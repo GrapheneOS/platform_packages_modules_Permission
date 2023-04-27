@@ -31,6 +31,9 @@
     <attr name="colorScIconRecommend" format="color" />
     <attr name="colorScIconWarn" format="color" />
     <attr name="colorScIconNull" format="color" />
+    <attr name="colorScOutlineButtonInfoBase" format="color" />
+    <attr name="colorScOutlineButtonRecommendBase" format="color" />
+    <attr name="colorScOutlineButtonWarnBase" format="color" />
 
     <attr name="scActionButtonStyle" format="reference"/>
     <attr name="scSecondaryActionButtonStyle" format="reference"/>
