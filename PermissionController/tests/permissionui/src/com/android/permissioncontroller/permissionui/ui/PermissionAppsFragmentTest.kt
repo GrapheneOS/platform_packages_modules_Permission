@@ -83,7 +83,7 @@ abstract class PermissionAppsFragmentTest(
         }
     }
 
-    @Test
+    @Test(timeout = 120000)
     fun appDisappearsWhenUninstalled() {
         assertNull(waitFindObjectOrNull(By.text(userPkg)))
 
