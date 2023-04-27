@@ -44,4 +44,14 @@
     <color name="sc_shield_accent_light">@color/sc_shield_accent</color>
     <color name="sc_shield_accent_dark">@color/gm_grey_900</color>
     <color name="sc_shield_accent_fixed_variant">@color/sc_shield_accent_dark</color>
+
+    <color name="sc_primary_action_button_text">@color/gm_grey_900</color>
+
+    <color name="sc_outline_button_info_base_light">@color/gm_green_500</color>
+    <color name="sc_outline_button_recommend_base_light">@color/gm_yellow_500</color>
+    <color name="sc_outline_button_warn_base_light">@color/gm_red_500</color>
+
+    <color name="sc_outline_button_info_base_dark">@color/gm_green_400</color>
+    <color name="sc_outline_button_recommend_base_dark">@color/gm_yellow_400</color>
+    <color name="sc_outline_button_warn_base_dark">@color/gm_red_400</color>
 </resources>

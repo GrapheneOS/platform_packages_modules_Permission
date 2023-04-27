@@ -51,7 +51,6 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.service.notification.StatusBarNotification
-import android.text.Html
 import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.GuardedBy
@@ -519,23 +518,8 @@ internal class NotificationListenerCheckInternal(
             parentUserContext.getString(
                 R.string.notification_listener_reminder_notification_content, pkgLabel)
 
-        // Use PbA branding if available, otherwise default to more generic branding
-        val appLabel: String
-        val smallIconResId: Int
-        val colorResId: Int
-        if (KotlinUtils.shouldShowSafetyProtectionResources(parentUserContext)) {
-            // PbA branding and colors
-            val pbaHtmlString =
-                parentUserContext.getString(android.R.string.safety_protection_display_text)
-            appLabel = Html.fromHtml(pbaHtmlString, 0).toString()
-            smallIconResId = android.R.drawable.ic_safety_protection
-            colorResId = R.color.safety_center_info
-        } else {
-            // Generic branding. Settings label, gear icon, and system accent color
-            appLabel = parentUserContext.getString(R.string.safety_center_notification_app_label)
-            smallIconResId = R.drawable.ic_settings_notification
-            colorResId = android.R.color.system_notification_accent_color
-        }
+        val (appLabel, smallIcon, color) =
+            KotlinUtils.getSafetyCenterNotificationResources(parentUserContext)
 
         val b: Notification.Builder =
             Notification.Builder(parentUserContext, Constants.PERMISSION_REMINDER_CHANNEL_ID)
@@ -544,8 +528,8 @@ internal class NotificationListenerCheckInternal(
                 .setContentText(text)
                 // Ensure entire text can be displayed, instead of being truncated to one line
                 .setStyle(Notification.BigTextStyle().bigText(text))
-                .setSmallIcon(smallIconResId)
-                .setColor(parentUserContext.getColor(colorResId))
+                .setSmallIcon(smallIcon)
+                .setColor(color)
                 .setAutoCancel(true)
                 .setDeleteIntent(deletePendingIntent)
                 .setContentIntent(clickPendingIntent)
