@@ -303,9 +303,8 @@ class GrantPermissionsViewModel(
                             appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true &&
                                 appPermGroup.permissions[perm]?.isRevokeWhenRequested == false
                         }
-                        if (allAffectedGranted || isCompatStorageGrant(appPermGroup)) {
-                            groupStates[key] = GroupState(appPermGroup, state.isBackground,
-                                    state.affectedPermissions, STATE_ALLOWED)
+                        if (allAffectedGranted) {
+                            groupStates[key]!!.state = STATE_ALLOWED
                         }
                     }
                 } else {
@@ -815,11 +814,6 @@ class GrantPermissionsViewModel(
                 // then skip the request
                 return STATE_SKIPPED
             }
-            // If the "false grant" for apps that don't support the permission has been applied,
-            // treat the permission as already granted
-            if (isCompatStorageGrant(group)) {
-                return STATE_ALLOWED
-            }
         }
 
         val isBackground = perm in group.backgroundPermNames
@@ -892,7 +886,7 @@ class GrantPermissionsViewModel(
      * ACCESS_MEDIA_LOCATION granted
      */
     private fun isPartialStorageGrant(group: LightAppPermGroup): Boolean {
-        if (group.permGroupName != READ_MEDIA_VISUAL || !KotlinUtils.isPhotoPickerPromptEnabled()) {
+        if (!KotlinUtils.isPhotoPickerPromptEnabled() || group.permGroupName != READ_MEDIA_VISUAL) {
             return false
         }
 
@@ -900,20 +894,6 @@ class GrantPermissionsViewModel(
         return group.isGranted && group.permissions.values.all {
             it.name in partialPerms || (it.name !in partialPerms && !it.isGrantedIncludingAppOp)
         }
-    }
-
-    /**
-     * A compat storage grant is provided when the user selects "select photos" on an app that does
-     * not explicitly request the READ_MEDIA_VISUAL_USER_SELECTED permission. It grants RMVUS, and
-     * applies the "revoked compat" state to all other permissions in the group.
-     */
-    private fun isCompatStorageGrant(group: LightAppPermGroup): Boolean {
-        if (group.permGroupName != READ_MEDIA_VISUAL || !KotlinUtils.isPhotoPickerPromptEnabled()) {
-            return false
-        }
-        return group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]
-                ?.isGrantedIncludingAppOp == true &&
-                group.permissions.values.any { it.isCompatRevoked }
     }
 
     private fun getStateFromPolicy(perm: String, group: LightAppPermGroup): Int {
