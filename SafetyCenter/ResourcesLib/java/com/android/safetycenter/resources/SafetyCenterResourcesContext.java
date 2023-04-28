@@ -370,6 +370,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
      * Gets a color by resource name
      */
     @ColorInt
+    @Nullable
     public Integer getColorByName(String name) {
         int resId = getResId(name, "color");
         if (resId != Resources.ID_NULL) {
