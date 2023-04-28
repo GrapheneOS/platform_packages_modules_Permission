@@ -32,6 +32,7 @@ android_test {
         "androidx.test.ext.junit",
         "compatibility-device-preconditions",
         "kotlin-test",
+        "platform-test-rules",
         "safety-center-test-util-lib",
         "safety-center-pending-intents",
     ],
