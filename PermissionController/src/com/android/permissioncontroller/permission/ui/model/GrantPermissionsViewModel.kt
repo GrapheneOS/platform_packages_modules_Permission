@@ -72,7 +72,7 @@ import com.android.permissioncontroller.auto.DrivingDecisionReminderService
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
-import com.android.permissioncontroller.permission.data.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
@@ -154,7 +154,7 @@ class GrantPermissionsViewModel(
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
     private val safetyLabelInfoLiveData =
-        if (requestedPermissions
+        if (SdkLevel.isAtLeastU() && requestedPermissions
                 .mapNotNull { PermissionMapping.getGroupOfPlatformPermission(it) }
                 .any { PermissionMapping.isSafetyLabelAwarePermissionGroup(it) }) {
             SafetyLabelInfoLiveData[packageName, user]
@@ -438,8 +438,17 @@ class GrantPermissionsViewModel(
                             }
                         } else if (needBgPermissions) {
                             // Case: sdk >= R, BG/FG permission requesting BG only
-                            requestInfos.add(RequestInfo(
-                                groupInfo, sendToSettingsImmediately = true))
+                            if (storedState != null && storedState.containsKey(getInstanceStateKey(
+                                    groupInfo.name, groupState.isBackground))) {
+                                // If we're restoring state, and we had this groupInfo in our
+                                // previous state, that means that we likely sent the user to
+                                // settings already. Don't send the user back.
+                                permGroupsToSkip.add(groupInfo.name)
+                                groupState.state = STATE_SKIPPED
+                            } else {
+                                requestInfos.add(RequestInfo(
+                                    groupInfo, sendToSettingsImmediately = true))
+                            }
                             continue
                         } else {
                             // Not reached as the permissions should be auto-granted
@@ -1085,8 +1094,6 @@ class GrantPermissionsViewModel(
                 listOf(READ_MEDIA_VISUAL_USER_SELECTED))
             grantForegroundRuntimePermissions(app, groupState.group,
                 nonSelectedPerms, isOneTime = true, userFixed = false, withoutAppOps = true)
-            onPermissionGrantResultSingleState(groupState, listOf(READ_MEDIA_VISUAL_USER_SELECTED),
-                granted = true, isOneTime = false, doNotAskAgain = false)
             val appPermGroup = AppPermissionGroup.create(app, packageName,
             groupState.group.permGroupName, groupState.group.userHandle, false)
             appPermGroup.setSelfRevoked()
@@ -1357,7 +1364,6 @@ class GrantPermissionsViewModel(
             } else {
                 onPermissionGrantResult(READ_MEDIA_VISUAL, null, CANCELED)
             }
-            logPhotoPickerInteraction(result)
             requestInfosLiveData.update()
         }
         activity.startActivityForResult(Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
@@ -1427,20 +1433,6 @@ class GrantPermissionsViewModel(
 
     private fun getInstanceStateKey(groupName: String, isBackground: Boolean): String {
         return "${this::class.java.name}_${groupName}_$isBackground"
-    }
-
-    private fun logPhotoPickerInteraction(result: Int) {
-        val foregroundGroupState = groupStates[READ_MEDIA_VISUAL to false] ?: return
-        when (result) {
-            GRANTED_USER_SELECTED -> {
-                reportRequestResult(foregroundGroupState.affectedPermissions,
-                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__PHOTOS_SELECTED)
-            }
-            CANCELED -> {
-                reportRequestResult(foregroundGroupState.affectedPermissions,
-                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__IGNORED)
-            }
-        }
     }
 
     private fun logSettingsInteraction(groupName: String, result: Int) {

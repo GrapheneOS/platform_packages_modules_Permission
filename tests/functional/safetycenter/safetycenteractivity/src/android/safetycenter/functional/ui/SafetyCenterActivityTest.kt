@@ -118,6 +118,17 @@ class SafetyCenterActivityTest {
     }
 
     @Test
+    fun launchActivity_allowingSettingsTrampoline() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        val dataToDisplay = safetySourceTestData.criticalWithResolvingGeneralIssue
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
+
+        context.launchSafetyCenterActivity(preventTrampolineToSettings = false) {
+            waitSourceDataDisplayed(dataToDisplay)
+        }
+    }
+
+    @Test
     fun launchActivity_displaysStaticSources() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.staticSourcesConfig)
 

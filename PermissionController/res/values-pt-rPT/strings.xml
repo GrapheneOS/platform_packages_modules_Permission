@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Permitir sempre todos"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Selecionar fotos e vídeos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Selecionar mais"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Não selecionar mais"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Não selecionar mais"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Não permitir mesmo assim"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignorar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -60,7 +60,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizações da app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Apps não usadas"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não utilizada"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não usada"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 apps não utilizadas"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Decisões de autorização recentes"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões de autorização recentes"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Todas as autorizações"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Outras capacidades de aplicações"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Pedido de autorização"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Sobreposição de ecrã detetada"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Para alterar esta definição de autorização, primeiro tem de desativar a sobreposição do ecrã em Definições &gt; Apps"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Abrir definições"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"As ações de instalar/desinstalar não são compatíveis com o Android Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Escolher a que conteúdos permite que o &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda"</string>
@@ -222,7 +219,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizações de <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Autorização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> autorizações removidas."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usadas"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for utilizada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for usada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Se uma app não for usada durante um mês:\n\n• As autorizações são removidas para proteger os seus dados\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações, abra a app."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Abertas pela última vez há mais de # mês}many{Abertas pela última vez há mais de # de meses}other{Abertas pela última vez há mais de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A app foi aberta pela última vez a <xliff:g id="DATE">%s</xliff:g>."</string>
@@ -354,7 +351,7 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App assistente digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"As apps de assistência podem ajudá-lo com base em informações do ecrã que está a ver. Algumas apps são compatíveis com serviços de iniciação e de entrada de texto por voz para oferecer assistência integrada."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"App navegador predefinida"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicação de navegador"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"App de navegador"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apps que lhe dão acesso à Internet e apresentam links em que pode tocar."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como a app de navegador predefinida?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Não são necessárias autorizações."</string>
@@ -365,7 +362,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Esta app fica com acesso à sua Câmara, Contactos, Microfone, Telefone e SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefone"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App de SMS predefinida"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicação de SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"App de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem utilizar o seu número de telefone para enviar e receber mensagens de texto, fotos, vídeos e muito mais."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como app SMS predefinida?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Esta app fica com acesso à sua Câmara, Contactos, Ficheiros e multimédia, Microfone, Telefone e SMS"</string>
@@ -501,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar a permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores de corpo enquanto usa a app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lhe envie notificações?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizações controladas"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"É possível aceder à localização"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"O seu administrador de TI está a permitir que a app <xliff:g id="APP_NAME">%s</xliff:g> aceda à sua localização"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> tem acesso à localização"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"A sua organização permite que a app <xliff:g id="APP_NAME">%1$s</xliff:g> aceda à sua localização"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Outras autorizações"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorização utilizada pelo sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorizações utilizadas apenas pelas aplicações do sistema."</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Reveja a app com acesso à localização em segundo plano"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"A app <xliff:g id="APP_NAME">%s</xliff:g> pode aceder sempre à sua localização, mesmo quando a app está fechada"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Reveja a app com acesso à localização em segundo plano"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Esta app consegue aceder sempre à sua localização, mesmo quando está fechada."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Esta app pode aceder sempre à sua localização, mesmo quando está fechada.\n\nAlgumas apps de segurança e emergência precisam de acesso à sua localização em segundo plano para funcionarem como esperado."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Acesso alterado"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver utilização da localização recente"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Controlos de privacidade"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esta app pode partilhar dados de localização para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"A partilha de dados varia"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"As práticas de dados podem variar consoante a versão da app, a utilização, a região e a idade. "<annotation id="link">"Mais informações sobre a partilha de dados"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"As práticas de dados podem variar consoante a versão da app, a utilização, a região e a idade."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Os seus dados de localização"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Altere o acesso desta app nas "<annotation id="link">"definições de privacidade"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Funcionalidade da app"</string>

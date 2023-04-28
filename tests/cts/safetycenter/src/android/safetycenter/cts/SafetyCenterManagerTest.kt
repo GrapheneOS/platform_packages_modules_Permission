@@ -21,6 +21,7 @@ import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle.USER_NULL
+import android.os.UserManager
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager
@@ -810,6 +811,8 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
+        // Implicit broadcast is only sent to system user.
+        assumeTrue(context.getSystemService(UserManager::class.java)!!.isSystemUser)
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         val receiverValue =
@@ -826,6 +829,8 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverDoesntHavePermission_receiverNotCalled() {
+        // Implicit broadcast is only sent to system user.
+        assumeTrue(context.getSystemService(UserManager::class.java)!!.isSystemUser)
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         assertFailsWith(TimeoutCancellationException::class) {

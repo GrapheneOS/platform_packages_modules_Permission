@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"اسکین ہو رہا ہے"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"آلے کی ترتیبات چیک کی جا رہی ہے…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"آلے کی ترتیبات چیک کی جا رہی ہیں…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ٹھیک لگ رہا ہے"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"کوئی مسئلہ نہیں پایا گيا"</string>
     <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{تجویز دستیاب ہے}other{تجاویز دستیاب ہیں}}"</string>

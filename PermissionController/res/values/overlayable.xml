@@ -69,6 +69,8 @@
             <item type="style" name="PermissionGrantPermissionRationaleMessage" />
             <item type="style" name="PermissionGrantPermissionRationaleMoreInfoIcon" />
 
+            <item type="color" name="permission_rationale_overview_background" />
+
             <!-- END PERMISSION GRANT DIALOG -->
 
             <!-- START PERMISSION RATIONALE DIALOG -->
@@ -90,6 +92,8 @@
 
             <item type="style" name="PermissionRationaleButtonContainer" />
             <item type="style" name="PermissionRationaleBackButton" />
+
+            <item type="color" name="permission_rationale_accent_primary_variant" />
 
             <!-- END PERMISSION RATIONALE DIALOG -->
 
@@ -410,9 +414,32 @@
             <item type="color" name="sc_accent_primary_light" />
             <item type="color" name="sc_accent_primary_dark" />
             <item type="color" name="sc_shield_accent" />
+            <item type="color" name="sc_shield_accent_dark" />
+            <item type="color" name="sc_shield_accent_fixed_variant" />
             <item type="color" name="safety_center_info" />
             <item type="color" name="safety_center_recommend" />
             <item type="color" name="safety_center_warn" />
+
+            <item type="color" name="sc_status_info_light" />
+            <item type="color" name="sc_status_recommend_light" />
+            <item type="color" name="sc_status_warn_light" />
+            <item type="color" name="sc_status_info_dark" />
+            <item type="color" name="sc_status_recommend_dark" />
+            <item type="color" name="sc_status_warn_dark" />
+            <item type="color" name="sc_status_background_info_light" />
+            <item type="color" name="sc_status_background_recommend_light" />
+            <item type="color" name="sc_status_background_warn_light" />
+            <item type="color" name="sc_status_background_info_dark" />
+            <item type="color" name="sc_status_background_recommend_dark" />
+            <item type="color" name="sc_status_background_warn_dark" />
+            <item type="color" name="sc_icon_info_light" />
+            <item type="color" name="sc_icon_recommend_light" />
+            <item type="color" name="sc_icon_warn_light" />
+            <item type="color" name="sc_icon_null_light" />
+            <item type="color" name="sc_icon_info_dark" />
+            <item type="color" name="sc_icon_recommend_dark" />
+            <item type="color" name="sc_icon_warn_dark" />
+            <item type="color" name="sc_icon_null_dark" />
 
             <item type="drawable" name="ic_check" />
             <item type="drawable" name="ic_chevron_right" />

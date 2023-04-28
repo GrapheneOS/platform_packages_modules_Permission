@@ -24,9 +24,6 @@ public class SafetyCenterConstants {
     public static final String QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT =
             "QUICK_SETTINGS_SAFETY_CENTER_FRAGMENT";
 
-    public static final String EXPAND_ISSUE_GROUP_SAVED_INSTANCE_STATE_KEY =
-            "expand_issue_group_saved_instance_state_key";
-
     public static final String EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY =
             "expand_issue_group_qs_fragment_key";
 

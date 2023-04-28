@@ -36,9 +36,11 @@ import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource
-import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.config.SafetySourcesGroup
+import android.safetycenter.config.SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN
+import android.safetycenter.config.SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL
+import android.safetycenter.config.SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
@@ -47,6 +49,7 @@ import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSO
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.ui.SafetyCenterUiFlags
 import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsViewModel.Pref
+import com.android.safetycenter.internaldata.SafetyCenterBundles
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
@@ -62,14 +65,17 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         }
 
         val context = requireContext()
-        val safetyCenterManager: SafetyCenterManager? =
-            context.getSystemService(SafetyCenterManager::class.java)
+        val safetyCenterManager =
+            context.getSystemService(SafetyCenterManager::class.java) ?: return cursor
         val resourcesContext = SafetyCenterResourcesContext(context)
 
         val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
 
-        safetyCenterManager?.safetySourcesGroups?.forEach { safetySourcesGroup ->
-            if (SdkLevel.isAtLeastU()) {
+        safetyCenterManager.safetySourcesGroupsWithEntries.forEach { safetySourcesGroup ->
+            if (
+                SdkLevel.isAtLeastU() &&
+                    safetySourcesGroup.type == SAFETY_SOURCES_GROUP_TYPE_STATEFUL
+            ) {
                 cursor.addSafetySourcesGroupRow(safetySourcesGroup, resourcesContext, screenTitle)
             }
             safetySourcesGroup.safetySources
@@ -99,18 +105,28 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         }
 
         val context = requireContext()
-        val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)
+        val safetyCenterManager =
+            context.getSystemService(SafetyCenterManager::class.java) ?: return cursor
         val userManager = context.getSystemService(UserManager::class.java) ?: return cursor
         val keysToRemove = mutableSetOf<String>()
 
-        if (safetyCenterManager?.isSafetyCenterEnabled == true) {
-            collectAllRemovableKeys(safetyCenterManager, keysToRemove) {
-                // we are only removing dynamic sources from search, so all the static will remain
-                it.type == SAFETY_SOURCE_TYPE_DYNAMIC
-            }
+        if (safetyCenterManager.isSafetyCenterEnabled) {
+            // SafetyCenterStaticEntry doesn't provide an ID, so we never remove these entries from
+            // search as we have no way to know if they're actually surfaced in the UI on T.
+            // On U+, we implemented a workaround that provides an ID for these entries using
+            // SafetyCenterData#getExtras().
+            collectAllRemovableKeys(
+                safetyCenterManager,
+                keysToRemove,
+                staticEntryGroupsAreRemovable = SdkLevel.isAtLeastU()
+            )
             keepActiveEntriesFromRemoval(safetyCenterManager, userManager, keysToRemove)
         } else {
-            collectAllRemovableKeys(safetyCenterManager, keysToRemove) { true }
+            collectAllRemovableKeys(
+                safetyCenterManager,
+                keysToRemove,
+                staticEntryGroupsAreRemovable = true
+            )
         }
 
         if (shouldRemovePrivacyControlKeys(safetyCenterManager)) {
@@ -200,50 +216,75 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     private fun String.addSuffix(isWorkProfile: Boolean): String =
         "${this}_${if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX}"
 
-    private val SafetyCenterManager.safetySourcesGroups: Sequence<SafetySourcesGroup>?
-        get() = safetyCenterConfig?.safetySourcesGroups?.asSequence()
+    private val SafetyCenterManager.safetySourcesGroupsWithEntries: Sequence<SafetySourcesGroup>
+        get() =
+            safetyCenterConfig?.safetySourcesGroups?.asSequence()?.filter {
+                it.type != SAFETY_SOURCES_GROUP_TYPE_HIDDEN
+            }
+                ?: emptySequence()
 
     private fun collectAllRemovableKeys(
-        safetyCenterManager: SafetyCenterManager?,
+        safetyCenterManager: SafetyCenterManager,
         keysToRemove: MutableSet<String>,
-        filter: (SafetySource) -> Boolean
+        staticEntryGroupsAreRemovable: Boolean
     ) {
-        safetyCenterManager?.safetySourcesGroups?.forEach { safetySourcesGroup ->
-            if (SdkLevel.isAtLeastU()) {
-                keysToRemove.add(safetySourcesGroup.id)
+        safetyCenterManager.safetySourcesGroupsWithEntries
+            .filter {
+                it.type != SAFETY_SOURCES_GROUP_TYPE_STATELESS || staticEntryGroupsAreRemovable
             }
-            safetySourcesGroup.safetySources.asSequence().filter(filter).forEach { safetySource ->
-                keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
-                if (safetySource.profile == SafetySource.PROFILE_ALL) {
-                    keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+            .forEach { safetySourcesGroup ->
+                if (
+                    SdkLevel.isAtLeastU() &&
+                        safetySourcesGroup.type == SAFETY_SOURCES_GROUP_TYPE_STATEFUL
+                ) {
+                    keysToRemove.add(safetySourcesGroup.id)
                 }
+                safetySourcesGroup.safetySources
+                    .asSequence()
+                    .filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+                    .forEach { safetySource ->
+                        keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = false))
+                        if (safetySource.profile == SafetySource.PROFILE_ALL) {
+                            keysToRemove.add(safetySource.id.addSuffix(isWorkProfile = true))
+                        }
+                    }
             }
-        }
     }
 
     private fun keepActiveEntriesFromRemoval(
-        safetyCenterManager: SafetyCenterManager?,
+        safetyCenterManager: SafetyCenterManager,
         userManager: UserManager,
         keysToRemove: MutableSet<String>
     ) {
-        safetyCenterManager?.safetyEntriesOrGroups?.forEach { entryOrGroup ->
+        val safetyCenterData = safetyCenterManager.safetyCenterData
+        safetyCenterData.entriesOrGroups.forEach { entryOrGroup ->
             val entryGroup = entryOrGroup.entryGroup
             if (entryGroup != null && SafetyCenterUiFlags.getShowSubpages()) {
                 keysToRemove.remove(entryGroup.id)
-                // Note that we will discard static or issue-only entry groups here; and only keep
-                // dynamic ones. This is desirable as highlighting isn't implemented for static
-                // entries; and most static entries are now within subpages anyway.
             }
-            entryOrGroup.entries.forEach { keepEntryFromRemoval(it, userManager, keysToRemove) }
+            entryOrGroup.entries.forEach {
+                keepEntryFromRemoval(it.entryId, userManager, keysToRemove)
+            }
         }
+        if (!SdkLevel.isAtLeastU()) {
+            return
+        }
+        safetyCenterData.staticEntryGroups
+            .asSequence()
+            .flatMap { it.staticEntries.asSequence() }
+            .forEach { staticEntry ->
+                val entryId = SafetyCenterBundles.getStaticEntryId(safetyCenterData, staticEntry)
+                if (entryId != null) {
+                    keepEntryFromRemoval(entryId, userManager, keysToRemove)
+                }
+            }
     }
 
     private fun keepEntryFromRemoval(
-        safetyCenterEntry: SafetyCenterEntry,
+        entryId: SafetyCenterEntryId,
         userManager: UserManager,
         keysToRemove: MutableSet<String>
     ) {
-        val entryId = safetyCenterEntry.entryId
         val isWorkProfile = userManager.isManagedProfile(entryId.userId)
         keysToRemove.remove(entryId.safetySourceId.addSuffix(isWorkProfile))
     }
@@ -281,13 +322,13 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         }
 
         private fun shouldRemovePrivacyControlKeys(
-            safetyCenterManager: SafetyCenterManager?
+            safetyCenterManager: SafetyCenterManager
         ): Boolean {
             if (!SdkLevel.isAtLeastU()) {
                 // The keys were never added in the first place, no need to remove.
                 return false
             }
-            val safetyCenterDisabled = safetyCenterManager?.isSafetyCenterEnabled != true
+            val safetyCenterDisabled = !safetyCenterManager.isSafetyCenterEnabled
             val subpagesDisabled = !SafetyCenterUiFlags.getShowSubpages()
             return safetyCenterDisabled || subpagesDisabled
         }

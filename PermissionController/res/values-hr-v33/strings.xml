@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Aplikacija će vam moći slati obavijesti i dobit će pristup vašoj kameri, kontaktima, mikrofonu, telefonu i SMS-ovima"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"Aplikacija će vam moći slati obavijesti i dobit će pristup vašoj kameri, kontaktima, datotekama, mikrofonu, telefonu i SMS-ovima"</string>
-    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacije s tim dopuštenjem mogu pristupati svim datotekama na ovom uređaju"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikacije s tim dopuštenjem imaju pristup svim datotekama na ovom uređaju"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Informacije o pravilima za posao"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Postavkama upravlja vaš IT administrator"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Proširi i prikaži popis"</string>
@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Više upozorenja"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Odbačena upozorenja"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Proširite i pogledajte još jedno upozorenje}one{Proširite i pogledajte još # upozorenje}few{Proširite i pogledajte još # upozorenja}other{Proširite i pogledajte još # upozorenja}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Upozorenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Upozorenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Upozorenje. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Radnja je dovršena"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Provjerite postavke koje mogu vašem uređaju dodati zaštitu"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Brze postavke sigurnosti i privatnosti"</string>

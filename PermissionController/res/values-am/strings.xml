@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ሁልጊዜ ሁሉንም ፍቀድ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ፎቶዎችን እና ቪድዮዎችን ምረጥ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ተጨማሪ ምረጥ"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"ተጨማሪ አትምረጥ"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ተጨማሪ አትምረጥ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ለማንኛውም አትፍቀድ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"አሰናብት"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ከ<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"ሁሉም ፍቃዶች"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ሌሎች የመተግበሪያ ችሎታዎች"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"የፍቃድ ጥያቄ"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"የማያ ገጽ ተደራቢ ተገኝ"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"ይህን የፍቃድ ቅንብር ለመቀየር መጀመሪያ የማያ ገጽ ተደራቢውን ከቅንብሮች &gt; መተግበሪያዎች ማጥፋት አለብዎ"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"ቅንብሮችን ክፈት"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"በWear ላይ የመጫን/ማራገፍ እርምጃዎች አይደገፉም።"</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ምን መድረስ እንደሚችል ይምረጡ"</string>
@@ -292,8 +289,8 @@
     <string name="notification_listener_review_app_button_label" msgid="3433073281029143924">"ተጨማሪ አማራጮችን ይመልከቱ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"መዳረሻ ተወግዷል"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"ሙሉ የመሣሪያ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን ማያ ገጽ ማየት እና በመሣሪያዎ ላይ እርምጃዎችን መውሰድ ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ አይነት መዳረሻ ያስፈልጋቸዋል።"</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ይህ መተግበሪያ ማያ ገጽዎን ማየት እና በመሣሪያዎ ላይ እርምጃዎችን ማከናወን ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ አይነት መዳረሻ ያስፈልጋቸዋል፣ ነገር ግን መተግበሪያውን ይፈትሹት እና እንደሚያምኑት ያረጋግጡ።"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን ማያ ገፅ ማየት እና በመሣሪያዎ ላይ እርምጃዎችን መውሰድ ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ ዓይነት መዳረሻ ያስፈልጋቸዋል።"</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"ይህ መተግበሪያ ማያ ገጽዎን ማየት እና በመሣሪያዎ ላይ እርምጃዎችን ማከናወን ይችላል። የተደራሽነት መተግበሪያዎች እንደታሰቡት እንዲሰሩ እንደዚህ ዓይነት መዳረሻ ያስፈልጋቸዋል፣ ነገር ግን መተግበሪያውን ይፈትሹት እና እንደሚያምኑት ያረጋግጡ።"</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"መዳረሻን አስወግድ"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"ሙሉ መዳረሻ ያላቸውን መተግበሪያዎች ይመልከቱ"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"መዳረሻ ተወግዷል"</string>
@@ -348,11 +345,11 @@
     <string name="settings" msgid="5409109923158713323">"ቅንብሮች"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ወደ የእርስዎ መሣሪያ ሙሉ መዳረሻ አለው"</string>
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ተደራሽነት መተግበሪያዎች ወደ የእርስዎ መሣሪያ ሙሉ መዳረሻ አላቸው"</string>
-    <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> የእርስዎን ማያ ገጽ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላል።"</string>
-    <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"እነዚህ መተግበሪያዎች የእርስዎን ማያ ገጽ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላሉ።"</string>
+    <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> የእርስዎን ማያ ገፅ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላል።"</string>
+    <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"እነዚህ መተግበሪያዎች የእርስዎን ማያ ገፅ፣ እርምጃዎች እና ግቤቶች መመልከት፣ እርምጃዎችን መውሰድ እና ማሳያን መቆጣጠር ይችላሉ።"</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"ነባሪ የዲጂታል ረዳት መተግበሪያ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"የዲጂታል ረዳት መተግበሪያ"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"ረዳት መተግበሪያዎች በሚያዩት ማያ ገጽ ላይ ባለ መረጃ ላይ ተመስርቶ ሊያግዘዎት ይችላል። አንዳንድ መተግበሪያዎች የተዋሃደ እርዳታ ለእርስዎ ለመስጠት ሁለቱንም ማስጀመሪያ እና የድምፅ ግቤት አገልግሎቶችን ይደግፋሉ።"</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"ረዳት መተግበሪያዎች በሚያዩት ማያ ገፅ ላይ ባለ መረጃ ላይ ተመስርቶ ሊያግዘዎት ይችላል። አንዳንድ መተግበሪያዎች የተዋሃደ እርዳታ ለእርስዎ ለመስጠት ሁለቱንም ማስጀመሪያ እና የድምፅ ግቤት አገልግሎቶችን ይደግፋሉ።"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ነባሪ አሳሽ መተግበሪያ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"የአሳሽ መተግበሪያ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ወደ በየነ መረብ ለእርስዎ መዳረሻ የሚሰጥዎትን እና እርስዎ መታ የሚያደርጓቸውን አገናኞች የሚያሳዩ መተግበሪያዎች"</string>
@@ -439,8 +436,8 @@
     <string name="no_special_app_access" msgid="6950277571805106247">"ምንም ልዩ መተግበሪያ መዳረሻ"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"መተግበሪያዎች የሉም"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"የሥራ መገለጫን አይደግፍም"</string>
-    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"ማስታወሻ፦ የእርስዎን መሣሪያ ዳግም ካስጀምሩ እና ማያ ገጽ መቆለፊያው እንዲቀናበር ካደረጉ፣ ይህ መተግበሪያ የእርስዎን መሣሪያ ዳግም እስከሚከፍቱ ድረስ መጀመር አይችልም።"</string>
-    <string name="assistant_confirmation_message" msgid="7476540402884416212">"ረዳቱ በእርስዎ ስርዓት ላይ በአገልግሎት ላይ ስለሚውሉ መተግበሪያዎች መረጃን ማንበብ ይችላል፣ ይህም በእርስዎ ማያ ገጽ ላይ የሚታይ ወይም በመተግበሪያዎች ውስጥ የሚደረስበት መረጃን ይጨምራል።"</string>
+    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"ማስታወሻ፦ የእርስዎን መሣሪያ ዳግም ካስጀምሩ እና ማያ ገፅ መቆለፊያው እንዲቀናበር ካደረጉ፣ ይህ መተግበሪያ የእርስዎን መሣሪያ ዳግም እስከሚከፍቱ ድረስ መጀመር አይችልም።"</string>
+    <string name="assistant_confirmation_message" msgid="7476540402884416212">"ረዳቱ በእርስዎ ስርዓት ላይ በአገልግሎት ላይ ስለሚውሉ መተግበሪያዎች መረጃን ማንበብ ይችላል፣ ይህም በእርስዎ ማያ ገፅ ላይ የሚታይ ወይም በመተግበሪያዎች ውስጥ የሚደረስበት መረጃን ይጨምራል።"</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"ሳንካ ማረሚያ ውሂብን አጋራ"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"ዝርዝር የሳንካ ማረሚያ መረጃ ይጋራ?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> የሳንካ ማረሚያ መረጃን መስቀል ይፈልጋል።"</string>
@@ -501,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"መተግበሪያ ስራ ላይ በሚውልበት ጊዜ የሰውነት ዳሳሽ ውሂብን እንዲደርስ ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; መፍቀድ ይቀጥሉ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎች እንዲልክ ይፈቀድለት?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ቁጥጥር የሚደረግባችድው ፈቃዶች"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"የመገኛ አካባቢ ሊደርስበት ይችላል"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"የእርስዎ አይቲ አስተዳዳሪ <xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን መገኛ አካባቢን እንዲደርስ እየፈቀደ ነው"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> የአካባቢ መዳረሻ አለው"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"ድርጅትዎ <xliff:g id="APP_NAME">%1$s</xliff:g> አካባቢዎን እንዲደርስ ይፈቅዳል"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"ሌሎች ፍቃዶች"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"በስርዓት ጥቅም ላይ የሚውል ፈቃድ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"በስርዓት መተግበሪያዎችች ብቻ ጥቅም ላይ የሚውሉ ፈቃዶች።"</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"የዳራ አካባቢ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"የ<xliff:g id="APP_NAME">%s</xliff:g> መተግበሪያው ተዘግቶም እንኳ ሁልጊዜ አካባቢዎን መድረስ ይችላል"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"የዳራ አካባቢ መዳረሻ ያለውን መተግበሪያ ይገምግሙ"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"ይህ መተግበሪያ ተዘግቶም እንኳ ሁልጊዜ አካባቢዎን መድረስ ይችላል።"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ይህ መተግበሪያ ተዘግቶም እንኳን በማንኛውም ጊዜ አካባቢዎን መድረስ ይችላል።\n\nአንዳንድ የደህንነት እና የድንገተኛ ጊዜ መተግበሪያዎች እንደታሰበው ለመሥራት የአካባቢዎ መዳረሻ በዳራ ውስጥ ያስፈልጋቸዋል።"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"መዳረሻ ተለውጧል"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"የቅርብ ጊዜ የአካባቢ አጠቃቀምን ይመልከቱ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"የግላዊነት መቆጣጠሪያዎች"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ይህ መተግበሪያ የአካባቢ ውሂብን ለሚከተሉት ሊያጋራ ይችላል፦"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"የውሂብ ማጋራት ይለያያል"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"የውሂብ ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀምዎ፣ ክልልዎ እና እድሜዎ መሰረት ሊለያዩ ይችላሉ። "<annotation id="link">"ስለውሂብ ማጋራት ተጨማሪ"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"የውሂብ ልማዶች በመተግበሪያዎ ስሪት፣ አጠቃቀምዎ፣ ክልልዎ እና እድሜዎ መሰረት ሊለያዩ ይችላሉ።"</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"የእርስዎ የአካባቢ ውሂብ"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"የዚህን መተግበሪያ መዳረሻ በ"<annotation id="link">"ግላዊነት ቅንብሮች"</annotation>" ውስጥ ይለውጡ"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"የመተግበሪያ ተግባራዊነት"</string>

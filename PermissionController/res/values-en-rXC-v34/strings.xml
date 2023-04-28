@@ -19,7 +19,6 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‎‏‎‏‎‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‎‎‎‏‎‏‎‏‏‎‎‏‎‎‎‏‎‎‏‎‏‏‏‏‏‏‏‎‏‎‎‏‏‎‏‏‎‎‎Security &amp; privacy‎‏‎‎‏‎"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‎‎‏‏‎‏‎‎‎‎‎‎‏‎‎‎‏‏‏‎‎‎‎‏‏‎‎‏‏‎‎‏‎‏‏‎‏‏‎‏‏‎‏‏‏‎‏‎‎‏‏‎‏‎‎‏‎‏‎‎Controls‎‏‎‎‏‎"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‎‎‎‎‏‎‎‏‎‎‏‏‏‏‏‏‏‎‎‎‎‎‏‎‎‎‎‏‏‎‎‏‎‏‏‎‎‏‏‎‎‎‏‎‎‎‎‏‎‏‎‏‎‏‎‏‎‎Data‎‏‎‎‏‎"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‎‏‏‎‎‏‎‏‏‏‎‎‏‏‎‏‏‏‎‏‏‎‏‏‎‏‎‎‏‏‏‎‏‏‎‎‏‏‎‎‏‏‏‏‎‎‎‏‎‏‏‏‎‎‎‏‏‏‎Health Connect‎‏‎‎‏‎"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‏‏‎‏‎‏‎‎‎‏‎‎‏‎‎‏‎‎‏‏‎‏‎‏‏‏‎‎‎‏‏‎‎‎‎‏‏‎‏‎‎‏‎‎‏‎‎‎‏‎‎‏‏‏‏‎‎‎‎Manage app access to health data‎‏‎‎‏‎"</string>
     <string name="location_settings" msgid="8863940440881290182">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‏‎‎‎‎‎‎‏‏‎‎‎‎‏‎‏‎‏‏‎‏‏‏‏‎‎‎‏‎‏‎‎‎‏‏‏‏‎‎‏‎‏‏‎‏‏‎‏‏‏‏‎‎‎‏‏‎‎Location access‎‏‎‎‏‎"</string>

@@ -17,5 +17,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="unused_apps_page_summary" msgid="7505839764289846511">"如果您在過去幾個月未曾使用應用程式，系統將會：\n\n• 移除權限以保護您的資料\n• 移除暫存檔案以騰出空間"</string>
+    <string name="unused_apps_page_summary" msgid="7505839764289846511">"如果你在過去幾個月未曾使用應用程式，系統將會：\n\n• 移除權限以保護你的資料\n• 移除暫存檔案以騰出空間"</string>
 </resources>

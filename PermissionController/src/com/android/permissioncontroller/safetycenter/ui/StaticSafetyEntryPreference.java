@@ -18,7 +18,11 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
+
 import android.content.Context;
+import android.os.UserManager;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,6 +32,7 @@ import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
+import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 
 /** A preference which displays a visual representation of a {@link SafetyCenterStaticEntry}. */
 @RequiresApi(TIRAMISU)
@@ -42,6 +47,7 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
             Context context,
             @Nullable Integer launchTaskId,
             SafetyCenterStaticEntry entry,
+            @Nullable SafetyCenterEntryId entryId,
             SafetyCenterViewModel viewModel) {
         super(context);
         mEntry = entry;
@@ -68,6 +74,21 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
 
                         return true;
                     });
+        }
+        if (entryId != null) {
+            setupPreferenceKey(entryId);
+        }
+    }
+
+    private void setupPreferenceKey(SafetyCenterEntryId entryId) {
+        boolean isWorkProfile =
+                getContext()
+                        .getSystemService(UserManager.class)
+                        .isManagedProfile(entryId.getUserId());
+        if (isWorkProfile) {
+            setKey(String.format("%s_%s", entryId.getSafetySourceId(), WORK_PROFILE_SUFFIX));
+        } else {
+            setKey(String.format("%s_%s", entryId.getSafetySourceId(), PERSONAL_PROFILE_SUFFIX));
         }
     }
 

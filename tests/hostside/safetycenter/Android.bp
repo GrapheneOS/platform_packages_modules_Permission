@@ -32,4 +32,8 @@ java_test_host {
         "cts-statsd-atom-host-test-utils",
     ],
     data: [":SafetyCenterHostSideTestsHelper"],
+    test_suites: [
+        "general-tests",
+        "mts-permission",
+    ],
 }

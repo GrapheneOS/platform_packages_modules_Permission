@@ -60,6 +60,8 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
     private val PERM_LABEL = "Permission B"
     private val SECOND_PERM_LABEL = "Permission C"
 
+    private val TIMEOUT_SHORT = 500L
+
     @Before
     fun assumeNotTelevision() = assumeFalse(isTelevision)
 
@@ -77,6 +79,7 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
             instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
                 .apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     putExtra(Intent.EXTRA_PACKAGE_NAME, USER_PKG)
                 })
         }
@@ -109,7 +112,7 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
 
         install(PERMISSION_USER_APK)
         eventually {
-            assertNull(waitFindObjectOrNull(By.text(SECOND_PERM_LABEL)))
+            assertNull(waitFindObjectOrNull(By.text(SECOND_PERM_LABEL), TIMEOUT_SHORT))
         }
     }
 
@@ -117,7 +120,7 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
     fun activityIsClosedWhenUserIsUninstalled() {
         uninstallApp(USER_PKG)
         eventually {
-            assertNull(waitFindObjectOrNull(By.text(ALL_PERMISSIONS)))
+            assertNull(waitFindObjectOrNull(By.text(ALL_PERMISSIONS), TIMEOUT_SHORT))
         }
     }
 

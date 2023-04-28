@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Tillåt alltid alla"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Välj foton och videor"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Välj fler"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Välj inte fler"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Välj inte fler"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Tillåt inte ändå"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Stäng"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> av <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Alla behörigheter"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Andra appbehörigheter"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Begäran om behörighet"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Skärmöverlagring har upptäckts"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Innan du kan ändra den här behörighetsinställningen måste du inaktivera skärmöverlagring under Inställningar &gt; Appar"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Öppna inställningarna"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Åtgärder för att installera/avinstallera stöds inte på Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Välj vad du vill ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till"</string>
@@ -229,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Om du tillåter hantering av alla filer kan appen komma åt, redigera och radera alla filer i det vanliga lagringsutrymmet på denna enhet eller anslutna lagringsenheter. Appen kan komma åt filer utan att du tillfrågas."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vill du tillåta att den här appen får komma åt, redigera och radera filer på enheten och eventuella anslutna lagringsenheter? Appen kan komma åt filer utan att du tillfrågas."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Appar med den här behörigheten får åtkomst till din fysiska aktivitet, till exempel promenader, cykelturer, körning, stegräkning och annat"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Appar med den här behörigheten får åtkomst till din kalender"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Appar med den här behörigheten kan läsa och skriva samtalshistoriken"</string>
@@ -402,7 +399,7 @@
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Den här tjänsten delar dina foton, videor och aviseringar på telefonen med andra enheter."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Standardapp för anteckningar"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Anteckningsapp"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"Appar som låter dig ta anteckningar på enheten"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Appar som låter dig göra anteckningar på enheten"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"anteckningar"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Fråga inte igen"</string>
@@ -501,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ska &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ha åtkomst till data från kroppssensorer medan appen används även i fortsättningen?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att skicka aviseringar?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Styrda behörigheter"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Plats kan kommas åt"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT-administratören tillåter att <xliff:g id="APP_NAME">%s</xliff:g> får åtkomst till din plats"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har platsåtkomst"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Din organisation tillåter att <xliff:g id="APP_NAME">%1$s</xliff:g> får åtkomst till din plats"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Andra behörigheter"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Behörighet som används av systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Behörigheter som bara används av systemappar."</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Granska app med platsåtkomst i bakgrunden"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> har alltid åtkomst till din plats, också när appen är stängd"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Granska app med platsåtkomst i bakgrunden"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Den här appen har alltid åtkomst till din plats, även när den är stängd."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Den här appen har alltid åtkomst till din plats, även när den är stängd.\n\nVissa säkerhets- och nödappar kräver platsåtkomst i bakgrunden för att fungera som de ska."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Åtkomst ändrad"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Se senaste användning av plats"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Integritetsinställningar"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Appen kan dela platsdata för följande:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadelningen varierar"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Rutiner för data kan variera efter appversion, användning, region och din ålder. "<annotation id="link">"Läs mer om datadelning"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Rutiner för data kan variera efter appversion, användning, region och din ålder."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Din platsdata"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Ändra appens åtkomst i "<annotation id="link">"integritetsinställningarna"</annotation></string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Appfunktioner"</string>

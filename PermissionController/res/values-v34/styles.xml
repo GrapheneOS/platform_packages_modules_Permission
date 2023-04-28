@@ -331,13 +331,15 @@
     <style name="SafetyCenterBrandChip">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingHorizontal">@dimen/sc_spacing_large</item>
+        <item name="android:paddingHorizontal">@dimen/sc_list_margin</item>
     </style>
 
     <style name="SafetyCenterBrandChipButton"
             parent="android:Widget.DeviceDefault.Button.Borderless">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- Widget.DeviceDefault.Button has a minHeight that's larger than our chip spec. -->
+        <item name="android:minHeight">0dp</item>
         <item name="android:layout_gravity">center_vertical|start</item>
         <item name="android:paddingVertical">@dimen/sc_brand_chip_padding</item>
         <item name="android:paddingHorizontal">@dimen/sc_spacing_small</item>

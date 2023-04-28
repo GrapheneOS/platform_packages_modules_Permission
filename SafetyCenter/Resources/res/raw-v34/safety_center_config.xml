@@ -57,13 +57,6 @@
                 title="@com.android.safetycenter.resources:string/permission_usage_title"
                 summary="@com.android.safetycenter.resources:string/permission_usage_summary"
                 searchTerms="@com.android.safetycenter.resources:string/permission_usage_search_terms"/>
-            <static-safety-source
-                id="AndroidAdsPrivacy"
-                profile="primary_profile_only"
-                intentAction="android.adservices.ui.SETTINGS"
-                title="@com.android.safetycenter.resources:string/ads_privacy_title"
-                summary="@com.android.safetycenter.resources:string/ads_privacy_summary"
-                searchTerms="@com.android.safetycenter.resources:string/ads_privacy_search_terms"/>
             <dynamic-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"
@@ -119,6 +112,7 @@
                 id="AndroidWorkPolicyInfo"
                 packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
+                title="@com.android.safetycenter.resources:string/work_policy_title"
                 initialDisplayState="hidden"
                 refreshOnPageOpenAllowed="true"/>
             <static-safety-source

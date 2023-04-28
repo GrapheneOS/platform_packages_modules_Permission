@@ -40,6 +40,9 @@ class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
     }
 
     override fun onError(errorDetails: SafetyCenterErrorDetails) {
+        // This call to super is needed for code coverage purposes, see b/272351657 for more
+        // details. The default impl of the interface is a no-op so the call to super is a no-op.
+        super.onError(errorDetails)
         runBlockingWithTimeout { errorChannel.send(errorDetails) }
     }
 

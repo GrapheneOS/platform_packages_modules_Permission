@@ -19,12 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Sekuriteit en privaatheid"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Kontroles"</string>
-    <string name="privacy_subpage_data_header" msgid="5049237788244591274">"Data"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <!-- no translation found for health_connect_summary (815473513776882296) -->
-    <skip />
+    <string name="health_connect_summary" msgid="815473513776882296">"Bestuur apptoegang tot gesondheidsdata"</string>
     <string name="location_settings" msgid="8863940440881290182">"Liggingtoegang"</string>
-    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
-    <skip />
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Vir apps en dienste. As hierdie instelling af is, kan mikrofoondata steeds gedeel word wanneer jy ’n noodnommer bel"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Vir apps en dienste"</string>
 </resources>

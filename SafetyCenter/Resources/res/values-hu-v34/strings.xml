@@ -27,11 +27,8 @@
     <string name="ads_privacy_title" msgid="2478678200445158640">"Hirdetésekhez kapcsolódó adatvédelem"</string>
     <string name="ads_privacy_summary" msgid="4977699525670966049">"Személyre szabhatja azokat az információkat, amelyeket az alkalmazások arra használnak, hogy hirdetéseket jelenítsenek meg Önnek"</string>
     <string name="ads_privacy_search_terms" msgid="8008413316055240046">"hirdetések, hirdetésekhez kapcsolódó adatvédelem, privacy sandbox, hirdetéstéma, alkalmazások által javasolt hirdetések, hirdetésmérés"</string>
-    <!-- no translation found for advanced_title (6259362998269627310) -->
-    <skip />
-    <!-- no translation found for more_settings_title (9033454654010697185) -->
-    <skip />
-    <!-- no translation found for more_settings_summary (7086620830002515710) -->
-    <skip />
+    <string name="advanced_title" msgid="6259362998269627310">"Egyéb beállítások"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"További biztonsági és adatvédelmi beállítások"</string>
+    <string name="more_settings_summary" msgid="7086620830002515710">"Automatikus kitöltés, értesítések és egyebek"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
 </resources>

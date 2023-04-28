@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"ज़्यादा चेतावनियां"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"खारिज किए गए अलर्ट"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{कार्ड को बड़ा करके एक और सूचना देखें}one{कार्ड को बड़ा करके # और सूचना देखें}other{कार्ड को बड़ा करके # और सूचनाएं देखें}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"चेतावनी. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"चेतावनी. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"चेतावनी. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"कार्रवाई पूरी हुई"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"आपके डिवाइस को सुरक्षित रखने वाली सेटिंग देखें"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"सुरक्षा और निजता से जुड़ी फटाफट सेटिंग"</string>

@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"অধিক সতৰ্কবাৰ্তা"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"অগ্ৰাহ্য কৰা সতৰ্কবাৰ্তা"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{বিস্তাৰ কৰক আৰু এটা সতৰ্কবাৰ্তা চাওক}one{বিস্তাৰ কৰক আৰু # টা সতৰ্কবাৰ্তা চাওক}other{বিস্তাৰ কৰক আৰু # টা সতৰ্কবাৰ্তা চাওক}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"সতৰ্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"সতৰ্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>। <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"সতৰ্কতা। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"কার্য সম্পূর্ণ হ\'ল"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"আপোনাৰ ডিভাইচ অধিক সুৰক্ষিত কৰিব পৰা ছেটিংসমূহ পৰীক্ষা কৰক"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"সুৰক্ষা আৰু গোপনীয়তাৰ ক্ষিপ্ৰ ছেটিং"</string>

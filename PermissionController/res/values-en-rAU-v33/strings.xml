@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"More alerts"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Dismissed alerts"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Expand and see one more alert}other{Expand and see # more alerts}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"Alert. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"Alert. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>. <xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Alert. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Action complete"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Check settings that can add protection to your device"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Security and privacy quick settings"</string>

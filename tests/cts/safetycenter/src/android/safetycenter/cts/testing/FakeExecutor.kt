@@ -47,5 +47,6 @@ class FakeExecutor : Executor {
      *
      * Note: the returned task is not run when returned. Use [Runnable.run] to actually run it.
      */
-    fun getNextTask(timeout: Duration = TIMEOUT_LONG) = runBlockingWithTimeout { tasks.receive() }
+    fun getNextTask(timeout: Duration = TIMEOUT_LONG) =
+        runBlockingWithTimeout(timeout) { tasks.receive() }
 }

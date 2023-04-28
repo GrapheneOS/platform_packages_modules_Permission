@@ -125,7 +125,8 @@ class ParserConfigOverlayTest {
         private const val STATE_ENABLED = "STATE_ENABLED"
 
         private fun getStateForOverlay(overlayPackage: String): String? {
-            val result: String = runShellCommand("cmd overlay dump --user 0 state $overlayPackage")
+            val result: String =
+                runShellCommand("cmd overlay dump --user 0 state $overlayPackage").lines().first()
             if (!result.startsWith("STATE_")) {
                 return null
             }

@@ -803,6 +803,7 @@ internal class NotificationListenerCheckInternal(
                     EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME, componentName.flattenToString())
                 putExtra(Constants.EXTRA_SESSION_ID, sessionId)
                 putExtra(Intent.EXTRA_UID, uid)
+                putExtra(Constants.EXTRA_IS_FROM_SLICE, true)
             }
         return PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE or FLAG_UPDATE_CURRENT)
     }

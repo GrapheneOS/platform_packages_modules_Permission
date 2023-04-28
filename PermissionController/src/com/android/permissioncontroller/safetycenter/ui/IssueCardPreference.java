@@ -136,7 +136,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         mSafetyCenterViewModel
                 .getInteractionLogger()
-                .recordForIssue(Action.SAFETY_ISSUE_VIEWED, mIssue, mIsDismissed);
+                .recordIssueViewed(mIssue, mIsDismissed);
     }
 
     private void maybeDisplayText(@Nullable CharSequence maybeText, TextView textView) {

@@ -64,6 +64,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_INTENT_URI";
     private static final String EXTRA_SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY =
             "android.provider.extra.SETTINGS_EMBEDDED_DEEP_LINK_HIGHLIGHT_MENU_KEY";
+    private static final String EXTRA_PREVENT_TRAMPOLINE_TO_SETTINGS =
+            "com.android.permissioncontroller.safetycenter.extra.PREVENT_TRAMPOLINE_TO_SETTINGS";
 
     private SafetyCenterManager mSafetyCenterManager;
 
@@ -145,6 +147,12 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (!ActivityEmbeddingUtils.isEmbeddingActivityEnabled(this)) {
             return false;
         }
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.getBoolean(EXTRA_PREVENT_TRAMPOLINE_TO_SETTINGS, false)) {
+            return false;
+        }
+
         return isTaskRoot() && !ActivityEmbeddingUtils.isActivityEmbedded(this);
     }
 
@@ -244,6 +252,10 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
         List<SafetySourcesGroup> groups = safetyCenterConfig.getSafetySourcesGroups();
         for (SafetySourcesGroup group : groups) {
+            if (group.getType() != SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATEFUL) {
+                // Hidden and static groups are not opened in a subpage.
+                continue;
+            }
             for (SafetySource source : group.getSafetySources()) {
                 if (Objects.equals(source.getId(), splitKey[0])) {
                     return group.getId();

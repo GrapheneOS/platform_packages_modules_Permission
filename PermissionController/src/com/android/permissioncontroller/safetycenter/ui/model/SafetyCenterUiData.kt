@@ -22,6 +22,7 @@ import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterIssue
 import androidx.annotation.RequiresApi
+import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
 
 /** UI model representation of Safety Center Data */
 data class SafetyCenterUiData(
@@ -66,9 +67,5 @@ data class SafetyCenterUiData(
 
             if (mappingExists) matchesInMapping else matchesByDefault
         }
-    }
-
-    private companion object {
-        const val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
     }
 }

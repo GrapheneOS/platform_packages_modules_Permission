@@ -16,10 +16,10 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="role_dialer_request_description" msgid="6188305064871543419">"此應用程式將可傳送通知，並能存取您的相機、通訊錄、麥克風、電話及短訊"</string>
-    <string name="role_sms_request_description" msgid="1506966389698625395">"此應用程式將可傳送通知，並能存取您的相機、通訊錄、檔案、麥克風、電話及短訊"</string>
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"此應用程式將可傳送通知，並能存取你的相機、通訊錄、麥克風、電話及短訊"</string>
+    <string name="role_sms_request_description" msgid="1506966389698625395">"此應用程式將可傳送通知，並能存取你的相機、通訊錄、檔案、麥克風、電話及短訊"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"擁有此權限的應用程式可存取此裝置上的所有檔案"</string>
-    <string name="work_policy_title" msgid="832967780713677409">"您的工作政策資料"</string>
+    <string name="work_policy_title" msgid="832967780713677409">"你的工作政策資料"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"由 IT 管理員管理的設定"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"展開並顯示清單"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"收合清單並隱藏設定"</string>
@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"更多警示"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"已關閉的警示"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{展開即可查看多一個警示}other{展開即可查看多 # 個警示}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"警示。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"警示。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"警示：<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"動作已完成"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"查看可加強保護裝置的設定"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"安全性和私隱快速設定"</string>

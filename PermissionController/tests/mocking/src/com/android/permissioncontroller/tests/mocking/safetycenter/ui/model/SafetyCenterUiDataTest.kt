@@ -26,6 +26,7 @@ import android.safetycenter.SafetyCenterStatus
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData
+import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -211,7 +212,6 @@ class SafetyCenterUiDataTest {
     private companion object {
         const val MATCHING_GROUP_ID = "matching_group_id"
         const val NON_MATCHING_GROUP_ID = "non_matching_group_id"
-        const val ISSUES_TO_GROUPS_BUNDLE_KEY = "IssuesToGroupsKey"
 
         fun createSafetyCenterData(
             issues: List<SafetyCenterIssue> = listOf(),

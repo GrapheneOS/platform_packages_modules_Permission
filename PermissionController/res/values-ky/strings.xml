@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Ар дайым баарына уруксат берүү"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Сүрөттөрдү жана видеолорду тандаңыз"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Дагы тандоо"</string>
-    <string name="grant_dialog_button_dont_allow_more_selected_photos" msgid="7956647792328613790">"Башка тандалбасын"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Башка тандалбасын"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Баары бир тыюу салуу"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабуу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> уруксаттын ичинен <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -60,7 +60,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Колдонмолор"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Колдонмонун уруксаттары"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Колдонулбаган колдонмолор"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Бардык колдонмолор иштетилүүдө"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Бардык колдонмолор колдонулууда"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Колдонулбаган колдонмолор: 0"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Уруксаттарга байланыштуу аракеттер"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Уруксаттар боюнча көрүлгөн соңку аракеттер"</string>
@@ -114,9 +114,6 @@
     <string name="all_permissions" msgid="6911125611996872522">"Бардык уруксаттар"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Колдонмонун башка мүмкүнчүлүктөрү"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Уруксат суроо"</string>
-    <string name="screen_overlay_title" msgid="6977038513913222078">"Колдонмонун үстүнө коюу күйүк"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Параметрлер &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
-    <string name="screen_overlay_button" msgid="4655005928054025250">"Жөндөөлөрдү ачуу"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Орнотуу/чыгарып салуу аракеттери Android Wear\'де колдоого алынбайт."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн уруксаттарды тандаңыз"</string>
@@ -354,9 +351,9 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Санариптик жардамчы колдонмосу"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Көмөкчү колдонмолор экранда көргөн маалыматыңыздын негизинде сизге жардам бере алат. Айрым колдонмолор жүргүзгүчтү жана айтып киргизүү функциясын да колдоого алат."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Демейки серепчи"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"\"Серепчи\" колдонмосу"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"Серепчи колдонмосу"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Сайттарга кирип, шилтемелер боюнча өткөнгө мүмкүнчүлүк берген колдонмолор."</string>
-    <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки \"серепчи\" колдонмосу катары коёсузбу?"</string>
+    <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки серепчи колдонмосу катары коёсузбу?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Уруксаттардын кереги жок"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Демейки телефон колдонмосу"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"\"Телефон\" колдонмосу"</string>
@@ -465,7 +462,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурашы мүмкүн. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн түзмөктүн жайгашкан жерин пайдалануу мүмкүнчүлүгү өзгөртүлсүнбү?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай берсинби?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы? "<annotation id="link">"Жөндөөлөрдөн уруксат берүү."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунда жайгашкан жер болжолдуу эмес, так аныкталсынбы?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн болжолдуу жайгашкан жерин пайдаланууга уруксат берилсинби?"</string>
@@ -501,8 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу колдонулуп жатканда дене бой сенсорлорунун көрсөткүчтөрүн көрүү мүмкүнчүлүгүн бересизби?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна сизге билдирмелерди жөнөтүүгө уруксат бересизби?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Көзөмөлдөнгөн уруксаттар"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Кайда жүргөнүңүз көрүнүп турат"</string>
-    <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT администраторуңуз <xliff:g id="APP_NAME">%s</xliff:g> колдонмосуна кайда жүргөнүңүздү көрүүгө уруксат берип жатат"</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> жүргөн жериңизди аныктай алат"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Уюмуңуз <xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосуна жүргөн жериңизди аныктоого уруксат берет"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Башка уруксаттар"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Тутум пайдаланган уруксат"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Системанын колдонмолору гана пайдаланган уруксаттар."</string>
@@ -576,7 +573,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> жүргөн жериңизди ар дайым, колдонмо жабылып турганда да, көрө алат"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Фондук режимде жайгашкан жерди аныктай алган колдонмону караңыз"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"Бул колдонмо жүргөн жериңизди ар дайым көрө алат (жабылып турса да)."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Бул колдонмо жүргөн жериңизди ар дайым (жабылып турса да) көрө алат.\n\nКоопсуздукту камсыздаган жана кырсыктаганда жардам берген айрым колдонмолор туура иштөө үчүн жүргөн жериңизди фондо көрүп турушу керек."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Кирүү мүмкүнчүлүгү өзгөрдү"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Жайгашкан жер акыркы жолу качан аныкталганын көрүү"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Купуялыкты көзөмөлдөө каражаттары"</string>
@@ -596,8 +593,7 @@
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Бул колдонмо турган жериңиз тууралуу маалыматты төмөнкүлөр үчүн бөлүшүшү мүмкүн:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Маалымат ар кандай жолдор менен бөлүшүлөт"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Маалыматтар колдонмонун версиясына, колдонулушуна, жашаган жериңизге жана курагыңызга жараша иштелет. "<annotation id="link">"Маалыматтарды бөлүшүү жөнүндө кеңири маалымат"</annotation></string>
-    <!-- no translation found for permission_rationale_data_sharing_varies_message_without_link (4912763761399025094) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Маалыматтарды иштетүү жолдору колдонмоңуздун версиясы, колдонулушу, аймак жана курагыңызга жараша айырмаланышы мүмкүн."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Турган жериңиз"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Бул колдонмонун кирүү мүмкүнчүлүгүн "<annotation id="link">"купуялык параметрлеринен"</annotation>" өзгөртүңүз"</string>
     <string name="permission_rationale_purpose_app_functionality" msgid="8397736681065841405">"Колдонмонун функциялары"</string>
