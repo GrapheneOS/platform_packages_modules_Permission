@@ -109,9 +109,9 @@ public abstract class RequiredComponent {
      * @return whether this required component is available
      */
     public boolean isAvailable() {
-        // Workaround to match the value 34+ for U+ in roles.xml before SDK finalization.
-        if (mMinTargetSdkVersion >= 34) {
-            return SdkLevel.isAtLeastU();
+        // Workaround to match the value 35+ for V+ in roles.xml before SDK finalization.
+        if (mMinTargetSdkVersion >= 35) {
+            return SdkLevel.isAtLeastV();
         } else {
             return Build.VERSION.SDK_INT >= mMinTargetSdkVersion;
         }
