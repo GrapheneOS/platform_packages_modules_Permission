@@ -240,8 +240,7 @@ final class SafetyCenterIssueRepository {
             SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData =
-                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
+        SafetySourceData safetySourceData = mSafetySourceDataRepository.getSafetySourceData(key);
 
         if (safetySourceData == null) {
             return;

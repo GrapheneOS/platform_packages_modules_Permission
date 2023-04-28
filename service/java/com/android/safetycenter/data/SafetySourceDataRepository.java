@@ -38,7 +38,6 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceStatus;
-import android.safetycenter.config.SafetyCenterConfig;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -81,19 +80,16 @@ final class SafetySourceDataRepository {
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
-    private final SafetySourceDataValidator mSafetySourceDataValidator;
 
     SafetySourceDataRepository(
             Context context,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             SafetyCenterInFlightIssueActionRepository safetyCenterInFlightIssueActionRepository,
-            SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository,
-            SafetySourceDataValidator safetySourceDataValidator) {
+            SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         mContext = context;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
-        mSafetySourceDataValidator = safetySourceDataValidator;
     }
 
     /**
@@ -101,9 +97,9 @@ final class SafetySourceDataRepository {
      * SafetyEvent}, {@code packageName} and {@code userId}, and returns {@code true} if this caused
      * any changes which would alter {@link SafetyCenterData}.
      *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
-     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or the {@link
-     * SafetySourceData} does not respect all constraints defined in the config.
+     * <p>This method does not perform any validation, {@link
+     * SafetyCenterDataManager#setSafetySourceData(SafetySourceData, String, SafetyEvent, String,
+     * int)} should be called wherever validation is required.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry and clears the {@link SafetyCenterIssueDismissalRepository} for the
@@ -115,12 +111,7 @@ final class SafetySourceDataRepository {
             @Nullable SafetySourceData safetySourceData,
             String safetySourceId,
             SafetyEvent safetyEvent,
-            String packageName,
             @UserIdInt int userId) {
-        if (!mSafetySourceDataValidator.validateRequest(
-                safetySourceData, safetySourceId, packageName, userId)) {
-            return false;
-        }
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         safetySourceData =
                 AndroidLockScreenFix.maybeOverrideSafetySourceData(
@@ -168,36 +159,17 @@ final class SafetySourceDataRepository {
 
     /**
      * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
-     * the given {@code safetySourceId}, {@code packageName} and {@code userId}.
-     *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
-     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
-     *
-     * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
-     * {@link #setSafetySourceData} with a {@code null} value.
-     */
-    @Nullable
-    SafetySourceData getSafetySourceData(
-            String safetySourceId, String packageName, @UserIdInt int userId) {
-        if (!mSafetySourceDataValidator.validateRequest(
-                null, safetySourceId, packageName, userId)) {
-            return null;
-        }
-        return getSafetySourceDataInternal(SafetySourceKey.of(safetySourceId, userId));
-    }
-
-    /**
-     * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
      * the given {@link SafetySourceKey}.
      *
-     * <p>This method does not perform any validation, {@link #getSafetySourceData(String, String,
-     * int)} should be called wherever validation is required.
+     * <p>This method does not perform any validation, {@link
+     * SafetyCenterDataManager#getSafetySourceData(String, String, int)} should be called wherever
+     * validation is required.
      *
      * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
-    SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
+    SafetySourceData getSafetySourceData(SafetySourceKey safetySourceKey) {
         return mSafetySourceData.get(safetySourceKey);
     }
 
@@ -210,18 +182,14 @@ final class SafetySourceDataRepository {
      * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
      * {@code userId}, and returns {@code true} if this changed the repository's data.
      *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
-     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
+     * <p>This method does not perform any validation, {@link
+     * SafetyCenterDataManager#reportSafetySourceError(SafetySourceErrorDetails, String, String,
+     * int)} should be called wherever validation is required.
      */
     boolean reportSafetySourceError(
             SafetySourceErrorDetails safetySourceErrorDetails,
             String safetySourceId,
-            String packageName,
             @UserIdInt int userId) {
-        if (!mSafetySourceDataValidator.validateRequest(
-                null, safetySourceId, packageName, userId)) {
-            return false;
-        }
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
         Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
 

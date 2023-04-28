@@ -68,6 +68,7 @@ public final class SafetyCenterDataManager {
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
+    private final SafetySourceDataValidator mSafetySourceDataValidator;
 
     /** Creates an instance of {@link SafetyCenterDataManager}. */
     public SafetyCenterDataManager(
@@ -84,8 +85,7 @@ public final class SafetyCenterDataManager {
                         context,
                         safetyCenterRefreshTracker,
                         mSafetyCenterInFlightIssueActionRepository,
-                        mSafetyCenterIssueDismissalRepository,
-                        new SafetySourceDataValidator(context, safetyCenterConfigReader));
+                        mSafetyCenterIssueDismissalRepository);
         mSafetyCenterIssueRepository =
                 new SafetyCenterIssueRepository(
                         context,
@@ -93,6 +93,8 @@ public final class SafetyCenterDataManager {
                         safetyCenterConfigReader,
                         mSafetyCenterIssueDismissalRepository,
                         new SafetyCenterIssueDeduplicator(mSafetyCenterIssueDismissalRepository));
+        mSafetySourceDataValidator =
+                new SafetySourceDataValidator(context, safetyCenterConfigReader);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,9 +122,13 @@ public final class SafetyCenterDataManager {
             SafetyEvent safetyEvent,
             String packageName,
             @UserIdInt int userId) {
+        if (!mSafetySourceDataValidator.validateRequest(
+                safetySourceData, safetySourceId, packageName, userId)) {
+            return false;
+        }
         boolean dataUpdated =
                 mSafetySourceDataRepository.setSafetySourceData(
-                        safetySourceData, safetySourceId, safetyEvent, packageName, userId);
+                        safetySourceData, safetySourceId, safetyEvent, userId);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
@@ -164,9 +170,13 @@ public final class SafetyCenterDataManager {
             String safetySourceId,
             String packageName,
             @UserIdInt int userId) {
+        if (!mSafetySourceDataValidator.validateRequest(
+                null, safetySourceId, packageName, userId)) {
+            return false;
+        }
         boolean dataUpdated =
                 mSafetySourceDataRepository.reportSafetySourceError(
-                        safetySourceErrorDetails, safetySourceId, packageName, userId);
+                        safetySourceErrorDetails, safetySourceId, userId);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
@@ -370,7 +380,12 @@ public final class SafetyCenterDataManager {
     @Nullable
     public SafetySourceData getSafetySourceData(
             String safetySourceId, String packageName, @UserIdInt int userId) {
-        return mSafetySourceDataRepository.getSafetySourceData(safetySourceId, packageName, userId);
+        if (!mSafetySourceDataValidator.validateRequest(
+                null, safetySourceId, packageName, userId)) {
+            return null;
+        }
+        return mSafetySourceDataRepository.getSafetySourceData(
+                SafetySourceKey.of(safetySourceId, userId));
     }
 
     /**
@@ -385,7 +400,7 @@ public final class SafetyCenterDataManager {
      */
     @Nullable
     public SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSafetySourceDataInternal(safetySourceKey);
+        return mSafetySourceDataRepository.getSafetySourceData(safetySourceKey);
     }
 
     /** Returns {@code true} if the given source has an error. */
