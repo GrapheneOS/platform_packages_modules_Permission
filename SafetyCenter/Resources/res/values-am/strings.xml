@@ -20,9 +20,9 @@
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"የደህንነት ማዕከል መርጃዎች"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"የመሣሪያ ቁልፍ"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
-    <string name="lock_screen_title" msgid="4069104894527169877">"የማያ ገጽ ቁልፍ"</string>
+    <string name="lock_screen_title" msgid="4069104894527169877">"የማያ ገፅ ቁልፍ"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ገና ምንም መረጃ የለም"</string>
-    <string name="lock_screen_search_terms" msgid="2678486357779794826">"የመሣሪያ ቁልፍ፣ የማያ ገጽ መቆለፊያ፣ የማያ ገጽ ቁልፍ፣ የማያ ገጽ ቁልፍ፣ የይለፍ ቃል፣ ፒን፣ ስርዓተ ጥለት"</string>
+    <string name="lock_screen_search_terms" msgid="2678486357779794826">"የመሣሪያ ቁልፍ፣ የማያ ገፅ መቆለፊያ፣ የማያ ገፅ ቁልፍ፣ የማያ ገፅ ቁልፍ፣ የይለፍ ቃል፣ ፒን፣ ስርዓተ ጥለት"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"ባዮሜትሪክስ"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"የጣት አሻራ፣ ጣት፣ የጣት አሻራ ያክሉ፣ በመልክ መክፈት፣ መልክ"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ግላዊነት"</string>
