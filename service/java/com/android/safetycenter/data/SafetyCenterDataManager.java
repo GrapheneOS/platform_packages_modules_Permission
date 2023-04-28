@@ -82,10 +82,10 @@ public final class SafetyCenterDataManager {
         mSafetySourceDataRepository =
                 new SafetySourceDataRepository(
                         context,
-                        safetyCenterConfigReader,
                         safetyCenterRefreshTracker,
                         mSafetyCenterInFlightIssueActionRepository,
-                        mSafetyCenterIssueDismissalRepository);
+                        mSafetyCenterIssueDismissalRepository,
+                        new SafetySourceDataValidator(context, safetyCenterConfigReader));
         mSafetyCenterIssueRepository =
                 new SafetyCenterIssueRepository(
                         context,
