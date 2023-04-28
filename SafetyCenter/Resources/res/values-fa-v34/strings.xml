@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"‏سلامت، Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"به‌روزرسانی‌های هم‌رسانی داده برای مکان"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"داده، هم‌رسانی داده، به‌روزرسانی‌های هم‌رسانی داده، به‌روزرسانی‌های هم‌رسانی داده مکان، هم‌رسانی"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"حریم خصوصی آگهی"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"سفارشی‌سازی اطلاعات مورداستفاده برنامه‌ها برای نمایش آگهی به شما"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"آگهی‌ها، حریم خصوصی آگهی، جعبه ایمنی حریم خصوصی، موضوع آگهی‌ها، آگهی‌های پیشنهادی برنامه، سنجش آگهی"</string>
     <string name="advanced_title" msgid="6259362998269627310">"تنظیمات دیگر"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"امنیت و حریم خصوصی بیشتر"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"تکمیل خودکار، اعلان‌ها، و موارد دیگر"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"اطلاعات خط‌مشی کاری شما"</string>
 </resources>

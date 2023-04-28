@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"ਸਿਹਤ, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ਟਿਕਾਣੇ ਲਈ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ਡਾਟਾ, ਡਾਟਾ ਸਾਂਝਾਕਰਨ, ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ, ਟਿਕਾਣੇ ਲਈ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ, ਸਾਂਝਾਕਰਨ"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"ਵਿਗਿਆਪਨ ਪਰਦੇਦਾਰੀ"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"ਇਹ ਵਿਉਂਤਬੱਧ ਕਰੋ ਕਿ ਐਪਾਂ ਤੁਹਾਨੂੰ ਵਿਗਿਆਪਨ ਦਿਖਾਉਣ ਲਈ ਕਿਹੜੀ ਜਾਣਕਾਰੀ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"ਵਿਗਿਆਪਨ, ਵਿਗਿਆਪਨ ਪਰਦੇਦਾਰੀ, ਪ੍ਰਾਈਵੇਸੀ ਸੈਂਡਬਾਕਸ, ਵਿਗਿਆਪਨ ਦੇ ਵਿਸ਼ੇ, ਐਪ ਵੱਲੋਂ ਸੁਝਾਏ ਵਿਗਿਆਪਨ, ਵਿਗਿਆਪਨ ਮਾਪ"</string>
     <string name="advanced_title" msgid="6259362998269627310">"ਹੋਰ ਸੈਟਿੰਗਾਂ"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"ਹੋਰ ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"ਆਟੋਫਿਲ, ਸੂਚਨਾਵਾਂ ਅਤੇ ਹੋਰ"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"ਤੁਹਾਡੀ ਕਾਰਜ ਨੀਤੀ ਸੰਬੰਧੀ ਜਾਣਕਾਰੀ"</string>
 </resources>

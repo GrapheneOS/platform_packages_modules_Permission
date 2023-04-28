@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Байршлын өгөгдөл хуваалцах шинэчлэлт"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Өгөгдөл, өгөгдөл хуваалцах, өгөгдөл хуваалцах шинэчлэлт, байршлын өгөгдөл хуваалцах шинэчлэлт, хуваалцах"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Зарын нууцлал"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Танд зар харуулахын тулд мэдээллийн аппуудын ашиглалтыг өөрчлөх"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"зар, зарын нууцлал, privacy sandbox, зарын сэдэв, аппын санал болгосон зар, зарын хэмжилт"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Бусад тохиргоо"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Бусад аюулгүй байдал, нууцлал"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Автоматаар бөглөх хэсэг, мэдэгдэл болон бусад"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Таны ажлын бодлогын мэдээлэл"</string>
 </resources>
