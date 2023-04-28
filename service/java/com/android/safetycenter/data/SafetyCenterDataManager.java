@@ -30,12 +30,14 @@ import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
+import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySourcesGroup;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterRefreshTracker;
@@ -49,6 +51,7 @@ import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -68,6 +71,7 @@ public final class SafetyCenterDataManager {
 
     private static final String TAG = "SafetyCenterDataManager";
 
+    private final Context mContext;
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     private final SafetySourceDataRepository mSafetySourceDataRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
@@ -82,6 +86,7 @@ public final class SafetyCenterDataManager {
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             ApiLock apiLock) {
+        mContext = context;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository =
                 new SafetyCenterInFlightIssueActionRepository(context);
@@ -133,18 +138,31 @@ public final class SafetyCenterDataManager {
                 safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        boolean sourceDataDiffers =
-                mSafetySourceDataRepository.setSafetySourceData(
-                        safetySourceData, safetySourceId, safetyEvent, userId);
-        boolean eventCausedChange =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
 
-        if (sourceDataDiffers || eventCausedChange) {
-            mSafetyCenterIssueRepository.updateIssues(userId);
-            return true;
+        // Must fetch refresh reason before calling processSafetyEvent because the latter may
+        // complete and clear the current refresh.
+        // TODO(b/277174417): Restructure this code to avoid this error-prone sequencing concern
+        Integer refreshReason = null;
+        if (safetyEvent.getType() == SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED) {
+            refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
         }
 
-        return false;
+        boolean sourceDataDiffers =
+                mSafetySourceDataRepository.setSafetySourceData(
+                        safetySourceData, safetySourceId, userId);
+        boolean eventCausedChange =
+                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
+        boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
+
+        if (safetyCenterDataChanged) {
+            mSafetyCenterIssueRepository.updateIssues(userId);
+        }
+
+        logSafetySourceStateCollected(
+                key, userId, safetySourceData, refreshReason, sourceDataDiffers);
+
+        return safetyCenterDataChanged;
     }
 
     /**
@@ -538,5 +556,72 @@ public final class SafetyCenterDataManager {
         }
         Log.w(TAG, "Unexpected SafetyEvent.Type: " + type);
         return false;
+    }
+
+    private void logSafetySourceStateCollected(
+            SafetySourceKey sourceKey,
+            @UserIdInt int userId,
+            @Nullable SafetySourceData sourceData,
+            @Nullable Integer refreshReason,
+            boolean sourceDataDiffers) {
+        SafetySourceStatus sourceStatus = sourceData == null ? null : sourceData.getStatus();
+        List<SafetySourceIssue> sourceIssues =
+                sourceData == null ? Collections.emptyList() : sourceData.getIssues();
+
+        int maxSeverityLevel = Integer.MIN_VALUE;
+        if (sourceStatus != null) {
+            maxSeverityLevel = sourceStatus.getSeverityLevel();
+        } else if (sourceData != null) {
+            // In this case we know we have an issue-only source because of the checks carried out
+            // in the validateRequest function.
+            maxSeverityLevel = SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED;
+        }
+
+        long openIssuesCount = 0;
+        long dismissedIssuesCount = 0;
+        for (int i = 0; i < sourceIssues.size(); i++) {
+            SafetySourceIssue issue = sourceIssues.get(i);
+            if (isIssueDismissed(issue, sourceKey.getSourceId(), userId)) {
+                dismissedIssuesCount++;
+            } else {
+                openIssuesCount++;
+                maxSeverityLevel = Math.max(maxSeverityLevel, issue.getSeverityLevel());
+            }
+        }
+
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollectedSourceUpdated(
+                sourceKey.getSourceId(),
+                UserUtils.isManagedProfile(userId, mContext),
+                maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
+                openIssuesCount,
+                dismissedIssuesCount,
+                getDuplicateFilteredOutIssueCount(userId, sourceKey.getSourceId()),
+                getSourceState(sourceKey),
+                refreshReason,
+                sourceDataDiffers);
+    }
+
+    private boolean isIssueDismissed(
+            SafetySourceIssue issue, String sourceId, @UserIdInt int userId) {
+        SafetyCenterIssueKey issueKey =
+                SafetyCenterIssueKey.newBuilder()
+                        .setSafetySourceId(sourceId)
+                        .setSafetySourceIssueId(issue.getId())
+                        .setUserId(userId)
+                        .build();
+        return mSafetyCenterIssueDismissalRepository.isIssueDismissed(
+                issueKey, issue.getSeverityLevel());
+    }
+
+    private long getDuplicateFilteredOutIssueCount(@UserIdInt int userId, String sourceId) {
+        long duplicateFilteredOutIssuesCount = 0;
+        List<SafetySourceIssueInfo> filteredOutDuplicateIssues =
+                getMostRecentFilteredOutDuplicateIssues(userId);
+        for (int i = 0; i < filteredOutDuplicateIssues.size(); i++) {
+            if (filteredOutDuplicateIssues.get(i).getSafetySource().getId().equals(sourceId)) {
+                duplicateFilteredOutIssuesCount++;
+            }
+        }
+        return duplicateFilteredOutIssuesCount;
     }
 }
