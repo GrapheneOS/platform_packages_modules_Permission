@@ -30,7 +30,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -96,12 +95,16 @@ final class SafetyCenterNotificationFactory {
                 new Notification.Builder(mContext, channelId)
                         .setSmallIcon(
                                 getNotificationIcon(SafetySourceData.SEVERITY_LEVEL_INFORMATION))
-                        .setColor(getNotificationColor(SafetySourceData.SEVERITY_LEVEL_INFORMATION))
                         .setExtras(getNotificationExtras())
                         .setContentTitle(action.getSuccessMessage())
                         .setShowWhen(true)
                         .setTimeoutAfter(SUCCESS_NOTIFICATION_TIMEOUT.toMillis())
                         .setContentIntent(newSafetyCenterPendingIntent(null));
+
+        Integer color = getNotificationColor(SafetySourceData.SEVERITY_LEVEL_INFORMATION);
+        if (color != null) {
+            builder.setColor(color);
+        }
 
         return builder.build();
     }
@@ -140,7 +143,6 @@ final class SafetyCenterNotificationFactory {
         Notification.Builder builder =
                 new Notification.Builder(mContext, channelId)
                         .setSmallIcon(getNotificationIcon(issue.getSeverityLevel()))
-                        .setColor(getNotificationColor(issue.getSeverityLevel()))
                         .setExtras(getNotificationExtras())
                         .setShowWhen(true)
                         .setContentTitle(title)
@@ -149,6 +151,11 @@ final class SafetyCenterNotificationFactory {
                         .setDeleteIntent(
                                 SafetyCenterNotificationReceiver.newNotificationDismissedIntent(
                                         mContext, issueKey));
+
+        Integer color = getNotificationColor(issue.getSeverityLevel());
+        if (color != null) {
+            builder.setColor(color);
+        }
 
         for (int i = 0; i < issueActions.size(); i++) {
             Notification.Action notificationAction =
@@ -194,13 +201,13 @@ final class SafetyCenterNotificationFactory {
     }
 
     @ColorInt
-    private int getNotificationColor(@SafetySourceData.SeverityLevel int severityLevel) {
-        boolean isDarkTheme = isDarkTheme(mContext);
+    @Nullable
+    private Integer getNotificationColor(@SafetySourceData.SeverityLevel int severityLevel) {
+        String colorResName = "notification_tint_normal";
         if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
-            return isDarkTheme ? Color.parseColor("#EE675C") : Color.parseColor("#D93025");
-        } else {
-            return isDarkTheme ? Color.parseColor("#8AB4F8") : Color.parseColor("#1A73E8");
+            colorResName = "notification_tint_critical";
         }
+        return mResourcesContext.getColorByName(colorResName);
     }
 
     private Bundle getNotificationExtras() {
