@@ -23,7 +23,6 @@ import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLL
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_CLEARED;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR;
-import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import static java.util.Collections.emptyList;
 
@@ -126,8 +125,6 @@ final class SafetySourceDataRepository {
         }
 
         boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
-        boolean eventCausedChange =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
         boolean removedSourceError = mSafetySourceErrors.remove(key);
 
         if (sourceDataDiffers) {
@@ -138,7 +135,7 @@ final class SafetySourceDataRepository {
         logSafetySourceStateCollected(
                 key, userId, safetySourceData, refreshReason, sourceDataDiffers);
 
-        return sourceDataDiffers || eventCausedChange || removedSourceError;
+        return sourceDataDiffers || removedSourceError;
     }
 
     private void setSafetySourceDataInternal(SafetySourceKey key, SafetySourceData data) {
@@ -193,18 +190,15 @@ final class SafetySourceDataRepository {
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
         Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
 
-        boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, true, false);
         int safetyEventType = safetyEvent.getType();
         if (safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
                 || safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
-            return safetyEventChangedSafetyCenterData;
+            return false;
         }
 
         SafetySourceKey sourceKey = SafetySourceKey.of(safetySourceId, userId);
         mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR);
-        boolean safetySourceErrorChangedSafetyCenterData = setSafetySourceError(sourceKey);
-        return safetyEventChangedSafetyCenterData || safetySourceErrorChangedSafetyCenterData;
+        return setSafetySourceError(sourceKey);
     }
 
     /**
@@ -386,61 +380,6 @@ final class SafetySourceDataRepository {
         for (int i = 0; i < count; i++) {
             fout.println("\t[" + i + "] " + map.keyAt(i) + " -> " + map.valueAt(i));
         }
-    }
-
-    private boolean processSafetyEvent(
-            String safetySourceId,
-            SafetyEvent safetyEvent,
-            @UserIdInt int userId,
-            boolean isError,
-            boolean sourceDataChanged) {
-        int type = safetyEvent.getType();
-        switch (type) {
-            case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
-                String refreshBroadcastId = safetyEvent.getRefreshBroadcastId();
-                if (refreshBroadcastId == null) {
-                    Log.w(TAG, "No refresh broadcast id in SafetyEvent of type " + type);
-                    return false;
-                }
-                return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
-                        refreshBroadcastId, safetySourceId, userId, !isError, sourceDataChanged);
-            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
-            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
-                String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
-                if (safetySourceIssueId == null) {
-                    Log.w(TAG, "No safety source issue id in SafetyEvent of type " + type);
-                    return false;
-                }
-                String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
-                if (safetySourceIssueActionId == null) {
-                    Log.w(TAG, "No safety source issue action id in SafetyEvent of type " + type);
-                    return false;
-                }
-                SafetyCenterIssueKey safetyCenterIssueKey =
-                        SafetyCenterIssueKey.newBuilder()
-                                .setSafetySourceId(safetySourceId)
-                                .setSafetySourceIssueId(safetySourceIssueId)
-                                .setUserId(userId)
-                                .build();
-                SafetyCenterIssueActionId safetyCenterIssueActionId =
-                        SafetyCenterIssueActionId.newBuilder()
-                                .setSafetyCenterIssueKey(safetyCenterIssueKey)
-                                .setSafetySourceIssueActionId(safetySourceIssueActionId)
-                                .build();
-                boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
-                int result = toSystemEventResult(success);
-                return mSafetyCenterInFlightIssueActionRepository
-                        .unmarkSafetyCenterIssueActionInFlight(
-                                safetyCenterIssueActionId,
-                                getSafetySourceIssue(safetyCenterIssueKey),
-                                result);
-            case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
-            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
-            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
-                return false;
-        }
-        Log.w(TAG, "Unexpected SafetyEvent.Type: " + type);
-        return false;
     }
 
     private void logSafetySourceStateCollected(
