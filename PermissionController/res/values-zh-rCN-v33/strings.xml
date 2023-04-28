@@ -27,14 +27,13 @@
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"列表。<xliff:g id="ENTRY_TITLE">%1$s</xliff:g>。需要采取行动。<xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"列表项。<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>。<xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>。<xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
-    <!-- no translation found for safety_center_more_issues_card_title (7425844746197493312) -->
-    <skip />
+    <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"更多提醒"</string>
+    <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"忽略的提醒"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{展开并查看另外一项提醒}other{展开并查看另外 # 项提醒}}"</string>
-    <string name="safety_center_issue_card_content_description" msgid="1281390769721765363">"警报。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_issue_card_content_description_with_subtitle" msgid="5504040663935313539">"警报。<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUBTITLE">%2$s</xliff:g>。<xliff:g id="ISSUE_CARD_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"提醒：<xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"操作完成"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"查看可提高设备安全性的设置"</string>
-    <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"“安全性和隐私权”快捷设置"</string>
+    <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"“安全和隐私”快捷设置"</string>
     <string name="safety_center_qs_close_button" msgid="1352313308176244599">"关闭"</string>
     <string name="safety_center_qs_expand_action" msgid="2193190557696484169">"展开并显示选项"</string>
     <string name="safety_center_qs_collapse_action" msgid="5809657430125309183">"收起"</string>
