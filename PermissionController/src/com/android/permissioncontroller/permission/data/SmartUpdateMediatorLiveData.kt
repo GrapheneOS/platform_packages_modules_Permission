@@ -201,7 +201,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
                 val liveData = getLiveDataFun(key)
                 // Should be a no op, but there is a slight possibility it isn't
                 have[key] = liveData
-                val observer = Observer<Any> {
+                val observer = Observer<Any?> {
                     if (onUpdateFun != null) {
                         onUpdateFun(key)
                     } else {

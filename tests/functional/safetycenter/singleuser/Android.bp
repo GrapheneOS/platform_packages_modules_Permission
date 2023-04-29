@@ -33,6 +33,7 @@ android_test {
         "androidx.test.monitor",
         "compatibility-device-preconditions",
         "kotlin-test",
+        "platform-test-rules",
         "safety-center-internal-data",
         "safety-center-pending-intents",
         "safety-center-test-util-lib",
