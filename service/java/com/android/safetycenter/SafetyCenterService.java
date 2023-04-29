@@ -272,7 +272,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             synchronized (mApiLock) {
                 boolean hasUpdate =
                         mSafetyCenterDataManager.setSafetySourceData(
@@ -330,7 +330,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             synchronized (mApiLock) {
                 boolean hasUpdate =
                         mSafetyCenterDataManager.reportSafetySourceError(
@@ -391,7 +391,7 @@ public final class SafetyCenterService extends SystemService {
             // search works by adding all the entries very rarely (and relies on filtering them out
             // instead).
             if (!canUseSafetyCenter()) {
-                Log.w(TAG, "Called getSafetyConfig, but Safety Center is not supported");
+                Log.w(TAG, "Called getSafetyCenterConfig, but Safety Center is not supported");
                 return null;
             }
 
@@ -411,8 +411,7 @@ public final class SafetyCenterService extends SystemService {
                 return SafetyCenterDataFactory.getDefaultSafetyCenterData();
             }
 
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             synchronized (mApiLock) {
                 return mSafetyCenterDataFactory.assembleSafetyCenterData(
                         packageName, userProfileGroup);
@@ -435,7 +434,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             synchronized (mApiLock) {
                 IOnSafetyCenterDataChangedListener registeredListener =
                         mSafetyCenterListeners.addListener(listener, packageName, userId);
@@ -480,7 +479,7 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterIssueId safetyCenterIssueId = SafetyCenterIds.issueIdFromString(issueId);
             SafetyCenterIssueKey safetyCenterIssueKey =
                     safetyCenterIssueId.getSafetyCenterIssueKey();
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             enforceSameUserProfileGroup(
                     "dismissSafetyCenterIssue", userProfileGroup, safetyCenterIssueKey.getUserId());
             synchronized (mApiLock) {
@@ -544,15 +543,14 @@ public final class SafetyCenterService extends SystemService {
                                 + toUserFriendlyString(safetyCenterIssueActionId)
                                 + " do not match");
             }
-            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             enforceSameUserProfileGroup(
                     "executeSafetyCenterIssueAction",
                     userProfileGroup,
                     safetyCenterIssueKey.getUserId());
             Integer taskId =
                     safetyCenterIssueId.hasTaskId() ? safetyCenterIssueId.getTaskId() : null;
-            executeIssueActionInternal(
-                    safetyCenterIssueKey, safetyCenterIssueActionId, userProfileGroup, taskId);
+            executeIssueActionInternal(safetyCenterIssueActionId, userProfileGroup, taskId);
         }
 
         @Override
@@ -633,17 +631,27 @@ public final class SafetyCenterService extends SystemService {
                             + ", but none were granted");
         }
 
-        /** Enforces cross user permission and returns whether the user is existent. */
+        /** Enforces cross user permission and returns whether the user is valid. */
         private boolean enforceCrossUserPermission(String message, @UserIdInt int userId) {
             UserUtils.enforceCrossUserPermission(userId, false, message, getContext());
             if (!UserUtils.isUserExistent(userId, getContext())) {
-                Log.e(
+                Log.w(
                         TAG,
                         "Called "
                                 + message
                                 + " with user id "
                                 + userId
                                 + ", which does not correspond to an existing user");
+                return false;
+            }
+            if (!UserProfileGroup.isSupported(userId, getContext())) {
+                Log.w(
+                        TAG,
+                        "Called "
+                                + message
+                                + " with user id "
+                                + userId
+                                + ", which is an unsupported user");
                 return false;
             }
             return true;
@@ -995,6 +1003,14 @@ public final class SafetyCenterService extends SystemService {
             }
 
             int userId = userHandle.getIdentifier();
+            if (!UserProfileGroup.isSupported(userId, context)) {
+                Log.i(
+                        TAG,
+                        "Received broadcast for user id "
+                                + userId
+                                + ", which is an unsupported user");
+                return;
+            }
             Log.d(TAG, "Received " + action + " broadcast for user " + userId);
 
             switch (action) {
@@ -1016,7 +1032,7 @@ public final class SafetyCenterService extends SystemService {
     }
 
     private void removeUser(@UserIdInt int userId, boolean clearDataPermanently) {
-        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
         synchronized (mApiLock) {
             mSafetyCenterListeners.clearForUser(userId);
             mSafetyCenterRefreshTracker.clearRefreshForUser(userId);
@@ -1039,7 +1055,7 @@ public final class SafetyCenterService extends SystemService {
             @RefreshReason int refreshReason,
             @UserIdInt int userId,
             @Nullable List<String> selectedSafetySourceIds) {
-        UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+        UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
         synchronized (mApiLock) {
             mSafetyCenterDataManager.clearSafetySourceErrors(userProfileGroup);
 
@@ -1069,13 +1085,11 @@ public final class SafetyCenterService extends SystemService {
         SafetyCenterIssueKey safetyCenterIssueKey =
                 safetyCenterIssueActionId.getSafetyCenterIssueKey();
         UserProfileGroup userProfileGroup =
-                UserProfileGroup.from(getContext(), safetyCenterIssueKey.getUserId());
-        executeIssueActionInternal(
-                safetyCenterIssueKey, safetyCenterIssueActionId, userProfileGroup, null);
+                UserProfileGroup.fromUser(getContext(), safetyCenterIssueKey.getUserId());
+        executeIssueActionInternal(safetyCenterIssueActionId, userProfileGroup, null);
     }
 
     private void executeIssueActionInternal(
-            SafetyCenterIssueKey safetyCenterIssueKey,
             SafetyCenterIssueActionId safetyCenterIssueActionId,
             UserProfileGroup userProfileGroup,
             @Nullable Integer taskId) {
