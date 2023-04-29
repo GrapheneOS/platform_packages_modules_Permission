@@ -39,6 +39,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
 import com.android.bedstead.harrier.annotations.EnsureHasAdditionalUser
+import com.android.bedstead.harrier.annotations.EnsureHasCloneProfile
 import com.android.bedstead.harrier.annotations.EnsureHasNoWorkProfile
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
 import com.android.bedstead.harrier.annotations.Postsubmit
@@ -999,6 +1000,27 @@ class SafetyCenterMultiUsersTest {
 
         val safetySourceData =
             managedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
+                SINGLE_SOURCE_ALL_PROFILE_ID
+            )
+        assertThat(safetySourceData).isNull()
+    }
+
+    @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
+    @EnsureHasCloneProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_withUnsupportedProfile_shouldNoOp() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
+        val dataForClone = safetySourceTestData.informationWithIssueForWork
+        val clonedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.cloneProfile().userHandle())
+
+        clonedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForClone
+        )
+
+        val safetySourceData =
+            clonedSafetyCenterManager.getSafetySourceDataWithInteractAcrossUsersPermission(
                 SINGLE_SOURCE_ALL_PROFILE_ID
             )
         assertThat(safetySourceData).isNull()
