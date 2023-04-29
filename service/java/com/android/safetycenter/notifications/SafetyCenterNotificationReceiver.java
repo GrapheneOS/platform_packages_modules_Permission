@@ -199,9 +199,9 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         }
 
         int userId = issueKey.getUserId();
-        UserProfileGroup userProfileGroup = UserProfileGroup.from(context, userId);
-        SafetySourceIssue dismissedIssue;
+        UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(context, userId);
 
+        SafetySourceIssue dismissedIssue;
         synchronized (mApiLock) {
             dismissedIssue = mSafetyCenterDataManager.getSafetySourceIssue(issueKey);
             mSafetyCenterDataManager.dismissNotification(issueKey);
