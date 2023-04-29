@@ -87,6 +87,20 @@ class SafetySourceStateCollectedLoggingHelperTests {
     }
 
     @Test
+    fun refreshAllSources_twiceDifferentData_onlySource1Unchanged() {
+        simulateRefresh(
+                Response.SetData(safetySourceTestData.information),
+                Response.SetData(safetySourceTestData.recommendationWithAccountIssue),
+                Response.SetData(safetySourceTestData.criticalWithResolvingDeviceIssue)
+        )
+        simulateRefresh(
+                Response.SetData(safetySourceTestData.information),
+                Response.SetData(safetySourceTestData.information),
+                Response.SetData(safetySourceTestData.information)
+        )
+    }
+
+    @Test
     fun refreshAllSources_reasonPageOpen_oneError() {
         simulateRefresh(
             Response.SetData(safetySourceTestData.information),

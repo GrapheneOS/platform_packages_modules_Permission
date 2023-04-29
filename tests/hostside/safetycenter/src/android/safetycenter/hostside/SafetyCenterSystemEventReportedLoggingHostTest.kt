@@ -180,6 +180,23 @@ class SafetyCenterSystemEventReportedLoggingHostTest : BaseHostJUnit4Test() {
             .isEqualTo(3)
     }
 
+    @Test
+    fun refreshAllSources_secondTime_someSourcesChanged_dataChangedCorrect() {
+        helperAppRule.runTest(
+                ".SafetySourceStateCollectedLoggingHelperTests",
+                "refreshAllSources_twiceDifferentData_onlySource1Unchanged"
+        )
+
+        val systemEventAtoms =
+                ReportUtils.getEventMetricDataList(device).mapNotNull {
+                    it.atom.safetyCenterSystemEventReported
+                }
+
+        assertWithMessage("the number of atoms with dataChanged=false")
+                .that(systemEventAtoms.count { !it.dataChanged })
+                .isEqualTo(1) // Only source 1
+    }
+
     companion object {
         private const val REFRESH_REASON_PAGE_OPEN = 100L
         private const val REFRESH_REASON_BUTTON_CLICK = 200L
