@@ -129,11 +129,9 @@ class RuntimePermissionsUpgradeControllerTest {
      * @param pkgs packages that should pretend to be installed
      */
     private fun setPackages(vararg pkgs: Package) {
-        whenever(packageManager.getInstalledPackagesAsUser(anyInt(), anyInt())).thenAnswer {
-            val flags = it.arguments[0] as Int
-
+        val mockPackageInfo = { pkgs: List<Package>, flags: Long ->
             pkgs.filter { pkg ->
-                (flags and MATCH_FACTORY_ONLY) == 0 || pkg.isPreinstalled
+                (flags and MATCH_FACTORY_ONLY.toLong()) == 0L || pkg.isPreinstalled
             }.map { pkg ->
                 PackageInfo().apply {
                     packageName = pkg.name
@@ -152,12 +150,29 @@ class RuntimePermissionsUpgradeControllerTest {
             }
         }
 
+        whenever(packageManager.getInstalledPackagesAsUser(anyInt(), anyInt())).thenAnswer {
+            val flags = (it.arguments[0] as Int).toLong()
+
+            mockPackageInfo(pkgs.toList(), flags)
+        }
+
+        whenever(
+            packageManager.getInstalledPackagesAsUser(
+                any(PackageManager.PackageInfoFlags::class.java),
+                anyInt()
+            )
+        ).thenAnswer {
+            val flags = it.arguments[0] as PackageManager.PackageInfoFlags
+
+            mockPackageInfo(pkgs.toList(), flags.value)
+        }
+
         whenever(packageManager.getPackageInfo(anyString(), anyInt())).thenAnswer {
             val packageName = it.arguments[0] as String
 
             packageManager.getInstalledPackagesAsUser(0, 0)
-                    .find { it.packageName == packageName }
-                    ?: throw PackageManager.NameNotFoundException()
+                .find { it.packageName == packageName }
+                ?: throw PackageManager.NameNotFoundException()
         }
 
         whenever(packageManager.getPermissionFlags(any(), any(), any())).thenAnswer {
