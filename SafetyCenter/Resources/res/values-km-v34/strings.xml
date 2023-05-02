@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"សុខភាព Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ការធ្វើបច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ទិន្នន័យ ការចែករំលែកទិន្នន័យ បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យ បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង ការចែករំលែក"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"ឯកជនភាពនៃការផ្សាយពាណិជ្ជកម្ម"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"ប្ដូរការប្រើប្រាស់កម្មវិធីព័ត៌មានតាមបំណង ដើម្បីបង្ហាញការផ្សាយពាណិជ្ជកម្មដល់អ្នក"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"ការផ្សាយពាណិជ្ជកម្ម, ឯកជនភាពនៃការផ្សាយពាណិជ្ជកម្ម, privacy sandbox, ប្រធានបទផ្សាយពាណិជ្ជកម្ម, ការផ្សាយពាណិជ្ជកម្មដែលណែនាំដោយកម្មវិធី, ការវាស់ស្ទង់ការផ្សាយពាណិជ្ជកម្ម"</string>
     <string name="advanced_title" msgid="6259362998269627310">"ការកំណត់​ផ្សេងទៀត"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"ឯកជនភាព និងសុវត្ថិភាពបន្ថែម"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"បំពេញស្វ័យប្រវត្តិ ការជូនដំណឹង និងច្រើនទៀត"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"ព័ត៌មាន​អំពីគោលការណ៍ការងារ​របស់អ្នក"</string>
 </resources>
