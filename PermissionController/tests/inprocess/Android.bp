@@ -33,10 +33,7 @@ android_test {
     target_sdk_version: "30",
     min_sdk_version: "30",
 
-    srcs: [
-        "src/**/*.kt",
-        "src/com/android/permissioncontroller/permission/compat/LinkMovementMethodCompatTest.java",
-    ],
+    srcs: ["src/**/*.kt"],
 
     libs: [
         "android.test.base",
