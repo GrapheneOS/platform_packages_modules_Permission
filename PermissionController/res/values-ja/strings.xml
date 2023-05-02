@@ -510,7 +510,7 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"位置情報"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"その他"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"なし"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"24 時間\n以内"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"過去 \n24 時間"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 日間"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はステータスバーやプライバシー ダッシュボードには表示されません。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はプライバシー ダッシュボードには表示されません。"</string>
@@ -589,6 +589,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"データ共有と位置情報"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"データ共有情報の提供元"</string>
+    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
+    <skip />
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"デベロッパーは、このアプリがデータを共有する方法に関する情報を "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" に提供しています。この情報は時間が経つと更新される可能性があります。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"このアプリが位置情報を共有する目的"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"さまざまなデータ共有方法"</string>
