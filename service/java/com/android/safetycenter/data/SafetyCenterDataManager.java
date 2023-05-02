@@ -21,11 +21,10 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.Nullable;
-import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
 import android.content.Context;
-import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
@@ -159,8 +158,8 @@ public final class SafetyCenterDataManager {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
 
-        logSafetySourceStateCollected(
-                key, userId, safetySourceData, refreshReason, sourceDataDiffers);
+        logSafetySourceStateCollectedSourceUpdated(
+                key, safetySourceData, refreshReason, sourceDataDiffers, userId, safetyEvent);
 
         return safetyCenterDataChanged;
     }
@@ -203,23 +202,32 @@ public final class SafetyCenterDataManager {
                 null, safetySourceId, packageName, userId)) {
             return false;
         }
+        SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+
+        // Must fetch refresh reason before calling processSafetyEvent because the latter may
+        // complete and clear the current refresh.
+        // TODO(b/277174417): Restructure this code to avoid this error-prone sequencing concern
+        Integer refreshReason = null;
+        if (safetyEvent.getType() == SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED) {
+            refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
+        }
+
         boolean sourceDataDiffers =
                 mSafetySourceDataRepository.reportSafetySourceError(
                         safetySourceErrorDetails, safetySourceId, userId);
         boolean eventCausedChange =
-                processSafetyEvent(
-                        safetySourceId,
-                        safetySourceErrorDetails.getSafetyEvent(),
-                        userId,
-                        true,
-                        false);
+                processSafetyEvent(safetySourceId, safetyEvent, userId, true, sourceDataDiffers);
+        boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
 
-        if (eventCausedChange || sourceDataDiffers) {
+        if (safetyCenterDataChanged) {
             mSafetyCenterIssueRepository.updateIssues(userId);
-            return true;
         }
 
-        return false;
+        logSafetySourceStateCollectedSourceUpdated(
+                key, null, refreshReason, sourceDataDiffers, userId, safetyEvent);
+
+        return safetyCenterDataChanged;
     }
 
     /**
@@ -368,20 +376,6 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Returns the list of issues for the given {@code userId} which were removed from the given
-     * list of issues in the most recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues}
-     * call. These issues were removed because they were duplicates of other issues (see {@link
-     * SafetySourceIssue#getDeduplicationId()} for more info).
-     *
-     * <p>If this method is called before any calls to {@link
-     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
-     */
-    public List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(
-            @UserIdInt int userId) {
-        return mSafetyCenterIssueRepository.getMostRecentFilteredOutDuplicateIssues(userId);
-    }
-
-    /**
      * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
      * is mapped to, or an empty list of no such mapping is configured.
      *
@@ -471,26 +465,6 @@ public final class SafetyCenterDataManager {
         return mSafetySourceDataRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
     }
 
-    /**
-     * Returns the elapsed realtime millis of when the data of the given {@link SafetySourceKey} was
-     * last updated, or {@code 0L} if no update has occurred.
-     *
-     * @see SystemClock#elapsedRealtime()
-     */
-    @UptimeMillisLong
-    public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
-    }
-
-    /**
-     * Returns the current {@link SafetyCenterStatsdLogger.SourceState} of the given {@link
-     * SafetySourceKey}.
-     */
-    @SafetyCenterStatsdLogger.SourceState
-    public int getSourceState(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSourceState(safetySourceKey);
-    }
-
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////  Other   /////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -558,12 +532,50 @@ public final class SafetyCenterDataManager {
         return false;
     }
 
+    /**
+     * Writes a SafetySourceStateCollected atom for the given source in response to a stats pull.
+     */
+    public void logSafetySourceStateCollectedAutomatic(
+            SafetySourceKey sourceKey, boolean isManagedProfile) {
+        logSafetySourceStateCollected(
+                sourceKey,
+                getSafetySourceDataInternal(sourceKey),
+                /* refreshReason= */ null,
+                /* sourceDataDiffers= */ false,
+                isManagedProfile,
+                /* safetyEvent= */ null,
+                mSafetySourceDataRepository.getSafetySourceLastUpdated(sourceKey));
+    }
+
+    /**
+     * Writes a SafetySourceStateCollected atom for the given source in response to that source
+     * updating its own state.
+     */
+    private void logSafetySourceStateCollectedSourceUpdated(
+            SafetySourceKey key,
+            @Nullable SafetySourceData safetySourceData,
+            @Nullable @SafetyCenterManager.RefreshReason Integer refreshReason,
+            boolean sourceDataDiffers,
+            int userId,
+            SafetyEvent safetyEvent) {
+        logSafetySourceStateCollected(
+                key,
+                safetySourceData,
+                refreshReason,
+                sourceDataDiffers,
+                UserUtils.isManagedProfile(userId, mContext),
+                safetyEvent,
+                /* lastUpdatedElapsedTimeMillis= */ null);
+    }
+
     private void logSafetySourceStateCollected(
             SafetySourceKey sourceKey,
-            @UserIdInt int userId,
             @Nullable SafetySourceData sourceData,
-            @Nullable Integer refreshReason,
-            boolean sourceDataDiffers) {
+            @Nullable @SafetyCenterManager.RefreshReason Integer refreshReason,
+            boolean sourceDataDiffers,
+            boolean isManagedProfile,
+            @Nullable SafetyEvent safetyEvent,
+            @Nullable Long lastUpdatedElapsedTimeMillis) {
         SafetySourceStatus sourceStatus = sourceData == null ? null : sourceData.getStatus();
         List<SafetySourceIssue> sourceIssues =
                 sourceData == null ? Collections.emptyList() : sourceData.getIssues();
@@ -581,7 +593,7 @@ public final class SafetyCenterDataManager {
         long dismissedIssuesCount = 0;
         for (int i = 0; i < sourceIssues.size(); i++) {
             SafetySourceIssue issue = sourceIssues.get(i);
-            if (isIssueDismissed(issue, sourceKey.getSourceId(), userId)) {
+            if (isIssueDismissed(issue, sourceKey)) {
                 dismissedIssuesCount++;
             } else {
                 openIssuesCount++;
@@ -589,39 +601,40 @@ public final class SafetyCenterDataManager {
             }
         }
 
-        SafetyCenterStatsdLogger.writeSafetySourceStateCollectedSourceUpdated(
+        SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
                 sourceKey.getSourceId(),
-                UserUtils.isManagedProfile(userId, mContext),
+                isManagedProfile,
                 maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
                 openIssuesCount,
                 dismissedIssuesCount,
-                getDuplicateFilteredOutIssueCount(userId, sourceKey.getSourceId()),
-                getSourceState(sourceKey),
+                getDuplicateCount(sourceKey),
+                mSafetySourceDataRepository.getSourceState(sourceKey),
+                safetyEvent,
                 refreshReason,
-                sourceDataDiffers);
+                sourceDataDiffers,
+                lastUpdatedElapsedTimeMillis);
     }
 
-    private boolean isIssueDismissed(
-            SafetySourceIssue issue, String sourceId, @UserIdInt int userId) {
+    private boolean isIssueDismissed(SafetySourceIssue issue, SafetySourceKey sourceKey) {
         SafetyCenterIssueKey issueKey =
                 SafetyCenterIssueKey.newBuilder()
-                        .setSafetySourceId(sourceId)
+                        .setSafetySourceId(sourceKey.getSourceId())
                         .setSafetySourceIssueId(issue.getId())
-                        .setUserId(userId)
+                        .setUserId(sourceKey.getUserId())
                         .build();
         return mSafetyCenterIssueDismissalRepository.isIssueDismissed(
                 issueKey, issue.getSeverityLevel());
     }
 
-    private long getDuplicateFilteredOutIssueCount(@UserIdInt int userId, String sourceId) {
-        long duplicateFilteredOutIssuesCount = 0;
-        List<SafetySourceIssueInfo> filteredOutDuplicateIssues =
-                getMostRecentFilteredOutDuplicateIssues(userId);
-        for (int i = 0; i < filteredOutDuplicateIssues.size(); i++) {
-            if (filteredOutDuplicateIssues.get(i).getSafetySource().getId().equals(sourceId)) {
-                duplicateFilteredOutIssuesCount++;
+    private long getDuplicateCount(SafetySourceKey sourceKey) {
+        long count = 0;
+        List<SafetySourceIssueInfo> duplicates =
+                mSafetyCenterIssueRepository.getLatestDuplicates(sourceKey.getUserId());
+        for (int i = 0; i < duplicates.size(); i++) {
+            if (duplicates.get(i).getSafetySource().getId().equals(sourceKey.getSourceId())) {
+                count++;
             }
         }
-        return duplicateFilteredOutIssuesCount;
+        return count;
     }
 }
