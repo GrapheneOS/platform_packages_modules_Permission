@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"កម្មវិធីនេះបានបញ្ជាក់ថា វាអាចចែករំលែកទិន្នន័យទីតាំងជាមួយភាគីទីបី"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ការចែករំលែកទិន្នន័យ និងទីតាំង"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"កន្លែងដែលព័ត៌មាន​អំពីការចែករំលែក​ទិន្នន័យបានមកពី"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"អ្នកអភិវឌ្ឍន៍បានផ្ដល់ព័ត៌មាន​ដល់ក្រុមហ៊ុនផលិតឧបករណ៍នេះ​អំពីរបៀបដែលកម្មវិធីនេះ​ចែករំលែកទិន្នន័យ។ អ្នក​អភិវឌ្ឍន៍អាចនឹងធ្វើបច្ចុប្បន្នភាព​ព័ត៌មាននេះ​ទៅតាមពេលវេលា។"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"អ្នកអភិវឌ្ឍន៍​បានផ្ដល់ព័ត៌មានដល់ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" អំពីរបៀបដែល​កម្មវិធីនេះ​ចែករំលែកទិន្នន័យ។ អ្នក​អភិវឌ្ឍន៍អាចនឹងធ្វើបច្ចុប្បន្នភាព​ព័ត៌មាននេះ​ទៅតាមពេលវេលា។"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"កម្មវិធីនេះ​អាចនឹងចែករំលែក​ទិន្នន័យទីតាំងសម្រាប់៖"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ភាពខុសគ្នានៃ​ការចែករំលែកទិន្នន័យ"</string>

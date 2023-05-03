@@ -583,12 +583,13 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Pre aplikácie a služby. Keď je toto nastavenie vypnuté a zavoláte na tiesňovú linku, údaje mikrofónu sa môžu stále zdieľať."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Zobraziť aplikácie a služby, ktoré majú prístup k polohe"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Zobrazovať prístup k schránke"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovať správu, keď sa aplikácie získajú pristup k textu, obrázkom alebo inému obsahu, ktorý ste skopírovali"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovať správu, keď aplikácie získajú pristup k textu, obrázkom alebo inému obsahu, ktorý ste skopírovali"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Zobrazovať heslá"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Pri písaní nakrátko zobrazovať zadávané znaky"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"V tejto aplikácii bolo uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Zdieľanie údajov a poloha"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odkiaľ pochádzajú informácie o zdieľaní údajov"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Vývojár poskytol výrobcovi tohto zariadenia informácie, ako táto aplikácia zdieľa údaje. Priebežne môže dané informácie aktualizovať."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Vývojár poskytol v sekcii "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informácie o tom, ako táto aplikácia zdieľa údaje. Priebežne môže dané informácie aktualizovať."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikácia môže zdieľať údaje o polohe na účely:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Zdieľanie údajov sa líši"</string>

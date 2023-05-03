@@ -51,7 +51,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Permet"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Permet sempre"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mentre s\'utilitza l\'aplicació"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Canvia a la ubicació exacta"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Canvia a la ubicació precisa"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Mantén la ubicació aproximada"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Només aquesta vegada"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Permet sempre"</string>
@@ -193,14 +193,14 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permetis"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicació exacta"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ubicació aproximada"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació exacta"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quan la ubicació exacta està desactivada, les aplicacions poden accedir a la teva ubicació aproximada"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació precisa"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quan la ubicació precisa està desactivada, les aplicacions poden accedir a la teva ubicació aproximada"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permís d\'accés a <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accés a <xliff:g id="PERM">%1$s</xliff:g> per a aquesta aplicació"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Mostra tots els permisos per a <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Mostra totes les aplicacions que tenen aquest permís"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostra l\'ús del micròfon de l\'Assistent"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuració d\'apps no utilitzades"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuració d\'aplicació no utilitzada"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Suprimeix els permisos si no s\'utilitza l\'aplicació"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Suprimeix els permisos i allibera espai"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Activitat a l\'app en pausa si no s\'usa"</string>
@@ -518,7 +518,7 @@
     <string name="blocked_microphone_title" msgid="1631517143648232585">"El micròfon del dispositiu està bloquejat"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"La ubicació del dispositiu està desactivada"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Per a aplicacions i serveis"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es comparteixin si truques a un número d\'emergència."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Canvia"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Seguretat i privadesa"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Analitza el dispositiu"</string>
@@ -580,7 +580,7 @@
     <string name="camera_toggle_title" msgid="1251201397431837666">"Accés a la càmera"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Accés al micròfon"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Per a aplicacions i serveis"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Per a aplicacions i serveis. Si aquesta opció de configuració està desactivada, és possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Per a aplicacions i serveis. És possible que les dades del micròfon es comparteixin si truques a un número d\'emergència encara que aquesta opció estigui desactivada."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Mostra les aplicacions i els serveis que tinguin accés a la ubicació"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Mostra l\'accés al porta-retalls"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Mostra un missatge quan les aplicacions accedeixen al text, a les imatges o a qualsevol altre contingut que hagis copiat"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aquesta aplicació ha indicat que és possible que comparteixi dades d\'ubicació amb tercers"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Compartició de dades i ubicació"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"D\'on prové la informació de la compartició de dades"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"El desenvolupador ha proporcionat informació al fabricant del dispositiu sobre com comparteix dades aquesta aplicació. És possible que el desenvolupador actualitzi aquesta informació al llarg del temps."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"El desenvolupador ha proporcionat informació a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre com comparteix dades aquesta aplicació. És possible que el desenvolupador actualitzi aquesta informació al llarg del temps."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'aplicació pot compartir dades d\'ubicació per a:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La compartició de dades varia"</string>

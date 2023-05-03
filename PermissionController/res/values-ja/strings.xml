@@ -510,14 +510,14 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"位置情報"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"その他"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"なし"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"24 時間\n以内"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"過去 \n24 時間"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 日間"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はステータスバーやプライバシー ダッシュボードには表示されません。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はプライバシー ダッシュボードには表示されません。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"デバイスのカメラがブロックされています"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"デバイスのマイクがブロックされています"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"デバイスの位置情報が OFF です"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"アプリとサービス"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"アプリとサービスによるアクセス"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"緊急通報番号に発信したときは、マイクのデータが引き続き共有されることがあります。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"変更"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"セキュリティとプライバシー"</string>
@@ -579,16 +579,17 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"プライバシー管理"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"カメラへのアクセス"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"マイクへのアクセス"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"アプリとサービス"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"アプリとサービス。この設定が OFF の場合でも、緊急通報番号に発信するとマイクのデータが共有されることがあります。"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"アプリとサービスによるアクセス"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります。"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"位置情報にアクセスできるアプリとサービスを確認"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"クリップボードへのアクセスを表示"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"クリップボードへのアクセスを通知"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージで通知する"</string>
-    <string name="show_password_title" msgid="2877269286984684659">"パスワードの表示"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"パスワードを表示"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を短い間表示する"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"データ共有と位置情報"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"データ共有情報の提供元"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"デベロッパーは、このアプリがデータを共有する方法に関する情報を、このデバイスのメーカーに提供しています。この情報は時間が経つと更新される可能性があります。"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"デベロッパーは、このアプリがデータを共有する方法に関する情報を "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" に提供しています。この情報は時間が経つと更新される可能性があります。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"このアプリが位置情報を共有する目的"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"さまざまなデータ共有方法"</string>

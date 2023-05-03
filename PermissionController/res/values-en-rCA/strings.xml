@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"This app stated it may share location data with third parties"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Data sharing and location"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Where data sharing info comes from"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"The developer provided info to this device\'s manufacturer about how this app shares data. The developer may update this info over time."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"The developer provided info to "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" about how this app shares data. The developer may update this info over time."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"This app may share location data for:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Data sharing varies"</string>

@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Maelezo ya programu yanasema kuwa inaweza kushiriki data na kampuni za wengine"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Kushiriki data na mahali"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Maelezo ya kushiriki data yanakotokea"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Msanidi programu ametoa maelezo kwa mtengenezaji wa kifaa hiki kuhusu jinsi programu hii inavyoshiriki data. Msanidi programu anaweza kusasisha maelezo haya kadiri muda unavyosonga."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Wasanidi programu wametoa maelezo kwenye "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" kuhusu jinsi programu hii inavyoshiriki data. Msanidi programu anaweza kusasisha maelezo haya kadiri muda unavyosonga."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Programu hii inaweza kushiriki data ya mahali ili:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Kanuni za kushiriki data hutofautiana"</string>

@@ -68,7 +68,7 @@
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Administrer adgang til data for kalender, opkaldshistorik m.m."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Du har givet <xliff:g id="APP_NAME">%1$s</xliff:g> adgang til <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Du har nægtet <xliff:g id="APP_NAME">%1$s</xliff:g> adgang til <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{I dag}=1{For 1 dag siden}one{for # dag siden}other{for # dage siden}}"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{I dag}=1{1 dag siden}one{# dag siden}other{# dage siden}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiver appen"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Hvis du deaktiverer denne app, kan det medføre, at Android-apps og andre apps ikke fungerer korrekt. Vær opmærksom på, at du ikke kan slette denne app, da den er forudinstalleret på din enhed. Hvis du slår appen fra, deaktiveres og skjules den på din enhed."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Tilladelses­administrator"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Denne app har angivet, at den muligvis deler lokationsdata med tredjeparter"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datadeling og lokation"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvor oplysninger om datadeling stammer fra"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Udvikleren har stillet oplysninger om, hvordan denne app deler data, til rådighed for producenten af denne enhed. Udvikleren opdaterer muligvis disse oplysninger senere."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Udvikleren gav oplysninger til "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" om, hvordan denne app deler data. Udvikleren opdaterer muligvis disse oplysninger senere."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Denne app deler muligvis lokationsdata for:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling varierer"</string>
