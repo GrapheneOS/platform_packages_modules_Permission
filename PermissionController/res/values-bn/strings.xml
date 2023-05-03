@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই অ্যাপ, থার্ড-পার্টির সাথে লোকেশন ডেটা শেয়ার করার অনুমতি চাইতে পারে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শেয়ারিং ও লোকেশন"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শেয়ারিং সম্পর্কিত তথ্য কোথা থেকে পাওয়া যায়"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"কীভাবে এই অ্যাপ ডেটা শেয়ার করে, তার ব্যাপারে ডিভাইস প্রস্তুতকারীকে, ডেভেলপার তথ্য প্রদান করেছে। এই তথ্য ভবিষ্যতে ডেভেলপার আপডেট করতে পারে।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"কীভাবে এই অ্যাপ ডেটা শেয়ার করে, তার ব্যাপারে ডেভেলপার "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"-কে তথ্য প্রদান করেছে। ভবিষ্যতে ডেভেলপার এই তথ্য আপডেট করতে পারে।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এই অ্যাপ যে জন্য লোকেশন ডেটা শেয়ার করতে পারে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শেয়ারিংয়ের ক্ষেত্রে হওয়া পরিবর্তন"</string>

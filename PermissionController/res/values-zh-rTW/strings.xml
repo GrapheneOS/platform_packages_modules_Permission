@@ -83,7 +83,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"執行不明的動作"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統程序"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統設定"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隱藏系統程序"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"顯示過去 7 天內的使用情況"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"顯示過去 24 小時內的使用情況"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"這個應用程式表示可能會將位置資料分享給第三方"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"資料分享與位置"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享的相關資訊來源"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"開發人員已將這個應用程式的資料分享做法相關資訊提供給這部裝置的製造商，並可能會隨著時間更新這項資訊。"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"開發人員已將這個應用程式的資料分享做法資訊提供給 "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"，並可能會隨著時間更新這項資訊。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"這個應用程式分享位置資料的可能目的如下："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享的差異"</string>

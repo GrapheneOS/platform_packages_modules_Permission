@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Esta app indicó que podría compartir datos de ubicación con terceros"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Uso compartido de datos y ubicación"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De dónde proviene la información de uso compartido de datos"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"El desarrollador brindó información al fabricante del dispositivo sobre el uso compartido de datos de esta app. El desarrollador podría actualizar esta información con el tiempo."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"El desarrollador brindó información a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre el uso compartido de datos de esta app. El desarrollador podría actualizar esta información con el tiempo."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esta app puede compartir datos de ubicación para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"El uso compartido de datos varía"</string>
