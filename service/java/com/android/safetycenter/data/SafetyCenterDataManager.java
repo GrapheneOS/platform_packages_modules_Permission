@@ -24,19 +24,16 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.safetycenter.SafetyCenterData;
-import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
-import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySourcesGroup;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.permission.util.UserUtils;
 import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
 import com.android.safetycenter.SafetyCenterRefreshTracker;
@@ -50,7 +47,6 @@ import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.time.Instant;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -70,7 +66,6 @@ public final class SafetyCenterDataManager {
 
     private static final String TAG = "SafetyCenterDataManager";
 
-    private final Context mContext;
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     private final SafetySourceDataRepository mSafetySourceDataRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
@@ -78,6 +73,7 @@ public final class SafetyCenterDataManager {
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
     private final SafetySourceDataValidator mSafetySourceDataValidator;
+    private final SafetySourceStateCollectedLogger mSafetySourceStateCollectedLogger;
 
     /** Creates an instance of {@link SafetyCenterDataManager}. */
     public SafetyCenterDataManager(
@@ -85,7 +81,6 @@ public final class SafetyCenterDataManager {
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             ApiLock apiLock) {
-        mContext = context;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository =
                 new SafetyCenterInFlightIssueActionRepository(context);
@@ -106,6 +101,12 @@ public final class SafetyCenterDataManager {
                         new SafetyCenterIssueDeduplicator(mSafetyCenterIssueDismissalRepository));
         mSafetySourceDataValidator =
                 new SafetySourceDataValidator(context, safetyCenterConfigReader);
+        mSafetySourceStateCollectedLogger =
+                new SafetySourceStateCollectedLogger(
+                        context,
+                        mSafetySourceDataRepository,
+                        mSafetyCenterIssueDismissalRepository,
+                        mSafetyCenterIssueRepository);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -158,7 +159,7 @@ public final class SafetyCenterDataManager {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
 
-        logSafetySourceStateCollectedSourceUpdated(
+        mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
                 key, safetySourceData, refreshReason, sourceDataDiffers, userId, safetyEvent);
 
         return safetyCenterDataChanged;
@@ -224,7 +225,7 @@ public final class SafetyCenterDataManager {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
 
-        logSafetySourceStateCollectedSourceUpdated(
+        mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
                 key, null, refreshReason, sourceDataDiffers, userId, safetyEvent);
 
         return safetyCenterDataChanged;
@@ -537,104 +538,6 @@ public final class SafetyCenterDataManager {
      */
     public void logSafetySourceStateCollectedAutomatic(
             SafetySourceKey sourceKey, boolean isManagedProfile) {
-        logSafetySourceStateCollected(
-                sourceKey,
-                getSafetySourceDataInternal(sourceKey),
-                /* refreshReason= */ null,
-                /* sourceDataDiffers= */ false,
-                isManagedProfile,
-                /* safetyEvent= */ null,
-                mSafetySourceDataRepository.getSafetySourceLastUpdated(sourceKey));
-    }
-
-    /**
-     * Writes a SafetySourceStateCollected atom for the given source in response to that source
-     * updating its own state.
-     */
-    private void logSafetySourceStateCollectedSourceUpdated(
-            SafetySourceKey key,
-            @Nullable SafetySourceData safetySourceData,
-            @Nullable @SafetyCenterManager.RefreshReason Integer refreshReason,
-            boolean sourceDataDiffers,
-            int userId,
-            SafetyEvent safetyEvent) {
-        logSafetySourceStateCollected(
-                key,
-                safetySourceData,
-                refreshReason,
-                sourceDataDiffers,
-                UserUtils.isManagedProfile(userId, mContext),
-                safetyEvent,
-                /* lastUpdatedElapsedTimeMillis= */ null);
-    }
-
-    private void logSafetySourceStateCollected(
-            SafetySourceKey sourceKey,
-            @Nullable SafetySourceData sourceData,
-            @Nullable @SafetyCenterManager.RefreshReason Integer refreshReason,
-            boolean sourceDataDiffers,
-            boolean isManagedProfile,
-            @Nullable SafetyEvent safetyEvent,
-            @Nullable Long lastUpdatedElapsedTimeMillis) {
-        SafetySourceStatus sourceStatus = sourceData == null ? null : sourceData.getStatus();
-        List<SafetySourceIssue> sourceIssues =
-                sourceData == null ? Collections.emptyList() : sourceData.getIssues();
-
-        int maxSeverityLevel = Integer.MIN_VALUE;
-        if (sourceStatus != null) {
-            maxSeverityLevel = sourceStatus.getSeverityLevel();
-        } else if (sourceData != null) {
-            // In this case we know we have an issue-only source because of the checks carried out
-            // in the validateRequest function.
-            maxSeverityLevel = SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED;
-        }
-
-        long openIssuesCount = 0;
-        long dismissedIssuesCount = 0;
-        for (int i = 0; i < sourceIssues.size(); i++) {
-            SafetySourceIssue issue = sourceIssues.get(i);
-            if (isIssueDismissed(issue, sourceKey)) {
-                dismissedIssuesCount++;
-            } else {
-                openIssuesCount++;
-                maxSeverityLevel = Math.max(maxSeverityLevel, issue.getSeverityLevel());
-            }
-        }
-
-        SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
-                sourceKey.getSourceId(),
-                isManagedProfile,
-                maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
-                openIssuesCount,
-                dismissedIssuesCount,
-                getDuplicateCount(sourceKey),
-                mSafetySourceDataRepository.getSourceState(sourceKey),
-                safetyEvent,
-                refreshReason,
-                sourceDataDiffers,
-                lastUpdatedElapsedTimeMillis);
-    }
-
-    private boolean isIssueDismissed(SafetySourceIssue issue, SafetySourceKey sourceKey) {
-        SafetyCenterIssueKey issueKey =
-                SafetyCenterIssueKey.newBuilder()
-                        .setSafetySourceId(sourceKey.getSourceId())
-                        .setSafetySourceIssueId(issue.getId())
-                        .setUserId(sourceKey.getUserId())
-                        .build();
-        return mSafetyCenterIssueDismissalRepository.isIssueDismissed(
-                issueKey, issue.getSeverityLevel());
-    }
-
-    private long getDuplicateCount(SafetySourceKey sourceKey) {
-        long count = 0;
-        List<SafetySourceIssueInfo> duplicates =
-                mSafetyCenterIssueRepository.getLatestDuplicates(sourceKey.getUserId());
-        for (int i = 0; i < duplicates.size(); i++) {
-            if (duplicates.get(i).getSafetySource().getId().equals(sourceKey.getSourceId())) {
-                count++;
-            }
-        }
-        return count;
+        mSafetySourceStateCollectedLogger.writeAutomaticAtom(sourceKey, isManagedProfile);
     }
 }
