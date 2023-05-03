@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacija"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odakle dolaze informacije o dijeljenju podataka"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Programer je proizvođaču uređaja naveo informacije o tome kako ova aplikacija dijeli podatke. Programer može povremeno ažurirati ove informacije."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Programer je usluzi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" naveo informacije o tome kako ova aplikacija dijeli podatke. Programer može tokom vremena ažurirati ove informacije."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikacija može dijeliti podatke o lokaciji za:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Dijeljenje podataka se razlikuje"</string>

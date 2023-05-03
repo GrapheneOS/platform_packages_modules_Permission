@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Denne appen har oppgitt at den kan dele posisjonsdata med tredjeparter"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datadeling og posisjon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvor kommer informasjon om datadeling fra?"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Utvikleren har gitt produsenten av denne enheten informasjon om hvordan denne appen deler data. Utvikleren kan oppdatere denne informasjonen over tid."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Utvikleren har gitt informasjon til "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" om hvordan denne appen deler data. Utvikleren kan oppdatere denne informasjonen over tid."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Denne appen kan dele posisjonsdata for"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling varierer"</string>

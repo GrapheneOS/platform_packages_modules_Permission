@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikasi ini menyatakan bahwa aplikasi mungkin membagikan data lokasi ke pihak ketiga"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Berbagi data dan lokasi"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Sumber info berbagi data"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Developer memberikan info kepada produsen perangkat ini tentang cara aplikasi ini berbagi data. Developer dapat memperbarui info ini dari waktu ke waktu."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Developer memberikan info kepada "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tentang cara aplikasi ini berbagi data. Developer dapat memperbarui info ini dari waktu ke waktu."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikasi ini mungkin membagikan data lokasi untuk:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Praktik berbagi data dapat berbeda-beda"</string>

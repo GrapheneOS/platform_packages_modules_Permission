@@ -21,7 +21,7 @@
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"การควบคุม"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"จัดการสิทธิ์เข้าถึงข้อมูลสุขภาพของแอป"</string>
-    <string name="location_settings" msgid="8863940440881290182">"การเข้าถึงตำแหน่ง"</string>
+    <string name="location_settings" msgid="8863940440881290182">"สิทธิ์เข้าถึงตำแหน่ง"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"สำหรับแอปและบริการ หากปิดการตั้งค่านี้ ระบบอาจยังคงแชร์ข้อมูลไมโครโฟนเมื่อคุณโทรหาหมายเลขฉุกเฉิน"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"สำหรับแอปและบริการ"</string>
 </resources>
