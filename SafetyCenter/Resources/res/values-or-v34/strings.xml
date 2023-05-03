@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"ସ୍ୱାସ୍ଥ୍ୟ, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟଗୁଡ଼ିକ"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ଡାଟା, ଡାଟା ସେୟାରିଂ, ଡାଟା ସେୟାରିଂ ଅପଡେଟ, ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟ, ସେୟାରିଂ"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"ବିଜ୍ଞାପନ ଗୋପନୀୟତା"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"ଆପଣଙ୍କୁ ବିଜ୍ଞାପନଗୁଡ଼ିକ ଦେଖାଇବା ପାଇଁ ଆପ୍ସ ବ୍ୟବହାର କରୁଥିବା ସୂଚନାକୁ କଷ୍ଟମାଇଜ କରନ୍ତୁ"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"ବିଜ୍ଞାପନ, ବିଜ୍ଞାପନ ଗୋପନୀୟତା, ପ୍ରାଇଭେସି ସେଣ୍ଡବକ୍ସ, ବିଜ୍ଞାପନ ବିଷୟ, ଆପ ଦ୍ୱାରା-ପରାମର୍ଶ ଦିଆଯାଇଥିବା ବିଜ୍ଞାପନଗୁଡ଼ିକ, ବିଜ୍ଞାପନର ପରିମାପ"</string>
     <string name="advanced_title" msgid="6259362998269627310">"ଅନ୍ୟ ସେଟିଂସ"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"ଅଧିକ ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"ଅଟୋଫିଲ, ବିଜ୍ଞପ୍ତି ଏବଂ ଆହୁରି ଅନେକ କିଛି"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"ଆପଣଙ୍କ ୱାର୍କ ନୀତି ସୂଚନା"</string>
 </resources>

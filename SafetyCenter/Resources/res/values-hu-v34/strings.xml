@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Egészség, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"A helyadatok megosztását érintő frissítések"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Adatok, adatmegosztás, adatmegosztási változások, helyadatokat érintő adatmegosztási változások, megosztás"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Hirdetésekhez kapcsolódó adatvédelem"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Személyre szabhatja azokat az információkat, amelyeket az alkalmazások arra használnak, hogy hirdetéseket jelenítsenek meg Önnek"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"hirdetések, hirdetésekhez kapcsolódó adatvédelem, privacy sandbox, hirdetéstéma, alkalmazások által javasolt hirdetések, hirdetésmérés"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Egyéb beállítások"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"További biztonsági és adatvédelmi beállítások"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Automatikus kitöltés, értesítések és egyebek"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Munkahelyi házirendekkel kapcsolatos adatok"</string>
 </resources>

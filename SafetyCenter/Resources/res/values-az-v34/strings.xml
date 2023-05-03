@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Sağlamlıq, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Məkan üzrə data paylaşımı yenilikləri"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Data, Data paylaşımı, Data paylaşımı yenilikləri, Məkan üzrə data paylaşımı, paylaşım"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Reklam məxfiliyi"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Tətbiqlərin sizə reklam göstərmək üçün istifadə etdiyi məlumatları fərdiləşdirin"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklamlar, reklam məxfiliyi, təhlükəsiz sandbox, reklam mövzuları, tətbiq tərəfindən təklif edilən reklamlar, reklam ölçüsü"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Digər ayarlar"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Güvənlik və məxfilik ayarlarının ardı"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Avto doldurma, bildirişlər və s."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"İş siyasəti məlumatı"</string>
 </resources>

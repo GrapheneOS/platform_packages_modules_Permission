@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Zmiany w udostępnianiu danych o lokalizacji"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"dane, udostępnianie danych, zmiany w udostępnianiu danych, zmiany w udostępnianiu danych o lokalizacji, udostępnianie"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Prywatność w reklamach"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Dostosuj informacje używane przez aplikacje przy wyświetlaniu reklam"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklamy, prywatność w reklamach, Piaskownica prywatności, tematy reklam, reklamy sugerowane przez aplikację, pomiar skuteczności reklam"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Inne ustawienia"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Więcej ustawień bezpieczeństwa i prywatności"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Autouzupełnianie, powiadomienia i inne ustawienia"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Informacje o zasadach obowiązujących w firmie"</string>
 </resources>
