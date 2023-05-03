@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Kalusugan, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Mga update sa pagbabahagi ng data para sa lokasyon"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Data, Pagbabahagi ng data, Mga update sa pagbabahagi ng data, Mga update sa pagbabahagi ng data para sa lokasyon, pagbabahagi"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Privacy sa ad"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"I-customize ang impormasyong ginagamit ng mga app para makapagpakita sa iyo ng mga ad"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"mga ad, privacy sa ad, privacy sandbox, mga paksa ng ad, mga ad na iminumungkahi ng app, pagsusukat ng ad"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Iba pang setting"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Higit na seguridad at privacy"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Autofill, mga notification, at higit pa"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Impormasyon tungkol sa iyong patakaran sa trabaho"</string>
 </resources>

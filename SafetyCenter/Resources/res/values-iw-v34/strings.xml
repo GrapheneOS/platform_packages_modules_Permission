@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"‏בריאות, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"עדכונים לגבי שיתוף נתונים עבור המיקום"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"נתונים, שיתוף נתונים, עדכונים לגבי שיתוף נתונים, עדכונים לגבי שיתוף נתונים עבור המיקום, שיתוף"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"פרטיות בפרסום"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"התאמה אישית של המידע שאפליקציות משתמשות בו כדי להציג לך מודעות"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"מודעות, פרטיות בפרסום, ארגז חול לפרטיות, נושאי מודעות, מודעות שאפליקציות מציעות, מדידת מודעות"</string>
     <string name="advanced_title" msgid="6259362998269627310">"הגדרות אחרות"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"עוד אבטחה ופרטיות"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"מילוי אוטומטי, התראות ועוד"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"פרטי המדיניות של מקום העבודה"</string>
 </resources>

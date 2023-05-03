@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"जगह की जानकारी शेयर करने के तरीके के बारे में अपडेट"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"डेटा, डेटा शेयर करना, डेटा शेयर करने के अपडेट, जगह की जानकारी शेयर करने के बारे में अपडेट, शेयर करना"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"विज्ञापन देखने वाले की निजता बनाए रखने की सुविधा"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"अपने हिसाब से यह तय करें कि ऐप्लिकेशन आपको विज्ञापन दिखाने के लिए, कौनसी जानकारी का इस्तेमाल कर सकते हैं"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"विज्ञापन, विज्ञापन देखने वाले की निजता बनाए रखना, प्राइवसी सैंडबॉक्स, विज्ञापन का विषय, ऐप्लिकेशन के सुझाए गए विज्ञापन, और विज्ञापन की परफ़ॉर्मेंस का आकलन करना"</string>
     <string name="advanced_title" msgid="6259362998269627310">"बेहतर सेटिंग"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"सुरक्षा और निजता की ज़्यादा सेटिंग"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"ऑटोमैटिक भरना, सूचनाएं वगैरह"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"आपके ऑफ़िस की नीति के बारे में जानकारी"</string>
 </resources>

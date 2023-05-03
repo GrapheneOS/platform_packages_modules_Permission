@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"‏الصحة، Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"تعديلات مشاركة بيانات الموقع الجغرافي"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"البيانات، مشاركة البيانات، تعديلات مشاركة البيانات، تعديلات مشاركة بيانات الموقع الجغرافي، المشاركة"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"الخصوصية في عرض الإعلانات"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"تخصيص المعلومات التي تستخدمها التطبيقات لعرض الإعلانات لك"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"الإعلانات، الخصوصية في عرض الإعلانات، مبادرة حماية الخصوصية، مواضيع الإعلانات، الإعلانات المقترَحة من التطبيقات، قياس أداء الإعلانات"</string>
     <string name="advanced_title" msgid="6259362998269627310">"إعدادات أخرى"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"تعزيز الأمان والخصوصية"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"الملء التلقائي والإشعارات والمزيد"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"معلومات سياسة العمل"</string>
 </resources>

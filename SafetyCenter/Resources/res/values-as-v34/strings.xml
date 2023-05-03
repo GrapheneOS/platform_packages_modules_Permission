@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"স্বাস্থ্য, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ডেটা, ডেটা শ্বেয়াৰ কৰা, ডেটা শ্বেয়াৰ কৰা সম্পৰ্কীয় আপডে’ট, অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট, শ্বেয়াৰ কৰা"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"বিজ্ঞাপনৰ গোপনীয়তা"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"আপোনাক বিজ্ঞাপন দেখুৱাবলৈ তথ্য এপৰ ব্যৱহাৰ কাষ্টমাইজ কৰক"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"বিজ্ঞাপন, বিজ্ঞাপনৰ গোপনীয়তা, প্ৰাইভেচি ছেণ্ডবক্স, বিজ্ঞাপনৰ বিষয়বস্তু, এপে পৰামৰ্শ দিয়া বিজ্ঞাপন, বিজ্ঞাপনৰ জোখ-মাখ"</string>
     <string name="advanced_title" msgid="6259362998269627310">"অন্য ছেটিং"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"অধিক সুৰক্ষা আৰু গোপনীয়তা"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"স্বয়ংক্ৰিয়ভাৱে পূৰ হোৱাৰ সুবিধা, জাননী আৰু আন বহুতো"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"আপোনাৰ কৰ্মস্থানৰ নীতিৰ তথ্য"</string>
 </resources>
