@@ -40,7 +40,7 @@
     <string name="safety_center_qs_privacy_control" msgid="1160682635058529673">"Chave. <xliff:g id="PRIVACY_CONTROL_TITLE">%1$s</xliff:g>. <xliff:g id="PRIVACY_CONTROL_STATUS">%2$s</xliff:g>"</string>
     <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"Alternar"</string>
     <string name="safety_center_qs_open_action" msgid="2760200829912423728">"Abrir"</string>
-    <string name="safety_center_review_settings_button" msgid="938981137942443930">"Revisar configura&amp;#173;ções"</string>
+    <string name="safety_center_review_settings_button" msgid="938981137942443930">"Revisar configura­ções"</string>
     <string name="safety_center_gear_label" msgid="5175877094379694098">"Configurações"</string>
     <string name="safety_center_info_label" msgid="8993181584061825412">"Informações"</string>
 </resources>

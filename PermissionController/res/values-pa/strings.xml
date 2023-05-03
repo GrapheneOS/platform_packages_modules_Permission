@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅਤੇ ਟਿਕਾਣਾ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਜਾਣਕਾਰੀ ਕਿੱਥੋਂ ਆਉਂਦੀ ਹੈ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ਵਿਕਾਸਕਾਰ ਨੇ ਇਸ ਐਪ ਵੱਲੋਂ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦੇ ਤਰੀਕੇ ਬਾਰੇ ਜਾਣਕਾਰੀ ਇਸ ਡੀਵਾਈਸ ਦੇ ਨਿਰਮਾਤਾ ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਵਿਕਾਸਕਾਰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਇਸ ਜਾਣਕਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ਵਿਕਾਸਕਾਰ ਨੇ ਇਸ ਐਪ ਵੱਲੋਂ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦੇ ਤਰੀਕੇ ਬਾਰੇ ਜਾਣਕਾਰੀ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਵਿਕਾਸਕਾਰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਇਸ ਜਾਣਕਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ਇਹ ਐਪ ਇਸ ਲਈ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵੱਖ-ਵੱਖ ਹੁੰਦਾ ਹੈ"</string>

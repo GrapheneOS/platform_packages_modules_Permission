@@ -535,7 +535,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"您的隐私控制项"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"更多设置"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"相机使用权限"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"摄像头使用权限"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"麦克风使用权限"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"已移除权限"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"查看近期相机使用情况"</string>
@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"此应用已声明它可能会与第三方共享位置数据"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"数据分享和位置信息"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"数据分享信息的来源"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"开发者已将此应用的数据分享方式相关信息提供给此设备的制造商。开发者可能会随时间推移更新此信息。"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"开发者已将此应用的数据分享方式相关信息提供给"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"。开发者可能会随时间推移更新此信息。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"此应用可能会出于以下目的分享位置数据："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"数据分享因情况而异"</string>

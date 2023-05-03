@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"此應用程式表明可能會與第三方分享位置資料"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"資料分享和位置"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享詳情的來源"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"開發人員向此裝置的製造商提供資料，說明此應用程式的資料分享方式，並可能會隨時間更新。"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"開發人員向"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"提供資料，說明此應用程式的資料分享方式，並可能會隨時間更新。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"應用程式可能分享位置資料作以下用途："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式因情況而異"</string>

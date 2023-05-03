@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Az alkalmazás jelezte, hogy megoszthat helyadatokat harmadik felekkel"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Adatmegosztás és hely"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Az adatmegosztással kapcsolatos információ forrása"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"A fejlesztő információt adott meg az eszköz gyártójának arról, hogy az alkalmazás minként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"A fejlesztő információt adott meg "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" számára arról, hogy az alkalmazás miként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Az app helyadatokat oszthat meg az alábbi célból:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Az adatmegosztás változik"</string>

@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ଡାଟା ସେୟାରିଂ ଏବଂ ଲୋକେସନ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ଡାଟା ସେୟାରିଂ ସୂଚନା କେଉଁଠାରୁ ଆସିଥାଏ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ଏହି ଆପ କିପରି ଡାଟା ସେୟାର କରେ ସେ ବିଷୟରେ ଡେଭେଲପର ଏହି ଡିଭାଇସର ନିର୍ମାତାଙ୍କୁ ସୂଚନା ପ୍ରଦାନ କରିଛନ୍ତି। ଡେଭେଲପର ସମୟ ଅନୁସାରେ ଏହି ସୂଚନାକୁ ଅପଡେଟ କରିପାରନ୍ତି।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ଏହି ଆପ କିପରି ଡାଟା ସେୟାର କରେ ସେ ବିଷୟରେ ଡେଭେଲପର "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ରେ ସୂଚନା ପ୍ରଦାନ କରିଛନ୍ତି। ଡେଭେଲପର ସମୟ ଅନୁସାରେ ଏହି ସୂଚନାକୁ ଅପଡେଟ କରିପାରନ୍ତି।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ଏଥିପାଇଁ ଏହି ଆପ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ଡାଟା ସେୟାରିଂ ଭିନ୍ନ ହୋଇଥାଏ"</string>
