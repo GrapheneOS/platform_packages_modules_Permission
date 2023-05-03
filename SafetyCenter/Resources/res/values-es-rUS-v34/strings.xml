@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Actualizaciones del uso compartido de los datos de ubicación"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"datos, uso compartido de los datos, actualizaciones del uso compartido de los datos, actualizaciones del uso compartido de los datos de ubicación, uso compartido"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Privacidad en los anuncios"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Personaliza la información que usan las apps para mostrarte anuncios"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"anuncios, privacidad en los anuncios, privacy sandbox, temas de anuncios, anuncios sugeridos por apps, medición de anuncios"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Otras opciones"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Mayor seguridad y privacidad"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Autocompletar, notificaciones y más"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Información sobre la política de tu trabajo"</string>
 </resources>

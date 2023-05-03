@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Sağlık, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Konum için veri paylaşımı güncellemeleri"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Veri, Veri paylaşımı, Veri paylaşımı güncellemeleri, Konum için veri paylaşımı güncellemeleri, paylaşım"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Reklam gizliliği"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Uygulamaların size reklam göstermek için kullandığı bilgileri özelleştirin"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklamlar, reklam gizliliği, özel korumalı alan, reklam konuları, uygulama tarafından önerilen reklamlar, reklam ölçümü"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Diğer ayarlar"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Daha fazla güvenlik ve gizlilik"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Otomatik doldurma, bildirimler ve daha fazlası"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"İş politikası bilgileriniz"</string>
 </resources>

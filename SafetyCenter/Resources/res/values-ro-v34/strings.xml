@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Actualizări privind permiterea accesului la date pentru locație"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"date, permiterea accesului la date, actualizări privind permiterea accesului la date, actualizări privind permiterea accesului la date pentru locație, permiterea accesului"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Confidențialitatea anunțurilor"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Personalizează informațiile pe care le folosesc aplicațiile pentru a-ți afișa anunțuri"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"anunțuri, confidențialitatea anunțurilor, privacy sandbox, subiectele anunțurilor, anunțuri sugerate de aplicații, cuantificarea anunțurilor"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Alte setări"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Mai multe setări pentru securitate și confidențialitate"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Completare automată, notificări și altele"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Informații despre politica privind activitatea"</string>
 </resources>
