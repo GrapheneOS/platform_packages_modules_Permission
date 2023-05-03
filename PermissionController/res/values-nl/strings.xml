@@ -195,7 +195,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Geschatte locatie"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Exacte locatie gebruiken"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Als de exacte locatie uitstaat, hebben apps toegang tot je geschatte locatie"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-rechten"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Rechten: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> voor deze app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Deze app geeft aan dat locatiegegevens kunnen worden gedeeld met derden"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gegevens delen en locatie"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar informatie over gegevens delen vandaan komt"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"De ontwikkelaar heeft de fabrikant van het apparaat informatie gegeven over de manier waarop deze app gegevens deelt. De ontwikkelaar kan deze informatie in de loop van de tijd updaten."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"De ontwikkelaar heeft informatie gegeven aan "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" over hoe deze app gegevens deelt. De ontwikkelaar kan deze informatie in de loop van de tijd updaten."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Deze app kan locatiegegevens delen voor:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Gegevens delen verschilt"</string>

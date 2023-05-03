@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Lietotne norādīja, ka tā var kopīgot atrašanās vietas datus ar trešajām pusēm."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datu kopīgošana un atrašanās vieta"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Datu kopīgošanas informācijas avots"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Izstrādātājs sniedza ierīces ražotājam informāciju par to, kā šajā lietotnē tiek kopīgoti dati. Laika gaitā izstrādātājs var šo informāciju atjaunināt."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Izstrādātājs sniedza lietotņu veikalam "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informāciju par to, kā šajā lietotnē tiek kopīgoti dati. Laika gaitā izstrādātājs var šo informāciju atjaunināt."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Atrašanās vietas datu kopīgošanas nolūki lietotnē"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datu kopīgošana var atšķirties"</string>

@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Apl ini menyatakan bahawa data lokasi mungkin dikongsi dengan pihak ketiga"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Perkongsian data dan lokasi"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Sumber maklumat perkongsian data"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Pembangun menyediakan maklumat kepada pengilang peranti ini tentang cara apl ini berkongsi data. Pembangun boleh mengemaskinikan maklumat ini dari semasa ke semasa."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Pembangun menyediakan maklumat kepada "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tentang cara apl ini berkongsi data. Pembangun mungkin mengemaskinikan maklumat ini dari semasa ke semasa."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Apl ini mungkin berkongsi data lokasi untuk:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Perkongsian data berbeza-beza"</string>

@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Duomenų bendrinimas ir vietovė"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Iš kur gaunama duomenų bendrinimo informacija"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Kūrėjas pateikė informacijos šio įrenginio gamintojui apie tai, kaip ši programa bendrina duomenis. Bėgant laikui kūrėjas gali atnaujinti šią informaciją."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Kūrėjas pateikė informacijos "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" apie duomenų bendrinimą šioje programoje. Bėgant laikui kūrėjas gali atnaujinti šią informaciją."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ši programa gali bendrinti vietovės duomenis dėl:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Duomenų bendrinimas skiriasi"</string>

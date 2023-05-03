@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Isinaad ng app na ito na puwede nitong ibahagi ang data ng lokasyon sa mga third party"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Pagbabahagi ng data at lokasyon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Saan nanggagaling ang impormasyon sa pagbabahagi ng data"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Nagbigay ang developer ng impormasyon sa manufacturer ng device na ito tungkol sa kung paano nagbabahagi ng data ang app na ito. Posibleng i-update ng developer ang impormasyong ito sa pagtagal."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nagbigay ang developer ng impormasyon sa "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tungkol sa kung paano nagbabahagi ng data ang app na ito. Posibleng i-update ng developer ang impormasyong ito sa paglipas ng panahon."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Puwedeng magbahagi ng data ng lokasyon para sa:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nag-iiba ang pagbabahagi ng data"</string>
