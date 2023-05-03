@@ -577,7 +577,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Uygulamalar ve hizmetler için. Bu ayar kapalıyken bir acil durum numarasını aradığınızda mikrofon verileri paylaşılmaya devam edilebilir."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Konum erişimi olan uygulama ve hizmetlere göz atın."</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Panoya erişimi göster"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Uygulamalar kopyaladığınız metne, resimlere veya diğer içeriklere eriştiğinde mesaj gösterilsin."</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Uygulamalar kopyaladığınız metne, resimlere veya diğer içeriklere eriştiğinde mesaj gösterilsin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Şifreleri göster"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Yazarken karakterleri kısa süreliğine göster"</string>
 </resources>

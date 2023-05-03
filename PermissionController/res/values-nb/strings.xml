@@ -43,7 +43,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> er slått av"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"alt er slått av"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ingen er slått av"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Ja"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Tillat"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Tillat hele tiden"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Når appen brukes"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Bytt til nøyaktig posisjon"</string>
@@ -195,7 +195,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Bruk nøyaktig posisjon"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Når nøyaktig posisjon er av, har apper tilgang til den omtrentlige posisjonen din"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Tillatelse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: tilgang for denne appen"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Tilgang for denne appen: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>

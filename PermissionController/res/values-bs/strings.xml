@@ -231,7 +231,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s ovim odobrenjem mogu čitati i pisati zapisnike telefonskih poziva"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s ovim odobrenjem mogu snimati fotografije i videozapise"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s ovim odobrenjem mogu pristupiti vašim kontaktima"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupiti lokaciji uređaja"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupati lokaciji uređaja"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacije s ovim odobrenjem mogu pronaći uređaje u blizini, povezati se s njima te odrediti njihov relativni položaj"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s ovim odobrenjem mogu snimati zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s ovim odobrenjem mogu upućivati pozive i upravljati njima"</string>

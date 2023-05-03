@@ -231,7 +231,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Izinhlelo zokusebenza ezinale mvume zingafunda ziphinde zibhale irekhodi lamakholi"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Izinhlelo zokusebenza ezinale mvume zingathatha izithombe ziphinde zirekhode ividiyo"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Izinhlelo zokusebenza ezinale mvume zingafinyelela koxhumana nabo"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Izinhlelo zokusebenza ezinale mvume zingafinyelela kundawo yale divayisi"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Ama-app anale mvume angafinyelela kundawo yale divayisi"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Ama-app anale mvume angathola, axhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Izinhlelo zokusebenza ezinale mvume zingarekhoda umsindo"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Izinhlelo zokusebenza ezinale mvume zingenza ziphinde ziphathe amakholi efoni"</string>
