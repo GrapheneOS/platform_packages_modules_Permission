@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ఈ యాప్, అది లొకేషన్ డేటాను థర్డ్-పార్టీలతో షేర్ చేయవచ్చని పేర్కొంది"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"డేటా షేరింగ్ &amp; లొకేషన్"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"డేటా షేరింగ్‌కు సంబంధించిన సమాచారం ఎక్కడి నుంచి వస్తుంది"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"డెవలపర్ ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని పరికర తయారీదారుకు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని డెవలపర్  "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"‌కు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ఈ యాప్ లొకేషన్ డేటాను వీటి కోసం షేర్ చేయవచ్చు:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"డేటా షేరింగ్ మారుతూ ఉంటుంది"</string>

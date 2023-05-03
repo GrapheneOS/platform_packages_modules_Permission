@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ಈ ಆ್ಯಪ್ ಥರ್ಡ್ ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ಉಲ್ಲೇಖಿಸಿದೆ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ಡೇಟಾ ಹಂಚಿಕೆ ಮತ್ತು ಸ್ಥಳ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ಡೇಟಾ ಹಂಚಿಕೆಯ ಮಾಹಿತಿಯು ಎಲ್ಲಿಂದ ಬರುತ್ತದೆ"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ಈ ಆ್ಯಪ್ ಡೇಟಾವನ್ನು ಹೇಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ ಎಂಬುದರ ಕುರಿತು ಡೆವಲಪರ್ ಈ ಸಾಧನದ ತಯಾರಕರಿಗೆ ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಿದ್ದಾರೆ. ಡೆವಲಪರ್ ಕಾಲಕ್ರಮೇಣ ಈ ಮಾಹಿತಿಯನ್ನು ಅಪ್‌ಡೇಟ್ ಮಾಡಬಹುದು."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ಈ ಆ್ಯಪ್, ಡೇಟಾವನ್ನು ಹೇಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ ಎಂಬುದರ ಕುರಿತು ಡೆವಲಪರ್ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ಗೆ ಮಾಹಿತಿ ಒದಗಿಸಿದ್ದಾರೆ. ಡೆವಲಪರ್ ಕಾಲಕ್ರಮೇಣ ಈ ಮಾಹಿತಿಯನ್ನು ಅಪ್‌ಡೇಟ್ ಮಾಡಬಹುದು."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ಈ ಆ್ಯಪ್ ಇವುಗಳಿಗಾಗಿ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ಡೇಟಾ ಹಂಚಿಕೆ ಬದಲಾಗುತ್ತದೆ"</string>

@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"แอปนี้ระบุว่าแอปอาจแชร์ข้อมูลตำแหน่งกับองค์กรบุคคลที่สามของแอป"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"การแชร์ข้อมูลและตำแหน่ง"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"แหล่งที่มาของรายละเอียดการแชร์ข้อมูล"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"นักพัฒนาแอปได้ให้รายละเอียดเกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูลไว้กับผู้ผลิตอุปกรณ์นี้ โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"นักพัฒนาแอปได้ให้รายละเอียดเกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูลไว้ใน "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"แอปนี้อาจแชร์ข้อมูลตำแหน่งเพื่อ"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
