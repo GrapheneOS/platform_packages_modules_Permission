@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Gesondheid, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Datadelingopdaterings vir ligging"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Data, datadeling, datadelingopdaterings, datadelingopdaterings vir ligging, deling"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Advertensieprivaatheid"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Pasmaak inligting wat apps gebruik om vir jou advertensies te wys"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"advertensies, advertensieprivaatheid, privacy sandbox, advertensie-onderwerpe, appvoorgestelde advertensies, advertensiemeting"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Ander instellings"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Meer sekuriteit en privaatheid"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Outovul, kennisgewings en meer"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Jou werkbeleidinligting"</string>
 </resources>

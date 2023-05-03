@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"স্বাস্থ্য, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"লোকেশনের জন্য ডেটা শেয়ারিং সম্পর্কিত আপডেট"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ডেটা, ডেটা শেয়ার করা, ডেটা শেয়ার করা সংক্রান্ত আপডেট, লোকেশনের জন্য ডেটা শেয়ারিং সম্পর্কিত আপডেট, শেয়ার করা"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"বিজ্ঞাপন সংক্রান্ত গোপনীয়তা"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"আপনাকে বিজ্ঞাপন দেখানোর জন্য অ্যাপের ব্যবহার করা তথ্য কাস্টমাইজ করুন"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"বিজ্ঞাপন, বিজ্ঞাপন সংক্রান্ত গোপনীয়তা, প্রাইভেসি স্যান্ডবক্স, বিজ্ঞাপনের বিষয়, অ্যাপের সাজেস্ট করা বিজ্ঞাপন, বিজ্ঞাপন সম্পর্কিত পরিমাপ"</string>
     <string name="advanced_title" msgid="6259362998269627310">"অন্যান্য সেটিংস"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"আরও সুরক্ষা ও গোপনীয়তা"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"অটোফিল, বিজ্ঞপ্তি ও আরও অনেক কিছু"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"আপনার অফিসের নীতি সংক্রান্ত তথ্য"</string>
 </resources>

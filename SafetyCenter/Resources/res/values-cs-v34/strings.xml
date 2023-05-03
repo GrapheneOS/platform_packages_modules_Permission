@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"zdraví, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Aktualizace sdílení údajů o poloze"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"data, sdílení dat, aktualizace sdílení dat, aktualizace sdílení údajů o poloze, sdílení"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Ochrana soukromí v reklamách"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Přizpůsobte údaje, které aplikace používají k zobrazování reklam"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklamy, ochrana, soukromí v reklamách, privacy sandbox, témata reklam, reklamy navrhované aplikacemi, měření reklam"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Další nastavení"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Další zabezpečení a ochrana soukromí"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Automatické vyplňování, oznámení atd."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Informace o vašich pracovních zásadách"</string>
 </resources>
