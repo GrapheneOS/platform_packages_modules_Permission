@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"υγεία, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Ενημερώσεις στην κοινοποίηση δεδομένων για την τοποθεσία"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"δεδομένα, κοινοποίηση δεδομένων, ενημερώσεις κοινοποίησης δεδομένων, ενημερώσεις κοινοποίησης δεδομένων για την τοποθεσία, κοινοποίηση"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Απόρρητο διαφημίσεων"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Προσαρμόστε τις πληροφορίες που χρησιμοποιούν οι εφαρμογές για την εμφάνιση των διαφημίσεών σας"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"διαφημίσεις, απόρρητο διαφημίσεων, πλαίσιο ιδιωτικότητας, θέματα διαφημίσεων, διαφημίσεις που προτείνονται από εφαρμογές, μέτρηση διαφημίσεων"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Άλλες ρυθμίσεις"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Περισσότερες ρυθμίσεις για την ασφάλεια και το απόρρητο"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Αυτόματη συμπλήρωση, ειδοποιήσεις κ.ά."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Πληροφορίες σχετικά με την πολιτική εργασίας"</string>
 </resources>

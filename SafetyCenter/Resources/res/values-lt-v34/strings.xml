@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Sveikata, „Health Connect“"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Vietovės duomenų bendrinimo naujiniai"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Duomenys, duomenų bendrinimas, duomenų bendrinimo naujiniai, vietovės duomenų bendrinimo naujiniai, bendrinimas"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Su skelbimais susijęs privatumas"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Tinkinti informaciją, kurią programos naudoja skelbimams rodyti"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"skelbimai, su skelbimais susijęs privatumas, Privatumo „sandbox“ (smėlio dėžė), skelbimų temos, programų siūlomi skelbimai, skelbimų vertinimas"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Kiti nustatymai"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Geresnė sauga ir privatumas"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Automatinis pildymas, pranešimai ir kt."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Darbo politikos informacija"</string>
 </resources>
