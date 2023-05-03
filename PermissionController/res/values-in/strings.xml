@@ -247,7 +247,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Ditolak / Tidak pernah mengakses"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Diizinkan"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Diizinkan sepanjang waktu"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Hanya diizinkan saat digunakan"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Diizinkan hanya saat digunakan"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Hanya diizinkan akses ke media"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Diizinkan untuk mengelola semua file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Selalu tanya"</string>
@@ -399,7 +399,7 @@
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Layanan ini membagikan foto, media, dan notifikasi dari ponsel ke perangkat lain."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Aplikasi catatan default"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikasi catatan"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"Aplikasi yang memungkinkan Anda membuat catatan di perangkat"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Aplikasi untuk membuat catatan di perangkat"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"catatan"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Default saat ini"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Jangan tanya lagi"</string>
@@ -583,12 +583,13 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Untuk aplikasi dan layanan. Jika setelan ini nonaktif, data mikrofon mungkin tetap dibagikan saat Anda menelepon nomor darurat."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Lihat aplikasi dan layanan yang memiliki akses ke lokasi"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Tampilkan akses papan klip"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Menampilkan pesan saat aplikasi mengakses teks, gambar, atau konten lainnya yang telah Anda salin"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Tampilkan pesan saat aplikasi mengakses teks, gambar, atau konten lain yang telah Anda salin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Tampilkan sandi"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Menampilkan karakter sejenak saat Anda mengetik"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Tampilkan karakter sejenak saat Anda mengetik"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikasi ini menyatakan bahwa aplikasi mungkin membagikan data lokasi ke pihak ketiga"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Berbagi data dan lokasi"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Sumber info berbagi data"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Developer memberikan info kepada produsen perangkat ini tentang cara aplikasi ini berbagi data. Developer dapat memperbarui info ini dari waktu ke waktu."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Developer memberikan info kepada "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tentang cara aplikasi ini berbagi data. Developer dapat memperbarui info ini dari waktu ke waktu."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikasi ini mungkin membagikan data lokasi untuk:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Praktik berbagi data dapat berbeda-beda"</string>

@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Uvek dozvoli sve"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Izaberite slike i video snimke"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Izaberite još"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne biraj više"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ništa više"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ionako ne dozvoli"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odbaci"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> će dobiti dozvolu za interakciju sa obaveštenjima i pristup dozvolama za telefon, SMS poruke, kontakte i kalendar."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> će dobiti dozvolu za interakciju sa obaveštenjima i strimovanje aplikacija na povezanom uređaju."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ova usluga deli slike, medijski sadržaj i obaveštenja sa telefona na drugim uređajima."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"Podrazumevana aplik za beleške"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Podrazumevana apl. za beleške"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikacija za beleške"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Aplikacije koje vam omogućavaju da pravite beleške na uređaju"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"beleške"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ova aplikacija navodi da može da deli podatke sa trećim stranama"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Deljenje podataka i lokacija"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odakle informacije o deljenju podataka potiču"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Programer je naveo informacije proizvođaču ovog uređaja o tome kako ova aplikacija deli podatke. Programer može vremenom da ažurira ove podatke."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Programer je naveo informacije o tome kako ova aplikacija deli podatke za:"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Programer može vremenom da ažurira ove podatke."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ova aplikacija može da deli podatke o lokaciji za:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Deljenje podataka varira"</string>

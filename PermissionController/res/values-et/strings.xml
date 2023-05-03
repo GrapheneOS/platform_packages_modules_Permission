@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"See rakendus andis teada, et võib asukohaandmeid jagada kolmandate osapooltega"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Andmete jagamine ja asukoht"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Andmete jagamise teabe päritolu"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Arendaja on esitanud selle seadme tootjale teavet selle kohta, kuidas see rakendus andmeid jagab. Arendaja võib seda teavet aja jooksul muuta."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Arendaja on esitanud rakenduste poele "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" teavet selle kohta, kuidas see rakendus andmeid jagab. Arendaja võib seda teavet aja jooksul muuta."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Rakendus võib asukohaandmeid jagada järgmiseks."</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Andmete jagamine võib olla erinev"</string>

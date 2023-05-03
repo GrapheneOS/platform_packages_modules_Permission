@@ -490,7 +490,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Да се промени пристапот до камерата за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Апликацијава сака да снима слики и видеа цело време, дури и кога не ја користите. "<annotation id="link">"Дозволете во „Поставки“."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до евиденцијата на повици?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да повикува и да управува со телефонските повици?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да упатува телефонски повици и да управува со нив?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците на сензорот за витални знаци?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Апликацијава сака да пристапува до податоците од сензорите за вашите витални знаци цело време, дури и кога не се користи. За да го промените ова, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дали да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците од сензорите за витални знаци?"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Апликацијава изјави дека можеби ќе споделува податоци за локацијата со трети страни"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделување податоци и локација"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Од каде доаѓаат информациите за споделувањето податоци"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Програмерот доставил информации до производителот на уредов за начинот на кој апликацијава споделува податоци. Програмерот може да ги ажурира информацииве со текот на времето."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Програмерот доставил информации до "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" за начинот на кој апликацијава споделува податоци. Програмерот може да ги ажурира податоциве со текот на времето."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Апл. може да споделува податоци за локацијата за:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделувањето податоци варира"</string>

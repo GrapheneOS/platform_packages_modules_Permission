@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Összes engedélyezése mindig"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotók és videók kijelölése"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Több kijelölése"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne válasszon ki többet"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nem jelölök ki többet"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Semmiképpen se engedélyezze"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Elvetés"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>/<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>."</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Az alkalmazás jelezte, hogy megoszthat helyadatokat harmadik felekkel"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Adatmegosztás és hely"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Az adatmegosztással kapcsolatos információ forrása"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"A fejlesztő információt adott meg az eszköz gyártójának arról, hogy az alkalmazás minként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"A fejlesztő információt adott meg "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" számára arról, hogy az alkalmazás miként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Az app helyadatokat oszthat meg az alábbi célból:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Az adatmegosztás változik"</string>

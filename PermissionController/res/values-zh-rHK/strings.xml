@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"一律全部允許"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"選取相片和影片"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"選取更多項目"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"不選取更多資料"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"不選取更多"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"一律不允許"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"關閉"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 個 (共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 個)"</string>
@@ -475,7 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的&lt;b&gt;相片、影片、音樂、音訊和其他檔案&lt;/b&gt;嗎？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的音樂和音訊嗎？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取此裝置上的相片和影片嗎？"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置上的相片和影片嗎？"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置上更多的相片和影片？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;錄音嗎？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此應用程式將只能在你使用期間錄音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;錄音嗎？"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"此應用程式表明可能會與第三方分享位置資料"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"資料分享和位置"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"資料分享詳情的來源"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"開發人員向此裝置的製造商提供資料，說明此應用程式的資料分享方式，並可能會隨時間更新。"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"開發人員向"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"提供資料，說明此應用程式的資料分享方式，並可能會隨時間更新。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"應用程式可能分享位置資料作以下用途："</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"資料分享方式因情況而異"</string>

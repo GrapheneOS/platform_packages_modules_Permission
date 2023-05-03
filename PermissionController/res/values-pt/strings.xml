@@ -34,7 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mais inform."</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Permitir tudo"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Sempre permitir tudo"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Alguns vídeos e fotos"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Selecionar fotos e vídeos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Selecionar mais"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Não selecionar mais"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Não permitir mesmo assim"</string>
@@ -508,7 +508,7 @@
     <string name="privdash_label_camera" msgid="1426440033626198096">"Câmera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Microfone"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Localização"</string>
-    <string name="privdash_label_other" msgid="3710394147423236033">"Outra"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Outras"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Nenhuma"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Nos últimos\nsete dias"</string>
@@ -547,7 +547,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Em uso pela chamada telefônica"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Usada recentemente em uma chamada telefônica"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Usada recentemente por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Uso recente por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Usada recentemente por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Este app declarou que pode compartilhar dados de local com terceiros"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Local e compartilhamento de dados"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De onde vêm as informações do compartilhamento de dados"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"O desenvolvedor forneceu informações para o fabricante do dispositivo sobre como este app compartilha dados. O desenvolvedor pode atualizar essas informações com o tempo."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"O desenvolvedor forneceu informações para "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre como esse app compartilha dados. O desenvolvedor pode atualizar essas informações com o tempo."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esse app pode compartilhar dados de local para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"O compartilhamento de dados varia"</string>
