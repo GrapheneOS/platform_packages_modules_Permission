@@ -156,15 +156,17 @@ class RuntimePermissionsUpgradeControllerTest {
             mockPackageInfo(pkgs.toList(), flags)
         }
 
-        whenever(
-            packageManager.getInstalledPackagesAsUser(
-                any(PackageManager.PackageInfoFlags::class.java),
-                anyInt()
-            )
-        ).thenAnswer {
-            val flags = it.arguments[0] as PackageManager.PackageInfoFlags
+        if (SdkLevel.isAtLeastT()) {
+            whenever(
+                packageManager.getInstalledPackagesAsUser(
+                    any(PackageManager.PackageInfoFlags::class.java),
+                    anyInt()
+                )
+            ).thenAnswer {
+                val flags = it.arguments[0] as PackageManager.PackageInfoFlags
 
-            mockPackageInfo(pkgs.toList(), flags.value)
+                mockPackageInfo(pkgs.toList(), flags.value)
+            }
         }
 
         whenever(packageManager.getPackageInfo(anyString(), anyInt())).thenAnswer {
