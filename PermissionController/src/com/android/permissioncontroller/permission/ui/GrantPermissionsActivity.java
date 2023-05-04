@@ -172,7 +172,6 @@ public class GrantPermissionsActivity extends SettingsActivity
     private String mTargetPackage;
     /** A key representing this activity, defined by the target package and task ID */
     private Pair<String, Integer> mKey;
-    private int mCurrentRequestIdx = 0;
     private float mOriginalDimAmount;
     private View mRootView;
     private int mStoragePermGroupIcon = R.drawable.ic_empty_icon;
@@ -507,8 +506,6 @@ public class GrantPermissionsActivity extends SettingsActivity
             Log.e(LOG_TAG, "Cannot load icon for group" + info.getGroupName(), e);
         }
 
-        boolean showingNewGroup = message == null || !message.equals(getTitle());
-
         // Set the permission message as the title so it can be announced. Skip on Wear
         // because the dialog title is already announced, as is the default selection which
         // is a text view containing the title.
@@ -542,12 +539,10 @@ public class GrantPermissionsActivity extends SettingsActivity
             mRequestCounts = mRequestInfos.size();
         }
 
-        mViewHandler.updateUi(info.getGroupName(), mRequestCounts, mCurrentRequestIdx, icon,
+        int pageIdx = mRequestCounts - mRequestInfos.size();
+        mViewHandler.updateUi(info.getGroupName(), mRequestCounts, pageIdx, icon,
                 message, detailMessage, permissionRationaleMessage, mButtonVisibilities,
                 locationVisibilities);
-        if (showingNewGroup) {
-            mCurrentRequestIdx++;
-        }
 
         getWindow().setDimAmount(mOriginalDimAmount);
         if (mRootView.getVisibility() == View.GONE) {
