@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Цей додаток зазначає, що може передавати дані про місцезнаходження третім особам"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Передавання даних і місцезнаходження"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Звідки надходить інформація про передавання даних"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Розробник надав виробнику цього пристрою інформацію про те, як цей додаток передає дані. Розробник може періодично оновлювати цю інформацію."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Розробник надав "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" інформацію про те, як цей додаток передає дані. Розробник може періодично оновлювати цю інформацію."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Цілі передавання геоданих цим додатком"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Спосіб передавання даних може різнитися"</string>

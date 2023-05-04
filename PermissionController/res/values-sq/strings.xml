@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ky aplikacion deklaroi se mund të ndajë të dhënat e vendndodhjes me palë të treta"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Ndarja e të dhënave dhe vendndodhja"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nga vijnë informacionet rreth ndarjes së të dhënave"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Zhvilluesi i ka dhënë informacione prodhuesit të kësaj pajisjeje rreth mënyrës se si ky aplikacion ndan të dhënat Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Zhvilluesi i ofroi informacione "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" rreth mënyrës se si ky aplikacion ndan të dhënat. Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Apl. mund të ndajë të dhënat e vendndodhjes për:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Ndarja e të dhënave ndryshon"</string>

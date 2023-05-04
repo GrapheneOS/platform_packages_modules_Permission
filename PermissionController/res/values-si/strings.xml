@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"මෙම යෙදුම තෙවන පාර්ශ්වයන් සමග ස්ථාන දත්ත බෙදා ගත හැකි බව ප්‍රකාශ කර ඇත"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"දත්ත බෙදා ගැනීම සහ ස්ථානය"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"දත්ත බෙදා ගැනීමේ තතු පැමිණෙන තැන"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"සංවර්ධකයා මෙම යෙදුම දත්ත බෙදා ගන්නා ආකාරය පිළිබඳ තතු මෙම උපාංගයේ නිෂ්පාදකයාට ලබා දුන්නේ ය. සංවර්ධකයා මෙම තතු කාලයත් සමග යාවත්කාලීන කිරීමට ඉඩ ඇත."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"මෙම යෙදුම දත්ත බෙදා ගන්නා ආකාරය පිළිබඳව සංවර්ධකයා "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" වෙත තතු සපයා ඇත. සංවර්ධකයා මෙම තතු කාලයත් සමග යාවත්කාලීන කළ හැක."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"මෙම යෙදුම මේ සඳහා ස්ථාන දත්ත බෙදා ගත හැක:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"දත්ත බෙදා ගැනීම වෙනස් වේ"</string>

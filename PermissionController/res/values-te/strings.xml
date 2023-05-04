@@ -194,7 +194,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"ఖచ్చితమైన లొకేషన్"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"సుమారు లొకేషన్"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ఖచ్చితమైన లొకేషన్‌ను ఉపయోగించండి"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ఖచ్చితమైన లొకేషన్ ఆఫ్‌లో ఉన్నప్పుడు, యాప్‌లు మీ సుమారు లొకేషన్‌ను యాక్సెస్ చేయగలగవచ్చు"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ఖచ్చితమైన లొకేషన్ అనే సెట్టింగ్ ఆఫ్‌లో ఉన్నప్పుడు, యాప్‌లు మీ సుమారు లొకేషన్‌ను యాక్సెస్ చేయగలవు"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"\'<xliff:g id="PERM">%1$s</xliff:g>\' అనుమతి"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
@@ -250,7 +250,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"ఉపయోగించేటప్పుడు మాత్రమే అనుమతి ఇవ్వాలి"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"మీడియాకు మాత్రమే యాక్సెస్ అనుమతించబడినవి"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ఫైల్స్ అన్నింటినీ మేనేజ్ చేసేందుకు అనుమతించబడినవి"</string>
-    <string name="ask_header" msgid="2633816846459944376">"ప్రతిసారి అడుగు"</string>
+    <string name="ask_header" msgid="2633816846459944376">"ప్రతిసారి అడగాలి"</string>
     <string name="denied_header" msgid="903209608358177654">"అనుమతించబడలేదు"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"అన్ని ఫైళ్లను యాక్సెస్ చేయగల మరిన్ని యాప్‌లను చూడండి"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 రోజు}other{# రోజులు}}"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ఈ యాప్, అది లొకేషన్ డేటాను థర్డ్-పార్టీలతో షేర్ చేయవచ్చని పేర్కొంది"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"డేటా షేరింగ్ &amp; లొకేషన్"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"డేటా షేరింగ్‌కు సంబంధించిన సమాచారం ఎక్కడి నుంచి వస్తుంది"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"డెవలపర్ ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని పరికర తయారీదారుకు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని డెవలపర్  "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"‌కు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ఈ యాప్ లొకేషన్ డేటాను వీటి కోసం షేర్ చేయవచ్చు:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"డేటా షేరింగ్ మారుతూ ఉంటుంది"</string>

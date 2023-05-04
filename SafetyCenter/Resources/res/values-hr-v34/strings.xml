@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Zdravlje, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Ažuriranja o dijeljenju podataka za lokaciju"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"podaci, dijeljenje podataka, ažuriranja dijeljenja podataka, ažuriranja dijeljenja podataka za lokaciju, dijeljenje"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Zaštita privatnosti u online oglašavanju"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Prilagodite podatke koje aplikacije koriste da bi vam prikazivale oglase"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"oglasi, zaštita privatnosti u online oglašavanju, privacy sandbox, teme oglasa, oglasi koje predlažu aplikacije, mjerenje oglasa"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Druge postavke"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Više sigurnosti i privatnosti"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Automatsko popunjavanje, obavijesti i drugo"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Informacije o pravilima za poslovne uređaje"</string>
 </resources>
