@@ -246,7 +246,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Ditolak / Tidak pernah mengakses"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Diizinkan"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Diizinkan sepanjang waktu"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Hanya diizinkan saat digunakan"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Diizinkan hanya saat digunakan"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Hanya diizinkan akses ke media"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Diizinkan untuk mengelola semua file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Selalu tanya"</string>
@@ -577,7 +577,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Untuk aplikasi dan layanan. Jika setelan ini nonaktif, data mikrofon mungkin tetap dibagikan saat Anda menelepon nomor darurat."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Lihat aplikasi dan layanan yang memiliki akses ke lokasi"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Tampilkan akses papan klip"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Menampilkan pesan saat aplikasi mengakses teks, gambar, atau konten lainnya yang telah Anda salin"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Tampilkan pesan saat aplikasi mengakses teks, gambar, atau konten lain yang telah Anda salin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Tampilkan sandi"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Menampilkan karakter sejenak saat Anda mengetik"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Tampilkan karakter sejenak saat Anda mengetik"</string>
 </resources>
