@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"ヘルス, ヘルス コネクト"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"位置情報を共有する方法の更新"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"データ, データ 共有, データ 共有 更新, データ 共有 更新 位置情報, 共有"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"広告のプライバシー"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"広告を表示するためにアプリが使用する情報をカスタマイズします"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"広告, 広告のプライバシー, プライバシー サンドボックス, 広告 トピック, アプリによる広告の提案, 広告 測定"</string>
     <string name="advanced_title" msgid="6259362998269627310">"その他の設定"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"その他のセキュリティとプライバシー"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"自動入力、通知など"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"仕事用ポリシーに関する情報"</string>
 </resources>

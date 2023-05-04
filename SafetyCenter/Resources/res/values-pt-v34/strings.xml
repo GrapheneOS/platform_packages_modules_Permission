@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Saúde, Conexão Saúde"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Atualizações no compartilhamento de dados de local"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Dados, Compartilhamento de dados, Atualizações de compartilhamento de dados, Atualizações de compartilhamento de dados para localização, compartilhamento"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Privacidade de anúncios"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Personalize as informações que os apps usam para mostrar anúncios"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"anúncios, privacidade de anúncios, Sandbox de privacidade, temas de anúncios, anúncios sugeridos por apps, medição de anúncio"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Outras configurações"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Mais segurança e privacidade"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Preenchimento automático, notificações e mais"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Informações sobre sua política de trabalho"</string>
 </resources>
