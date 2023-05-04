@@ -219,7 +219,7 @@ public final class SafetyCenterFlags {
 
     /** Returns whether Safety Center notifications are enabled. */
     public static boolean getNotificationsEnabled() {
-        return getBoolean(PROPERTY_NOTIFICATIONS_ENABLED, false);
+        return getBoolean(PROPERTY_NOTIFICATIONS_ENABLED, SdkLevel.isAtLeastU());
     }
 
     /**
