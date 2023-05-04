@@ -33,6 +33,7 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.LocationAccessCheck
+import com.android.permissioncontroller.permission.service.v33.CorrectSensorPrivacyJobService
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService.Companion.QS_TILE_COMPONENT_SETTING_FLAGS
 import com.android.permissioncontroller.permission.utils.Utils
@@ -109,6 +110,7 @@ class SafetyCenterReceiver(
                         mapOfSourceIdsToSources,
                         mapOfSourceIdsToSources.keys.toList())
                 }
+                CorrectSensorPrivacyJobService.scheduleJobIfNeeded(context)
             }
         }
     }

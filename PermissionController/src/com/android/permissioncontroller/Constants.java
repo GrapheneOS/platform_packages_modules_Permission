@@ -78,6 +78,7 @@ public class Constants {
      */
     public static final int SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID = 7;
 
+    public static final int FIX_SENSOR_PRIVACY_STATE_PERIODIC_JOB_ID = 10;
 
     /**
      * Name of file to containing the packages we already showed a notification for.
