@@ -1588,6 +1588,7 @@
     -->
     <role
         name="android.app.role.SYSTEM_CALL_STREAMING"
+        allowBypassingQualification="true"
         defaultHolders="config_systemCallStreaming"
         exclusive="true"
         minSdkVersion="34"
