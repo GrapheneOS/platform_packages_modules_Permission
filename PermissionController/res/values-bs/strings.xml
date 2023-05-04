@@ -232,7 +232,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s ovim odobrenjem mogu čitati i pisati zapisnike telefonskih poziva"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s ovim odobrenjem mogu snimati fotografije i videozapise"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s ovim odobrenjem mogu pristupiti vašim kontaktima"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupiti lokaciji uređaja"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupati lokaciji uređaja"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacije s ovim odobrenjem mogu pronaći uređaje u blizini, povezati se s njima te odrediti njihov relativni položaj"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s ovim odobrenjem mogu snimati zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s ovim odobrenjem mogu upućivati pozive i upravljati njima"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacija"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odakle dolaze informacije o dijeljenju podataka"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Programer je proizvođaču uređaja naveo informacije o tome kako ova aplikacija dijeli podatke. Programer može povremeno ažurirati ove informacije."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Programer je usluzi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" naveo informacije o tome kako ova aplikacija dijeli podatke. Programer može tokom vremena ažurirati ove informacije."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikacija može dijeliti podatke o lokaciji za:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Dijeljenje podataka se razlikuje"</string>

@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"နောက်သို့"</string>
     <string name="available" msgid="6007778121920339498">"ရနိုင်သည်"</string>
     <string name="blocked" msgid="9195547604866033708">"ပိတ်ထားသည်"</string>
-    <string name="on" msgid="280241003226755921">"ဖွင့်ထားသည်"</string>
+    <string name="on" msgid="280241003226755921">"ဖွင့်"</string>
     <string name="off" msgid="1438489226422866263">"ပိတ်"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ပရိုဂရမ်ကို ဖယ်ရှားရန် သို့မဟုတ် ပိတ်ရန်"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"အက်ပ် မတွေ့ပါ"</string>
@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"သင့်အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်အက်ပ်များကို ချိတ်ဆက်ထားသောစက်သို့ တိုက်ရိုက်လွှင့်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ဤဝန်ဆောင်မှုသည် သင်၏ဖုန်းမှ ဓာတ်ပုံ၊ မီဒီယာနှင့် အကြောင်းကြားချက်များကို အခြားစက်ပစ္စည်းများသို့ မျှဝေသည်။"</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"မူလ မှတ်စုရေးသောအက်ပ်"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"မူရင်း မှတ်စုအက်ပ်"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"မှတ်စုရေးသောအက်ပ်"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"စက်ပစ္စည်းတွင် မှတ်စုရေးခွင့်ပြုသော အက်ပ်များ"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"မှတ်စုများ"</string>
@@ -582,13 +582,14 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်။ ဤဆက်တင်ကို ပိတ်ထားသော်လည်း အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"တည်နေရာသုံးခွင့်ရှိသော အက်ပ်နှင့် ဝန်ဆောင်မှုများကို ကြည့်ပါ"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ကလစ်ဘုတ်အသုံးပြုမှုကို ပြခြင်း"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"အက်ပ်များက သင်မိတ္တူကူးထားသော စာသား၊ ပုံများ (သို့) အခြားအကြောင်းအရာကို သုံးသောအခါ အကြောင်းကြားပါ"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ကလစ်ဘုတ်အသုံးပြုမှုကို ပြရန်"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"အက်ပ်များက သင်မိတ္တူကူးထားသော စာသား၊ ပုံများ (သို့) အခြားအကြောင်းအရာကို သုံးသောအခါ အကြောင်းကြားသည်"</string>
     <string name="show_password_title" msgid="2877269286984684659">"စကားဝှက်များပြရန်"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"စာရိုက်သည့်အခါ အက္ခရာများကို ခဏတာပြသည်"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ဤအက်ပ်က ၎င်းသည် ဒေတာကို ပြင်ပအဖွဲ့များနှင့် မျှဝေနိုင်ကြောင်း ဖော်ပြထားသည်"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ဒေတာမျှဝေခြင်းနှင့် တည်နေရာ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ဒေတာမျှဝေခြင်း အချက်အလက် ရလာသောနေရာ"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ဆော့ဖ်ဝဲရေးသူသည် ဤအက်ပ် ဒေတာမျှဝေပုံအကြောင်း အချက်အလက်ကို ဤစက်၏ ထုတ်လုပ်သူထံသို့ ပေးထားသည်။ ဆော့ဖ်ဝဲရေးသူက ဤအချက်အလက်ကို အချိန်နှင့်အမျှ အပ်ဒိတ်လုပ်နိုင်သည်။"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ဆော့ဖ်ဝဲရေးသူသည် ဤအက်ပ် ဒေတာမျှဝေပုံအကြောင်း အချက်အလက်ကို "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" သို့ ပေးထားသည်။ ဆော့ဖ်ဝဲရေးသူက ဤအချက်အလက်ကို အချိန်နှင့်အမျှ အပ်ဒိတ်လုပ်နိုင်သည်။"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ဤအက်ပ်က အောက်ပါတို့ကြောင့် တည်နေရာဒေတာမျှဝေနိုင်သည်-"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ဒေတာမျှဝေခြင်း ကွဲပြားပုံ"</string>

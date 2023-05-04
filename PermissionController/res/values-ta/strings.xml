@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவைப் பகிரலாம் என இந்த ஆப்ஸ் குறிப்பிடுகிறது"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"தரவுப் பகிர்வு மற்றும் இருப்பிடம்"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"தரவுப் பகிர்வு குறித்த தகவல்கள் எங்கிருந்து பெறப்படுகின்றன?"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"இந்த ஆப்ஸ் தரவை எப்படிப் பகிர்கிறது என்பது குறித்த தகவல்களை டெவெலப்பர் இந்தச் சாதனத்தின் உற்பத்தியாளருக்கு வழங்கியுள்ளார். டெவெலப்பர் காலப்போக்கில் இந்தத் தகவல்களை மாற்றக்கூடும்."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"இந்த ஆப்ஸ் எப்படித் தரவைப் பகிர்கிறது என்பது குறித்த தகவல்களை டெவெலப்பர் "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" என்பதற்கு வழங்கியுள்ளார். டெவெலப்பர் காலப்போக்கில் இந்தத் தகவல்களை மாற்றக்கூடும்."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ஆப்ஸ் இவற்றுக்காக இருப்பிடத் தரவைப் பகிரக்கூடும்:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"தரவுப் பகிர்வு வேறுபடுகிறது"</string>

@@ -49,12 +49,12 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"усе адключаны"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"няма адключаных"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Дазволіць"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазволіць заўсёды"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазваляць заўсёды"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Падчас выкарыстання праграмы"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Пераключыцца на дакладнае вызначэнне месцазнаходжання"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Пакінуць прыблізнае месцазнаходжанне"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Толькі ў гэты раз"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазволіць заўсёды"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазваляць заўсёды"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дазволіць доступ да файлаў мультымедыя"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Праграмы"</string>
@@ -107,7 +107,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"Дазволіць заўсёды"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"Дазваляць заўсёды"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Падчас карыстання праграмай"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Не дазваляць"</string>
     <string name="loading" msgid="4789365003890741082">"Загрузка…"</string>
@@ -186,8 +186,8 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Дазволіць"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дазволіць доступ толькі да мультымедыя"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазволіць заўсёды"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дазволіць толькі падчас карыстання праграмай"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазваляць заўсёды"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дазваляць толькі падчас карыстання праграмай"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Заўсёды дазваляць усе"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Заўсёды пытацца"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Не дазваляць"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Абагульванне даных і даныя пра месцазнаходжанне"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Адкуль бярэцца інфармацыя пра абагульванне даных"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Распрацоўшчык даў вытворцы прылады інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэтая інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Распрацоўшчык дадаў (сюды: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>") інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэтая інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Праграма можа абагульваць геаданыя для наступнага:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Абагульванне даных залежыць ад розных умоў"</string>

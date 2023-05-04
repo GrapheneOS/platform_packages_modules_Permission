@@ -32,11 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Оставить доступ только в активном режиме"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Оставить \"Только в этот раз\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Подробнее"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Разрешить все"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Разрешить ко всем"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Постоянный полный доступ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Выбрать фотографии и видео"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Выбрать больше"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Больше не выбирать"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Не выбирать"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Все равно запретить"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Закрыть"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> из <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -475,7 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, аудио и другим файлам&lt;/b&gt; на устройстве?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к музыке и аудио на устройстве?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и видео на устройстве?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фотографиям и видео на этом устройстве?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к другим фото и видео на этом устройстве?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Приложение будет записывать аудио, только когда вы им пользуетесь."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Это приложение может передавать третьим лицам данные о местоположении."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Передача данных и местоположение"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Источник сведений о передаче данных"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Разработчик предоставил производителю устройства информацию о том, как приложение передает данные. Со временем она может обновляться."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Разработчик предоставил "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" информацию о том, как приложение передает данные. Со временем она может обновляться."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Цели передачи данных о местоположении:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Варианты передачи данных"</string>
