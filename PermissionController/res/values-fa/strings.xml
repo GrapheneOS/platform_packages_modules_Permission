@@ -32,11 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"تغییر ندادن اجازه «هنگامی که از برنامه استفاده می‌شود»"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"«فقط این بار» نگه داشته شود"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"اطلاعات بیشتر"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"همه مجازاند"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"مجاز بودن همه"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"همه موارد همیشه مجازاند"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"انتخاب عکس و ویدیو"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"انتخاب موارد بیشتر"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"موارد بیشتری انتخاب نشود"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"دیگر چیزی انتخاب نشود"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"درهرصورت اجازه نیست"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"رد کردن"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> مجوز از <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> مجوز"</string>
@@ -203,7 +203,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"تنظیمات برنامه‌های استفاده‌نشده"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"اگر از برنامه استفاده نمی‌شود، اجازه‌ها برداشته شوند"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"برداشتن اجازه‌ها و آزاد کردن فضا"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"مکث فعالیت برنامه درصورت عدم‌استفاده"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"مکث فعالیت‌ها در برنامه درصورت عدم‌استفاده"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"اجازه‌ها برداشته می‌شود، فایل‌های موقت حذف می‌شود، و اعلان‌ها متوقف می‌شوند"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های آن برداشته خواهد شد."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های زیر برداشته خواهد شد: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -246,12 +246,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"هرگز دسترسی نداشته است"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"غیرمجاز / هرگز دسترسی نداشته است"</string>
     <string name="allowed_header" msgid="7769277978004790414">"مجاز است"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز است"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده از برنامه"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز بودن"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"مجاز فقط برای دسترسی به رسانه‌ها"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"مجاز برای مدیریت همه فایل‌ها"</string>
     <string name="ask_header" msgid="2633816846459944376">"هربار پرسیده شود"</string>
-    <string name="denied_header" msgid="903209608358177654">"اجازه ندادن"</string>
+    <string name="denied_header" msgid="903209608358177654">"مجاز نبودن"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"دیدن برنامه‌های دیگری که به همه فایل‌ها دسترسی دارند"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{یک روز}one{# روز}other{# روز}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# ساعت}one{# ساعت}other{# ساعت}}"</string>
@@ -314,7 +314,7 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"تنها هنگام استفاده از برنامه"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"رسانه"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"همه فایل‌ها"</string>
-    <string name="permission_subtitle_background" msgid="8916750995309083180">"همیشه مجاز است"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"همیشه مجاز بودن"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"آخرین زمان دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"آخرین زمان دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"این برنامه اعلام کرده است که ممکن است داده‌های مکان را با اشخاص ثالث هم‌رسانی کند"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"هم‌رسانی داده‌ها و مکان"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"اطلاعات هم‌رسانی داده از کجا می‌آید"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"توسعه‌دهنده اطلاعاتی درباره نحوه هم‌رسانی داده‌ها توسط این برنامه به سازنده این دستگاه ارائه کرده است. ممکن است توسعه‌دهنده این اطلاعات را به‌مرور زمان به‌روز کند."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"‏توسعه‌دهنده در "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" اطلاعاتی درباره نحوه هم‌رسانی داده‌ها توسط این برنامه ارائه کرده است. ممکن است توسعه‌دهنده این اطلاعات را به‌مرور زمان به‌روز کند."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"برنامه شاید داده‌های مکان را به این دلایل هم‌رسانی کند:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"روش‌های هم‌رسانی داده متفاوت است"</string>
