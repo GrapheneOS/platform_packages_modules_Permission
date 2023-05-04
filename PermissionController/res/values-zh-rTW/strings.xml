@@ -76,7 +76,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"執行不明的動作"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統程序"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統設定"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隱藏系統程序"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"顯示過去 7 天內的使用情況"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"顯示過去 24 小時內的使用情況"</string>

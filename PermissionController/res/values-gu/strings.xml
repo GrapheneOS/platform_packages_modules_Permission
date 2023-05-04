@@ -126,7 +126,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"અન્ય પરવાનગીઓ જુઓ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> અને વધુ <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની ટાઇમલાઇન"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"છેલ્લા 7 દિવસમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"જ્યારે આ ઍપ દ્વારા તમારી <xliff:g id="PERMGROUP">%1$s</xliff:g>ની પરવાનગીનો ઉપયોગ કરવામાં આવ્યો"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"વધુ જાણો"</string>
@@ -229,7 +229,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ લૉગ વાંચી અને લખી શકે છે"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"આ પરવાનગી ધરાવતી ઍપ ફોટા લઈ શકે છે અને વીડિયો રેકોર્ડ કરી શકે છે"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"આ પરવાનગી ધરાવતી ઍપ તમારા સંપર્કોને ઍક્સેસ કરી શકશે"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું સ્થાન ઍક્સેસ કરી શકે છે"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું લોકેશન ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"આ પરવાનગી ધરાવતી ઍપ નજીકના ડિવાઇસ શોધી શકે છે, તેઓને કનેક્ટ કરી શકે છે તેમજ સંબંધિત અંતર નક્કી કરી શકે છે"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"આ પરવાનગી ધરાવતી ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ કરી શકશે અને તેને મેનેજ કરી શકશે"</string>
