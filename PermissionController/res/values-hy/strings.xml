@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Այս հավելվածը կարող է երրորդ կողմերի հետ կիսվել տեղադրության տվյալներով"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Տվյալների փոխանցում և տեղորոշում"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Որտեղից են վերցվում տվյալներով կիսվելու մասին տեղեկությունները"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Մշակողն այս սարքի արտադրողին տրամադրել է տեղեկություններ, թե ինչպես է այս հավելվածը կիսվում տվյալներով։ Ժամանակի ընթացքում մշակողը կարող է թարմացնել այս տեղեկությունները։"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Մշակողը "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"-ին տրամադրել է տեղեկություններ, թե ինչպես է այս հավելվածը կիսվում տվյալներով։ Ժամանակի ընթացքում մշակողը կարող է թարմացնել այս տեղեկությունները։"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Տեղադրության տվյալներով կիսվելու նպատակները՝"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Տվյալներով կիսվելու եղանակները տարբեր են"</string>

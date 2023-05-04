@@ -583,14 +583,13 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Uygulamalar ve hizmetler için. Bu ayar kapalıyken bir acil durum numarasını aradığınızda mikrofon verileri paylaşılmaya devam edilebilir."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Konum erişimi olan uygulama ve hizmetlere göz atın."</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Panoya erişimi göster"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Uygulamalar kopyaladığınız metne, resimlere veya diğer içeriklere eriştiğinde mesaj gösterilsin."</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Uygulamalar kopyaladığınız metne, resimlere veya diğer içeriklere eriştiğinde mesaj gösterilsin"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Şifreleri göster"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Yazarken karakterleri kısa süreliğine göster"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Bu uygulama, konum verilerini üçüncü taraflarla paylaşabileceğini belirtti"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Veri paylaşımı ve konum"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Veri paylaşımı bilgilerinin kaynağı"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Geliştirici, bu cihazın üreticisine bu uygulamanın veri paylaşım yöntemleri hakkında bilgi sağladı. Geliştirici bu bilgiyi zaman içinde güncelleyebilir."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Geliştirici, "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" uygulama mağazasına bu uygulamanın veri paylaşımı yöntemleri hakkında bilgi sağladı. Geliştirici bu bilgiyi zaman içinde güncelleyebilir."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Bu uygulama, konum verilerini paylaşabilir:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Veri paylaşımı değişir"</string>

@@ -23,7 +23,7 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Ешқандай мәселе табылмады."</string>
     <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Кеңес бар.}other{Кеңестер бар.}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Әрекет жасалды.}other{Әрекеттер жасалды.}}"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Параметрлерді қарап шығу"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Параметрлерді тексеріңіз"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Параметрлер тізімін тексеру"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Құрылғыға қауіп төнген болуы мүмкін"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Құрылғыға қауіп төніп тұр"</string>
