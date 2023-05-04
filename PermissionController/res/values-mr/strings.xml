@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते, तेव्हा ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ही परवानगी असलेली सर्व अ‍ॅप्स पहा"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ने मायक्रोफोनचा केलेला वापर दाखवा"</string>
@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि तुमचा फोन, एसएमएस, संपर्क आणि Calendar च्या परवानग्या अ‍ॅक्सेस करण्याची अनुमती मिळेल."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि कनेक्‍ट केलेल्या डिव्हाइसवर तुमची ॲप्स स्ट्रीम करण्याची अनुमती दिली जाईल."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ही सेवा तुमचे फोटो, मीडिया आणि सूचना तुमच्या फोनवरून दुसऱ्या डिव्हाइसवर शेअर करते."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"डीफॉल्ट टिपांचे अ‍ॅप"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"टिपांसाठी डीफॉल्ट अ‍ॅप"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"टिपांचे अ‍ॅप"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"तुमच्या डिव्हाइसवर तुम्हाला टिपा घेण्याची अनुमती देणारी अ‍ॅप्स"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"टिपा"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"हे अ‍ॅप तृतीय पक्षांसोबत स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"डेटा शेअरिंग आणि स्थान"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"डेटा शेअरिंग माहिती कुठून मिळते"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"हे ॲप डेटा कसे शेअर करते याबद्दल डेव्हलपरने या डिव्हाइसच्या उत्पादकाला माहिती पुरवली आहे. डेव्हलपर कालांतराने ही माहिती अपडेट करू शकतो."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"हे अ‍ॅप डेटा कसे शेअर करते याबद्दल डेव्हलपरने "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" यांना माहिती पुरवली. डेव्हलपर कालांतराने ही माहिती अपडेट करू शकतो."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"अ‍ॅप पुढील गोष्टींसाठी स्‍थान डेटा शेअर करू शकते:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेअरिंग बदलते"</string>

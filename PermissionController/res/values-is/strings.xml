@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Þetta forrit gaf til kynna að það kunni að deila staðsetningargögnum með þriðju aðilum"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gagnadeiling og staðsetning"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvaðan koma upplýsingar um gagnadeilingu"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Þróunaraðilinn veitti framleiðanda þessa tækis upplýsingar um hvernig þetta forrit deilir gögnum. Þróunaraðilinn kann að uppfæra þessar upplýsingar síðar."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Þróunaraðilinn veitti "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" upplýsingar um hvernig þetta forrit deilir gögnum. Þróunaraðilinn kann að uppfæra þessar upplýsingar síðar."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Forritið kann að deila staðsetningargögnum til að:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Gagnadeiling er mismunandi"</string>
