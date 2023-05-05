@@ -24,7 +24,6 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
 import com.android.safetycenter.testing.SafetyCenterTestData
@@ -33,6 +32,7 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.RESCAN_BUTTON_LABEL
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
@@ -40,7 +40,6 @@ import com.android.safetycenter.testing.UiTestHelper.waitButtonNotDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitNotDisplayed
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -62,28 +61,15 @@ class SafetyCenterStatusCardTest {
     private val safetyCenterTestData = SafetyCenterTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
-    // JUnit's Assume is not supported in @BeforeClass by the tests runner, so this is used to
-    // manually skip the setup and teardown methods.
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
-
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
 
     @Before
     fun enableSafetyCenterBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.setup()
     }
 
     @After
     fun clearDataAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.reset()
     }
 

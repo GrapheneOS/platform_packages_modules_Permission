@@ -324,11 +324,15 @@ object SafetyCenterFlags {
             backgroundRefreshRequiresChargingFlag
         )
 
-    /** Returns whether the device supports Safety Center. */
-    fun Context.deviceSupportsSafetyCenter() =
-        resources.getBoolean(
+    /**
+     * Returns whether the device supports Safety Center according to the
+     * `config_enableSafetyCenter` boolean system resource.
+     */
+    fun Context.deviceSupportsSafetyCenter(): Boolean {
+        val resId =
             Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android")
-        )
+        return resources.getBoolean(resId)
+    }
 
     /** A property that allows getting and setting the [isEnabledFlag]. */
     var isEnabled: Boolean by isEnabledFlag
