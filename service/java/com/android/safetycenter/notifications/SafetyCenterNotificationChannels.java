@@ -62,7 +62,7 @@ public final class SafetyCenterNotificationChannels {
     @Nullable
     static NotificationManager getNotificationManagerForUser(
             Context baseContext, UserHandle userHandle) {
-        Context contextAsUser = baseContext.createContextAsUser(userHandle, 0);
+        Context contextAsUser = baseContext.createContextAsUser(userHandle, /* flags= */ 0);
         return contextAsUser.getSystemService(NotificationManager.class);
     }
 

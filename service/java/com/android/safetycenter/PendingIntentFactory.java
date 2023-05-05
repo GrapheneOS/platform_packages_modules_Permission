@@ -216,7 +216,8 @@ public final class PendingIntentFactory {
         // This call requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            return context.createPackageContextAsUser(packageName, 0, UserHandle.of(userId));
+            return context.createPackageContextAsUser(
+                    packageName, /* flags= */ 0, UserHandle.of(userId));
         } catch (PackageManager.NameNotFoundException e) {
             Log.w(TAG, "Package name " + packageName + " not found", e);
             return null;

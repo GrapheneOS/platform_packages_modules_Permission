@@ -94,7 +94,11 @@ final class SafetyCenterListeners {
         int[] relevantUserIds = userProfileGroup.getProfileParentAndManagedRunningProfilesUserIds();
         for (int i = 0; i < relevantUserIds.length; i++) {
             deliverUpdateForUser(
-                    relevantUserIds[i], userProfileGroup, safetyCenterDataCache, true, null);
+                    relevantUserIds[i],
+                    userProfileGroup,
+                    safetyCenterDataCache,
+                    /* updateSafetyCenterData= */ true,
+                    /* safetyCenterErrorDetails= */ null);
         }
     }
 
@@ -111,7 +115,7 @@ final class SafetyCenterListeners {
                     relevantUserIds[i],
                     userProfileGroup,
                     safetyCenterDataCache,
-                    false,
+                    /* updateSafetyCenterData= */ false,
                     safetyCenterErrorDetails);
         }
     }

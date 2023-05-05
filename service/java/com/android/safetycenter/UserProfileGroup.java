@@ -167,7 +167,8 @@ public final class UserProfileGroup {
             return context;
         } else {
             try {
-                return context.createPackageContextAsUser(context.getPackageName(), 0, userHandle);
+                return context.createPackageContextAsUser(
+                        context.getPackageName(), /* flags= */ 0, userHandle);
             } catch (PackageManager.NameNotFoundException doesNotHappen) {
                 throw new IllegalStateException(doesNotHappen);
             }
@@ -232,9 +233,9 @@ public final class UserProfileGroup {
         profileParentAndManagedRunningProfilesUserIds[0] = mProfileParentUserId;
         System.arraycopy(
                 mManagedRunningProfilesUserIds,
-                0,
+                /* srcPos= */ 0,
                 profileParentAndManagedRunningProfilesUserIds,
-                1,
+                /* destPos= */ 1,
                 mManagedRunningProfilesUserIds.length);
         return profileParentAndManagedRunningProfilesUserIds;
     }
