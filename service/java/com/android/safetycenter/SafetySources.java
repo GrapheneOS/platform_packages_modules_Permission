@@ -51,12 +51,6 @@ public final class SafetySources {
         return false;
     }
 
-    /** Returns whether a {@link SafetySource} is issue-only. */
-    public static boolean isIssueOnly(SafetySource safetySource) {
-        int safetySourceType = safetySource.getType();
-        return safetySourceType == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
-    }
-
     /** Returns whether a {@link SafetySource} supports managed profiles. */
     public static boolean supportsManagedProfiles(SafetySource safetySource) {
         int safetySourceProfile = safetySource.getProfile();
