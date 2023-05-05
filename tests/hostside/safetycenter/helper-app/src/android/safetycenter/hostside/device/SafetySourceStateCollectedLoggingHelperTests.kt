@@ -18,10 +18,13 @@ package android.safetycenter.hostside.device
 
 import android.content.Context
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyEvent
+import android.safetycenter.SafetySourceErrorDetails
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.*
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_3
@@ -67,6 +70,16 @@ class SafetySourceStateCollectedLoggingHelperTests {
     }
 
     @Test
+    fun reportSafetySourceError_source1() {
+        safetyCenterManager.reportSafetySourceErrorWithPermission(
+            SOURCE_ID_1,
+            SafetySourceErrorDetails(
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            )
+        )
+    }
+
+    @Test
     fun refreshAllSources_reasonPageOpen_allSuccessful() {
         simulateRefresh(
             Response.SetData(safetySourceTestData.information),
@@ -89,14 +102,14 @@ class SafetySourceStateCollectedLoggingHelperTests {
     @Test
     fun refreshAllSources_twiceDifferentData_onlySource1Unchanged() {
         simulateRefresh(
-                Response.SetData(safetySourceTestData.information),
-                Response.SetData(safetySourceTestData.recommendationWithAccountIssue),
-                Response.SetData(safetySourceTestData.criticalWithResolvingDeviceIssue)
+            Response.SetData(safetySourceTestData.information),
+            Response.SetData(safetySourceTestData.recommendationWithAccountIssue),
+            Response.SetData(safetySourceTestData.criticalWithResolvingDeviceIssue)
         )
         simulateRefresh(
-                Response.SetData(safetySourceTestData.information),
-                Response.SetData(safetySourceTestData.information),
-                Response.SetData(safetySourceTestData.information)
+            Response.SetData(safetySourceTestData.information),
+            Response.SetData(safetySourceTestData.information),
+            Response.SetData(safetySourceTestData.information)
         )
     }
 
