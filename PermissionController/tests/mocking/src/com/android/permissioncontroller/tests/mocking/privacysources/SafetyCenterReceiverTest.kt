@@ -16,11 +16,13 @@
 
 package com.android.permissioncontroller.tests.mocking.privacysources
 
+import android.app.job.JobScheduler
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.content.pm.PackageManager
+import android.hardware.SensorPrivacyManager
 import android.os.Build
 import android.os.UserManager
 import android.provider.DeviceConfig
@@ -87,6 +89,10 @@ class SafetyCenterReceiverTest {
     lateinit var mockPrivacySource2: PrivacySource
     @Mock
     lateinit var mockUserManager: UserManager
+    @Mock
+    lateinit var mockSensorPrivacyManager: SensorPrivacyManager
+    @Mock
+    lateinit var mockJobScheduler: JobScheduler
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var safetyCenterReceiver: SafetyCenterReceiver
@@ -120,6 +126,10 @@ class SafetyCenterReceiverTest {
                 any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java)
             ))
             .thenReturn(mockSafetyCenterManager)
+        whenever(application.getSystemService(eq(SensorPrivacyManager::class.java)))
+            .thenReturn(mockSensorPrivacyManager)
+        whenever(application.getSystemService(eq(JobScheduler::class.java)))
+            .thenReturn(mockJobScheduler)
         whenever(mockUserManager.isProfile).thenReturn(false)
 
         safetyCenterReceiver = SafetyCenterReceiver(::privacySourceMap, testCoroutineDispatcher)
