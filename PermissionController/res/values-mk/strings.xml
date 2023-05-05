@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Апликацијава изјави дека можеби ќе споделува податоци за локацијата со трети страни"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделување податоци и локација"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Од каде доаѓаат информациите за споделувањето податоци"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Програмерот доставил информации до производителот на уредов за начинот на кој апликацијава споделува податоци. Програмерот може да ги ажурира информацииве со текот на времето."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Програмерот доставил информации до "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" за начинот на кој апликацијава споделува податоци. Програмерот може да ги ажурира податоциве со текот на времето."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Апл. може да споделува податоци за локацијата за:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделувањето податоци варира"</string>

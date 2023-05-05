@@ -547,7 +547,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Koristi telefonski poziv"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno korišteno tijekom telefonskog poziva"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nedavno je koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
@@ -583,14 +583,13 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Za aplikacije i usluge. Ako je ta postavka isključena, podaci mikrofona i dalje se mogu dijeliti kad nazovete broj hitne službe."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Pogledajte aplikacije i usluge koje imaju pristup lokaciji"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Prikaži pristup međuspremniku"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Primite poruku kad aplikacije pristupe tekstu, slikama ili drugom kopiranom sadržaju"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Prikazuje se poruka kad aplikacije pristupe tekstu, slikama ili drugom kopiranom sadržaju"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Prikaži zaporke"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Nakratko prikaži znakove tijekom unosa"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Znakovi se nakratko prikazuju tijekom unosa"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacije"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Tko određuje kako se podaci dijele"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Razvojni programer pružio je proizvođaču ovog uređaja informacije o načinu na koji ova aplikacija dijeli podatke. Razvojni programer može s vremenom ažurirati te informacije."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Razvojni programer je usluzi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" poslao informacije o načinu na koji aplikacija dijeli podatke. Razvojni programer može s vremenom ažurirati informacije."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikacija može dijeliti podatke o lokaciji radi:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Način dijeljenja može se razlikovati"</string>

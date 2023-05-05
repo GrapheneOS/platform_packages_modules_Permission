@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শ্বেয়াৰ কৰা আৰু অৱস্থান"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শ্বেয়াৰ কৰাৰ তথ্যখিনি ক’ৰ পৰা আহে"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই নিৰ্মাতাক তথ্য দিছে। বিকাশকৰ্তাগৰাকীয়ে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ক তথ্য দিছে। বিকাশকৰ্তাগৰাকীয়ে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
