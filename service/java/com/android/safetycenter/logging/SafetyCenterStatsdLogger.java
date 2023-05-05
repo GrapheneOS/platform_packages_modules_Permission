@@ -283,7 +283,7 @@ public final class SafetyCenterStatsdLogger {
     public static void writeNotificationPostedEvent(
             String sourceId,
             boolean isManagedProfile,
-            @Nullable String issueTypeId,
+            String issueTypeId,
             @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
         writeNotificationInteractionReportedEvent(
                 SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_POSTED,
@@ -300,7 +300,7 @@ public final class SafetyCenterStatsdLogger {
     public static void writeNotificationDismissedEvent(
             String sourceId,
             boolean isManagedProfile,
-            @Nullable String issueTypeId,
+            String issueTypeId,
             @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
         writeNotificationInteractionReportedEvent(
                 SAFETY_CENTER_INTERACTION_REPORTED__ACTION__NOTIFICATION_DISMISSED,
@@ -317,7 +317,7 @@ public final class SafetyCenterStatsdLogger {
     public static void writeNotificationActionClickedEvent(
             String sourceId,
             boolean isManagedProfile,
-            @Nullable String issueTypeId,
+            String issueTypeId,
             @SafetySourceData.SeverityLevel int sourceSeverityLevel,
             boolean isPrimaryAction) {
         int action =
@@ -332,7 +332,7 @@ public final class SafetyCenterStatsdLogger {
             int interactionReportedAction,
             String sourceId,
             boolean isManagedProfile,
-            @Nullable String issueTypeId,
+            String issueTypeId,
             @SafetySourceData.SeverityLevel int sourceSeverityLevel) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;

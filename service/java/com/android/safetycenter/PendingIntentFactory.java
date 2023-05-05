@@ -18,6 +18,8 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
@@ -174,7 +176,7 @@ public final class PendingIntentFactory {
      * flag is passed in.
      */
     @Nullable
-    public static PendingIntent getActivityPendingIntent(
+    public static PendingIntent getNullableActivityPendingIntent(
             Context packageContext, int requestCode, Intent intent, int flags) {
         // This call requires Binder identity to be cleared for getIntentSender() to be allowed to
         // send as another package.
@@ -187,17 +189,34 @@ public final class PendingIntentFactory {
     }
 
     /**
+     * Creates a {@link PendingIntent} to start an Activity from the given {@code packageContext}.
+     *
+     * <p>{@code flags} must not include {@link PendingIntent#FLAG_NO_CREATE}
+     */
+    public static PendingIntent getActivityPendingIntent(
+            Context packageContext, int requestCode, Intent intent, int flags) {
+        if ((flags & PendingIntent.FLAG_NO_CREATE) != 0) {
+            throw new IllegalArgumentException("flags must not include FLAG_NO_CREATE");
+        }
+        return requireNonNull(
+                getNullableActivityPendingIntent(packageContext, requestCode, intent, flags));
+    }
+
+    /**
      * Creates a non-protected broadcast {@link PendingIntent} which can only be received by the
      * system. Use this method to create PendingIntents to be received by Context-registered
      * receivers, for example for notification-related callbacks.
      *
-     * <p>{@code flags} must include {@link PendingIntent#FLAG_IMMUTABLE}
+     * <p>{@code flags} must include {@link PendingIntent#FLAG_IMMUTABLE} and must not include
+     * {@link PendingIntent#FLAG_NO_CREATE}
      */
-    @Nullable
     public static PendingIntent getNonProtectedSystemOnlyBroadcastPendingIntent(
             Context context, int requestCode, Intent intent, int flags) {
         if ((flags & PendingIntent.FLAG_IMMUTABLE) == 0) {
             throw new IllegalArgumentException("flags must include FLAG_IMMUTABLE");
+        }
+        if ((flags & PendingIntent.FLAG_NO_CREATE) != 0) {
+            throw new IllegalArgumentException("flags must not include FLAG_NO_CREATE");
         }
         intent.setPackage("android");
         // This call is needed to be allowed to send the broadcast as the "android" package.
