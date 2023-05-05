@@ -104,6 +104,18 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
             .containsExactly(SafetySourceStateCollected.CollectionType.SOURCE_UPDATED)
     }
 
+    @Test
+    fun reportSafetySourceError_atomPushedForThatSource() {
+        helperAppRule.runTest(TEST_CLASS_NAME, "reportSafetySourceError_source1")
+
+        val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
+
+        assertThat(sourceStateAtoms.map { it.encodedSafetySourceId })
+            .containsExactly(SOURCE_1_ENCODED_SOURCE_ID)
+        assertThat(sourceStateAtoms.map { it.collectionType })
+            .containsExactly(SafetySourceStateCollected.CollectionType.SOURCE_UPDATED)
+    }
+
     private fun getSafetySourceStateCollectedAtoms() =
         ReportUtils.getEventMetricDataList(device)
             .mapNotNull { it.atom.safetySourceStateCollected }
@@ -113,8 +125,8 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
                 // specifically filter the resultant atoms out using the real encoded source ID.
                 // Similar failures are also observed on Android Test Hub due to the background
                 // location source (b/278782808)
-                it.encodedSafetySourceId == PLAY_PROTECT_ENCODED_SOURCE_ID
-                        || it.encodedSafetySourceId == BACKGROUND_LOCATION_ENCODED_SOURCE_ID
+                it.encodedSafetySourceId == PLAY_PROTECT_ENCODED_SOURCE_ID ||
+                    it.encodedSafetySourceId == BACKGROUND_LOCATION_ENCODED_SOURCE_ID
             }
 
     private companion object {

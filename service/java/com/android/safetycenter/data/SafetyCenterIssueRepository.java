@@ -184,7 +184,7 @@ final class SafetyCenterIssueRepository {
      * <p>If this method is called before any calls to {@link
      * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
      */
-    List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(@UserIdInt int userId) {
+    List<SafetySourceIssueInfo> getLatestDuplicates(@UserIdInt int userId) {
         return mUserIdToDedupInfo.get(userId, EMPTY_DEDUP_INFO).getFilteredOutDuplicateIssues();
     }
 
@@ -240,8 +240,7 @@ final class SafetyCenterIssueRepository {
             SafetySourcesGroup safetySourcesGroup,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
-        SafetySourceData safetySourceData =
-                mSafetySourceDataRepository.getSafetySourceDataInternal(key);
+        SafetySourceData safetySourceData = mSafetySourceDataRepository.getSafetySourceData(key);
 
         if (safetySourceData == null) {
             return;
