@@ -18,11 +18,11 @@ package com.android.safetycenter.data;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
+
 import android.annotation.Nullable;
-import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
 import android.content.Context;
-import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
@@ -30,6 +30,7 @@ import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -63,11 +64,16 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 public final class SafetyCenterDataManager {
 
+    private static final String TAG = "SafetyCenterDataManager";
+
+    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     private final SafetySourceDataRepository mSafetySourceDataRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
     private final SafetyCenterIssueRepository mSafetyCenterIssueRepository;
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
+    private final SafetySourceDataValidator mSafetySourceDataValidator;
+    private final SafetySourceStateCollectedLogger mSafetySourceStateCollectedLogger;
 
     /** Creates an instance of {@link SafetyCenterDataManager}. */
     public SafetyCenterDataManager(
@@ -75,6 +81,7 @@ public final class SafetyCenterDataManager {
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             ApiLock apiLock) {
+        mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository =
                 new SafetyCenterInFlightIssueActionRepository(context);
         mSafetyCenterIssueDismissalRepository =
@@ -82,7 +89,6 @@ public final class SafetyCenterDataManager {
         mSafetySourceDataRepository =
                 new SafetySourceDataRepository(
                         context,
-                        safetyCenterConfigReader,
                         safetyCenterRefreshTracker,
                         mSafetyCenterInFlightIssueActionRepository,
                         mSafetyCenterIssueDismissalRepository);
@@ -93,6 +99,14 @@ public final class SafetyCenterDataManager {
                         safetyCenterConfigReader,
                         mSafetyCenterIssueDismissalRepository,
                         new SafetyCenterIssueDeduplicator(mSafetyCenterIssueDismissalRepository));
+        mSafetySourceDataValidator =
+                new SafetySourceDataValidator(context, safetyCenterConfigReader);
+        mSafetySourceStateCollectedLogger =
+                new SafetySourceStateCollectedLogger(
+                        context,
+                        mSafetySourceDataRepository,
+                        mSafetyCenterIssueDismissalRepository,
+                        mSafetyCenterIssueRepository);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,14 +134,35 @@ public final class SafetyCenterDataManager {
             SafetyEvent safetyEvent,
             String packageName,
             @UserIdInt int userId) {
-        boolean dataUpdated =
+        if (!mSafetySourceDataValidator.validateRequest(
+                safetySourceData, safetySourceId, packageName, userId)) {
+            return false;
+        }
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+
+        // Must fetch refresh reason before calling processSafetyEvent because the latter may
+        // complete and clear the current refresh.
+        // TODO(b/277174417): Restructure this code to avoid this error-prone sequencing concern
+        Integer refreshReason = null;
+        if (safetyEvent.getType() == SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED) {
+            refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
+        }
+
+        boolean sourceDataDiffers =
                 mSafetySourceDataRepository.setSafetySourceData(
-                        safetySourceData, safetySourceId, safetyEvent, packageName, userId);
-        if (dataUpdated) {
+                        safetySourceData, safetySourceId, userId);
+        boolean eventCausedChange =
+                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
+        boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
+
+        if (safetyCenterDataChanged) {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
 
-        return dataUpdated;
+        mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
+                key, safetySourceData, refreshReason, sourceDataDiffers, userId, safetyEvent);
+
+        return safetyCenterDataChanged;
     }
 
     /**
@@ -164,14 +199,36 @@ public final class SafetyCenterDataManager {
             String safetySourceId,
             String packageName,
             @UserIdInt int userId) {
-        boolean dataUpdated =
+        if (!mSafetySourceDataValidator.validateRequest(
+                null, safetySourceId, packageName, userId)) {
+            return false;
+        }
+        SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+
+        // Must fetch refresh reason before calling processSafetyEvent because the latter may
+        // complete and clear the current refresh.
+        // TODO(b/277174417): Restructure this code to avoid this error-prone sequencing concern
+        Integer refreshReason = null;
+        if (safetyEvent.getType() == SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED) {
+            refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
+        }
+
+        boolean sourceDataDiffers =
                 mSafetySourceDataRepository.reportSafetySourceError(
-                        safetySourceErrorDetails, safetySourceId, packageName, userId);
-        if (dataUpdated) {
+                        safetySourceErrorDetails, safetySourceId, userId);
+        boolean eventCausedChange =
+                processSafetyEvent(safetySourceId, safetyEvent, userId, true, sourceDataDiffers);
+        boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
+
+        if (safetyCenterDataChanged) {
             mSafetyCenterIssueRepository.updateIssues(userId);
         }
 
-        return dataUpdated;
+        mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
+                key, null, refreshReason, sourceDataDiffers, userId, safetyEvent);
+
+        return safetyCenterDataChanged;
     }
 
     /**
@@ -320,20 +377,6 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Returns the list of issues for the given {@code userId} which were removed from the given
-     * list of issues in the most recent {@link SafetyCenterIssueDeduplicator#deduplicateIssues}
-     * call. These issues were removed because they were duplicates of other issues (see {@link
-     * SafetySourceIssue#getDeduplicationId()} for more info).
-     *
-     * <p>If this method is called before any calls to {@link
-     * SafetyCenterIssueDeduplicator#deduplicateIssues} then an empty list is returned.
-     */
-    public List<SafetySourceIssueInfo> getMostRecentFilteredOutDuplicateIssues(
-            @UserIdInt int userId) {
-        return mSafetyCenterIssueRepository.getMostRecentFilteredOutDuplicateIssues(userId);
-    }
-
-    /**
      * Returns a set of {@link SafetySourcesGroup} IDs that the given {@link SafetyCenterIssueKey}
      * is mapped to, or an empty list of no such mapping is configured.
      *
@@ -370,7 +413,12 @@ public final class SafetyCenterDataManager {
     @Nullable
     public SafetySourceData getSafetySourceData(
             String safetySourceId, String packageName, @UserIdInt int userId) {
-        return mSafetySourceDataRepository.getSafetySourceData(safetySourceId, packageName, userId);
+        if (!mSafetySourceDataValidator.validateRequest(
+                null, safetySourceId, packageName, userId)) {
+            return null;
+        }
+        return mSafetySourceDataRepository.getSafetySourceData(
+                SafetySourceKey.of(safetySourceId, userId));
     }
 
     /**
@@ -385,7 +433,7 @@ public final class SafetyCenterDataManager {
      */
     @Nullable
     public SafetySourceData getSafetySourceDataInternal(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSafetySourceDataInternal(safetySourceKey);
+        return mSafetySourceDataRepository.getSafetySourceData(safetySourceKey);
     }
 
     /** Returns {@code true} if the given source has an error. */
@@ -418,26 +466,6 @@ public final class SafetyCenterDataManager {
         return mSafetySourceDataRepository.getSafetySourceIssueAction(safetyCenterIssueActionId);
     }
 
-    /**
-     * Returns the elapsed realtime millis of when the data of the given {@link SafetySourceKey} was
-     * last updated, or {@code 0L} if no update has occurred.
-     *
-     * @see SystemClock#elapsedRealtime()
-     */
-    @UptimeMillisLong
-    public long getSafetySourceLastUpdated(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSafetySourceLastUpdated(safetySourceKey);
-    }
-
-    /**
-     * Returns the current {@link SafetyCenterStatsdLogger.SourceState} of the given {@link
-     * SafetySourceKey}.
-     */
-    @SafetyCenterStatsdLogger.SourceState
-    public int getSourceState(SafetySourceKey safetySourceKey) {
-        return mSafetySourceDataRepository.getSourceState(safetySourceKey);
-    }
-
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////  Other   /////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -448,5 +476,68 @@ public final class SafetyCenterDataManager {
         mSafetyCenterIssueDismissalRepository.dump(fd, fout);
         mSafetyCenterInFlightIssueActionRepository.dump(fout);
         mSafetyCenterIssueRepository.dump(fout);
+    }
+
+    private boolean processSafetyEvent(
+            String safetySourceId,
+            SafetyEvent safetyEvent,
+            @UserIdInt int userId,
+            boolean isError,
+            boolean sourceDataChanged) {
+        int type = safetyEvent.getType();
+        switch (type) {
+            case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
+                String refreshBroadcastId = safetyEvent.getRefreshBroadcastId();
+                if (refreshBroadcastId == null) {
+                    Log.w(TAG, "No refresh broadcast id in SafetyEvent of type " + type);
+                    return false;
+                }
+                return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
+                        refreshBroadcastId, safetySourceId, userId, !isError, sourceDataChanged);
+            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
+                String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
+                if (safetySourceIssueId == null) {
+                    Log.w(TAG, "No safety source issue id in SafetyEvent of type " + type);
+                    return false;
+                }
+                String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
+                if (safetySourceIssueActionId == null) {
+                    Log.w(TAG, "No safety source issue action id in SafetyEvent of type " + type);
+                    return false;
+                }
+                SafetyCenterIssueKey safetyCenterIssueKey =
+                        SafetyCenterIssueKey.newBuilder()
+                                .setSafetySourceId(safetySourceId)
+                                .setSafetySourceIssueId(safetySourceIssueId)
+                                .setUserId(userId)
+                                .build();
+                SafetyCenterIssueActionId safetyCenterIssueActionId =
+                        SafetyCenterIssueActionId.newBuilder()
+                                .setSafetyCenterIssueKey(safetyCenterIssueKey)
+                                .setSafetySourceIssueActionId(safetySourceIssueActionId)
+                                .build();
+                boolean success = type == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED;
+                int result = toSystemEventResult(success);
+                return mSafetyCenterInFlightIssueActionRepository
+                        .unmarkSafetyCenterIssueActionInFlight(
+                                safetyCenterIssueActionId,
+                                getSafetySourceIssue(safetyCenterIssueKey),
+                                result);
+            case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
+                return false;
+        }
+        Log.w(TAG, "Unexpected SafetyEvent.Type: " + type);
+        return false;
+    }
+
+    /**
+     * Writes a SafetySourceStateCollected atom for the given source in response to a stats pull.
+     */
+    public void logSafetySourceStateCollectedAutomatic(
+            SafetySourceKey sourceKey, boolean isManagedProfile) {
+        mSafetySourceStateCollectedLogger.writeAutomaticAtom(sourceKey, isManagedProfile);
     }
 }
