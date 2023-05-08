@@ -16,37 +16,46 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes.v34
 
-import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_UNSPECIFIED
 
 /**
  * A lighter version of the system's InstallSourceInfo class, containing select information about
  * the install source.
- *
- * @param initiatingPackageName The package name of the install source (usually the app store)
- * @param packageSource Indicates the package source of the app [PackageInstaller.PackageSourceType]
  */
-data class LightInstallSourceInfo(
-    val initiatingPackageName: String?,
-    private val packageSource: Int
-) {
-    /** Return {@code true} if package considered to be installed by a store */
-    fun isStoreInstalled(): Boolean {
+class LightInstallSourceInfo {
+    private constructor() {
+        initiatingPackageName = null
+        isPreloadedApp = false
+        supportsSafetyLabel = false
+    }
+
+    constructor(packageSource: Int, initiatingPackage: String?) {
+        initiatingPackageName = initiatingPackage
         // Stores should be setting PACKAGE_SOURCE_STORE, but it's not enforced. So include the
         // default source of unspecified. All other sources should be explicitly set to another
         // PACKAGE_SOURCE_ value
-        return initiatingPackageName != null &&
-                (packageSource == PACKAGE_SOURCE_STORE ||
-                        packageSource == PACKAGE_SOURCE_UNSPECIFIED)
+        val isStoreInstalled =
+                initiatingPackageName != null &&
+                        (packageSource == PACKAGE_SOURCE_STORE ||
+                                packageSource == PACKAGE_SOURCE_UNSPECIFIED)
+
+        isPreloadedApp = initiatingPackageName == null &&
+                packageSource == PACKAGE_SOURCE_UNSPECIFIED
+        supportsSafetyLabel = isStoreInstalled || isPreloadedApp
     }
 
-    /** Return {@code true} if package considered to be provided as a preloaded app */
-    fun isPreloadedApp(): Boolean {
-        return initiatingPackageName == null && packageSource == PACKAGE_SOURCE_UNSPECIFIED
-    }
+    /** The package name of the install source (usually the app store) */
+    val initiatingPackageName: String?
+
+    /** Whether packages from this install source support safety labels. */
+    val supportsSafetyLabel: Boolean
+
+    /** Whether this install source indicates that the package was preloaded onto the device. */
+    val isPreloadedApp: Boolean
 
     companion object {
-        val UNKNOWN_INSTALL_SOURCE = LightInstallSourceInfo(null, PACKAGE_SOURCE_UNSPECIFIED)
+        /** Indicates an unavailable install source. */
+        val INSTALL_SOURCE_UNAVAILABLE = LightInstallSourceInfo()
     }
 }
