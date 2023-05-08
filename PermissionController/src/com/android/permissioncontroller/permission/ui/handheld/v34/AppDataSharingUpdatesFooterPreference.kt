@@ -22,10 +22,10 @@ import android.text.style.ClickableSpan
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
+import androidx.core.text.method.LinkMovementMethodCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.compat.LinkMovementMethodCompat
 
 /** A preference for a footer with an icon and a link. */
 class AppDataSharingUpdatesFooterPreference : Preference {

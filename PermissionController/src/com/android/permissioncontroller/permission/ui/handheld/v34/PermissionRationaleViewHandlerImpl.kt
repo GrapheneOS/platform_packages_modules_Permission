@@ -33,8 +33,8 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.text.method.LinkMovementMethodCompat
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.compat.LinkMovementMethodCompat
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleViewHandler.Result.Companion.CANCELLED
 

@@ -594,8 +594,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Unexported empty activity for in-process tests -->
-        <activity android:name="android.app.Activity" />
     </application>
 
 </manifest>
