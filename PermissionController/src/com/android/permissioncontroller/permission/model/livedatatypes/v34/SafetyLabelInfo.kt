@@ -17,18 +17,20 @@
 package com.android.permissioncontroller.permission.model.livedatatypes.v34
 
 import com.android.permission.safetylabel.SafetyLabel
+import com.android.permissioncontroller.permission.model.livedatatypes.v34.LightInstallSourceInfo.Companion.INSTALL_SOURCE_UNAVAILABLE
 
 /**
  * A wrapping class for [SafetyLabel] class that includes the install source package name
  *
- * @param safetyLabel The resulting [SafetyLabel], or null if none found
- * @param installSourcePackageName The package name of the install source for the APK and safety
- * label(usually the app store)
+ * @param safetyLabel the resulting [SafetyLabel], or null if none found
+ * @param installSourceInfo the install source information for the package
  */
-class SafetyLabelInfo(val safetyLabel: SafetyLabel?, val installSourcePackageName: String?) {
-
+class SafetyLabelInfo(
+    val safetyLabel: SafetyLabel?,
+    val installSourceInfo: LightInstallSourceInfo
+    ) {
     companion object {
         /** Default definition of unavailable or no safety label found */
-        val UNAVAILABLE = SafetyLabelInfo(null, null)
+        val UNAVAILABLE = SafetyLabelInfo(null, INSTALL_SOURCE_UNAVAILABLE)
     }
 }
