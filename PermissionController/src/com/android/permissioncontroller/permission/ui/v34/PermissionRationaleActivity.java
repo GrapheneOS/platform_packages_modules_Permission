@@ -353,17 +353,7 @@ public class PermissionRationaleActivity extends SettingsActivity implements
         @StringRes int titleResId = getTitleResIdForPermissionGroup(mPermissionGroupName);
         setTitle(titleResId);
         CharSequence title = getString(titleResId);
-
-        String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
-        CharSequence installSourceLabel = mPermissionRationaleInfo.getInstallSourceLabel();
-        checkStringNotEmpty(installSourcePackageName,
-                "installSourcePackageName cannot be null or empty");
-        checkStringNotEmpty(installSourceLabel,
-                "installSourceLabel cannot be null or empty");
-        CharSequence dataSharingSourceMessage = createDataSharingSourceMessageWithSpans(
-                getText(R.string.permission_rationale_data_sharing_source_message),
-                installSourceLabel,
-                getLinkToAppStore(installSourcePackageName));
+        CharSequence dataSharingSourceMessage = getDataSharingSourceMessage();
 
         CharSequence purposeTitle =
                 getString(getPurposeTitleResIdForPermissionGroup(mPermissionGroupName));
@@ -416,6 +406,22 @@ public class PermissionRationaleActivity extends SettingsActivity implements
             manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
             mRootView.setVisibility(View.VISIBLE);
         }
+    }
+
+    private CharSequence getDataSharingSourceMessage() {
+        if (mPermissionRationaleInfo.isPreloadedApp()) {
+            return getText(R.string.permission_rationale_data_sharing_device_manufacturer_message);
+        }
+
+        String installSourcePackageName = mPermissionRationaleInfo.getInstallSourcePackageName();
+        CharSequence installSourceLabel = mPermissionRationaleInfo.getInstallSourceLabel();
+        checkStringNotEmpty(installSourcePackageName,
+                "installSourcePackageName cannot be null or empty");
+        checkStringNotEmpty(installSourceLabel, "installSourceLabel cannot be null or empty");
+        return createDataSharingSourceMessageWithSpans(
+                getText(R.string.permission_rationale_data_sharing_source_message),
+                installSourceLabel,
+                getLinkToAppStore(installSourcePackageName));
     }
 
     @StringRes
