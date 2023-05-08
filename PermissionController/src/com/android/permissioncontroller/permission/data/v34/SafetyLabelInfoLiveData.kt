@@ -82,10 +82,8 @@ private constructor(
             return
         }
 
-        // TODO(b/261607291): Add support for preinstall apps that provide SafetyLabel. Initiating
-        //  package is null until updated from an app store
         val lightInstallSourceInfo = lightInstallSourceInfoLiveData.value
-        if (lightInstallSourceInfo?.isStoreInstalled() != true) {
+        if (lightInstallSourceInfo?.supportsSafetyLabel != true) {
             postValue(SafetyLabelInfo.UNAVAILABLE)
             return
         }
@@ -94,7 +92,7 @@ private constructor(
             try {
                 val safetyLabel: SafetyLabel? = getSafetyLabel(packageName, user)
                 if (safetyLabel != null) {
-                    SafetyLabelInfo(safetyLabel, lightInstallSourceInfo.initiatingPackageName)
+                    SafetyLabelInfo(safetyLabel, lightInstallSourceInfo)
                 } else {
                     SafetyLabelInfo.UNAVAILABLE
                 }
