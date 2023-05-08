@@ -88,11 +88,12 @@ class PermissionRationaleViewModel(
      * should be shown with it.
      */
     data class PermissionRationaleInfo(
-        val groupName: String,
-        val installSourcePackageName: String?,
-        val installSourceLabel: String?,
-        val purposeSet: Set<Int>
-    )
+            val groupName: String,
+            val isPreloadedApp: Boolean,
+            val installSourcePackageName: String?,
+            val installSourceLabel: String?,
+            val purposeSet: Set<Int>
+        )
 
     /** A [LiveData] which holds the currently pending PermissionRationaleInfo */
     val permissionRationaleInfoLiveData =
@@ -118,7 +119,8 @@ class PermissionRationaleViewModel(
                     return
                 }
 
-                val installSourcePackageName = safetyLabelInfo.installSourcePackageName
+                val installSourcePackageName =
+                    safetyLabelInfo.installSourceInfo.initiatingPackageName
                 val installSourceLabel: String? =
                     installSourcePackageName?.let {
                         KotlinUtils.getPackageLabel(app, it, Process.myUserHandle())
@@ -132,6 +134,7 @@ class PermissionRationaleViewModel(
                 value =
                     PermissionRationaleInfo(
                         permissionGroupName,
+                        safetyLabelInfo.installSourceInfo.isPreloadedApp,
                         installSourcePackageName,
                         installSourceLabel,
                         purposes)
