@@ -40,7 +40,6 @@ import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.cle
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
@@ -54,14 +53,15 @@ import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -77,20 +77,10 @@ class SafetyCenterNotificationTest {
             "Could not get system service"
         }
 
-    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
-    // manually skip the setup and teardown methods.
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
-
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
 
     @Before
     fun setUp() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.setup()
         TestNotificationListener.setup()
         SafetyCenterFlags.notificationsEnabled = true
@@ -100,9 +90,6 @@ class SafetyCenterNotificationTest {
 
     @After
     fun tearDown() {
-        if (!shouldRunTests) {
-            return
-        }
         // It is important to reset the notification listener last because it waits/ensures that
         // all notifications have been removed before returning.
         safetyCenterTestHelper.reset()

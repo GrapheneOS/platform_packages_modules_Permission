@@ -41,7 +41,6 @@ import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafet
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.openPageAndExit
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.openPageAndExitAllowingRetries
 import com.android.safetycenter.testing.SafetyCenterFlags
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.MULTIPLE_SOURCES_GROUP_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
@@ -56,6 +55,7 @@ import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
 import com.android.safetycenter.testing.UiTestHelper.clickConfirmDismissal
 import com.android.safetycenter.testing.UiTestHelper.clickDismissIssueCard
@@ -78,7 +78,6 @@ import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import java.util.concurrent.TimeUnit
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -112,29 +111,16 @@ class SafetyCenterSubpagesTest {
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
 
-    // JUnit's Assume is not supported in @BeforeClass by the tests runner, so this is used to
-    // manually skip the setup and teardown methods.
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
-
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
 
     @Before
     fun enableSafetyCenterBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.setup()
         SafetyCenterFlags.showSubpages = true
     }
 
     @After
     fun clearDataAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.reset()
         UiAutomatorUtils2.getUiDevice().resetRotation()
     }

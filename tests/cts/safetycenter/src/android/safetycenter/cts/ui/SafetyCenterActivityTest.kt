@@ -24,14 +24,13 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.SettingsPackage.getSettingsPackageName
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.resetRotation
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -48,28 +47,16 @@ class SafetyCenterActivityTest {
     private val context: Context = getApplicationContext()
 
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
-    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
-    // manually skip the setup and teardown methods.
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
 
     @Before
     fun enableSafetyCenterBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.setup()
     }
 
     @After
     fun clearDataAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.reset()
         getUiDevice().resetRotation()
     }

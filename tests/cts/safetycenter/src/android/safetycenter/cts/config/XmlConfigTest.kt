@@ -26,13 +26,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.safetycenter.config.SafetyCenterConfigParser
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
 import org.junit.After
-import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -43,28 +43,16 @@ class XmlConfigTest {
     private val safetyCenterContext = SafetyCenterResourcesContext.forTests(context)
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
-    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
-    // manually skip the setup and teardown methods.
-    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
+    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
 
     @Before
     fun enableSafetyCenterBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.setup()
     }
 
     @After
     fun clearDataAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
         safetyCenterTestHelper.reset()
     }
 
