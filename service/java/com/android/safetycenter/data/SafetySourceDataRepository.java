@@ -122,7 +122,7 @@ final class SafetySourceDataRepository {
         return sourceDataDiffers || removedSourceError;
     }
 
-    private void setSafetySourceDataInternal(SafetySourceKey key, SafetySourceData data) {
+    private void setSafetySourceDataInternal(SafetySourceKey key, @Nullable SafetySourceData data) {
         ArraySet<String> issueIds = new ArraySet<>();
         if (data == null) {
             mSafetySourceData.remove(key);
