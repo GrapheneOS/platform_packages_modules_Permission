@@ -191,7 +191,7 @@ final class AndroidLockScreenFix {
             return pendingIntent;
         }
         PendingIntent suspectPendingIntent =
-                PendingIntentFactory.getActivityPendingIntent(
+                PendingIntentFactory.getNullableActivityPendingIntent(
                         settingsPackageContext,
                         SUSPECT_REQ_CODE,
                         newBaseLockScreenIntent(settingsPackageName),
