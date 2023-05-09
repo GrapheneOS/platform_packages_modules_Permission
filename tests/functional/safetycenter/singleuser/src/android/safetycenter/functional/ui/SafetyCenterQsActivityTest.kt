@@ -47,15 +47,16 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterQsActivityTest {
 
+    // TODO(b/280991082): Order these rules in a RuleChain
     @get:Rule val disableAnimationRule = DisableAnimationRule()
-
     @get:Rule val freezeRotationRule = FreezeRotationRule()
-
     @get:Rule val screenRecordRule = ScreenRecordRule()
 
     private val context: Context = getApplicationContext()
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
+
+    // TODO(b/280991082): Use rules for all SafetyCenterQsActivityTest preconditions
     private var shouldRunTests =
         context.deviceSupportsSafetyCenter() &&
             deviceSupportsSensorToggle(CAMERA) &&
