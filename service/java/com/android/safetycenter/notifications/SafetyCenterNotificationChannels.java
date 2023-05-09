@@ -18,6 +18,8 @@ package com.android.safetycenter.notifications;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.Nullable;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
@@ -62,8 +64,25 @@ public final class SafetyCenterNotificationChannels {
     @Nullable
     static NotificationManager getNotificationManagerForUser(
             Context baseContext, UserHandle userHandle) {
-        Context contextAsUser = baseContext.createContextAsUser(userHandle, 0);
-        return contextAsUser.getSystemService(NotificationManager.class);
+        Context contextAsUser = getContextAsUser(baseContext, userHandle);
+        NotificationManager notificationManager =
+                (contextAsUser != null)
+                        ? contextAsUser.getSystemService(NotificationManager.class)
+                        : null;
+        if (notificationManager == null) {
+            Log.w(TAG, "Could not retrieve NotificationManager for user " + userHandle);
+        }
+        return notificationManager;
+    }
+
+    @Nullable
+    private static Context getContextAsUser(Context baseContext, UserHandle userHandle) {
+        try {
+            return baseContext.createContextAsUser(userHandle, 0);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Could not create Context as user " + userHandle, e);
+            return null;
+        }
     }
 
     /**
@@ -100,7 +119,9 @@ public final class SafetyCenterNotificationChannels {
      */
     public void createAllChannelsForUser(Context context, UserHandle user) {
         try {
-            createAllChannelsWithoutCallingIdentity(getNotificationManagerForUser(context, user));
+            NotificationManager notificationManager =
+                    requireNonNull(getNotificationManagerForUser(context, user));
+            createAllChannelsWithoutCallingIdentity(notificationManager);
         } catch (RuntimeException e) {
             Log.w(TAG, "Error creating notification channels for user " + user.getIdentifier(), e);
         }
@@ -127,7 +148,6 @@ public final class SafetyCenterNotificationChannels {
      * unblockable. Throws a {@link RuntimeException} if any channel is malformed and could not be
      * created.
      */
-    @Nullable
     private void createAllChannelsWithoutCallingIdentity(NotificationManager notificationManager) {
         // Clearing calling identity to be able to make unblockable system notification channels
         final long callingId = Binder.clearCallingIdentity();

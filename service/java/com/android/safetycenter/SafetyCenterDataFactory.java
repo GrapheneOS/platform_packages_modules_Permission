@@ -296,7 +296,6 @@ public final class SafetyCenterDataFactory {
         }
     }
 
-    @Nullable
     private SafetyCenterIssue toSafetyCenterIssue(
             SafetySourceIssue safetySourceIssue,
             SafetySourcesGroup safetySourcesGroup,
