@@ -198,7 +198,11 @@ final class SafetyCenterBroadcastDispatcher {
         }
 
         Intent implicitIntent = createImplicitEnabledChangedIntent();
-        sendBroadcast(implicitIntent, UserHandle.SYSTEM, READ_SAFETY_CENTER_STATUS, null);
+        sendBroadcast(
+                implicitIntent,
+                UserHandle.SYSTEM,
+                READ_SAFETY_CENTER_STATUS,
+                /* broadcastOptions= */ null);
     }
 
     private void sendEnabledChangedBroadcast(
@@ -267,7 +271,7 @@ final class SafetyCenterBroadcastDispatcher {
 
     private boolean doesBroadcastResolve(Intent broadcastIntent, UserHandle userHandle) {
         return !PackageUtils.queryUnfilteredBroadcastReceiversAsUser(
-                        broadcastIntent, 0, userHandle.getIdentifier(), mContext)
+                        broadcastIntent, /* flags= */ 0, userHandle.getIdentifier(), mContext)
                 .isEmpty();
     }
 

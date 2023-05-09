@@ -162,7 +162,7 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_NOTIFICATION_DISMISSED);
         filter.addAction(ACTION_NOTIFICATION_ACTION_CLICKED);
-        context.registerReceiver(this, filter, Context.RECEIVER_NOT_EXPORTED);
+        context.registerReceiver(/* receiver= */ this, filter, Context.RECEIVER_NOT_EXPORTED);
     }
 
     @Override

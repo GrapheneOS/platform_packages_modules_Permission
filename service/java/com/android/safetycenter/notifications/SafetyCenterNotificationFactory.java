@@ -222,7 +222,9 @@ final class SafetyCenterNotificationFactory {
     private Notification.Action toNotificationAction(
             SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
         PendingIntent pendingIntent = getPendingIntentForAction(issueKey, issueAction);
-        return new Notification.Action.Builder(null, issueAction.getLabel(), pendingIntent).build();
+        return new Notification.Action.Builder(
+                        /* icon= */ null, issueAction.getLabel(), pendingIntent)
+                .build();
     }
 
     private PendingIntent getPendingIntentForAction(

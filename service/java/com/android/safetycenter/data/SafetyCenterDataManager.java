@@ -152,7 +152,12 @@ public final class SafetyCenterDataManager {
                 mSafetySourceDataRepository.setSafetySourceData(
                         safetySourceData, safetySourceId, userId);
         boolean eventCausedChange =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, false, sourceDataDiffers);
+                processSafetyEvent(
+                        safetySourceId,
+                        safetyEvent,
+                        userId,
+                        /* isError= */ false,
+                        sourceDataDiffers);
         boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
 
         if (safetyCenterDataChanged) {
@@ -200,7 +205,7 @@ public final class SafetyCenterDataManager {
             String packageName,
             @UserIdInt int userId) {
         if (!mSafetySourceDataValidator.validateRequest(
-                null, safetySourceId, packageName, userId)) {
+                /* safetySourceData= */ null, safetySourceId, packageName, userId)) {
             return false;
         }
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
@@ -218,7 +223,12 @@ public final class SafetyCenterDataManager {
                 mSafetySourceDataRepository.reportSafetySourceError(
                         safetySourceErrorDetails, safetySourceId, userId);
         boolean eventCausedChange =
-                processSafetyEvent(safetySourceId, safetyEvent, userId, true, sourceDataDiffers);
+                processSafetyEvent(
+                        safetySourceId,
+                        safetyEvent,
+                        userId,
+                        /* isError= */ true,
+                        sourceDataDiffers);
         boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
 
         if (safetyCenterDataChanged) {
@@ -226,7 +236,12 @@ public final class SafetyCenterDataManager {
         }
 
         mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
-                key, null, refreshReason, sourceDataDiffers, userId, safetyEvent);
+                key,
+                /* safetySourceData= */ null,
+                refreshReason,
+                sourceDataDiffers,
+                userId,
+                safetyEvent);
 
         return safetyCenterDataChanged;
     }
@@ -414,7 +429,7 @@ public final class SafetyCenterDataManager {
     public SafetySourceData getSafetySourceData(
             String safetySourceId, String packageName, @UserIdInt int userId) {
         if (!mSafetySourceDataValidator.validateRequest(
-                null, safetySourceId, packageName, userId)) {
+                /* safetySourceData= */ null, safetySourceId, packageName, userId)) {
             return null;
         }
         return mSafetySourceDataRepository.getSafetySourceData(

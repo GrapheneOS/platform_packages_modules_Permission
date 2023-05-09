@@ -401,8 +401,8 @@ public final class SafetyCenterDataFactory {
                                     safetySource,
                                     defaultPackageName,
                                     userProfileGroup.getProfileParentUserId(),
-                                    false,
-                                    false));
+                                    /* isUserManaged= */ false,
+                                    /* isManagedUserRunning= */ false));
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -423,7 +423,7 @@ public final class SafetyCenterDataFactory {
                                         safetySource,
                                         defaultPackageName,
                                         managedProfileUserId,
-                                        true,
+                                        /* isUserManaged= */ true,
                                         isManagedUserRunning));
             }
         }
@@ -510,10 +510,7 @@ public final class SafetyCenterDataFactory {
                 for (int i = 0; i < entries.size(); i++) {
                     SafetySourceKey key = toSafetySourceKey(entries.get(i).getId());
                     if (mSafetyCenterDataManager.sourceHasError(key)) {
-                        // We always use the singular form of the error string for groups because
-                        // they appear as single entries in the UI and this ensures consistency,
-                        // especially when subpages are enabled.
-                        return getRefreshErrorString(1);
+                        return getRefreshErrorString();
                     }
                 }
                 return mSafetyCenterResourcesContext.getStringByName("group_unknown_summary");
@@ -718,7 +715,7 @@ public final class SafetyCenterDataFactory {
         CharSequence summary =
                 mSafetyCenterDataManager.sourceHasError(
                                 SafetySourceKey.of(safetySource.getId(), userId))
-                        ? getRefreshErrorString(1)
+                        ? getRefreshErrorString()
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
         if (isQuietModeEnabled) {
@@ -755,8 +752,8 @@ public final class SafetyCenterDataFactory {
                     safetySource,
                     defaultPackageName,
                     userProfileGroup.getProfileParentUserId(),
-                    false,
-                    false);
+                    /* isUserManaged= */ false,
+                    /* isManagedUserRunning= */ false);
 
             if (!SafetySources.supportsManagedProfiles(safetySource)) {
                 continue;
@@ -775,7 +772,7 @@ public final class SafetyCenterDataFactory {
                         safetySource,
                         defaultPackageName,
                         managedProfileUserId,
-                        true,
+                        /* isUserManaged= */ true,
                         isManagedUserRunning);
             }
         }
@@ -922,7 +919,7 @@ public final class SafetyCenterDataFactory {
         CharSequence summary =
                 mSafetyCenterDataManager.sourceHasError(
                                 SafetySourceKey.of(safetySource.getId(), userId))
-                        ? getRefreshErrorString(1)
+                        ? getRefreshErrorString()
                         : mSafetyCenterResourcesContext.getOptionalString(
                                 safetySource.getSummaryResId());
         if (isQuietModeEnabled) {
@@ -1208,8 +1205,8 @@ public final class SafetyCenterDataFactory {
                         == SafetySourceIssue.ISSUE_ACTIONABILITY_AUTOMATIC;
     }
 
-    private String getRefreshErrorString(int numberOfErrorEntries) {
-        return getIcuPluralsString("refresh_error", numberOfErrorEntries);
+    private String getRefreshErrorString() {
+        return getIcuPluralsString("refresh_error", /* count= */ 1);
     }
 
     private String getIcuPluralsString(String name, int count, Object... formatArgs) {

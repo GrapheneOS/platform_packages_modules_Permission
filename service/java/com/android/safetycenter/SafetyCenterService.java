@@ -207,7 +207,7 @@ public final class SafetyCenterService extends SystemService {
                     mSafetyCenterDataManager.loadPersistableDataStateFromFile();
                     new UserBroadcastReceiver().register(getContext());
                     new SafetyCenterNotificationReceiver(
-                                    this,
+                                    /* service= */ this,
                                     mSafetyCenterDataManager,
                                     mSafetyCenterDataChangeNotifier,
                                     mApiLock)
@@ -240,7 +240,10 @@ public final class SafetyCenterService extends SystemService {
         StatsManager statsManager =
                 requireNonNull(getContext().getSystemService(StatsManager.class));
         statsManager.setPullAtomCallback(
-                SAFETY_STATE, null, BackgroundThread.getExecutor(), mPullAtomCallback);
+                SAFETY_STATE,
+                /* metadata= */ null,
+                BackgroundThread.getExecutor(),
+                mPullAtomCallback);
     }
 
     /** Service implementation of {@link ISafetyCenterManager.Stub}. */
@@ -503,7 +506,7 @@ public final class SafetyCenterService extends SystemService {
                 PendingIntent onDismissPendingIntent =
                         safetySourceIssue.getOnDismissPendingIntent();
                 if (onDismissPendingIntent != null
-                        && !dispatchPendingIntent(onDismissPendingIntent, null)) {
+                        && !dispatchPendingIntent(onDismissPendingIntent)) {
                     Log.w(
                             TAG,
                             "Error dispatching dismissal for issue: "
@@ -633,7 +636,8 @@ public final class SafetyCenterService extends SystemService {
 
         /** Enforces cross user permission and returns whether the user is valid. */
         private boolean enforceCrossUserPermission(String message, @UserIdInt int userId) {
-            UserUtils.enforceCrossUserPermission(userId, false, message, getContext());
+            UserUtils.enforceCrossUserPermission(
+                    userId, /* allowAll= */ false, message, getContext());
             if (!UserUtils.isUserExistent(userId, getContext())) {
                 Log.w(
                         TAG,
@@ -718,9 +722,11 @@ public final class SafetyCenterService extends SystemService {
                 ParcelFileDescriptor err,
                 String[] args) {
             return new SafetyCenterShellCommandHandler(
-                            getContext(), this, mDeviceSupportsSafetyCenter)
+                            getContext(),
+                            /* safetyCenterManager= */ this,
+                            mDeviceSupportsSafetyCenter)
                     .exec(
-                            this,
+                            /* target= */ this,
                             in.getFileDescriptor(),
                             out.getFileDescriptor(),
                             err.getFileDescriptor(),
@@ -959,7 +965,11 @@ public final class SafetyCenterService extends SystemService {
         void register(Context context) {
             IntentFilter filter = new IntentFilter();
             filter.addAction(Intent.ACTION_LOCALE_CHANGED);
-            context.registerReceiverForAllUsers(this, filter, null, null);
+            context.registerReceiverForAllUsers(
+                    /* receiver= */ this,
+                    filter,
+                    /* broadcastPermission= */ null,
+                    /* scheduler= */ null);
         }
 
         @Override
@@ -985,7 +995,11 @@ public final class SafetyCenterService extends SystemService {
             filter.addAction(Intent.ACTION_MANAGED_PROFILE_REMOVED);
             filter.addAction(Intent.ACTION_MANAGED_PROFILE_AVAILABLE);
             filter.addAction(Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE);
-            context.registerReceiverForAllUsers(this, filter, null, null);
+            context.registerReceiverForAllUsers(
+                    /* receiver= */ this,
+                    filter,
+                    /* broadcastPermission= */ null,
+                    /* scheduler= */ null);
         }
 
         @Override
@@ -1016,10 +1030,10 @@ public final class SafetyCenterService extends SystemService {
             switch (action) {
                 case Intent.ACTION_USER_REMOVED:
                 case Intent.ACTION_MANAGED_PROFILE_REMOVED:
-                    removeUser(userId, true);
+                    removeUserAndData(userId);
                     break;
                 case Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE:
-                    removeUser(userId, false);
+                    removeUser(userId);
                     // fall through!
                 case Intent.ACTION_USER_ADDED:
                 case Intent.ACTION_MANAGED_PROFILE_ADDED:
@@ -1029,6 +1043,14 @@ public final class SafetyCenterService extends SystemService {
                     break;
             }
         }
+    }
+
+    private void removeUserAndData(@UserIdInt int userId) {
+        removeUser(userId, /* clearDataPermanently= */ true);
+    }
+
+    private void removeUser(@UserIdInt int userId) {
+        removeUser(userId, /* clearDataPermanently= */ false);
     }
 
     private void removeUser(@UserIdInt int userId, boolean clearDataPermanently) {
@@ -1048,7 +1070,7 @@ public final class SafetyCenterService extends SystemService {
 
     private void startRefreshingSafetySources(
             @RefreshReason int refreshReason, @UserIdInt int userId) {
-        startRefreshingSafetySources(refreshReason, userId, null);
+        startRefreshingSafetySources(refreshReason, userId, /* selectedSafetySourceIds= */ null);
     }
 
     private void startRefreshingSafetySources(
@@ -1086,7 +1108,7 @@ public final class SafetyCenterService extends SystemService {
                 safetyCenterIssueActionId.getSafetyCenterIssueKey();
         UserProfileGroup userProfileGroup =
                 UserProfileGroup.fromUser(getContext(), safetyCenterIssueKey.getUserId());
-        executeIssueActionInternal(safetyCenterIssueActionId, userProfileGroup, null);
+        executeIssueActionInternal(safetyCenterIssueActionId, userProfileGroup, /* taskId= */ null);
     }
 
     private void executeIssueActionInternal(
@@ -1134,6 +1156,10 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterDataChangeNotifier.updateDataConsumers(userProfileGroup);
             }
         }
+    }
+
+    private boolean dispatchPendingIntent(PendingIntent pendingIntent) {
+        return dispatchPendingIntent(pendingIntent, /* launchTaskId= */ null);
     }
 
     private boolean dispatchPendingIntent(

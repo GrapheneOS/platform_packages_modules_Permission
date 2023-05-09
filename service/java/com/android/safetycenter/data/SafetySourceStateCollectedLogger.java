@@ -131,10 +131,11 @@ final class SafetySourceStateCollectedLogger {
             }
         }
 
+        Integer severityLevel = maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null;
         SafetyCenterStatsdLogger.writeSafetySourceStateCollected(
                 sourceKey.getSourceId(),
                 isManagedProfile,
-                maxSeverityLevel > Integer.MIN_VALUE ? maxSeverityLevel : null,
+                severityLevel,
                 openIssuesCount,
                 dismissedIssuesCount,
                 getDuplicateCount(sourceKey),

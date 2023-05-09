@@ -119,7 +119,9 @@ final class AndroidLockScreenFix {
                                 safetySourceStatus.getSeverityLevel())
                         .setPendingIntent(
                                 overridePendingIntent(
-                                        context, safetySourceStatus.getPendingIntent(), false))
+                                        context,
+                                        safetySourceStatus.getPendingIntent(),
+                                        /* isIconAction= */ false))
                         .setEnabled(safetySourceStatus.isEnabled());
         SafetySourceStatus.IconAction iconAction = safetySourceStatus.getIconAction();
         if (iconAction != null) {
@@ -134,7 +136,8 @@ final class AndroidLockScreenFix {
             Context context, SafetySourceStatus.IconAction iconAction) {
         return new SafetySourceStatus.IconAction(
                 iconAction.getIconType(),
-                overridePendingIntent(context, iconAction.getPendingIntent(), true));
+                overridePendingIntent(
+                        context, iconAction.getPendingIntent(), /* isIconAction= */ true));
     }
 
     private static SafetySourceIssue overrideTiramisuSafetySourceIssue(
@@ -163,7 +166,8 @@ final class AndroidLockScreenFix {
         return new SafetySourceIssue.Action.Builder(
                         action.getId(),
                         action.getLabel(),
-                        overridePendingIntent(context, action.getPendingIntent(), false))
+                        overridePendingIntent(
+                                context, action.getPendingIntent(), /* isIconAction= */ false))
                 .setWillResolve(action.willResolve())
                 .setSuccessMessage(action.getSuccessMessage())
                 .build();

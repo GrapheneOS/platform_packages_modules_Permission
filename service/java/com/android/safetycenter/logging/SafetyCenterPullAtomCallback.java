@@ -165,7 +165,8 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
 
                 int[] managedIds = userProfileGroup.getManagedRunningProfilesUserIds();
                 for (int k = 0; k < managedIds.length; k++) {
-                    writeSafetySourceStateCollectedAtomLocked(loggableSource, managedIds[k], true);
+                    writeSafetySourceStateCollectedAtomLocked(
+                            loggableSource, managedIds[k], /* isUserManaged= */ true);
                 }
             }
         }
