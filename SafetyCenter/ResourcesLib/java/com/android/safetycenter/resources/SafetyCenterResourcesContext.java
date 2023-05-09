@@ -290,6 +290,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /** Retrieve assets held in the Safety Center resources APK. */
     @Override
+    @Nullable
     public AssetManager getAssets() {
         if (mAssetsFromApk == null) {
             Context resourcesApkContext = getResourcesApkContext();
@@ -302,6 +303,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /** Retrieve resources held in the Safety Center resources APK. */
     @Override
+    @Nullable
     public Resources getResources() {
         if (mResourcesFromApk == null) {
             Context resourcesApkContext = getResourcesApkContext();
@@ -314,6 +316,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
 
     /** Retrieve theme held in the Safety Center resources APK. */
     @Override
+    @Nullable
     public Resources.Theme getTheme() {
         if (mThemeFromApk == null) {
             Context resourcesApkContext = getResourcesApkContext();
@@ -366,9 +369,7 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         return null;
     }
 
-    /**
-     * Gets a color by resource name
-     */
+    /** Gets a color by resource name */
     @ColorInt
     @Nullable
     public Integer getColorByName(String name) {

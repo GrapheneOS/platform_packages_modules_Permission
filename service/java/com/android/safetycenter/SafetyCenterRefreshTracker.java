@@ -134,12 +134,14 @@ public final class SafetyCenterRefreshTracker {
      */
     void reportSourceRefreshesInFlight(
             String refreshBroadcastId, List<String> sourceIds, @UserIdInt int userId) {
-        if (!checkRefreshInProgress("reportSourceRefreshesInFlight", refreshBroadcastId)) {
+        RefreshInProgress refreshInProgress =
+                getRefreshInProgressWithId("reportSourceRefreshesInFlight", refreshBroadcastId);
+        if (refreshInProgress == null) {
             return;
         }
         for (int i = 0; i < sourceIds.size(); i++) {
             SafetySourceKey key = SafetySourceKey.of(sourceIds.get(i), userId);
-            mRefreshInProgress.markSourceRefreshInFlight(key);
+            refreshInProgress.markSourceRefreshInFlight(key);
         }
     }
 
@@ -160,14 +162,16 @@ public final class SafetyCenterRefreshTracker {
             @UserIdInt int userId,
             boolean successful,
             boolean dataChanged) {
-        if (!checkRefreshInProgress("reportSourceRefreshCompleted", refreshBroadcastId)) {
+        RefreshInProgress refreshInProgress =
+                getRefreshInProgressWithId("reportSourceRefreshCompleted", refreshBroadcastId);
+        if (refreshInProgress == null) {
             return false;
         }
 
         SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
         Duration duration =
-                mRefreshInProgress.markSourceRefreshComplete(sourceKey, successful, dataChanged);
-        int refreshReason = mRefreshInProgress.getReason();
+                refreshInProgress.markSourceRefreshComplete(sourceKey, successful, dataChanged);
+        int refreshReason = refreshInProgress.getReason();
         int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
         if (duration != null) {
@@ -182,19 +186,19 @@ public final class SafetyCenterRefreshTracker {
                     dataChanged);
         }
 
-        if (!mRefreshInProgress.isComplete()) {
+        if (!refreshInProgress.isComplete()) {
             return false;
         }
 
-        Log.v(TAG, "Refresh with id: " + mRefreshInProgress.getId() + " completed");
+        Log.v(TAG, "Refresh with id: " + refreshInProgress.getId() + " completed");
         int wholeResult =
-                toSystemEventResult(/* success= */ !mRefreshInProgress.hasAnyTrackedSourceErrors());
+                toSystemEventResult(/* success= */ !refreshInProgress.hasAnyTrackedSourceErrors());
         SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
                 requestType,
-                mRefreshInProgress.getDurationSinceStart(),
+                refreshInProgress.getDurationSinceStart(),
                 wholeResult,
                 refreshReason,
-                mRefreshInProgress.hasAnyTrackedSourceDataChanged());
+                refreshInProgress.hasAnyTrackedSourceDataChanged());
         mRefreshInProgress = null;
         return true;
     }
@@ -300,33 +304,40 @@ public final class SafetyCenterRefreshTracker {
      */
     @Nullable
     private RefreshInProgress clearRefreshInternal() {
-        if (mRefreshInProgress == null) {
+        RefreshInProgress refreshToClear = mRefreshInProgress;
+        if (refreshToClear == null) {
             Log.v(TAG, "Clear refresh called but no refresh in progress");
             return null;
         }
 
-        RefreshInProgress refreshToClear = mRefreshInProgress;
         Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshToClear.getId());
         mRefreshInProgress = null;
         return refreshToClear;
     }
 
     /**
-     * Returns {@code true} if there is currently a refresh in progress with the given ID, or logs a
-     * helpful warning and returns {@code false} if not.
+     * Returns the current {@link RefreshInProgress} if it has the given ID, or logs and returns
+     * {@code null} if not.
      */
-    private boolean checkRefreshInProgress(String methodName, String refreshBroadcastId) {
-        if (mRefreshInProgress == null || !mRefreshInProgress.getId().equals(refreshBroadcastId)) {
-            Log.w(
+    @Nullable
+    private RefreshInProgress getRefreshInProgressWithId(
+            String methodName, String refreshBroadcastId) {
+        RefreshInProgress refreshInProgress = mRefreshInProgress;
+        if (refreshInProgress == null || !refreshInProgress.getId().equals(refreshBroadcastId)) {
+            Log.i(
                     TAG,
                     methodName
                             + " called for invalid refresh broadcast id: "
                             + refreshBroadcastId
                             + "; no such refresh in"
                             + " progress");
-            return false;
+            return null;
         }
-        return true;
+        return refreshInProgress;
+    }
+
+    private boolean checkRefreshInProgress(String methodName, String refreshBroadcastId) {
+        return getRefreshInProgressWithId(methodName, refreshBroadcastId) != null;
     }
 
     /** Dumps state for debugging purposes. */
