@@ -15,19 +15,28 @@
  */
 package com.android.safetycenter.annotations;
 
-import androidx.annotation.NonNull;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PACKAGE;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.CLASS;
 
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
+import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierDefault;
 
 /**
- * Annotation to declare all type usages in the annotated instance as {@link NonNull}, unless
- * explicitly marked with a nullable annotation.
+ * Specifies that all type uses are {@link Nonnull} within the annotated package, unless tagged with
+ * {@code @Nullable}. This helps IDEs flag all potential nullability issues without having to use
+ * {@code @NonNull} annotations.
+ *
+ * <p>This is similar to {@code @ParametersAreNonnullByDefault}, but is also applied more widely
+ * (e.g. to methods return types and fields).
  */
-@NonNull
-@TypeQualifierDefault(ElementType.TYPE_USE)
-@Retention(RetentionPolicy.CLASS)
+@Retention(CLASS)
+@Target(PACKAGE)
+@TypeQualifierDefault({PARAMETER, FIELD, METHOD})
+@Nonnull // Android variant cannot be applied as a type qualifier.
 public @interface NonNullByDefault {}
