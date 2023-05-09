@@ -462,7 +462,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
 
         public void buildAndAddToView(LinearLayout buttonList) {
             MaterialButton button = new MaterialButton(mContextThemeWrapper, null, getStyle());
-            if (SdkLevel.isAtLeastU()) {
+            if (SdkLevel.isAtLeastU() && !mIsLargeScreen) {
                 configureGroupStyleCorners(button);
             }
             setButtonColors(button);
