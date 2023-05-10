@@ -290,6 +290,7 @@
     <style name="TextAppearance.SafetyCenter.IssueSubtitle"
         parent="TextAppearance.SafetyCenter.Medium">
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.SafetyCenter.ActionButton"
@@ -484,7 +485,7 @@
         <item name="layout_constraintStart_toStartOf">@id/issue_card_title</item>
         <item name="layout_constraintTop_toBottomOf">@id/issue_card_title</item>
         <item name="layout_constraintBottom_toTopOf">@id/issue_card_summary</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xsmall</item>
+        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
     </style>
 
     <style name="SafetyCenterIssueSummary"
