@@ -504,7 +504,7 @@ public final class SafetyCenterDataManager {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
                 String refreshBroadcastId = safetyEvent.getRefreshBroadcastId();
                 if (refreshBroadcastId == null) {
-                    Log.w(TAG, "No refresh broadcast id in SafetyEvent of type " + type);
+                    Log.w(TAG, "No refresh broadcast id in SafetyEvent of type: " + type);
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
@@ -513,12 +513,12 @@ public final class SafetyCenterDataManager {
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
                 if (safetySourceIssueId == null) {
-                    Log.w(TAG, "No safety source issue id in SafetyEvent of type " + type);
+                    Log.w(TAG, "No safety source issue id in SafetyEvent of type: " + type);
                     return false;
                 }
                 String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
                 if (safetySourceIssueActionId == null) {
-                    Log.w(TAG, "No safety source issue action id in SafetyEvent of type " + type);
+                    Log.w(TAG, "No safety source issue action id in SafetyEvent of type: " + type);
                     return false;
                 }
                 SafetyCenterIssueKey safetyCenterIssueKey =

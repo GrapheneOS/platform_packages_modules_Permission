@@ -78,15 +78,15 @@ public final class SafetyCenterRefreshTracker {
     String reportRefreshInProgress(
             @RefreshReason int refreshReason, UserProfileGroup userProfileGroup) {
         if (mRefreshInProgress != null) {
-            Log.w(TAG, "Replacing an ongoing refresh");
+            Log.i(TAG, "Replacing an ongoing refresh");
         }
 
         String refreshBroadcastId = UUID.randomUUID() + "_" + mRefreshCounter++;
-        Log.v(
+        Log.d(
                 TAG,
-                "Starting a new refresh with refreshReason:"
+                "Starting a new refresh with reason: "
                         + refreshReason
-                        + " refreshBroadcastId:"
+                        + ", and id: "
                         + refreshBroadcastId);
 
         mRefreshInProgress =
@@ -237,7 +237,7 @@ public final class SafetyCenterRefreshTracker {
      */
     void clearRefreshForUser(@UserIdInt int userId) {
         if (mRefreshInProgress == null) {
-            Log.v(TAG, "Clear refresh for user called but no refresh in progress");
+            Log.d(TAG, "Clear refresh for user called but no refresh in progress");
             return;
         }
         if (mRefreshInProgress.clearForUser(userId)) {
@@ -306,11 +306,11 @@ public final class SafetyCenterRefreshTracker {
     private RefreshInProgress clearRefreshInternal() {
         RefreshInProgress refreshToClear = mRefreshInProgress;
         if (refreshToClear == null) {
-            Log.v(TAG, "Clear refresh called but no refresh in progress");
+            Log.d(TAG, "Clear refresh called but no refresh in progress");
             return null;
         }
 
-        Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshToClear.getId());
+        Log.v(TAG, "Clearing refresh with id: " + refreshToClear.getId());
         mRefreshInProgress = null;
         return refreshToClear;
     }
@@ -324,13 +324,7 @@ public final class SafetyCenterRefreshTracker {
             String methodName, String refreshBroadcastId) {
         RefreshInProgress refreshInProgress = mRefreshInProgress;
         if (refreshInProgress == null || !refreshInProgress.getId().equals(refreshBroadcastId)) {
-            Log.i(
-                    TAG,
-                    methodName
-                            + " called for invalid refresh broadcast id: "
-                            + refreshBroadcastId
-                            + "; no such refresh in"
-                            + " progress");
+            Log.i(TAG, methodName + " called with invalid refresh id: " + refreshBroadcastId);
             return null;
         }
         return refreshInProgress;
@@ -435,19 +429,19 @@ public final class SafetyCenterRefreshTracker {
             }
             Log.v(
                     TAG,
-                    "Refresh started for sourceId:"
-                            + safetySourceKey.getSourceId()
-                            + " userId:"
-                            + safetySourceKey.getUserId()
-                            + " with refreshBroadcastId:"
+                    "Refresh with id: "
                             + mId
-                            + " at currentElapsedMillis:"
+                            + " started for source id: "
+                            + safetySourceKey.getSourceId()
+                            + ", user id: "
+                            + safetySourceKey.getUserId()
+                            + ", elapsed millis: "
                             + currentElapsedMillis
-                            + " & tracking:"
+                            + ", tracking: "
                             + tracked
                             + ", now "
                             + mSourceRefreshesInFlight.size()
-                            + " tracked sources in flight.");
+                            + " tracked sources in flight");
         }
 
         @Nullable
@@ -464,23 +458,23 @@ public final class SafetyCenterRefreshTracker {
                             : Duration.ofMillis(SystemClock.elapsedRealtime() - startElapsedMillis);
             Log.v(
                     TAG,
-                    "Refresh completed for sourceId:"
-                            + safetySourceKey.getSourceId()
-                            + " userId:"
-                            + safetySourceKey.getUserId()
-                            + " with refreshBroadcastId:"
+                    "Refresh with id: "
                             + mId
-                            + " duration:"
+                            + " completed for source id: "
+                            + safetySourceKey.getSourceId()
+                            + ", user id: "
+                            + safetySourceKey.getUserId()
+                            + ", duration: "
                             + duration
-                            + " successful:"
+                            + ", successful: "
                             + successful
-                            + " dataChanged:"
+                            + ", data changed: "
                             + dataChanged
-                            + " & tracking:"
+                            + ", tracking: "
                             + tracked
-                            + ", "
+                            + ", now "
                             + mSourceRefreshesInFlight.size()
-                            + " tracked sources still in flight.");
+                            + " tracked sources in flight");
             return duration;
         }
 

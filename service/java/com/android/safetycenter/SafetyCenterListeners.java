@@ -67,7 +67,7 @@ final class SafetyCenterListeners {
         try {
             listener.onSafetyCenterDataChanged(safetyCenterData);
         } catch (RemoteException e) {
-            Log.e(TAG, "Error delivering SafetyCenterData to listener", e);
+            Log.w(TAG, "Error delivering SafetyCenterData to listener", e);
         }
     }
 
@@ -81,7 +81,7 @@ final class SafetyCenterListeners {
         try {
             listener.onError(safetyCenterErrorDetails);
         } catch (RemoteException e) {
-            Log.e(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
+            Log.w(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
         }
     }
 

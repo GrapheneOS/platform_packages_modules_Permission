@@ -233,18 +233,18 @@ final class SafetyCenterBroadcastDispatcher {
         if (!doesBroadcastResolve(intent, userHandle)) {
             Log.w(
                     TAG,
-                    "No receiver for intent targeting "
+                    "No receiver for intent targeting: "
                             + intent.getPackage()
-                            + " and user "
-                            + userHandle);
+                            + ", and user id: "
+                            + userHandle.getIdentifier());
             return false;
         }
         Log.v(
                 TAG,
-                "Found receiver for intent targeting "
+                "Found receiver for intent targeting: "
                         + intent.getPackage()
-                        + " and user "
-                        + userHandle);
+                        + ", and user id: "
+                        + userHandle.getIdentifier());
         sendBroadcast(intent, userHandle, SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
         return true;
     }
