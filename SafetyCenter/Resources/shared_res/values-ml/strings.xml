@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"സ്‌കാൻ ചെയ്യുന്നു"</string>
     <string name="loading_summary" msgid="3740846439782713910">"ഉപകരണ ക്രമീകരണം പരിശോധിക്കുന്നു…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"കൊള്ളാം"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"പ്രശ്‌നങ്ങളൊന്നും കണ്ടെത്തിയില്ല"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{നുറുങ്ങ് ലഭ്യമാണ്}other{നുറുങ്ങുകൾ ലഭ്യമാണ്}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"പ്രശ്‌നങ്ങളൊന്നും കണ്ടെത്തിയില്ല"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{നിർദ്ദേശം കാണുക}other{നിർദ്ദേശങ്ങൾ കാണുക}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{എടുത്ത നടപടി}other{എടുത്ത നടപടികൾ}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ക്രമീകരണം അവലോകനം ചെയ്യുക"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ക്രമീകരണ ലിസ്റ്റ് പരിശോധിക്കുക"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"സാധ്യതയുള്ള അപകടസാധ്യതകൾ കണ്ടെത്തി"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"അപകടസാധ്യതകൾ കണ്ടെത്തി"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"അക്കൗണ്ട് അപകടത്തിലായേക്കാം"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"അക്കൗണ്ട് അപകടത്തിലാണ്"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{താഴെയുള്ള മുന്നറിയിപ്പ് കാണുക}other{താഴെയുള്ള മുന്നറിയിപ്പുകൾ കാണുക}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"അക്കൗണ്ട് അപകടത്തിലാണ്"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{മുന്നറിയിപ്പ് കാണുക}other{മുന്നറിയിപ്പുകൾ കാണുക}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"പേജ് തുറക്കാനായില്ല"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"മുന്നറിയിപ്പ് പരിഹരിക്കാനായില്ല"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ക്രമീകരണം റീഫ്രഷ് ചെയ്യാനായില്ല"</string>
