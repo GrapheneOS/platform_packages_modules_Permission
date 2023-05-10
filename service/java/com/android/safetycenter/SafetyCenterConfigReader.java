@@ -138,7 +138,8 @@ public final class SafetyCenterConfigReader {
     public ExternalSafetySource getExternalSafetySource(
             String safetySourceId, String callingPackageName) {
         SafetyCenterConfigInternal currentConfig = getCurrentConfigInternal();
-        if (currentConfig == mConfigInternalFromXml) {
+        SafetyCenterConfigInternal xmlConfig = requireNonNull(mConfigInternalFromXml);
+        if (currentConfig == xmlConfig) {
             // No override, access source directly.
             return currentConfig.getExternalSafetySources().get(safetySourceId);
         }
@@ -146,7 +147,7 @@ public final class SafetyCenterConfigReader {
         ExternalSafetySource externalSafetySourceInTestConfig =
                 currentConfig.getExternalSafetySources().get(safetySourceId);
         ExternalSafetySource externalSafetySourceInRealConfig =
-                mConfigInternalFromXml.getExternalSafetySources().get(safetySourceId);
+                xmlConfig.getExternalSafetySources().get(safetySourceId);
 
         if (externalSafetySourceInTestConfig != null
                 && Objects.equals(

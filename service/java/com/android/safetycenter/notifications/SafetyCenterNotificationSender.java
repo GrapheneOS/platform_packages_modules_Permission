@@ -188,7 +188,6 @@ public final class SafetyCenterNotificationSender {
         NotificationManager notificationManager = getNotificationManagerForUser(userId);
 
         if (notificationManager == null) {
-            Log.w(TAG, "Could not retrieve NotificationManager for user " + userId);
             return;
         }
 
@@ -231,7 +230,6 @@ public final class SafetyCenterNotificationSender {
         NotificationManager notificationManager = getNotificationManagerForUser(userId);
 
         if (notificationManager == null) {
-            Log.w(TAG, "Could not retrieve NotificationManager for user " + userId);
             return;
         }
 
@@ -266,9 +264,12 @@ public final class SafetyCenterNotificationSender {
         // Loop in reverse index order to be able to remove entries while iterating
         for (int i = mNotifiedIssues.size() - 1; i >= 0; i--) {
             SafetyCenterIssueKey issueKey = mNotifiedIssues.keyAt(i);
-            cancelNotificationFromSystem(
-                    getNotificationManagerForUser(issueKey.getUserId()),
-                    getNotificationTag(issueKey));
+            int userId = issueKey.getUserId();
+            NotificationManager notificationManager = getNotificationManagerForUser(userId);
+            if (notificationManager == null) {
+                continue;
+            }
+            cancelNotificationFromSystem(notificationManager, getNotificationTag(issueKey));
             mNotifiedIssues.removeAt(i);
         }
     }
@@ -360,7 +361,8 @@ public final class SafetyCenterNotificationSender {
     private boolean canNotifyDelayedIssueNow(SafetyCenterIssueKey issueKey) {
         Duration minNotificationsDelay = SafetyCenterFlags.getNotificationsMinDelay();
         Instant threshold = Instant.now().minus(minNotificationsDelay);
-        return mSafetyCenterDataManager.getIssueFirstSeenAt(issueKey).isBefore(threshold);
+        Instant seenAt = mSafetyCenterDataManager.getIssueFirstSeenAt(issueKey);
+        return seenAt != null && seenAt.isBefore(threshold);
     }
 
     private boolean postNotificationForIssue(
