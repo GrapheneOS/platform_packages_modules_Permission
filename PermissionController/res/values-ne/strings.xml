@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"यो एपले यसले लोकेसन डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"लोकेसन डेटा सेयर गर्नेसम्बन्धी अभ्यास"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"जानकारी सेयर गर्नेसम्बन्धी अभ्यासको स्रोत"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"यो एपका विकासकर्ताले यो एपले जानकारी सेयर गर्ने तरिकाका बारेमा यो डिभाइसका उत्पादकलाई जानकारी दिएका छन्। ती विकासकर्ता समय क्रममा उक्त जानकारी संशोधन गर्न सक्छन्।"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"यो एपका विकासकर्ताले यो एपले जानकारी सेयर गर्ने तरिकाका बारेमा यो डिभाइसका उत्पादकलाई जानकारी दिएका छन्। ती विकासकर्ता भविष्यमा उक्त जानकारी संशोधन गर्न सक्छन्।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"यो एपका विकासकर्ताले यो एपले जानकारी सेयर गर्ने तरिकाका बारेमा "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" लाई जानकारी दिएका छन्। ती विकासकर्ता समय क्रममा उक्त जानकारी संशोधन गर्न सक्छन्।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"यो एपले निम्न प्रयोजनका लागि लोकेसन सेयर गर्न सक्छ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"जानकारी सेयर गर्नेसम्बन्धी अभ्यास फरक हुन सक्छ"</string>
