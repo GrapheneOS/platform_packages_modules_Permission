@@ -294,13 +294,13 @@
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Se apps med fuld adgang"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Adgangen er blevet fjernet"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-system"</string>
-    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Apptilladelserne blev fjernet for at beskytte dine personlige oplysninger"</string>
+    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Apptilladelserne blev fjernet for at beskytte dit privatliv"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> og 1 anden app er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"<xliff:g id="APP_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> andre apps er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"1 app bruges ikke"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps bruges ikke"</string>
-    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Tilladelserne fjernes for at beskytte dine personlige oplysninger. Tryk for at gennemgå."</string>
+    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Tilladelserne fjernes for at beskytte dit privatliv. Tryk for at gennemgå."</string>
     <string name="unused_apps_title" msgid="8589298917717872239">"Apps, du ikke bruger"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Tilladelserne blev fjernet fra"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Tilladelserne fjernes fra"</string>

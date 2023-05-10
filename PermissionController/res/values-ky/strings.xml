@@ -437,14 +437,14 @@
     <string name="incident_report_notification_title" msgid="4635984625656519773">"Мүчүлүштүктөрдү аныктоо дайындары бөлүшүлсүнбү?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> мүчүлүштүктөрдү оңдоо маалыматын жүктөп бергиси келет."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"Мүчүлүштүктөр тууралуу кабарлансынбы?"</string>
-    <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Тутум бир мүчүлүштүктү аныктады."</string>
+    <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Система бир мүчүлүштүктү аныктады."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"\"<xliff:g id="APP_NAME_0">%1$s</xliff:g>\" колдонмосу ушул түзмөктөн <xliff:g id="DATE">%2$s</xliff:g>, саат <xliff:g id="TIME">%3$s</xliff:g> түзүлгөн мүчүлүштүктөр тууралуу отчетту жүктөп берүүнү сурап жатат. Отчетто колдонуучулардын аттары, жүргөн жерлери, түзмөктүн идентификаторлору жана тармактын дайын-даректери сыяктуу түзмөгүңүздөгү же колдонмолоруңуздагы жеке маалымат камтылышы мүмкүн. Андыктан мүчүлүштүктөр тууралуу отчетту ишенимдүү адамдар жана колдонмолор менен гана бөлүшүңүз. \"<xliff:g id="APP_NAME_1">%4$s</xliff:g>\" колдонмосуна мүчүлүштүк тууралуу отчетту жүктөөгө уруксат бересизби?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосундагы мүчүлүштүк тууралуу кабарды иштетүүдө ката кетти. Мүчүлүштүктөрдү аныктоо тууралуу кеңири маалыматтарды бөлүшүү сурамы четке кагылды. Ыңгайсыздык үчүн кечирим сурайбыз."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Уруксат берүү"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Тыюу салынат"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Өркүндөтүлгөн жөндөөлөр"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"Өркүндөтүлгөн жөндөөлөр"</string>
-    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Тутум колдонмолорунун колдонгондугун көрсөтүү"</string>
+    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Система колдонмолорунун колдонгондугун көрсөтүү"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"Системанын уруксаттарды колдонгондугу абал тилкесинде, куралдар тактасында жана башка жерде көрүнөт"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Тандалган колдонмолорду көрсөтүү"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Үн жардамчысынын иштегенин чагылдырган сүрөтчөнү көрсөтүү"</string>
@@ -454,11 +454,11 @@
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн жайгашкан жерин көрүүгө уруксат бересизби?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Колдонмону колдонуп жаткан маалда гана, ал сиздин кайда жүргөнүңүздү билип турат."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн жайгашкан жерин көрүүгө уруксат бересизби?"</string>
-    <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурашы мүмкүн. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
+    <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурашы мүмкүн. "<annotation id="link">"Параметрлерден уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн түзмөктүн жайгашкан жерин пайдалануу мүмкүнчүлүгү өзгөртүлсүнбү?"</string>
-    <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
+    <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Параметрлерден уруксат бериңиз."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай берсинби?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы? "<annotation id="link">"Жөндөөлөрдөн уруксат берүү."</annotation></string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы? "<annotation id="link">"Параметрлерден уруксат берүү."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунда жайгашкан жер болжолдуу эмес, так аныкталсынбы?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн болжолдуу жайгашкан жерин пайдаланууга уруксат берилсинби?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Так"</string>
@@ -495,7 +495,7 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Кайда жүргөнүңүз көрүнүп турат"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT администраторуңуз <xliff:g id="APP_NAME">%s</xliff:g> колдонмосуна кайда жүргөнүңүздү көрүүгө уруксат берип жатат"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Башка уруксаттар"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"Тутум пайдаланган уруксат"</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"Система пайдаланган уруксат"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Системанын колдонмолору гана пайдаланган уруксаттар."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Кошумча уруксаттар"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Колдонмолор аныктаган уруксаттар."</string>
