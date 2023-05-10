@@ -210,7 +210,7 @@ final class AndroidLockScreenFix {
         // This is important because there are scenarios where the Settings app provides different
         // pending intents (e.g. in the work profile), and in this case we shouldn't override them.
         if (isIconAction) {
-            Log.w(
+            Log.i(
                     TAG,
                     "Replacing " + ANDROID_LOCK_SCREEN_SOURCE_ID + " icon action pending intent");
             return PendingIntentFactory.getActivityPendingIntent(
@@ -219,7 +219,7 @@ final class AndroidLockScreenFix {
                     newLockScreenIconActionIntent(settingsPackageName),
                     PendingIntent.FLAG_IMMUTABLE);
         }
-        Log.w(TAG, "Replacing " + ANDROID_LOCK_SCREEN_SOURCE_ID + " entry or issue pending intent");
+        Log.i(TAG, "Replacing " + ANDROID_LOCK_SCREEN_SOURCE_ID + " entry or issue pending intent");
         return PendingIntentFactory.getActivityPendingIntent(
                 settingsPackageContext,
                 ANDROID_LOCK_SCREEN_ENTRY_REQ_CODE,

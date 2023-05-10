@@ -120,13 +120,13 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
     private static SafetyCenterIssueActionId getIssueActionIdExtra(Intent intent) {
         String issueActionIdString = intent.getStringExtra(EXTRA_ISSUE_ACTION_ID);
         if (issueActionIdString == null) {
-            Log.w(TAG, "Received notification action broadcast with null issue action ID");
+            Log.w(TAG, "Received notification action broadcast with null issue action id");
             return null;
         }
         try {
             return SafetyCenterIds.issueActionIdFromString(issueActionIdString);
         } catch (IllegalArgumentException e) {
-            Log.w(TAG, "Could not decode the issue action ID", e);
+            Log.w(TAG, "Could not decode the issue action id", e);
             return null;
         }
     }
@@ -167,17 +167,22 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (!SafetyCenterFlags.getSafetyCenterEnabled()
-                || !SafetyCenterFlags.getNotificationsEnabled()) {
+        if (!SafetyCenterFlags.getSafetyCenterEnabled()) {
+            Log.i(TAG, "Received notification broadcast but Safety Center is disabled");
             return;
         }
 
-        Log.d(TAG, "Received broadcast with action " + intent.getAction());
-        String action = intent.getAction();
-        if (action == null) {
-            Log.w(TAG, "Received broadcast with null action!");
+        if (!SafetyCenterFlags.getNotificationsEnabled()) {
+            Log.i(TAG, "Received notification broadcast but notifications are disabled");
             return;
         }
+
+        String action = intent.getAction();
+        if (action == null) {
+            Log.w(TAG, "Received broadcast with null action");
+            return;
+        }
+        Log.d(TAG, "Received broadcast with action: " + action);
 
         switch (action) {
             case ACTION_NOTIFICATION_DISMISSED:

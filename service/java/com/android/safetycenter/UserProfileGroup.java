@@ -141,9 +141,9 @@ public final class UserProfileGroup {
                         Arrays.copyOf(
                                 managedRunningProfilesUserIds, managedRunningProfilesUserIdsLen));
         if (!userProfileGroup.contains(userId)) {
-            Log.w(
+            Log.i(
                     TAG,
-                    "User id " + userId + " does not belong to " + userProfileGroup,
+                    "User id: " + userId + " does not belong to: " + userProfileGroup,
                     new Exception());
         }
         return userProfileGroup;

@@ -192,7 +192,7 @@ public final class SafetyCenterService extends SystemService {
                                         .getIdentifier(
                                                 "config_enableSafetyCenter", "bool", "android"));
         if (!mDeviceSupportsSafetyCenter) {
-            Log.i(TAG, "Device does not support safety center, safety center will be disabled.");
+            Log.i(TAG, "Device does not support Safety Center, it will be disabled");
         }
     }
 
@@ -394,7 +394,7 @@ public final class SafetyCenterService extends SystemService {
             // search works by adding all the entries very rarely (and relies on filtering them out
             // instead).
             if (!canUseSafetyCenter()) {
-                Log.w(TAG, "Called getSafetyCenterConfig, but Safety Center is not supported");
+                Log.i(TAG, "Called getSafetyCenterConfig, but Safety Center is not supported");
                 return null;
             }
 
@@ -643,7 +643,7 @@ public final class SafetyCenterService extends SystemService {
                         TAG,
                         "Called "
                                 + message
-                                + " with user id "
+                                + " with user id: "
                                 + userId
                                 + ", which does not correspond to an existing user");
                 return false;
@@ -653,7 +653,7 @@ public final class SafetyCenterService extends SystemService {
                         TAG,
                         "Called "
                                 + message
-                                + " with user id "
+                                + " with user id: "
                                 + userId
                                 + ", which is an unsupported user");
                 return false;
@@ -679,7 +679,7 @@ public final class SafetyCenterService extends SystemService {
                         packageManager.getPackageUidAsUser(
                                 packageName, PackageInfoFlags.of(0), userId);
             } catch (NameNotFoundException e) {
-                Log.e(TAG, "packageName=" + packageName + ", not found for userId=" + userId, e);
+                Log.w(TAG, "Package: " + packageName + ", not found for user id: " + userId, e);
                 return false;
             }
             if (callingUid == Process.ROOT_UID || callingUid == Process.SYSTEM_UID) {
@@ -687,9 +687,9 @@ public final class SafetyCenterService extends SystemService {
             }
             if (UserHandle.getAppId(callingUid) != UserHandle.getAppId(actualUid)) {
                 throw new SecurityException(
-                        "packageName="
+                        "Package: "
                                 + packageName
-                                + ", does not belong to callingUid="
+                                + ", does not belong to calling uid: "
                                 + callingUid);
             }
             return true;
@@ -821,11 +821,11 @@ public final class SafetyCenterService extends SystemService {
 
         private void setInitialState() {
             mSafetyCenterEnabled = SafetyCenterFlags.getSafetyCenterEnabled();
-            Log.w(TAG, "SafetyCenter is " + (mSafetyCenterEnabled ? "enabled." : "disabled."));
+            Log.i(TAG, "Safety Center is " + (mSafetyCenterEnabled ? "enabled" : "disabled"));
         }
 
         private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
-            Log.w(TAG, "SafetyCenter is now " + (safetyCenterEnabled ? "enabled." : "disabled."));
+            Log.i(TAG, "Safety Center is now " + (safetyCenterEnabled ? "enabled" : "disabled"));
 
             if (safetyCenterEnabled) {
                 onApiEnabled();
@@ -888,9 +888,7 @@ public final class SafetyCenterService extends SystemService {
                 }
             }
 
-            Log.v(
-                    TAG,
-                    "Cleared refresh with broadcastId:" + mRefreshBroadcastId + " after a timeout");
+            Log.w(TAG, "Timeout for refresh with id: " + mRefreshBroadcastId);
         }
 
         @Override
@@ -1006,26 +1004,26 @@ public final class SafetyCenterService extends SystemService {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (action == null) {
-                Log.w(TAG, "Received broadcast with null action!");
+                Log.w(TAG, "Received broadcast with null action");
                 return;
             }
 
             UserHandle userHandle = intent.getParcelableExtra(Intent.EXTRA_USER, UserHandle.class);
             if (userHandle == null) {
-                Log.w(TAG, "Received " + action + " broadcast missing user extra!");
+                Log.w(TAG, "Received action: " + action + ", but missing user extra");
                 return;
             }
 
             int userId = userHandle.getIdentifier();
+            Log.d(TAG, "Received action: " + action + ", for user id: " + userId);
             if (!UserProfileGroup.isSupported(userId, context)) {
                 Log.i(
                         TAG,
-                        "Received broadcast for user id "
+                        "Received broadcast for user id: "
                                 + userId
                                 + ", which is an unsupported user");
                 return;
             }
-            Log.d(TAG, "Received " + action + " broadcast for user " + userId);
 
             switch (action) {
                 case Intent.ACTION_USER_REMOVED:

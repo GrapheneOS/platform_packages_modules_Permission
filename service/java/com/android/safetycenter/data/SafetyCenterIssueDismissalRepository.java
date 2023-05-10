@@ -342,7 +342,7 @@ final class SafetyCenterIssueDismissalRepository {
      * and all following calls won't have any effect.
      */
     void resurfaceHiddenIssueAfterPeriod(SafetyCenterIssueKey safetyCenterIssueKey) {
-        IssueData issueData = getOrWarn(safetyCenterIssueKey, "resurfaceIssueAfterPeriod");
+        IssueData issueData = getOrWarn(safetyCenterIssueKey, "resurfacing hidden issue");
         if (issueData == null) {
             return;
         }
@@ -492,9 +492,9 @@ final class SafetyCenterIssueDismissalRepository {
         try {
             persistedSafetyCenterIssues =
                     SafetyCenterIssuesPersistence.read(getIssueDismissalRepositoryFile());
-            Log.i(TAG, "Safety Center persisted issues read successfully");
+            Log.d(TAG, "Safety Center persisted issues read successfully");
         } catch (PersistenceException e) {
-            Log.e(TAG, "Cannot read Safety Center persisted issues", e);
+            Log.w(TAG, "Cannot read Safety Center persisted issues", e);
         }
 
         load(persistedSafetyCenterIssues);

@@ -192,13 +192,13 @@ final class SafetySourceDataValidator {
                 && !checkCerts(
                         packageName,
                         SafetyCenterFlags.getAdditionalAllowedPackageCerts(packageName))) {
-            Log.e(
+            Log.w(
                     TAG,
-                    "Package "
+                    "Package: "
                             + packageName
-                            + " for source "
+                            + ", for source: "
                             + safetySourceId
-                            + " signed with invalid signature");
+                            + " is signed with invalid signature");
             throw new IllegalArgumentException("Invalid signature for package " + packageName);
         }
     }
@@ -210,7 +210,7 @@ final class SafetySourceDataValidator {
                 byte[] certificate = new Signature(certHash).toByteArray();
                 if (mPackageManager.hasSigningCertificate(
                         packageName, certificate, PackageManager.CERT_INPUT_SHA256)) {
-                    Log.d(TAG, "Package " + packageName + " has expected signature");
+                    Log.v(TAG, "Package: " + packageName + " has expected signature");
                     hasMatchingCert = true;
                 }
             } catch (IllegalArgumentException e) {

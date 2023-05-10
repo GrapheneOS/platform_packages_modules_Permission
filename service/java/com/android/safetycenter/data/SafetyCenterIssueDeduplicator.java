@@ -123,7 +123,7 @@ final class SafetyCenterIssueDeduplicator {
         for (int i = 0; i < dedupBuckets.size(); i++) {
             List<SafetySourceIssueInfo> duplicates = dedupBuckets.valueAt(i);
             if (duplicates.isEmpty()) {
-                Log.w(TAG, "List of duplicates in a dedupBucket is empty");
+                Log.w(TAG, "List of duplicates in a deduplication bucket is empty");
                 continue;
             }
 
