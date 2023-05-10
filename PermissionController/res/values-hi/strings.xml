@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"इस ऐप्लिकेशन ने बताया है कि यह जगह की जानकारी का डेटा, तीसरे पक्ष के साथ शेयर कर सकता है"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"डेटा शेयर करने का तरीका और जगह की जानकारी"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"डेटा शेयर करने के तरीके की जानकारी यहां से मिलती है:"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"डेवलपर ने डिवाइस बनाने वाली कंपनी को यह जानकारी दी है कि ऐप्लिकेशन, उपयोगकर्ताओं के किस तरह के डेटा को शेयर करता है. डेवलपर समय-समय पर इस जानकारी को अपडेट कर सकता है."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"डेवलपर ने डिवाइस बनाने वाली कंपनी को, इस ऐप्लिकेशन के डेटा शेयर करने के तरीकों की जानकारी दी है. डेवलपर समय-समय पर इस जानकारी को अपडेट कर सकता है."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"डेवलपर ने "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" पर, इस ऐप्लिकेशन के डेटा शेयर करने के तरीकों की जानकारी दी है. डेवलपर समय-समय पर इस जानकारी को अपडेट कर सकता है."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ऐप जगह की जानकारी का डेटा इनके लिए शेयर करता है:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेयर करने के अलग-अलग तरीके"</string>

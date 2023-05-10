@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"האפליקציה הזו הצהירה שהיא עשויה לשתף נתוני מיקום עם צדדים שלישיים"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"שיתוף נתונים ומיקום"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"מאיפה מגיע המידע לגבי שיתוף הנתונים"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"המפתחים סיפקו מידע ליצרן המכשיר הזה על האופן שבו האפליקציה משתפת נתונים. המפתחים עשויים לעדכן את המידע הזה עם הזמן."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"מפתחי האפליקציה סיפקו מידע ליצרן המכשיר הזה על האופן שבו האפליקציה משתפת נתונים. המפתחים עשויים לעדכן את המידע הזה עם הזמן."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"‏המפתחים סיפקו מידע על האופן שבו האפליקציה משתפת נתונים כאן: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". המפתחים עשויים לעדכן את המידע הזה עם הזמן."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"האפליקציה עשויה לשתף את נתוני המיקום למטרות הבאות:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"שיתוף הנתונים עשוי להיות שונה"</string>

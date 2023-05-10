@@ -126,7 +126,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Ezezaguna"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Pribatutasun-panela"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Ikusi zein aplikaziok erabili berri dituzten baimenak"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> atzitzeko baimenaren erabilera"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> erabiltzeko baimenaren erabilera"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ikusi beste baimen batzuk"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> eta beste <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -589,8 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datuak partekatzeko moduak eta kokapena"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nondik dator datuak partekatzeko moduei buruzko informazioa?"</string>
-    <!-- no translation found for permission_rationale_data_sharing_device_manufacturer_message (7569261218145653185) -->
-    <skip />
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman dio gailuaren fabrikatzaileari garatzaileak. Baliteke garatzaileak informazio hori eguneratzea denboran zehar."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman du "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" dendan garatzaileak. Baliteke garatzaileak informazio hori eguneratzea denboran zehar."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Baliteke hauetarako partekatzea kokapen-datuak:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak aldatu egiten dira"</string>
