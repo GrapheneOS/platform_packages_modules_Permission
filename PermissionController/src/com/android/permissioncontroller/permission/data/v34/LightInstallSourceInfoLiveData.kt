@@ -27,7 +27,7 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.PackageBroadcastReceiver
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.v34.LightInstallSourceInfo
-import com.android.permissioncontroller.permission.model.livedatatypes.v34.LightInstallSourceInfo.Companion.UNKNOWN_INSTALL_SOURCE
+import com.android.permissioncontroller.permission.model.livedatatypes.v34.LightInstallSourceInfo.Companion.INSTALL_SOURCE_UNAVAILABLE
 import kotlinx.coroutines.Job
 
 /**
@@ -73,12 +73,12 @@ private constructor(
         val lightInstallSourceInfo: LightInstallSourceInfo =
             try {
                 val installSourceInfo = getInstallSourceInfo(packageName)
-                LightInstallSourceInfo(installSourceInfo.initiatingPackageName,
-                    installSourceInfo.packageSource)
+                LightInstallSourceInfo(
+                    installSourceInfo.packageSource, installSourceInfo.initiatingPackageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "InstallSourceInfo for $packageName not found")
                 invalidateSingle(packageName to user)
-                UNKNOWN_INSTALL_SOURCE
+                INSTALL_SOURCE_UNAVAILABLE
             }
         postValue(lightInstallSourceInfo)
     }
