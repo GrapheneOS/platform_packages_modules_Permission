@@ -113,7 +113,7 @@
     <string name="loading" msgid="4789365003890741082">"Läser in …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alla behörigheter"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Andra appbehörigheter"</string>
-    <string name="permission_request_title" msgid="8790310151025020126">"Begäran om behörighet"</string>
+    <string name="permission_request_title" msgid="8790310151025020126">"Behörighetsbegäran"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Åtgärder för att installera/avinstallera stöds inte på Wear."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Välj vad du vill ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till"</string>
