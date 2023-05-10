@@ -46,9 +46,22 @@ class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
         runBlockingWithTimeout { errorChannel.send(errorDetails) }
     }
 
-    /** Waits for a [SafetyCenterData] update from SafetyCenter within the given [timeout]. */
-    fun receiveSafetyCenterData(timeout: Duration = TIMEOUT_LONG) =
-        runBlockingWithTimeout(timeout) { dataChannel.receive() }
+    /**
+     * Waits for a [SafetyCenterData] update from SafetyCenter within the given [timeout].
+     *
+     * Optionally, a predicate can be used to wait for the [SafetyCenterData] to be [matching].
+     */
+    fun receiveSafetyCenterData(
+        timeout: Duration = TIMEOUT_LONG,
+        matching: (SafetyCenterData) -> Boolean = { true }
+    ): SafetyCenterData =
+        runBlockingWithTimeout(timeout) {
+            var safetyCenterData = dataChannel.receive()
+            while (!matching(safetyCenterData)) {
+                safetyCenterData = dataChannel.receive()
+            }
+            safetyCenterData
+        }
 
     /**
      * Waits for a [SafetyCenterErrorDetails] update from SafetyCenter within the given [timeout].
