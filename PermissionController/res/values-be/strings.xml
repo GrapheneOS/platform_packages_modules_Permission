@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Абагульванне даных і даныя пра месцазнаходжанне"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Адкуль бярэцца інфармацыя пра абагульванне даных"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Распрацоўшчык даў вытворцы прылады інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэтая інфармацыя можа быць зменена распрацоўшчыкам."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Распрацоўшчык перадаў вытворцы прылады інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэта інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Распрацоўшчык дадаў (сюды: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>") інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэтая інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Праграма можа абагульваць геаданыя для наступнага:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Абагульванне даных залежыць ад розных умоў"</string>

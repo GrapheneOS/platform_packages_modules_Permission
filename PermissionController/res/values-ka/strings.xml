@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ამ აპის თანახმად, მან შესაძლოა გაუზიაროს მდებარეობის მონაცემები მესამე მხარეს"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"მონაცემთა გაზიარება და მდებარეობა"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"საიდან მოდის მონაცემთა გაზიარების ინფორმაცია"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"დეველოპერმა მოცემული მოწყობილობის მწარმოებელს მიუთითა ინფორმაცია ამ აპის მიერ ინფორმაციის გაზიარების შესახებ. დეველოპერმა შესაძლოა, დროთა განმავლობაში განაახლოს ეს ინფორმაცია."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"დეველოპერმა მოცემული მოწყობილობის მწარმოებელს მიაწოდა ინფორმაცია ამ აპის მიერ ინფორმაციის გაზიარების შესახებ. დეველოპერმა, შესაძლოა, დროთა განმავლობაში განაახლოს ეს ინფორმაცია."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"დეველოპერმა ინფორმაცია დაურთო "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"-ს ამ აპის მიერ ინფორმაციის გაზიარების შესახებ. დეველოპერმა შესაძლოა, დროთა განმავლობაში განაახლოს ეს ინფორმაცია."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"აპმა შესაძლოა, გაუზიაროს მდებარეობის მონაცემები:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"მონაცემთა გაზიარება განსხვავდება"</string>
