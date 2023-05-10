@@ -26,8 +26,9 @@ import com.android.safetycenter.testing.SafetyCenterActivityLauncher.openPageAnd
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestHelper
-import org.junit.After
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -47,15 +48,11 @@ class SafetyCenterInteractionLoggingHelperTests {
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
+    @get:Rule val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+
     @Before
     fun setUp() {
-        safetyCenterTestHelper.setup()
         SafetyCenterFlags.showSubpages = true
-    }
-
-    @After
-    fun tearDown() {
-        safetyCenterTestHelper.reset()
     }
 
     @Test

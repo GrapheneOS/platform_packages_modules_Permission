@@ -75,6 +75,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withoutExtras
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
@@ -85,7 +86,6 @@ import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
 import org.junit.After
-import org.junit.Before
 import org.junit.ClassRule
 import org.junit.Ignore
 import org.junit.Rule
@@ -102,10 +102,6 @@ class SafetyCenterMultiUsersTest {
     companion object {
         @JvmField @ClassRule @Rule val deviceState: DeviceState = DeviceState()
     }
-
-    @get:Rule val disableAnimationRule = DisableAnimationRule()
-
-    @get:Rule val freezeRotationRule = FreezeRotationRule()
 
     private val context: Context = ApplicationProvider.getApplicationContext()
     private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
@@ -294,16 +290,13 @@ class SafetyCenterMultiUsersTest {
                 emptyList()
             )
 
-    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
-
-    @Before
-    fun enableSafetyCenterBeforeTest() {
-        safetyCenterTestHelper.setup()
-    }
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+    @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
+    @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
 
     @After
     fun clearDataAfterTest() {
-        safetyCenterTestHelper.reset()
         resetQuietMode()
     }
 
