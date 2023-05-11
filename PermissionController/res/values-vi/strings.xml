@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Nhà phát triển nêu rõ ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Chia sẻ dữ liệu và thông tin vị trí"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nguồn cung cấp thông tin về cách thức chia sẻ dữ liệu"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Nhà phát triển đã cung cấp thông tin cho nhà sản xuất thiết bị này về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Nhà phát triển đã cung cấp cho nhà sản xuất thiết bị này thông tin về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nhà phát triển đã cung cấp thông tin cho "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ứng dụng này có thể chia sẻ dữ liệu vị trí cho:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nhiều cách thức chia sẻ dữ liệu"</string>

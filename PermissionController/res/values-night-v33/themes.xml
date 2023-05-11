@@ -42,6 +42,12 @@
 
         <item name="colorScShieldAccent">@color/sc_shield_accent</item>
 
+
+        <item name="scStatusTitleAndSummaryContainerStyle">
+            @style/SafetyCenterStatusTitleAndSummaryContainer.Responsive
+        </item>
+        <item name="scStatusButtonStyle">@style/SafetyCenterStatusButton.Responsive</item>
+
         <!-- Buttons -->
         <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
         <item name="scSecondaryActionButtonStyle">@style/SafetyCenterActionButton.Secondary</item>
