@@ -344,7 +344,11 @@
     <style name="SafetyCenterActionButton.Secondary"
            parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:theme">@style/Theme.MaterialComponents</item>
-        <item name="android:height">56dp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/sc_spacing_xlarge</item>
+        <item name="android:paddingBottom">@dimen/sc_spacing_xlarge</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textAppearance">
@@ -352,6 +356,8 @@
         </item>
         <item name="android:hyphenationFrequency">normalFast</item>
         <item name="android:textColor">?attr/textColorScSecondaryActionButton</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
         <item name="cornerRadius">@dimen/sc_button_corner_radius</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
     </style>
@@ -385,6 +391,9 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
     </style>
 
+    <style name="SafetyCenterStatusTitleAndSummaryContainer.Fixed" />
+    <style name="SafetyCenterStatusTitleAndSummaryContainer.Responsive" />
+
     <style name="SafetyCenterStatusTitle"
           parent="SafetyCenterBaseTextWidget">
         <item name="android:layout_width">wrap_content</item>
@@ -399,7 +408,6 @@
           parent="SafetyCenterBaseTextWidget">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toBottomOf">@id/status_title</item>
         <item name="android:textAppearance">@style/TextAppearance.SafetyCenter.Body</item>
         <item name="android:lineHeight">@dimen/sc_line_height_medium</item>
     </style>
@@ -408,25 +416,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxxlarge</item>
         <item name="backgroundTint">@color/safety_center_button_info</item>
     </style>
 
-    <!-- Overridden for larger screens -->
-    <style name="SafetyCenterStatusButton.ReviewSettings" />
-    <style name="SafetyCenterStatusButton.Rescan" />
+    <style name="SafetyCenterStatusButton.Fixed" />
+    <style name="SafetyCenterStatusButton.Responsive" />
 
-    <style name="SafetyCenterStatusSafetyProtectionView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toBottomOf">@id/rescan_button</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:paddingTop">@dimen/sc_spacing_xxlarge</item>
-        <item name="android:paddingBottom">@dimen/sc_spacing_xxlarge</item>
-    </style>
     <!-- END SAFETY STATUS CARD -->
 
     <style name="SafetyCenterCard.Issue">

@@ -28,8 +28,6 @@
     <color name="sc_accent_primary_light">@android:color/system_primary_light</color>
     <color name="sc_accent_primary_dark">@android:color/system_primary_dark</color>
 
-    <color name="sc_qs_background_color">@android:color/system_surface_container_dark</color>
-
     <color name="sc_status_info_light">@color/sc_semantic_green</color>
 
     <color name="sc_status_info_dark">@color/gm_green_400</color>

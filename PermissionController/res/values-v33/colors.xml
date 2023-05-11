@@ -24,8 +24,6 @@
     <color name="sc_accent_primary_light">@android:color/system_accent1_100</color>
     <color name="sc_accent_primary_dark">@android:color/system_accent1_100</color>
 
-    <color name="sc_qs_background_color">@android:color/background_dark</color>
-
     <color name="sc_status_info_light">@color/gm_green_600</color>
     <color name="sc_status_recommend_light">@color/gm_yellow_600</color>
     <color name="sc_status_warn_light">@color/gm_red_600</color>
