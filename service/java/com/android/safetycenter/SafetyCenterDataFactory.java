@@ -23,7 +23,6 @@ import static com.android.safetycenter.internaldata.SafetyCenterBundles.STATIC_E
 
 import static java.util.Collections.emptyList;
 
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -50,6 +49,7 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;

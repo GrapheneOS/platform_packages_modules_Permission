@@ -23,7 +23,6 @@ import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVE
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.ElapsedRealtimeLong;
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.os.SystemClock;
@@ -34,6 +33,7 @@ import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;

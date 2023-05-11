@@ -18,7 +18,6 @@ package com.android.safetycenter.notifications;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.Nullable;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,6 +26,7 @@ import android.content.IntentFilter;
 import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;

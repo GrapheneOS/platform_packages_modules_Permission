@@ -22,7 +22,6 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_USER_HANDLE;
 
 import android.annotation.ColorInt;
-import android.annotation.Nullable;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -37,6 +36,7 @@ import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.text.TextUtils;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
