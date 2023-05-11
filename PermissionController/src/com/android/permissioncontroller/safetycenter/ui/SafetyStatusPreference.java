@@ -27,7 +27,6 @@ import android.os.Looper;
 import android.safetycenter.SafetyCenterStatus;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +36,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
 import com.android.permissioncontroller.safetycenter.ui.view.StatusCardView;
@@ -90,7 +88,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
         updateStatusText(statusCardView.getTitleView(), statusCardView.getSummaryView());
 
-        configureSafetyProtectionView(statusCardView, context);
         mFirstBind = false;
     }
 
@@ -119,31 +116,6 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     private void updateButtonState(StatusCardView statusCardView) {
         if (mStatus == null) return; // Shouldn't happen in practice but we do it for null safety.
         statusCardView.showButtons(mStatus);
-    }
-
-    private void configureSafetyProtectionView(StatusCardView statusCardView, Context context) {
-        View safetyProtectionSectionView =
-                statusCardView.findViewById(R.id.safety_protection_section_view);
-        if (KotlinUtils.INSTANCE.shouldShowSafetyProtectionResources(context)) {
-            // Hide the Safety Protection branding if there are any issue cards
-            safetyProtectionSectionView.setVisibility(
-                    mStatus.hasIssues() ? View.GONE : View.VISIBLE);
-        }
-        if (safetyProtectionSectionView.getVisibility() == View.GONE) {
-            statusCardView.setPaddingRelative(
-                    statusCardView.getPaddingStart(),
-                    statusCardView.getPaddingTop(),
-                    statusCardView.getPaddingEnd(),
-                    /* bottom= */ getContext()
-                            .getResources()
-                            .getDimensionPixelSize(R.dimen.sc_card_margin_bottom));
-        } else {
-            statusCardView.setPaddingRelative(
-                    statusCardView.getPaddingStart(),
-                    statusCardView.getPaddingTop(),
-                    statusCardView.getPaddingEnd(),
-                    /* bottom= */ 0);
-        }
     }
 
     private void updateStatusText(TextView title, TextView summary) {
