@@ -19,7 +19,6 @@ package com.android.safetycenter;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 
-import android.annotation.Nullable;
 import android.os.Binder;
 import android.provider.DeviceConfig;
 import android.safetycenter.SafetySourceData;
@@ -27,6 +26,7 @@ import android.safetycenter.SafetySourceIssue;
 import android.util.ArraySet;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;

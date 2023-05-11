@@ -22,7 +22,6 @@ import static android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTIO
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
 import android.annotation.IntDef;
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,6 +35,7 @@ import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;

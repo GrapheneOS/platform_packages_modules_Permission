@@ -73,7 +73,6 @@ import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SE
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
 
 import android.annotation.IntDef;
-import android.annotation.Nullable;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.safetycenter.SafetyCenterStatus;
@@ -82,6 +81,7 @@ import android.safetycenter.SafetySourceData;
 import android.util.Log;
 import android.util.StatsEvent;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.PermissionStatsLog;

@@ -35,7 +35,6 @@ import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriend
 
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.app.StatsManager;
@@ -69,6 +68,7 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;

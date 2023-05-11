@@ -18,7 +18,6 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
@@ -30,6 +29,7 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.util.SparseArray;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.io.PrintWriter;
