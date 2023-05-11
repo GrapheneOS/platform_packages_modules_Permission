@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Le-app ithi ingabelana ngedatha yendawo nezinkampani engahlangene ngqo"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Ukwabelana ngedatha nendawo"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Lapho ulwazi lokwabelana ngedatha luvela khona"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Unjniyela unikezele ngolwazi kumkhiqizi wale divayisi mayelana nokuthi le app yabelana kanjani ngedatha. Unjiniyela angase abuyekeze lolu lwazi ngokuhamba kwesikhathi."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Unjiniyela unikezele ngolwazi kumkhiqizi wale divayisi mayelana nokuthi le app yabelana kanjani ngedatha. Unjiniyela angase abuyekeze lolu lwazi ngokuhamba kwesikhathi."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Unjiniyela unikeze ulwazi ku-"<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" mayelana nokuthi le-app yabelana kanjani ngedatha. Unjiniyela angase abuyekeze lolu lwazi ngokuhamba kwesikhathi."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Le app ingabelana ngedatha yendawo ye-:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Ukwabelana ngedatha kuyahlukahluka"</string>

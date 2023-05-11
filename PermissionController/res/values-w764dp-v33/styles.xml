@@ -14,51 +14,27 @@
   ~ limitations under the License.
   -->
 
-<resources
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- START SAFETY STATUS CARD -->
-    <!-- Overrides to width, constraints and padding to move button location on large screens. -->
-    <style name="SafetyCenterStatusTitleAndSummaryContainer" parent="android:Widget.DeviceDefault">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
-        <item name="android:layout_marginStart">@dimen/sc_spacing_large</item>
-        <item name="android:layout_marginEnd">@dimen/sc_spacing_xxxlarge</item>
-        <item name="layout_constraintStart_toEndOf">@id/status_image</item>
-        <item name="layout_constraintEnd_toStartOf">@id/review_settings_button</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
+    <style name="SafetyCenterStatusTitleAndSummaryContainer.Responsive">
+        <item name="layout_constraintEnd_toStartOf">@id/sc_status_buttons_start_barrier</item>
+        <!-- Clear the base style constraints so they don't conflict with this style's constraints
+        on the same sides. -->
+        <item name="layout_constraintEnd_toEndOf">@null</item>
     </style>
 
-    <style name="SafetyCenterStatusButton" parent="SafetyCenterActionButton">
+    <style name="SafetyCenterStatusButton.Responsive">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintStart_toEndOf">@id/status_title_and_summary</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
         <item name="android:paddingStart">@dimen/sc_large_screen_button_padding</item>
         <item name="android:paddingEnd">@dimen/sc_large_screen_button_padding</item>
-        <item name="backgroundTint">@color/safety_center_button_info</item>
-    </style>
-
-    <style name="SafetyCenterStatusButton.ReviewSettings">
-        <item name="layout_constraintStart_toEndOf">@id/status_title_and_summary</item>
-        <item name="layout_constraintEnd_toStartOf">@id/rescan_button</item>
-    </style>
-
-    <style name="SafetyCenterStatusButton.Rescan">
-        <item name="layout_constraintStart_toEndOf">@id/review_settings_button</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-    </style>
-
-    <style name="SafetyCenterStatusSafetyProtectionView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintTop_toBottomOf">@id/status_title_and_summary</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:paddingTop">@dimen/sc_spacing_xxlarge</item>
-        <item name="android:paddingBottom">@dimen/sc_spacing_xxlarge</item>
+        <!-- Clear the base style constraints so they don't conflict with this style's constraints
+         on the same sides. -->
+        <item name="layout_constraintTop_toBottomOf">@null</item>
+        <item name="layout_constraintStart_toStartOf">@null</item>
     </style>
 </resources>

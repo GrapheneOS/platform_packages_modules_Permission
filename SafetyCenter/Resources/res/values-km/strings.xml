@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"មិន​ទាន់​មាន​ព័ត៌មាន​នៅ​ឡើយ​ទេ"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"ការចាក់សោឧបករណ៍, ការចាក់សោអេក្រង់, អេក្រង់ចាក់សោ, អេក្រង់ចាក់សោ, ពាក្យសម្ងាត់, កូដ​ PIN, លំនាំ"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"ជីវមាត្រ"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"ស្នាមម្រាមដៃ, ម្រាមដៃ, បញ្ចូលស្នាមម្រាមដៃ, ការដោះសោតាមទម្រង់មុខ, មុខ"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"ស្នាមម្រាមដៃ, ម្រាមដៃ, បញ្ចូលស្នាមម្រាមដៃ, ការដោះសោដោយស្កេនមុខ, មុខ"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"ឯកជនភាព"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"ផ្ទាំងគ្រប់គ្រង ការអនុញ្ញាត ការគ្រប់គ្រង"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព"</string>
