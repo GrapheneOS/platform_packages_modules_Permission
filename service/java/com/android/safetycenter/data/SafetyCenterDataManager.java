@@ -89,7 +89,6 @@ public final class SafetyCenterDataManager {
         mSafetySourceDataRepository =
                 new SafetySourceDataRepository(
                         context,
-                        safetyCenterRefreshTracker,
                         mSafetyCenterInFlightIssueActionRepository,
                         mSafetyCenterIssueDismissalRepository);
         mSafetyCenterIssueRepository =
@@ -255,15 +254,6 @@ public final class SafetyCenterDataManager {
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(safetySourceKey.getUserId());
         }
-    }
-
-    /**
-     * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
-     * is useful e.g. when starting a new broadcast.
-     */
-    public void clearSafetySourceErrors(UserProfileGroup userProfileGroup) {
-        mSafetySourceDataRepository.clearSafetySourceErrors(userProfileGroup);
-        mSafetyCenterIssueRepository.updateIssues(userProfileGroup);
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
