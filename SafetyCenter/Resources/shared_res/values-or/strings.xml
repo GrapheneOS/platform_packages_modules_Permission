@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"ସ୍କାନ କରାଯାଉଛି"</string>
     <string name="loading_summary" msgid="3740846439782713910">"ଡିଭାଇସ ସେଟିଂସ ଯାଞ୍ଚ କରାଯାଉଛି…"</string>
-    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ଠିକ୍ ଥିବା ପରି ଜଣାପଡ଼ୁଛି"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ଠିକ ଥିବା ପରି ଲାଗୁଛି"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"କୌଣସି ସମସ୍ୟା ମିଳିଲା ନାହିଁ"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ସେଟିଂସର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ସେଟିଂସ ତାଲିକା ଯାଞ୍ଚ କରନ୍ତୁ"</string>
