@@ -324,7 +324,7 @@
 
     <style name="SafetyCenterActionButton"
            parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="android:theme">@style/Theme.MaterialComponents</item>
+        <item name="android:theme">?attr/scActionButtonTheme</item>
         <item name="android:minHeight">56dp</item>
         <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_small_screen</item>
         <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_small_screen</item>
@@ -345,7 +345,7 @@
 
     <style name="SecondarySafetyCenterActionButton"
            parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:theme">@style/Theme.MaterialComponents</item>
+        <item name="android:theme">?attr/scActionButtonTheme</item>
         <item name="android:minHeight">56dp</item>
         <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_small_screen</item>
         <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_small_screen</item>
