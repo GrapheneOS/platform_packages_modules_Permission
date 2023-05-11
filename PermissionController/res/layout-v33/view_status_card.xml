@@ -16,6 +16,7 @@
 
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
@@ -27,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/status_title_and_summary"
-        style="@style/SafetyCenterStatusTitleAndSummaryContainer">
+        style="?attr/scStatusTitleAndSummaryContainerStyle">
 
         <TextView
             android:id="@+id/status_title"
@@ -40,19 +41,21 @@
             style="@style/SafetyCenterStatusSummary" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/sc_status_buttons_start_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="review_settings_button,rescan_button" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/review_settings_button"
         android:text="@string/safety_center_review_settings_button"
         android:visibility="gone"
-        style="@style/SafetyCenterStatusButton.ReviewSettings" />
+        style="?attr/scStatusButtonStyle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/rescan_button"
         android:text="@string/safety_center_rescan_button"
-        style="@style/SafetyCenterStatusButton.Rescan" />
-
-    <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
-        android:id="@+id/safety_protection_section_view"
-        android:importantForAccessibility="noHideDescendants"
-        style="@style/SafetyCenterStatusSafetyProtectionView" />
+        style="?attr/scStatusButtonStyle" />
 </merge>
