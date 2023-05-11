@@ -25,7 +25,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData
 import com.google.android.material.button.MaterialButton
 
@@ -51,9 +50,6 @@ constructor(
     val summaryView: TextView by lazy { findViewById(R.id.status_summary) }
     val reviewSettingsButton: MaterialButton by lazy { findViewById(R.id.review_settings_button) }
     val rescanButton: MaterialButton by lazy { findViewById(R.id.rescan_button) }
-    val safetyProtectionSectionView: SafetyProtectionSectionView by lazy {
-        findViewById(R.id.safety_protection_section_view)
-    }
 
     fun showButtons(statusUiData: StatusUiData) {
         rescanButton.isEnabled = !statusUiData.isRefreshInProgress
