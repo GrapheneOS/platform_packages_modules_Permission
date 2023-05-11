@@ -1077,8 +1077,6 @@ public final class SafetyCenterService extends SystemService {
             @Nullable List<String> selectedSafetySourceIds) {
         UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
         synchronized (mApiLock) {
-            mSafetyCenterDataManager.clearSafetySourceErrors(userProfileGroup);
-
             String refreshBroadcastId =
                     mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
                             refreshReason, userProfileGroup, selectedSafetySourceIds);
