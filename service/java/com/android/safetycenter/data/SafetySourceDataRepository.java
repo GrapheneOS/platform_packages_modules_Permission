@@ -181,11 +181,16 @@ final class SafetySourceDataRepository {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout
-     * and returns {@code true} if this changed the repository's data.
+     * Marks the given {@link SafetySourceKey} as having timed out during a refresh, and returns
+     * {@code true} if it caused a change to the stored data.
+     *
+     * @param setError whether we should clear the data associated with the source and set an error
      */
-    boolean markSafetySourceRefreshTimedOut(SafetySourceKey sourceKey) {
+    boolean markSafetySourceRefreshTimedOut(SafetySourceKey sourceKey, boolean setError) {
         mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT);
+        if (!setError) {
+            return false;
+        }
         return setSafetySourceError(sourceKey);
     }
 
