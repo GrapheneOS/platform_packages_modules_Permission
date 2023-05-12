@@ -105,7 +105,9 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
             Log.w(TAG, "$sourceGroupId doesn't have any matching footer")
             subpageFooter.setVisible(false)
         }
-
+        // footer is ordered last by default
+        // in order to keep a spacer after the footer, footer needs to be the second from last
+        subpageFooter.setOrder(Int.MAX_VALUE - 2)
         subpageFooter.setSummary(footerText)
     }
 
