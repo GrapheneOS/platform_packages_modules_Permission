@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"स्कॅन करत आहे"</string>
     <string name="loading_summary" msgid="3740846439782713910">"डिव्हाइस सेटिंग्ज तपासत आहे…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"चांगले दिसते आहे"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"कोणत्‍याही समस्‍या आढळल्‍या नाहीत"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{टीप उपलब्ध}other{टीपा उपलब्ध}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"कोणत्याही समस्या आढळल्या नाहीत"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{शिफारस पहा}other{शिफारशी पहा}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{कृती केली}other{कृती केल्या}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"सेटिंग्जचे पुनरावलोकन करा"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"सेटिंग्जची सूची तपासा"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"संभाव्य धोके आढळले"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"धोके आढळले"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"खाते धोक्यात असू शकते"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"खाते धोक्यात आहे"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{सूचना खाली पहा}other{सूचना खाली पहा}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"खाते धोक्यात आहे"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{सूचना पहा}other{सूचना पहा}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"पेज उघडता आले नाही"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"इशाऱ्याचे निराकरण करता आले नाही"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"सेटिंग्ज रिफ्रेश करता आली नाही"</string>
