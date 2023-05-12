@@ -246,11 +246,14 @@ public final class SafetyCenterDataManager {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout.
+     * Marks the given {@link SafetySourceKey} as having timed out during a refresh.
+     *
+     * @param setError whether we should clear the data associated with the source and set an error
      */
-    public void markSafetySourceRefreshTimedOut(SafetySourceKey safetySourceKey) {
+    public void markSafetySourceRefreshTimedOut(SafetySourceKey safetySourceKey, boolean setError) {
         boolean dataUpdated =
-                mSafetySourceDataRepository.markSafetySourceRefreshTimedOut(safetySourceKey);
+                mSafetySourceDataRepository.markSafetySourceRefreshTimedOut(
+                        safetySourceKey, setError);
         if (dataUpdated) {
             mSafetyCenterIssueRepository.updateIssues(safetySourceKey.getUserId());
         }

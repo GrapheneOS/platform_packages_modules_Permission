@@ -854,10 +854,15 @@ public final class SafetyCenterService extends SystemService {
     private final class RefreshTimeout implements Runnable {
 
         private final String mRefreshBroadcastId;
+        @RefreshReason private final int mRefreshReason;
         private final UserProfileGroup mUserProfileGroup;
 
-        RefreshTimeout(String refreshBroadcastId, UserProfileGroup userProfileGroup) {
+        RefreshTimeout(
+                String refreshBroadcastId,
+                @RefreshReason int refreshReason,
+                UserProfileGroup userProfileGroup) {
             mRefreshBroadcastId = refreshBroadcastId;
+            mRefreshReason = refreshReason;
             mUserProfileGroup = userProfileGroup;
         }
 
@@ -872,11 +877,12 @@ public final class SafetyCenterService extends SystemService {
                 }
                 boolean showErrorEntriesOnTimeout =
                         SafetyCenterFlags.getShowErrorEntriesOnTimeout();
-                if (showErrorEntriesOnTimeout) {
-                    for (int i = 0; i < stillInFlight.size(); i++) {
-                        mSafetyCenterDataManager.markSafetySourceRefreshTimedOut(
-                                stillInFlight.valueAt(i));
-                    }
+                boolean setError =
+                        showErrorEntriesOnTimeout
+                                && !RefreshReasons.isBackgroundRefresh(mRefreshReason);
+                for (int i = 0; i < stillInFlight.size(); i++) {
+                    mSafetyCenterDataManager.markSafetySourceRefreshTimedOut(
+                            stillInFlight.valueAt(i), setError);
                 }
                 mSafetyCenterDataChangeNotifier.updateDataConsumers(mUserProfileGroup);
                 if (!showErrorEntriesOnTimeout) {
@@ -1085,7 +1091,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             RefreshTimeout refreshTimeout =
-                    new RefreshTimeout(refreshBroadcastId, userProfileGroup);
+                    new RefreshTimeout(refreshBroadcastId, refreshReason, userProfileGroup);
             mSafetyCenterTimeouts.add(
                     refreshTimeout, SafetyCenterFlags.getRefreshSourcesTimeout(refreshReason));
 
