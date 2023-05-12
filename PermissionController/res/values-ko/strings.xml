@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"데이터 공유 및 위치"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"데이터 공유 정보 출처"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"개발자가 이 기기의 제조업체에 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 향후 개발자가 이 정보를 업데이트할 수도 있습니다."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"개발자가 이 기기의 제조업체에 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 시간이 지난 후 개발자가 이 정보를 업데이트할 수도 있습니다."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"개발자가 "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"에게 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 시간이 지난 후 개발자가 이 정보를 업데이트할 수도 있습니다."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"이 앱은 다음 목적으로 위치 데이터를 공유할 수 있습니다."</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"다양한 데이터 공유 방식"</string>

@@ -589,7 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"આ ઍપ દ્વારા જણાવવામાં આવ્યું છે કે તે ત્રીજા પક્ષો સાથે લોકેશન ડેટા શેર કરી શકે છે"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ડેટા શેરિંગ અને લોકેશન"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ડેટા શેરિંગ સંબંધિત માહિતી ક્યાંથી આવે છે"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવા વિશેની માહિતી આ ડિવાઇસના નિર્માતાને પૂરી પાડી છે. સમય જતાં કદાચ ડેવલપર આ માહિતી અપડેટ કરી શકે છે."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવાની રીત વિશેની માહિતી આ ડિવાઇસના નિર્માતાને પૂરી પાડી છે. સમય જતાં કદાચ ડેવલપર આ માહિતી અપડેટ કરી શકે છે."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવા વિશેની માહિતી "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ને પૂરી પાડી છે. સમય જતાં કદાચ ડેવલપર આ માહિતી અપડેટ કરી શકે છે."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"આ ઍપ આ માટે લોકેશન ડેટા શેર કરી શકે છે:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ડેટા શેરિંગમાં ફેરફાર થતો રહે છે"</string>
