@@ -39,4 +39,8 @@
         android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
+    <com.android.permissioncontroller.safetycenter.ui.SpacerPreference
+        android:key="spacer"
+        app:selectable="false" />
+
 </PreferenceScreen>

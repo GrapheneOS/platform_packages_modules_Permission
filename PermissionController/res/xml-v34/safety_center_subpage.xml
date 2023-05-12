@@ -38,4 +38,8 @@
     <com.android.settingslib.widget.FooterPreference
         android:key="subpage_footer"
         app:selectable="false"/>
+
+    <com.android.permissioncontroller.safetycenter.ui.SpacerPreference
+        android:key="subpage_spacer"
+        app:selectable="false"/>
 </PreferenceScreen>
