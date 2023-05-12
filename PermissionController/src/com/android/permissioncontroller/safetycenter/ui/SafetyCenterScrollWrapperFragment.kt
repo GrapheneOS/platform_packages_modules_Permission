@@ -24,18 +24,26 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-internal class SafetyCenterScrollWrapperFragment : Fragment(R.layout.safety_center_scroll_wrapper) {
+internal class SafetyCenterScrollWrapperFragment :
+    Fragment(
+        if (SafetyCenterUiFlags.getShowSubpages()) R.layout.safety_center_non_scroll_wrapper
+        else R.layout.safety_center_scroll_wrapper
+    ) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {
-            childFragmentManager.beginTransaction()
-                    .add(R.id.fragment_container,
-                            SafetyCenterDashboardFragment.newInstance(
-                                    Utils.getOrGenerateSessionId(requireActivity().getIntent()),
-                                    /* isQuickSettingsFragment= */ false))
-                    .commitNow()
+            childFragmentManager
+                .beginTransaction()
+                .add(
+                    R.id.fragment_container,
+                    SafetyCenterDashboardFragment.newInstance(
+                        Utils.getOrGenerateSessionId(requireActivity().getIntent()),
+                        /* isQuickSettingsFragment= */ false
+                    )
+                )
+                .commitNow()
         }
     }
 }
