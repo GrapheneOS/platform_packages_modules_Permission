@@ -72,6 +72,7 @@ import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SE
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_OK;
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE__OVERALL_SEVERITY_LEVEL__SAFETY_SEVERITY_RECOMMENDATION;
 
+import android.annotation.ElapsedRealtimeLong;
 import android.annotation.IntDef;
 import android.annotation.Nullable;
 import android.safetycenter.SafetyCenterManager;
@@ -173,7 +174,7 @@ public final class SafetyCenterStatsdLogger {
             @Nullable SafetyEvent safetyEvent,
             @Nullable @SafetyCenterManager.RefreshReason Integer refreshReason,
             boolean dataChanged,
-            @Nullable Long lastUpdatedElapsedTimeMillis) {
+            @Nullable @ElapsedRealtimeLong Long lastUpdatedElapsedTimeMillis) {
         if (!SafetyCenterFlags.getAllowStatsdLogging()) {
             return;
         }
