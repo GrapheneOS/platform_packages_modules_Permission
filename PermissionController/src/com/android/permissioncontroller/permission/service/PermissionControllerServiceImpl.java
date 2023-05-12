@@ -547,8 +547,6 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
 
         final boolean isManagedProfile = getSystemService(UserManager.class).isManagedProfile();
         DevicePolicyManager dpm = getSystemService(DevicePolicyManager.class);
-        final boolean isOrganizationOwnedDevice = dpm.isOrganizationOwnedDeviceWithManagedProfile();
-
         int numPerms = expandedPermissions.size();
         for (int i = 0; i < numPerms; i++) {
             String permName = expandedPermissions.get(i);
@@ -565,8 +563,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             switch (grantState) {
                 case PERMISSION_GRANT_STATE_GRANTED:
                     if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(perm.getName(),
-                            canAdminGrantSensorsPermissions, isManagedProfile,
-                            isOrganizationOwnedDevice)) {
+                            canAdminGrantSensorsPermissions, isManagedProfile, dpm)) {
                         perm.setPolicyFixed(true);
                         group.grantRuntimePermissions(false, false, new String[]{permName});
                         autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);
