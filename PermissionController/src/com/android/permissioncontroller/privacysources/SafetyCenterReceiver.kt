@@ -100,7 +100,7 @@ class SafetyCenterReceiver(
                 }
             }
 
-            ACTION_BOOT_COMPLETED -> {
+            ACTION_BOOT_COMPLETED, ACTION_CORRECT_SENSOR_PRIVACY -> {
                 updateTileVisibility(context, safetyCenterManager.isSafetyCenterEnabled)
                 if (safetyCenterManager.isSafetyCenterEnabled) {
                     refreshSafetySources(
@@ -172,5 +172,10 @@ class SafetyCenterReceiver(
             return true
         }
         return shouldProcessProfileRequest
+    }
+
+    companion object {
+        private const val ACTION_CORRECT_SENSOR_PRIVACY =
+            "android.safetycenter.action.CORRECT_SENSOR_PRIVACY"
     }
 }
