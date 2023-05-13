@@ -40,9 +40,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.SafetyCenterRefreshTracker;
 import com.android.safetycenter.SafetySourceKey;
-import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
@@ -71,18 +69,15 @@ final class SafetySourceDataRepository {
     private final ArrayMap<SafetySourceKey, Integer> mSourceStates = new ArrayMap<>();
 
     private final Context mContext;
-    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     SafetySourceDataRepository(
             Context context,
-            SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             SafetyCenterInFlightIssueActionRepository safetyCenterInFlightIssueActionRepository,
             SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         mContext = context;
-        mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
     }
@@ -186,11 +181,16 @@ final class SafetySourceDataRepository {
     }
 
     /**
-     * Marks the given {@link SafetySourceKey} as being in an error state due to a refresh timeout
-     * and returns {@code true} if this changed the repository's data.
+     * Marks the given {@link SafetySourceKey} as having timed out during a refresh, and returns
+     * {@code true} if it caused a change to the stored data.
+     *
+     * @param setError whether we should clear the data associated with the source and set an error
      */
-    boolean markSafetySourceRefreshTimedOut(SafetySourceKey sourceKey) {
+    boolean markSafetySourceRefreshTimedOut(SafetySourceKey sourceKey, boolean setError) {
         mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT);
+        if (!setError) {
+            return false;
+        }
         return setSafetySourceError(sourceKey);
     }
 
@@ -206,20 +206,6 @@ final class SafetySourceDataRepository {
                 mSafetySourceErrors.add(safetySourceKey);
         return removingSafetySourceDataChangedSafetyCenterData
                 || addingSafetySourceErrorChangedSafetyCenterData;
-    }
-
-    /**
-     * Clears all safety source errors received so far for the given {@link UserProfileGroup}, this
-     * is useful e.g. when starting a new broadcast.
-     */
-    void clearSafetySourceErrors(UserProfileGroup userProfileGroup) {
-        // Loop in reverse index order to be able to remove entries while iterating.
-        for (int i = mSafetySourceErrors.size() - 1; i >= 0; i--) {
-            SafetySourceKey sourceKey = mSafetySourceErrors.valueAt(i);
-            if (userProfileGroup.contains(sourceKey.getUserId())) {
-                mSafetySourceErrors.removeAt(i);
-            }
-        }
     }
 
     /**

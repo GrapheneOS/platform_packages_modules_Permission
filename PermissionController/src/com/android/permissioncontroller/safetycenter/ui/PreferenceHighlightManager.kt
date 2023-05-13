@@ -74,21 +74,21 @@ internal class PreferenceHighlightManager(private val fragment: PreferenceFragme
 
     /** Restore previously saved instance state from [Bundle] */
     fun restoreState(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
+        if (!SafetyCenterUiFlags.getShowSubpages() || savedInstanceState == null) {
             return
         }
 
-        if (!SafetyCenterUiFlags.getShowSubpages()) {
-            preferenceHighlighted = savedInstanceState.getBoolean(SAVE_HIGHLIGHTED_KEY, false)
-        }
+        preferenceHighlighted = savedInstanceState.getBoolean(SAVE_HIGHLIGHTED_KEY, false)
     }
 
     /** Save current instance state to provided [Bundle] */
     fun saveState(outState: Bundle) {
         if (!SafetyCenterUiFlags.getShowSubpages()) {
-            val highlightRequested = preferenceGroupAdapter?.isHighlightRequested
-            highlightRequested?.let { outState.putBoolean(SAVE_HIGHLIGHTED_KEY, it) }
+            return
         }
+
+        val highlightRequested = preferenceGroupAdapter?.isHighlightRequested
+        highlightRequested?.let { outState.putBoolean(SAVE_HIGHLIGHTED_KEY, it) }
     }
 
     /** Scrolls to a particular preference in the recycler view and highlights it */
