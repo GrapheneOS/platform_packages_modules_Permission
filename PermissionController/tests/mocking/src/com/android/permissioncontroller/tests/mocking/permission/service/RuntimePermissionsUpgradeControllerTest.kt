@@ -24,6 +24,7 @@ import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.READ_MEDIA_AUDIO
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
+import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
 import android.Manifest.permission.SEND_SMS
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.app.ActivityManager
@@ -545,6 +546,63 @@ class RuntimePermissionsUpgradeControllerTest {
         verifyGranted(TEST_PKG_NAME, READ_MEDIA_AUDIO)
         verifyGranted(TEST_PKG_NAME, READ_MEDIA_VIDEO)
         verifyGranted(TEST_PKG_NAME, READ_MEDIA_IMAGES)
+    }
+
+    @Test
+    fun userSelectedGrantedIfReadMediaVisualGrantedWhenVersionIs10() {
+        Assume.assumeTrue(SdkLevel.isAtLeastU())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(10)
+        setPackages(
+            Package(TEST_PKG_NAME,
+                Permission(READ_MEDIA_VIDEO, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_IMAGES, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_VISUAL_USER_SELECTED, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyGranted(TEST_PKG_NAME, READ_MEDIA_VISUAL_USER_SELECTED)
+    }
+
+    @Test
+    fun userSelectedNotGrantedIfDeviceNotUpgradingWhenVersionIs10() {
+        Assume.assumeTrue(SdkLevel.isAtLeastU())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(false)
+        setInitialDatabaseVersion(10)
+        setPackages(
+            Package(TEST_PKG_NAME,
+                Permission(READ_MEDIA_VIDEO, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_IMAGES, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_VISUAL_USER_SELECTED, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyNotGranted(TEST_PKG_NAME, READ_MEDIA_VISUAL_USER_SELECTED)
+    }
+
+    @Test
+    fun userSelectedNotGrantedIfReadMediaVisualNotGrantedWhenVersionIs10() {
+        Assume.assumeTrue(SdkLevel.isAtLeastU())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(false)
+        setInitialDatabaseVersion(10)
+        setPackages(
+            Package(TEST_PKG_NAME,
+                Permission(READ_MEDIA_VIDEO, isGranted = false, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_IMAGES, isGranted = false, flags = FLAG_PERMISSION_USER_SET),
+                Permission(READ_MEDIA_VISUAL_USER_SELECTED, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyNotGranted(TEST_PKG_NAME, READ_MEDIA_VISUAL_USER_SELECTED)
     }
 
     @After

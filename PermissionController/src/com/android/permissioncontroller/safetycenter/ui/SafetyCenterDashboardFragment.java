@@ -41,6 +41,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 
@@ -65,6 +66,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
     private static final String ISSUES_GROUP_KEY = "issues_group";
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
+    private static final String SPACER_KEY = "spacer";
 
     private SafetyStatusPreference mSafetyStatusPreference;
     private final CollapsableGroupCardHelper mCollapsableGroupCardHelper =
@@ -116,6 +118,8 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
             mEntriesGroup = null;
             getPreferenceScreen().removePreference(mStaticEntriesGroup);
             mStaticEntriesGroup = null;
+            Preference spacerPreference = getPreferenceScreen().findPreference(SPACER_KEY);
+            getPreferenceScreen().removePreference(spacerPreference);
         }
         getSafetyCenterViewModel().getStatusUiLiveData().observe(this, this::updateStatus);
 

@@ -18,13 +18,13 @@ package com.android.permissioncontroller.permission.utils.v31;
 
 import android.Manifest;
 import android.app.admin.DevicePolicyManager;
+import android.app.admin.ManagedSubscriptionsPolicy;
 import android.content.Context;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.ArraySet;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.permissioncontroller.permission.utils.Utils;
 
 /**
  * A class for dealing with permissions that the admin may not grant in certain configurations.
@@ -56,16 +56,6 @@ public final class AdminRestrictedPermissionsUtils {
     }
 
     /**
-     * A set of permissions that the non-organization owned managed Profile Owner cannot grant.
-     */
-    private static final ArraySet<String> MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS =
-            new ArraySet<>();
-
-    static {
-        MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.add(Manifest.permission.READ_SMS);
-    }
-
-    /**
      * Returns true if the admin may grant this permission, false otherwise.
      */
     public static boolean mayAdminGrantPermission(Context context, String permission, int userId) {
@@ -75,10 +65,8 @@ public final class AdminRestrictedPermissionsUtils {
         Context userContext = context.createContextAsUser(UserHandle.of(userId), /* flags= */0);
         DevicePolicyManager dpm = userContext.getSystemService(DevicePolicyManager.class);
         UserManager um = userContext.getSystemService(UserManager.class);
-        if (um.isManagedProfile(userId)
-                && MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.contains(permission)
-                && !(SdkLevel.isAtLeastU() && dpm.isOrganizationOwnedDeviceWithManagedProfile())) {
-            return false;
+        if (um.isManagedProfile(userId) && Manifest.permission.READ_SMS.equals(permission)) {
+            return mayManagedProfileAdminGrantReadSms(dpm);
         }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
@@ -92,18 +80,23 @@ public final class AdminRestrictedPermissionsUtils {
      */
     public static boolean mayAdminGrantPermission(String permission,
             boolean canAdminGrantSensorsPermissions, boolean isManagedProfile,
-            boolean isOrganizationOwnedDevice) {
+            DevicePolicyManager dpm) {
         if (!SdkLevel.isAtLeastS()) {
             return true;
         }
-        if (isManagedProfile && MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.contains(permission)
-                && !(SdkLevel.isAtLeastU() && isOrganizationOwnedDevice)) {
-            return false;
+        if (isManagedProfile && Manifest.permission.READ_SMS.equals(permission)) {
+            return mayManagedProfileAdminGrantReadSms(dpm);
         }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
         }
 
         return canAdminGrantSensorsPermissions;
+    }
+
+    private static boolean mayManagedProfileAdminGrantReadSms(DevicePolicyManager dpm) {
+        return SdkLevel.isAtLeastU() && dpm.isOrganizationOwnedDeviceWithManagedProfile()
+                && dpm.getManagedSubscriptionsPolicy().getPolicyType()
+                == ManagedSubscriptionsPolicy.TYPE_ALL_MANAGED_SUBSCRIPTIONS;
     }
 }

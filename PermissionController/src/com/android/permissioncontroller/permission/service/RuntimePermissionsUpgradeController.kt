@@ -42,6 +42,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPlatformPermissionNamesOfGroup
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getRuntimePlatformPermissionNames
 import com.android.permissioncontroller.permission.utils.application
@@ -55,7 +56,9 @@ internal object RuntimePermissionsUpgradeController {
     private val LOG_TAG = RuntimePermissionsUpgradeController::class.java.simpleName
 
     // The latest version of the runtime permissions database
-    private val LATEST_VERSION = if (SdkLevel.isAtLeastT()) {
+    private val LATEST_VERSION = if (SdkLevel.isAtLeastU()) {
+        11
+    } else if (SdkLevel.isAtLeastT()) {
         10
     } else {
         9
@@ -134,6 +137,7 @@ internal object RuntimePermissionsUpgradeController {
         val needBackgroundAppPermGroups = sdkUpgradedFromP && currentVersion <= 6
         val needAccessMediaAppPermGroups = !isNewUser && currentVersion <= 7
         val needGrantedExternalStorage = currentVersion <= 9 && SdkLevel.isAtLeastT()
+        val needGrantedReadMediaVisual = currentVersion <= 10 && SdkLevel.isAtLeastU()
         val isDeviceUpgrading = context.packageManager.isDeviceUpgrading
 
         // All data needed by this method.
@@ -156,24 +160,17 @@ internal object RuntimePermissionsUpgradeController {
             private val pkgInfoProvider = UserPackageInfosLiveData[myUserHandle()]
 
             /** Provides all {@link LightAppPermGroup} this upgrade needs */
-            private var permGroupProviders: MutableList<LightAppPermGroupLiveData>? = null
+            private var permGroupProviders: MutableSet<LightAppPermGroupLiveData>? = null
 
             /** {@link #permGroupProviders} that already provided a result */
             private val permGroupProvidersDone = mutableSetOf<LightAppPermGroupLiveData>()
 
             init {
                 // First step: Load packages + perm infos
-                // TODO ntmyren: remove once b/154796729 is fixed
-                Log.i("RuntimePermissions", "observing UserPackageInfoLiveData for " +
-                    "${myUserHandle().identifier} in RuntimePermissionsUpgradeController")
                 addSource(pkgInfoProvider) { pkgInfos ->
                     if (pkgInfos != null) {
                         removeSource(pkgInfoProvider)
 
-                        // TODO ntmyren: remove once b/154796729 is fixed
-                        Log.i("RuntimePermissions", "observing " +
-                            "PreinstalledUserPackageInfoLiveData for ${myUserHandle().identifier}" +
-                            " in RuntimePermissionsUpgradeController")
                         addSource(preinstalledPkgInfoProvider) { preinstalledPkgInfos ->
                             if (preinstalledPkgInfos != null) {
                                 removeSource(preinstalledPkgInfoProvider)
@@ -203,15 +200,16 @@ internal object RuntimePermissionsUpgradeController {
                 if (permGroupProviders == null && pkgInfoProvider.value != null) {
                     // Second step: Trigger load of app-perm-groups
 
-                    permGroupProviders = mutableListOf()
+                    permGroupProviders = mutableSetOf()
 
                     // Only load app-perm-groups needed for this upgrade
                     if (needBackgroundAppPermGroups || needAccessMediaAppPermGroups ||
-                        needGrantedExternalStorage) {
+                        needGrantedExternalStorage || needGrantedReadMediaVisual) {
                         for ((pkgName, _, requestedPerms, requestedPermFlags) in
                                 pkgInfoProvider.value!!) {
                             var requestsAccessMediaLocation = false
                             var hasGrantedExternalStorage = false
+                            var hasGrantedReadMediaVisual = false
 
                             for ((perm, flags) in requestedPerms.zip(requestedPermFlags)) {
                                 if (needBackgroundAppPermGroups &&
@@ -220,16 +218,21 @@ internal object RuntimePermissionsUpgradeController {
                                             permission_group.LOCATION, myUserHandle()])
                                 }
 
-                                if (needAccessMediaAppPermGroups || needGrantedExternalStorage) {
+                                if (needAccessMediaAppPermGroups || needGrantedExternalStorage ||
+                                    needGrantedReadMediaVisual) {
                                     if (needAccessMediaAppPermGroups &&
                                         perm == permission.ACCESS_MEDIA_LOCATION) {
                                         requestsAccessMediaLocation = true
                                     }
 
-                                    if (perm == permission.READ_EXTERNAL_STORAGE &&
-                                            flags and PackageInfo.REQUESTED_PERMISSION_GRANTED
-                                            != 0) {
+                                    val isGranted =
+                                        flags and PackageInfo.REQUESTED_PERMISSION_GRANTED != 0
+                                    if (perm == permission.READ_EXTERNAL_STORAGE && isGranted) {
                                         hasGrantedExternalStorage = true
+                                    }
+                                    if (PermissionMapping.getGroupOfPlatformPermission(perm)
+                                        == permission_group.READ_MEDIA_VISUAL && isGranted) {
+                                        hasGrantedReadMediaVisual = true
                                     }
                                 }
                             }
@@ -254,6 +257,10 @@ internal object RuntimePermissionsUpgradeController {
                                     permGroupProviders!!.add(LightAppPermGroupLiveData[pkgName,
                                             accessMediaLocationPermGroup, myUserHandle()])
                                 }
+                            }
+                            if (hasGrantedReadMediaVisual && needGrantedReadMediaVisual) {
+                                permGroupProviders!!.add(LightAppPermGroupLiveData[pkgName,
+                                    permission_group.READ_MEDIA_VISUAL, myUserHandle()])
                             }
                         }
                     }
@@ -536,6 +543,24 @@ internal object RuntimePermissionsUpgradeController {
             currentVersion = 10
         }
 
+        if (currentVersion == 10 && SdkLevel.isAtLeastU()) {
+            // On U, if the app is granted READ_MEDIA_VISUAL, expand the grant to
+            // READ_MEDIA_VISUAL_USER_SELECTED
+            if (isDeviceUpgrading && !isNewUser) {
+                Log.i(LOG_TAG, "Grandfathering READ_MEDIA_VISUAL_USER_SELECTED to apps already " +
+                    "granted visual permissions")
+                val visualAppPermGroups = storageAndMediaAppPermGroups.filter {
+                    it.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU &&
+                        it.permGroupInfo.name == permission_group.READ_MEDIA_VISUAL &&
+                        it.isGranted && it.isUserSet
+                }
+                visualAppPermGroups.forEach {
+                    grants.add(Grant(false, it))
+                }
+            }
+            currentVersion = 11
+        }
+
         // XXX: Add new upgrade steps above this point.
 
         return Triple(currentVersion, exemptions, grants)
@@ -591,7 +616,7 @@ internal object RuntimePermissionsUpgradeController {
         private val isBackground: Boolean,
         /** Group to be granted */
         private val group: LightAppPermGroup,
-        /** Which of th permissions in the group should be granted */
+        /** Which of the permissions in the group should be granted */
         private val permissions: List<String> = group.permissions.keys.toList()
     ) {
         /**

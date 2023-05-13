@@ -38,6 +38,7 @@ import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
 import android.safetycenter.SafetyCenterStaticEntry
@@ -430,6 +431,18 @@ class SafetyCenterManagerTest {
             emptyList()
         )
 
+    private val safetyCenterDataUnknownScanningWithError =
+        SafetyCenterData(
+            safetyCenterStatusUnknownScanning,
+            emptyList(),
+            listOf(
+                SafetyCenterEntryOrGroup(
+                    safetyCenterTestData.safetyCenterEntryError(SINGLE_SOURCE_ID)
+                )
+            ),
+            emptyList()
+        )
+
     private val safetyCenterDataUnknownReviewError =
         SafetyCenterData(
             safetyCenterTestData.safetyCenterStatusUnknown,
@@ -738,7 +751,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_withShowEntriesOnTimeout_stopsShowingErrorWhenTryingAgain() {
+    fun refreshSafetySources_withShowEntriesOnTimeout_keepsShowingErrorUntilClearedBySource() {
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
@@ -746,8 +759,10 @@ class SafetyCenterManagerTest {
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK
         )
-        listener.receiveSafetyCenterData()
-        listener.receiveSafetyCenterData()
+        val scanningData = listener.receiveSafetyCenterData()
+        checkState(scanningData == safetyCenterDataFromConfigScanning)
+        val initialData = listener.receiveSafetyCenterData()
+        checkState(initialData == safetyCenterDataUnknownReviewError)
 
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         SafetySourceReceiver.setResponse(
@@ -759,9 +774,26 @@ class SafetyCenterManagerTest {
         )
 
         val safetyCenterDataWhenTryingAgain = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterDataWhenTryingAgain).isEqualTo(safetyCenterDataFromConfigScanning)
+        assertThat(safetyCenterDataWhenTryingAgain)
+            .isEqualTo(safetyCenterDataUnknownScanningWithError)
         val safetyCenterDataWhenFinishingRefresh = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataWhenFinishingRefresh).isEqualTo(safetyCenterDataOk)
+    }
+
+    @Test
+    fun refreshSafetySources_withShowEntriesOnTimeout_doesntSetErrorForBackgroundRefreshes() {
+        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        SafetyCenterFlags.showErrorEntriesOnTimeout = true
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        val listener = safetyCenterTestHelper.addListener()
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(REFRESH_REASON_OTHER)
+
+        val safetyCenterBeforeTimeout = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterBeforeTimeout.status.refreshStatus)
+            .isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
+        val safetyCenterDataAfterTimeout = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataAfterTimeout).isEqualTo(safetyCenterDataFromConfig)
     }
 
     @Test
