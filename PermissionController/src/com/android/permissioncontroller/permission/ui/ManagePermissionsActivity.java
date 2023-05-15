@@ -153,10 +153,10 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         }
         super.onCreate(savedInstanceState);
 
-        // If this is not a phone (which uses the Navigation component), and there is a previous
-        // instance, re-use its Fragment instead of making a new one.
-        if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this)
-                || DeviceUtils.isWear(this)) && savedInstanceState != null) {
+        // If this is not a phone or a watch (which uses the Navigation component), and there
+        // is a previous instance, re-use its Fragment instead of making a new one.
+        if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this))
+                && savedInstanceState != null) {
             return;
         }
 
