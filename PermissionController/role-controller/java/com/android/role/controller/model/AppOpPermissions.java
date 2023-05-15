@@ -24,6 +24,7 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
+import com.android.role.controller.compat.AppOpsManagerCompat;
 import com.android.role.controller.util.ArrayUtils;
 import com.android.role.controller.util.PackageUtils;
 
@@ -55,7 +56,7 @@ public class AppOpPermissions {
         if (!ArrayUtils.contains(packageInfo.requestedPermissions, appOpPermission)) {
             return false;
         }
-        String appOp = AppOpsManager.permissionToOp(appOpPermission);
+        String appOp = AppOpsManagerCompat.permissionToOp(appOpPermission);
         if (!overrideNonDefaultMode) {
             Integer currentMode = Permissions.getAppOpMode(packageName, appOp, context);
             if (currentMode != null && currentMode != Permissions.getDefaultAppOpMode(appOp)) {
@@ -96,6 +97,7 @@ public class AppOpPermissions {
             case AppOpsManager.OPSTR_ACCESS_NOTIFICATIONS:
             case AppOpsManager.OPSTR_SYSTEM_ALERT_WINDOW:
             case AppOpsManager.OPSTR_WRITE_SETTINGS:
+            case AppOpsManager.OPSTR_GET_USAGE_STATS:
             case AppOpsManager.OPSTR_REQUEST_INSTALL_PACKAGES:
             case AppOpsManager.OPSTR_START_FOREGROUND:
             // This isn't an API but we are deprecating it soon anyway.
