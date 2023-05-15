@@ -32,7 +32,6 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -547,15 +546,6 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         NavGraph graph = inflater.inflate(R.navigation.nav_graph);
         graph.setStartDestination(startDestination);
         navHost.getNavController().setGraph(graph, args);
-    }
-
-    @Override
-    public ActionBar getActionBar() {
-        ActionBar ab = super.getActionBar();
-        if (ab != null) {
-            ab.setHomeActionContentDescription(R.string.back);
-        }
-        return ab;
     }
 
     @Override
