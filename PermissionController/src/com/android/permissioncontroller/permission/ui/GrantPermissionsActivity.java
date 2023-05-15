@@ -651,7 +651,6 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         logGrantPermissionActivityButtons(name, affectedForegroundPermissions, result);
         mViewModel.onPermissionGrantResult(name, affectedForegroundPermissions, result);
-        showNextRequest();
         if (result == CANCELED) {
             setResultAndFinish();
         }
