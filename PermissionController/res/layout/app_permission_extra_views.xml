@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_configure_storage_scopes_link"
+    android:id="@+id/layout_app_permission_extra_views"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
@@ -13,7 +13,7 @@
         android:background="@drawable/list_divider" />
 
     <TextView
-        android:id="@+id/configure_storage_scopes"
+        android:id="@+id/app_permission_extra_link_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
