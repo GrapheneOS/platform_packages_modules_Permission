@@ -1038,7 +1038,7 @@ public final class SafetyCenterService extends SystemService {
                     break;
                 case Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE:
                     removeUser(userId);
-                    // fall through!
+                    break;
                 case Intent.ACTION_USER_ADDED:
                 case Intent.ACTION_MANAGED_PROFILE_ADDED:
                 case Intent.ACTION_MANAGED_PROFILE_AVAILABLE:
