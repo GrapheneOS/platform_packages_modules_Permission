@@ -61,14 +61,14 @@ data class LightPackageInfo(
         pI.permissions?.map { perm -> LightPermInfo(perm) } ?: emptyList(),
         pI.requestedPermissions?.toList() ?: emptyList(),
         pI.requestedPermissionsFlags?.toList() ?: emptyList(),
-        pI.applicationInfo.uid,
-        pI.applicationInfo.targetSdkVersion,
-        pI.applicationInfo.isInstantApp,
-        pI.applicationInfo.enabled,
-        pI.applicationInfo.flags,
+        pI.applicationInfo!!.uid,
+        pI.applicationInfo!!.targetSdkVersion,
+        pI.applicationInfo!!.isInstantApp,
+        pI.applicationInfo!!.enabled,
+        pI.applicationInfo!!.flags,
         pI.firstInstallTime,
         pI.lastUpdateTime,
-        if (SdkLevel.isAtLeastS()) pI.applicationInfo.areAttributionsUserVisible() else false,
+        if (SdkLevel.isAtLeastS()) pI.applicationInfo!!.areAttributionsUserVisible() else false,
         if (SdkLevel.isAtLeastS()) buildAttributionTagsToLabelsMap(pI.attributions) else emptyMap())
 
     /** Permissions which are granted according to the [requestedPermissionsFlags] */

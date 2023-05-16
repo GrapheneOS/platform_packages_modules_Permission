@@ -504,8 +504,8 @@ internal class NotificationListenerCheckInternal(
         sessionId: Long
     ) {
         val pkgLabel =
-            Utils.getApplicationLabel(parentUserContext, pkg.applicationInfo)
-        val uid = pkg.applicationInfo.uid
+            Utils.getApplicationLabel(parentUserContext, pkg.applicationInfo!!)
+        val uid = pkg.applicationInfo!!.uid
 
         val deletePendingIntent =
             getNotificationDeletePendingIntent(parentUserContext, componentName, uid, sessionId)
@@ -697,9 +697,9 @@ internal class NotificationListenerCheckInternal(
             }
             return null
         }
-        val pkgLabel = Utils.getApplicationLabel(parentUserContext, pkgInfo.applicationInfo)
+        val pkgLabel = Utils.getApplicationLabel(parentUserContext, pkgInfo.applicationInfo!!)
         val safetySourceIssueId = getSafetySourceIssueIdFromComponentName(componentName)
-        val uid = pkgInfo.applicationInfo.uid
+        val uid = pkgInfo.applicationInfo!!.uid
 
         val disableNlsPendingIntent =
             getDisableNlsPendingIntent(
