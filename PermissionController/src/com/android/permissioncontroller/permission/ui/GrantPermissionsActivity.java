@@ -541,7 +541,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     }
 
 
-    public static final int CONFIGURE_STORAGE_SCOPES_REQUEST_CODE = 100;
+    public static final int REQ_CODE_SETUP_STORAGE_SCOPES = 100;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -551,7 +551,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         if (requestCode == APP_PERMISSION_REQUEST_CODE && callback != null) {
             callback.accept(data);
             mViewModel.setActivityResultCallback(null);
-        } else if (requestCode == CONFIGURE_STORAGE_SCOPES_REQUEST_CODE) {
+        } else if (requestCode == REQ_CODE_SETUP_STORAGE_SCOPES) {
             if (StorageScopesUtils.storageScopesEnabled(mTargetPackage)) {
                 setResultAndFinish();
             }
