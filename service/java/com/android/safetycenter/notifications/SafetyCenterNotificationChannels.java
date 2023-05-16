@@ -143,15 +143,18 @@ public final class SafetyCenterNotificationChannels {
                 return CHANNEL_ID_RECOMMENDATION;
             case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
                 return CHANNEL_ID_CRITICAL_WARNING;
-            default:
-                Log.w(
-                        TAG,
-                        "Unexpected SafetySourceData.SeverityLevel: "
-                                + issueSeverityLevel
-                                + ", for issue: "
-                                + issue);
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+                Log.w(TAG, "SafetySourceData.SeverityLevel is unspecified for issue: " + issue);
                 return null;
         }
+
+        Log.w(
+                TAG,
+                "Unexpected SafetySourceData.SeverityLevel: "
+                        + issueSeverityLevel
+                        + ", for issue: "
+                        + issue);
+        return null;
     }
 
     /**

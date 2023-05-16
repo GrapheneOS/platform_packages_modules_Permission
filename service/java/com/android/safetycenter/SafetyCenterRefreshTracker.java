@@ -298,7 +298,7 @@ public final class SafetyCenterRefreshTracker {
     }
 
     /**
-     * Clears the any refresh in progress and returns it for the caller to do what it needs to.
+     * Clears the refresh in progress and returns it for the caller to do what it needs to.
      *
      * <p>If there was no refresh in progress then {@code null} is returned.
      */

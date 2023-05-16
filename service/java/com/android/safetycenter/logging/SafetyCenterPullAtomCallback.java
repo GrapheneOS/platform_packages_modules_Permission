@@ -111,8 +111,8 @@ public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback
                 statsEvents.add(
                         createOverallSafetyStateAtomLocked(userProfileGroup, loggableGroups));
                 // The SAFETY_SOURCE_STATE_COLLECTED atoms are written instead of being pulled,
-                // they do not support pull but we want to collect them at the same time as
-                // the above pulled atom.
+                // as they do not support pull. We still want to collect them at the same time as
+                // the above pulled atom, which is why they're written here.
                 writeSafetySourceStateCollectedAtomsLocked(userProfileGroup, loggableGroups);
             }
         }

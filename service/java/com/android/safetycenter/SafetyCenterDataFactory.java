@@ -17,12 +17,14 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY;
 import static com.android.safetycenter.internaldata.SafetyCenterBundles.STATIC_ENTRIES_TO_IDS_BUNDLE_KEY;
 
 import static java.util.Collections.emptyList;
 
+import android.annotation.TargetApi;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -1114,6 +1116,7 @@ public final class SafetyCenterDataFactory {
         return "";
     }
 
+    @TargetApi(UPSIDE_DOWN_CAKE)
     private String getStatusTitleFromIssueCategories(
             @Nullable SafetySourceIssueInfo topNonDismissedIssueInfo,
             String deviceResourceName,
@@ -1135,17 +1138,12 @@ public final class SafetyCenterDataFactory {
                 return mSafetyCenterResourcesContext.getStringByName(accountResourceName);
             case SafetySourceIssue.ISSUE_CATEGORY_GENERAL:
                 return generalString;
-        }
-        if (SdkLevel.isAtLeastU()) {
-            switch (issueCategory) {
-                case SafetySourceIssue.ISSUE_CATEGORY_DATA:
-                    return mSafetyCenterResourcesContext.getStringByName(dataResourceName);
-                case SafetySourceIssue.ISSUE_CATEGORY_PASSWORDS:
-                    return mSafetyCenterResourcesContext.getStringByName(passwordsResourceName);
-                case SafetySourceIssue.ISSUE_CATEGORY_PERSONAL_SAFETY:
-                    return mSafetyCenterResourcesContext.getStringByName(
-                            personalSafetyResourceName);
-            }
+            case SafetySourceIssue.ISSUE_CATEGORY_DATA:
+                return mSafetyCenterResourcesContext.getStringByName(dataResourceName);
+            case SafetySourceIssue.ISSUE_CATEGORY_PASSWORDS:
+                return mSafetyCenterResourcesContext.getStringByName(passwordsResourceName);
+            case SafetySourceIssue.ISSUE_CATEGORY_PERSONAL_SAFETY:
+                return mSafetyCenterResourcesContext.getStringByName(personalSafetyResourceName);
         }
 
         Log.w(TAG, "Unexpected SafetySourceIssue.IssueCategory: " + issueCategory);
