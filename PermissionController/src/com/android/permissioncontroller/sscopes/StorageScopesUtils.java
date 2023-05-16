@@ -17,18 +17,14 @@
 package com.android.permissioncontroller.sscopes;
 
 import android.Manifest;
-import android.app.AppOpsManager;
 import android.app.Application;
 import android.app.StorageScope;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.GosPackageState;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.os.Process;
 import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
@@ -39,6 +35,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.android.permissioncontroller.ext.ScopesUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import java.io.File;
@@ -46,6 +43,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import static com.android.permissioncontroller.ext.StringUtils.isUtf16;
 
 public class StorageScopesUtils {
     private static final String TAG = "StorageScopesUtils";
@@ -273,95 +273,25 @@ public class StorageScopesUtils {
         return res.toString();
     }
 
+    private static final Set<String> STORAGE_PERMISSION_GROUPS = Set.of(new String[] {
+            Manifest.permission_group.STORAGE,
+            Manifest.permission_group.READ_MEDIA_AURAL,
+            Manifest.permission_group.READ_MEDIA_VISUAL,
+    });
+
+    public static boolean isStoragePermissionGroup(String name) {
+        return STORAGE_PERMISSION_GROUPS.contains(name);
+    }
+
     // returns whether at least one permission was revoked
     static boolean revokeStoragePermissions(Context ctx, String pkgName) {
-        PackageManager pm = ctx.getPackageManager();
-
-        int uid;
-        int targetSdk;
-        try {
-            uid = pm.getPackageUid(pkgName, 0);
-            var flags = PackageManager.ApplicationInfoFlags.of(0);
-            targetSdk = pm.getApplicationInfo(pkgName, flags).targetSdkVersion;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-
-        String[] perms = {
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_MEDIA_LOCATION,
-                Manifest.permission.READ_MEDIA_AUDIO,
-                Manifest.permission.READ_MEDIA_IMAGES,
-                Manifest.permission.READ_MEDIA_VIDEO,
-        };
-
-        AppOpsManager appOps = ctx.getSystemService(AppOpsManager.class);
-        // unsafeCheckOpNoThrow is a better option than noteOpNoThrow for this particular use-case
-
-        UserHandle user = Process.myUserHandle();
-
-        int numOfRevokations = 0;
-
-        for (String permission : perms) {
-            if (targetSdk >= 23) { // runtime permissions are always granted for targetSdk < 23 apps
-                if (pm.checkPermission(permission, pkgName) == PackageManager.PERMISSION_GRANTED) {
-                    pm.revokeRuntimePermission(pkgName, permission, user, "StorageScopes");
-                    int permFlag = PackageManager.FLAG_PERMISSION_USER_SET;
-                    pm.updatePermissionFlags(permission, pkgName, permFlag, permFlag, user);
-                    ++ numOfRevokations;
-                }
-            }
-
-            String op = AppOpsManager.permissionToOp(permission);
-            if (op != null
-                    && AppOpsManager.opToDefaultMode(op) != AppOpsManager.MODE_ALLOWED
-                    && appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                appOps.setUidMode(op, uid, AppOpsManager.MODE_IGNORED);
-                ++ numOfRevokations;
-            }
-        }
+        List<String> perms = ScopesUtils.INSTANCE.getGroupPerms(STORAGE_PERMISSION_GROUPS);
 
         String[] opPerms = {
                 Manifest.permission.MANAGE_EXTERNAL_STORAGE,
                 Manifest.permission.MANAGE_MEDIA,
-         };
+        };
 
-        for (String opPerm : opPerms) {
-            String op = AppOpsManager.permissionToOp(opPerm);
-
-            if (appOps.unsafeCheckOpNoThrow(op, uid, pkgName) == AppOpsManager.MODE_ALLOWED) {
-                appOps.setUidMode(op, uid, AppOpsManager.MODE_ERRORED);
-                ++ numOfRevokations;
-            }
-        }
-
-        return numOfRevokations != 0;
-    }
-
-    static boolean isUtf16(String str) {
-        return isUtf16(str, 0, str.length());
-    }
-
-    static boolean isUtf16(String str, int a, int b) {
-        while (a != b) {
-            int c1 = str.charAt(a++);
-
-            if (c1 < 0xd800 || c1 > 0xdfff) {
-                continue;
-            }
-
-            // check validity of a surrogate pair
-
-            // d800..dbff
-            if (c1 <= 0xdbff && a != b) {
-                int c2 = str.charAt(a++);
-                if (c2 >= 0xdc00 && c2 <= 0xdfff) {
-                    continue;
-                }
-            }
-            return false;
-        }
-        return true;
+        return ScopesUtils.INSTANCE.revokePermissions(ctx, pkgName, perms, opPerms);
     }
 }
