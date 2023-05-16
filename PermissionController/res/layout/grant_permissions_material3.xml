@@ -147,8 +147,7 @@
                     style="@style/PermissionGrantButtonNoUpgradeMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
-                    android:id="@+id/permission_storage_scopes_button"
-                    android:text="@string/configure_storage_scopes"
+                    android:id="@+id/permission_extra_button_1"
                     style="@style/PermissionGrantButtonDenyMaterial3" />
             </LinearLayout>
 
