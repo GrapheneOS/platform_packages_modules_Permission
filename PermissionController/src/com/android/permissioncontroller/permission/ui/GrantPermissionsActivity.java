@@ -433,7 +433,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        CharSequence appLabel = KotlinUtils.INSTANCE.getPackageLabel(getApplication(),
+        String appLabel = KotlinUtils.INSTANCE.getPackageLabel(getApplication(),
                 mTargetPackage, Process.myUserHandle());
 
         Icon icon = null;

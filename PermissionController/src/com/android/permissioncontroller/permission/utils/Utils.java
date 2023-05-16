@@ -109,6 +109,8 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo;
 
+import kotlin.Triple;
+
 import java.lang.annotation.Retention;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -119,8 +121,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
-
-import kotlin.Triple;
 
 public final class Utils {
 
@@ -698,11 +698,16 @@ public final class Utils {
      * @param groupName The name of the permission group
      * @param context A context to resolve resources
      * @param requestRes The resource id of the grant request message
-     *
      * @return The formatted message to be used as title when granting permissions
      */
-    public static CharSequence getRequestMessage(CharSequence appLabel, String packageName,
-            String groupName, Context context, @StringRes int requestRes) {
+    @NonNull
+    public static CharSequence getRequestMessage(
+            @NonNull String appLabel,
+            @NonNull String packageName,
+            @NonNull String groupName,
+            @NonNull Context context,
+            @StringRes int requestRes) {
+        String escapedAppLabel = Html.escapeHtml(appLabel);
 
         boolean isIsolatedStorage;
         try {
@@ -712,15 +717,21 @@ public final class Utils {
         }
         if (groupName.equals(STORAGE) && isIsolatedStorage) {
             return Html.fromHtml(
-                    String.format(context.getResources().getConfiguration().getLocales().get(0),
+                    String.format(
+                            context.getResources().getConfiguration().getLocales().get(0),
                             context.getString(R.string.permgrouprequest_storage_isolated),
-                            appLabel), 0);
+                            escapedAppLabel),
+                    0);
         } else if (requestRes != 0) {
-            return Html.fromHtml(context.getResources().getString(requestRes, appLabel), 0);
+            return Html.fromHtml(context.getResources().getString(requestRes, escapedAppLabel), 0);
         }
 
-        return Html.fromHtml(context.getString(R.string.permission_warning_template, appLabel,
-                loadGroupDescription(context, groupName, context.getPackageManager())), 0);
+        return Html.fromHtml(
+                context.getString(
+                        R.string.permission_warning_template,
+                        escapedAppLabel,
+                        loadGroupDescription(context, groupName, context.getPackageManager())),
+                0);
     }
 
     private static CharSequence loadGroupDescription(Context context, String groupName,
