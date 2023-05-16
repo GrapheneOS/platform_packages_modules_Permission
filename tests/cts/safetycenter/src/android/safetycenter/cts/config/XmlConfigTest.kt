@@ -26,12 +26,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.safetycenter.config.SafetyCenterConfigParser
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
-import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,20 +39,10 @@ import org.junit.runner.RunWith
 class XmlConfigTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterContext = SafetyCenterResourcesContext.forTests(context)
-    private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
-    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
-
-    @Before
-    fun enableSafetyCenterBeforeTest() {
-        safetyCenterTestHelper.setup()
-    }
-
-    @After
-    fun clearDataAfterTest() {
-        safetyCenterTestHelper.reset()
-    }
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(context)
 
     @Test
     fun safetyCenterConfigResource_validConfig() {

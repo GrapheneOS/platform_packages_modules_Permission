@@ -47,6 +47,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_4
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_5
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
@@ -73,7 +74,6 @@ import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import org.junit.After
 import org.junit.Assume.assumeFalse
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -82,28 +82,19 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterActivityTest {
 
-    @get:Rule val disableAnimationRule = DisableAnimationRule()
-
-    @get:Rule val freezeRotationRule = FreezeRotationRule()
-
-    @get:Rule val screenRecordRule = ScreenRecordRule()
-
     private val context: Context = getApplicationContext()
-
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
-    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
-
-    @Before
-    fun enableSafetyCenterBeforeTest() {
-        safetyCenterTestHelper.setup()
-    }
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+    @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
+    @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
+    @get:Rule(order = 5) val screenRecordRule = ScreenRecordRule()
 
     @After
     fun clearDataAfterTest() {
-        safetyCenterTestHelper.reset()
         getUiDevice().resetRotation()
     }
 

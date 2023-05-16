@@ -35,6 +35,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.PRIVACY_SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
@@ -57,26 +58,23 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class PrivacySubpageTest {
 
-    @get:Rule val disableAnimationRule = DisableAnimationRule()
-
-    @get:Rule val freezeRotationRule = FreezeRotationRule()
-
     private val context: Context = getApplicationContext()
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
-    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+    @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
+    @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
 
     @Before
     fun enableSafetyCenterBeforeTest() {
-        safetyCenterTestHelper.setup()
         SafetyCenterFlags.showSubpages = true
     }
 
     @After
     fun clearDataAfterTest() {
-        safetyCenterTestHelper.reset()
         UiAutomatorUtils2.getUiDevice().resetRotation()
     }
 

@@ -31,8 +31,8 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
-import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -44,16 +44,12 @@ class SafetySourceStateCollectedLoggingHelperTests {
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
+    @get:Rule val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+
     @Before
     fun setUp() {
-        safetyCenterTestHelper.setup()
         SafetyCenterFlags.allowStatsdLogging = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
-    }
-
-    @After
-    fun tearDown() {
-        safetyCenterTestHelper.reset()
     }
 
     @Test

@@ -25,9 +25,10 @@ import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceTestData
-import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -48,18 +49,14 @@ class SafetyCenterNotificationLoggingHelperTests {
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
+    @get:Rule val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+
     @Before
     fun setUp() {
-        safetyCenterTestHelper.setup()
         SafetyCenterFlags.notificationsEnabled = true
         SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ID)
         SafetyCenterFlags.allowStatsdLogging = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
-    }
-
-    @After
-    fun tearDown() {
-        safetyCenterTestHelper.reset()
     }
 
     @Test
