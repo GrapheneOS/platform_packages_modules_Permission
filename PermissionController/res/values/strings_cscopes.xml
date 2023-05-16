@@ -1,0 +1,48 @@
+<resources>
+    <string name="contact_scopes">Contact Scopes</string>
+    <string name="setup_contact_scopes">Setup Contact Scopes</string>
+
+    <string name="cscopes_enable">Enable Contact Scopes</string>
+    <string name="cscopes_toast_all_contacts_permissions_denied">Contacts permission is now denied</string>
+    <string name="cscopes_turn_off">Turn off</string>
+
+    <string name="cscopes_btn_add_label">Label</string>
+    <string name="cscopes_btn_add_contact">Contact</string>
+    <string name="cscopes_btn_add_number">Number</string>
+    <string name="cscopes_btn_add_email">Email</string>
+
+    <string name="cscopes_labels">Labels</string>
+    <string name="cscopes_contacts">Contacts</string>
+    <string name="cscopes_numbers">Numbers</string>
+    <string name="cscopes_emails">Emails</string>
+
+    <string name="cscope_group_open">Open</string>
+    <string name="cscope_group_add_to_scopes">Add to the list of scopes</string>
+
+    <string name="cscope_btn_remove">Remove</string>
+
+    <string name="cscope_missing_item">Missing item, ID %1$s</string>
+
+    <string name="cscopes_pick_label">Pick a label</string>
+    <string name="cscopes_create_label">Create label</string>
+
+    <string name="cscopes_toast_contacts_app_not_found">Contacts app not found</string>
+    <string name="cscopes_toast_unknown_scope">Unknown scope %1$s</string>
+    <string name="cscopes_toast_already_added">This scope is already added</string>
+
+    <string name="cscopes_disabled_footer">
+"Enabling Contact Scopes will make this app assume that it has the Contacts permission, despite not actually having it.
+
+It will not be able to access any contacts or to create new ones."
+    </string>
+    <string name="cscopes_empty_footer">
+"This app is not able to access any contacts or to create new ones (unless you've allowed it the Contacts permission in some other way).
+
+Optionally, you can allow this app read-only access to specific contacts data, contacts, or groups of contacts (labels)."
+    </string>
+
+    <string name="cscopes_settings">Settings</string>
+    <string name="cscopes_settings_dismiss">Dismiss</string>
+    <string name="cscopes_allow_custom_contacts_app">Allow to use a custom Contacts app for picking scopes</string>
+
+</resources>
