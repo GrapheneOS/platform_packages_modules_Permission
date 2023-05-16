@@ -85,7 +85,7 @@ public class BroadStorageAccessPromptActivity extends SettingsActivity implement
 
         setTitle(R.string.permission_request_title); // invisible, needed for accessibility
 
-        View root = LayoutInflater.from(this).inflate(R.layout.grant_permissions, null);
+        View root = LayoutInflater.from(this).inflate(R.layout.grant_permissions_material3, null);
 
         SecureButton allowButton = root.requireViewById(R.id.permission_allow_button);
         allowButton.setText(R.string.grant_dialog_button_allow_in_settings);
