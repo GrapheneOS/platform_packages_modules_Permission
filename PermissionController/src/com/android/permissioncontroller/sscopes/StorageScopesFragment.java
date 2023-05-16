@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.sscopes;
 
 import android.app.Activity;
-import android.app.Application;
 import android.app.StorageScope;
 import android.app.compat.gms.GmsCompat;
 import android.content.ClipData;
@@ -26,32 +25,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.GosPackageState;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Process;
-import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.PreferenceScreen;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.ext.PackageExtraConfigFragment;
+import com.android.permissioncontroller.ext.PreferenceWithImageButton;
 import com.android.settingslib.widget.ActionButtonsPreference;
 import com.android.settingslib.widget.FooterPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
@@ -68,13 +59,14 @@ import static com.android.permissioncontroller.sscopes.StorageScopesUtils.getSto
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.revokeStoragePermissions;
 import static com.android.permissioncontroller.sscopes.StorageScopesUtils.storageScopesEnabled;
 
-public final class StorageScopesFragment extends SettingsWithLargeHeader {
+import static com.android.permissioncontroller.ext.PreferenceFragementUtilsKt.addOrRemove;
+import static com.android.permissioncontroller.ext.PreferenceFragementUtilsKt.createCategory;
+import static com.android.permissioncontroller.ext.PreferenceFragementUtilsKt.createFooterPreference;
+
+public final class StorageScopesFragment extends PackageExtraConfigFragment {
     private static final String TAG = "StorageScopesFragment";
 
-    private String pkgName;
-
     private Context context;
-    private PreferenceScreen preferenceScreen;
 
     private MainSwitchPreference mainSwitch;
     private ActionButtonsPreference actionButtons;
@@ -84,36 +76,15 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
     private FooterPreference footer;
 
-    public static Bundle createArgs(String packageName) {
-        Bundle b = new Bundle();
-        b.putString(Intent.EXTRA_PACKAGE_NAME, packageName);
-        return b;
+    @Override
+    public CharSequence getTitle() {
+        return context.getText(R.string.sscopes);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getActivity().setTitle(R.string.sscopes);
-        setHasOptionsMenu(true); // needed for the "back arrow" button even when there's no menu
-
-        Context context = requireContext();
-        this.context = context;
-
-        String pkgName = Objects.requireNonNull(getArguments().getString(Intent.EXTRA_PACKAGE_NAME));
-        this.pkgName = pkgName;
-
-        UserHandle user = Process.myUserHandle();
-        Application application = getActivity().getApplication();
-        String label = KotlinUtils.INSTANCE.getPackageLabel(application, pkgName, user);
-
-        if (TextUtils.isEmpty(label)) {
-            pressBack(this);
-            return;
-        }
-
-        Drawable icon = KotlinUtils.INSTANCE.getBadgedPackageIcon(application, pkgName, user);
-        setHeader(icon, label, null, user, false);
+        context = requireContext();
 
         {
             MainSwitchPreference s = new MainSwitchPreference(context);
@@ -143,23 +114,17 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
             actionButtons = b;
         }
-        categoryFolders = newCategory(R.string.sscopes_folders);
-        categoryFiles = newCategory(R.string.sscopes_files);
-        {
-            FooterPreference f = new FooterPreference(context);
-            f.setSelectable(false);
-            footer = f;
-        }
+        categoryFolders = createCategory(this, R.string.sscopes_folders);
+        categoryFiles = createCategory(this, R.string.sscopes_files);
 
-        preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
-        setPreferenceScreen(preferenceScreen);
+        footer = createFooterPreference(this);
     }
 
-    void update() {
+    public void update() {
         StorageScope[] scopes = getStorageScopes(pkgName);
         boolean enabled = scopes != null;
 
-        addOrRemove(mainSwitch, !enabled);
+        addOrRemove(this, mainSwitch, !enabled);
 
         if (!enabled) {
             ignoreMainSwitchChange = true;
@@ -167,9 +132,9 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
             ignoreMainSwitchChange = false;
         }
 
-        addOrRemove(actionButtons, enabled);
-        addOrRemove(categoryFolders, enabled);
-        addOrRemove(categoryFiles, enabled);
+        addOrRemove(this, actionButtons, enabled);
+        addOrRemove(this, categoryFolders, enabled);
+        addOrRemove(this, categoryFiles, enabled);
 
         updateListOfScopes(scopes);
 
@@ -213,7 +178,7 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
                 });
             }
         }
-        addOrRemove(footer, addFooter);
+        addOrRemove(this, footer, addFooter);
 
         getActivity().invalidateOptionsMenu();
     }
@@ -225,21 +190,22 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
             killUid = GmsCompat.isGmsApp(pkgName, Process.myUserHandle().getIdentifier());
 
             if (revokeStoragePermissions(context, pkgName)) {
-                Toast.makeText(context, R.string.sscopes_storage_permissions_revoked, Toast.LENGTH_SHORT).show();
+                getToastManager().showToast(R.string.sscopes_storage_permissions_revoked);
             }
         } else {
             killUid = true;
         }
 
-        GosPackageState newPs = GosPackageState.edit(pkgName)
+        boolean psUpdated = GosPackageState.edit(pkgName)
                 .setFlagsState(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED, enabled)
                 .setStorageScopes(null) // always empty initially
                 .setKillUidAfterApply(killUid)
+                .setNotifyUidAfterApply(true)
                 .apply();
 
         invalidateMediaProviderCache(null);
 
-        if (newPs == null && enabled) {
+        if (!psUpdated) {
             // failed to updated GosPackageState, likely because the package was uninstalled
             pressBack(this);
             return;
@@ -274,10 +240,12 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
                 throw new IllegalStateException();
             }
 
-            StorageScopePreference p = new StorageScopePreference(ctx);
+            var p = new PreferenceWithImageButton(ctx);
             p.setTitle(StorageScopesUtils.pathToUiLabel(ctx, storageVolumes, new File(scope.path)));
 
-            p.setRightIcon(ctx.getDrawable(R.drawable.ic_sscopes_remove), v -> removeScope(scope));
+            p.setupButton(R.drawable.ic_item_remove, getText(R.string.scopes_btn_remove_scope),
+                    () -> removeScope(scope));
+
             p.setSelectable(false);
 
             p.setKey(scope.path);
@@ -307,12 +275,12 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
         byte[] serializedScopes = StorageScope.serializeArray(scopesArray);
 
-        GosPackageState newPs = ps.edit()
+        boolean psUpdated = ps.edit()
                 .addFlags(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED)
                 .setStorageScopes(serializedScopes)
                 .apply();
 
-        if (newPs == null) {
+        if (!psUpdated) {
             pressBack(this);
             return;
         }
@@ -324,13 +292,6 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         update();
     }
 
-    private PreferenceCategory newCategory(int title) {
-        PreferenceCategory c = new PreferenceCategory(context);
-        c.setTitle(title);
-        c.setKey(Integer.toString(title));
-        return c;
-    }
-
     void launchPicker(int mode) {
         StorageScope[] scopes = getStorageScopes(pkgName);
         if (scopes == null) {
@@ -339,7 +300,7 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         }
         int availableSpace = StorageScope.maxArrayLength() - scopes.length;
         if (availableSpace < 1) {
-            showToast(R.string.sscopes_list_is_full);
+            getToastManager().showToast(R.string.scopes_list_is_full);
             return;
         }
 
@@ -446,14 +407,14 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         }
 
         if (newScopes.size() == 0) {
-            showToast(R.string.sscopes_unknown_location);
+            getToastManager().showToast(R.string.sscopes_unknown_location);
             return;
         }
 
         ArrayList<StorageScope> currentScopes = arrayListOf(StorageScope.deserializeArray(curPkgState));
 
         if (currentScopes.size() >= StorageScope.maxArrayLength()) {
-            showToast(R.string.sscopes_list_is_full);
+            getToastManager().showToast(R.string.scopes_list_is_full);
             return;
         }
 
@@ -477,14 +438,14 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
         StorageScope[] scopesArray = currentScopes.toArray(new StorageScope[0]);
 
-        GosPackageState newPkgState = GosPackageState.edit(pkgName)
+        boolean psUpdated = GosPackageState.edit(pkgName)
                 .addFlags(GosPackageState.FLAG_STORAGE_SCOPES_ENABLED)
                 .setStorageScopes(StorageScope.serializeArray(scopesArray))
                 .apply();
 
         invalidateMediaProviderCache(addedPaths);
 
-        if (newPkgState == null) {
+        if (!psUpdated) {
             // unable to save newPkgState, likely because the package was racily uninstalled
             pressBack(this);
             return;
@@ -511,7 +472,7 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
         super.onCreateOptionsMenu(menu, inflater);
 
         if (storageScopesEnabled(pkgName)) {
-            menuItemTurnOff = menu.add(R.string.sscopes_menu_item_turn_off);
+            menuItemTurnOff = menu.add(R.string.scopes_menu_item_turn_off);
         }
     }
 
@@ -519,54 +480,11 @@ public final class StorageScopesFragment extends SettingsWithLargeHeader {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            pressBack(this);
-            return true;
-        }
-
         if (menuItemTurnOff == item) {
             setEnabled(false);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-    private void addOrRemove(Preference p, boolean add) {
-        addOrRemove(p, preferenceScreen, add);
-    }
-
-    private static void addOrRemove(Preference p, PreferenceGroup group, boolean add) {
-        boolean added = p.getParent() != null;
-        if (add == added) {
-            return;
-        }
-        if (add) {
-            group.addPreference(p);
-        } else {
-            group.removePreference(p);
-        }
-    }
-
-    private Toast toast;
-
-    private void showToast(int text) {
-        showToast(getString(text), Toast.LENGTH_SHORT);
-    }
-
-    private void showToast(String text, int duration) {
-        if (toast != null) {
-            toast.cancel();
-        }
-
-        toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        update();
     }
 }
