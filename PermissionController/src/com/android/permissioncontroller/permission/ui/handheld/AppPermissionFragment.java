@@ -45,6 +45,7 @@ import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.GosPackageState;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,7 +70,6 @@ import androidx.annotation.StringRes;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
@@ -82,8 +82,6 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.sscopes.StorageScopesFragment;
-import com.android.permissioncontroller.sscopes.StorageScopesUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.widget.ActionBarShadowController;
@@ -438,7 +436,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue());
         }
 
-        setupStorageScopesLink();
+        setupExtraViews();
     }
 
     private void setButtonState(CompoundButton button, AppPermissionViewModel.ButtonState state) {
@@ -653,50 +651,47 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
     private CharSequence mOrigDenyButtonText;
 
-    private void setupStorageScopesLink() {
+    private void setupExtraViews() {
         View rootView = getView();
         if (rootView == null) {
             return;
-        }
-
-        switch (mPermGroupName) {
-            case android.Manifest.permission_group.STORAGE:
-            case android.Manifest.permission_group.READ_MEDIA_AURAL:
-            case android.Manifest.permission_group.READ_MEDIA_VISUAL:
-                break;
-            default:
-                return;
         }
 
         if (!mDenyButton.isEnabled()) {
             return;
         }
 
-        if (StorageScopesUtils.storageScopesEnabled(mPackageName)) {
+        ExtraPermissionLink link = ExtraPermissionLinkKt.getExtraPermissionLink(requireContext(),
+                mPackageName, mPermGroupName);
+
+        if (link == null) {
+            return;
+        }
+
+        Context ctx = requireContext();
+
+        String packageName = mPackageName;
+        GosPackageState packageState = GosPackageState.get(packageName);
+
+        String denyItemSuffix = link.getSettingsDeniedRadioButtonSuffix(ctx, packageName, packageState);
+
+        if (denyItemSuffix != null) {
             if (mOrigDenyButtonText == null) {
                 mOrigDenyButtonText = mDenyButton.getText();
             }
-            mDenyButton.setText(mOrigDenyButtonText + " (+ " + getString(R.string.sscopes) + ")");
+            mDenyButton.setText(mOrigDenyButtonText + denyItemSuffix);
         } else {
             if (mOrigDenyButtonText != null) {
                 mDenyButton.setText(mOrigDenyButtonText);
             }
         }
 
-        ViewGroup layout = rootView.requireViewById(R.id.layout_configure_storage_scopes_link);
+        ViewGroup layout = rootView.requireViewById(R.id.layout_app_permission_extra_views);
 
-        if (!android.content.pm.GosPackageState.attachableToPackage(mPackageName)) {
-            layout.setVisibility(View.GONE);
-            return;
-        }
+        TextView view = layout.requireViewById(R.id.app_permission_extra_link_1);
 
-        TextView link = layout.requireViewById(R.id.configure_storage_scopes);
-
-        link.setText(R.string.configure_storage_scopes);
-        link.setOnClickListener(v -> {
-            Bundle args = StorageScopesFragment.createArgs(mPackageName);
-            NavHostFragment.findNavController(this).navigate(R.id.storage_scopes, args);
-        });
+        view.setText(link.getSettingsLinkText(ctx, packageName, packageState));
+        view.setOnClickListener(v -> link.onSettingsLinkClick(this, packageName, packageState));
 
         layout.setVisibility(View.VISIBLE);
     }
