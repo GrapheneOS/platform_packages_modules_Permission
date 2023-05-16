@@ -93,9 +93,13 @@ public class BroadStorageAccessPromptActivity extends SettingsActivity implement
         ViewGroup buttons = (ViewGroup) allowButton.getParent();
 
         int[] visibleButtons = { R.id.permission_allow_button,
-                R.id.permission_deny_button, R.id.permission_storage_scopes_button };
+                R.id.permission_deny_button, R.id.permission_extra_button_1 };
         for (int b : visibleButtons) {
-            buttons.requireViewById(b).setOnClickListener(this);
+            SecureButton button = buttons.requireViewById(b);
+            if (b == R.id.permission_extra_button_1) {
+                button.setText(R.string.setup_storage_scopes);
+            }
+            button.setOnClickListener(this);
         }
 
         for (int i = 0, m = buttons.getChildCount(); i < m; ++i) {
@@ -128,7 +132,7 @@ public class BroadStorageAccessPromptActivity extends SettingsActivity implement
             String origAction = promptAction.substring(0, promptAction.length() - INTENT_SUFFIX.length());
             Intent i = new Intent(origAction, intent.getData());
             startActivity(i);
-        } else if (id == R.id.permission_storage_scopes_button) {
+        } else if (id == R.id.permission_extra_button_1) {
             Intent i = StorageScope.createConfigActivityIntent(pkgName);
             startActivity(i);
         }
