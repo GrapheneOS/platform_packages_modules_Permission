@@ -52,6 +52,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs
+import com.android.permissioncontroller.permission.ui.handheld.getExtraPermissionLink
 
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
@@ -317,6 +318,14 @@ class AppPermissionViewModel(
                 allowedState.isShown = true
 
                 allowedState.isChecked = group.foreground.isGranted && !group.foreground.isOneTime
+
+                if (!allowedState.isChecked) {
+                    if (getExtraPermissionLink(app, packageName, permGroupName)
+                            ?.isAllowPermissionSettingsButtonHidden(app, packageName) == true) {
+                        allowedState.isShown = false
+                    }
+                }
+
                 askState.isChecked = !group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isShown = askOneTimeState.isChecked
