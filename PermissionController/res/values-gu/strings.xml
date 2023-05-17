@@ -566,10 +566,10 @@
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"બૅકગ્રાઉન્ડમાં સ્થાનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે, ઍપ બંધ હોય ત્યારે પણ"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"બૅકગ્રાઉન્ડમાં સ્થાનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"બૅકગ્રાઉન્ડમાં લોકેશનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"આ ઍપ હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે, તે બંધ હોય ત્યારે પણ."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ઍક્સેસ કરવા સંબંધિત પરવાનગી બદલાઈ ગઈ"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"સ્થાનનો તાજેતરનો વપરાશ જુઓ"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"લોકેશનનો તાજેતરનો વપરાશ જુઓ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"પ્રાઇવસીને લગતાં નિયંત્રણ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"કૅમેરાનો ઍક્સેસ"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"માઇક્રોફોનનો ઍક્સેસ"</string>
