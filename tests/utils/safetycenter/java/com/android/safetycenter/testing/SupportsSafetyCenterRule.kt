@@ -16,7 +16,6 @@
 package com.android.safetycenter.testing
 
 import android.content.Context
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.rules.TestRule

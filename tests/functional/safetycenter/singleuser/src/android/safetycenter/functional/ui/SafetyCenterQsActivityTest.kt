@@ -16,29 +16,22 @@
 
 package android.safetycenter.functional.ui
 
-import android.Manifest.permission.MANAGE_SENSOR_PRIVACY
-import android.Manifest.permission.OBSERVE_SENSOR_PRIVACY
 import android.content.Context
-import android.hardware.SensorPrivacyManager
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
-import android.hardware.SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE
 import android.platform.test.rule.ScreenRecordRule
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
+import com.android.safetycenter.testing.EnableSensorRule
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import com.android.safetycenter.testing.SafetyCenterTestHelper
-import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.SafetyCenterTestRule
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
-import org.junit.After
-import org.junit.Assume.assumeTrue
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -47,64 +40,14 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterQsActivityTest {
 
-    // TODO(b/280991082): Order these rules in a RuleChain
-    @get:Rule val disableAnimationRule = DisableAnimationRule()
-    @get:Rule val freezeRotationRule = FreezeRotationRule()
-    @get:Rule val screenRecordRule = ScreenRecordRule()
-
     private val context: Context = getApplicationContext()
-    private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
-    private val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
 
-    // TODO(b/280991082): Use rules for all SafetyCenterQsActivityTest preconditions
-    private var shouldRunTests =
-        context.deviceSupportsSafetyCenter() &&
-            deviceSupportsSensorToggle(CAMERA) &&
-            deviceSupportsSensorToggle(MICROPHONE)
-    private var oldCameraState: Boolean = false
-    private var oldMicrophoneState: Boolean = false
-
-    @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(shouldRunTests)
-    }
-
-    @Before
-    fun enableSafetyCenterBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
-        safetyCenterTestHelper.setup()
-    }
-
-    @After
-    fun clearDataAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
-        safetyCenterTestHelper.reset()
-    }
-
-    @Before
-    fun enablePrivacyControlsBeforeTest() {
-        if (!shouldRunTests) {
-            return
-        }
-        oldCameraState = isSensorEnabled(CAMERA)
-        setSensorState(CAMERA, true)
-
-        oldMicrophoneState = isSensorEnabled(MICROPHONE)
-        setSensorState(MICROPHONE, true)
-    }
-
-    @After
-    fun restorePrivacyControlsAfterTest() {
-        if (!shouldRunTests) {
-            return
-        }
-        setSensorState(CAMERA, oldCameraState)
-        setSensorState(MICROPHONE, oldMicrophoneState)
-    }
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2) val enableCameraRule = EnableSensorRule(context, CAMERA)
+    @get:Rule(order = 3) val enableMicrophoneRule = EnableSensorRule(context, MICROPHONE)
+    @get:Rule(order = 4) val safetyCenterTestRule = SafetyCenterTestRule(context)
+    @get:Rule(order = 5) val disableAnimationRule = DisableAnimationRule()
+    @get:Rule(order = 6) val freezeRotationRule = FreezeRotationRule()
 
     @Test
     fun launchActivity_fromQuickSettings_hasContentDescriptions() {
@@ -130,27 +73,6 @@ class SafetyCenterQsActivityTest {
             // Verify updated state of privacy controls
             waitDisplayed(By.desc("Switch. Camera access. Blocked"))
             waitDisplayed(By.desc("Switch. Mic access. Blocked"))
-        }
-    }
-
-    private fun deviceSupportsSensorToggle(sensor: Int): Boolean {
-        return sensorPrivacyManager.supportsSensorToggle(sensor) &&
-            sensorPrivacyManager.supportsSensorToggle(TOGGLE_TYPE_SOFTWARE, sensor)
-    }
-
-    private fun isSensorEnabled(sensor: Int): Boolean {
-        val isSensorDisabled =
-            callWithShellPermissionIdentity(OBSERVE_SENSOR_PRIVACY) {
-                sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor)
-            }
-        return !isSensorDisabled
-    }
-
-    private fun setSensorState(sensor: Int, enabled: Boolean) {
-        val disableSensor = !enabled
-        // The sensor is enabled iff the privacy control is disabled.
-        callWithShellPermissionIdentity(MANAGE_SENSOR_PRIVACY, OBSERVE_SENSOR_PRIVACY) {
-            sensorPrivacyManager.setSensorPrivacy(sensor, disableSensor)
         }
     }
 }
