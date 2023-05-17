@@ -114,7 +114,7 @@ public final class SafetyCenterConfigReader {
 
     /**
      * Returns the groups of {@link SafetySource}, filtering out any sources where {@link
-     * SafetySources#isLoggable(SafetySource)} is false (and any resultingly empty groups).
+     * SafetySources#isLoggable(SafetySource)} is {@code false} (and any resulting empty groups).
      */
     public List<SafetySourcesGroup> getLoggableSafetySourcesGroups() {
         return getCurrentConfigInternal().getLoggableSourcesGroups();

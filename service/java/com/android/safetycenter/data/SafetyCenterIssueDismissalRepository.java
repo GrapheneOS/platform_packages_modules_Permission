@@ -130,11 +130,7 @@ final class SafetyCenterIssueDismissalRepository {
 
         Duration timeSinceLastDismissal = Duration.between(dismissedAt, Instant.now());
         boolean isTimeToResurface = timeSinceLastDismissal.compareTo(delay) >= 0;
-        if (isTimeToResurface) {
-            return false;
-        }
-
-        return true;
+        return !isTimeToResurface;
     }
 
     /**

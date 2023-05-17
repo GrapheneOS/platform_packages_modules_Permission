@@ -52,7 +52,7 @@ import javax.annotation.concurrent.NotThreadSafe;
 @NotThreadSafe
 final class SafetySourceDataValidator {
 
-    private static final String TAG = "SafetySourceDataValidator";
+    private static final String TAG = "SafetySourceDataValidat";
 
     private final Context mContext;
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
