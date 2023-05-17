@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Laat altyd toe"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Laat net toe terwyl jy program gebruik"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Laat net toe terwyl jy app gebruik"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Moenie toelaat nie"</string>
     <string name="loading" msgid="4789365003890741082">"Laai tans …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alle toestemmings"</string>
@@ -187,7 +187,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Laat toe dat alle lêers bestuur word"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Laat net toegang tot media toe"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Laat altyd toe"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy program gebruik"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy app gebruik"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Laat altyd alles toe"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vra elke keer"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Moenie toelaat nie"</string>
@@ -572,7 +572,7 @@
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Hierdie program steun nie die jongste weergawe van Android nie. As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Gaan program met agtergrondliggingtoegang na"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> het altyd toegang tot jou ligging, selfs wanneer die program toe is"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Gaan program met agtergrondliggingtoegang na"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Gaan app met agtergrondliggingtoegang na"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Hierdie app het altyd toegang tot jou ligging, selfs wanneer dit toe is.\n\nSekere veiligheid- en noodapps moet op die agtergrond toegang tot jou ligging hê om te kan werk soos hulle moet."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Toegang is verander"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Sien onlangse ligginggebruik"</string>
