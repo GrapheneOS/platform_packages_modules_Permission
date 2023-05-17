@@ -32,7 +32,6 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CEN
 
 import static java.util.Collections.unmodifiableList;
 
-import android.annotation.SuppressLint;
 import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
 import android.content.Context;
@@ -210,15 +209,17 @@ final class SafetyCenterBroadcastDispatcher {
             BroadcastOptions broadcastOptions,
             List<UserProfileGroup> userProfileGroups) {
         Intent intent = createExplicitEnabledChangedIntent(broadcast.getPackageName());
-        // The same ENABLED reason is used here for both enable and disable events. It is not sent
-        // externally and is only used internally to filter safety sources in the methods of the
-        // Broadcast class.
-        int refreshReason = REFRESH_REASON_SAFETY_CENTER_ENABLED;
 
         for (int i = 0; i < userProfileGroups.size(); i++) {
             UserProfileGroup userProfileGroup = userProfileGroups.get(i);
             SparseArray<List<String>> userIdsToSourceIds =
-                    getUserIdsToSourceIds(broadcast, userProfileGroup, refreshReason);
+                    getUserIdsToSourceIds(
+                            broadcast,
+                            userProfileGroup,
+                            // The same ENABLED reason is used here for both enable and disable
+                            // events. It is not sent externally and is only used internally to
+                            // filter safety sources in the methods of the Broadcast class.
+                            REFRESH_REASON_SAFETY_CENTER_ENABLED);
 
             for (int j = 0; j < userIdsToSourceIds.size(); j++) {
                 int userId = userIdsToSourceIds.keyAt(j);
@@ -249,8 +250,6 @@ final class SafetyCenterBroadcastDispatcher {
         return true;
     }
 
-    // TODO(b/193460475): Remove when tooling supports SystemApi to public API.
-    @SuppressLint("NewApi")
     private void sendBroadcast(
             Intent intent,
             UserHandle userHandle,
@@ -300,8 +299,6 @@ final class SafetyCenterBroadcastDispatcher {
         return new Intent(intentAction).setFlags(FLAG_RECEIVER_FOREGROUND);
     }
 
-    // TODO(b/193460475): Remove when tooling supports SystemApi to public API.
-    @SuppressLint("NewApi")
     private static BroadcastOptions createBroadcastOptions() {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         Duration allowListDuration = SafetyCenterFlags.getFgsAllowlistDuration();

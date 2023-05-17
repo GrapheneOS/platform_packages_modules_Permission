@@ -137,7 +137,7 @@ public final class SafetyCenterNotificationSender {
      * <p>The given {@link SafetyEvent} have type {@link
      * SafetyEvent#SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} and include issue and action IDs
      * that correspond to a {@link SafetySourceIssue} for which a notification is currently
-     * displayed. Otherwise this method has no effect.
+     * displayed. Otherwise, this method has no effect.
      *
      * @param sourceId of the source which reported the issue
      * @param safetyEvent the source provided upon successful action resolution
@@ -286,7 +286,7 @@ public final class SafetyCenterNotificationSender {
         fout.println();
     }
 
-    /** Get all of the key-issue pairs for which notifications should be posted or updated now. */
+    /** Gets all the key-issue pairs for which notifications should be posted or updated now. */
     private ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> getIssuesToNotify(
             @UserIdInt int userId) {
         ArrayMap<SafetyCenterIssueKey, SafetySourceIssue> result = new ArrayMap<>();
@@ -325,14 +325,20 @@ public final class SafetyCenterNotificationSender {
     @NotificationBehaviorInternal
     private int getBehavior(SafetySourceIssue issue, SafetyCenterIssueKey issueKey) {
         if (SdkLevel.isAtLeastU()) {
-            switch (issue.getNotificationBehavior()) {
+            int notificationBehavior = issue.getNotificationBehavior();
+            switch (notificationBehavior) {
                 case SafetySourceIssue.NOTIFICATION_BEHAVIOR_NEVER:
                     return NOTIFICATION_BEHAVIOR_INTERNAL_NEVER;
                 case SafetySourceIssue.NOTIFICATION_BEHAVIOR_DELAYED:
                     return NOTIFICATION_BEHAVIOR_INTERNAL_DELAYED;
                 case SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY:
                     return NOTIFICATION_BEHAVIOR_INTERNAL_IMMEDIATELY;
+                case SafetySourceIssue.NOTIFICATION_BEHAVIOR_UNSPECIFIED:
+                    return getBehaviorForIssueWithUnspecifiedBehavior(issue, issueKey);
             }
+            Log.w(
+                    TAG,
+                    "Unexpected SafetySourceIssue.NotificationBehavior: " + notificationBehavior);
         }
         // On Android T all issues are assumed to have "unspecified" behavior
         return getBehaviorForIssueWithUnspecifiedBehavior(issue, issueKey);

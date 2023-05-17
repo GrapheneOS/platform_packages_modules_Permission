@@ -442,7 +442,7 @@ public final class SafetyCenterFlags {
         if (allowlistedCertString == null) {
             return new ArraySet<>();
         }
-        return new ArraySet<String>(allowlistedCertString.split("\\|"));
+        return new ArraySet<>(allowlistedCertString.split("\\|"));
     }
 
     /**
