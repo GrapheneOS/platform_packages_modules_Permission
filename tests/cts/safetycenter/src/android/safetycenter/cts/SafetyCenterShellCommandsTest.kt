@@ -22,7 +22,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
-import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import com.android.safetycenter.testing.deviceSupportsSafetyCenter
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
