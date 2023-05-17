@@ -18,19 +18,28 @@ package android.safetycenter.hostside.device
 
 import android.content.Context
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyCenterStatus
+import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
+import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
-import com.android.safetycenter.testing.*
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
+import com.android.safetycenter.testing.SafetyCenterFlags
+import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_3
+import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
+import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
+import com.android.safetycenter.testing.SafetySourceTestData
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -120,13 +129,11 @@ class SafetySourceStateCollectedLoggingHelperTests {
 
     @Test
     fun refreshAllSources_reasonPageOpen_oneSuccessOneErrorOneTimeout() {
-        SafetyCenterFlags.setAllRefreshTimeoutsTo(Coroutines.TIMEOUT_SHORT)
         simulateRefresh(Response.SetData(safetySourceTestData.information), Response.Error, null)
     }
 
     @Test
     fun refreshAllSources_reasonButtonClick_oneSuccessOneErrorOneTimeout() {
-        SafetyCenterFlags.setAllRefreshTimeoutsTo(Coroutines.TIMEOUT_SHORT)
         simulateRefresh(
             Response.SetData(safetySourceTestData.information),
             Response.Error,
@@ -150,8 +157,23 @@ class SafetySourceStateCollectedLoggingHelperTests {
         if (source3Response != null) {
             SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
         }
+
+        val atLeastOneTimeout =
+            source1Response == null || source2Response == null || source3Response == null
+        if (atLeastOneTimeout) {
+            SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
+        }
+
+        // Refresh sources and wait until the refresh has fully completed / timed out to ensure that
+        // things are logged.
+        val listener = safetyCenterTestHelper.addListener()
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
-        // Give time for responses to all sources
-        Thread.sleep(Coroutines.TIMEOUT_SHORT.toMillis())
+        listener.receiveSafetyCenterData {
+            it.status.refreshStatus == REFRESH_STATUS_DATA_FETCH_IN_PROGRESS ||
+                it.status.refreshStatus == REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
+        }
+        listener.receiveSafetyCenterData {
+            it.status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_NONE
+        }
     }
 }
