@@ -570,10 +570,10 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"このアプリは最新バージョンの Android に対応していません。このアプリが写真や動画にアクセスできる場合は、音楽ファイルや音声ファイルへのアクセスも許可されます。"</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"バックグラウンドでの位置情報へのアクセス権があるアプリの確認"</string>
-    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> は、閉じているときも、常に位置情報にアクセスできます"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"バックグラウンドでの位置情報へのアクセス権があるアプリの確認"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"このアプリは、閉じているときも、常に位置情報にアクセスできます。\n\n緊急情報アプリや緊急通報アプリのなかには、バックグラウンドで位置情報にアクセスできないと、意図したとおりに動作しないものがあります。"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"アプリがバックグラウンドで位置情報にアクセスできるかを確認"</string>
+    <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> は、開いていなくても常に位置情報にアクセスできます"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"アプリがバックグラウンドで位置情報にアクセスできるかを確認"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"このアプリは、開いていなくても常に位置情報にアクセスできます。\n\n緊急情報アプリや緊急通報アプリのなかには、バックグラウンドで位置情報にアクセスできないと、意図したとおりに動作しないものもあります。"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"アクセス権を変更しました"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"最近の位置情報の使用状況を確認"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"プライバシー管理"</string>

@@ -20,10 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Ellenőrzés…"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Eszközbeállítások ellenőrzése…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Jónak tűnik"</string>
-    <!-- no translation found for overall_severity_level_ok_summary (383626536912856690) -->
-    <skip />
-    <!-- no translation found for overall_severity_level_tip_summary (1935765582243024999) -->
-    <skip />
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nem találtunk problémát"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Javaslat megtekintése}other{Javaslatok megtekintése}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Végrehajtott intézkedés}other{Végrehajtott intézkedések}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Beállítások áttekintése"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Ellenőrizze a beállításlistát"</string>
@@ -38,10 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Lehetséges veszélyeket észleltünk"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Veszélyeket észleltünk"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Fiókja veszélyben lehet"</string>
-    <!-- no translation found for overall_severity_level_critical_account_warning_title (1913235490583842004) -->
-    <skip />
-    <!-- no translation found for overall_severity_n_alerts_summary (3262010942295408403) -->
-    <skip />
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Veszélyeztetett fiók"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Értesítés megtekintése}other{Értesítések megtekintése}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Nem sikerült megnyitni az oldalt"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Nem sikerült feloldani a figyelmeztetést"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nem sikerült a beállítások frissítése"</string>
