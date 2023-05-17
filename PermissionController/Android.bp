@@ -145,6 +145,7 @@ android_app {
 
     lint: {
         strict_updatability_linting: true,
+        error_checks: ["Recycle"],
     },
 
     optimize: {
