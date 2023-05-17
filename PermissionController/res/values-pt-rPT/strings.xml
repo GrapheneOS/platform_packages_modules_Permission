@@ -124,7 +124,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconhecido"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Painel de privacidade"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Veja que apps utilizaram autorizações recentemente"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"utilização de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilização de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Veja outras autorizações"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e mais <xliff:g id="NUM">%3$s</xliff:g>"</string>
