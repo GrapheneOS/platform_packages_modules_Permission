@@ -40,6 +40,9 @@ object ContactScopesLinks : ExtraPermissionLink() {
         activity.startActivityForResult(intent, GrantPermissionsActivity.REQ_CODE_SETUP_CONTACT_SCOPES)
     }
 
+    override fun isAllowPermissionSettingsButtonHidden(ctx: Context, packageName: String) =
+            ContactScopesUtils.isContactScopesEnabled(packageName)
+
     override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageName: String, packageState: GosPackageState?): String? {
         if (!ContactScopesUtils.isContactScopesEnabled(packageState)) {
             return null
