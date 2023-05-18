@@ -27,7 +27,10 @@
     <string name="cscopes_create_label">Create label</string>
 
     <string name="cscopes_toast_contacts_app_not_found">Contacts app not found</string>
-    <string name="cscopes_toast_unknown_scope">Unknown scope %1$s</string>
+    <plurals name="cscopes_toast_unknown_scope">
+        <item quantity="one">Unknown scope %1$s</item>
+        <item quantity="other">One or more of scopes is unknown: %1$s</item>
+    </plurals>
     <string name="cscopes_toast_already_added">This scope is already added</string>
 
     <string name="cscopes_disabled_footer">
