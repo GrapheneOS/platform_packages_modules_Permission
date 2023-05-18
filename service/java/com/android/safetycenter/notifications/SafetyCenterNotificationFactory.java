@@ -28,7 +28,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -56,7 +55,6 @@ import java.util.List;
 @RequiresApi(TIRAMISU)
 final class SafetyCenterNotificationFactory {
 
-    private static final String TAG = "SafetyCenterNF";
     private static final int OPEN_SAFETY_CENTER_REQUEST_CODE = 1221;
     private static final Duration SUCCESS_NOTIFICATION_TIMEOUT = Duration.ofSeconds(10);
 
@@ -255,10 +253,5 @@ final class SafetyCenterNotificationFactory {
     private PendingIntent getDirectPendingIntentForNonResolvingAction(
             SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
         return issueAction.getPendingIntent();
-    }
-
-    private static boolean isDarkTheme(Context context) {
-        return (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
-                == Configuration.UI_MODE_NIGHT_YES;
     }
 }
