@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ব্যাকগ্রাউন্ডে লোকেশন অ্যাক্সেস করার অনুমতি আছে এমন অ্যাপ পর্যালোচনা করুন"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"এই অ্যাপ সব সময় আপনার লোকেশন অ্যাক্সেস করতে পারে, এমনকি অ্যাপটি বন্ধ করা থাকলেও।\n\nসঠিকভাবে কাজ করার জন্য কিছু সুরক্ষা ও জরুরি অ্যাপকে ব্যাকগ্রাউন্ডে আপনার লোকেশন অ্যাক্সেস করতে দিতে হবে।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"অ্যাক্সেস পরিবর্তন করা হয়েছে"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"সম্প্রতি লোকেশন ব্যবহার সম্পর্কিত তথ্য দেখুন"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"লোকেশন ব্যবহারের সাম্প্রতিক তথ্য দেখুন"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"গোপনীয়তা নিয়ন্ত্রণ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"ক্যামেরা অ্যাক্সেস"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"মাইক্রোফোনে অ্যাক্সেস"</string>
