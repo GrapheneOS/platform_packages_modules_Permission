@@ -34,6 +34,7 @@ import com.android.permissioncontroller.permission.ui.handheld.pressBack
 import com.android.settingslib.widget.ActionButtonsPreference
 import com.android.settingslib.widget.FooterPreference
 import com.android.settingslib.widget.MainSwitchPreference
+import java.util.function.Function
 
 class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
     lateinit var mainSwitch: MainSwitchPreference
@@ -214,62 +215,84 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
             return
         }
 
-        val uri = intent.data!!
-
-        val id: Long = when (type) {
-            ContactScope.TYPE_CONTACT -> {
-                val args = Bundle().apply { putParcelable(ContactScopesApi.KEY_URI, uri) }
-                val res = callScopedContactsProvider(ContactScopesApi.METHOD_GET_ID_FROM_URI, args)
-                if (res == null) {
-                    toastManager.showToast(getString(R.string.cscopes_toast_unknown_scope, uri))
-                    return
+        val uris: List<Uri> = run {
+            val clipData = intent.clipData
+            if (clipData != null) {
+                val list = ArrayList<Uri>(clipData.itemCount)
+                for (i in 0 until clipData.itemCount) {
+                    val uri = clipData.getItemAt(i).uri ?: continue
+                    list.add(uri)
                 }
-                res.getNumber(ContactScopesApi.KEY_ID)!!
+                list
+            } else {
+                val uri = intent.data ?: return@onPickerResult
+                listOf(uri)
+            }
+        }
+
+        val ids = getIdsFromUris(type, uris)
+
+        if (ids == null) {
+            val template = resources.getQuantityText(R.plurals.cscopes_toast_unknown_scope, uris.size).toString()
+            val text = String.format(template, uris.joinToString())
+            toastManager.showToast(text)
+            return
+        }
+
+        updateStorage { css ->
+            var res = false
+            for (id in ids) {
+                if (css.count >= ContactScopesStorage.MAX_COUNT_PER_PACKAGE) {
+                    toastManager.showToast(R.string.scopes_list_is_full)
+                    break
+                }
+                if (addScope(css, type, id)) {
+                    res = true
+                }
+            }
+            res
+        }
+    }
+
+    fun getIdsFromUris(type: Int, uris: List<Uri>): LongArray? {
+         when (type) {
+            ContactScope.TYPE_CONTACT -> {
+                val args = Bundle().apply {
+                    putParcelableArray(ContactScopesApi.KEY_URIS, uris.toTypedArray())
+                }
+                val res = callScopedContactsProvider(ContactScopesApi.METHOD_GET_IDS_FROM_URIS, args)
+                if (res == null) {
+                    return null
+                }
+                return res.getLongArray(ContactScopesApi.KEY_IDS)!!
             }
             ContactScope.TYPE_NUMBER, ContactScope.TYPE_EMAIL -> {
-                uri.lastPathSegment!!.toLong()
+                return uris.map {
+                    it.lastPathSegment!!.toLong()
+                }.toLongArray()
             }
             else -> error(type)
         }
-
-        addScope(type, id)
-
     }
 
     fun callScopedContactsProvider(method: String, args: Bundle? = null, arg: String? = null): Bundle? {
         return context_.contentResolver.call(SCOPED_CONTACTS_PROVIDER_AUTHORITY, method, arg, args)
     }
 
-    fun addScope(type: Int, id: Long) {
-        val packageState = getGosPackageStateOrPressBack() ?: return
-
-        val css = ContactScopesStorage.deserialize(packageState)
-
-        if (css.count >= ContactScopesStorage.MAX_COUNT_PER_PACKAGE) {
-            toastManager.showToast(R.string.scopes_list_is_full)
-            return
-        }
-
-        if (!css.add(type, id)) {
-            toastManager.showToast(R.string.cscopes_toast_already_added)
-            return
-        }
-
-        updateGosPackageState(packageState, css)
+    fun addScope(css: ContactScopesStorage, type: Int, id: Long): Boolean {
+        check(css.count < ContactScopesStorage.MAX_COUNT_PER_PACKAGE)
+        return css.add(type, id)
     }
 
     fun removeScope(type: Int, id: Long) {
-        val packageState = getGosPackageStateOrPressBack() ?: return
-
-        val css = ContactScopesStorage.deserialize(packageState)
-
-        if (!css.remove(type, id)) {
-            // GosPackageState was racily modified elsewhere
-            update()
-            return
+        updateStorage {
+            val res = it.remove(type, id)
+            if (!res) {
+                // GosPackageState was racily modified elsewhere
+                update()
+            }
+            res
         }
-
-        updateGosPackageState(packageState, css)
     }
 
     fun notifyContentObservers() {
@@ -278,8 +301,15 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
         context_.sendBroadcast(i)
     }
 
-    fun updateGosPackageState(ps: GosPackageState, css: ContactScopesStorage) {
-        ps.edit().run {
+    fun updateStorage(action: Function<ContactScopesStorage, Boolean>) {
+        val packageState = getGosPackageStateOrPressBack() ?: return
+        val css = ContactScopesStorage.deserialize(packageState)
+
+        if (!action.apply(css)) {
+            return
+        }
+
+        packageState.edit().run {
             setContactScopes(css.serialize())
             applyOrPressBack()
         }
@@ -345,7 +375,16 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
                     openGroup(group.id)
                 }
                 R.string.cscope_group_add_to_scopes -> {
-                    addScope(ContactScope.TYPE_GROUP, group.id)
+                    updateStorage {
+                        var res = false
+                        if (it.count < ContactScopesStorage.MAX_COUNT_PER_PACKAGE) {
+                            res = addScope(it, ContactScope.TYPE_GROUP, group.id)
+                        } else {
+                            toastManager.showToast(R.string.scopes_list_is_full)
+                        }
+                        res
+                    }
+
                     dialog.cancel()
                 }
             }
@@ -361,6 +400,7 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
         override fun createIntent(context: Context, input: Unit): Intent {
             return Intent(Intent.ACTION_PICK).apply {
                 type = dataType
+                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
                 maybeSpecifyPackage(context, this)
             }
         }
