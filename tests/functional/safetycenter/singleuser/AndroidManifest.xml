@@ -17,14 +17,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="android.safetycenter.functional">
     <application>
-        <service android:name=".testing.TestNotificationListener"
-            android:label="TestNotificationListener"
-            android:exported="false"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
-            </intent-filter>
-        </service>
+
         <uses-library android:name="android.test.runner"/>
     </application>
 
