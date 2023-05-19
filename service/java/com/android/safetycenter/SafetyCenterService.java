@@ -201,6 +201,7 @@ public final class SafetyCenterService extends SystemService {
         publishBinderService(Context.SAFETY_CENTER_SERVICE, new Stub());
         if (mDeviceSupportsSafetyCenter) {
             synchronized (mApiLock) {
+                mSafetyCenterResourcesContext.init();
                 SafetyCenterFlags.init(mSafetyCenterResourcesContext);
                 mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
                 if (mConfigAvailable) {
