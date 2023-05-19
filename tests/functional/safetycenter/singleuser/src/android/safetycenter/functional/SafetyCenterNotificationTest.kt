@@ -28,13 +28,12 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.functional.testing.NotificationCharacteristics
-import android.safetycenter.functional.testing.TestNotificationListener
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.pendingintents.PendingIntentSender
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
+import com.android.safetycenter.testing.NotificationCharacteristics
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
@@ -54,6 +53,7 @@ import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
+import com.android.safetycenter.testing.TestNotificationListener
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
@@ -82,7 +82,7 @@ class SafetyCenterNotificationTest {
     @Before
     fun setUp() {
         safetyCenterTestHelper.setup()
-        TestNotificationListener.setup()
+        TestNotificationListener.setup(context)
         SafetyCenterFlags.notificationsEnabled = true
         setFlagsForImmediateNotifications(SINGLE_SOURCE_ID)
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
@@ -93,7 +93,7 @@ class SafetyCenterNotificationTest {
         // It is important to reset the notification listener last because it waits/ensures that
         // all notifications have been removed before returning.
         safetyCenterTestHelper.reset()
-        TestNotificationListener.reset()
+        TestNotificationListener.reset(context)
     }
 
     @Test
