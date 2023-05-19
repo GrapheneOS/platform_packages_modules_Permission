@@ -14,8 +14,6 @@ abstract class ExtraPermissionLink {
 
     abstract fun onDialogButtonClick(activity: GrantPermissionsActivity, packageName: String)
 
-    open fun isAllowPermissionSettingsButtonHidden(ctx: Context, packageName: String): Boolean = false
-
     abstract fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageName: String, packageState: GosPackageState?): String?
 
     abstract fun getSettingsLinkText(ctx: Context, packageName: String, packageState: GosPackageState?): CharSequence
