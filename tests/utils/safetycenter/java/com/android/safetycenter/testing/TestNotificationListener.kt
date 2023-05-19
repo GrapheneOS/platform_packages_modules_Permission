@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package android.safetycenter.functional.testing
+package com.android.safetycenter.testing
 
 import android.app.NotificationChannel
 import android.content.ComponentName
+import android.content.Context
 import android.os.ConditionVariable
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
@@ -85,14 +86,6 @@ class TestNotificationListener : NotificationListenerService() {
 
     companion object {
         private const val TAG = "TestNotificationListene"
-
-        private val id: String =
-            "android.safetycenter.functional/" + TestNotificationListener::class.java.name
-        private val componentName =
-            ComponentName(
-                "android.safetycenter.functional",
-                TestNotificationListener::class.java.name
-            )
 
         private val connected = ConditionVariable(false)
         private val disconnected = ConditionVariable(true)
@@ -164,7 +157,9 @@ class TestNotificationListener : NotificationListenerService() {
             return waitForNotificationsToSatisfy(
                 timeout,
                 description = "notification(s) matching characteristics $charsList"
-            ) { NotificationCharacteristics.areMatching(it, charsList) }
+            ) {
+                NotificationCharacteristics.areMatching(it, charsList)
+            }
         }
 
         /**
@@ -283,7 +278,9 @@ class TestNotificationListener : NotificationListenerService() {
             waitForNotificationsToSatisfy(
                 timeout,
                 description = "no notification with the key $key"
-            ) { notifications -> notifications.none { it.statusBarNotification.key == key } }
+            ) { notifications ->
+                notifications.none { it.statusBarNotification.key == key }
+            }
 
             waitForIssueCacheToContainAnyDismissedNotification()
         }
@@ -313,10 +310,12 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /** Runs a shell command to allow or disallow the listener. Use before and after test. */
-        private fun toggleListenerAccess(allowed: Boolean) {
-            // TODO(b/260335646): Try to do this using the AndroidTest.xml instead of in code
+        private fun toggleListenerAccess(context: Context, allowed: Boolean) {
+            val componentName = ComponentName(context, TestNotificationListener::class.java)
             val verb = if (allowed) "allow" else "disallow"
-            SystemUtil.runShellCommand("cmd notification ${verb}_listener $id")
+            SystemUtil.runShellCommand(
+                "cmd notification ${verb}_listener ${componentName.flattenToString()}"
+            )
             if (allowed) {
                 requestRebind(componentName)
                 if (!connected.block(TIMEOUT_LONG.toMillis())) {
@@ -332,17 +331,19 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /** Prepare the [TestNotificationListener] for a notification test */
-        fun setup() {
-            toggleListenerAccess(true)
+        fun setup(context: Context) {
+            toggleListenerAccess(context, true)
         }
 
         /** Clean up the [TestNotificationListener] after executing a notification test. */
-        fun reset() {
+        fun reset(context: Context) {
             waitForNotificationsToSatisfy(
                 forAtLeast = Duration.ZERO,
                 description = "all Safety Center notifications removed in tear down"
-            ) { it.isEmpty() }
-            toggleListenerAccess(false)
+            ) {
+                it.isEmpty()
+            }
+            toggleListenerAccess(context, false)
             safetyCenterNotificationEvents.cancel()
             safetyCenterNotificationEvents = Channel(capacity = Channel.UNLIMITED)
         }
