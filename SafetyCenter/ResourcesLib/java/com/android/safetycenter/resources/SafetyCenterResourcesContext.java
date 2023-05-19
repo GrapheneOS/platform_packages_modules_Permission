@@ -123,6 +123,21 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
                 contextBase, /* shouldFallbackIfNamedResourceNotFound */ false);
     }
 
+    /**
+     * Initializes the {@link Context}'s {@link AssetManager}, {@link Resources} and {@link
+     * Resources.Theme}.
+     *
+     * <p>This call is optional as this can also be lazily instantiated. This is useful to ensure
+     * that resources are loaded prior to interacting with the {@link SafetyCenterResourcesContext},
+     * as this code needs to run for the same user as the provided base {@link Context}; which may
+     * not be the case with a binder call.
+     */
+    public void init() {
+        mAssetsFromApk = getAssets();
+        mResourcesFromApk = getResources();
+        mThemeFromApk = getTheme();
+    }
+
     /** Get the package name of the Safety Center resources APK. */
     @VisibleForTesting
     @Nullable
