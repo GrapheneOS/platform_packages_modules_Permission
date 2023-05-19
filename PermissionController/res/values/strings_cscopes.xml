@@ -48,4 +48,6 @@ Optionally, you can allow this app read-only access to specific contacts data, c
     <string name="cscopes_settings_dismiss">Dismiss</string>
     <string name="cscopes_allow_custom_contacts_app">Allow to use a custom Contacts app for picking scopes</string>
 
+    <string name="cscopes_allow_contacts_permission_blocked_msg">Turn off Contact Scopes before allowing the Contacts permission.</string>
+
 </resources>
