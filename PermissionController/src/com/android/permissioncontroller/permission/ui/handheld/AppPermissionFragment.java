@@ -55,6 +55,7 @@ import android.text.BidiFormatter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -437,6 +438,20 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
 
         setupExtraViews();
+
+        {
+            Context ctx = requireContext();
+            var epl = ExtraPermissionLinkKt.getExtraPermissionLink(ctx, mPackageName, mPermGroupName);
+            if (epl != null && epl.isAllowPermissionSettingsButtonBlocked(ctx, mPackageName)) {
+                mAllowButton.setOnTouchListener((v, ev) -> {
+                    if (ev.getAction() == MotionEvent.ACTION_UP) {
+                        epl.onAllowPermissionSettingsButtonClick(ctx, mPackageName);
+                    }
+                    return true;
+                });
+                return;
+            }
+        }
     }
 
     private void setButtonState(CompoundButton button, AppPermissionViewModel.ButtonState state) {
