@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.GosPackageState
 import android.ext.cscopes.ContactScopesApi
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.NavHostFragment
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.ext.PackageExtraConfigFragment
@@ -38,6 +39,15 @@ object ContactScopesLinks : ExtraPermissionLink() {
         val intent = ContactScopesApi.createConfigActivityIntent(packageName)
         @Suppress("DEPRECATION")
         activity.startActivityForResult(intent, GrantPermissionsActivity.REQ_CODE_SETUP_CONTACT_SCOPES)
+    }
+
+    override fun isAllowPermissionSettingsButtonBlocked(ctx: Context, packageName: String) = true
+
+    override fun onAllowPermissionSettingsButtonClick(ctx: Context, packageName: String) {
+        AlertDialog.Builder(ctx).run {
+            setMessage(R.string.cscopes_allow_contacts_permission_blocked_msg)
+            show()
+        }
     }
 
     override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageName: String, packageState: GosPackageState?): String? {
