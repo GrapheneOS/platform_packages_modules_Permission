@@ -81,6 +81,7 @@ class SafetyCenterNotificationTest {
 
     @Before
     fun setUp() {
+        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
         safetyCenterTestHelper.setup()
         TestNotificationListener.setup(context)
         SafetyCenterFlags.notificationsEnabled = true
@@ -92,6 +93,7 @@ class SafetyCenterNotificationTest {
     fun tearDown() {
         // It is important to reset the notification listener last because it waits/ensures that
         // all notifications have been removed before returning.
+        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
         safetyCenterTestHelper.reset()
         TestNotificationListener.reset(context)
     }

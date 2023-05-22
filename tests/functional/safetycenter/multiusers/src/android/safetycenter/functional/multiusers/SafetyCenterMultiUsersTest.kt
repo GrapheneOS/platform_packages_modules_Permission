@@ -53,6 +53,7 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
+import com.android.safetycenter.testing.NotificationCharacteristics
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
@@ -80,11 +81,12 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withoutExtras
 import com.android.safetycenter.testing.SafetyCenterTestHelper
-import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
+import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
+import com.android.safetycenter.testing.TestNotificationListener
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextNotDisplayed
 import com.google.common.base.Preconditions.checkState
@@ -335,18 +337,25 @@ class SafetyCenterMultiUsersTest {
             )
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
-    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
     @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
     @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
 
     @Before
     fun setTimeoutsBeforeTest() {
+        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
+        safetyCenterTestHelper.setup()
+        TestNotificationListener.setup(context)
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
     }
 
     @After
     fun resetQuietModeAfterTest() {
         setQuietMode(false)
+        // It is important to reset the notification listener last because it waits/ensures that
+        // all notifications have been removed before returning.
+        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
+        safetyCenterTestHelper.reset()
+        TestNotificationListener.reset(context)
     }
 
     @Test
@@ -1149,6 +1158,33 @@ class SafetyCenterMultiUsersTest {
             )
         assertThat(apiSafetySourceData).isEqualTo(dataForPrimaryUser)
         assertThat(apiSafetySourceDataForWork).isEqualTo(dataForWork)
+    }
+
+    @Test
+    @Postsubmit(reason = "Test takes too much time to setup")
+    @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
+    fun setSafetySourceData_notificationsAllowed_workProfile_sendsNotification() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
+        SafetyCenterFlags.notificationsEnabled = true
+        SafetyCenterFlags.notificationsAllowedSources = setOf(SINGLE_SOURCE_ALL_PROFILE_ID)
+        SafetyCenterFlags.immediateNotificationBehaviorIssues =
+            setOf("$SINGLE_SOURCE_ALL_PROFILE_ID/$ISSUE_TYPE_ID")
+        val dataForWork = safetySourceTestData.informationWithIssueForWork
+        val managedSafetyCenterManager =
+            getSafetyCenterManagerForUser(deviceState.workProfile().userHandle())
+
+        managedSafetyCenterManager.setSafetySourceDataWithInteractAcrossUsersPermission(
+            SINGLE_SOURCE_ALL_PROFILE_ID,
+            dataForWork
+        )
+
+        TestNotificationListener.waitForNotificationsMatching(
+            NotificationCharacteristics(
+                title = "Information issue title",
+                text = "Information issue summary",
+                actions = listOf("Review")
+            )
+        )
     }
 
     @Test
