@@ -76,12 +76,16 @@ public final class SafetyCenterNotificationChannels {
     }
 
     @Nullable
-    private static Context getContextAsUser(Context baseContext, UserHandle userHandle) {
+    static Context getContextAsUser(Context baseContext, UserHandle userHandle) {
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
         try {
             return baseContext.createContextAsUser(userHandle, 0);
         } catch (RuntimeException e) {
             Log.w(TAG, "Could not create Context as user " + userHandle, e);
             return null;
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 
