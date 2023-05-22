@@ -20,7 +20,7 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"सुरक्षा आणि गोपनीयता"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"नियंत्रणे"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"आरोग्यविषयक डेटासंबंधित अ‍ॅपचा अ‍ॅक्सेस नियंत्रित करा"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"आरोग्यविषयक डेटासंबंधित अ‍ॅपचा अ‍ॅक्सेस व्यवस्थापित करा"</string>
     <string name="location_settings" msgid="8863940440881290182">"स्थान अ‍ॅक्सेस"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ॲप्स आणि सेवांसाठी. हे सेटिंग बंद असल्यास, तुम्ही आणीबाणी नंबरवर कॉल करता, तेव्हा मायक्रोफोन डेटा तरीही शेअर केला जाऊ शकतो"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ॲप्स आणि सेवांसाठी"</string>
