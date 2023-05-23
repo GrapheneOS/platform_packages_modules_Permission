@@ -29,9 +29,12 @@ import com.android.safetycenter.testing.EnableSensorRule
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
 import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
+import com.android.safetycenter.testing.SafetyCenterTestConfigs
+import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,6 +44,8 @@ import org.junit.runner.RunWith
 class SafetyCenterQsActivityTest {
 
     private val context: Context = getApplicationContext()
+    private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
+    private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
     @get:Rule(order = 2) val enableCameraRule = EnableSensorRule(context, CAMERA)
@@ -48,6 +53,11 @@ class SafetyCenterQsActivityTest {
     @get:Rule(order = 4) val safetyCenterTestRule = SafetyCenterTestRule(context)
     @get:Rule(order = 5) val disableAnimationRule = DisableAnimationRule()
     @get:Rule(order = 6) val freezeRotationRule = FreezeRotationRule()
+
+    @Before
+    fun setTestConfigBeforeTest() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+    }
 
     @Test
     fun launchActivity_fromQuickSettings_hasContentDescriptions() {
