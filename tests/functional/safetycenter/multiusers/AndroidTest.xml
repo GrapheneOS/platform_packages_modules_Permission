@@ -43,9 +43,12 @@
              aren't polluted by `BOOT_COMPLETED` or similar broadcasts still being delivered, which
              causes our `ActivityManager#waitForBroadcastIdle()` calls to timeout. -->
         <option name="run-command" value="am wait-for-broadcast-idle" />
+        <option name="run-command" value="am wait-for-broadcast-barrier" />
         <!-- Disable syncing to prevent overwriting flags during testing. -->
         <option name="run-command" value="device_config set_sync_disabled_for_tests persistent" />
         <option name="teardown-command" value="device_config set_sync_disabled_for_tests none" />
+        <!-- Dismiss any system dialogs (e.g. crashes, ANR). -->
+        <option name="run-command" value="am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS --receiver-foreground"  />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest">
