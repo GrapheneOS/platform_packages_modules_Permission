@@ -579,7 +579,7 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Nastavitve zasebnosti"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Dostop do fotoaparata"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Dostop do mikrofona"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Za aplikacije in storitve"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Za aplikacije in storitve."</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Za aplikacije in storitve. Če je ta nastavitev izklopljena, bodo podatki mikrofona morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Oglejte si aplikacije in storitve, ki imajo dostop do lokacije."</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Pokaži dostop do odložišča"</string>
@@ -610,7 +610,7 @@
     <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Te povezave ni mogoče odpreti"</string>
     <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Posodobitve deljenja podatkov o lokaciji"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregled aplikacij s spremembami v načinu deljenja vaših lokacijskih podatkov"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregled aplikacij s spremembami v načinu deljenja vaših lokacijskih podatkov."</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacije so spremenile način deljenja vaših lokacijskih podatkov. Prej jih morda sploh niso delile ali pa jih zdaj delijo za namene oglaševanja ali trženja."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Razvijalci teh aplikacij so trgovino z aplikacijami seznanili z informacijami o svojih postopkih deljenja podatkov. Te informacije bodo občasno morda posodobljene.\n\nPostopki deljenja podatkov se lahko razlikujejo glede na različico aplikacije, njeno uporabo, regijo ali vašo starost."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Preberite več o deljenju podatkov."</string>

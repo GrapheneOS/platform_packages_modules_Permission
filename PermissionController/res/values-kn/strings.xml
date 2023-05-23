@@ -403,7 +403,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"ಟಿಪ್ಪಣಿಗಳು"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ಪ್ರಸ್ತುತ ಡೀಫಾಲ್ಟ್"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ಮತ್ತೆ ಕೇಳಬೇಡ"</string>
-    <string name="request_role_set_as_default" msgid="4253949643984172880">"ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ"</string>
+    <string name="request_role_set_as_default" msgid="4253949643984172880">"ಡೀಫಾಲ್ಟ್ ಆಗಿ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"&lt;b&gt;ಫೋನ್ ಕರೆಯಲ್ಲಿ&lt;/b&gt; ಮೈಕ್ರೋಫೋನ್ ಅನ್ನು ಬಳಸಲಾಗುತ್ತದೆ"</string>
     <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"&lt;b&gt;ವೀಡಿಯೋ ಕರೆಯಲ್ಲಿ&lt;/b&gt; ಕ್ಯಾಮರಾ ಮತ್ತು ಮೈಕ್ರೋಫೋನ್ ಅನ್ನು ಬಳಸಲಾಗುತ್ತದೆ"</string>
     <string name="phone_call_uses_camera" msgid="2048417022147857418">"&lt;b&gt;ವೀಡಿಯೋ ಕರೆಯಲ್ಲಿ&lt;/b&gt; ಕ್ಯಾಮರಾವನ್ನು ಬಳಸಲಾಗುತ್ತದೆ"</string>
