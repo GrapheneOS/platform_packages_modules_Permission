@@ -28,5 +28,5 @@
     <string name="more_settings_title" msgid="9033454654010697185">"Plus de paramètres de sécurité et de confidentialité"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Remplissage automatique, notifications, etc."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
-    <string name="work_policy_title" msgid="915692932391542104">"Les détails de votre politique de travail"</string>
+    <string name="work_policy_title" msgid="915692932391542104">"Infos sur votre politique de travail"</string>
 </resources>
