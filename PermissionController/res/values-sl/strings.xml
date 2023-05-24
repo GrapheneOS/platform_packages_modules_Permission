@@ -573,7 +573,7 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Nastavitve zasebnosti"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Dostop do fotoaparata"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Dostop do mikrofona"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Za aplikacije in storitve"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Za aplikacije in storitve."</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Za aplikacije in storitve. Če je ta nastavitev izklopljena, bodo podatki mikrofona morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Oglejte si aplikacije in storitve, ki imajo dostop do lokacije."</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Pokaži dostop do odložišča"</string>

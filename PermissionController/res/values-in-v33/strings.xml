@@ -19,7 +19,7 @@
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Aplikasi ini akan diizinkan untuk mengirim Notifikasi, dan akan diberi akses ke Kamera, Kontak, Mikrofon, Telepon, dan SMS Anda"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"Aplikasi ini akan diizinkan untuk mengirim Notifikasi, dan akan diberi akses ke Kamera, Kontak, File, Mikrofon, Telepon, dan SMS Anda"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikasi yang memiliki izin ini dapat mengakses semua file di perangkat ini"</string>
-    <string name="work_policy_title" msgid="832967780713677409">"Info kebijakan kerja Anda"</string>
+    <string name="work_policy_title" msgid="832967780713677409">"Info kebijakan profil kerja Anda"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Setelan yang dikelola oleh admin IT"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Luaskan dan tampilkan daftar"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Ciutkan daftar dan sembunyikan setelan"</string>
