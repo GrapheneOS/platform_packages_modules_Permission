@@ -31,6 +31,7 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
 import com.android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestHelper
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
@@ -55,6 +56,7 @@ class SafetyCenterQsActivityTest {
 
     private val context: Context = getApplicationContext()
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
+    private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
     private val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
     private var shouldRunTests =
         context.deviceSupportsSafetyCenter() &&
@@ -74,6 +76,7 @@ class SafetyCenterQsActivityTest {
             return
         }
         safetyCenterTestHelper.setup()
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
     }
 
     @After
