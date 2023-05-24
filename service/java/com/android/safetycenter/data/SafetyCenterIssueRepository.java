@@ -92,19 +92,6 @@ final class SafetyCenterIssueRepository {
      * Updates the class as per the current state of issues. Should be called after any state update
      * that can affect issues.
      */
-    void updateIssues(UserProfileGroup userProfileGroup) {
-        updateIssues(userProfileGroup.getProfileParentUserId(), /* isManagedProfile= */ false);
-
-        int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
-        for (int i = 0; i < managedProfileUserIds.length; i++) {
-            updateIssues(managedProfileUserIds[i], /* isManagedProfile= */ true);
-        }
-    }
-
-    /**
-     * Updates the class as per the current state of issues. Should be called after any state update
-     * that can affect issues.
-     */
     void updateIssues(@UserIdInt int userId) {
         updateIssues(userId, UserUtils.isManagedProfile(userId, mContext));
     }
