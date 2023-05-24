@@ -611,7 +611,7 @@
     <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Canvis en la compartició de dades per a la ubicació"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revisa les aplicacions que han canviat la manera en què poden compartir les teves dades d\'ubicació"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aquestes aplicacions han canviat la manera en què poden compartir les teves dades d\'ubicació. Pot ser que no les hagin compartit abans o que ara les comparteixin amb finalitats publicitàries o de màrqueting."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aquestes aplicacions han canviat la manera en què poden compartir les teves dades d\'ubicació. Pot ser que no les hagin compartit abans o que ara les comparteixin amb finalitats de màrqueting o publicitat."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Els desenvolupadors d\'aquestes aplicacions han proporcionat informació sobre les seves pràctiques de compartició de dades a una botiga d\'aplicacions. És possible que actualitzin la informació al llarg del temps.\n\nLes pràctiques de compartició de dades poden variar segons la versió de l\'aplicació, l\'ús, la regió i l\'edat."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Informació sobre la compartició de dades"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Les teves dades d\'ubicació ara es comparteixen amb tercers"</string>
