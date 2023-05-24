@@ -29,6 +29,7 @@ import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -402,6 +403,11 @@ public final class SafetyCenterDataManager {
     public boolean actionIsInFlight(SafetyCenterIssueActionId safetyCenterIssueActionId) {
         return mSafetyCenterInFlightIssueActionRepository.actionIsInFlight(
                 safetyCenterIssueActionId);
+    }
+
+    /** Returns a list of IDs of in-flight actions for the given source and user */
+    ArraySet<SafetyCenterIssueActionId> getInFlightActions(String sourceId, @UserIdInt int userId) {
+        return mSafetyCenterInFlightIssueActionRepository.getInFlightActions(sourceId, userId);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -221,7 +221,7 @@ class SafetySourceIntentHandler {
         safetyEventForResponse: (Response) -> SafetyEvent
     ) {
         val response = mutex.withLock { requestsToResponses[request] } ?: return
-        val safetyEvent = safetyEventForResponse(response)
+        val safetyEvent = response.overrideSafetyEvent ?: safetyEventForResponse(response)
         when (response) {
             is Response.Error ->
                 reportSafetySourceError(request.sourceId, SafetySourceErrorDetails(safetyEvent))
@@ -270,6 +270,13 @@ class SafetySourceIntentHandler {
      */
     sealed interface Response {
 
+        /**
+         * If non-null, the [SafetyEvent] to use when calling any applicable [SafetyCenterManager]
+         * methods.
+         */
+        val overrideSafetyEvent: SafetyEvent?
+            get() = null
+
         /** Creates an error [Response]. */
         object Error : Response
 
@@ -282,10 +289,13 @@ class SafetySourceIntentHandler {
          * @param overrideBroadcastId an optional override of the broadcast id to use in the
          *   [SafetyEvent] sent to the [SafetyCenterManager], in case of [Request.Refresh] or
          *   [Request.Rescan]. This is used to simulate a misuse of the [SafetyCenterManager] APIs
+         * @param overrideSafetyEvent like [overrideBroadcastId] but allows the whole [SafetyEvent]
+         *   to be override to send different types of [SafetyEvent].
          */
         data class SetData(
             val safetySourceData: SafetySourceData,
-            val overrideBroadcastId: String? = null
+            val overrideBroadcastId: String? = null,
+            override val overrideSafetyEvent: SafetyEvent? = null
         ) : Response
     }
 

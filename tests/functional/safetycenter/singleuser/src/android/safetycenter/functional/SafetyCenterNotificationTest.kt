@@ -936,6 +936,36 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
+    fun sendActionPendingIntent_sourceStateChangedSafetyEvent_successNotification() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingIssueWithSuccessMessage
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(
+                safetySourceTestData.information,
+                overrideSafetyEvent =
+                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            )
+        )
+
+        sendActionPendingIntentAndWaitWithPermission(action)
+
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                "Issue solved",
+                "",
+                actions = emptyList(),
+            )
+        )
+    }
+
+    @Test
     fun sendActionPendingIntent_error_updatesListenerDoesNotRemoveNotification() {
         // Here we cause a notification with an action to be posted and prepare the fake receiver
         // to resolve that action successfully.
