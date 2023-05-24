@@ -22,7 +22,7 @@
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje zaslona"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još nema podataka"</string>
-    <string name="lock_screen_search_terms" msgid="2678486357779794826">"Zaključavanje uređaja, zaključavanje zaslona, zaključan zaslon, zaključani zaslon, zaporka, PIN, uzorak"</string>
+    <string name="lock_screen_search_terms" msgid="2678486357779794826">"Zaključavanje uređaja, zaključavanje zaslona, zaključani zaslon, zaključani zaslon, zaporka, PIN, uzorak"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Biometrijski podaci"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"Otisak prsta, prst, dodavanje otiska prsta, otključavanje licem, lice"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privatnost"</string>
