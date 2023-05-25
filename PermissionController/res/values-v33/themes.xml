@@ -47,8 +47,11 @@
         <item name="scStatusButtonStyle">@style/SafetyCenterStatusButton.Fixed</item>
 
         <!-- Buttons -->
-        <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
-        <item name="scSecondaryActionButtonStyle">@style/SafetyCenterActionButton.Secondary</item>
+        <item name="scActionButtonListLayout">@layout/action_button_list_fixed</item>
+        <item name="scActionButtonStyle">@style/SafetyCenterActionButton.Fixed</item>
+        <item name="scSecondaryActionButtonStyle">
+            @style/SecondarySafetyCenterActionButton.Fixed
+        </item>
 
         <item name="textColorScActionButton">@color/sc_primary_action_button_text</item>
         <!-- While the rest of the text colors automatically appear correct in quick settings,
@@ -93,8 +96,11 @@
         <item name="scStatusButtonStyle">@style/SafetyCenterStatusButton.Responsive</item>
 
         <!-- Buttons -->
-        <item name="scActionButtonStyle">@style/SafetyCenterActionButton</item>
-        <item name="scSecondaryActionButtonStyle">@style/SafetyCenterActionButton.Secondary</item>
+        <item name="scActionButtonListLayout">@layout/action_button_list_responsive</item>
+        <item name="scActionButtonStyle">@style/SafetyCenterActionButton.Responsive</item>
+        <item name="scSecondaryActionButtonStyle">
+            @style/SecondarySafetyCenterActionButton.Responsive
+        </item>
 
         <item name="textColorScActionButton">@color/sc_primary_action_button_text</item>
         <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>

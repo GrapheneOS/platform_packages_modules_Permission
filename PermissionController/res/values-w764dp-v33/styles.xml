@@ -16,6 +16,16 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="SafetyCenterActionButton.Responsive">
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_large_screen</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_large_screen</item>
+    </style>
+
+    <style name="SecondarySafetyCenterActionButton.Responsive">
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_large_screen</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_large_screen</item>
+    </style>
+
     <!-- START SAFETY STATUS CARD -->
     <style name="SafetyCenterStatusTitleAndSummaryContainer.Responsive">
         <item name="layout_constraintEnd_toStartOf">@id/sc_status_buttons_start_barrier</item>
@@ -30,8 +40,8 @@
         <item name="layout_constraintStart_toEndOf">@id/status_title_and_summary</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:layout_marginTop">@dimen/sc_spacing_xxsmall</item>
-        <item name="android:paddingStart">@dimen/sc_large_screen_button_padding</item>
-        <item name="android:paddingEnd">@dimen/sc_large_screen_button_padding</item>
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_large_screen</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_large_screen</item>
         <!-- Clear the base style constraints so they don't conflict with this style's constraints
          on the same sides. -->
         <item name="layout_constraintTop_toBottomOf">@null</item>

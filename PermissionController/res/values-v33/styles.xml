@@ -326,8 +326,8 @@
            parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:theme">@style/Theme.MaterialComponents</item>
         <item name="android:minHeight">56dp</item>
-        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding</item>
-        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_small_screen</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_small_screen</item>
         <item name="android:paddingTop">@dimen/sc_spacing_xlarge</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_xlarge</item>
         <item name="android:insetTop">0dp</item>
@@ -340,13 +340,15 @@
         <item name="cornerRadius">@dimen/sc_button_corner_radius</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
     </style>
+    <style name="SafetyCenterActionButton.Fixed" />
+    <style name="SafetyCenterActionButton.Responsive" />
 
-    <style name="SafetyCenterActionButton.Secondary"
+    <style name="SecondarySafetyCenterActionButton"
            parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:theme">@style/Theme.MaterialComponents</item>
         <item name="android:minHeight">56dp</item>
-        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding</item>
-        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/sc_button_horizontal_padding_small_screen</item>
+        <item name="android:paddingEnd">@dimen/sc_button_horizontal_padding_small_screen</item>
         <item name="android:paddingTop">@dimen/sc_spacing_xlarge</item>
         <item name="android:paddingBottom">@dimen/sc_spacing_xlarge</item>
         <item name="android:insetTop">0dp</item>
@@ -361,6 +363,8 @@
         <item name="cornerRadius">@dimen/sc_button_corner_radius</item>
         <item name="rippleColor">?android:colorControlHighlight</item>
     </style>
+    <style name="SecondarySafetyCenterActionButton.Fixed" />
+    <style name="SecondarySafetyCenterActionButton.Responsive" />
 
     <!-- START SAFETY STATUS CARD -->
     <style name="SafetyCenterCard.Status">
