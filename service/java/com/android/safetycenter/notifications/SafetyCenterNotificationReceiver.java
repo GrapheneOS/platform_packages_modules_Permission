@@ -173,6 +173,7 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
         }
 
         if (!SafetyCenterFlags.getNotificationsEnabled()) {
+            // TODO(b/284271124): Decide what to do with existing notifications
             Log.i(TAG, "Received notification broadcast but notifications are disabled");
             return;
         }

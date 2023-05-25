@@ -32,6 +32,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.pendingintents.PendingIntentSender
+import com.android.safetycenter.testing.Coroutines
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.NotificationCharacteristics
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.executeBlockAndExit
@@ -528,6 +529,22 @@ class SafetyCenterNotificationTest {
         TestNotificationListener.waitForZeroNotifications()
     }
 
+    // TODO(b/284271124): Decide what to do with existing notifications when flag flipped off
+    @Test
+    fun setSafetySourceData_removingAnIssue_afterFlagTurnedOff_noNotificationChanges() {
+        val data1 = safetySourceTestData.recommendationWithAccountIssue
+        val data2 = safetySourceTestData.information
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data1)
+
+        TestNotificationListener.waitForSingleNotification()
+
+        SafetyCenterFlags.notificationsEnabled = false
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data2)
+
+        TestNotificationListener.waitForZeroNotificationEvents()
+    }
+
     @Test
     fun reportSafetySourceError_sourceWithNotification_cancelsNotification() {
         val data = safetySourceTestData.recommendationWithAccountIssue
@@ -896,6 +913,28 @@ class SafetyCenterNotificationTest {
         )
     }
 
+    // TODO(b/284271124): Decide what to do with existing notifications when flag flipped off
+    @Test
+    fun sendActionPendingIntent_flagDisabled_pendingIntentNotSentToSource() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingIssueWithSuccessMessage
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+        SafetyCenterFlags.notificationsEnabled = false
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            sendActionPendingIntentAndWaitWithPermission(action, timeout = TIMEOUT_SHORT)
+        }
+    }
+
     @Test
     fun sendActionPendingIntent_error_updatesListenerDoesNotRemoveNotification() {
         // Here we cause a notification with an action to be posted and prepare the fake receiver
@@ -966,12 +1005,15 @@ class SafetyCenterNotificationTest {
         private val SafetyCenterData.inFlightActions: List<SafetyCenterIssue.Action>
             get() = issues.flatMap { it.actions }.filter { it.isInFlight }
 
-        private fun sendActionPendingIntentAndWaitWithPermission(action: Notification.Action) {
+        private fun sendActionPendingIntentAndWaitWithPermission(
+            action: Notification.Action,
+            timeout: Duration = Coroutines.TIMEOUT_LONG
+        ) {
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
                 PendingIntentSender.send(action.actionIntent)
                 // Sending the action's PendingIntent above is asynchronous and we need to wait for
                 // it to be received by the fake receiver below.
-                SafetySourceReceiver.receiveResolveAction()
+                SafetySourceReceiver.receiveResolveAction(timeout)
             }
         }
 

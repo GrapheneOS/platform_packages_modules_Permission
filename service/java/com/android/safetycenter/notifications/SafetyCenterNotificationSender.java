@@ -145,6 +145,11 @@ public final class SafetyCenterNotificationSender {
      */
     public void notifyActionSuccess(
             String sourceId, SafetyEvent safetyEvent, @UserIdInt int userId) {
+        if (!SafetyCenterFlags.getNotificationsEnabled()) {
+            // TODO(b/284271124): Decide what to do with existing notifications
+            return;
+        }
+
         if (safetyEvent.getType() != SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED) {
             Log.w(TAG, "Received safety event of wrong type");
             return;
@@ -224,6 +229,7 @@ public final class SafetyCenterNotificationSender {
      */
     public void updateNotifications(@UserIdInt int userId) {
         if (!SafetyCenterFlags.getNotificationsEnabled()) {
+            // TODO(b/284271124): Decide what to do with existing notifications
             return;
         }
 
