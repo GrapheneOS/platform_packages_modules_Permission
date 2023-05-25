@@ -102,10 +102,6 @@ final class SafetySourceDataRepository {
             String safetySourceId,
             @UserIdInt int userId) {
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        safetySourceData =
-                AndroidLockScreenFix.maybeOverrideSafetySourceData(
-                        mContext, safetySourceId, safetySourceData);
-
         boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
         boolean removedSourceError = mSafetySourceErrors.remove(key);
 
