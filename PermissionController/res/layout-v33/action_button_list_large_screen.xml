@@ -16,6 +16,4 @@
 
 
 <com.android.permissioncontroller.safetycenter.ui.EqualWidthContainer
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/action_button_list"
     style="@style/SafetyCenterIssueActionButtonList" />
