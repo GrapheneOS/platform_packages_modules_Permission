@@ -134,9 +134,7 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
         configureSafetyProtectionView(holder);
         maybeStartResolutionAnimation(holder);
 
-        mSafetyCenterViewModel
-                .getInteractionLogger()
-                .recordIssueViewed(mIssue, mIsDismissed);
+        mSafetyCenterViewModel.getInteractionLogger().recordIssueViewed(mIssue, mIsDismissed);
     }
 
     private void maybeDisplayText(@Nullable CharSequence maybeText, TextView textView) {
@@ -540,9 +538,11 @@ public class IssueCardPreference extends Preference implements ComparablePrefere
                 return;
             }
 
-            int margin =
-                    mContext.getResources()
-                            .getDimensionPixelSize(R.dimen.sc_action_button_list_margin);
+            int marginRes =
+                    mIsLargeScreen
+                            ? R.dimen.sc_action_button_list_margin_large_screen
+                            : R.dimen.sc_action_button_list_margin;
+            int margin = mContext.getResources().getDimensionPixelSize(marginRes);
             Space space = new Space(mContext);
             space.setLayoutParams(new ViewGroup.LayoutParams(margin, margin));
             buttonList.addView(space);

@@ -54,7 +54,7 @@
 
     <include
       android:id="@+id/issue_card_action_button_list"
-      layout="@layout/action_button_list"/>
+        layout="?attr/scActionButtonListLayout"/>
 
     <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
         android:id="@+id/issue_card_protected_by_android"
