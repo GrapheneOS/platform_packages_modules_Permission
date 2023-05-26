@@ -43,8 +43,8 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
 import com.android.permissioncontroller.permission.utils.Utils;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
         implements Preference.OnPreferenceChangeListener {
@@ -290,7 +290,7 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
         titlePref.setIcon(icon);
 
         // Set message
-        String appLabel = mAppPermissions.getAppLabel().toString();
+        String appLabel = Html.escapeHtml(mAppPermissions.getAppLabel().toString());
         final int labelTemplateResId = isPackageUpdated()
                 ?  R.string.permission_review_title_template_update
                 :  R.string.permission_review_title_template_install;
