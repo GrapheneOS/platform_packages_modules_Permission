@@ -63,19 +63,19 @@ internal object RuntimePermissionsUpgradeController {
 
     fun upgradeIfNeeded(context: Context, onComplete: Runnable) {
         val permissionManager = context.getSystemService(PermissionManager::class.java)
-        val storedVersion = permissionManager!!.runtimePermissionsVersion
-        val currentVersion = minOf(storedVersion, LATEST_VERSION)
+        val currentVersion = permissionManager!!.runtimePermissionsVersion
 
         GlobalScope.launch(IPC) {
             val upgradedVersion = onUpgradeLocked(context, currentVersion)
             if (upgradedVersion != LATEST_VERSION) {
                 Log.wtf("PermissionControllerService", "warning: upgrading permission database" +
-                    " to version $LATEST_VERSION left it at $currentVersion instead; this is " +
-                    "probably a bug. Did you update LATEST_VERSION?", Throwable())
+                    " to version " + LATEST_VERSION + " left it at " + currentVersion +
+                    " instead; this is probably a bug. Did you update " +
+                    "LATEST_VERSION?", Throwable())
                 throw RuntimeException("db upgrade error")
             }
 
-            if (storedVersion != upgradedVersion) {
+            if (currentVersion != upgradedVersion) {
                 permissionManager.runtimePermissionsVersion = LATEST_VERSION
             }
             onComplete.run()
