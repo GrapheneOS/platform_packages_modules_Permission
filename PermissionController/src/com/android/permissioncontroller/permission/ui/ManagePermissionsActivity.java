@@ -165,6 +165,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         boolean completed = Settings.Secure.getInt(
                 getContentResolver(), Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
         if (!provisioned || !completed) {
+            Log.e(LOG_TAG, "Device setup incomplete. device provisioned=" + provisioned
+                    + ", user setup complete=" + completed);
             finishAfterTransition();
             return;
         }
