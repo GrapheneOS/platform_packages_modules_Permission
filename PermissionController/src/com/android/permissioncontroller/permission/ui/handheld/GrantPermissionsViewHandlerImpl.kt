@@ -53,6 +53,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
@@ -71,6 +72,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.N
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.EXTRA_BUTTON_1
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
@@ -109,6 +111,8 @@ class GrantPermissionsViewHandlerImpl(
     private var coarseOnDrawable: AnimatedImageDrawable? = null
     private var fineOffDrawable: AnimatedImageDrawable? = null
     private var fineOnDrawable: AnimatedImageDrawable? = null
+
+    private var extraButton1: ExtraPermissionLink? = null
 
     // Views
     private var iconView: ImageView? = null
@@ -361,6 +365,11 @@ class GrantPermissionsViewHandlerImpl(
                             R.string.grant_dialog_button_deny)
                 }
             }
+            if (pos == EXTRA_BUTTON_1 && buttonVisibilities[pos]) {
+                val spec = getExtraPermissionLink(mActivity, mAppPackageName, groupName!!)!!
+                this.extraButton1 = spec
+                spec.setupDialogButton(buttons[pos]!!)
+            }
             buttons[pos]?.requestLayout()
         }
     }
@@ -520,6 +529,13 @@ class GrantPermissionsViewHandlerImpl(
                 resultListener!!.onPermissionGrantResult(groupName, affectedForegroundPermissions,
                     DENIED_DO_NOT_ASK_AGAIN)
             }
+            EXTRA_BUTTON_1 -> {
+                view.performAccessibilityAction(
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
+                if (resultListener != null) {
+                    extraButton1!!.onDialogButtonClick(mActivity as GrantPermissionsActivity, mAppPackageName)
+                }
+            }
         }
     }
 
@@ -567,6 +583,7 @@ class GrantPermissionsViewHandlerImpl(
                 NO_UPGRADE_OT_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
                 NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_extra_button_1, EXTRA_BUTTON_1)
 
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_fine,
