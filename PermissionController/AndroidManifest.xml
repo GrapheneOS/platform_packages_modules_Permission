@@ -410,6 +410,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.android.permissioncontroller.sscopes.StorageScopesActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:excludeFromRecents="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS"
+        >
+        <!-- WRITE_SECURE_SETTINGS permission is held only by privileged apps -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
