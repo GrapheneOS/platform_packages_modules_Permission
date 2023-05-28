@@ -192,4 +192,9 @@
         android:name="com.android.permissioncontroller.sscopes.StorageScopesWrapperFragment"
         android:label="StorageScopes"/>
 
+    <fragment
+        android:id="@+id/contact_scopes"
+        android:name="com.android.permissioncontroller.cscopes.ContactScopesWrapperFragment"
+        android:label="ContactScopes"/>
+
 </navigation>

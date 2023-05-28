@@ -441,6 +441,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.android.permissioncontroller.cscopes.ContactScopesActivity"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS"
+            android:exported="true" />
+
     </application>
 
 </manifest>
