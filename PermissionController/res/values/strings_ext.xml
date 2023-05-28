@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scopes_list_is_full">Scope list is full</string>
+    <string name="scopes_menu_item_turn_off">Turn off</string>
+    <string name="scopes_btn_remove_scope">Remove</string>
+</resources>
