@@ -191,4 +191,10 @@
         android:id="@+id/app_data_sharing_updates"
         android:name="com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesWrapperFragment"
         android:label="AppDataSharingUpdates"/>
+
+    <fragment
+        android:id="@+id/storage_scopes"
+        android:name="com.android.permissioncontroller.sscopes.StorageScopesWrapperFragment"
+        android:label="StorageScopes"/>
+
 </navigation>
