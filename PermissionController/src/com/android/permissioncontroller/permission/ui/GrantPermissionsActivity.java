@@ -102,7 +102,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             + "_REQUEST_ID";
     public static final String ANNOTATION_ID = "link";
 
-    public static final int NEXT_BUTTON = 15;
+    public static final int NEXT_BUTTON = 16;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
@@ -119,6 +119,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     // button to cancel a request for more data with a picker
     public static final int DONT_ALLOW_MORE_SELECTED_BUTTON = 13;
     public static final int LINK_TO_PERMISSION_RATIONALE = 14;
+    public static final int EXTRA_BUTTON_1 = 15;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
     public static final int LOCATION_ACCURACY_LAYOUT = 0;
@@ -286,7 +287,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     .setResultListener(this);
         } else {
             mViewHandler = new com.android.permissioncontroller.permission.ui.handheld
-                    .GrantPermissionsViewHandlerImpl(this, this);
+                    .GrantPermissionsViewHandlerImpl(this, mTargetPackage, this);
         }
 
         GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
