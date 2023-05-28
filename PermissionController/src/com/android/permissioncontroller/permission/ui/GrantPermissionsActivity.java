@@ -86,7 +86,9 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils;
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
+import com.android.permissioncontroller.permission.ui.handheld.ExtraPermissionLinkKt;
 import com.android.permissioncontroller.permission.ui.model.DenyButton;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.RequestInfo;
@@ -128,7 +130,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     public static final String ANNOTATION_ID = "link";
 
-    public static final int NEXT_BUTTON = 15;
+    public static final int NEXT_BUTTON = 16;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
@@ -145,6 +147,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     // button to cancel a request for more data with a picker
     public static final int DONT_ALLOW_MORE_SELECTED_BUTTON = 13;
     public static final int LINK_TO_PERMISSION_RATIONALE = 14;
+    public static final int EXTRA_BUTTON_1 = 15;
 
     public static final int NEXT_LOCATION_DIALOG = 6;
     public static final int LOCATION_ACCURACY_LAYOUT = 0;
@@ -428,7 +431,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     .setResultListener(this);
         } else {
             mViewHandler = new com.android.permissioncontroller.permission.ui.handheld
-                    .GrantPermissionsViewHandlerImpl(this, this);
+                    .GrantPermissionsViewHandlerImpl(this, mTargetPackage, this);
         }
 
         if (!mDelegated) {
@@ -789,7 +792,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             setTitle(message);
         }
 
-        mButtonVisibilities = getButtonsForPrompt(info.getPrompt(), info.getDeny(),
+        mButtonVisibilities = getButtonsForPrompt(info.getGroupInfo(), info.getPrompt(), info.getDeny(),
                 info.getShowRationale());
 
         CharSequence permissionRationaleMessage = null;
@@ -847,7 +850,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         };
     }
 
-    private boolean[] getButtonsForPrompt(Prompt prompt, DenyButton denyButton,
+    private boolean[] getButtonsForPrompt(LightPermGroupInfo groupInfo, Prompt prompt, DenyButton denyButton,
                                           boolean shouldShowRationale) {
         ArraySet<Integer> buttons = new ArraySet<>();
         switch (prompt) {
@@ -877,6 +880,12 @@ public class GrantPermissionsActivity extends SettingsActivity
         if (shouldShowRationale) {
             buttons.add(LINK_TO_PERMISSION_RATIONALE);
         }
+
+        if (ExtraPermissionLinkKt.getExtraPermissionLink(this, mTargetPackage, getUser(),
+                groupInfo.getName()) != null) {
+            buttons.add(EXTRA_BUTTON_1);
+        }
+
         return convertSetToBoolList(buttons, NEXT_BUTTON);
     }
 
