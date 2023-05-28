@@ -89,6 +89,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.MultiDeviceUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.sscopes.StorageScopesUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -752,9 +753,18 @@ public class GrantPermissionsActivity extends SettingsActivity
     }
 
 
+    public static final int REQ_CODE_SETUP_STORAGE_SCOPES = 100;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQ_CODE_SETUP_STORAGE_SCOPES) {
+            if (StorageScopesUtils.storageScopesEnabled(mTargetPackage)) {
+                setResultAndFinish();
+            }
+            return;
+        }
+
         Consumer<Intent> callback = mViewModel.getActivityResultCallback();
         if (callback == null || (requestCode != APP_PERMISSION_REQUEST_CODE
                 && requestCode != PHOTO_PICKER_REQUEST_CODE)) {
