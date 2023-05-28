@@ -186,4 +186,10 @@
             app:popExitAnim="@anim/activity_close_exit"
             app:popEnterAnim="@anim/activity_open_enter"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/storage_scopes"
+        android:name="com.android.permissioncontroller.sscopes.StorageScopesWrapperFragment"
+        android:label="StorageScopes"/>
+
 </navigation>
