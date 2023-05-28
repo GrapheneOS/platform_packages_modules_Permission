@@ -49,6 +49,7 @@ import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.GosPackageState;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,6 +79,8 @@ import com.android.permissioncontroller.permission.data.FullStoragePermissionApp
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 import com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.ExtraPermissionLink;
+import com.android.permissioncontroller.permission.ui.handheld.ExtraPermissionLinkKt;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionFooterPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionPreference;
@@ -131,6 +134,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull SelectorWithWidgetPreference mDenyButton;
     private @NonNull SelectorWithWidgetPreference mDenyForegroundButton;
     private @NonNull TwoStatePreference mLocationAccuracySwitch;
+    private @NonNull Preference mExtraLink1;
     private @NonNull PermissionTwoTargetPreference mDetails;
     private @NonNull AppPermissionFooterLinkPreference mFooterLink1;
     private @NonNull AppPermissionFooterLinkPreference mFooterLink2;
@@ -228,6 +232,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         } else {
             mLocationAccuracySwitch = requirePreference("app_permission_location_accuracy_switch");
         }
+        mExtraLink1 = requirePreference("app_permission_extra_link_1");
         mDetails = requirePreference("app_permission_details");
         mFooterLink1 = requirePreference("app_permission_footer_link_1");
         mFooterLink2 = requirePreference("app_permission_footer_link_2");
@@ -313,6 +318,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         super.onResume();
         // If we're returning to the fragment, photo picker hasn't been triggered
         mPhotoPickerTriggered = false;
+        if (!mIsInitialLoad) {
+            setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
+        }
     }
 
     private void showPermissionRationaleDialog(Boolean showPermissionRationale) {
@@ -491,6 +499,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized()) {
             setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue());
+        }
+
+        if (!setupExtraLinks()) {
+            mExtraLink1.setVisible(false);
         }
     }
 
@@ -713,6 +725,46 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             b.setTitle(args.getTitleId());
         }
         b.show();
+    }
+
+    private CharSequence mOrigDenyButtonTitle;
+
+    private boolean setupExtraLinks() {
+        if (!mDenyButton.isEnabled()) {
+            return false;
+        }
+
+        Context ctx = mDenyButton.getContext();
+        String packageName = mPackageName;
+        UserHandle user = mUser;
+
+        ExtraPermissionLink link = ExtraPermissionLinkKt.getExtraPermissionLink(ctx,
+                packageName, user, mPermGroupName);
+        if (link == null) {
+            return false;
+        }
+
+        GosPackageState packageState = GosPackageState.get(packageName, user);
+        String denyItemSuffix = link.getSettingsDeniedRadioButtonSuffix(ctx, packageState);
+
+        if (denyItemSuffix != null) {
+            if (mOrigDenyButtonTitle == null) {
+                mOrigDenyButtonTitle = mDenyButton.getTitle();
+            }
+            mDenyButton.setTitle(mOrigDenyButtonTitle + denyItemSuffix);
+        } else {
+            if (mOrigDenyButtonTitle != null) {
+                mDenyButton.setTitle(mOrigDenyButtonTitle);
+            }
+        }
+
+        mExtraLink1.setTitle(link.getSettingsLinkText(ctx));
+        mExtraLink1.setOnPreferenceClickListener(p -> {
+            link.onSettingsLinkClick(p.getContext(), mPackageName, mUser);
+            return true;
+        });
+        mExtraLink1.setVisible(true);
+        return true;
     }
 }
 // LINT.ThenChange(../max35/LegacyAppPermissionFragment.java)
