@@ -97,6 +97,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
+import com.android.permissioncontroller.permission.ui.handheld.getExtraPermissionLink
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils
@@ -439,6 +440,8 @@ class GrantPermissionsViewModel(
                 }
                 buttonVisibilities[LINK_TO_SETTINGS] =
                     detailMessage != RequestMessage.NO_MESSAGE
+                buttonVisibilities[GrantPermissionsActivity.EXTRA_BUTTON_1] =
+                        getExtraPermissionLink(app, packageName, groupName) != null
 
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
