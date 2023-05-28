@@ -145,6 +145,10 @@
                     android:id="@+id/permission_no_upgrade_one_time_and_dont_ask_again_button"
                     android:text="@string/grant_dialog_button_no_upgrade_one_time"
                     style="@style/PermissionGrantButtonNoUpgradeMaterial3" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_extra_button_1"
+                    style="@style/PermissionGrantButtonDenyMaterial3" />
             </LinearLayout>
 
             <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
