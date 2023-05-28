@@ -102,6 +102,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils;
+import com.android.permissioncontroller.sscopes.StorageScopesUtils;
 import com.android.settingslib.widget.ExpressiveDesignEnabledProvider;
 
 import java.util.ArrayList;
@@ -1028,6 +1029,8 @@ public class GrantPermissionsActivity extends FragmentActivity
     }
 
 
+    public static final int REQ_CODE_SETUP_STORAGE_SCOPES = 100;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -1037,6 +1040,14 @@ public class GrantPermissionsActivity extends FragmentActivity
                 return;
             }
         }
+
+        if (requestCode == REQ_CODE_SETUP_STORAGE_SCOPES) {
+            if (StorageScopesUtils.isStorageScopesEnabled(this, mTargetPackage)) {
+                setResultAndFinish();
+            }
+            return;
+        }
+
         if (requestCode != APP_PERMISSION_REQUEST_CODE
                 && requestCode != PHOTO_PICKER_REQUEST_CODE) {
             return;
