@@ -82,6 +82,10 @@
         android:title="@string/app_permission_location_accuracy"
         app:isPreferenceVisible="false" />
 
+    <Preference
+        android:key="app_permission_extra_link_1"
+        app:isPreferenceVisible="false" />
+
     <com.android.permissioncontroller.permission.ui.handheld.v36.PermissionTwoTargetPreference
         android:key="app_permission_details"
         android:selectable="false"

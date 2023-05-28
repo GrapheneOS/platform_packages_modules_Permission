@@ -199,6 +199,10 @@
                     android:text="@string/grant_dialog_button_dont_select_more"
                     style="@style/PermissionGrantButtonDontAllowMoreExpressive" />
 
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_extra_button_1"
+                    style="@style/PermissionGrantButtonDontAllowMoreExpressive" />
+
             </LinearLayout>
 
             <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
