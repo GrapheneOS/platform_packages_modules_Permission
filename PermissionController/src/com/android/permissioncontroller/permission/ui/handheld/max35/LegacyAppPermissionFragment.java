@@ -260,6 +260,7 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
         mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
         mAskButton = root.requireViewById(R.id.ask_radio_button);
         mSelectButton = root.requireViewById(R.id.select_radio_button);
+        mExtraViews = root.requireViewById(R.id.layout_app_permission_extra_views);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
 
@@ -771,12 +772,9 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
 
     private CharSequence mOrigDenyButtonText;
 
-    private void setupExtraViews() {
-        View rootView = getView();
-        if (rootView == null) {
-            return;
-        }
+    private ViewGroup mExtraViews;
 
+    private void setupExtraViews() {
         if (!mDenyButton.isEnabled()) {
             return;
         }
@@ -806,14 +804,12 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
             }
         }
 
-        ViewGroup layout = rootView.requireViewById(R.id.layout_app_permission_extra_views);
-
-        TextView view = layout.requireViewById(R.id.app_permission_extra_link_1);
+        TextView view = mExtraViews.requireViewById(R.id.app_permission_extra_link_1);
 
         view.setText(link.getSettingsLinkText(ctx));
         view.setOnClickListener(v -> link.onSettingsLinkClick(v.getContext(), mPackageName, mUser));
 
-        layout.setVisibility(View.VISIBLE);
+        mExtraViews.setVisibility(View.VISIBLE);
     }
 }
 // LINT.ThenChange(../v36/AppPermissionFragment.java)

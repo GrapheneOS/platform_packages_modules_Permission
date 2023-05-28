@@ -1,0 +1,13 @@
+<ImageButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/preference_widget_image_button"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:minWidth="@dimen/two_target_min_width"
+    android:paddingStart="?android:attr/listPreferredItemPaddingEnd"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:background="?android:attr/selectableItemBackground"
+    android:scaleType="center"
+    android:tint="?android:attr/colorAccent" />
+
