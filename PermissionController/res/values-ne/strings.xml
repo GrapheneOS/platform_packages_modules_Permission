@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ब्याकग्राउन्डमा लोकेसन प्रयोग गर्ने अनुमति दिइएको एपको समीक्षा गर्नुहोस्"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"यो एप बन्द हुँदा पनि यसले जुनसुकै बेला तपाईंको लोकेसन प्रयोग गर्न सक्छ।\n\nसुरक्षा तथा आपत्कालीन प्रयोजनका लागि बनाइएका केही एपहरूले राम्रोसँग काम गर्नका निम्ति तपाईंले ती एपहरूलाई ब्याकग्राउन्डमा तपाईंको लोकेसन प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"अनुमति बदलियो"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हालसालै प्रयोग गरिएको लोकेसनसम्बन्धी जानकारी हेर्नुहोस्"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हालसालै कहिले लोकेसनसम्बन्धी प्रयोग गरिएको थियो हेर्नुहोस्"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"गोपनीयतासम्बन्धी सेटिङ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"क्यामेरा प्रयोग गर्ने अनुमति"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"माइक्रोफोन प्रयोग गर्ने अनुमति"</string>
