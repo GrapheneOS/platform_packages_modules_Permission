@@ -41,7 +41,8 @@ object ContactScopesLinks : ExtraPermissionLink() {
         activity.startActivityForResult(intent, GrantPermissionsActivity.REQ_CODE_SETUP_CONTACT_SCOPES)
     }
 
-    override fun isAllowPermissionSettingsButtonBlocked(ctx: Context, packageName: String) = true
+    override fun isAllowPermissionSettingsButtonBlocked(ctx: Context, packageName: String) =
+            ContactScopesUtils.isContactScopesEnabled(packageName)
 
     override fun onAllowPermissionSettingsButtonClick(ctx: Context, packageName: String) {
         AlertDialog.Builder(ctx).run {
