@@ -475,7 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music, audio and other files&lt;/b&gt; on this device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access music and audio on this device?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos and videos on this device?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos and videos on this device?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access more photos and videos on this device?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"The app will only be able to record audio while you’re using the app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
