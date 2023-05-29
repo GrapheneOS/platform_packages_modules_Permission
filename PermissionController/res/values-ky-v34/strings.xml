@@ -20,8 +20,8 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Коопсуздук жана купуялык"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Башкаруу элементтери"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Колдонмонун ден соолук тууралуу маалыматка кирүү мүмкүнчүлүгүн тескөө"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Колдонмо үчүн ден соолукка байланыштуу нерселердин жеткиликтүүлүгүн тескейсиз"</string>
     <string name="location_settings" msgid="8863940440881290182">"Жайгашкан жерди көрсөтүү"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Колдонмолор жана кызматтар үчүн. Эгер бул жөндөө өчүрүлсө, кырсыктаганда жардамга келчү кызматтын номерине чалганыңызда микрофондогу нерселер өткөрүлүшү мүмкүн"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Колдонмолор жана кызматтар үчүн. Бул параметр өчүп турса да, кырсыктаганда жардамга келчү кызматтын номерине чалганыңызда микрофондогу нерселер өткөрүлүшү мүмкүн."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Колдонмолор жана кызматтар үчүн"</string>
 </resources>

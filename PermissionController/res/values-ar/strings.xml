@@ -483,7 +483,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"‏هل تريد تغيير إذن الوصول إلى الميكروفون بالنسبة إلى &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;؟"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"يحتاج هذا التطبيق إلى تسجيل الصوت طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى بيانات نشاطك البدني؟"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديو؟"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديوهات؟"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"لن يتمكن هذا التطبيق من التقاط صور وتسجيل فيديوهات إلا عندما يكون قيد الاستخدام"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديوهات؟"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"قد يحتاج هذا التطبيق إلى التقاط صور وتسجيل فيديوهات طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
@@ -583,7 +583,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"بالنسبة للتطبيقات والخدمات. إذا كان هذا الخيار غير مفعّل، قد يظل بالإمكان مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"عرض التطبيقات والخدمات التي يمكنها الوصول إلى الموقع الجغرافي"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"عرض إشعار عند الوصول إلى الحافظة"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه."</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه"</string>
     <string name="show_password_title" msgid="2877269286984684659">"عرض كلمات المرور"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"عرض الأحرف لفترة وجيزة أثناء الكتابة"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"وضَّح هذا التطبيق أنه يمكنه مشاركة بيانات الموقع الجغرافي مع جهات خارجية."</string>
