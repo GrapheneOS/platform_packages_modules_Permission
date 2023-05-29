@@ -573,7 +573,7 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Құпиялық параметрлері"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Камераны пайдалану"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Микрофонды пайдалану"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Қолданбалар мен қызметтер үшін"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Қолданбалар мен қызметтерге арналған."</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Қолданбалар мен қызметтерге арналған. Бұл параметр өшірілсе де, құтқару қызметінің нөміріне қоңырау шалғанда, микрофон деректері жіберілуі мүмкін."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Локацияны пайдалана алатын қолданбалар мен қызметтерді көру"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Буфер пайдаланылғанын көрсету"</string>

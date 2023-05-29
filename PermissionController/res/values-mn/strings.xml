@@ -477,7 +477,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-н микрофоны хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж аудио бичихийг хүснэ. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн дасгал хөдөлгөөнд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео хийхийг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Энэ апп зөвхөн таныг ашиглаж байх үед л зураг авж, видео бичих боломжтой болно"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж зураг авж, видео бичихийг хүсэж болзошгүй. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
@@ -579,5 +579,5 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Түр санах ойн хандалтыг харуулах"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Аппууд таны хуулсан текст, зураг эсвэл бусад контентод хандах үед мессеж харуулах"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Нууц үгнүүдийг харуулах"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Таныг бичиж явцад тэмдэгтүүдийг түр үзүүлэх"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Бичих явцад тэмдэгтийг товчхон харуулах"</string>
 </resources>
