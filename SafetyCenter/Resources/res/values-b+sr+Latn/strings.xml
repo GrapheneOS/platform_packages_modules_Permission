@@ -20,7 +20,7 @@
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Resursi Centra za bezbednost"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Zaključavanje uređaja"</string>
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
-    <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje ekrana"</string>
+    <string name="lock_screen_title" msgid="4069104894527169877">"Otključavanje ekrana"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još nema informacija"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"zaključavanje uređaja, zaključavanje ekrana, zaključani ekran, lozinka, PIN, šablon"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Biometrija"</string>

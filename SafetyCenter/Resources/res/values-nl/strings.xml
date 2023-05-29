@@ -30,7 +30,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Privacydashboard"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Toon welke apps onlangs rechten hebben gebruikt"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Privacy, Privacydashboard"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"Rechtenbeheer"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Rechten­beheer"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Beheer de toegang van apps tot je gegevens"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Rechten, Rechtenbeheer"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Privacyopties"</string>
