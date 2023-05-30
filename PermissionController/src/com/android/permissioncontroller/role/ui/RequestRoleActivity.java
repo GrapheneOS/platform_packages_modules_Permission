@@ -291,4 +291,11 @@ public class RequestRoleActivity extends FragmentActivity {
         }
         return applicationInfo.uid;
     }
+
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+
+        Log.w(LOG_TAG, "Ignoring new intent: " + intent);
+    }
 }
