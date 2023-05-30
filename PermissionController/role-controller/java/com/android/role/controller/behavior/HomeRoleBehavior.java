@@ -57,7 +57,8 @@ public class HomeRoleBehavior implements RoleBehavior {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static final List<String> WEAR_PERMISSIONS = Arrays.asList(
-            android.Manifest.permission.POST_NOTIFICATIONS);
+            android.Manifest.permission.POST_NOTIFICATIONS,
+            android.Manifest.permission.SYSTEM_APPLICATION_OVERLAY);
 
     private static final List<String> WEAR_APP_OP_PERMISSIONS = Arrays.asList(
             android.Manifest.permission.SYSTEM_ALERT_WINDOW);
