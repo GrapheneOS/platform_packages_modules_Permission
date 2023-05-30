@@ -38,12 +38,16 @@ import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
@@ -126,6 +130,18 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
         prerenderCurrentSafetyCenterData();
     }
 
+    @Override
+    public RecyclerView onCreateRecyclerView(
+            LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+        RecyclerView recyclerView =
+                super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+
+        if (mIsQuickSettingsFragment) {
+            recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            recyclerView.setVerticalScrollBarEnabled(false);
+        }
+        return recyclerView;
+    }
     // Set the default divider line between preferences to be transparent
     @Override
     public void setDivider(Drawable divider) {
