@@ -1080,7 +1080,9 @@ class GrantPermissionsViewModel(
             appPermGroup.setSelfRevoked()
             appPermGroup.persistChanges(false, null, nonSelectedPerms.toSet())
         } else {
-            val partialPerms = getPartialStorageGrantPermissionsForGroup(groupState.group)
+            val partialPerms = getPartialStorageGrantPermissionsForGroup(groupState.group).filter {
+                it in groupState.affectedPermissions
+            }
             val nonSelectedPerms = groupState.affectedPermissions.filter { it !in partialPerms }
             val setUserFixed = userSelectedPerm.isUserFixed || userSelectedPerm.isUserSet
             grantForegroundRuntimePermissions(app, groupState.group,
