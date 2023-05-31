@@ -515,8 +515,8 @@ class GrantPermissionsViewModel(
 
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
-                if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled() &&
-                    packageInfo.targetSdkVersion >= Build.VERSION_CODES.S) {
+                if (groupState.group.permGroupName == LOCATION &&
+                    isLocationAccuracyEnabledForApp(groupState.group)) {
                     if (needFgPermissions) {
                         locationVisibilities[LOCATION_ACCURACY_LAYOUT] = true
                         if (fgState != null &&
@@ -763,7 +763,7 @@ class GrantPermissionsViewModel(
             // Skip showing groups that we know cannot be granted.
             return false
         } else if (subGroup.isUserFixed) {
-            if (perm == ACCESS_COARSE_LOCATION) {
+            if (perm == ACCESS_COARSE_LOCATION && isLocationAccuracyEnabledForApp(group)) {
                 val coarsePerm = group.permissions[perm]
                 if (coarsePerm != null && !coarsePerm.isUserFixed) {
                     // If the location group is user fixed but ACCESS_COARSE_LOCATION is not, then
@@ -867,7 +867,7 @@ class GrantPermissionsViewModel(
     private fun canAutoGrantWholeGroup(group: LightAppPermGroup): Boolean {
         // If FINE location is not granted, do not grant it automatically when COARSE
         // location is already granted.
-        if (group.permGroupName == LOCATION &&
+        if (group.permGroupName == LOCATION && isLocationAccuracyEnabledForApp(group) &&
             group.allPermissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp == false) {
             return false
         }
@@ -1464,6 +1464,11 @@ class GrantPermissionsViewModel(
                 }
             }
         }
+    }
+
+    private fun isLocationAccuracyEnabledForApp(group: LightAppPermGroup): Boolean {
+        return isLocationAccuracyEnabled() &&
+                group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.S
     }
 
     /**
