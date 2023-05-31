@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ứng dụng này luôn truy cập được vào thông tin vị trí của bạn, kể cả khi đang đóng.\n\nMột số ứng dụng khẩn cấp và an toàn cần truy cập vào thông tin vị trí của bạn ở chế độ nền để hoạt động như mong đợi."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Đã thay đổi quyền truy cập"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin gần đây về việc sử dụng thông tin vị trí"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin về hoạt động sử dụng thông tin vị trí gần đây"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Chế độ kiểm soát quyền riêng tư"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Quyền truy cập máy ảnh"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Quyền truy cập micrô"</string>
