@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Consenti sempre tutto"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Seleziona foto e video"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Seleziona più messaggi"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Non selezionare altri dati"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Non selezionare altro"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non consentire comunque"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignora"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> di <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
