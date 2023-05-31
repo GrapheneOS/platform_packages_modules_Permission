@@ -583,7 +583,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Para apps y servicios. Aunque se desactive este parámetro de configuración, es posible que se sigan compartiendo los datos del micrófono cuando llames a un número de emergencia."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Consulta las apps y los servicios que tienen acceso a la ubicación"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Mostrar acceso a portapapeles"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Mostrar un mensaje cuando las apps accedan a textos, imágenes y otro contenido que hayas copiado"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Muestra un mensaje cuando las apps accedan a texto, imágenes y otro contenido que hayas copiado"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Mostrar contraseñas"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Mostrar caracteres brevemente mientras escribes"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Esta app indicó que podría compartir datos de ubicación con terceros"</string>
