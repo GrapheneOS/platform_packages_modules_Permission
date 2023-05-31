@@ -27,6 +27,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.car.ui.FocusArea;
+import com.android.car.ui.R;
+import com.android.car.ui.baselayout.Insets;
 import com.android.car.ui.preference.PreferenceFragment;
 import com.android.car.ui.toolbar.MenuItem;
 import com.android.car.ui.toolbar.ToolbarController;
@@ -55,6 +58,20 @@ public abstract class AutoSettingsFrameFragment extends PreferenceFragment {
         updateAction();
 
         return rootView;
+    }
+    @Override
+    public void onCarUiInsetsChanged(Insets insets) {
+        // don't allow scrolling behind the toolbar to be consistent with the rest of Settings
+        // reference UI. Scrolling behind toolbar also leads to flakier tests due to UI being
+        // visible but clicks are intercepted and dropped by the toolbar.
+        FocusArea focusArea = getView().findViewById(R.id.car_ui_focus_area);
+        focusArea.setHighlightPadding(
+                /* left= */ 0, /* top= */  0, /* right= */  0, /* bottom= */  0);
+        focusArea.setBoundsOffset(/* left= */ 0, /* top= */  0, /* right= */  0, /* bottom= */  0);
+        getView().setPadding(
+                insets.getLeft(), insets.getTop(), insets.getRight(), insets.getBottom());
+        getCarUiRecyclerView().setPadding(
+                /* left= */ 0, /* top= */  0, /* right= */  0, /* bottom= */  0);
     }
 
     /** Sets the header text of this fragment. */
