@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Kontroluje sa"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Kontrolujú sa nastavenia zariadenia…"</string>
-    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Je to v poriadku"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Všetko v poriadku"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenašli sa žiadne problémy"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Kontrola nastavení"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrolný zoznam nastavení"</string>

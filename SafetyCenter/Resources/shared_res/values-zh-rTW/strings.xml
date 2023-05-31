@@ -27,7 +27,7 @@
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"裝置有風險"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"你可能有風險"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"你目前有風險"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"帳戶可能面臨風險"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"帳戶可能有風險"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"帳戶目前有風險"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# 個警示}other{# 個警示}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"無法開啟網頁"</string>
