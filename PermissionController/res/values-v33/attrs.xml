@@ -37,8 +37,8 @@
 
     <attr name="scStatusTitleAndSummaryContainerStyle" format="reference" />
     <attr name="scStatusButtonStyle" format="reference" />
-
     <attr name="scActionButtonListLayout" format="reference" />
+    <attr name="scActionButtonTheme" format="reference" />
     <attr name="scActionButtonStyle" format="reference"/>
     <attr name="scSecondaryActionButtonStyle" format="reference"/>
 
