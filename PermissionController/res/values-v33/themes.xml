@@ -48,16 +48,17 @@
 
         <!-- Buttons -->
         <item name="scActionButtonListLayout">@layout/action_button_list_fixed</item>
+        <item name="scActionButtonTheme">
+            <!-- Dark-only theme for QS buttons -->
+            @style/Theme.MaterialComponents
+        </item>
         <item name="scActionButtonStyle">@style/SafetyCenterActionButton.Fixed</item>
         <item name="scSecondaryActionButtonStyle">
             @style/SecondarySafetyCenterActionButton.Fixed
         </item>
 
         <item name="textColorScActionButton">@color/sc_primary_action_button_text</item>
-        <!-- While the rest of the text colors automatically appear correct in quick settings,
-             the outline action button text color needs to be set to primary inverse in light mode
-             and primary in night mode to appear correctly in QS's faux permanent night mode. -->
-        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimaryInverse</item>
+        <item name="textColorScSecondaryActionButton">?android:attr/textColorPrimary</item>
 
         <item name="colorScOutlineButtonInfoBase">@color/sc_outline_button_info_base_dark</item>
         <item name="colorScOutlineButtonRecommendBase">
@@ -97,6 +98,7 @@
 
         <!-- Buttons -->
         <item name="scActionButtonListLayout">@layout/action_button_list_responsive</item>
+        <item name="scActionButtonTheme">@style/Theme.MaterialComponents.DayNight</item>
         <item name="scActionButtonStyle">@style/SafetyCenterActionButton.Responsive</item>
         <item name="scSecondaryActionButtonStyle">
             @style/SecondarySafetyCenterActionButton.Responsive
