@@ -1493,6 +1493,7 @@
         minSdkVersion="34"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.MANAGE_DEVICE_LOCK_STATE" />
         </permissions>
     </role>
@@ -1509,6 +1510,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_CALLS" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES" />
