@@ -102,7 +102,7 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         mGroupIcon = icon;
         mGroupMessage = message;
         mDetailMessage = detailMessage;
-        mButtonVisibilities = buttonVisibilities;
+        setButtonVisibilities(buttonVisibilities);
 
         update();
     }
@@ -193,9 +193,17 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         mGroupCount = savedInstanceState.getInt(ARG_GROUP_COUNT);
         mGroupIndex = savedInstanceState.getInt(ARG_GROUP_INDEX);
         mDetailMessage = savedInstanceState.getCharSequence(ARG_GROUP_DETAIL_MESSAGE);
-        mButtonVisibilities = savedInstanceState.getBooleanArray(ARG_BUTTON_VISIBILITIES);
+        setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_BUTTON_VISIBILITIES));
 
         update();
+    }
+
+    private void setButtonVisibilities(boolean[] visibilities) {
+        // If GrantPermissionsActivity sent the user directly to settings, button visibilities are
+        // not created. If the activity was then destroyed by the system, once the activity is
+        // recreated to perform onActivityResult, it will try to loadInstanceState in onCreate but
+        // the button visibilities were never set, so they will be null.
+        mButtonVisibilities = visibilities == null ? new boolean[0] : visibilities;
     }
 
     @Override
