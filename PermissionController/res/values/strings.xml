@@ -1801,12 +1801,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Description for the app's location permission rationale dialog content. [CHAR LIMIT=130] -->
     <string name="app_location_permission_rationale_subtitle">This app stated it may share your location data with third parties</string>
 
-    <!-- Title of error dialog when a link can't be launched automatically in a browser. [CHAR LIMIT=100] -->
-    <string name="permission_rationale_data_sharing_link_error_title">Can\u2019t open this link</string>
-
-    <!-- Message shown in error dialog when a link can't be launched automatically in a browser. [CHAR LIMIT=NONE] -->
-    <string name="permission_rationale_data_sharing_link_error_message"></string>
-
     <!-- Permission Rationale - End -->
 
     <!-- Safety Label Change Notifications Start -->
