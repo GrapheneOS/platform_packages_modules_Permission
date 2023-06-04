@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Keselamatan data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data lokasi mungkin dikongsi"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Apl ini menyatakan bahawa data lokasi anda mungkin dikongsi dengan pihak ketiga"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Tidak dapat membuka pautan ini"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kemaskinian perkongsian data untuk lokasi"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Semak apl yang mengubah cara apl itu boleh berkongsi data lokasi anda"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Apl ini telah mengubah cara apl boleh berkongsi data lokasi anda. Apl mungkin tidak berkongsi data lokasi sebelum ini atau mungkin berkongsi data lokasi sekarang untuk tujuan pengiklanan atau pemasaran."</string>

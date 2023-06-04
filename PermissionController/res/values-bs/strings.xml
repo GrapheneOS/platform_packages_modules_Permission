@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Dozvoli sve vrijeme"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozvoli samo dok se koristi"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozvoli samo dok se aplikacija koristi"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Nemoj dozvoliti"</string>
     <string name="loading" msgid="4789365003890741082">"Učitavanje…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Sva odobrenja"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sigurnost podataka"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Podaci o lokaciji se mogu dijeliti"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Nije moguće otvoriti ovu vezu"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Promjene u dijeljenju podataka za lokaciju"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregledajte aplikacije koje su promijenile način na koji mogu dijeliti podatke o lokaciji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ove aplikacije su promijenile način na koji mogu dijeliti podatke o lokaciji. Možda ih prije nisu dijelile ili ih sada dijele u svrhe oglašavanja ili marketinga."</string>

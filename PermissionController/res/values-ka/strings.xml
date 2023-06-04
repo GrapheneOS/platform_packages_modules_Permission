@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"მონაცემთა უსაფრთხოება"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"მდებარეობის მონაცემები შესაძლოა გაზიარებულია"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ამ აპის თანახმად, მან შესაძლოა გაუზიაროს თქვენი მდებარეობის მონაცემები მესამე მხარეს"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ამ ბმულის გახსნა შეუძლებელია"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"მონაცემების გაზიარ. განახლებები მდებარეობისთვის"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"გადახედეთ აპებს, რომლებშიც შეიცვალა თქვენი მდებარეობის მონაცემების გაზიარების მეთოდი"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ამ აპებმა შეცვალა თქვენი მდებარეობის მონაცემების გაზიარების გზები. შესაძლოა, ისინი ადრე არ გაუზიარებიათ, ან გაზიარდა ახლა რეკლამირების ან მარკეტინგული მიზნით."</string>
