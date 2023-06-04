@@ -30,7 +30,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Панель керування дозволами"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Перегляньте, які додатки нещодавно використовували дозволи"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"конфіденційність, панель керування дозволами"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"Диспетчер дозволів"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Менеджер дозволів"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Контролюйте доступ додатка до даних"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"дозволи, диспетчер дозволів"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Налаштування конфіденційності"</string>
