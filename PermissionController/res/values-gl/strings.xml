@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Seguranza dos datos"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Poden compartirse os datos de localización"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Esta aplicación indicou que pode compartir os teus datos de localización con terceiros"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Non se puido abrir esta ligazón"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Actualizacións do uso compartido de datos de localización"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revisa as aplicacións que cambiaron a forma en que poden compartir os teus datos de localización"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas aplicacións cambiaron a forma en que poden compartir os teus datos de localización. É posible que non os compartisen antes ou que agora os compartan con fins publicitarios ou de márketing."</string>
