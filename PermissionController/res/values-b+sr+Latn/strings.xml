@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Dozvoli uvek"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozv. samo dok se apl. koristi"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozvoli samo dok se apl. koristi"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Ne dozvoli"</string>
     <string name="loading" msgid="4789365003890741082">"Učitava se…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Sve dozvole"</string>
@@ -299,23 +299,23 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Poslednji pristup juče u <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Poslednji pristup: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Pristup u poslednja 24 sata"</string>
-    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Pristup u poslednjih 7 dana"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Pristupljeno u poslednja 24 sata"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Pristupljeno u poslednjih 7 dana"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Dozvoljeno uvek"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Poslednji pristup juče u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Dozvoljeno uvek"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Poslednji pristup: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Dozvoljeno uvek"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Pristup u poslednja 24 sata • Dozvoljeno uvek"</string>
-    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Pristup u poslednjih 7 dana • Dozvoljeno uvek"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Pristupljeno u poslednja 24 sata • Dozvoljeno uvek"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Pristupljeno u poslednjih 7 dana • Dozvoljeno uvek"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Mediji"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Poslednji pristup juče u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Mediji"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Poslednji pristup: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Mediji"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Pristup u poslednja 24 sata • Mediji"</string>
-    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Pristup u poslednjih 7 dana • Mediji"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Pristupljeno u poslednja 24 sata • Mediji"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Pristupljeno u poslednjih 7 dana • Mediji"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Svi fajlovi"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Poslednji pristup juče u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Svi fajlovi"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Poslednji pristup: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Svi fajlovi"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Pristup u poslednja 24 sata • Svi fajlovi"</string>
-    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Pristup u poslednjih 7 dana• Svi fajlovi"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Pristupljeno u poslednja 24 sata • Svi fajlovi"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Pristupljeno u poslednjih 7 dana• Svi fajlovi"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Dozvole nisu odobrene"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nijedna dozvola nije odbijena"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nijedna aplikacija nema dozvolu"</string>

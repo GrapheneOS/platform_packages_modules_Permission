@@ -53,7 +53,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizações da app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Apps não usadas"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não utilizada"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Nenhuma app não usada"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 apps não utilizadas"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Decisões de autorização recentes"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Ver todas as decisões de autorização recentes"</string>
@@ -122,7 +122,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconhecido"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Painel de privacidade"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Veja que apps utilizaram autorizações recentemente"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"utilização de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilização de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Veja outras autorizações"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e mais <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -216,7 +216,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizações de <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Autorização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> autorizações removidas."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usadas"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for utilizada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se uma app não for usada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• As notificações são interrompidas para poupar bateria\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações e notificações, abra a app."</string>
     <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Se uma app não for usada durante alguns meses:\n\n• As autorizações são removidas para proteger os seus dados\n• Os ficheiros temporários são removidos para libertar espaço\n\nPara voltar a permitir autorizações, abra a app."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abertas pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A app foi aberta pela última vez a <xliff:g id="DATE">%s</xliff:g>."</string>
@@ -332,7 +332,7 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App assistente digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"As apps de assistência podem ajudá-lo com base em informações do ecrã que está a ver. Algumas apps são compatíveis com serviços de iniciação e de entrada de texto por voz para oferecer assistência integrada."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"App navegador predefinida"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicação de navegador"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"App de navegador"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apps que lhe dão acesso à Internet e apresentam links em que pode tocar."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como a app de navegador predefinida?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Não são necessárias autorizações."</string>
@@ -343,7 +343,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Esta app fica com acesso à sua Câmara, Contactos, Microfone, Telefone e SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefone"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App de SMS predefinida"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicação de SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"App de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem utilizar o seu número de telefone para enviar e receber mensagens de texto, fotos, vídeos e muito mais."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como app SMS predefinida?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Esta app fica com acesso à sua Câmara, Contactos, Ficheiros e multimédia, Microfone, Telefone e SMS"</string>

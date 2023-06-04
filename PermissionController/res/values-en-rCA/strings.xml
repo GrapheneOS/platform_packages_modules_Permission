@@ -25,7 +25,7 @@
     <string name="blocked" msgid="9195547604866033708">"Blocked"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Uninstall or disable"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App not found"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Don’t allow"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Don\'t allow"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Don’t allow &amp; don’t ask again"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Keep “While the app is in use”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Keep “Only this time”"</string>
@@ -102,7 +102,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Allow all the time"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Allow only while using the app"</string>
-    <string name="permission_access_never" msgid="4647014230217936900">"Don’t allow"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Don\'t allow"</string>
     <string name="loading" msgid="4789365003890741082">"Loading…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"All permissions"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Other app capabilities"</string>
@@ -186,7 +186,7 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Allow all the time"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Allow only while using the app"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ask every time"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"Don’t allow"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Don\'t allow"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Precise location"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Approximate location"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Use precise location"</string>
@@ -496,7 +496,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"For apps and services"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Microphone data may still be shared when you call an emergency number."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Change"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Security &amp; Privacy"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Security and privacy"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Scan"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Dismiss"</string>
     <string name="security_settings" msgid="3808106921175271317">"Security Settings"</string>
@@ -517,7 +517,7 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Recently used by <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Being used by <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Recently used by <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Security &amp; Privacy"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Security and privacy"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Check status"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Confirm"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Back"</string>

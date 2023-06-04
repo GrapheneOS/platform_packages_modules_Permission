@@ -44,7 +44,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Permet"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Permet sempre"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mentre s\'utilitza l\'aplicació"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Canvia a la ubicació exacta"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Canvia a la ubicació precisa"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Mantén la ubicació aproximada"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Només aquesta vegada"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Permet sempre"</string>
@@ -189,17 +189,17 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permetis"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicació exacta"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ubicació aproximada"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació exacta"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quan la ubicació exacta està desactivada, les aplicacions poden accedir a la teva ubicació aproximada"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació precisa"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quan la ubicació precisa està desactivada, les aplicacions poden accedir a la teva ubicació aproximada"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permís d\'accés a <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accés a <xliff:g id="PERM">%1$s</xliff:g> per a aquesta aplicació"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Mostra tots els permisos per a <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Mostra totes les aplicacions que tenen aquest permís"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostra l\'ús del micròfon de l\'Assistent"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuració d\'apps no utilitzades"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuració d\'aplicació no utilitzada"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Suprimeix els permisos si no s\'utilitza l\'aplicació"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Suprimeix els permisos i allibera espai"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Posa en pausa activitat a app si no s\'usa"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Activitat a l\'app en pausa si no s\'usa"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Suprimeix els permisos i els fitxers temporals, i atura les notificacions"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Per protegir les teves dades, els permisos d\'aquesta aplicació se suprimiran si no la utilitzes durant uns mesos."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Si l\'aplicació no s\'utilitza durant uns mesos, se suprimiran els permisos següents per protegir les teves dades: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -329,7 +329,7 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> pot veure la pantalla, les accions i el text que s\'introdueix, dur a terme accions i controlar la pantalla."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Aquestes aplicacions poden veure la pantalla, les accions i el text que s\'introdueix, dur a terme accions i controlar la pantalla."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Assistent digital predeterminat"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicació de l\'assistent digital"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicació d\'assistent digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les aplicacions d\'assistència et poden ajudar en funció de la informació que es mostri a la pantalla. Algunes aplicacions admeten tant el menú d\'aplicacions com els serveis d\'entrada de veu per oferir-te una assistència integrada."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicació de navegador predeterminada"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicació de navegador"</string>
@@ -494,7 +494,7 @@
     <string name="blocked_microphone_title" msgid="1631517143648232585">"El micròfon del dispositiu està bloquejat"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"La ubicació del dispositiu està desactivada"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Per a aplicacions i serveis"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es comparteixin si truques a un número d\'emergència."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Canvia"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Seguretat i privadesa"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Cerca"</string>

@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"OK"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"зөвшөөрөл"</string>
     <string name="cancel" msgid="8943320028373963831">"Болих"</string>
-    <string name="back" msgid="6249950659061523680">"Арын"</string>
+    <string name="back" msgid="6249950659061523680">"Буцах"</string>
     <string name="available" msgid="6007778121920339498">"Боломжтой"</string>
     <string name="blocked" msgid="9195547604866033708">"Блоклосон"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Устгах эсвэл идэвхгүй болгох"</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Бүх файлыг удирдахыг зөвшөөрсөн"</string>
     <string name="ask_header" msgid="2633816846459944376">"Тухай бүрд асуух"</string>
     <string name="denied_header" msgid="903209608358177654">"Зөвшөөрөөгүй"</string>
-    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Бүх файлд хандах боломжтой илүү их аппыг харах"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Бүх файлд хандах боломжтой бусад аппыг харах"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 өдөр}other{# өдөр}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 цаг}other{# цаг}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минут}other{# минут}}"</string>
@@ -459,7 +459,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-н микрофоны хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж аудио бичихийг хүснэ. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн дасгал хөдөлгөөнд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео хийхийг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Энэ апп зөвхөн таныг ашиглаж байх үед л зураг авж, видео бичих боломжтой болно"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж зураг авж, видео бичихийг хүсэж болзошгүй. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>

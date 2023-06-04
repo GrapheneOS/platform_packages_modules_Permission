@@ -243,12 +243,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No ha accedido nunca"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegado / Último acceso: Nunca"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Permitido"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Permitido siempre"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Permitidas siempre"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitidas solo mientras se usan"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Pueden acceder solo al contenido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden gestionar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
-    <string name="denied_header" msgid="903209608358177654">"No permitido"</string>
+    <string name="denied_header" msgid="903209608358177654">"No permitidas"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Ver más aplicaciones que pueden acceder a todos los archivos"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 día}many{# días}other{# días}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hora}many{# horas}other{# horas}}"</string>
@@ -366,7 +366,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de redirección de llamadas predeterminada?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"No se necesita ningún permiso"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplicación de filtro de identificación de llamada y spam"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamada y filtro de spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplicación de identificación de llamadas y filtro de spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicaciones que te permiten identificar llamadas y bloquear spam, llamadas automatizadas o números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de identificación de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>
@@ -408,9 +408,9 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"No hay aplicaciones"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Seleccionada: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"aplicaciones con accesos especiales"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Aplicaciones con accesos especiales"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de apps"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"acceso especial de aplicaciones"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Acceso especial de aplicaciones"</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Sin acceso especial de aplicaciones"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"No hay aplicaciones"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"No admite perfiles de trabajo"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Nota: Si reinicias el dispositivo y y has definido un bloqueo de pantalla, esta aplicación no se podrá iniciar hasta que desbloquees el dispositivo."</string>

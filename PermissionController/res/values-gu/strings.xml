@@ -126,7 +126,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"અન્ય પરવાનગીઓ જુઓ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> અને વધુ <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની ટાઇમલાઇન"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"છેલ્લા 7 દિવસમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"જ્યારે આ ઍપ દ્વારા તમારી <xliff:g id="PERMGROUP">%1$s</xliff:g>ની પરવાનગીનો ઉપયોગ કરવામાં આવ્યો"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"વધુ જાણો"</string>
@@ -189,8 +189,8 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"મંજૂરી આપશો નહીં"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ચોક્કસ સ્થાન"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"અંદાજિત સ્થાન"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ સ્થાનનો ઉપયોગ કરો"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"જ્યારે ચોક્કસ સ્થાન બંધ હોય, ત્યારે ઍપ તમારા અંદાજિત સ્થાનને ઍક્સેસ કરી શકે છે"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ લોકેશનનો ઉપયોગ કરો"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"જ્યારે ચોક્કસ લોકેશન બંધ હોય, ત્યારે ઍપ તમારા અંદાજિત લોકેશનને ઍક્સેસ કરી શકે છે"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>ની પરવાનગી"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"આ ઍપ માટે <xliff:g id="PERM">%1$s</xliff:g>નો ઍક્સેસ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>ની બધી પરવાનગીઓ જુઓ"</string>
@@ -229,7 +229,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ લૉગ વાંચી અને લખી શકે છે"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"આ પરવાનગી ધરાવતી ઍપ ફોટા લઈ શકે છે અને વીડિયો રેકોર્ડ કરી શકે છે"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"આ પરવાનગી ધરાવતી ઍપ તમારા સંપર્કોને ઍક્સેસ કરી શકશે"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું સ્થાન ઍક્સેસ કરી શકે છે"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું લોકેશન ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"આ પરવાનગી ધરાવતી ઍપ નજીકના ડિવાઇસ શોધી શકે છે, તેઓને કનેક્ટ કરી શકે છે તેમજ સંબંધિત અંતર નક્કી કરી શકે છે"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"આ પરવાનગી ધરાવતી ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ કરી શકશે અને તેને મેનેજ કરી શકશે"</string>
@@ -483,7 +483,7 @@
     <string name="additional_permissions_description" msgid="2186611950890732112">"ઍપ્લિકેશન દ્વારા વ્યાખ્યાયિત પરવાનગીઓ."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"કૅમેરા"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"માઇક્રોફોન"</string>
-    <string name="privdash_label_location" msgid="6882400763866489291">"સ્થાન"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"લોકેશન"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"અન્ય"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"એકપણ નહીં"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"છેલ્લા\n24 કલાક"</string>

@@ -64,7 +64,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Vandaag}=1{1 dag geleden}other{# dagen geleden}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitzetten"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitzet, werken Android en andere apps mogelijk niet meer zoals bedoeld. Je kunt deze app niet verwijderen omdat deze vooraf geïnstalleerd was op je apparaat. Door de app uit te zetten verberg je deze ook op je apparaat."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Rechtenbeheer"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Rechten­beheer"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Niet meer vragen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Geen rechten"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Aanvullende rechten"</string>
@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Altijd toestaan"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Toestaan bij gebruik van app"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Alleen toestaan bij gebruik van app"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Niet toestaan"</string>
     <string name="loading" msgid="4789365003890741082">"Laden…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alle rechten"</string>
@@ -191,7 +191,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Geschatte locatie"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Exacte locatie gebruiken"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Als de exacte locatie uitstaat, hebben apps toegang tot je geschatte locatie"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-rechten"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Rechten: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> voor deze app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Als je het beheer van alle bestanden toestaat, kan deze app alle bestanden in de algemene opslag van dit apparaat of gekoppelde opslagapparaten openen, bewerken en verwijderen. De app kan toegang tot bestanden krijgen zonder je dat te vragen."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Toestaan dat deze app bestanden op het apparaat of gekoppelde opslagapparaten kan openen, aanpassen of verwijderen? Deze app kan toegang tot bestanden krijgen zonder dat aan je te vragen."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps met dit recht kunnen/hebben <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps met dit recht kunnen <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apps met dit recht hebben toegang tot je fysieke activiteit, zoals wandelen, fietsen, autorijden, aantal stappen en meer"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Apps met dit recht hebben toegang tot je agenda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps met dit recht kunnen de gesprekslijst van je telefoon lezen en erin schrijven"</string>

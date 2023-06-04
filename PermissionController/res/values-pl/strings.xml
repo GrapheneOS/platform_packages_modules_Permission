@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Ustawienia nieużywanych aplikacji"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Usuń uprawnienia, jeśli aplikacja jest nieużywana"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Usuń uprawnienia i zwolnij miejsce"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Wstrzymaj aktywność w aplikacji, jeśli jest nieużywana"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Wstrzymuj aktywność w aplikacji, jeśli jest nieużywana"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Usuń uprawnienia i pliki tymczasowe oraz zatrzymaj powiadomienia"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Aby chronić Twoje dane, usuniemy uprawnienia tej aplikacji, jeśli nie była używana od kilku miesięcy."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Aby chronić Twoje dane, jeśli aplikacja nie będzie używana przez kilka miesięcy, usuniemy te uprawnienia: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
@@ -218,12 +218,12 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nieużywane aplikacje"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jeśli aplikacja jest nieużywana od kilku miesięcy:\n\n• aby chronić Twoje dane, odbieramy jej uprawnienia;\n• zatrzymujemy powiadomienia, aby oszczędzać baterię;\n• usuwamy pliki tymczasowe, aby zwolnić miejsce.\n\nAby ponownie przyznać uprawnienia i zezwolić na powiadomienia, otwórz aplikację."</string>
     <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Jeśli aplikacja jest nieużywana od kilku miesięcy:\n\n• aby chronić Twoje dane, odbieramy jej uprawnienia;\n• usuwamy pliki tymczasowe, aby zwolnić miejsce.\n\nAby ponownie przyznać uprawnienia, otwórz aplikację."</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Ostatnio otwarto ponad <xliff:g id="NUMBER">%s</xliff:g> mies. temu"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Ostatnio otwarte ponad <xliff:g id="NUMBER">%s</xliff:g> mies. temu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacja została ostatnio otwarta <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ostatnio otwarto <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jeśli pozwolisz zarządzać wszystkimi plikami, ta aplikacja będzie mogła odczytywać, modyfikować i usuwać dowolne pliki na tym urządzeniu lub zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Zezwól tej aplikacji na odczytywanie, modyfikowanie i usuwanie plików na tym urządzeniu oraz wszelkich podłączonych zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mogą <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mają <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacje z tym uprawnieniem mają dostęp do danych o Twojej aktywności fizycznej takiej jak spacery, jazda na rowerze, jazda samochodem, liczba kroków i inne"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacje z tym uprawnieniem mają dostęp do kalendarza"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
@@ -236,7 +236,7 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacje z tym uprawnieniem mają dostęp do danych z czujnika podstawowych funkcji życiowych"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacje z tym uprawnieniem mogą wysyłać i wyświetlać SMS-y"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacje z tym uprawnieniem mają dostęp do zdjęć, multimediów i plików na urządzeniu"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacje z tymi uprawnieniami mają dostęp do muzyki i innych plików audio na tym urządzeniu"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacje z tymi uprawnieniami mają dostęp do muzyki i innych plików audio na tym urządzeniu."</string>
     <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacje z tymi uprawnieniami mają dostęp do zdjęć i filmów na tym urządzeniu"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Ostatnie użycie: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Aktualnie odmowa / ostatni dostęp: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -439,8 +439,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Zmienić uprawnienia dostępu do lokalizacji w przypadku aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>”?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie lokalizacji tego urządzenia?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie lokalizacji tego urządzenia? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie względnego położenia urządzeń w pobliżu?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie względnego położenia urządzeń w pobliżu? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Zmienić dostęp aplikacji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> do lokalizacji przybliżonej na dostęp do lokalizacji dokładnej?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do przybliżonej lokalizacji urządzenia?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dokładna"</string>

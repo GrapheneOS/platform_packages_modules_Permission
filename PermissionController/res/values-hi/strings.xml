@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="6098036489833144040">"अनुमति कंट्रोलर"</string>
+    <string name="app_name" msgid="6098036489833144040">"परमिशन कंट्रोलर"</string>
     <string name="ok" msgid="1936281769725676272">"ठीक है"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"अनुमतियां"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करें"</string>
@@ -192,14 +192,14 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"जगह की सटीक जानकारी का इस्तेमाल करें"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"जगह की सटीक जानकारी देने वाली सुविधा बंद होने पर, ऐप्लिकेशन आपकी अनुमानित जगह की जानकारी को ऐक्सेस कर सकते हैं"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> की अनुमति"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए <xliff:g id="PERM">%1$s</xliff:g> की अनुमति चाहिए"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए यह अनुमति चाहिए: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> को मिली सभी अनुमतियां देखें"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"असिस्टेंट माइक्रोफ़ोन के इस्तेमाल से जुड़ा डेटा दिखाएं"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"इस्तेमाल न किए जाने वाले ऐप की सेटिंग"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ऐप्लिकेशन का इस्तेमाल न होने पर अनुमतियां हटाएं"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतियां हटाएं और जगह खाली करें"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"इस्तेमाल न होने पर, ऐप गतिविधि बंद करें"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"इस्तेमाल न होने पर ऐप गतिविधि रोकें"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"ऐप्लिकेशन की अनुमतियां हटाएं, डिवाइस में कुछ समय के लिए रहने वाली फ़ाइलें मिटाएं, और सूचनाएं रोकें"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"अगर इस ऐप्लिकेशन का इस्तेमाल कुछ महीनों तक नहीं किया गया, तो इसे दी गई अनुमतियां हटा दी जाएंगी. ऐसा आपके डेटा को सुरक्षित रखने के लिए किया जाएगा."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"अगर ऐप्लिकेशन कुछ महीनों से इस्तेमाल नहीं हुआ है, तो आपके डेटा को सुरक्षित रखने के लिए ये अनुमतियां हटा दी जाएंगी: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -216,14 +216,14 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> और <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> की अनुमतियां हटाई गईं"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> और <xliff:g id="NUMBER">%2$s</xliff:g> अन्य अनुमतियां हटाई गईं"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"इस्तेमाल नहीं किए गए ऐप्लिकेशन"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"अगर आप कुछ महीनों तक किसी ऐप्लिकेशन का इस्तेमाल नहीं करते हैं, तो:\n\n• आपके डेटा की सुरक्षा के लिए, उस ऐप्लिकेशन को दी गई अनुमतियां हटा दी जाती हैं\n• बैटरी बचाने के लिए, सूचनाएं बंद कर दी जाती हैं\n• स्टोरेज खाली करने के लिए, डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी जाती हैं\n\nदोबारा अनुमतियां देने और सूचनाएं फिर से पाने के लिए, ऐप्लिकेशन खोलें."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"अगर कुछ महीनों तक किसी ऐप्लिकेशन का इस्तेमाल नहीं किया जाता, तो:\n\n• आपके डेटा की सुरक्षा के लिए, उस ऐप्लिकेशन को दी गई अनुमतियां हटा दी जाती हैं\n• बैटरी बचाने के लिए, सूचनाएं बंद कर दी जाती हैं\n• स्टोरेज खाली करने के लिए, डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी जाती हैं\n\nदोबारा अनुमतियां देने और सूचनाएं फिर से पाने के लिए, ऐप्लिकेशन खोलें."</string>
     <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"अगर कुछ महीनों से किसी ऐप्लिकेशन को इस्तेमाल न किया गया हो, तो:\n\n• आपके डेटा को सुरक्षित रखने के लिए, उस ऐप्लिकेशन को दी गई अनुमतियां हटा दी जाती हैं\n• मेमोरी खाली करने के लिए, डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलें हटा दी जाती हैं\n\nफिर से अनुमतियां देने के लिए, ऐप्लिकेशन खोलें."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"पिछली बार इसे <xliff:g id="NUMBER">%s</xliff:g> महीने पहले खोला गया था"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ऐप्लिकेशन पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन यह कर सकते हैं: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें पैदल चलने, बाइक चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"इस अनुमति वाले ऐप्लिकेशन आपके कैलेंडर को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ऐसे ऐप्लिकेशन जिनके पास अनुमति है, वे फ़ोन में कॉल लॉग को पढ़ सकते हैं और लिख सकते हैं"</string>
@@ -242,13 +242,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"इस समय मना किया गया / आखिरी बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कभी ऐक्सेस नहीं किया गया"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"मना किया गया / कभी ऐक्सेस नहीं किया गया"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"इन ऐप्लिकेशन के पास अनुमति है"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"अनुमति है"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए अनुमति दी गई है"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"सिर्फ़ इस्तेमाल में होने पर अनुमति है"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ये सिर्फ़ मीडिया फ़ाइलें ऐक्सेस कर सकते हैं"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
-    <string name="denied_header" msgid="903209608358177654">"इन ऐप्लिकेशन के पास अनुमति नहींं है"</string>
+    <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ऐसे और ऐप्लिकेशन देखें जो सभी फ़ाइलों को ऐक्सेस कर सकते हैं"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 दिन}one{# दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 घंटा}one{# घंटा}other{# घंटे}}"</string>
@@ -321,7 +321,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"किसी ऐप्लिकेशन को अनुमति नहीं है"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"किसी भी ऐप्लिकेशन को, सभी फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"किसी भी ऐप्लिकेशन को, सिर्फ़ मीडिया फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"किसी ऐप्लिकेशन को अनुमति नहीं दी गई"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"किसी भी ऐप्लिकेशन की अनुमति नहीं रोकी गई"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चुनी गई अनुमति"</string>
     <string name="settings" msgid="5409109923158713323">"सेटिंग"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> को आपके डिवाइस पर पूरा ऐक्सेस मिला है"</string>

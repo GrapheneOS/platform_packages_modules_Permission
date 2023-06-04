@@ -16,12 +16,12 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="6098036489833144040">"Permission controller"</string>
+    <string name="app_name" msgid="6098036489833144040">"Управувач со дозволи"</string>
     <string name="ok" msgid="1936281769725676272">"Во ред"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"дозволи"</string>
     <string name="cancel" msgid="8943320028373963831">"Откажи"</string>
     <string name="back" msgid="6249950659061523680">"Назад"</string>
-    <string name="available" msgid="6007778121920339498">"Достапен"</string>
+    <string name="available" msgid="6007778121920339498">"Дозволен"</string>
     <string name="blocked" msgid="9195547604866033708">"Блокиран"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Деинсталирај или оневозможи"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Апликацијата не е најдена"</string>
@@ -77,7 +77,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Апликации со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> дозволени апликации"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи го системот"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Сокриј го системот"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Скриј го системот"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Прикажи 7 дена"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Прикажи 24 часа"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволата"</string>
@@ -122,10 +122,10 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Непознатo"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Контролна табла за приватност"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"да прегледува кои апликации користеле дозволи неодамна"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Користење на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Користење <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Видете други дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g> други"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 24 часа"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 7 дена"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога апликацијава ја користела дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -216,7 +216,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволите за „<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>“ и „<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>“ се отстранети"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозволата за „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ и уште <xliff:g id="NUMBER">%2$s</xliff:g> други дозволи се отстранети"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Некористени апликации"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да повторно се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа повторно да се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
     <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ако некоја апликација не се користи неколку месеци:\n\n• Дозволите се отстрануваат за да се заштитат вашите податоци\n• Привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да ги овозможите дозволите повторно, отворете ја апликацијата."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отворени пред повеќе од <xliff:g id="NUMBER">%s</xliff:g> месеци"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Последно отворање на апликацијата: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
     <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="903209608358177654">"Без дозвола"</string>
-    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Видете уште апликации што може да пристапат до сите датотеки"</string>
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Прикажи уште апликации што имаат пристап до сите датотеки"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ден}one{# ден}other{# дена}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 час}one{# час}other{# часа}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минута}one{# минута}other{# минути}}"</string>
@@ -267,7 +267,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Додека возевте, дадовте пристап на <xliff:g id="APP">%1$s</xliff:g> за <xliff:g id="PERMISSION_1">%2$s</xliff:g> и <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Додека возевте, дадовте <xliff:g id="COUNT">%1$d</xliff:g> дозволи на <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Додека возевте, дадовте пристап на <xliff:g id="APP_0">%1$s</xliff:g> и # друга апликација}one{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # друга апликација}other{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # други апликации}}"</string>
-    <string name="go_to_settings" msgid="1053735612211228335">"Одете во „Поставки“"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"Отворете „Поставки“"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Некои апликации не се користени неколку месеци"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Одземени дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Отстранети дозволи"</string>
@@ -287,7 +287,7 @@
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Дозволите се отстранети од"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Дозволите ќе се отстранат од"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> и <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
-    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> и уште <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g> други"</string>
+    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> и уште <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"За заштита на податоците, отстранети се дозволите од апликациите што не сте ги користеле неколку месеци"</string>
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"За заштита на податоците, отстранети се дозволите од некои апликации што не сте ги користеле неколку месеци."</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"1 апликација не е користена неколку месеци"</string>
@@ -466,7 +466,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Да се промени пристапот до камерата за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Апликацијава сака да снима слики и видеа цело време, дури и кога не ја користите. "<annotation id="link">"Дозволете во „Поставки“."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до евиденцијата на повици?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да повикува и да управува со телефонските повици?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да упатува телефонски повици и да управува со нив?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците на сензорот за витални знаци?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Апликацијава сака да пристапува до податоците од сензорите за вашите витални знаци цело време, дури и кога не се користи. За да го промените ова, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дали да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците од сензорите за витални знаци?"</string>

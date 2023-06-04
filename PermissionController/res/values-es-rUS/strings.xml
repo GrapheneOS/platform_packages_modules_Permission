@@ -74,7 +74,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Esta app se diseñó para una versión anterior de Android. Si otorgas este permiso, se podrá acceder a todo el almacenamiento, lo que incluye fotos, videos, música, audios y otros archivos."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Esta app se diseñó para una versión anterior de Android. Si rechazas este permiso, no se podrá acceder a todo el almacenamiento, lo que incluye fotos, videos, música, audios y otros archivos."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"realizar una acción desconocida"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Se otorgó el permiso a <xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Permiso otorgado a <xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidas"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver otros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> y <xliff:g id="NUM">%3$s</xliff:g> más"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronograma de cuándo las apps usaron tu <xliff:g id="PERMGROUP">%1$s</xliff:g> durante las últimas 24 horas"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronograma de cuándo las apps usaron tu <xliff:g id="PERMGROUP">%1$s</xliff:g> durante los últimos 7 días"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronología de cuándo las apps usaron tu <xliff:g id="PERMGROUP">%1$s</xliff:g> durante las últimas 24 horas"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronología de cuándo las apps usaron tu <xliff:g id="PERMGROUP">%1$s</xliff:g> durante los últimos 7 días"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cuándo esta app usó tu permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Más información"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Controla el acceso de las apps a <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -366,7 +366,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"¿Quieres establecer <xliff:g id="APP_NAME">%1$s</xliff:g> como tu app de redireccionamiento de llamadas predeterminada?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"No se requieren permisos"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"App de ID de llamada y spam predeterminada"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"App de ID de llamada y spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"App de identificación de llamadas y filtro de spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apps que te permiten identificar llamadas y bloquear spam, llamadas automáticas y números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer <xliff:g id="APP_NAME">%1$s</xliff:g> como tu app de identificador de llamada y spam predeterminada?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se requieren permisos"</string>
@@ -401,7 +401,7 @@
     <string name="default_apps" msgid="5119201969348748639">"Apps predeterminadas"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Sin apps predeterminadas"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Más apps predeterminadas"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Vínculos de apertura"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Abrir vínculos"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Predeterminadas de trabajo"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ninguna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Predeterminada de sistema)"</string>

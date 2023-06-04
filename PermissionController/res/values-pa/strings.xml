@@ -25,7 +25,7 @@
     <string name="blocked" msgid="9195547604866033708">"ਬਲਾਕ ਹੈ"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ਅਣਸਥਾਪਤ ਕਰੋ ਜਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ਐਪ ਨਹੀਂ ਮਿਲੀ"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਨਾ ਕਰਨ ਦਿਓ"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਆਗਿਆ ਨਾ ਦਿਓ"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ਆਗਿਆ ਨਾ ਦਿਓ ਅਤੇ ਦੁਬਾਰਾ ਨਾ ਪੁੱਛੋ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ਐਪ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ” ਨੂੰ ਰੱਖੋ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ਸਿਰਫ਼ ਇਸ ਸਮੇਂ ਲਈ ਇਜਾਜ਼ਤ ਦਿਓ” ਰੱਖੋ"</string>
@@ -191,7 +191,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"ਅੰਦਾਜ਼ਨ ਟਿਕਾਣਾ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ਸਹੀ ਟਿਕਾਣਾ ਵਰਤੋ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ਜਦੋਂ ਸਹੀ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਬੰਦ ਹੋਵੇ, ਤਾਂ ਐਪਾਂ ਤੁਹਾਡੀ ਅੰਦਾਜ਼ਨ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਇਜਾਜ਼ਤ"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਸੰਬੰਧੀ ਇਜਾਜ਼ਤ"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ਇਸ ਐਪ ਲਈ <xliff:g id="PERM">%1$s</xliff:g> ਪਹੁੰਚ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ਦੀਆਂ ਸਾਰੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੇਖੋ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਦੇਖੋ"</string>

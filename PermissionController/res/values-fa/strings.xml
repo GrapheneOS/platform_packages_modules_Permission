@@ -106,7 +106,7 @@
     <string name="loading" msgid="4789365003890741082">"درحال بارگیری…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"همه مجوزها"</string>
     <string name="other_permissions" msgid="2901186127193849594">"سایر قابلیت‌های برنامه"</string>
-    <string name="permission_request_title" msgid="8790310151025020126">"درخواست مجوز"</string>
+    <string name="permission_request_title" msgid="8790310151025020126">"درخواست اجازه"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"هم‌پوشانی صفحه شناسایی شد"</string>
     <string name="screen_overlay_message" msgid="5622563069757142102">"برای تغییر این تنظیم مجوز، ابتدا باید هم‌پوشانی صفحه را از «تنظیمات &gt; برنامه‌ها» خاموش کنید"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"باز کردن تنظیمات"</string>
@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"تنظیمات برنامه‌های استفاده‌نشده"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"اگر از برنامه استفاده نمی‌شود، اجازه‌ها برداشته شوند"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"برداشتن اجازه‌ها و آزاد کردن فضا"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"مکث فعالیت برنامه درصورت عدم‌استفاده"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"مکث فعالیت‌ها در برنامه درصورت عدم‌استفاده"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"اجازه‌ها برداشته می‌شود، فایل‌های موقت حذف می‌شود، و اعلان‌ها متوقف می‌شوند"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های آن برداشته خواهد شد."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"برای محافظت از داده‌هایتان، اگر طی چند ماه گذشته از این برنامه استفاده نشده باشد، اجازه‌های زیر برداشته خواهد شد: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -223,7 +223,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر مدیریت همه فایل‌ها را مجاز کنید، این برنامه می‌تواند به همه فایل‌های موجود در فضای ذخیره‌سازی استاندارد این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند. این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"به این برنامه اجازه داده شود به فایل‌های موجود در این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند؟ این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این مجوز را داشته باشند مجاز هستند به: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"برنامه‌های دارای این اجازه می‌توانند به فعالیت فیزیکی‌تان مانند پیاده‌روی، دوچرخه‌سواری، رانندگی، قدم‌شماری، و غیره دسترسی داشته باشند"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"برنامه‌های دارای این اجازه می‌توانند به تقویمتان دسترسی داشته باشند"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند گزارش تماس تلقنی را بخوانند و بنویسند"</string>
@@ -243,12 +243,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"هرگز دسترسی نداشته است"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"غیرمجاز / هرگز دسترسی نداشته است"</string>
     <string name="allowed_header" msgid="7769277978004790414">"مجاز است"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز است"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده از برنامه"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز بودن"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"مجاز فقط برای دسترسی به رسانه‌ها"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"مجاز برای مدیریت همه فایل‌ها"</string>
     <string name="ask_header" msgid="2633816846459944376">"هربار پرسیده شود"</string>
-    <string name="denied_header" msgid="903209608358177654">"اجازه ندادن"</string>
+    <string name="denied_header" msgid="903209608358177654">"مجاز نبودن"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"دیدن برنامه‌های دیگری که به همه فایل‌ها دسترسی دارند"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{یک روز}one{# روز}other{# روز}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{یک ساعت}one{# ساعت}other{# ساعت}}"</string>
@@ -295,7 +295,7 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"تنها هنگام استفاده از برنامه"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"رسانه"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"همه فایل‌ها"</string>
-    <string name="permission_subtitle_background" msgid="8916750995309083180">"همیشه مجاز است"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"همیشه مجاز بودن"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"آخرین زمان دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"آخرین زمان دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>

@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Luba alati"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Luba rakenduse kasutamise ajal"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Luba ainult rakenduse kasutamise ajal"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Ära luba"</string>
     <string name="loading" msgid="4789365003890741082">"Laadimine …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Kõik load"</string>
@@ -184,7 +184,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Luba kõikide failide haldamine"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Luba juurdepääs ainult meediale"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Luba alati"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Luba rakenduse kasutamise ajal"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Luba ainult rakenduse kasutamise ajal"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Küsi iga kord"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ära luba"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Täpne asukoht"</string>
@@ -439,7 +439,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"See rakendus võib soovida pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu asukohale?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"See rakendus soovib pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Kas lubada rak. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; leida lähedalasuvaid seadmeid, nendega ühendada ja nende suhteline asukoht määrata?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; leida lähedalasuvaid seadmeid, nendega ühendada ja nende suhteline asukoht määrata?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; leida lähedalasuvaid seadmeid, nendega ühendada ja nende suhteline asukoht määrata? "<annotation id="link">"Lubage menüüs Seaded."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Kas muuta rakenduse <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> asukohale juurdepääsemise tase ligikaudsest täpseks?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme ligikaudsele asukohale?"</string>

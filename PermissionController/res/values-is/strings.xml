@@ -120,7 +120,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Núgildandi heimildir"</string>
     <string name="message_staging" msgid="9110563899955511866">"Setur upp forrit…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Óþekkt"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Einkastjórnborð"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Persónuverndarstjórnborð"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Skoða hvaða forrit notuðu heimildir nýlega"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: notkun"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Sjá aðrar heimildir"</string>

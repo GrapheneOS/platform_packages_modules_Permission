@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"ओके"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"परवानग्या"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करा"</string>
-    <string name="back" msgid="6249950659061523680">"परत"</string>
+    <string name="back" msgid="6249950659061523680">"मागे जा"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध आहे"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक केला आहे"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइंस्टॉल करा किंवा बंद करा"</string>
@@ -192,7 +192,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते, तेव्हा ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ही परवानगी असलेली सर्व अ‍ॅप्स पहा"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ने मायक्रोफोनचा केलेला वापर दाखवा"</string>
@@ -517,7 +517,7 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) द्वारे अलीकडे वापरले गेले"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) द्वारे वापरले जात आहे"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) द्वारे अलीकडे वापरले गेले"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा &amp; गोपनीयता"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा आणि गोपनीयता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्टेटस तपासा"</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"कंफर्म करा"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"मागे जा"</string>

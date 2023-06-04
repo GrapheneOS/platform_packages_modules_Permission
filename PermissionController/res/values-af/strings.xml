@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Laat altyd toe"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Laat net toe terwyl jy program gebruik"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Laat net toe terwyl jy app gebruik"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Moenie toelaat nie"</string>
     <string name="loading" msgid="4789365003890741082">"Laai tans …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alle toestemmings"</string>
@@ -184,7 +184,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Laat toe dat alle lêers bestuur word"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Laat net toegang tot media toe"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Laat altyd toe"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy program gebruik"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy app gebruik"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vra elke keer"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Moenie toelaat nie"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presiese ligging"</string>

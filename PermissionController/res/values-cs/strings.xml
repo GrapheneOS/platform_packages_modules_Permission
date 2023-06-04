@@ -51,7 +51,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Povolit správu všech souborů"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Povolit pouze přístup k médiím"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikace"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Oprávnění aplikací"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Oprávnění aplikace"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nepoužívané aplikace"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Žádné nepoužívané aplikace"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Žádné nepoužívané aplikace"</string>
@@ -74,7 +74,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Tato aplikace byla vytvořena pro starší verzi platformy Android. Pokud toto oprávnění povolíte, bude povolen přístup k celému úložišti (včetně fotek, videí, hudby, zvuků a dalších souborů)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Tato aplikace byla vytvořena pro starší verzi platformy Android. Pokud toto oprávnění odepřete, bude odepřen přístup k celému úložišti (včetně fotek, videí, hudby, zvuků a dalších souborů)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"provést neznámou akci"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u aplikací: <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u aplikací: <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Povolené aplikace: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobrazit systémové aplikace"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skrýt systémové aplikace"</string>
@@ -192,7 +192,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Používat přesnou polohu"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Když je přesná poloha vypnutá, aplikace mají přístup k vaší přibližné poloze"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Oprávnění: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Aplikace má přístup k: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: přístup této aplikace"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobrazit všechna oprávnění aplikace <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Zobrazit všechny aplikace s tímto oprávněním"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Zobrazit používání mikrofonu asistentem"</string>
@@ -202,7 +202,7 @@
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastavit aktivitu při nepoužívání"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Odebrat oprávnění, smazat dočasné soubory a zastavit oznámení"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pokud tuto aplikaci několik měsíců nepoužijete, kvůli ochraně vašich dat jí budou oprávnění odebrána."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pokud tuto aplikaci několik měsíců nepoužijete, budou jí kvůli ochraně vašich dat odebrána následující oprávnění: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pokud tuto aplikaci několik měsíců nepoužijete, budou jí kvůli ochraně vašich dat odebrána následující oprávnění: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Za účelem ochrany vašich dat byla odebrána oprávnění aplikacím, které jste několik měsíců nepoužili."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Pokud chcete oprávnění znovu povolit, aplikaci otevřete."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatické odebrání je pro tuto aplikaci momentálně zakázáno."</string>

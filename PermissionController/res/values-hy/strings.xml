@@ -260,7 +260,7 @@
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Թույլտվությունները հեռացվել են ձեր գաղտնիությունը պաշտպանելու նպատակով։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Չօգտագործվող հավելվածների թույլտվությունները հեռացվել են"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# չօգտագործվող հավելված}one{# օգտագործվող հավելված}other{# օգտագործվող հավելված}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# չօգտագործվող հավելված}one{# չօգտագործվող հավելված}other{# չօգտագործվող հավելված}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են, իսկ ծանուցումների ուղարկումը դադարեցվել է։ Հպեք՝ մանրամասներն իմանալու համար։"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Ստուգեք վերջին տրամադրած թույլտվությունները"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Մեքենան վարելիս դուք <xliff:g id="APP">%1$s</xliff:g> հավելվածին տրամադրել եք <xliff:g id="PERMISSION">%2$s</xliff:g>ն օգտագործելու թույլտվություն"</string>
