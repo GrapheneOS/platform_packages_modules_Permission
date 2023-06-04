@@ -567,7 +567,7 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"مراجعة تطبيق لديه الإذن برصد الموقع الجغرافي في الخلفية"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"يمكن لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> الوصول دومًا إلى موقعك الجغرافي، حتى في حال كان التطبيق مغلقًا."</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"مراجعة تطبيق لديه الإذن برصد الموقع الجغرافي في الخلفية"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"يمكن لهذا التطبيق الوصول دومًا لموقعك الجغرافي، حتى في حال كان التطبيق مغلقًا."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"يمكن لهذا التطبيق الوصول دومًا إلى موقعك الجغرافي، حتى لو كان التطبيق مغلقًا."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"تم تغيير إذن الوصول."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"عرض أحدث بيانات استخدام للموقع الجغرافي"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"عناصر التحكّم في الخصوصية"</string>

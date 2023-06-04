@@ -576,8 +576,8 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ. ಈ ಸೆಟ್ಟಿಂಗ್ ಆಫ್ ಆಗಿದ್ದರೆ, ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದಾಗ ಮೈಕ್ರೊಫೋನ್ ಡೇಟಾವನ್ನು ಆಗಲೂ ಹಂಚಿಕೊಳ್ಳಬಹುದು."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"ಸ್ಥಳಕ್ಕೆ ಆ್ಯಕ್ಸೆಸ್ ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಹಾಗೂ ಸೇವೆಗಳನ್ನು ನೋಡಿ"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ಕ್ಲಿಪ್‌ಬೋರ್ಡ್ ಪ್ರವೇಶವನ್ನು ತೋರಿಸಿ"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಪ್ರವೇಶಿಸಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ಕ್ಲಿಪ್‌ಬೋರ್ಡ್ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ತೋರಿಸಿ"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ನೀವು ಟೈಪ್ ಮಾಡಿದಂತೆ ಅಕ್ಷರಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಪ್ರದರ್ಶಿಸಿ"</string>
 </resources>

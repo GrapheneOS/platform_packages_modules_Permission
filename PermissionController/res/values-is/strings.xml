@@ -122,7 +122,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Núgildandi heimildir"</string>
     <string name="message_staging" msgid="9110563899955511866">"Setur upp forrit…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Óþekkt"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Einkastjórnborð"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Persónuverndarstjórnborð"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Skoða hvaða forrit notuðu heimildir nýlega"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: notkun"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Sjá aðrar heimildir"</string>
@@ -573,7 +573,7 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Persónuverndarstillingar"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Aðgangur að myndavél"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Aðgangur að hljóðnema"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Fyrir forrit og þjónustu"</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Fyrir forrit og þjónustur"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Fyrir forrit og þjónustur. Þegar slökkt er á þessari stillingu verður hljóðnemagögnum þó hugsanlega deilt þegar þú hringir í neyðarnúmer."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Skoða forrit og þjónustur sem eru með aðgang að staðsetningu"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Sýna aðgang að klippiborði"</string>

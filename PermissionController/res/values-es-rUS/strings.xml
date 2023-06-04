@@ -419,7 +419,7 @@
     <string name="default_apps" msgid="5119201969348748639">"Apps predeterminadas"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Sin apps predeterminadas"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Más apps predeterminadas"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Vínculos de apertura"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Abrir vínculos"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Predeterminadas de trabajo"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ninguna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Predeterminada de sistema)"</string>

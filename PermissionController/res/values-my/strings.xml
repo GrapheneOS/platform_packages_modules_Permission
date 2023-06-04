@@ -576,7 +576,7 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်။ ဤဆက်တင်ကို ပိတ်ထားသော်လည်း အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"တည်နေရာသုံးခွင့်ရှိသော အက်ပ်နှင့် ဝန်ဆောင်မှုများကို ကြည့်ပါ"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ကလစ်ဘုတ်အသုံးပြုမှုကို ပြရန်"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ကလစ်ဘုတ်အသုံးပြုမှု ပြရန်"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"အက်ပ်များက သင်မိတ္တူကူးထားသော စာသား၊ ပုံများ (သို့) အခြားအကြောင်းအရာကို သုံးသောအခါ အကြောင်းကြားသည်"</string>
     <string name="show_password_title" msgid="2877269286984684659">"စကားဝှက်များပြရန်"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"စာရိုက်သည့်အခါ အက္ခရာများကို ခဏတာပြသည်"</string>

@@ -577,7 +577,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Pour les applications et les services. Si ce paramètre est désactivé, il est possible que les données du microphone soient partagées lorsque vous appelez un numéro d\'urgence."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Voir les applications et les services qui ont accès à votre emplacement"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Afficher l\'accès au presse-papiers"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Afficher un message lorsque les applications accèdent à du texte, à des images ou à d\'autres contenus que vous avez copiés"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Un message s\'affiche lorsque les applications accèdent à du texte, à des images ou à d\'autres contenus que vous avez copiés"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Afficher les mots de passe"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Afficher les caractères brièvement pendant la saisie"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Les caractères s\'affichent brièvement pendant la saisie"</string>
 </resources>
