@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"डेटा की सुरक्षा"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"जगह की जानकारी का डेटा शेयर किया जा सकता है"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"इस ऐप्लिकेशन में बताया गया है कि यह तीसरे पक्ष के साथ जगह की जानकारी का डेटा शेयर कर सकता है"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"यह लिंक नहीं खोला जा सका"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"जगह की जानकारी का डेटा शेयर करने के तरीके के बारे में अपडेट"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ऐसे ऐप्लिकेशन देखें जिन्होंने शायद आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"इन ऐप्लिकेशन ने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है. ऐसा हो सकता है कि ये ऐप्लिकेशन पहले जगह की जानकारी का डेटा शेयर न करते हों या फिर अब विज्ञापन या मार्केटिंग के लिए यह डेटा शेयर किया हो."</string>

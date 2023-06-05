@@ -20,7 +20,7 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Beveiliging en privacy"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Bediening"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Toegang van app tot gezondheidsgegevens beheren"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Beheer de toegang van apps tot je gezondheidsgegevens"</string>
     <string name="location_settings" msgid="8863940440881290182">"Locatietoegang"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Voor apps en services. Als deze instelling uitstaat, kunnen microfoongegevens nog altijd worden gedeeld als je een alarmnummer belt."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Voor apps en services"</string>
