@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Өгөгдлийн аюулгүй байдал"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Байршлын өгөгдлийг хуваалцаж магадгүй"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Энэ апп таны байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж магадгүйг мэдэгдсэн"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Энэ холбоосыг нээх боломжгүй"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Байршлын өгөгдөл хуваалцах шинэчлэлтүүд"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн аппуудыг шалгана уу"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Эдгээр апп таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн. Тэд үүнийг өмнө нь хуваалцаагүй байж магадгүй эсвэл одоо үүнийг сурталчилгаа, маркетингийн зорилгоор хуваалцаж болзошгүй."</string>
