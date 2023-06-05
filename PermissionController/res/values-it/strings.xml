@@ -526,7 +526,7 @@
     <string name="security_settings" msgid="3808106921175271317">"Impostazioni di sicurezza"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Autorizzazioni"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicurezza e privacy"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica lo stato"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica stato"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Controlli per la privacy"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Altre impostazioni"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accesso alla fotocamera"</string>

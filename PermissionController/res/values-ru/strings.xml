@@ -569,7 +569,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Проверьте приложение с доступом к геоданным в фоновом режиме"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="8276755741395332974">"У этого приложения есть доступ к геоданным, даже когда оно закрыто."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Права доступа изменены."</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Показать сведения о недавнем использовании геоданных"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Показать недавнее использование геоданных"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Настройки конфиденциальности"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Доступ к камере"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Доступ к микрофону"</string>

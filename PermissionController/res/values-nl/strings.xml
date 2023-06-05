@@ -579,5 +579,5 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Toegang tot klembord tonen"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Tekens kort tonen terwijl je typt"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Geef tekens kort weer terwijl je typt"</string>
 </resources>
