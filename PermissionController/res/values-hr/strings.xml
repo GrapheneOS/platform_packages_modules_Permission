@@ -356,7 +356,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za preglednik?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nije potrebno nijedno dopuštenje"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Zadana aplikacija telefona"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija telefona"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija za pozive"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije koje vam omogućuju upućivanje i primanje telefonskih poziva na uređaju"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao svoju zadanu aplikaciju telefona?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplikacija će dobiti pristup vašoj kameri, kontaktima, mikrofonu, telefonu i SMS-ovima"</string>
@@ -462,7 +462,7 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ova aplikacija možda će uvijek htjeti imati pristup vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Želite li promijeniti pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ova aplikacija želi uvijek pristupati vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; traži uređaje u blizini, poveže se s njima i odredi njihov približni položaj?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da traži uređaje u blizini, povezuje se s njima i određuje njihov približni položaj?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; traži uređaje u blizini, poveže se s njima i odredi njihov približni položaj? "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Želite li aplikaciji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> promijeniti pristup iz približne lokacije u točnu?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa približnoj lokaciji ovog uređaja?"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sigurnost podataka"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Podaci o lokaciji mogu se dijeliti"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikacija je navela da vaše podatke o lokaciji može dijeliti s trećim stranama"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Vezu nije moguće otvoriti"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ažuriranja o dijeljenju podataka za lokaciju"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregledajte aplikacije koje su promijenile način na koji mogu dijeliti vaše podatke o lokaciji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ove su aplikacije promijenile način na koji mogu dijeliti vaše podatke o lokaciji. Ranije ih možda nisu dijelile ili ih sada mogu dijeliti u svrhe oglašavanja ili marketinga."</string>

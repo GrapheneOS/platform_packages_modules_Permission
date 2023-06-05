@@ -570,9 +570,9 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii haitaweza kufikia faili za muziki na sauti, haitaruhusiwa pia kufikia picha na video."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii itaweza kufikia picha na video, itaruhusiwa pia kufikia muziki na faili za sauti."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Programu hii haiwezi kutumia toleo jipya zaidi la Android. Iwapo programu hii haitaweza kufikia faili za muziki na sauti, haitaruhusiwa pia kufikia picha na video."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Kagua programu yenye ufikiaji wa ruhusa ya kubainisha mahali chinichini"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Kagua programu yenye ufikiaji wa mahali chinichini"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> inaweza kufikia mahali ulipo kila wakati, hata kama programu imefungwa"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Kagua programu yenye ufikiaji wa ruhusa ya kubainisha mahali chinichini"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Kagua programu yenye ufikiaji wa mahali chinichini"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Programu hii inaweza kufikia data ya mahali ulipo kila wakati, hata kama imefungwa.\n\nBaadhi ya programu za usalama na dharura zinahitaji ufikiaji wa data ya mahali ulipo chinichini ili kufanya kazi ipasavyo."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Ruhusa ya ufikiaji imebadilishwa"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Angalia matumizi ya hivi karibuni ya maelezo ya mahali"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Usalama wa data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data ya mahali inaweza kushirikiwa"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Programu hii ilitaja kuwa inaweza kushiriki data yako ya mahali na washirika wengine"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Huwezi kufungua kiungo hiki"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Masasisho ya kushiriki data ya mahali"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Kagua programu zilizobadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Programu hizi zimebadilisha jinsi zinavyoweza kushiriki data ya mahali ulipo. Huenda zilikuwa haziishiriki hapo awali au sasa zinaweza kuishiriki kwa madhumuni ya utangazaji au uuzaji."</string>

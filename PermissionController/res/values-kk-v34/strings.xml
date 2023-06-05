@@ -23,5 +23,5 @@
     <string name="health_connect_summary" msgid="815473513776882296">"Қолданбаның денсаулық деректерін пайдалану рұқсатын басқару"</string>
     <string name="location_settings" msgid="8863940440881290182">"Локацияны пайдалану рұқсаты"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Қолданбалар мен қызметтерге арналған. Бұл параметр өшірілсе де, құтқару қызметінің нөміріне қоңырау шалғанда, микрофон деректері жіберілуі мүмкін."</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Қолданбалар мен қызметтер үшін"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"Қолданбалар мен қызметтерге арналған."</string>
 </resources>

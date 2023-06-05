@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Varnost podatkov"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Lokacijski podatki so morda deljeni z drugimi"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ta aplikacija navaja, da bo vaše lokacijske podatke morda delila s tretjimi osebami."</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Te povezave ni mogoče odpreti"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Posodobitve deljenja podatkov o lokaciji"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregled aplikacij s spremembami v načinu deljenja vaših lokacijskih podatkov."</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacije so spremenile način deljenja vaših lokacijskih podatkov. Prej jih morda sploh niso delile ali pa jih zdaj delijo za namene oglaševanja ali trženja."</string>
