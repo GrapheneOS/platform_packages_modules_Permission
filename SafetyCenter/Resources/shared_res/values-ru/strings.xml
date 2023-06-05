@@ -22,7 +22,7 @@
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Всё в порядке"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Угроз не обнаружено"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Проверьте настройки"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Изучите список настроек"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Просмотрите список настроек"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Устройство может быть под угрозой"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Устройство под угрозой"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Безопасность может быть под угрозой"</string>

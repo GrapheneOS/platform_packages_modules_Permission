@@ -23,11 +23,11 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Aucun problème détecté"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Vérifier les paramètres"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Vérifier la liste des paramètres"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Risque potentiel sur l\'appareil"</string>
-    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Risque sur l\'appareil"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Appareil présentant un risque potentiel"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Appareil présentant un risque"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Risque potentiel"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"Risque de sécurité"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Risque potentiel sur le compte"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Compte présentant un risque potentiel"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Risque sur le compte"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# alerte}one{# alerte}many{# alertes}other{# alertes}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Impossible d\'accéder à la page"</string>
