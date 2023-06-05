@@ -267,7 +267,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Додека возевте, дадовте пристап на <xliff:g id="APP">%1$s</xliff:g> за <xliff:g id="PERMISSION_1">%2$s</xliff:g> и <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Додека возевте, дадовте <xliff:g id="COUNT">%1$d</xliff:g> дозволи на <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Додека возевте, дадовте пристап на <xliff:g id="APP_0">%1$s</xliff:g> и # друга апликација}one{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # друга апликација}other{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # други апликации}}"</string>
-    <string name="go_to_settings" msgid="1053735612211228335">"Одете во „Поставки“"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"Отворете „Поставки“"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Некои апликации не се користени неколку месеци"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Одземени дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Отстранети дозволи"</string>
@@ -466,7 +466,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Да се промени пристапот до камерата за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Апликацијава сака да снима слики и видеа цело време, дури и кога не ја користите. "<annotation id="link">"Дозволете во „Поставки“."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до евиденцијата на повици?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да повикува и да управува со телефонските повици?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да упатува телефонски повици и да управува со нив?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците на сензорот за витални знаци?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Апликацијава сака да пристапува до податоците од сензорите за вашите витални знаци цело време, дури и кога не се користи. За да го промените ова, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дали да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците од сензорите за витални знаци?"</string>

@@ -511,8 +511,8 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"ניהול הרשאות"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"בשימוש על ידי שיחת טלפון"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"נעשה שימוש לאחרונה על ידי שיחת טלפון"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"בשימוש על ידי <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"נעשה שימוש לאחרונה על ידי <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"בשימוש על ידי: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"נעשה שימוש לאחרונה על ידי: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"בשימוש על ידי <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"נעשה שימוש לאחרונה על ידי <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"בשימוש על ידי <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>

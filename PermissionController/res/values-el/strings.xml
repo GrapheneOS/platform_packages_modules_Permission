@@ -472,7 +472,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Για να επιτρέψετε σε αυτήν την εφαρμογή να έχει πρόσβαση σε δεδομένα αισθητήρων σώματος οποιαδήποτε στιγμή, ακόμα και όταν δεν χρησιμοποιείτε την εφαρμογή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Επιτρέπετε στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ελεγχόμενες άδειες"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Είναι δυνατή η πρόσβαση στην τοποθεσία."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ο διαχειριστής σας επιτρέπει στην εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> να αποκτά πρόσβαση στην τοποθεσία σας."</string>

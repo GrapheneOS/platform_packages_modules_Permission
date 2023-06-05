@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Dozvoli sve vrijeme"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozvoli samo dok se koristi"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Dozvoli samo dok se aplikacija koristi"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Nemoj dozvoliti"</string>
     <string name="loading" msgid="4789365003890741082">"Učitavanje…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Sva odobrenja"</string>
@@ -229,7 +229,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s ovim odobrenjem mogu čitati i pisati zapisnike telefonskih poziva"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s ovim odobrenjem mogu snimati fotografije i videozapise"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s ovim odobrenjem mogu pristupiti vašim kontaktima"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupiti lokaciji uređaja"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupati lokaciji uređaja"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacije s ovim odobrenjem mogu pronaći uređaje u blizini, povezati se s njima te odrediti njihov relativni položaj"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s ovim odobrenjem mogu snimati zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s ovim odobrenjem mogu upućivati pozive i upravljati njima"</string>
