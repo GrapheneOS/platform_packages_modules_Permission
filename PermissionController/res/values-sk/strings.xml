@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Zabezpečenie údajov"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Môžu sa zdieľať údaje o polohe"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"V tejto aplikácii je uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Tento odkaz sa nedá otvoriť"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizácie zdieľania údajov o polohe"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Skontrolujte aplikácie, ktoré zmenili spôsob zdieľania údajov o vašej polohe"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tieto aplikácie zmenili spôsob zdieľania údajov o vašej polohe. Možno ich v minulosti nezdieľali alebo ich teraz zdieľajú na účely reklamy a marketingu."</string>

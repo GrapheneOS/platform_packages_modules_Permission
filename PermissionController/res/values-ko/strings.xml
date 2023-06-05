@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"데이터 보안"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"위치 데이터가 공유될 수 있습니다."</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"링크를 열 수 없음"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"위치 데이터 공유 방법 업데이트"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"위치 데이터 공유 방법을 변경한 앱 검토"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"다음 앱에서 위치 데이터 공유 방법을 변경했습니다. 이전에 위치 데이터를 공유하지 않았던 앱이거나, 이제 광고 또는 마케팅 목적으로 데이터를 공유하는 앱일 수 있습니다."</string>

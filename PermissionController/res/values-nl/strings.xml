@@ -585,7 +585,7 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Toegang tot klembord tonen"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Tekens kort tonen terwijl je typt"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Geef tekens kort weer terwijl je typt"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Deze app geeft aan dat locatiegegevens kunnen worden gedeeld met derden"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gegevens delen en locatie"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar informatie over gegevens delen vandaan komt"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Veiligheid van gegevens"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Locatiegegevens kunnen worden gedeeld"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens met derden kunnen worden gedeeld"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Link kan niet worden geopend"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Check apps die de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>
