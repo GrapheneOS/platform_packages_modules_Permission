@@ -25,8 +25,8 @@
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Mesure prise}one{Mesure prise}many{Mesures prises}other{Mesures prises}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Vérifier les paramètres"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Vérifier la liste des paramètres"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Risque potentiel sur l\'appareil"</string>
-    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Risque sur l\'appareil"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Appareil présentant un risque potentiel"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Appareil présentant un risque"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Risque potentiel sur vos données"</string>
     <string name="overall_severity_level_critical_data_warning_title" msgid="1012704126634698604">"Risque sur vos données"</string>
     <string name="overall_severity_level_passwords_recommendation_title" msgid="8625105570296877719">"Mots de passe compromis (anciens)"</string>
@@ -35,8 +35,8 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"Risque de sécurité"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Risques potentiels détectés"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Risques détectés"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Risque potentiel sur le compte"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Compte à risque"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Compte présentant un risque potentiel"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Compte présentant un risque"</string>
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Voir l\'alerte}one{Voir l\'alerte}many{Voir les alertes}other{Voir les alertes}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Impossible d\'accéder à la page"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Impossible de résoudre l\'alerte"</string>
