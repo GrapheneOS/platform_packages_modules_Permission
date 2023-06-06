@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Дозволи увек"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Дозв. само док се апл. користи"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Дозволи само док се апл. користи"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Не дозволи"</string>
     <string name="loading" msgid="4789365003890741082">"Учитава се…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Све дозволе"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безбедност података"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Подаци о локацији могу да се деле"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ова апликација наводи да може да дели податке о локацији са трећим странама"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не можемо да отворимо овај линк"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ажурирања дељења података за локацију"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледајте апликације које су промениле начин на који могу да деле податке о локацији"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Апликације су промениле начин на који могу да деле податке о локацији. Можда их нису делиле раније или их сада деле у сврхе оглашавања или маркетинга."</string>

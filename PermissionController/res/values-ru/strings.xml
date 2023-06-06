@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Проверьте приложение с доступом к геоданным в фоновом режиме"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"У этого приложения есть доступ к геоданным, даже когда оно закрыто.\n\nНекоторым приложениям, которые обеспечивают безопасность или предназначены для экстренных случаев, требуется доступ к данным о вашем местоположении в фоновом режиме, чтобы правильно выполнять свои функции."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Права доступа изменены."</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Показать сведения о недавнем использовании геоданных"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Показать недавнее использование геоданных"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Настройки конфиденциальности"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Доступ к камере"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Доступ к микрофону"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безопасность данных"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Возможна передача геоданных"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Это приложение уведомило, что оно может передавать данные о вашем местоположении третьим лицам."</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не удалось открыть ссылку"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Обновления в передаче данных о местоположении"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Проверить приложения, которые изменили подход к передаче данных о вашем местоположении"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Эти приложения изменили подход к передаче данных о вашем местоположении. Возможно, такие сведения ранее не передавались или теперь передаются в рекламных или маркетинговых целях."</string>
