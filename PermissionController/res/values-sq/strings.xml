@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Siguria e të dhënave"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Të dhënat e vendndodhjes mund të ndahen"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ky aplikacion deklaroi se mund të ndajë të dhënat e vendndodhjes sate me palë të treta"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Kjo lidhje nuk mund të hapet"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Përditësime për ndarjen e të dhënave për vendndodhjen"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Shqyrto aplikacionet që ndryshuan mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Këto aplikacione kanë ndryshuar mënyrën se si mund të ndajnë të dhënat e vendndodhjes sate. Ato mund të mos i kenë ndarë më parë ose mund t\'i ndajnë tani për qëllime reklamimi dhe marketingu."</string>

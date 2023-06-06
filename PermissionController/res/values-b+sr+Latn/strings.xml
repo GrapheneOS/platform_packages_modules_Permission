@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Bezbednost podataka"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Podaci o lokaciji mogu da se dele"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ova aplikacija navodi da može da deli podatke o lokaciji sa trećim stranama"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Ne možemo da otvorimo ovaj link"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ažuriranja deljenja podataka za lokaciju"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregledajte aplikacije koje su promenile način na koji mogu da dele podatke o lokaciji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aplikacije su promenile način na koji mogu da dele podatke o lokaciji. Možda ih nisu delile ranije ili ih sada dele u svrhe oglašavanja ili marketinga."</string>
