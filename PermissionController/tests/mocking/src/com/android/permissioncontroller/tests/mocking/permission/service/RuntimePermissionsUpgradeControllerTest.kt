@@ -61,6 +61,7 @@ import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.AdditionalMatchers
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.ArgumentMatchers.eq
@@ -603,6 +604,14 @@ class RuntimePermissionsUpgradeControllerTest {
         upgradeIfNeeded()
 
         verifyNotGranted(TEST_PKG_NAME, READ_MEDIA_VISUAL_USER_SELECTED)
+    }
+
+    @Test
+    fun ensureDatabaseResetToLatestIfAboveLatest() {
+        setInitialDatabaseVersion(Int.MAX_VALUE)
+        upgradeIfNeeded()
+        verify(permissionManager).runtimePermissionsVersion =
+            AdditionalMatchers.not(eq(Int.MAX_VALUE))
     }
 
     @After
