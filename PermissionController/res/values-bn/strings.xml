@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ডেটা সুরক্ষা"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"লোকেশন ডেটা শেয়ার করা হতে পারে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই অ্যাপ জানিয়েছে যে, এটি থার্ড পার্টির সাথে আপনার লোকেশন ডেটা শেয়ার করতে পারে"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিঙ্কটি খুলতে পারা যাচ্ছে না"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"লোকেশনের জন্য ডেটা শেয়ারিং সম্পর্কিত আপডেট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"যেসব অ্যাপ আপনার লোকেশন ডেটা শেয়ার করার উপায়ের ক্ষেত্রে পরিবর্তন করেছে, সেগুলি পর্যালোচনা করুন"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এইসব অ্যাপ আপনার লোকেশন ডেটা শেয়ার করার উপায়ের ক্ষেত্রে পরিবর্তন করেছে। এগুলি আগে হয়ত শেয়ার করেনি অথবা এখন বিজ্ঞাপন বা মার্কেটিং সংক্রান্ত উদ্দেশ্যে শেয়ার করতে পারে।"</string>

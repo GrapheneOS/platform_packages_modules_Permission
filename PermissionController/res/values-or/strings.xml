@@ -577,7 +577,7 @@
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ଆକ୍ସେସ ପରିବର୍ତ୍ତନ କରାଯାଇଛି"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ବର୍ତ୍ତମାନର ଲୋକେସନ ବ୍ୟବହାର ଦେଖନ୍ତୁ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"ଗୋପନୀୟତା ନିୟନ୍ତ୍ରଣଗୁଡ଼ିକ"</string>
-    <string name="camera_toggle_title" msgid="1251201397431837666">"କ୍ୟାମେରା ଆକ୍ସେସ"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"କେମେରା ଆକ୍ସେସ"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"ମାଇକ୍ରୋଫୋନ ଆକ୍ସେସ"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"ଆପ୍ସ ଏବଂ ସେବାଗୁଡ଼ିକ ପାଇଁ"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"ଆପ୍ସ ଏବଂ ସେବାଗୁଡ଼ିକ ପାଇଁ। ଯଦି ଏହି ସେଟିଂ ବନ୍ଦ ଥାଏ, ତେବେ ଆପଣ ଏକ ଜରୁରୀକାଳୀନ ନମ୍ବରକୁ କଲ କରିବା ସମୟରେ ମାଇକ୍ରୋଫୋନ ଡାଟା ଏବେ ବି ସେୟାର କରାଯାଇପାରେ।"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ଡାଟା ସୁରକ୍ଷା"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ଲୋକେସନ ଡାଟା ସେୟାର କରାଯାଇପାରେ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ଏହି ଆପ ଉଲ୍ଲେଖ କରିଛି ଯେ ଏହା ତୃତୀୟ ପକ୍ଷଗୁଡ଼ିକ ସହ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିପାରେ"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ଏହି ଲିଙ୍କ ଖୋଲାଯାଇପାରିବ ନାହିଁ"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ଲୋକେସନ ପାଇଁ ଡାଟା ସେୟାରିଂ ଅପଡେଟଗୁଡ଼ିକ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିବା ଉପାୟକୁ ପରିବର୍ତ୍ତନ କରିଥିବା ଆପ୍ସର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ଏହି ଆପ୍ସ ଆପଣଙ୍କ ଲୋକେସନ ଡାଟା ସେୟାର କରିବା ଉପାୟକୁ ପରିବର୍ତ୍ତନ କରିଛି। ସେଗୁଡ଼ିକ ଏହାକୁ ପୂର୍ବରୁ ସେୟାର କରିନଥାଇପାରେ କିମ୍ବା ବର୍ତ୍ତମାନ ଏହାକୁ ବିଜ୍ଞାପନ ବା ମାର୍କେଟିଂ ଉଦ୍ଦେଶ୍ୟରେ ସେୟାର କରିପାରେ।"</string>

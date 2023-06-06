@@ -582,8 +582,8 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ. ಈ ಸೆಟ್ಟಿಂಗ್ ಆಫ್ ಆಗಿದ್ದರೆ, ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದಾಗ ಮೈಕ್ರೊಫೋನ್ ಡೇಟಾವನ್ನು ಆಗಲೂ ಹಂಚಿಕೊಳ್ಳಬಹುದು."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"ಸ್ಥಳಕ್ಕೆ ಆ್ಯಕ್ಸೆಸ್ ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಹಾಗೂ ಸೇವೆಗಳನ್ನು ನೋಡಿ"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ಕ್ಲಿಪ್‌ಬೋರ್ಡ್ ಪ್ರವೇಶವನ್ನು ತೋರಿಸಿ"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಪ್ರವೇಶಿಸಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ಕ್ಲಿಪ್‌ಬೋರ್ಡ್ ಆ್ಯಕ್ಸೆಸ್ ಅನ್ನು ತೋರಿಸಿ"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"ನೀವು ನಕಲಿಸಿರುವ ಪಠ್ಯ, ಚಿತ್ರಗಳು ಅಥವಾ ಇತರ ವಿಷಯವನ್ನು ಆ್ಯಪ್‌ಗಳು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಿದಾಗ ಸಂದೇಶವೊಂದನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_title" msgid="2877269286984684659">"ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಿ"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"ನೀವು ಟೈಪ್ ಮಾಡಿದಂತೆ ಅಕ್ಷರಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ಪ್ರದರ್ಶಿಸಿ"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ಈ ಆ್ಯಪ್ ಥರ್ಡ್ ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ಉಲ್ಲೇಖಿಸಿದೆ"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ಡೇಟಾ ಸುರಕ್ಷತೆ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ಈ ಆ್ಯಪ್, ಥರ್ಡ್-ಪಾರ್ಟಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಎಂದು ತಿಳಿಸಿದೆ"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ಈ ಲಿಂಕ್ ತೆರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ಸ್ಥಳಕ್ಕಾಗಿ ಡೇಟಾ ಹಂಚಿಕೊಳ್ಳುವಿಕೆ ಕುರಿತ ಅಪ್‌ಡೇಟ್‌ಗಳು"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ತಾವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸಿದ ಆ್ಯಪ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ನಿಮ್ಮ ಸ್ಥಳ ಡೇಟಾವನ್ನು ಈ ಆ್ಯಪ್‌ಗಳು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ವಿಧಾನವನ್ನು ಅವು ಬದಲಾಯಿಸಿವೆ. ಇವು ಇದನ್ನು ಈ ಮೊದಲು ಹಂಚಿಕೊಂಡಿಲ್ಲದಿರಬಹುದು ಅಥವಾ ಈಗ ಅದನ್ನು ಜಾಹೀರಾತು ಅಥವಾ ಮಾರ್ಕೆಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಹಂಚಿಕೊಳ್ಳುತ್ತಿರಬಹುದು."</string>

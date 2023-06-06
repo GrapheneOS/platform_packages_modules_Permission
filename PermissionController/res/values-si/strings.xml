@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"දත්ත ආරක්ෂාව"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ස්ථාන දත්ත බෙදා ගත හැක"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"මෙම යෙදුම තෙවන පාර්ශ්වයන් සමග ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි බව ප්‍රකාශ කර ඇත"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"මෙම සබැඳිය විවෘත කළ නොහැක"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ස්ථානය සඳහා දත්ත බෙදා ගැනීමේ යාවත්කාලීන"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ඒවා ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කළ යෙදුම් සමාලෝචනය කරන්න"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"මෙම යෙදුම් ඔබේ ස්ථාන දත්ත බෙදා ගත හැකි ආකාරය වෙනස් කර ඇත. ඒවා එය කලින් බෙදා ගෙන නොතිබිය හැක, නැතහොත් දැන් එය වෙළඳ ප්‍රචාරණ හෝ අලෙවිකරණ අරමුණු සඳහා බෙදා ගත හැක."</string>
