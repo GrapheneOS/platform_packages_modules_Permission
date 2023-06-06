@@ -184,7 +184,7 @@
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_dont_allow_more_selected_button"
                     android:text="@string/grant_dialog_button_dont_select_more"
-                    style="@style/PermissionGrantButtonDeny" />
+                    style="@style/PermissionGrantButtonDontAllowMore" />
             </LinearLayout>
 
         </LinearLayout>

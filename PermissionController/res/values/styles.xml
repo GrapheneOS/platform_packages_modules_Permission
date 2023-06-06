@@ -233,15 +233,15 @@
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowOneTime"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAll"
-           parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowSelected"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonDontAllowMore"
+    <style name="PermissionGrantButtonAllowAll"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonDeny"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonNoUpgrade"
+           parent="@style/PermissionGrantButton"></style>
+    <style name="PermissionGrantButtonDontAllowMore"
            parent="@style/PermissionGrantButton"></style>
 
     <style name="PermissionGrantButtonAllowMaterial3"
@@ -255,10 +255,6 @@
     <style name="PermissionGrantButtonNoUpgradeMaterial3"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowAllMaterial3"
-           parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowSelectedPhotosMaterial3"
-           parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonDontAllowMorePhotosMaterial3"
            parent="@style/PermissionGrantButton"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->

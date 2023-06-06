@@ -37,11 +37,23 @@
             <item type="style" name="PermissionGrantTitleMessage" />
             <item type="style" name="PermissionGrantDetailMessage" />
 
+            <item type="style" name="PermissionGrantPermissionRationaleContent" />
+            <item type="style" name="PermissionGrantPermissionRationaleIcon" />
+            <item type="style" name="PermissionGrantPermissionRationaleMessage" />
+            <item type="style" name="PermissionGrantPermissionRationaleMoreInfoIcon" />
+
+            <item type="color" name="permission_rationale_overview_background" />
+
+            <item type="style" name="PermissionLocationAccuracyRadioGroupMaterial3" />
+            <item type="style" name="PermissionLocationAccuracyFineImageViewMaterial3" />
+            <item type="style" name="PermissionLocationAccuracyCoarseImageViewMaterial3" />
+
+            <item type="style" name="PermissionLocationAccuracyRadioFine" />
+            <item type="style" name="PermissionLocationAccuracyRadioCoarse" />
+
             <item type="style" name="PermissionGrantButtonList" />
             <item type="style" name="PermissionGrantButtonBarSpace" />
             <item type="style" name="PermissionGrantButton" />
-
-            <!-- IDs for V31 only -->
 
             <item type="style" name="PermissionGrantButtonTop" />
             <item type="style" name="PermissionGrantButtonMiddle" />
@@ -52,23 +64,27 @@
             <item type="style" name="PermissionGrantButtonAllowMaterial3" />
             <item type="style" name="PermissionGrantButtonAllowForegroundMaterial3" />
             <item type="style" name="PermissionGrantButtonAllowOneTimeMaterial3" />
+            <item type="style" name="PermissionGrantButtonAllowSelectedMaterial3" />
+            <item type="style" name="PermissionGrantButtonAllowAllMaterial3" />
             <item type="style" name="PermissionGrantButtonDenyMaterial3" />
             <item type="style" name="PermissionGrantButtonNoUpgradeMaterial3" />
+            <item type="style" name="PermissionGrantButtonDontAllowMoreMaterial3" />
 
-            <!-- END IDs for V31 only -->
+            <!-- Used in V30 only -->
+
+            <item type="style" name="PermissionLocationAccuracyFineImageView" />
+            <item type="style" name="PermissionLocationAccuracyCoarseImageView" />
 
             <item type="style" name="PermissionGrantButtonAllow" />
             <item type="style" name="PermissionGrantButtonAllowForeground" />
             <item type="style" name="PermissionGrantButtonAllowOneTime" />
+            <item type="style" name="PermissionGrantButtonAllowSelected" />
+            <item type="style" name="PermissionGrantButtonAllowAll" />
             <item type="style" name="PermissionGrantButtonDeny" />
             <item type="style" name="PermissionGrantButtonNoUpgrade" />
+            <item type="style" name="PermissionGrantButtonDontAllowMore" />
 
-            <item type="style" name="PermissionGrantPermissionRationaleContent" />
-            <item type="style" name="PermissionGrantPermissionRationaleIcon" />
-            <item type="style" name="PermissionGrantPermissionRationaleMessage" />
-            <item type="style" name="PermissionGrantPermissionRationaleMoreInfoIcon" />
-
-            <item type="color" name="permission_rationale_overview_background" />
+            <!-- END Used in V30 only -->
 
             <!-- END PERMISSION GRANT DIALOG -->
 
