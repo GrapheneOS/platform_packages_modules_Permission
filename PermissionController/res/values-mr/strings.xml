@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"ओके"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"परवानग्या"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करा"</string>
-    <string name="back" msgid="6249950659061523680">"परत"</string>
+    <string name="back" msgid="6249950659061523680">"मागे जा"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध आहे"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक केला आहे"</string>
     <string name="on" msgid="280241003226755921">"सुरू आहे"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"डेटासंबंधित सुरक्षितता"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"स्‍थान डेटा शेअर केला जाऊ शकतो"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"हे अ‍ॅप तृतीय पक्षांसोबत तुमचा स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ही लिंक उघडू शकत नाही"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"स्थानासाठी डेटा शेअरिंगसंबंधित अपडेट"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ज्या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली अशा अ‍ॅप्सचे पुनरावलोकन करा"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली आहे. त्यांनी तो पूर्वी शेअर केलेला नसू शकतो किंवा आता जाहिरात करणे अथवा मार्केटिंग उद्देशांसाठी शेअर करू शकतात."</string>

@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Bezpieczeństwo danych"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Dane o lokalizacji mogą być udostępniane"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ta aplikacja deklaruje, że może udostępniać Twoje dane o lokalizacji innym podmiotom"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Nie można otworzyć tego linku"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Zmiany w udostępnianiu danych o lokalizacji"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Przejrzyj aplikacje, które zmieniły sposób udostępniania Twoich danych o lokalizacji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacje zmieniły sposób udostępniania Twoich danych o lokalizacji. Wcześniej mogły ich nie udostępniać lub teraz zaczęły je udostępniać w celach marketingowych."</string>

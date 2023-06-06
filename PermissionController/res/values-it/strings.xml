@@ -532,7 +532,7 @@
     <string name="security_settings" msgid="3808106921175271317">"Impostazioni di sicurezza"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Autorizzazioni"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicurezza e privacy"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica lo stato"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica stato"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Controlli per la privacy"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Altre impostazioni"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accesso alla fotocamera"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sicurezza dei dati"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Potrebbero essere condivisi dati sulla posizione"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Questa app ha dichiarato che potrebbe condividere i tuoi dati sulla posizione con terze parti"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossibile aprire questo link"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aggiornamenti relativi alla condivisione dei dati sulla posizione"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Controlla le app che hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Le app che seguono hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione. Potrebbero non averli condivisi in precedenza oppure ora potrebbero condividerli per scopi pubblicitari o di marketing."</string>
