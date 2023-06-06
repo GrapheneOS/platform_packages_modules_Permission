@@ -163,12 +163,12 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /**
-         * Blocks until [forAtLeast] has elapsed, or throw an [AssertionError] if any notification
-         * is posted or removed before then.
+         * Blocks for [TIMEOUT_SHORT], or throw an [AssertionError] if any notification is posted or
+         * removed before then.
          */
-        fun waitForZeroNotificationEvents(forAtLeast: Duration = TIMEOUT_SHORT) {
+        fun waitForZeroNotificationEvents() {
             val event =
-                runBlockingWithTimeoutOrNull(forAtLeast) {
+                runBlockingWithTimeoutOrNull(TIMEOUT_SHORT) {
                     safetyCenterNotificationEvents.receive()
                 }
             assertThat(event).isNull()
