@@ -78,7 +78,7 @@ public final class SafetyCenterRefreshTracker {
     String reportRefreshInProgress(
             @RefreshReason int refreshReason, UserProfileGroup userProfileGroup) {
         if (mRefreshInProgress != null) {
-            Log.i(TAG, "Replacing an ongoing refresh");
+            Log.i(TAG, "Replacing ongoing refresh with id: " + mRefreshInProgress.getId());
         }
 
         String refreshBroadcastId = UUID.randomUUID() + "_" + mRefreshCounter++;
@@ -272,6 +272,15 @@ public final class SafetyCenterRefreshTracker {
         int refreshReason = clearedRefresh.getReason();
         int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
+        Log.w(
+                TAG,
+                "Timeout after "
+                        + clearedRefresh.getDurationSinceStart()
+                        + " for refresh with reason: "
+                        + refreshReason
+                        + ", and id: "
+                        + clearedRefresh.getId());
+
         for (int i = 0; i < timedOutSources.size(); i++) {
             SafetySourceKey sourceKey = timedOutSources.valueAt(i);
             Duration duration = clearedRefresh.getDurationSinceSourceStart(sourceKey);
@@ -285,6 +294,15 @@ public final class SafetyCenterRefreshTracker {
                         refreshReason,
                         false);
             }
+
+            Log.w(
+                    TAG,
+                    "Refresh with id: "
+                            + clearedRefresh.getId()
+                            + " timed out for tracked source id: "
+                            + sourceKey.getSourceId()
+                            + ", and user id: "
+                            + sourceKey.getUserId());
         }
 
         SafetyCenterStatsdLogger.writeWholeRefreshSystemEvent(
