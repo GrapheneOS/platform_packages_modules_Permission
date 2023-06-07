@@ -90,15 +90,15 @@
            parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonAllowOneTimeMaterial3"
            parent="@style/PermissionGrantButtonMiddle"></style>
+    <style name="PermissionGrantButtonAllowSelectedMaterial3"
+           parent="@style/PermissionGrantButtonTop"></style>
     <style name="PermissionGrantButtonAllowAllMaterial3"
         parent="@style/PermissionGrantButtonMiddle"></style>
-    <style name="PermissionGrantButtonAllowSelectedMaterial3"
-        parent="@style/PermissionGrantButtonTop"></style>
-    <style name="PermissionGrantButtonDontAllowMoreMaterial3"
-        parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonDenyMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
     <style name="PermissionGrantButtonNoUpgradeMaterial3"
+           parent="@style/PermissionGrantButtonBottom"></style>
+    <style name="PermissionGrantButtonDontAllowMoreMaterial3"
            parent="@style/PermissionGrantButtonBottom"></style>
 
     <!-- END PERMISSION GRANT DIALOG -->
