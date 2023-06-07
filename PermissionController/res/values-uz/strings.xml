@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Maʼlumotlar xavfsizligi"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Joylashuv axboroti ulashilishi mumkin"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu ilova tashqariga joylashuv axborotini ulashishi mumkinligi aniqlandi"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu havola ochilmadi"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Joylashuv axboroti ulashuvidagi oʻzgarishlar"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Joylashuv axboroti ulashuviga oʻzgartirish kiritgan ilovalarni tekshiring"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Quyidagi ilovalarda joylashuv axboroti ulashuvi oʻzgardi. Avval ulashilmagan boʻlishi yoki endi reklama va marketing maqsadlarida ulashilishi mumkin"</string>

@@ -51,7 +51,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Izinkan"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Izinkan sepanjang waktu"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Saat aplikasi digunakan"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Ubah ke lokasi akurat"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Ubah ke lokasi presisi"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Tetap gunakan perkiraan"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Hanya kali ini"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Izinkan sepanjang waktu"</string>
@@ -193,8 +193,8 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Jangan izinkan"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Lokasi akurat"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Perkiraan lokasi"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gunakan lokasi akurat"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Saat lokasi akurat dinonaktifkan, aplikasi dapat mengakses perkiraan lokasi"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gunakan lokasi presisi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Saat lokasi presisi dinonaktifkan, aplikasi dapat mengakses perkiraan lokasi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Izin <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Akses <xliff:g id="PERM">%1$s</xliff:g> untuk aplikasi ini"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Lihat semua izin <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -462,9 +462,9 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikasi ini mungkin ingin selalu mengakses lokasi, meski tidak sedang digunakan. "<annotation id="link">"Izinkan di setelan."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Ubah akses lokasi untuk &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikasi ini mungkin ingin selalu mengakses lokasi, meski tidak sedang digunakan. "<annotation id="link">"Izinkan di setelan."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar? "<annotation id="link">"Izinkan di setelan."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Ubah akses lokasi <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> dari perkiraan ke lokasi akurat?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar? "<annotation id="link">"Izinkan di setelan."</annotation></string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Ubah akses lokasi <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> dari perkiraan ke lokasi presisi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses perkiraan lokasi perangkat ini?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Akurat"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Perkiraan"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Keamanan data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data lokasi mungkin dibagikan"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikasi ini menyatakan bahwa aplikasi mungkin membagikan data lokasi Anda kepada pihak ketiga"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Tidak dapat membuka link ini"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Pembaruan berbagi data untuk lokasi"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Tinjau aplikasi yang mengubah caranya berbagi data lokasi Anda"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aplikasi ini telah mengubah caranya berbagi data lokasi Anda. Aplikasi mungkin sebelumnya tidak membagikan data, atau mungkin kini membagikan data untuk tujuan iklan atau pemasaran."</string>

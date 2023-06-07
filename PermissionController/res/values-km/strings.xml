@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"សុវត្ថិភាព​ទិន្នន័យ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ទិន្នន័យទីតាំងអាចនឹង​ត្រូវបានចែករំលែក"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"កម្មវិធីនេះ​បានបញ្ជាក់ថា វាអាចចែករំលែក​ទិន្នន័យទីតាំងរបស់អ្នក​ជាមួយភាគីទីបី"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"មិនអាចបើកតំណនេះបានទេ"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ពិនិត្យមើលកម្មវិធីដែលបានផ្លាស់ប្ដូររបៀបដែលកម្មវិធីទាំងនោះអាចចែករំលែកទិន្នន័យទីតាំងរបស់អ្នក"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"កម្មវិធីទាំងនេះ​បានផ្លាស់ប្ដូររបៀបដែលវា​អាចចែករំលែកទិន្នន័យ​ទីតាំងរបស់អ្នក។ កម្មវិធីទាំងនេះ​ប្រហែលជាមិនបានចែករំលែកទិន្នន័យទីតាំងពីមុនទេ ឬឥឡូវនេះប្រហែលជា​ចែករំលែកទិន្នន័យទីតាំងនេះ​សម្រាប់គោលបំណង​ផ្សាយពាណិជ្ជកម្ម ឬធ្វើទីផ្សារ។"</string>

@@ -193,7 +193,7 @@ public final class SafetyCenterNotificationSender {
 
         Notification notification =
                 mNotificationFactory.newNotificationForSuccessfulAction(
-                        notificationManager, notifiedIssue, successfulAction);
+                        notificationManager, notifiedIssue, successfulAction, userId);
         if (notification == null) {
             Log.w(TAG, "Could not create successful action notification");
             return;

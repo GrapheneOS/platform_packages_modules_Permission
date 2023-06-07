@@ -532,7 +532,7 @@
     <string name="security_settings" msgid="3808106921175271317">"Configurações de segurança"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Permissões"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Segurança e privacidade"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Ver status"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Checar status"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Seus controles de privacidade"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Mais configurações"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Acesso à câmera"</string>
@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Revisar apps com acesso à localização em segundo plano"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Este app sempre pode acessar sua localização, mesmo quando está fechado.\n\nAlguns apps de segurança e emergência exigem acesso à sua localização em segundo plano para funcionar corretamente."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"O acesso foi mudado"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver o uso recente da localização"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Verificar o uso recente da localização"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Controles de privacidade"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Acesso à câmera"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Acesso ao microfone"</string>
@@ -607,10 +607,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Segurança dos dados"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Os dados de local podem ser compartilhados"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Este app indicou que pode compartilhar seus dados de local com terceiros"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Não é possível abrir esse link"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Atualizações no compartilhamento de dados de local"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revise os apps que mudaram a forma de compartilhar os dados de local"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Conferir apps que mudaram a forma de compartilhar dados de local"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Esses apps mudaram a forma de compartilhar os dados de local. É possível que eles não tenham compartilhado antes ou que agora compartilhem para fins de publicidade ou marketing."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os desenvolvedores desses apps oferecem informações sobre as práticas deles de compartilhamento de dados com uma app store. Eles podem atualizar essas informações com o tempo.\n\nAs práticas de compartilhamento de dados podem variar de acordo com a versão do app e com a idade, o uso e a região do usuário."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre o compartilhamento de dados"</string>

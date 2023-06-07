@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ਡਾਟਾ ਸੁਰੱਖਿਆ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ਇਸ ਲਿੰਕ ਨੂੰ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ਟਿਕਾਣੇ ਲਈ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ਉਨ੍ਹਾਂ ਐਪਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ ਜਿਨ੍ਹਾਂ ਨੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ਇਨ੍ਹਾਂ ਐਪਾਂ ਨੇ ਉਨ੍ਹਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੇ ਸ਼ਾਇਦ ਇਸਨੂੰ ਪਹਿਲਾਂ ਸਾਂਝਾ ਨਾ ਕੀਤਾ ਹੋਵੇ, ਜਾਂ ਉਹ ਸ਼ਾਇਦ ਹੁਣ ਵਿਗਿਆਪਨ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਸੰਬੰਧੀ ਉਦੇਸ਼ਾਂ ਲਈ ਹੁਣ ਇਸਨੂੰ ਸਾਂਝਾ ਕਰਨ।"</string>

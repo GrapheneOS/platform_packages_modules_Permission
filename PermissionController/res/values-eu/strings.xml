@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Eman baimena beti"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Aplikazioa erabiltzean soilik"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Baimendu aplikazioa erabiltzean soilik"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Ez eman baimenik"</string>
     <string name="loading" msgid="4789365003890741082">"Kargatzen…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Baimen guztiak"</string>
@@ -187,7 +187,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Eman fitxategi guztiak kudeatzeko baimena"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Eman multimedia-fitxategiak soilik erabiltzeko baimena"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Eman baimena beti"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Aplikazioa erabiltzean soilik"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Baimendu aplikazioa erabiltzean soilik"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Eman beti baliabide guztiak erabiltzeko baimena"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Galdetu beti"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ez eman baimenik"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datuen babesa"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Baliteke kokapen-datuak partekatzea"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Ezin da ireki esteka"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kokapen-datuak partekatzeko jardunbideen berritasunak"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Berrikusi kokapen-datuak partekatzeko modua aldatu duten aplikazioak"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio hauek. Agian ez zuten daturik partekatzen lehen, edo baliteke orain publizitate- edo marketin-helburuetarako partekatzea."</string>

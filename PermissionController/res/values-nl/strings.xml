@@ -71,7 +71,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Vandaag}=1{1 dag geleden}other{# dagen geleden}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitzetten"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitzet, werken Android en andere apps mogelijk niet meer zoals bedoeld. Je kunt deze app niet verwijderen omdat deze vooraf geïnstalleerd was op je apparaat. Door de app uit te zetten verberg je deze ook op je apparaat."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Rechtenbeheer"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Rechten­beheer"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Niet meer vragen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Geen rechten"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Aanvullende rechten"</string>
@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Altijd toestaan"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Toestaan bij gebruik van app"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Alleen toestaan bij gebruik van app"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Niet toestaan"</string>
     <string name="loading" msgid="4789365003890741082">"Laden…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alle rechten"</string>
@@ -570,9 +570,9 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Deze app ondersteunt de nieuwste versie van Android niet. Als deze app geen toegang heeft tot muziek- en audiobestanden, heeft deze ook geen toegang tot foto\'s en video\'s."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Deze app ondersteunt de nieuwste versie van Android niet. Als deze app toegang heeft tot foto\'s en video\'s, heeft deze ook toegang tot muziek- en audiobestanden."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Deze app ondersteunt de nieuwste versie van Android niet. Als deze app geen toegang heeft tot muziek- en audiobestanden, heeft deze ook geen toegang tot foto\'s en video\'s."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Apps met toegang tot locatie op de achtergrond bekijken"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"App met toegang tot locatie op de achtergrond doornemen"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> heeft altijd toegang tot je locatie, ook als de app gesloten is"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Apps met toegang tot locatie op de achtergrond bekijken"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"App met toegang tot locatie op de achtergrond doornemen"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Deze app heeft altijd toegang tot je locatie, ook als de app gesloten is.\n\nBepaalde veiligheids- en nood-apps hebben op de achtergrond toegang tot je locatie nodig voor een juiste werking."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Toegang gewijzigd"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Recent locatiegebruik bekijken"</string>
@@ -585,7 +585,7 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Toegang tot klembord tonen"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Tekens kort tonen terwijl je typt"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Geef tekens kort weer terwijl je typt"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Deze app geeft aan dat locatiegegevens kunnen worden gedeeld met derden"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Gegevens delen en locatie"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Waar informatie over gegevens delen vandaan komt"</string>
@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Veiligheid van gegevens"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Locatiegegevens kunnen worden gedeeld"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens met derden kunnen worden gedeeld"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Link kan niet worden geopend"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Check apps die de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>
