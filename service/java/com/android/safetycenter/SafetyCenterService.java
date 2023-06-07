@@ -906,8 +906,6 @@ public final class SafetyCenterService extends SystemService {
                                             "refresh_timeout")));
                 }
             }
-
-            Log.w(TAG, "Timeout for refresh with id: " + mRefreshBroadcastId);
         }
 
         @Override
@@ -956,6 +954,10 @@ public final class SafetyCenterService extends SystemService {
                         new SafetyCenterErrorDetails(
                                 mSafetyCenterResourcesContext.getStringByName(
                                         "resolving_action_error")));
+                Log.w(
+                        TAG,
+                        "Resolving action timed out for: "
+                                + toUserFriendlyString(mSafetyCenterIssueActionId));
             }
         }
 
@@ -1162,6 +1164,10 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
             if (safetySourceIssueAction.willResolve()) {
+                Log.d(
+                        TAG,
+                        "Starting resolving action for: "
+                                + toUserFriendlyString(safetyCenterIssueActionId));
                 mSafetyCenterDataManager.markSafetyCenterIssueActionInFlight(
                         safetyCenterIssueActionId);
                 ResolvingActionTimeout resolvingActionTimeout =
