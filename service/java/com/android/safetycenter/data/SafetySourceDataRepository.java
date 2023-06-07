@@ -26,7 +26,6 @@ import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLL
 
 import android.annotation.UptimeMillisLong;
 import android.annotation.UserIdInt;
-import android.content.Context;
 import android.os.SystemClock;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
@@ -68,16 +67,13 @@ final class SafetySourceDataRepository {
     private final ArrayMap<SafetySourceKey, Long> mSafetySourceLastUpdated = new ArrayMap<>();
     private final ArrayMap<SafetySourceKey, Integer> mSourceStates = new ArrayMap<>();
 
-    private final Context mContext;
     private final SafetyCenterInFlightIssueActionRepository
             mSafetyCenterInFlightIssueActionRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
     SafetySourceDataRepository(
-            Context context,
             SafetyCenterInFlightIssueActionRepository safetyCenterInFlightIssueActionRepository,
             SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
-        mContext = context;
         mSafetyCenterInFlightIssueActionRepository = safetyCenterInFlightIssueActionRepository;
         mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
     }

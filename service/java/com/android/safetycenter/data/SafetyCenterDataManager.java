@@ -89,7 +89,6 @@ public final class SafetyCenterDataManager {
                 new SafetyCenterIssueDismissalRepository(apiLock, safetyCenterConfigReader);
         mSafetySourceDataRepository =
                 new SafetySourceDataRepository(
-                        context,
                         mSafetyCenterInFlightIssueActionRepository,
                         mSafetyCenterIssueDismissalRepository);
         mSafetyCenterIssueRepository =
