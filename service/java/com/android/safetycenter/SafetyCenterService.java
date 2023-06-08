@@ -230,10 +230,12 @@ public final class SafetyCenterService extends SystemService {
         }
 
         registerSafetyCenterEnabledListener();
+        SafetyCenterPullAtomCallback pullAtomCallback;
         synchronized (mApiLock) {
-            registerSafetyCenterPullAtomCallbackLocked();
+            pullAtomCallback = newSafetyCenterPullAtomCallbackLocked();
             mNotificationChannels.createAllChannelsForAllUsers(getContext());
         }
+        registerSafetyCenterPullAtomCallback(pullAtomCallback);
     }
 
     private void registerSafetyCenterEnabledListener() {
@@ -246,16 +248,19 @@ public final class SafetyCenterService extends SystemService {
     }
 
     @GuardedBy("mApiLock")
-    private void registerSafetyCenterPullAtomCallbackLocked() {
+    private SafetyCenterPullAtomCallback newSafetyCenterPullAtomCallbackLocked() {
+        return new SafetyCenterPullAtomCallback(
+                getContext(),
+                mApiLock,
+                mSafetyCenterConfigReader,
+                mSafetyCenterDataFactory,
+                mSafetyCenterDataManager);
+    }
+
+    private void registerSafetyCenterPullAtomCallback(
+            SafetyCenterPullAtomCallback pullAtomCallback) {
         StatsManager statsManager =
                 requireNonNull(getContext().getSystemService(StatsManager.class));
-        SafetyCenterPullAtomCallback pullAtomCallback =
-                new SafetyCenterPullAtomCallback(
-                        getContext(),
-                        mApiLock,
-                        mSafetyCenterConfigReader,
-                        mSafetyCenterDataFactory,
-                        mSafetyCenterDataManager);
         statsManager.setPullAtomCallback(
                 SAFETY_STATE,
                 /* metadata= */ null,

@@ -206,7 +206,7 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         }
     }
 
-    private fun Context.getNotEmptyStringOrNull(resId: Int): String? =
+    private fun SafetyCenterResourcesContext.getNotEmptyStringOrNull(resId: Int): String? =
         if (resId != Resources.ID_NULL) {
             getString(resId).takeIf { it.isNotEmpty() }
         } else {

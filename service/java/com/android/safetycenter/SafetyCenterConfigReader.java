@@ -226,18 +226,13 @@ public final class SafetyCenterConfigReader {
 
     @Nullable
     private SafetyCenterConfig loadSafetyCenterConfig() {
-        Resources resources = mSafetyCenterResourcesContext.getResources();
-        if (resources == null) {
-            Log.e(TAG, "Cannot access Safety Center resources");
-            return null;
-        }
-
         InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
         if (in == null) {
             Log.e(TAG, "Cannot access Safety Center config file");
             return null;
         }
 
+        Resources resources = mSafetyCenterResourcesContext.getResources();
         try {
             SafetyCenterConfig safetyCenterConfig =
                     SafetyCenterConfigParser.parseXmlResource(in, resources);
