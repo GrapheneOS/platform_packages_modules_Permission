@@ -76,7 +76,7 @@ public final class SafetyCenterConfigReader {
      * this method was {@code true}.
      */
     boolean loadConfig() {
-        SafetyCenterConfig safetyCenterConfig = readSafetyCenterConfig();
+        SafetyCenterConfig safetyCenterConfig = loadSafetyCenterConfig();
         if (safetyCenterConfig == null) {
             return false;
         }
@@ -225,26 +225,26 @@ public final class SafetyCenterConfigReader {
     }
 
     @Nullable
-    private SafetyCenterConfig readSafetyCenterConfig() {
-        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
-        if (in == null) {
-            Log.e(TAG, "Cannot get safety center config file, Safety Center will be disabled");
+    private SafetyCenterConfig loadSafetyCenterConfig() {
+        Resources resources = mSafetyCenterResourcesContext.getResources();
+        if (resources == null) {
+            Log.e(TAG, "Cannot access Safety Center resources");
             return null;
         }
 
-        Resources resources = mSafetyCenterResourcesContext.getResources();
-        if (resources == null) {
-            Log.e(TAG, "Cannot get safety center resources, Safety Center will be disabled");
+        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
+        if (in == null) {
+            Log.e(TAG, "Cannot access Safety Center config file");
             return null;
         }
 
         try {
             SafetyCenterConfig safetyCenterConfig =
                     SafetyCenterConfigParser.parseXmlResource(in, resources);
-            Log.d(TAG, "SafetyCenterConfig read successfully");
+            Log.d(TAG, "SafetyCenterConfig loaded successfully");
             return safetyCenterConfig;
         } catch (ParseException e) {
-            Log.e(TAG, "Cannot read SafetyCenterConfig, Safety Center will be disabled", e);
+            Log.e(TAG, "Cannot parse SafetyCenterConfig", e);
             return null;
         }
     }
