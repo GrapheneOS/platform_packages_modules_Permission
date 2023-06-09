@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"資料安全"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"可能會分享位置資料"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"這個應用程式表示可能會將位置資料分享給第三方"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"無法開啟這個連結"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料分享更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看哪些應用程式變更了分享位置資料的做法"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"以下應用程式變更了分享位置資料的做法。這些應用程式先前可能未曾分享位置資料，也可能是現在為了廣告或行銷目的而分享這些資料。"</string>

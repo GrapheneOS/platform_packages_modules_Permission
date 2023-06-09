@@ -607,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Տվյալների պաշտպանություն"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Տեղադրության տվյալները կարող են փոխանցվել"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Այս հավելվածը կարող է երրորդ կողմերի հետ կիսվել ձեր տեղադրության տվյալներով"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Չհաջողվեց բացել հղումը"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Տեղադրության մասին տվյալներով կիսվելու թույլտվության թարմացում"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ստուգեք հավելվածների ցանկը, որոնք փոխել են ձեր տեղադրության տվյալներով կիսվելու եղանակը"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Այս հավելվածները փոխել են ձեր տեղադրության տվյալներով կիսվելու եղանակը։ Հնարավոր է, որ նշված հավելվածները նախկինում չեն կիսվել այդ տվյալներով կամ այժմ կիսվում են դրանցով գովազդային կամ մարքեթինգային նպատակներով։"</string>
