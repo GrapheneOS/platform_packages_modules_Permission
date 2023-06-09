@@ -22,11 +22,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
-import androidx.preference.SwitchPreference;
-import androidx.preference.TwoStatePreference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
+import com.android.permissioncontroller.role.ui.RoleApplicationPreference;
 import com.android.permissioncontroller.role.ui.specialappaccess.SpecialAppAccessChildFragment;
 
 /** Automotive fragment for displaying special app access for a role. */
@@ -81,8 +80,8 @@ public class AutoSpecialAppAccessFragment extends AutoSettingsFrameFragment impl
 
     @NonNull
     @Override
-    public TwoStatePreference createApplicationPreference() {
-        return new SwitchPreference(requireContext());
+    public RoleApplicationPreference createApplicationPreference() {
+        return new AutoSwitchPreference(requireContext());
     }
 
     @NonNull
