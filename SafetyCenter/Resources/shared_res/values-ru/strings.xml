@@ -21,10 +21,10 @@
     <string name="loading_summary" msgid="3740846439782713910">"Проверка настроек устройства…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Всё в порядке"</string>
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Проблем не найдено"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Ознакомьтесь с рекомендацией}one{Ознакомьтесь с рекомендациями}few{Ознакомьтесь с рекомендациями}many{Ознакомьтесь с рекомендациями}other{Ознакомьтесь с рекомендациями}}"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Посмотрите рекомендацию}one{Посмотрите рекомендации}few{Посмотрите рекомендации}many{Посмотрите рекомендации}other{Посмотрите рекомендации}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Выполнено действие}one{Выполнены действия}few{Выполнены действия}many{Выполнены действия}other{Выполнены действия}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Проверьте настройки"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Изучите список настроек"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Просмотрите список настроек"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Устройство может быть под угрозой"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Устройство под угрозой"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Ваши данные могут быть под угрозой"</string>
