@@ -69,7 +69,7 @@ class XmlConfigTest {
     }
 
     private fun assertThatIntentResolves(intentAction: String) {
-        val pm = safetyCenterContext.packageManager
+        val pm = context.packageManager
         assertWithMessage("Intent '%s' cannot be resolved.", intentAction)
             .that(pm.queryIntentActivities(Intent(intentAction), ResolveInfoFlags.of(0)))
             .isNotEmpty()
@@ -86,7 +86,7 @@ class XmlConfigTest {
     private fun parseXmlConfig() =
         SafetyCenterConfigParser.parseXmlResource(
             safetyCenterContext.safetyCenterConfig!!,
-            safetyCenterContext.resources!!
+            safetyCenterContext.resources
         )
 
     companion object {

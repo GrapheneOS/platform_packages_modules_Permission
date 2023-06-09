@@ -50,7 +50,7 @@ final class DevicePolicyResources {
             String safetySourceId,
             @StringRes int workResId) {
         return getEnterpriseString(
-                safetyCenterResourcesContext,
+                safetyCenterResourcesContext.getResourcesApkContext(),
                 safetySourceId,
                 () -> safetyCenterResourcesContext.getString(workResId));
     }
@@ -62,7 +62,7 @@ final class DevicePolicyResources {
     static String getWorkProfilePausedString(
             SafetyCenterResourcesContext safetyCenterResourcesContext) {
         return getEnterpriseString(
-                safetyCenterResourcesContext,
+                safetyCenterResourcesContext.getResourcesApkContext(),
                 WORK_PROFILE_PAUSED_TITLE,
                 () -> safetyCenterResourcesContext.getStringByName("work_profile_paused"));
     }

@@ -22,6 +22,7 @@ import android.content.res.Resources
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
+import java.lang.IllegalStateException
 import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,65 +32,172 @@ class SafetyCenterResourcesContextTest {
     private val context: Context = getApplicationContext()
 
     @Test
-    fun validDataWithValidInputs() {
+    fun init_withValidInputs_returnsTrue() {
         val resourcesContext = createNewResourcesContext()
 
-        val resourcesApkContext = resourcesContext.resourcesApkContext
-        assertThat(resourcesApkContext).isNotNull()
-        assertThat(resourcesApkContext!!.packageName).isEqualTo(RESOURCES_APK_PKG_NAME)
+        val initialized = resourcesContext.init()
 
-        val configContent =
-            resourcesContext.safetyCenterConfig?.bufferedReader().use { it?.readText() }
-
-        assertThat(configContent).isEqualTo(CONFIG_CONTENT)
-        assertThat(resourcesContext.assets).isNotNull()
-        assertThat(resourcesContext.resources).isNotNull()
-        assertThat(resourcesContext.theme).isNotNull()
+        assertThat(initialized).isTrue()
     }
 
     @Test
-    fun nullDataWithWrongAction() {
+    fun init_withWrongAction_returnsFalse() {
         val resourcesContext = createNewResourcesContext(resourcesApkAction = "wrong")
 
-        assertThat(resourcesContext.resourcesApkContext).isNull()
-        assertThat(resourcesContext.safetyCenterConfig).isNull()
-        assertThat(resourcesContext.assets).isNull()
-        assertThat(resourcesContext.resources).isNull()
-        assertThat(resourcesContext.theme).isNull()
+        val initialized = resourcesContext.init()
+
+        assertThat(initialized).isFalse()
     }
 
     @Test
-    fun nullDataWithWrongPath() {
+    fun init_withWrongPath_returnsFalse() {
         val resourcesContext =
             createNewResourcesContext(resourcesApkPath = "/apex/com.android.permission")
 
-        assertThat(resourcesContext.resourcesApkContext).isNull()
-        assertThat(resourcesContext.safetyCenterConfig).isNull()
-        assertThat(resourcesContext.assets).isNull()
-        assertThat(resourcesContext.resources).isNull()
-        assertThat(resourcesContext.theme).isNull()
+        val initialized = resourcesContext.init()
+
+        assertThat(initialized).isFalse()
     }
 
     @Test
-    fun nullDataWithWrongFlag() {
+    fun init_withWrongFlags_returnsFalse() {
         val resourcesContext = createNewResourcesContext(flags = PackageManager.MATCH_SYSTEM_ONLY)
 
-        assertThat(resourcesContext.resourcesApkContext).isNull()
-        assertThat(resourcesContext.safetyCenterConfig).isNull()
-        assertThat(resourcesContext.assets).isNull()
-        assertThat(resourcesContext.resources).isNull()
-        assertThat(resourcesContext.theme).isNull()
+        val initialized = resourcesContext.init()
+
+        assertThat(initialized).isFalse()
     }
 
     @Test
-    fun nullConfigWithWrongConfigName() {
-        val resourcesContext = createNewResourcesContext(configName = "wrong")
+    fun getResourcesApkContext_withValidInputs_returnsResourcesApkContext() {
+        val resourcesContext = createNewResourcesContext()
 
-        assertThat(resourcesContext.resourcesApkContext).isNotNull()
-        assertThat(resourcesContext.safetyCenterConfig).isNull()
-        assertThat(resourcesContext.assets).isNotNull()
-        assertThat(resourcesContext.resources).isNotNull()
-        assertThat(resourcesContext.theme).isNotNull()
+        val resourcesApkContext = resourcesContext.resourcesApkContext
+
+        assertThat(resourcesApkContext.packageName).isEqualTo(RESOURCES_APK_PKG_NAME)
+    }
+
+    @Test
+    fun getResourcesApkContext_withWrongAction_throws() {
+        val resourcesContext = createNewResourcesContext(resourcesApkAction = "wrong")
+
+        assertFailsWith(IllegalStateException::class) { resourcesContext.resourcesApkContext }
+    }
+
+    @Test
+    fun getResourcesApkContext_withWrongPath_throws() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkPath = "/apex/com.android.permission")
+
+        assertFailsWith(IllegalStateException::class) { resourcesContext.resourcesApkContext }
+    }
+
+    @Test
+    fun getResourcesApkContext_withWrongFlags_throws() {
+        val resourcesContext = createNewResourcesContext(flags = PackageManager.MATCH_SYSTEM_ONLY)
+
+        assertFailsWith(IllegalStateException::class) { resourcesContext.resourcesApkContext }
+    }
+
+    @Test
+    fun getResources_withValidInputs_returnsResourcesApkContextResources() {
+        val resourcesContext = createNewResourcesContext()
+
+        val resources = resourcesContext.resources
+
+        assertThat(resources).isEqualTo(resourcesContext.resourcesApkContext.resources)
+    }
+
+    @Test
+    fun getResources_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) { resourcesContext.resources }
+    }
+
+    @Test
+    fun getSafetyCenterConfig_withValidInputs_returnsConfigContent() {
+        val resourcesContext = createNewResourcesContext()
+
+        val config = resourcesContext.safetyCenterConfig
+        val configContent = config?.bufferedReader().use { it?.readText() }
+
+        assertThat(config).isNotNull()
+        assertThat(configContent).isEqualTo(CONFIG_CONTENT)
+    }
+
+    @Test
+    fun getSafetyCenterConfig_anotherValidConfigName_returnsConfigContent() {
+        val resourcesContext = createNewResourcesContext()
+
+        val config = resourcesContext.getSafetyCenterConfig(CONFIG_NAME)
+        val configContent = config?.bufferedReader().use { it?.readText() }
+
+        assertThat(config).isNotNull()
+        assertThat(configContent).isEqualTo(CONFIG_CONTENT)
+    }
+
+    @Test
+    fun getSafetyCenterConfig_invalidConfigNameWithFallback_returnsNull() {
+        val resourcesContext = createNewResourcesContext(fallback = true)
+
+        assertThat(resourcesContext.getSafetyCenterConfig("wrong")).isNull()
+    }
+
+    @Test
+    fun getSafetyCenterConfig_invalidConfigNameWithoutFallback_throws() {
+        val resourcesContext = createNewResourcesContext(fallback = false)
+
+        assertFailsWith(Resources.NotFoundException::class) {
+            resourcesContext.getSafetyCenterConfig("wrong")
+        }
+    }
+
+    @Test
+    fun getSafetyCenterConfig_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) { resourcesContext.safetyCenterConfig }
+    }
+
+    @Test
+    fun getString_validString_returnsString() {
+        val resourcesContext = createNewResourcesContext()
+
+        val ok = resourcesContext.getString(android.R.string.ok)
+
+        assertThat(ok).isEqualTo("OK")
+    }
+
+    @Test
+    fun getString_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getString(android.R.string.ok)
+        }
+    }
+
+    @Test
+    fun getStringWithFormatArgs_validString_returnsString() {
+        val resourcesContext = createNewResourcesContext()
+
+        val ok = resourcesContext.getString(android.R.string.ok, "")
+
+        assertThat(ok).isEqualTo("OK")
+    }
+
+    @Test
+    fun getStringWithFormatArgs_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getString(android.R.string.ok, "")
+        }
     }
 
     @Test
@@ -116,6 +224,77 @@ class SafetyCenterResourcesContextTest {
     }
 
     @Test
+    fun getStringByName_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getStringByName("valid_string")
+        }
+    }
+
+    @Test
+    fun getStringByNameWithFormatArgs_validString_returnsString() {
+        val resourcesContext = createNewResourcesContext()
+
+        assertThat(resourcesContext.getStringByName("valid_string", "")).isEqualTo("I exist!")
+    }
+
+    @Test
+    fun getStringByNameWithFormatArgs_invalidStringWithFallback_returnsEmptyString() {
+        val resourcesContext = createNewResourcesContext(fallback = true)
+
+        assertThat(resourcesContext.getStringByName("invalid_string", "")).isEqualTo("")
+    }
+
+    @Test
+    fun getStringByNameWithFormatArgs_invalidStringWithoutFallback_throws() {
+        val resourcesContext = createNewResourcesContext(fallback = false)
+
+        assertFailsWith(Resources.NotFoundException::class) {
+            resourcesContext.getStringByName("invalid_string", "")
+        }
+    }
+
+    @Test
+    fun getStringByNameWithFormatArgs_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getStringByName("valid_string", "")
+        }
+    }
+
+    @Test
+    fun getOptionalString_validString_returnsString() {
+        val resourcesContext = createNewResourcesContext()
+
+        val ok = resourcesContext.getOptionalString(android.R.string.ok)
+
+        assertThat(ok).isEqualTo("OK")
+    }
+
+    @Test
+    fun getOptionalString_resourceIdNull_returnsNull() {
+        val resourcesContext = createNewResourcesContext()
+
+        val string = resourcesContext.getOptionalString(Resources.ID_NULL)
+
+        assertThat(string).isNull()
+    }
+
+    @Test
+    fun getOptionalString_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getOptionalString(android.R.string.ok)
+        }
+    }
+
+    @Test
     fun getOptionalStringByName_validString_returnsString() {
         val resourcesContext = createNewResourcesContext()
 
@@ -134,6 +313,16 @@ class SafetyCenterResourcesContextTest {
         val resourcesContext = createNewResourcesContext(fallback = false)
 
         assertThat(resourcesContext.getOptionalStringByName("invalid_string")).isNull()
+    }
+
+    @Test
+    fun getOptionalStringByName_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getOptionalStringByName("valid_string")
+        }
     }
 
     @Test
@@ -156,6 +345,16 @@ class SafetyCenterResourcesContextTest {
 
         assertFailsWith(Resources.NotFoundException::class) {
             resourcesContext.getDrawableByName("invalid_drawable", context.theme)
+        }
+    }
+
+    @Test
+    fun getDrawableByName_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getDrawableByName("valid_drawable", context.theme)
         }
     }
 
@@ -183,6 +382,16 @@ class SafetyCenterResourcesContextTest {
     }
 
     @Test
+    fun getIconByDrawableByName_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getIconByDrawableName("valid_drawable")
+        }
+    }
+
+    @Test
     fun getColorByName_validColor_returnsColor() {
         val resourcesContext = createNewResourcesContext()
 
@@ -205,21 +414,22 @@ class SafetyCenterResourcesContextTest {
         }
     }
 
+    @Test
+    fun getColorByName_nullContext_throwsRegardlessOfFallback() {
+        val resourcesContext =
+            createNewResourcesContext(resourcesApkAction = "wrong", fallback = true)
+
+        assertFailsWith(IllegalStateException::class) {
+            resourcesContext.getColorByName("valid_color")
+        }
+    }
+
     private fun createNewResourcesContext(
         resourcesApkAction: String = RESOURCES_APK_ACTION,
         resourcesApkPath: String = "",
-        configName: String = CONFIG_NAME,
         flags: Int = 0,
         fallback: Boolean = false
-    ) =
-        SafetyCenterResourcesContext(
-            context,
-            resourcesApkAction,
-            resourcesApkPath,
-            configName,
-            flags,
-            fallback
-        )
+    ) = SafetyCenterResourcesContext(context, resourcesApkAction, resourcesApkPath, flags, fallback)
 
     companion object {
         const val RESOURCES_APK_ACTION =
