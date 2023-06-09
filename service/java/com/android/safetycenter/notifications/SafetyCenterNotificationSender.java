@@ -47,7 +47,7 @@ import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
@@ -120,13 +120,13 @@ public final class SafetyCenterNotificationSender {
 
     public static SafetyCenterNotificationSender newInstance(
             Context context,
-            SafetyCenterResourcesContext resourcesContext,
+            SafetyCenterResourcesApk safetyCenterResourcesApk,
             SafetyCenterNotificationChannels notificationChannels,
             SafetyCenterDataManager dataManager) {
         return new SafetyCenterNotificationSender(
                 context,
                 new SafetyCenterNotificationFactory(
-                        context, notificationChannels, resourcesContext),
+                        context, notificationChannels, safetyCenterResourcesApk),
                 dataManager);
     }
 

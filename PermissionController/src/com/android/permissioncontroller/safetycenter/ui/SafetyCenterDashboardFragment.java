@@ -53,7 +53,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterUiData;
 import com.android.permissioncontroller.safetycenter.ui.model.StatusUiData;
 import com.android.safetycenter.internaldata.SafetyCenterBundles;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import kotlin.Unit;
 
@@ -178,10 +178,10 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
 
     private void updateStatus(StatusUiData statusUiData) {
         if (mIsQuickSettingsFragment) {
-            SafetyCenterResourcesContext safetyCenterResourcesContext =
-                    new SafetyCenterResourcesContext(requireContext());
+            SafetyCenterResourcesApk safetyCenterResourcesApk =
+                    new SafetyCenterResourcesApk(requireContext());
             boolean hasPendingActions =
-                    safetyCenterResourcesContext
+                    safetyCenterResourcesApk
                             .getStringByName("overall_severity_level_ok_review_summary")
                             .equals(statusUiData.getOriginalSummary().toString());
 

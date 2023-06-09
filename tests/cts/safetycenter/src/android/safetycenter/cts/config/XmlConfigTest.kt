@@ -24,7 +24,7 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.safetycenter.config.SafetyCenterConfigParser
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
 import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
@@ -38,7 +38,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class XmlConfigTest {
     private val context: Context = getApplicationContext()
-    private val safetyCenterContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
@@ -85,8 +85,8 @@ class XmlConfigTest {
 
     private fun parseXmlConfig() =
         SafetyCenterConfigParser.parseXmlResource(
-            safetyCenterContext.safetyCenterConfig!!,
-            safetyCenterContext.resources
+            safetyCenterResourcesApk.safetyCenterConfig!!,
+            safetyCenterResourcesApk.resources
         )
 
     companion object {

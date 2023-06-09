@@ -35,7 +35,7 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.RetryRule
 import com.android.compatibility.common.util.UiAutomatorUtils2
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
@@ -94,7 +94,7 @@ class SafetyCenterSubpagesTest {
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
     @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
@@ -957,9 +957,7 @@ class SafetyCenterSubpagesTest {
                 waitAllTextDisplayed(
                     context.getString(source.titleResId),
                     context.getString(source.summaryResId),
-                    safetyCenterResourcesContext.getStringByName(
-                        "test_single_source_group_id_footer"
-                    )
+                    safetyCenterResourcesApk.getStringByName("test_single_source_group_id_footer")
                 )
             }
         }

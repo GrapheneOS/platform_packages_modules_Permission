@@ -46,7 +46,7 @@ import com.android.safetycenter.PendingIntentFactory;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.time.Duration;
 import java.util.List;
@@ -63,15 +63,15 @@ final class SafetyCenterNotificationFactory {
 
     private final Context mContext;
     private final SafetyCenterNotificationChannels mNotificationChannels;
-    private final SafetyCenterResourcesContext mResourcesContext;
+    private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
     SafetyCenterNotificationFactory(
             Context context,
             SafetyCenterNotificationChannels notificationChannels,
-            SafetyCenterResourcesContext resourcesContext) {
+            SafetyCenterResourcesApk safetyCenterResourcesApk) {
         mContext = context;
         mNotificationChannels = notificationChannels;
-        mResourcesContext = resourcesContext;
+        mSafetyCenterResourcesApk = safetyCenterResourcesApk;
     }
 
     /**
@@ -229,7 +229,7 @@ final class SafetyCenterNotificationFactory {
         if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
             iconResName = "ic_notification_badge_critical";
         }
-        Icon icon = mResourcesContext.getIconByDrawableName(iconResName);
+        Icon icon = mSafetyCenterResourcesApk.getIconByDrawableName(iconResName);
         if (icon == null) {
             // In case it was impossible to fetch the above drawable for any reason use this
             // fallback which should be present on all Android devices:
@@ -245,12 +245,13 @@ final class SafetyCenterNotificationFactory {
         if (severityLevel == SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING) {
             colorResName = "notification_tint_critical";
         }
-        return mResourcesContext.getColorByName(colorResName);
+        return mSafetyCenterResourcesApk.getColorByName(colorResName);
     }
 
     private Bundle getNotificationExtras() {
         Bundle extras = new Bundle();
-        String appName = mResourcesContext.getStringByName("notification_channel_group_name");
+        String appName =
+                mSafetyCenterResourcesApk.getStringByName("notification_channel_group_name");
         if (!TextUtils.isEmpty(appName)) {
             extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appName);
         }

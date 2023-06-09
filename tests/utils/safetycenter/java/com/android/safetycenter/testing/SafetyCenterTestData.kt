@@ -48,7 +48,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
 import com.android.safetycenter.internaldata.SafetyCenterIssueId
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_GROUP_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ACTION_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
@@ -66,7 +66,7 @@ import java.util.Locale
 @RequiresApi(TIRAMISU)
 class SafetyCenterTestData(context: Context) {
 
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetySourceTestData = SafetySourceTestData(context)
 
     /**
@@ -74,12 +74,8 @@ class SafetyCenterTestData(context: Context) {
      */
     val safetyCenterStatusUnknown =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"
-                ),
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_summary"
-                )
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_summary")
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
             .build()
@@ -103,7 +99,7 @@ class SafetyCenterTestData(context: Context) {
         numAlerts: Int,
     ): SafetyCenterStatus =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(statusResource),
+                safetyCenterResourcesApk.getStringByName(statusResource),
                 getAlertString(numAlerts)
             )
             .setSeverityLevel(overallSeverityLevel)
@@ -117,8 +113,8 @@ class SafetyCenterTestData(context: Context) {
         numTipIssues: Int,
     ): SafetyCenterStatus =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_tip_summary",
                     numTipIssues
                 )
@@ -134,8 +130,8 @@ class SafetyCenterTestData(context: Context) {
         numAutomaticIssues: Int,
     ): SafetyCenterStatus =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_action_taken_summary",
                     numAutomaticIssues
                 )
@@ -149,7 +145,7 @@ class SafetyCenterTestData(context: Context) {
      */
     fun safetyCenterStatusCritical(numAlerts: Int) =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"
                 ),
                 getAlertString(numAlerts)
@@ -428,7 +424,7 @@ class SafetyCenterTestData(context: Context) {
     private fun getIcuPluralsString(name: String, count: Int, vararg formatArgs: Any): String {
         val messageFormat =
             MessageFormat(
-                safetyCenterResourcesContext.getStringByName(name, formatArgs),
+                safetyCenterResourcesApk.getStringByName(name, formatArgs),
                 Locale.getDefault()
             )
         val arguments = ArrayMap<String, Any>()
