@@ -31,8 +31,13 @@ import androidx.wear.compose.material.Text
  */
 @Composable
 public fun ListHeader(labelStringRes: Int) {
+    ListHeader(stringResource(labelStringRes))
+}
+
+@Composable
+public fun ListHeader(labelString: String) {
     Text(
-        text = stringResource(labelStringRes),
+        text = labelString,
         style = MaterialTheme.typography.caption1,
         modifier =
         Modifier.padding(top = 16.dp, bottom = 12.dp, start = 8.dp, end = 8.dp).fillMaxWidth(),
