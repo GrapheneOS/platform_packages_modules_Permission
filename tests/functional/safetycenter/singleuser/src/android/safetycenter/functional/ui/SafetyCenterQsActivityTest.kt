@@ -19,7 +19,6 @@ package android.safetycenter.functional.ui
 import android.content.Context
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
-import android.platform.test.rule.ScreenRecordRule
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -27,10 +26,10 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.testing.EnableSensorRule
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterQsActivity
-import com.android.safetycenter.testing.SafetyCenterTestRule
-import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
+import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.waitAllTextDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
@@ -73,7 +72,6 @@ class SafetyCenterQsActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun launchActivity_togglePrivacyControls_hasUpdatedDescriptions() {
         context.launchSafetyCenterQsActivity {
             // Toggle privacy controls
