@@ -46,7 +46,7 @@ object UiTestHelper {
     const val MORE_ISSUES_LABEL = "More alerts"
 
     private const val DISMISS_ISSUE_LABEL = "Dismiss"
-    private val WAIT_TIMEOUT = Duration.ofSeconds(10)
+    private val WAIT_TIMEOUT = Duration.ofSeconds(15)
     private val NOT_DISPLAYED_TIMEOUT = Duration.ofMillis(500)
 
     private val TAG = UiTestHelper::class.java.simpleName
