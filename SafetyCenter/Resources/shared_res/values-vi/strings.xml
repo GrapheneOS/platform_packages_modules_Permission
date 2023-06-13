@@ -37,7 +37,7 @@
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Đã phát hiện rủi ro"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Tài khoản có thể gặp rủi ro"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Tài khoản đang gặp rủi ro"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Xem cảnh báo}other{Xem các cảnh báo}}"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Xem cảnh báo}other{Xem cảnh báo}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Không thể mở trang"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Không thể giải quyết vấn đề cảnh báo"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Không thể làm mới cài đặt"</string>
