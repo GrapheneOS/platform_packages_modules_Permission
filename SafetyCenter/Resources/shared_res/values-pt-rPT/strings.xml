@@ -21,7 +21,7 @@
     <string name="loading_summary" msgid="3740846439782713910">"A verificar as definições do dispositivo…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Parece estar tudo bem"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenhum problema encontrado"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Reveja as definições"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Rever definições"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifique a lista de definições"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"O dispositivo pode estar em risco"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"O dispositivo está em risco"</string>

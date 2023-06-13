@@ -23,11 +23,11 @@
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ပြဿနာမတွေ့ပါ"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ဆက်တင်များကို စိစစ်ပါ"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ဆက်တင်များစာရင်းကို စစ်ဆေးပါ"</string>
-    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"စက်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
-    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"စက်တွင် အန္တရာယ်ရှိနေသည်"</string>
+    <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"စက်အတွက် အန္တရာယ်ရှိနိုင်သည်"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"စက်အတွက် အန္တရာယ်ရှိနေသည်"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"သင့်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"သင့်တွင် အန္တရာယ်ရှိနေသည်"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"အကောင့်တွင် အန္တရာယ်ရှိနိုင်သည်"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"အကောင့်အတွက် အန္တရာယ်ရှိနိုင်သည်"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"အကောင့်တွင် အန္တရာယ်ရှိသည်"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{သတိပေးချက် # ခု}other{သတိပေးချက် # ခု}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"စာမျက်နှာကို ဖွင့်၍မရပါ"</string>

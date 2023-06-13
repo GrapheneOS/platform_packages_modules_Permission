@@ -27,7 +27,7 @@
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"ಸಾಧನವು ಅಪಾಯದಲ್ಲಿದೆ"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"ನೀವು ಅಪಾಯಕ್ಕೀಡಾಗಬಹುದು"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="1039142045555227172">"ನೀವು ಅಪಾಯದಲ್ಲಿದ್ದೀರಿ"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ಖಾತೆಯು ಅಪಾಯಕ್ಕೀಡಾಗಬಹುದು"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ಖಾತೆಯು ಅಪಾಯದಲ್ಲಿರಬಹುದು"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"ಖಾತೆ ಅಪಾಯದಲ್ಲಿದೆ"</string>
     <string name="overall_severity_n_alerts_summary" msgid="1105615451561197136">"{count,plural, =1{# ಅಲರ್ಟ್}one{# ಅಲರ್ಟ್‌ಗಳು}other{# ಅಲರ್ಟ್‌ಗಳು}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>

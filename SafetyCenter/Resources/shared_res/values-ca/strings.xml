@@ -22,7 +22,7 @@
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Tot correcte"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"No s\'ha trobat cap problema"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisa la configuració"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Comprova la llista de configuració"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Comprova la llista d\'opcions de configuració"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"El dispositiu pot estar en perill"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositiu està en perill"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Pot ser que estiguis en perill"</string>

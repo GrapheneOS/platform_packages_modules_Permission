@@ -21,8 +21,8 @@
     <string name="loading_summary" msgid="3740846439782713910">"Құрылғы параметрлері тексеріліп жатыр…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Бәрі дұрыс"</string>
     <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Ешқандай мәселе табылмады."</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Параметрлерді тексеріңіз"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Параметрлер тізімін тексеру"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Параметрлерді тексерy"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Параметрлер тізімін тексеріңіз."</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Құрылғыға қауіп төнген болуы мүмкін"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Құрылғыға қауіп төніп тұр"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="6436208984463981167">"Қауіп төнуі мүмкін"</string>
