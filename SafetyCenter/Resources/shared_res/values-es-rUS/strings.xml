@@ -23,7 +23,7 @@
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"No se encontraron problemas"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Ver recomendación}many{Ver recomendaciones}other{Ver recomendaciones}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Se tomó una medida}many{Se tomaron medidas}other{Se tomaron medidas}}"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisar la configuración"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisa la configuración"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifica la lista de configuración"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"El dispositivo podría estar en riesgo"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositivo está en riesgo"</string>

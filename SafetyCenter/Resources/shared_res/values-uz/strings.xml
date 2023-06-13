@@ -35,7 +35,7 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"Xavf ostidasiz"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Potentsial xavflar topildi"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Xavflar topildi"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Hisob xavf ostida shekilli"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Hisob xavf ostida boʻlishi mumkin"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Hisob xavf ostida"</string>
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Ogohlantirish}other{Ogohlantirishlar}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Sahifa ochilmadi"</string>

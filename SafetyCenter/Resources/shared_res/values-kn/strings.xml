@@ -35,8 +35,8 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"ನೀವು ಅಪಾಯದಲ್ಲಿದ್ದೀರಿ"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"ಸಂಭವನೀಯ ಅಪಾಯಗಳು ಕಂಡುಬಂದಿವೆ"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"ಅಪಾಯಗಳು ಕಂಡುಬಂದಿವೆ"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ಖಾತೆಯು ಅಪಾಯಕ್ಕೀಡಾಗಬಹುದು"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"ಖಾತೆಯು ಅಪಾಯಕ್ಕೀಡಾಗಬಹುದು"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ಖಾತೆಯು ಅಪಾಯದಲ್ಲಿರಬಹುದು"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"ಖಾತೆಯು ಅಪಾಯದಲ್ಲಿದೆ"</string>
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ಎಚ್ಚರಿಕೆಯನ್ನು ನೋಡಿ}one{ಎಚ್ಚರಿಕೆಗಳನ್ನು ನೋಡಿ}other{ಎಚ್ಚರಿಕೆಗಳನ್ನು ನೋಡಿ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ಅಲರ್ಟ್ ಅನ್ನು ಬಗೆಹರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
