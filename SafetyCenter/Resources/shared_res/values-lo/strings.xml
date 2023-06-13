@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"ການສະແກນ"</string>
     <string name="loading_summary" msgid="3740846439782713910">"ກໍາລັງກວດການຕັ້ງຄ່າອຸປະກອນ…"</string>
-    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ເບິ່ງໃຊ້ໄດ້"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ດີແລ້ວ"</string>
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"ບໍ່ພົບບັນຫາ"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{ເບິ່ງຄຳແນະນຳ}other{ເບິ່ງຄຳແນະນຳ}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{ດຳເນີນການແລ້ວ}other{ດຳເນີນການແລ້ວ}}"</string>
