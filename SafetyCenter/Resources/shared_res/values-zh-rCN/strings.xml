@@ -21,7 +21,7 @@
     <string name="loading_summary" msgid="3740846439782713910">"正在检查设备设置…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"没问题"</string>
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"未发现任何问题"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{查看推荐内容}other{查看推荐内容}}"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{查看建议}other{查看建议}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{已采取措施}other{已采取措施}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"检查设置"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"请检查设置列表"</string>
