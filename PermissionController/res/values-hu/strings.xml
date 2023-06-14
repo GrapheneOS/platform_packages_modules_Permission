@@ -521,7 +521,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Segélyhívó szám hívásakor a rendszer továbbra is megoszthatja a mikrofonadatokat."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Módosítás"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Biztonság és adatvédelem"</string>
-    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Keresés az eszközön"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Eszközvizsgálat"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Elvetés"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Elveti ezt az értesítést?"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Bármikor áttekintheti biztonsági és adatvédelmi beállításait, és növelheti a védelmet"</string>

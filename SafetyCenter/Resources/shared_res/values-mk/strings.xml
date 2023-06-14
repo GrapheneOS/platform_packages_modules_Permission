@@ -35,7 +35,7 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"Под ризик сте"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Најдени се потенцијални ризици"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Најдени се ризици"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Сметката можеби е под ризик"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Сметката можеби е изложена на ризик"</string>
     <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Сметката е изложена на ризик"</string>
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Видете го предупредувањето}one{Видете ги предупредувањата}other{Видете ги предупредувањата}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Не можеше да се отвори страницата"</string>
