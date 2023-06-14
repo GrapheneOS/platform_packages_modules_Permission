@@ -24,7 +24,7 @@
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Mostra la recomanació}many{Mostra les recomanacions}other{Mostra les recomanacions}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{S\'ha dut a terme una acció}many{S\'han dut a terme accions}other{S\'han dut a terme accions}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisa la configuració"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Comprova la llista de configuració"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Comprova la llista d\'opcions de configuració"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"El dispositiu pot estar en perill"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositiu està en perill"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Les dades poden estar en perill"</string>
