@@ -40,7 +40,7 @@ import android.safetycenter.cts.testing.FakeExecutor
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
@@ -105,7 +105,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterManagerTest {
     private val context: Context = getApplicationContext()
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
@@ -1314,7 +1314,7 @@ class SafetyCenterManagerTest {
         assertThat(safetyCenterErrorDetailsFromListener)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("refresh_timeout")
+                    safetyCenterResourcesApk.getStringByName("refresh_timeout")
                 )
             )
     }
@@ -1378,7 +1378,7 @@ class SafetyCenterManagerTest {
         assertThat(safetyCenterErrorDetailsFromListener)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("refresh_timeout")
+                    safetyCenterResourcesApk.getStringByName("refresh_timeout")
                 )
             )
     }
@@ -2054,7 +2054,7 @@ class SafetyCenterManagerTest {
         assertThat(error)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("redirecting_error")
+                    safetyCenterResourcesApk.getStringByName("redirecting_error")
                 )
             )
     }
@@ -2080,7 +2080,7 @@ class SafetyCenterManagerTest {
         assertThat(error)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("resolving_action_error")
+                    safetyCenterResourcesApk.getStringByName("resolving_action_error")
                 )
             )
     }

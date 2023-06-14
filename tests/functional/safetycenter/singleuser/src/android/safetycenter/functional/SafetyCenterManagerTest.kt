@@ -70,7 +70,7 @@ import com.android.safetycenter.internaldata.SafetyCenterBundles
 import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.Coroutines.waitForWithTimeout
@@ -146,7 +146,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterManagerTest {
     private val context: Context = getApplicationContext()
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestData = SafetyCenterTestData(context)
@@ -155,16 +155,16 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusOk =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary")
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_summary")
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
     private val safetyCenterStatusUnknownScanning =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName("scanning_title"),
-                safetyCenterResourcesContext.getStringByName("loading_summary")
+                safetyCenterResourcesApk.getStringByName("scanning_title"),
+                safetyCenterResourcesApk.getStringByName("loading_summary")
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
             .setRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
@@ -172,7 +172,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusOkOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
                 safetyCenterTestData.getAlertString(1)
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
@@ -180,9 +180,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusOkReviewOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"
-                ),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_title"),
                 safetyCenterTestData.getAlertString(1)
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
@@ -190,19 +188,15 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusOkReview =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"
-                ),
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_summary"
-                )
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_summary")
             )
             .setSeverityLevel(OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
     private val safetyCenterStatusGeneralRecommendationOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_safety_recommendation_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -212,7 +206,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusAccountRecommendationOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_account_recommendation_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -222,7 +216,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusDeviceRecommendationOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_device_recommendation_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -232,7 +226,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusGeneralCriticalOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -242,7 +236,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusGeneralCriticalTwoAlerts =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(2)
@@ -252,7 +246,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusAccountCriticalOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_account_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -262,7 +256,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusAccountCriticalTwoAlerts =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_account_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(2)
@@ -272,7 +266,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusDeviceCriticalOneAlert =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_device_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -282,7 +276,7 @@ class SafetyCenterManagerTest {
 
     private val safetyCenterStatusDeviceCriticalTwoAlerts =
         SafetyCenterStatus.Builder(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_device_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(2)
@@ -302,7 +296,7 @@ class SafetyCenterManagerTest {
         SafetyCenterEntryOrGroup(
             SafetyCenterEntryGroup.Builder(MIXED_STATEFUL_GROUP_ID, "OK")
                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
-                .setSummary(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+                .setSummary(safetyCenterResourcesApk.getStringByName("group_unknown_summary"))
                 .setEntries(
                     listOf(
                         safetyCenterTestData.safetyCenterEntryDefault(DYNAMIC_IN_STATEFUL_ID),
@@ -604,7 +598,7 @@ class SafetyCenterManagerTest {
                     SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                         .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                         .setSummary(
-                            safetyCenterResourcesContext.getStringByName("group_unknown_summary")
+                            safetyCenterResourcesApk.getStringByName("group_unknown_summary")
                         )
                         .setSeverityUnspecifiedIconType(SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                         .setEntries(
@@ -791,9 +785,9 @@ class SafetyCenterManagerTest {
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
         assertThat(status1.title.toString())
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("scanning_title"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("scanning_title"))
         assertThat(status1.summary.toString())
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("loading_summary"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("loading_summary"))
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -815,9 +809,9 @@ class SafetyCenterManagerTest {
         val status1 = listener.receiveSafetyCenterData().status
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
         assertThat(status1.title.toString())
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("scanning_title"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("scanning_title"))
         assertThat(status1.summary.toString())
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("loading_summary"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("loading_summary"))
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -841,7 +835,7 @@ class SafetyCenterManagerTest {
         assertThat(status1.refreshStatus).isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
         assertThat(status1.title.toString()).isEqualTo(safetyCenterStatusOk.title.toString())
         assertThat(status1.summary.toString())
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("loading_summary"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("loading_summary"))
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
@@ -2814,7 +2808,7 @@ class SafetyCenterManagerTest {
             safetyCenterManager.getSafetyCenterDataWithPermission().getGroup(SUMMARY_TEST_GROUP_ID)
 
         assertThat(group.summary)
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("group_unknown_summary"))
         assertThat(group.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
     }
 
@@ -2828,7 +2822,7 @@ class SafetyCenterManagerTest {
                 .getGroup(ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID)
 
         assertThat(initialGroup.summary)
-            .isEqualTo(safetyCenterResourcesContext.getStringByName("group_unknown_summary"))
+            .isEqualTo(safetyCenterResourcesApk.getStringByName("group_unknown_summary"))
         assertThat(initialGroup.severityLevel).isEqualTo(ENTRY_SEVERITY_LEVEL_UNKNOWN)
 
         safetyCenterTestHelper.setData(DYNAMIC_BAREBONE_ID, safetySourceTestData.unspecified)
@@ -3323,7 +3317,7 @@ class SafetyCenterManagerTest {
         assertThat(error)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("resolving_action_error")
+                    safetyCenterResourcesApk.getStringByName("resolving_action_error")
                 )
             )
     }
@@ -3357,7 +3351,7 @@ class SafetyCenterManagerTest {
         assertThat(error)
             .isEqualTo(
                 SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("resolving_action_error")
+                    safetyCenterResourcesApk.getStringByName("resolving_action_error")
                 )
             )
     }

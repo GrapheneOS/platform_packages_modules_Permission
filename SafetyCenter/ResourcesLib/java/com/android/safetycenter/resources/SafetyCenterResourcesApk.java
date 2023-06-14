@@ -46,9 +46,9 @@ import java.util.List;
  * <p>This class isn't thread safe. Thread safety must be handled by the caller, or this may cause
  * the resources APK {@link Context} to be initialized multiple times.
  */
-public final class SafetyCenterResourcesContext {
+public final class SafetyCenterResourcesApk {
 
-    private static final String TAG = "SafetyCenterResContext";
+    private static final String TAG = "SafetyCenterResApk";
 
     /** Intent action that is used to identify the Safety Center resources APK */
     private static final String RESOURCES_APK_ACTION =
@@ -86,11 +86,11 @@ public final class SafetyCenterResourcesContext {
     // Cached context from the resources APK.
     @Nullable private Context mResourcesApkContext;
 
-    public SafetyCenterResourcesContext(Context context) {
+    public SafetyCenterResourcesApk(Context context) {
         this(context, /* shouldFallbackIfNamedResourceNotFound */ true);
     }
 
-    private SafetyCenterResourcesContext(
+    private SafetyCenterResourcesApk(
             Context context, boolean shouldFallbackIfNamedResourceNotFound) {
         this(
                 context,
@@ -101,7 +101,7 @@ public final class SafetyCenterResourcesContext {
     }
 
     @VisibleForTesting
-    SafetyCenterResourcesContext(
+    SafetyCenterResourcesApk(
             Context context,
             String resourcesApkAction,
             String resourcesApkPath,
@@ -114,11 +114,11 @@ public final class SafetyCenterResourcesContext {
         mShouldFallbackIfNamedResourceNotFound = shouldFallbackIfNamedResourceNotFound;
     }
 
-    /** Creates a new {@link SafetyCenterResourcesContext} for testing. */
+    /** Creates a new {@link SafetyCenterResourcesApk} for testing. */
     @VisibleForTesting
-    public static SafetyCenterResourcesContext forTests(Context contextBase) {
-        return new SafetyCenterResourcesContext(
-                contextBase, /* shouldFallbackIfNamedResourceNotFound */ false);
+    public static SafetyCenterResourcesApk forTests(Context context) {
+        return new SafetyCenterResourcesApk(
+                context, /* shouldFallbackIfNamedResourceNotFound */ false);
     }
 
     /**
@@ -140,7 +140,7 @@ public final class SafetyCenterResourcesContext {
      *
      * <p>Throws an {@link IllegalStateException} if the resources APK is not available
      */
-    public Context getResourcesApkContext() {
+    public Context getContext() {
         if (mResourcesApkContext != null) {
             return mResourcesApkContext;
         }
@@ -213,7 +213,7 @@ public final class SafetyCenterResourcesContext {
 
     /** Calls {@link Context#getResources()} for the resources APK {@link Context}. */
     public Resources getResources() {
-        return getResourcesApkContext().getResources();
+        return getContext().getResources();
     }
 
     /**
@@ -228,21 +228,21 @@ public final class SafetyCenterResourcesContext {
     @VisibleForTesting
     @Nullable
     InputStream getSafetyCenterConfig(String configName) {
-        int id = getResIdAndMaybeThrowIfNull(configName, "raw");
-        if (id == Resources.ID_NULL) {
+        int resId = getResIdAndMaybeThrowIfNull(configName, "raw");
+        if (resId == Resources.ID_NULL) {
             return null;
         }
-        return getResources().openRawResource(id);
+        return getResources().openRawResource(resId);
     }
 
     /** Calls {@link Context#getString(int)} for the resources APK {@link Context}. */
     public String getString(@StringRes int stringId) {
-        return getResourcesApkContext().getString(stringId);
+        return getContext().getString(stringId);
     }
 
     /** Same as {@link #getString(int)} but with the given {@code formatArgs}. */
     public String getString(@StringRes int stringId, Object... formatArgs) {
-        return getResourcesApkContext().getString(stringId, formatArgs);
+        return getContext().getString(stringId, formatArgs);
     }
 
     /**
@@ -317,7 +317,7 @@ public final class SafetyCenterResourcesContext {
         if (resId == Resources.ID_NULL) {
             return null;
         }
-        return Icon.createWithResource(getResourcesApkContext().getPackageName(), resId);
+        return Icon.createWithResource(getContext().getPackageName(), resId);
     }
 
     /**
@@ -333,7 +333,7 @@ public final class SafetyCenterResourcesContext {
         if (resId == Resources.ID_NULL) {
             return null;
         }
-        return getResources().getColor(resId, getResourcesApkContext().getTheme());
+        return getResources().getColor(resId, getContext().getTheme());
     }
 
     private int getResIdAndMaybeThrowIfNull(String name, String type) {
@@ -351,6 +351,6 @@ public final class SafetyCenterResourcesContext {
     private int getResId(String name, String type) {
         // TODO(b/227738283): profile the performance of this operation and consider adding caching
         //  or finding some alternative solution.
-        return getResources().getIdentifier(name, type, getResourcesApkContext().getPackageName());
+        return getResources().getIdentifier(name, type, getContext().getPackageName());
     }
 }

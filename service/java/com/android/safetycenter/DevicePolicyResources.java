@@ -28,7 +28,7 @@ import android.os.Binder;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.util.function.Supplier;
 
@@ -46,31 +46,30 @@ final class DevicePolicyResources {
      * DevicePolicyResourcesManager#getString}.
      */
     static String getSafetySourceWorkString(
-            SafetyCenterResourcesContext safetyCenterResourcesContext,
+            SafetyCenterResourcesApk safetyCenterResourcesApk,
             String safetySourceId,
             @StringRes int workResId) {
         return getEnterpriseString(
-                safetyCenterResourcesContext.getResourcesApkContext(),
+                safetyCenterResourcesApk.getContext(),
                 safetySourceId,
-                () -> safetyCenterResourcesContext.getString(workResId));
+                () -> safetyCenterResourcesApk.getString(workResId));
     }
 
     /**
      * Returns the updated string for the {@code work_profile_paused} string by calling {@link
      * DevicePolicyResourcesManager#getString}.
      */
-    static String getWorkProfilePausedString(
-            SafetyCenterResourcesContext safetyCenterResourcesContext) {
+    static String getWorkProfilePausedString(SafetyCenterResourcesApk safetyCenterResourcesApk) {
         return getEnterpriseString(
-                safetyCenterResourcesContext.getResourcesApkContext(),
+                safetyCenterResourcesApk.getContext(),
                 WORK_PROFILE_PAUSED_TITLE,
-                () -> safetyCenterResourcesContext.getStringByName("work_profile_paused"));
+                () -> safetyCenterResourcesApk.getStringByName("work_profile_paused"));
     }
 
     private static String getEnterpriseString(
             Context context, String devicePolicyIdentifier, Supplier<String> defaultValueLoader) {
         // This call requires the caller’s identity to match the package name of the given context.
-        // However, the SafetyCenterResourcesContext’s has package name "android", which does not
+        // However, the SafetyCenterResourceApk Context's has package name "android", which does not
         // necessarily match the caller’s package when making Binder calls, so the calling identity
         // has to be cleared.
         final long callingId = Binder.clearCallingIdentity();

@@ -51,7 +51,7 @@ import com.android.bedstead.nene.TestApis
 import com.android.bedstead.nene.types.OptionalBoolean.TRUE
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.NotificationCharacteristics
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
@@ -111,7 +111,7 @@ class SafetyCenterMultiUsersTest {
     }
 
     private val context: Context = ApplicationProvider.getApplicationContext()
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestData = SafetyCenterTestData(context)
@@ -192,7 +192,7 @@ class SafetyCenterMultiUsersTest {
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
                 // keyword.
                 .setSummary(
-                    safetyCenterResourcesContext.getStringByName("work_profile_paused"),
+                    safetyCenterResourcesApk.getStringByName("work_profile_paused"),
                 )
                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                 .setEnabled(false)
@@ -219,7 +219,7 @@ class SafetyCenterMultiUsersTest {
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
                 // keyword.
                 .setSummary(
-                    safetyCenterResourcesContext.getStringByName("work_profile_paused"),
+                    safetyCenterResourcesApk.getStringByName("work_profile_paused"),
                 )
                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                 .setEnabled(false)
@@ -262,7 +262,7 @@ class SafetyCenterMultiUsersTest {
             staticAllOptionalForWorkBuilder(inQuietMode = true)
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
                 //  keyword.
-                .setSummary(safetyCenterResourcesContext.getStringByName("work_profile_paused"))
+                .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .setEnabled(false)
                 .build()
 
@@ -299,7 +299,7 @@ class SafetyCenterMultiUsersTest {
             staticEntryForWorkBuilder(inQuietMode = true)
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
                 //  keyword.
-                .setSummary(safetyCenterResourcesContext.getStringByName("work_profile_paused"))
+                .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
     private val staticEntryForWorkPausedUpdated
@@ -307,7 +307,7 @@ class SafetyCenterMultiUsersTest {
             staticEntryForWorkBuilder(title = "Unspecified title for Work", inQuietMode = true)
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
                 //  keyword.
-                .setSummary(safetyCenterResourcesContext.getStringByName("work_profile_paused"))
+                .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
     private val staticEntryForWorkUpdated =
@@ -548,9 +548,7 @@ class SafetyCenterMultiUsersTest {
                         SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
-                                safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"
-                                )
+                                safetyCenterResourcesApk.getStringByName("group_unknown_summary")
                             )
                             .setEntries(listOf(dynamicBareboneDefault, dynamicDisabledDefault))
                             .setSeverityUnspecifiedIconType(
@@ -586,9 +584,7 @@ class SafetyCenterMultiUsersTest {
                         SafetyCenterEntryGroup.Builder(DYNAMIC_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
-                                safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"
-                                )
+                                safetyCenterResourcesApk.getStringByName("group_unknown_summary")
                             )
                             .setEntries(
                                 listOf(
@@ -886,9 +882,7 @@ class SafetyCenterMultiUsersTest {
                         SafetyCenterEntryGroup.Builder(SINGLE_SOURCE_GROUP_ID, "OK")
                             .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNKNOWN)
                             .setSummary(
-                                safetyCenterResourcesContext.getStringByName(
-                                    "group_unknown_summary"
-                                )
+                                safetyCenterResourcesApk.getStringByName("group_unknown_summary")
                             )
                             .setEntries(
                                 listOf(

@@ -30,7 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.io.PrintWriter;
 import java.time.Duration;
@@ -134,24 +134,27 @@ public final class SafetyCenterFlags {
     private static volatile String sRefreshOnPageOpenSourcesDefault =
             "AndroidBiometrics,AndroidLockScreen";
 
-    static void init(SafetyCenterResourcesContext resourceContext) {
+    static void init(SafetyCenterResourcesApk safetyCenterResourcesApk) {
         String untrackedSourcesDefault =
-                resourceContext.getOptionalStringByName("config_defaultUntrackedSources");
+                safetyCenterResourcesApk.getOptionalStringByName("config_defaultUntrackedSources");
         if (untrackedSourcesDefault != null) {
             sUntrackedSourcesDefault = untrackedSourcesDefault;
         }
         String backgroundRefreshDenyDefault =
-                resourceContext.getOptionalStringByName("config_defaultBackgroundRefreshDeny");
+                safetyCenterResourcesApk.getOptionalStringByName(
+                        "config_defaultBackgroundRefreshDeny");
         if (backgroundRefreshDenyDefault != null) {
             sBackgroundRefreshDenyDefault = backgroundRefreshDenyDefault;
         }
         String issueCategoryAllowlistDefault =
-                resourceContext.getOptionalStringByName("config_defaultIssueCategoryAllowlist");
+                safetyCenterResourcesApk.getOptionalStringByName(
+                        "config_defaultIssueCategoryAllowlist");
         if (issueCategoryAllowlistDefault != null) {
             sIssueCategoryAllowlistDefault = issueCategoryAllowlistDefault;
         }
         String refreshOnPageOpenSourcesDefault =
-                resourceContext.getOptionalStringByName("config_defaultRefreshOnPageOpenSources");
+                safetyCenterResourcesApk.getOptionalStringByName(
+                        "config_defaultRefreshOnPageOpenSources");
         if (refreshOnPageOpenSourcesDefault != null) {
             sRefreshOnPageOpenSourcesDefault = refreshOnPageOpenSourcesDefault;
         }

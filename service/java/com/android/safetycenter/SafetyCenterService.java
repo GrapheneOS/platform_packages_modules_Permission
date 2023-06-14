@@ -86,7 +86,7 @@ import com.android.safetycenter.notifications.SafetyCenterNotificationChannels;
 import com.android.safetycenter.notifications.SafetyCenterNotificationReceiver;
 import com.android.safetycenter.notifications.SafetyCenterNotificationSender;
 import com.android.safetycenter.pendingintents.PendingIntentSender;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 import com.android.server.SystemService;
 
 import java.io.FileDescriptor;
@@ -114,7 +114,7 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterTimeouts mSafetyCenterTimeouts = new SafetyCenterTimeouts();
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
     @GuardedBy("mApiLock")
     private final SafetyCenterNotificationChannels mNotificationChannels;
@@ -150,8 +150,8 @@ public final class SafetyCenterService extends SystemService {
 
     public SafetyCenterService(Context context) {
         super(context);
-        mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
-        mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesContext);
+        mSafetyCenterResourcesApk = new SafetyCenterResourcesApk(context);
+        mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesApk);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(context);
         mSafetyCenterDataManager =
                 new SafetyCenterDataManager(
@@ -159,17 +159,17 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterDataFactory =
                 new SafetyCenterDataFactory(
                         context,
-                        mSafetyCenterResourcesContext,
+                        mSafetyCenterResourcesApk,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        new PendingIntentFactory(context, mSafetyCenterResourcesContext),
+                        new PendingIntentFactory(context, mSafetyCenterResourcesApk),
                         mSafetyCenterDataManager);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
-        mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesContext);
+        mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesApk);
         mNotificationSender =
                 SafetyCenterNotificationSender.newInstance(
                         context,
-                        mSafetyCenterResourcesContext,
+                        mSafetyCenterResourcesApk,
                         mNotificationChannels,
                         mSafetyCenterDataManager);
         mSafetyCenterBroadcastDispatcher =
@@ -197,13 +197,13 @@ public final class SafetyCenterService extends SystemService {
         }
 
         synchronized (mApiLock) {
-            boolean safetyCenterResourcesInitialized = mSafetyCenterResourcesContext.init();
+            boolean safetyCenterResourcesInitialized = mSafetyCenterResourcesApk.init();
             if (!safetyCenterResourcesInitialized) {
                 Log.e(TAG, "Cannot init Safety Center resources, Safety Center will be disabled");
                 return;
             }
 
-            SafetyCenterFlags.init(mSafetyCenterResourcesContext);
+            SafetyCenterFlags.init(mSafetyCenterResourcesApk);
 
             if (!mSafetyCenterConfigReader.loadConfig()) {
                 Log.e(TAG, "Cannot init Safety Center config, Safety Center will be disabled");
@@ -376,7 +376,7 @@ public final class SafetyCenterService extends SystemService {
                                 == SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED) {
                     safetyCenterErrorDetails =
                             new SafetyCenterErrorDetails(
-                                    mSafetyCenterResourcesContext.getStringByName(
+                                    mSafetyCenterResourcesApk.getStringByName(
                                             "resolving_action_error"));
                 }
                 if (hasUpdate) {
@@ -921,8 +921,7 @@ public final class SafetyCenterService extends SystemService {
                     mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                             mUserProfileGroup,
                             new SafetyCenterErrorDetails(
-                                    mSafetyCenterResourcesContext.getStringByName(
-                                            "refresh_timeout")));
+                                    mSafetyCenterResourcesApk.getStringByName("refresh_timeout")));
                 }
             }
         }
@@ -971,7 +970,7 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                         mUserProfileGroup,
                         new SafetyCenterErrorDetails(
-                                mSafetyCenterResourcesContext.getStringByName(
+                                mSafetyCenterResourcesApk.getStringByName(
                                         "resolving_action_error")));
                 Log.w(
                         TAG,
@@ -1177,10 +1176,9 @@ public final class SafetyCenterService extends SystemService {
                 CharSequence errorMessage;
                 if (safetySourceIssueAction.willResolve()) {
                     errorMessage =
-                            mSafetyCenterResourcesContext.getStringByName("resolving_action_error");
+                            mSafetyCenterResourcesApk.getStringByName("resolving_action_error");
                 } else {
-                    errorMessage =
-                            mSafetyCenterResourcesContext.getStringByName("redirecting_error");
+                    errorMessage = mSafetyCenterResourcesApk.getStringByName("redirecting_error");
                 }
                 mSafetyCenterListeners.deliverErrorForUserProfileGroup(
                         userProfileGroup, new SafetyCenterErrorDetails(errorMessage));

@@ -34,7 +34,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.util.Arrays;
 
@@ -53,12 +53,11 @@ public final class PendingIntentFactory {
     private static final String IS_SETTINGS_HOMEPAGE = "is_from_settings_homepage";
 
     private final Context mContext;
-    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
-    PendingIntentFactory(
-            Context context, SafetyCenterResourcesContext safetyCenterResourcesContext) {
+    PendingIntentFactory(Context context, SafetyCenterResourcesApk safetyCenterResourcesApk) {
         mContext = context;
-        mSafetyCenterResourcesContext = safetyCenterResourcesContext;
+        mSafetyCenterResourcesApk = safetyCenterResourcesApk;
     }
 
     /**
@@ -146,7 +145,7 @@ public final class PendingIntentFactory {
 
     private boolean shouldAddSettingsHomepageExtra(String sourceId) {
         return Arrays.asList(
-                        mSafetyCenterResourcesContext
+                        mSafetyCenterResourcesApk
                                 .getStringByName("config_useSettingsHomepageIntentExtra")
                                 .split(","))
                 .contains(sourceId);

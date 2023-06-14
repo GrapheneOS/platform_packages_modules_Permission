@@ -22,7 +22,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SINGLE_SOURCE_ID
@@ -49,7 +49,7 @@ import org.junit.runner.RunWith
 class SafetyCenterStatusCardTest {
 
     private val context: Context = getApplicationContext()
-    private val safetyCenterResourcesContext = SafetyCenterResourcesContext.forTests(context)
+    private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)
     private val safetyCenterTestHelper = SafetyCenterTestHelper(context)
     private val safetySourceTestData = SafetySourceTestData(context)
     private val safetyCenterTestData = SafetyCenterTestData(context)
@@ -66,8 +66,8 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("scanning_title"),
-                safetyCenterResourcesContext.getStringByName("loading_summary")
+                safetyCenterResourcesApk.getStringByName("scanning_title"),
+                safetyCenterResourcesApk.getStringByName("loading_summary")
             )
         }
     }
@@ -82,8 +82,8 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName("loading_summary")
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("loading_summary")
             )
         }
     }
@@ -95,12 +95,8 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_title"
-                ),
-                safetyCenterResourcesContext.getStringByName(
-                    "overall_severity_level_ok_review_summary"
-                )
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_summary")
             )
             waitButtonDisplayed(RESCAN_BUTTON_LABEL)
         }
@@ -116,8 +112,8 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary")
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_summary")
             )
             waitButtonDisplayed(RESCAN_BUTTON_LABEL)
         }
@@ -147,7 +143,7 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
                 safetyCenterTestData.getAlertString(1)
             )
             waitButtonNotDisplayed(RESCAN_BUTTON_LABEL)
@@ -164,7 +160,7 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_safety_recommendation_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -183,7 +179,7 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_critical_safety_warning_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
@@ -202,15 +198,15 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary")
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_summary")
             )
 
             waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("scanning_title"),
-                safetyCenterResourcesContext.getStringByName("loading_summary")
+                safetyCenterResourcesApk.getStringByName("scanning_title"),
+                safetyCenterResourcesApk.getStringByName("loading_summary")
             )
         }
     }
@@ -229,14 +225,14 @@ class SafetyCenterStatusCardTest {
 
         context.launchSafetyCenterActivity(withReceiverPermission = true) {
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_title"),
-                safetyCenterResourcesContext.getStringByName("overall_severity_level_ok_summary")
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_title"),
+                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_summary")
             )
 
             waitButtonDisplayed(RESCAN_BUTTON_LABEL) { it.click() }
 
             waitAllTextDisplayed(
-                safetyCenterResourcesContext.getStringByName(
+                safetyCenterResourcesApk.getStringByName(
                     "overall_severity_level_safety_recommendation_title"
                 ),
                 safetyCenterTestData.getAlertString(1)
