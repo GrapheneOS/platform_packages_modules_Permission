@@ -29,11 +29,11 @@ import com.android.permissioncontroller.safetycenter.ui.SeverityIconPicker
 
 internal class SafetyEntryCommonViewsManager(rootEntryView: ViewGroup?) {
 
-    val titleView: TextView? by lazy { rootEntryView?.findViewById(R.id.title) }
-    val summaryView: TextView? by lazy { rootEntryView?.findViewById(R.id.summary) }
-    private val iconView: ImageView? by lazy { rootEntryView?.findViewById(R.id.icon) }
-    private val iconFrame: View? by lazy { rootEntryView?.findViewById(R.id.icon_frame) }
-    private val emptySpace: View? by lazy { rootEntryView?.findViewById(R.id.empty_space) }
+    val titleView: TextView? by lazyView { rootEntryView?.findViewById(R.id.title) }
+    val summaryView: TextView? by lazyView { rootEntryView?.findViewById(R.id.summary) }
+    private val iconView: ImageView? by lazyView { rootEntryView?.findViewById(R.id.icon) }
+    private val iconFrame: View? by lazyView { rootEntryView?.findViewById(R.id.icon_frame) }
+    private val emptySpace: View? by lazyView { rootEntryView?.findViewById(R.id.empty_space) }
 
     fun showDetails(
         id: String,

@@ -43,13 +43,13 @@ constructor(
     }
 
     private val moreIssuesCardAnimator = MoreIssuesCardAnimator()
-    private val statusIconView: ImageView by lazy { findViewById(R.id.status_icon) }
-    private val titleView: TextView by lazy { findViewById(R.id.title) }
-    private val expandCollapseLayout: View by lazy { findViewById(android.R.id.widget_frame) }
-    private val counterView: TextView by lazy {
+    private val statusIconView: ImageView by lazyView(R.id.status_icon)
+    private val titleView: TextView by lazyView(R.id.title)
+    private val expandCollapseLayout: View by lazyView(android.R.id.widget_frame)
+    private val counterView: TextView by lazyView {
         expandCollapseLayout.findViewById(R.id.widget_title)
     }
-    private val expandCollapseIcon: ImageView by lazy {
+    private val expandCollapseIcon: ImageView by lazyView {
         expandCollapseLayout.findViewById(R.id.widget_icon)
     }
     private var cornerAnimator: ValueAnimator? = null
