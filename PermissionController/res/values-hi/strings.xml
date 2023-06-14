@@ -460,7 +460,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"क्या आपको &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आस-पास मौजूद डिवाइसों को खोजने, उनसे कनेक्ट करने, और उनकी जगह की जानकारी का पता लगाने की अनुमति देनी है?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आस-पास मौजूद डिवाइसों को खोजने, उनसे कनेक्ट करने, और उनकी जगह की जानकारी का पता लगाने की अनुमति देना चाहते हैं? "<annotation id="link">"सेटिंग में जाकर अनुमति दें."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"क्या <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> आपकी जगह की अनुमानित जानकारी के बजाय सटीक जानकारी ऐक्सेस करे?"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की अनुमानित जानकारी ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"क्या आपको &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की अनुमानित जानकारी ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"सटीक जगह"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित जगह"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर ऐक्सेस करने की अनुमति देना है?"</string>
