@@ -33,7 +33,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.config.ParseException;
 import com.android.safetycenter.config.SafetyCenterConfigParser;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -56,15 +56,15 @@ public final class SafetyCenterConfigReader {
 
     private static final String TAG = "SafetyCenterConfigReade";
 
-    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
     @Nullable private SafetyCenterConfigInternal mConfigInternalFromXml;
 
     @Nullable private SafetyCenterConfigInternal mConfigInternalOverrideForTests;
 
-    /** Creates a {@link SafetyCenterConfigReader} from a {@link SafetyCenterResourcesContext}. */
-    SafetyCenterConfigReader(SafetyCenterResourcesContext safetyCenterResourcesContext) {
-        mSafetyCenterResourcesContext = safetyCenterResourcesContext;
+    /** Creates a {@link SafetyCenterConfigReader} from a {@link SafetyCenterResourcesApk}. */
+    SafetyCenterConfigReader(SafetyCenterResourcesApk safetyCenterResourcesApk) {
+        mSafetyCenterResourcesApk = safetyCenterResourcesApk;
     }
 
     /**
@@ -226,13 +226,13 @@ public final class SafetyCenterConfigReader {
 
     @Nullable
     private SafetyCenterConfig loadSafetyCenterConfig() {
-        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
+        InputStream in = mSafetyCenterResourcesApk.getSafetyCenterConfig();
         if (in == null) {
             Log.e(TAG, "Cannot access Safety Center config file");
             return null;
         }
 
-        Resources resources = mSafetyCenterResourcesContext.getResources();
+        Resources resources = mSafetyCenterResourcesApk.getResources();
         try {
             SafetyCenterConfig safetyCenterConfig =
                     SafetyCenterConfigParser.parseXmlResource(in, resources);

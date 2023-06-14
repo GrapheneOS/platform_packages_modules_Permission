@@ -34,7 +34,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
+import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.util.List;
 
@@ -53,11 +53,10 @@ public final class SafetyCenterNotificationChannels {
     private static final String CHANNEL_ID_RECOMMENDATION = "safety_center_recommendation";
     private static final String CHANNEL_ID_CRITICAL_WARNING = "safety_center_critical_warning";
 
-    private final SafetyCenterResourcesContext mResourcesContext;
+    private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
-    public SafetyCenterNotificationChannels(
-            SafetyCenterResourcesContext safetyCenterResourceContext) {
-        mResourcesContext = safetyCenterResourceContext;
+    public SafetyCenterNotificationChannels(SafetyCenterResourcesApk safetyCenterResourcesApk) {
+        mSafetyCenterResourcesApk = safetyCenterResourcesApk;
     }
 
     /** Returns a {@link NotificationManager} which will send notifications to the given user. */
@@ -219,6 +218,6 @@ public final class SafetyCenterNotificationChannels {
     }
 
     private String getString(String name) {
-        return mResourcesContext.getStringByName(name);
+        return mSafetyCenterResourcesApk.getStringByName(name);
     }
 }

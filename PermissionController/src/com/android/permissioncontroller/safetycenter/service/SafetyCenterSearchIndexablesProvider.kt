@@ -52,7 +52,7 @@ import com.android.permissioncontroller.safetycenter.ui.model.PrivacyControlsVie
 import com.android.safetycenter.internaldata.SafetyCenterBundles
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
 import com.android.safetycenter.internaldata.SafetyCenterIds
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 
 /** [android.provider.SearchIndexablesProvider] for Safety Center. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -67,7 +67,7 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         val context = requireContext()
         val safetyCenterManager =
             context.getSystemService(SafetyCenterManager::class.java) ?: return cursor
-        val resourcesContext = SafetyCenterResourcesContext(context)
+        val safetyCenterResourcesApk = SafetyCenterResourcesApk(context)
 
         val screenTitle = context.getString(R.string.safety_center_dashboard_page_title)
 
@@ -76,7 +76,11 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
                 SdkLevel.isAtLeastU() &&
                     safetySourcesGroup.type == SAFETY_SOURCES_GROUP_TYPE_STATEFUL
             ) {
-                cursor.addSafetySourcesGroupRow(safetySourcesGroup, resourcesContext, screenTitle)
+                cursor.addSafetySourcesGroupRow(
+                    safetySourcesGroup,
+                    safetyCenterResourcesApk,
+                    screenTitle
+                )
             }
             safetySourcesGroup.safetySources
                 .asSequence()
@@ -85,7 +89,7 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
                     cursor.addSafetySourceRow(
                         context,
                         safetySource,
-                        resourcesContext,
+                        safetyCenterResourcesApk,
                         safetyCenterManager,
                         screenTitle
                     )
@@ -139,11 +143,12 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
 
     private fun MatrixCursor.addSafetySourcesGroupRow(
         safetySourcesGroups: SafetySourcesGroup,
-        resourcesContext: SafetyCenterResourcesContext,
+        safetyCenterResourcesApk: SafetyCenterResourcesApk,
         screenTitle: String,
     ) {
         val groupTitle =
-            resourcesContext.getNotEmptyStringOrNull(safetySourcesGroups.titleResId) ?: return
+            safetyCenterResourcesApk.getNotEmptyStringOrNull(safetySourcesGroups.titleResId)
+                ?: return
 
         newRow()
             .add(COLUMN_RANK, 0)
@@ -157,11 +162,12 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
     private fun MatrixCursor.addSafetySourceRow(
         context: Context,
         safetySource: SafetySource,
-        resourcesContext: SafetyCenterResourcesContext,
+        safetyCenterResourcesApk: SafetyCenterResourcesApk,
         safetyCenterManager: SafetyCenterManager,
         screenTitle: String,
     ) {
-        val searchTerms = resourcesContext.getNotEmptyStringOrNull(safetySource.searchTermsResId)
+        val searchTerms =
+            safetyCenterResourcesApk.getNotEmptyStringOrNull(safetySource.searchTermsResId)
         var isPersonalEntryAdded = false
         var isWorkEntryAdded = false
 
@@ -194,19 +200,19 @@ class SafetyCenterSearchIndexablesProvider : BaseSearchIndexablesProvider() {
         }
 
         if (!isPersonalEntryAdded) {
-            resourcesContext.getNotEmptyStringOrNull(safetySource.titleResId)?.let {
+            safetyCenterResourcesApk.getNotEmptyStringOrNull(safetySource.titleResId)?.let {
                 addIndexableRow(title = it, isWorkProfile = false)
             }
         }
 
         if (!isWorkEntryAdded && safetySource.profile == SafetySource.PROFILE_ALL) {
-            resourcesContext.getNotEmptyStringOrNull(safetySource.titleForWorkResId)?.let {
+            safetyCenterResourcesApk.getNotEmptyStringOrNull(safetySource.titleForWorkResId)?.let {
                 addIndexableRow(title = it, isWorkProfile = true)
             }
         }
     }
 
-    private fun SafetyCenterResourcesContext.getNotEmptyStringOrNull(resId: Int): String? =
+    private fun SafetyCenterResourcesApk.getNotEmptyStringOrNull(resId: Int): String? =
         if (resId != Resources.ID_NULL) {
             getString(resId).takeIf { it.isNotEmpty() }
         } else {

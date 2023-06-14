@@ -18,32 +18,34 @@ package com.android.permissioncontroller.privacysources
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
+import com.android.safetycenter.resources.SafetyCenterResourcesApk
 
 // (TODO:b/242573074) Remove for Android U.
 class NotificationListenerPregrants(private val context: Context) {
     @VisibleForTesting
     val pregrantedPackagesDelegate = lazy {
         hashSetOf(
-            "android",
-            "com.android.cellbroadcastreceiver",
-            "com.android.server.telecom",
-            "com.android.settings",
-            "com.android.systemui",
-            "com.android.launcher3",
-            "com.android.dynsystem",
-            "com.android.providers.settings",
-            "com.android.inputdevices",
-            "com.android.keychain",
-            "com.android.localtransport",
-            "com.android.wallpaperbackup",
-            "com.android.location.fused"
-        ).also {
-            it.addAll(
-                SafetyCenterResourcesContext(context)
-                    .getStringByName("config_NotificationListenerServicePregrants")
-                    .split(","))
-        }
+                "android",
+                "com.android.cellbroadcastreceiver",
+                "com.android.server.telecom",
+                "com.android.settings",
+                "com.android.systemui",
+                "com.android.launcher3",
+                "com.android.dynsystem",
+                "com.android.providers.settings",
+                "com.android.inputdevices",
+                "com.android.keychain",
+                "com.android.localtransport",
+                "com.android.wallpaperbackup",
+                "com.android.location.fused"
+            )
+            .also {
+                it.addAll(
+                    SafetyCenterResourcesApk(context)
+                        .getStringByName("config_NotificationListenerServicePregrants")
+                        .split(",")
+                )
+            }
     }
     val pregrantedPackages: Set<String> by pregrantedPackagesDelegate
 }
