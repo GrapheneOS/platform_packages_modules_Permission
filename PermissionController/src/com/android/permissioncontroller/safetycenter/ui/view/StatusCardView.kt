@@ -42,14 +42,12 @@ constructor(
         inflate(context, R.layout.view_status_card, this)
     }
 
-    val statusImageView: ImageView by lazy { findViewById(R.id.status_image) }
-    val titleAndSummaryContainerView: LinearLayout by lazy {
-        findViewById(R.id.status_title_and_summary)
-    }
-    val titleView: TextView by lazy { findViewById(R.id.status_title) }
-    val summaryView: TextView by lazy { findViewById(R.id.status_summary) }
-    val reviewSettingsButton: MaterialButton by lazy { findViewById(R.id.review_settings_button) }
-    val rescanButton: MaterialButton by lazy { findViewById(R.id.rescan_button) }
+    val statusImageView: ImageView by lazyView(R.id.status_image)
+    val titleAndSummaryContainerView: LinearLayout by lazyView(R.id.status_title_and_summary)
+    val titleView: TextView by lazyView(R.id.status_title)
+    val summaryView: TextView by lazyView(R.id.status_summary)
+    val reviewSettingsButton: MaterialButton by lazyView(R.id.review_settings_button)
+    val rescanButton: MaterialButton by lazyView(R.id.rescan_button)
 
     fun showButtons(statusUiData: StatusUiData) {
         rescanButton.isEnabled = !statusUiData.isRefreshInProgress
