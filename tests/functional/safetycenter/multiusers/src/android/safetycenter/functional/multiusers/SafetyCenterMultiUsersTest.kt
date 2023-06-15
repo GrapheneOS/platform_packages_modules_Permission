@@ -23,6 +23,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
+import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED
@@ -30,6 +31,7 @@ import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
+import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
@@ -120,53 +122,55 @@ class SafetyCenterMultiUsersTest {
 
     private var inQuietMode = false
 
-    private val primaryProfileOnlyIssues =
-        listOf(
-            safetyCenterTestData.safetyCenterIssueCritical(
-                DYNAMIC_BAREBONE_ID,
-                groupId = DYNAMIC_GROUP_ID
-            ),
-            safetyCenterTestData.safetyCenterIssueCritical(
-                ISSUE_ONLY_BAREBONE_ID,
-                attributionTitle = null,
-                groupId = ISSUE_ONLY_GROUP_ID
-            ),
-            safetyCenterTestData.safetyCenterIssueRecommendation(
-                DYNAMIC_DISABLED_ID,
-                groupId = DYNAMIC_GROUP_ID
-            ),
-            safetyCenterTestData.safetyCenterIssueRecommendation(
-                ISSUE_ONLY_ALL_OPTIONAL_ID,
-                attributionTitle = null,
-                groupId = ISSUE_ONLY_GROUP_ID
-            ),
-            safetyCenterTestData.safetyCenterIssueInformation(
-                DYNAMIC_IN_STATELESS_ID,
-                groupId = MIXED_STATELESS_GROUP_ID
-            ),
-            safetyCenterTestData.safetyCenterIssueInformation(
-                ISSUE_ONLY_IN_STATELESS_ID,
-                groupId = MIXED_STATELESS_GROUP_ID
+    private val primaryProfileOnlyIssues: List<SafetyCenterIssue>
+        get() =
+            listOf(
+                safetyCenterTestData.safetyCenterIssueCritical(
+                    DYNAMIC_BAREBONE_ID,
+                    groupId = DYNAMIC_GROUP_ID
+                ),
+                safetyCenterTestData.safetyCenterIssueCritical(
+                    ISSUE_ONLY_BAREBONE_ID,
+                    attributionTitle = null,
+                    groupId = ISSUE_ONLY_GROUP_ID
+                ),
+                safetyCenterTestData.safetyCenterIssueRecommendation(
+                    DYNAMIC_DISABLED_ID,
+                    groupId = DYNAMIC_GROUP_ID
+                ),
+                safetyCenterTestData.safetyCenterIssueRecommendation(
+                    ISSUE_ONLY_ALL_OPTIONAL_ID,
+                    attributionTitle = null,
+                    groupId = ISSUE_ONLY_GROUP_ID
+                ),
+                safetyCenterTestData.safetyCenterIssueInformation(
+                    DYNAMIC_IN_STATELESS_ID,
+                    groupId = MIXED_STATELESS_GROUP_ID
+                ),
+                safetyCenterTestData.safetyCenterIssueInformation(
+                    ISSUE_ONLY_IN_STATELESS_ID,
+                    groupId = MIXED_STATELESS_GROUP_ID
+                )
             )
-        )
 
-    private val dynamicBareboneDefault =
-        safetyCenterTestData.safetyCenterEntryDefault(DYNAMIC_BAREBONE_ID)
+    private val dynamicBareboneDefault: SafetyCenterEntry
+        get() = safetyCenterTestData.safetyCenterEntryDefault(DYNAMIC_BAREBONE_ID)
 
-    private val dynamicBareboneUpdated =
-        safetyCenterTestData.safetyCenterEntryCritical(DYNAMIC_BAREBONE_ID)
+    private val dynamicBareboneUpdated: SafetyCenterEntry
+        get() = safetyCenterTestData.safetyCenterEntryCritical(DYNAMIC_BAREBONE_ID)
 
-    private val dynamicDisabledDefault =
-        safetyCenterTestData
-            .safetyCenterEntryDefaultBuilder(DYNAMIC_DISABLED_ID)
-            .setPendingIntent(null)
-            .setEnabled(false)
-            .build()
+    private val dynamicDisabledDefault: SafetyCenterEntry
+        get() =
+            safetyCenterTestData
+                .safetyCenterEntryDefaultBuilder(DYNAMIC_DISABLED_ID)
+                .setPendingIntent(null)
+                .setEnabled(false)
+                .build()
 
-    private val dynamicDisabledUpdated =
-        safetyCenterTestData.safetyCenterEntryRecommendation(DYNAMIC_DISABLED_ID)
+    private val dynamicDisabledUpdated: SafetyCenterEntry
+        get() = safetyCenterTestData.safetyCenterEntryRecommendation(DYNAMIC_DISABLED_ID)
 
-    private val dynamicDisabledForWorkDefaultBuilder
+    private val dynamicDisabledForWorkDefaultBuilder: SafetyCenterEntry.Builder
         get() =
             safetyCenterTestData
                 .safetyCenterEntryDefaultBuilder(
@@ -177,10 +181,10 @@ class SafetyCenterMultiUsersTest {
                 .setPendingIntent(null)
                 .setEnabled(false)
 
-    private val dynamicDisabledForWorkDefault
+    private val dynamicDisabledForWorkDefault: SafetyCenterEntry
         get() = dynamicDisabledForWorkDefaultBuilder.build()
 
-    private val dynamicDisabledForWorkPausedUpdated
+    private val dynamicDisabledForWorkPausedUpdated: SafetyCenterEntry
         get() =
             safetyCenterTestData
                 .safetyCenterEntryDefaultBuilder(
@@ -198,13 +202,17 @@ class SafetyCenterMultiUsersTest {
                 .setEnabled(false)
                 .build()
 
-    private val dynamicDisabledForWorkUpdated
+    private val dynamicDisabledForWorkUpdated: SafetyCenterEntry
         get() = safetyCenterEntryOkForWork(DYNAMIC_DISABLED_ID, deviceState.workProfile().id())
 
-    private val dynamicHiddenUpdated =
-        safetyCenterTestData.safetyCenterEntryUnspecified(DYNAMIC_HIDDEN_ID, pendingIntent = null)
+    private val dynamicHiddenUpdated: SafetyCenterEntry
+        get() =
+            safetyCenterTestData.safetyCenterEntryUnspecified(
+                DYNAMIC_HIDDEN_ID,
+                pendingIntent = null
+            )
 
-    private val dynamicHiddenForWorkUpdated
+    private val dynamicHiddenForWorkUpdated: SafetyCenterEntry
         get() = safetyCenterEntryOkForWork(DYNAMIC_HIDDEN_ID, deviceState.workProfile().id())
 
     private val dynamicHiddenForWorkPausedUpdated
@@ -266,17 +274,19 @@ class SafetyCenterMultiUsersTest {
                 .setEnabled(false)
                 .build()
 
-    private val staticEntry =
-        SafetyCenterStaticEntry.Builder("OK")
-            .setSummary("OK")
-            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
-            .build()
+    private val staticEntry: SafetyCenterStaticEntry
+        get() =
+            SafetyCenterStaticEntry.Builder("OK")
+                .setSummary("OK")
+                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                .build()
 
-    private val staticEntryUpdated =
-        SafetyCenterStaticEntry.Builder("Unspecified title")
-            .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
-            .build()
+    private val staticEntryUpdated: SafetyCenterStaticEntry
+        get() =
+            SafetyCenterStaticEntry.Builder("Unspecified title")
+                .setSummary("Unspecified summary")
+                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                .build()
 
     private fun staticEntryForWorkBuilder(
         title: CharSequence = "Paste",
@@ -291,10 +301,10 @@ class SafetyCenterMultiUsersTest {
                 )
             )
 
-    private val staticEntryForWork
+    private val staticEntryForWork: SafetyCenterStaticEntry
         get() = staticEntryForWorkBuilder().build()
 
-    private val staticEntryForWorkPaused
+    private val staticEntryForWorkPaused: SafetyCenterStaticEntry
         get() =
             staticEntryForWorkBuilder(inQuietMode = true)
                 // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
@@ -310,11 +320,12 @@ class SafetyCenterMultiUsersTest {
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
-    private val staticEntryForWorkUpdated =
-        SafetyCenterStaticEntry.Builder("Unspecified title for Work")
-            .setSummary("Unspecified summary")
-            .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
-            .build()
+    private val staticEntryForWorkUpdated: SafetyCenterStaticEntry
+        get() =
+            SafetyCenterStaticEntry.Builder("Unspecified title for Work")
+                .setSummary("Unspecified summary")
+                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                .build()
 
     private val safetyCenterDataForAdditionalUser
         get() =

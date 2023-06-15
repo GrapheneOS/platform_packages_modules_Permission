@@ -189,10 +189,7 @@ public final class SafetyCenterResourcesApk {
 
         if (info == null) {
             // Resource APK not loaded yet, print a stack trace to see where this is called from
-            Log.e(
-                    TAG,
-                    "Attempted to fetch resources before Safety Center resources APK is loaded!",
-                    new IllegalStateException());
+            Log.e(TAG, "Could not find Safety Center resources APK", new IllegalStateException());
             return null;
         }
 

@@ -72,13 +72,18 @@ class SafetyCenterTestData(context: Context) {
     /**
      * The [SafetyCenterStatus] used when the overall status is unknown and no scan is in progress.
      */
-    val safetyCenterStatusUnknown =
-        SafetyCenterStatus.Builder(
-                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_title"),
-                safetyCenterResourcesApk.getStringByName("overall_severity_level_ok_review_summary")
-            )
-            .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-            .build()
+    val safetyCenterStatusUnknown: SafetyCenterStatus
+        get() =
+            SafetyCenterStatus.Builder(
+                    safetyCenterResourcesApk.getStringByName(
+                        "overall_severity_level_ok_review_title"
+                    ),
+                    safetyCenterResourcesApk.getStringByName(
+                        "overall_severity_level_ok_review_summary"
+                    )
+                )
+                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                .build()
 
     /**
      * Returns a [SafetyCenterStatus] with one alert and the given [statusResource] and
