@@ -24,6 +24,7 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.annotation.WorkerThread;
 import android.app.AppOpsManager;
+import android.app.admin.DevicePolicyManager;
 import android.app.role.IOnRoleHoldersChangedListener;
 import android.app.role.IRoleManager;
 import android.app.role.RoleControllerManager;
@@ -33,6 +34,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
@@ -41,6 +44,8 @@ import android.os.RemoteCallback;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.os.UserManager;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.IndentingPrintWriter;
@@ -55,6 +60,7 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.infra.AndroidFuture;
 import com.android.internal.util.Preconditions;
 import com.android.internal.util.dump.DualDumpOutputStream;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.compat.UserHandleCompat;
 import com.android.permission.util.ArrayUtils;
 import com.android.permission.util.CollectionUtils;
@@ -181,13 +187,14 @@ public class RoleService extends SystemService implements RoleUserState.Callback
     public void onStart() {
         publishBinderService(Context.ROLE_SERVICE, new Stub());
 
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
-        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        intentFilter.addDataScheme("package");
-        intentFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-        getContext().registerReceiverForAllUsers(new BroadcastReceiver() {
+        Context context = getContext();
+        IntentFilter packageIntentFilter = new IntentFilter();
+        packageIntentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
+        packageIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        packageIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        packageIntentFilter.addDataScheme("package");
+        packageIntentFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        context.registerReceiverForAllUsers(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 int userId = UserHandleCompat.getUserId(intent.getIntExtra(Intent.EXTRA_UID, -1));
@@ -202,7 +209,44 @@ public class RoleService extends SystemService implements RoleUserState.Callback
                 }
                 maybeGrantDefaultRolesAsync(userId);
             }
-        }, intentFilter, null, null);
+        }, packageIntentFilter, null, null);
+
+        if (SdkLevel.isAtLeastV()) {
+            IntentFilter devicePolicyIntentFilter = new IntentFilter();
+            devicePolicyIntentFilter.addAction(
+                    DevicePolicyManager.ACTION_DEVICE_OWNER_CHANGED);
+            devicePolicyIntentFilter.addAction(
+                    DevicePolicyManager.ACTION_PROFILE_OWNER_CHANGED);
+            devicePolicyIntentFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+            context.registerReceiverForAllUsers(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    int userId = getSendingUser().getIdentifier();
+                    if (DEBUG) {
+                        Log.i(LOG_TAG, "Device policy changed (" + intent.getAction()
+                            + ") - re-running initial grants for user " + userId);
+                    }
+                    maybeGrantDefaultRolesAsync(userId);
+                }
+            }, devicePolicyIntentFilter, null, null);
+
+            context.getContentResolver().registerContentObserver(
+                    Settings.Global.getUriFor(Settings.Global.DEVICE_DEMO_MODE), false,
+                    new ContentObserver(ForegroundThread.getHandler()) {
+                        public void onChange(boolean selfChange, Uri uri) {
+                            if (DEBUG) {
+                                Log.i(LOG_TAG, "Settings.Global.DEVICE_DEMO_MODE changed.");
+                            }
+                            UserManager userManager =
+                                    context.getSystemService(UserManager.class);
+                            List<UserHandle> users = userManager.getUserHandles(true);
+                            int usersSize = users.size();
+                            for (int i = 0; i < usersSize; i++) {
+                                maybeGrantDefaultRolesAsync(users.get(i).getIdentifier());
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
