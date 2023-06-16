@@ -24,7 +24,7 @@
     ],
     "postsubmit": [
         {
-            "name": "CtsPermission3TestCases"
+            "name": "CtsPermissionUiTestCases"
         }
     ]
 }
