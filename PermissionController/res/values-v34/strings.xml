@@ -28,7 +28,7 @@
     <!-- Title for the link to location settings [CHAR LIMIT=30] -->
     <string name="location_settings">Location access</string>
 
-    <!-- Describes what is affected by the mic toggle [CHAR LIMIT=NONE] -->
+    <!-- Describes what is affected by the mic toggle. Unlike the similar tc/9163104307990677157, there should NOT be a full stop at the end of this sentence.  [CHAR LIMIT=NONE] -->
     <string name="mic_toggle_description">For apps and services. If this setting is off, microphone data may still be shared when you call an emergency number</string>
     <!-- Subtitle for the link to location settings [CHAR LIMIT=NONE] -->
     <string name="location_settings_subtitle">For apps and services</string>
