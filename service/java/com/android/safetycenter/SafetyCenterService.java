@@ -840,12 +840,18 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void onPropertiesChanged(DeviceConfig.Properties properties) {
+            Log.v(TAG, "SafetyCenterEnabledListener#onPropertiesChanged(" + properties + ")");
             if (!properties.getKeyset().contains(PROPERTY_SAFETY_CENTER_ENABLED)) {
                 return;
             }
             boolean safetyCenterEnabled =
                     properties.getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, false);
             if (mSafetyCenterEnabled == safetyCenterEnabled) {
+                Log.v(
+                        TAG,
+                        "Safety Center is already "
+                                + (mSafetyCenterEnabled ? "enabled" : "disabled")
+                                + ", ignoring change");
                 return;
             }
             onSafetyCenterEnabledChanged(safetyCenterEnabled);
