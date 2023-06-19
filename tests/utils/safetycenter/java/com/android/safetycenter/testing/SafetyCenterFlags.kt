@@ -33,6 +33,7 @@ import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PERIODIC
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED
 import android.safetycenter.SafetySourceData
+import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
@@ -43,7 +44,7 @@ object SafetyCenterFlags {
 
     /** Flag that determines whether Safety Center is enabled. */
     private val isEnabledFlag =
-        Flag("safety_center_is_enabled", defaultValue = false, BooleanParser())
+        Flag("safety_center_is_enabled", defaultValue = SdkLevel.isAtLeastU(), BooleanParser())
 
     /** Flag that determines whether Safety Center can send notifications. */
     private val notificationsFlag =
