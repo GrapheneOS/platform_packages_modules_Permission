@@ -271,7 +271,7 @@ final class SafetyCenterNotificationFactory {
         if (issueAction.willResolve()) {
             return getReceiverPendingIntentForResolvingAction(issueKey, issueAction);
         } else {
-            return getDirectPendingIntentForNonResolvingAction(issueKey, issueAction);
+            return getDirectPendingIntentForNonResolvingAction(issueAction);
         }
     }
 
@@ -292,7 +292,7 @@ final class SafetyCenterNotificationFactory {
     }
 
     private PendingIntent getDirectPendingIntentForNonResolvingAction(
-            SafetyCenterIssueKey issueKey, SafetySourceIssue.Action issueAction) {
+            SafetySourceIssue.Action issueAction) {
         return issueAction.getPendingIntent();
     }
 }
