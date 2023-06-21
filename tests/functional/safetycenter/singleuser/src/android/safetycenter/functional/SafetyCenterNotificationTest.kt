@@ -143,7 +143,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationBehaviorNever_noNotification() {
         val data =
             safetySourceTestData
@@ -162,7 +162,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationBehaviorDelay_noImmediateNotification() {
         SafetyCenterFlags.notificationsMinDelay = Duration.ofDays(1)
         val data =
@@ -182,7 +182,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationBehaviorDelay_sendsNotificationAfterDelay() {
         SafetyCenterFlags.notificationsMinDelay = Duration.ofDays(1)
         val delayedNotificationIssue =
@@ -227,7 +227,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationBehaviorDelayOfZero_sendsNotificationImmediately() {
         SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
         SafetyCenterFlags.notificationsMinDelay = Duration.ofSeconds(0)
@@ -254,7 +254,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationBehaviorImmediately_sendsNotification() {
         SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
         val data =
@@ -331,7 +331,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withNotificationsAllowedForSourceByConfig_sendsNotification() {
         SafetyCenterFlags.notificationsAllowedSources = emptySet()
         SafetyCenterFlags.immediateNotificationBehaviorIssues = emptySet()
@@ -362,7 +362,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withCustomNotification_usesCustomValues() {
         val intent1 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "1")
         val intent2 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "2")
@@ -408,7 +408,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withEmptyCustomActions_notificationHasNoActions() {
         val notification =
             SafetySourceIssue.Notification.Builder("Custom title", "Custom text")
@@ -636,7 +636,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_duplicateIssues_sendsOneNotification() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -666,7 +666,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_duplicateIssueOfLowerSeverityDismissed_sendsNotification() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -790,7 +790,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun dismissingNotification_withDuplicateIssues_allDismissed() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig

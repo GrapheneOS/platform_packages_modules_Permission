@@ -20,7 +20,7 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -96,7 +96,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_withDefaultBuilder_returnsEmptyBundle() {
         val safetySourceData =
             SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()
@@ -105,7 +105,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_whenSetExplicitly_returnsExtras() {
         val safetySourceData =
             SafetySourceData.Builder()
@@ -118,7 +118,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_whenCleared_returnsEmptyBundle() {
         val safetySourceData =
             SafetySourceData.Builder()
@@ -325,7 +325,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun parcelRoundTrip_withExtras_recreatesEqual() {
         val safetySourceData =
             SafetySourceData.Builder()
@@ -384,7 +384,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun equalsHashCode_atLeastU_usingEqualsHashCodeToStringTester() {
         val firstStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 1)
         val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
@@ -454,7 +454,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withExtras_containsHasExtras() {
         val safetySourceDataWithExtras =
             SafetySourceData.Builder()
@@ -468,7 +468,7 @@ class SafetySourceDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withoutExtras_doesNotContainHasExtras() {
         val safetySourceDataWithoutExtras =
             SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()

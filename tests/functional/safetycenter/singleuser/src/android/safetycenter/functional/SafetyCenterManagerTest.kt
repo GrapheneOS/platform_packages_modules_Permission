@@ -19,7 +19,6 @@ package android.safetycenter.functional
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle
@@ -980,7 +979,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_attributionTitleProvidedBySource_returnsIssueWithAttributionTitle() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(
@@ -996,7 +995,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_attributionTitleNotProvided_returnsGroupTitleAsAttributionTitle() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
@@ -1009,7 +1008,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_attributionNotSetAndGroupTitleNull_returnsNullAttributionTitle() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceNoGroupTitleConfig)
         safetyCenterTestHelper.setData(
@@ -1037,9 +1036,6 @@ class SafetyCenterManagerTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getSafetyCenterData_attributionNotSetBySourceOnTiramisu_returnsNullAttributionTitle() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
 
@@ -1114,7 +1110,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withActionConfirmation_returnsRecommendationWithActionConfirmation() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(
@@ -1194,7 +1190,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withRecommendationDataIssue_returnsDataRecommendationStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1219,7 +1215,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withCriticalDataIssue_returnsDataCriticalStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1244,7 +1240,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withRecommendationPasswordsIssue_returnsDataRecommendationStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1269,7 +1265,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withCriticalPasswordsIssue_returnsDataCriticalStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1294,7 +1290,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withRecommendationPersonalIssue_returnsDataRecommendationStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1319,7 +1315,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withCriticalPersonalIssue_returnsDataCriticalStatus() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1344,7 +1340,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusTipFirstIssueSingleTip_infoStatusWithTipSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1364,7 +1360,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusTipFirstIssueMultiTips_infoStatusWithTipsSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1400,7 +1396,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusActionFirstIssueSingleAction_infoStatusWithActionSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1420,7 +1416,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusActionFirstIssueMultiActions_infoStatusWithActionsSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1456,7 +1452,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusManualFirstIssueSingleManual_infoStatusWithAlertSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1482,7 +1478,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_infoStatusManualFirstIssueMultiManual_infoStatusWithAlertsSummary() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
         safetyCenterTestHelper.setData(
@@ -1520,7 +1516,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_withStaticEntryGroups_hasStaticEntriesToIdsMapping() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.staticSourcesConfig)
 
@@ -1600,7 +1596,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesOfSameSeverities_issueOfFirstSourceInConfigShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1632,7 +1628,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesInDifferentSourceGroups_topIssueRelevantForBothGroups() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1662,7 +1658,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesInSameSourceGroups_topIssueRelevantForThatGroup() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1692,7 +1688,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_noDuplicateIssues_noGroupBelongingSpecified() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1720,7 +1716,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_differentDuplicationId_bothIssuesShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1757,7 +1753,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_differentDuplicationGroup_bothIssuesShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1794,7 +1790,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_threeDuplicateIssues_onlyOneIssueShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1833,7 +1829,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesOfDifferentSeverities_moreSevereIssueShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1865,7 +1861,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_multipleDuplicationsOfIssues_correctlyDeduplicated() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1941,7 +1937,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesBothDismissed_topOneShownAsDismissed() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -1982,7 +1978,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesLowerSeverityOneDismissed_topOneShown() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -2020,7 +2016,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesHigherSeverityOneDismissed_topOneShownAsDismissed() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -2058,7 +2054,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_dupIssuesLowerPrioritySameSeverityOneDismissed_topShownAsDismissed() {
         safetyCenterTestHelper.setConfig(
             safetyCenterTestConfigs.multipleSourcesWithDeduplicationInfoConfig
@@ -2096,7 +2092,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_dupIssuesTopOneDismissedThenDisappears_bottomOneReemergesTimely() {
         SafetyCenterFlags.tempHiddenIssueResurfaceDelay = Duration.ZERO
         SafetyCenterFlags.resurfaceIssueMaxCounts = mapOf(SEVERITY_LEVEL_CRITICAL_WARNING to 99L)
@@ -2150,7 +2146,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_dupsOfDiffSeveritiesTopOneDismissedThenGone_bottomOneReemergesTimely() {
         SafetyCenterFlags.tempHiddenIssueResurfaceDelay = Duration.ZERO
         SafetyCenterFlags.resurfaceIssueMaxCounts =
@@ -2213,7 +2209,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesLowerOneResurfaces_lowerOneStillFilteredOut() {
         SafetyCenterFlags.resurfaceIssueMaxCounts =
             mapOf(
@@ -2276,7 +2272,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_duplicateIssuesTopOneResurfaces_topOneShown() {
         SafetyCenterFlags.resurfaceIssueMaxCounts =
             mapOf(
@@ -2337,7 +2333,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getSafetyCenterData_dupIssuesTopOneResolved_bottomOneReemergesAfterTemporaryHiddenPeriod() {
         SafetyCenterFlags.tempHiddenIssueResurfaceDelay = RESURFACE_DELAY
         safetyCenterTestHelper.setConfig(

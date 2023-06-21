@@ -17,7 +17,7 @@
 package android.safetycenter.cts.config
 
 import android.content.res.Resources
-import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.config.SafetySource
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
@@ -75,7 +75,7 @@ class SafetySourceTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getOptionalPackageName_returnsPackageNameOrNull() {
         assertThat(DYNAMIC_BAREBONE.optionalPackageName).isEqualTo(PACKAGE_NAME)
         assertThat(dynamicAllOptional().optionalPackageName).isEqualTo(PACKAGE_NAME)
@@ -259,7 +259,7 @@ class SafetySourceTest {
         assertThat(issueOnlyAllOptional().isRefreshOnPageOpenAllowed).isEqualTo(true)
     }
 
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     @Test
     fun areNotificationsAllowed_returnsNotificationsAllowed() {
         assertThat(DYNAMIC_BAREBONE.areNotificationsAllowed()).isFalse()
@@ -273,7 +273,7 @@ class SafetySourceTest {
         assertThat(issueOnlyAllOptional().areNotificationsAllowed()).isTrue()
     }
 
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     @Test
     fun getDeduplicationGroupsList_returnsDeduplicationGroups() {
         assertThat(DYNAMIC_BAREBONE.deduplicationGroup).isNull()
@@ -287,7 +287,7 @@ class SafetySourceTest {
         assertThat(issueOnlyAllOptional().deduplicationGroup).isEqualTo(DEDUPLICATION_GROUP)
     }
 
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     @Test
     fun getPackageCertificateHashes_returnsPackageCerts() {
         assertThat(DYNAMIC_BAREBONE.packageCertificateHashes).isEmpty()

@@ -211,7 +211,7 @@ class SafetySourcesGroupTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_hiddenGroupWithDynamicSource_throwsIllegalStateException() {
         val builder =
             SafetySourcesGroup.Builder()
@@ -228,7 +228,7 @@ class SafetySourcesGroupTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_hiddenGroupWithStaticSource_throwsIllegalStateException() {
         val builder =
             SafetySourcesGroup.Builder()
@@ -245,7 +245,7 @@ class SafetySourcesGroupTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_statefulGroupWithIssueOnlySource_throwsIllegalStateException() {
         val builder =
             SafetySourcesGroup.Builder()
@@ -264,7 +264,7 @@ class SafetySourcesGroupTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_statelessGroupWithIssueOnlySource_throwsIllegalStateException() {
         val builder =
             SafetySourcesGroup.Builder()

@@ -20,7 +20,6 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -43,7 +42,6 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.assertFailsWith
-import org.junit.Assume.assumeFalse
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -120,9 +118,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun action_getConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val action = Action.Builder("action_id", "Action label", pendingIntent1).build()
 
         assertFailsWith(UnsupportedOperationException::class) { action.confirmationDialogDetails }
@@ -131,9 +126,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun action_setConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         assertFailsWith(UnsupportedOperationException::class) {
             Action.Builder("action_id", "Action label", pendingIntent1)
                 .setConfirmationDialogDetails(
@@ -143,7 +135,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun action_getConfirmationDialogDetails_withDefaultBuilder_returnsNull() {
         val action = Action.Builder("action_id", "Action label", pendingIntent1).build()
 
@@ -151,7 +143,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun action_getConfirmationDialogDetails_whenSetExplicitly_returnsConfirmation() {
         val action =
             Action.Builder("action_id", "Action label", pendingIntent1)
@@ -186,7 +178,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun action_build_withActivityPendingIntentAndWillResolve_throwsIllegalArgumentException() {
         assertFailsWith(IllegalArgumentException::class) {
             Action.Builder("action_id", "Action label", pendingIntent1).setWillResolve(true).build()
@@ -211,7 +203,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun action_parcelRoundTrip_recreatesEqual_atLeastAndroidU() {
         val action =
             Action.Builder("action_id", "Action label", pendingIntent1)
@@ -229,7 +221,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun action_equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
         actionNewTiramisuEqualsHashCodeToStringTester(
@@ -293,7 +285,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_getTitle_returnsTitle() {
         val notification = Notification.Builder("Notification title", "Notification text").build()
 
@@ -301,7 +293,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_getText_returnsText() {
         val notification = Notification.Builder("Notification title", "Notification text").build()
 
@@ -309,7 +301,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_getActions_withDefaultBuilder_returnsEmptyList() {
         val notification = Notification.Builder("", "").build()
 
@@ -317,7 +309,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_getActions_returnsActions() {
         val notification =
             Notification.Builder("", "").addAction(action1).addAction(action2).build()
@@ -326,7 +318,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_getActions_mutationsAreNotAllowed() {
         val notification =
             Notification.Builder("", "").addAction(action1).addAction(action2).build()
@@ -335,7 +327,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_describeContents_returns0() {
         val notification =
             Notification.Builder("Notification title", "Notification text")
@@ -347,7 +339,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_parcelRoundTrip_recreatesEqual() {
         val notification =
             Notification.Builder("Notification title", "Notification text")
@@ -359,7 +351,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_withNullTitle_throwsNullPointerException() {
         assertFailsWith(NullPointerException::class) {
             Notification.Builder(Generic.asNull(), "Notification text")
@@ -367,7 +359,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_withNullText_throwsNullPointerException() {
         assertFailsWith(NullPointerException::class) {
             Notification.Builder("Notification title", Generic.asNull())
@@ -375,7 +367,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_addAction_doesNotMutatePreviouslyBuiltInstance() {
         val notificationBuilder = Notification.Builder("", "").addAction(action1)
         val actions = notificationBuilder.build().actions
@@ -386,7 +378,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_addAction_withNull_throwsIllegalArgumentException() {
         assertFailsWith(NullPointerException::class) {
             Notification.Builder("", "").addAction(Generic.asNull())
@@ -394,7 +386,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_addActions_keepsPreviouslyAddedActions() {
         val notificationBuilder = Notification.Builder("", "").addAction(action1)
 
@@ -404,7 +396,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_addActions_doesNotMutatePreviouslyBuiltInstance() {
         val notificationBuilder = Notification.Builder("", "").addActions(listOf(action1))
         val actions = notificationBuilder.build().actions
@@ -415,7 +407,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_addActions_withNull_throwsIllegalArgumentException() {
         assertFailsWith(NullPointerException::class) {
             Notification.Builder("", "").addActions(Generic.asNull())
@@ -423,7 +415,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_builder_clearActions_removesAllActions() {
         val notification =
             Notification.Builder("", "")
@@ -437,7 +429,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_build_withDuplicateActionIds_throwsIllegalArgumentException() {
         val notificationBuilder =
             Notification.Builder("Notification title", "Notification text")
@@ -452,7 +444,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_build_withMoreThanTwoActions_throwsIllegalArgumentException() {
         val notificationBuilder =
             Notification.Builder("Notification title", "Notification text")
@@ -468,7 +460,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun notification_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = Notification.CREATOR,
@@ -490,7 +482,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_getTitle_returnsTitle() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -498,7 +490,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_getText_returnsText() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -506,7 +498,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_getAcceptButtonText_returnsAcceptButtonText() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -514,7 +506,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_getDenyButtonText_returnsDenyButtonText() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -522,7 +514,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_describeContents_returns0() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -530,7 +522,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_parcelRoundTrip_recreatesEqual() {
         val confirmationDialogDetails = ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
 
@@ -538,7 +530,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun actionConfirmation_equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = ConfirmationDialogDetails.CREATOR
@@ -636,7 +628,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getAttributionTitle_withNullAttributionTitle_returnsNull() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -653,7 +645,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getAttributionTitle_returnsAttributionTitle() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -673,9 +665,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -693,9 +682,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun setAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -760,7 +746,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getIssueCategory_whenSetExplicitlyWithUValueOnU_returnsIssueCategory() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -884,7 +870,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDeduplicationId_withDefaultBuilder_returnsNull() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -901,7 +887,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDeduplicationId_whenSetExplicitly_returnsDeduplicationId() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -921,9 +907,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -941,9 +924,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun setDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -975,7 +955,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getCustomNotification_withDefaultBuilder_returnsNull() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -992,7 +972,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getCustomNotification_whenSetExplicitly_returnsCustomNotification() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1021,9 +1001,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1043,9 +1020,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun setCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1061,7 +1035,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getNotificationBehavior_withDefaultBuilder_returnsUnspecified() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1079,7 +1053,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getNotificationBehavior_whenSetExplicitly_returnsSpecifiedBehavior() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1100,9 +1074,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1120,7 +1091,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setNotificationBehavior_withInvalidNotificationBehavior_throwsIllegalArgumentException() {
         val builder =
             SafetySourceIssue.Builder(
@@ -1142,9 +1113,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun setNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1160,7 +1128,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getIssueActionability_withDefaultBuilder_returnsManual() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1178,7 +1146,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getIssueActionability_whenSetExplicitly_returnsValueSet() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1199,9 +1167,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun getIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1219,7 +1184,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setIssueActionability_withInvalidIssueActionability_throwsIllegalArgumentException() {
         val builder =
             SafetySourceIssue.Builder(
@@ -1241,9 +1206,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun setIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1366,9 +1328,6 @@ class SafetySourceIssueTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun build_withUIssueCategoryValueOnT_throwsIllegalArgumentException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         val builder =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1480,7 +1439,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_withNoActionsAndManualActionabilityOnU_throwsIllegalArgumentException() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
@@ -1500,7 +1459,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_withNoActionsAndTipActionabilityOnU_success() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1517,7 +1476,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun build_withNoActionsAndAutomaticActionabilityOnU_success() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1574,7 +1533,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun parcelRoundTrip_recreatesEqual_atLeastAndroidU() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1601,7 +1560,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun parcelRoundTrip_recreatesEqual_atLeastUpsideDownCake() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
@@ -1636,7 +1595,7 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastUpsideDownCake() {
         newUpsideDownCakeEqualsHashCodeToStringTester().test()
     }
