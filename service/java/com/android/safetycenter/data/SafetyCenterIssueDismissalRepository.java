@@ -436,10 +436,16 @@ final class SafetyCenterIssueDismissalRepository {
         try {
             Files.copy(issueDismissalRepositoryFile.toPath(), new FileOutputStream(fd));
         } catch (IOException e) {
-            // TODO(b/266202404)
-            e.printStackTrace(fout);
+            printError(e, fout);
         }
         fout.println();
+    }
+
+    // We want to dump the stack trace on a specific PrintWriter here, this is a false positive as
+    // the warning does not consider the overload that takes a PrintWriter as an argument (yet).
+    @SuppressWarnings("CatchAndPrintStackTrace")
+    private void printError(Throwable error, PrintWriter fout) {
+        error.printStackTrace(fout);
     }
 
     @Nullable
