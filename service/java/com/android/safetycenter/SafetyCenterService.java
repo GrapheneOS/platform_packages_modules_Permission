@@ -93,9 +93,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Executor;
-
-import javax.annotation.concurrent.NotThreadSafe;
 
 /**
  * Service for the safety center.
@@ -229,22 +226,35 @@ public final class SafetyCenterService extends SystemService {
             return;
         }
 
-        registerSafetyCenterEnabledListener();
         SafetyCenterPullAtomCallback pullAtomCallback;
         synchronized (mApiLock) {
+            registerSafetyCenterEnabledListenerLocked();
             pullAtomCallback = newSafetyCenterPullAtomCallbackLocked();
             mNotificationChannels.createAllChannelsForAllUsers(getContext());
         }
         registerSafetyCenterPullAtomCallback(pullAtomCallback);
     }
 
-    private void registerSafetyCenterEnabledListener() {
-        Executor foregroundThreadExecutor = ForegroundThread.getExecutor();
-        SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
-        // Ensure the listener is called first with the current state on the same thread.
-        foregroundThreadExecutor.execute(listener::setInitialState);
+    @GuardedBy("mApiLock")
+    private void registerSafetyCenterEnabledListenerLocked() {
+        SafetyCenterEnabledListener safetyCenterEnabledListener = new SafetyCenterEnabledListener();
         DeviceConfig.addOnPropertiesChangedListener(
-                DeviceConfig.NAMESPACE_PRIVACY, foregroundThreadExecutor, listener);
+                DeviceConfig.NAMESPACE_PRIVACY,
+                ForegroundThread.getExecutor(),
+                safetyCenterEnabledListener);
+        // Set the initial state *after* registering the listener, in the unlikely event that the
+        // flag changes between creating the listener and registering it (in which case we could
+        // miss an update and end up with an inconsistent state).
+        setInitialStateLocked(safetyCenterEnabledListener);
+    }
+
+    @GuardedBy("mApiLock")
+    @SuppressWarnings("GuardedBy")
+    // @GuardedBy is unable to infer that the `SafetyCenterService.this.mApiLock` in
+    // `SafetyCenterService` is the same as the one in `SafetyCenterEnabledListener` here, so it
+    // has to be suppressed.
+    private void setInitialStateLocked(SafetyCenterEnabledListener safetyCenterEnabledListener) {
+        safetyCenterEnabledListener.setInitialStateLocked();
     }
 
     @GuardedBy("mApiLock")
@@ -830,61 +840,60 @@ public final class SafetyCenterService extends SystemService {
      * value maps to {@link SafetyCenterManager#isSafetyCenterEnabled()}. It should only be
      * registered if the device supports SafetyCenter and the {@link SafetyCenterConfig} was loaded
      * successfully.
-     *
-     * <p>This listener is not thread-safe; it should be called on a single thread.
      */
-    @NotThreadSafe
     private final class SafetyCenterEnabledListener implements OnPropertiesChangedListener {
 
+        @GuardedBy("mApiLock")
         private boolean mSafetyCenterEnabled;
 
         @Override
         public void onPropertiesChanged(DeviceConfig.Properties properties) {
-            Log.v(TAG, "SafetyCenterEnabledListener#onPropertiesChanged(" + properties + ")");
             if (!properties.getKeyset().contains(PROPERTY_SAFETY_CENTER_ENABLED)) {
                 return;
             }
             boolean safetyCenterEnabled =
                     properties.getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, false);
-            if (mSafetyCenterEnabled == safetyCenterEnabled) {
-                Log.v(
-                        TAG,
-                        "Safety Center is already "
-                                + (mSafetyCenterEnabled ? "enabled" : "disabled")
-                                + ", ignoring change");
-                return;
+            synchronized (mApiLock) {
+                if (mSafetyCenterEnabled == safetyCenterEnabled) {
+                    Log.i(
+                            TAG,
+                            "Safety Center is already "
+                                    + (mSafetyCenterEnabled ? "enabled" : "disabled")
+                                    + ", ignoring change");
+                    return;
+                }
+                onSafetyCenterEnabledChangedLocked(safetyCenterEnabled);
             }
-            onSafetyCenterEnabledChanged(safetyCenterEnabled);
         }
 
-        private void setInitialState() {
+        @GuardedBy("mApiLock")
+        private void setInitialStateLocked() {
             mSafetyCenterEnabled = SafetyCenterFlags.getSafetyCenterEnabled();
             Log.i(TAG, "Safety Center is " + (mSafetyCenterEnabled ? "enabled" : "disabled"));
         }
 
-        private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
-            Log.i(TAG, "Safety Center is now " + (safetyCenterEnabled ? "enabled" : "disabled"));
-
+        @GuardedBy("mApiLock")
+        private void onSafetyCenterEnabledChangedLocked(boolean safetyCenterEnabled) {
             if (safetyCenterEnabled) {
-                onApiEnabled();
+                onApiEnabledLocked();
             } else {
-                onApiDisabled();
+                onApiDisabledLocked();
             }
+
             mSafetyCenterEnabled = safetyCenterEnabled;
+            Log.i(TAG, "Safety Center is now " + (mSafetyCenterEnabled ? "enabled" : "disabled"));
         }
 
-        private void onApiEnabled() {
-            synchronized (mApiLock) {
-                mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
-            }
+        @GuardedBy("mApiLock")
+        private void onApiEnabledLocked() {
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
         }
 
-        private void onApiDisabled() {
-            synchronized (mApiLock) {
-                clearDataLocked();
-                mSafetyCenterListeners.clear();
-                mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
-            }
+        @GuardedBy("mApiLock")
+        private void onApiDisabledLocked() {
+            clearDataLocked();
+            mSafetyCenterListeners.clear();
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
         }
     }
 
