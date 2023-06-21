@@ -89,9 +89,16 @@ final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
                     return handleDefaultCommands(cmd);
             }
         } catch (RemoteException | IllegalArgumentException e) {
-            e.printStackTrace(getErrPrintWriter());
+            printError(e);
             return 1;
         }
+    }
+
+    // We want to log the stack trace on a specific PrintWriter here, this is a false positive as
+    // the warning does not consider the overload that takes a PrintWriter as an argument (yet).
+    @SuppressWarnings("CatchAndPrintStackTrace")
+    private void printError(Throwable error) {
+        error.printStackTrace(getErrPrintWriter());
     }
 
     private int onEnabled() throws RemoteException {
