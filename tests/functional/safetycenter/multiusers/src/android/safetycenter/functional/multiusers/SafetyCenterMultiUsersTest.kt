@@ -40,13 +40,13 @@ import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.filters.LargeTest
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
 import com.android.bedstead.harrier.annotations.EnsureHasAdditionalUser
 import com.android.bedstead.harrier.annotations.EnsureHasCloneProfile
 import com.android.bedstead.harrier.annotations.EnsureHasNoWorkProfile
 import com.android.bedstead.harrier.annotations.EnsureHasWorkProfile
-import com.android.bedstead.harrier.annotations.Postsubmit
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasDeviceOwner
 import com.android.bedstead.harrier.annotations.enterprise.EnsureHasNoDeviceOwner
 import com.android.bedstead.nene.TestApis
@@ -105,6 +105,7 @@ import org.junit.runner.RunWith
  * Functional tests for our APIs and UI on a device with multiple users. e.g. with a managed or
  * additional user(s).
  */
+@LargeTest
 @RunWith(BedsteadJUnit4::class)
 class SafetyCenterMultiUsersTest {
 
@@ -370,7 +371,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile
     // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun getSafetyCenterData_withProfileOwner_hasWorkPolicyInfo() {
@@ -380,7 +380,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasDeviceOwner
     // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun getSafetyCenterData_withDeviceOwner_hasWorkPolicyInfo() {
@@ -390,7 +389,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile
     // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun launchActivity_withQuietModeEnabled_hasWorkPolicyInfo() {
@@ -402,7 +400,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasNoWorkProfile
     @EnsureHasNoDeviceOwner
     // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
@@ -413,7 +410,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withQuietModeEnabled_dataIsNotCleared() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -435,7 +431,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun getSafetySourceData_afterAdditionalUserRemoved_returnsNull() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -464,7 +459,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -477,7 +471,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withoutAppInstalledForWorkProfile_shouldReturnNull() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -499,7 +492,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withRemovedProfile_shouldReturnNull() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -521,7 +513,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetySourceData_withProfileInQuietMode_shouldReturnData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -543,7 +534,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasNoWorkProfile
     fun getSafetyCenterData_withComplexConfigWithoutWorkProfile_returnsPrimaryDataFromConfig() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexAllProfileConfig)
@@ -579,7 +569,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithoutDataProvided_returnsDataFromConfig() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexAllProfileConfig)
@@ -628,7 +617,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithPrimaryDataProvided_returnsPrimaryDataProvided() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexAllProfileConfig)
@@ -682,7 +670,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withComplexConfigWithAllDataProvided_returnsAllDataProvided() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexAllProfileConfig)
@@ -792,7 +779,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withQuietMode_shouldHaveWorkProfilePausedSummaryAndNoWorkIssues() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexAllProfileConfig)
@@ -853,7 +839,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_withDataForDifferentUserProfileGroup_shouldBeUnaffected() {
@@ -878,7 +863,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_afterManagedProfileRemoved_returnsDefaultData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -950,7 +934,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun getSafetyCenterData_afterAdditionalUserRemoved_returnsDefaultData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -972,7 +955,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_primaryProfileIssueOnlySource_shouldNotBeAbleToSetDataToWorkProfile() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceConfig)
@@ -990,7 +972,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withoutInteractAcrossUserPermission_shouldThrowError() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1008,7 +989,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withoutAppInstalledForWorkProfile_shouldNoOp() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1030,7 +1010,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withRemovedProfile_shouldNoOp() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1052,7 +1031,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasCloneProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withUnsupportedProfile_shouldNoOp() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1073,7 +1051,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_withProfileInQuietMode_shouldSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1095,7 +1072,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_issuesOnlySourceWithWorkProfile_shouldBeAbleToSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceAllProfileConfig)
@@ -1123,7 +1099,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_primaryProfileSource_shouldNotBeAbleToSetDataToWorkProfile() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
@@ -1140,7 +1115,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_sourceWithWorkProfile_shouldBeAbleToSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1166,7 +1140,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasWorkProfile(installInstrumentedApp = TRUE)
     fun setSafetySourceData_notificationsAllowed_workProfile_sendsNotification() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceAllProfileConfig)
@@ -1193,7 +1166,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forStoppedUser_shouldSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
@@ -1215,7 +1187,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forBothPrimaryAdditionalUser_shouldSetData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
@@ -1241,7 +1212,6 @@ class SafetyCenterMultiUsersTest {
     }
 
     @Test
-    @Postsubmit(reason = "Test takes too much time to setup")
     @EnsureHasAdditionalUser(installInstrumentedApp = TRUE)
     fun setSafetySourceData_forAdditionalUser_shouldNotAffectDataForPrimaryUser() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
