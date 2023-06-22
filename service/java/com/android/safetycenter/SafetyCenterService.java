@@ -1012,7 +1012,7 @@ public final class SafetyCenterService extends SystemService {
     /** {@link BroadcastReceiver} which handles Locale changes. */
     private final class LocaleBroadcastReceiver extends BroadcastReceiver {
 
-        private static final String TAG = "LocaleBroadcastReceiver";
+        private static final String TAG = "SafetyCenterLocaleBroad";
 
         void register(Context context) {
             IntentFilter filter = new IntentFilter();
@@ -1026,6 +1026,17 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!SafetyCenterFlags.getSafetyCenterEnabled()) {
+                Log.i(TAG, "Safety Center is disabled, ignoring intent: " + intent);
+                return;
+            }
+
+            String action = intent.getAction();
+            if (!TextUtils.equals(action, Intent.ACTION_LOCALE_CHANGED)) {
+                Log.w(TAG, "Received unexpected action: " + action);
+                return;
+            }
+
             Log.d(TAG, "Locale changed broadcast received");
             synchronized (mApiLock) {
                 mNotificationChannels.createAllChannelsForAllUsers(getContext());
@@ -1039,7 +1050,7 @@ public final class SafetyCenterService extends SystemService {
      */
     private final class UserBroadcastReceiver extends BroadcastReceiver {
 
-        private static final String TAG = "UserBroadcastReceiver";
+        private static final String TAG = "SafetyCenterUserBroadca";
 
         void register(Context context) {
             IntentFilter filter = new IntentFilter();
@@ -1058,6 +1069,11 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (!SafetyCenterFlags.getSafetyCenterEnabled()) {
+                Log.i(TAG, "Safety Center is disabled, ignoring intent: " + intent);
+                return;
+            }
+
             String action = intent.getAction();
             if (action == null) {
                 Log.w(TAG, "Received broadcast with null action");
