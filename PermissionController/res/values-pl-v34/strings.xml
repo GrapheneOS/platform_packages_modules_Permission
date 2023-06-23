@@ -22,6 +22,6 @@
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"Zarządzaj dostępem aplikacji do danych dotyczących zdrowia"</string>
     <string name="location_settings" msgid="8863940440881290182">"Dostęp do lokalizacji"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Aplikacje i usługi. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym"</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Aplikacje i usługi"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Dotyczy aplikacji i usług. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"Dotyczy aplikacji i usług"</string>
 </resources>
