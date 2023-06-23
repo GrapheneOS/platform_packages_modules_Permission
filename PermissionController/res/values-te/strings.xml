@@ -572,7 +572,7 @@
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ఈ యాప్ Android తాజా వెర్షన్‌కు సపోర్ట్ ఇవ్వదు. ఈ యాప్ మ్యూజిక్, ఆడియో ఫైల్స్‌ను యాక్సెస్ చేయలేకపోతే, ఫోటోలు, వీడియోలను యాక్సెస్ చేయడానికి కూడా ఇది అనుమతించబడదు."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Review app with background location access"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> can always access your location, even when the app is closed"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"బ్యాక్‌గ్రౌండ్ లొకేషన్‌కు యాక్సెస్‌ను కలిగి ఉన్న యాప్‌ను రివ్యూ చేయండి"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"బ్యాక్‌గ్రౌండ్ లొకేషన్‌కు యాక్సెస్‌ ఉన్న యాప్‌ను రివ్యూ చేయండి"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ఈ యాప్ అది మూసివేసి ఉన్నప్పుడు కూడా, మీ లొకేషన్‌ను ఎల్లప్పుడూ యాక్సెస్ చేయగలదు.\n\nకొన్ని భద్రత, ఎమర్జెన్సీ యాప్‌లు ఉద్దేశించిన విధంగా పని చేయడానికి, వాటికి బ్యాక్‌గ్రౌండ్‌లో మీ లొకేషన్‌కు యాక్సెస్ అవసరం."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"యాక్సెస్‌ మార్చబడింది."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ఇటీవలి లొకేషన్‌ వినియోగాన్ని చూడండి"</string>

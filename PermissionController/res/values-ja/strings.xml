@@ -583,9 +583,9 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります。"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"位置情報にアクセスできるアプリとサービスを確認"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"クリップボードへのアクセスを通知"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージで通知する"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージが表示されます"</string>
     <string name="show_password_title" msgid="2877269286984684659">"パスワードを表示"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を短い間表示する"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を一瞬だけ表示します"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"データ共有と位置情報"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"データ共有情報の提供元"</string>
@@ -608,7 +608,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"位置情報が共有されることがあります"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"このアプリは位置情報をサードパーティと共有することがあります"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置情報を共有する方法の更新"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ユーザーの位置情報を共有する方法が変更されたアプリを確認できます"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ユーザーの位置情報を共有する方法が変更されたアプリを確認します"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"これらのアプリで、ユーザーの位置情報を共有する方法が変更されました。以前は共有していなかったか、広告またはマーケティングの目的で共有されるようになった可能性があります。"</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"これらのアプリのデベロッパーは、データの共有方法に関する情報をアプリストアに提供しています。この情報は時間が経つと更新される可能性があります。\n\nデータの共有方法は、アプリのバージョンや使用方法、ユーザーの年齢やお住まいの地域によって異なることがあります。"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"データ共有の詳細"</string>
