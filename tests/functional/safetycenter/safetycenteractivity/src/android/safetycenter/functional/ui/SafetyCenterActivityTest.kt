@@ -1124,7 +1124,7 @@ class SafetyCenterActivityTest {
         )
         safetyCenterTestHelper.setData(SOURCE_ID_3, safetySourceTestData.informationWithIssue)
 
-        context.launchSafetyCenterActivity {
+        context.launchSafetyCenterActivity(withRetry = true) {
             clickMoreIssuesCard()
 
             val uiDevice = getUiDevice()
