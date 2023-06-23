@@ -573,8 +573,8 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Ustawienia prywatności"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Dostęp do aparatu"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Dostęp do mikrofonu"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Aplikacje i usługi"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Aplikacje i usługi. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Dotyczy aplikacji i usług"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Dotyczy aplikacji i usług. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Wyświetl aplikacje i usługi z dostępem do lokalizacji"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Pokazuj dostęp do schowka"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Pokazuj komunikat, gdy aplikacja uzyskuje dostęp do skopiowanego tekstu, obrazów lub innych treści"</string>

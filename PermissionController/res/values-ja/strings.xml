@@ -577,7 +577,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります。"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"位置情報にアクセスできるアプリとサービスを確認"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"クリップボードへのアクセスを通知"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージで通知する"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージが表示されます"</string>
     <string name="show_password_title" msgid="2877269286984684659">"パスワードを表示"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を短い間表示する"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を一瞬だけ表示します"</string>
 </resources>
