@@ -28,10 +28,10 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"Прыватнасць"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Панэль кіравання, дазволы, налады"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Панэль кіравання доступам"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Паказ праграм, якія нядаўна выкарыстоўвалі дазволы"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Глядзіце, якія праграмы нядаўна выкарыстоўвалі дазволы"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Прыватнасць, панэль кіравання доступам"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Менеджар дазволаў"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Кіраванне доступам праграм да вашых даных"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Кіруйце доступам праграм да вашых даных"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Дазволы, менеджар дазволаў"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Налады прыватнасці"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Кіраванне доступам прылады да мікрафона, камеры і іншых функцый"</string>
