@@ -26,7 +26,7 @@
     <string name="privacy_sources_summary" msgid="4089719981155120864">"ड्यासबोर्ड, अनुमति, कन्ट्रोल"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"गोपनीयतासम्बन्धी ड्यासबोर्ड"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"हालसालै कुन कुन एपले अनुमतिहरू प्रयोग गरेका छन् भन्ने कुरा हेर्नुहोस्"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"पर्मिसन म्यानेजर"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"अनुमति व्यवस्थापन"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"कुन कुन एपले तपाईंको डेटा प्रयोग गर्न पाउँछन् भन्ने कुरा तय गर्नुहोस्"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"गोपनीयतासम्बन्धी सेटिङ"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"कुन कुन डिभाइसले माइक्रोफोन, क्यामेरा र अन्य कुरा प्रयोग गर्न पाउँछन् भन्ने कुरा तय गर्नुहोस्"</string>
