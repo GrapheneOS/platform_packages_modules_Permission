@@ -20,13 +20,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.UserHandle;
-import android.os.UserManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.role.controller.model.Role;
 
@@ -75,13 +73,7 @@ public interface RoleUiBehavior {
     default void preparePreferenceAsUser(@NonNull Role role,
             @NonNull TwoTargetPreference preference,
             @NonNull UserHandle user,
-            @NonNull Context context) {
-        if (SdkLevel.isAtLeastU() && role.isExclusive()) {
-            final UserManager userManager = context.getSystemService(UserManager.class);
-            preference.setEnabled(!userManager.hasUserRestrictionForUser(
-                    UserManager.DISALLOW_CONFIG_DEFAULT_APPS, user));
-        }
-    }
+            @NonNull Context context) {}
 
     /**
      * Check whether a qualifying application should be visible to user.
@@ -108,13 +100,7 @@ public interface RoleUiBehavior {
      */
     default void prepareApplicationPreferenceAsUser(@NonNull Role role,
             @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
-            @NonNull UserHandle user, @NonNull Context context) {
-        if (SdkLevel.isAtLeastU() && role.isExclusive()) {
-            final UserManager userManager = context.getSystemService(UserManager.class);
-            preference.setEnabled(!userManager.hasUserRestrictionForUser(
-                    UserManager.DISALLOW_CONFIG_DEFAULT_APPS, user));
-        }
-    }
+            @NonNull UserHandle user, @NonNull Context context) {}
 
     /**
      * Get the confirmation message for adding an application as a holder of this role.
