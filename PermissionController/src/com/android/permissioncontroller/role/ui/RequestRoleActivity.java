@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.Process;
+import android.os.UserManager;
 import android.provider.Telephony;
 import android.telecom.TelecomManager;
 import android.text.TextUtils;
@@ -150,6 +151,16 @@ public class RequestRoleActivity extends FragmentActivity {
             reportRequestResult(PermissionControllerStatsLog
                     .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_ALREADY_GRANTED);
             setResult(RESULT_OK);
+            finish();
+            return;
+        }
+
+        UserManager userManager = getSystemService(UserManager.class);
+        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_DEFAULT_APPS)) {
+            Log.w(LOG_TAG, "Cannot request role due to user restriction"
+                    + " DISALLOW_CONFIG_DEFAULT_APPS, role: " + mRoleName);
+            reportRequestResult(PermissionControllerStatsLog
+                    .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_USER_RESTRICTION);
             finish();
             return;
         }
