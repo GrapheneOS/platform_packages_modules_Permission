@@ -30,7 +30,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"لوحة بيانات الخصوصية"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"عرض التطبيقات التي استخدمت الأذونات مؤخرًا"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"الخصوصية، لوحة بيانات الخصوصية"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"مدير الأذونات"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"إدارة الأذونات"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"التحكُّم في وصول التطبيقات إلى بياناتك"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"الأذونات، مدير الأذونات"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"عناصر التحكّم في الخصوصية"</string>
