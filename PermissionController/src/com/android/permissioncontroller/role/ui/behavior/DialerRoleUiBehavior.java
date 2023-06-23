@@ -40,9 +40,6 @@ public class DialerRoleUiBehavior implements RoleUiBehavior {
     public void prepareApplicationPreferenceAsUser(@NonNull Role role,
             @NonNull Preference preference, @NonNull ApplicationInfo applicationInfo,
             @NonNull UserHandle user, @NonNull Context context) {
-        RoleUiBehavior.super.prepareApplicationPreferenceAsUser(
-                role, preference, applicationInfo, user, context);
-
         TelecomManager telecomManager = context.getSystemService(TelecomManager.class);
         String systemPackageName = telecomManager.getSystemDialerPackage();
         if (Objects.equals(applicationInfo.packageName, systemPackageName)) {
