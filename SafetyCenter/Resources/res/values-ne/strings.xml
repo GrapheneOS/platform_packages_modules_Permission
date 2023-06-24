@@ -30,7 +30,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"गोपनीयतासम्बन्धी ड्यासबोर्ड"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"हालसालै कुन कुन एपले अनुमतिहरू प्रयोग गरेका छन् भन्ने कुरा हेर्नुहोस्"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"गोपनीयता, गोपनीयतासम्बन्धी ड्यासबोर्ड"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"पर्मिसन म्यानेजर"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"अनुमति व्यवस्थापन"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"कुन कुन एपले तपाईंको डेटा प्रयोग गर्न पाउँछन् भन्ने कुरा तय गर्नुहोस्"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"अनुमतिहरू, अनुमतिसम्बन्धी प्रबन्धक"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"गोपनीयतासम्बन्धी सेटिङ"</string>
