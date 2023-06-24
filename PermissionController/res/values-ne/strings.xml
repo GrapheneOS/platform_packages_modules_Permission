@@ -71,7 +71,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{आज}=1{१ दिनअघि}other{# दिनअघि}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"एप असक्षम पार्नुहोस्"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपहरूले अब उप्रान्त अपेक्षाअनुसार कार्य नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको यन्त्रसँग पहिल्यै स्थापना भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्नुहुन्छ तथा यसलाई आफ्नो डिभाइसमा लुकाउनुहुन्छ।"</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"पर्मिसन म्यानेजर"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"अनुमति व्यवस्थापन"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"फेरि नसोध्नुहोला"</string>
     <string name="no_permissions" msgid="3881676756371148563">"अनुमति दिन भनी कुनै अनुरोध छैन"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"अतिरिक्त अनुमति"</string>
