@@ -27,7 +27,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Панель управления разрешениями"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Посмотреть, какие приложения недавно использовали разрешения"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Управление разрешениями"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Настройки доступа приложений к вашим данным"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Настроить доступ приложений к вашим данным"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Настройки конфиденциальности"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Настройки доступа к микрофону, камере и прочему"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Дополнительные настройки"</string>
