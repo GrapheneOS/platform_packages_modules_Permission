@@ -78,32 +78,12 @@ import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveD
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALL_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_SELECTED_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DONT_ALLOW_MORE_SELECTED_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.INTENT_PHOTOS_SELECTED
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_PERMISSION_RATIONALE
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LOCATION_ACCURACY_LAYOUT
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_LOCATION_DIALOG
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
@@ -115,7 +95,6 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
-import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.Companion.RequestMessage
 import com.android.permissioncontroller.permission.ui.model.grantPermissions.BackgroundGrantBehavior
 import com.android.permissioncontroller.permission.ui.model.grantPermissions.BasicGrantBehavior
 import com.android.permissioncontroller.permission.ui.model.grantPermissions.GrantBehavior
@@ -157,8 +136,8 @@ class NewGrantPermissionsViewModel(
     private val systemRequestedPermissions: List<String>,
     private val sessionId: Long,
     private val storedState: Bundle?
-) : GrantPermissionsViewModel(app, packageName, requestedPermissions, sessionId, storedState) {
-    private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
+) : ViewModel() {
+    private val LOG_TAG = NewGrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
     private val safetyLabelInfoLiveData =
@@ -187,7 +166,7 @@ class NewGrantPermissionsViewModel(
 
     private var appPermGroupLiveDatas = mutableMapOf<String, LightAppPermGroupLiveData>()
 
-    override var activityResultCallback: Consumer<Intent>? = null
+    var activityResultCallback: Consumer<Intent>? = null
 
     /**
      * An internal class which represents the state of a current AppPermissionGroup grant request.
@@ -216,14 +195,19 @@ class NewGrantPermissionsViewModel(
         }
     }
 
-    /**
-     * A LiveData which holds a list of the currently pending RequestInfos
-     * TODO 284183336: Once the old ViewModel is gone, remove RequestInfo, and replace it with
-     *  just a prompt + denyButton
-     */
-    override val requestInfosLiveData = object :
+    data class RequestInfo(
+        val groupInfo: LightPermGroupInfo,
+        val prompt: Prompt,
+        val deny: DenyButton,
+        val showRationale: Boolean,
+        val deviceId: Int = ContextCompat.DEVICE_ID_DEFAULT
+    ) {
+        val groupName = groupInfo.name
+    }
+
+    val requestInfosLiveData = object :
         SmartUpdateMediatorLiveData<List<RequestInfo>>() {
-        private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
+        private val LOG_TAG = NewGrantPermissionsViewModel::class.java.simpleName
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
 
         init {
@@ -356,11 +340,20 @@ class NewGrantPermissionsViewModel(
 
                 val denyBehavior = behavior.getDenyButton(groupState.group,
                     groupState.affectedPermissions, prompt)
-                requestInfos.add(convertPromptToRequestInfo(groupState, prompt, denyBehavior))
+                val safetyLabel = safetyLabelInfoLiveData?.value?.safetyLabel
+                val permissionResourceDeviceId = ContextCompat.DEVICE_ID_DEFAULT
+                // TODO(b/298623935) Determine the device ID of the permission resource
+                // More logic is required at that point to properly identify permissions which can be
+                // device-aware (once implemented)
+                // e.g. check VDM for the VirtualDevice's capabilities
+                // e.g. check the permission request for the target device ID.
+                requestInfos.add(RequestInfo(groupState.group.permGroupInfo, prompt, denyBehavior,
+                   shouldShowPermissionRationale(safetyLabel, groupState.group.permGroupName),
+                    permissionResourceDeviceId))
             }
             sortPermissionGroups(requestInfos)
 
-            value = if (requestInfos.any { it.sendToSettingsImmediately } &&
+            value = if (requestInfos.any { it.prompt == Prompt.NO_UI_SETTINGS_REDIRECT } &&
                 requestInfos.size > 1) {
                 Log.e(LOG_TAG, "For R+ apps, background permissions must be requested " +
                         "individually")
@@ -369,6 +362,30 @@ class NewGrantPermissionsViewModel(
                 requestInfos
             }
         }
+    }
+
+    private fun sortPermissionGroups(
+        requestInfos: MutableList<RequestInfo>
+    ) {
+        requestInfos.sortWith { rhs, lhs ->
+            val rhsHasOneTime = isOneTimePrompt(rhs.prompt)
+            val lhsHasOneTime = isOneTimePrompt(lhs.prompt)
+            if (rhsHasOneTime && !lhsHasOneTime) {
+                -1
+            } else if ((!rhsHasOneTime && lhsHasOneTime) ||
+                Utils.isHealthPermissionGroup(rhs.groupName)
+            ) {
+                1
+            } else {
+                rhs.groupName.compareTo(lhs.groupName)
+            }
+        }
+    }
+
+    private fun isOneTimePrompt(prompt: Prompt): Boolean {
+        return prompt in setOf(Prompt.ONE_TIME_FG, Prompt.SETTINGS_LINK_WITH_OT,
+            Prompt.LOCATION_TWO_BUTTON_COARSE_HIGHLIGHT, Prompt.LOCATION_TWO_BUTTON_FINE_HIGHLIGHT,
+            Prompt.LOCATION_COARSE_ONLY, Prompt.LOCATION_FINE_UPGRADE)
     }
 
     private fun shouldShowPermissionRationale(
@@ -569,7 +586,7 @@ class NewGrantPermissionsViewModel(
      * @param affectedForegroundPermissions The name of the foreground permission which was changed
      * @param result The choice the user made regarding the group.
      */
-    override fun onPermissionGrantResult(
+    fun onPermissionGrantResult(
         groupName: String?,
         affectedForegroundPermissions: List<String>?,
         result: Int
@@ -821,7 +838,7 @@ class NewGrantPermissionsViewModel(
      *
      * @param outState The bundle in which to store state
      */
-    override fun saveInstanceState(outState: Bundle) {
+    fun saveInstanceState(outState: Bundle) {
         for ((groupName, groupState) in groupStates) {
             outState.putInt(groupName, groupState.state)
         }
@@ -833,7 +850,7 @@ class NewGrantPermissionsViewModel(
      * @return Whether or not state should be returned. False only if the package is pre-M, true
      * otherwise.
      */
-    override fun shouldReturnPermissionState(): Boolean {
+    fun shouldReturnPermissionState(): Boolean {
         return if (packageInfoLiveData.value != null) {
             packageInfoLiveData.value!!.targetSdkVersion >= Build.VERSION_CODES.M
         } else {
@@ -848,7 +865,7 @@ class NewGrantPermissionsViewModel(
         }
     }
 
-    override fun handleHealthConnectPermissions(activity: Activity) {
+    fun handleHealthConnectPermissions(activity: Activity) {
         if (activityResultCallback == null) {
             activityResultCallback = Consumer {
                 groupStates[HEALTH_PERMISSION_GROUP]?.state = STATE_SKIPPED
@@ -872,7 +889,7 @@ class NewGrantPermissionsViewModel(
      * @param activity The current activity
      * @param groupName The name of the permission group whose fragment should be opened
      */
-    override fun sendDirectlyToSettings(activity: Activity, groupName: String) {
+    fun sendDirectlyToSettings(activity: Activity, groupName: String) {
         if (activityResultCallback == null) {
             activityResultCallback = Consumer { data ->
                 if (data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED) == null) {
@@ -895,7 +912,7 @@ class NewGrantPermissionsViewModel(
         }
     }
 
-    override fun openPhotoPicker(activity: Activity, result: Int) {
+    fun openPhotoPicker(activity: Activity, result: Int) {
         if (activityResultCallback != null) {
             return
         }
@@ -923,7 +940,7 @@ class NewGrantPermissionsViewModel(
      * @param activity The current activity
      * @param groupName The name of the permission group whose fragment should be opened
      */
-    override fun sendToSettingsFromLink(activity: Activity, groupName: String) {
+    fun sendToSettingsFromLink(activity: Activity, groupName: String) {
         startAppPermissionFragment(activity, groupName)
         activityResultCallback = Consumer { data ->
             val returnGroupName = data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED)
@@ -942,7 +959,7 @@ class NewGrantPermissionsViewModel(
     * @param activity The current activity
     * @param groupName The name of the permission group whose fragment should be opened
     */
-    override fun showPermissionRationaleActivity(activity: Activity, groupName: String) {
+    fun showPermissionRationaleActivity(activity: Activity, groupName: String) {
         if (!SdkLevel.isAtLeastU()) {
             return
         }
@@ -1027,7 +1044,7 @@ class NewGrantPermissionsViewModel(
     /**
      * Log all permission groups which were requested
      */
-    override fun logRequestedPermissionGroups() {
+    fun logRequestedPermissionGroups() {
         if (groupStates.isEmpty()) {
             return
         }
@@ -1044,7 +1061,7 @@ class NewGrantPermissionsViewModel(
      * @param clickedButton The button that was clicked by the user
      * @param presentedButtons All buttons which were shown to the user
      */
-    override fun logClickedButtons(
+    fun logClickedButtons(
         groupName: String?,
         selectedPrecision: Int,
         clickedButton: Int,
@@ -1079,152 +1096,8 @@ class NewGrantPermissionsViewModel(
     /**
      * Use the autoGrantNotifier to notify of auto-granted permissions.
      */
-    override fun autoGrantNotify() {
+    fun autoGrantNotify() {
         autoGrantNotifier?.notifyOfAutoGrantPermissions(true)
-    }
-
-    // TODO: 284183336, once the old viewModel is gone, this should be moved to the activity
-    private fun convertPromptToRequestInfo(
-        groupState: GroupState,
-        prompt: Prompt,
-        deny: DenyButton
-    ): RequestInfo {
-        val buttons = mutableSetOf<Int>()
-        val locationButtons = mutableSetOf<Int>()
-        var message = RequestMessage.FG_MESSAGE
-        var detailMessage = RequestMessage.NO_MESSAGE
-        when (prompt) {
-            Prompt.BASIC -> buttons.add(ALLOW_BUTTON)
-            Prompt.FG_ONLY -> buttons.add(ALLOW_FOREGROUND_BUTTON)
-            Prompt.ONE_TIME_FG ->
-                buttons.addAll(listOf(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON))
-            Prompt.SETTINGS_LINK_FOR_BG -> {
-                buttons.add(ALLOW_FOREGROUND_BUTTON)
-                message = RequestMessage.BG_MESSAGE
-                detailMessage = RequestMessage.BG_MESSAGE
-            }
-            Prompt.SETTINGS_LINK_WITH_OT -> {
-                buttons.addAll(listOf(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON))
-                message = RequestMessage.BG_MESSAGE
-                detailMessage = RequestMessage.BG_MESSAGE
-            }
-            Prompt.UPGRADE_SETTINGS_LINK -> {
-                message = RequestMessage.UPGRADE_MESSAGE
-                detailMessage = RequestMessage.UPGRADE_MESSAGE
-            }
-            Prompt.OT_UPGRADE_SETTINGS_LINK -> {
-                message = RequestMessage.UPGRADE_MESSAGE
-                detailMessage = RequestMessage.UPGRADE_MESSAGE
-            }
-            Prompt.LOCATION_TWO_BUTTON -> {
-                buttons.addAll(listOf(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON))
-                locationButtons.addAll(listOf(LOCATION_ACCURACY_LAYOUT,
-                    DIALOG_WITH_BOTH_LOCATIONS, getSelectedLocation(groupState.group)))
-            }
-            Prompt.LOCATION_COARSE_ONLY -> {
-                buttons.addAll(listOf(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON))
-                locationButtons.addAll(listOf(LOCATION_ACCURACY_LAYOUT,
-                    DIALOG_WITH_COARSE_LOCATION_ONLY))
-                message = RequestMessage.FG_COARSE_LOCATION_MESSAGE
-            }
-            Prompt.LOCATION_FINE_UPGRADE -> {
-                buttons.addAll(listOf(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON))
-                locationButtons.addAll(listOf(LOCATION_ACCURACY_LAYOUT,
-                    DIALOG_WITH_FINE_LOCATION_ONLY))
-                message = RequestMessage.FG_FINE_LOCATION_MESSAGE
-            }
-            Prompt.SELECT_PHOTOS -> {
-                buttons.addAll(listOf(ALLOW_ALL_BUTTON, ALLOW_SELECTED_BUTTON))
-            }
-            Prompt.SELECT_MORE_PHOTOS -> {
-                buttons.addAll(listOf(ALLOW_ALL_BUTTON, ALLOW_SELECTED_BUTTON))
-                message = GrantPermissionsViewModel.Companion.RequestMessage.MORE_PHOTOS_MESSAGE
-            }
-            Prompt.STORAGE_SUPERGROUP_PRE_Q -> {
-                buttons.add(ALLOW_BUTTON)
-                message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_PRE_Q
-            }
-            Prompt.STORAGE_SUPERGROUP_Q_TO_S -> {
-                buttons.add(ALLOW_BUTTON)
-                message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_Q_TO_S
-            }
-            Prompt.NO_UI_SETTINGS_REDIRECT -> {
-                return RequestInfo(groupState.group.permGroupInfo, sendToSettingsImmediately = true)
-            }
-            Prompt.NO_UI_PHOTO_PICKER_REDIRECT -> {
-                return RequestInfo(groupState.group.permGroupInfo, openPhotoPicker = true)
-            }
-            Prompt.NO_UI_HEALTH_REDIRECT -> {
-                return RequestInfo(groupState.group.permGroupInfo)
-            }
-            Prompt.NO_UI_FILTER_THIS_GROUP -> {
-                return RequestInfo(groupState.group.permGroupInfo,
-                    filteredPermissions = groupState.affectedPermissions)
-            }
-            Prompt.NO_UI_REJECT_ALL_GROUPS, Prompt.NO_UI_REJECT_THIS_GROUP -> {
-                /* These have no buttons */
-            }
-        }
-
-        when (deny) {
-            DenyButton.DENY -> buttons.add(DENY_BUTTON)
-            DenyButton.DENY_DONT_ASK_AGAIN -> buttons.add(DENY_AND_DONT_ASK_AGAIN_BUTTON)
-            DenyButton.DONT_SELECT_MORE -> buttons.add(DONT_ALLOW_MORE_SELECTED_BUTTON)
-            DenyButton.NO_UPGRADE -> buttons.add(NO_UPGRADE_BUTTON)
-            DenyButton.NO_UPGRADE_OT -> buttons.add(NO_UPGRADE_OT_BUTTON)
-            DenyButton.NO_UPGRADE_AND_DONT_ASK_AGAIN ->
-                buttons.add(NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON)
-            DenyButton.NO_UPGRADE_AND_DONT_ASK_AGAIN_OT -> NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
-            DenyButton.NONE -> {}
-        }
-
-        val safetyLabel = safetyLabelInfoLiveData?.value?.safetyLabel
-        if (shouldShowPermissionRationale(safetyLabel, groupState.group.permGroupName)) {
-            buttons.add(LINK_TO_PERMISSION_RATIONALE)
-        }
-        val buttonArray = convertSetToBoolList(buttons, NEXT_BUTTON)
-        val locationArray = convertSetToBoolList(locationButtons, NEXT_LOCATION_DIALOG)
-
-        val permissionResourceDeviceId = ContextCompat.DEVICE_ID_DEFAULT
-        // TODO(b/298623935) Determine the device ID of the permission resource
-        // More logic is required at that point to properly identify permissions which can be
-        // device-aware (once implemented)
-        // e.g. check VDM for the VirtualDevice's capabilities
-        // e.g. check the permission request for the target device ID.
-
-        return RequestInfo(groupState.group.permGroupInfo, buttonArray, locationArray, message,
-                detailMessage, deviceId = permissionResourceDeviceId)
-    }
-
-    private fun getSelectedLocation(group: LightAppPermGroup): Int {
-        // Steps to decide location accuracy default state
-        // 1. If none of the FINE and COARSE isSelectedLocationAccuracy
-        //    flags is set, then use default precision from device config.
-        // 2. Otherwise set to whichever isSelectedLocationAccuracy is true.
-        val coarseLocationPerm =
-            group.allPermissions[ACCESS_COARSE_LOCATION]
-        val fineLocationPerm =
-            group.allPermissions[ACCESS_FINE_LOCATION]
-        return if (coarseLocationPerm?.isSelectedLocationAccuracy == false &&
-            fineLocationPerm?.isSelectedLocationAccuracy == false) {
-            if (KotlinUtils.getDefaultPrecision()) {
-                FINE_RADIO_BUTTON
-            } else {
-                COARSE_RADIO_BUTTON
-            }
-        } else if (coarseLocationPerm?.isSelectedLocationAccuracy == true) {
-            COARSE_RADIO_BUTTON
-        } else {
-            FINE_RADIO_BUTTON
-        }
-    }
-
-    private fun convertSetToBoolList(buttonSet: Set<Int>, maxSize: Int): List<Boolean> {
-        val buttonArray = MutableList(maxSize) { false }
-        for (button in buttonSet) {
-            buttonArray[button] = true
-        }
-        return buttonArray
     }
 
     private fun isStateUnknown(state: Int?): Boolean {
@@ -1271,7 +1144,9 @@ enum class Prompt {
     SETTINGS_LINK_WITH_OT, // Same as above, but with a one time button
     UPGRADE_SETTINGS_LINK, // Keep foreground, with link to settings to grant background
     OT_UPGRADE_SETTINGS_LINK, // Same as above, but the button is "keep one time"
-    LOCATION_TWO_BUTTON, // Choose coarse/fine, foreground/one time/deny
+    LOCATION_TWO_BUTTON_COARSE_HIGHLIGHT, // Choose coarse/fine, foreground/one time/deny, coarse
+                                          // button highlighted
+    LOCATION_TWO_BUTTON_FINE_HIGHLIGHT, // Same as above, but fine location highlighted
     LOCATION_COARSE_ONLY, // Only coarse location, foreground/one time/deny
     LOCATION_FINE_UPGRADE, // Upgrade coarse to fine, upgrade to fine/ one time/ keep coarse
     SELECT_PHOTOS, // Select photos/allow all photos/deny
