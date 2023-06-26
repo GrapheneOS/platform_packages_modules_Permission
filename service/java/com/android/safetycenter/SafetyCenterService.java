@@ -1065,7 +1065,7 @@ public final class SafetyCenterService extends SystemService {
 
         void register(Context context) {
             IntentFilter filter = new IntentFilter();
-            filter.addAction(Intent.ACTION_USER_ADDED);
+            filter.addAction(Intent.ACTION_USER_SWITCHED);
             filter.addAction(Intent.ACTION_USER_REMOVED);
             filter.addAction(Intent.ACTION_MANAGED_PROFILE_ADDED);
             filter.addAction(Intent.ACTION_MANAGED_PROFILE_REMOVED);
@@ -1116,9 +1116,26 @@ public final class SafetyCenterService extends SystemService {
                 case Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE:
                     removeUser(userId);
                     break;
-                case Intent.ACTION_USER_ADDED:
+                case Intent.ACTION_USER_SWITCHED:
+                    if (userId != ActivityManager.getCurrentUser()) {
+                        Log.w(
+                                TAG,
+                                "Received broadcast for user id: "
+                                        + userId
+                                        + ", which is not the current user");
+                        return;
+                    }
+                    // Fall through
                 case Intent.ACTION_MANAGED_PROFILE_ADDED:
                 case Intent.ACTION_MANAGED_PROFILE_AVAILABLE:
+                    if (!UserUtils.isUserExistent(userId, getContext())) {
+                        Log.w(
+                                TAG,
+                                "Received broadcast for user id: "
+                                        + userId
+                                        + ", which does not exist");
+                        return;
+                    }
                     synchronized (mApiLock) {
                         startRefreshingSafetySourcesLocked(REFRESH_REASON_OTHER, userId);
                         mNotificationChannels.createAllChannelsForUser(getContext(), userHandle);
