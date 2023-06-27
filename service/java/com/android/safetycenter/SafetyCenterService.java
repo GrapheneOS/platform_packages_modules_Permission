@@ -74,6 +74,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.BackgroundThread;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.data.AndroidLockScreenFix;
@@ -860,7 +861,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
             boolean safetyCenterEnabled =
-                    properties.getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, false);
+                    properties.getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, SdkLevel.isAtLeastU());
             synchronized (mApiLock) {
                 if (mSafetyCenterEnabled == safetyCenterEnabled) {
                     Log.i(
