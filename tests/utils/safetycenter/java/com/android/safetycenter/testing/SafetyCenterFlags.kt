@@ -447,7 +447,7 @@ object SafetyCenterFlags {
 
     /** Returns the [isEnabledFlag] value of the Safety Center flags snapshot. */
     fun Properties.isSafetyCenterEnabled() =
-        getBoolean(isEnabledFlag.name, /* defaultValue */ false)
+        getBoolean(isEnabledFlag.name, isEnabledFlag.defaultValue)
 
     @TargetApi(UPSIDE_DOWN_CAKE)
     private fun getAllRefreshTimeoutsMap(refreshTimeout: Duration): Map<Int, Duration> =
@@ -520,11 +520,7 @@ object SafetyCenterFlags {
                 .joinToString(entriesDelimiter)
     }
 
-    private class Flag<T>(
-        val name: String,
-        private val defaultValue: T,
-        private val parser: Parser<T>
-    ) {
+    private class Flag<T>(val name: String, val defaultValue: T, private val parser: Parser<T>) {
         val defaultStringValue = parser.toString(defaultValue)
 
         operator fun getValue(thisRef: Any?, property: KProperty<*>): T =
