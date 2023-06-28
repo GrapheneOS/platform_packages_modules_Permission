@@ -215,7 +215,7 @@ class SafetyCenterUnsupportedTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
     }

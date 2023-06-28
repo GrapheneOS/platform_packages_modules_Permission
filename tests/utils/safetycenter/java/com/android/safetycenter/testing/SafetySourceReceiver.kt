@@ -35,8 +35,8 @@ import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import androidx.annotation.RequiresApi
 import androidx.test.core.app.ApplicationProvider
-import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.executeSafetyCenterIssueActionWithPermission
@@ -164,46 +164,38 @@ class SafetySourceReceiver : BroadcastReceiver() {
 
         fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             refreshReason: Int,
-            timeout: Duration = TIMEOUT_LONG,
-            safetySourceIds: List<String>? = null
-        ) =
+            safetySourceIds: List<String>? = null,
+            timeout: Duration = TIMEOUT_LONG
+        ): String =
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-                refreshSafetySourcesWithoutReceiverPermissionAndWait(
-                    refreshReason,
-                    timeout,
-                    safetySourceIds
-                )
+                refreshSafetySourcesWithPermission(refreshReason, safetySourceIds)
+                receiveRefreshSafetySources(timeout)
             }
 
         fun SafetyCenterManager.refreshSafetySourcesWithoutReceiverPermissionAndWait(
             refreshReason: Int,
-            timeout: Duration,
             safetySourceIds: List<String>? = null
-        ): String {
+        ) {
             refreshSafetySourcesWithPermission(refreshReason, safetySourceIds)
-            if (timeout < TIMEOUT_LONG) {
-                SystemUtil.waitForBroadcasts()
-            }
-            return receiveRefreshSafetySources(timeout)
+            WaitForBroadcasts.waitForBroadcasts()
+            receiveRefreshSafetySources(TIMEOUT_SHORT)
         }
 
         fun setSafetyCenterEnabledWithReceiverPermissionAndWait(
             value: Boolean,
             timeout: Duration = TIMEOUT_LONG
-        ) =
+        ): Boolean =
             callWithShellPermissionIdentity(SEND_SAFETY_CENTER_UPDATE) {
-                setSafetyCenterEnabledWithoutReceiverPermissionAndWait(value, timeout)
+                SafetyCenterFlags.isEnabled = value
+                receiveSafetyCenterEnabledChanged(timeout)
             }
 
         fun setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
             value: Boolean,
-            timeout: Duration = TIMEOUT_LONG
-        ): Boolean {
+        ) {
             SafetyCenterFlags.isEnabled = value
-            if (timeout < TIMEOUT_LONG) {
-                SystemUtil.waitForBroadcasts()
-            }
-            return receiveSafetyCenterEnabledChanged(timeout)
+            WaitForBroadcasts.waitForBroadcasts()
+            receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
         }
 
         fun SafetyCenterManager.executeSafetyCenterIssueActionWithPermissionAndWait(
