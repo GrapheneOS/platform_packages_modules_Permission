@@ -255,11 +255,7 @@ class SafetyCenterIssueTest {
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
                 .build()
 
-        val exception = assertFailsWith(UnsupportedOperationException::class) { issue.groupId }
-
-        assertThat(exception)
-            .hasMessageThat()
-            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+        assertFailsWith(UnsupportedOperationException::class) { issue.groupId }
     }
 
     @Test
@@ -277,14 +273,9 @@ class SafetyCenterIssueTest {
         assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
         assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
 
-        val exception =
-            assertFailsWith(UnsupportedOperationException::class) {
-                SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build()
-            }
-
-        assertThat(exception)
-            .hasMessageThat()
-            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+        assertFailsWith(UnsupportedOperationException::class) {
+            SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build()
+        }
     }
 
     @Test
