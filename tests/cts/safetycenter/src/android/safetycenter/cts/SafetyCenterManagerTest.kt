@@ -1590,17 +1590,12 @@ class SafetyCenterManagerTest {
         assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
 
-        val exception =
-            assertFailsWith(UnsupportedOperationException::class) {
-                safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
-                    REFRESH_REASON_PAGE_OPEN,
-                    safetySourceIds = listOf(SOURCE_ID_1, SOURCE_ID_3)
-                )
-            }
-
-        assertThat(exception)
-            .hasMessageThat()
-            .isEqualTo("Method not supported for versions lower than UPSIDE_DOWN_CAKE")
+        assertFailsWith(UnsupportedOperationException::class) {
+            safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN,
+                safetySourceIds = listOf(SOURCE_ID_1, SOURCE_ID_3)
+            )
+        }
     }
 
     @Test

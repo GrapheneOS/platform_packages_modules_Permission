@@ -297,7 +297,8 @@ public final class SafetySource implements Parcelable {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     public String getOptionalPackageName() {
         if (!SdkLevel.isAtLeastU()) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(
+                    "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
         }
         return mPackageName;
     }
@@ -488,7 +489,8 @@ public final class SafetySource implements Parcelable {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     public boolean areNotificationsAllowed() {
         if (!SdkLevel.isAtLeastU()) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(
+                    "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
         }
         return mNotificationsAllowed;
     }
@@ -503,7 +505,8 @@ public final class SafetySource implements Parcelable {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     public String getDeduplicationGroup() {
         if (!SdkLevel.isAtLeastU()) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(
+                    "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
         }
         return mDeduplicationGroup;
     }
@@ -525,7 +528,8 @@ public final class SafetySource implements Parcelable {
     @RequiresApi(UPSIDE_DOWN_CAKE)
     public Set<String> getPackageCertificateHashes() {
         if (!SdkLevel.isAtLeastU()) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException(
+                    "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
         }
         return mPackageCertificateHashes;
     }
@@ -668,7 +672,8 @@ public final class SafetySource implements Parcelable {
         @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder(@NonNull SafetySource safetySource) {
             if (!SdkLevel.isAtLeastU()) {
-                throw new UnsupportedOperationException();
+                throw new UnsupportedOperationException(
+                        "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
             }
             requireNonNull(safetySource);
             mType = safetySource.mType;
@@ -884,7 +889,8 @@ public final class SafetySource implements Parcelable {
         @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder setNotificationsAllowed(boolean notificationsAllowed) {
             if (!SdkLevel.isAtLeastU()) {
-                throw new UnsupportedOperationException();
+                throw new UnsupportedOperationException(
+                        "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
             }
             mNotificationsAllowed = notificationsAllowed;
             return this;
@@ -903,7 +909,8 @@ public final class SafetySource implements Parcelable {
         @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder setDeduplicationGroup(@Nullable String deduplicationGroup) {
             if (!SdkLevel.isAtLeastU()) {
-                throw new UnsupportedOperationException();
+                throw new UnsupportedOperationException(
+                        "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
             }
             mDeduplicationGroup = deduplicationGroup;
             return this;
@@ -919,7 +926,8 @@ public final class SafetySource implements Parcelable {
         @RequiresApi(UPSIDE_DOWN_CAKE)
         public Builder addPackageCertificateHash(@NonNull String packageCertificateHash) {
             if (!SdkLevel.isAtLeastU()) {
-                throw new UnsupportedOperationException();
+                throw new UnsupportedOperationException(
+                        "Method not supported on versions lower than UPSIDE_DOWN_CAKE");
             }
             mPackageCertificateHashes.add(packageCertificateHash);
             return this;
