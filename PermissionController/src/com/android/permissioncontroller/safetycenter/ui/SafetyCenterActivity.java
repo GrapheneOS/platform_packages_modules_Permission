@@ -30,6 +30,7 @@ import static com.android.permissioncontroller.safetycenter.SafetyCenterConstant
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.safetycenter.SafetyCenterManager;
@@ -107,7 +108,30 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
                     .commitNow();
         }
 
+        configureHomeButton();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        maybeRedirectIfDisabled();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        // We don't set configChanges, but small screen size changes may still be delivered here.
+        super.onConfigurationChanged(newConfig);
+        configureHomeButton();
+    }
+
+    /** Decide whether a home/back button should be shown or not. */
+    private void configureHomeButton() {
         ActionBar actionBar = getActionBar();
+        Fragment frag = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        if (actionBar == null || frag == null) {
+            return;
+        }
+
         // Only the homepage can be considered a "second layer" page as it's the only one that
         // can be reached from the Settings menu. The other pages are only reachable using
         // a direct intent (e.g. notification, "first layer") and/or by navigating within Safety
@@ -115,17 +139,10 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         // Note that the homepage can also be a "first layer" page, but that would only happen
         // if the activity is not embedded.
         boolean isSecondLayerPage = frag instanceof SafetyCenterScrollWrapperFragment;
-        if (actionBar != null
-                && ActivityEmbeddingUtils.shouldHideNavigateUpButton(this, isSecondLayerPage)) {
+        if (ActivityEmbeddingUtils.shouldHideNavigateUpButton(this, isSecondLayerPage)) {
             actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.setHomeButtonEnabled(false);
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        maybeRedirectIfDisabled();
     }
 
     private boolean maybeRedirectIfDisabled() {
