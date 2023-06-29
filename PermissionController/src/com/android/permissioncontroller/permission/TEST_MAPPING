@@ -78,5 +78,10 @@
                 }
             ]
         }
+    ],
+    "postsubmit": [
+        {
+            "name": "CtsHibernationTestCases"
+        }
     ]
 }
