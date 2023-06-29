@@ -132,9 +132,6 @@ object KotlinUtils {
     private val ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE =
         ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE
 
-    /** Whether to show the Permissions Hub. */
-    private const val PROPERTY_PERMISSIONS_HUB_2_ENABLED = "permissions_hub_2_enabled"
-
     /** Whether to show the mic and camera icons. */
     private const val PROPERTY_CAMERA_MIC_ICONS_ENABLED = "camera_mic_icons_enabled"
 
@@ -175,77 +172,31 @@ object KotlinUtils {
     private const val PROPERTY_NEW_GRANT_DIALOG_BACKEND = "new_grand_dialog_backend"
 
     /**
-     * Whether the Permissions Hub 2 flag is enabled
-     *
-     * @return whether the flag is enabled
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
-    fun isPermissionsHub2FlagEnabled(): Boolean {
-        return SdkLevel.isAtLeastS() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_PERMISSIONS_HUB_2_ENABLED,
-                false
-            )
-    }
-    /**
-     * Whether to show the Permissions Dashboard
-     *
-     * @return whether to show the Permissions Dashboard.
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
-    fun shouldShowPermissionsDashboard(): Boolean {
-        return isPermissionsHub2FlagEnabled()
-    }
-
-    /**
-     * Whether the Camera and Mic Icons are enabled by flag.
-     *
-     * @return whether the Camera and Mic Icons are enabled.
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
-    fun isCameraMicIconsFlagEnabled(): Boolean {
-        return SdkLevel.isAtLeastS() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_CAMERA_MIC_ICONS_ENABLED,
-                true
-            )
-    }
-
-    /**
-     * Whether to show Camera and Mic Icons. They should be shown if the permission hub, or the
-     * icons specifically, are enabled.
+     * Whether to show Camera and Mic Icons.
      *
      * @return whether to show the icons.
      */
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun shouldShowCameraMicIndicators(): Boolean {
-        return isCameraMicIconsFlagEnabled() || isPermissionsHub2FlagEnabled()
-    }
-
-    /**
-     * Whether the location indicators are enabled by flag.
-     *
-     * @return whether the location indicators are enabled by flag.
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
-    fun isLocationIndicatorsFlagEnabled(): Boolean {
         return SdkLevel.isAtLeastS() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_LOCATION_INDICATORS_ENABLED,
-                false
-            )
+                DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_CAMERA_MIC_ICONS_ENABLED,
+                    true
+                )
     }
 
     /**
-     * Whether to show the location indicators. The location indicators are enable if the permission
-     * hub, or location indicator specifically are enabled.
+     * Whether to show the location indicators.
      */
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun shouldShowLocationIndicators(): Boolean {
-        return isLocationIndicatorsFlagEnabled() || isPermissionsHub2FlagEnabled()
+        return SdkLevel.isAtLeastS() &&
+                DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_LOCATION_INDICATORS_ENABLED,
+                    false
+                )
     }
 
     /** Whether the location accuracy feature is enabled */

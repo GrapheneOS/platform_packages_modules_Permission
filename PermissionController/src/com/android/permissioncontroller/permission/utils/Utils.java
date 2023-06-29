@@ -162,9 +162,6 @@ public final class Utils {
     public static final String PROPERTY_SYSTEM_EXEMPT_HIBERNATION_ENABLED =
             "system_exempt_hibernation_enabled";
 
-    /** Whether to show the Permissions Hub. */
-    private static final String PROPERTY_PERMISSIONS_HUB_ENABLED = "permissions_hub_enabled";
-
     /** The timeout for one-time permissions */
     private static final String PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS =
             "one_time_permissions_timeout_millis";
