@@ -51,6 +51,11 @@ public class RequiredActivity extends RequiredComponent {
         return userPackageManager.queryIntentActivities(intent, flags);
     }
 
+    @Override
+    protected boolean isComponentQualified(@NonNull ResolveInfo resolveInfo) {
+        return resolveInfo.activityInfo.exported;
+    }
+
     @NonNull
     @Override
     protected ComponentInfo getComponentComponentInfo(@NonNull ResolveInfo resolveInfo) {

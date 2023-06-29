@@ -112,9 +112,6 @@ public class AssistantRoleBehavior implements RoleBehavior {
                 ResolveInfo serviceResolveInfo = serviceResolveInfos.get(i);
 
                 ServiceInfo serviceInfo = serviceResolveInfo.serviceInfo;
-                if (!serviceInfo.exported) {
-                    continue;
-                }
                 if (!isAssistantVoiceInteractionService(userPackageManager, serviceInfo)) {
                     if (filterPackageName != null) {
                         Log.w(LOG_TAG, "Package " + filterPackageName
