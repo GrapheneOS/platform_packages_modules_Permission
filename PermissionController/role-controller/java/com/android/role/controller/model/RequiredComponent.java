@@ -196,8 +196,7 @@ public abstract class RequiredComponent {
         for (int resolveInfosIndex = 0; resolveInfosIndex < resolveInfosSize; resolveInfosIndex++) {
             ResolveInfo resolveInfo = resolveInfos.get(resolveInfosIndex);
 
-            ComponentInfo componentInfo = getComponentComponentInfo(resolveInfo);
-            if (!componentInfo.exported) {
+            if (!isComponentQualified(resolveInfo)) {
                 continue;
             }
 
@@ -215,6 +214,7 @@ public abstract class RequiredComponent {
                 }
             }
 
+            ComponentInfo componentInfo = getComponentComponentInfo(resolveInfo);
             if (hasMetaData) {
                 Bundle componentMetaData = componentInfo.metaData;
                 if (componentMetaData == null) {
@@ -262,6 +262,10 @@ public abstract class RequiredComponent {
     @NonNull
     protected abstract List<ResolveInfo> queryIntentComponentsAsUser(@NonNull Intent intent,
             int flags, @NonNull UserHandle user, @NonNull Context context);
+
+    protected boolean isComponentQualified(@NonNull ResolveInfo resolveInfo) {
+        return true;
+    }
 
     /**
      * Get the {@code ComponentInfo} of a component.
