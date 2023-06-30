@@ -812,10 +812,7 @@ class SafetyCenterManagerTest {
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            enabledChangedReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
-                false,
-                TIMEOUT_SHORT
-            )
+            enabledChangedReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(false)
         }
         enabledChangedReceiver.unregister()
     }
@@ -852,10 +849,7 @@ class SafetyCenterManagerTest {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            SafetySourceReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
-                false,
-                TIMEOUT_SHORT
-            )
+            SafetySourceReceiver.setSafetyCenterEnabledWithoutReceiverPermissionAndWait(false)
         }
     }
 
@@ -933,7 +927,7 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
 
@@ -991,7 +985,7 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
         val apiSafetySourceDataBeforeSettingFlag =
@@ -1113,8 +1107,7 @@ class SafetyCenterManagerTest {
 
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithoutReceiverPermissionAndWait(
-                REFRESH_REASON_RESCAN_BUTTON_CLICK,
-                TIMEOUT_SHORT
+                REFRESH_REASON_RESCAN_BUTTON_CLICK
             )
         }
         val apiSafetySourceData =
@@ -1132,7 +1125,7 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
     }
@@ -1404,7 +1397,7 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
     }
@@ -1500,7 +1493,7 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PERIODIC,
-                TIMEOUT_SHORT
+                timeout = TIMEOUT_SHORT
             )
         }
 
@@ -1573,8 +1566,8 @@ class SafetyCenterManagerTest {
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_PAGE_OPEN,
-                TIMEOUT_SHORT,
-                emptyList()
+                safetySourceIds = emptyList(),
+                timeout = TIMEOUT_SHORT,
             )
         }
 

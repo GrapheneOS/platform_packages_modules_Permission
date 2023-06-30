@@ -24,8 +24,8 @@ import android.content.IntentFilter
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import androidx.annotation.RequiresApi
-import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
+import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
 import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
@@ -55,20 +55,18 @@ class SafetyCenterEnabledChangedReceiver(private val context: Context) : Broadca
     fun setSafetyCenterEnabledWithReceiverPermissionAndWait(
         value: Boolean,
         timeout: Duration = TIMEOUT_LONG
-    ) =
+    ): Boolean =
         callWithShellPermissionIdentity(READ_SAFETY_CENTER_STATUS) {
-            setSafetyCenterEnabledWithoutReceiverPermissionAndWait(value, timeout)
+            SafetyCenterFlags.isEnabled = value
+            receiveSafetyCenterEnabledChanged(timeout)
         }
 
     fun setSafetyCenterEnabledWithoutReceiverPermissionAndWait(
         value: Boolean,
-        timeout: Duration = TIMEOUT_LONG
-    ): Boolean {
+    ) {
         SafetyCenterFlags.isEnabled = value
-        if (timeout < TIMEOUT_LONG) {
-            SystemUtil.waitForBroadcasts()
-        }
-        return receiveSafetyCenterEnabledChanged(timeout)
+        WaitForBroadcasts.waitForBroadcasts()
+        receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
     }
 
     fun unregister() {
