@@ -16,6 +16,8 @@
 
 package com.android.role.controller.behavior;
 
+import android.app.admin.DevicePolicyManager;
+import android.app.admin.ManagedSubscriptionsPolicy;
 import android.content.Context;
 import android.os.Process;
 import android.os.UserHandle;
@@ -59,6 +61,21 @@ public class SmsRoleBehavior implements RoleBehavior {
         if (SdkLevel.isAtLeastU()) {
             if (UserUtils.isCloneProfile(user, context)) {
                 return false;
+            }
+
+            // If work profile telephony is not enabled, there is no reason for sms role to be
+            // available in work profile. Given that you can't send or receive work message without
+            // work profile telephony being enabled.
+            // Also when work profile telephony gets enabled, dialer/sms app gets installed in to
+            // work profile, which would trigger this function and hence sms role getting
+            // enabled at the right point of time.
+            if (UserUtils.isManagedProfile(user, context)) {
+                DevicePolicyManager devicePolicyManager = context.getSystemService(
+                        DevicePolicyManager.class);
+                if (devicePolicyManager.getManagedSubscriptionsPolicy().getPolicyType()
+                        != ManagedSubscriptionsPolicy.TYPE_ALL_MANAGED_SUBSCRIPTIONS) {
+                    return false;
+                }
             }
         } else {
             if (UserUtils.isProfile(user, context)) {
