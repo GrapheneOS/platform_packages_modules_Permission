@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
@@ -30,7 +28,6 @@ import android.safetycenter.SafetySourceStatus;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.PendingIntentFactory;
@@ -44,7 +41,6 @@ import java.util.List;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class AndroidLockScreenFix {
 
     private static final String TAG = "AndroidLockScreenFix";

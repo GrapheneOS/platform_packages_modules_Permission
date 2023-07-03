@@ -16,16 +16,11 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.safetycenter.config.SafetySourcesGroup;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 
 /** Static utilities for working with {@link SafetySourcesGroup} objects. */
-@RequiresApi(TIRAMISU)
 final class SafetySourcesGroups {
 
     /**

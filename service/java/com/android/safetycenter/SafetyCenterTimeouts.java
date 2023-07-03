@@ -16,11 +16,7 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.os.Handler;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.ForegroundThread;
 
@@ -36,7 +32,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterTimeouts {
 

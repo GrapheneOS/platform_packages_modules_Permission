@@ -16,7 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_LOCALE_CHANGE;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
@@ -34,7 +33,6 @@ import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.BasicShellCommandHandler;
 import com.android.modules.utils.build.SdkLevel;
@@ -48,7 +46,6 @@ import java.util.Map;
  *
  * <p>Example usage: $ adb shell cmd safety_center refresh --reason PAGE_OPEN --user 10
  */
-@RequiresApi(TIRAMISU)
 final class SafetyCenterShellCommandHandler extends BasicShellCommandHandler {
 
     private static final Map<String, Integer> REASONS = createReasonMap();

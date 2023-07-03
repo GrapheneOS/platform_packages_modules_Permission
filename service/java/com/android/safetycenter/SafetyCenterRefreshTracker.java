@@ -16,7 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import static com.android.permission.PermissionStatsLog.SAFETY_CENTER_SYSTEM_EVENT_REPORTED__RESULT__TIMEOUT;
@@ -34,7 +33,6 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
@@ -53,7 +51,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 public final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";

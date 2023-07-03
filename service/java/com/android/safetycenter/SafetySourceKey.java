@@ -16,12 +16,8 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.annotation.UserIdInt;
 import android.safetycenter.SafetySourceData;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.Objects;
 
@@ -32,7 +28,7 @@ import java.util.Objects;
  * @hide
  */
 // TODO(b/219697341): Look into using AutoValue for this data class.
-@RequiresApi(TIRAMISU)
+
 public final class SafetySourceKey {
 
     private final String mSourceId;

@@ -16,16 +16,12 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
 import android.annotation.UserIdInt;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 
@@ -36,7 +32,6 @@ import java.util.Objects;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetySourceIssueInfo {
 
     private final SafetySourceIssue mSafetySourceIssue;
@@ -65,6 +60,7 @@ public final class SafetySourceIssueInfo {
     public SafetyCenterIssueKey getSafetyCenterIssueKey() {
         return mSafetyCenterIssueKey;
     }
+
     /** Returns the {@link SafetySourceIssue}. */
     public SafetySourceIssue getSafetySourceIssue() {
         return mSafetySourceIssue;

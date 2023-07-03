@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 @NonNullByDefault
+@RequiresTiramisuByDefault
 package com.android.safetycenter.logging;
 
 import com.android.safetycenter.annotations.NonNullByDefault;
+import com.android.safetycenter.annotations.RequiresTiramisuByDefault;

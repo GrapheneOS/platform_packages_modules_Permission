@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__DATA_PROVIDED;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__NO_DATA_PROVIDED;
 import static com.android.permission.PermissionStatsLog.SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__REFRESH_TIMEOUT;
@@ -37,7 +35,6 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.SafetySourceKey;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
@@ -56,7 +53,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetySourceDataRepository {
 

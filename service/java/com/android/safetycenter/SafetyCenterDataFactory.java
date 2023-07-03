@@ -16,7 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY;
@@ -52,7 +51,6 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.UserUtils;
@@ -80,7 +78,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 public final class SafetyCenterDataFactory {
 

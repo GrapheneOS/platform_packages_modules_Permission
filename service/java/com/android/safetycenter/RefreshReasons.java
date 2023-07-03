@@ -16,7 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
@@ -33,10 +32,7 @@ import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.util.Log;
 
-import androidx.annotation.RequiresApi;
-
 /** Helpers to do with {@link RefreshReason}. */
-@RequiresApi(TIRAMISU)
 final class RefreshReasons {
 
     private static final String TAG = "RefreshReasons";

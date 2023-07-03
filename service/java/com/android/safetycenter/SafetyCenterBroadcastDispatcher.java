@@ -19,7 +19,6 @@ package com.android.safetycenter;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.content.Intent.FLAG_RECEIVER_FOREGROUND;
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.PowerExemptionManager.REASON_REFRESH_SAFETY_SOURCES;
 import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED;
 import static android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES;
@@ -47,7 +46,6 @@ import android.util.Log;
 import android.util.SparseArray;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.PackageUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
@@ -66,7 +64,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterBroadcastDispatcher {
     private static final String TAG = "SafetyCenterBroadcastDi";

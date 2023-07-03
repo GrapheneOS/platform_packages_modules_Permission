@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.UserIdInt;
@@ -33,7 +31,6 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.ApiLock;
 import com.android.safetycenter.SafetyCenterConfigReader;
@@ -61,7 +58,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 public final class SafetyCenterDataManager {
 

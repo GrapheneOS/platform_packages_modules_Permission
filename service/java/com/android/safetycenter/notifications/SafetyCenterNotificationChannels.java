@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.notifications;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static java.util.Objects.requireNonNull;
 
 import android.app.NotificationChannel;
@@ -31,7 +29,6 @@ import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.resources.SafetyCenterResourcesApk;
@@ -43,7 +40,6 @@ import java.util.List;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetyCenterNotificationChannels {
 
     private static final String TAG = "SafetyCenterNC";

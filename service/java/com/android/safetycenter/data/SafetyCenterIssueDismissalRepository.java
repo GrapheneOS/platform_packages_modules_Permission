@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
 
 import android.annotation.UserIdInt;
@@ -30,7 +28,6 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.BackgroundThread;
 import com.android.safetycenter.ApiLock;
@@ -66,7 +63,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterIssueDismissalRepository {
 

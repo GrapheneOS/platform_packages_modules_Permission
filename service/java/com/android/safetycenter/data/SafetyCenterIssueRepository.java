@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.safetycenter.data.SafetyCenterIssueDeduplicator.DeduplicationInfo;
 
 import static java.util.Collections.emptyList;
@@ -31,8 +29,6 @@ import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
 import android.util.SparseArray;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.UserUtils;
@@ -56,7 +52,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * <p>Responsible for generating lists of issues and deduplication of issues.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterIssueRepository {
 

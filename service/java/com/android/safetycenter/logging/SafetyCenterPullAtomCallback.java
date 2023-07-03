@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.logging;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static com.android.permission.PermissionStatsLog.SAFETY_STATE;
 
 import android.annotation.UserIdInt;
@@ -29,8 +27,6 @@ import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
 import android.util.Log;
 import android.util.StatsEvent;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.build.SdkLevel;
@@ -56,7 +52,6 @@ import java.util.List;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetyCenterPullAtomCallback implements StatsPullAtomCallback {
 
     private static final String TAG = "SafetyCenterPullAtom";

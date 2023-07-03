@@ -16,10 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
-import androidx.annotation.RequiresApi;
-
 /**
  * A class that is used to strongly type the {@link Object} used to synchronize the Safety Center
  * APIs.
@@ -29,7 +25,6 @@ import androidx.annotation.RequiresApi;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class ApiLock {
     ApiLock() {}
 }

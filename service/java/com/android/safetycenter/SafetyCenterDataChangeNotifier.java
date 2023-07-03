@@ -16,11 +16,7 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.annotation.UserIdInt;
-
-import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.notifications.SafetyCenterNotificationSender;
 
@@ -34,7 +30,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 public final class SafetyCenterDataChangeNotifier {
 
