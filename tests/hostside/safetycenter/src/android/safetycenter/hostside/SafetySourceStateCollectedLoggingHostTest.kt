@@ -29,19 +29,15 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
 /** Host-side tests for Safety Center statsd logging. */
 @RunWith(DeviceJUnit4ClassRunner::class)
 class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
-    private val safetyCenterRule = RequireSafetyCenterRule(this)
-    private val helperAppRule = HelperAppRule(this, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME)
-
-    @Rule
-    @JvmField
-    val rules: RuleChain = RuleChain.outerRule(safetyCenterRule).around(helperAppRule)
+    @get:Rule(order = 1) val safetyCenterRule = RequireSafetyCenterRule(this)
+    @get:Rule(order = 2)
+    val helperAppRule = HelperAppRule(this, HelperApp.APK_NAME, HelperApp.PACKAGE_NAME)
 
     @Before
     fun setUp() {
