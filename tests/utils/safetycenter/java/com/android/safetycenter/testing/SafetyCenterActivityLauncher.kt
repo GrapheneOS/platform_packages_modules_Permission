@@ -48,6 +48,7 @@ object SafetyCenterActivityLauncher {
      */
     fun Context.launchSafetyCenterActivity(
         intentExtras: Bundle? = null,
+        intentAction: String = ACTION_SAFETY_CENTER,
         withReceiverPermission: Boolean = false,
         withRetry: Boolean = false,
         preventTrampolineToSettings: Boolean = true,
@@ -55,7 +56,7 @@ object SafetyCenterActivityLauncher {
     ) {
         val launchSafetyCenterIntent =
             createIntent(
-                ACTION_SAFETY_CENTER,
+                intentAction,
                 intentExtras,
                 preventTrampolineToSettings = preventTrampolineToSettings
             )

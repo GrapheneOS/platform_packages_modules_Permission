@@ -37,6 +37,7 @@ import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -149,11 +150,21 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (mSafetyCenterManager == null || !mSafetyCenterManager.isSafetyCenterEnabled()) {
             Log.w(TAG, "Safety Center disabled, redirecting to settings page");
             startActivity(
-                    new Intent(Settings.ACTION_SETTINGS).addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
+                    new Intent(getActionToRedirectWhenDisabled())
+                            .addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
             finish();
             return true;
         }
         return false;
+    }
+
+    private String getActionToRedirectWhenDisabled() {
+        boolean isPrivacyControls =
+                TextUtils.equals(getIntent().getAction(), PRIVACY_CONTROLS_ACTION);
+        if (isPrivacyControls) {
+            return Settings.ACTION_PRIVACY_SETTINGS;
+        }
+        return Settings.ACTION_SETTINGS;
     }
 
     private boolean maybeRedirectIntoTwoPaneSettings() {

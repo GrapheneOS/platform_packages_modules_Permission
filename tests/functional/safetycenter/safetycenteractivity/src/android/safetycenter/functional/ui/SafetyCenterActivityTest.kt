@@ -57,6 +57,7 @@ import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
+import com.android.safetycenter.testing.SettingsPackage.getSettingsPackageName
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.UiTestHelper.MORE_ISSUES_LABEL
 import com.android.safetycenter.testing.UiTestHelper.RESCAN_BUTTON_LABEL
@@ -72,10 +73,10 @@ import com.android.safetycenter.testing.UiTestHelper.waitButtonDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitCollapsedIssuesDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitExpandedIssuesDisplayed
+import com.android.safetycenter.testing.UiTestHelper.waitPageTitleDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceDataDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import org.junit.After
 import org.junit.Assume.assumeFalse
@@ -106,7 +107,7 @@ class SafetyCenterActivityTest {
     val timeoutRule =
         Timeout(
             InstrumentationRegistry.getArguments().getString("timeout_msec", "60000").toLong(),
-            TimeUnit.MILLISECONDS
+            MILLISECONDS
         )
 
     @After
@@ -1474,17 +1475,35 @@ class SafetyCenterActivityTest {
         }
     }
 
-    companion object {
-        private const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
-        private const val SAFETY_SOURCE_1_TITLE = "Safety Source 1 Title"
-        private const val SAFETY_SOURCE_1_SUMMARY = "Safety Source 1 Summary"
-        private const val SAFETY_SOURCE_2_TITLE = "Safety Source 2 Title"
-        private const val SAFETY_SOURCE_2_SUMMARY = "Safety Source 2 Summary"
-        private const val SAFETY_SOURCE_3_TITLE = "Safety Source 3 Title"
-        private const val SAFETY_SOURCE_3_SUMMARY = "Safety Source 3 Summary"
-        private const val SAFETY_SOURCE_4_TITLE = "Safety Source 4 Title"
-        private const val SAFETY_SOURCE_4_SUMMARY = "Safety Source 4 Summary"
-        private const val SAFETY_SOURCE_5_TITLE = "Safety Source 5 Title"
-        private const val SAFETY_SOURCE_5_SUMMARY = "Safety Source 5 Summary"
+    @Test
+    fun launchActivity_openWithPrivacyControlsIntent_showsPrivacyControls() {
+        context.launchSafetyCenterActivity(intentAction = PRIVACY_CONTROLS_ACTION) {
+            waitPageTitleDisplayed("Privacy controls")
+        }
+    }
+
+    @Test
+    fun launchActivity_openWithPrivacyControlsIntentWithScDisabled_showsLegacyPrivacyPage() {
+        safetyCenterTestHelper.setEnabled(false)
+
+        context.launchSafetyCenterActivity(intentAction = PRIVACY_CONTROLS_ACTION) {
+            waitDisplayed(By.pkg(context.getSettingsPackageName()))
+            waitPageTitleDisplayed("Privacy")
+        }
+    }
+
+    private companion object {
+        const val EXPAND_ISSUE_GROUP_QS_FRAGMENT_KEY = "expand_issue_group_qs_fragment_key"
+        const val SAFETY_SOURCE_1_TITLE = "Safety Source 1 Title"
+        const val SAFETY_SOURCE_1_SUMMARY = "Safety Source 1 Summary"
+        const val SAFETY_SOURCE_2_TITLE = "Safety Source 2 Title"
+        const val SAFETY_SOURCE_2_SUMMARY = "Safety Source 2 Summary"
+        const val SAFETY_SOURCE_3_TITLE = "Safety Source 3 Title"
+        const val SAFETY_SOURCE_3_SUMMARY = "Safety Source 3 Summary"
+        const val SAFETY_SOURCE_4_TITLE = "Safety Source 4 Title"
+        const val SAFETY_SOURCE_4_SUMMARY = "Safety Source 4 Summary"
+        const val SAFETY_SOURCE_5_TITLE = "Safety Source 5 Title"
+        const val SAFETY_SOURCE_5_SUMMARY = "Safety Source 5 Summary"
+        const val PRIVACY_CONTROLS_ACTION = "android.settings.PRIVACY_CONTROLS"
     }
 }
