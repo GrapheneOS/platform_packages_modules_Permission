@@ -822,7 +822,14 @@ class SafetySourceTestData(private val context: Context) {
                 if (intentResolves(context, explicitIntent)) {
                     explicitIntent
                 } else if (intentResolves(context, intent)) {
-                    intent
+                    // We have seen some flakiness where implicit intents find multiple receivers
+                    // and the ResolveActivity pops up.  A test cannot handle this, so crash.  Most
+                    // likely the cause is other test's APKs being left hanging around by flaky
+                    // test infrastructure.
+                    val intentWithFlag = Intent(intent)
+                    intentWithFlag.flags =
+                        intentWithFlag.flags or Intent.FLAG_ACTIVITY_REQUIRE_DEFAULT
+                    intentWithFlag
                 } else if (inQuietMode) {
                     explicitIntent
                 } else {
