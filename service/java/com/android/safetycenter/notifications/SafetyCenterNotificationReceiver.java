@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.notifications;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,7 +25,6 @@ import android.safetycenter.SafetySourceIssue;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.UserUtils;
@@ -54,7 +51,6 @@ import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
 
     private static final String TAG = "SafetyCenterNR";

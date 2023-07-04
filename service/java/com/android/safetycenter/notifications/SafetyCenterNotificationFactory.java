@@ -16,7 +16,6 @@
 
 package com.android.safetycenter.notifications;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_USER_HANDLE;
@@ -39,7 +38,6 @@ import android.safetycenter.SafetySourceIssue;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.PendingIntentFactory;
@@ -55,7 +53,6 @@ import java.util.List;
  * Factory that builds {@link Notification} objects from {@link SafetySourceIssue} instances with
  * appropriate {@link PendingIntent}s for click and dismiss callbacks.
  */
-@RequiresApi(TIRAMISU)
 final class SafetyCenterNotificationFactory {
 
     private static final int OPEN_SAFETY_CENTER_REQUEST_CODE = 1221;

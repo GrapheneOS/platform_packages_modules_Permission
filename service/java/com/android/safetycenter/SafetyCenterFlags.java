@@ -16,7 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import android.os.Binder;
@@ -27,7 +26,6 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.safetycenter.resources.SafetyCenterResourcesApk;
@@ -40,7 +38,6 @@ import java.time.Duration;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetyCenterFlags {
 
     private static final String TAG = "SafetyCenterFlags";

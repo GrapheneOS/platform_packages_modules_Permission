@@ -16,8 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.annotation.ElapsedRealtimeLong;
 import android.content.Context;
 import android.safetycenter.SafetyCenterManager;
@@ -27,7 +25,6 @@ import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceStatus;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetySourceIssueInfo;
@@ -44,7 +41,6 @@ import javax.annotation.concurrent.NotThreadSafe;
  * Collates information from various data-related classes and uses that information to log {@code
  * SafetySourceStateCollected} atoms.
  */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetySourceStateCollectedLogger {
 

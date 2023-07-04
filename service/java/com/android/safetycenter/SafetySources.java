@@ -16,20 +16,15 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.config.SafetySource;
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 /**
  * A helper class to facilitate working with {@link SafetySource} objects.
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class SafetySources {
 
     private static final String TAG = "SafetySources";

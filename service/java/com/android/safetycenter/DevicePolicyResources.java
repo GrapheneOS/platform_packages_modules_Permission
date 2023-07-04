@@ -16,8 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.StringRes;
@@ -26,14 +24,11 @@ import android.app.admin.DevicePolicyResourcesManager;
 import android.content.Context;
 import android.os.Binder;
 
-import androidx.annotation.RequiresApi;
-
 import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.util.function.Supplier;
 
 /** A class that handles dynamically updating enterprise-related resources. */
-@RequiresApi(TIRAMISU)
 final class DevicePolicyResources {
 
     private static final String SAFETY_CENTER_PREFIX = "SafetyCenter.";

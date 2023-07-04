@@ -16,7 +16,6 @@
 
 package com.android.safetycenter.data;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.android.safetycenter.internaldata.SafetyCenterIds.toUserFriendlyString;
@@ -48,7 +47,6 @@ import java.util.Set;
 import javax.annotation.concurrent.NotThreadSafe;
 
 /** Deduplicates issues based on deduplication info provided by the source and the issue. */
-@RequiresApi(TIRAMISU)
 @NotThreadSafe
 final class SafetyCenterIssueDeduplicator {
 
@@ -56,7 +54,6 @@ final class SafetyCenterIssueDeduplicator {
 
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
 
-    @RequiresApi(TIRAMISU)
     SafetyCenterIssueDeduplicator(
             SafetyCenterIssueDismissalRepository safetyCenterIssueDismissalRepository) {
         this.mSafetyCenterIssueDismissalRepository = safetyCenterIssueDismissalRepository;
@@ -329,7 +326,6 @@ final class SafetyCenterIssueDeduplicator {
     }
 
     /** Encapsulates deduplication result along with some additional information. */
-    @RequiresApi(TIRAMISU) // to simplify code and minimize code path differences across SDKs
     static final class DeduplicationInfo {
         private final List<SafetySourceIssueInfo> mDeduplicatedIssues;
         private final List<SafetySourceIssueInfo> mFilteredOutDuplicates;

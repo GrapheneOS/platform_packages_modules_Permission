@@ -16,8 +16,6 @@
 
 package com.android.safetycenter;
 
-import static android.os.Build.VERSION_CODES.TIRAMISU;
-
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.UserIdInt;
@@ -32,7 +30,6 @@ import android.os.UserHandle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
@@ -43,7 +40,6 @@ import java.util.Arrays;
  *
  * @hide
  */
-@RequiresApi(TIRAMISU)
 public final class PendingIntentFactory {
 
     private static final String TAG = "PendingIntentFactory";
