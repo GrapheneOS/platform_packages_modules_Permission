@@ -16,7 +16,7 @@
 
 package android.safetycenter.cts
 
-import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
@@ -190,7 +190,7 @@ class SafetyEventTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         newTiramisuEqualsHashCodeToStringTester(
                 createCopyFromBuilder = { SafetyEvent.Builder(it).build() }

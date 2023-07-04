@@ -87,7 +87,7 @@ import org.junit.runner.RunWith
 
 /** Functional tests for generic subpages in Safety Center. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+@SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
 class SafetyCenterSubpagesTest {
 
     private val context: Context = getApplicationContext()

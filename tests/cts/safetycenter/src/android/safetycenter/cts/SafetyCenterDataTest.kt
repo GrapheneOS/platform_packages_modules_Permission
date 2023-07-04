@@ -19,7 +19,7 @@ package android.safetycenter.cts
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
@@ -164,7 +164,7 @@ class SafetyCenterDataTest {
         SafetyCenterData(status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2))
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getStatus_withDefaultBuilder_returnsStatus() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -172,7 +172,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getIssues_withDefaultBuilder_returnsEmptyList() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -180,7 +180,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getIssues_whenSetExplicitly_returnsIssues() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1).addIssue(issue1).addIssue(issue2).build()
@@ -189,7 +189,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getEntriesOrGroups_withDefaultBuilder_returnsEmptyList() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -197,7 +197,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getEntriesOrGroups_whenSetExplicitly_returnsEntriesOrGroups() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -211,7 +211,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getStaticGroups_withDefaultBuilder_returnsEmptyList() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -219,7 +219,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getStaticEntryGroups_whenSetExplicitly_returnsStaticEntryGroups() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -233,7 +233,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDismissedIssues_withDefaultBuilder_returnsEmptyList() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -241,7 +241,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDismissedIssues_whenSetExplicitly_returnsIssues() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -253,7 +253,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_withDefaultBuilder_returnsEmptyBundle() {
         val safetyCenterData = SafetyCenterData.Builder(status1).build()
 
@@ -261,7 +261,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_whenSetExplicitly_returnsExtras() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1).setExtras(filledExtrasIssuesToGroups1).build()
@@ -275,7 +275,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getExtras_whenCleared_returnsEmptyBundle() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -299,7 +299,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDismissedIssues_returnsDismissedIssues() {
         val data3 = data1.withDismissedIssuesIfAtLeastU(listOf(issue2))
 
@@ -308,7 +308,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun getDismissedIssues_mutationsAreNotAllowed() {
         val mutatedDismissedIssues = data1.dismissedIssues
 
@@ -353,7 +353,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_addIssue_doesNotMutatePreviouslyBuiltInstance() {
         val safetyCenterDataBuilder = SafetyCenterData.Builder(status1).addIssue(issue1)
         val issues = safetyCenterDataBuilder.build().issues
@@ -364,7 +364,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_clearIssues_removesAllIssues() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -377,7 +377,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_addEntryOrGroup_doesNotMutatePreviouslyBuiltInstance() {
         val safetyCenterDataBuilder =
             SafetyCenterData.Builder(status1).addEntryOrGroup(entryOrGroup1)
@@ -389,7 +389,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_clearEntriesOrGroups_removesAllEntriesOrGroups() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -402,7 +402,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_addStaticEntryGroup_doesNotMutatePreviouslyBuiltInstance() {
         val safetyCenterDataBuilder =
             SafetyCenterData.Builder(status1).addStaticEntryGroup(staticEntryGroup1)
@@ -414,7 +414,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_clearStaticEntryGroups_removesAllStaticEntryGroups() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -427,7 +427,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_addDismissedIssue_doesNotMutatePreviouslyBuiltInstance() {
         val safetyCenterDataBuilder = SafetyCenterData.Builder(status1).addDismissedIssue(issue1)
         val dismissedIssues = safetyCenterDataBuilder.build().dismissedIssues
@@ -438,7 +438,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun builder_clearDismissedIssues_removesAllDismissedIssues() {
         val safetyCenterData =
             SafetyCenterData.Builder(status1)
@@ -463,7 +463,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun parcelRoundTrip_withDismissedIssues_recreatesEqual() {
         val data3 = data1.withDismissedIssuesIfAtLeastU(listOf(issue2))
         val data4 = data2.withDismissedIssuesIfAtLeastU(listOf(issue1))
@@ -473,7 +473,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun parcelRoundTrip_withExtras_recreatesEqual() {
         val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledAllExtras)
         val safetyCenterDatafromParcel =
@@ -545,7 +545,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun equalsHashCode_atLeastU_usingEqualsHashCodeToStringTester() {
         EqualsHashCodeToStringTester.ofParcelable(
                 parcelableCreator = SafetyCenterData.CREATOR,
@@ -680,7 +680,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withSingleKnownExtra_containsKnownExtra() {
         val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledExtrasIssuesToGroups1)
 
@@ -693,7 +693,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withAllKnownExtras_containsKnownExtras() {
         val safetyCenterDataWithAllExtras = data1.withExtrasIfAtLeastU(filledAllExtras)
 
@@ -706,7 +706,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withOneKnowAndOneUnknownExtra_containsKnownAndUnknownExtras() {
         val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(filledOneKnownOneUnknown)
 
@@ -719,7 +719,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withSingleUnknownExtra_containsUnknownExtras() {
         val safetyCenterDataWithExtras = data1.withExtrasIfAtLeastU(unknownExtras)
 
@@ -732,7 +732,7 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun toString_withoutExtras_containsNoExtras() {
         val safetyCenterDataWithoutExtras = data1
 

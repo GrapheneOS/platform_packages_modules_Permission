@@ -17,7 +17,6 @@
 package android.safetycenter.functional.ui
 
 import android.content.Context
-import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
@@ -79,7 +78,6 @@ import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import org.junit.After
-import org.junit.Assume.assumeFalse
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.Timeout
@@ -549,7 +547,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_withAttribution_hasProperContentDescriptions() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
@@ -722,7 +720,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_resolveIssue_withDialogClickYes_resolves() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(
@@ -748,7 +746,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_resolveIssue_withDialog_rotates_clickYes_resolves() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(
@@ -778,7 +776,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_resolveIssue_withDialogClicksNo_cancels() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         safetyCenterTestHelper.setData(
@@ -880,7 +878,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_withAttributionTitleSetBySource_displaysAttributionTitle() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
@@ -891,7 +889,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_attributionNotSetBySource_displaysGroupTitleAsAttribution() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
@@ -902,7 +900,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun issueCard_attributionNotSetBySourceAndGroupTitleNull_doesNotDisplayAttributionTitle() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.issueOnlySourceNoGroupTitleConfig)
 
@@ -915,9 +913,6 @@ class SafetyCenterActivityTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun issueCard_attributionNotSetBySourceOnTiramisu_doesNotDisplayAttributionTitle() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(CODENAME == "UpsideDownCake")
-        assumeFalse(CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         val data = safetySourceTestData.recommendationWithGeneralIssue
@@ -1418,10 +1413,6 @@ class SafetyCenterActivityTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun launchSafetyCenter_enableSubpagesFlagOnT_stillShowsExpandAndCollapseEntries() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(CODENAME == "UpsideDownCake")
-        assumeFalse(CODENAME == "VanillaIceCream")
-
         SafetyCenterFlags.showSubpages = true
         val sourceTestData = safetySourceTestData.information
         val config = safetyCenterTestConfigs.multipleSourceGroupsConfig

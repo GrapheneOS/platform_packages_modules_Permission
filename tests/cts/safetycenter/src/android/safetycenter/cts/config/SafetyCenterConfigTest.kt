@@ -16,7 +16,7 @@
 
 package android.safetycenter.cts.config
 
-import android.os.Build
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.safetycenter.config.SafetyCenterConfig
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
@@ -86,7 +86,7 @@ class SafetyCenterConfigTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester_atLeastAndroidU() {
         newTiramisuEqualsHashCodeToStringTester(
                 createCopyFromBuilder = { SafetyCenterConfig.Builder(it).build() }

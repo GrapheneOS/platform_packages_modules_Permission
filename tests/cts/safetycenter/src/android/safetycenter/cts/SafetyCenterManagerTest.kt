@@ -17,7 +17,6 @@
 package android.safetycenter.cts
 
 import android.content.Context
-import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle.USER_NULL
@@ -95,7 +94,6 @@ import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
-import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
@@ -229,7 +227,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_wronglySignedPackage_throwsIllegalArgumentException() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceWithFakeCert)
 
@@ -244,7 +242,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_wronglySignedPackageButAllowedByFlag_isAllowed() {
         SafetyCenterFlags.allowedAdditionalPackageCerts =
             mapOf(context.packageName to setOf(safetyCenterTestConfigs.packageCertHash))
@@ -259,7 +257,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_invalidPackageCertificate_throwsIllegalArgumentException() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceWithInvalidCert)
 
@@ -1481,7 +1479,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun refreshSafetySources_withRefreshReasonPeriodic_noBackgroundRefreshSourceDoesNotSendData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
@@ -1503,7 +1501,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun refreshSafetySources_withRefreshReasonPeriodic_backgroundRefreshSourceSendsData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
@@ -1520,7 +1518,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun refreshSafetySources_withSafetySourceIds_onlySpecifiedSourcesSendData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         SafetySourceReceiver.apply {
@@ -1555,7 +1553,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun refreshSafetySources_withEmptySafetySourceIds_noSourcesSendData() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         SafetySourceReceiver.setResponse(
@@ -1578,9 +1576,6 @@ class SafetyCenterManagerTest {
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
     fun refreshSafetySources_versionLessThanU_throwsUnsupportedOperationException() {
-        // TODO(b/258228790): Remove after U is no longer in pre-release
-        assumeFalse(Build.VERSION.CODENAME == "UpsideDownCake")
-        assumeFalse(Build.VERSION.CODENAME == "VanillaIceCream")
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
 
         assertFailsWith(UnsupportedOperationException::class) {
@@ -1592,7 +1587,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun refreshSafetySources_withSafetySourceIds_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.refreshSafetySources(REFRESH_REASON_PAGE_OPEN, listOf())
