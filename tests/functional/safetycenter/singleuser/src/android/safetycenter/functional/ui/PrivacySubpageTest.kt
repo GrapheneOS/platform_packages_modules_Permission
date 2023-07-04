@@ -60,7 +60,7 @@ import org.junit.runner.RunWith
 
 /** Functional tests for the Privacy subpage in Safety Center. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
+@SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
 class PrivacySubpageTest {
 
     private val context: Context = getApplicationContext()
