@@ -17,6 +17,7 @@
 package android.safetycenter.functional.ui
 
 import android.content.Context
+import android.os.Build
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
@@ -78,6 +79,7 @@ import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueNotDisplayed
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import org.junit.After
+import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.Timeout
@@ -1475,6 +1477,11 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_openWithPrivacyControlsIntentWithScDisabled_showsLegacyPrivacyPage() {
+        // This test should technically run on T+ but we have to restrict it to V+ as b/286690307 is
+        // causing a flake which was only fixed on master.
+        assumeTrue(
+            Build.VERSION.SDK_INT > UPSIDE_DOWN_CAKE || Build.VERSION.CODENAME == "VanillaIceCream"
+        )
         safetyCenterTestHelper.setEnabled(false)
 
         context.launchSafetyCenterActivity(intentAction = PRIVACY_CONTROLS_ACTION) {
