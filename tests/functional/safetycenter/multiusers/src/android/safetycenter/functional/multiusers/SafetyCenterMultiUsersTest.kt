@@ -194,8 +194,6 @@ class SafetyCenterMultiUsersTest {
                     title = "Ok title for Work",
                     pendingIntent = null
                 )
-                // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-                // keyword.
                 .setSummary(
                     safetyCenterResourcesApk.getStringByName("work_profile_paused"),
                 )
@@ -225,8 +223,6 @@ class SafetyCenterMultiUsersTest {
                     title = "Ok title for Work",
                     pendingIntent = null
                 )
-                // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-                // keyword.
                 .setSummary(
                     safetyCenterResourcesApk.getStringByName("work_profile_paused"),
                 )
@@ -269,8 +265,6 @@ class SafetyCenterMultiUsersTest {
     private val staticAllOptionalForWorkPaused
         get() =
             staticAllOptionalForWorkBuilder(inQuietMode = true)
-                // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-                //  keyword.
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .setEnabled(false)
                 .build()
@@ -308,16 +302,12 @@ class SafetyCenterMultiUsersTest {
     private val staticEntryForWorkPaused: SafetyCenterStaticEntry
         get() =
             staticEntryForWorkBuilder(inQuietMode = true)
-                // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-                //  keyword.
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
     private val staticEntryForWorkPausedUpdated
         get() =
             staticEntryForWorkBuilder(title = "Unspecified title for Work", inQuietMode = true)
-                // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-                //  keyword.
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
@@ -372,7 +362,6 @@ class SafetyCenterMultiUsersTest {
 
     @Test
     @EnsureHasWorkProfile
-    // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun getSafetyCenterData_withProfileOwner_hasWorkPolicyInfo() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.workPolicyInfoConfig)
 
@@ -381,7 +370,6 @@ class SafetyCenterMultiUsersTest {
 
     @Test
     @EnsureHasDeviceOwner
-    // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun getSafetyCenterData_withDeviceOwner_hasWorkPolicyInfo() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.workPolicyInfoConfig)
 
@@ -390,7 +378,6 @@ class SafetyCenterMultiUsersTest {
 
     @Test
     @EnsureHasWorkProfile
-    // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun launchActivity_withQuietModeEnabled_hasWorkPolicyInfo() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.workPolicyInfoConfig)
 
@@ -402,7 +389,6 @@ class SafetyCenterMultiUsersTest {
     @Test
     @EnsureHasNoWorkProfile
     @EnsureHasNoDeviceOwner
-    // TODO(b/242999951): Write these tests using the getSafetyCenterData() method instead.
     fun launchActivity_withoutWorkProfileOrDeviceOwner_doesntHaveWorkPolicyInfo() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.workPolicyInfoConfig)
 
@@ -1231,8 +1217,6 @@ class SafetyCenterMultiUsersTest {
 
     private fun findWorkPolicyInfo() {
         context.launchSafetyCenterActivity {
-            // TODO(b/233188021): This needs to use the Enterprise API to override the "work"
-            //  keyword.
             waitAllTextDisplayed("Your work policy info", "Settings managed by your IT admin")
         }
     }
