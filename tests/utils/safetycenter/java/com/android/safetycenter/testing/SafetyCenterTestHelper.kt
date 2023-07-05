@@ -55,8 +55,9 @@ class SafetyCenterTestHelper(private val context: Context) {
      * values. To be called before each test.
      */
     fun setup() {
-        SafetySourceReceiver.setup()
         Coroutines.enableDebugging()
+        SafetySourceReceiver.setup()
+        TestActivity.enableHighPriorityAlias()
         SafetyCenterFlags.setup()
         setEnabled(true)
     }
@@ -72,6 +73,7 @@ class SafetyCenterTestHelper(private val context: Context) {
         safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
         safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
         resetFlags()
+        TestActivity.disableHighPriorityAlias()
         SafetySourceReceiver.reset()
         Coroutines.resetDebugging()
     }
