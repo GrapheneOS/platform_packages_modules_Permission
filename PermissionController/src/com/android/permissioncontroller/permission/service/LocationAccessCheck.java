@@ -41,6 +41,9 @@ import static android.os.UserHandle.getUserHandleForUid;
 import static android.os.UserHandle.myUserId;
 import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_DELAY_MILLIS;
 import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_INTERVAL_MILLIS;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID;
+import static android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_USER_HANDLE;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
@@ -1054,6 +1057,10 @@ public class LocationAccessCheck {
         Intent clickIntent = null;
         if (isSafetyCenterBgLocationReminderEnabled()) {
             clickIntent = new Intent(ACTION_SAFETY_CENTER);
+            clickIntent.putExtra(EXTRA_SAFETY_SOURCE_ID, BG_LOCATION_SOURCE_ID);
+            clickIntent.putExtra(
+                    EXTRA_SAFETY_SOURCE_ISSUE_ID, createSafetySourceIssueId(pkg, user));
+            clickIntent.putExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, user);
         } else {
             clickIntent = new Intent(ACTION_MANAGE_APP_PERMISSION);
             clickIntent.putExtra(EXTRA_PERMISSION_GROUP_NAME, LOCATION);
