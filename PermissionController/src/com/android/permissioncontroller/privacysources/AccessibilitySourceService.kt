@@ -35,6 +35,8 @@ import android.os.Bundle
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
+import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
@@ -239,7 +241,9 @@ class AccessibilitySourceService(
                             PendingIntent.FLAG_IMMUTABLE
                     )
                 )
-                .setContentIntent(getSafetyCenterActivityIntent(context, uid, sessionId))
+                .setContentIntent(
+                    getSafetyCenterActivityIntent(context, uid, sessionId, componentName)
+                )
 
         val appNameExtras = Bundle()
         appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel)
@@ -290,7 +294,7 @@ class AccessibilitySourceService(
         sessionId: Long
     ): SafetySourceIssue {
         val componentName = ComponentName.unflattenFromString(a11yService.id)!!
-        val safetySourceIssueId = "accessibility_${componentName.flattenToString()}"
+        val safetySourceIssueId = getSafetySourceIssueId(componentName)
         val pkgLabel = a11yService.resolveInfo.loadLabel(packageManager).toString()
         val uid = a11yService.resolveInfo.serviceInfo.applicationInfo.uid
 
@@ -368,7 +372,7 @@ class AccessibilitySourceService(
         val intent =
             Intent(parentUserContext, AccessibilityRemoveAccessHandler::class.java).apply {
                 putExtra(Intent.EXTRA_COMPONENT_NAME, serviceComponentName)
-                putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
+                putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
                 putExtra(Constants.EXTRA_SESSION_ID, sessionId)
                 putExtra(Intent.EXTRA_UID, uid)
                 flags = Intent.FLAG_RECEIVER_FOREGROUND
@@ -414,12 +418,15 @@ class AccessibilitySourceService(
     private fun getSafetyCenterActivityIntent(
         context: Context,
         uid: Int,
-        sessionId: Long
+        sessionId: Long,
+        componentName: ComponentName
     ): PendingIntent {
         val intent = Intent(Intent.ACTION_SAFETY_CENTER)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         intent.putExtra(Constants.EXTRA_SESSION_ID, sessionId)
         intent.putExtra(Intent.EXTRA_UID, uid)
+        intent.putExtra(EXTRA_SAFETY_SOURCE_ID, SC_ACCESSIBILITY_SOURCE_ID)
+        intent.putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, getSafetySourceIssueId(componentName))
         intent.putExtra(
             Constants.EXTRA_PRIVACY_SOURCE,
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION__PRIVACY_SOURCE__A11Y_SERVICE
@@ -430,6 +437,10 @@ class AccessibilitySourceService(
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
+    }
+
+    private fun getSafetySourceIssueId(componentName: ComponentName): String {
+        return "accessibility_${componentName.flattenToString()}"
     }
 
     private fun sendIssuesToSafetyCenter(
@@ -788,7 +799,7 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
                     )
                 }
                 val safetySourceIssueId = intent.getStringExtra(
-                    SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+                    EXTRA_SAFETY_SOURCE_ISSUE_ID
                 )
                 val safetyEvent = builder.setSafetySourceIssueId(safetySourceIssueId)
                     .setSafetySourceIssueActionId(SC_ACCESSIBILITY_REMOVE_ACCESS_ACTION_ID)
