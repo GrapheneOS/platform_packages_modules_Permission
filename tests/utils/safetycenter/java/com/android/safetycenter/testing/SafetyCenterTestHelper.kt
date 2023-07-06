@@ -27,6 +27,7 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
@@ -55,6 +56,7 @@ class SafetyCenterTestHelper(private val context: Context) {
      * values. To be called before each test.
      */
     fun setup() {
+        Log.d(TAG, "setup")
         Coroutines.enableDebugging()
         SafetySourceReceiver.setup()
         TestActivity.enableHighPriorityAlias()
@@ -64,6 +66,7 @@ class SafetyCenterTestHelper(private val context: Context) {
 
     /** Resets the state of Safety Center. To be called after each test. */
     fun reset() {
+        Log.d(TAG, "reset")
         setEnabled(true)
         listeners.forEach {
             safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(it)
@@ -80,6 +83,7 @@ class SafetyCenterTestHelper(private val context: Context) {
 
     /** Enables or disables SafetyCenter based on [value]. */
     fun setEnabled(value: Boolean) {
+        Log.d(TAG, "setEnabled to $value")
         val safetyCenterConfig = safetyCenterManager.getSafetyCenterConfigWithPermission()
         if (safetyCenterConfig == null) {
             // No broadcasts are dispatched when toggling the flag when SafetyCenter is not
@@ -89,8 +93,8 @@ class SafetyCenterTestHelper(private val context: Context) {
             SafetyCenterFlags.isEnabled = value
             return
         }
-        val currentValue = safetyCenterManager.isSafetyCenterEnabledWithPermission()
-        if (currentValue == value) {
+        if (value == isEnabled()) {
+            Log.d(TAG, "isEnabled is already $value")
             return
         }
         setEnabledWaitingForSafetyCenterBroadcastIdle(value, safetyCenterConfig)
@@ -98,6 +102,7 @@ class SafetyCenterTestHelper(private val context: Context) {
 
     /** Sets the given [SafetyCenterConfig]. */
     fun setConfig(config: SafetyCenterConfig) {
+        Log.d(TAG, "setConfig")
         require(isEnabled())
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(config)
     }
@@ -109,6 +114,7 @@ class SafetyCenterTestHelper(private val context: Context) {
      *   initial SafetyCenter update
      */
     fun addListener(skipInitialData: Boolean = true): SafetyCenterTestListener {
+        Log.d(TAG, "addListener")
         require(isEnabled())
         val listener = SafetyCenterTestListener()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
@@ -128,6 +134,7 @@ class SafetyCenterTestHelper(private val context: Context) {
         safetySourceData: SafetySourceData?,
         safetyEvent: SafetyEvent = EVENT_SOURCE_STATE_CHANGED
     ) {
+        Log.d(TAG, "setData for $safetySourceId")
         require(isEnabled())
         safetyCenterManager.setSafetySourceDataWithPermission(
             safetySourceId,
@@ -139,6 +146,8 @@ class SafetyCenterTestHelper(private val context: Context) {
     /** Dismisses the [SafetyCenterIssue] for the given [safetyCenterIssueId]. */
     @RequiresApi(UPSIDE_DOWN_CAKE)
     fun dismissSafetyCenterIssue(safetyCenterIssueId: String) {
+        Log.d(TAG, "dismissSafetyCenterIssue")
+        require(isEnabled())
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssueId)
     }
 
@@ -157,6 +166,7 @@ class SafetyCenterTestHelper(private val context: Context) {
             // Wait for all ACTION_SAFETY_CENTER_ENABLED_CHANGED broadcasts to be dispatched to
             // avoid them leaking onto other tests.
             if (safetyCenterConfig.containsTestSource()) {
+                Log.d(TAG, "Waiting for test source enabled changed broadcast")
                 SafetySourceReceiver.receiveSafetyCenterEnabledChanged()
                 // The explicit ACTION_SAFETY_CENTER_ENABLED_CHANGED broadcast is also sent to the
                 // dynamically registered receivers.
@@ -168,6 +178,7 @@ class SafetyCenterTestHelper(private val context: Context) {
             // 2: test finishes, 3: new test starts, 4: a test config is set, 5: broadcast from 1
             // dispatched).
             if (userManager.isSystemUser) {
+                Log.d(TAG, "Waiting for system enabled changed broadcast")
                 // The implicit broadcast is only sent to the system user.
                 enabledChangedReceiver.receiveSafetyCenterEnabledChanged()
             }
@@ -190,4 +201,8 @@ class SafetyCenterTestHelper(private val context: Context) {
             .any { it.packageName == context.packageName }
 
     private fun isEnabled() = safetyCenterManager.isSafetyCenterEnabledWithPermission()
+
+    private companion object {
+        const val TAG: String = "SafetyCenterTestHelper"
+    }
 }
