@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Baribir rad etilsin"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Yopish"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> / <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga <xliff:g id="ACTION">%2$s</xliff:g> uchun ruxsat berilsinmi?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga bu amalga bajarishga doim ruxsat berilsinmi: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun <xliff:g id="ACTION">%2$s</xliff:g> ruxsati berilsinmi?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun doim <xliff:g id="ACTION">%2$s</xliff:g> ruxsati berilsinmi?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Faqat ilova ishlatilayotganda"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Har doim"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Rad etilsin va boshqa soʻralmasin"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Oxirgi marta ochilgan: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Barcha fayllarni boshqarishga ruxsat berilsa, ilova bu qurilmadagi yoki ulangan xotira omborlaridagi barcha fayllarni ochishi, tahrirlashi yoki oʻchirib tashlashi mumkin. Ilova fayllar bilan sizga xabar qilmay ishlay oladi."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Ilovaga bu qurilmadagi yoki ulangan xotira omborlaridagi barcha fayllarni ochish, tahrirlash yoki oʻchirib tashlash uchun ruxsat berilsinmi? Bu ilova fayllar bilan sizga xabar qilmay ishlay oladi."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Bunday ruxsatga ega ilovalar quyidagi amallarni bajara oladi: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"<xliff:g id="DESCRIPTION">%1$s</xliff:g> ruxsatiga ega ilovalar"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Bunday ruxsatga ega ilovalar piyoda yurish, velosiped haydash, avtomobil boshqarish, qadamlaringiz soni kabi jismoniy faoliyatingiz haqidagi axborotlarga ham kira oladi"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Bunday ruxsatga ega ilovalar taqvimingizdan foydalana oladi"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Bunday ruxsatga ega ilovalar telefondagi chaqiruvlar jurnaliga kira oladi va uni tahrirlay oladi"</string>
