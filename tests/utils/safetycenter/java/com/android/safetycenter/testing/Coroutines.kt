@@ -17,7 +17,9 @@
 package com.android.safetycenter.testing
 
 import android.util.Log
+import androidx.test.platform.app.InstrumentationRegistry
 import java.time.Duration
+import kotlin.comparisons.minOf
 import kotlinx.coroutines.DEBUG_PROPERTY_NAME
 import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
 import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_ON
@@ -29,8 +31,15 @@ import kotlinx.coroutines.withTimeoutOrNull
 /** A class that facilitates interacting with coroutines. */
 object Coroutines {
 
+    private val TEST_TIMEOUT: Duration
+        get() =
+            Duration.ofMillis(
+                InstrumentationRegistry.getArguments().getString("timeout_msec", "60000").toLong()
+            )
+
     /** A long timeout, to be used for actions that are expected to complete. */
-    val TIMEOUT_LONG: Duration = Duration.ofSeconds(25)
+    val TIMEOUT_LONG: Duration
+        get() = minOf(TEST_TIMEOUT.dividedBy(2), Duration.ofMinutes(1))
 
     /** A short timeout, to be used for actions that are expected not to complete. */
     val TIMEOUT_SHORT: Duration = Duration.ofSeconds(1)
