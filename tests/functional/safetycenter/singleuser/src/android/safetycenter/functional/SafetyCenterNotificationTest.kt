@@ -47,6 +47,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_5
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Request
 import com.android.safetycenter.testing.SafetySourceIntentHandler.Response
 import com.android.safetycenter.testing.SafetySourceReceiver
@@ -60,7 +61,6 @@ import com.google.common.truth.Truth.assertThat
 import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -78,25 +78,16 @@ class SafetyCenterNotificationTest {
             "Could not get system service"
         }
 
-    @get:Rule val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2)
+    val safetyCenterTestRule =
+        SafetyCenterTestRule(safetyCenterTestHelper, withNotifications = true)
 
     @Before
-    fun setUp() {
-        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
-        safetyCenterTestHelper.setup()
-        TestNotificationListener.setup(context)
+    fun enableNotificationsForTestSourceBeforeTest() {
         SafetyCenterFlags.notificationsEnabled = true
         setFlagsForImmediateNotifications(SINGLE_SOURCE_ID)
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
-    }
-
-    @After
-    fun tearDown() {
-        // It is important to reset the notification listener last because it waits/ensures that
-        // all notifications have been removed before returning.
-        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
-        safetyCenterTestHelper.reset()
-        TestNotificationListener.reset(context)
     }
 
     @Test
