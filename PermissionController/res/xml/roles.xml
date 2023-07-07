@@ -1609,4 +1609,29 @@
             </service>
         </required-components>
     </role>
+
+    <role
+        name="android.app.role.RETAIL_DEMO"
+        behavior="RetailDemoRoleBehavior"
+        defaultHolders="config_defaultRetailDemo"
+        exclusive="true"
+        minSdkVersion="35"
+        static="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.ACCESS_BLOBS_ACROSS_USERS" />
+            <permission name="android.permission.CHANGE_CONFIGURATION" />
+            <permission name="android.permission.MODIFY_DAY_NIGHT_MODE" />
+            <permission name="android.permission.MODIFY_PHONE_STATE" />
+            <permission name="android.permission.OBSERVE_APP_USAGE" />
+            <permission name="android.permission.QUERY_USERS" />
+            <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+            <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
+            <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
+            <permission name="android.permission.WRITE_SETTINGS" />
+        </permissions>
+        <app-op-permissions>
+            <app-op-permission name="android.permission.PACKAGE_USAGE_STATS" />
+        </app-op-permissions>
+    </role>
 </roles>
