@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permetis de cap manera"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignora"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Vols permetre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Vols permetre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Permetre sempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Permetre sempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Només mentre s\'utilitzi l\'aplicació"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Sempre"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"No permetis i no m\'ho tornis a preguntar"</string>
@@ -191,7 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permet sempre tot"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pregunta sempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permetis"</string>
-    <string name="precise_image_description" msgid="6349638632303619872">"Ubicació exacta"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Ubicació precisa"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ubicació aproximada"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació precisa"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quan la ubicació precisa està desactivada, les aplicacions poden accedir a la teva ubicació aproximada"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Oberta per darrera vegada el dia <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permets la gestió de tots els fitxers, aquesta aplicació podrà accedir als fitxers, així com modificar-los i suprimir-los, que es trobin a l\'emmagatzematge comú d\'aquest dispositiu o als dispositius d\'emmagatzematge connectats. L\'aplicació podrà accedir als fitxers sense demanar-te permís."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vols permetre que aquesta aplicació accedeixi als fitxers, o els modifiqui o suprimeixi, en aquest dispositiu o en qualsevol altre dispositiu d\'emmagatzematge connectat? Aquesta aplicació podrà accedir als fitxers sense demanar-te permís."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les aplicacions amb aquest permís poden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les aplicacions amb aquest permís poden fer el següent: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Les aplicacions amb aquest permís poden accedir a la teva activitat física, com ara els passejos a peu, els trajectes amb bici o cotxe, el recompte de passos, etc."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Les aplicacions amb aquest permís poden accedir al teu calendari"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Les aplicacions amb aquest permís poden llegir i editar el registre de trucades del telèfon"</string>
