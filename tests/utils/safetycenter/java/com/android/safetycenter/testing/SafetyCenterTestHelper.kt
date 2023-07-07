@@ -45,7 +45,7 @@ import com.google.common.util.concurrent.MoreExecutors.directExecutor
 
 /** A class that facilitates settings up Safety Center in tests. */
 @RequiresApi(TIRAMISU)
-class SafetyCenterTestHelper(private val context: Context) {
+class SafetyCenterTestHelper(val context: Context) {
 
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
     private val userManager = context.getSystemService(UserManager::class.java)!!

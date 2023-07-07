@@ -113,12 +113,12 @@ class SafetyCenterSubpagesTest {
         )
 
     @Before
-    fun enableSafetyCenterBeforeTest() {
+    fun enableSubpagesBeforeTest() {
         SafetyCenterFlags.showSubpages = true
     }
 
     @After
-    fun clearDataAfterTest() {
+    fun resetRotationAfterTest() {
         UiAutomatorUtils2.getUiDevice().resetRotation()
     }
 

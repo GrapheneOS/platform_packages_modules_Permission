@@ -16,26 +16,42 @@
 
 package com.android.safetycenter.testing
 
-import android.content.Context
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 /** A JUnit [TestRule] that performs setup and reset steps before and after Safety Center tests. */
-class SafetyCenterTestRule(private val safetyCenterTestHelper: SafetyCenterTestHelper) : TestRule {
-
-    constructor(context: Context) : this(SafetyCenterTestHelper(context))
+class SafetyCenterTestRule(
+    private val safetyCenterTestHelper: SafetyCenterTestHelper,
+    private val withNotifications: Boolean = false
+) : TestRule {
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
-                safetyCenterTestHelper.setup()
+                setup()
                 try {
                     base.evaluate()
                 } finally {
-                    safetyCenterTestHelper.reset()
+                    reset()
                 }
             }
+        }
+    }
+
+    private fun setup() {
+        safetyCenterTestHelper.setup()
+        if (withNotifications) {
+            TestNotificationListener.setup(safetyCenterTestHelper.context)
+        }
+    }
+
+    private fun reset() {
+        safetyCenterTestHelper.reset()
+        if (withNotifications) {
+            // It is important to reset the notification listener last because it waits/ensures that
+            // all notifications have been removed before returning.
+            TestNotificationListener.reset(safetyCenterTestHelper.context)
         }
     }
 }
