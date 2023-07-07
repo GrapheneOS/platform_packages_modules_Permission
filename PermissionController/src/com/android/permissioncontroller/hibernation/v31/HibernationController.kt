@@ -25,6 +25,7 @@ import android.os.Build
 import android.os.UserHandle
 import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.permission.data.HibernatedPackagesLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 
 /**
@@ -93,6 +94,9 @@ class HibernationController(
 
             hibernationManager.setHibernatingGlobally(pkgName, true)
             globallyHibernatedApps.add(pkgName)
+        }
+        if (hibernatedApps.isNotEmpty()) {
+            HibernatedPackagesLiveData.update()
         }
         if (DEBUG_HIBERNATION) {
             DumpableLog.i(LOG_TAG,
