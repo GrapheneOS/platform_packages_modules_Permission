@@ -33,6 +33,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.data.AutoRevokedPackagesLiveData
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -220,6 +221,9 @@ suspend fun revokeAppPermissions(
                         "Done auto-revoke for user ${user.identifier} - revoked $revokedApps")
             }
         }
+    }
+    if (revokedApps.isNotEmpty()) {
+        AutoRevokedPackagesLiveData.update()
     }
     return revokedApps
 }
