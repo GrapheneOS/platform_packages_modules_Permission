@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Поки немає інформації"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"блокування пристрою, блокування екрана, блокувати екран, заблокований екран, пароль, PIN-код, ключ"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Біометрія"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"відбиток пальця, палець, додати відбиток пальця, фейсконтроль, обличчя"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"відбиток пальця, палець, додати відбиток пальця, фейс-контроль, обличчя"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Конфіденційність"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Панель керування, дозволи, параметри"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Панель керування дозволами"</string>
