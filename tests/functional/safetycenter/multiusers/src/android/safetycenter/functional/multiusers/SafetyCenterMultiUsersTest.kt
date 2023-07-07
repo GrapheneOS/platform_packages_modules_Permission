@@ -83,6 +83,7 @@ import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.STATIC
 import com.android.safetycenter.testing.SafetyCenterTestData
 import com.android.safetycenter.testing.SafetyCenterTestData.Companion.withoutExtras
 import com.android.safetycenter.testing.SafetyCenterTestHelper
+import com.android.safetycenter.testing.SafetyCenterTestRule
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
@@ -339,25 +340,20 @@ class SafetyCenterMultiUsersTest {
             )
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 2)
+    val safetyCenterTestRule =
+        SafetyCenterTestRule(safetyCenterTestHelper, withNotifications = true)
     @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
     @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
 
     @Before
-    fun setTimeoutsBeforeTest() {
-        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
-        safetyCenterTestHelper.setup()
-        TestNotificationListener.setup(context)
+    fun setRefreshTimeoutsBeforeTest() {
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
     }
 
     @After
     fun resetQuietModeAfterTest() {
         setQuietMode(false)
-        // It is important to reset the notification listener last because it waits/ensures that
-        // all notifications have been removed before returning.
-        // TODO(b/283745908): Make TestNotificationListener compatible with SafetyCenterTestRule
-        safetyCenterTestHelper.reset()
-        TestNotificationListener.reset(context)
     }
 
     @Test
