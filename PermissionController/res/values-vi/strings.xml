@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vẫn không cho phép"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Đóng"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Bạn có muốn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> không?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Bạn có muốn luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> không?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Chỉ khi dùng ứng dụng"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Luôn luôn"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Không cho phép và không hỏi lại"</string>
