@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permitir de todas formas"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Cerrar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"¿Permitir a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"¿Quieres permitir siempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"¿Permitir a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lo siguiente? <xliff:g id="ACTION">%2$s</xliff:g>"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"¿Permitir siempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lo siguiente? <xliff:g id="ACTION">%2$s</xliff:g>"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Solo mientras se usa la aplicación"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Siempre"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"No permitir y no volver a preguntar"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación podrá consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"¿Permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden hacer lo siguiente: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las aplicaciones con este permiso pueden acceder a tu actividad física, como paseos a pie o en bici, trayectos en coche, número de pasos y más"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las aplicaciones con este permiso pueden acceder a tu calendario"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Las aplicaciones con este permiso pueden leer y editar el registro de llamadas del teléfono"</string>

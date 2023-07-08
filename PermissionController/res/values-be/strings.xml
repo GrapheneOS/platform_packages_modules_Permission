@@ -40,7 +40,7 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усё роўна не дазваляць"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Адхіліць"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Дазволіць &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Заўсёды дазваляць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Толькі пры актыўнай праграме"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Заўсёды"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Адкрывалася ў апошні раз <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Калі вы дазволіце кіраванне ўсімі файламі, гэта праграма зможа атрымліваць доступ да ўсіх файлаў у агульным сховішчы на гэтай прыладзе ці ў сховішчах падключаных прылад, а таксама змяняць і выдаляць гэтыя файлы. Праграма зможа атрымліваць доступ да файлаў без вашага ведама."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Дазволіць гэтай праграме атрымліваць доступ да файлаў на гэтай прыладзе і ў любых падключаных сховішчах, а такама змяняць і выдаляць файлы? Гэта праграма зможа атрымліваць доступ да файлаў без вашага ведама."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Характарыстыка дазволу: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Праграмы з гэтым дазволам могуць <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Праграмы з такім дазволам могуць мець доступ да звестак пра вашу фізічную актыўнасць, напрыклад перамяшчэнні пешшу, язду на веласіпедзе, на аўтамабілі, колькасць крокаў і многае іншае"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Праграмы з гэтым дазволам могуць мець доступ да календара"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Праграмы з гэтым дазволам могуць чытаць журнал выклікаў тэлефона і дадаваць у яго запісы"</string>

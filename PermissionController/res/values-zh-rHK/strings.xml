@@ -391,7 +391,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"無需任何權限"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"預設導航應用程式"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"導航應用程式"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"可提供名勝地點搜尋和行車路線導航指引的應用程式"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"可提供興趣點搜尋和行車路線導航指引的應用程式"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設定為預設導航應用程式嗎？"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"無需任何權限"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> 將可與你的通知互動，並可存取電話、短訊、聯絡人和日曆。"</string>
