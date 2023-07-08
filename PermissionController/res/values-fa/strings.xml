@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"درهرصورت اجازه نیست"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"رد کردن"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> مجوز از <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> مجوز"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه <xliff:g id="ACTION">%2$s</xliff:g> را می‌دهید؟"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"‏همیشه به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; برای <xliff:g id="ACTION">%2$s</xliff:g> اجازه داده شود؟"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; این اجازه داده شود؟ <xliff:g id="ACTION">%2$s</xliff:g>"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"‏همیشه به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; این اجازه داده شود؟ <xliff:g id="ACTION">%2$s</xliff:g>"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"فقط هنگام استفاده از برنامه"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"همیشه"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"اجازه نیست و دیگر پرسیده نشود"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر مدیریت همه فایل‌ها را مجاز کنید، این برنامه می‌تواند به همه فایل‌های موجود در فضای ذخیره‌سازی استاندارد این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند. این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"به این برنامه اجازه داده شود به فایل‌های موجود در این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند؟ این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این مجوز را داشته باشند مجاز هستند به: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این اجازه را داشته باشند برای این هم مجازند: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"برنامه‌های دارای این اجازه می‌توانند به فعالیت فیزیکی‌تان مانند پیاده‌روی، دوچرخه‌سواری، رانندگی، قدم‌شماری، و غیره دسترسی داشته باشند"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"برنامه‌های دارای این اجازه می‌توانند به تقویمتان دسترسی داشته باشند"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند گزارش تماس تلقنی را بخوانند و بنویسند"</string>
@@ -405,8 +405,8 @@
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوباره سؤال نشود"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"تنظیم برای پیش‌فرض"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"‏در &lt;b&gt;تماس تلفنی&lt;/b&gt; از میکروفون استفاده می‌شود"</string>
-    <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"‏در &lt;b&gt;تماس ویدیویی&lt;/b&gt; از دوربین و میکروفون استفاده می‌شود"</string>
-    <string name="phone_call_uses_camera" msgid="2048417022147857418">"‏در &lt;b&gt;تماس ویدیویی&lt;/b&gt; از دوربین استفاده می‌شود"</string>
+    <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"‏در &lt;b&gt;تماس تصویری&lt;/b&gt; از دوربین و میکروفون استفاده می‌شود"</string>
+    <string name="phone_call_uses_camera" msgid="2048417022147857418">"‏در &lt;b&gt;تماس تصویری&lt;/b&gt; از دوربین استفاده می‌شود"</string>
     <string name="system_uses_microphone" msgid="576672130318877143">"سرویس سیستم به میکروفون دسترسی دارد"</string>
     <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"سرویس سیستم به دوربین و میکروفون دسترسی دارد"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"سرویس سیستم به دوربین دسترسی دارد"</string>

@@ -373,7 +373,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardnødapp?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Der kræves ingen tilladelser"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"i nødsituationer"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Standardstartapp"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Standard­startapp"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Startapp"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Apps (ofte kaldet launchers), som erstatter startskærmene på din Android-enhed og giver dig adgang til indhold og funktioner på din enhed"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardstartapp?"</string>
@@ -443,7 +443,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> vil gerne uploade fejretningsoplysninger."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"Vil du dele fejlretningsdata?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Systemet har registreret et problem."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> anmoder om at uploade en fejlrapport fra denne enhed, som stammer fra <xliff:g id="DATE">%2$s</xliff:g> kl. <xliff:g id="TIME">%3$s</xliff:g>. Fejlrapporter indeholder personlige oplysninger om din enhed eller registreres af apps, f.eks. brugernavne, steddata, enheds-id\'er og netværksoplysninger. Oplysningerne i fejlrapporterne må kun deles med personer og apps, du har tillid til. Vil du give <xliff:g id="APP_NAME_1">%4$s</xliff:g> tilladelse til at uploade en fejlrapport?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> anmoder om at uploade en fejlrapport fra denne enhed, som stammer fra <xliff:g id="DATE">%2$s</xliff:g> kl. <xliff:g id="TIME">%3$s</xliff:g>. Fejlrapporter indeholder personlige oplysninger om din enhed eller registreres af apps, f.eks. brugernavne, lokationsdata, enheds-id\'er og netværksoplysninger. Oplysningerne i fejlrapporterne må kun deles med personer og apps, du har tillid til. Vil du give <xliff:g id="APP_NAME_1">%4$s</xliff:g> tilladelse til at uploade en fejlrapport?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Der opstod en fejl i behandlingen af fejlrapporten for <xliff:g id="APP_NAME">%1$s</xliff:g>. Det er derfor ikke muligt at dele detaljerede fejlretningsdata. Vi beklager ulejligheden."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Tillad"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Afvis"</string>
