@@ -62,8 +62,10 @@ class SafetySourceStateCollectedLoggingHostTest : BaseHostJUnit4Test() {
 
         val sourceStateAtoms = getSafetySourceStateCollectedAtoms()
 
+        // This assertion purposefully uses containsAtLeast and not containsExact because on test
+        // devices with multiple primary users there will be multiple atoms per source.
         assertThat(sourceStateAtoms.map { it.encodedSafetySourceId })
-            .containsExactly(
+            .containsAtLeast(
                 SOURCE_1_ENCODED_SOURCE_ID,
                 SOURCE_2_ENCODED_SOURCE_ID,
                 SOURCE_3_ENCODED_SOURCE_ID
