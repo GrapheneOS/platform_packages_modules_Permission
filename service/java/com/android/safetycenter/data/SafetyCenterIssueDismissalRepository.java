@@ -45,6 +45,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -431,6 +432,8 @@ final class SafetyCenterIssueDismissalRepository {
         fout.flush();
         try {
             Files.copy(issueDismissalRepositoryFile.toPath(), new FileOutputStream(fd));
+        } catch (NoSuchFileException e) {
+            fout.println("<No File> (equivalent to empty issue list)");
         } catch (IOException e) {
             printError(e, fout);
         }
