@@ -27,6 +27,7 @@ java_test_host {
     libs: [
         "tradefed",
         "junit",
+        "compatibility-host-util",
     ],
     static_libs: [
         "cts-statsd-atom-host-test-utils",
