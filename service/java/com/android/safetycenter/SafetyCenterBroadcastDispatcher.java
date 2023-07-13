@@ -18,6 +18,7 @@ package com.android.safetycenter;
 
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
+import static android.content.Intent.FLAG_INCLUDE_STOPPED_PACKAGES;
 import static android.content.Intent.FLAG_RECEIVER_FOREGROUND;
 import static android.os.PowerExemptionManager.REASON_REFRESH_SAFETY_SOURCES;
 import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED;
@@ -39,7 +40,6 @@ import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
-import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.safetycenter.SafetySourceData;
 import android.util.ArraySet;
 import android.util.Log;
@@ -135,7 +135,6 @@ final class SafetyCenterBroadcastDispatcher {
             String broadcastId,
             @Nullable List<String> requiredSourceIds) {
         boolean hasSentAtLeastOneBroadcast = false;
-        int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
         String packageName = broadcast.getPackageName();
         Set<String> deniedSourceIds = getRefreshDeniedSourceIds(refreshReason);
         SparseArray<List<String>> userIdsToSourceIds =
@@ -159,7 +158,7 @@ final class SafetyCenterBroadcastDispatcher {
                 continue;
             }
 
-            Intent intent = createRefreshIntent(requestType, packageName, sourceIds, broadcastId);
+            Intent intent = createRefreshIntent(refreshReason, packageName, sourceIds, broadcastId);
             boolean broadcastWasSent =
                     sendBroadcastIfResolves(intent, UserHandle.of(userId), broadcastOptions);
             if (broadcastWasSent) {
@@ -280,20 +279,27 @@ final class SafetyCenterBroadcastDispatcher {
     }
 
     private static Intent createRefreshIntent(
-            @RefreshRequestType int requestType,
+            @RefreshReason int refreshReason,
             String packageName,
             List<String> sourceIdsToRefresh,
             String broadcastId) {
         String[] sourceIdsArray = sourceIdsToRefresh.toArray(new String[0]);
-        return createBroadcastIntent(ACTION_REFRESH_SAFETY_SOURCES)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS, sourceIdsArray)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, broadcastId)
-                .setPackage(packageName);
+        int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
+        Intent refreshIntent =
+                createBroadcastIntent(ACTION_REFRESH_SAFETY_SOURCES)
+                        .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
+                        .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS, sourceIdsArray)
+                        .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, broadcastId)
+                        .setPackage(packageName);
+        boolean isUserInitiated = !RefreshReasons.isBackgroundRefresh(refreshReason);
+        if (isUserInitiated) {
+            return refreshIntent.addFlags(FLAG_INCLUDE_STOPPED_PACKAGES);
+        }
+        return refreshIntent;
     }
 
     private static Intent createBroadcastIntent(String intentAction) {
-        return new Intent(intentAction).setFlags(FLAG_RECEIVER_FOREGROUND);
+        return new Intent(intentAction).addFlags(FLAG_RECEIVER_FOREGROUND);
     }
 
     private static BroadcastOptions createBroadcastOptions() {
