@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Svejedno nemoj dozvoliti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odbaci"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Želite li dozvoliti da aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uradi sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Uvijek dozvoliti da aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uradi sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da uradi sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Uvijek dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da uradi sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Samo dok se koristi aplikacija"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Uvijek"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Nemoj dozvoliti i ne pitaj ponovo"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Posljednji put otvoreno na dan <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ako dozvolite upravljanje svim fajlovima, ova aplikacija može pristupati, mijenjati i brisati sve fajlove u zajedničkoj pohrani na ovom uređaju ili na povezanim uređajima za pohranu. Aplikacija može pristupati fajlovima bez prethodnog pitanja."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Dozvoliti ovoj aplikaciji da pristupa, mijenja i briše fajlove na uređaju ili na svim povezanim uređajima za pohranu? Ova aplikacija može pristupati fajlovima bez prethodnog pitanja."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacije s ovim odobrenjem mogu <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacije s ovim odobrenjem mogu raditi sljedeće: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacije s ovim odobrenjem mogu pristupiti informacijama o vašim fizičkim aktivnostima kao što su hodanje, vožnja bicikla, vožnja, broj koraka i još mnogo toga"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacije s ovim odobrenjem mogu pristupiti vašem kalendaru"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s ovim odobrenjem mogu čitati i pisati zapisnike telefonskih poziva"</string>
