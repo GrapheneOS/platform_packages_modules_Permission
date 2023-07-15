@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последњи пут отворено: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако омогућите управљање свим датотекама, ова апликација може да приступа свим датотекама у заједничком меморијском простору на овом уређају или повезаним уређајима за складиштење и да мења и брише те датотеке. Апликација може да приступа датотекама без питања."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Желите ли да дозволите да ова апликација приступа датотекама на уређају или свим повезаним уређајима за складиштење и да мења и брише те датотеке? Ова апликација може да приступа датотекама без питања."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Апликације са овом дозволом могу <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Апликације са том дозволом имају ове могућности: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Апликације са овом дозволом могу да приступају подацима о физичким активностима, попут ходања, вожње бицикла, вожње аутомобила, броја корака и друго"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Апликације са овом дозволом могу да приступају календару"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Апликације са овом дозволом могу да читају и додају ставке у евиденцију позива на телефону"</string>

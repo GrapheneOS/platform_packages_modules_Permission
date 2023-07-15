@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"අවසාන විවෘත කළේ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ඔබ සියලු ගොනු කළමනාකරණය කිරීමට ඉඩ දෙන්නේ නම්, මෙම යෙදුමට මෙම උපාංගයේ හෝ සම්බන්ධිත ගබඩා උපාංගවල පොදු ගබඩාවේ ඇති ඕනෑම ගොනුවක් වෙත ප්‍රවේශ වීමට, වෙනස් කිරීමට සහ මැකීටම හැකිය. යෙදුම ඔබෙන් විමසීමෙන් තොරව ගොනු වෙත ප්‍රවේශ විය හැකිය."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"මෙම යෙදුමට උපාංගයේ හෝ ඕනෑම සම්බන්ධිත ගබඩා උපාංගයක ඇති ගොනු වෙත ප්‍රවේශ වීමට, වෙනස් කිරීමට සහ මැකීමට ඉඩ දෙන්නද? මෙම යෙදුම ඔබෙන් විමසීමෙන් තොරව ගොනු වෙත ප්‍රවේශ විය හැකිය."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"මෙම අවසරය සහිත යෙදුම්වලට <xliff:g id="DESCRIPTION">%1$s</xliff:g> කළ හැක"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"මෙම අවසරය ඇති යෙදුම් වලට මෙය කළ හැක: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"මෙම අවසරය සහිත යෙදුම්වලට ඇවිදීම, බයිසිකල් පැදීම, රිය පැදවීම, පියවර ගණනය සහ තවත් දෑ වැනි, ඔබේ ශාරීරික ක්‍රියාකාරකම්වලට ප්‍රවේශ විය හැක"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"මෙම අවසරය සහිත යෙදුම්වලට ඔබේ දින දර්ශනය වෙත ප්‍රවේශ විය හැක"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"මෙම අවසරය සහිත යෙදුම්වලට දුරකථන ඇමතුම් ලොගය කියවීමටත් ලිවීමටත් හැකි ය"</string>
