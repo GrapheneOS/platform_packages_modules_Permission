@@ -41,6 +41,7 @@ import androidx.test.filters.SdkSuppress
 import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -117,16 +118,16 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun action_getConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
+    fun action_getConfirmationDialogDetails_withVersionLessThanU_throws() {
         val action = Action.Builder("action_id", "Action label", pendingIntent1).build()
 
-        assertFailsWith(UnsupportedOperationException::class) { action.confirmationDialogDetails }
+        assertFails { action.confirmationDialogDetails }
     }
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun action_setConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
-        assertFailsWith(UnsupportedOperationException::class) {
+    fun action_setConfirmationDialogDetails_withVersionLessThanU_throws() {
+        assertFails {
             Action.Builder("action_id", "Action label", pendingIntent1)
                 .setConfirmationDialogDetails(
                     ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
@@ -664,7 +665,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getAttributionTitle_withVersionLessThanU_throws() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -676,12 +677,12 @@ class SafetySourceIssueTest {
                 .addAction(action1)
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) { safetySourceIssue.attributionTitle }
+        assertFails { safetySourceIssue.attributionTitle }
     }
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setAttributionTitle_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun setAttributionTitle_withVersionLessThanU_throws() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -691,9 +692,7 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssueBuilder.setAttributionTitle("title")
-        }
+        assertFails { safetySourceIssueBuilder.setAttributionTitle("title") }
     }
 
     @Test
@@ -906,7 +905,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getDeduplicationId_withVersionLessThanU_throws() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -918,12 +917,12 @@ class SafetySourceIssueTest {
                 .addAction(action1)
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) { safetySourceIssue.deduplicationId }
+        assertFails { safetySourceIssue.deduplicationId }
     }
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setDeduplicationId_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun setDeduplicationId_withVersionLessThanU_throws() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -933,9 +932,7 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssueBuilder.setDeduplicationId("id")
-        }
+        assertFails { safetySourceIssueBuilder.setDeduplicationId("id") }
     }
 
     @Test
@@ -1000,7 +997,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getCustomNotification_withVersionLessThanU_throws() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1012,14 +1009,12 @@ class SafetySourceIssueTest {
                 .addAction(action1)
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssue.customNotification
-        }
+        assertFails { safetySourceIssue.customNotification }
     }
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setCustomNotification_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun setCustomNotification_withVersionLessThanU_throws() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1029,9 +1024,7 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssueBuilder.setCustomNotification(null)
-        }
+        assertFails { safetySourceIssueBuilder.setCustomNotification(null) }
     }
 
     @Test
@@ -1073,7 +1066,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getNotificationBehavior_withVersionLessThanU_throws() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1085,9 +1078,7 @@ class SafetySourceIssueTest {
                 .addAction(action1)
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssue.notificationBehavior
-        }
+        assertFails { safetySourceIssue.notificationBehavior }
     }
 
     @Test
@@ -1112,7 +1103,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setNotificationBehavior_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun setNotificationBehavior_withVersionLessThanU_throws() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1122,9 +1113,7 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssueBuilder.setNotificationBehavior(0)
-        }
+        assertFails { safetySourceIssueBuilder.setNotificationBehavior(0) }
     }
 
     @Test
@@ -1166,7 +1155,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getIssueActionability_withVersionLessThanU_throws() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
                     "Issue id",
@@ -1178,9 +1167,7 @@ class SafetySourceIssueTest {
                 .addAction(action1)
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssue.issueActionability
-        }
+        assertFails { safetySourceIssue.issueActionability }
     }
 
     @Test
@@ -1205,7 +1192,7 @@ class SafetySourceIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setIssueActionability_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun setIssueActionability_withVersionLessThanU_throws() {
         val safetySourceIssueBuilder =
             SafetySourceIssue.Builder(
                 "Issue id",
@@ -1215,9 +1202,7 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
 
-        assertFailsWith(UnsupportedOperationException::class) {
-            safetySourceIssueBuilder.setIssueActionability(0)
-        }
+        assertFails { safetySourceIssueBuilder.setIssueActionability(0) }
     }
 
     @Test
