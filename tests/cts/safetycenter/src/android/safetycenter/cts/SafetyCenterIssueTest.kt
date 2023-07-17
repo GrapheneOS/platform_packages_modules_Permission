@@ -30,6 +30,7 @@ import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.android.safetycenter.testing.EqualsHashCodeToStringTester
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -245,12 +246,12 @@ class SafetyCenterIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun getGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
+    fun getGroupId_withVersionLessThanU_throws() {
         val issue =
             SafetyCenterIssue.Builder("issue_id", "Everything's good", "Please acknowledge this")
                 .build()
 
-        assertFailsWith(UnsupportedOperationException::class) { issue.groupId }
+        assertFails { issue.groupId }
     }
 
     @Test
@@ -263,10 +264,8 @@ class SafetyCenterIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun setGroupId_withVersionLessThanU_throwsUnsupportedOperationException() {
-        assertFailsWith(UnsupportedOperationException::class) {
-            SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build()
-        }
+    fun setGroupId_withVersionLessThanU_throws() {
+        assertFails { SafetyCenterIssue.Builder(issue1).setGroupId("group_id").build() }
     }
 
     @Test
@@ -355,14 +354,14 @@ class SafetyCenterIssueTest {
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun action_getConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
-        assertFailsWith(UnsupportedOperationException::class) { action1.confirmationDialogDetails }
+    fun action_getConfirmationDialogDetails_withVersionLessThanU_throws() {
+        assertFails { action1.confirmationDialogDetails }
     }
 
     @Test
     @SdkSuppress(maxSdkVersion = TIRAMISU)
-    fun action_setConfirmationDialogDetails_withVersionLessThanU_throwsUnsupportedOperation() {
-        assertFailsWith(UnsupportedOperationException::class) {
+    fun action_setConfirmationDialogDetails_withVersionLessThanU_throws() {
+        assertFails {
             SafetyCenterIssue.Action.Builder("action_id", "Action label", pendingIntent1)
                 .setConfirmationDialogDetails(
                     ConfirmationDialogDetails("Title", "Text", "Accept", "Deny")
