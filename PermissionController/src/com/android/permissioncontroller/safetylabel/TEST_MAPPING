@@ -21,6 +21,27 @@
   ],
   "mainline-presubmit": [
     {
+      "name": "CtsPermissionUiTestCases[com.google.android.permission.apex]",
+      "options": [
+        {
+          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+        }
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "PermissionControllerMockingTests",
+      "options": [
+        {
+          "include-filter": "com.android.permissioncontroller.tests.mocking.safetylabel"
+        }
+      ]
+    },
+    {
+      "name": "CtsPermissionUiTestCases"
+    },
+    {
       "name": "CtsPermissionUiTestCases[com.google.android.permission.apex]"
     }
   ]

@@ -33,8 +33,27 @@
         },
         {
           "exclude-annotation": "androidx.test.filters.FlakyTest"
+        },
+        {
+          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
         }
       ]
     }
+  ],
+  "postsubmit": [
+      {
+          "name": "CtsPermissionUiTestCases"
+      },
+      {
+        "name": "CtsPermissionTestCases",
+        "options": [
+          {
+            "include-filter": "android.permission.cts.NotificationListenerCheckTest"
+          },
+          {
+            "include-filter": "android.permission.cts.AccessibilityPrivacySourceTest"
+          }
+        ]
+      }
   ]
 }
