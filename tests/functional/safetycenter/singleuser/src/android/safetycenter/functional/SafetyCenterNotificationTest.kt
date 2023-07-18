@@ -31,6 +31,7 @@ import android.safetycenter.SafetySourceIssue
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
 import com.android.safetycenter.pendingintents.PendingIntentSender
 import com.android.safetycenter.testing.Coroutines
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
@@ -56,6 +57,7 @@ import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYP
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.TestNotificationListener
+import com.android.safetycenter.testing.UiTestHelper.clickNotificationElementWithText
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
@@ -904,6 +906,35 @@ class SafetyCenterNotificationTest {
         )
     }
 
+    @Test
+    fun successNotificationClicked_successNotificationCancelled() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingIssueWithSuccessMessage
+        )
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+        sendActionPendingIntentAndWaitWithPermission(action)
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                "Issue solved",
+                "",
+                actions = emptyList(),
+            )
+        )
+
+        clickNotificationElementWithText("Issue solved")
+
+        TestNotificationListener.waitForZeroNotifications()
+        getUiDevice().pressBack()
+    }
+
     // TODO(b/284271124): Decide what to do with existing notifications when flag flipped off
     @Test
     fun sendActionPendingIntent_flagDisabled_pendingIntentNotSentToSource() {
@@ -1020,6 +1051,34 @@ class SafetyCenterNotificationTest {
                 waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
             }
         )
+    }
+
+    @Test
+    fun sendContentPendingIntent_whenGreenIssue_notificationCancelled() {
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
+        TestNotificationListener.waitForSingleNotification()
+
+        clickNotificationElementWithText(safetySourceTestData.informationIssue.summary.toString())
+
+        TestNotificationListener.waitForZeroNotifications()
+        getUiDevice().pressBack()
+    }
+
+    @Test
+    fun sendContentPendingIntent_whenNotGreenIssue_notificationNotCancelled() {
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.recommendationWithDeviceIssue
+        )
+        TestNotificationListener.waitForSingleNotification()
+
+        clickNotificationElementWithText(
+            safetySourceTestData.recommendationDeviceIssue.summary.toString()
+        )
+
+        waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue)
+        TestNotificationListener.waitForSingleNotification()
+        getUiDevice().pressBack()
     }
 
     companion object {
