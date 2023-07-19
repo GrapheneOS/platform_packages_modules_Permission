@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts
+package android.safetycenter.functional
 
+import android.Manifest.permission.INTERACT_ACROSS_USERS
+import android.app.ActivityManager
 import android.content.Context
 import android.safetycenter.SafetyCenterManager
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.deviceSupportsSafetyCenter
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for Safety Center's shell commands. */
+/** Tests for Safety Center's shell commands. */
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterShellCommandsTest {
     private val context: Context = getApplicationContext()
@@ -54,6 +57,39 @@ class SafetyCenterShellCommandsTest {
         assertThat(packageName).isEqualTo(context.packageManager.permissionControllerPackageName)
     }
 
+    @Test
+    fun clearData_executesSuccessfully() {
+        executeShellCommand("cmd safety_center clear-data")
+    }
+
+    @Test
+    fun refresh_executesSuccessfully() {
+        val currentUser =
+            callWithShellPermissionIdentity(INTERACT_ACROSS_USERS) {
+                ActivityManager.getCurrentUser()
+            }
+        executeShellCommand("cmd safety_center refresh --reason OTHER --user $currentUser")
+    }
+
+    @Test
+    fun help_containsAllCommands() {
+        val help = executeShellCommand("cmd safety_center help")
+
+        assertThat(help).contains("help")
+        assertThat(help).contains("enabled")
+        assertThat(help).contains("supported")
+        assertThat(help).contains("package-name")
+        assertThat(help).contains("clear-data")
+        assertThat(help).contains("refresh")
+    }
+
+    @Test
+    fun dump_containsSafetyCenterService() {
+        val dump = executeShellCommand("dumpsys safety_center")
+
+        assertThat(dump).contains("SafetyCenterService")
+    }
+
     private fun executeShellCommand(command: String): String =
-        SystemUtil.runShellCommand(command).trim()
+        SystemUtil.runShellCommandOrThrow(command).trim()
 }
