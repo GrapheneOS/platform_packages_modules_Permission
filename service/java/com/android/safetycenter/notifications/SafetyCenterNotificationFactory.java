@@ -102,7 +102,8 @@ final class SafetyCenterNotificationFactory {
                         .setContentTitle(action.getSuccessMessage())
                         .setShowWhen(true)
                         .setTimeoutAfter(SUCCESS_NOTIFICATION_TIMEOUT.toMillis())
-                        .setContentIntent(contentIntent);
+                        .setContentIntent(contentIntent)
+                        .setAutoCancel(true);
 
         Integer color = getNotificationColor(SafetySourceData.SEVERITY_LEVEL_INFORMATION);
         if (color != null) {
@@ -168,6 +169,10 @@ final class SafetyCenterNotificationFactory {
             Notification.Action notificationAction =
                     toNotificationAction(issueKey, issueActions.get(i));
             builder.addAction(notificationAction);
+        }
+
+        if (issue.getSeverityLevel() == SafetySourceData.SEVERITY_LEVEL_INFORMATION) {
+            builder.setAutoCancel(true);
         }
 
         return builder.build();
