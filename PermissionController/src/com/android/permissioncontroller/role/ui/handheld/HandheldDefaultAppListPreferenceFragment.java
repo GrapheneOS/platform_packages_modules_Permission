@@ -23,7 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.role.ui.DefaultAppListChildFragment;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.RolePreference;
 
 /**
  * Handheld preference fragment for the list of default apps.
@@ -62,8 +62,8 @@ public class HandheldDefaultAppListPreferenceFragment extends PreferenceFragment
 
     @NonNull
     @Override
-    public TwoTargetPreference createPreference() {
-        return new SettingsButtonPreference(requireContext());
+    public RolePreference createPreference() {
+        return new HandheldRolePreference(requireContext());
     }
 
     @Override

@@ -22,34 +22,57 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
+import com.android.permissioncontroller.role.ui.RolePreference;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.UserRestrictionAwarePreferenceMixin;
 
 /**
  * Preference for use in auto lists. Extends {@link TwoTargetPreference} in order to make sure of
  * shared logic between phone and auto settings UI.
  */
-public class AutoSettingsPreference extends Preference implements TwoTargetPreference {
+public class AutoRolePreference extends Preference implements RolePreference {
 
-    public AutoSettingsPreference(@NonNull Context context,
+    private UserRestrictionAwarePreferenceMixin mUserRestrictionAwarePreferenceMixin =
+            new UserRestrictionAwarePreferenceMixin(this);
+
+    public AutoRolePreference(@NonNull Context context,
             @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public AutoSettingsPreference(@NonNull Context context, @Nullable AttributeSet attrs,
+    public AutoRolePreference(@NonNull Context context, @Nullable AttributeSet attrs,
             int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public AutoSettingsPreference(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public AutoRolePreference(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public AutoSettingsPreference(@NonNull Context context) {
+    public AutoRolePreference(@NonNull Context context) {
         super(context);
     }
 
     @Override
     public void setOnSecondTargetClickListener(@Nullable OnSecondTargetClickListener listener) {
+    }
+
+    @Override
+    public void setUserRestriction(@Nullable String userRestriction) {
+        mUserRestrictionAwarePreferenceMixin.setUserRestriction(userRestriction);
+    }
+
+    @Override
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+
+        mUserRestrictionAwarePreferenceMixin.onAfterBindViewHolder(holder);
+    }
+
+    @Override
+    public AutoRolePreference asPreference() {
+        return this;
     }
 }
