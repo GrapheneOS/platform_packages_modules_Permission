@@ -187,12 +187,6 @@ object UiTestHelper {
         waitDisplayed(By.text(MORE_ISSUES_LABEL)) { it.click() }
     }
 
-    /** Clicks on a notification element that contains the given text. */
-    fun clickNotificationElementWithText(text: String) {
-        getUiDevice().openNotification()
-        waitDisplayed(By.text(text)) { it.click() }
-    }
-
     /** Enables or disables animations based on [enabled]. */
     fun setAnimationsEnabled(enabled: Boolean) {
         val scale =
