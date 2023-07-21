@@ -31,7 +31,8 @@ import android.safetycenter.SafetySourceIssue
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.compatibility.common.util.UiAutomatorUtils2.getUiDevice
+import com.android.compatibility.common.util.DisableAnimationRule
+import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.safetycenter.pendingintents.PendingIntentSender
 import com.android.safetycenter.testing.Coroutines
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_SHORT
@@ -55,9 +56,9 @@ import com.android.safetycenter.testing.SafetySourceReceiver
 import com.android.safetycenter.testing.SafetySourceTestData
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.ISSUE_TYPE_ID
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
+import com.android.safetycenter.testing.StatusBarNotificationWithChannel
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.android.safetycenter.testing.TestNotificationListener
-import com.android.safetycenter.testing.UiTestHelper.clickNotificationElementWithText
 import com.android.safetycenter.testing.UiTestHelper.waitSourceIssueDisplayed
 import com.google.common.truth.Truth.assertThat
 import java.time.Duration
@@ -77,13 +78,15 @@ class SafetyCenterNotificationTest {
     private val safetyCenterTestConfigs = SafetyCenterTestConfigs(context)
     private val safetyCenterManager =
         requireNotNull(context.getSystemService(SafetyCenterManager::class.java)) {
-            "Could not get system service"
+            "Could not get SafetyCenterManager"
         }
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
     @get:Rule(order = 2)
     val safetyCenterTestRule =
         SafetyCenterTestRule(safetyCenterTestHelper, withNotifications = true)
+    @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
+    @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
 
     @Before
     fun enableNotificationsForTestSourceBeforeTest() {
@@ -907,7 +910,7 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
-    fun successNotificationClicked_successNotificationCancelled() {
+    fun successNotification_notificationHasAutoCancel() {
         safetyCenterTestHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceTestData.criticalWithResolvingIssueWithSuccessMessage
@@ -921,18 +924,16 @@ class SafetyCenterNotificationTest {
             Response.SetData(safetySourceTestData.information)
         )
         sendActionPendingIntentAndWaitWithPermission(action)
-        TestNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(
-                "Issue solved",
-                "",
-                actions = emptyList(),
+        val issueSolvedNotificationWithChannel =
+            TestNotificationListener.waitForSingleNotificationMatching(
+                NotificationCharacteristics(
+                    "Issue solved",
+                    "",
+                    actions = emptyList(),
+                )
             )
-        )
 
-        clickNotificationElementWithText("Issue solved")
-
-        TestNotificationListener.waitForZeroNotifications()
-        getUiDevice().pressBack()
+        assertThat(issueSolvedNotificationWithChannel.hasAutoCancel()).isTrue()
     }
 
     // TODO(b/284271124): Decide what to do with existing notifications when flag flipped off
@@ -1021,12 +1022,10 @@ class SafetyCenterNotificationTest {
             safetySourceTestData.recommendationWithDeviceIssue
         )
         val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
-        val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
 
-        executeBlockAndExit(
-            launchActivity = { PendingIntentSender.send(contentIntent) },
-            block = { waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue) }
-        )
+        sendContentPendingIntent(notificationWithChannel) {
+            waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue)
+        }
     }
 
     @Test
@@ -1042,50 +1041,37 @@ class SafetyCenterNotificationTest {
             safetySourceTestData.criticalWithResolvingGeneralIssue
         )
         val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
-        val contentIntent = notificationWithChannel.statusBarNotification.notification.contentIntent
 
-        executeBlockAndExit(
-            launchActivity = { PendingIntentSender.send(contentIntent) },
-            block = {
-                waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
-                waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
-            }
-        )
+        sendContentPendingIntent(notificationWithChannel) {
+            waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
+            waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue)
+        }
     }
 
     @Test
-    fun sendContentPendingIntent_whenGreenIssue_notificationCancelled() {
+    fun whenGreenIssue_notificationHasAutoCancel() {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
-        TestNotificationListener.waitForSingleNotification()
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
 
-        clickNotificationElementWithText(safetySourceTestData.informationIssue.summary.toString())
-
-        TestNotificationListener.waitForZeroNotifications()
-        getUiDevice().pressBack()
+        assertThat(notificationWithChannel.hasAutoCancel()).isTrue()
     }
 
     @Test
-    fun sendContentPendingIntent_whenNotGreenIssue_notificationNotCancelled() {
+    fun whenNotGreenIssue_notificationDoesntHaveAutoCancel() {
         safetyCenterTestHelper.setData(
             SINGLE_SOURCE_ID,
             safetySourceTestData.recommendationWithDeviceIssue
         )
-        TestNotificationListener.waitForSingleNotification()
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
 
-        clickNotificationElementWithText(
-            safetySourceTestData.recommendationDeviceIssue.summary.toString()
-        )
-
-        waitSourceIssueDisplayed(safetySourceTestData.recommendationDeviceIssue)
-        TestNotificationListener.waitForSingleNotification()
-        getUiDevice().pressBack()
+        assertThat(notificationWithChannel.hasAutoCancel()).isFalse()
     }
 
-    companion object {
-        private val SafetyCenterData.inFlightActions: List<SafetyCenterIssue.Action>
+    private companion object {
+        val SafetyCenterData.inFlightActions: List<SafetyCenterIssue.Action>
             get() = issues.flatMap { it.actions }.filter { it.isInFlight }
 
-        private fun sendActionPendingIntentAndWaitWithPermission(
+        fun sendActionPendingIntentAndWaitWithPermission(
             action: Notification.Action,
             timeout: Duration = Coroutines.TIMEOUT_LONG
         ) {
@@ -1097,10 +1083,28 @@ class SafetyCenterNotificationTest {
             }
         }
 
-        private fun setFlagsForImmediateNotifications(vararg sourceIds: String) {
+        fun setFlagsForImmediateNotifications(vararg sourceIds: String) {
             SafetyCenterFlags.notificationsAllowedSources = sourceIds.toSet()
             SafetyCenterFlags.immediateNotificationBehaviorIssues =
                 sourceIds.map { "$it/$ISSUE_TYPE_ID" }.toSet()
+        }
+
+        fun StatusBarNotificationWithChannel.hasAutoCancel(): Boolean {
+            val autoCancelMask =
+                statusBarNotification.notification.flags and Notification.FLAG_AUTO_CANCEL
+            return autoCancelMask != 0
+        }
+
+        fun sendContentPendingIntent(
+            statusBarNotificationWithChannel: StatusBarNotificationWithChannel,
+            andExecuteBlock: () -> Unit = {}
+        ) {
+            val contentIntent =
+                statusBarNotificationWithChannel.statusBarNotification.notification.contentIntent
+            executeBlockAndExit(
+                launchActivity = { PendingIntentSender.send(contentIntent) },
+                block = andExecuteBlock
+            )
         }
     }
 }
