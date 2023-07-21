@@ -45,7 +45,7 @@ class AppDataSharingDetailsPreference : Preference {
         }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
-        val noUpdatesMessage = holder.findViewById(R.id.no_updates_message)
+        val noUpdatesMessage = holder.findViewById(R.id.no_updates_message)!!
         noUpdatesMessage.isVisible = showNoUpdates
         super.onBindViewHolder(holder)
     }
