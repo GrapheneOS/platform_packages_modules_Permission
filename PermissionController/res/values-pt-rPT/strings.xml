@@ -437,7 +437,7 @@
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Sem apps"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Não suporta o perfil de trabalho."</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Nota: se reiniciar o dispositivo e tiver um bloqueio de ecrã definido, só é possível iniciar esta app quando o dispositivo for desbloqueado."</string>
-    <string name="assistant_confirmation_message" msgid="7476540402884416212">"O assistente pode ler informações sobre aplicações em utilização no seu sistema, incluindo informações visíveis no ecrã ou acessíveis nas aplicações."</string>
+    <string name="assistant_confirmation_message" msgid="7476540402884416212">"O assistente pode ler informações sobre as apps em utilização no seu sistema, incluindo informações visíveis no ecrã ou acessíveis nas apps."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"Partilhar dados de depuração"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"Pretende partilhar dados de depuração detalhados?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> pretende carregar informações de depuração."</string>
