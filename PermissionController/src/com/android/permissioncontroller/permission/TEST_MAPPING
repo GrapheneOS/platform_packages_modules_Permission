@@ -86,6 +86,61 @@
     "postsubmit": [
         {
             "name": "CtsHibernationTestCases"
+        },
+        {
+            "name": "CtsPermissionTestCases",
+            "options": [
+                {
+                    "include-filter": "android.permission.cts.BackgroundPermissionsTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.NotificationListenerCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.OneTimePermissionTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PermissionControllerTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PlatformPermissionGroupMappingTest"
+                }
+            ]
+        },
+        {
+            "name": "CtsPermissionTestCases[com.google.android.permission.apex]",
+            "options": [
+                {
+                    "include-filter": "android.permission.cts.BackgroundPermissionsTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.NotificationListenerCheckTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.OneTimePermissionTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PermissionControllerTest"
+                },
+                {
+                    "include-filter": "android.permission.cts.PlatformPermissionGroupMappingTest"
+                }
+            ]
+        },
+        {
+            "name": "CtsHibernationTestCases[com.google.android.permission.apex]",
+            "options": [
+                // TODO(b/238677038): This test currently fails on R base image
+                {
+                    "exclude-filter": "android.hibernation.cts.AutoRevokeTest#testUnusedApp_uninstallApp"
+                }
+            ]
         }
     ]
 }

@@ -13,6 +13,9 @@
             "options": [
                 {
                     "exclude-annotation": "androidx.test.filters.FlakyTest"
+                },
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
                 }
             ]
         }
@@ -30,6 +33,34 @@
                 },
                 {
                     "exclude-annotation": "androidx.test.filters.FlakyTest"
+                },
+                {
+                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                }
+            ]
+        }
+    ],
+    "postsubmit": [
+        {
+            "name": "CtsAppSecurityHostTestCases",
+            "options": [
+                {
+                    "include-filter": "android.appsecurity.cts.StatsdAppSecurityAtomTest#testRoleHolder"
+                }
+            ]
+        },
+        {
+            "name": "CtsRoleTestCases"
+        },
+        {
+            "name": "CtsRoleTestCases[com.google.android.permission.apex]",
+            "options": [
+                // TODO(b/238677748): These two tests currently fails on R base image
+                {
+                    "exclude-filter": "android.app.role.cts.RoleManagerTest#openDefaultAppListThenIsNotDefaultAppInList"
+                },
+                {
+                    "exclude-filter": "android.app.role.cts.RoleManagerTest#removeSmsRoleHolderThenPermissionIsRevoked"
                 }
             ]
         }

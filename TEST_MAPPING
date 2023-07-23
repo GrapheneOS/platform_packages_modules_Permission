@@ -6,7 +6,13 @@
   ],
   "carpermission-presubmit" : [
     {
-      "name" : "CtsPermissionUiTestCases"
+      "name" : "CtsPermissionUiTestCases",
+      "options": [
+        {
+          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+        }
+      ]
     }
   ]
+  // TODO: Do we need to create a carpermission-postsubmit test-group?
 }
