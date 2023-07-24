@@ -1,0 +1,7 @@
+package: "com.android.permission.flags"
+
+flag {
+    name: "voice_activation_op_enabled"
+    namespace: "permissions"
+    description: "This flag is used to support hotword activation events in privacy dashboard"
+}
