@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model.v33
 
@@ -105,10 +106,9 @@ class SafetyCenterQsViewModel(
         val group = lightAppPermMap.get(Triple(usage.packageName, usage.permissionGroupName,
             UserHandle.getUserHandleForUid(usage.uid))) ?: return
 
-        if (group != null) {
-            KotlinUtils.revokeForegroundRuntimePermissions(app, group)
-            KotlinUtils.revokeBackgroundRuntimePermissions(app, group)
-        }
+        KotlinUtils.revokeForegroundRuntimePermissions(app, group)
+        KotlinUtils.revokeBackgroundRuntimePermissions(app, group)
+
     }
 
     fun toggleSensor(groupName: String) {
@@ -147,6 +147,7 @@ class SafetyCenterQsViewModel(
                     LOCATION to locationEnabled)
             }
 
+            @Suppress("OVERRIDE_DEPRECATION")
             override fun onSensorPrivacyChanged(sensor: Int, enabled: Boolean) {
                 update()
             }

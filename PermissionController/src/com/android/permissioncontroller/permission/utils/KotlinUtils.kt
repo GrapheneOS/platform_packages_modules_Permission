@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.utils
 
@@ -316,7 +317,6 @@ object KotlinUtils {
      *
      * @return The package's icon, or null, if the package does not exist
      */
-    @JvmOverloads
     fun getBadgedPackageIcon(
         app: Application,
         packageName: String,
@@ -528,7 +528,6 @@ object KotlinUtils {
         isOneTime: Boolean = false,
         filterPermissions: List<String> = group.permissions.keys.toList()
     ): LightAppPermGroup {
-        val wasOneTime = group.isOneTime
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
         for (permName in filterPermissions) {
@@ -543,10 +542,10 @@ object KotlinUtils {
         if (!newPerms.isEmpty()) {
             val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
             for (groupPerm in group.allPermissions.values) {
-                var permFlags = groupPerm!!.flags
+                var permFlags = groupPerm.flags
                 permFlags = permFlags.clearFlag(PackageManager.FLAG_PERMISSION_AUTO_REVOKED)
-                if (groupPerm!!.flags != permFlags) {
-                    app.packageManager.updatePermissionFlags(groupPerm!!.name,
+                if (groupPerm.flags != permFlags) {
+                    app.packageManager.updatePermissionFlags(groupPerm.name,
                         group.packageInfo.packageName, PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,
                         permFlags, user)
                 }
@@ -1089,14 +1088,14 @@ object KotlinUtils {
         var resolveInfos = context.packageManager.queryIntentActivities(intentToResolve,
             MATCH_DIRECT_BOOT_AWARE or MATCH_DIRECT_BOOT_UNAWARE)
 
-        if (resolveInfos == null || resolveInfos.size <= 0) {
+        if (resolveInfos.size <= 0) {
             intentToResolve.removeCategory(CATEGORY_INFO)
             intentToResolve.addCategory(CATEGORY_LAUNCHER)
             intentToResolve.setPackage(packageName)
             resolveInfos = context.packageManager.queryIntentActivities(intentToResolve,
                 MATCH_DIRECT_BOOT_AWARE or MATCH_DIRECT_BOOT_UNAWARE)
         }
-        return resolveInfos != null && resolveInfos.size > 0
+        return resolveInfos.size > 0
     }
 
     /**
@@ -1157,7 +1156,7 @@ suspend fun <T, LD : LiveData<T>> LD.getInitializedValue(
     isInitialized: LD.() -> Boolean = { value != null }
 ): T {
     return if (isInitialized()) {
-        value as T
+        value!!
     } else {
         suspendCoroutine { continuation: Continuation<T> ->
             val observer = AtomicReference<Observer<T>>()

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.ui.model.v31
 
@@ -835,10 +836,10 @@ class GrantPermissionsViewModel(
         if (!alreadyRequestedStorageGroupsIfNeeded &&
             groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS &&
             packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
-            for (groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
-                val groupPerms = appPermGroupLiveDatas[groupName]
+            for (storageGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                val groupPerms = appPermGroupLiveDatas[storageGroupName]
                     ?.value?.allPermissions?.keys?.toList()
-                onPermissionGrantResult(groupName, groupPerms, result, true)
+                onPermissionGrantResult(storageGroupName, groupPerms, result, true)
             }
             return
         }
@@ -1281,15 +1282,15 @@ class GrantPermissionsViewModel(
          * An enum that represents the type of message which should be shown- foreground,
          * background, upgrade, or no message.
          */
-        enum class RequestMessage(request: Int) {
-            FG_MESSAGE(0),
-            BG_MESSAGE(1),
-            UPGRADE_MESSAGE(2),
-            NO_MESSAGE(3),
-            FG_FINE_LOCATION_MESSAGE(4),
-            FG_COARSE_LOCATION_MESSAGE(5),
-            STORAGE_SUPERGROUP_MESSAGE_Q_TO_S(6),
-            STORAGE_SUPERGROUP_MESSAGE_PRE_Q(7);
+        enum class RequestMessage {
+            FG_MESSAGE,
+            BG_MESSAGE,
+            UPGRADE_MESSAGE,
+            NO_MESSAGE,
+            FG_FINE_LOCATION_MESSAGE,
+            FG_COARSE_LOCATION_MESSAGE,
+            STORAGE_SUPERGROUP_MESSAGE_Q_TO_S,
+            STORAGE_SUPERGROUP_MESSAGE_PRE_Q,
         }
 
         fun filterNotificationPermissionIfNeededSync(

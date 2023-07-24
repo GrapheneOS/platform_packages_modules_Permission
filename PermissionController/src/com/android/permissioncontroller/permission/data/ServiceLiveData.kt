@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
 
 package com.android.permissioncontroller.permission.data
 
@@ -167,7 +168,7 @@ class ServiceLiveData(
                     if (resolveInfo?.serviceInfo?.permission != permission) {
                         return@mapNotNull null
                     }
-                    val packageName = resolveInfo?.serviceInfo?.packageName
+                    val packageName = resolveInfo.serviceInfo?.packageName
                     if (!isServiceEnabled(packageName)) {
                         if (DEBUG_HIBERNATION_POLICY) {
                             DumpableLog.i(LOG_TAG,

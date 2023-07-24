@@ -41,11 +41,11 @@ class SplitPermissionIndex() {
                 val newPermGroup = Utils.getGroupOfPlatformPermission(newPerm)
                 if (newPermGroup != null) {
                     permToGroupSplits.add(SplitPermissionIndexEntry(
-                        oldPerm, splitPerm.targetSdk, newPermGroup!!))
+                        oldPerm, splitPerm.targetSdk, newPermGroup))
                 }
                 if (oldPermGroup != null && newPermGroup != null) {
                     groupToGroupSplits.add(SplitPermissionIndexEntry(
-                        oldPermGroup!!, splitPerm.targetSdk, newPermGroup!!))
+                        oldPermGroup, splitPerm.targetSdk, newPermGroup))
                 }
             }
         }
