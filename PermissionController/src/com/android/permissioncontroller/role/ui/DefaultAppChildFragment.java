@@ -196,20 +196,25 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
             @NonNull CharSequence title, boolean checked, @Nullable ApplicationInfo applicationInfo,
             @NonNull ArrayMap<String, Preference> oldPreferences,
             @NonNull PreferenceScreen preferenceScreen, @NonNull Context context) {
-        TwoStatePreference preference = (TwoStatePreference) oldPreferences.get(key);
-        if (preference == null) {
-            preference = requirePreferenceFragment().createApplicationPreference();
+        RoleApplicationPreference roleApplicationPreference =
+                (RoleApplicationPreference) oldPreferences.get(key);
+        TwoStatePreference preference;
+        if (roleApplicationPreference == null) {
+            roleApplicationPreference = requirePreferenceFragment().createApplicationPreference();
+            preference = roleApplicationPreference.asTwoStatePreference();
             preference.setKey(key);
             preference.setIcon(icon);
             preference.setTitle(title);
             preference.setPersistent(false);
             preference.setOnPreferenceChangeListener((preference2, newValue) -> false);
             preference.setOnPreferenceClickListener(this);
+        } else {
+            preference = roleApplicationPreference.asTwoStatePreference();
         }
 
         preference.setChecked(checked);
         if (applicationInfo != null) {
-            RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(mRole, preference,
+            RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(mRole, roleApplicationPreference,
                     applicationInfo, mUser, context);
         }
 
@@ -281,7 +286,7 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
          * @return a new preference for an application
          */
         @NonNull
-        TwoStatePreference createApplicationPreference();
+        RoleApplicationPreference createApplicationPreference();
 
         /**
          * Create a new preference for the footer.
