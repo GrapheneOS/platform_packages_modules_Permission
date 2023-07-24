@@ -109,7 +109,9 @@
                     "include-filter": "android.permission.cts.PlatformPermissionGroupMappingTest"
                 }
             ]
-        },
+        }
+    ],
+    "mainline-postsubmit": [
         {
             "name": "CtsPermissionTestCases[com.google.android.permission.apex]",
             "options": [

@@ -97,7 +97,9 @@
         },
         {
             "name": "CtsPermissionUiTestCases"
-        },
+        }
+    ],
+    "mainline-postsubmit": [
         {
             "name": "CtsRoleTestCases[com.google.android.permission.apex]",
             "options": [

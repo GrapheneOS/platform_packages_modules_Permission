@@ -29,7 +29,9 @@
     "postsubmit": [
         {
             "name": "CtsRoleTestCases"
-        },
+        }
+    ],
+    "mainline-postsubmit": [
         {
             "name": "CtsRoleTestCases[com.google.android.permission.apex]",
             "options": [
