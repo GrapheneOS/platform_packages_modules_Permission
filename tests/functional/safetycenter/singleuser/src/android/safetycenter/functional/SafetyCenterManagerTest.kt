@@ -76,6 +76,7 @@ import com.android.safetycenter.testing.Coroutines.waitForWithTimeout
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.dismissSafetyCenterIssueWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
+import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
@@ -901,6 +902,71 @@ class SafetyCenterManagerTest {
         val status2 = listener.receiveSafetyCenterData().status
         assertThat(status2.refreshStatus).isEqualTo(REFRESH_STATUS_NONE)
         assertThat(status2).isEqualTo(safetyCenterStatusOk)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_allowedByFlag_broadcastSent() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.noPageOpenConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+        SafetyCenterFlags.overrideRefreshOnPageOpenSources = setOf(SINGLE_SOURCE_ID)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.informationWithIssue)
+        )
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN
+        )
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceTestData.informationWithIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_allowedByFlagLater_broadcastSentLater() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.noPageOpenConfig)
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.information)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.informationWithIssue)
+        )
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN,
+                timeout = TIMEOUT_SHORT
+            )
+        }
+        val apiSafetySourceDataBeforeSettingFlag =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        SafetyCenterFlags.overrideRefreshOnPageOpenSources = setOf(SINGLE_SOURCE_ID)
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN
+        )
+        val apiSafetySourceDataAfterSettingFlag =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+
+        assertThat(apiSafetySourceDataBeforeSettingFlag).isEqualTo(safetySourceTestData.information)
+        assertThat(apiSafetySourceDataAfterSettingFlag)
+            .isEqualTo(safetySourceTestData.informationWithIssue)
+    }
+
+    @Test
+    fun refreshSafetySources_reasonPageOpen_noDataForSource_broadcastSent() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.noPageOpenConfig)
+        SafetySourceReceiver.setResponse(
+            Request.Refresh(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN
+        )
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceTestData.information)
     }
 
     @Test
