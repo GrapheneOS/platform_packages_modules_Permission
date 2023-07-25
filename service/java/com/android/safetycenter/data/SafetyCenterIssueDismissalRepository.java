@@ -432,6 +432,7 @@ final class SafetyCenterIssueDismissalRepository {
         fout.flush();
         try {
             Files.copy(issueDismissalRepositoryFile.toPath(), new FileOutputStream(fd));
+            fout.println();
         } catch (NoSuchFileException e) {
             fout.println("<No File> (equivalent to empty issue list)");
         } catch (IOException e) {
