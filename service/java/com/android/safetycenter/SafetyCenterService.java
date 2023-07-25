@@ -115,9 +115,6 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterResourcesApk mSafetyCenterResourcesApk;
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterNotificationChannels mNotificationChannels;
-
-    @GuardedBy("mApiLock")
     private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     @GuardedBy("mApiLock")
@@ -131,6 +128,9 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     private final SafetyCenterListeners mSafetyCenterListeners;
+
+    @GuardedBy("mApiLock")
+    private final SafetyCenterNotificationChannels mNotificationChannels;
 
     @GuardedBy("mApiLock")
     private final SafetyCenterNotificationSender mNotificationSender;
@@ -231,7 +231,6 @@ public final class SafetyCenterService extends SystemService {
         synchronized (mApiLock) {
             registerSafetyCenterEnabledListenerLocked();
             pullAtomCallback = newSafetyCenterPullAtomCallbackLocked();
-            mNotificationChannels.createAllChannelsForAllUsers(getContext());
         }
         registerSafetyCenterPullAtomCallback(pullAtomCallback);
     }
@@ -876,6 +875,9 @@ public final class SafetyCenterService extends SystemService {
         @GuardedBy("mApiLock")
         private void setInitialStateLocked() {
             mSafetyCenterEnabled = SafetyCenterFlags.getSafetyCenterEnabled();
+            if (mSafetyCenterEnabled) {
+                onApiInitEnabledLocked();
+            }
             Log.i(TAG, "Safety Center is " + (mSafetyCenterEnabled ? "enabled" : "disabled"));
         }
 
@@ -892,13 +894,20 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @GuardedBy("mApiLock")
+        private void onApiInitEnabledLocked() {
+            mNotificationChannels.createAllChannelsForAllUsers(getContext());
+        }
+
+        @GuardedBy("mApiLock")
         private void onApiEnabledLocked() {
+            mNotificationChannels.createAllChannelsForAllUsers(getContext());
             mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
         }
 
         @GuardedBy("mApiLock")
         private void onApiDisabledLocked() {
             clearDataLocked();
+            mNotificationChannels.clearAllChannelsForAllUsers(getContext());
             mSafetyCenterListeners.clear();
             mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
         }
