@@ -327,9 +327,9 @@ final class SafetySourceDataRepository {
             SafetySourceKey key = mSafetySourceErrors.valueAt(i);
             fout.println("\t[" + i + "] " + key);
         }
+        fout.println();
         dumpArrayMap(fout, mSafetySourceLastUpdated, "LAST UPDATED");
         dumpArrayMap(fout, mSourceStates, "SOURCE STATES");
-        fout.println();
     }
 
     private static <K, V> void dumpArrayMap(PrintWriter fout, ArrayMap<K, V> map, String label) {
@@ -338,5 +338,6 @@ final class SafetySourceDataRepository {
         for (int i = 0; i < count; i++) {
             fout.println("\t[" + i + "] " + map.keyAt(i) + " -> " + map.valueAt(i));
         }
+        fout.println();
     }
 }
