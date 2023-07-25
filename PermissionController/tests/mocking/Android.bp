@@ -139,5 +139,5 @@ android_test {
         "mts-permission",
     ],
 
-    kotlincflags: ["-Xjvm-default=enable"],
+    kotlincflags: ["-Xjvm-default=all"],
 }
