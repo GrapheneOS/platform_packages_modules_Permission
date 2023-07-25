@@ -5,6 +5,9 @@
             "options": [
                 {
                     "include-filter": "android.hibernation.cts.AppHibernationIntegrationTest"
+                },
+                {
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }

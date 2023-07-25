@@ -29,12 +29,8 @@
         {
             "name": "CtsHibernationTestCases",
             "options": [
-                // TODO(b/280519694): This test is flaky GSI builds
                 {
-                    "exclude-filter": "android.hibernation.cts.AutoRevokeTest#testPermissionEventCleanupService_scrubsEvents"
-                },
-                {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
@@ -69,16 +65,8 @@
         {
             "name": "CtsHibernationTestCases[com.google.android.permission.apex]",
             "options": [
-                // TODO(b/238677038): This test currently fails on R base image
                 {
-                    "exclude-filter": "android.hibernation.cts.AutoRevokeTest#testUnusedApp_uninstallApp"
-                },
-                // TODO(b/280519694): This test is very flaky on T+ builds
-                {
-                    "exclude-filter": "android.hibernation.cts.AutoRevokeTest#testPermissionEventCleanupService_scrubsEvents"
-                },
-                {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
