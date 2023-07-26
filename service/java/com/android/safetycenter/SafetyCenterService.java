@@ -906,8 +906,14 @@ public final class SafetyCenterService extends SystemService {
 
         @GuardedBy("mApiLock")
         private void onApiDisabledLocked() {
+            // We're not clearing the Safety Center notification channels here. The reason for this
+            // is that the NotificationManager will post a runnable to cancel all associated
+            // notifications when clearing the channels. Given this happens asynchronously, this can
+            // leak between test cases and cause notifications that should be active to be cleared
+            // inadvertently. We're ok with the inconsistency because the channels are hidden
+            // somewhat deeply under Settings anyway, and we're unlikely to turn off Safety Center
+            // in production.
             clearDataLocked();
-            mNotificationChannels.clearAllChannelsForAllUsers(getContext());
             mSafetyCenterListeners.clear();
             mSafetyCenterBroadcastDispatcher.sendEnabledChanged();
         }

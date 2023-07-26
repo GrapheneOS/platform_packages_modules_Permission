@@ -150,32 +150,6 @@ public final class SafetyCenterNotificationChannels {
         }
     }
 
-    /** Clears all Safety Center {@link NotificationChannel}s, for all current users. */
-    public void clearAllChannelsForAllUsers(Context context) {
-        List<UserHandle> users = UserUtils.getUserHandles(context);
-        for (int i = 0; i < users.size(); i++) {
-            clearAllChannelsForUser(context, users.get(i));
-        }
-    }
-
-    // This method is private and not public as it is assumed that clearing channels on user removal
-    // is already handled by the NotificationManagerService.
-    private void clearAllChannelsForUser(Context context, UserHandle user) {
-        NotificationManager notificationManager = getNotificationManagerForUser(context, user);
-        if (notificationManager == null) {
-            return;
-        }
-
-        try {
-            clearAllChannelsWithoutCallingIdentity(notificationManager);
-        } catch (RuntimeException e) {
-            Log.w(
-                    TAG,
-                    "Error clearing notification channels for user id: " + user.getIdentifier(),
-                    e);
-        }
-    }
-
     @Nullable
     private String getChannelIdForIssue(SafetySourceIssue issue) {
         int issueSeverityLevel = issue.getSeverityLevel();
