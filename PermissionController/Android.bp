@@ -173,6 +173,7 @@ android_app {
     },
 
     optimize: {
+        proguard_compatibility: false, // TODO(b/215530220): remove when this is default behavior
         proguard_flags_files: ["proguard.flags"],
     },
 
