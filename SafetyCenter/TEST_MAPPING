@@ -11,6 +11,9 @@
     },
     {
       "path": "packages/modules/Permission/tests/functional/safetycenter/singleuser/"
+    },
+    {
+      "path": "packages/modules/Permission/tests/hostside/safetycenter/"
     }
   ]
 }
