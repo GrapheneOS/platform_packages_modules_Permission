@@ -589,8 +589,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"データ共有と位置情報"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"データ共有情報の提供元"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"デベロッパーは、このアプリがデータを共有する方法に関する情報を、このデバイスのメーカーに提供しています。この情報は時間が経つと更新される可能性があります。"</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"デベロッパーは、このアプリがデータを共有する方法に関する情報を "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" に提供しています。この情報は時間が経つと更新される可能性があります。"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"デベロッパーは、このデバイスのメーカーに、このアプリによるデータ共有方法についての情報を提供しています。この情報は将来更新される場合があります。"</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"デベロッパーは、このアプリによるデータ共有方法についての情報を "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" に提供しています。この情報は将来更新される場合があります。"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"このアプリが位置情報を共有する目的"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"さまざまなデータ共有方法"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"データの取り扱いは、アプリのバージョンや使用方法、ユーザーの年齢やお住まいの地域によって異なることがあります。"<annotation id="link">"データ共有の詳細"</annotation></string>

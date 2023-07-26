@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Mos lejo gjithsesi"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Hiqe"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> nga <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; që të <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Të lejohet gjithmonë &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; që <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të kryejë këtë veprim: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Të lejohet gjithmonë &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të kryejë këtë veprim: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Vetëm gjatë përdorimit të aplikacionit"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Gjithmonë"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Mos lejo dhe mos pyet përsëri"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Hapur së fundi më <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Nëse lejon menaxhimin e të gjithë skedarëve, ky aplikacion mund të ketë qasje, modifikojë dhe fshijë çdo skedar në hapësirën ruajtëse të përbashkët në këtë pajisje ose pajisjet me hapësirë ruajtëse të lidhur. Aplikacioni mund të ketë qasje te skedarët pa të pyetur."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Të lejohet që ky aplikacion të qaset, modifikojë dhe fshijë skedarët në pajisje ose në çdo pajisje me hapësirë ruajtëse të lidhur? Ky aplikacion mund të ketë qasje te skedarët pa të pyetur."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacioneve me këtë leje u lejohet <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacioneve me këtë leje u lejohet ky veprim: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacionet me këtë leje mund të kenë qasje tek aktiviteti yt fizik, si: ecja në këmbë, me biçikletë, me makinë, numërimi i hapave etj."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacionet me këtë leje mund të kenë qasje te kalendari yt"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacionet me këtë leje mund të lexojnë dhe të shkruajnë në evidencën e telefonatave të telefonit"</string>
@@ -589,8 +589,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ky aplikacion deklaroi se mund të ndajë të dhënat e vendndodhjes me palë të treta"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Ndarja e të dhënave dhe vendndodhja"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nga vijnë informacionet rreth ndarjes së të dhënave"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Zhvilluesi i ka dhënë informacione prodhuesit të kësaj pajisjeje rreth mënyrës se si ky aplikacion ndan të dhënat Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
-    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Zhvilluesi i ofroi informacione "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" rreth mënyrës se si ky aplikacion ndan të dhënat. Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Zhvilluesi i ka dhënë informacione prodhuesit të kësaj pajisjeje rreth mënyrës se si ky aplikacion ndan të dhënat. Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
+    <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Zhvilluesi i ka dhënë informacione "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" rreth mënyrës se si ky aplikacion ndan të dhënat. Zhvilluesi mund t\'i përditësojë këto informacione me kalimin e kohës."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Apl. mund të ndajë të dhënat e vendndodhjes për:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Ndarja e të dhënave ndryshon"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Veprimet me të dhënat mund të ndryshojnë bazuar në versionin e aplikacionit, përdorimin, rajonin dhe moshën tënde. "<annotation id="link">"Më shumë rreth ndarjes së të dhënave"</annotation></string>
