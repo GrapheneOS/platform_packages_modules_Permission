@@ -19,8 +19,6 @@ package android.safetycenter.functional.ui
 import android.content.Context
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
-import android.platform.test.rule.ScreenRecordRule
-import android.platform.test.rule.ScreenRecordRule.ScreenRecord
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
@@ -100,7 +98,6 @@ class SafetyCenterSubpagesTest {
     @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
     @get:Rule(order = 3) val disableAnimationRule = DisableAnimationRule()
     @get:Rule(order = 4) val freezeRotationRule = FreezeRotationRule()
-    @get:Rule(order = 5) val screenRecordRule = ScreenRecordRule()
 
     // It is necessary to couple RetryRule and Timeout to ensure that all the retries together are
     // restricted with the test timeout
@@ -314,7 +311,6 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    @ScreenRecord
     fun entryListWithSingleSource_clickingTheInfoIcon_redirectsToDifferentScreen() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         val sourceTestData = safetySourceTestData.informationWithIconAction
@@ -479,7 +475,6 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    @ScreenRecord
     fun issueCard_updateSafetySourceData_subpageDisplaysUpdatedIssue() {
         val initialDataToDisplay = safetySourceTestData.informationWithIssueWithAttributionTitle
         val updatedDataToDisplay = safetySourceTestData.criticalWithIssueWithAttributionTitle
@@ -912,7 +907,6 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
-    @ScreenRecord
     fun settingsSearch_openWithGenericIntentExtra_showsGenericSubpage() {
         val config = safetyCenterTestConfigs.multipleSourcesConfig
         safetyCenterTestHelper.setConfig(config)
