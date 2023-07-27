@@ -1,30 +1,11 @@
 {
-  "presubmit": [
-    {
-      "name": "SafetyCenterFunctionalMultiUsersTestCases",
-      "options": [
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
-    }
-  ],
   "postsubmit": [
+    // Note that these test cases are running in postsubmit only. Bedstead tests can be pretty slow
+    // (due to adding/removing users, which makes the device somewhat unresponsive). This can also
+    // cause flakyness due to timeouts. In postsubmit, these tests have more time to run which makes
+    // them less flaky (and this flakyness is arguably less of an issue in this case).
     {
       "name": "SafetyCenterFunctionalMultiUsersTestCases"
-    }
-  ],
-  "mainline-presubmit": [
-    {
-      "name": "SafetyCenterFunctionalMultiUsersTestCases[com.google.android.permission.apex]",
-      "options": [
-        {
-          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
-        },
-        {
-          "exclude-annotation": "com.android.bedstead.harrier.annotations.Postsubmit"
-        }
-      ]
     }
   ]
 }
