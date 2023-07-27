@@ -85,7 +85,7 @@ class TestNotificationListener : NotificationListenerService() {
     }
 
     companion object {
-        private const val TAG = "TestNotificationListene"
+        private const val TAG = "SafetyCenterTestNotif"
 
         private val connected = ConditionVariable(false)
         private val disconnected = ConditionVariable(true)
@@ -125,7 +125,10 @@ class TestNotificationListener : NotificationListenerService() {
             count: Int,
             timeout: Duration = TIMEOUT_LONG
         ): List<StatusBarNotificationWithChannel> {
-            return waitForNotificationsToSatisfy(timeout, description = "$count notifications") {
+            return waitForNotificationsToSatisfy(
+                timeout = timeout,
+                description = "$count notifications"
+            ) {
                 it.size == count
             }
         }
@@ -155,7 +158,7 @@ class TestNotificationListener : NotificationListenerService() {
         ): List<StatusBarNotificationWithChannel> {
             val charsList = characteristics.toList()
             return waitForNotificationsToSatisfy(
-                timeout,
+                timeout = timeout,
                 description = "notification(s) matching characteristics $charsList"
             ) {
                 NotificationCharacteristics.areMatching(it, charsList)
@@ -180,10 +183,6 @@ class TestNotificationListener : NotificationListenerService() {
             description: String,
             predicate: (List<StatusBarNotificationWithChannel>) -> Boolean
         ): List<StatusBarNotificationWithChannel> {
-            fun formatError(notifs: List<StatusBarNotificationWithChannel>): String {
-                return "Expected: $description, but the actual notifications were: $notifs"
-            }
-
             // First we wait at most timeout for the active notifications to satisfy the given
             // predicate or otherwise we throw:
             val satisfyingNotifications =
@@ -192,7 +191,11 @@ class TestNotificationListener : NotificationListenerService() {
                         waitForNotificationsToSatisfyAsync(predicate)
                     }
                 } catch (e: TimeoutCancellationException) {
-                    throw AssertionError(formatError(getSafetyCenterNotifications()), e)
+                    throw AssertionError(
+                        "Expected: $description, but notifications were " +
+                            "${getSafetyCenterNotifications()} after waiting for $timeout",
+                        e
+                    )
                 }
 
             // Assuming the predicate was satisfied, now we ensure it is not violated for the
@@ -203,7 +206,10 @@ class TestNotificationListener : NotificationListenerService() {
                 }
             if (nonSatisfyingNotifications != null) {
                 // In this case the negated-predicate was satisfied before forAtLeast had elapsed
-                throw AssertionError(formatError(nonSatisfyingNotifications))
+                throw AssertionError(
+                    "Expected: $description to settle, but notifications changed to " +
+                        "$nonSatisfyingNotifications within $forAtLeast"
+                )
             }
 
             return satisfyingNotifications
@@ -276,7 +282,7 @@ class TestNotificationListener : NotificationListenerService() {
         fun cancelAndWait(key: String, timeout: Duration = TIMEOUT_LONG) {
             getInstanceOrThrow().cancelNotification(key)
             waitForNotificationsToSatisfy(
-                timeout,
+                timeout = timeout,
                 description = "no notification with the key $key"
             ) { notifications ->
                 notifications.none { it.statusBarNotification.key == key }
