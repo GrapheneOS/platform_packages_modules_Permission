@@ -60,9 +60,6 @@ public final class SafetyCenterFlags {
     private static final String PROPERTY_NOTIFICATION_RESURFACE_INTERVAL =
             "safety_center_notification_resurface_interval";
 
-    private static final String PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT =
-            "safety_center_show_error_entries_on_timeout";
-
     private static final String PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION =
             "safety_center_replace_lock_screen_icon_action";
 
@@ -173,7 +170,6 @@ public final class SafetyCenterFlags {
                 getImmediateNotificationBehaviorIssues());
         printFlag(
                 fout, PROPERTY_NOTIFICATION_RESURFACE_INTERVAL, getNotificationResurfaceInterval());
-        printFlag(fout, PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, getShowErrorEntriesOnTimeout());
         printFlag(fout, PROPERTY_REPLACE_LOCK_SCREEN_ICON_ACTION, getReplaceLockScreenIconAction());
         printFlag(fout, PROPERTY_RESOLVING_ACTION_TIMEOUT_MILLIS, getResolvingActionTimeout());
         printFlag(fout, PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS, getFgsAllowlistDuration());
@@ -281,13 +277,6 @@ public final class SafetyCenterFlags {
         } else {
             return Duration.ofMillis(millis);
         }
-    }
-
-    /**
-     * Returns whether we should show error entries for sources that timeout when refreshing them.
-     */
-    static boolean getShowErrorEntriesOnTimeout() {
-        return getBoolean(PROPERTY_SHOW_ERROR_ENTRIES_ON_TIMEOUT, true);
     }
 
     /**
