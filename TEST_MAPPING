@@ -14,6 +14,16 @@
       ]
     }
   ],
+  "carpermission-postsubmit" : [
+    {
+      "name" : "CtsPermissionUiTestCases",
+      "options": [
+        {
+          "include-annotation": "android.platform.test.annotations.FlakyTest"
+        }
+      ]
+    }
+  ],
   "alltests" : [
     {
       "name" : "PermissionControllerMockingTests"
@@ -59,5 +69,4 @@
       ]
     }
   ]
-  // TODO: Do we need to create a carpermission-postsubmit test-group?
 }
