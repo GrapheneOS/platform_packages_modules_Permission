@@ -355,6 +355,11 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         private fun StatusBarNotification.isSafetyCenterNotification(): Boolean =
-            packageName == "android" && notification.channelId.startsWith("safety_center")
+            packageName == "android" &&
+                notification.channelId.startsWith("safety_center") &&
+                // Don't consider the grouped system notifications to be a SC notification, in some
+                // scenarios a "ranker_group" notification can remain even when there are no more
+                // notifications associated with the channel. See b/293593539 for more details.
+                tag != "ranker_group"
     }
 }
