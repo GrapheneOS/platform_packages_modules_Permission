@@ -34,6 +34,7 @@ import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLI
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED
 import android.safetycenter.SafetySourceData
 import com.android.modules.utils.build.SdkLevel
+import com.android.safetycenter.testing.Coroutines.TEST_TIMEOUT
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import java.time.Duration
@@ -100,13 +101,6 @@ object SafetyCenterFlags {
             DurationParser()
         )
 
-    /**
-     * Flag that determines whether we should show error entries for sources that timeout when
-     * refreshing them.
-     */
-    private val showErrorEntriesOnTimeoutFlag =
-        Flag("safety_center_show_error_entries_on_timeout", defaultValue = false, BooleanParser())
-
     /** Flag that determines whether we should replace the IconAction of the lock screen source. */
     private val replaceLockScreenIconActionFlag =
         Flag("safety_center_replace_lock_screen_icon_action", defaultValue = true, BooleanParser())
@@ -115,11 +109,16 @@ object SafetyCenterFlags {
      * Flag that determines the time for which a Safety Center refresh is allowed to wait for a
      * source to respond to a refresh request before timing out and marking the refresh as finished,
      * depending on the refresh reason.
+     *
+     * Unlike the production code, this flag is set to [TEST_TIMEOUT] for all refresh reasons by
+     * default for convenience. UI tests typically will set some data manually rather than going
+     * through a full refresh, and we don't want to timeout the refresh and potentially end up with
+     * error entries in this case (as it could lead to flakyness).
      */
     private val refreshSourceTimeoutsFlag =
         Flag(
             "safety_center_refresh_sources_timeouts_millis",
-            defaultValue = getAllRefreshTimeoutsMap(TIMEOUT_LONG),
+            defaultValue = getAllRefreshTimeoutsMap(TEST_TIMEOUT),
             MapParser(IntParser(), DurationParser())
         )
 
@@ -302,7 +301,6 @@ object SafetyCenterFlags {
             notificationsMinDelayFlag,
             immediateNotificationBehaviorIssuesFlag,
             notificationResurfaceIntervalFlag,
-            showErrorEntriesOnTimeoutFlag,
             replaceLockScreenIconActionFlag,
             refreshSourceTimeoutsFlag,
             resolveActionTimeoutFlag,
@@ -341,14 +339,11 @@ object SafetyCenterFlags {
     /** A property that allows getting and setting the [notificationResurfaceIntervalFlag]. */
     var notificationResurfaceInterval: Duration by notificationResurfaceIntervalFlag
 
-    /** A property that allows getting and setting the [showErrorEntriesOnTimeoutFlag]. */
-    var showErrorEntriesOnTimeout: Boolean by showErrorEntriesOnTimeoutFlag
-
     /** A property that allows getting and setting the [replaceLockScreenIconActionFlag]. */
     var replaceLockScreenIconAction: Boolean by replaceLockScreenIconActionFlag
 
     /** A property that allows getting and setting the [refreshSourceTimeoutsFlag]. */
-    var refreshTimeouts: Map<Int, Duration> by refreshSourceTimeoutsFlag
+    private var refreshTimeouts: Map<Int, Duration> by refreshSourceTimeoutsFlag
 
     /** A property that allows getting and setting the [resolveActionTimeoutFlag]. */
     var resolveActionTimeout: Duration by resolveActionTimeoutFlag

@@ -944,22 +944,12 @@ public final class SafetyCenterService extends SystemService {
                 if (stillInFlight == null) {
                     return;
                 }
-                boolean showErrorEntriesOnTimeout =
-                        SafetyCenterFlags.getShowErrorEntriesOnTimeout();
-                boolean setError =
-                        showErrorEntriesOnTimeout
-                                && !RefreshReasons.isBackgroundRefresh(mRefreshReason);
+                boolean setError = !RefreshReasons.isBackgroundRefresh(mRefreshReason);
                 for (int i = 0; i < stillInFlight.size(); i++) {
                     mSafetyCenterDataManager.markSafetySourceRefreshTimedOut(
                             stillInFlight.valueAt(i), setError);
                 }
                 mSafetyCenterDataChangeNotifier.updateDataConsumers(mUserProfileGroup);
-                if (!showErrorEntriesOnTimeout) {
-                    mSafetyCenterListeners.deliverErrorForUserProfileGroup(
-                            mUserProfileGroup,
-                            new SafetyCenterErrorDetails(
-                                    mSafetyCenterResourcesApk.getStringByName("refresh_timeout")));
-                }
             }
         }
 

@@ -18,9 +18,6 @@ package android.safetycenter.hostside.device
 
 import android.content.Context
 import android.safetycenter.SafetyCenterManager
-import android.safetycenter.SafetyCenterStatus
-import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
-import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
 import androidx.test.core.app.ApplicationProvider
@@ -168,12 +165,6 @@ class SafetySourceStateCollectedLoggingHelperTests {
         // things are logged.
         val listener = safetyCenterTestHelper.addListener()
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
-        listener.receiveSafetyCenterData {
-            it.status.refreshStatus == REFRESH_STATUS_DATA_FETCH_IN_PROGRESS ||
-                it.status.refreshStatus == REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-        }
-        listener.receiveSafetyCenterData {
-            it.status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_NONE
-        }
+        listener.waitForSafetyCenterRefresh()
     }
 }
