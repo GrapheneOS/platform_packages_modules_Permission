@@ -246,7 +246,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
     <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح لها"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
@@ -340,7 +340,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"لم يتم السماح لأي تطبيقات."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"ما من تطبيقات تم منحها إذن الوصول إلى جميع الملفات."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"ما من تطبيقات تم منحها إذن الوصول إلى الوسائط فقط."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات."</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"مُختار"</string>
     <string name="settings" msgid="5409109923158713323">"الإعدادات"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"تحظى خدمة <xliff:g id="SERVICE_NAME">%s</xliff:g> بوصول كامل إلى جهازك."</string>

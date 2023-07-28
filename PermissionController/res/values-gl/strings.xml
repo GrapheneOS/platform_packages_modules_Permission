@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non permitir aínda así"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Pechar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Queres permitir á aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Permitir sempre á aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Queres dar permiso á aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; para <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; poida <xliff:g id="ACTION">%2$s</xliff:g> sempre?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Só ao usar a aplicación"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Sempre"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Non permitir e non volver preguntar"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Abriuse por última vez o <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se permites a xestión de todos os ficheiros, esta aplicación pode acceder aos ficheiros de almacenamento común, así como modificalos e eliminalos, neste dispositivo ou nos dispositivos de almacenamento conectados. A aplicación pode acceder aos ficheiros sen pedirche permiso."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Queres permite que esta aplicación acceda aos ficheiros, así como que os modifique e elimine, neste dispositivo ou en calquera dispositivo de almacenamento conectado? Esta aplicación pode acceder aos ficheiros sen pediche permiso."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"As aplicacións que teñen este permiso poden facer o seguinte: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"As aplicacións que teñen este permiso poden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"As aplicacións que teñen este permiso poden acceder á túa actividade física, como as camiñadas, os percorridos en bicicleta, os traxectos en coche, o reconto de pasos e moito máis"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"As aplicacións que teñen este permiso poden acceder ao teu calendario"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"As aplicacións que teñen este permiso poden ler e editar o rexistro de chamadas do teléfono"</string>
@@ -444,7 +444,7 @@
     <string name="incident_report_dialog_title" msgid="669104389325204095">"Queres compartir os datos de depuración?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"O sistema detectou un problema."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"A aplicación <xliff:g id="APP_NAME_0">%1$s</xliff:g> quere subir un informe de erros deste dispositivo, xerado o <xliff:g id="DATE">%2$s</xliff:g> (<xliff:g id="TIME">%3$s</xliff:g>). Os informes de erros inclúen información persoal sobre o dispositivo ou datos rexistrados polas aplicacións, como os nomes de usuario, os datos de localización, os identificadores do dispositivo e a información da rede. Comparte estes informes unicamente con persoas e aplicacións de confianza. Queres permitir que a aplicación <xliff:g id="APP_NAME_1">%4$s</xliff:g> cargue un informe de erros?"</string>
-    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Houbo un erro ao procesar o informe de erro da aplicación <xliff:g id="APP_NAME">%1$s</xliff:g>, polo cal se denegou o uso compartido dos datos de depuración detallados. Lamentamos a interrupción."</string>
+    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Houbo un erro ao procesar o informe de erros da aplicación <xliff:g id="APP_NAME">%1$s</xliff:g>, polo cal se denegou o uso compartido dos datos de depuración detallados. Lamentamos a interrupción."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Permitir"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Denegar"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Configuración avanzada"</string>
