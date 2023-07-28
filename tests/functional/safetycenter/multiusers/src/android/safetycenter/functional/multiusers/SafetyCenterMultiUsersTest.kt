@@ -35,8 +35,6 @@ import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
-import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
-import android.safetycenter.SafetyCenterStatus.REFRESH_STATUS_NONE
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
 import androidx.test.core.app.ApplicationProvider
@@ -1279,10 +1277,7 @@ class SafetyCenterMultiUsersTest {
     private fun disableQuietModeAndWaitForRefreshToComplete() {
         val listener = safetyCenterTestHelper.addListener()
         deviceState.workProfile().setQuietMode(false)
-        listener.receiveSafetyCenterData {
-            it.status.refreshStatus == REFRESH_STATUS_DATA_FETCH_IN_PROGRESS
-        }
-        listener.receiveSafetyCenterData { it.status.refreshStatus == REFRESH_STATUS_NONE }
+        listener.waitForSafetyCenterRefresh()
     }
 
     private fun safetyCenterEntryOkForWork(sourceId: String, managedUserId: Int) =

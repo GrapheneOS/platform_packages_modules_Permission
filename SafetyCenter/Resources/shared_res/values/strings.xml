@@ -94,9 +94,6 @@
     <!-- An error shown to the user when we failed to resolve an alert that they attempted to resolve directly from the Safety Center screen [CHAR LIMIT=50] -->
     <string name="resolving_action_error">Couldn\’t resolve alert</string>
 
-    <!-- An error shown to the user when we failed to refresh the overall Safety Center status. This happens when at least one safety signal did not get back to Safety Center within an arbitrary timeout [CHAR LIMIT=50] -->
-    <string name="refresh_timeout">Couldn\’t refresh settings</string>
-
     <!-- An error shown to the user when we failed to refresh the status of one or more Safety Center entries. The number of entries is used as a parameter to format the error [CHAR LIMIT=60] -->
     <string name="refresh_error">{count, plural,
         =1      {Couldn\’t check setting}
