@@ -21,13 +21,11 @@ import android.content.pm.PackageManager
 import android.hardware.SensorPrivacyManager
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
-import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID
 import android.safetycenter.config.SafetySource
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
@@ -60,7 +58,6 @@ import org.junit.runner.RunWith
 
 /** Functional tests for the Privacy subpage in Safety Center. */
 @RunWith(AndroidJUnit4::class)
-@SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
 class PrivacySubpageTest {
 
     private val context: Context = getApplicationContext()
