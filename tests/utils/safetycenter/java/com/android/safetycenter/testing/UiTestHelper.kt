@@ -84,9 +84,7 @@ object UiTestHelper {
 
     /** Waits for all the given [textToFind] not to be displayed. */
     fun waitAllTextNotDisplayed(vararg textToFind: CharSequence?) {
-        for (text in textToFind) {
-            if (text != null) waitNotDisplayed(By.text(text.toString()))
-        }
+        waitNotDisplayed(By.text(anyOf(*textToFind)))
     }
 
     /** Waits for a button with the given [label] not to be displayed. */
@@ -131,7 +129,7 @@ object UiTestHelper {
     fun waitCollapsedIssuesDisplayed(vararg sourceIssues: SafetySourceIssue) {
         waitSourceIssueDisplayed(sourceIssues.first())
         waitAllTextDisplayed(MORE_ISSUES_LABEL)
-        sourceIssues.asSequence().drop(1).forEach { waitSourceIssueNotDisplayed(it) }
+        waitAllTextNotDisplayed(*sourceIssues.drop(1).map { it.title }.toTypedArray())
     }
 
     /** Waits for all the [SafetySourceIssue] to be displayed with the [MORE_ISSUES_LABEL] card. */
@@ -221,7 +219,15 @@ object UiTestHelper {
     }
 
     private fun buttonSelector(label: CharSequence): BySelector {
-        return By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}"))
+        return By.clickable(true).text(anyOf(label, label.toString().uppercase()))
+    }
+
+    private fun anyOf(vararg anyTextToFind: CharSequence?): Pattern {
+        val regex =
+            anyTextToFind.filterNotNull().joinToString(separator = "|") {
+                Pattern.quote(it.toString())
+            }
+        return Pattern.compile(regex)
     }
 
     private fun waitFor(
