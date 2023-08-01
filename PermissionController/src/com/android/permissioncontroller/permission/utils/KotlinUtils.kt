@@ -173,6 +173,8 @@ object KotlinUtils {
     private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH =
         "safety_label_changes_job_service_kill_switch"
 
+    private const val PROPERTY_NEW_GRANT_DIALOG_BACKEND = "new_grand_dialog_backend"
+
     /**
      * Whether the Permissions Hub 2 flag is enabled
      *
@@ -365,6 +367,11 @@ object KotlinUtils {
             PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE,
             true
         )
+    }
+
+    fun isNewGrantDialogBackendEnabled(): Boolean {
+         return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_NEW_GRANT_DIALOG_BACKEND, true)
     }
 
     /**
@@ -837,7 +844,7 @@ object KotlinUtils {
     fun grantForegroundRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
-        filterPermissions: List<String> = group.permissions.keys.toList(),
+        filterPermissions: Collection<String> = group.permissions.keys,
         isOneTime: Boolean = false,
         userFixed: Boolean = false,
         withoutAppOps: Boolean = false,
@@ -868,9 +875,10 @@ object KotlinUtils {
     fun grantBackgroundRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
-        filterPermissions: List<String> = group.permissions.keys.toList()
+        filterPermissions: Collection<String> = group.permissions.keys
     ): LightAppPermGroup {
-        return grantRuntimePermissions(app, group, true, false, false, false, filterPermissions)
+        return grantRuntimePermissions(app, group, grantBackground = true, isOneTime = false,
+            userFixed = false, withoutAppOps = false, filterPermissions = filterPermissions)
     }
 
     private fun grantRuntimePermissions(
@@ -880,7 +888,7 @@ object KotlinUtils {
         isOneTime: Boolean = false,
         userFixed: Boolean = false,
         withoutAppOps: Boolean = false,
-        filterPermissions: List<String> = group.permissions.keys.toList(),
+        filterPermissions: Collection<String> = group.permissions.keys
     ): LightAppPermGroup {
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
@@ -1103,7 +1111,7 @@ object KotlinUtils {
         userFixed: Boolean = false,
         oneTime: Boolean = false,
         forceRemoveRevokedCompat: Boolean = false,
-        filterPermissions: List<String> = group.permissions.keys.toList()
+        filterPermissions: Collection<String> = group.permissions.keys
     ): LightAppPermGroup {
         return revokeRuntimePermissions(
             app,
@@ -1135,7 +1143,7 @@ object KotlinUtils {
         userFixed: Boolean = false,
         oneTime: Boolean = false,
         forceRemoveRevokedCompat: Boolean = false,
-        filterPermissions: List<String> = group.permissions.keys.toList()
+        filterPermissions: Collection<String> = group.permissions.keys
     ): LightAppPermGroup {
         return revokeRuntimePermissions(
             app,
@@ -1155,7 +1163,7 @@ object KotlinUtils {
         userFixed: Boolean,
         oneTime: Boolean,
         forceRemoveRevokedCompat: Boolean = false,
-        filterPermissions: List<String>
+        filterPermissions: Collection<String>
     ): LightAppPermGroup {
         val wasOneTime = group.isOneTime
         val newPerms = group.permissions.toMutableMap()

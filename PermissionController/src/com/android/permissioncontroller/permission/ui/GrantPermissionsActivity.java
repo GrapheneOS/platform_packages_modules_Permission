@@ -77,6 +77,8 @@ import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoV
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.RequestInfo;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModelFactory;
+import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel;
+import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModelFactory;
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -150,6 +152,11 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     /** The current list of permissions requested, across all current requests for this app */
     private List<String> mRequestedPermissions = new ArrayList<>();
+
+    /** A list of permissions requested on an app's behalf by the system. Usually Implicitly
+     * requested, although this isn't necessarily always the case.
+     */
+    private List<String> mSystemRequestedPermissions = new ArrayList<>();
     /** A copy of the list of permissions originally requested in the intent to this activity */
     private String[] mOriginalRequestedPermissions = new String[0];
 
@@ -235,8 +242,17 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        mRequestedPermissions = GrantPermissionsViewModel.Companion.getSanitizedPermissionsList(
-            requestedPermissionsArray, permissionsSdkLevel);
+        boolean useNewViewModel = KotlinUtils.INSTANCE.isNewGrantDialogBackendEnabled();
+        if (useNewViewModel) {
+            mRequestedPermissions = removeNullOrEmptyPermissions(requestedPermissionsArray);
+            if (mIsSystemTriggered) {
+                mSystemRequestedPermissions.addAll(mRequestedPermissions);
+            }
+        } else {
+            mRequestedPermissions = GrantPermissionsViewModel.Companion
+                    .getSanitizedPermissionsList(requestedPermissionsArray, permissionsSdkLevel);
+        }
+
         if (mRequestedPermissions.isEmpty()) {
             setResultAndFinish();
             return;
@@ -281,10 +297,19 @@ public class GrantPermissionsActivity extends SettingsActivity
                     .GrantPermissionsViewHandlerImpl(this, this);
         }
 
-        GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
-                getApplication(), mTargetPackage, mRequestedPermissions, mSessionId, icicle);
         if (!mDelegated) {
-            mViewModel = factory.create(GrantPermissionsViewModel.class);
+            if (useNewViewModel) {
+                NewGrantPermissionsViewModelFactory factory =
+                        new NewGrantPermissionsViewModelFactory(getApplication(), mTargetPackage,
+                                mRequestedPermissions, mSystemRequestedPermissions, mSessionId,
+                                icicle);
+                mViewModel = factory.create(NewGrantPermissionsViewModel.class);
+            } else {
+                GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
+                        getApplication(), mTargetPackage, mRequestedPermissions, mSessionId,
+                        icicle);
+                mViewModel = factory.create(GrantPermissionsViewModel.class);
+            }
             mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         }
 
@@ -368,10 +393,17 @@ public class GrantPermissionsActivity extends SettingsActivity
         Bundle oldState = new Bundle();
         mViewModel.getRequestInfosLiveData().removeObservers(this);
         mViewModel.saveInstanceState(oldState);
-        GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
-                getApplication(), mTargetPackage, mRequestedPermissions,
-                mSessionId, oldState);
-        mViewModel = factory.create(GrantPermissionsViewModel.class);
+        if (KotlinUtils.INSTANCE.isNewGrantDialogBackendEnabled()) {
+            NewGrantPermissionsViewModelFactory factory = new NewGrantPermissionsViewModelFactory(
+                    getApplication(), mTargetPackage, mRequestedPermissions,
+                    mSystemRequestedPermissions, mSessionId, oldState);
+            mViewModel = factory.create(GrantPermissionsViewModel.class);
+        } else {
+            GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
+                    getApplication(), mTargetPackage, mRequestedPermissions,
+                    mSessionId, oldState);
+            mViewModel = factory.create(GrantPermissionsViewModel.class);
+        }
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         if (follower != null) {
             follower.mViewModel = mViewModel;
@@ -423,6 +455,13 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         } else if (info.getOpenPhotoPicker()) {
             mViewModel.openPhotoPicker(top, GRANTED_USER_SELECTED);
+            return;
+        } else if (!info.getFilteredPermissions().isEmpty()) {
+            // Filtered permissions should be removed from the requested permissions list entirely,
+            // and not have status returned to the app
+            mRequestedPermissions.removeAll(info.getFilteredPermissions());
+            mRequestInfos.remove(info);
+            showNextRequest();
             return;
         }
 
@@ -874,6 +913,18 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     private boolean isResultSet() {
         return mResultCode != Integer.MAX_VALUE;
+    }
+
+    // Remove null and empty permissions from an array, return a list
+    private List<String> removeNullOrEmptyPermissions(String[] perms) {
+        ArrayList<String> sanitized = new ArrayList<>();
+        for (String perm : perms) {
+            if (perm == null || perm.isEmpty()) {
+                continue;
+            }
+            sanitized.add(perm);
+        }
+        return sanitized;
     }
 
     /**
