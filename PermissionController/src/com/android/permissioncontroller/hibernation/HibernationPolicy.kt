@@ -100,6 +100,7 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
+import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
@@ -864,7 +865,7 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showUnusedAppsNotification(
+    private fun showUnusedAppsNotification(
             numUnused: Int,
             sessionId: Long,
             user: UserHandle
@@ -923,8 +924,10 @@ class HibernationJobService : JobService() {
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
                 Constants.UNUSED_APPS_NOTIFICATION_ID, b.build())
-        // Preload the unused packages
-        getUnusedPackages().getInitializedValue()
+        GlobalScope.launch(IPC) {
+            // Preload the unused packages
+            getUnusedPackages().getInitializedValue(staleOk = true)
+        }
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
