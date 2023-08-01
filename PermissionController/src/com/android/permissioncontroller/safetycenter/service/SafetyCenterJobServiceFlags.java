@@ -26,8 +26,6 @@ public class SafetyCenterJobServiceFlags {
     private static final Duration DEFAULT_PERIODIC_BACKGROUND_REFRESH_INTERVAL = Duration.ofDays(1);
     private static final String PROPERTY_BACKGROUND_REFRESH_IS_ENABLED =
             "safety_center_background_refresh_is_enabled";
-    private static final String PROPERTY_BACKGROUND_REFRESH_REQUIRES_CHARGING =
-            "safety_center_background_requires_charging";
     private static final String PROPERTY_PERIODIC_BACKGROUND_REFRESH_INTERVAL_MILLIS =
             "safety_center_periodic_background_interval_millis";
 
@@ -46,16 +44,5 @@ public class SafetyCenterJobServiceFlags {
                         DeviceConfig.NAMESPACE_PRIVACY,
                         PROPERTY_PERIODIC_BACKGROUND_REFRESH_INTERVAL_MILLIS,
                         DEFAULT_PERIODIC_BACKGROUND_REFRESH_INTERVAL.toMillis()));
-    }
-
-    /**
-     * Returns whether we should constrain background refresh jobs to only run when the device is
-     * charging.
-     */
-    static boolean getBackgroundRefreshRequiresCharging() {
-        return DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_BACKGROUND_REFRESH_REQUIRES_CHARGING,
-                true);
     }
 }

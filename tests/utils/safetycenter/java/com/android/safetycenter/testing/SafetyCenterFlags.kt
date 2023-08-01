@@ -285,13 +285,6 @@ object SafetyCenterFlags {
             MapParser(StringParser(), SetParser(StringParser(), delimiter = "|"))
         )
 
-    /**
-     * Flag that determines whether background refreshes require charging in
-     * [SafetyCenterBackgroundRefreshJobService]. See [JobInfo.setRequiresCharging] for details.
-     */
-    private val backgroundRefreshRequiresChargingFlag =
-        Flag("safety_center_background_requires_charging", defaultValue = false, BooleanParser())
-
     /** Every Safety Center flag. */
     private val FLAGS: List<Flag<*>> =
         listOf(
@@ -317,8 +310,7 @@ object SafetyCenterFlags {
             showSubpagesFlag,
             overrideRefreshOnPageOpenSourcesFlag,
             backgroundRefreshIsEnabledFlag,
-            periodicBackgroundRefreshIntervalFlag,
-            backgroundRefreshRequiresChargingFlag
+            periodicBackgroundRefreshIntervalFlag
         )
 
     /** A property that allows getting and setting the [isEnabledFlag]. */
@@ -379,15 +371,6 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [overrideRefreshOnPageOpenSourcesFlag]. */
     var overrideRefreshOnPageOpenSources: Set<String> by overrideRefreshOnPageOpenSourcesFlag
-
-    /** A property that allows getting and settings the [backgroundRefreshIsEnabledFlag]. */
-    var backgroundRefreshIsEnabled: Boolean by backgroundRefreshIsEnabledFlag
-
-    /** A property that allows getting and settings the [periodicBackgroundRefreshIntervalFlag]. */
-    var periodicBackgroundRefreshInterval: Duration by periodicBackgroundRefreshIntervalFlag
-
-    /** A property that allows getting and settings the [backgroundRefreshRequiresChargingFlag]. */
-    var backgroundRefreshRequiresCharging: Boolean by backgroundRefreshRequiresChargingFlag
 
     /**
      * Returns a snapshot of all the Safety Center flags.

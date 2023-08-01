@@ -39,6 +39,8 @@ import androidx.annotation.Nullable;
 
 import com.android.modules.utils.build.SdkLevel;
 
+import java.time.Duration;
+
 /**
  * Uses {@link android.app.job.JobScheduler} to schedule periodic calls to {@link
  * SafetyCenterManager#refreshSafetySources} after boot completed if safety center is already
@@ -46,7 +48,6 @@ import com.android.modules.utils.build.SdkLevel;
  *
  * <p>The job waits until the device is in idle mode to minimize impact on system health.
  */
-// TODO(b/243493200): Add tests
 public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     private static final String TAG = "SafetyCenterBackgroundR";
 
@@ -76,7 +77,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
             Context context, @Nullable String actionString) {
 
         if (!isActionStringValid(actionString)) {
-            Log.v(TAG, "Ignoring a " + actionString + " broadcast.");
+            Log.i(TAG, "Ignoring a " + actionString + " broadcast.");
             return;
         }
 
@@ -104,30 +105,26 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
             return;
         }
 
+        Duration periodicBackgroundRefreshInterval =
+                SafetyCenterJobServiceFlags.getPeriodicBackgroundRefreshInterval();
         JobInfo jobInfo =
                 new JobInfo.Builder(
                                 SAFETY_CENTER_BACKGROUND_REFRESH_JOB_ID,
                                 new ComponentName(
                                         context, SafetyCenterBackgroundRefreshJobService.class))
                         .setRequiresDeviceIdle(true)
-                        .setRequiresCharging(
-                                SafetyCenterJobServiceFlags.getBackgroundRefreshRequiresCharging())
-                        .setPeriodic(
-                                SafetyCenterJobServiceFlags.getPeriodicBackgroundRefreshInterval()
-                                        .toMillis())
+                        .setRequiresCharging(true)
+                        .setPeriodic(periodicBackgroundRefreshInterval.toMillis())
                         .build();
 
         Log.v(
                 TAG,
-                "Scheduling a periodic background refresh with "
-                        + ", interval="
-                        + jobInfo.getIntervalMillis()
-                        + "requires charging="
-                        + jobInfo.isRequireCharging());
+                "Scheduling a periodic background refresh with interval="
+                        + periodicBackgroundRefreshInterval);
 
         int scheduleResult = jobScheduler.schedule(jobInfo);
         if (scheduleResult != RESULT_SUCCESS) {
-            Log.e(
+            Log.w(
                     TAG,
                     "Could not schedule the background refresh job, scheduleResult="
                             + scheduleResult);
