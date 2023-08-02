@@ -72,10 +72,10 @@
         android:text="@string/safety_center_resolved_issue_fallback"
         style="@style/SafetyCenterIssueCardResolvedTitle" />
 
-    <!--  This group doesn't contain issue_card_dismiss_btn, issue_card_subtitle or
-          issue_card_protected_by_android since the version of ConstraintLayout we're
-          using doesn't allow us to override the group's visibility on individual group
-          members. See b/242705351 for context. -->
+    <!--  This group doesn't contain issue_card_attribution_title, issue_card_dismiss_btn,
+          issue_card_subtitle or issue_card_protected_by_android since the version of
+          ConstraintLayout we're using doesn't allow us to override the group's visibility on
+          individual group members. See b/242705351 for context. -->
     <androidx.constraintlayout.widget.Group
         android:id="@+id/default_issue_content"
         android:layout_width="wrap_content"

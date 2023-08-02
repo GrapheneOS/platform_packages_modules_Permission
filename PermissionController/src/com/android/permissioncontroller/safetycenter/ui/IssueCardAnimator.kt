@@ -91,9 +91,11 @@ class IssueCardAnimator(val callback: AnimationCallback) {
             // view groups.
             defaultIssueContentGroup.visibility = View.INVISIBLE
 
-            // These two views are outside of the group since their visibility must be set
+            // These views are outside of the group since their visibility must be set
             // independently of the rest of the group, and some frustrating constraints of
             // constraint layout's behavior. See b/242705351 for context.
+            makeInvisibleIfVisible(holder.findViewById(R.id.issue_card_attribution_title))
+            makeInvisibleIfVisible(holder.findViewById(R.id.issue_card_dismiss_btn))
             makeInvisibleIfVisible(holder.findViewById(R.id.issue_card_subtitle))
             makeInvisibleIfVisible(holder.findViewById(R.id.issue_card_protected_by_android))
 
