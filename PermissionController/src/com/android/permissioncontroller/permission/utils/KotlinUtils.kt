@@ -289,16 +289,25 @@ object KotlinUtils {
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun isPhotoPickerPromptEnabled(): Boolean {
-        val app = PermissionControllerApplication.get()
-        return SdkLevel.isAtLeastU() &&
-            !DeviceUtils.isAuto(app) &&
-            !DeviceUtils.isTelevision(app) &&
-            !DeviceUtils.isWear(app) &&
+        return isPhotoPickerPromptSupported() &&
             DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_PRIVACY,
                 PROPERTY_PHOTO_PICKER_PROMPT_ENABLED,
                 true
             )
+    }
+
+    /**
+     * Whether the Photo Picker Prompt is supported by the device
+     *
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    fun isPhotoPickerPromptSupported(): Boolean {
+        val app = PermissionControllerApplication.get()
+        return SdkLevel.isAtLeastU() &&
+                !DeviceUtils.isAuto(app) &&
+                !DeviceUtils.isTelevision(app) &&
+                !DeviceUtils.isWear(app)
     }
 
     /*

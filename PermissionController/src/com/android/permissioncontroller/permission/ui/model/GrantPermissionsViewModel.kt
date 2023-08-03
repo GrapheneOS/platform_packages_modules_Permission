@@ -124,6 +124,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultP
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptSupported
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
@@ -886,7 +887,7 @@ class GrantPermissionsViewModel(
      * ACCESS_MEDIA_LOCATION granted
      */
     private fun isPartialStorageGrant(group: LightAppPermGroup): Boolean {
-        if (!KotlinUtils.isPhotoPickerPromptEnabled() || group.permGroupName != READ_MEDIA_VISUAL) {
+        if (!isPhotoPickerPromptSupported() || group.permGroupName != READ_MEDIA_VISUAL) {
             return false
         }
 

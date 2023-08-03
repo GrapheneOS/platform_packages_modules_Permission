@@ -334,6 +334,10 @@ object PermissionMapping {
      * grant. Otherwise, ACCESS_MEDIA_LOCATION is considered a full grant (for compatibility).
      */
     fun getPartialStorageGrantPermissionsForGroup(group: LightAppPermGroup): Set<String> {
+        if (!KotlinUtils.isPhotoPickerPromptSupported()) {
+            return emptySet()
+        }
+
         val appSupportsPickerPrompt = group
             .permissions[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED]?.isImplicit == false
 
