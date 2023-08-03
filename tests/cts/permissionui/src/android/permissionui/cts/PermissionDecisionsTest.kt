@@ -20,6 +20,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.permission.PermissionManager
+import android.platform.test.annotations.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil
@@ -29,6 +30,7 @@ import org.junit.Before
 import org.junit.Test
 
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
+@FlakyTest
 class PermissionDecisionsTest : BaseUsePermissionTest() {
 
     companion object {
@@ -49,9 +51,10 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
         }
 
         openPermissionDecisions()
-        waitFindObject(By
-                .hasChild(By.text("You gave $APP_PACKAGE_NAME access to location"))
-                .hasChild(By.text("Today")))
+        waitFindObject(
+            By.hasChild(By.text("You gave $APP_PACKAGE_NAME access to location"))
+                .hasChild(By.text("Today"))
+        )
     }
 
     @Test
@@ -62,9 +65,10 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
         }
 
         openPermissionDecisions()
-        waitFindObject(By
-                .hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
-                .hasChild(By.text("Today")))
+        waitFindObject(
+            By.hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
+                .hasChild(By.text("Today"))
+        )
     }
 
     @Test
@@ -76,10 +80,13 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
         uninstallApp()
 
         openPermissionDecisions()
-        assertNull(waitFindObjectOrNull(By
-                .hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
-                .hasChild(By.text("Today")),
-                ASSERT_ABSENT_SELECTOR_TIMEOUT_MS))
+        assertNull(
+            waitFindObjectOrNull(
+                By.hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
+                    .hasChild(By.text("Today")),
+                ASSERT_ABSENT_SELECTOR_TIMEOUT_MS
+            )
+        )
     }
 
     @Test
@@ -91,10 +98,11 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
 
         openPermissionDecisions()
 
-        waitFindObject(By
-                .hasChild(By.text("You gave $APP_PACKAGE_NAME access to location"))
-                .hasChild(By.text("Today")))
-                .click()
+        waitFindObject(
+                By.hasChild(By.text("You gave $APP_PACKAGE_NAME access to location"))
+                    .hasChild(By.text("Today"))
+            )
+            .click()
 
         waitFindObject(By.text(APP_PACKAGE_NAME))
         waitFindObject(By.text("Location access for this app"))
@@ -103,17 +111,19 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
         // page
         waitFindObject(By.text("Don’t allow")).click()
         pressBack()
-        waitFindObject(By
-                .hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
-                .hasChild(By.text("Today")))
+        waitFindObject(
+            By.hasChild(By.text("You denied $APP_PACKAGE_NAME access to location"))
+                .hasChild(By.text("Today"))
+        )
     }
 
     private fun openPermissionDecisions() {
         SystemUtil.runWithShellPermissionIdentity {
-            context.startActivity(Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS)
-                    .apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    })
+            context.startActivity(
+                Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            )
         }
     }
 }
