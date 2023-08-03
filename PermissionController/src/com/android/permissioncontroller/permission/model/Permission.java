@@ -169,6 +169,18 @@ public final class Permission {
     }
 
     /**
+     * Sets the REVOKE_WHEN_REQUESTED permission flag
+     * @param revokeWhenRequested true to set the flag, false to unset it
+     */
+    public void setRevokeWhenRequested(boolean revokeWhenRequested) {
+        if (revokeWhenRequested) {
+            mFlags |= PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED;
+        } else {
+            mFlags &= ~PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED;
+        }
+    }
+
+    /**
      * Sets the one-time permission flag
      * @param oneTime true to set the flag, false to unset it
      */

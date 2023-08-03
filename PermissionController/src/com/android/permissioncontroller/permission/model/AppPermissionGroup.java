@@ -936,8 +936,12 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             }
 
             boolean wasGranted = permission.isGrantedIncludingAppOp();
+            boolean isPermissionSplitFromNonRuntime = KotlinUtils.isPermissionSplitFromNonRuntime(
+                    mContext,
+                    permission.getName(),
+                    mPackageInfo.applicationInfo.targetSdkVersion);
 
-            if (mAppSupportsRuntimePermissions) {
+            if (mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) {
                 // Do not touch permissions fixed by the system.
                 if (permission.isSystemFixed()) {
                     wasAllGranted = false;
@@ -1127,7 +1131,14 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
             boolean wasGranted = permission.isGrantedIncludingAppOp();
 
-            if (mAppSupportsRuntimePermissions) {
+            boolean isPermissionSplitFromNonRuntime =
+                    KotlinUtils.isPermissionSplitFromNonRuntime(
+                            mContext,
+                            permission.getName(),
+                            mPackageInfo.applicationInfo.targetSdkVersion);
+
+            if (mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) {
+
                 // Revoke the permission if needed.
                 if (permission.isGranted()) {
                     permission.setGranted(false);
@@ -1172,6 +1183,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     if (!permission.isRevokedCompat()) {
                         permission.setRevokedCompat(true);
                     }
+
+                    permission.setRevokeWhenRequested(false);
                 }
             }
 
