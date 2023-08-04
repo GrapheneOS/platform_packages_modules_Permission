@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Տեսնել ծանուցումը}one{Տեսնել ծանուցումները}other{Տեսնել ծանուցումները}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Չհաջողվեց բացել էջը"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Չհաջողվեց լուծել ծանուցումը"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Չհաջողվեց թարմացնել կարգավորումները"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Չհաջողվեց ստուգել կարգավորումը}one{Չհաջողվեց ստուգել կարգավորումը}other{Չհաջողվեց ստուգել կարգավորումները}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Աշխատանքային պրոֆիլը դադարեցված է"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Տեղեկություններ դեռ չկան"</string>
