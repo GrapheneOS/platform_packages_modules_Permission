@@ -56,9 +56,13 @@ public class HomeRoleBehavior implements RoleBehavior {
             android.Manifest.permission.READ_CONTACTS);
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private static final List<String> WEAR_PERMISSIONS = Arrays.asList(
+    private static final List<String> WEAR_PERMISSIONS_T = Arrays.asList(
             android.Manifest.permission.POST_NOTIFICATIONS,
             android.Manifest.permission.SYSTEM_APPLICATION_OVERLAY);
+
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    private static final List<String> WEAR_PERMISSIONS_V = Arrays.asList(
+            android.Manifest.permission.ALWAYS_UPDATE_WALLPAPER);
 
     private static final List<String> WEAR_APP_OP_PERMISSIONS = Arrays.asList(
             android.Manifest.permission.SYSTEM_ALERT_WINDOW);
@@ -145,13 +149,17 @@ public class HomeRoleBehavior implements RoleBehavior {
                     true, false, true, false, false, context);
         }
 
-        if (SdkLevel.isAtLeastT()) {
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
-                Permissions.grant(packageName, WEAR_PERMISSIONS,
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+            if (SdkLevel.isAtLeastT()) {
+                Permissions.grant(packageName, WEAR_PERMISSIONS_T,
                         true, false, true, false, false, context);
                 for (String permission : WEAR_APP_OP_PERMISSIONS) {
                     AppOpPermissions.grant(packageName, permission, true, context);
                 }
+            }
+            if (SdkLevel.isAtLeastV()) {
+                Permissions.grant(packageName, WEAR_PERMISSIONS_V,
+                        true, false, true, false, false, context);
             }
         }
     }
@@ -169,12 +177,15 @@ public class HomeRoleBehavior implements RoleBehavior {
                     true, false, false, context);
         }
 
-        if (SdkLevel.isAtLeastT()) {
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
-                Permissions.revoke(packageName, WEAR_PERMISSIONS, true, false, false, context);
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+            if (SdkLevel.isAtLeastT()) {
+                Permissions.revoke(packageName, WEAR_PERMISSIONS_T, true, false, false, context);
                 for (String permission : WEAR_APP_OP_PERMISSIONS) {
                     AppOpPermissions.revoke(packageName, permission, context);
                 }
+            }
+            if (SdkLevel.isAtLeastV()) {
+                Permissions.revoke(packageName, WEAR_PERMISSIONS_V, true, false, false, context);
             }
         }
     }
