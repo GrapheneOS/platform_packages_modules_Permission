@@ -147,9 +147,7 @@ class AccessibilitySourceService(
                 interruptJobIfCanceled(cancel)
                 val a11yServiceList = getEnabledAccessibilityServices()
                 if (a11yServiceList.isEmpty()) {
-                    if (DEBUG) {
-                        Log.v(LOG_TAG, "accessibility services not enabled, job completed.")
-                    }
+                    Log.d(LOG_TAG, "accessibility services not enabled, job completed.")
                     jobService.jobFinished(params, false)
                     jobService.clearJob()
                     return
@@ -452,9 +450,7 @@ class AccessibilitySourceService(
         val dataBuilder = SafetySourceData.Builder()
         pendingIssues.forEach { dataBuilder.addIssue(it) }
         val safetySourceData = dataBuilder.build()
-        if (DEBUG) {
-            Log.v(LOG_TAG, "sending ${pendingIssues.size} issue to sc, data: $safetySourceData")
-        }
+        Log.d(LOG_TAG, "a11y source sending ${pendingIssues.size} issue to sc")
         safetyCenterManager.setSafetySourceData(
             SC_ACCESSIBILITY_SOURCE_ID,
             safetySourceData,
@@ -506,8 +502,10 @@ class AccessibilitySourceService(
                 installedServices[it]
             }
 
-        return enabledServices.filterNotNull()
+        val enabled3rdPartyServices = enabledServices.filterNotNull()
             .filter { !it.isAccessibilityTool }
+        Log.d(LOG_TAG, "enabled a11y services count ${enabledServices.size}")
+        return enabled3rdPartyServices
     }
 
     /**
