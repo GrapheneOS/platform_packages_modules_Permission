@@ -99,7 +99,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-
 /**
  * A set of util functions designed to work with kotlin, though they can work with java, as well.
  */
@@ -754,8 +753,9 @@ object KotlinUtils {
      * Determine if the given permission should be treated as split from a non-runtime permission
      * for an application targeting the given SDK level.
      */
-    private fun isPermissionSplitFromNonRuntime(
-        app: Application,
+    @JvmStatic
+    fun isPermissionSplitFromNonRuntime(
+        app: Context,
         permName: String,
         targetSdk: Int
     ): Boolean {
