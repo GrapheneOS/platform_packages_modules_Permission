@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Mostra l\'alerta}many{Mostra les alertes}other{Mostra les alertes}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"No s\'ha pogut obrir la pàgina"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"No s\'ha pogut resoldre l\'alerta"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"No s\'ha pogut actualitzar la configuració"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{No s\'ha pogut comprovar la configuració}many{No s\'ha pogut comprovar la configuració}other{No s\'ha pogut comprovar la configuració}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"El perfil de treball s\'ha posat en pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Encara no hi ha informació"</string>

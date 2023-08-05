@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{មើលការជូន​ដំណឹង}other{មើលការជូនដំណឹង}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"មិនអាច​បើកទំព័រ​បានទេ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"មិនអាច​ដោះស្រាយការជូនដំណឹងនេះ​បានទេ"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"មិនអាចផ្ទុកការកំណត់ឡើងវិញបានទេ"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{មិន​អាច​ពិនិត្យ​មើល​ការកំណត់​បាន​ទេ}other{មិន​អាច​ពិនិត្យ​មើល​ការកំណត់​បាន​ទេ}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"កម្រងព័ត៌មានការងារត្រូវបាន​ផ្អាក"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"មិន​ទាន់​មាន​ព័ត៌មាន​នៅ​ឡើយ​ទេ"</string>
