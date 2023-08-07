@@ -1772,7 +1772,8 @@ suspend fun <T, LD : LiveData<T>> LD.getInitializedValue(
     isInitialized: LD.() -> Boolean = { value != null }
 ): T {
     return if (isInitialized()) {
-        value!!
+        @Suppress("UNCHECKED_CAST")
+        value as T
     } else {
         suspendCoroutine { continuation: Continuation<T> ->
             val observer = AtomicReference<Observer<T>>()
