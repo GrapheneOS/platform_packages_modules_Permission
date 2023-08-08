@@ -270,7 +270,6 @@
                   android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
                   android:visibleToInstantApps="true"
                   android:inheritShowWhenLocked="true"
-                  android:hardwareAccelerated="false"
                   android:canDisplayOnRemoteDevices="false">
             <intent-filter android:priority="1">
                 <action android:name="android.content.pm.action.REQUEST_PERMISSIONS" />
