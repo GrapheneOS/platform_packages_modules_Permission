@@ -18,34 +18,42 @@ package android.permission.cts;
 
 import static android.content.pm.PackageManager.FEATURE_WIFI;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeTrue;
+
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.platform.test.annotations.AppModeFull;
-import android.test.AndroidTestCase;
-import android.test.suitebuilder.annotation.SmallTest;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.SmallTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Verify WifiManager related methods without specific Wifi state permissions.
  */
+@RunWith(AndroidJUnit4.class)
 @AppModeFull(reason = "Instant apps cannot access the WifiManager")
 @SmallTest
-public class NoWifiStatePermissionTest extends AndroidTestCase {
+public class NoWifiStatePermissionTest {
+    private static final Context sContext =
+            InstrumentationRegistry.getInstrumentation().getTargetContext();
+
     private static final int TEST_NET_ID = 1;
     private static final WifiConfiguration TEST_WIFI_CONFIGURATION = new WifiConfiguration();
     private WifiManager mWifiManager;
-    private boolean mHasWifi;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @Before
+    public void setUp() {
+        boolean hasWifi = sContext.getPackageManager().hasSystemFeature(FEATURE_WIFI);
+        assumeTrue(hasWifi);
 
-        mHasWifi = mContext.getPackageManager().hasSystemFeature(FEATURE_WIFI);
-        if (!mHasWifi) {
-            return;
-        }
-
-        mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) sContext.getSystemService(Context.WIFI_SERVICE);
         assertNotNull(mWifiManager);
     }
 
@@ -54,17 +62,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#ACCESS_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testGetWifiState() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.getWifiState();
-            fail("WifiManager.getWifiState didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.getWifiState();
     }
 
     /**
@@ -72,17 +72,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#ACCESS_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testGetConfiguredNetworks() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.getConfiguredNetworks();
-            fail("WifiManager.getConfiguredNetworks didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.getConfiguredNetworks();
     }
 
     /**
@@ -90,17 +82,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#ACCESS_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testGetConnectionInfo() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.getConnectionInfo();
-            fail("WifiManager.getConnectionInfo didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.getConnectionInfo();
     }
 
     /**
@@ -108,17 +92,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#ACCESS_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testGetScanResults() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.getScanResults();
-            fail("WifiManager.getScanResults didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.getScanResults();
     }
 
     /**
@@ -126,17 +102,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#ACCESS_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testGetDhcpInfo() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.getDhcpInfo();
-            fail("WifiManager.getDhcpInfo didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.getDhcpInfo();
     }
 
     /**
@@ -144,17 +112,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testDisconnect() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.disconnect();
-            fail("WifiManager.disconnect didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.disconnect();
     }
 
     /**
@@ -162,17 +122,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testReconnect() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.reconnect();
-            fail("WifiManager.reconnect didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.reconnect();
     }
 
     /**
@@ -180,17 +132,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testReassociate() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.reassociate();
-            fail("WifiManager.reassociate didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.reassociate();
     }
 
     /**
@@ -198,17 +142,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testAddNetwork() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.addNetwork(TEST_WIFI_CONFIGURATION);
-            fail("WifiManager.addNetwork didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.addNetwork(TEST_WIFI_CONFIGURATION);
     }
 
     /**
@@ -216,37 +152,19 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testUpdateNetwork() {
-        if (!mHasWifi) {
-            return;
-        }
-
         TEST_WIFI_CONFIGURATION.networkId = 2;
-
-        try {
-            mWifiManager.updateNetwork(TEST_WIFI_CONFIGURATION);
-            fail("WifiManager.updateNetwork didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.updateNetwork(TEST_WIFI_CONFIGURATION);
     }
-
     /**
      * Verify that WifiManager#removeNetwork() requires permissions.
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testRemoveNetwork() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.removeNetwork(TEST_NET_ID);
-            fail("WifiManager.removeNetwork didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.removeNetwork(TEST_NET_ID);
     }
 
     /**
@@ -254,17 +172,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testEnableNetwork() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.enableNetwork(TEST_NET_ID, false);
-            fail("WifiManager.enableNetwork didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.enableNetwork(TEST_NET_ID, false);
     }
 
     /**
@@ -272,17 +182,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testDisableNetwork() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.disableNetwork(TEST_NET_ID);
-            fail("WifiManager.disableNetwork didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.disableNetwork(TEST_NET_ID);
     }
 
     /**
@@ -290,17 +192,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testPingSupplicant() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.pingSupplicant();
-            fail("WifiManager.pingSupplicant didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.pingSupplicant();
     }
 
     /**
@@ -308,17 +202,9 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testStartScan() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.startScan();
-            fail("WifiManager.startScan didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.startScan();
     }
 
     /**
@@ -326,16 +212,8 @@ public class NoWifiStatePermissionTest extends AndroidTestCase {
      * <p>Requires Permission:
      *   {@link android.Manifest.permission#CHANGE_WIFI_STATE}.
      */
+    @Test(expected = SecurityException.class)
     public void testSetWifiEnabled() {
-        if (!mHasWifi) {
-            return;
-        }
-
-        try {
-            mWifiManager.setWifiEnabled(true);
-            fail("WifiManager.setWifiEnabled didn't throw SecurityException as expected");
-        } catch (SecurityException e) {
-            // expected
-        }
+        mWifiManager.setWifiEnabled(true);
     }
 }
