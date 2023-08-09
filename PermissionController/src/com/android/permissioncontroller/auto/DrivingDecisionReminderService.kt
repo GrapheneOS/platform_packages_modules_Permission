@@ -112,15 +112,25 @@ class DrivingDecisionReminderService : Service() {
                 // just give up if we can't connect to the car
                 if (ready) {
                     val restrictionsManager = car.getCarManager(
-                        Car.CAR_UX_RESTRICTION_SERVICE) as CarUxRestrictionsManager
-                    if (restrictionsManager.currentCarUxRestrictions
-                            .isRequiresDistractionOptimization) {
-                        context.startService(
-                            createIntent(
-                                context,
-                                packageName,
-                                permGroupName,
-                                Process.myUserHandle()))
+                        Car.CAR_UX_RESTRICTION_SERVICE) as CarUxRestrictionsManager?
+                    if (restrictionsManager != null) {
+                        val currentCarUxRestrictions = restrictionsManager.currentCarUxRestrictions
+                        if (currentCarUxRestrictions != null) {
+                            if (currentCarUxRestrictions.isRequiresDistractionOptimization) {
+                                context.startService(
+                                    createIntent(
+                                        context,
+                                        packageName,
+                                        permGroupName,
+                                        Process.myUserHandle()))
+                            }
+                        } else {
+                            DumpableLog.e(LOG_TAG,
+                                "Reminder service not created because CarUxRestrictions is null")
+                        }
+                    } else {
+                        DumpableLog.e(LOG_TAG,
+                            "Reminder service not created because CarUxRestrictionsManager is null")
                     }
                 }
                 car.disconnect()
