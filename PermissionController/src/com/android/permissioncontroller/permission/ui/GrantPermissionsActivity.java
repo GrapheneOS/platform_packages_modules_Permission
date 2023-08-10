@@ -461,7 +461,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             // and not have status returned to the app
             mRequestedPermissions.removeAll(info.getFilteredPermissions());
             mRequestInfos.remove(info);
-            showNextRequest();
+            onRequestInfoLoad(mRequestInfos);
             return;
         }
 
