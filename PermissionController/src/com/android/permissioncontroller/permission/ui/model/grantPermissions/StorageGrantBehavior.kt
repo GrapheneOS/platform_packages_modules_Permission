@@ -18,7 +18,6 @@ package com.android.permissioncontroller.permission.ui.model.grantPermissions
 
 import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
-import android.Manifest.permission_group.READ_MEDIA_AURAL
 import android.Manifest.permission_group.READ_MEDIA_VISUAL
 import android.Manifest.permission_group.STORAGE
 import android.os.Build
@@ -27,6 +26,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.ui.model.DenyButton
 import com.android.permissioncontroller.permission.ui.model.Prompt
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptSupported
 
 /**
  * Storage split from one group (STORAGE) into two (READ_MEDIA_VISUAL and READ_MEDIA_AURAL) in T.
@@ -47,8 +47,7 @@ object StorageGrantBehavior : GrantBehavior() {
             return Prompt.NO_UI_REJECT_THIS_GROUP
         }
 
-        if (appSupportsSplitStoragePermissions && (group.permGroupName == READ_MEDIA_AURAL ||
-            !SdkLevel.isAtLeastU())) {
+        if (appSupportsSplitStoragePermissions && !shouldShowPhotoPickerPrompt(group)) {
             return Prompt.BASIC
         }
 
@@ -93,7 +92,8 @@ object StorageGrantBehavior : GrantBehavior() {
         group: LightAppPermGroup,
         requestedPerms: Set<String>
     ): Boolean {
-        if (!shouldShowPhotoPickerPrompt(group)) {
+        if (!isPhotoPickerPromptSupported() ||
+            group.permGroupName != READ_MEDIA_VISUAL) {
             return super.isGroupFullyGranted(group, requestedPerms)
         }
 
