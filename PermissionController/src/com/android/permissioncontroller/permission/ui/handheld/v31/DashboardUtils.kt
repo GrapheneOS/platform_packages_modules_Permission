@@ -81,7 +81,7 @@ fun shouldShowPermissionsDashboard(): Boolean {
  */
 fun is7DayToggleEnabled(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PRIVACY_DASHBOARD_7_DAY_TOGGLE, false)
+            PRIVACY_DASHBOARD_7_DAY_TOGGLE, true)
 }
 
 /**
