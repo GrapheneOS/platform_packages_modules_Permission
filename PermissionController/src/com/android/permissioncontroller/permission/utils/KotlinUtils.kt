@@ -262,7 +262,7 @@ object KotlinUtils {
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun is7DayToggleEnabled(): Boolean {
         return SdkLevel.isAtLeastS() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PRIVACY_DASHBOARD_7_DAY_TOGGLE, false)
+            PRIVACY_DASHBOARD_7_DAY_TOGGLE, true)
     }
 
     /**
