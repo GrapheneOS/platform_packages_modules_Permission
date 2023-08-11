@@ -220,7 +220,7 @@ object KotlinUtils {
             DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_PRIVACY,
                 PRIVACY_DASHBOARD_7_DAY_TOGGLE,
-                false
+                true
             )
     }
 
