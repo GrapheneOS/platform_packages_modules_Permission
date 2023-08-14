@@ -125,8 +125,7 @@ public final class SafetyCenterFlags {
 
     private static volatile String sIssueCategoryAllowlistDefault = "";
 
-    private static volatile String sRefreshOnPageOpenSourcesDefault =
-            "AndroidBiometrics,AndroidLockScreen";
+    private static volatile String sRefreshOnPageOpenSourcesDefault = "AndroidBiometrics";
 
     static void init(SafetyCenterResourcesApk safetyCenterResourcesApk) {
         String untrackedSourcesDefault =

@@ -20,4 +20,6 @@
     <string name="config_same_task_safety_source_ids" translatable="false">AndroidAccessibility,AndroidBackgroundLocation,AndroidBiometrics,AndroidHealthConnect,AndroidLockScreen,AndroidMoreSettings,AndroidNotificationListener,AndroidPermissionAutoRevoke,AndroidPermissionManager,AndroidPermissionUsage,AndroidPrivacyAppDataSharingUpdates,AndroidPrivacyControls,AndroidWorkPolicyInfo</string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->
     <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidMoreSettings,TestSource</string>
+    <!-- Comma separated list of safety source IDs that should be refreshed on page open by default. -->
+    <string name="config_defaultRefreshOnPageOpenSources" translatable="false">AndroidBiometrics</string>
 </resources>
