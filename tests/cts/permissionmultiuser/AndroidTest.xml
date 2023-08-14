@@ -55,6 +55,12 @@
         <option name="run-command" value="am wait-for-broadcast-barrier"  />
     </target_preparer>
 
+    <!-- Create place to store apks -->
+    <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
+        <option name="run-command" value="mkdir -p /data/local/tmp/cts/permissionmultiuser" />
+        <option name="teardown-command" value="rm -rf /data/local/tmp/cts"/>
+    </target_preparer>
+
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
         <option name="package" value="android.permissionmultiuser.cts" />
         <option name="runtime-hint" value="5m" />
