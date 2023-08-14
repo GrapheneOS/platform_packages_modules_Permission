@@ -22,4 +22,6 @@
     <string name="config_NotificationListenerServicePregrants" translatable="false"></string>
     <!-- Comma separated list of safety source IDs to add an Intent Extra confirming they should be displayed as if opened by a settings UI page. -->
     <string name="config_useSettingsHomepageIntentExtra" translatable="false">AndroidAdvancedPrivacy,AndroidAdvancedSecurity,TestSource</string>
+    <!-- Comma separated list of safety source IDs that should be refreshed on page open by default. -->
+    <string name="config_defaultRefreshOnPageOpenSources" translatable="false"></string>
 </resources>
