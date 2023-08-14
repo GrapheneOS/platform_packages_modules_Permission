@@ -32,4 +32,7 @@
     <!-- overviewBackground is not visible from mainline, so UX provided this alternative.
     system_neutral2_200 is v31+ so use this placeholder provided by ux -->
     <color name="permission_rationale_overview_background">#DADCE0</color>
+
+    <!-- Wear related colors -->
+    <color name="wear_material_gray_600">#FF80868B</color>
 </resources>

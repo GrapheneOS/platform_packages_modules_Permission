@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -42,6 +43,7 @@ import androidx.wear.compose.material.ChipDefaults
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import com.android.permissioncontroller.R
 
 /**
  * This component is an alternative to [Chip], providing the following:
@@ -165,6 +167,7 @@ public fun Chip(
     icon: (@Composable BoxScope.() -> Unit)? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
+    secondaryTextColor: Color = colorResource(R.color.wear_material_gray_600),
     colors: ChipColors = ChipDefaults.secondaryChipColors(),
     enabled: Boolean = true
 ) {
@@ -189,6 +192,7 @@ public fun Chip(
             {
                 Text(
                     text = secondaryLabel,
+                    color = secondaryTextColor,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                     style = MaterialTheme.typography.caption2

@@ -43,6 +43,7 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
 import androidx.wear.compose.foundation.lazy.ScalingLazyListState
 import androidx.wear.compose.material.CircularProgressIndicator
+import androidx.wear.compose.material.ListHeader
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
@@ -119,16 +120,9 @@ fun ScrollableScreen(
                         }
                         if (title != null) {
                             item {
-                                Text(
-                                    text = title,
-                                    textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.button,
-                                    modifier = Modifier.padding(
-                                        bottom = 12.dp,
-                                        start = 24.dp,
-                                        end = 24.dp
-                                    )
-                                )
+                                ListHeader {
+                                    Text(text = title, textAlign = TextAlign.Center)
+                                }
                             }
                         }
                         if (subtitle != null) {
