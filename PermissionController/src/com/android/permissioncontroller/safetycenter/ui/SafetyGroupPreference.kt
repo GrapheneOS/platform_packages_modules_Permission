@@ -45,10 +45,10 @@ class SafetyGroupPreference(
         layoutResource = R.layout.preference_group
     }
 
-    override fun onBindViewHolder(holder: PreferenceViewHolder?) {
+    override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
-        (holder?.itemView as? SafetyEntryGroupView)?.showGroup(
+        (holder.itemView as? SafetyEntryGroupView)?.showGroup(
             group,
             isExpanded,
             isFirstCard,
@@ -56,7 +56,8 @@ class SafetyGroupPreference(
             getTaskIdForEntry,
             viewModel,
             onExpandedListener,
-            onCollapsedListener)
+            onCollapsedListener
+        )
     }
 
     override fun isSameItem(preference: Preference): Boolean =
