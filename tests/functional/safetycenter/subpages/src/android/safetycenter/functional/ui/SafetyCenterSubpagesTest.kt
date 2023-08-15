@@ -788,6 +788,24 @@ class SafetyCenterSubpagesTest {
     }
 
     @Test
+    fun dismissedIssuesCard_doesntShowGreenCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        val (sourcesGroup, issue) =
+            prepareSingleSourceGroupWithIssue(
+                safetySourceTestData.informationWithIssueWithAttributionTitle
+            )
+        val safetyCenterIssueId = SafetyCenterTestData.issueId(SINGLE_SOURCE_ID, issue.id)
+        safetyCenterTestHelper.dismissSafetyCenterIssue(safetyCenterIssueId)
+
+        context.launchSafetyCenterActivity {
+            openPageAndExit(context.getString(sourcesGroup.titleResId)) {
+                waitAllTextNotDisplayed("Dismissed alerts")
+                waitSourceIssueNotDisplayed(issue)
+            }
+        }
+    }
+
+    @Test
     fun moreIssuesCard_expandWithDismissedIssues_showsAdditionalCards() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesInSingleGroupConfig)
 

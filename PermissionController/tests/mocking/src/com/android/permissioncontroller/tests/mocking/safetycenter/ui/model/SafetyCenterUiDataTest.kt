@@ -22,6 +22,9 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterIssue
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetyCenterStatus
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -209,6 +212,44 @@ class SafetyCenterUiDataTest {
         assertThat(result).isEmpty()
     }
 
+    @Test
+    fun getMatchingDismissedIssues_doesntReturnGreenIssues() {
+        val greenDismissedIssue =
+            createSafetyCenterIssue(
+                "id1",
+                MATCHING_GROUP_ID,
+                severityLevel = ISSUE_SEVERITY_LEVEL_OK
+            )
+        val yellowDismissedIssue =
+            createSafetyCenterIssue(
+                "id2",
+                MATCHING_GROUP_ID,
+                severityLevel = ISSUE_SEVERITY_LEVEL_RECOMMENDATION
+            )
+        val redDismissedIssue =
+            createSafetyCenterIssue(
+                "id3",
+                MATCHING_GROUP_ID,
+                severityLevel = ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING
+            )
+        val nonMatchingDismissedIssue = createSafetyCenterIssue("id4", NON_MATCHING_GROUP_ID)
+        val safetyCenterData =
+            createSafetyCenterData(
+                dismissedIssues =
+                    listOf(
+                        redDismissedIssue,
+                        yellowDismissedIssue,
+                        greenDismissedIssue,
+                        nonMatchingDismissedIssue
+                    ),
+            )
+
+        val result =
+            SafetyCenterUiData(safetyCenterData).getMatchingDismissedIssues(MATCHING_GROUP_ID)
+
+        assertThat(result).containsExactly(redDismissedIssue, yellowDismissedIssue).inOrder()
+    }
+
     private companion object {
         const val MATCHING_GROUP_ID = "matching_group_id"
         const val NON_MATCHING_GROUP_ID = "non_matching_group_id"
@@ -238,8 +279,13 @@ class SafetyCenterUiDataTest {
         fun createSafetyCenterEntryGroup(groupId: String) =
             SafetyCenterEntryGroup.Builder(groupId, "group title").build()
 
-        fun createSafetyCenterIssue(issueId: String, groupId: String) =
+        fun createSafetyCenterIssue(
+            issueId: String,
+            groupId: String,
+            severityLevel: Int = ISSUE_SEVERITY_LEVEL_RECOMMENDATION
+        ) =
             SafetyCenterIssue.Builder(issueId, "issue title", "issue summary")
+                .setSeverityLevel(severityLevel)
                 .setGroupId(groupId)
                 .build()
 
