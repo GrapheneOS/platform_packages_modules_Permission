@@ -21,6 +21,7 @@ import android.os.Build
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
@@ -104,14 +105,18 @@ class HealthConnectAllAppPermissionFragmentTest : BasePermissionUiTest() {
     }
 
     private fun startManageAppPermissionsActivity() {
-        runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
-                .apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    putExtra(Intent.EXTRA_PACKAGE_NAME, PERM_USER_PACKAGE)
-                })
-        }
+        uiDevice.performActionAndWait({
+            runWithShellPermissionIdentity {
+                instrumentationContext.startActivity(
+                    Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
+                    .apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        putExtra(Intent.EXTRA_PACKAGE_NAME, PERM_USER_PACKAGE)
+                    }
+                )
+            }
+        }, Until.newWindow(), TIMEOUT_SHORT)
 
         waitFindObject(By.descContains(MORE_OPTIONS)).click()
         waitFindObject(By.text(ALL_PERMISSIONS)).click()
