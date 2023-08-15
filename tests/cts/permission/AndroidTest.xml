@@ -107,6 +107,7 @@
         <option name="push" value="CtsAppThatRequestsSystemAlertWindow22.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsSystemAlertWindow22.apk" />
         <option name="push" value="CtsAppThatRequestsSystemAlertWindow23.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsSystemAlertWindow23.apk" />
         <option name="push" value="CtsAppThatRequestCustomCameraPermission.apk->/data/local/tmp/cts-permission/CtsAppThatRequestCustomCameraPermission.apk" />
+        <option name="push" value="CtsAppThatRequestsDevicePermissions.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsDevicePermissions.apk" />
     </target_preparer>
 
     <!-- Remove additional apps if installed -->
