@@ -139,6 +139,7 @@ class SafetyCenterSystemEventReportedLoggingHostTest : BaseHostJUnit4Test() {
             .that(systemEventAtoms.count { it.refreshReason == REFRESH_REASON_BUTTON_CLICK })
     }
 
+    @Test
     fun refreshAllSources_firstTime_allSourcesSuccessful_dataChangedTrueForAll() {
         helperAppRule.runTest(
             ".SafetySourceStateCollectedLoggingHelperTests",
