@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Zobraziť upozornenie}few{Zobraziť upozornenia}many{See alerts}other{Zobraziť upozornenia}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Stránku sa nepodarilo otvoriť"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Upozornenie sa nepodarilo vyriešiť"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Nastavenia sa nepodarilo obnoviť"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Nastavenie sa nepodarilo skontrolovať}few{Nastavenia sa nepodarilo skontrolovať}many{Nastavenia sa nepodarilo skontrolovať}other{Nastavenia sa nepodarilo skontrolovať}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Pracovný profil je pozastavený"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Zatiaľ žiadne informácie"</string>

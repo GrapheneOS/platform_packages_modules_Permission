@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Tingnan ang alerto}one{Tingnan ang mga alerto}other{Tingnan ang mga alerto}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Hindi mabuksan ang page"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Hindi ma-resolve ang alerto"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Hindi ma-refresh ang mga setting"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Hindi masuri ang setting}one{Hindi masuri ang mga setting}other{Hindi masuri ang mga setting}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Naka-pause ang profile sa trabaho"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Wala pang impormasyon"</string>

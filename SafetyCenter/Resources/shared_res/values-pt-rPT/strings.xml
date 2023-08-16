@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Veja o alerta}many{Veja os alertas}other{Veja os alertas}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Não foi possível abrir a página"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Não foi possível resolver o alerta"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Não foi possível atualizar as definições"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Não foi possível verificar a definição}many{Não foi possível verificar as definições}other{Não foi possível verificar as definições}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Perfil de trabalho em pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Ainda sem informações"</string>
