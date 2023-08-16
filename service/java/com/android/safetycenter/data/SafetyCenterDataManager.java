@@ -133,7 +133,7 @@ public final class SafetyCenterDataManager {
                 safetySourceData, safetySourceId, packageName, userId)) {
             return false;
         }
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+        SafetySourceKey safetySourceKey = SafetySourceKey.of(safetySourceId, userId);
 
         // Must fetch refresh reason before calling processSafetyEvent because the latter may
         // complete and clear the current refresh.
@@ -143,16 +143,15 @@ public final class SafetyCenterDataManager {
             refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
         }
 
-        boolean sourceDataDiffers =
-                mSafetySourceDataRepository.setSafetySourceData(
-                        safetySourceData, safetySourceId, userId);
+        // It is important to process the event first as it relies on the data available prior to
+        // changing it.
+        boolean sourceDataWillChange =
+                !mSafetySourceDataRepository.sourceHasData(safetySourceKey, safetySourceData);
         boolean eventCausedChange =
                 processSafetyEvent(
-                        safetySourceId,
-                        safetyEvent,
-                        userId,
-                        /* isError= */ false,
-                        sourceDataDiffers);
+                        safetySourceKey, safetyEvent, /* isError= */ false, sourceDataWillChange);
+        boolean sourceDataDiffers =
+                mSafetySourceDataRepository.setSafetySourceData(safetySourceKey, safetySourceData);
         boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
 
         if (safetyCenterDataChanged) {
@@ -160,7 +159,12 @@ public final class SafetyCenterDataManager {
         }
 
         mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
-                key, safetySourceData, refreshReason, sourceDataDiffers, userId, safetyEvent);
+                safetySourceKey,
+                safetySourceData,
+                refreshReason,
+                sourceDataDiffers,
+                userId,
+                safetyEvent);
 
         return safetyCenterDataChanged;
     }
@@ -204,7 +208,7 @@ public final class SafetyCenterDataManager {
             return false;
         }
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
+        SafetySourceKey safetySourceKey = SafetySourceKey.of(safetySourceId, userId);
 
         // Must fetch refresh reason before calling processSafetyEvent because the latter may
         // complete and clear the current refresh.
@@ -214,16 +218,15 @@ public final class SafetyCenterDataManager {
             refreshReason = mSafetyCenterRefreshTracker.getRefreshReason();
         }
 
-        boolean sourceDataDiffers =
-                mSafetySourceDataRepository.reportSafetySourceError(
-                        safetySourceErrorDetails, safetySourceId, userId);
+        // It is important to process the event first as it relies on the data available prior to
+        // changing it.
+        boolean sourceDataWillChange = !mSafetySourceDataRepository.sourceHasError(safetySourceKey);
         boolean eventCausedChange =
                 processSafetyEvent(
-                        safetySourceId,
-                        safetyEvent,
-                        userId,
-                        /* isError= */ true,
-                        sourceDataDiffers);
+                        safetySourceKey, safetyEvent, /* isError= */ true, sourceDataWillChange);
+        boolean sourceDataDiffers =
+                mSafetySourceDataRepository.reportSafetySourceError(
+                        safetySourceKey, safetySourceErrorDetails);
         boolean safetyCenterDataChanged = sourceDataDiffers || eventCausedChange;
 
         if (safetyCenterDataChanged) {
@@ -231,7 +234,7 @@ public final class SafetyCenterDataManager {
         }
 
         mSafetySourceStateCollectedLogger.writeSourceUpdatedAtom(
-                key,
+                safetySourceKey,
                 /* safetySourceData= */ null,
                 refreshReason,
                 sourceDataDiffers,
@@ -488,11 +491,10 @@ public final class SafetyCenterDataManager {
     }
 
     private boolean processSafetyEvent(
-            String safetySourceId,
+            SafetySourceKey safetySourceKey,
             SafetyEvent safetyEvent,
-            @UserIdInt int userId,
             boolean isError,
-            boolean sourceDataChanged) {
+            boolean sourceDataWillChange) {
         int type = safetyEvent.getType();
         switch (type) {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
@@ -502,7 +504,7 @@ public final class SafetyCenterDataManager {
                     return false;
                 }
                 return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
-                        refreshBroadcastId, safetySourceId, userId, !isError, sourceDataChanged);
+                        refreshBroadcastId, safetySourceKey, !isError, sourceDataWillChange);
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
@@ -517,9 +519,9 @@ public final class SafetyCenterDataManager {
                 }
                 SafetyCenterIssueKey safetyCenterIssueKey =
                         SafetyCenterIssueKey.newBuilder()
-                                .setSafetySourceId(safetySourceId)
+                                .setSafetySourceId(safetySourceKey.getSourceId())
                                 .setSafetySourceIssueId(safetySourceIssueId)
-                                .setUserId(userId)
+                                .setUserId(safetySourceKey.getUserId())
                                 .build();
                 SafetyCenterIssueActionId safetyCenterIssueActionId =
                         SafetyCenterIssueActionId.newBuilder()

@@ -75,9 +75,8 @@ final class SafetySourceDataRepository {
     }
 
     /**
-     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
-     * SafetyEvent}, {@code packageName} and {@code userId}, and returns {@code true} if this caused
-     * any changes which would alter {@link SafetyCenterData}.
+     * Sets the latest {@link SafetySourceData} for the given {@link SafetySourceKey}, and returns
+     * {@code true} if this caused any changes which would alter {@link SafetyCenterData}.
      *
      * <p>This method does not perform any validation, {@link
      * SafetyCenterDataManager#setSafetySourceData(SafetySourceData, String, SafetyEvent, String,
@@ -90,18 +89,16 @@ final class SafetySourceDataRepository {
      * <p>This method may modify the {@link SafetyCenterIssueDismissalRepository}.
      */
     boolean setSafetySourceData(
-            @Nullable SafetySourceData safetySourceData,
-            String safetySourceId,
-            @UserIdInt int userId) {
-        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
-        boolean sourceDataDiffers = !Objects.equals(safetySourceData, mSafetySourceData.get(key));
-        boolean removedSourceError = mSafetySourceErrors.remove(key);
+            SafetySourceKey safetySourceKey, @Nullable SafetySourceData safetySourceData) {
+        boolean sourceDataDiffers =
+                !Objects.equals(safetySourceData, mSafetySourceData.get(safetySourceKey));
+        boolean removedSourceError = mSafetySourceErrors.remove(safetySourceKey);
 
         if (sourceDataDiffers) {
-            setSafetySourceDataInternal(key, safetySourceData);
+            setSafetySourceDataInternal(safetySourceKey, safetySourceData);
         }
 
-        setLastUpdatedNow(key);
+        setLastUpdatedNow(safetySourceKey);
         return sourceDataDiffers || removedSourceError;
     }
 
@@ -143,19 +140,33 @@ final class SafetySourceDataRepository {
     }
 
     /**
-     * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
-     * {@code userId}, and returns {@code true} if this changed the repository's data.
+     * Returns whether the repository has the given {@link SafetySourceData} for the given {@link
+     * SafetySourceKey}.
+     */
+    boolean sourceHasData(
+            SafetySourceKey safetySourceKey, @Nullable SafetySourceData safetySourceData) {
+        if (mSafetySourceErrors.contains(safetySourceKey)) {
+            // Any error will cause the SafetySourceData to be discarded in favor of an error
+            // message, so it can't possibly match the SafetySourceData passed in parameter.
+            return false;
+        }
+        return Objects.equals(safetySourceData, mSafetySourceData.get(safetySourceKey));
+    }
+
+    /**
+     * Reports the given {@link SafetySourceErrorDetails} for the given {@link SafetySourceKey}, and
+     * returns {@code true} if this changed the repository's data.
      *
      * <p>This method does not perform any validation, {@link
      * SafetyCenterDataManager#reportSafetySourceError(SafetySourceErrorDetails, String, String,
      * int)} should be called wherever validation is required.
      */
     boolean reportSafetySourceError(
-            SafetySourceErrorDetails safetySourceErrorDetails,
-            String safetySourceId,
-            @UserIdInt int userId) {
+            SafetySourceKey safetySourceKey, SafetySourceErrorDetails safetySourceErrorDetails) {
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
-        Log.w(TAG, "Error reported from source: " + safetySourceId + ", for event: " + safetyEvent);
+        Log.w(
+                TAG,
+                "Error reported from source: " + safetySourceKey + ", for event: " + safetyEvent);
 
         int safetyEventType = safetyEvent.getType();
         if (safetyEventType == SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
@@ -163,9 +174,9 @@ final class SafetySourceDataRepository {
             return false;
         }
 
-        SafetySourceKey sourceKey = SafetySourceKey.of(safetySourceId, userId);
-        mSourceStates.put(sourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR);
-        return setSafetySourceError(sourceKey);
+        mSourceStates.put(
+                safetySourceKey, SAFETY_SOURCE_STATE_COLLECTED__SOURCE_STATE__SOURCE_ERROR);
+        return setSafetySourceError(safetySourceKey);
     }
 
     /**
