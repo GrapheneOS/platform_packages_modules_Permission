@@ -194,6 +194,38 @@ class SafetyCenterSystemEventReportedLoggingHostTest : BaseHostJUnit4Test() {
             .isEqualTo(1) // Only source 1
     }
 
+    @Test
+    fun resolveAction_success_resolvingActionSuccessEvent() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "resolvingAction_success"
+        )
+
+        val resolvingActionEvent =
+            ReportUtils.getEventMetricDataList(device)
+                .mapNotNull { it.atom.safetyCenterSystemEventReported }
+                .single { it.eventType == EventType.INLINE_ACTION }
+
+        assertThat(resolvingActionEvent.result).isEqualTo(Result.SUCCESS)
+        assertThat(resolvingActionEvent.encodedIssueTypeId).isNotEqualTo(0)
+    }
+
+    @Test
+    fun resolveAction_error_resolvingActionErrorEvent() {
+        helperAppRule.runTest(
+            ".SafetySourceStateCollectedLoggingHelperTests",
+            "resolvingAction_error"
+        )
+
+        val resolvingActionEvent =
+            ReportUtils.getEventMetricDataList(device)
+                .mapNotNull { it.atom.safetyCenterSystemEventReported }
+                .single { it.eventType == EventType.INLINE_ACTION }
+
+        assertThat(resolvingActionEvent.result).isEqualTo(Result.ERROR)
+        assertThat(resolvingActionEvent.encodedIssueTypeId).isNotEqualTo(0)
+    }
+
     companion object {
         private const val REFRESH_REASON_PAGE_OPEN = 100L
         private const val REFRESH_REASON_BUTTON_CLICK = 200L
