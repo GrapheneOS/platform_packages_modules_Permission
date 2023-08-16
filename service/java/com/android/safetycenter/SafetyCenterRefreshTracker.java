@@ -155,8 +155,7 @@ public final class SafetyCenterRefreshTracker {
      */
     public boolean reportSourceRefreshCompleted(
             String refreshBroadcastId,
-            String sourceId,
-            @UserIdInt int userId,
+            SafetySourceKey safetySourceKey,
             boolean successful,
             boolean dataChanged) {
         RefreshInProgress refreshInProgress =
@@ -165,9 +164,9 @@ public final class SafetyCenterRefreshTracker {
             return false;
         }
 
-        SafetySourceKey sourceKey = SafetySourceKey.of(sourceId, userId);
         Duration duration =
-                refreshInProgress.markSourceRefreshComplete(sourceKey, successful, dataChanged);
+                refreshInProgress.markSourceRefreshComplete(
+                        safetySourceKey, successful, dataChanged);
         int refreshReason = refreshInProgress.getReason();
         int requestType = RefreshReasons.toRefreshRequestType(refreshReason);
 
@@ -175,8 +174,8 @@ public final class SafetyCenterRefreshTracker {
             int sourceResult = toSystemEventResult(successful);
             SafetyCenterStatsdLogger.writeSourceRefreshSystemEvent(
                     requestType,
-                    sourceId,
-                    UserUtils.isManagedProfile(userId, mContext),
+                    safetySourceKey.getSourceId(),
+                    UserUtils.isManagedProfile(safetySourceKey.getUserId(), mContext),
                     duration,
                     sourceResult,
                     refreshReason,
