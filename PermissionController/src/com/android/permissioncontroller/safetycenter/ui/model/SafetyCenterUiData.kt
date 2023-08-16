@@ -21,6 +21,7 @@ import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntryGroup
 import android.safetycenter.SafetyCenterEntryOrGroup
 import android.safetycenter.SafetyCenterIssue
+import android.safetycenter.SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK
 import androidx.annotation.RequiresApi
 import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
 
@@ -51,7 +52,7 @@ data class SafetyCenterUiData(
      */
     @RequiresApi(UPSIDE_DOWN_CAKE)
     fun getMatchingDismissedIssues(groupId: String): List<SafetyCenterIssue> =
-        selectMatchingIssuesForGroup(groupId, safetyCenterData.dismissedIssues)
+        selectMatchingIssuesForGroup(groupId, safetyCenterData.visibleDismissedIssues())
 
     @RequiresApi(UPSIDE_DOWN_CAKE)
     private fun selectMatchingIssuesForGroup(
@@ -68,4 +69,9 @@ data class SafetyCenterUiData(
             if (mappingExists) matchesInMapping else matchesByDefault
         }
     }
+
+    /** Returns the [SafetyCenterData.getDismissedIssues] that are meant to be visible in the UI. */
+    @RequiresApi(UPSIDE_DOWN_CAKE)
+    fun SafetyCenterData.visibleDismissedIssues() =
+        dismissedIssues.filter { it.severityLevel > ISSUE_SEVERITY_LEVEL_OK }
 }
