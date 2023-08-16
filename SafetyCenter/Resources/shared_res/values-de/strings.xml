@@ -36,7 +36,7 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Mögliche Sicherheitsrisiken gefunden"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Sicherheitsrisiken gefunden"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Konto eventuell gefährdet"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Konto gefährdet"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Konto ist gefährdet"</string>
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Benachrichtigung ansehen}other{Benachrichtigungen ansehen}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Seite konnte nicht geöffnet werden"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Ursache konnte nicht behoben werden"</string>
