@@ -197,9 +197,6 @@ public final class Utils {
     public static final String PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS =
             "permission_decisions_max_data_age_millis";
 
-    /** Whether or not warning banner is displayed when device sensors are off **/
-    public static final String PROPERTY_WARNING_BANNER_DISPLAY_ENABLED = "warning_banner_enabled";
-
     /** All permission whitelists. */
     public static final int FLAGS_PERMISSION_WHITELIST_ALL =
             PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM
@@ -1326,10 +1323,8 @@ public final class Utils {
      * Returns if a card should be shown if the sensor is blocked
      **/
     public static boolean shouldDisplayCardIfBlocked(@NonNull String permissionGroupName) {
-        return DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_WARNING_BANNER_DISPLAY_ENABLED, true) && (
-                CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName)
-                        || LOCATION.equals(permissionGroupName));
+        return CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName)
+                || LOCATION.equals(permissionGroupName);
     }
 
     /**
