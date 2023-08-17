@@ -989,6 +989,73 @@ class SafetyCenterNotificationTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
+    fun sendActionPendingIntent_actionIdDiffersFromIssueActionId_successNotification() {
+        val notification =
+            SafetySourceIssue.Notification.Builder("Custom title", "Custom text")
+                .addAction(
+                    SafetySourceIssue.Action.Builder(
+                            "notification_action_id",
+                            "Solve now!",
+                            safetySourceTestData.resolvingActionPendingIntent(
+                                sourceIssueActionId = "notification_action_id"
+                            )
+                        )
+                        .setWillResolve(true)
+                        .setSuccessMessage("Solved via notification action :)")
+                        .build()
+                )
+                .build()
+        val data =
+            safetySourceTestData
+                .defaultCriticalDataBuilder()
+                .clearIssues()
+                .addIssue(
+                    safetySourceTestData
+                        .defaultCriticalResolvingIssueBuilder()
+                        .clearActions()
+                        .addAction(
+                            SafetySourceIssue.Action.Builder(
+                                    "issue_action_id",
+                                    "Default action",
+                                    safetySourceTestData.resolvingActionPendingIntent(
+                                        sourceIssueActionId = "issue_action_id"
+                                    )
+                                )
+                                .setWillResolve(true)
+                                .setSuccessMessage("Solved via issue action :(")
+                                .build()
+                        )
+                        .setCustomNotification(notification)
+                        .setNotificationBehavior(
+                            SafetySourceIssue.NOTIFICATION_BEHAVIOR_IMMEDIATELY
+                        )
+                        .build()
+                )
+                .build()
+
+        safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, data)
+        val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
+        val action =
+            notificationWithChannel.statusBarNotification.notification.actions.firstOrNull()
+        checkNotNull(action) { "Notification action unexpectedly null" }
+        SafetySourceReceiver.setResponse(
+            Request.ResolveAction(SINGLE_SOURCE_ID),
+            Response.SetData(safetySourceTestData.information)
+        )
+
+        sendActionPendingIntentAndWaitWithPermission(action)
+
+        TestNotificationListener.waitForSingleNotificationMatching(
+            NotificationCharacteristics(
+                "Solved via notification action :)",
+                "",
+                actions = emptyList(),
+            )
+        )
+    }
+
+    @Test
     fun sendActionPendingIntent_error_updatesListenerDoesNotRemoveNotification() {
         // Here we cause a notification with an action to be posted and prepare the fake receiver
         // to resolve that action successfully.

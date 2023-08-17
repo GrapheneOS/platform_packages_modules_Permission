@@ -33,6 +33,7 @@ import com.android.safetycenter.PendingIntentFactory;
 import com.android.safetycenter.SafetyCenterDataChangeNotifier;
 import com.android.safetycenter.SafetyCenterFlags;
 import com.android.safetycenter.SafetyCenterService;
+import com.android.safetycenter.SafetySourceIssues;
 import com.android.safetycenter.UserProfileGroup;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -242,16 +243,8 @@ public final class SafetyCenterNotificationReceiver extends BroadcastReceiver {
                     UserUtils.isManagedProfile(issueKey.getUserId(), context),
                     issue.getIssueTypeId(),
                     issue.getSeverityLevel(),
-                    isPrimaryAction(issue, issueActionId));
+                    SafetySourceIssues.isPrimaryAction(
+                            issue, issueActionId.getSafetySourceIssueActionId()));
         }
-    }
-
-    /** Returns {@code true} if {@code actionId} is the first action of {@code issue}. */
-    private boolean isPrimaryAction(SafetySourceIssue issue, SafetyCenterIssueActionId actionId) {
-        return !issue.getActions().isEmpty()
-                && issue.getActions()
-                        .get(0)
-                        .getId()
-                        .equals(actionId.getSafetySourceIssueActionId());
     }
 }

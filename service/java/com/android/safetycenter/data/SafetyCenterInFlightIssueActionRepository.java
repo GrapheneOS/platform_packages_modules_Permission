@@ -29,13 +29,13 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.android.permission.util.UserUtils;
+import com.android.safetycenter.SafetySourceIssues;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey;
 import com.android.safetycenter.logging.SafetyCenterStatsdLogger;
 
 import java.io.PrintWriter;
 import java.time.Duration;
-import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
@@ -135,18 +135,8 @@ final class SafetyCenterInFlightIssueActionRepository {
             return null;
         }
 
-        List<SafetySourceIssue.Action> safetySourceIssueActions = safetySourceIssue.getActions();
-        for (int i = 0; i < safetySourceIssueActions.size(); i++) {
-            SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
-
-            if (safetyCenterIssueActionId
-                    .getSafetySourceIssueActionId()
-                    .equals(safetySourceIssueAction.getId())) {
-                return safetySourceIssueAction;
-            }
-        }
-
-        return null;
+        return SafetySourceIssues.findAction(
+                safetySourceIssue, safetyCenterIssueActionId.getSafetySourceIssueActionId());
     }
 
     /** Dumps in-flight action data for debugging purposes. */
