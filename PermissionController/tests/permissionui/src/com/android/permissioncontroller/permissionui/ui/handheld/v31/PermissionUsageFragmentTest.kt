@@ -61,9 +61,12 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
 
         runWithShellPermissionIdentity {
             context.startActivity(
-                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
+                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE)
+                .apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+                }
+            )
         }
 
         eventually {
