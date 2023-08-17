@@ -27,9 +27,9 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
 import android.net.Uri
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually

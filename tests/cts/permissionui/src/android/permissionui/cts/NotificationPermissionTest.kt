@@ -28,8 +28,8 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.os.UserHandle
-import android.platform.test.annotations.FlakyTest
 import android.provider.Settings
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until

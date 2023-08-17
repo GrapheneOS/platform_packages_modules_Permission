@@ -18,7 +18,7 @@ package android.permissionui.cts
 
 import android.Manifest
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.CddTest
 import com.android.compatibility.common.util.SystemUtil

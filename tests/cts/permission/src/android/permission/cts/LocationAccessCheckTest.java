@@ -62,7 +62,6 @@ import android.os.Process;
 import android.permission.cts.appthataccesseslocation.IAccessLocationOnCommand;
 import android.platform.test.annotations.AppModeFull;
 import android.platform.test.annotations.AsbSecurityTest;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.annotations.SystemUserOnly;
 import android.platform.test.rule.ScreenRecordRule;
 import android.provider.DeviceConfig;
@@ -72,6 +71,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.test.InstrumentationRegistry;
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 

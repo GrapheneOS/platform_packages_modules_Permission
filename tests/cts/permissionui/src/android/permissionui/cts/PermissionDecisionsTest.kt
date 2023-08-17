@@ -20,7 +20,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.permission.PermissionManager
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until

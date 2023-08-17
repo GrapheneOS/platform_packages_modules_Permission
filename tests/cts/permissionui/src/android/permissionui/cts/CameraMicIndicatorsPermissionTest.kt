@@ -30,12 +30,12 @@ import android.os.SystemClock
 import android.os.SystemProperties
 import android.permission.PermissionManager
 import android.platform.test.annotations.AsbSecurityTest
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
 import android.server.wm.WindowManagerStateHelper
 import androidx.annotation.RequiresApi
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By

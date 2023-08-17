@@ -18,10 +18,10 @@ package android.permissionui.cts
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.provider.Settings.Secure.USER_SETUP_COMPLETE
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule

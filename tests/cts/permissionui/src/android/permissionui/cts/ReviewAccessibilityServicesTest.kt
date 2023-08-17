@@ -23,7 +23,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.platform.test.annotations.AppModeFull
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import androidx.test.uiautomator.By

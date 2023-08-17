@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 import android.os.Build;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 

@@ -24,7 +24,7 @@ import android.location.LocationManager
 import android.os.Build
 import android.permission.cts.MtsIgnore
 import android.permission.cts.PermissionUtils
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until

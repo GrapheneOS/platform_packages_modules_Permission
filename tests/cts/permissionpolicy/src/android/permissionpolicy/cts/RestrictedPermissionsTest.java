@@ -48,11 +48,11 @@ import android.content.pm.PermissionInfo;
 import android.os.Process;
 import android.os.UserHandle;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.annotations.SystemUserOnly;
 import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
+import androidx.test.filters.FlakyTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.android.compatibility.common.util.ThrowingRunnable;

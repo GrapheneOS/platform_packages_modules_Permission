@@ -21,13 +21,13 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until
