@@ -15,7 +15,7 @@
 -->
 <configuration description="Config for CTS PermissionManager native test cases">
     <option name="test-suite-tag" value="cts" />
-    <option name="config-descriptor:metadata" key="component" value="framework" />
+    <option name="config-descriptor:metadata" key="component" value="permissions" />
     <option name="config-descriptor:metadata" key="parameter" value="instant_app" />
     <option name="config-descriptor:metadata" key="parameter" value="multi_abi" />
     <option name="config-descriptor:metadata" key="parameter" value="no_foldable_states" />

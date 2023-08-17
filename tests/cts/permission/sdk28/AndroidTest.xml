@@ -15,7 +15,7 @@
 -->
 <configuration description="Config for CTS Permission test cases for TargetSdk 28">
     <option name="test-suite-tag" value="cts" />
-    <option name="config-descriptor:metadata" key="component" value="framework" />
+    <option name="config-descriptor:metadata" key="component" value="permissions" />
     <option name="not-shardable" value="true" />
     <option name="config-descriptor:metadata" key="parameter" value="instant_app" />
     <option name="config-descriptor:metadata" key="parameter" value="not_multi_abi" />
