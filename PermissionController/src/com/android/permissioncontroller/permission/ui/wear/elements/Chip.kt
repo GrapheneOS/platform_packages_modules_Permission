@@ -54,9 +54,11 @@ import com.android.permissioncontroller.R
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     iconContentDescription: String? = null,
     largeIcon: Boolean = false,
@@ -110,9 +112,11 @@ public fun Chip(
 
     Chip(
         label = label,
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel,
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = iconParam,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -130,9 +134,11 @@ public fun Chip(
 @Composable
 public fun Chip(
     @StringRes labelId: Int,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     @StringRes secondaryLabel: Int? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
@@ -142,9 +148,11 @@ public fun Chip(
 ) {
     Chip(
         label = stringResource(id = labelId),
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel?.let { stringResource(id = it) },
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = icon,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -161,9 +169,11 @@ public fun Chip(
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: (@Composable BoxScope.() -> Unit)? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
@@ -182,7 +192,7 @@ public fun Chip(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = if (hasSecondaryLabel) 1 else 2,
+                maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
                 style = MaterialTheme.typography.button
             )
         }
@@ -194,7 +204,7 @@ public fun Chip(
                     text = secondaryLabel,
                     color = secondaryTextColor,
                     overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                    maxLines = secondaryLabelMaxLines ?: 1,
                     style = MaterialTheme.typography.caption2
                 )
             }
