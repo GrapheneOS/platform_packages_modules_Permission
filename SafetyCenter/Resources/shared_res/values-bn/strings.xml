@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{বিজ্ঞপ্তি দেখুন}one{বিজ্ঞপ্তি দেখুন}other{বিজ্ঞপ্তি দেখুন}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"পৃষ্ঠা খোলা যায়নি"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"সতর্কতার সমাধান করা যায়নি"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"সেটিংস রিফ্রেশ করা যায়নি"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{সেটিং চেক করা যায়নি}one{সেটিংস চেক করা যায়নি}other{সেটিংস চেক করা যায়নি}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"অফিস প্রোফাইল পজ করা আছে"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"এখনও কোনও তথ্য নেই"</string>

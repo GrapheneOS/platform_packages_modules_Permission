@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{चेतावनी देखें}one{चेतावनी देखें}other{चेतावनियां देखें}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"पेज को खोला नहीं जा सका"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"चेतावनी में बताई गई समस्या को ठीक नहीं किया जा सका"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"सेटिंग को रीफ़्रेश नहीं किया जा सका"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{सेटिंग की जांच नहीं की जा सकी}one{सेटिंग की जांच नहीं की जा सकी}other{सेटिंग की जांच नहीं की जा सकी}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"वर्क प्रोफ़ाइल रोक दी गई है"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"कोई जानकारी मौजूद नहीं है"</string>

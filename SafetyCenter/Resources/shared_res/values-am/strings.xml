@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ማንቂያ ይመልከቱ}one{ማንቂያ ይመልከቱ}other{ማንቂያዎች ይመልከቱ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ገጹን መከፈት አልተቻለም"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ማንቂያን መፍታት አልተቻለም"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"ቅንብሮችን ማደስ አልተቻለም"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{ቅንብርን መፈተሽ አልተቻለም}one{ቅንብርን መፈተሽ አልተቻለም}other{ቅንብሮችን መፈተሽ አልተቻለም}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"የስራ መገለጫ ባለበት ቆሟል"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ገና ምንም መረጃ የለም"</string>

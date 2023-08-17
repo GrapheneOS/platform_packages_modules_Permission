@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ಎಚ್ಚರಿಕೆಯನ್ನು ನೋಡಿ}one{ಎಚ್ಚರಿಕೆಗಳನ್ನು ನೋಡಿ}other{ಎಚ್ಚರಿಕೆಗಳನ್ನು ನೋಡಿ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ಪುಟವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ಅಲರ್ಟ್ ಅನ್ನು ಬಗೆಹರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ}one{ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ}other{ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"ಉದ್ಯೋಗ ಪ್ರೊಫೈಲ್‌ ಅನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ಇನ್ನೂ ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ"</string>

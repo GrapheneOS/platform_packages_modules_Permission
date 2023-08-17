@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{अलर्ट हेर्नुहोस्}other{अलर्टहरू हेर्नुहोस्}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"पेज खोल्न सकिएन"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"अलर्ट समाधान गर्न सकिएन"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"सेटिङ रिफ्रेस गर्न सकिएन"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{सेटिङ जाँच गर्न सकिएन}other{सेटिङहरू जाँच गर्न सकिएन}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"कार्य प्रोफाइल पज गरिएको छ"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"कुनै जानकारी उपलब्ध छैन"</string>
