@@ -21,7 +21,6 @@ import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
-import android.platform.test.rule.ScreenRecordRule
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -86,8 +85,6 @@ class SafetyCenterActivityTest {
     @get:Rule val disableAnimationRule = DisableAnimationRule()
 
     @get:Rule val freezeRotationRule = FreezeRotationRule()
-
-    @get:Rule val screenRecordRule = ScreenRecordRule()
 
     private val context: Context = getApplicationContext()
 
@@ -430,7 +427,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun entryListWithEntryGroup_clickingAClickableDisabledEntry_redirectsToDifferentScreen() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
@@ -486,7 +482,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun entryListWithSingleSource_clickingDefaultEntryImplicitIntent_redirectsToDifferentScreen() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.implicitIntentSingleSourceConfig)
 
@@ -932,7 +927,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun launchActivity_fromQuickSettings_issuesExpanded() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
