@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/app_permission_groups"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsWrapperFragment"
+        android:name="com.android.permissioncontroller.permission.ui.wear.WearAppPermissionGroupsFragment"
         android:label="AppPermissionGroups">
 
         <action
