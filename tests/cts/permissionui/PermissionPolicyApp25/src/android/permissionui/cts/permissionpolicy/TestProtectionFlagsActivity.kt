@@ -40,7 +40,7 @@ class TestProtectionFlagsActivity : Activity() {
     private fun getProtectionFlagsErrorMessage(): String {
         val packageInfo = packageManager.getPackageInfo("android", PackageManager.GET_PERMISSIONS)
         val errorMessageBuilder = StringBuilder()
-        for (declaredPermissionInfo in packageInfo.permissions) {
+        for (declaredPermissionInfo in packageInfo.permissions ?: emptyArray()) {
             val permissionInfo = packageManager.getPermissionInfo(declaredPermissionInfo.name, 0)
             val protection = permissionInfo.protection and (
                 PermissionInfo.PROTECTION_NORMAL

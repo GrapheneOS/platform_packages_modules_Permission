@@ -28,7 +28,7 @@ class AddLocationProviderActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val attrContext = createAttributionContext("test.tag")
-        val locationManager = attrContext.getSystemService(LocationManager::class.java)
+        val locationManager = attrContext.getSystemService(LocationManager::class.java)!!
         locationManager.addTestProvider(
             packageName, false, false, false, false, false, false, false, Criteria.POWER_LOW,
             Criteria.ACCURACY_COARSE
