@@ -91,7 +91,7 @@ class RolesPersistenceTest {
             .writeText("<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
         val persistedState = persistence.readForUser(user)
 
-        checkPersistedState(persistedState!!)
+        checkPersistedState(persistedState)
     }
 
     @Test
