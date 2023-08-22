@@ -78,7 +78,6 @@ android_app {
     // artifact. See also b/209458854.
     sdk_version: "system_current",
     min_sdk_version: "30",
-    target_sdk_version: "32",
     updatable: true,
     privileged: true,
     certificate: "platform",
@@ -99,10 +98,11 @@ android_app {
         // Soong fails to automatically add this dependency because all the
         // *.kt sources are inside a filegroup.
         "kotlin-annotations",
+        "safety-center-annotations",
     ],
 
     static_libs: [
-        "iconloader",
+        "iconloader_sc_mainline_prod",
         "com.google.android.material_material",
         "androidx.transition_transition",
         "androidx-constraintlayout_constraintlayout",
@@ -134,20 +134,29 @@ android_app {
         "SettingsLibActionBarShadow",
         "SettingsLibProgressBar",
         "SettingsLibCollapsingToolbarBaseActivity",
+        "SettingsLibActivityEmbedding",
         "SettingsLibSettingsTheme",
         "SettingsLibFooterPreference",
         "SettingsLibSelectorWithWidgetPreference",
         "SettingsLibTwoTargetPreference",
+        "SettingsLibIllustrationPreference",
         "androidx.annotation_annotation",
         "permissioncontroller-statsd",
         "car-ui-lib",
         "libprotobuf-java-lite",
+        "safety-center-internal-data",
+        "safety-center-pending-intents",
         "SettingsLibUtils",
         "modules-utils-build_system",
+        "safety-center-resources-lib",
+        "lottie",
+        "safety-label",
+        "role-controller",
     ],
 
     proto: {
         type: "lite",
+        include_dirs: ["packages/modules/Permission/PermissionController/src/com/android/permissioncontroller"],
     },
 
     lint: {

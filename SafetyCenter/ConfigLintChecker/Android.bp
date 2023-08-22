@@ -21,6 +21,7 @@ java_library_host {
     srcs: [
         "java/**/*.java",
         "java/**/*.kt",
+        ":safetycenter-annotations-sources",
         ":safetycenter-config-api-sources",
         ":safetycenter-config-parser-sources",
     ],
@@ -33,9 +34,13 @@ java_library_host {
         "layoutlib_api-prebuilt", // For com.android.resources.ResourceFolderType
         "lint_api",
     ],
-    java_resources: [":safetycenter-config-schema"],
+    java_resources: [":safetycenter-config-schemas"],
     jarjar_rules: "jarjar-rules.txt",
     kotlincflags: ["-Xjvm-default=all"],
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+        "//vendor:__subpackages__",
+    ],
 }
 
 java_test_host {
