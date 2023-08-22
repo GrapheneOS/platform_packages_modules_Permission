@@ -29,5 +29,13 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <application />
+    <application>
+        <receiver
+            android:name="android.permission.cts.appthatrequestpermission.RevokeSelfPermissionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.permission.cts.appthatrequestpermission.REVOKE_SELF_PERMISSION" />
+            </intent-filter>
+        </receiver>
+    </application>
 </manifest>
