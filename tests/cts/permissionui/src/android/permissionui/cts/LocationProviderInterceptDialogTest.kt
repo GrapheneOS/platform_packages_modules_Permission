@@ -47,8 +47,6 @@ private const val ACTION_MANAGE_APP_PERMISSIONS = "android.intent.action.MANAGE_
  */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
 @FlakyTest
-@Ignore("b/288471744")
-@MtsIgnore(bugId = 288471744)
 @CddTest(requirement = "9.1/C-0-1")
 class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     @Before
@@ -65,6 +63,8 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     }
 
     @Test
+    @Ignore("b/288471744")
+    @MtsIgnore(bugId = 288471744)
     fun clickLocationPermission_showDialog_clickOk() {
         openPermissionScreenForApp()
         click(By.text("Location"))
@@ -75,6 +75,8 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     }
 
     @Test
+    @Ignore("b/288471744")
+    @MtsIgnore(bugId = 288471744)
     fun clickLocationPermission_showDialog_clickLocationAccess() {
         openPermissionScreenForApp()
         click(By.text("Location"))
@@ -86,6 +88,8 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     }
 
     @Test
+    @Ignore("b/288471744")
+    @MtsIgnore(bugId = 288471744)
     fun checkRestrictedPermissions() {
         context.sendBroadcast(Intent(PermissionTapjackingTest.ACTION_SHOW_OVERLAY)
             .putExtra("package", MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
