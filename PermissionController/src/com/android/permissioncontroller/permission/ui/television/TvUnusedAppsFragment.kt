@@ -104,7 +104,7 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
     }
 
     private fun createNoUnusedAppsPreference(): Preference {
-        val preference = Preference(context)
+        val preference = Preference(requireContext())
         preference.title = getString(R.string.zero_unused_apps)
         preference.key = UNUSED_PREFERENCE_KEY
         preference.isSelectable = false
