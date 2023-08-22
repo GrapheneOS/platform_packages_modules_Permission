@@ -145,7 +145,8 @@ class LocationAccuracyTest : BaseUsePermissionTest() {
         }
         assertAppHasPermission(ACCESS_FINE_LOCATION, false)
         requestAppPermissionsAndAssertResult(
-            ACCESS_FINE_LOCATION to true
+            ACCESS_FINE_LOCATION to true,
+            waitForWindowTransition = false
         ) { }
     }
 

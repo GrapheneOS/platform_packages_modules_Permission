@@ -111,7 +111,8 @@ class MediaPermissionTest : BaseUsePermissionTest() {
         installPackage(APP_APK_PATH_MEDIA_PERMISSION_33_WITH_STORAGE)
         requestAppPermissions(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            waitForWindowTransition = false
         ) {
         }
         assertStorageAndMediaPermissionState(false)
@@ -167,7 +168,8 @@ class MediaPermissionTest : BaseUsePermissionTest() {
         setRevokeWhenRequested("android.permission.READ_MEDIA_IMAGES")
 
         requestAppPermissionsAndAssertResult(
-            Manifest.permission.READ_EXTERNAL_STORAGE to true
+            Manifest.permission.READ_EXTERNAL_STORAGE to true,
+            waitForWindowTransition = false
         ) {
             // No dialog should appear
         }

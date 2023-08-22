@@ -568,16 +568,11 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
 
     private fun pressBack() {
         uiDevice.pressBack()
-        waitForIdle()
     }
 
     private fun pressHome() {
         uiDevice.pressHome()
-        waitForIdle()
     }
-
-    private fun waitForIdle() =
-        uiAutomation.waitForIdle(IDLE_TIMEOUT_MILLIS, TIMEOUT_MILLIS)
 
     private fun changeSafetyCenterFlag(safetyCenterEnabled: String) {
         runWithShellPermissionIdentity {
@@ -596,7 +591,6 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     protected fun waitFindObject(selector: BySelector): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) })
     }
 
@@ -604,7 +598,6 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
         automatorMethod: (timeoutMillis: Long) -> UiObject2?,
         timeoutMillis: Long = TIMEOUT_MILLIS
     ): UiObject2? {
-        waitForIdle()
         val startTime = SystemClock.elapsedRealtime()
         return try {
             automatorMethod(timeoutMillis)

@@ -51,6 +51,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
@@ -86,6 +87,7 @@ abstract class BasePermissionTest {
         const val UNEXPECTED_TIMEOUT_MILLIS = 1000
         const val TIMEOUT_MILLIS: Long = 20000
         const val PACKAGE_INSTALLER_TIMEOUT = 60000L
+        const val NEW_WINDOW_TIMEOUT_MILLIS: Long = 20_000
 
         @JvmStatic
         protected val instrumentation: Instrumentation =
@@ -283,23 +285,19 @@ abstract class BasePermissionTest {
     }
 
     protected fun waitFindObject(selector: BySelector): UiObject2 {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) })!!
     }
 
     protected fun waitFindObject(selector: BySelector, timeoutMillis: Long): UiObject2 {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) },
                 timeoutMillis)!!
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) })
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector, timeoutMillis: Long): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) },
                 timeoutMillis)
     }
@@ -308,7 +306,6 @@ abstract class BasePermissionTest {
         automatorMethod: (timeoutMillis: Long) -> UiObject2?,
         timeoutMillis: Long = 20_000L
     ): UiObject2? {
-        waitForIdle()
         val startTime = SystemClock.elapsedRealtime()
         return try {
             automatorMethod(timeoutMillis)
@@ -323,7 +320,11 @@ abstract class BasePermissionTest {
 
     protected fun click(selector: BySelector, timeoutMillis: Long = 20_000) {
         waitFindObject(selector, timeoutMillis).click()
-        waitForIdle()
+    }
+
+    protected fun clickAndWaitForWindowTransition(selector: BySelector, timeoutMillis: Long = 20_000) {
+        waitFindObject(selector, timeoutMillis)
+                .clickAndWait(Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     protected fun findView(selector: BySelector, expected: Boolean) {
@@ -374,12 +375,10 @@ abstract class BasePermissionTest {
 
     protected fun pressBack() {
         uiDevice.pressBack()
-        waitForIdle()
     }
 
     protected fun pressHome() {
         uiDevice.pressHome()
-        waitForIdle()
     }
 
     protected fun pressDPadDown() {

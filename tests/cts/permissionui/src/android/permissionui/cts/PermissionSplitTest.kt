@@ -83,12 +83,15 @@ class PermissionSplitTest : BaseUsePermissionTest() {
         assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.ACCESS_FINE_LOCATION to true
+                android.Manifest.permission.ACCESS_FINE_LOCATION to true,
+                waitForWindowTransition = false
         ) {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                clickPermissionRequestAllowForegroundButton()
+                doAndWaitForWindowTransition {
+                    clickPermissionRequestAllowForegroundButton()
+                }
             }
         }
 
@@ -100,12 +103,15 @@ class PermissionSplitTest : BaseUsePermissionTest() {
         assertAppHasPermission(android.Manifest.permission.BODY_SENSORS_BACKGROUND, false)
 
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.BODY_SENSORS to true
+                android.Manifest.permission.BODY_SENSORS to true,
+                waitForWindowTransition = false
         ) {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                clickPermissionRequestAllowForegroundButton()
+                doAndWaitForWindowTransition {
+                    clickPermissionRequestAllowForegroundButton()
+                }
             }
         }
 

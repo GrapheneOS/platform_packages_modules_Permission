@@ -52,7 +52,8 @@ class MediaPermissionUpgradeTest : BaseUsePermissionTest() {
         requestAppPermissionsAndAssertResult(
                 READ_MEDIA_AUDIO to true,
                 READ_MEDIA_VIDEO to true,
-                READ_MEDIA_IMAGES to true
+                READ_MEDIA_IMAGES to true,
+                waitForWindowTransition = false
         ) {
             // Don't click any grant dialog buttons because no grant dialog should appear
         }

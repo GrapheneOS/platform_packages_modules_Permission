@@ -44,6 +44,7 @@ import androidx.test.uiautomator.StaleObjectException
 import androidx.test.uiautomator.UiObjectNotFoundException
 import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.eventually
@@ -56,6 +57,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import java.util.concurrent.CompletableFuture
 
 abstract class BaseUsePermissionTest : BasePermissionTest() {
     companion object {
@@ -358,7 +360,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             return
         }
 
-        waitForIdle()
         waitFindObjectOrNull(By.res("android:id/button1"), timeoutMillis)?.let {
             try {
                 it.click()
@@ -381,15 +382,16 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionReviewContinue() {
         if (isAutomotive || isWatch) {
-            click(By.text(getPermissionControllerString("review_button_continue")))
+            clickAndWaitForWindowTransition(
+                By.text(getPermissionControllerString("review_button_continue")))
         } else {
-            click(By.res("com.android.permissioncontroller:id/continue_button"))
+            clickAndWaitForWindowTransition(
+                By.res("com.android.permissioncontroller:id/continue_button"))
         }
     }
 
     protected fun clickPermissionReviewContinueAndClearSdkWarning() {
         clickPermissionReviewContinue()
-        waitForIdle()
         clearTargetSdkWarning()
     }
 
@@ -530,16 +532,15 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionReviewCancel() {
         if (isAutomotive || isWatch) {
-            click(By.text(getPermissionControllerString("review_button_cancel")))
+            clickAndWaitForWindowTransition(By.text(getPermissionControllerString("review_button_cancel")))
         } else {
-            click(By.res("com.android.permissioncontroller:id/cancel_button"))
+            clickAndWaitForWindowTransition(By.res("com.android.permissioncontroller:id/cancel_button"))
         }
     }
 
     protected fun approvePermissionReview() {
         startAppActivityAndAssertResultCode(Activity.RESULT_OK) {
             clickPermissionReviewContinueAndClearSdkWarning()
-            waitForIdle()
         }
     }
 
@@ -572,54 +573,70 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected inline fun requestAppPermissionsForNoResult(
         vararg permissions: String?,
-        block: () -> Unit
+        crossinline block: () -> Unit
     ) {
         // Request the permissions
-        context.startActivity(
-                Intent().apply {
-                    component = ComponentName(
-                            APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.RequestPermissionsActivity"
-                    )
-                    putExtra("$APP_PACKAGE_NAME.PERMISSIONS", permissions)
-                    addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK)
-                }
-        )
-        waitForIdle()
+        doAndWaitForWindowTransition {
+            context.startActivity(
+                    Intent().apply {
+                        component = ComponentName(
+                                APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.RequestPermissionsActivity"
+                        )
+                        putExtra("$APP_PACKAGE_NAME.PERMISSIONS", permissions)
+                        addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK)
+                    }
+            )
+        }
         // Perform the post-request action
         block()
     }
 
     protected inline fun requestAppPermissions(
-        vararg permissions: String?,
-        askTwice: Boolean = false,
-        block: () -> Unit
+            vararg permissions: String?,
+            askTwice: Boolean = false,
+            waitForWindowTransition: Boolean = true,
+            crossinline block: () -> Unit
     ): Instrumentation.ActivityResult {
         // Request the permissions
-        val future = startActivityForFuture(
-            Intent().apply {
-                component = ComponentName(
-                    APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.RequestPermissionsActivity"
-                )
-                putExtra("$APP_PACKAGE_NAME.PERMISSIONS", permissions)
-                putExtra("$APP_PACKAGE_NAME.ASK_TWICE", askTwice)
-            }
-        )
-        waitForIdle()
+        lateinit var future: CompletableFuture<Instrumentation.ActivityResult>
+        doAndWaitForWindowTransition {
+            future = startActivityForFuture(
+                Intent().apply {
+                    component = ComponentName(
+                        APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.RequestPermissionsActivity"
+                    )
+                    putExtra("$APP_PACKAGE_NAME.PERMISSIONS", permissions)
+                    putExtra("$APP_PACKAGE_NAME.ASK_TWICE", askTwice)
+                }
+            )
+        }
 
         // Notification permission prompt is shown first, so get it out of the way
         clickNotificationPermissionRequestAllowButtonIfAvailable()
         // Perform the post-request action
-        block()
+        if (waitForWindowTransition) {
+            doAndWaitForWindowTransition {
+                block()
+            }
+        } else {
+            block()
+        }
         return future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
     }
 
     protected inline fun requestAppPermissionsAndAssertResult(
-        permissions: Array<out String?>,
-        permissionAndExpectedGrantResults: Array<out Pair<String?, Boolean>>,
-        askTwice: Boolean = false,
-        block: () -> Unit
+            permissions: Array<out String?>,
+            permissionAndExpectedGrantResults: Array<out Pair<String?, Boolean>>,
+            askTwice: Boolean = false,
+            waitForWindowTransition: Boolean = true,
+            crossinline block: () -> Unit
     ) {
-        val result = requestAppPermissions(*permissions, askTwice = askTwice, block = block)
+        val result = requestAppPermissions(
+            *permissions,
+            askTwice = askTwice,
+            waitForWindowTransition = waitForWindowTransition,
+            block = block
+        )
         assertEquals(Activity.RESULT_OK, result.resultCode)
 
         val responseSize: Int =
@@ -643,6 +660,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                         .map { it == PackageManager.PERMISSION_GRANTED }
                 )
         )
+
         permissionAndExpectedGrantResults.forEach {
             it.first?.let { permission ->
                 assertAppHasPermission(permission, it.second)
@@ -651,15 +669,29 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected inline fun requestAppPermissionsAndAssertResult(
-        vararg permissionAndExpectedGrantResults: Pair<String?, Boolean>,
-        askTwice: Boolean = false,
-        block: () -> Unit
-    ) = requestAppPermissionsAndAssertResult(
-        permissionAndExpectedGrantResults.map { it.first }.toTypedArray(),
-        permissionAndExpectedGrantResults,
-        askTwice,
-        block
-    )
+            vararg permissionAndExpectedGrantResults: Pair<String?, Boolean>,
+            askTwice: Boolean = false,
+            waitForWindowTransition: Boolean = true,
+            crossinline block: () -> Unit
+    ) {
+        requestAppPermissionsAndAssertResult(
+            permissionAndExpectedGrantResults.map { it.first }.toTypedArray(),
+            permissionAndExpectedGrantResults,
+            askTwice,
+            waitForWindowTransition,
+            block
+        )
+    }
+
+    // Performs the requested action and returns, waiting for a new window transition if at least
+    // one has not already occurred while the action took place.
+    protected inline fun doAndWaitForWindowTransition(
+        crossinline block: () -> Unit
+    ) {
+        uiDevice.performActionAndWait({
+            block()
+        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+    }
 
     protected fun findPermissionRequestAllowButton(timeoutMillis: Long = 20000) {
         if (isAutomotive) {
@@ -740,7 +772,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     protected fun clickPermissionRequestAllowForegroundButton(timeoutMillis: Long = 10_000) {
         if (isAutomotive) {
             click(By.text(
-                    getPermissionControllerString(ALLOW_FOREGROUND_BUTTON_TEXT)), timeoutMillis)
+                getPermissionControllerString(ALLOW_FOREGROUND_BUTTON_TEXT)), timeoutMillis)
         } else {
             click(By.res(ALLOW_FOREGROUND_BUTTON), timeoutMillis)
         }
@@ -759,12 +791,10 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         eventually({
             clicksDenyInSettings()
         }, TIMEOUT_MILLIS * 2)
-        waitForIdle()
         pressBack()
     }
 
     protected fun clickPermissionRequestSettingsLink() {
-        waitForIdle()
         eventually {
             // UiObject2 doesn't expose CharSequence.
             val node = if (isAutomotive) {
@@ -784,9 +814,10 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            clickableSpan.onClick(View(context))
+            doAndWaitForWindowTransition {
+                clickableSpan.onClick(View(context))
+            }
         }
-        waitForIdle()
     }
 
     protected fun clickPermissionRequestDenyAndDontAskAgainButton() {
@@ -819,13 +850,11 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRationaleContentInAppPermission() {
-        waitForIdle()
-        click(By.res(APP_PERMISSION_RATIONALE_CONTENT_VIEW))
+        clickAndWaitForWindowTransition(By.res(APP_PERMISSION_RATIONALE_CONTENT_VIEW))
     }
 
     protected fun clickPermissionRationaleViewInGrantDialog() {
-        waitForIdle()
-        click(By.res(GRANT_DIALOG_PERMISSION_RATIONALE_CONTAINER_VIEW))
+        clickAndWaitForWindowTransition(By.res(GRANT_DIALOG_PERMISSION_RATIONALE_CONTAINER_VIEW))
     }
 
     protected fun grantAppPermissionsByUi(vararg permissions: String) {
@@ -863,23 +892,24 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         eventually({
             try {
                 // Open the app details settings
-                context.startActivity(
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                        data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
-                        addCategory(Intent.CATEGORY_DEFAULT)
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    }
-                )
+                doAndWaitForWindowTransition {
+                    context.startActivity(
+                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                            data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
+                            addCategory(Intent.CATEGORY_DEFAULT)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        }
+                    )
+                }
                 if (isTv) {
-                    waitForIdle()
                     pressDPadDown()
                     pressDPadDown()
                     pressDPadDown()
                     pressDPadDown()
                 }
                 // Open the permissions UI
-                click(byTextRes(R.string.permissions).enabled(true))
+                clickAndWaitForWindowTransition(byTextRes(R.string.permissions).enabled(true))
             } catch (e: Exception) {
                 pressBack()
                 throw e
@@ -907,32 +937,35 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             navigateToAppPermissionSettings()
             val permissionLabel = getPermissionLabel(permission)
             if (isWatch) {
-                click(By.text(permissionLabel), 40_000)
+                clickAndWaitForWindowTransition(By.text(permissionLabel), 40_000)
             } else {
                 clickPermissionControllerUi(By.text(permissionLabel))
             }
             return
         }
-
-        runWithShellPermissionIdentity {
-            context.startActivity(
-                Intent(Intent.ACTION_MANAGE_APP_PERMISSION).apply {
-                    putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
-                    putExtra(Intent.EXTRA_PERMISSION_NAME, permission)
-                    putExtra(Intent.EXTRA_USER, Process.myUserHandle())
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                })
+        doAndWaitForWindowTransition {
+            runWithShellPermissionIdentity {
+                context.startActivity(
+                    Intent(Intent.ACTION_MANAGE_APP_PERMISSION).apply {
+                        putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
+                        putExtra(Intent.EXTRA_PERMISSION_NAME, permission)
+                        putExtra(Intent.EXTRA_USER, Process.myUserHandle())
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    })
+            }
         }
     }
 
     /** Starts activity with intent [ACTION_REVIEW_APP_DATA_SHARING_UPDATES]. */
     fun startAppDataSharingUpdatesActivity() {
-        runWithShellPermissionIdentity {
-            context.startActivity(
+        doAndWaitForWindowTransition {
+            runWithShellPermissionIdentity {
+                context.startActivity(
                     Intent(ACTION_REVIEW_APP_DATA_SHARING_UPDATES).apply {
                         addFlags(FLAG_ACTIVITY_NEW_TASK)
                     })
+            }
         }
     }
 
@@ -964,15 +997,17 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                     clickPermissionControllerUi(By.text(permissionLabel))
                 }
             } else {
-                runWithShellPermissionIdentity {
-                    context.startActivity(
-                        Intent(Intent.ACTION_MANAGE_APP_PERMISSION).apply {
-                            putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
-                            putExtra(Intent.EXTRA_PERMISSION_NAME, permission)
-                            putExtra(Intent.EXTRA_USER, Process.myUserHandle())
-                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        })
+                doAndWaitForWindowTransition {
+                    runWithShellPermissionIdentity {
+                        context.startActivity(
+                            Intent(Intent.ACTION_MANAGE_APP_PERMISSION).apply {
+                                putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
+                                putExtra(Intent.EXTRA_PERMISSION_NAME, permission)
+                                putExtra(Intent.EXTRA_USER, Process.myUserHandle())
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            })
+                    }
                 }
             }
 
@@ -1181,7 +1216,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                 )
             }
         )
-        waitForIdle()
         clickNotificationPermissionRequestAllowButtonIfAvailable()
         val result = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         assertEquals(Activity.RESULT_OK, result.resultCode)

@@ -32,6 +32,7 @@ import android.platform.test.annotations.FlakyTest
 import android.provider.Settings
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
@@ -388,13 +389,14 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
 
         val options = ActivityOptions.makeBasic()
         options.isEligibleForLegacyPermissionPrompt = isEligibleForPromptOption
-        context.startActivity(intent, options.toBundle())
+        uiDevice.performActionAndWait({
+            context.startActivity(intent, options.toBundle())
+        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
 
         // Watch does not have app bar
         if (!isWatch) {
             waitFindObject(By.textContains(ACTIVITY_LABEL))
         }
-        waitForIdle()
     }
 
     private fun assertDialogNotShowing(timeoutMillis: Long = EXPECTED_TIMEOUT_MS) {

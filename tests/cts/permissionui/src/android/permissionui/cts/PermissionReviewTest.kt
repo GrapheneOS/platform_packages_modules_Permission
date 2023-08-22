@@ -95,6 +95,7 @@ class PermissionReviewTest : BaseUsePermissionTest() {
         startAppActivityAndAssertResultCode(Activity.RESULT_OK) {
             // Deny
             clickPermissionControllerUi(By.text("Calendar"))
+
             // Confirm deny
             click(By.res("android:id/button1"))
 

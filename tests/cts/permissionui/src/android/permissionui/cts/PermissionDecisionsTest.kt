@@ -23,6 +23,7 @@ import android.permission.PermissionManager
 import android.platform.test.annotations.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil
 import org.junit.Assert.assertNull
 import org.junit.Assume.assumeTrue
@@ -118,12 +119,14 @@ class PermissionDecisionsTest : BaseUsePermissionTest() {
     }
 
     private fun openPermissionDecisions() {
-        SystemUtil.runWithShellPermissionIdentity {
-            context.startActivity(
-                Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
-            )
-        }
+        uiDevice.performActionAndWait({
+            SystemUtil.runWithShellPermissionIdentity {
+                context.startActivity(
+                    Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                )
+            }
+        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 }
