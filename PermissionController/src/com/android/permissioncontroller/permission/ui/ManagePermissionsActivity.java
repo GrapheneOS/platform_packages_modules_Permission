@@ -78,7 +78,6 @@ import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsa
 import com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
-import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -376,8 +375,6 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                         androidXFragment = AutoAppPermissionsFragment.newInstance(packageName,
                                 userHandle, sessionId, /* isSystemPermsScreen= */ true);
                     }
-                } else if (DeviceUtils.isWear(this)) {
-                    androidXFragment = AppPermissionsFragmentWear.newInstance(packageName);
                 } else if (DeviceUtils.isTelevision(this)) {
                     androidXFragment = com.android.permissioncontroller.permission.ui.television
                             .AppPermissionsFragment.newInstance(packageName, userHandle);

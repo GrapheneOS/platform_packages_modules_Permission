@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/manage_standard"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageStandardPermissionsWrapperFragment"
+        android:name="com.android.permissioncontroller.permission.ui.wear.WearManageStandardPermissionsFragment"
         android:label="ManageStandard">
 
         <action
@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/app_permission_groups"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsWrapperFragment"
+        android:name="com.android.permissioncontroller.permission.ui.wear.WearAppPermissionGroupsFragment"
         android:label="AppPermissionGroups">
 
         <action

@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -42,6 +43,7 @@ import androidx.wear.compose.material.ChipDefaults
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import com.android.permissioncontroller.R
 
 /**
  * This component is an alternative to [Chip], providing the following:
@@ -52,9 +54,11 @@ import androidx.wear.compose.material.Text
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     iconContentDescription: String? = null,
     largeIcon: Boolean = false,
@@ -108,9 +112,11 @@ public fun Chip(
 
     Chip(
         label = label,
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel,
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = iconParam,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -128,9 +134,11 @@ public fun Chip(
 @Composable
 public fun Chip(
     @StringRes labelId: Int,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     @StringRes secondaryLabel: Int? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
@@ -140,9 +148,11 @@ public fun Chip(
 ) {
     Chip(
         label = stringResource(id = labelId),
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel?.let { stringResource(id = it) },
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = icon,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -159,12 +169,15 @@ public fun Chip(
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: (@Composable BoxScope.() -> Unit)? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
+    secondaryTextColor: Color = colorResource(R.color.wear_material_gray_600),
     colors: ChipColors = ChipDefaults.secondaryChipColors(),
     enabled: Boolean = true
 ) {
@@ -179,7 +192,7 @@ public fun Chip(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = if (hasSecondaryLabel) 1 else 2,
+                maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
                 style = MaterialTheme.typography.button
             )
         }
@@ -189,8 +202,9 @@ public fun Chip(
             {
                 Text(
                     text = secondaryLabel,
+                    color = secondaryTextColor,
                     overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                    maxLines = secondaryLabelMaxLines ?: 1,
                     style = MaterialTheme.typography.caption2
                 )
             }

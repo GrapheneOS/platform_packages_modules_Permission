@@ -53,6 +53,7 @@ public fun ToggleChip(
     checked: Boolean,
     onCheckedChanged: (Boolean) -> Unit,
     label: String,
+    labelMaxLine: Int? = null,
     toggleControl: ToggleChipToggleControl,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
@@ -71,7 +72,7 @@ public fun ToggleChip(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Start,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = if (hasSecondaryLabel) 1 else 2,
+                maxLines = labelMaxLine ?: if (hasSecondaryLabel) 1 else 2,
                 style = MaterialTheme.typography.button
             )
         }
