@@ -22,6 +22,7 @@ import static android.app.AppOpsManager.OPSTR_FINE_LOCATION;
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
 import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
+import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -41,6 +42,7 @@ import android.content.AttributionSource;
 import android.content.Context;
 import android.content.ContextParams;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Process;
 import android.os.SystemClock;
 import android.platform.test.annotations.AppModeFull;
@@ -72,8 +74,13 @@ public class NearbyDevicesRenouncePermissionTest {
     private int mLocationNoteCount;
     private int mScanNoteCount;
     private Context mContext = InstrumentationRegistry.getInstrumentation().getContext();
-    private BluetoothAdapter mBluetoothAdapter;
-    private boolean mBluetoothAdapterWasEnabled;
+    private final LocationManager mLocationManager =
+            mContext.getSystemService(LocationManager.class);
+    private final BluetoothManager mBluetoothManager =
+            mContext.getSystemService(BluetoothManager.class);
+    private final BluetoothAdapter mBluetoothAdapter = mBluetoothManager.getAdapter();
+    private boolean mBluetoothAdapterWasEnabled = true;
+    private boolean mLocationWasEnabled = true;
 
     private enum Result {
         UNKNOWN, EXCEPTION, EMPTY, FILTERED, FULL
@@ -83,18 +90,32 @@ public class NearbyDevicesRenouncePermissionTest {
         DEFAULT, RENOUNCE, RENOUNCE_MIDDLE, RENOUNCE_END
     }
 
-    @Before
-    public void enableBluetooth() {
-        assumeTrue(supportsBluetooth());
-        mBluetoothAdapter = mContext.getSystemService(BluetoothManager.class).getAdapter();
-        mBluetoothAdapterWasEnabled = mBluetoothAdapter.isEnabled();
-        assertTrue(BTAdapterUtils.enableAdapter(mBluetoothAdapter, mContext));
-        enableTestMode();
+    private boolean enableLocation() throws Exception {
+        boolean locationWasEnabled = mLocationManager.isLocationEnabled();
+        if (!locationWasEnabled) {
+            runWithShellPermissionIdentity(() -> {
+                mLocationManager.setLocationEnabledForUser(true, Process.myUserHandle());
+            });
+        }
+        return locationWasEnabled;
     }
 
-    @After
-    public void disableBluetooth() {
-        assumeTrue(supportsBluetooth());
+    private void disableLocation() throws Exception {
+        runWithShellPermissionIdentity(() -> {
+            mLocationManager.setLocationEnabledForUser(false, Process.myUserHandle());
+        });
+    }
+
+    private boolean enableBluetooth() {
+        boolean bluetoothAdapterWasEnabled = mBluetoothAdapter.isEnabled();
+        if (!bluetoothAdapterWasEnabled) {
+            assertTrue(BTAdapterUtils.enableAdapter(mBluetoothAdapter, mContext));
+        }
+        enableTestMode();
+        return bluetoothAdapterWasEnabled;
+    }
+
+    private void disableBluetooth() {
         disableTestMode();
         if (!mBluetoothAdapterWasEnabled) {
             assertTrue(BTAdapterUtils.disableAdapter(mBluetoothAdapter, mContext));
@@ -102,7 +123,10 @@ public class NearbyDevicesRenouncePermissionTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        assumeTrue(supportsBluetooth());
+        mLocationWasEnabled = enableLocation();
+        mBluetoothAdapterWasEnabled = enableBluetooth();
         mAppOpsManager = getApplicationContext().getSystemService(AppOpsManager.class);
         mAppOpsManager.setOnOpNotedCallback(getApplicationContext().getMainExecutor(),
                 new AppOpsManager.OnOpNotedCallback() {
@@ -139,8 +163,15 @@ public class NearbyDevicesRenouncePermissionTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
+        assumeTrue(supportsBluetooth());
         mAppOpsManager.setOnOpNotedCallback(null, null);
+        if (!mBluetoothAdapterWasEnabled) {
+            disableBluetooth();
+        }
+        if (!mLocationWasEnabled) {
+            disableLocation();
+        }
     }
 
     private void clearNoteCounts() {
