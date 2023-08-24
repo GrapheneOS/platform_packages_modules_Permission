@@ -60,7 +60,8 @@ class PermissionTest22 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-            arrayOf(android.Manifest.permission.SEND_SMS), emptyArray()
+            arrayOf(android.Manifest.permission.SEND_SMS), emptyArray(),
+            waitForWindowTransition = false
         ) {}
     }
 }

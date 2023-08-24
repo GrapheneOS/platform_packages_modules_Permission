@@ -258,10 +258,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         try {
             findView(By.descContains(DATA_SHARING_UPDATES), true)
             findView(By.textContains(LEARN_ABOUT_DATA_SHARING), true)
-            waitForIdle()
 
-            click(By.textContains(LEARN_ABOUT_DATA_SHARING))
-            waitForIdle()
+            clickAndWaitForWindowTransition(By.textContains(LEARN_ABOUT_DATA_SHARING))
 
             eventually({assertHelpCenterLinkClickSuccessful()}, HELP_CENTER_TIMEOUT_MILLIS)
         } finally {
@@ -297,9 +295,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             findView(By.descContains(DATA_SHARING_UPDATES), true)
             findView(By.textContains(UPDATES_IN_LAST_30_DAYS), true)
             findView(By.textContains(APP_PACKAGE_NAME_SUBSTRING), true)
-            waitForIdle()
 
-            click(By.textContains(APP_PACKAGE_NAME_SUBSTRING))
+            clickAndWaitForWindowTransition(By.textContains(APP_PACKAGE_NAME_SUBSTRING))
 
             findView(By.descContains(LOCATION_PERMISSION), true)
             findView(By.textContains(APP_PACKAGE_NAME), true)

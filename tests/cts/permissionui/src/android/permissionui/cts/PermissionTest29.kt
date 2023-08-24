@@ -48,7 +48,8 @@ class PermissionTest29 : BaseUsePermissionTest() {
     @Test
     fun testRequestOnlyBackgroundNotPossible() {
         requestAppPermissionsAndAssertResult(
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false,
+            waitForWindowTransition = false
         ) {}
 
         assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
@@ -58,7 +59,8 @@ class PermissionTest29 : BaseUsePermissionTest() {
     fun testRequestBoth() {
         requestAppPermissionsAndAssertResult(
             android.Manifest.permission.ACCESS_FINE_LOCATION to true,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true,
+            waitForWindowTransition = false
         ) {
             clickPermissionRequestSettingsLinkAndAllowAlways()
         }
@@ -77,7 +79,8 @@ class PermissionTest29 : BaseUsePermissionTest() {
 
         // Step 2: request background only
         requestAppPermissionsAndAssertResult(
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true,
+            waitForWindowTransition = false
         ) {
             clickPermissionRequestSettingsLinkAndAllowAlways()
         }
@@ -98,7 +101,8 @@ class PermissionTest29 : BaseUsePermissionTest() {
         // Step 2: grant background
         requestAppPermissionsAndAssertResult(
             android.Manifest.permission.ACCESS_FINE_LOCATION to true,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to true,
+            waitForWindowTransition = false
         ) {
             clickPermissionRequestSettingsLinkAndAllowAlways()
         }
@@ -127,7 +131,8 @@ class PermissionTest29 : BaseUsePermissionTest() {
         // Step 3: All further requests should be denied automatically
         requestAppPermissionsAndAssertResult(
             android.Manifest.permission.ACCESS_FINE_LOCATION to false,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -138,27 +143,33 @@ class PermissionTest29 : BaseUsePermissionTest() {
         // Step 1: Request both, go to settings, do nothing
         requestAppPermissionsAndAssertResult(
             android.Manifest.permission.ACCESS_FINE_LOCATION to true,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false,
+            waitForWindowTransition = false
         ) {
             openSettingsThenDoNothingThenLeave()
 
             assertAppHasPermission(android.Manifest.permission.ACCESS_FINE_LOCATION, false)
             assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
-            clickPermissionRequestAllowForegroundButton()
+            doAndWaitForWindowTransition {
+                clickPermissionRequestAllowForegroundButton()
+            }
         }
 
         // Step 2: Upgrade foreground to background, go to settings, do nothing
         requestAppPermissionsAndAssertResult(
             android.Manifest.permission.ACCESS_FINE_LOCATION to true,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to false,
+            waitForWindowTransition = false
         ) {
             openSettingsThenDoNothingThenLeave()
 
             assertAppHasPermission(android.Manifest.permission.ACCESS_FINE_LOCATION, true)
             assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
-            clickPermissionRequestNoUpgradeAndDontAskAgainButton()
+            doAndWaitForWindowTransition {
+                clickPermissionRequestNoUpgradeAndDontAskAgainButton()
+            }
         }
     }
 
@@ -187,10 +198,10 @@ class PermissionTest29 : BaseUsePermissionTest() {
 
         requestAppPermissions(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+            waitForWindowTransition = false
         ) {
             clickPermissionRequestSettingsLinkAndDeny()
-            waitForIdle()
             pressBack()
         }
 

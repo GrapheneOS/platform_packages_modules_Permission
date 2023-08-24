@@ -116,7 +116,10 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         // Request the permission and do nothing
         // Expect the permission is granted
-        requestAppPermissionsAndAssertResult(android.Manifest.permission.WRITE_CONTACTS to true) {}
+        requestAppPermissionsAndAssertResult(
+                android.Manifest.permission.WRITE_CONTACTS to true,
+                waitForWindowTransition = false
+        ) {}
     }
 
     @Test
@@ -136,7 +139,10 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         // Request the permission and do nothing
         // Expect the permission is not granted
-        requestAppPermissionsAndAssertResult(android.Manifest.permission.WRITE_CONTACTS to false) {}
+        requestAppPermissionsAndAssertResult(
+                android.Manifest.permission.WRITE_CONTACTS to false,
+                waitForWindowTransition = false
+        ) {}
     }
 
     @FlakyTest
@@ -170,7 +176,6 @@ class PermissionTest23 : BaseUsePermissionTest() {
             askTwice = true
         ) {
             clickPermissionRequestDenyButton()
-            waitForIdle()
             denyPermissionRequestWithPrejudice()
         }
 
@@ -197,7 +202,8 @@ class PermissionTest23 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-            android.Manifest.permission.BIND_PRINT_SERVICE to false
+            android.Manifest.permission.BIND_PRINT_SERVICE to false,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -208,7 +214,10 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         // Request the permission and do nothing
         // Expect the permission is not granted
-        requestAppPermissionsAndAssertResult(NON_EXISTENT_PERMISSION to false) {}
+        requestAppPermissionsAndAssertResult(
+                NON_EXISTENT_PERMISSION to false,
+                waitForWindowTransition = false
+        ) {}
     }
 
     @Test
@@ -267,7 +276,11 @@ class PermissionTest23 : BaseUsePermissionTest() {
         val permissions: Array<String?> = arrayOf(null)
         val results: Array<Pair<String?, Boolean>> = arrayOf()
         // Go through normal grant flow
-        requestAppPermissionsAndAssertResult(permissions, results) {}
+        requestAppPermissionsAndAssertResult(
+                permissions,
+                results,
+                waitForWindowTransition = false
+        ) {}
     }
 
     @Test
@@ -297,7 +310,10 @@ class PermissionTest23 : BaseUsePermissionTest() {
     fun testInvalidPermission() {
         // Request the permission and allow it
         // Expect the permission is not granted
-        requestAppPermissionsAndAssertResult(INVALID_PERMISSION to false) {}
+        requestAppPermissionsAndAssertResult(
+                INVALID_PERMISSION to false,
+                waitForWindowTransition = false
+        ) {}
     }
 
     @Test

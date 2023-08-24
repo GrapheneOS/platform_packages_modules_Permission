@@ -276,10 +276,8 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
 
         requestAppPermissionsForNoResult(ACCESS_FINE_LOCATION) {
             clickPermissionRationaleViewInGrantDialog()
-            waitForIdle()
             assertPermissionRationaleDialogIsVisible(true)
             pressBack()
-            waitForIdle()
             assertPermissionRationaleDialogIsVisible(false)
             assertPermissionRationaleContainerOnGrantDialogIsVisible(true)
         }

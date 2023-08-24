@@ -27,6 +27,7 @@ import android.permission.cts.PermissionUtils
 import android.platform.test.annotations.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.AppOpsUtils
 import com.android.compatibility.common.util.CddTest
 import com.android.compatibility.common.util.SystemUtil
@@ -67,7 +68,7 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     @MtsIgnore(bugId = 288471744)
     fun clickLocationPermission_showDialog_clickOk() {
         openPermissionScreenForApp()
-        click(By.text("Location"))
+        clickAndWaitForWindowTransition(By.text("Location"))
         findView(
             By.textContains("Location access can be modified from location settings"),
             true)
@@ -79,11 +80,11 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     @MtsIgnore(bugId = 288471744)
     fun clickLocationPermission_showDialog_clickLocationAccess() {
         openPermissionScreenForApp()
-        click(By.text("Location"))
+        clickAndWaitForWindowTransition(By.text("Location"))
         findView(
             By.textContains("Location access can be modified from location settings"),
             true)
-        click(By.res(LOCATION_ACCESS_BUTTON_RES))
+        clickAndWaitForWindowTransition(By.res(LOCATION_ACCESS_BUTTON_RES))
         findView(By.res(USE_LOCATION_LABEL_ID), true)
     }
 
@@ -98,16 +99,17 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
 
     private fun openPermissionScreenForApp() {
         restartPermissionController()
-        SystemUtil.runWithShellPermissionIdentity {
-            context.startActivity(
-                Intent(ACTION_MANAGE_APP_PERMISSIONS).apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    putExtra(EXTRA_PACKAGE_NAME, MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
-                }
-            )
-        }
-        waitForIdle()
+        uiDevice.performActionAndWait({
+            SystemUtil.runWithShellPermissionIdentity {
+                context.startActivity(
+                    Intent(ACTION_MANAGE_APP_PERMISSIONS).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        putExtra(EXTRA_PACKAGE_NAME, MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
+                    }
+                )
+            }
+        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     private fun restartPermissionController() {
