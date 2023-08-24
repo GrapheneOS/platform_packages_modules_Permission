@@ -166,8 +166,11 @@ class UndefinedGroupPermissionTest {
                 if (mContext?.packageManager
                                 ?.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE) == true) {
                     waitFindObject(By.text(mDenyButtonText!!), 2000)
+                } else if (mContext?.packageManager
+                                ?.hasSystemFeature(PackageManager.FEATURE_WATCH) == true) {
+                    waitFindObject(By.res(ALLOW_BUTTON), 2000)
                 } else {
-                    waitFindObject(By.res("com.android.permissioncontroller:id/grant_dialog"), 2000)
+                    waitFindObject(By.res(GRANT_DIALOG), 2000)
                 }
             } catch (e: UiObjectNotFoundException) {
                 Assert.assertEquals("grant dialog never showed.",
@@ -193,6 +196,9 @@ class UndefinedGroupPermissionTest {
         private const val APP_PKG_NAME = "android.permission.cts.appthatrequestpermission"
         private const val EXTRA_PERMISSIONS =
                 "android.permission.cts.appthatrequestpermission.extra.PERMISSIONS"
+        private const val GRANT_DIALOG = "com.android.permissioncontroller:id/grant_dialog"
+        private const val ALLOW_BUTTON =
+                "com.android.permissioncontroller:id/permission_allow_button"
         const val TEST = "android.permission.cts.appthatrequestpermission.TEST"
     }
 }
