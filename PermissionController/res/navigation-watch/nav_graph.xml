@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/manage_custom"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageCustomPermissionsWrapperFragment"
+        android:name="com.android.permissioncontroller.permission.ui.wear.WearManageCustomPermissionsFragment"
         android:label="ManageCustom">
 
         <action
