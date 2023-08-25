@@ -496,7 +496,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取與你生命體徵相關的感應器資料嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要讓此應用程式隨時存取人體感應器資料 (即使在你沒有使用此應用程式時)，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要讓「<xliff:g id="APP_NAME">%1$s</xliff:g>」應用程式&lt;b&gt;&lt;/b&gt;在使用時存取人體感應器資料嗎？"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 傳送通知給你嗎？"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知給你嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控制的權限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」有位置存取權"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"你的機構允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取位置資訊"</string>
