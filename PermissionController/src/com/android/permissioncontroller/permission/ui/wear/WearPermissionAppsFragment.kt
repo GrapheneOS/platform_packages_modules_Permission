@@ -63,7 +63,7 @@ class WearPermissionAppsFragment : Fragment() {
             Bundle()
         )
         val viewModel =
-            ViewModelProvider(activity, factory).get(PermissionAppsViewModel::class.java)
+            ViewModelProvider(this, factory).get(PermissionAppsViewModel::class.java)
 
         val onAppClick: (String, UserHandle, String) -> Unit = {
                 packageName, user, category ->
