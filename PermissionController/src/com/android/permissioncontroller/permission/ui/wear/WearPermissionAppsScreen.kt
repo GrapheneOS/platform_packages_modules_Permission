@@ -93,6 +93,7 @@ internal fun WearPermissionAppsContent(
                 item {
                     Chip(
                         label = it.title,
+                        labelMaxLines = Int.MAX_VALUE,
                         icon = it.icon,
                         onClick = {
                             it.onClick()
@@ -111,6 +112,7 @@ internal fun WearPermissionAppsContent(
                     } else {
                         stringResource(R.string.menu_show_system)
                     },
+                    labelMaxLines = Int.MAX_VALUE,
                     onClick = {
                         onShowSystemClick(!showSystem)
                     },
