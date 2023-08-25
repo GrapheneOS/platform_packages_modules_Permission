@@ -121,6 +121,13 @@ class AccessibilityPrivacySourceTest {
                 "${Process.myUserHandle().identifier} $permissionControllerPackage true"
         )
         cancelNotifications(permissionControllerPackage)
+        assertEmptyNotification(permissionControllerPackage, ACCESSIBILITY_NOTIFICATION_ID)
+        runWithShellPermissionIdentity { safetyCenterManager?.clearAllSafetySourceDataForTests() }
+        assertSafetyCenterIssueDoesNotExist(
+            SC_ACCESSIBILITY_SOURCE_ID,
+            safetyCenterIssueId,
+            SC_ACCESSIBILITY_ISSUE_TYPE_ID
+        )
     }
 
     @After
