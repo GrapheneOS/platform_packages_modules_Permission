@@ -369,7 +369,7 @@
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensagem de texto, enviar mensagens de texto, mensagens"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"App padrão de emergência"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"App de emergência"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"Apps que permitem registrar informações médicas e disponibilizá-las para socorristas, receber alertas sobre eventos climáticos graves e desastres e notificar outras pessoas se você precisar de ajuda"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"Apps que permitem registrar informações de saúde e disponibilizá-las para socorristas, receber alertas sobre eventos climáticos graves e desastres e notificar outras pessoas se você precisar de ajuda"</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app padrão de emergência?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nenhuma permissão necessária"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"em emergências"</string>
