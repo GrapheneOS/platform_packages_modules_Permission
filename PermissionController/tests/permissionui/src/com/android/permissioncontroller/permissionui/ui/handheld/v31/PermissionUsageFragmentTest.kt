@@ -41,7 +41,7 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
 class PermissionUsageFragmentTest : PermissionHub2Test() {
     private val APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui" +
+        "/data/local/tmp/pc-permissionui" +
             "/PermissionUiUseCameraPermissionApp.apk"
     private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
     private val APP_LABEL = "CameraRequestApp"

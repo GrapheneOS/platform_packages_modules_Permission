@@ -53,28 +53,28 @@ import javax.annotation.Nullable;
 /** Tests for restricted storage-related permissions. */
 public class RestrictedStoragePermissionTest {
     private static final String APK_USES_STORAGE_DEFAULT_22 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk22.apk";
 
     private static final String APK_USES_STORAGE_DEFAULT_28 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk28.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk28.apk";
 
     private static final String APK_USES_STORAGE_DEFAULT_29 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk29.apk";
 
     private static final String APK_USES_STORAGE_OPT_IN_22 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptInSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptInSdk22.apk";
 
     private static final String APK_USES_STORAGE_OPT_IN_28 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptInSdk28.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptInSdk28.apk";
 
     private static final String APK_USES_STORAGE_OPT_OUT_29 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptOutSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptOutSdk29.apk";
 
     private static final String APK_USES_STORAGE_OPT_OUT_30 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptOutSdk30.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptOutSdk30.apk";
 
     private static final String APK_USES_STORAGE_PRESERVED_OPT_OUT_30 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsPreservedUserOptOutSdk30.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsPreservedUserOptOutSdk30.apk";
 
     private static final String PKG = "android.permissionpolicy.cts.restrictedpermissionuser";
 

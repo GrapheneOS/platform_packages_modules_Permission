@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class PermissionUpdateListenerTest {
     private static final String APK =
-            "/data/local/tmp/cts/permissions/"
+            "/data/local/tmp/cts-permission/"
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String PACKAGE_NAME =
             "android.permission.cts.appthatrequestcustompermission";

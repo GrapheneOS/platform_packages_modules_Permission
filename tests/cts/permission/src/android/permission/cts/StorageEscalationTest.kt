@@ -41,7 +41,7 @@ import org.junit.Test
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class StorageEscalationTest {
     companion object {
-        private const val APK_DIRECTORY = "/data/local/tmp/cts/permissions"
+        private const val APK_DIRECTORY = "/data/local/tmp/cts-permission"
         const val APP_APK_PATH_28 = "$APK_DIRECTORY/CtsStorageEscalationApp28.apk"
         const val APP_APK_PATH_29_SCOPED = "$APK_DIRECTORY/CtsStorageEscalationApp29Scoped.apk"
         const val APP_APK_PATH_29_FULL = "$APK_DIRECTORY/CtsStorageEscalationApp29Full.apk"

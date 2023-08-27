@@ -178,7 +178,7 @@ public class RestrictedStoragePermissionSharedUidTest {
         }
     }
 
-    private static final String APK_PATH = "/data/local/tmp/cts/permissions2/";
+    private static final String APK_PATH = "/data/local/tmp/cts-permissionpolicy/";
     private static final String PKG_PREFIX = "android.permissionpolicy.cts.legacystoragewithshareduid.";
 
     private static final TestApp[] TEST_APPS = new TestApp[]{

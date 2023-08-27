@@ -204,7 +204,7 @@ class AppDataSharingUpdatesTest {
         private data class SessionResult(val status: Int?)
         private val TAG = AppDataSharingUpdatesTest::class.simpleName
 
-        private const val APK_DIRECTORY = "/data/local/tmp/cts/permissionmultiuser"
+        private const val APK_DIRECTORY = "/data/local/tmp/cts-permissionmultiuser"
         private const val LOCATION_PACKAGE_NAME = "android.permissionmultiuser.cts.requestlocation"
         private const val LOCATION_PACKAGE_APK_PATH = "CtsRequestLocationApp.apk"
         private const val INSTALL_ACTION_CALLBACK = "AppDataSharingUpdatesTest.install_callback"

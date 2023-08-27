@@ -31,7 +31,7 @@ import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 
-private const val APK_PATH = "/data/local/tmp/cts/permissions/"
+private const val APK_PATH = "/data/local/tmp/cts-permission/"
 
 private const val APK_DEFINING_PERM_A = "${APK_PATH}CtsAppThatDefinesPermissionA.apk"
 private const val APK_ALSO_DEFINING_PERM_A = "${APK_PATH}CtsAppThatAlsoDefinesPermissionA.apk"

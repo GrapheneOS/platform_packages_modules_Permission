@@ -196,7 +196,7 @@ class RoleShellCommandTest {
 
     companion object {
         private const val ROLE_NAME = RoleManager.ROLE_BROWSER
-        private const val APP_APK_PATH = "/data/local/tmp/cts/role/CtsRoleTestApp.apk"
+        private const val APP_APK_PATH = "/data/local/tmp/cts-role/CtsRoleTestApp.apk"
         private const val APP_PACKAGE_NAME = "android.app.role.cts.app"
     }
 }

@@ -78,10 +78,10 @@ import java.util.concurrent.atomic.AtomicReference;
 @AppModeFull(reason = "Instant apps cannot talk to permission controller")
 public class PermissionControllerTest {
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatAccessesLocationOnCommand.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatAccessesLocationOnCommand.apk";
     private static final String APP = "android.permission.cts.appthataccesseslocation";
     private static final String APK2 =
-            "/data/local/tmp/cts/permissions/"
+            "/data/local/tmp/cts-permission/"
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String APP2 = "android.permission.cts.appthatrequestcustompermission";
     private static final String CUSTOM_PERMISSION =

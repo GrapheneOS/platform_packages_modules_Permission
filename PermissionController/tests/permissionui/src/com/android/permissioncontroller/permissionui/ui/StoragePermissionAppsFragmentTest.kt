@@ -28,7 +28,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class StoragePermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/permissioncontroller/tests/permissionui" +
+    "/data/local/tmp/pc-permissionui" +
         "/PermissionUiUseStoragePermissionApp.apk",
     "com.android.permissioncontroller.tests.appthatrequestpermission",
     READ_EXTERNAL_STORAGE

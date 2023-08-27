@@ -36,11 +36,11 @@ private const val PERMISSION_APPS_DESCRIPTION = "Apps with this permission"
  */
 @RunWith(AndroidJUnit4::class)
 class CustomPermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/permissioncontroller/tests/permissionui" +
+    "/data/local/tmp/pc-permissionui" +
         "/PermissionUiUseAdditionalPermissionApp.apk",
     "com.android.permissioncontroller.tests.appthatrequestpermission",
     "com.android.permissioncontroller.tests.A",
-    "/data/local/tmp/permissioncontroller/tests/permissionui" +
+    "/data/local/tmp/pc-permissionui" +
         "/PermissionUiDefineAdditionalPermissionApp.apk",
     "com.android.permissioncontroller.tests.appthatdefinespermission"
 ) {
