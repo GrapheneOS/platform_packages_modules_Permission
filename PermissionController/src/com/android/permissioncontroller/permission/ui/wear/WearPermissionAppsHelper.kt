@@ -32,11 +32,11 @@ import java.util.Random
 /**
  * Helper class for WearPermissionsAppScreen.
  */
-class WearPermissionsAppHelper(
+class WearPermissionAppsHelper(
     val application: Application,
     val permGroupName: String,
     val viewModel: PermissionAppsViewModel,
-    private val isStorage: Boolean,
+    private val isStorageAndLessThanT: Boolean,
     private val onAppClick: (String, UserHandle, String) -> Unit,
     val onShowSystemClick: (Boolean) -> Unit,
     val logFragmentCreated: (String, UserHandle, Long, Boolean, Boolean, Boolean) -> Unit
@@ -53,14 +53,12 @@ class WearPermissionsAppHelper(
         val chipsByCategory: MutableMap<String, MutableList<ChipInfo>> = HashMap()
 
         val context = application
-        val collator = Collator.getInstance(
-            context.getResources().getConfiguration().getLocales().get(0)
-        )
+        val collator = Collator.getInstance(context.resources.configuration.locales.get(0))
         val comparator = ChipComparator(collator)
 
         val viewIdForLogging = Random().nextLong()
         for (category in Category.values()) {
-            if (category == Category.ALLOWED && isStorage) {
+            if (category == Category.ALLOWED && isStorageAndLessThanT) {
                 val allowedList = categorizedApps[Category.ALLOWED]
                 if (!allowedList.isNullOrEmpty()) {
                     allowedList.partition { p ->
@@ -70,11 +68,11 @@ class WearPermissionsAppHelper(
                         )
                     }.let {
                         if (it.first.isNotEmpty()) {
-                            chipsByCategory["allowed_storage_full"] =
+                            chipsByCategory[STORAGE_ALLOWED_FULL] =
                                 convertToChips(category, it.first, viewIdForLogging, comparator)
                         }
                         if (it.second.isNotEmpty()) {
-                            chipsByCategory["allowed_storage_scoped"] =
+                            chipsByCategory[STORAGE_ALLOWED_SCOPED] =
                                 convertToChips(category, it.second, viewIdForLogging, comparator)
                         }
                     }
@@ -89,26 +87,7 @@ class WearPermissionsAppHelper(
         }
 
         // Add no_apps chips to allowed and denied if it doesn't have an app.
-        chipsByCategory[Category.ALLOWED.categoryName]?.let {
-            if (it.isEmpty()) {
-                it.add(
-                    ChipInfo(
-                        title = context.resources.getString(R.string.no_apps_allowed),
-                        enabled = false
-                    )
-                )
-            }
-        }
-        chipsByCategory[Category.DENIED.categoryName]?.let {
-            if (it.isEmpty()) {
-                it.add(
-                    ChipInfo(
-                        title = context.resources.getString(R.string.no_apps_denied),
-                        enabled = false
-                    )
-                )
-            }
-        }
+        addNoAppsIfNeeded(chipsByCategory)
         return chipsByCategory
     }
 
@@ -161,6 +140,47 @@ class WearPermissionsAppHelper(
             icon = KotlinUtils.getBadgedPackageIcon(application, packageName, user),
             onClick = { onClick(packageName, user, category.categoryName) }
         )
+    }
+
+    private fun addNoAppsIfNeeded(chipsByCategory: MutableMap<String, MutableList<ChipInfo>>) {
+        addNoAppsToAllowed(chipsByCategory)
+        addNoAppsToDenied(chipsByCategory)
+    }
+
+    private fun addNoAppsToAllowed(chipsByCategory: MutableMap<String, MutableList<ChipInfo>>) {
+        if (isStorageAndLessThanT) {
+            // For the storage permission,
+            // allowed category is split into allowed_full and allowed_scoped categories,
+            // add no_apps chip to the categories.
+            addNoAppsTo(chipsByCategory, STORAGE_ALLOWED_FULL, R.string.no_apps_allowed_full)
+            addNoAppsTo(chipsByCategory, STORAGE_ALLOWED_SCOPED, R.string.no_apps_allowed_scoped)
+            return
+        }
+        addNoAppsTo(chipsByCategory, Category.ALLOWED.categoryName, R.string.no_apps_allowed)
+    }
+
+    private fun addNoAppsToDenied(chipsByCategory: MutableMap<String, MutableList<ChipInfo>>) {
+        addNoAppsTo(chipsByCategory, Category.DENIED.categoryName, R.string.no_apps_denied)
+    }
+
+    private fun addNoAppsTo(
+        chipsByCategory: MutableMap<String, MutableList<ChipInfo>>,
+        categoryName: String,
+        titleResId: Int
+    ) {
+        if (chipsByCategory[categoryName].isNullOrEmpty()) {
+            chipsByCategory[categoryName] = mutableListOf(
+                ChipInfo(
+                    title = application.resources.getString(titleResId),
+                    enabled = false
+                )
+            )
+        }
+    }
+
+    companion object {
+        private const val STORAGE_ALLOWED_FULL = "allowed_storage_full"
+        private const val STORAGE_ALLOWED_SCOPED = "allowed_storage_scoped"
     }
 }
 
