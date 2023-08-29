@@ -61,7 +61,7 @@ public class BackgroundPermissionsTest {
     /** The package name of all apps used in the test */
     private static final String APP_PKG = "android.permission.cts.appthatrequestpermission";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_LOCATION_BACKGROUND_29 =
             TMP_DIR + "CtsAppThatRequestsLocationAndBackgroundPermission29.apk";
     private static final String APK_LOCATION_29v4 =

@@ -82,33 +82,33 @@ import javax.annotation.Nullable;
  */
 public class RestrictedPermissionsTest {
     private static final String APK_USES_LOCATION_22 =
-            "/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk22.apk";
 
     private static final String APK_USES_LOCATION_29 =
-            "/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk29.apk";
 
     private static final String APK_USES_SMS_CALL_LOG_22 =
-            "/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk22.apk";
 
     private static final String APK_NAME_USES_SMS_CALL_LOG_29 =
             "CtsSMSCallLogPermissionsUserSdk29.apk";
 
     private static final String APK_USES_SMS_CALL_LOG_29 =
-            "/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk29.apk";
 
     private static final String APK_USES_STORAGE_DEFAULT_29 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk29.apk";
 
     private static final String PKG = "android.permissionpolicy.cts.restrictedpermissionuser";
 
     private static final String APK_USES_SMS_RESTRICTED_SHARED_UID =
-            "/data/local/tmp/cts/permissions2/CtsSMSRestrictedWithSharedUid.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSRestrictedWithSharedUid.apk";
 
     private static final String PKG_USES_SMS_RESTRICTED_SHARED_UID =
             "android.permissionpolicy.cts.smswithshareduid.restricted";
 
     private static final String APK_USES_SMS_NOT_RESTRICTED_SHARED_UID =
-            "/data/local/tmp/cts/permissions2/CtsSMSNotRestrictedWithSharedUid.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSNotRestrictedWithSharedUid.apk";
 
     private static final String PKG_USES_SMS_NOT_RESTRICTED_SHARED_UID =
             "android.permissionpolicy.cts.smswithshareduid.notrestricted";

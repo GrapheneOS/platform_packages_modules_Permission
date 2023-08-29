@@ -146,7 +146,7 @@ class RoleControllerManagerTest {
 
     companion object {
         private const val ROLE_NAME = RoleManager.ROLE_BROWSER
-        private const val APP_APK_PATH = "/data/local/tmp/cts/role/CtsRoleTestApp.apk"
+        private const val APP_APK_PATH = "/data/local/tmp/cts-role/CtsRoleTestApp.apk"
         private const val APP_PACKAGE_NAME = "android.app.role.cts.app"
         private const val SYSTEM_GALLERY_ROLE_NAME = "android.app.role.SYSTEM_GALLERY"
         private const val TIMEOUT_MILLIS = 15 * 1000L

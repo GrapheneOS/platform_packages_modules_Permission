@@ -43,7 +43,7 @@
     </target_preparer>
 
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
-        <option name="push" value="CtsRequestLocationApp.apk->/data/local/tmp/cts/permissionmultiuser/CtsRequestLocationApp.apk" />
+        <option name="push" value="CtsRequestLocationApp.apk->/data/local/tmp/cts-permissionmultiuser/CtsRequestLocationApp.apk" />
     </target_preparer>
 
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
@@ -57,8 +57,8 @@
 
     <!-- Create place to store apks -->
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
-        <option name="run-command" value="mkdir -p /data/local/tmp/cts/permissionmultiuser" />
-        <option name="teardown-command" value="rm -rf /data/local/tmp/cts"/>
+        <option name="run-command" value="mkdir -p /data/local/tmp/cts-permissionmultiuser" />
+        <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionmultiuser"/>
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >

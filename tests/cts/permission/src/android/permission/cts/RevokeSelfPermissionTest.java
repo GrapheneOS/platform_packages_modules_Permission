@@ -65,7 +65,7 @@ public class RevokeSelfPermissionTest {
     private static final String APP_PKG_NAME =
             "android.permission.cts.apptotestrevokeselfpermission";
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppToTestRevokeSelfPermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppToTestRevokeSelfPermission.apk";
     private static final long ONE_TIME_TIMEOUT_MILLIS = 500;
     private static final long ONE_TIME_TIMER_UPPER_GRACE_PERIOD = 5000;
 

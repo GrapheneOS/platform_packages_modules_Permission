@@ -80,7 +80,7 @@ abstract class BasePermissionTest {
 
         private const val MAX_SWIPES = 5
 
-        const val APK_DIRECTORY = "/data/local/tmp/cts/permissionui"
+        const val APK_DIRECTORY = "/data/local/tmp/cts-permissionui"
 
         const val QUICK_CHECK_TIMEOUT_MILLIS = 100L
         const val IDLE_TIMEOUT_MILLIS: Long = 1000

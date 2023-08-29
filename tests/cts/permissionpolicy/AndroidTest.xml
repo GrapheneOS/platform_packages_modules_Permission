@@ -41,26 +41,32 @@
         <option name="disable-device-config-sync" value="true" />
     </target_preparer>
 
+    <!-- Create place to store apks -->
+    <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
+        <option name="run-command" value="mkdir -p /data/local/tmp/cts-permissionpolicy" />
+        <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionpolicy-permissionpolicy"/>
+    </target_preparer>
+
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
-        <option name="push" value="CtsLocationPermissionsUserSdk22.apk->/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk22.apk" />
-        <option name="push" value="CtsLocationPermissionsUserSdk29.apk->/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk29.apk" />
-        <option name="push" value="CtsSMSCallLogPermissionsUserSdk22.apk->/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk22.apk" />
-        <option name="push" value="CtsSMSCallLogPermissionsUserSdk29.apk->/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk29.apk" />
-        <option name="push" value="CtsStoragePermissionsUserDefaultSdk22.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk22.apk" />
-        <option name="push" value="CtsStoragePermissionsUserDefaultSdk28.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk28.apk" />
-        <option name="push" value="CtsStoragePermissionsUserDefaultSdk29.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk29.apk" />
-        <option name="push" value="CtsStoragePermissionsUserOptInSdk22.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptInSdk22.apk" />
-        <option name="push" value="CtsStoragePermissionsUserOptInSdk28.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptInSdk28.apk" />
-        <option name="push" value="CtsStoragePermissionsUserOptOutSdk29.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptOutSdk29.apk" />
-        <option name="push" value="CtsLegacyStorageNotIsolatedWithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsLegacyStorageNotIsolatedWithSharedUid.apk" />
-        <option name="push" value="CtsLegacyStorageIsolatedWithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsLegacyStorageIsolatedWithSharedUid.apk" />
-        <option name="push" value="CtsLegacyStorageRestrictedWithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsLegacyStorageRestrictedWithSharedUid.apk" />
-        <option name="push" value="CtsLegacyStorageRestrictedSdk28WithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsLegacyStorageRestrictedSdk28WithSharedUid.apk" />
-        <option name="push" value="CtsStoragePermissionsUserOptOutSdk30.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserOptOutSdk30.apk" />
-        <option name="push" value="CtsStoragePermissionsPreservedUserOptOutSdk30.apk->/data/local/tmp/cts/permissions2/CtsStoragePermissionsPreservedUserOptOutSdk30.apk" />
-        <option name="push" value="CtsSMSRestrictedWithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsSMSRestrictedWithSharedUid.apk" />
-        <option name="push" value="CtsSMSNotRestrictedWithSharedUid.apk->/data/local/tmp/cts/permissions2/CtsSMSNotRestrictedWithSharedUid.apk" />
-        <option name="push" value="CtsProcessOutgoingCalls.apk->/data/local/tmp/cts/permissions2/CtsProcessOutgoingCalls.apk" />
+        <option name="push" value="CtsLocationPermissionsUserSdk22.apk->/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk22.apk" />
+        <option name="push" value="CtsLocationPermissionsUserSdk29.apk->/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk29.apk" />
+        <option name="push" value="CtsSMSCallLogPermissionsUserSdk22.apk->/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk22.apk" />
+        <option name="push" value="CtsSMSCallLogPermissionsUserSdk29.apk->/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk29.apk" />
+        <option name="push" value="CtsStoragePermissionsUserDefaultSdk22.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk22.apk" />
+        <option name="push" value="CtsStoragePermissionsUserDefaultSdk28.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk28.apk" />
+        <option name="push" value="CtsStoragePermissionsUserDefaultSdk29.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk29.apk" />
+        <option name="push" value="CtsStoragePermissionsUserOptInSdk22.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptInSdk22.apk" />
+        <option name="push" value="CtsStoragePermissionsUserOptInSdk28.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptInSdk28.apk" />
+        <option name="push" value="CtsStoragePermissionsUserOptOutSdk29.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptOutSdk29.apk" />
+        <option name="push" value="CtsLegacyStorageNotIsolatedWithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsLegacyStorageNotIsolatedWithSharedUid.apk" />
+        <option name="push" value="CtsLegacyStorageIsolatedWithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsLegacyStorageIsolatedWithSharedUid.apk" />
+        <option name="push" value="CtsLegacyStorageRestrictedWithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsLegacyStorageRestrictedWithSharedUid.apk" />
+        <option name="push" value="CtsLegacyStorageRestrictedSdk28WithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsLegacyStorageRestrictedSdk28WithSharedUid.apk" />
+        <option name="push" value="CtsStoragePermissionsUserOptOutSdk30.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserOptOutSdk30.apk" />
+        <option name="push" value="CtsStoragePermissionsPreservedUserOptOutSdk30.apk->/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsPreservedUserOptOutSdk30.apk" />
+        <option name="push" value="CtsSMSRestrictedWithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsSMSRestrictedWithSharedUid.apk" />
+        <option name="push" value="CtsSMSNotRestrictedWithSharedUid.apk->/data/local/tmp/cts-permissionpolicy/CtsSMSNotRestrictedWithSharedUid.apk" />
+        <option name="push" value="CtsProcessOutgoingCalls.apk->/data/local/tmp/cts-permissionpolicy/CtsProcessOutgoingCalls.apk" />
     </target_preparer>
 
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">

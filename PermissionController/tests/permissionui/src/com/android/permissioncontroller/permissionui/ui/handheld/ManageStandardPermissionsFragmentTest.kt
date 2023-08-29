@@ -42,12 +42,12 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     private val LOCATION_USER_APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui/AppThatRequestsLocation.apk"
+        "/data/local/tmp/pc-permissionui/AppThatRequestsLocation.apk"
     private val ADDITIONAL_DEFINER_APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui/" +
+        "/data/local/tmp/pc-permissionui/" +
             "PermissionUiDefineAdditionalPermissionApp.apk"
     private val ADDITIONAL_USER_APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui/" +
+        "/data/local/tmp/pc-permissionui/" +
             "PermissionUiUseAdditionalPermissionApp.apk"
     private val LOCATION_USER_PKG = "android.permission.cts.appthatrequestpermission"
     private val ADDITIONAL_DEFINER_PKG =

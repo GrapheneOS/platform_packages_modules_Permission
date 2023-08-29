@@ -73,7 +73,7 @@ public class NearbyDevicesPermissionTest {
     private static final String TEST_APP_AUTHORITY = "appthatrequestpermission";
     private static final String DISAVOWAL_APP_PKG = "android.permission.cts.appneverforlocation";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_BLUETOOTH_30 = TMP_DIR
             + "CtsAppThatRequestsBluetoothPermission30.apk";
     private static final String APK_BLUETOOTH_31 = TMP_DIR

@@ -66,9 +66,9 @@ public class OneTimePermissionTest {
     private static final String CUSTOM_CAMERA_PERM_APP_PKG_NAME =
             "android.permission.cts.appthatrequestcustomcamerapermission";
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatRequestsOneTimePermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatRequestsOneTimePermission.apk";
     private static final String CUSTOM_CAMERA_PERM_APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatRequestCustomCameraPermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatRequestCustomCameraPermission.apk";
     private static final String EXTRA_FOREGROUND_SERVICE_LIFESPAN =
             "android.permission.cts.OneTimePermissionTest.EXTRA_FOREGROUND_SERVICE_LIFESPAN";
     private static final String EXTRA_FOREGROUND_SERVICE_STICKY =

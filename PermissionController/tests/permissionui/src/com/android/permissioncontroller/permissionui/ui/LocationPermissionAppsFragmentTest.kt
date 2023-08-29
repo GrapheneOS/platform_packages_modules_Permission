@@ -28,7 +28,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class LocationPermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/permissioncontroller/tests/permissionui/AppThatRequestsLocation.apk",
+    "/data/local/tmp/pc-permissionui/AppThatRequestsLocation.apk",
     "android.permission.cts.appthatrequestpermission",
     ACCESS_COARSE_LOCATION
 )

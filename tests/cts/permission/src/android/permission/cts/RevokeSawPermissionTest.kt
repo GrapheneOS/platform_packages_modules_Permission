@@ -24,9 +24,9 @@ import org.junit.Assert
 import org.junit.Test
 
 private val APP_PKG_NAME = "android.permission.cts.usesystemalertwindowpermission"
-private val APK_22 = "/data/local/tmp/cts/permissions/" +
+private val APK_22 = "/data/local/tmp/cts-permission/" +
         "CtsAppThatRequestsSystemAlertWindow22.apk"
-private val APK_23 = "/data/local/tmp/cts/permissions/" +
+private val APK_23 = "/data/local/tmp/cts-permission/" +
         "CtsAppThatRequestsSystemAlertWindow23.apk"
 
 class RevokeSawPermissionTest {

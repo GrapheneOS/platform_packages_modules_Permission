@@ -68,7 +68,7 @@ import org.junit.Rule
 import org.junit.Test
 
 private const val APK_PATH =
-    "/data/local/tmp/cts/permissionui/CtsAppThatAccessesMicAndCameraPermission.apk"
+    "/data/local/tmp/cts-permissionui/CtsAppThatAccessesMicAndCameraPermission.apk"
 private const val APP_LABEL = "CtsCameraMicAccess"
 private const val APP_PKG = "android.permissionui.cts.appthataccessescameraandmic"
 private const val SHELL_PKG = "com.android.shell"

@@ -90,7 +90,7 @@ public class RoleManagerTest {
     private static final String ROLE_NAME = RoleManager.ROLE_BROWSER;
     private static final String ROLE_SHORT_LABEL = "Browser app";
 
-    private static final String APP_APK_PATH = "/data/local/tmp/cts/role/CtsRoleTestApp.apk";
+    private static final String APP_APK_PATH = "/data/local/tmp/cts-role/CtsRoleTestApp.apk";
     private static final String APP_PACKAGE_NAME = "android.app.role.cts.app";
     private static final String APP_LABEL = "CtsRoleTestApp";
     private static final String APP_IS_ROLE_HELD_ACTIVITY_NAME = APP_PACKAGE_NAME
@@ -104,7 +104,7 @@ public class RoleManagerTest {
     private static final String APP_CHANGE_DEFAULT_SMS_ACTIVITY_NAME = APP_PACKAGE_NAME
             + ".ChangeDefaultSmsActivity";
 
-    private static final String APP_28_APK_PATH = "/data/local/tmp/cts/role/CtsRoleTestApp28.apk";
+    private static final String APP_28_APK_PATH = "/data/local/tmp/cts-role/CtsRoleTestApp28.apk";
     private static final String APP_28_PACKAGE_NAME = "android.app.role.cts.app28";
     private static final String APP_28_LABEL = "CtsRoleTestApp28";
     private static final String APP_28_CHANGE_DEFAULT_DIALER_ACTIVITY_NAME = APP_28_PACKAGE_NAME
@@ -113,7 +113,7 @@ public class RoleManagerTest {
             + ".ChangeDefaultSmsActivity";
 
     private static final String APP_33_WITHOUT_INCALLSERVICE_APK_PATH =
-            "/data/local/tmp/cts/role/CtsRoleTestApp33WithoutInCallService.apk";
+            "/data/local/tmp/cts-role/CtsRoleTestApp33WithoutInCallService.apk";
     private static final String APP_33_WITHOUT_INCALLSERVICE_PACKAGE_NAME =
             "android.app.role.cts.app33WithoutInCallService";
 

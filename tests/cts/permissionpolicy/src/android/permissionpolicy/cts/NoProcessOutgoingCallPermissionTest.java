@@ -58,7 +58,7 @@ public class NoProcessOutgoingCallPermissionTest {
     private static final int POST_CALL_START_WAIT_TIME_SEC = 5;
 
     private static final String APK_INSTALL_LOCATION =
-            "/data/local/tmp/cts/permissions2/CtsProcessOutgoingCalls.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsProcessOutgoingCalls.apk";
     private static final String LOG_TAG = "NoProcessOutgoingCallPermissionTest";
 
     private static final String ACTION_TEST_APP_RECEIVED_CALL =
