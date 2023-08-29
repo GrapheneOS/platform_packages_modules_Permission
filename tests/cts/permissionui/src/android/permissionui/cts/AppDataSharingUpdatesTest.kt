@@ -30,10 +30,10 @@ import android.permission.cts.PermissionUtils
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingNoAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithNoSharing
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import android.util.Log
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule

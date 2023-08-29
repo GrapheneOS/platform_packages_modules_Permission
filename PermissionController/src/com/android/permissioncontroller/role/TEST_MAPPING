@@ -4,7 +4,7 @@
             "name": "CtsRoleTestCases",
             "options": [
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
@@ -21,7 +21,7 @@
                     "exclude-filter": "android.app.role.cts.RoleManagerTest#removeSmsRoleHolderThenPermissionIsRevoked"
                 },
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }

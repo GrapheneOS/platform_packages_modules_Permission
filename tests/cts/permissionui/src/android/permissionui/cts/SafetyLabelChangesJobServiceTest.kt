@@ -36,11 +36,11 @@ import android.permission.cts.PermissionUtils
 import android.permission.cts.TestUtils
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingNoAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithNoSharing
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import androidx.test.InstrumentationRegistry
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule

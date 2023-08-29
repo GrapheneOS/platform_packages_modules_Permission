@@ -7,7 +7,7 @@
                     "include-filter": "android.permission.cts.OneTimePermissionTest"
                 },
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
@@ -20,7 +20,7 @@
                     "include-annotation": "com.android.cts.devicepolicy.annotations.PermissionsTest"
                 },
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }

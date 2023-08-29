@@ -19,8 +19,8 @@ package android.permissionui.cts
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.res.Resources
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
 import com.android.modules.utils.build.SdkLevel

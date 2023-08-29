@@ -18,7 +18,7 @@ package android.permissionui.cts
 
 import android.content.pm.PackageManager
 import android.permission.cts.MtsIgnore
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import com.android.compatibility.common.util.SystemUtil
 import org.junit.Assert
 import org.junit.Assume

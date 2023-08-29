@@ -36,10 +36,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.platform.test.annotations.AsbSecurityTest;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.rule.ScreenRecordRule;
 import android.provider.DeviceConfig;
 
+import androidx.test.filters.FlakyTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiDevice;

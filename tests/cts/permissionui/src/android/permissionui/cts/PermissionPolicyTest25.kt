@@ -19,12 +19,12 @@ package android.permissionui.cts
 import android.app.Activity
 import android.content.ComponentName
 import android.content.Intent
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
+import java.util.concurrent.TimeUnit
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import java.util.concurrent.TimeUnit
 
 /**
  * Tests for the platform permission policy around apps targeting API 25.

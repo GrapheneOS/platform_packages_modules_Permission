@@ -19,7 +19,7 @@ package android.permissionui.cts
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import org.junit.Assert.assertNull
 import org.junit.Test
