@@ -20,17 +20,18 @@ import android.content.Context;
 import android.icu.text.Collator;
 
 import androidx.annotation.NonNull;
-import androidx.arch.core.util.Function;
+
+import kotlin.jvm.functions.Function1;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 /**
- * A function for {@link androidx.lifecycle.Transformations#map(androidx.lifecycle.LiveData,
- * Function)} that sorts a live data for role list.
+ * A function for {@link androidx.lifecycle#map(androidx.lifecycle.LiveData, Function1)}
+ * that sorts a live data for role list.
  */
-public class RoleListSortFunction implements Function<List<RoleItem>, List<RoleItem>> {
+public class RoleListSortFunction implements Function1<List<RoleItem>, List<RoleItem>> {
 
     @NonNull
     private final Comparator<RoleItem> mComparator;
@@ -42,10 +43,9 @@ public class RoleListSortFunction implements Function<List<RoleItem>, List<RoleI
                 roleItem.getRole().getShortLabelResource()), collator);
     }
 
-    @NonNull
     @Override
-    public List<RoleItem> apply(@NonNull List<RoleItem> input) {
-        List<RoleItem> sorted = new ArrayList<>(input);
+    public List<RoleItem> invoke(List<RoleItem> p1) {
+        List<RoleItem> sorted = new ArrayList<>(p1);
         sorted.sort(mComparator);
         return sorted;
     }

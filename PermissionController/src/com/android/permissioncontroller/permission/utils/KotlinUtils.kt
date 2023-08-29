@@ -1543,15 +1543,16 @@ object KotlinUtils {
  */
 suspend fun <T, LD : LiveData<T>> LD.getInitializedValue(
     observe: LD.(Observer<T>) -> Unit = { observeForever(it) },
-    isInitialized: LD.() -> Boolean = { value != null }
+    isValueInitialized: LD.() -> Boolean = { value != null }
 ): T {
-    return if (isInitialized()) {
-        value!!
+    return if (isValueInitialized()) {
+        @Suppress("UNCHECKED_CAST")
+        value as T
     } else {
         suspendCoroutine { continuation: Continuation<T> ->
             val observer = AtomicReference<Observer<T>>()
             observer.set(Observer { newValue ->
-                if (isInitialized()) {
+                if (isValueInitialized()) {
                     GlobalScope.launch(Dispatchers.Main) {
                         observer.getAndSet(null)?.let { observerSnapshot ->
                             removeObserver(observerSnapshot)
