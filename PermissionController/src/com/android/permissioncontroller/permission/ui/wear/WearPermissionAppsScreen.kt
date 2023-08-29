@@ -36,7 +36,7 @@ import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableSc
  */
 @Composable
 fun WearPermissionAppsScreen(
-    helper: WearPermissionsAppHelper
+    helper: WearPermissionAppsHelper
 ) {
     val categorizedApps = helper.categorizedAppsLiveData().observeAsState(emptyMap())
     val hasSystemApps = helper.hasSystemAppsLiveData().observeAsState(false)
@@ -95,6 +95,7 @@ internal fun WearPermissionAppsContent(
                         label = it.title,
                         labelMaxLines = Int.MAX_VALUE,
                         icon = it.icon,
+                        enabled = it.enabled,
                         onClick = {
                             it.onClick()
                         },

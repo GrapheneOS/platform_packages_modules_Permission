@@ -26,6 +26,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel
@@ -53,7 +54,8 @@ class WearPermissionAppsFragment : Fragment() {
             ?: throw RuntimeException("Permission group name must not be null.")
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
-        val isStorage = permGroupName == Manifest.permission_group.STORAGE
+        val isStorageAndLessThanT = !SdkLevel.isAtLeastT() &&
+                permGroupName == Manifest.permission_group.STORAGE
 
         val activity = requireActivity()
         val factory = PermissionAppsViewModelFactory(
@@ -106,11 +108,11 @@ class WearPermissionAppsFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 WearPermissionAppsScreen(
-                    WearPermissionsAppHelper(
+                    WearPermissionAppsHelper(
                         activity.getApplication(),
                         permGroupName,
                         viewModel,
-                        isStorage,
+                        isStorageAndLessThanT,
                         onAppClick,
                         onShowSystemClick,
                         logPermissionAppsFragmentCreated
