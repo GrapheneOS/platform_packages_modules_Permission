@@ -25,12 +25,14 @@ import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
 import android.location.LocationManager
 import android.os.Build
+import android.safetycenter.SafetyCenterManager
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import java.util.regex.Pattern
+import org.junit.Assert.assertTrue
 import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
@@ -44,10 +46,13 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
     companion object {
         const val LOCATION = -1
         const val DELAY_MILLIS = 3000L
+        private const val CHANGE_BUTTON = "com.android.permissioncontroller:id/button_id"
+        private const val CAMERA_TOGGLE_LABEL = "Camera access"
     }
 
-    val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
-    val locationManager = context.getSystemService(LocationManager::class.java)!!
+    private val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
+    private val locationManager = context.getSystemService(LocationManager::class.java)!!
+    private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     private val sensorToPermissionGroup = mapOf(CAMERA to CAMERA_PERMISSION_GROUP,
             MICROPHONE to MICROPHONE_PERMISSION_GROUP,
@@ -72,12 +77,12 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
         val intent = Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                 .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, permissionGroup)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         runWithShellPermissionIdentity {
             context.startActivity(intent)
         }
         val bannerTitle = permToTitle.getOrDefault(sensor, "Break")
         waitFindObject(By.text(getPermissionControllerString(bannerTitle)))
-        pressBack()
     }
 
     private fun runSensorTest(sensor: Int) {
@@ -110,6 +115,25 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
     @Test
     fun testLocationCardDisplayed() {
         runSensorTest(LOCATION)
+    }
+
+    @Test
+    fun testCardClickOpenPrivacyControls() {
+        Assume.assumeTrue(sensorPrivacyManager.supportsSensorToggle(CAMERA))
+        runWithShellPermissionIdentity {
+            Assume.assumeTrue(safetyCenterManager.isSafetyCenterEnabled)
+        }
+        // Disable global camera toggle
+        val blocked = isSensorPrivacyEnabled(CAMERA)
+        if (!blocked) {
+            setSensor(CAMERA, true)
+        }
+        // verify sensor card is shown for blocked camera
+        navigateAndTest(CAMERA)
+        click(By.res(CHANGE_BUTTON))
+        // Enable global camera toggle and verify
+        waitFindObject(By.text(CAMERA_TOGGLE_LABEL)).click()
+        assertTrue(!isSensorPrivacyEnabled(CAMERA))
     }
 
     private fun setSensor(sensor: Int, enable: Boolean) {
