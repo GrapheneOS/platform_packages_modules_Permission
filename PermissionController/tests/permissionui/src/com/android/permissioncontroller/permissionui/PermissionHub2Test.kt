@@ -25,15 +25,10 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
 import android.os.Process.myUserHandle
-import android.provider.DeviceConfig
-import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.compatibility.common.util.SystemUtil.eventually
-import com.android.compatibility.common.util.SystemUtil.runShellCommand
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.google.common.truth.Truth.assertThat
-import org.junit.AfterClass
-import org.junit.BeforeClass
 
 /**
  * Super class with utilities for testing permission hub 2 code
@@ -43,36 +38,6 @@ open class PermissionHub2Test {
 
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
     protected val context = instrumentation.targetContext
-
-    companion object {
-        private const val PROPERTY_PERMISSIONS_HUB_2_ENABLED = "permissions_hub_2_enabled"
-
-        private var wasPermissionHubEnabled = false
-
-        @JvmStatic
-        @BeforeClass
-        fun enablePermissionHub2() {
-
-            runWithShellPermissionIdentity {
-                wasPermissionHubEnabled = DeviceConfig.getBoolean(NAMESPACE_PRIVACY,
-                    PROPERTY_PERMISSIONS_HUB_2_ENABLED, false)
-            }
-
-            if (!wasPermissionHubEnabled) {
-                runShellCommand(
-                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED true")
-            }
-        }
-
-        @JvmStatic
-        @AfterClass
-        fun disablePermissionHub2() {
-            if (!wasPermissionHubEnabled) {
-                runShellCommand(
-                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED false")
-            }
-        }
-    }
 
     /**
      * Make {@value #APP} access the camera

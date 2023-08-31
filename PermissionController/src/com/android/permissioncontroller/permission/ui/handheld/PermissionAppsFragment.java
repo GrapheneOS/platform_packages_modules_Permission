@@ -52,7 +52,6 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.Category;
-import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.v31.CardViewPreference;
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel;
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModelFactory;
@@ -62,14 +61,14 @@ import com.android.settingslib.HelpUtils;
 import com.android.settingslib.utils.applications.AppUtils;
 import com.android.settingslib.widget.FooterPreference;
 
+import kotlin.Pair;
+import kotlin.Triple;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import kotlin.Pair;
-import kotlin.Triple;
 
 /**
  * Show and manage apps which request a single permission group.
@@ -90,8 +89,6 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     private static final String STORAGE_FOOTER_CATEGORY_KEY = "storage_footer_category";
     private static final String STORAGE_FOOTER_PREFERENCE_KEY = "storage_footer_preference";
     private static final int SHOW_LOAD_DELAY_MS = 200;
-
-    private static final int MENU_PERMISSION_USAGE = MENU_HIDE_SYSTEM + 1;
 
     /**
      * Create a bundle with the arguments needed by this fragment
@@ -197,10 +194,6 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             updateMenu(mViewModel.getShouldShowSystemLiveData().getValue());
         }
 
-        if (KotlinUtils.INSTANCE.shouldShowPermissionsDashboard()) {
-            menu.add(Menu.NONE, MENU_PERMISSION_USAGE, Menu.NONE, R.string.permission_usage_title);
-        }
-
         if (!SdkLevel.isAtLeastS()) {
             HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
                     getClass().getName());
@@ -218,11 +211,6 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             case MENU_HIDE_SYSTEM:
                 mViewModel.updateShowSystem(item.getItemId() == MENU_SHOW_SYSTEM);
                 break;
-            case MENU_PERMISSION_USAGE:
-                getActivity().startActivity(new Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE)
-                        .setClass(getContext(), ManagePermissionsActivity.class)
-                        .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermGroupName));
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }

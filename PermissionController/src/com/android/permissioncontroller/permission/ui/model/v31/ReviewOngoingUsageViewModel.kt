@@ -51,7 +51,6 @@ import com.android.permissioncontroller.permission.ui.handheld.v31.ReviewOngoing
 import com.android.permissioncontroller.permission.ui.handheld.v31.ReviewOngoingUsageFragment.VIDEO_CALL
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.shouldShowLocationIndicators
-import com.android.permissioncontroller.permission.utils.KotlinUtils.shouldShowPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.Utils
 import java.time.Instant
 import kotlin.math.max
@@ -103,7 +102,7 @@ class ReviewOngoingUsageViewModel(
      */
     private val permGroupUsages = LoadAndFreezeLifeData(state, USAGES_KEY,
             PermGroupUsageLiveData(PermissionControllerApplication.get(),
-                    if (shouldShowPermissionsDashboard() || shouldShowLocationIndicators()) {
+                    if (shouldShowLocationIndicators()) {
                         listOf(CAMERA, LOCATION, MICROPHONE)
                     } else {
                         listOf(CAMERA, MICROPHONE)
