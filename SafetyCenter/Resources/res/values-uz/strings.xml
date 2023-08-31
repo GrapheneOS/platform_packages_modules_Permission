@@ -27,7 +27,7 @@
     <string name="biometrics_search_terms" msgid="6040319118762671981">"Barmoq izi, barmoq, barmoq izi qoʻshish, yuz bilan ochish, yuz"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Maxfiylik"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Boshqaruv paneli, ruxsatlar, boshqaruv"</string>
-    <string name="permission_usage_title" msgid="3633779688945350407">"Maxfiylik boshqaruv paneli"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"Maxfiylik boshqaruvi"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Oxirgi marta qaysi ilovalar ruxsatlardan foydalanganini koʻrsatish"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Maxfiylik, maxfiylik boshqaruv paneli"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Ruxsatlar boshqaruvi"</string>

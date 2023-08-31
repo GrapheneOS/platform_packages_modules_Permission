@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Saúde, Saúde conectada"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Actualizacións do uso compartido de datos de localización"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"datos, uso compartido de datos, actualizacións do uso compartido de datos, actualizacións do uso compartido de datos de localización, uso compartido"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Privacidade dos anuncios"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Personaliza a información que usan as aplicacións para mostrarche anuncios"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"anuncios, privacidade nos anuncios, privacy sandbox, temas dos anuncios, anuncios suxeridos polas aplicacións, medición de anuncios"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Outras opcións de configuración"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Máis seguranza e privacidade"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Autocompletar, notificacións e outras opcións"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Información sobre a túa política do traballo"</string>
 </resources>

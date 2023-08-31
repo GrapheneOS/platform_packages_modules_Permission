@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Տեղադրության մասին տվյալներով կիսվելու թույլտվության թարմացում"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Տվյալներ, Տվյալների փոխանցում, Տվյալներով կիսվելու եղանակի փոփոխություն, Տեղադրության մասին տվյալներով կիսվելու թույլտվության թարմացում, փոխանցում"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Գովազդի գաղտնիություն"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Անհատականացված տեղեկություններ, որոնք հավելվածներն օգտագործում են՝ ձեզ գովազդ ցուցադրելու համար"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"գովազդներ, գովազդի գաղտնիություն, privacy sandbox, գովազդի թեմաներ, հավելվածների կողմից առաջարկվող գովազդներ, գովազդի արդյունավետության գնահատում"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Այլ կարգավորումներ"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Անվտանգության և գաղտնիության լրացուցիչ կարգավորումներ"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Ինքնալրացում, ծանուցումներ և ավելին"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Տեղեկություններ աշխատանքային կանոնների մասին"</string>
 </resources>

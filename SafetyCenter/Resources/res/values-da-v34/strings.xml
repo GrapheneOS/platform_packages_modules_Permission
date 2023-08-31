@@ -18,17 +18,15 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="lock_screen_sources_title" msgid="5493678510117489865">"Enhedsoplåsning"</string>
-    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Biometri til arbejdet"</string>
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Biometri til arbejdsprofil"</string>
     <string name="privacy_sources_summary" msgid="4083646673569677049">"Tilladelser, kontrolpanel, indstillinger"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Opdateringer om deling af lokationsdata"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Data, datadeling, opdateringer om datadeling, opdateringer om deling af lokationsdata, deling"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Privatliv ved annoncering"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Tilpas de oplysninger, apps bruger til at vise dig annoncer"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"annoncer, privatliv ved annoncering, privacy sandbox, annonceemner, annoncer foreslået af apps, annoncemåling"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Andre indstillinger"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Mere sikkerhed og privatliv"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Autofyld, notifikationer m.m."</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Oplysninger om din arbejdspolitik"</string>
 </resources>

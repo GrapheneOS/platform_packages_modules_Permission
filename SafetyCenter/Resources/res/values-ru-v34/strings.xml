@@ -22,13 +22,11 @@
     <string name="privacy_sources_summary" msgid="4083646673569677049">"Разрешения, панель управления, параметры"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Здоровье и спорт"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Здоровье, Здоровье и спорт"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Обновление доступа к данным о местоположении"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Обновления в передаче данных о местоположении"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Данные, Передача данных, Обновления передачи данных, Обновление доступа к данным, Обновление доступа к данным о местоположении"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Конфиденциальность в рекламе"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Укажите, какую информацию приложения могут использовать для показа рекламы"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"объявления, конфиденциальность в рекламе, privacy sandbox, темы объявлений, реклама, предлагаемая приложениями, оценка эффективности рекламы"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Другие настройки"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Дополнительные настройки безопасности и конфиденциальности"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Автозаполнение, уведомления и другие настройки"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Сведения о правилах организации"</string>
 </resources>

@@ -28,10 +28,10 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"గోప్యత"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"డ్యాష్‌బోర్డ్, అనుమతులు, కంట్రోల్స్"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"గోప్యతా డ్యాష్‌బోర్డ్"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"ఇటీవల ఏ యాప్‌లు అనుమతులను ఉపయోగించాయో చూపించండి"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"ఇటీవల ఏ యాప్‌లు అనుమతులను ఉపయోగించాయో చూపిస్తుంది"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"గోప్యత, గోప్యతా డ్యాష్‌బోర్డ్"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"అనుమతి మేనేజర్"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"మీ డేటాకు యాప్ యాక్సెస్‌ను కంట్రోల్ చేయండి"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"మీ డేటాకు యాప్ యాక్సెస్‌ను కంట్రోల్ చేస్తుంది"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"అనుమతులు, అనుమతుల మేనేజర్"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"గోప్యతా కంట్రోల్స్"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"మైక్రోఫోన్, కెమెరా, మరిన్నింటికి డివైజ్ యాక్సెస్‌ను కంట్రోల్ చేయండి"</string>
