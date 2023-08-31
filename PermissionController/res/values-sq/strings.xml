@@ -195,8 +195,8 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Vendndodhja e përafërt"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Përdor vendndodhjen e saktë"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kur është joaktive vendndodhja e saktë, aplikacionet mund të qasen te vendndodhja jote e përafërt"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Leje për te <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Qasja te <xliff:g id="PERM">%1$s</xliff:g> për këtë aplikacion"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Leje për te \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Qasja te \"<xliff:g id="PERM">%1$s</xliff:g>\" për këtë aplikacion"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Shiko të gjitha lejet e aplikacionit \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Shiko të gjitha aplikacionet me këtë leje"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Shfaq përdorimin e mikrofonit të \"Asistentit\""</string>
@@ -211,7 +211,7 @@
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Nëse dëshiron t\'i lejosh përsëri lejet, hap aplikacionin."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Heqja automatike aktualisht është çaktivizuar për këtë aplikacion."</string>
     <string name="auto_revocable_permissions_none" msgid="8334929619113991466">"Aktualisht nuk janë dhënë leje të revokueshme automatikisht"</string>
-    <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"Leja për \"<xliff:g id="PERM">%1$s</xliff:g>\" do të hiqet."</string>
+    <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"Leja për te \"<xliff:g id="PERM">%1$s</xliff:g>\" do të hiqet."</string>
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Lejet <xliff:g id="PERM_0">%1$s</xliff:g> dhe <xliff:g id="PERM_1">%2$s</xliff:g> do të hiqen."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"Lejet që do të hiqen: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"Menaxho automatikisht lejet"</string>
