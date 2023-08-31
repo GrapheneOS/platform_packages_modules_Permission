@@ -475,7 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music, audio and other files&lt;/b&gt; on this device?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access music and audio on this device?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos and videos on this device?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos and videos on this device?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access more photos and videos on this device?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"The app will only be able to record audio while you’re using the app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
@@ -520,7 +520,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"For apps and services"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Microphone data may still be shared when you call an emergency number."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Change"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Security &amp; privacy"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Security and privacy"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Scan device"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Dismiss"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Dismiss this alert?"</string>
@@ -589,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"This app stated that it may share location data with third parties"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Data sharing and location"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Where data sharing info comes from"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"The developer provided info to this device\'s manufacturer about how this app shares data. The developer may update this info over time."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"The developer provided info to "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" about how this app shares data. The developer may update this info over time."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"This app may share location data for:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Data sharing varies"</string>
@@ -606,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Data safety"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Location data may be shared"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"This app stated that it may share your location data with third parties"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Can’t open this link"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Data sharing updates for location"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Review apps that changed the way that they may share your location data"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"These apps have changed the way that they may share your location data. They may not have shared it before or may now share it for advertising or marketing purposes."</string>

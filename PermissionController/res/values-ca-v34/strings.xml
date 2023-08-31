@@ -20,8 +20,8 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Seguretat i privadesa"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Controls"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Salut connectada"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Gestiona l\'accés de l\'aplicació a les dades de salut"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Gestiona l\'accés de les aplicacions a les dades de salut"</string>
     <string name="location_settings" msgid="8863940440881290182">"Accés a la ubicació"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Per a aplicacions i serveis. Si aquesta opció de configuració està desactivada, és possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Per a aplicacions i serveis. És possible que les dades del micròfon es comparteixin si truques a un número d\'emergència encara que aquesta opció estigui desactivada."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Per a aplicacions i serveis"</string>
 </resources>

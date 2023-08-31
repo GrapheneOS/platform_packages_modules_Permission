@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Higit pang alerto"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Mga na-dismiss na alerto"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{I-expand at makakita ng isa pang alerto}one{I-expand at makakita ng # pang alerto}other{I-expand at makakita ng # pang alerto}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Alerto. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Tapos na ang pagkilos"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Tingnan ang mga setting na makakapagdagdag ng proteksyon sa iyong device"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Mga mabilisang setting ng seguridad at privacy"</string>

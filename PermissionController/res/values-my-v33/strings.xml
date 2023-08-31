@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"နောက်ထပ် သတိပေးချက်များ"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ပယ်ထားသော သတိပေးချက်များ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ချဲ့ပြီး သတိပေးချက်နောက်တစ်ခု ကြည့်ရန်}other{ချဲ့ပြီး သတိပေးချက်နောက် # ခု ကြည့်ရန်}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"သတိပေးချက်။ <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"လုပ်ဆောင်ချက် ပြီးပြီ"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"သင့်စက်တွင် အကာအကွယ်ထည့်သွင်းနိုင်သည့် ဆက်တင်များကို ကြည့်နိုင်သည်"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"လုံခြုံရေးနှင့် ကိုယ်ရေးဒေတာ အမြန်ဆက်တင်များ"</string>

@@ -18,10 +18,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Безпека й конфіденційність"</string>
-    <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Елементи керування"</string>
+    <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Параметри"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Керуйте доступом додатка до даних про здоров’я"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Керуйте доступом додатків до даних про здоров’я"</string>
     <string name="location_settings" msgid="8863940440881290182">"Доступ до геоданих"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Для додатків і сервісів. Якщо це налаштування вимкнено, дані мікрофона можуть усе одно передаватися під час виклику екстреного номера"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Для додатків і сервісів. Якщо це налаштування вимкнено, дані мікрофона можуть усе одно передаватися під час виклику екстреного номера."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Для додатків і сервісів"</string>
 </resources>

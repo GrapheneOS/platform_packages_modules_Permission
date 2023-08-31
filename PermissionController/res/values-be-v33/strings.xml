@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Іншыя абвесткі"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Адхіленыя абвесткі"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Разгарніце, каб убачыць яшчэ адну абвестку}one{Разгарніце, каб убачыць яшчэ # абвестку}few{Разгарніце, каб убачыць яшчэ # абвесткі}many{Разгарніце, каб убачыць яшчэ # абвестак}other{Разгарніце, каб убачыць яшчэ # абвесткі}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Абвестка. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Дзеянне завершана"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Праверце налады, якія могуць павысіць бяспеку вашай прылады"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Хуткія налады бяспекі і прыватнасці"</string>

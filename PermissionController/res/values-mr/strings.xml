@@ -20,7 +20,7 @@
     <string name="ok" msgid="1936281769725676272">"ओके"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"परवानग्या"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करा"</string>
-    <string name="back" msgid="6249950659061523680">"परत"</string>
+    <string name="back" msgid="6249950659061523680">"मागे जा"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध आहे"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक केला आहे"</string>
     <string name="on" msgid="280241003226755921">"सुरू आहे"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते, तेव्हा ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ही परवानगी असलेली सर्व अ‍ॅप्स पहा"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ने मायक्रोफोनचा केलेला वापर दाखवा"</string>
@@ -397,8 +397,8 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि तुमचा फोन, एसएमएस, संपर्क आणि Calendar च्या परवानग्या अ‍ॅक्सेस करण्याची अनुमती मिळेल."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि कनेक्‍ट केलेल्या डिव्हाइसवर तुमची ॲप्स स्ट्रीम करण्याची अनुमती दिली जाईल."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ही सेवा तुमचे फोटो, मीडिया आणि सूचना तुमच्या फोनवरून दुसऱ्या डिव्हाइसवर शेअर करते."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"डीफॉल्ट टीपांचे अ‍ॅप"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"टीपांचे अ‍ॅप"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"टिपांसाठी डीफॉल्ट अ‍ॅप"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"टिपांचे अ‍ॅप"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"तुमच्या डिव्हाइसवर तुम्हाला टिपा घेण्याची अनुमती देणारी अ‍ॅप्स"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"टिपा"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"सद्य डीफॉल्ट"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवू द्यायचे का?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियंत्रित परवानग्या"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> कडे स्थान अ‍ॅक्सेस आहे"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"तुमची संस्था <xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमचे स्थान अ‍ॅक्सेस करण्याची अनुमती देते"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"इतर परवानग्या"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"सिस्टमद्वारे वापरल्या जाणाऱ्या परवानग्या"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"फक्त सिस्टम ॲप्लिकेशनद्वारे वापरल्या जाणाऱ्या परवानग्या."</string>
@@ -585,12 +583,13 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"ॲप्स आणि सेवांसाठी. हे सेटिंग बंद असल्यास, तुम्ही आणीबाणी नंबरवर कॉल करता तेव्हा, मायक्रोफोन डेटा तरीही कदाचित शेअर केला जाईल."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"स्थानाचा अ‍ॅक्सेस असलेली अ‍ॅप्स आणि सेवा पहा"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्डचा अ‍ॅक्सेस दाखवा"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"तुम्ही कॉपी केलेला मजकूर, इमेज किंवा इतर आशय ॲप्स अ‍ॅक्सेस करतात तेव्हा, मेसेज दाखवा"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"तुम्ही कॉपी केलेला मजकूर, इमेज किंवा इतर आशय ॲप्स अ‍ॅक्सेस करतात, तेव्हा मेसेज दाखवा"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्ड दाखवा"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"तुम्ही टाइप कराल त्‍याप्रमाणे वर्ण थोडक्‍यात डिस्प्ले करा"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"हे अ‍ॅप तृतीय पक्षांसोबत स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"डेटा शेअरिंग आणि स्थान"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"डेटा शेअरिंग माहिती कुठून मिळते"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"हे ॲप डेटा कसे शेअर करते याबद्दल डेव्हलपरने या डिव्हाइसच्या उत्पादकाला माहिती पुरवली आहे. डेव्हलपर कालांतराने ही माहिती अपडेट करू शकतो."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"हे अ‍ॅप डेटा कसे शेअर करते याबद्दल डेव्हलपरने "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" यांना माहिती पुरवली. डेव्हलपर कालांतराने ही माहिती अपडेट करू शकतो."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"अ‍ॅप पुढील गोष्टींसाठी स्‍थान डेटा शेअर करू शकते:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेअरिंग बदलते"</string>
@@ -608,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"डेटासंबंधित सुरक्षितता"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"स्‍थान डेटा शेअर केला जाऊ शकतो"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"हे अ‍ॅप तृतीय पक्षांसोबत तुमचा स्थान डेटा शेअर करू शकते असे या अ‍ॅपने नमूद केले आहे"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ही लिंक उघडू शकत नाही"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"स्थानासाठी डेटा शेअरिंगसंबंधित अपडेट"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ज्या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली अशा अ‍ॅप्सचे पुनरावलोकन करा"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"या अ‍ॅप्सनी तुमचा स्थान डेटा शेअर करण्याची त्यांची पद्धत बदलली आहे. त्यांनी तो पूर्वी शेअर केलेला नसू शकतो किंवा आता जाहिरात करणे अथवा मार्केटिंग उद्देशांसाठी शेअर करू शकतात."</string>

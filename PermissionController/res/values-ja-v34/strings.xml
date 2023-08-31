@@ -20,8 +20,8 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"セキュリティとプライバシー"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"管理"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"ヘルスコネクト"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"健康に関するデータへのアプリのアクセス権を管理する"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"健康に関するデータへのアプリのアクセス権を管理します"</string>
     <string name="location_settings" msgid="8863940440881290182">"位置情報へのアクセス"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"アプリとサービス。この設定が OFF の場合、緊急通報番号に発信したときは、マイクのデータが共有されることがあります。"</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"アプリとサービス"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"アプリとサービスによるアクセス"</string>
 </resources>

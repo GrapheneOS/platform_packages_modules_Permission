@@ -27,11 +27,10 @@
     <string name="safety_center_entry_group_with_actions_needed_content_description" msgid="2708884606775932657">"ਸੂਚੀ। <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. ਕਾਰਵਾਈਆਂ ਦੀ ਲੋੜ ਹੈ। <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_group_item_content_description" msgid="7348298582877249787">"ਸੂਚੀ ਆਈਟਮ। <xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
-    <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"ਹੋਰ ਸੁਚੇਤਨਾਵਾਂ"</string>
+    <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"ਹੋਰ ਅਲਰਟ"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"ਖਾਰਜ ਕੀਤੀਆਂ ਗਈਆਂ ਸੁਚੇਤਨਾਵਾਂ"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{ਵਿਸਤਾਰ ਕਰੋ ਅਤੇ ਇੱਕ ਹੋਰ ਸੁਚੇਤਨਾ ਦੇਖੋ}one{ਵਿਸਤਾਰ ਕਰੋ ਅਤੇ # ਹੋਰ ਸੁਚੇਤਨਾ ਦੇਖੋ}other{ਵਿਸਤਾਰ ਕਰੋ ਅਤੇ # ਹੋਰ ਸੁਚੇਤਨਾਵਾਂ ਦੇਖੋ}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"ਸੁਚੇਤਨਾ। <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"ਕਾਰਵਾਈ ਪੂਰੀ ਹੋਈ"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"ਉਨ੍ਹਾਂ ਸੈਟਿੰਗਾਂ ਦੀ ਜਾਂਚ ਕਰੋ ਜੋ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਵਿੱਚ ਸੁਰੱਖਿਆ ਸ਼ਾਮਲ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਤਤਕਾਲ ਸੈਟਿੰਗਾਂ"</string>

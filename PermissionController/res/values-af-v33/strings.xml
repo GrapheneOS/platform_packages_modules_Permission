@@ -30,8 +30,7 @@
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Meer waarskuwings"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Waarskuwings wat toegemaak is"</string>
     <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Vou uit om nog een waarskuwing te sien}other{Vou uit om nog # waarskuwings te sien}}"</string>
-    <!-- no translation found for safety_center_issue_card_prefix_content_description (1447445289637043544) -->
-    <skip />
+    <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Waarskuwing. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Handeling is voltooi"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Gaan instellings na wat jou toestel kan beskerm"</string>
     <string name="safety_center_qs_page_landing" msgid="1717368301679228128">"Kitsinstellings vir sekuriteit en privaatheid"</string>

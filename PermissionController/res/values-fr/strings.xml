@@ -81,7 +81,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Cette appli a été conçue pour une ancienne version d\'Android. Si vous lui accordez cette autorisation, elle aura accès à tout le contenu stocké (y compris, les photos, vidéos, fichiers musicaux et audio, et autres)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Cette appli a été conçue pour une ancienne version d\'Android. Si vous lui refusez cette autorisation, elle n\'aura pas accès à l\'ensemble du contenu stocké (y compris, les photos, vidéos, fichiers musicaux et audio, et autres)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"effectuer une action inconnue"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> application(s) autorisée(s) sur <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> appli(s) autorisée(s) sur <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> applications autorisées"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Voir applis système"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Masquer applis système"</string>
@@ -161,8 +161,8 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Autorisations utilisées (dernière heure)"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Autorisations utilisées (15 dernières minutes)"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Autorisations utilisées (dernière minute)"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Non utilisée au cours du dernier jour (#)}one{Non utilisée au cours du dernier jour (#)}many{Non utilisée au cours des # derniers jours}other{Non utilisée au cours des # derniers jours}}"</string>
-    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Non utilisée au cours de la dernière heure (#)}one{Non utilisée au cours de la dernière heure (#)}many{Non utilisée au cours des # dernières heures}other{Non utilisée au cours des # dernières heures}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Pas d\'utilisation sur le dernier jour (#)}one{Pas d\'utilisation sur le dernier jour (#)}many{Pas d\'utilisation sur les # derniers jours}other{Pas d\'utilisation sur les # derniers jours}}"</string>
+    <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Pas d\'utilisation sur la dernière heure (#)}one{Pas d\'utilisation sur la dernière heure (#)}many{Pas d\'utilisation sur les # dernières heures}other{Pas d\'utilisation sur les # dernières heures}}"</string>
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisation par 1 appli}one{Utilisation par # appli}many{Utilisation par # applis}other{Utilisation par # applis}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Données filtrées par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -187,7 +187,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Autoriser la gestion de tous les fichiers"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Autoriser l\'accès aux fichiers multimédias uniquement"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Toujours autoriser"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser seulement si l\'appli est en cours d\'utilisation"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser seulement si l\'appli est utilisée"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Toujours autoriser"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne pas autoriser"</string>
@@ -197,8 +197,8 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Si la position exacte est désactivée, les applis ont accès à votre position approximative"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorisation d\'accès à \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accès à \"<xliff:g id="PERM">%1$s</xliff:g>\" pour cette appli"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Afficher toutes les autorisations pour <xliff:g id="APP">%1$s</xliff:g>"</string>
-    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Afficher toutes les applications disposant de cette autorisation"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Voir toutes les autorisations pour <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Voir toutes les applis ayant cette autorisation"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afficher l\'utilisation du micro par l\'Assistant"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Paramètres des applis inutilisées"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Supprimer les autorisations si l\'application n\'est pas utilisée"</string>
@@ -232,7 +232,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Les applications disposant de cette autorisation peuvent consulter et modifier le journal d\'appels du téléphone"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Les applications disposant de cette autorisation peuvent prendre des photos et enregistrer des vidéos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Les applications disposant de cette autorisation peuvent accéder à vos contacts"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Les applications disposant de cette autorisation peuvent accéder à la position de cet appareil"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Les applications ayant cette autorisation peuvent accéder à la position de cet appareil"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Les applis ayant cette autorisation peuvent détecter les appareils à proximité, s\'y connecter et déterminer leur position relative"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Les applications disposant de cette autorisation peuvent enregistrer de l\'audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Les applications disposant de cette autorisation peuvent passer et gérer des appels téléphoniques"</string>
@@ -246,8 +246,8 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aucun accès enregistré"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Accès refusé/aucune tentative d\'accès"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Autorisé"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Toujours autorisées"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorisées seulement pendant l\'utilisation"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Toujours autorisé"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorisé seulement pendant l\'utilisation"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorisées à gérer les fichiers multimédias"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorisées à gérer tous les fichiers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Toujours demander"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuer à autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder aux données des capteurs corporels seulement en cours d\'utilisation ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à vous envoyer des notifications ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorisations contrôlées"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> a accès à votre position"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Votre organisation autorise <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder à votre position"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Autres autorisations"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorisation utilisée par le système"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées uniquement par les applications système."</string>
@@ -537,7 +535,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Vérifier l\'état"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Paramètres de confidentialité"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Autres paramètres"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accès à l\'appareil photo"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accès à la caméra"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Accès au micro"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Autorisation supprimée"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Voir l\'utilisation récente de l\'appareil photo"</string>
@@ -575,11 +573,11 @@
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Examiner l\'appli qui a accès à la localisation en arrière-plan"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> peut toujours accéder à votre localisation, même lorsque l\'appli est fermée"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Examiner l\'appli qui a accès à la localisation en arrière-plan"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Même fermée, cette appli peut toujours accéder à votre localisation.\n\nCertaines applis de sécurité et d\'urgence nécessitent d\'accéder à votre position en arrière-plan pour fonctionner comme prévu."</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Même fermée, cette appli peut toujours accéder à votre localisation.\n\nCertaines applis de sécurité et d\'urgence ont besoin d\'accéder à votre position en arrière-plan pour fonctionner comme prévu."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Accès modifié"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Voir l\'utilisation récente de la localisation"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Paramètres de confidentialité"</string>
-    <string name="camera_toggle_title" msgid="1251201397431837666">"Accès à l\'appareil photo"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Accès à la caméra"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Accès au micro"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Pour les applis et services"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Pour les applis et services. Si ce paramètre est désactivé, il est possible que les données du micro soient quand même partagées quand vous appelez un numéro d\'urgence."</string>
@@ -591,8 +589,9 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Cette appli a indiqué qu\'elle peut partager des données de localisation avec des tiers"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Partage des données et localisation"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Origine des informations sur le partage des données"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Le développeur a fourni des infos au fabricant de cet appareil concernant la manière dont cette appli partage les données. Le développeur peut mettre à jour ces infos au fil du temps."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Le développeur a fourni des infos sur "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" concernant la manière dont cette appli partage les données. Le développeur peut mettre à jour ces infos au fil du temps."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Appli peut partager données de localisation pour :"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'appli peut partager données de localisation pour :"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Partage des données variable"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"La gestion des données peut varier selon la version de l\'appli, l\'utilisation que vous en faites, votre région et votre âge. "<annotation id="link">"En savoir plus sur le partage des données"</annotation></string>
     <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"La gestion des données peut varier selon la version de l\'appli, l\'utilisation que vous en faites, votre région et votre âge."</string>
@@ -608,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sécurité des données"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette appli a indiqué qu\'elle peut partager vos données de localisation avec des tiers"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossible d\'ouvrir ce lien"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour du partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Consulter les applis qui ont modifié la manière dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applis ont modifié la manière dont elles peuvent partager vos données de localisation. Elles ne les partageaient peut-être pas auparavant ou peuvent désormais les partager à des fins de publicité ou de marketing."</string>
@@ -619,7 +616,7 @@
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Vos données de localisation sont désormais partagées avec des tiers à des fins de publicité ou de marketing"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Mise à jour au cours du dernier jour}=1{Mise à jour au cours du dernier jour}one{Mise à jour il y a # jour}many{Mise à jour au cours des # derniers jours}other{Mise à jour au cours des # derniers jours}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Aucune mise à jour pour le moment"</string>
-    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Mises à jour du partage des données"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Modifications du partage des données"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Certaines applis ont modifié la façon dont elles peuvent partager vos données de localisation"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Paramètres"</string>
 </resources>

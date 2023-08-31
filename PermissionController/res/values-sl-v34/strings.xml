@@ -20,8 +20,8 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Varnost in zasebnost"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Kontrolniki"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Upravljajte dostop aplikacij do podatkov o zdravju"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Upravljajte dostop aplikacij do podatkov o zdravju."</string>
     <string name="location_settings" msgid="8863940440881290182">"Dostop do lokacije"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Za aplikacije in storitve. Če je ta nastavitev izklopljena, bodo podatki mikrofona morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Za aplikacije in storitve"</string>
+    <string name="location_settings_subtitle" msgid="6846532794702613851">"Za aplikacije in storitve."</string>
 </resources>

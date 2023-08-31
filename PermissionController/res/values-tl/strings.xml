@@ -398,7 +398,7 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Papayagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na makipag-ugnayan sa iyong mga notification at i-stream ang iyong mga app sa nakakonektang device."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ibinabahagi ng serbisyong ito ang iyong mga larawan, media, at notification sa ibang device mula sa iyong telepono."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Default na app sa pagtatala"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"App sa pagtatala"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"Notes app"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Mga app na nagbibigay-daan sa iyong magtala sa device mo"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"mga tala"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Kasalukuyang default"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Patuloy na pahintulutan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang data ng sensor ng katawan habang ginagamit ang app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Payagan ang <xliff:g id="APP_NAME">%1$s</xliff:g> na padalhan ka ng mga notification?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontroladong pahintulot"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"May access sa lokasyon ang <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Pinapayagan ng organisasyon mo ang <xliff:g id="APP_NAME">%1$s</xliff:g> na i-access ang iyong lokasyon"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Iba pang pahintulot"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Pahintulot na ginagamit ng system"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Mga pahintulot na mga application ng system lang ang gumagamit."</string>
@@ -591,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Isinaad ng app na ito na puwede nitong ibahagi ang data ng lokasyon sa mga third party"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Pagbabahagi ng data at lokasyon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Saan nanggagaling ang impormasyon sa pagbabahagi ng data"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Nagbigay ang developer ng impormasyon sa manufacturer ng device na ito tungkol sa kung paano nagbabahagi ng data ang app na ito. Posibleng i-update ng developer ang impormasyong ito sa pagtagal."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nagbigay ang developer ng impormasyon sa "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" tungkol sa kung paano nagbabahagi ng data ang app na ito. Posibleng i-update ng developer ang impormasyong ito sa paglipas ng panahon."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Puwedeng magbahagi ng data ng lokasyon para sa:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nag-iiba ang pagbabahagi ng data"</string>
@@ -608,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Kaligtasan ng data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Puwedeng ibahagi ang data ng lokasyon"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Isinaad ng app na ito na puwede nitong ibahagi ang iyong data ng lokasyon sa mga third party"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Hindi mabuksan ang link na ito"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mga update sa pagbabahagi ng data para sa lokasyon"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Suriin ang mga app na nagbago ng paraan kung paano nila posibleng ibahagi ang iyong data ng lokasyon"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Binago ng mga app na ito ang paraan kung paano posibleng ibahagi ng mga ito ang iyong data ng lokasyon. Posibleng hindi pa nila ito ibinahagi noon, o ibinabahagi nila ito ngayon para sa mga layunin sa pag-advertise o marketing."</string>

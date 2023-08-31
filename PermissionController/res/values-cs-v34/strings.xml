@@ -20,8 +20,8 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"Zabezpečení a ochrana soukromí"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"Ovládací prvky"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"Spravovat přístup aplikací ke zdravotním údajům"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"Správa přístupu aplikací ke zdravotním údajům"</string>
     <string name="location_settings" msgid="8863940440881290182">"Přístup k poloze"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Aplikace a služby. Pokud je toto nastavení vypnuté a zavoláte na číslo tísňového volání, mohou být nadále sdílena data z mikrofonu"</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Aplikace a služby. Pokud je toto nastavení vypnuté a zavoláte na číslo tísňového volání, data z mikrofonu bude možné nadále sdílet"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Aplikace a služby"</string>
 </resources>

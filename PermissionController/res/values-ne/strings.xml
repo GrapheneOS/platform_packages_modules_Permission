@@ -32,11 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"थप जानकारी"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै डेटा प्रयोग गर्ने अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"सधैँ सबै अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फोटो र भिडियोहरू चयन गर्नुहोस्"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"अझ धेरै फोटो चयन गर्नुहोस्"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"थप फोटो वा कन्ट्याक्ट चयन नगर्नुहोस्"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"थप डेटा चयन नगर्नुहोस्"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"जे भए पनि फेरि नसोध्नुहोस्"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"खारेज गर्नुहोस्"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> मध्ये <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -71,7 +71,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{आज}=1{१ दिनअघि}other{# दिनअघि}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"एप असक्षम पार्नुहोस्"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपहरूले अब उप्रान्त अपेक्षाअनुसार कार्य नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको यन्त्रसँग पहिल्यै स्थापना भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्नुहुन्छ तथा यसलाई आफ्नो डिभाइसमा लुकाउनुहुन्छ।"</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"पर्मिसन म्यानेजर"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"अनुमति व्यवस्थापन"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"फेरि नसोध्नुहोला"</string>
     <string name="no_permissions" msgid="3881676756371148563">"अनुमति दिन भनी कुनै अनुरोध छैन"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"अतिरिक्त अनुमति"</string>
@@ -366,7 +366,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"तपाईंलाई छोटा टेक्स्ट म्यासेज, फोटो, भिडियो र थप कुरा पठाउन र प्राप्त गर्न आफ्नो फोन नम्बर प्रयोग गर्न दिने एपहरू"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"आफ्नो डिफल्ट SMS एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"यो एपलाई क्यामेरा, कन्ट्याक्ट, फाइल तथा मिडिया, माइक्रोफोन, फोन र SMS हेर्ने तथा प्रयोग गर्ने अनुमति दिइने छ"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"टेक्स्ट म्यासेज, टेक्स्ट म्यासेज पठाउने, सन्देशहरू, सन्देश प्रवाह"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"टेक्स्ट म्यासेज, टेक्स्ट म्यासेज पठाउने, म्यासेजहरू, सन्देश प्रवाह"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"डिफल्ट आपत्‌कालीन एप"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"आपत्‌कालीन एप"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"तपाईंलाई आफ्नो स्वास्थ्यसम्बन्धी जानकारी रेकर्ड गर्न र आपत्‌कालीन अवस्थामा सहयोग गर्ने मान्छेहरूलाई उक्त जानकारीमाथि पहुँच प्रदान गर्न; कठोर मौसम तथा विपत्तिसम्बन्धी अलर्टहरू प्रदान गर्न; तपाईंलाई आवश्यकता पर्दा अरू मान्छेहरूलाई जानकारी दिन अनुमति दिने एपहरू"</string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"यो एप प्रयोग गरिँदै गरेका बेला यसलाई &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; बडी सेन्सरसम्बन्धी डेटा हेर्ने र प्रयोग गर्ने अनुमति दिइरहने हो?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाउन दिने हो?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियन्त्रित अनुमतिहरू"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> लाई लोकेसन प्रयोग गर्ने अनुमति दिइएको छ"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"तपाईंको सङ्गठनले <xliff:g id="APP_NAME">%1$s</xliff:g> लाई तपाईंको लोकेसन प्रयोग गर्ने अनुमति दिएको छ"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"अन्य अनुमतिहरू"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">" सिस्टमले प्रयोग गर्ने अनुमतिहरू"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"सिस्टमका एपहरूमा मात्र प्रयोग गरिने अनुमतिहरू।"</string>
@@ -577,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ब्याकग्राउन्डमा लोकेसन प्रयोग गर्ने अनुमति दिइएको एपको समीक्षा गर्नुहोस्"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"यो एप बन्द हुँदा पनि यसले जुनसुकै बेला तपाईंको लोकेसन प्रयोग गर्न सक्छ।\n\nसुरक्षा तथा आपत्कालीन प्रयोजनका लागि बनाइएका केही एपहरूले राम्रोसँग काम गर्नका निम्ति तपाईंले ती एपहरूलाई ब्याकग्राउन्डमा तपाईंको लोकेसन प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"अनुमति बदलियो"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हालसालै प्रयोग गरिएको लोकेसनसम्बन्धी जानकारी हेर्नुहोस्"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"हालसालै कहिले लोकेसनसम्बन्धी प्रयोग गरिएको थियो हेर्नुहोस्"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"गोपनीयतासम्बन्धी सेटिङ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"क्यामेरा प्रयोग गर्ने अनुमति"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"माइक्रोफोन प्रयोग गर्ने अनुमति"</string>
@@ -591,6 +589,7 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"यो एपले यसले लोकेसन डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"लोकेसन डेटा सेयर गर्नेसम्बन्धी अभ्यास"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"जानकारी सेयर गर्नेसम्बन्धी अभ्यासको स्रोत"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"यो एपका विकासकर्ताले यो एपले जानकारी सेयर गर्ने तरिकाका बारेमा यो डिभाइसका उत्पादकलाई जानकारी दिएका छन्। ती विकासकर्ता भविष्यमा उक्त जानकारी संशोधन गर्न सक्छन्।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"यो एपका विकासकर्ताले यो एपले जानकारी सेयर गर्ने तरिकाका बारेमा "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" लाई जानकारी दिएका छन्। ती विकासकर्ता समय क्रममा उक्त जानकारी संशोधन गर्न सक्छन्।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"यो एपले निम्न प्रयोजनका लागि लोकेसन सेयर गर्न सक्छ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"जानकारी सेयर गर्नेसम्बन्धी अभ्यास फरक हुन सक्छ"</string>
@@ -608,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"जानकारीको सुरक्षा"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"लोकेसन डेटा सेयर गरिन सक्छ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"यो एपले यसले तपाईंको लोकेसन डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"यो लिंक खोल्न सकिएन"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"लोकेसन डेटा सेयर गर्नेसम्बन्धी अभ्यासका बारेमा अद्यावधिक जानकारी"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"तपाईंको लोकेसन डेटा सेयर गर्न सक्ने तरिका परिवर्तन गरेका एपहरूको समीक्षा गर्नुहोस्"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"यी एपहरूले तपाईंको लोकेसन डेटा सेयर गर्न सक्ने तरिका परिवर्तन गरेका छन्। यी एपहरूले यसअघि तपाईंको लोकेसन डेटा सेयर नगरेका हुन सक्छन् तर अब भने विज्ञापन तथा मार्केटिङ गर्ने प्रयोजनका लागि तपाईंको लोकेसन डेटा सेयर गर्न सक्छन्।"</string>

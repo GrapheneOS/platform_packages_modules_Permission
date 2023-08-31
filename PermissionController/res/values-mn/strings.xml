@@ -483,7 +483,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-н микрофоны хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж аудио бичихийг хүснэ. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн дасгал хөдөлгөөнд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео хийхийг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Энэ апп зөвхөн таныг ашиглаж байх үед л зураг авж, видео бичих боломжтой болно"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео бичихийг зөвшөөрөх үү?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж зураг авж, видео бичихийг хүсэж болзошгүй. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
@@ -498,10 +498,8 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Аппыг ашиглаж байх үедээ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-г биеийн мэдрэгчийн өгөгдөлд хандахыг үргэлжлүүлэн зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-&lt;/b&gt;-д танд мэдэгдэл илгээхийг зөвшөөрөх үү?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Хяналттай зөвшөөрөл"</string>
-    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
-    <skip />
-    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
-    <skip />
+    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> байршилд хандах эрхтэй байна"</string>
+    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Танай байгууллага <xliff:g id="APP_NAME">%1$s</xliff:g>-д байршилд тань хандахыг зөвшөөрдөг"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Бусад зөвшөөрөл"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Системийн ашигласан зөвшөөрөл"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Зөвхөн системийн аппликэйшний ашигласан зөвшөөрөл."</string>
@@ -533,7 +531,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Аюулгүй байдал болон нууцлалын төлөв. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Аюулгүй байдлын тохиргоо"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Зөвшөөрөл"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Аюулгүй байдал &amp; нууцлал"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Аюулгүй байдал ба нууцлал"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Төлөвийг шалгах"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Таны нууцлалын тохиргоо"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Бусад тохиргоо"</string>
@@ -587,10 +585,11 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Түр санах ойн хандалтыг харуулах"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Аппууд таны хуулсан текст, зураг эсвэл бусад контентод хандах үед мессеж харуулах"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Нууц үгнүүдийг харуулах"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Таныг бичиж явцад тэмдэгтүүдийг түр үзүүлэх"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Бичих явцад тэмдэгтийг товчхон харуулах"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Энэ апп байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж болохыг мэдэгдсэн"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Өгөгдөл хуваалцах болон байршил"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Өгөгдөл хуваалцах мэдээллийг хаанаас авдаг вэ?"</string>
+    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Хөгжүүлэгч энэ төхөөрөмжийн үйлдвэрлэгчид уг апп хэрхэн өгөгдөл хуваалцдаг талаарх мэдээллийг өгсөн. Хөгжүүлэгч энэ мэдээллийг яваандаа шинэчилж магадгүй."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Хөгжүүлэгч энэ апп өгөгдөл хэрхэн хуваалцдаг талаарх мэдээллийг "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s-д"</annotation></annotation>" өгсөн. Хөгжүүлэгч энэ мэдээллийг цагийн аясаар шинэчилж магадгүй."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Апп байршлын өгөгдөл дараах зорилгоор хуваалцана:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Өгөгдөл хуваалцах нь ялгаатай"</string>
@@ -608,8 +607,6 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Өгөгдлийн аюулгүй байдал"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Байршлын өгөгдлийг хуваалцаж магадгүй"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Энэ апп таны байршлын өгөгдлийг гуравдагч талуудтай хуваалцаж магадгүйг мэдэгдсэн"</string>
-    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Энэ холбоосыг нээх боломжгүй"</string>
-    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Байршлын өгөгдөл хуваалцах шинэчлэлтүүд"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн аппуудыг шалгана уу"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Эдгээр апп таны байршлын өгөгдлийг хуваалцдаг аргаа өөрчилсөн. Тэд үүнийг өмнө нь хуваалцаагүй байж магадгүй эсвэл одоо үүнийг сурталчилгаа, маркетингийн зорилгоор хуваалцаж болзошгүй."</string>
