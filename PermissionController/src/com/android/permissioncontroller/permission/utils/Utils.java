@@ -44,10 +44,8 @@ import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
 import static android.health.connect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.os.UserHandle.myUserId;
-
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
-
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 import android.Manifest;
@@ -110,6 +108,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo;
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity;
 
 import kotlin.Triple;
 
@@ -218,10 +217,13 @@ public final class Utils {
     public static final long ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS = 5 * 1000;
 
     private static final ArrayMap<String, Integer> PERM_GROUP_REQUEST_RES;
+    private static final ArrayMap<String, Integer> PERM_GROUP_REQUEST_DEVICE_AWARE_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_REQUEST_DETAIL_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_RES;
+    private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_RES;
+    private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES;
 
     /** Permission -> Sensor codes */
@@ -278,6 +280,38 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES.put(SENSORS, R.string.permgrouprequest_sensors);
         PERM_GROUP_REQUEST_RES.put(NOTIFICATIONS, R.string.permgrouprequest_notifications);
 
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES = new ArrayMap<>();
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(CONTACTS,
+                R.string.permgrouprequest_device_aware_contacts);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(LOCATION,
+                R.string.permgrouprequest_device_aware_location);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(NEARBY_DEVICES,
+                R.string.permgrouprequest_device_aware_nearby_devices);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(CALENDAR,
+                R.string.permgrouprequest_device_aware_calendar);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(SMS, R.string.permgrouprequest_device_aware_sms);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(STORAGE,
+                R.string.permgrouprequest_device_aware_storage);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(READ_MEDIA_AURAL,
+                R.string.permgrouprequest_device_aware_read_media_aural);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(READ_MEDIA_VISUAL,
+                R.string.permgrouprequest_device_aware_read_media_visual);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(MICROPHONE,
+                R.string.permgrouprequest_device_aware_microphone);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES
+                .put(ACTIVITY_RECOGNITION,
+                        R.string.permgrouprequest_device_aware_activityRecognition);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(CAMERA,
+                R.string.permgrouprequest_device_aware_camera);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(CALL_LOG,
+                R.string.permgrouprequest_device_aware_calllog);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(PHONE,
+                R.string.permgrouprequest_device_aware_phone);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(SENSORS,
+                R.string.permgrouprequest_device_aware_sensors);
+        PERM_GROUP_REQUEST_DEVICE_AWARE_RES.put(NOTIFICATIONS,
+                R.string.permgrouprequest_device_aware_notifications);
+
         PERM_GROUP_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_DETAIL_RES.put(LOCATION, R.string.permgrouprequestdetail_location);
         PERM_GROUP_REQUEST_DETAIL_RES.put(MICROPHONE, R.string.permgrouprequestdetail_microphone);
@@ -292,6 +326,16 @@ public final class Utils {
                 .put(CAMERA, R.string.permgroupbackgroundrequest_camera);
         PERM_GROUP_BACKGROUND_REQUEST_RES
                 .put(SENSORS, R.string.permgroupbackgroundrequest_sensors);
+
+        PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES = new ArrayMap<>();
+        PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES
+                .put(LOCATION, R.string.permgroupbackgroundrequest_device_aware_location);
+        PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES
+                .put(MICROPHONE, R.string.permgroupbackgroundrequest_device_aware_microphone);
+        PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES
+                .put(CAMERA, R.string.permgroupbackgroundrequest_device_aware_camera);
+        PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES
+                .put(SENSORS, R.string.permgroupbackgroundrequest_device_aware_sensors);
 
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
@@ -308,6 +352,16 @@ public final class Utils {
         PERM_GROUP_UPGRADE_REQUEST_RES.put(MICROPHONE, R.string.permgroupupgraderequest_microphone);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(CAMERA, R.string.permgroupupgraderequest_camera);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(SENSORS, R.string.permgroupupgraderequest_sensors);
+
+        PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES = new ArrayMap<>();
+        PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.put(LOCATION,
+                R.string.permgroupupgraderequest_device_aware_location);
+        PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.put(MICROPHONE,
+                R.string.permgroupupgraderequest_device_aware_microphone);
+        PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.put(CAMERA,
+                R.string.permgroupupgraderequest_device_aware_camera);
+        PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.put(SENSORS,
+                R.string.permgroupupgraderequest_device_aware_sensors);
 
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
@@ -730,6 +784,61 @@ public final class Utils {
                 0);
     }
 
+    /**
+     * Get the message shown to grant a permission group to an app.
+     *
+     * @param appLabel The label of the app
+     * @param packageName The package name of the app
+     * @param groupName The name of the permission group
+     * @param context A context to resolve resources
+     * @param requestRes The resource id of the grant request message
+     * @return The formatted message to be used as title when granting permissions
+     */
+    @NonNull
+    public static CharSequence getRequestMessage(
+            @NonNull String appLabel,
+            @NonNull String packageName,
+            @NonNull String groupName,
+            @NonNull String deviceLabel,
+            @NonNull Context context,
+            int deviceId,
+            @StringRes int requestRes) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return getRequestMessage(appLabel, packageName, groupName, context, requestRes);
+        }
+        String escapedAppLabel = Html.escapeHtml(appLabel);
+
+        boolean isIsolatedStorage;
+        try {
+            isIsolatedStorage = !isNonIsolatedStorage(context, packageName);
+        } catch (NameNotFoundException e) {
+            isIsolatedStorage = false;
+        }
+        if (groupName.equals(STORAGE) && isIsolatedStorage) {
+            String escapedDeviceLabel = Html.escapeHtml(deviceLabel);
+            return Html.fromHtml(
+                    String.format(
+                            context.getResources().getConfiguration().getLocales().get(0),
+                            context.getString(
+                                    R.string.permgrouprequest_device_aware_storage_isolated),
+                            escapedAppLabel,
+                            escapedDeviceLabel),
+                    0);
+
+        } else if (requestRes != 0) {
+            String escapedDeviceLabel = Html.escapeHtml(deviceLabel);
+            return Html.fromHtml(context.getResources().getString(requestRes, escapedAppLabel,
+                    escapedDeviceLabel), 0);
+        }
+
+        return Html.fromHtml(
+                context.getString(
+                        R.string.permission_warning_template,
+                        escapedAppLabel,
+                        loadGroupDescription(context, groupName, context.getPackageManager())),
+                0);
+    }
+
     private static CharSequence loadGroupDescription(Context context, String groupName,
             @NonNull PackageManager packageManager) {
         PackageItemInfo groupInfo = getGroupInfo(groupName, context);
@@ -1084,7 +1193,21 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getRequest(String groupName) {
-        return PERM_GROUP_REQUEST_RES.getOrDefault(groupName, 0);
+        return getRequest(groupName, GrantPermissionsActivity.DEVICE_ID_DEFAULT);
+    }
+
+    /**
+     * The resource id for the request message for a permission group for a specific device
+     *
+     * @param groupName Permission group name
+     * @return The id or 0 if the permission group doesn't exist or have a message
+     */
+    public static int getRequest(String groupName, int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return PERM_GROUP_REQUEST_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        }
     }
 
     /**
@@ -1102,7 +1225,22 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getBackgroundRequest(String groupName) {
-        return PERM_GROUP_BACKGROUND_REQUEST_RES.getOrDefault(groupName, 0);
+        return getBackgroundRequest(groupName, GrantPermissionsActivity.DEVICE_ID_DEFAULT);
+    }
+
+    /**
+     * The resource id for the background request message for a permission group for a specific
+     * device
+     *
+     * @param groupName Permission group name
+     * @return The id or 0 if the permission group doesn't exist or have a message
+     */
+    public static int getBackgroundRequest(String groupName, int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return PERM_GROUP_BACKGROUND_REQUEST_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        }
     }
 
     /**
@@ -1120,7 +1258,20 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getUpgradeRequest(String groupName) {
-        return PERM_GROUP_UPGRADE_REQUEST_RES.getOrDefault(groupName, 0);
+        return getUpgradeRequest(groupName, GrantPermissionsActivity.DEVICE_ID_DEFAULT);
+    }
+
+    /**
+     * The resource id for the upgrade request message for a permission group for a specific device.
+     * @param groupName Permission group name
+     * @return The id or 0 if the permission group doesn't exist or have a message
+     */
+    public static int getUpgradeRequest(String groupName, int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return PERM_GROUP_UPGRADE_REQUEST_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        }
     }
 
     /**
@@ -1130,6 +1281,42 @@ public final class Utils {
      */
     public static int getUpgradeRequestDetail(String groupName) {
         return PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES.getOrDefault(groupName, 0);
+    }
+
+    /**
+     * The resource id for the fine location request message for a specific device
+     * @return The id
+     */
+    public static int getFineLocationRequest(int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return R.string.permgrouprequest_fineupgrade;
+        } else {
+            return R.string.permgrouprequest_device_aware_fineupgrade;
+        }
+    }
+
+    /**
+     * The resource id for the coarse location request message for a specific device
+     * @return The id
+     */
+    public static int getCoarseLocationRequest(int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return R.string.permgrouprequest_coarselocation;
+        } else {
+            return R.string.permgrouprequest_device_aware_coarselocation;
+        }
+    }
+
+    /**
+     * The resource id for the get more photos  request message for a specific device
+     * @return The id
+     */
+    public static int getMorePhotosRequest(int deviceId) {
+        if (deviceId == GrantPermissionsActivity.DEVICE_ID_DEFAULT) {
+            return R.string.permgrouprequest_more_photos;
+        } else {
+            return R.string.permgrouprequest_device_aware_more_photos;
+        }
     }
 
     /**

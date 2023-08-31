@@ -23,7 +23,6 @@ import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
-
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
@@ -41,6 +40,8 @@ import static com.android.permissioncontroller.permission.utils.Utils.getRequest
 import android.Manifest;
 import android.app.Activity;
 import android.app.KeyguardManager;
+import android.companion.virtual.VirtualDevice;
+import android.companion.virtual.VirtualDeviceManager;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
@@ -50,6 +51,7 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
+import android.provider.Settings;
 import android.text.Annotation;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -80,6 +82,7 @@ import com.android.permissioncontroller.permission.ui.model.GrantPermissionsView
 import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModelFactory;
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
+import com.android.permissioncontroller.permission.utils.ContextCompat;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
@@ -475,22 +478,23 @@ public class GrantPermissionsActivity extends SettingsActivity
                 mTargetPackage, Process.myUserHandle());
 
         Icon icon = null;
+        int deviceId = ContextCompat.getDeviceId(this);
         int messageId = 0;
         switch (info.getMessage()) {
             case FG_MESSAGE:
-                messageId = Utils.getRequest(info.getGroupName());
+                messageId = Utils.getRequest(info.getGroupName(), deviceId);
                 break;
             case FG_FINE_LOCATION_MESSAGE:
-                messageId = R.string.permgrouprequest_fineupgrade;
+                messageId = Utils.getFineLocationRequest(deviceId);
                 break;
             case FG_COARSE_LOCATION_MESSAGE:
-                messageId = R.string.permgrouprequest_coarselocation;
+                messageId = Utils.getCoarseLocationRequest(deviceId);
                 break;
             case BG_MESSAGE:
-                messageId = Utils.getBackgroundRequest(info.getGroupName());
+                messageId = Utils.getBackgroundRequest(info.getGroupName(), deviceId);
                 break;
             case UPGRADE_MESSAGE:
-                messageId = Utils.getUpgradeRequest(info.getGroupName());
+                messageId = Utils.getUpgradeRequest(info.getGroupName(), deviceId);
                 break;
             case STORAGE_SUPERGROUP_MESSAGE_Q_TO_S:
                 icon = Icon.createWithResource(getPackageName(), mStoragePermGroupIcon);
@@ -501,14 +505,14 @@ public class GrantPermissionsActivity extends SettingsActivity
                 messageId = R.string.permgrouprequest_storage_pre_q;
                 break;
             case MORE_PHOTOS_MESSAGE:
-                messageId = R.string.permgrouprequest_more_photos;
+                messageId = Utils.getMorePhotosRequest(deviceId);
                 break;
             default:
                 Log.w(LOG_TAG, "Unhandled message type: " + info.getMessage());
         }
 
-        CharSequence message = getRequestMessage(appLabel, mTargetPackage,
-                info.getGroupName(), this, messageId);
+        CharSequence message = getRequestMessage(appLabel, mTargetPackage, info.getGroupName(),
+                getDeviceName(info.getDeviceId()), this, deviceId, messageId);
 
         int detailMessageId = 0;
         switch (info.getDetailMessage()) {
@@ -602,6 +606,27 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
             mRootView.setVisibility(View.VISIBLE);
         }
+    }
+
+    private String getDeviceName(int deviceId) {
+        // Pre Android V no permission requests can affect the VirtualDevice, thus return local
+        // device name.
+        if (!SdkLevel.isAtLeastV() || deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
+            return Settings.Global.getString(getContentResolver(), Settings.Global.DEVICE_NAME);
+        }
+
+        VirtualDeviceManager vdm = getSystemService(VirtualDeviceManager.class);
+        if (vdm != null) {
+            // TODO(b/298621125): replace with vdm.getVirtualDeviceById(deviceId) once the API is
+            //  rolled out.
+            for (VirtualDevice virtualDevice : vdm.getVirtualDevices()) {
+                if (virtualDevice.getDeviceId() == deviceId) {
+                    return virtualDevice.getDisplayName().toString();
+                }
+            }
+        }
+
+        throw new IllegalArgumentException("No device name for device: " + deviceId);
     }
 
     // LINT.IfChange(dispatchTouchEvent)
