@@ -28,7 +28,7 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"Құпиялық"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Басқару тақтасы, рұқсаттар, басқару элементтері"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Құпиялық тақтасы"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Жақында рұқсаттарды пайдаланған қолданбаларды көрсетеді."</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Жақында рұқсаттарды пайдаланған қолданбаларды көрсету"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Құпиялық, құпиялық тақтасы"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Рұқсат менеджері"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Қолданбалардың деректерді пайдалану рұқсатын басқару"</string>

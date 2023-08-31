@@ -24,11 +24,9 @@
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Health, Health Connect"</string>
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Joylashuv axboroti ulashuvida oʻzgarishlar"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Maʼlumotlar, maʼlumotlar ulashuvi, maʼlumotlar ulashuvi yangilanishi, joylashuv axboroti ulashuvida oʻzgarishlar, ulashuv"</string>
-    <string name="ads_privacy_title" msgid="2478678200445158640">"Reklamadagi maxfiylik"</string>
-    <string name="ads_privacy_summary" msgid="4977699525670966049">"Reklamalarni chiqarishda ilovalar foydalanadigan maʼlumotlarni belgilang"</string>
-    <string name="ads_privacy_search_terms" msgid="8008413316055240046">"reklama, reklamada maxfiylik, maxfiylik sinovi, reklama mavzulari, ilova taklif qiladigan reklama, reklama hisoblanishi"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Boshqa sozlamalar"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Qoʻshimcha xavfsizlik va maxfiylik sozlamalari"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Avtomatik kiritish, bildirishnomalar va boshqalar"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
+    <string name="work_policy_title" msgid="915692932391542104">"Ish siyosati haqida axborot"</string>
 </resources>

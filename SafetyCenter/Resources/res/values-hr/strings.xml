@@ -22,16 +22,16 @@
     <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje zaslona"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još nema podataka"</string>
-    <string name="lock_screen_search_terms" msgid="2678486357779794826">"Zaključavanje uređaja, zaključavanje zaslona, zaključan zaslon, zaključani zaslon, zaporka, PIN, uzorak"</string>
+    <string name="lock_screen_search_terms" msgid="2678486357779794826">"Zaključavanje uređaja, zaključavanje zaslona, zaključani zaslon, zaključani zaslon, zaporka, PIN, uzorak"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Biometrijski podaci"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"Otisak prsta, prst, dodavanje otiska prsta, otključavanje licem, lice"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privatnost"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Nadzorna ploča, dopuštenja, kontrole"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Nadzorna ploča za privatnost"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Prikaži aplikacije koje su nedavno upotrebljavale dopuštenja"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Pregledajte aplikacije koje su nedavno upotrebljavale dopuštenja"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Privatnost, nadzorna ploča za privatnost"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Upravitelj dopuštenja"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Upravljajte pristupom aplikacija svojim podacima"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Upravljajte kojim podacima mogu pristupati vaše aplikacije"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Dopuštenja, upravitelj dopuštenja"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Kontrole privatnosti"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Kontroliranje pristupanja uređaja mikrofonu, kameri i ostalome"</string>
