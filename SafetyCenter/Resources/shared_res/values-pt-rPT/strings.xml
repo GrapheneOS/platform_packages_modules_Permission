@@ -20,10 +20,10 @@
     <string name="scanning_title" msgid="5424849039854311398">"A analisar"</string>
     <string name="loading_summary" msgid="3740846439782713910">"A verificar as definições do dispositivo…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Parece estar tudo bem"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenhum problema encontrado"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Sugestão disponível}many{Sugestões disponíveis}other{Sugestões disponíveis}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nenhum problema encontrado"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Veja a recomendação}many{Veja as recomendações}other{Veja as recomendações}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Medida tomada}many{Medidas tomadas}other{Medidas tomadas}}"</string>
-    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Reveja as definições"</string>
+    <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Rever definições"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifique a lista de definições"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"O dispositivo pode estar em risco"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"O dispositivo está em risco"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Potenciais riscos encontrados"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Riscos encontrados"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"A conta pode estar em risco"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"A conta está em risco"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Veja o alerta abaixo}many{Veja os alertas abaixo}other{Veja os alertas abaixo}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Conta em risco"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Veja o alerta}many{Veja os alertas}other{Veja os alertas}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Não foi possível abrir a página"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Não foi possível resolver o alerta"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Não foi possível atualizar as definições"</string>

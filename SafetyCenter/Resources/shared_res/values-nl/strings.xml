@@ -18,10 +18,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Scannen"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"Apparaat-instellingen&amp;#173checken…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"Apparaat­instellingen­ checken…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Dat ziet er goed uit"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Geen problemen gevonden"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Beschikbare tip}other{Beschikbare tips}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Geen problemen gevonden"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Aanbeveling bekijken}other{Aanbevelingen bekijken}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Ondernomen actie}other{Ondernomen acties}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Instellingen checken"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Check de lijst met instellingen"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Potentiële risico\'s gevonden"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Risico\'s gevonden"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Account loopt misschien gevaar"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Account loopt risico"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Zie onderstaande melding}other{Zie onderstaande meldingen}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Account loopt gevaar"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Melding bekijken}other{Meldingen bekijken}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Kan de pagina niet openen"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Kan melding niet oplossen"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Kan instellingen niet vernieuwen"</string>
