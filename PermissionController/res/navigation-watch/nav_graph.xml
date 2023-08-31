@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/auto_revoke"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment"
+        android:name="com.android.permissioncontroller.permission.ui.wear.WearUnusedAppsFragment"
         android:label="AutoRevoke">
 
         <action

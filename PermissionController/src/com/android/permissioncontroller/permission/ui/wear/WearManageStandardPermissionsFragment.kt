@@ -24,7 +24,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 import com.android.permissioncontroller.permission.ui.handheld.ManageCustomPermissionsFragment
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel
@@ -57,7 +56,7 @@ class WearManageStandardPermissionsFragment : Fragment() {
             )
         }
         val onAutoRevokeClick = {
-            viewModel.showAutoRevoke(this, UnusedAppsFragment.createArgs(sessionId))
+            viewModel.showAutoRevoke(this, WearUnusedAppsFragment.createArgs(sessionId))
         }
 
         return ComposeView(activity).apply {
