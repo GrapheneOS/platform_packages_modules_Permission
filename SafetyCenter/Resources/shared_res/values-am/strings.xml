@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"በመቃኘት ላይ"</string>
     <string name="loading_summary" msgid="3740846439782713910">"የመሣሪያ ቅንብሮችን በመፈተሽ ላይ…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ጥሩ ይመስላል"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ምንም ችግሮች አልተገኙም"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{ጠቃሚ ምክር ይገኛል}one{ጠቃሚ ምክር ይገኛል}other{ጠቃሚ ምክሮች ይገኛሉ}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"ምንም ችግሮች አልተገኙም"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{ምክር ይመልከቱ}one{ምክር ይመልከቱ}other{ምክሮችን ይመልከቱ}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{የተወሰደ እርምጃ}one{የተወሰደ እርምጃ}other{የተወሰዱ እርምጃዎች}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ቅንብሮችን ይከልሱ"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"የቅንብሮች ዝርዝርን ይፈትሹ"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"ሊከሰቱ የሚችሉ አደጋዎች ተገኝተዋል"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"አደጋዎች ተገኝተዋል"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"መለያ አደጋ ላይ ሊሆን ይችላል"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"መለያ አደጋ ላይ ነው"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{ማንቂያን ከታች ይመልከቱ}one{ማንቂያን ከታች ይመልከቱ}other{ማንቂያዎችን ከታች ይመልከቱ}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"መለያ አደጋ ላይ ነው"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ማንቂያ ይመልከቱ}one{ማንቂያ ይመልከቱ}other{ማንቂያዎች ይመልከቱ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ገጹን መከፈት አልተቻለም"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ማንቂያን መፍታት አልተቻለም"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ቅንብሮችን ማደስ አልተቻለም"</string>

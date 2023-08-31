@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Scanner"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Tjekker enheds­indstillinger…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Det ser fint ud"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Der blev ikke fundet nogen problemer"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Der er et tilgængeligt tip}one{Der er et tilgængeligt tip}other{Der er tilgængelige tips}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Der blev ikke fundet nogen problemer"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Se anbefaling}one{Se anbefaling}other{Se anbefalinger}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{En handling er udført}one{En handling er udført}other{Handlinger er udført}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Gennemgå indstillingerne"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Tjek listen over indstillinger"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Der blev fundet potentielle risici"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Der blev fundet risici"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Kontoen kan være sårbar"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Kontoen er sårbar"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Se underretningen nedenfor}one{Se underretningen nedenfor}other{Se underretningerne nedenfor}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Kontoen er sårbar"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Se underretning}one{Se underretning}other{Se underretninger}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Siden kunne ikke åbnes"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Underretningen kunne ikke behandles"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Indstillingerne kunne ikke opdateres"</string>

@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"ਸਕੈਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
     <string name="loading_summary" msgid="3740846439782713910">"ਡੀਵਾਈਸ ਸੈਟਿੰਗਾਂ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ਸਭ ਕੁਝ ਠੀਕ ਲੱਗ ਰਿਹਾ ਹੈ"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ਕੋਈ ਸਮੱਸਿਆ ਨਹੀਂ ਮਿਲੀ"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{ਨੁਕਤਾ ਉਪਲਬਧ ਹੈ}one{ਨੁਕਤਾ ਉਪਲਬਧ ਹੈ}other{ਨੁਕਤੇ ਉਪਲਬਧ ਹਨ}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"ਕੋਈ ਸਮੱਸਿਆ ਨਹੀਂ ਮਿਲੀ"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{ਸਿਫ਼ਾਰਸ਼ ਦੇਖੋ}one{ਸਿਫ਼ਾਰਸ਼ ਦੇਖੋ}other{ਸਿਫ਼ਾਰਸ਼ਾਂ ਦੇਖੋ}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{ਕੀਤੀ ਗਈ ਕਾਰਵਾਈ}one{ਕੀਤੀ ਗਈ ਕਾਰਵਾਈ}other{ਕੀਤੀਆਂ ਗਈਆਂ ਕਾਰਵਾਈਆਂ}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ਸੈਟਿੰਗਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ਸੈਟਿੰਗਾਂ ਸੂਚੀ ਦੀ ਜਾਂਚ ਕਰੋ"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"ਸੰਭਾਵੀ ਜੋਖਮਾਂ ਦਾ ਪਤਾ ਲੱਗਿਆ"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"ਜੋਖਮਾਂ ਦਾ ਪਤਾ ਲੱਗਿਆ"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ਖਾਤਾ ਜੋਖਮ ਵਿੱਚ ਹੋ ਸਕਦਾ ਹੈ"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"ਖਾਤਾ ਜੋਖਮ ਵਿੱਚ ਹੈ"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{ਹੇਠਾਂ ਸੁਚੇਤਨਾ ਦੇਖੋ}one{ਹੇਠਾਂ ਸੁਚੇਤਨਾ ਦੇਖੋ}other{ਹੇਠਾਂ ਸੁਚੇਤਨਾਵਾਂ ਦੇਖੋ}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"ਖਾਤਾ ਜੋਖਮ ਵਿੱਚ ਹੈ"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ਅਲਰਟ ਦੇਖੋ}one{ਅਲਰਟ ਦੇਖੋ}other{ਅਲਰਟ ਦੇਖੋ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ਪੰਨਾ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ਸੁਚੇਤਨਾ ਦਾ ਹੱਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"ਸੈਟਿੰਗਾਂ ਨੂੰ ਰਿਫ੍ਰੈਸ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"</string>

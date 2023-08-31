@@ -20,11 +20,11 @@
     <string name="scanning_title" msgid="5424849039854311398">"Поиск"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Проверка настроек устройства…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Всё в порядке"</string>
-    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Угроз не обнаружено"</string>
-    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Доступен совет}one{Доступны советы}few{Доступны советы}many{Доступны советы}other{Доступны советы}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Проблем не найдено"</string>
+    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Посмотрите рекомендацию}one{Посмотрите рекомендации}few{Посмотрите рекомендации}many{Посмотрите рекомендации}other{Посмотрите рекомендации}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Выполнено действие}one{Выполнены действия}few{Выполнены действия}many{Выполнены действия}other{Выполнены действия}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Проверьте настройки"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Изучите список настроек"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Просмотрите список настроек"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Устройство может быть под угрозой"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Устройство под угрозой"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Ваши данные могут быть под угрозой"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Обнаружены потенциальные риски"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Обнаружены риски"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Аккаунт может быть под угрозой"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Аккаунт под угрозой"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Ознакомьтесь с оповещением ниже}one{Ознакомьтесь с оповещениями ниже}few{Ознакомьтесь с оповещениями ниже}many{Ознакомьтесь с оповещениями ниже}other{Ознакомьтесь с оповещениями ниже}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Аккаунт под угрозой"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Посмотрите оповещение}one{Посмотрите оповещения}few{Посмотрите оповещения}many{Посмотрите оповещения}other{Посмотрите оповещения}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Не удалось открыть страницу."</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Не удалось устранить проблему."</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Не удалось обновить настройки"</string>
