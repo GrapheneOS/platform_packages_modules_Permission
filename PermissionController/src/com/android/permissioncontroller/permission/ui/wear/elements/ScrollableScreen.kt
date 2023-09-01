@@ -43,7 +43,6 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
 import androidx.wear.compose.foundation.lazy.ScalingLazyListState
 import androidx.wear.compose.material.CircularProgressIndicator
-import androidx.wear.compose.material.ListHeader
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold

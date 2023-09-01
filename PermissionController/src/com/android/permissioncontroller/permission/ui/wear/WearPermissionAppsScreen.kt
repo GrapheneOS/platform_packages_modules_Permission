@@ -25,10 +25,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.wear.compose.material.Text
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.wear.elements.Chip
-import com.android.permissioncontroller.permission.ui.wear.elements.ListHeader
+import com.android.permissioncontroller.permission.ui.wear.elements.ListSubheader
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 
 /**
@@ -87,7 +88,9 @@ internal fun WearPermissionAppsContent(
                 continue
             }
             item {
-                ListHeader(getCategoryString(category, showAlways))
+                ListSubheader{
+                    Text(text = stringResource(getCategoryString(category, showAlways)))
+                }
             }
             chips.forEach {
                 item {
