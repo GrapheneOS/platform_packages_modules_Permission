@@ -49,7 +49,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 private const val LOG_TAG = "AutoRevokePermissions"
 const val DEBUG_AUTO_REVOKE = true
 
-private val EXEMPT_PERMISSIONS = listOf(
+val AUTO_REVOKE_EXEMPT_PERMISSIONS = listOf(
         Manifest.permission.ACTIVITY_RECOGNITION,
         Manifest.permission.POST_NOTIFICATIONS)
 
@@ -115,7 +115,7 @@ suspend fun revokeAppPermissions(
                         .getInitializedValue() ?: continue
                 val fixed = group.isBackgroundFixed || group.isForegroundFixed
                 val granted = group.permissions.any { (_, perm) ->
-                    perm.isGrantedIncludingAppOp && perm.name !in EXEMPT_PERMISSIONS
+                    perm.isGrantedIncludingAppOp && perm.name !in AUTO_REVOKE_EXEMPT_PERMISSIONS
                 }
                 if (!fixed && granted &&
                     !group.isGrantedByDefault &&
