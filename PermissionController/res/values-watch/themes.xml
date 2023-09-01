@@ -21,6 +21,5 @@
     <style name="Theme.PermissionController.Settings" parent="Settings" />
 
     <style name="GrantPermissions" parent="@android:style/Theme.DeviceDefault.NoActionBar">
-        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>
