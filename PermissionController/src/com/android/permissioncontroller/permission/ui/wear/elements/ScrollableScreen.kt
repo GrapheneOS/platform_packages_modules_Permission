@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.wear.elements
 
+import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
@@ -23,7 +24,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -43,7 +43,6 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
 import androidx.wear.compose.foundation.lazy.ScalingLazyListState
 import androidx.wear.compose.material.CircularProgressIndicator
-import androidx.wear.compose.material.ListHeader
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
@@ -65,7 +64,7 @@ fun ScrollableScreen(
     showTimeText: Boolean = true,
     title: String? = null,
     subtitle: String? = null,
-    image: Int? = null,
+    image: Any? = null,
     isLoading: Boolean = false,
     content: ScalingLazyListScope.() -> Unit,
 ) {
@@ -109,13 +108,24 @@ fun ScrollableScreen(
                             bottom = 70.dp
                         )
                     ) {
-                        if (image != null) {
-                            item {
-                                Image(
-                                    painter = painterResource(id = image),
-                                    modifier = Modifier.padding(bottom = 14.dp),
-                                    contentDescription = null,
-                                )
+                        image?.let {
+                            when (image) {
+                                is Int ->
+                                    item {
+                                        Image(
+                                            painter = painterResource(id = image),
+                                            contentDescription = null
+                                        )
+                                    }
+                                is Drawable ->
+                                    item {
+                                        Image(
+                                            painter = rememberDrawablePainter(image),
+                                            contentDescription = null
+                                        )
+                                    }
+                                else -> {
+                                }
                             }
                         }
                         if (title != null) {

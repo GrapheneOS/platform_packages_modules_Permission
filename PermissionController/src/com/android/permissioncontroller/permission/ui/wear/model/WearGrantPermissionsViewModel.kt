@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.wear.model
 
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -24,8 +25,8 @@ class WearGrantPermissionsViewModel : ViewModel() {
     /** A livedata which stores the permission group name. */
     val groupNameLiveData = MutableLiveData<String>()
 
-    /** A livedata which stores the permission group icon resource Id. */
-    val iconLiveData = MutableLiveData<Int?>()
+    /** A livedata which stores the permission group icon. */
+    val iconLiveData = MutableLiveData<Drawable?>()
 
     /** A livedata which stores the permission group message. */
     val groupMessageLiveData = MutableLiveData<String>()
