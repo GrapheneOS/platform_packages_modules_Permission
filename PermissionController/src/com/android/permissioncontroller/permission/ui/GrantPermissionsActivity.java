@@ -590,8 +590,11 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         getWindow().setDimAmount(mOriginalDimAmount);
         if (mRootView.getVisibility() == View.GONE) {
-            InputMethodManager manager = getSystemService(InputMethodManager.class);
-            manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
+            if (mIsSystemTriggered) {
+                // We don't want the keyboard obscuring system-triggered dialogs
+                InputMethodManager manager = getSystemService(InputMethodManager.class);
+                manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
+            }
             mRootView.setVisibility(View.VISIBLE);
         }
     }
