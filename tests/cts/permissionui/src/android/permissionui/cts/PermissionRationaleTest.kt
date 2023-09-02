@@ -30,7 +30,6 @@ import android.view.View
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
-import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
 import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.eventually
@@ -236,9 +235,9 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            uiDevice.performActionAndWait({
+            doAndWaitForWindowTransition {
                 clickableSpan.onClick(View(context))
-            }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+            }
         }
     }
 
@@ -254,9 +253,9 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            uiDevice.performActionAndWait({
+            doAndWaitForWindowTransition {
                 clickableSpan.onClick(View(context))
-            }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+            }
         }
     }
 
@@ -272,9 +271,9 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            uiDevice.performActionAndWait({
+            doAndWaitForWindowTransition {
                 clickableSpan.onClick(View(context))
-            }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+            }
         }
     }
 

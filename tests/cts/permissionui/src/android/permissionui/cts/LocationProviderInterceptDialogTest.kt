@@ -27,7 +27,6 @@ import android.permission.cts.PermissionUtils
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
-import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.AppOpsUtils
 import com.android.compatibility.common.util.CddTest
 import com.android.compatibility.common.util.SystemUtil
@@ -99,7 +98,7 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
 
     private fun openPermissionScreenForApp() {
         restartPermissionController()
-        uiDevice.performActionAndWait({
+        doAndWaitForWindowTransition {
             SystemUtil.runWithShellPermissionIdentity {
                 context.startActivity(
                     Intent(ACTION_MANAGE_APP_PERMISSIONS).apply {
@@ -109,7 +108,7 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
                     }
                 )
             }
-        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+        }
     }
 
     private fun restartPermissionController() {
