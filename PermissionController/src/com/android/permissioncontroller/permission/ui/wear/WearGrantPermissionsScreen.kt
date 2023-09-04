@@ -72,7 +72,8 @@ fun WearGrantPermissionsScreen(
                     onCheckedChanged = { onLocationSwitchChanged(it) },
                     label = stringResource(R.string.app_permission_location_accuracy),
                     toggleControl = ToggleChipToggleControl.Switch,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    labelMaxLine = Integer.MAX_VALUE
                 )
             }
         }
