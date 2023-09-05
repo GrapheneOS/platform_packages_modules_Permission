@@ -117,6 +117,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
         mEntriesGroup = getPreferenceScreen().findPreference(ENTRIES_GROUP_KEY);
         mStaticEntriesGroup = getPreferenceScreen().findPreference(STATIC_ENTRIES_GROUP_KEY);
+
         if (mIsQuickSettingsFragment) {
             getPreferenceScreen().removePreference(mEntriesGroup);
             mEntriesGroup = null;
@@ -142,6 +143,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
         }
         return recyclerView;
     }
+
     // Set the default divider line between preferences to be transparent
     @Override
     public void setDivider(Drawable divider) {

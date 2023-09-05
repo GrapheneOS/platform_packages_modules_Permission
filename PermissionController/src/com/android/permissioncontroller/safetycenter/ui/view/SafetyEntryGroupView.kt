@@ -51,7 +51,6 @@ constructor(
 ) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     private companion object {
-        val TAG = SafetyEntryGroupView::class.java.simpleName
         const val EXPAND_COLLAPSE_ANIMATION_DURATION_MS = 183L
     }
 
@@ -107,8 +106,15 @@ constructor(
         val params = layoutParams as MarginLayoutParams
         if (params.topMargin != topMargin) {
             params.topMargin = topMargin
-            layoutParams = params
         }
+
+        if (isLastCard) {
+            params.bottomMargin = context.resources.getDimensionPixelSize(R.dimen.sc_spacing_large)
+        } else {
+            params.bottomMargin = 0
+        }
+
+        layoutParams = params
     }
 
     private fun showGroupDetails(group: SafetyCenterEntryGroup) {
