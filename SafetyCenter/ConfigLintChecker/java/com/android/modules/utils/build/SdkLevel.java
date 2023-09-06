@@ -18,6 +18,7 @@ package com.android.modules.utils.build;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
+import static android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM;
 
 /** Stub class to compile the linter for host execution. */
 public final class SdkLevel {
@@ -41,5 +42,10 @@ public final class SdkLevel {
     /** Method used in the Safety Center config code. */
     public static boolean isAtLeastU() {
         return sSdkInt >= UPSIDE_DOWN_CAKE;
+    }
+
+    /** Method used in the Safety Center config code. */
+    public static boolean isAtLeastV() {
+        return sSdkInt >= VANILLA_ICE_CREAM;
     }
 }
