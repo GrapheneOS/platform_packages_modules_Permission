@@ -40,7 +40,7 @@ import java.util.Set;
 /**
  * Represents the current list of pending records.
  */
-class PendingList {
+public class PendingList {
     private static final String TAG = "PermissionController.incident";
 
     /**

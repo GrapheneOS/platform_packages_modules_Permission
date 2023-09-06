@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.incident;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -38,15 +37,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.ComponentActivity;
+
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.incident.wear.ConfirmationActivityWearViewHandler;
 
 import java.util.ArrayList;
 
 /**
  * Confirmation dialog for approving an incident or bug report for sharing off the device.
  */
-public class ConfirmationActivity extends Activity implements OnClickListener, OnDismissListener {
+public class ConfirmationActivity extends ComponentActivity implements OnClickListener,
+        OnDismissListener {
     private static final String TAG = "ConfirmationActivity";
 
     /**
@@ -107,7 +111,16 @@ public class ConfirmationActivity extends Activity implements OnClickListener, O
             // since we can't get proper approval. (Zero-length images or reasons means that
             // we will proceed with the imageless consent dialog).
             final IncidentManager incidentManager = getSystemService(IncidentManager.class);
-            incidentManager.denyReport(getIntent().getData());
+            incidentManager.denyReport(uri);
+
+            if (DeviceUtils.isWear(this)) {
+                ConfirmationActivityWearViewHandler viewHandler =
+                        new ConfirmationActivityWearViewHandler(this, incidentManager);
+                setContentView(viewHandler.createView());
+                viewHandler.updateViewModel(true, getString(R.string.incident_report_dialog_title),
+                        getString(R.string.incident_report_error_dialog_text, appLabel), uri);
+                return;
+            }
 
             // Show a message to the user saying... nevermind.
             new AlertDialog.Builder(this)
@@ -123,6 +136,22 @@ public class ConfirmationActivity extends Activity implements OnClickListener, O
                 .show();
             return;
 
+        }
+
+        final String message = getString(R.string.incident_report_dialog_text,
+                appLabel,
+                formatting.getDate(pending.getTimestamp()),
+                formatting.getTime(pending.getTimestamp()),
+                appLabel);
+
+        if (DeviceUtils.isWear(this)) {
+            ConfirmationActivityWearViewHandler viewHandler =
+                    new ConfirmationActivityWearViewHandler(this,
+                            getSystemService(IncidentManager.class));
+            setContentView(viewHandler.createView());
+            viewHandler.updateViewModel(false, getString(R.string.incident_report_dialog_title),
+                    message, uri);
+            return;
         }
 
         final View content = getLayoutInflater().inflate(R.layout.incident_confirmation,
@@ -162,11 +191,6 @@ public class ConfirmationActivity extends Activity implements OnClickListener, O
             reasonTextView.setText(spannable);
         }
 
-        final String message = getString(R.string.incident_report_dialog_text,
-                    appLabel,
-                    formatting.getDate(pending.getTimestamp()),
-                    formatting.getTime(pending.getTimestamp()),
-                    appLabel);
         ((TextView) content.findViewById(R.id.message)).setText(message);
 
         final ArrayList<Drawable> images = details.getImages();

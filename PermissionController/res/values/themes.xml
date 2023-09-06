@@ -138,4 +138,6 @@
         <item name="android:filterTouchesWhenObscured">true</item>
     </style>
 
+    <style name="Theme.PermissionController.IncidentReportDialog"
+        parent="@style/Theme.DeviceDefault.Dialog.NoActionBar.DayNight" />
 </resources>
