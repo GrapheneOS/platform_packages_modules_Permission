@@ -27,14 +27,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.wear.compose.material.contentColorFor
 import androidx.wear.compose.material.ChipDefaults
+import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.ToggleChip
@@ -56,9 +59,11 @@ public fun ToggleChip(
     labelMaxLine: Int? = null,
     toggleControl: ToggleChipToggleControl,
     modifier: Modifier = Modifier,
-    icon: ImageVector? = null,
+    icon: Any? = null,
+    iconColor: Color = Color.Unspecified,
     iconRtlMode: IconRtlMode = IconRtlMode.Default,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLine: Int? = null,
     colors: ToggleChipColors = ToggleChipDefaults.toggleChipColors(),
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
@@ -83,7 +88,7 @@ public fun ToggleChip(
                 Text(
                     text = secondaryLabel,
                     overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                    maxLines = secondaryLabelMaxLine ?: 1,
                     style = MaterialTheme.typography.caption2
                 )
             }
@@ -112,7 +117,8 @@ public fun ToggleChip(
             {
                 Row {
                     Icon(
-                        imageVector = icon,
+                        icon = icon,
+                        tint = iconColor,
                         contentDescription = null,
                         modifier = Modifier
                             .size(ChipDefaults.IconSize)
@@ -146,5 +152,49 @@ public fun ToggleChip(
         colors = colors,
         enabled = enabled,
         interactionSource = interactionSource
+    )
+}
+
+/**
+ * ToggleChipColors that disabled alpha is applied based on [ToggleChipDefaults.toggleChipColors()].
+ * It is used for a ToggleChip which would like to respond to click events,
+ * meanwhile it seems disabled.
+ */
+@Composable
+fun toggleChipDisabledColors(): ToggleChipColors {
+    val checkedStartBackgroundColor = MaterialTheme.colors.surface.copy(alpha = 0f)
+        .compositeOver(MaterialTheme.colors.surface)
+    val checkedEndBackgroundColor = MaterialTheme.colors.primary.copy(alpha = 0.5f)
+        .compositeOver(MaterialTheme.colors.surface)
+    val checkedContentColor = MaterialTheme.colors.onSurface
+    val checkedSecondaryContentColor = MaterialTheme.colors.onSurfaceVariant
+    val checkedToggleControlColor = MaterialTheme.colors.secondary
+    val uncheckedStartBackgroundColor = MaterialTheme.colors.surface
+    val uncheckedEndBackgroundColor = uncheckedStartBackgroundColor
+    val uncheckedContentColor = contentColorFor(checkedEndBackgroundColor)
+    val uncheckedSecondaryContentColor = uncheckedContentColor
+    val uncheckedToggleControlColor = uncheckedContentColor
+
+    return ToggleChipDefaults.toggleChipColors(
+        checkedStartBackgroundColor = checkedStartBackgroundColor
+            .copy(alpha = ContentAlpha.disabled),
+        checkedEndBackgroundColor = checkedEndBackgroundColor
+            .copy(alpha = ContentAlpha.disabled),
+        checkedContentColor = checkedContentColor
+            .copy(alpha = ContentAlpha.disabled),
+        checkedSecondaryContentColor = checkedSecondaryContentColor
+            .copy(alpha = ContentAlpha.disabled),
+        checkedToggleControlColor = checkedToggleControlColor
+            .copy(alpha = ContentAlpha.disabled),
+        uncheckedStartBackgroundColor = uncheckedStartBackgroundColor
+            .copy(alpha = ContentAlpha.disabled),
+        uncheckedEndBackgroundColor = uncheckedEndBackgroundColor
+            .copy(alpha = ContentAlpha.disabled),
+        uncheckedContentColor = uncheckedContentColor
+            .copy(alpha = ContentAlpha.disabled),
+        uncheckedSecondaryContentColor = uncheckedSecondaryContentColor
+            .copy(alpha = ContentAlpha.disabled),
+        uncheckedToggleControlColor = uncheckedToggleControlColor
+            .copy(alpha = ContentAlpha.disabled)
     )
 }

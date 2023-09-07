@@ -23,7 +23,10 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.android.permissioncontroller.role.ui.DefaultAppActivity
 import com.android.permissioncontroller.role.ui.DefaultAppListViewModel
+import com.android.permissioncontroller.role.ui.RoleItem
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils
 
 class WearDefaultAppListFragment : Fragment() {
     companion object {
@@ -40,11 +43,21 @@ class WearDefaultAppListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val context = requireContext()
         val viewModel = ViewModelProvider(this).get(DefaultAppListViewModel::class.java)
-
+        val user = viewModel.user
+        val onRoleClicked: (RoleItem) -> Unit = { roleItem ->
+            run {
+                var intent = RoleUiBehaviorUtils.getManageIntentAsUser(roleItem.role, user, context)
+                if (intent == null) {
+                    intent = DefaultAppActivity.createIntent(roleItem.role.name, user, context)
+                }
+                startActivity(intent)
+            }
+        }
         return ComposeView(requireContext()).apply {
             setContent {
-                WearDefaultAppListScreen(viewModel.liveData) {}
+                WearDefaultAppListScreen(viewModel.liveData, onRoleClicked)
             }
         }
     }
