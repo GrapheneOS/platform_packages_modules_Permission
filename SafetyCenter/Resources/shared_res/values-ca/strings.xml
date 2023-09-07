@@ -26,7 +26,7 @@
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Revisa la configuració"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Comprova la llista d\'opcions de configuració"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"El dispositiu pot estar en perill"</string>
-    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"El dispositiu està en perill"</string>
+    <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Dispositiu en perill"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Les dades poden estar en perill"</string>
     <string name="overall_severity_level_critical_data_warning_title" msgid="1012704126634698604">"Les dades estan en perill"</string>
     <string name="overall_severity_level_passwords_recommendation_title" msgid="8625105570296877719">"Contrasenyes en perill (antigues)"</string>
