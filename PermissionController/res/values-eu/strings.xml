@@ -232,7 +232,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Telefonoko deien erregistroa irakur dezakete baimen hau duten aplikazioek, baita bertan idatzi ere"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Argazkiak atera eta bideoak graba ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Zure kontaktuak atzi ditzakete baimen hau duten aplikazioek"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Gailu honen kokapena atzi dezakete baimen hau duten aplikazioek"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Gailu honen kokapena erabil dezakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Inguruko gailuak aurkitu, haietara konektatu, eta haien arteko distantzia erlatiboa zehatz dezakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Audioa graba dezakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Telefono-deiak egin eta kudea ditzakete baimen hau duten aplikazioek"</string>
