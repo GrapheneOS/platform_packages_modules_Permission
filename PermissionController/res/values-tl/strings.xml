@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gamitin ang eksaktong lokasyon"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kapag naka-off ang eksaktong lokasyon, puwedeng i-access ng mga app ang iyong tinatantyang lokasyon"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Pahintulot sa <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"access sa <xliff:g id="PERM">%1$s</xliff:g> para sa app na ito"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Access sa <xliff:g id="PERM">%1$s</xliff:g> para sa app na ito"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Tingnan ang lahat ng pahintulot ng <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Tingnan ang lahat ng app na may ganitong pahintulot"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Ipakita ang paggamit ng mikropono ng assistant"</string>
