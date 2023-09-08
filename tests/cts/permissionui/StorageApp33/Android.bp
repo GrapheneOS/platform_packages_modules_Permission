@@ -19,7 +19,7 @@ package {
 }
 
 android_test_helper_app {
-    name: "CtsUsePermissionAppImplicitUserSelectStorage",
+    name: "CtsUsePermissionAppStorage33",
     srcs: [
         ":CtsUsePermissionAppSrc",
     ],
@@ -28,6 +28,6 @@ android_test_helper_app {
         "compatibility-device-util-axt",
     ],
     certificate: ":cts-testkey2",
-    target_sdk_version: "34",
-    min_sdk_version: "34",
+    target_sdk_version: "33",
+    min_sdk_version: "33",
 }
