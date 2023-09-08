@@ -20,6 +20,7 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
 import android.Manifest.permission_group.READ_MEDIA_VISUAL
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -375,9 +376,8 @@ class AppPermissionViewModel(
                     val detailId = getIndividualPermissionDetailResId(group)
                     detailResIdLiveData.value = detailId.first to detailId.second
                 }
-            } else if (KotlinUtils.isPhotoPickerPromptEnabled() &&
-                group.permGroupName == READ_MEDIA_VISUAL &&
-                group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU) {
+            } else if (shouldShowPhotoPickerPromptForApp(group) &&
+                group.permGroupName == READ_MEDIA_VISUAL) {
                 // Allow / Select Photos / Deny case
                 allowedState.isShown = true
                 deniedState.isShown = true
@@ -469,6 +469,19 @@ class AppPermissionViewModel(
                 ASK to askState, DENY to deniedState, DENY_FOREGROUND to deniedForegroundState,
                 LOCATION_ACCURACY to locationAccuracyState, SELECT_PHOTOS to selectState)
         }
+    }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
+    private fun shouldShowPhotoPickerPromptForApp(group: LightAppPermGroup): Boolean {
+        if (!isPhotoPickerPromptEnabled() ||
+            group.packageInfo.targetSdkVersion < Build.VERSION_CODES.TIRAMISU) {
+            return false
+        }
+        if (group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return true
+        }
+        val userSelectedPerm = group.permissions[READ_MEDIA_VISUAL_USER_SELECTED] ?: return false
+        return !userSelectedPerm.isImplicit
     }
 
     fun registerPhotoPickerResultIfNeeded(fragment: Fragment) {

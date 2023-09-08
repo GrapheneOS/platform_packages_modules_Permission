@@ -47,7 +47,7 @@ object StorageGrantBehavior : GrantBehavior() {
             return Prompt.NO_UI_REJECT_THIS_GROUP
         }
 
-        if (appSupportsSplitStoragePermissions && !shouldShowPhotoPickerPrompt(group)) {
+        if (appSupportsSplitStoragePermissions && !shouldShowPhotoPickerPromptForApp(group)) {
             return Prompt.BASIC
         }
 
@@ -116,16 +116,17 @@ object StorageGrantBehavior : GrantBehavior() {
     private fun appSupportsSplitStoragePermissions(group: LightAppPermGroup) =
         SdkLevel.isAtLeastT() && group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU
 
-    private fun shouldShowPhotoPickerPrompt(group: LightAppPermGroup) =
+    private fun shouldShowPhotoPickerPromptForApp(group: LightAppPermGroup) =
         isPhotoPickerPromptEnabled() && group.permGroupName == READ_MEDIA_VISUAL &&
-            appSupportsSplitStoragePermissions(group)
+            (group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
+            appSupportsPhotoPicker(group))
 
     private fun appSupportsPhotoPicker(group: LightAppPermGroup) =
-        shouldShowPhotoPickerPrompt(group) &&
+        group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU &&
             group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]?.isImplicit == false
 
     private fun getPartialGrantPermissions(group: LightAppPermGroup): Set<String> {
-        return if (appSupportsPhotoPicker(group)) {
+        return if (appSupportsPhotoPicker(group) && shouldShowPhotoPickerPromptForApp(group)) {
             setOf(READ_MEDIA_VISUAL_USER_SELECTED, ACCESS_MEDIA_LOCATION)
         } else {
             setOf(READ_MEDIA_VISUAL_USER_SELECTED)
