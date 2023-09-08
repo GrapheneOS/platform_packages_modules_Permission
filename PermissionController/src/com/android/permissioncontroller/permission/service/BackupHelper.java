@@ -136,8 +136,8 @@ public class BackupHelper {
                 case END_TAG:
                     numOpenTags--;
                     break;
-                default:
-                    // ignore
+                case END_DOCUMENT:
+                    return;
             }
         }
     }
