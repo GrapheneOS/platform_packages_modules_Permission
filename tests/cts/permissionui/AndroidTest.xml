@@ -69,7 +69,7 @@
         <option name="push" value="CtsMediaPermissionApp33WithStorage.apk->/data/local/tmp/cts-permissionui/CtsMediaPermissionApp33WithStorage.apk" />
         <option name="push" value="CtsUsePermissionAppImplicitUserSelectStorage.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppImplicitUserSelectStorage.apk" />
         <option name="push" value="CtsAppThatAccessesMicAndCameraPermission.apk->/data/local/tmp/cts-permissionui/CtsAppThatAccessesMicAndCameraPermission.apk" />
-        <option name="push" value="CtsUsePermissionAppStorage33.apk->/data/local/tmp/cts/permissionui/CtsUsePermissionAppStorage33.apk" />
+        <option name="push" value="CtsUsePermissionAppStorage33.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppStorage33.apk" />
     </target_preparer>
 
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
