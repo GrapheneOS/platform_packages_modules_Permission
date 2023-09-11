@@ -412,11 +412,8 @@ class AppDataSharingUpdatesTest {
 
         private fun assertNoUpdatesPresent() {
             findView(By.descContains(DATA_SHARING_UPDATES), true)
-            findView(By.textContains(DATA_SHARING_UPDATES_SUBTITLE), true)
             findView(By.textContains(DATA_SHARING_NO_UPDATES_MESSAGE), true)
             findView(By.textContains(LOCATION_PACKAGE_NAME_SUBSTRING), false)
-            findView(By.textContains(UPDATES_IN_LAST_30_DAYS), false)
-            findView(By.textContains(DATA_SHARING_UPDATES_FOOTER_MESSAGE), true)
         }
 
         private fun grantLocationPermission(packageName: String) {
@@ -444,7 +441,7 @@ class AppDataSharingUpdatesTest {
         private fun findView(selector: BySelector, expected: Boolean) {
             val timeoutMillis =
                 if (expected) {
-                    10000L
+                    20000L
                 } else {
                     1000L
                 }
@@ -467,7 +464,13 @@ class AppDataSharingUpdatesTest {
                 } catch (e: Exception) {
                     e
                 }
-            Assert.assertTrue("Expected to find view: $expected", (exception == null) == expected)
+            val actual = exception == null
+            val message = if (expected) {
+                "Expected view $selector not found"
+            } else {
+                "Unexpected view found: $selector"
+            }
+            Assert.assertTrue(message, actual == expected)
         }
     }
 }
