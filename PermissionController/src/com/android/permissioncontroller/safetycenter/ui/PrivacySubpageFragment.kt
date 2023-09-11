@@ -81,7 +81,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
     }
 
     override fun renderSafetyCenterData(uiData: SafetyCenterUiData?) {
-        Log.d(TAG, "renderSafetyCenterEntryGroup called with $uiData")
+        Log.v(TAG, "renderSafetyCenterEntryGroup called with $uiData")
         val entryGroup = uiData?.getMatchingGroup(PRIVACY_SOURCES_GROUP_ID)
         if (entryGroup == null) {
             Log.w(
@@ -118,7 +118,7 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
     }
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
-        Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
+        Log.v(TAG, "updateSafetyCenterEntries called with $entryGroup")
         subpageGenericEntryGroup.removeAll()
         subpageControlsExtraEntryGroup.removeAll()
 

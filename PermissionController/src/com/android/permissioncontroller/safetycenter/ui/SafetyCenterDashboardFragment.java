@@ -198,8 +198,7 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
         if (uiData == null) return;
         SafetyCenterData data = uiData.getSafetyCenterData();
 
-        Log.i(TAG, String.format("renderSafetyCenterData called with: %s", data));
-
+        Log.v(TAG, String.format("renderSafetyCenterData called with: %s", data));
         Context context = getContext();
         if (context == null) {
             return;
