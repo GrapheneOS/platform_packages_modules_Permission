@@ -40,9 +40,11 @@ import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Chip
 import androidx.wear.compose.material.ChipColors
 import androidx.wear.compose.material.ChipDefaults
+import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.contentColorFor
 import com.android.permissioncontroller.R
 
 /**
@@ -64,7 +66,7 @@ public fun Chip(
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
     iconColor: Color = Color.Unspecified,
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     val iconParam: (@Composable BoxScope.() -> Unit)? =
@@ -143,7 +145,7 @@ public fun Chip(
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
     iconColor: Color = Color.Unspecified,
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     Chip(
@@ -178,7 +180,7 @@ public fun Chip(
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
     secondaryTextColor: Color = colorResource(R.color.wear_material_gray_600),
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     val hasSecondaryLabel = secondaryLabel != null
@@ -233,5 +235,32 @@ public fun Chip(
         colors = colors,
         enabled = enabled,
         contentPadding = contentPadding
+    )
+}
+
+/**
+ * Default colors of a Chip.
+ */
+@Composable
+fun chipDefaultColors(): ChipColors =
+    ChipDefaults.secondaryChipColors()
+
+/**
+ * ChipColors that disabled alpha is applied based on [ChipDefaults.secondaryChipColors()].
+ * It is used for a Chip which would like to respond to click events,
+ * meanwhile it seems disabled.
+ */
+@Composable
+fun chipDisabledColors(): ChipColors {
+    val backgroundColor = MaterialTheme.colors.surface
+    val contentColor = contentColorFor(backgroundColor)
+    val secondaryContentColor = contentColor
+    val iconColor = contentColor
+
+    return ChipDefaults.chipColors(
+        backgroundColor = backgroundColor.copy(alpha = ContentAlpha.disabled),
+        contentColor = contentColor.copy(alpha = ContentAlpha.disabled),
+        secondaryContentColor = secondaryContentColor.copy(alpha = ContentAlpha.disabled),
+        iconColor = iconColor.copy(alpha = ContentAlpha.disabled)
     )
 }
