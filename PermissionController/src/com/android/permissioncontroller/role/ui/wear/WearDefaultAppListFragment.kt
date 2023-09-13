@@ -28,7 +28,7 @@ import com.android.permissioncontroller.role.ui.DefaultAppListViewModel
 class WearDefaultAppListFragment : Fragment() {
     companion object {
         /**
-         * @return a new instance of [ManagePermissionsFragmentWear].
+         * @return a new instance of [WearDefaultAppListFragment].
          */
         fun newInstance(): WearDefaultAppListFragment {
             return WearDefaultAppListFragment()
@@ -40,11 +40,15 @@ class WearDefaultAppListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val context = requireContext()
         val viewModel = ViewModelProvider(this).get(DefaultAppListViewModel::class.java)
-
+        val user = viewModel.user
         return ComposeView(requireContext()).apply {
             setContent {
-                WearDefaultAppListScreen(viewModel.liveData) {}
+                WearDefaultAppListScreen(
+                    WearDefaultAppListHelper(context, user),
+                    viewModel.liveData
+                )
             }
         }
     }

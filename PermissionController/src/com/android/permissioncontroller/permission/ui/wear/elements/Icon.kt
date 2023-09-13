@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.wear.elements
 
+import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -80,8 +81,13 @@ public fun Icon(
     )
 }
 
+/**
+ * This component is an alternative to [Icon], providing the following:
+ * - a convenient way of providing an icon of various types
+ * - a convenient way of setting the icon to be mirrored in RTL mode;
+ */
 @Composable
-internal fun Icon(
+fun Icon(
     icon: Any,
     contentDescription: String?,
     modifier: Modifier = Modifier,
@@ -108,6 +114,15 @@ internal fun Icon(
         is Int -> {
             Icon(
                 painter = painterResource(id = icon),
+                contentDescription = contentDescription,
+                modifier = iconModifier,
+                tint = tint
+            )
+        }
+
+        is Drawable -> {
+            Icon(
+                painter = rememberDrawablePainter(icon),
                 contentDescription = contentDescription,
                 modifier = iconModifier,
                 tint = tint
