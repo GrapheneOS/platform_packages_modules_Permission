@@ -337,7 +337,7 @@
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"In afgelope 7 dae gebruik • Alle lêers"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Geen toestemmings toegelaat nie"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Geen toestemmings geweier nie"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Geen programme toegelaat nie"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Geen apps toegelaat nie"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Geen programme het toestemming vir alle lêers nie"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Geen programme het toestemming net vir media nie"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Geen programme geweier nie"</string>
