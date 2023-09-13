@@ -55,6 +55,7 @@ import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
+import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
@@ -245,7 +246,7 @@ abstract class BasePermissionTest {
         expectSuccess: Boolean = true,
         installSource: String? = null
     ) {
-        val output = runShellCommand(
+        val output = runShellCommandOrThrow(
             "pm install${if (SdkLevel.isAtLeastU()) " --bypass-low-target-sdk-block" else ""} " +
                 "${if (reinstall) " -r" else ""}${if (grantRuntimePermissions) " -g"
                 else ""}${if (installSource != null) " -i $installSource" else ""} $apkPath"

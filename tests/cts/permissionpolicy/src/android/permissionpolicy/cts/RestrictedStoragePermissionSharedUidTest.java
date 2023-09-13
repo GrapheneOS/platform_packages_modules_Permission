@@ -26,6 +26,7 @@ import static android.permissionpolicy.cts.RestrictedStoragePermissionSharedUidT
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertWithMessage;
@@ -129,9 +130,10 @@ public class RestrictedStoragePermissionSharedUidTest {
 
         void install() {
             if (isRestricted) {
-                runShellCommand("pm install -g --force-queryable --restrict-permissions " + mApk);
+                runShellCommandOrThrow(
+                        "pm install -g --force-queryable --restrict-permissions " + mApk);
             } else {
-                runShellCommand("pm install -g --force-queryable " + mApk);
+                runShellCommandOrThrow("pm install -g --force-queryable " + mApk);
             }
         }
 

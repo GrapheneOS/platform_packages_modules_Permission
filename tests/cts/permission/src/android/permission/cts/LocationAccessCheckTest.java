@@ -28,6 +28,7 @@ import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_DELAY_MILLI
 import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_INTERVAL_MILLIS;
 
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.waitForBroadcasts;
 
@@ -421,7 +422,8 @@ public class LocationAccessCheckTest {
     }
 
     public static void installBackgroundAccessApp() throws Exception {
-        String output = runShellCommand("pm install -r -g " + TEST_APP_LOCATION_BG_ACCESS_APK);
+        String output =
+                runShellCommandOrThrow("pm install -r -g " + TEST_APP_LOCATION_BG_ACCESS_APK);
         assertTrue(output.contains("Success"));
         // Wait for user sensitive to be updated, which is checked by LocationAccessCheck.
         Thread.sleep(5000);
@@ -458,7 +460,7 @@ public class LocationAccessCheckTest {
 
     private static void installForegroundAccessApp() throws Exception {
         unbindService();
-        runShellCommand("pm install -r -g " + TEST_APP_LOCATION_FG_ACCESS_APK);
+        runShellCommandOrThrow("pm install -r -g " + TEST_APP_LOCATION_FG_ACCESS_APK);
         // Wait for user sensitive to be updated, which is checked by LocationAccessCheck.
         Thread.sleep(5000);
     }
