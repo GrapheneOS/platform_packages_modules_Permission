@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Ancora nessuna informazione"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"Blocco dispositivo, Blocco schermo, Schermata di blocco, Password, PIN, Sequenza"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"Dati biometrici"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"Impronta, Dito, Aggiungi impronta, Sblocco con il volto, Volto"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"Impronta, Dito, Aggiungi impronta, Sblocco con il Volto, Volto"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privacy"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Dashboard, autorizzazioni, impostazioni"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Dashboard della privacy"</string>
