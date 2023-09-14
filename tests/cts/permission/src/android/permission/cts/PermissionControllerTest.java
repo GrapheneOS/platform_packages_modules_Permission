@@ -27,6 +27,7 @@ import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.MODE_FOREGROUND;
 import static android.app.AppOpsManager.permissionToOp;
 import static android.content.pm.PackageManager.PERMISSION_DENIED;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.permission.PermissionControllerManager.COUNT_ONLY_WHEN_GRANTED;
 import static android.permission.PermissionControllerManager.REASON_INSTALLER_POLICY_VIOLATION;
 import static android.permission.PermissionControllerManager.REASON_MALWARE;
@@ -249,8 +250,10 @@ public class PermissionControllerTest {
 
     @Test
     public void revokePermissionsDryRunForegroundPermission() throws Exception {
-        Map<String, List<String>> request = buildRevokeRequest(APP, ACCESS_FINE_LOCATION);
+        assertThat(sContext.getPackageManager().checkPermission(ACCESS_FINE_LOCATION,
+                APP)).isEqualTo(PERMISSION_GRANTED);
 
+        Map<String, List<String>> request = buildRevokeRequest(APP, ACCESS_FINE_LOCATION);
         Map<String, List<String>> result = revokePermissions(request, true);
 
         assertThat(result.size()).isEqualTo(1);
