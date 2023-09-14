@@ -39,7 +39,9 @@
         </service>
 
         <activity android:name="com.android.compatibility.common.util.FutureResultActivity" />
-        <activity android:name=".StartForFutureActivity" />
+        <activity
+            android:name=".StartForFutureActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"/>
 
         <activity android:name=".TestInstallerActivity"
                   android:exported="true"

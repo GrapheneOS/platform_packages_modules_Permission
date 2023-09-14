@@ -20,6 +20,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 
 class RequestPermissionsActivity : Activity() {
@@ -29,17 +30,20 @@ class RequestPermissionsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            val permissions = intent.getStringArrayExtra("$packageName.PERMISSIONS")!!
-            shouldAskTwice = intent.getBooleanExtra("$packageName.ASK_TWICE", false)
-            if (SdkLevel.isAtLeastV()) {
-                // TODO: make deviceId dynamic
-                requestPermissions(permissions, 1, Context.DEVICE_ID_DEFAULT)
-            } else {
-                requestPermissions(permissions, 1)
-            }
-            timesAsked = 1
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)")
+            return
         }
+
+        val permissions = intent.getStringArrayExtra("$packageName.PERMISSIONS")!!
+        shouldAskTwice = intent.getBooleanExtra("$packageName.ASK_TWICE", false)
+        if (SdkLevel.isAtLeastV()) {
+            // TODO: make deviceId dynamic
+            requestPermissions(permissions, 1, Context.DEVICE_ID_DEFAULT)
+        } else {
+            requestPermissions(permissions, 1)
+        }
+        timesAsked = 1
     }
 
     override fun onRequestPermissionsResult(
@@ -81,5 +85,9 @@ class RequestPermissionsActivity : Activity() {
             }
         )
         finish()
+    }
+
+    companion object {
+        private val TAG = RequestPermissionsActivity::class.simpleName
     }
 }

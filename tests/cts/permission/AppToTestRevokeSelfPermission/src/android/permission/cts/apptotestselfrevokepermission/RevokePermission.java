@@ -19,13 +19,22 @@ package android.permission.cts.apptotestrevokeselfpermission;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Arrays;
 
 public class RevokePermission extends Activity {
+    private static final String TAG = "RevokePermission";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)");
+            return;
+        }
+
         Intent intent = getIntent();
         String[] permissions = intent.getStringArrayExtra("permissions");
         if (permissions == null) {
