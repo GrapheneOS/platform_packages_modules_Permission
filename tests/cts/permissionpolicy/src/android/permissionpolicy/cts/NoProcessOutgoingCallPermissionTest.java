@@ -17,6 +17,7 @@
 package android.permissionpolicy.cts;
 
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -113,7 +114,7 @@ public class NoProcessOutgoingCallPermissionTest {
 
     @Before
     public void installApp() {
-        String installResult = runShellCommand("pm install -g " + APK_INSTALL_LOCATION);
+        String installResult = runShellCommandOrThrow("pm install -g " + APK_INSTALL_LOCATION);
         assertThat(installResult.trim()).isEqualTo("Success");
     }
 

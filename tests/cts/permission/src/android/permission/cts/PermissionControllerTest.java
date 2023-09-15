@@ -38,6 +38,7 @@ import static android.permission.cts.PermissionUtils.isPermissionGranted;
 import static com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -106,8 +107,8 @@ public class PermissionControllerTest {
 
     @BeforeClass
     public static void installApp() {
-        runShellCommand("pm install -r -g " + APK);
-        runShellCommand("pm install -r " + APK2);
+        runShellCommandOrThrow("pm install -r -g " + APK);
+        runShellCommandOrThrow("pm install -r " + APK2);
     }
 
     @AfterClass

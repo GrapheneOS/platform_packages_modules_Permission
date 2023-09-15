@@ -21,6 +21,7 @@ import static android.permission.cts.PermissionUtils.isPermissionGranted;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -694,7 +695,7 @@ public class RestrictedStoragePermissionTest {
         }
 
         // Install the app and whitelist/grant all permission if requested.
-        String installResult = runShellCommand("pm install"
+        String installResult = runShellCommandOrThrow("pm install"
                 + bypassLowTargetSdkFlag + " -t -r --restrict-permissions " + app);
         assertThat(installResult.trim()).isEqualTo("Success");
 

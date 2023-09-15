@@ -17,6 +17,7 @@
 package android.permission.cts;
 
 import static com.android.compatibility.common.util.ShellUtils.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -62,7 +63,7 @@ public class ActivityPermissionRationaleTest {
 
     @BeforeClass
     public static void setUp() {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
         int flag = PackageManager.FLAG_PERMISSION_USER_SET;
         PermissionUtils.setPermissionFlags(PACKAGE_NAME, PERMISSION_NAME, flag, flag);
     }

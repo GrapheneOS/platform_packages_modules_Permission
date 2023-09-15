@@ -49,6 +49,7 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
+import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
@@ -139,7 +140,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     private fun install() {
-        val output = runShellCommand("pm install -g $APK_PATH").trim()
+        val output = runShellCommandOrThrow("pm install -g $APK_PATH").trim()
         assertEquals("Success", output)
     }
 

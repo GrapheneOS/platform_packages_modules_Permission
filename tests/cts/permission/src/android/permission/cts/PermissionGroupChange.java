@@ -146,7 +146,7 @@ public class PermissionGroupChange {
     }
 
     private void installApp(String apk) {
-        String installResult = SystemUtil.runShellCommand(
+        String installResult = SystemUtil.runShellCommandOrThrow(
                 "pm install -r /data/local/tmp/cts-permission/" + apk + ".apk");
         assertEquals("Success", installResult.trim());
     }

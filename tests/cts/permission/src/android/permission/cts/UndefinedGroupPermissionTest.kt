@@ -55,7 +55,7 @@ class UndefinedGroupPermissionTest {
     @Before
     fun install() {
         SystemUtil.runShellCommand("pm uninstall $APP_PKG_NAME")
-        SystemUtil.runShellCommand("pm install -r " +
+        SystemUtil.runShellCommandOrThrow("pm install -r " +
                 TEST_APP_DEFINES_UNDEFINED_PERMISSION_GROUP_ELEMENT_APK)
     }
 

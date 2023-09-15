@@ -25,6 +25,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static org.junit.Assume.assumeFalse;
@@ -107,8 +108,8 @@ public class OneTimePermissionTest {
 
     @Before
     public void installApp() {
-        runShellCommand("pm install -r " + APK);
-        runShellCommand("pm install -r " + CUSTOM_CAMERA_PERM_APK);
+        runShellCommandOrThrow("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + CUSTOM_CAMERA_PERM_APK);
     }
 
     @Before

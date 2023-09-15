@@ -67,7 +67,7 @@ class StorageEscalationTest {
         secondaryUserId?.let { userId ->
             userString = " --user $userId"
         }
-        val result = SystemUtil.runShellCommand("pm install -r$userString $apk")
+        val result = SystemUtil.runShellCommandOrThrow("pm install -r$userString $apk")
         assertTrue("Expected output to contain \"Success\", but was \"$result\"",
                 result.contains("Success"))
     }

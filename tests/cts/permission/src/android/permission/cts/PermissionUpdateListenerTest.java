@@ -17,6 +17,7 @@
 package android.permission.cts;
 
 import static com.android.compatibility.common.util.ShellUtils.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -56,7 +57,7 @@ public class PermissionUpdateListenerTest {
 
     @BeforeClass
     public static void installApp() throws PackageManager.NameNotFoundException {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
         sUid = sPm.getPackageUid(PACKAGE_NAME, 0);
     }
 

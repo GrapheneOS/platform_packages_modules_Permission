@@ -32,6 +32,7 @@ import static android.permission.cts.PermissionUtils.setPermissionFlags;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static org.junit.Assert.assertEquals;
@@ -244,7 +245,7 @@ public class RevokeSelfPermissionTest {
 
 
     private void installApp() {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
     }
 
     private void keepAppInForeground(long timeoutMillis) {

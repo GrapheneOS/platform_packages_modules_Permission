@@ -24,6 +24,7 @@ import static android.permission.cts.PermissionUtils.isPermissionGranted;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
@@ -192,7 +193,7 @@ public class RestrictedPermissionsTest {
         }
 
         // Install with no changes to whitelisted permissions
-        runShellCommand("pm install" + bypassLowTargetSdkFlag
+        runShellCommandOrThrow("pm install" + bypassLowTargetSdkFlag
                 + " -g --force-queryable " + APK_USES_SMS_CALL_LOG_22);
 
         // All restricted permission should be whitelisted.
@@ -388,10 +389,10 @@ public class RestrictedPermissionsTest {
         Assume.assumeTrue("Secondary users have the DISALLOW_SMS user restriction",
                 UserHandle.SYSTEM.equals(Process.myUserHandle()));
 
-        runShellCommand(
+        runShellCommandOrThrow(
                 "pm install -g --force-queryable --restrict-permissions "
                 + APK_USES_SMS_RESTRICTED_SHARED_UID);
-        runShellCommand("pm install -g --force-queryable "
+        runShellCommandOrThrow("pm install -g --force-queryable "
                 + APK_USES_SMS_NOT_RESTRICTED_SHARED_UID);
 
         eventually(
@@ -669,7 +670,7 @@ public class RestrictedPermissionsTest {
         }
 
         // Install the app and whitelist/grant all permission if requested.
-        String installResult = runShellCommand("pm install -r --force-queryable"
+        String installResult = runShellCommandOrThrow("pm install -r --force-queryable"
                 + bypassLowTargetSdkFlag + " --restrict-permissions " + app);
         assertThat(installResult.trim()).isEqualTo("Success");
 

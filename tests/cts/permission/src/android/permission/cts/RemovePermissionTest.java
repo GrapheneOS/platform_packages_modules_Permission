@@ -132,7 +132,7 @@ public class RemovePermissionTest extends StsExtraBusinessLogicTestCase {
     }
 
     private void installApp(String apk) throws InterruptedException {
-        String installResult = SystemUtil.runShellCommand(
+        String installResult = SystemUtil.runShellCommandOrThrow(
                 "pm install -r -d /data/local/tmp/cts-permission/" + apk + ".apk");
         assertEquals("Success", installResult.trim());
         Thread.sleep(5000);

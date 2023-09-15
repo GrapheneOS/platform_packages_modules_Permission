@@ -18,6 +18,7 @@ package android.app.role.cts;
 
 import static com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject;
 import static com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull;
@@ -427,8 +428,8 @@ public class RoleManagerTest {
     }
 
     private void installPackage(@NonNull String apkPath) {
-        runShellCommand("pm install -r --user " + Process.myUserHandle().getIdentifier() + " "
-                + apkPath);
+        runShellCommandOrThrow(
+                "pm install -r --user " + Process.myUserHandle().getIdentifier() + " " + apkPath);
     }
 
     private void uninstallPackage(@NonNull String packageName) {
