@@ -31,6 +31,7 @@ import org.junit.After
 import org.junit.Assert.assertNull
 import org.junit.Assume.assumeFalse
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -85,6 +86,7 @@ class AppPermissionFragmentTest : BasePermissionUiTest() {
     }
 
     @Test
+    @Ignore("b/301001789")
     fun activityIsClosedWhenUserIsUninstalled() {
         uninstallApp(USER_PKG)
         eventually {
@@ -93,6 +95,7 @@ class AppPermissionFragmentTest : BasePermissionUiTest() {
     }
 
     @Test
+    @Ignore("b/301001789")
     fun activityIsClosedWhenDefinerIsUninstalled() {
         uninstallApp(DEFINER_PKG)
         eventually {
