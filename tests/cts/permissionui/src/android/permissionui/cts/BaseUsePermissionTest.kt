@@ -53,6 +53,7 @@ import com.android.modules.utils.build.SdkLevel
 import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 import org.junit.After
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -641,19 +642,24 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             waitForWindowTransition = waitForWindowTransition,
             block = block
         )
-        assertEquals(Activity.RESULT_OK, result.resultCode)
+        assertEquals(
+            "Permission request result had unexpected resultCode:",
+            Activity.RESULT_OK,
+            result.resultCode
+        )
 
         val responseSize: Int =
             result.resultData!!.getStringArrayExtra("$APP_PACKAGE_NAME.PERMISSIONS")!!.size
-        assertEquals(
+        assertEquals("Permission request result had unexpected number of grant results:",
             responseSize,
             result.resultData!!.getIntArrayExtra("$APP_PACKAGE_NAME.GRANT_RESULTS")!!.size
         )
 
         // Note that the behavior around requesting `null` permissions changed in the platform
         // in Android U. Currently, null permissions are ignored and left out of the result set.
-        assertTrue(permissions.size >= responseSize)
-        assertEquals(
+        assertTrue("Permission request result had fewer permissions than request",
+            permissions.size >= responseSize)
+        assertEquals("Permission request result had unexpected grant results:",
             permissionAndExpectedGrantResults
                 .filter { it.first != null }
                 .toList(),
@@ -1205,14 +1211,20 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         By.text(Pattern.compile("(?i)^${Pattern.quote(prefix)}.*$"))
 
     protected fun assertAppHasPermission(permissionName: String, expectPermission: Boolean) {
-        assertEquals( "Permission $permissionName",
-            if (expectPermission) {
-                PackageManager.PERMISSION_GRANTED
-            } else {
-                PackageManager.PERMISSION_DENIED
-            },
-            packageManager.checkPermission(permissionName, APP_PACKAGE_NAME)
+        val checkPermissionResult = packageManager.checkPermission(permissionName, APP_PACKAGE_NAME)
+        assertTrue(
+            "Invalid permission check result: $checkPermissionResult",
+            checkPermissionResult == PackageManager.PERMISSION_GRANTED ||
+                checkPermissionResult == PackageManager.PERMISSION_DENIED
         )
+        if (!expectPermission && checkPermissionResult == PackageManager.PERMISSION_GRANTED) {
+            Assert.fail("Unexpected permission check result for $permissionName: " +
+                "expected -1 (PERMISSION_DENIED) but was 0 (PERMISSION_GRANTED)")
+        }
+        if (expectPermission && checkPermissionResult == PackageManager.PERMISSION_DENIED) {
+            Assert.fail("Unexpected permission check result for $permissionName: " +
+                "expected 0 (PERMISSION_GRANTED) but was -1 (PERMISSION_DENIED)")
+        }
     }
 
     protected fun assertAppHasCalendarAccess(expectAccess: Boolean) {
