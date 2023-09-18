@@ -22,4 +22,7 @@
 
     <style name="GrantPermissions" parent="@android:style/Theme.DeviceDefault.NoActionBar">
     </style>
+
+    <style name="Theme.PermissionController.IncidentReportDialog"
+        parent="@android:style/Theme.DeviceDefault.Dialog.Alert" />
 </resources>
