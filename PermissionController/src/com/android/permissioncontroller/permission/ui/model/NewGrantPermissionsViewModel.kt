@@ -446,7 +446,6 @@ class NewGrantPermissionsViewModel(
 
         val splitPerms = app.getSystemService(PermissionManager::class.java)!!.splitPermissions
         for (splitPerm in splitPerms) {
-
             if (requestingAppTargetSDK < splitPerm.targetSdk && perm == splitPerm.splitPermission) {
                 extendedBySplitPerms.addAll(splitPerm.newPermissions)
             }
