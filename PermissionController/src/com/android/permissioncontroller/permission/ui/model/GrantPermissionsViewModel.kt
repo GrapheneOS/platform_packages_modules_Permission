@@ -132,6 +132,7 @@ import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 class GrantPermissionsViewModel(
     private val app: Application,
     private val packageName: String,
+    private val deviceId: Int,
     private val requestedPermissions: List<String>,
     private val systemRequestedPermissions: List<String>,
     private val sessionId: Long,
@@ -139,7 +140,7 @@ class GrantPermissionsViewModel(
 ) : ViewModel() {
     private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
-    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
+    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user, deviceId]
     private val safetyLabelInfoLiveData =
         if (
             SdkLevel.isAtLeastU() &&
@@ -156,6 +157,7 @@ class GrantPermissionsViewModel(
     private val groupStates = mutableMapOf<String, GroupState>()
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
+
     private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
         autoGrantNotifier = AutoGrantPermissionsNotifier(app, packageInfo.toPackageInfo(app)!!)
         return autoGrantNotifier!!
@@ -290,7 +292,7 @@ class GrantPermissionsViewModel(
                 }
 
                 val getLiveDataFun = { groupName: String ->
-                    LightAppPermGroupLiveData[packageName, groupName, user]
+                    LightAppPermGroupLiveData[packageName, groupName, user, deviceId]
                 }
                 setSourcesToDifference(requestedGroups.keys, appPermGroupLiveDatas, getLiveDataFun)
             }
@@ -365,13 +367,6 @@ class GrantPermissionsViewModel(
                             prompt
                         )
                     val safetyLabel = safetyLabelInfoLiveData?.value?.safetyLabel
-                    val permissionResourceDeviceId = ContextCompat.DEVICE_ID_DEFAULT
-                    // TODO(b/298623935) Determine the device ID of the permission resource
-                    // More logic is required at that point to properly identify permissions which
-                    // can be
-                    // device-aware (once implemented)
-                    // e.g. check VDM for the VirtualDevice's capabilities
-                    // e.g. check the permission request for the target device ID.
                     requestInfos.add(
                         RequestInfo(
                             groupState.group.permGroupInfo,
@@ -381,7 +376,7 @@ class GrantPermissionsViewModel(
                                 safetyLabel,
                                 groupState.group.permGroupName
                             ),
-                            permissionResourceDeviceId
+                            deviceId
                         )
                     )
                 }
@@ -1126,8 +1121,12 @@ class GrantPermissionsViewModel(
             }
             requestInfosLiveData.update()
         }
-        openPhotoPickerForApp(activity, packageInfo.uid, unfilteredAffectedPermissions,
-            PHOTO_PICKER_REQUEST_CODE)
+        openPhotoPickerForApp(
+            activity,
+            packageInfo.uid,
+            unfilteredAffectedPermissions,
+            PHOTO_PICKER_REQUEST_CODE
+        )
     }
 
     /**
@@ -1343,6 +1342,7 @@ class GrantPermissionsViewModel(
 class NewGrantPermissionsViewModelFactory(
     private val app: Application,
     private val packageName: String,
+    private val deviceId: Int,
     private val requestedPermissions: List<String>,
     private val systemRequestedPermissions: List<String>,
     private val sessionId: Long,
@@ -1353,6 +1353,7 @@ class NewGrantPermissionsViewModelFactory(
         return GrantPermissionsViewModel(
             app,
             packageName,
+            deviceId,
             requestedPermissions,
             systemRequestedPermissions,
             sessionId,

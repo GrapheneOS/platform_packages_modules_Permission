@@ -6,3 +6,10 @@ flag {
     description: "This flag is used to support hotword activation events in privacy dashboard"
     bug: "287264308"
 }
+
+flag {
+    name: "device_aware_permission_grant"
+    namespace: "permissions"
+    description: "Enables device aware grant permission flow"
+    bug: "292252664"
+}

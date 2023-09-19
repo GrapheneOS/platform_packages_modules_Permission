@@ -40,8 +40,6 @@ import static com.android.permissioncontroller.permission.utils.Utils.getRequest
 import android.Manifest;
 import android.app.Activity;
 import android.app.KeyguardManager;
-import android.companion.virtual.VirtualDevice;
-import android.companion.virtual.VirtualDeviceManager;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
@@ -51,7 +49,6 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
-import android.provider.Settings;
 import android.text.Annotation;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -85,6 +82,7 @@ import com.android.permissioncontroller.permission.ui.model.Prompt;
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
 import com.android.permissioncontroller.permission.utils.ContextCompat;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.MultiDeviceUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
@@ -135,9 +133,10 @@ public class GrantPermissionsActivity extends SettingsActivity
     public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 4;
     public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 5;
 
-    public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT = Map.of(
-            ACCESS_COARSE_LOCATION, 0,
-            ACCESS_FINE_LOCATION, 1);
+    public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT =
+            Map.of(
+                    ACCESS_COARSE_LOCATION, 0,
+                    ACCESS_FINE_LOCATION, 1);
 
     public static final String INTENT_PHOTOS_SELECTED = "intent_extra_result";
 
@@ -145,8 +144,8 @@ public class GrantPermissionsActivity extends SettingsActivity
      * A map of the currently shown GrantPermissionsActivity for this user, per package and task ID
      */
     @GuardedBy("sCurrentGrantRequests")
-    public static final Map<Pair<String, Integer>, GrantPermissionsActivity>
-            sCurrentGrantRequests = new HashMap<>();
+    public static final Map<Pair<String, Integer>, GrantPermissionsActivity> sCurrentGrantRequests =
+            new HashMap<>();
 
     /** Unique Id of a request */
     private long mSessionId;
@@ -172,24 +171,34 @@ public class GrantPermissionsActivity extends SettingsActivity
     private List<RequestInfo> mRequestInfos = new ArrayList<>();
     private GrantPermissionsViewHandler mViewHandler;
     private GrantPermissionsViewModel mViewModel;
+
     /**
      * A list of other GrantPermissionActivities for the same package which passed their list of
      * permissions to this one. They need to be informed when this activity finishes.
      */
     private List<GrantPermissionsActivity> mFollowerActivities = new ArrayList<>();
+
     /** Whether this activity has asked another GrantPermissionsActivity to show on its behalf */
     private boolean mDelegated;
+
     /** Whether this activity has been triggered by the system */
     private boolean mIsSystemTriggered = false;
+
     /** The set result code, or MAX_VALUE if it hasn't been set yet */
     private int mResultCode = Integer.MAX_VALUE;
+
     /** Package that shall have permissions granted */
     private String mTargetPackage;
+
     /** A key representing this activity, defined by the target package and task ID */
     private Pair<String, Integer> mKey;
+
     private float mOriginalDimAmount;
     private View mRootView;
     private int mStoragePermGroupIcon = R.drawable.ic_empty_icon;
+
+    /** Which device the permission will affect. Default is the primary device. */
+    private int mTargetDeviceId = ContextCompat.DEVICE_ID_DEFAULT;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -242,8 +251,8 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
         }
 
-        String[] requestedPermissionsArray = getIntent().getStringArrayExtra(
-            PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
+        String[] requestedPermissionsArray =
+                getIntent().getStringArrayExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
         if (requestedPermissionsArray == null) {
             setResultAndFinish();
             return;
@@ -259,6 +268,34 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
+        if (MultiDeviceUtils.isDeviceAwareGrantFlowEnabled()) {
+            mTargetDeviceId =
+                    getIntent()
+                            .getIntExtra(
+                                    PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID,
+                                    ContextCompat.DEVICE_ID_DEFAULT);
+        }
+
+        // If the permissions requested are for a remote device, check if each permission is device
+        // aware.
+        if (mTargetDeviceId != ContextCompat.DEVICE_ID_DEFAULT) {
+            if (!MultiDeviceUtils.isDeviceAwareGrantFlowEnabled()) {
+                Log.e(LOG_TAG, "targetDeviceId should be the default device if device aware grant"
+                        + " flow is not enabled");
+                finishAfterTransition();
+                return;
+            }
+
+            for (String permission : mRequestedPermissions) {
+                if (!MultiDeviceUtils.isPermissionDeviceAware(permission)) {
+                    Log.e(LOG_TAG, "When target device is external, permission " + permission
+                            + " needs to be device aware.");
+                    finishAfterTransition();
+                    return;
+                }
+            }
+        }
+
         mOriginalRequestedPermissions = mRequestedPermissions.toArray(new String[0]);
 
         synchronized (sCurrentGrantRequests) {
@@ -268,8 +305,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                 finishSystemStartedDialogsOnOtherTasksLocked();
             } else if (mIsSystemTriggered) {
                 // The system triggered dialog doesn't require results. Delegate, and finish.
-                sCurrentGrantRequests.get(mKey).onNewFollowerActivity(null,
-                        mRequestedPermissions);
+                sCurrentGrantRequests.get(mKey).onNewFollowerActivity(null, mRequestedPermissions);
                 finishAfterTransition();
                 return;
             } else if (sCurrentGrantRequests.get(mKey).mIsSystemTriggered) {
@@ -300,8 +336,13 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         if (!mDelegated) {
             NewGrantPermissionsViewModelFactory factory =
-                    new NewGrantPermissionsViewModelFactory(getApplication(), mTargetPackage,
-                            mRequestedPermissions, mSystemRequestedPermissions, mSessionId,
+                    new NewGrantPermissionsViewModelFactory(
+                            getApplication(),
+                            mTargetPackage,
+                            mTargetDeviceId,
+                            mRequestedPermissions,
+                            mSystemRequestedPermissions,
+                            mSessionId,
                             icicle);
             mViewModel = factory.create(GrantPermissionsViewModel.class);
             mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
@@ -387,9 +428,15 @@ public class GrantPermissionsActivity extends SettingsActivity
         Bundle oldState = new Bundle();
         mViewModel.getRequestInfosLiveData().removeObservers(this);
         mViewModel.saveInstanceState(oldState);
-        NewGrantPermissionsViewModelFactory factory = new NewGrantPermissionsViewModelFactory(
-                getApplication(), mTargetPackage, mRequestedPermissions,
-                mSystemRequestedPermissions, mSessionId, oldState);
+        NewGrantPermissionsViewModelFactory factory =
+                new NewGrantPermissionsViewModelFactory(
+                        getApplication(),
+                        mTargetPackage,
+                        mTargetDeviceId,
+                        mRequestedPermissions,
+                        mSystemRequestedPermissions,
+                        mSessionId,
+                        oldState);
         mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         if (follower != null) {
@@ -457,20 +504,34 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        String appLabel = KotlinUtils.INSTANCE.getPackageLabel(getApplication(),
-                mTargetPackage, Process.myUserHandle());
-        int deviceId = ContextCompat.getDeviceId(this);
-        int messageId = getMessageId(info.getGroupName(), info.getPrompt(), deviceId);
-        CharSequence message = getRequestMessage(appLabel, mTargetPackage, info.getGroupName(),
-                getDeviceName(info.getDeviceId()), this, deviceId, messageId);
+        String appLabel =
+                KotlinUtils.INSTANCE.getPackageLabel(
+                        getApplication(), mTargetPackage, Process.myUserHandle());
+
+        // Show device name in the dialog when the dialog is streamed to a remote device OR
+        // target device is different from streamed device.
+        int dialogDisplayDeviceId = ContextCompat.getDeviceId(this);
+        boolean isMessageDeviceAware =
+                dialogDisplayDeviceId != ContextCompat.DEVICE_ID_DEFAULT
+                        || dialogDisplayDeviceId != mTargetDeviceId;
+
+        int messageId = getMessageId(info.getGroupName(), info.getPrompt(), isMessageDeviceAware);
+        CharSequence message =
+                getRequestMessage(
+                        appLabel,
+                        mTargetPackage,
+                        info.getGroupName(),
+                        MultiDeviceUtils.getDeviceName(getApplicationContext(), info.getDeviceId()),
+                        this,
+                        isMessageDeviceAware,
+                        messageId);
 
         int detailMessageId = getDetailMessageId(info.getGroupName(), info.getPrompt());
         Spanned detailMessage = null;
         if (detailMessageId != 0) {
-            detailMessage =
-                    new SpannableString(getText(detailMessageId));
-            Annotation[] annotations = detailMessage.getSpans(
-                    0, detailMessage.length(), Annotation.class);
+            detailMessage = new SpannableString(getText(detailMessageId));
+            Annotation[] annotations =
+                    detailMessage.getSpans(0, detailMessage.length(), Annotation.class);
             int numAnnotations = annotations.length;
             for (int i = 0; i < numAnnotations; i++) {
                 Annotation annotation = annotations[i];
@@ -478,8 +539,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     int start = detailMessage.getSpanStart(annotation);
                     int end = detailMessage.getSpanEnd(annotation);
                     ClickableSpan clickableSpan = getLinkToAppPermissions(info);
-                    SpannableString spannableString =
-                            new SpannableString(detailMessage);
+                    SpannableString spannableString = new SpannableString(detailMessage);
                     spannableString.setSpan(clickableSpan, start, end, 0);
                     detailMessage = spannableString;
                     break;
@@ -541,38 +601,18 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
     }
 
-    private String getDeviceName(int deviceId) {
-        // Pre Android V no permission requests can affect the VirtualDevice, thus return local
-        // device name.
-        if (!SdkLevel.isAtLeastV() || deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return Settings.Global.getString(getContentResolver(), Settings.Global.DEVICE_NAME);
-        }
-
-        VirtualDeviceManager vdm = getSystemService(VirtualDeviceManager.class);
-        if (vdm != null) {
-            // TODO(b/298621125): replace with vdm.getVirtualDeviceById(deviceId) once the API is
-            //  rolled out.
-            for (VirtualDevice virtualDevice : vdm.getVirtualDevices()) {
-                if (virtualDevice.getDeviceId() == deviceId) {
-                    return virtualDevice.getDisplayName().toString();
-                }
-            }
-        }
-
-        throw new IllegalArgumentException("No device name for device: " + deviceId);
-    }
-    private int getMessageId(String permGroupName, Prompt prompt, int deviceId) {
+    private int getMessageId(String permGroupName, Prompt prompt, Boolean isDeviceAware) {
         return switch (prompt) {
-            case UPGRADE_SETTINGS_LINK, OT_UPGRADE_SETTINGS_LINK ->
-                    Utils.getUpgradeRequest(permGroupName, deviceId);
-            case SETTINGS_LINK_FOR_BG, SETTINGS_LINK_WITH_OT ->
-                    Utils.getBackgroundRequest(permGroupName, deviceId);
-            case LOCATION_FINE_UPGRADE -> Utils.getFineLocationRequest(deviceId);
-            case LOCATION_COARSE_ONLY -> Utils.getCoarseLocationRequest(deviceId);
+            case UPGRADE_SETTINGS_LINK, OT_UPGRADE_SETTINGS_LINK -> Utils.getUpgradeRequest(
+                    permGroupName, isDeviceAware);
+            case SETTINGS_LINK_FOR_BG, SETTINGS_LINK_WITH_OT -> Utils.getBackgroundRequest(
+                    permGroupName, isDeviceAware);
+            case LOCATION_FINE_UPGRADE -> Utils.getFineLocationRequest(isDeviceAware);
+            case LOCATION_COARSE_ONLY -> Utils.getCoarseLocationRequest(isDeviceAware);
             case STORAGE_SUPERGROUP_PRE_Q -> R.string.permgrouprequest_storage_pre_q;
             case STORAGE_SUPERGROUP_Q_TO_S -> R.string.permgrouprequest_storage_q_to_s;
-            case SELECT_MORE_PHOTOS -> Utils.getMorePhotosRequest(deviceId);
-            default -> Utils.getRequest(permGroupName, deviceId);
+            case SELECT_MORE_PHOTOS -> Utils.getMorePhotosRequest(isDeviceAware);
+            default -> Utils.getRequest(permGroupName, isDeviceAware);
         };
     }
 

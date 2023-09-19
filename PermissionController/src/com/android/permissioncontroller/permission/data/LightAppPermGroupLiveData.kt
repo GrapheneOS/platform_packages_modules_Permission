@@ -52,9 +52,9 @@ private constructor(
     private val LOG_TAG = this::class.java.simpleName
 
     private var isSpecialLocation = false
-    private val permStateLiveData = PermStateLiveData[packageName, permGroupName, user]
+    private val permStateLiveData = PermStateLiveData[packageName, permGroupName, user, deviceId]
     private val permGroupLiveData = PermGroupLiveData[permGroupName]
-    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
+    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user, deviceId]
     private val fgPermNamesLiveData = ForegroundPermNamesLiveData
 
     init {
