@@ -1124,7 +1124,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun moreIssuesCard_twoIssuesAlreadyShown_expandAdditionalIssueCards() {
+    fun moreIssuesCard_withThreeIssues_showsTopIssuesAndMoreIssuesCard() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
             SOURCE_ID_1,
@@ -1144,14 +1144,31 @@ class SafetyCenterActivityTest {
             waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
             waitAllTextDisplayed(MORE_ISSUES_LABEL)
             waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_twoIssuesAlreadyShown_expandAdditionalIssueCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_2,
+            safetySourceTestData.recommendationWithGeneralIssue
+        )
+        safetyCenterTestHelper.setData(SOURCE_ID_3, safetySourceTestData.informationWithIssue)
+
+        val bundle = Bundle()
+        bundle.putString(EXTRA_SAFETY_SOURCE_ID, SOURCE_ID_2)
+        bundle.putString(EXTRA_SAFETY_SOURCE_ISSUE_ID, RECOMMENDATION_ISSUE_ID)
+        context.launchSafetyCenterActivity(bundle) {
+            waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
 
             clickMoreIssuesCard()
 
-            waitExpandedIssuesDisplayed(
-                safetySourceTestData.criticalResolvingGeneralIssue,
-                safetySourceTestData.recommendationGeneralIssue,
-                safetySourceTestData.informationIssue
-            )
+            waitSourceIssueDisplayed(safetySourceTestData.informationIssue)
         }
     }
 
