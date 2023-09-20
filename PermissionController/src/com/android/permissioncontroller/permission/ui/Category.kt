@@ -24,5 +24,6 @@ enum class Category(val categoryName: String) {
     ALLOWED("allowed"),
     ALLOWED_FOREGROUND("allowed_foreground"),
     ASK("ask"),
-    DENIED("denied")
+    DENIED("denied"),
+    STORAGE_FOOTER("storage_footer_category"),
 }
