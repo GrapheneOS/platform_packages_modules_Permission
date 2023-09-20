@@ -23,6 +23,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED;
 import static com.android.permissioncontroller.hibernation.HibernationPolicyKt.isHibernationEnabled;
+import static com.android.permissioncontroller.permission.ui.Category.STORAGE_FOOTER;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
 
 import static java.util.concurrent.TimeUnit.DAYS;
@@ -317,6 +318,9 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 mPackageName);
 
         findPreference(Category.ALLOWED_FOREGROUND.getCategoryName()).setVisible(false);
+
+        // Hide storage footer category
+        findPreference(STORAGE_FOOTER.getCategoryName()).setVisible(false);
 
         long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
 
