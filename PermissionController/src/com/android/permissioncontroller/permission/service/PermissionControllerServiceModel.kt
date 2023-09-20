@@ -287,10 +287,14 @@ class PermissionControllerServiceModel(private val service: PermissionController
     fun onCountUnusedApps(
         callback: IntConsumer
     ) {
-        val unusedAppsCount = Transformations.map(getUnusedPackages()) {
-            it?.size ?: 0
+        GlobalScope.launch(Main.immediate) {
+            val unusedAppsCount = Transformations.map(getUnusedPackages()) {
+                it?.size ?: 0
+            }
+            observeAndCheckForLifecycleState(unusedAppsCount) { count ->
+                callback.accept(count ?: 0)
+            }
         }
-        observeAndCheckForLifecycleState(unusedAppsCount) { count -> callback.accept(count ?: 0) }
     }
 
     /**
