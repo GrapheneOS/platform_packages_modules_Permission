@@ -527,8 +527,8 @@ public final class RoleManager {
     public void setDefaultApplication(@NonNull String roleName, @Nullable String packageName,
             @ManageHoldersFlags int flags, @CallbackExecutor @NonNull Executor executor,
             @NonNull Consumer<Boolean> callback) {
+        // Prior to Android V some devices might require the "packageName" to be non-null.
         Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
-        Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
         Objects.requireNonNull(executor, "executor cannot be null");
         Objects.requireNonNull(callback, "callback cannot be null");
         try {
