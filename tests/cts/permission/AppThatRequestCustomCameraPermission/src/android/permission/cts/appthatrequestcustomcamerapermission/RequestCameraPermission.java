@@ -25,7 +25,6 @@ import android.os.Handler;
 import android.util.Log;
 
 public class RequestCameraPermission extends Activity {
-
     private static final String LOG_TAG = RequestCameraPermission.class.getSimpleName();
 
     public static final String CUSTOM_PERMISSION = "appthatrequestcustomcamerapermission.CUSTOM";
@@ -34,6 +33,11 @@ public class RequestCameraPermission extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            Log.w(LOG_TAG, "Activity was recreated. (Perhaps due to a configuration change?)");
+            return;
+        }
 
         boolean cameraGranted =
                 checkSelfPermission(CAMERA) == PERMISSION_GRANTED;

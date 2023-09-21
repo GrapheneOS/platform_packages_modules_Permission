@@ -18,6 +18,7 @@ package android.app.role.cts;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,18 @@ public class WaitForResultActivity extends Activity {
     private CountDownLatch mLatch;
     private int mResultCode;
     private Intent mData;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            throw new RuntimeException(
+                    "Activity was recreated (perhaps due to a configuration change?) "
+                          + "and this activity doesn't currently know how to gracefully handle "
+                          + "configuration changes.");
+        }
+    }
 
     public void startActivityToWaitForResult(@NonNull Intent intent) {
         mLatch = new CountDownLatch(1);

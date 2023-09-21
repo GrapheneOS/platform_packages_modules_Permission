@@ -24,6 +24,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 
 class RequestPermissionsActivity : Activity() {
 
@@ -31,6 +32,12 @@ class RequestPermissionsActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)")
+            return
+        }
+
         registerReceiver(object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 if (intent?.action != ACTION_SHOW_OVERLAY) {
@@ -85,5 +92,6 @@ class RequestPermissionsActivity : Activity() {
     companion object {
         const val ACTION_SHOW_OVERLAY = "android.permissionui.cts.usepermission.ACTION_SHOW_OVERLAY"
         const val ACTION_HIDE_OVERLAY = "android.permissionui.cts.usepermission.ACTION_HIDE_OVERLAY"
+        private val TAG = RequestPermissionsActivity::class.simpleName
     }
 }
