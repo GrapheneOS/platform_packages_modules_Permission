@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ଆଲର୍ଟ ଦେଖନ୍ତୁ}other{ଆଲର୍ଟଗୁଡ଼ିକ ଦେଖନ୍ତୁ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ପୃଷ୍ଠାକୁ ଖୋଲା ଯାଇପାରିଲା ନାହିଁ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ଆଲର୍ଟର ସମାଧାନ କରାଯାଇପାରିଲା ନାହିଁ"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"ସେଟିଂସ ରିଫ୍ରେସ କରାଯାଇପାରିଲା ନାହିଁ"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{ସେଟିଂ ଯାଞ୍ଚ କରାଯାଇପାରିଲା ନାହିଁ}other{ସେଟିଂସ ଯାଞ୍ଚ କରାଯାଇପାରିଲା ନାହିଁ}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"ୱାର୍କ ପ୍ରୋଫାଇଲକୁ ବିରତ କରାଯାଇଛି"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ସୂଚନା ନାହିଁ"</string>

@@ -577,7 +577,7 @@
         </receiver>
 
         <activity android:name="com.android.permissioncontroller.incident.ConfirmationActivity"
-                android:theme="@style/Theme.DeviceDefault.Dialog.NoActionBar.DayNight"
+                android:theme="@style/Theme.PermissionController.IncidentReportDialog"
                 android:exported="false"
                 android:excludeFromRecents="true"
                 android:finishOnCloseSystemDialogs="true"

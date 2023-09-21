@@ -15,4 +15,6 @@
   -->
 
 <Space
-    style="@style/SafetyCenterNoLabelPreferenceCategory"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/sc_spacing_xsmall" />

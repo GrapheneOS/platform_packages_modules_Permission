@@ -78,6 +78,7 @@
         <permission name="android.permission.READ_MEDIA_AUDIO" minSdkVersion="33" />
         <permission name="android.permission.READ_MEDIA_VIDEO" minSdkVersion="33" />
         <permission name="android.permission.READ_MEDIA_IMAGES" minSdkVersion="33" />
+        <permission name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" minSdkVersion="34" />
     </permission-set>
 
     <permission-set name="nearby_devices">

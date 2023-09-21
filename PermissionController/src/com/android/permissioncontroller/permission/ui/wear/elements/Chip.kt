@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -39,9 +40,12 @@ import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Chip
 import androidx.wear.compose.material.ChipColors
 import androidx.wear.compose.material.ChipDefaults
+import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.contentColorFor
+import com.android.permissioncontroller.R
 
 /**
  * This component is an alternative to [Chip], providing the following:
@@ -52,15 +56,17 @@ import androidx.wear.compose.material.Text
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     iconContentDescription: String? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
     iconColor: Color = Color.Unspecified,
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     val iconParam: (@Composable BoxScope.() -> Unit)? =
@@ -108,9 +114,11 @@ public fun Chip(
 
     Chip(
         label = label,
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel,
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = iconParam,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -128,21 +136,25 @@ public fun Chip(
 @Composable
 public fun Chip(
     @StringRes labelId: Int,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     @StringRes secondaryLabel: Int? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: Any? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
     iconColor: Color = Color.Unspecified,
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     Chip(
         label = stringResource(id = labelId),
+        labelMaxLines = labelMaxLines,
         onClick = onClick,
         modifier = modifier,
         secondaryLabel = secondaryLabel?.let { stringResource(id = it) },
+        secondaryLabelMaxLines = secondaryLabelMaxLines,
         icon = icon,
         largeIcon = largeIcon,
         textColor = textColor,
@@ -159,13 +171,16 @@ public fun Chip(
 @Composable
 public fun Chip(
     label: String,
+    labelMaxLines: Int? = null,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     secondaryLabel: String? = null,
+    secondaryLabelMaxLines: Int? = null,
     icon: (@Composable BoxScope.() -> Unit)? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
-    colors: ChipColors = ChipDefaults.secondaryChipColors(),
+    secondaryTextColor: Color = colorResource(R.color.wear_material_gray_600),
+    colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
     val hasSecondaryLabel = secondaryLabel != null
@@ -179,7 +194,7 @@ public fun Chip(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = if (hasSecondaryLabel) 1 else 2,
+                maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
                 style = MaterialTheme.typography.button
             )
         }
@@ -189,8 +204,9 @@ public fun Chip(
             {
                 Text(
                     text = secondaryLabel,
+                    color = secondaryTextColor,
                     overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                    maxLines = secondaryLabelMaxLines ?: 1,
                     style = MaterialTheme.typography.caption2
                 )
             }
@@ -219,5 +235,32 @@ public fun Chip(
         colors = colors,
         enabled = enabled,
         contentPadding = contentPadding
+    )
+}
+
+/**
+ * Default colors of a Chip.
+ */
+@Composable
+fun chipDefaultColors(): ChipColors =
+    ChipDefaults.secondaryChipColors()
+
+/**
+ * ChipColors that disabled alpha is applied based on [ChipDefaults.secondaryChipColors()].
+ * It is used for a Chip which would like to respond to click events,
+ * meanwhile it seems disabled.
+ */
+@Composable
+fun chipDisabledColors(): ChipColors {
+    val backgroundColor = MaterialTheme.colors.surface
+    val contentColor = contentColorFor(backgroundColor)
+    val secondaryContentColor = contentColor
+    val iconColor = contentColor
+
+    return ChipDefaults.chipColors(
+        backgroundColor = backgroundColor.copy(alpha = ContentAlpha.disabled),
+        contentColor = contentColor.copy(alpha = ContentAlpha.disabled),
+        secondaryContentColor = secondaryContentColor.copy(alpha = ContentAlpha.disabled),
+        iconColor = iconColor.copy(alpha = ContentAlpha.disabled)
     )
 }

@@ -16,7 +16,8 @@
 
 package android.permission.cts;
 
-import static org.junit.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
+
 import static org.junit.Assert.fail;
 
 import androidx.test.runner.AndroidJUnit4;
@@ -24,36 +25,23 @@ import androidx.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * Test shell command capability enforcement
  */
 @RunWith(AndroidJUnit4.class)
 public class ShellCommandPermissionTest {
 
-    private void executeShellCommandAndRequireError(String command, String required)
+    static final int EXPECTED_ERROR_CODE = 255;
+
+    /**
+     * Runs the given command, waits for it to exit, and verifies the return
+     * code indicates failure.
+     */
+    private void executeShellCommandAndWaitForError(String command)
             throws Exception {
         try {
             java.lang.Process proc = Runtime.getRuntime().exec(command);
-
-            // read output of command
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-            StringBuilder stderr = new StringBuilder();
-            String line = reader.readLine();
-            while (line != null) {
-                stderr.append(line);
-                line = reader.readLine();
-            }
-            reader.close();
-            proc.waitFor();
-
-            String stderrString = stderr.toString();
-            assertTrue("Expected command stderr '" + stderrString
-                            + " to contain '" + required + "'",
-                    stderrString.contains(required));
+            assertThat(proc.waitFor()).isEqualTo(EXPECTED_ERROR_CODE);
         } catch (InterruptedException e) {
             fail("Unsuccessful shell command");
         }
@@ -61,15 +49,13 @@ public class ShellCommandPermissionTest {
 
     @Test
     public void testTraceIpc() throws Exception {
-        executeShellCommandAndRequireError(
-                "cmd activity trace-ipc stop --dump-file /data/system/last-fstrim",
-                "Error:");
+        executeShellCommandAndWaitForError(
+                "cmd activity trace-ipc stop --dump-file /data/system/last-fstrim");
     }
 
     @Test
     public void testDumpheap() throws Exception {
-        executeShellCommandAndRequireError(
-                "cmd activity dumpheap system_server /data/system/last-fstrim",
-                "Error:");
+        executeShellCommandAndWaitForError(
+                "cmd activity dumpheap system_server /data/system/last-fstrim");
     }
 }

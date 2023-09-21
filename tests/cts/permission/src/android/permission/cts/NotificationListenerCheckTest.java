@@ -29,10 +29,10 @@ import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.os.Build;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.rule.ScreenRecordRule;
 import android.service.notification.StatusBarNotification;
 
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 

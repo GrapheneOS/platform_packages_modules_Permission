@@ -71,14 +71,14 @@ import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermiss
 import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
-import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionDetailsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsageWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharingUpdatesFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
-import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
+import com.android.permissioncontroller.permission.ui.wear.WearAppPermissionFragment;
+import com.android.permissioncontroller.permission.ui.wear.WearUnusedAppsFragment;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -154,10 +154,10 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         }
         super.onCreate(savedInstanceState);
 
-        // If this is not a phone (which uses the Navigation component), and there is a previous
-        // instance, re-use its Fragment instead of making a new one.
-        if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this)
-                || DeviceUtils.isWear(this)) && savedInstanceState != null) {
+        // If this is not a phone or a watch (which uses the Navigation component), and there
+        // is a previous instance, re-use its Fragment instead of making a new one.
+        if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this))
+                && savedInstanceState != null) {
             return;
         }
 
@@ -259,8 +259,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             }
 
             case Intent.ACTION_MANAGE_APP_PERMISSION: {
-                if (DeviceUtils.isAuto(this) || DeviceUtils.isTelevision(this)
-                        || DeviceUtils.isWear(this)) {
+                if (DeviceUtils.isAuto(this) || DeviceUtils.isTelevision(this)) {
                     Intent compatIntent = new Intent(this, AppPermissionActivity.class);
                     compatIntent.putExtras(getIntent().getExtras());
                     startActivityForResult(compatIntent, PROXY_ACTIVITY_REQUEST_CODE);
@@ -298,8 +297,14 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
 
-                Bundle args = AppPermissionFragment.createArgs(packageName, permissionName,
-                        groupName, userHandle, caller, sessionId, null);
+                Bundle args;
+                if (DeviceUtils.isWear(this)) {
+                    args = WearAppPermissionFragment.createArgs(packageName, permissionName,
+                            groupName, userHandle, caller, sessionId, null);
+                } else {
+                    args = AppPermissionFragment.createArgs(packageName, permissionName,
+                            groupName, userHandle, caller, sessionId, null);
+                }
                 setNavGraph(args, R.id.app_permission);
                 return;
             }
@@ -376,8 +381,6 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                         androidXFragment = AutoAppPermissionsFragment.newInstance(packageName,
                                 userHandle, sessionId, /* isSystemPermsScreen= */ true);
                     }
-                } else if (DeviceUtils.isWear(this)) {
-                    androidXFragment = AppPermissionsFragmentWear.newInstance(packageName);
                 } else if (DeviceUtils.isTelevision(this)) {
                     androidXFragment = com.android.permissioncontroller.permission.ui.television
                             .AppPermissionsFragment.newInstance(packageName, userHandle);
@@ -475,8 +478,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     androidXFragment = TvUnusedAppsFragment.newInstance();
                     androidXFragment.setArguments(UnusedAppsFragment.createArgs(sessionId));
                 } else if (DeviceUtils.isWear(this)) {
-                    androidXFragment = HandheldUnusedAppsWrapperFragment.newInstance();
-                    androidXFragment.setArguments(UnusedAppsFragment.createArgs(sessionId));
+                    setNavGraph(WearUnusedAppsFragment.createArgs(sessionId), R.id.auto_revoke);
+                    return;
                 } else {
                     setNavGraph(UnusedAppsFragment.createArgs(sessionId), R.id.auto_revoke);
                     return;

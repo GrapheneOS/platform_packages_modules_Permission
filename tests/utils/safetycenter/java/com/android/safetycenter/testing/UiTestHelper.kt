@@ -22,6 +22,7 @@ import android.os.SystemClock
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.config.SafetySourcesGroup
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
@@ -46,9 +47,9 @@ object UiTestHelper {
     const val MORE_ISSUES_LABEL = "More alerts"
 
     private const val DISMISS_ISSUE_LABEL = "Dismiss"
-    private val WAIT_TIMEOUT = Duration.ofSeconds(20)
+    private const val TAG = "SafetyCenterUiTestHelper"
 
-    private val TAG = UiTestHelper::class.java.simpleName
+    private val WAIT_TIMEOUT = Duration.ofSeconds(20)
 
     /**
      * Waits for the given [selector] to be displayed, and optionally perform a given
@@ -63,11 +64,13 @@ object UiTestHelper {
                 uiObjectAction(waitFindObject(selector, remaining.toMillis()))
                 return
             } catch (e: StaleObjectException) {
-                // Found, but stale before uiObjectAction could be performed, retry
+                Log.w(TAG, "Found stale UI object, retrying", e)
                 remaining = whenToTimeout - currentElapsedRealtime()
             }
         }
-        throw TimeoutException("Timed out waiting for $selector to be displayed")
+        throw UiDumpUtils.wrapWithUiDump(
+            TimeoutException("Timed out waiting for $selector to be displayed after $WAIT_TIMEOUT")
+        )
     }
 
     /** Waits for all the given [textToFind] to be displayed. */
@@ -86,14 +89,16 @@ object UiTestHelper {
 
     /** Waits for the given [selector] not to be displayed. */
     fun waitNotDisplayed(selector: BySelector) {
-        val timeoutMs = WAIT_TIMEOUT.toMillis()
         // TODO(b/294038848): Add scrolling to make sure it is properly gone.
-        val view = getUiDevice().wait(Until.gone(selector), timeoutMs)
-        if (view == null) {
-            throw UiDumpUtils.wrapWithUiDump(
-                TimeoutException("View not found after waiting for $timeoutMs $selector")
-            )
+        val gone = getUiDevice().wait(Until.gone(selector), WAIT_TIMEOUT.toMillis())
+        if (gone) {
+            return
         }
+        throw UiDumpUtils.wrapWithUiDump(
+            TimeoutException(
+                "Timed out waiting for $selector not to be displayed after $WAIT_TIMEOUT"
+            )
+        )
     }
 
     /** Waits for all the given [textToFind] not to be displayed. */
@@ -113,11 +118,11 @@ object UiTestHelper {
      */
     @RequiresApi(TIRAMISU)
     fun waitSourceDataDisplayed(sourceData: SafetySourceData) {
-        waitAllTextDisplayed(sourceData.status?.title, sourceData.status?.summary)
-
         for (sourceIssue in sourceData.issues) {
             waitSourceIssueDisplayed(sourceIssue)
         }
+
+        waitAllTextDisplayed(sourceData.status?.title, sourceData.status?.summary)
     }
 
     /** Waits for most of the [SafetySourceIssue] information to be displayed. */
@@ -243,6 +248,7 @@ object UiTestHelper {
             }
         return Pattern.compile(regex)
     }
+
     private fun currentElapsedRealtime(): Duration =
         Duration.ofMillis(SystemClock.elapsedRealtime())
 }

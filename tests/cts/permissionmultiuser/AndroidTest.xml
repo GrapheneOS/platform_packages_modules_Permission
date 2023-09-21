@@ -20,7 +20,7 @@
 
     <option name="test-suite-tag" value="cts" />
 
-    <option name="config-descriptor:metadata" key="component" value="framework" />
+    <option name="config-descriptor:metadata" key="component" value="permissions" />
     <option name="config-descriptor:metadata" key="parameter" value="no_foldable_states" />
     <option name="config-descriptor:metadata" key="parameter" value="not_instant_app" />
     <option name="config-descriptor:metadata" key="parameter" value="not_multi_abi" />
@@ -43,7 +43,7 @@
     </target_preparer>
 
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
-        <option name="push" value="CtsRequestLocationApp.apk->/data/local/tmp/cts/permissionmultiuser/CtsRequestLocationApp.apk" />
+        <option name="push" value="CtsRequestLocationApp.apk->/data/local/tmp/cts-permissionmultiuser/CtsRequestLocationApp.apk" />
     </target_preparer>
 
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
@@ -57,12 +57,14 @@
 
     <!-- Create place to store apks -->
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
-        <option name="run-command" value="mkdir -p /data/local/tmp/cts/permissionmultiuser" />
-        <option name="teardown-command" value="rm -rf /data/local/tmp/cts"/>
+        <option name="run-command" value="mkdir -p /data/local/tmp/cts-permissionmultiuser" />
+        <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionmultiuser"/>
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
         <option name="package" value="android.permissionmultiuser.cts" />
+        <option name="exclude-annotation" value="com.android.bedstead.harrier.annotations.RequireRunOnWorkProfile" />
+        <option name="exclude-annotation" value="com.android.bedstead.harrier.annotations.RequireRunOnSecondaryUser" />
         <option name="runtime-hint" value="5m" />
     </test>
 

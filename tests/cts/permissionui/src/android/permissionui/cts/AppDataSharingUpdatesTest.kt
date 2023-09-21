@@ -30,10 +30,10 @@ import android.permission.cts.PermissionUtils
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingNoAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithNoSharing
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import android.util.Log
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
@@ -258,10 +258,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         try {
             findView(By.descContains(DATA_SHARING_UPDATES), true)
             findView(By.textContains(LEARN_ABOUT_DATA_SHARING), true)
-            waitForIdle()
 
-            click(By.textContains(LEARN_ABOUT_DATA_SHARING))
-            waitForIdle()
+            clickAndWaitForWindowTransition(By.textContains(LEARN_ABOUT_DATA_SHARING))
 
             eventually({assertHelpCenterLinkClickSuccessful()}, HELP_CENTER_TIMEOUT_MILLIS)
         } finally {
@@ -297,9 +295,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             findView(By.descContains(DATA_SHARING_UPDATES), true)
             findView(By.textContains(UPDATES_IN_LAST_30_DAYS), true)
             findView(By.textContains(APP_PACKAGE_NAME_SUBSTRING), true)
-            waitForIdle()
 
-            click(By.textContains(APP_PACKAGE_NAME_SUBSTRING))
+            clickAndWaitForWindowTransition(By.textContains(APP_PACKAGE_NAME_SUBSTRING))
 
             findView(By.descContains(LOCATION_PERMISSION), true)
             findView(By.textContains(APP_PACKAGE_NAME), true)

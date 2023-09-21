@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ඇඟවීම බලන්න}one{ඇඟවීම් බලන්න}other{ඇඟවීම් බලන්න}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"පිටුව විවෘත කළ නොහැකි විය"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ඇඟවීම විසඳිය නොහැකි විය"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"සැකසීම් නැවුම් කිරීමට නොහැකි විය"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{සැකසීම පරීක්ෂා කිරීමට නොහැකි විය}one{සැකසීම් පරීක්ෂා කිරීමට නොහැකි විය}other{සැකසීම් පරීක්ෂා කිරීමට නොහැකි විය}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"කාර්යාල පැතිකඩ විරාම කර ඇත"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"තවම තතු නැත"</string>

@@ -25,6 +25,7 @@
 
     <application android:label="CreateNotif">
         <activity android:name=".CreateNotificationChannelsActivity"
+                  android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

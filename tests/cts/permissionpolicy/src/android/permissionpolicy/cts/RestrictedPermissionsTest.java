@@ -24,6 +24,7 @@ import static android.permission.cts.PermissionUtils.isPermissionGranted;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
@@ -48,11 +49,11 @@ import android.content.pm.PermissionInfo;
 import android.os.Process;
 import android.os.UserHandle;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.annotations.SystemUserOnly;
 import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
+import androidx.test.filters.FlakyTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.android.compatibility.common.util.ThrowingRunnable;
@@ -82,33 +83,33 @@ import javax.annotation.Nullable;
  */
 public class RestrictedPermissionsTest {
     private static final String APK_USES_LOCATION_22 =
-            "/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk22.apk";
 
     private static final String APK_USES_LOCATION_29 =
-            "/data/local/tmp/cts/permissions2/CtsLocationPermissionsUserSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsLocationPermissionsUserSdk29.apk";
 
     private static final String APK_USES_SMS_CALL_LOG_22 =
-            "/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk22.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk22.apk";
 
     private static final String APK_NAME_USES_SMS_CALL_LOG_29 =
             "CtsSMSCallLogPermissionsUserSdk29.apk";
 
     private static final String APK_USES_SMS_CALL_LOG_29 =
-            "/data/local/tmp/cts/permissions2/CtsSMSCallLogPermissionsUserSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSCallLogPermissionsUserSdk29.apk";
 
     private static final String APK_USES_STORAGE_DEFAULT_29 =
-            "/data/local/tmp/cts/permissions2/CtsStoragePermissionsUserDefaultSdk29.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsStoragePermissionsUserDefaultSdk29.apk";
 
     private static final String PKG = "android.permissionpolicy.cts.restrictedpermissionuser";
 
     private static final String APK_USES_SMS_RESTRICTED_SHARED_UID =
-            "/data/local/tmp/cts/permissions2/CtsSMSRestrictedWithSharedUid.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSRestrictedWithSharedUid.apk";
 
     private static final String PKG_USES_SMS_RESTRICTED_SHARED_UID =
             "android.permissionpolicy.cts.smswithshareduid.restricted";
 
     private static final String APK_USES_SMS_NOT_RESTRICTED_SHARED_UID =
-            "/data/local/tmp/cts/permissions2/CtsSMSNotRestrictedWithSharedUid.apk";
+            "/data/local/tmp/cts-permissionpolicy/CtsSMSNotRestrictedWithSharedUid.apk";
 
     private static final String PKG_USES_SMS_NOT_RESTRICTED_SHARED_UID =
             "android.permissionpolicy.cts.smswithshareduid.notrestricted";
@@ -192,7 +193,7 @@ public class RestrictedPermissionsTest {
         }
 
         // Install with no changes to whitelisted permissions
-        runShellCommand("pm install" + bypassLowTargetSdkFlag
+        runShellCommandOrThrow("pm install" + bypassLowTargetSdkFlag
                 + " -g --force-queryable " + APK_USES_SMS_CALL_LOG_22);
 
         // All restricted permission should be whitelisted.
@@ -388,10 +389,10 @@ public class RestrictedPermissionsTest {
         Assume.assumeTrue("Secondary users have the DISALLOW_SMS user restriction",
                 UserHandle.SYSTEM.equals(Process.myUserHandle()));
 
-        runShellCommand(
+        runShellCommandOrThrow(
                 "pm install -g --force-queryable --restrict-permissions "
                 + APK_USES_SMS_RESTRICTED_SHARED_UID);
-        runShellCommand("pm install -g --force-queryable "
+        runShellCommandOrThrow("pm install -g --force-queryable "
                 + APK_USES_SMS_NOT_RESTRICTED_SHARED_UID);
 
         eventually(
@@ -669,7 +670,7 @@ public class RestrictedPermissionsTest {
         }
 
         // Install the app and whitelist/grant all permission if requested.
-        String installResult = runShellCommand("pm install -r --force-queryable"
+        String installResult = runShellCommandOrThrow("pm install -r --force-queryable"
                 + bypassLowTargetSdkFlag + " --restrict-permissions " + app);
         assertThat(installResult.trim()).isEqualTo("Success");
 

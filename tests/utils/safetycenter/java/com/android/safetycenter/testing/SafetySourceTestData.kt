@@ -425,12 +425,25 @@ class SafetySourceTestData(private val context: Context) {
             .build()
 
     /** A [PendingIntent] used by the resolving [Action] in [criticalResolvingGeneralIssue]. */
-    val criticalIssueActionPendingIntent =
+    val criticalIssueActionPendingIntent = resolvingActionPendingIntent()
+
+    /**
+     * Returns a [PendingIntent] for a resolving [Action] with the given [sourceId], [sourceIssueId]
+     * and [sourceIssueActionId]. Default values are the same as those used by
+     * [criticalIssueActionPendingIntent]. *
+     */
+    fun resolvingActionPendingIntent(
+        sourceId: String = SINGLE_SOURCE_ID,
+        sourceIssueId: String = CRITICAL_ISSUE_ID,
+        sourceIssueActionId: String = CRITICAL_ISSUE_ACTION_ID
+    ) =
         broadcastPendingIntent(
             Intent(ACTION_RESOLVE_ACTION)
-                .putExtra(EXTRA_SOURCE_ID, SINGLE_SOURCE_ID)
-                .putExtra(EXTRA_SOURCE_ISSUE_ID, CRITICAL_ISSUE_ID)
-                .putExtra(EXTRA_SOURCE_ISSUE_ACTION_ID, CRITICAL_ISSUE_ACTION_ID)
+                .putExtra(EXTRA_SOURCE_ID, sourceId)
+                .putExtra(EXTRA_SOURCE_ISSUE_ID, sourceIssueId)
+                .putExtra(EXTRA_SOURCE_ISSUE_ACTION_ID, sourceIssueActionId)
+                // Identifier is set because intent extras do not disambiguate PendingIntents
+                .setIdentifier(sourceId + sourceIssueId + sourceIssueActionId)
         )
 
     /** A resolving Critical [Action] */

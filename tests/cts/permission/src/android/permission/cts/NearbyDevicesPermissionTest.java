@@ -25,15 +25,10 @@ import static android.permission.cts.PermissionUtils.install;
 import static android.permission.cts.PermissionUtils.revokePermission;
 import static android.permission.cts.PermissionUtils.uninstallApp;
 
-import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.cts.BTAdapterUtils;
+import android.bluetooth.cts.EnableBluetoothRule;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -48,9 +43,12 @@ import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.compatibility.common.util.CddTest;
+import com.android.compatibility.common.util.EnableLocationRule;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -70,7 +68,7 @@ public class NearbyDevicesPermissionTest {
     private static final String TEST_APP_AUTHORITY = "appthatrequestpermission";
     private static final String DISAVOWAL_APP_PKG = "android.permission.cts.appneverforlocation";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_BLUETOOTH_30 = TMP_DIR
             + "CtsAppThatRequestsBluetoothPermission30.apk";
     private static final String APK_BLUETOOTH_31 = TMP_DIR
@@ -84,37 +82,31 @@ public class NearbyDevicesPermissionTest {
         UNKNOWN, EXCEPTION, EMPTY, FILTERED, FULL
     }
 
-    private Context mContext = InstrumentationRegistry.getInstrumentation().getContext();
-    private BluetoothAdapter mBluetoothAdapter;
-    private boolean mBluetoothAdapterWasEnabled;
+    private final Context mContext = InstrumentationRegistry.getInstrumentation().getContext();
 
-    @Before
-    public void enableBluetooth() {
-        assumeTrue(supportsBluetooth());
-        mBluetoothAdapter = mContext.getSystemService(BluetoothManager.class).getAdapter();
-        mBluetoothAdapterWasEnabled = mBluetoothAdapter.isEnabled();
-        assertTrue(BTAdapterUtils.enableAdapter(mBluetoothAdapter, mContext));
-        enableTestMode();
-    }
+    @ClassRule
+    public static final EnableBluetoothRule sEnableBluetoothRule = new EnableBluetoothRule(true);
 
-    @After
-    public void disableBluetooth() {
-        assumeTrue(supportsBluetooth());
-        disableTestMode();
-        if (!mBluetoothAdapterWasEnabled) {
-            assertTrue(BTAdapterUtils.disableAdapter(mBluetoothAdapter, mContext));
-        }
-    }
+    @Rule
+    public final EnableLocationRule enableLocationRule = new EnableLocationRule();
 
-    @Before
-    @After
     public void uninstallTestApp() {
         uninstallApp(TEST_APP_PKG);
         uninstallApp(DISAVOWAL_APP_PKG);
     }
 
+    @Before
+    public void setUp() throws Exception {
+        uninstallTestApp();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        uninstallTestApp();
+    }
+
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission30_Default() throws Throwable {
         assumeTrue(supportsBluetoothLe());
 
@@ -123,7 +115,7 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission30_GrantLocation() throws Throwable {
         assumeTrue(supportsBluetoothLe());
 
@@ -134,14 +126,14 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission31_Default() throws Throwable {
         install(APK_BLUETOOTH_31);
         assertScanBluetoothResult(Result.EXCEPTION);
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission31_GrantNearby() throws Throwable {
         assumeTrue(supportsBluetoothLe());
 
@@ -152,7 +144,7 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission31_GrantLocation() throws Throwable {
         install(APK_BLUETOOTH_31);
         grantPermission(TEST_APP_PKG, ACCESS_FINE_LOCATION);
@@ -161,7 +153,7 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermission31_GrantNearby_GrantLocation() throws Throwable {
         assumeTrue(supportsBluetoothLe());
 
@@ -174,14 +166,14 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermissionNeverForLocation31_Default() throws Throwable {
         install(APK_BLUETOOTH_NEVER_FOR_LOCATION_31);
         assertScanBluetoothResult(Result.EXCEPTION);
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermissionNeverForLocation31_GrantNearby() throws Throwable {
         assumeTrue(supportsBluetoothLe());
 
@@ -192,7 +184,7 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermissionNeverForLocation31_GrantLocation() throws Throwable {
         install(APK_BLUETOOTH_NEVER_FOR_LOCATION_31);
         grantPermission(TEST_APP_PKG, ACCESS_FINE_LOCATION);
@@ -201,7 +193,7 @@ public class NearbyDevicesPermissionTest {
     }
 
     @Test
-    @CddTest(requirement="7.4.3/C-6-1")
+    @CddTest(requirement = "7.4.3/C-6-1")
     public void testRequestBluetoothPermissionNeverForLocation31_GrantNearby_GrantLocation()
             throws Throwable {
         assumeTrue(supportsBluetoothLe());
@@ -308,21 +300,8 @@ public class NearbyDevicesPermissionTest {
         assertEquals(expected, actual);
     }
 
-    private boolean supportsBluetooth() {
-        return mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH);
-    }
-
     private boolean supportsBluetoothLe() {
         return mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
     }
 
-    private void enableTestMode() {
-        runShellCommandOrThrow("dumpsys activity service"
-                + " com.android.bluetooth.btservice.AdapterService set-test-mode enabled");
-    }
-
-    private void disableTestMode() {
-        runShellCommandOrThrow("dumpsys activity service"
-                + " com.android.bluetooth.btservice.AdapterService set-test-mode disabled");
-    }
 }

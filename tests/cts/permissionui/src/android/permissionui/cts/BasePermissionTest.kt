@@ -51,9 +51,11 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.FreezeRotationRule
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
+import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
@@ -79,13 +81,14 @@ abstract class BasePermissionTest {
 
         private const val MAX_SWIPES = 5
 
-        const val APK_DIRECTORY = "/data/local/tmp/cts/permissionui"
+        const val APK_DIRECTORY = "/data/local/tmp/cts-permissionui"
 
         const val QUICK_CHECK_TIMEOUT_MILLIS = 100L
         const val IDLE_TIMEOUT_MILLIS: Long = 1000
         const val UNEXPECTED_TIMEOUT_MILLIS = 1000
         const val TIMEOUT_MILLIS: Long = 20000
         const val PACKAGE_INSTALLER_TIMEOUT = 60000L
+        const val NEW_WINDOW_TIMEOUT_MILLIS: Long = 20_000
 
         @JvmStatic
         protected val instrumentation: Instrumentation =
@@ -243,7 +246,7 @@ abstract class BasePermissionTest {
         expectSuccess: Boolean = true,
         installSource: String? = null
     ) {
-        val output = runShellCommand(
+        val output = runShellCommandOrThrow(
             "pm install${if (SdkLevel.isAtLeastU()) " --bypass-low-target-sdk-block" else ""} " +
                 "${if (reinstall) " -r" else ""}${if (grantRuntimePermissions) " -g"
                 else ""}${if (installSource != null) " -i $installSource" else ""} $apkPath"
@@ -283,23 +286,19 @@ abstract class BasePermissionTest {
     }
 
     protected fun waitFindObject(selector: BySelector): UiObject2 {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) })!!
     }
 
     protected fun waitFindObject(selector: BySelector, timeoutMillis: Long): UiObject2 {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) },
                 timeoutMillis)!!
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) })
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector, timeoutMillis: Long): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) },
                 timeoutMillis)
     }
@@ -308,7 +307,6 @@ abstract class BasePermissionTest {
         automatorMethod: (timeoutMillis: Long) -> UiObject2?,
         timeoutMillis: Long = 20_000L
     ): UiObject2? {
-        waitForIdle()
         val startTime = SystemClock.elapsedRealtime()
         return try {
             automatorMethod(timeoutMillis)
@@ -323,7 +321,11 @@ abstract class BasePermissionTest {
 
     protected fun click(selector: BySelector, timeoutMillis: Long = 20_000) {
         waitFindObject(selector, timeoutMillis).click()
-        waitForIdle()
+    }
+
+    protected fun clickAndWaitForWindowTransition(selector: BySelector, timeoutMillis: Long = 20_000) {
+        waitFindObject(selector, timeoutMillis)
+                .clickAndWait(Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     protected fun findView(selector: BySelector, expected: Boolean) {
@@ -374,12 +376,10 @@ abstract class BasePermissionTest {
 
     protected fun pressBack() {
         uiDevice.pressBack()
-        waitForIdle()
     }
 
     protected fun pressHome() {
         uiDevice.pressHome()
-        waitForIdle()
     }
 
     protected fun pressDPadDown() {

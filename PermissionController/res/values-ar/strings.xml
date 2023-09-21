@@ -246,12 +246,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
     <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح لها"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
-    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها بالوصول"</string>
+    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"الاطّلاع على تطبيقات أكثر يمكنها الوصول إلى كل الملفات"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{يوم واحد}zero{# يوم}two{يومان}few{# أيام}many{# يومًا}other{# يوم}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{ساعة واحدة}zero{# ساعة}two{ساعتان}few{# ساعات}many{# ساعةً}other{# ساعة}}"</string>
@@ -340,7 +340,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"لم يتم السماح لأي تطبيقات."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"ما من تطبيقات تم منحها إذن الوصول إلى جميع الملفات."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"ما من تطبيقات تم منحها إذن الوصول إلى الوسائط فقط."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات."</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"مُختار"</string>
     <string name="settings" msgid="5409109923158713323">"الإعدادات"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"تحظى خدمة <xliff:g id="SERVICE_NAME">%s</xliff:g> بوصول كامل إلى جهازك."</string>

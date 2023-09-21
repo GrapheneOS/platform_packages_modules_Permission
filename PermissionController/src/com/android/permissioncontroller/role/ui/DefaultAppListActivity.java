@@ -25,6 +25,7 @@ import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.ui.auto.AutoDefaultAppListFragment;
 import com.android.permissioncontroller.role.ui.handheld.HandheldDefaultAppListFragment;
+import com.android.permissioncontroller.role.ui.wear.WearDefaultAppListFragment;
 
 /**
  * Activity for the list of default apps.
@@ -45,6 +46,8 @@ public class DefaultAppListActivity extends SettingsActivity {
             Fragment fragment;
             if (DeviceUtils.isAuto(this)) {
                 fragment = AutoDefaultAppListFragment.newInstance();
+            } else if (DeviceUtils.isWear(this)) {
+                fragment = WearDefaultAppListFragment.Companion.newInstance();
             } else {
                 fragment = HandheldDefaultAppListFragment.newInstance();
             }

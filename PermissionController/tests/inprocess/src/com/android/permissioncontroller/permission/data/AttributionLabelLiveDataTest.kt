@@ -29,7 +29,7 @@ import org.junit.Before
 import org.junit.Test
 
 private const val APK =
-        "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatUsesCameraPermission.apk"
+        "/data/local/tmp/pc-inprocess/AppThatUsesCameraPermission.apk"
 private const val PKG = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
 class AttributionLabelLiveDataTest {

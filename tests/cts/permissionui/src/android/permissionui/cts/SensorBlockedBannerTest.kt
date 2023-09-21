@@ -25,14 +25,12 @@ import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
 import android.location.LocationManager
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
-import android.provider.DeviceConfig
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import java.util.regex.Pattern
-import org.junit.After
 import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
@@ -45,16 +43,11 @@ import org.junit.Test
 class SensorBlockedBannerTest : BaseUsePermissionTest() {
     companion object {
         const val LOCATION = -1
-        const val WARNING_BANNER_ENABLED = "warning_banner_enabled"
         const val DELAY_MILLIS = 3000L
     }
 
     val sensorPrivacyManager = context.getSystemService(SensorPrivacyManager::class.java)!!
     val locationManager = context.getSystemService(LocationManager::class.java)!!
-    private val originalEnabledValue = callWithShellPermissionIdentity {
-        DeviceConfig.getString(DeviceConfig.NAMESPACE_PRIVACY,
-                WARNING_BANNER_ENABLED, false.toString())
-    }
 
     private val sensorToPermissionGroup = mapOf(CAMERA to CAMERA_PERMISSION_GROUP,
             MICROPHONE to MICROPHONE_PERMISSION_GROUP,
@@ -72,18 +65,6 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
         // be support in T or below
         Assume.assumeFalse(isAutomotive)
         installPackage(APP_APK_PATH_31)
-        runWithShellPermissionIdentity {
-            DeviceConfig.setProperty(DeviceConfig.NAMESPACE_PRIVACY,
-                WARNING_BANNER_ENABLED, true.toString(), false)
-        }
-    }
-
-    @After
-    fun restoreWarningBannerState() {
-        runWithShellPermissionIdentity {
-            DeviceConfig.setProperty(DeviceConfig.NAMESPACE_PRIVACY,
-                    WARNING_BANNER_ENABLED, originalEnabledValue, false)
-        }
     }
 
     private fun navigateAndTest(sensor: Int) {

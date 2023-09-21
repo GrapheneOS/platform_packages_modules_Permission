@@ -28,6 +28,7 @@ import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_DELAY_MILLI
 import static android.provider.Settings.Secure.LOCATION_ACCESS_CHECK_INTERVAL_MILLIS;
 
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.waitForBroadcasts;
 
@@ -62,7 +63,6 @@ import android.os.Process;
 import android.permission.cts.appthataccesseslocation.IAccessLocationOnCommand;
 import android.platform.test.annotations.AppModeFull;
 import android.platform.test.annotations.AsbSecurityTest;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.annotations.SystemUserOnly;
 import android.platform.test.rule.ScreenRecordRule;
 import android.provider.DeviceConfig;
@@ -72,6 +72,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.test.InstrumentationRegistry;
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -107,9 +108,9 @@ public class LocationAccessCheckTest {
     private static final String TEST_APP_LABEL = "CtsLocationAccess";
     private static final String TEST_APP_SERVICE = TEST_APP_PKG + ".AccessLocationOnCommand";
     private static final String TEST_APP_LOCATION_BG_ACCESS_APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatAccessesLocationOnCommand.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatAccessesLocationOnCommand.apk";
     private static final String TEST_APP_LOCATION_FG_ACCESS_APK =
-            "/data/local/tmp/cts/permissions/AppThatDoesNotHaveBgLocationAccess.apk";
+            "/data/local/tmp/cts-permission/AppThatDoesNotHaveBgLocationAccess.apk";
     private static final String ACTION_SET_UP_LOCATION_ACCESS_CHECK =
             "com.android.permissioncontroller.action.SET_UP_LOCATION_ACCESS_CHECK";
     private static final int LOCATION_ACCESS_CHECK_JOB_ID = 0;
@@ -421,7 +422,8 @@ public class LocationAccessCheckTest {
     }
 
     public static void installBackgroundAccessApp() throws Exception {
-        String output = runShellCommand("pm install -r -g " + TEST_APP_LOCATION_BG_ACCESS_APK);
+        String output =
+                runShellCommandOrThrow("pm install -r -g " + TEST_APP_LOCATION_BG_ACCESS_APK);
         assertTrue(output.contains("Success"));
         // Wait for user sensitive to be updated, which is checked by LocationAccessCheck.
         Thread.sleep(5000);
@@ -458,7 +460,7 @@ public class LocationAccessCheckTest {
 
     private static void installForegroundAccessApp() throws Exception {
         unbindService();
-        runShellCommand("pm install -r -g " + TEST_APP_LOCATION_FG_ACCESS_APK);
+        runShellCommandOrThrow("pm install -r -g " + TEST_APP_LOCATION_FG_ACCESS_APK);
         // Wait for user sensitive to be updated, which is checked by LocationAccessCheck.
         Thread.sleep(5000);
     }

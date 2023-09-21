@@ -19,7 +19,7 @@ package android.permissionui.cts
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -38,8 +38,11 @@ class PermissionTest30 : BaseUsePermissionTest() {
         assertAppHasPermission(ACCESS_FINE_LOCATION, false)
         assertAppHasPermission(ACCESS_BACKGROUND_LOCATION, false)
 
-        requestAppPermissionsAndAssertResult(ACCESS_FINE_LOCATION to false,
-                ACCESS_BACKGROUND_LOCATION to false) {
+        requestAppPermissionsAndAssertResult(
+            ACCESS_FINE_LOCATION to false,
+            ACCESS_BACKGROUND_LOCATION to false,
+            waitForWindowTransition = false
+        ) {
             // Do nothing, should be automatically denied
         }
     }
@@ -54,9 +57,11 @@ class PermissionTest30 : BaseUsePermissionTest() {
             clickPermissionRequestAllowForegroundButton()
         }
 
-        requestAppPermissionsAndAssertResult(ACCESS_BACKGROUND_LOCATION to true) {
+        requestAppPermissionsAndAssertResult(
+            ACCESS_BACKGROUND_LOCATION to true,
+            waitForWindowTransition = false
+        ) {
             clickAllowAlwaysInSettings()
-            waitForIdle()
             pressBack()
         }
     }
@@ -76,7 +81,8 @@ class PermissionTest30 : BaseUsePermissionTest() {
                     "accuracy options. Please update the system with " +
                     "the latest (at least Oct, 2021) mainline modules.",
                     locationAccuracyOptions)
-            return
+            // Close dialog
+            clickPermissionRequestDenyButton()
         }
     }
 }

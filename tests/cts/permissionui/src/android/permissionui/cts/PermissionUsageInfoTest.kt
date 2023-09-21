@@ -17,7 +17,7 @@
 package android.permissionui.cts
 
 import android.content.Intent
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import org.junit.Assume.assumeFalse
@@ -43,13 +43,15 @@ class PermissionUsageInfoTest : BaseUsePermissionTest() {
 
     @Test
     fun testPermissionUsageInfo() {
-        runWithShellPermissionIdentity {
-            context.startActivity(
-                Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
-                    putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
-            )
+        doAndWaitForWindowTransition {
+            runWithShellPermissionIdentity {
+                context.startActivity(
+                        Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
+                            putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        }
+                )
+            }
         }
         click(By.res("com.android.permissioncontroller:id/icon"))
     }

@@ -496,7 +496,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取與你生命體徵相關的感應器資料嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要讓此應用程式隨時存取人體感應器資料 (即使在你沒有使用此應用程式時)，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要讓「<xliff:g id="APP_NAME">%1$s</xliff:g>」應用程式&lt;b&gt;&lt;/b&gt;在使用時存取人體感應器資料嗎？"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 傳送通知給你嗎？"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知給你嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控制的權限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」有位置存取權"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"你的機構允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取位置資訊"</string>
@@ -520,7 +520,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"應用程式和服務"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"撥打緊急電話號碼時，系統仍可能會分享麥克風資料。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"變更"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"安全性和私隱權"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"保安和私隱"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"掃瞄裝置"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"關閉"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"要關閉此警示嗎？"</string>
@@ -531,7 +531,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"安全性和私隱狀態。<xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>。<xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全性設定"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"權限"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"安全性和私隱權"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"保安和私隱"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"檢查狀態"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"你的私隱權設定"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"更多設定"</string>

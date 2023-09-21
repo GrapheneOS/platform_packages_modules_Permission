@@ -32,6 +32,7 @@ import static android.permission.cts.PermissionUtils.setPermissionFlags;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static org.junit.Assert.assertEquals;
@@ -65,7 +66,7 @@ public class RevokeSelfPermissionTest {
     private static final String APP_PKG_NAME =
             "android.permission.cts.apptotestrevokeselfpermission";
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppToTestRevokeSelfPermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppToTestRevokeSelfPermission.apk";
     private static final long ONE_TIME_TIMEOUT_MILLIS = 500;
     private static final long ONE_TIME_TIMER_UPPER_GRACE_PERIOD = 5000;
 
@@ -244,7 +245,7 @@ public class RevokeSelfPermissionTest {
 
 
     private void installApp() {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
     }
 
     private void keepAppInForeground(long timeoutMillis) {

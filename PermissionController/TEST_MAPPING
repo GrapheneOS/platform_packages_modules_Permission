@@ -8,9 +8,6 @@
             "options": [
                 {
                     "exclude-annotation": "androidx.test.filters.FlakyTest"
-                },
-                {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
                 }
             ],
             "file_patterns": ["res/xml/roles\\.xml"]
@@ -19,7 +16,7 @@
             "name": "PermissionUiTestCases",
             "options": [
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
@@ -29,7 +26,7 @@
             "name": "CtsPermissionUiTestCases",
             "options": [
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }
@@ -46,10 +43,7 @@
                     "exclude-filter": "android.app.role.cts.RoleManagerTest#removeSmsRoleHolderThenPermissionIsRevoked"
                 },
                 {
-                   "exclude-annotation": "androidx.test.filters.FlakyTest"
-                },
-                {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ],
             "file_patterns": ["res/xml/roles\\.xml"]
@@ -58,7 +52,7 @@
             "name": "PermissionUiTestCases[com.google.android.permission.apex]",
             "options": [
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 },
                 // TODO(b/238773220): These tests currently fails on R base image
                 {
@@ -82,7 +76,7 @@
             "name": "CtsPermissionUiTestCases[com.google.android.permission.apex]",
             "options": [
                 {
-                    "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
         }

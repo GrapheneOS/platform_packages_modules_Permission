@@ -19,7 +19,7 @@ package android.permissionui.cts
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import com.android.modules.utils.build.SdkLevel
 import org.junit.Assume.assumeFalse
@@ -145,7 +145,8 @@ class LocationAccuracyTest : BaseUsePermissionTest() {
         }
         assertAppHasPermission(ACCESS_FINE_LOCATION, false)
         requestAppPermissionsAndAssertResult(
-            ACCESS_FINE_LOCATION to true
+            ACCESS_FINE_LOCATION to true,
+            waitForWindowTransition = false
         ) { }
     }
 

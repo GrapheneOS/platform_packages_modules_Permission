@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Consulta a alerta}other{Consulta as alertas}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Non se puido abrir a páxina"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Non se puido resolver a alerta"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Non se puido actualizar a configuración"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Non se puido comprobar a opción de configuración}other{Non se puideron comprobar as opcións de configuración}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"O perfil de traballo está en pausa"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Aínda non hai información"</string>

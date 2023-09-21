@@ -21,7 +21,7 @@ import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
 
 // Test Apps' APK files
-private const val APK_DIRECTORY = "/data/local/tmp/permissioncontroller/tests/permissionui/"
+private const val APK_DIRECTORY = "/data/local/tmp/pc-permissionui/"
 private const val LOCATION_PERM_USER_APK = "$APK_DIRECTORY/AppThatRequestsLocation.apk"
 private const val CAMERA_PERM_USER_APK = "$APK_DIRECTORY/PermissionUiUseCameraPermissionApp.apk"
 private const val HEALTH_CONNECT_PERMISSION_USER_APK =

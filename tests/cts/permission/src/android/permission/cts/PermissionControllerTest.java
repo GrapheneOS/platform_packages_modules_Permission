@@ -27,6 +27,7 @@ import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.MODE_FOREGROUND;
 import static android.app.AppOpsManager.permissionToOp;
 import static android.content.pm.PackageManager.PERMISSION_DENIED;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.permission.PermissionControllerManager.COUNT_ONLY_WHEN_GRANTED;
 import static android.permission.PermissionControllerManager.REASON_INSTALLER_POLICY_VIOLATION;
 import static android.permission.PermissionControllerManager.REASON_MALWARE;
@@ -37,6 +38,7 @@ import static android.permission.cts.PermissionUtils.isPermissionGranted;
 import static com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -78,10 +80,10 @@ import java.util.concurrent.atomic.AtomicReference;
 @AppModeFull(reason = "Instant apps cannot talk to permission controller")
 public class PermissionControllerTest {
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatAccessesLocationOnCommand.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatAccessesLocationOnCommand.apk";
     private static final String APP = "android.permission.cts.appthataccesseslocation";
     private static final String APK2 =
-            "/data/local/tmp/cts/permissions/"
+            "/data/local/tmp/cts-permission/"
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String APP2 = "android.permission.cts.appthatrequestcustompermission";
     private static final String CUSTOM_PERMISSION =
@@ -105,8 +107,8 @@ public class PermissionControllerTest {
 
     @BeforeClass
     public static void installApp() {
-        runShellCommand("pm install -r -g " + APK);
-        runShellCommand("pm install -r " + APK2);
+        runShellCommandOrThrow("pm install -r -g " + APK);
+        runShellCommandOrThrow("pm install -r " + APK2);
     }
 
     @AfterClass
@@ -249,8 +251,10 @@ public class PermissionControllerTest {
 
     @Test
     public void revokePermissionsDryRunForegroundPermission() throws Exception {
-        Map<String, List<String>> request = buildRevokeRequest(APP, ACCESS_FINE_LOCATION);
+        assertThat(sContext.getPackageManager().checkPermission(ACCESS_FINE_LOCATION,
+                APP)).isEqualTo(PERMISSION_GRANTED);
 
+        Map<String, List<String>> request = buildRevokeRequest(APP, ACCESS_FINE_LOCATION);
         Map<String, List<String>> result = revokePermissions(request, true);
 
         assertThat(result.size()).isEqualTo(1);

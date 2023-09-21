@@ -51,6 +51,7 @@ android_test {
         "safety-center-internal-data",
         "sts-device-util",
         "platform-test-rules",
+        "CtsVirtualDeviceCommonLib",
     ],
     jni_libs: [
         "libctspermission_jni",
@@ -120,6 +121,7 @@ android_test {
         ":CtsAppThatRequestsSystemAlertWindow22",
         ":CtsAppThatRequestsSystemAlertWindow23",
         ":CtsAppThatRequestCustomCameraPermission",
+        ":CtsAppThatRequestsDevicePermissions",
     ],
     per_testcase_directory: true,
 }

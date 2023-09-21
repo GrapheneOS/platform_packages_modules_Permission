@@ -21,13 +21,13 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
@@ -148,7 +148,7 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         clickHelpCenterLink()
 
-        eventually({assertHelpCenterLinkClickSuccessful()}, HELP_CENTER_TIMEOUT_MILLIS)
+        eventually({assertHelpCenterLinkClickSuccessful()}, NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     @Test
@@ -235,9 +235,10 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            clickableSpan.onClick(View(context))
+            doAndWaitForWindowTransition {
+                clickableSpan.onClick(View(context))
+            }
         }
-        waitForIdle()
     }
 
     private fun clickHelpCenterLink() {
@@ -252,9 +253,10 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            clickableSpan.onClick(View(context))
+            doAndWaitForWindowTransition {
+                clickableSpan.onClick(View(context))
+            }
         }
-        waitForIdle()
     }
 
     private fun clickSettingsLink() {
@@ -269,9 +271,10 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            clickableSpan.onClick(View(context))
+            doAndWaitForWindowTransition {
+                clickableSpan.onClick(View(context))
+            }
         }
-        waitForIdle()
     }
 
     private fun clicksSettings_doesNothing_leaves() {
@@ -391,6 +394,5 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             "com.android.permissioncontroller:id/settings_message"
 
         private const val HELP_CENTER_URL_ID = "data_sharing_help_center_link"
-        private const val HELP_CENTER_TIMEOUT_MILLIS: Long = 20000
     }
 }

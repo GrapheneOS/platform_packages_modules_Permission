@@ -25,6 +25,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import static com.android.compatibility.common.util.SystemUtil.eventually;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static org.junit.Assume.assumeFalse;
@@ -36,10 +37,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.platform.test.annotations.AsbSecurityTest;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.rule.ScreenRecordRule;
 import android.provider.DeviceConfig;
 
+import androidx.test.filters.FlakyTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiDevice;
@@ -66,9 +67,9 @@ public class OneTimePermissionTest {
     private static final String CUSTOM_CAMERA_PERM_APP_PKG_NAME =
             "android.permission.cts.appthatrequestcustomcamerapermission";
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatRequestsOneTimePermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatRequestsOneTimePermission.apk";
     private static final String CUSTOM_CAMERA_PERM_APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatRequestCustomCameraPermission.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatRequestCustomCameraPermission.apk";
     private static final String EXTRA_FOREGROUND_SERVICE_LIFESPAN =
             "android.permission.cts.OneTimePermissionTest.EXTRA_FOREGROUND_SERVICE_LIFESPAN";
     private static final String EXTRA_FOREGROUND_SERVICE_STICKY =
@@ -107,8 +108,8 @@ public class OneTimePermissionTest {
 
     @Before
     public void installApp() {
-        runShellCommand("pm install -r " + APK);
-        runShellCommand("pm install -r " + CUSTOM_CAMERA_PERM_APK);
+        runShellCommandOrThrow("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + CUSTOM_CAMERA_PERM_APK);
     }
 
     @Before

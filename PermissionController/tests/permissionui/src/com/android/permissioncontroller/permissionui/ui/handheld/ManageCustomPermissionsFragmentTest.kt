@@ -40,10 +40,10 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     private val ONE_PERMISSION_DEFINER_APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui/" +
+        "/data/local/tmp/pc-permissionui/" +
             "PermissionUiDefineAdditionalPermissionApp.apk"
     private val PERMISSION_USER_APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui/" +
+        "/data/local/tmp/pc-permissionui/" +
             "PermissionUiUseAdditionalPermissionApp.apk"
     private val DEFINER_PKG = "com.android.permissioncontroller.tests.appthatdefinespermission"
     private val USER_PKG = "com.android.permissioncontroller.tests.appthatrequestpermission"

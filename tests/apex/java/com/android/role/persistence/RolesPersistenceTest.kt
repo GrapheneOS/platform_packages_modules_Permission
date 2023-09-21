@@ -91,7 +91,7 @@ class RolesPersistenceTest {
             .writeText("<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
         val persistedState = persistence.readForUser(user)
 
-        checkPersistedState(persistedState!!)
+        checkPersistedState(persistedState)
     }
 
     @Test
@@ -103,11 +103,11 @@ class RolesPersistenceTest {
         assertThat(persistedState).isNull()
     }
 
-    private fun checkPersistedState(persistedState: RolesState) {
+    private fun checkPersistedState(persistedState: RolesState?) {
         assertThat(persistedState).isEqualTo(state)
-        assertThat(persistedState.version).isEqualTo(state.version)
-        assertThat(persistedState.packagesHash).isEqualTo(state.packagesHash)
-        assertThat(persistedState.roles).isEqualTo(state.roles)
+        assertThat(persistedState?.version).isEqualTo(state.version)
+        assertThat(persistedState?.packagesHash).isEqualTo(state.packagesHash)
+        assertThat(persistedState?.roles).isEqualTo(state.roles)
     }
 
     companion object {

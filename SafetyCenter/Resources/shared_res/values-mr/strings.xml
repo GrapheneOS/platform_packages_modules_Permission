@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{सूचना पहा}other{सूचना पहा}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"पेज उघडता आले नाही"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"इशाऱ्याचे निराकरण करता आले नाही"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"सेटिंग्ज रिफ्रेश करता आली नाही"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{सेटिंग तपासता आले नाही}other{सेटिंग्ज तपासता आली नाहीत}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"कार्य प्रोफाइल थांबवली आहे"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"अद्याप कोणतीही माहिती नाही"</string>

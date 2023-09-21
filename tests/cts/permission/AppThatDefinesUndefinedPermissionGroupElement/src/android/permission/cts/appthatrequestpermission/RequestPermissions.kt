@@ -16,10 +16,19 @@
 package android.permission.cts.appthatrequestpermission
 
 import android.app.Activity
+import android.os.Bundle
+import android.util.Log
 
 class RequestPermissions : Activity() {
-    override fun onStart() {
-        super.onStart()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)")
+            return
+        }
+
         val permissions = intent.getStringArrayExtra(EXTRA_PERMISSIONS)!!
         requestPermissions(permissions, 0)
     }
@@ -35,5 +44,6 @@ class RequestPermissions : Activity() {
     companion object {
         private const val EXTRA_PERMISSIONS =
                 "android.permission.cts.appthatrequestpermission.extra.PERMISSIONS"
+        private val TAG = RequestPermissions::class.simpleName
     }
 }

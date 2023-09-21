@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Prikaži obaveštenje}one{Prikaži obaveštenja}few{Prikaži obaveštenja}other{Prikaži obaveštenja}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Otvaranje stranice nije uspelo"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Rešavanje obaveštenja nije uspelo"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Osvežavanje podešavanja nije uspelo"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Provera podešavanja nije uspela}one{Provera podešavanja nije uspela}few{Provera podešavanja nije uspela}other{Provera podešavanja nije uspela}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Poslovni profil je pauziran"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Još nema informacija"</string>

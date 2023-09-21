@@ -513,7 +513,7 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"过去\n7 天"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此隐私信息中心不会显示这个应用的权限使用情况。"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理的，因此隐私信息中心不会显示该应用的权限使用情况。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"设备麦克风已被屏蔽"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"设备位置信息功能已关闭"</string>
@@ -586,7 +586,7 @@
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"系统会在应用访问您复制的文字、图片或其他内容时显示一条消息"</string>
     <string name="show_password_title" msgid="2877269286984684659">"显示密码"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"输入时短暂显示字符"</string>
-    <string name="permission_rationale_message_location" msgid="2153841534298068414">"此应用已声明它可能会与第三方共享位置数据"</string>
+    <string name="permission_rationale_message_location" msgid="2153841534298068414">"此应用已声明它可能会与第三方分享位置数据"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"数据分享和位置信息"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"数据分享信息的来源"</string>
     <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"开发者已将此应用的数据分享方式相关信息提供给此设备的制造商。开发者可能会随时间推移更新此信息。"</string>
@@ -603,7 +603,7 @@
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"广告或营销"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"欺诈防范、安全和法规遵从"</string>
     <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"个性化"</string>
-    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"帐号管理"</string>
+    <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"账号管理"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"数据安全"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"可能会分享位置数据"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"此应用已声明它可能会与第三方分享您的位置数据"</string>

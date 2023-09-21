@@ -39,6 +39,7 @@ import static android.permission.cts.TestUtils.awaitJobUntilRequestedState;
 
 import static com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 import static com.android.compatibility.common.util.SystemUtil.waitForBroadcastDispatch;
 
@@ -105,7 +106,7 @@ public class PermissionUtils {
         final int sdkVersion = Build.VERSION.SDK_INT
                 + (Build.VERSION.RELEASE_OR_CODENAME.equals("REL") ? 0 : 1);
         boolean forceQueryable = sdkVersion > Build.VERSION_CODES.Q;
-        runShellCommand("pm install -r --force-sdk "
+        runShellCommandOrThrow("pm install -r --force-sdk "
                 + (SdkLevel.isAtLeastU() ? "--bypass-low-target-sdk-block " : "")
                 + (forceQueryable ? "--force-queryable " : "")
                 + apkFile);

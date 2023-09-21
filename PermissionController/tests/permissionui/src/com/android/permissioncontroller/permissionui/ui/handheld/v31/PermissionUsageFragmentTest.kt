@@ -41,7 +41,7 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
 class PermissionUsageFragmentTest : PermissionHub2Test() {
     private val APK =
-        "/data/local/tmp/permissioncontroller/tests/permissionui" +
+        "/data/local/tmp/pc-permissionui" +
             "/PermissionUiUseCameraPermissionApp.apk"
     private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
     private val APP_LABEL = "CameraRequestApp"
@@ -61,9 +61,12 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
 
         runWithShellPermissionIdentity {
             context.startActivity(
-                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
+                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE)
+                .apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+                }
+            )
         }
 
         eventually {

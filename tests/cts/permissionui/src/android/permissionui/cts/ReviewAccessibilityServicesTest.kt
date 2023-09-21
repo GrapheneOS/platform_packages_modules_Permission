@@ -23,7 +23,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.platform.test.annotations.AppModeFull
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -31,6 +31,7 @@ import androidx.test.uiautomator.Configurator
 import androidx.test.uiautomator.StaleObjectException
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
 import java.util.regex.Pattern
@@ -55,6 +56,7 @@ class ReviewAccessibilityServicesTest {
 
     companion object {
         private const val EXPECTED_TIMEOUT_MS = 500L
+        private const val NEW_WINDOW_TIMEOUT_MILLIS: Long = 20_000
     }
 
     @get:Rule
@@ -127,7 +129,6 @@ class ReviewAccessibilityServicesTest {
         accessibilityServiceRule.enableService()
         accessibilityServiceRule2.enableService()
         startAccessibilityActivity()
-        uiDevice.waitForIdle()
         findTestService2(true)!!.click()
         waitForSettingsButtonToDisappear()
         findTestService2(true)
@@ -138,15 +139,29 @@ class ReviewAccessibilityServicesTest {
         val automan =
             InstrumentationRegistry.getInstrumentation()
                 .getUiAutomation(UiAutomation.FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES)
-        automan.adoptShellPermissionIdentity()
-        try {
-            context.startActivity(
-                Intent(Intent.ACTION_REVIEW_ACCESSIBILITY_SERVICES)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
-        } catch (e: Exception) {
-            throw RuntimeException("Caught exception", e)
-        } finally {
-            automan.dropShellPermissionIdentity()
+        doAndWaitForWindowTransition {
+            automan.adoptShellPermissionIdentity()
+            try {
+                context.startActivity(
+                    Intent(Intent.ACTION_REVIEW_ACCESSIBILITY_SERVICES)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            } catch (e: Exception) {
+                throw RuntimeException("Caught exception", e)
+            } finally {
+                automan.dropShellPermissionIdentity()
+            }
+        }
+    }
+
+    private inline fun doAndWaitForWindowTransition(
+            crossinline block: () -> Unit
+    ) {
+        val timeoutOccurred: Boolean = !uiDevice.performActionAndWait({
+            block()
+        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+
+        if (timeoutOccurred) {
+            throw RuntimeException("Timed out waiting for window transition.")
         }
     }
 

@@ -21,19 +21,15 @@ import static android.app.AppOpsManager.OPSTR_FINE_LOCATION;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
-import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
-
 import static com.google.common.truth.Truth.assertThat;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import android.app.AppOpsManager;
 import android.app.AsyncNotedAppOp;
 import android.app.SyncNotedAppOp;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.cts.BTAdapterUtils;
+import android.bluetooth.cts.EnableBluetoothRule;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
@@ -50,10 +46,13 @@ import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
 
+import com.android.compatibility.common.util.EnableLocationRule;
 import com.android.compatibility.common.util.SystemUtil;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.HashSet;
@@ -68,12 +67,17 @@ public class NearbyDevicesRenouncePermissionTest {
     private static final String TAG = "NearbyDevicesRenouncePermissionTest";
     private static final String OPSTR_BLUETOOTH_SCAN = "android:bluetooth_scan";
 
+    private final Context mContext = InstrumentationRegistry.getInstrumentation().getContext();
+
+    @ClassRule
+    public static final EnableBluetoothRule sEnableBluetoothRule = new EnableBluetoothRule(true);
+
+    @Rule
+    public final EnableLocationRule enableLocationRule = new EnableLocationRule();
+
     private AppOpsManager mAppOpsManager;
     private int mLocationNoteCount;
     private int mScanNoteCount;
-    private Context mContext = InstrumentationRegistry.getInstrumentation().getContext();
-    private BluetoothAdapter mBluetoothAdapter;
-    private boolean mBluetoothAdapterWasEnabled;
 
     private enum Result {
         UNKNOWN, EXCEPTION, EMPTY, FILTERED, FULL
@@ -84,25 +88,7 @@ public class NearbyDevicesRenouncePermissionTest {
     }
 
     @Before
-    public void enableBluetooth() {
-        assumeTrue(supportsBluetooth());
-        mBluetoothAdapter = mContext.getSystemService(BluetoothManager.class).getAdapter();
-        mBluetoothAdapterWasEnabled = mBluetoothAdapter.isEnabled();
-        assertTrue(BTAdapterUtils.enableAdapter(mBluetoothAdapter, mContext));
-        enableTestMode();
-    }
-
-    @After
-    public void disableBluetooth() {
-        assumeTrue(supportsBluetooth());
-        disableTestMode();
-        if (!mBluetoothAdapterWasEnabled) {
-            assertTrue(BTAdapterUtils.disableAdapter(mBluetoothAdapter, mContext));
-        }
-    }
-
-    @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         mAppOpsManager = getApplicationContext().getSystemService(AppOpsManager.class);
         mAppOpsManager.setOnOpNotedCallback(getApplicationContext().getMainExecutor(),
                 new AppOpsManager.OnOpNotedCallback() {
@@ -139,7 +125,7 @@ public class NearbyDevicesRenouncePermissionTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
         mAppOpsManager.setOnOpNotedCallback(null, null);
     }
 
@@ -225,10 +211,14 @@ public class NearbyDevicesRenouncePermissionTest {
             SystemClock.sleep(3000);
             scanner.stopScan(callback);
             switch (observed.size()) {
-                case 0: return Result.EMPTY;
-                case 1: return Result.FILTERED;
-                case 5: return Result.FULL;
-                default: return Result.UNKNOWN;
+                case 0:
+                    return Result.EMPTY;
+                case 1:
+                    return Result.FILTERED;
+                case 5:
+                    return Result.FULL;
+                default:
+                    return Result.UNKNOWN;
             }
         } catch (Throwable t) {
             Log.v(TAG, "Failed to scan", t);
@@ -279,23 +269,7 @@ public class NearbyDevicesRenouncePermissionTest {
         }
     }
 
-
-    private boolean supportsBluetooth() {
-        return mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH);
-    }
-
     private boolean supportsBluetoothLe() {
         return mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
     }
-
-    private void enableTestMode() {
-        runShellCommandOrThrow("dumpsys activity service"
-                + " com.android.bluetooth.btservice.AdapterService set-test-mode enabled");
-    }
-
-    private void disableTestMode() {
-        runShellCommandOrThrow("dumpsys activity service"
-                + " com.android.bluetooth.btservice.AdapterService set-test-mode disabled");
-    }
-
 }

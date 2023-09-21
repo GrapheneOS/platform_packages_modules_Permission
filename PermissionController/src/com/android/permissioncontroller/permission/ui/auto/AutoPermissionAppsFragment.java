@@ -22,6 +22,7 @@ import static com.android.permissioncontroller.permission.ui.Category.ALLOWED;
 import static com.android.permissioncontroller.permission.ui.Category.ALLOWED_FOREGROUND;
 import static com.android.permissioncontroller.permission.ui.Category.ASK;
 import static com.android.permissioncontroller.permission.ui.Category.DENIED;
+import static com.android.permissioncontroller.permission.ui.Category.STORAGE_FOOTER;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 
 import android.content.Context;
@@ -52,14 +53,14 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.utils.applications.AppUtils;
 
+import kotlin.Pair;
+import kotlin.Triple;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import kotlin.Pair;
-import kotlin.Triple;
 
 /** Shows the list of applications which have (or do not have) the given permission. */
 public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implements
@@ -172,6 +173,10 @@ public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implem
         }
         // Hide allowed foreground label by default, to avoid briefly showing it before updating
         findPreference(ALLOWED_FOREGROUND.getCategoryName()).setVisible(false);
+
+        // Hide storage footer category
+        findPreference(STORAGE_FOOTER.getCategoryName()).setVisible(false);
+
         Context context = getPreferenceManager().getContext();
 
         if (context == null || getActivity() == null || categories == null) {

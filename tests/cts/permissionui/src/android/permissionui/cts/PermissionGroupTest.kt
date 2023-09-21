@@ -16,7 +16,7 @@
 
 package android.permissionui.cts
 
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import org.junit.Test
 
 /**
@@ -62,8 +62,11 @@ class PermissionGroupTest : BaseUsePermissionTest() {
 	assertAppHasPermission(android.Manifest.permission.RECEIVE_SMS, true)
 
         // Request both permissions, and expect that SEND_SMS is granted
-        requestAppPermissionsAndAssertResult(android.Manifest.permission.RECEIVE_SMS to true,
-            android.Manifest.permission.SEND_SMS to true) { }
+        requestAppPermissionsAndAssertResult(
+            android.Manifest.permission.RECEIVE_SMS to true,
+            android.Manifest.permission.SEND_SMS to true,
+            waitForWindowTransition = false
+        ) { }
 
         assertAppHasPermission(android.Manifest.permission.SEND_SMS, true)
     }

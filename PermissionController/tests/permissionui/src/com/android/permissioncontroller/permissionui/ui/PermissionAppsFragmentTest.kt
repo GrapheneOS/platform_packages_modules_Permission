@@ -20,13 +20,15 @@ import android.content.Intent
 import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.BySelector
+import androidx.test.uiautomator.Direction
+import androidx.test.uiautomator.UiObject2
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
-import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
-import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
 import com.android.permissioncontroller.permissionui.wakeUpScreen
+import com.google.common.truth.Truth.assertThat
 import org.junit.After
-import org.junit.Assert.assertNull
 import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
@@ -46,56 +48,64 @@ abstract class PermissionAppsFragmentTest(
     val definerApk: String? = null,
     val definerPkg: String? = null
 ) : BasePermissionUiTest() {
+    val pkgSelector = By.text(userPkg)
 
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
-
-    @Before
-    fun wakeScreenUp() {
-        wakeUpScreen()
-    }
-
-    @Before
-    fun installDefinerApk() {
-        if (definerApk != null) {
-            install(definerApk)
-        }
+    private fun scrollFindFromTop(selector: BySelector): UiObject2? {
+        val scrollable = uiDevice.findObject(By.scrollable(true))
+        scrollable.scrollUntil(Direction.UP, Until.scrollFinished(Direction.UP))
+        return scrollable.scrollUntil(
+            Direction.DOWN,
+            Until.findObject(selector)
+        )
     }
 
     @Before
     fun startManagePermissionAppsActivity() {
-        runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                .apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    putExtra(Intent.EXTRA_PERMISSION_NAME, perm)
-                })
+        assumeFalse(isTelevision)
+        wakeUpScreen()
+        if (definerApk != null) {
+            install(definerApk)
         }
+        uninstallApp(userPkg)
+        uiDevice.performActionAndWait({
+            runWithShellPermissionIdentity {
+                instrumentationContext.startActivity(
+                    Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
+                    .apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        putExtra(Intent.EXTRA_PERMISSION_NAME, perm)
+                    }
+                )
+            }
+        }, Until.newWindow(), Companion.NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     @Test
-    fun appAppearsWhenInstalled() {
-        assertNull(waitFindObjectOrNull(By.text(userPkg)))
+    fun testAppAppearanceReflectsInstallation() {
+        // Expect *not* to find package listed on screen
+        eventually({
+            val pkg = scrollFindFromTop(pkgSelector)
+            assertThat(pkg).isNull()
+        }, Companion.SCROLL_TIMEOUT_MILLIS)
 
+        // Install package
         install(userApk)
-        eventually {
-            waitFindObject(By.text(userPkg))
-        }
-    }
 
-    @Test(timeout = 120000)
-    fun appDisappearsWhenUninstalled() {
-        assertNull(waitFindObjectOrNull(By.text(userPkg)))
+        // Expect to find package listed on screen
+        eventually({
+            val pkg = scrollFindFromTop(pkgSelector)
+            assertThat(pkg).isNotNull()
+        }, Companion.SCROLL_TIMEOUT_MILLIS)
 
-        install(userApk)
-        eventually {
-            waitFindObject(By.text(userPkg))
-        }
-
+        // Uninstall app
         uninstallApp(userPkg)
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(userPkg)))
-        }
+
+        // Expect *not* to find package listed on screen
+        eventually({
+            val pkg = scrollFindFromTop(pkgSelector)
+            assertThat(pkg).isNull()
+        }, Companion.SCROLL_TIMEOUT_MILLIS)
     }
 
     @After
@@ -107,5 +117,10 @@ abstract class PermissionAppsFragmentTest(
 
         uiDevice.pressBack()
         uiDevice.pressHome()
+    }
+
+    companion object {
+        const val NEW_WINDOW_TIMEOUT_MILLIS = 25_000L
+        const val SCROLL_TIMEOUT_MILLIS = 25_000L
     }
 }

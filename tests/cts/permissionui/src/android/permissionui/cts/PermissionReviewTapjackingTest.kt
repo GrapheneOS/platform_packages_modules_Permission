@@ -18,7 +18,7 @@ package android.permissionui.cts
 
 import android.content.ComponentName
 import android.content.Intent
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil
 import java.lang.Exception

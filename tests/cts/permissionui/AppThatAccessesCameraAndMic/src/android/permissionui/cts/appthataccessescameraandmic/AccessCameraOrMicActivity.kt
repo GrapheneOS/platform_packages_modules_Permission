@@ -30,6 +30,7 @@ import android.media.AudioFormat.ENCODING_PCM_16BIT
 import android.media.AudioRecord
 import android.media.ImageReader
 import android.media.MediaRecorder.AudioSource.MIC
+import android.os.Bundle
 import android.os.Handler
 import android.os.Process
 import android.util.Log
@@ -64,6 +65,17 @@ class AccessCameraOrMicActivity : Activity() {
     private var hotwordFinished = false
     private var runHotword = false
     private var finishEarly = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            throw RuntimeException(
+                "Activity was recreated (perhaps due to a configuration change?) " +
+                    "and this activity doesn't currently know how to gracefully handle " +
+                    "configuration changes.")
+        }
+    }
 
     override fun onStart() {
         super.onStart()

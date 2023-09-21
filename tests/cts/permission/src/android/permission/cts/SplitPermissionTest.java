@@ -44,11 +44,11 @@ import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 import android.platform.test.annotations.SystemUserOnly;
 
 import androidx.annotation.NonNull;
 import androidx.test.InstrumentationRegistry;
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -73,7 +73,7 @@ public class SplitPermissionTest {
     /** The package name of all apps used in the test */
     private static final String APP_PKG = "android.permission.cts.appthatrequestpermission";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_CONTACTS_16 =
             TMP_DIR + "CtsAppThatRequestsContactsPermission16.apk";
     private static final String APK_CONTACTS_15 =

@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 import android.os.Build;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.FlakyTest;
 
+import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -49,7 +49,7 @@ public class SharedUidPermissionsTest {
     private static final String PKG_THAT_REQUESTS_NO_PERMISSIONS =
             "android.permission.cts.appthatrequestnopermission";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_THAT_REQUESTS_PERMISSIONS =
             TMP_DIR + "CtsAppWithSharedUidThatRequestsPermissions.apk";
     private static final String APK_THAT_REQUESTS_NO_PERMISSIONS =

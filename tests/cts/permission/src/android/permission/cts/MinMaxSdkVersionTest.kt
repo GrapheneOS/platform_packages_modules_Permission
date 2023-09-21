@@ -84,7 +84,7 @@ class MinMaxSdkVersionTest {
     companion object {
         private const val TEST_APP_NAME =
             "CtsAppThatRequestsMultiplePermissionsWithMinMaxSdk.apk"
-        private const val TMP_DIR = "/data/local/tmp/cts/permissions/"
+        private const val TMP_DIR = "/data/local/tmp/cts-permission/"
         private const val TEST_APP_PATH = TMP_DIR + TEST_APP_NAME
         private const val TEST_APP_PKG_NAME = "android.permission.cts.appthatrequestpermission"
         private const val CUSTOM_PERMS = "$TEST_APP_PKG_NAME.permissions"

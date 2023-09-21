@@ -20,7 +20,7 @@
     <string name="role_sms_request_description" msgid="1506966389698625395">"سيُسمح لهذا التطبيق بإرسال إشعارات إليك، وسيُمنح إذن الوصول إلى الكاميرا وجهات الاتصال والملفات والميكروفون والهاتف والرسائل القصيرة."</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى جميع الملفات على هذا الجهاز."</string>
     <string name="work_policy_title" msgid="832967780713677409">"معلومات سياسة العمل"</string>
-    <string name="work_policy_summary" msgid="3886113358084963931">"يتولى مشرف تكنولوجيا المعلومات إدارة الإعدادات."</string>
+    <string name="work_policy_summary" msgid="3886113358084963931">"يتولى مشرف تكنولوجيا المعلومات إدارة الإعدادات"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"توسيع القائمة وعرضها"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"تصغير القائمة وإخفاء الإعدادات"</string>
     <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"قائمة <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>

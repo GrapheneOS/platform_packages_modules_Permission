@@ -37,10 +37,10 @@ import android.permission.cts.SafetyCenterUtils.deleteDeviceConfigPrivacyPropert
 import android.permission.cts.SafetyCenterUtils.deviceSupportsSafetyCenter
 import android.permission.cts.SafetyCenterUtils.setDeviceConfigPrivacyProperty
 import android.platform.test.annotations.AppModeFull
-import android.platform.test.annotations.FlakyTest
 import android.platform.test.rule.ScreenRecordRule
 import android.provider.DeviceConfig
 import android.safetycenter.SafetyCenterManager
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -121,6 +121,13 @@ class AccessibilityPrivacySourceTest {
                 "${Process.myUserHandle().identifier} $permissionControllerPackage true"
         )
         cancelNotifications(permissionControllerPackage)
+        assertEmptyNotification(permissionControllerPackage, ACCESSIBILITY_NOTIFICATION_ID)
+        runWithShellPermissionIdentity { safetyCenterManager?.clearAllSafetySourceDataForTests() }
+        assertSafetyCenterIssueDoesNotExist(
+            SC_ACCESSIBILITY_SOURCE_ID,
+            safetyCenterIssueId,
+            SC_ACCESSIBILITY_ISSUE_TYPE_ID
+        )
     }
 
     @After

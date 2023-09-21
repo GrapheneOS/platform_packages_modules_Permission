@@ -62,7 +62,7 @@ public class BaseNotificationListenerCheckTest {
     private static final String TEST_APP_NOTIFICATION_SERVICE =
             TEST_APP_PKG + ".CtsNotificationListenerService";
     protected static final String TEST_APP_NOTIFICATION_LISTENER_APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatHasNotificationListener.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatHasNotificationListener.apk";
 
     private static final int NOTIFICATION_LISTENER_CHECK_JOB_ID = 4;
 

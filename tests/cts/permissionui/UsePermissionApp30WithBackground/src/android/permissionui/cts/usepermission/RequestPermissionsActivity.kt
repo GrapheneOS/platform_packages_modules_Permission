@@ -19,10 +19,16 @@ package android.permissionui.cts.usepermission
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 
 class RequestPermissionsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)")
+            return
+        }
 
         val permissions = intent.getStringArrayExtra("$packageName.PERMISSIONS")!!
         requestPermissions(permissions, 1)
@@ -40,5 +46,9 @@ class RequestPermissionsActivity : Activity() {
             putExtra("$packageName.GRANT_RESULTS", grantResults)
         })
         finish()
+    }
+
+    companion object {
+        private val TAG = RequestPermissionsActivity::class.simpleName
     }
 }

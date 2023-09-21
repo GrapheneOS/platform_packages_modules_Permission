@@ -26,12 +26,13 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.filters.SdkSuppress
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.android.compatibility.common.util.ShellUtils.runShellCommand
+import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 
-private const val APK_PATH = "/data/local/tmp/cts/permissions/"
+private const val APK_PATH = "/data/local/tmp/cts-permission/"
 
 private const val APK_DEFINING_PERM_A = "${APK_PATH}CtsAppThatDefinesPermissionA.apk"
 private const val APK_ALSO_DEFINING_PERM_A = "${APK_PATH}CtsAppThatAlsoDefinesPermissionA.apk"
@@ -80,7 +81,7 @@ class DuplicatePermissionDefinitionsTest {
     private val pm = InstrumentationRegistry.getTargetContext().packageManager
 
     private fun install(apk: String) {
-        runShellCommand("pm install $apk")
+        runShellCommandOrThrow("pm install $apk")
     }
 
     private fun uninstall(app: String) {

@@ -19,13 +19,28 @@ package android.permissionui.cts
 import android.app.Activity
 import android.app.Instrumentation
 import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import java.util.concurrent.CompletableFuture
 
 class StartForFutureActivity : Activity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            Log.w(TAG, "Activity was recreated. (Perhaps due to a configuration change?)")
+        }
+    }
+
     fun startActivityForFuture(
         intent: Intent,
         future: CompletableFuture<Instrumentation.ActivityResult>
     ) {
+        if (StartForFutureActivity.future != null) {
+            throw RuntimeException("StartForFutureActivity only supports launching one " +
+                "concurrent activity, but more than one was attempted.")
+        }
+
         startActivityForResult(intent, 1)
         StartForFutureActivity.future = future
     }
@@ -39,5 +54,6 @@ class StartForFutureActivity : Activity() {
 
     companion object {
         private var future: CompletableFuture<Instrumentation.ActivityResult>? = null
+        private val TAG = StartForFutureActivity::class.simpleName
     }
 }

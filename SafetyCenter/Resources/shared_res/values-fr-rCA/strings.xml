@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Afficher l\'alerte}one{Afficher l\'alerte}many{Afficher les alertes}other{Afficher les alertes}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Impossible d\'ouvrir la page"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Impossible de résoudre l\'alerte"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Impossible d\'actualiser les paramètres"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Impossible de vérifier le paramètre}one{Impossible de vérifier le paramètre}many{Impossible de vérifier les paramètres}other{Impossible de vérifier les paramètres}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Le profil professionnel est interrompu"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Aucune donnée pour le moment"</string>

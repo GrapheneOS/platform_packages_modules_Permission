@@ -476,7 +476,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         Icon icon = null;
         int messageId = 0;
-        switch(info.getMessage()) {
+        switch (info.getMessage()) {
             case FG_MESSAGE:
                 messageId = Utils.getRequest(info.getGroupName());
                 break;
@@ -503,13 +503,15 @@ public class GrantPermissionsActivity extends SettingsActivity
             case MORE_PHOTOS_MESSAGE:
                 messageId = R.string.permgrouprequest_more_photos;
                 break;
+            default:
+                Log.w(LOG_TAG, "Unhandled message type: " + info.getMessage());
         }
 
         CharSequence message = getRequestMessage(appLabel, mTargetPackage,
                 info.getGroupName(), this, messageId);
 
         int detailMessageId = 0;
-        switch(info.getDetailMessage()) {
+        switch (info.getDetailMessage()) {
             case FG_MESSAGE:
                 detailMessageId = Utils.getRequestDetail(info.getGroupName());
                 break;
@@ -518,6 +520,9 @@ public class GrantPermissionsActivity extends SettingsActivity
                 break;
             case UPGRADE_MESSAGE:
                 detailMessageId = Utils.getUpgradeRequestDetail(info.getGroupName());
+                break;
+            default:
+                Log.w(LOG_TAG, "Unhandled detail message type: " + info.getDetailMessage());
         }
 
         Spanned detailMessage = null;
@@ -590,8 +595,11 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         getWindow().setDimAmount(mOriginalDimAmount);
         if (mRootView.getVisibility() == View.GONE) {
-            InputMethodManager manager = getSystemService(InputMethodManager.class);
-            manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
+            if (mIsSystemTriggered) {
+                // We don't want the keyboard obscuring system-triggered dialogs
+                InputMethodManager manager = getSystemService(InputMethodManager.class);
+                manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
+            }
             mRootView.setVisibility(View.VISIBLE);
         }
     }

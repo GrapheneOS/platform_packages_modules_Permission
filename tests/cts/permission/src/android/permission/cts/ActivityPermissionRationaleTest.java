@@ -17,6 +17,7 @@
 package android.permission.cts;
 
 import static com.android.compatibility.common.util.ShellUtils.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -49,7 +50,7 @@ import java.util.concurrent.TimeUnit;
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 public class ActivityPermissionRationaleTest {
     private static final String APK =
-            "/data/local/tmp/cts/permissions/CtsAppThatRunsRationaleTests.apk";
+            "/data/local/tmp/cts-permission/CtsAppThatRunsRationaleTests.apk";
     private static final String PACKAGE_NAME = "android.permission.cts.appthatrunsrationaletests";
     private static final String PERMISSION_NAME = Manifest.permission.READ_CONTACTS;
     private static final String CALLBACK_KEY = "testactivitycallback";
@@ -62,7 +63,7 @@ public class ActivityPermissionRationaleTest {
 
     @BeforeClass
     public static void setUp() {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
         int flag = PackageManager.FLAG_PERMISSION_USER_SET;
         PermissionUtils.setPermissionFlags(PACKAGE_NAME, PERMISSION_NAME, flag, flag);
     }

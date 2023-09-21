@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{الرٹ دیکھیں}other{الرٹس دیکھیں}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"صفحہ نہیں کھل سکا"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"الرٹ حل نہیں ہو سکا"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"ترتیبات ریفریش نہیں کی جا سکی"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{ترتیب کی جانچ نہیں کی جا سکی}other{ترتیبات کی جانچ نہیں کی جا سکی}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"دفتری پروفائل روک دی گئی ہے"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ابھی تک کوئی معلومات نہیں ہے"</string>

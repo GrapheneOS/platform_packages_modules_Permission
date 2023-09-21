@@ -43,6 +43,7 @@ import java.util.concurrent.TimeUnit;
 @SystemUserOnly(reason = "Secondary users have the DISALLOW_SMS user restriction")
 public class NoReceiveSmsPermissionTest extends AndroidTestCase {
 
+    private static final int SMS_DELIVERED_WAIT_TIME_MILLIS = 4000;
     private static final String TELEPHONY_SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
     private static final String MESSAGE_STATUS_RECEIVED_ACTION =
         "com.android.cts.permission.sms.MESSAGE_STATUS_RECEIVED_ACTION";
@@ -128,7 +129,7 @@ public class NoReceiveSmsPermissionTest extends AndroidTestCase {
     private boolean waitForForEvents(Semaphore semaphore, int expectedNumberOfEvents) {
         for (int i = 0; i < expectedNumberOfEvents; i++) {
             try {
-                if (!semaphore.tryAcquire(2000, TimeUnit.MILLISECONDS)) {
+                if (!semaphore.tryAcquire(SMS_DELIVERED_WAIT_TIME_MILLIS, TimeUnit.MILLISECONDS)) {
                     return false;
                 }
             } catch (Exception ex) {

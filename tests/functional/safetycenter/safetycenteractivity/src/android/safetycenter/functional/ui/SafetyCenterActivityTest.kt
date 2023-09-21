@@ -1105,18 +1105,14 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             clickMoreIssuesCard()
 
-            val uiDevice = getUiDevice()
-            uiDevice.waitForIdle()
-
-            // Verify cards initially expanded
-            waitExpandedIssuesDisplayed(
-                safetySourceTestData.criticalResolvingGeneralIssue,
-                safetySourceTestData.recommendationGeneralIssue,
-                safetySourceTestData.informationIssue
-            )
+            // Not checking that all the cards are correctly expanded here, as it is already covered
+            // by other tests and makes this tests too slow otherwise. See b/288381777.
+            // We still check that the middle card title is displayed though, as this helps ensure
+            // the expansion did go through.
+            waitAllTextDisplayed(safetySourceTestData.recommendationGeneralIssue.title)
 
             // Device rotation to trigger usage of savedinstancestate via config update
-            uiDevice.rotate()
+            getUiDevice().rotate()
 
             // Verify cards remain expanded
             waitExpandedIssuesDisplayed(
@@ -1124,6 +1120,30 @@ class SafetyCenterActivityTest {
                 safetySourceTestData.recommendationGeneralIssue,
                 safetySourceTestData.informationIssue
             )
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_withThreeIssues_showsTopIssuesAndMoreIssuesCard() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_2,
+            safetySourceTestData.recommendationWithGeneralIssue
+        )
+        safetyCenterTestHelper.setData(SOURCE_ID_3, safetySourceTestData.informationWithIssue)
+
+        val bundle = Bundle()
+        bundle.putString(EXTRA_SAFETY_SOURCE_ID, SOURCE_ID_2)
+        bundle.putString(EXTRA_SAFETY_SOURCE_ISSUE_ID, RECOMMENDATION_ISSUE_ID)
+        context.launchSafetyCenterActivity(bundle) {
+            waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
+            waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
+            waitAllTextDisplayed(MORE_ISSUES_LABEL)
+            waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
         }
     }
 
@@ -1144,18 +1164,11 @@ class SafetyCenterActivityTest {
         bundle.putString(EXTRA_SAFETY_SOURCE_ID, SOURCE_ID_2)
         bundle.putString(EXTRA_SAFETY_SOURCE_ISSUE_ID, RECOMMENDATION_ISSUE_ID)
         context.launchSafetyCenterActivity(bundle) {
-            waitSourceIssueDisplayed(safetySourceTestData.criticalResolvingGeneralIssue)
-            waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
-            waitAllTextDisplayed(MORE_ISSUES_LABEL)
             waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
 
             clickMoreIssuesCard()
 
-            waitExpandedIssuesDisplayed(
-                safetySourceTestData.criticalResolvingGeneralIssue,
-                safetySourceTestData.recommendationGeneralIssue,
-                safetySourceTestData.informationIssue
-            )
+            waitSourceIssueDisplayed(safetySourceTestData.informationIssue)
         }
     }
 

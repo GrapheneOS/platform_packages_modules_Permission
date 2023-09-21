@@ -52,6 +52,14 @@ class CreateNotificationChannelsActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            throw RuntimeException(
+                "Activity was recreated (perhaps due to a configuration change?) " +
+                "and this activity doesn't currently know how to gracefully handle " +
+                    "configuration changes.")
+        }
+
         registerReceiver(receiver, IntentFilter(BROADCAST_ACTION), RECEIVER_EXPORTED)
         handleIntent(intent)
     }
@@ -156,5 +164,9 @@ class CreateNotificationChannelsActivity : Activity() {
             Intent(BROADCAST_ACTION).putStringArrayListExtra(
             PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, grantedPerms)
                 .setPackage(TEST_PKG))
+    }
+
+    companion object {
+        private val TAG = CreateNotificationChannelsActivity::class.simpleName
     }
 }

@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.wear.elements
 
+import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
@@ -23,7 +24,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -64,7 +64,7 @@ fun ScrollableScreen(
     showTimeText: Boolean = true,
     title: String? = null,
     subtitle: String? = null,
-    image: Int? = null,
+    image: Any? = null,
     isLoading: Boolean = false,
     content: ScalingLazyListScope.() -> Unit,
 ) {
@@ -108,27 +108,31 @@ fun ScrollableScreen(
                             bottom = 70.dp
                         )
                     ) {
-                        if (image != null) {
-                            item {
-                                Image(
-                                    painter = painterResource(id = image),
-                                    modifier = Modifier.padding(bottom = 14.dp),
-                                    contentDescription = null,
-                                )
+                        image?.let {
+                            when (image) {
+                                is Int ->
+                                    item {
+                                        Image(
+                                            painter = painterResource(id = image),
+                                            contentDescription = null
+                                        )
+                                    }
+                                is Drawable ->
+                                    item {
+                                        Image(
+                                            painter = rememberDrawablePainter(image),
+                                            contentDescription = null
+                                        )
+                                    }
+                                else -> {
+                                }
                             }
                         }
                         if (title != null) {
                             item {
-                                Text(
-                                    text = title,
-                                    textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.button,
-                                    modifier = Modifier.padding(
-                                        bottom = 12.dp,
-                                        start = 24.dp,
-                                        end = 24.dp
-                                    )
-                                )
+                                ListHeader {
+                                    Text(text = title, textAlign = TextAlign.Center)
+                                }
                             }
                         }
                         if (subtitle != null) {

@@ -16,7 +16,7 @@
 
 package android.permissionui.cts
 
-import android.platform.test.annotations.FlakyTest
+import androidx.test.filters.FlakyTest
 import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
@@ -60,7 +60,8 @@ class PermissionTest22 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-            arrayOf(android.Manifest.permission.SEND_SMS), emptyArray()
+            arrayOf(android.Manifest.permission.SEND_SMS), emptyArray(),
+            waitForWindowTransition = false
         ) {}
     }
 }

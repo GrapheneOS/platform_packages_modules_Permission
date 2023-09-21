@@ -30,9 +30,9 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Process
 import android.os.UserHandle
-import android.platform.test.annotations.FlakyTest
 import android.util.Log
 import androidx.test.InstrumentationRegistry
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity

@@ -33,7 +33,7 @@ import org.junit.Test
 class RevokePermissionTest {
 
     private val APP_PKG_NAME = "android.permission.cts.appthatrequestcustompermission"
-    private val APK = "/data/local/tmp/cts/permissions/" +
+    private val APK = "/data/local/tmp/cts-permission/" +
             "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk"
 
     @Before

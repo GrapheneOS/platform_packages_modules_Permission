@@ -17,6 +17,7 @@
 package android.permission.cts;
 
 import static com.android.compatibility.common.util.ShellUtils.runShellCommand;
+import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -42,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class PermissionUpdateListenerTest {
     private static final String APK =
-            "/data/local/tmp/cts/permissions/"
+            "/data/local/tmp/cts-permission/"
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String PACKAGE_NAME =
             "android.permission.cts.appthatrequestcustompermission";
@@ -56,7 +57,7 @@ public class PermissionUpdateListenerTest {
 
     @BeforeClass
     public static void installApp() throws PackageManager.NameNotFoundException {
-        runShellCommand("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r " + APK);
         sUid = sPm.getPackageUid(PACKAGE_NAME, 0);
     }
 

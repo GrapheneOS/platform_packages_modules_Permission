@@ -265,7 +265,6 @@ open class GrantPermissionsViewModel(
         }
 
         private fun setAppPermGroupsLiveDatas(groups: Map<String, List<String>>) {
-
             val requestedGroups = groups.filter { (_, perms) ->
                 perms.any { it in unfilteredAffectedPermissions }
             }
@@ -713,7 +712,6 @@ open class GrantPermissionsViewModel(
 
         val splitPerms = app.getSystemService(PermissionManager::class.java)!!.splitPermissions
         for (splitPerm in splitPerms) {
-
             if (requestingAppTargetSDK < splitPerm.targetSdk && perm == splitPerm.splitPermission) {
                 extendedBySplitPerms.addAll(splitPerm.newPermissions)
             }
@@ -742,7 +740,6 @@ open class GrantPermissionsViewModel(
     }
 
     private fun isPermissionGrantableAndNotFixed(perm: String, group: LightAppPermGroup): Boolean {
-
         // If the permission is restricted it does not show in the UI and
         // is not added to the group at all, so check that first.
         if (perm in group.packageInfo.requestedPermissions && perm !in group.permissions) {

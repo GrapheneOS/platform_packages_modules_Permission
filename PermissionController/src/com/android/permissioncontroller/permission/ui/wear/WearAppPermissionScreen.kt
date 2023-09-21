@@ -112,7 +112,8 @@ internal fun WearAppPermissionContent(
                         enabled = it.isEnabled,
                         label = stringResource(R.string.app_permission_location_accuracy),
                         toggleControl = ToggleChipToggleControl.Switch,
-                        onCheckedChanged = onLocationSwitchChanged
+                        onCheckedChanged = onLocationSwitchChanged,
+                        labelMaxLine = Integer.MAX_VALUE
                     )
                 }
             }
@@ -128,7 +129,8 @@ internal fun WearAppPermissionContent(
                             toggleControl = ToggleChipToggleControl.Radio,
                             onCheckedChanged = { checked ->
                                 onGrantedStateChanged(buttonType, checked)
-                            }
+                            },
+                            labelMaxLine = Integer.MAX_VALUE
                         )
                     }
                 }

@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{అలర్ట్‌ను చూడండి}other{అలర్ట్‌లను చూడండి}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"పేజీని తెరవడం సాధ్యపడలేదు"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"అలర్ట్‌ను పరిష్కరించడం సాధ్యపడలేదు"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"సెట్టింగ్‌లను రిఫ్రెష్ చేయడం సాధ్యపడలేదు"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{సెట్టింగ్‌ను చెక్ చేయడం సాధ్యపడలేదు}other{సెట్టింగ్‌లను చెక్ చేయడం సాధ్యపడలేదు}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"వర్క్ ప్రొఫైల్ పాజ్ చేయబడింది"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ఇంకా ఏ సమాచారం లేదు"</string>

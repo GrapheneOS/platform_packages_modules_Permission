@@ -40,7 +40,6 @@
     <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ਅਲਰਟ ਦੇਖੋ}one{ਅਲਰਟ ਦੇਖੋ}other{ਅਲਰਟ ਦੇਖੋ}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"ਪੰਨਾ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ਸੁਚੇਤਨਾ ਦਾ ਹੱਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"ਸੈਟਿੰਗਾਂ ਨੂੰ ਰਿਫ੍ਰੈਸ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰ ਸਕੇ}one{ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰ ਸਕੇ}other{ਸੈਟਿੰਗਾਂ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰ ਸਕੇ}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"ਕਾਰਜ ਪ੍ਰੋਫਾਈਲ ਨੂੰ ਰੋਕਿਆ ਗਿਆ ਹੈ"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ਅਜੇ ਕੋਈ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ"</string>

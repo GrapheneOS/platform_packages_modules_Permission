@@ -9,7 +9,7 @@
       "name" : "CtsPermissionUiTestCases",
       "options": [
         {
-          "exclude-annotation": "android.platform.test.annotations.FlakyTest"
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
         }
       ]
     }
@@ -19,7 +19,7 @@
       "name" : "CtsPermissionUiTestCases",
       "options": [
         {
-          "include-annotation": "android.platform.test.annotations.FlakyTest"
+          "include-annotation": "androidx.test.filters.FlakyTest"
         }
       ]
     }

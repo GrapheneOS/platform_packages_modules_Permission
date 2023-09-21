@@ -30,12 +30,12 @@ import android.os.SystemClock
 import android.os.SystemProperties
 import android.permission.PermissionManager
 import android.platform.test.annotations.AsbSecurityTest
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
 import android.server.wm.WindowManagerStateHelper
 import androidx.annotation.RequiresApi
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
@@ -49,6 +49,7 @@ import com.android.compatibility.common.util.DisableAnimationRule
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
+import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
@@ -68,7 +69,7 @@ import org.junit.Rule
 import org.junit.Test
 
 private const val APK_PATH =
-    "/data/local/tmp/cts/permissionui/CtsAppThatAccessesMicAndCameraPermission.apk"
+    "/data/local/tmp/cts-permissionui/CtsAppThatAccessesMicAndCameraPermission.apk"
 private const val APP_LABEL = "CtsCameraMicAccess"
 private const val APP_PKG = "android.permissionui.cts.appthataccessescameraandmic"
 private const val SHELL_PKG = "com.android.shell"
@@ -139,7 +140,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     private fun install() {
-        val output = runShellCommand("pm install -g $APK_PATH").trim()
+        val output = runShellCommandOrThrow("pm install -g $APK_PATH").trim()
         assertEquals("Success", output)
     }
 
@@ -568,16 +569,11 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
 
     private fun pressBack() {
         uiDevice.pressBack()
-        waitForIdle()
     }
 
     private fun pressHome() {
         uiDevice.pressHome()
-        waitForIdle()
     }
-
-    private fun waitForIdle() =
-        uiAutomation.waitForIdle(IDLE_TIMEOUT_MILLIS, TIMEOUT_MILLIS)
 
     private fun changeSafetyCenterFlag(safetyCenterEnabled: String) {
         runWithShellPermissionIdentity {
@@ -596,7 +592,6 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     protected fun waitFindObject(selector: BySelector): UiObject2? {
-        waitForIdle()
         return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) })
     }
 
@@ -604,7 +599,6 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
         automatorMethod: (timeoutMillis: Long) -> UiObject2?,
         timeoutMillis: Long = TIMEOUT_MILLIS
     ): UiObject2? {
-        waitForIdle()
         val startTime = SystemClock.elapsedRealtime()
         return try {
             automatorMethod(timeoutMillis)

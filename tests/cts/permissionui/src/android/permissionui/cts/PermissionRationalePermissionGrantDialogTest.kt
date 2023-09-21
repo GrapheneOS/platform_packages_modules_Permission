@@ -20,9 +20,9 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.CAMERA
 import android.os.Build
-import android.platform.test.annotations.FlakyTest
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
+import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
 import com.android.modules.utils.build.SdkLevel
@@ -276,10 +276,8 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
 
         requestAppPermissionsForNoResult(ACCESS_FINE_LOCATION) {
             clickPermissionRationaleViewInGrantDialog()
-            waitForIdle()
             assertPermissionRationaleDialogIsVisible(true)
             pressBack()
-            waitForIdle()
             assertPermissionRationaleDialogIsVisible(false)
             assertPermissionRationaleContainerOnGrantDialogIsVisible(true)
         }

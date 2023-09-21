@@ -64,7 +64,7 @@ public class PermissionFlagsTest {
     private static final String APP_SYSTEM_ALERT_WINDOW_PKG =
             "android.permission.cts.usesystemalertwindowpermission";
 
-    private static final String TMP_DIR = "/data/local/tmp/cts/permissions/";
+    private static final String TMP_DIR = "/data/local/tmp/cts-permission/";
     private static final String APK_CONTACTS_15 =
             TMP_DIR + "CtsAppThatRequestsContactsPermission15.apk";
     private static final String APK_LOCATION_22 =
