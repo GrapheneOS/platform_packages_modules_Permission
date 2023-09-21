@@ -126,6 +126,8 @@ public class RoleManagerTest {
     private static final Context sContext = InstrumentationRegistry.getTargetContext();
     private static final PackageManager sPackageManager = sContext.getPackageManager();
     private static final RoleManager sRoleManager = sContext.getSystemService(RoleManager.class);
+    private static final boolean sIsWatch = sPackageManager.hasSystemFeature(
+            PackageManager.FEATURE_WATCH);
 
     @Rule
     public DisableAnimationRule mDisableAnimationRule = new DisableAnimationRule();
@@ -611,8 +613,12 @@ public class RoleManagerTest {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
 
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
 
         pressBack();
     }
@@ -627,11 +633,20 @@ public class RoleManagerTest {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
         waitForIdle();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL))).click();
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(
+                    By.text(APP_LABEL))).click();
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL))).click();
+        }
 
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(true).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
         assertIsRoleHolder(ROLE_NAME, APP_PACKAGE_NAME, true);
 
         pressBack();
@@ -648,15 +663,30 @@ public class RoleManagerTest {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
         waitForIdle();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL))).click();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(
+                    By.text(APP_LABEL))).click();
+            waitFindObject(By.clickable(true).checked(true).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL))).click();
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
         waitForIdle();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))).click();
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false)).click();
+        } else {
+            waitFindObject(
+                    By.clickable(true).hasDescendant(By.checkable(true).checked(false))).click();
+        }
 
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
         assertIsRoleHolder(ROLE_NAME, APP_PACKAGE_NAME, false);
 
         pressBack();
@@ -695,11 +725,20 @@ public class RoleManagerTest {
         waitForIdle();
         waitFindObject(By.text(ROLE_SHORT_LABEL)).click();
         waitForIdle();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL))).click();
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(
+                    By.text(APP_LABEL))).click();
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL))).click();
+        }
 
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(true).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
         assertIsRoleHolder(ROLE_NAME, APP_PACKAGE_NAME, true);
 
         pressBack();
@@ -715,10 +754,16 @@ public class RoleManagerTest {
         waitForIdle();
         waitFindObject(By.text(ROLE_SHORT_LABEL)).click();
         waitForIdle();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
-                .hasDescendant(By.text(APP_LABEL))).click();
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
-                .hasDescendant(By.text(APP_LABEL)));
+        if (sIsWatch) {
+            waitFindObject(By.clickable(true).checked(false).hasDescendant(
+                    By.text(APP_LABEL))).click();
+            waitFindObject(By.clickable(true).checked(true).hasDescendant(By.text(APP_LABEL)));
+        } else {
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
+                    .hasDescendant(By.text(APP_LABEL))).click();
+            waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
+                    .hasDescendant(By.text(APP_LABEL)));
+        }
         pressBack();
 
         waitFindObject(By.text(APP_LABEL));
