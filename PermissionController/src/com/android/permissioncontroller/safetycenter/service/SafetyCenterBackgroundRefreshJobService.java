@@ -95,7 +95,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
         }
 
         if (!safetyCenterManager.isSafetyCenterEnabled()) {
-            Log.v(
+            Log.i(
                     TAG,
                     "Received a "
                             + actionString
@@ -135,7 +135,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
     public boolean onStartJob(JobParameters params) {
         // background thread not required, PC APK makes all API calls in main thread
         if (!SafetyCenterJobServiceFlags.areBackgroundRefreshesEnabled()) {
-            Log.v(TAG, "Background refreshes are not enabled, skipping job.");
+            Log.i(TAG, "Background refreshes are not enabled, skipping job.");
             return false; // job is no longer running
         }
         SafetyCenterManager safetyCenterManager = this.getSystemService(SafetyCenterManager.class);
@@ -144,7 +144,7 @@ public final class SafetyCenterBackgroundRefreshJobService extends JobService {
             return false; // job is no longer running
         }
         if (!safetyCenterManager.isSafetyCenterEnabled()) {
-            Log.v(TAG, "Safety center is not enabled, skipping job.");
+            Log.i(TAG, "Safety center is not enabled, skipping job.");
             return false; // job is no longer running
         }
 

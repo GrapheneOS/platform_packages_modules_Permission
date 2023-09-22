@@ -282,7 +282,7 @@ internal class NotificationListenerCheckInternal(
             sessionId = random.nextLong()
         }
         if (DEBUG) {
-            Log.v(
+            Log.d(
                 TAG,
                 "Found ${enabledComponents.size} enabled notification listeners. " +
                     "${notifiedComponents.size} already notified. ${unNotifiedComponents.size} " +
@@ -424,7 +424,7 @@ internal class NotificationListenerCheckInternal(
         if (currentTimeMillis() - getLastNotificationShownTimeMillis() <
             getInBetweenNotificationsMillis()) {
             if (DEBUG) {
-                Log.v(
+                Log.d(
                     TAG,
                     "Notification not posted, within " +
                         "$DEFAULT_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS ms")
@@ -435,7 +435,7 @@ internal class NotificationListenerCheckInternal(
         // Check for existing notification first, exit if one already present
         if (getCurrentlyShownNotificationLocked() != null) {
             if (DEBUG) {
-                Log.v(TAG, "Notification not posted, previous notification has not been dismissed")
+                Log.d(TAG, "Notification not posted, previous notification has not been dismissed")
             }
             return
         }
@@ -448,7 +448,7 @@ internal class NotificationListenerCheckInternal(
 
             if (componentsInternal.isEmpty()) {
                 if (DEBUG) {
-                    Log.v(TAG, "Notification not posted, no unnotified enabled listeners")
+                    Log.d(TAG, "Notification not posted, no unnotified enabled listeners")
                 }
                 return
             }
@@ -456,7 +456,7 @@ internal class NotificationListenerCheckInternal(
             componentToNotifyFor = componentsInternal[random.nextInt(componentsInternal.size)]
             try {
                 if (DEBUG) {
-                    Log.v(
+                    Log.d(
                         TAG,
                         "Attempting to get PackageInfo for " + componentToNotifyFor.packageName)
                 }
@@ -546,7 +546,7 @@ internal class NotificationListenerCheckInternal(
             componentName.flattenToString(), NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID, b.build())
 
         if (DEBUG) {
-            Log.v(
+            Log.d(
                 TAG,
                 "Notification listener check notification shown with component=" +
                     "${componentName.flattenToString()}, uid=$uid, sessionId=$sessionId")
@@ -954,7 +954,7 @@ class NotificationListenerCheckNotificationDeleteHandler : BroadcastReceiver() {
             NotificationListenerCheckInternal(context, null).markComponentAsNotified(componentName)
         }
         if (DEBUG) {
-            Log.v(
+            Log.d(
                 TAG,
                 "Notification listener check notification declined with component=" +
                     "${componentName.flattenToString()} , uid=$uid, sessionId=$sessionId")
@@ -981,7 +981,7 @@ class DisableNotificationListenerComponentHandler : BroadcastReceiver() {
 
         GlobalScope.launch(Default) {
             if (DEBUG) {
-                Log.v(
+                Log.d(
                     TAG,
                     "DisableComponentHandler: disabling $componentName," +
                         "uid=$uid, sessionId=$sessionId")
@@ -1041,7 +1041,7 @@ class NotificationListenerActionCardDismissalReceiver : BroadcastReceiver() {
 
         GlobalScope.launch(Default) {
             if (DEBUG) {
-                Log.v(
+                Log.d(
                     TAG,
                     "ActionCardDismissalReceiver: $componentName dismissed," +
                         "uid=$uid, sessionId=$sessionId")

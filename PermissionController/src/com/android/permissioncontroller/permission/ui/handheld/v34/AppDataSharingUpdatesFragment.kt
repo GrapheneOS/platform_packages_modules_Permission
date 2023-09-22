@@ -282,7 +282,7 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
                 sessionId,
                 numberOfAppUpdates
             )
-            Log.v(
+            Log.i(
                 LOG_TAG,
                 "AppDataSharingUpdatesFragment viewed with" +
                     " sessionId=$sessionId" +
