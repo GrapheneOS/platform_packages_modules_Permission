@@ -315,7 +315,7 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"ମିଡିଆ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ସମସ୍ତ ଫାଇଲ୍"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"ସର୍ବଦା ଅନୁମତି ଦିଆଯାଇଛି"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଗତଥର ଆକ୍ସେସ୍ କରାଯାଇଛି"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଗତଥର ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"ଗତକାଲି <xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଗତଥର ଆକ୍ସେସ୍ କରାଯାଇଛି"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ରେ ଗତଥର ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"ଗତ 24 ଘଣ୍ଟାରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
