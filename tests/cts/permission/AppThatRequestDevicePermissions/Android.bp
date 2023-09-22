@@ -22,6 +22,7 @@ android_test_helper_app {
     name: "CtsAppThatRequestsDevicePermissions",
     defaults: ["cts_defaults"],
     sdk_version: "current",
+    srcs: ["src/**/*.kt"],
     // Tag this module as a cts test artifact
     test_suites: [
         "cts",
