@@ -56,6 +56,7 @@ import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.LocationAccessCheck;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
+import com.android.permissioncontroller.permission.utils.ContextCompat;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
 import com.android.permissioncontroller.permission.utils.PermissionMapping;
@@ -336,8 +337,14 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                 continue;
             }
 
-            final boolean granted = (packageInfo.requestedPermissionsFlags[i]
-                    & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
+            boolean granted;
+            if (ContextCompat.getDeviceId(context) == ContextCompat.DEVICE_ID_DEFAULT) {
+                granted = (packageInfo.requestedPermissionsFlags[i]
+                        & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
+            } else {
+                int result = packageManager.checkPermission(requestedPermission, packageName);
+                granted = result == PackageManager.PERMISSION_GRANTED;
+            }
 
             final String appOp = PLATFORM_PACKAGE_NAME.equals(requestedPermissionInfo.packageName)
                     || (isHealthPermissionUiEnabled() && HEALTH_PERMISSION_GROUP.equals(
