@@ -386,7 +386,8 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     protected fun clickPermissionReviewContinue() {
         if (isAutomotive || isWatch) {
             clickAndWaitForWindowTransition(
-                By.text(getPermissionControllerString("review_button_continue")))
+                By.text(getPermissionControllerString("review_button_continue")), TIMEOUT_MILLIS * 2
+            )
         } else {
             clickAndWaitForWindowTransition(
                 By.res("com.android.permissioncontroller:id/continue_button"))
@@ -708,7 +709,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun findPermissionRequestAllowButton(timeoutMillis: Long = 20000) {
-        if (isAutomotive) {
+        if (isAutomotive || isWatch) {
             waitFindObject(By.text(getPermissionControllerString(ALLOW_BUTTON_TEXT)), timeoutMillis)
         } else {
             waitFindObject(By.res(ALLOW_BUTTON), timeoutMillis)
@@ -716,7 +717,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRequestAllowButton(timeoutMillis: Long = 20000) {
-        if (isAutomotive) {
+        if (isAutomotive || isWatch) {
             click(By.text(getPermissionControllerString(ALLOW_BUTTON_TEXT)), timeoutMillis)
         } else {
             click(By.res(ALLOW_BUTTON), timeoutMillis)
@@ -775,7 +776,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun findPermissionRequestAllowForegroundButton(timeoutMillis: Long = 20000) {
-        if (isAutomotive) {
+        if (isAutomotive || isWatch) {
             waitFindObject(By.text(
                 getPermissionControllerString(ALLOW_FOREGROUND_BUTTON_TEXT)), timeoutMillis)
         } else {
@@ -784,7 +785,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRequestAllowForegroundButton(timeoutMillis: Long = 10_000) {
-        if (isAutomotive) {
+        if (isAutomotive || isWatch) {
             click(By.text(
                 getPermissionControllerString(ALLOW_FOREGROUND_BUTTON_TEXT)), timeoutMillis)
         } else {

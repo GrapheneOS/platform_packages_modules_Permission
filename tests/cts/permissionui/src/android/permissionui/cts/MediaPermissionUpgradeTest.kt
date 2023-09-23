@@ -40,7 +40,8 @@ class MediaPermissionUpgradeTest : BaseUsePermissionTest() {
 
         // Request STORAGE, and click allow
         requestAppPermissionsAndAssertResult(
-            READ_EXTERNAL_STORAGE to true
+            READ_EXTERNAL_STORAGE to true,
+            waitForWindowTransition = !isWatch
         ) {
             clickPermissionRequestAllowButton()
         }
