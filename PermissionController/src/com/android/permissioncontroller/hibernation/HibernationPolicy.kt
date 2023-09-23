@@ -114,8 +114,7 @@ import kotlinx.coroutines.launch
 
 private const val LOG_TAG = "HibernationPolicy"
 const val DEBUG_OVERRIDE_THRESHOLDS = false
-// TODO eugenesusla: temporarily enabled for extra logs during dogfooding
-const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
+const val DEBUG_HIBERNATION_POLICY = false
 
 private var SKIP_NEXT_RUN = false
 
