@@ -41,7 +41,8 @@ class LightPackageInfoLiveData
 private constructor(
     private val app: Application,
     private val packageName: String,
-    private val user: UserHandle
+    private val user: UserHandle,
+    private val deviceId: Int
 ) :
     SmartAsyncMediatorLiveData<LightPackageInfo?>(alwaysUpdateOnActive = false),
     PackageBroadcastReceiver.PackageBroadcastListener,
@@ -120,7 +121,7 @@ private constructor(
                         e
                     )
                 }
-                invalidateSingle(packageName to user)
+                invalidateSingle(Triple(packageName, user, deviceId))
                 null
             }
         )
@@ -198,12 +199,16 @@ private constructor(
      * LiveData.
      */
     companion object :
-        DataRepositoryForPackage<Pair<String, UserHandle>, LightPackageInfoLiveData>() {
-        override fun newValue(key: Pair<String, UserHandle>): LightPackageInfoLiveData {
+        DataRepositoryForDevice<Triple<String, UserHandle, Int>, LightPackageInfoLiveData>() {
+        override fun newValue(
+            key: Triple<String, UserHandle, Int>,
+            deviceId: Int
+        ): LightPackageInfoLiveData {
             return LightPackageInfoLiveData(
                 PermissionControllerApplication.get(),
                 key.first,
-                key.second
+                key.second,
+                deviceId
             )
         }
     }

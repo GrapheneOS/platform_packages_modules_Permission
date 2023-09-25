@@ -58,6 +58,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SH
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
+import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.v34.AppDataSharingUpdatesLiveData
 import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
