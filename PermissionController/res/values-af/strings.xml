@@ -337,7 +337,7 @@
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"In afgelope 7 dae gebruik • Alle lêers"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Geen toestemmings toegelaat nie"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Geen toestemmings geweier nie"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Geen programme toegelaat nie"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Geen apps toegelaat nie"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Geen programme het toestemming vir alle lêers nie"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Geen programme het toestemming net vir media nie"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Geen programme geweier nie"</string>
@@ -580,7 +580,7 @@
     <string name="camera_toggle_title" msgid="1251201397431837666">"Kameratoegang"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofoontoegang"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Vir apps en dienste"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Vir programme en dienste. As hierdie instelling af is, kan mikrofoondata steeds gedeel word wanneer jy ’n noodnommer bel."</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Vir apps en dienste. As hierdie instelling af is, kan mikrofoondata steeds gedeel word wanneer jy ’n noodnommer bel."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Sien programme en dienste met toegang tot ligging"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Wys knipbordtoegang"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Wys ’n boodskap wanneer apps toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
