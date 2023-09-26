@@ -83,7 +83,9 @@ fun ScrollableScreen(
                 .focusRequester(focusRequester)
                 .focusable(),
             timeText = {
-                if (showTimeText && !isLoading) {
+                // TODO(b/302002254): Temperately skip broken library. Please revert back once
+                // b/300996348 is resolved.
+                if (false && showTimeText && !isLoading) {
                     TimeText(
                         modifier = Modifier.scrollAway(listState),
                         contentPadding = PaddingValues(15.dp)
