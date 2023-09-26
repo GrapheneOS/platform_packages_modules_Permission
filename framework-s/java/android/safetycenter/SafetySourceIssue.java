@@ -956,6 +956,8 @@ public final class SafetySourceIssue implements Parcelable {
                 mConfirmationDialogDetails = action.mConfirmationDialogDetails;
             }
 
+            // TODO(b/303443020): Add setters for id, label, and pendingIntent
+
             /**
              * Sets whether the action will resolve the safety issue. Defaults to {@code false}.
              *
