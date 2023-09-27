@@ -57,7 +57,7 @@
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Laat altyd toe"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Laat toe dat alle lêers bestuur word"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Laat toegang tot medialêers toe"</string>
-    <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Programme"</string>
+    <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Programtoestemmings"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Ongebruikte programme"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Geen ongebruikte programme nie"</string>
