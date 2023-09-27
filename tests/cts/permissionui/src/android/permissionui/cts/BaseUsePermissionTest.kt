@@ -1162,7 +1162,12 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                     getTargetSdk() <= Build.VERSION_CODES.S_V2 &&
                     permission in MEDIA_PERMISSIONS
             if (shouldShowStorageWarning) {
-                click(By.res(ALERT_DIALOG_OK_BUTTON))
+                if (isWatch) {
+                    click(By.desc(
+                        getPermissionControllerString("media_confirm_dialog_positive_button")))
+                } else {
+                    click(By.res(ALERT_DIALOG_OK_BUTTON))
+                }
             } else if (!alreadyChecked && isLegacyApp && wasGranted) {
                 if (!isTv) {
                     // Wait for alert dialog to popup, then scroll to the bottom of it
