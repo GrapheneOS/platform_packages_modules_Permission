@@ -118,6 +118,7 @@ import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
 import com.android.permissioncontroller.permission.ui.v34.PermissionRationaleActivity
+import com.android.permissioncontroller.permission.utils.ContextCompat
 import com.android.permissioncontroller.permission.utils.v31.AdminRestrictedPermissionsUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
@@ -198,7 +199,8 @@ open class GrantPermissionsViewModel(
         val sendToSettingsImmediately: Boolean = false,
         val openPhotoPicker: Boolean = false,
         // Unused for now, will be included in the GrantPermissions refactor
-        val filteredPermissions: Collection<String> = emptyList()
+        val filteredPermissions: Collection<String> = emptyList(),
+        val deviceId: Int = ContextCompat.DEVICE_ID_DEFAULT,
     ) {
         val groupName = groupInfo.name
     }

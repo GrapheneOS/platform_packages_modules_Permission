@@ -270,7 +270,7 @@
                   android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
                   android:visibleToInstantApps="true"
                   android:inheritShowWhenLocked="true"
-                  android:canDisplayOnRemoteDevices="false">
+                  android:canDisplayOnRemoteDevices="@bool/is_at_least_v">
             <intent-filter android:priority="1">
                 <action android:name="android.content.pm.action.REQUEST_PERMISSIONS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -290,7 +290,7 @@
                   android:visibleToInstantApps="true"
                   android:inheritShowWhenLocked="true"
                   android:hardwareAccelerated="false"
-                  android:canDisplayOnRemoteDevices="false">
+                  android:canDisplayOnRemoteDevices="@bool/is_at_least_v">
         </activity>
 
         <activity android:name="com.android.permissioncontroller.permission.ui.ManagePermissionsActivity"
