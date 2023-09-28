@@ -24,7 +24,11 @@ public final class Build {
     public static final class VERSION_CODES {
         /** Constant used in the Safety Center config code. */
         public static final int TIRAMISU = 33;
+
         /** Constant used in the Safety Center config code. */
         public static final int UPSIDE_DOWN_CAKE = 34;
+
+        /** Constant used in the Safety Center config code. */
+        public static final int VANILLA_ICE_CREAM = 35;
     }
 }
