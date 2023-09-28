@@ -466,7 +466,7 @@
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar? "<annotation id="link">"Izinkan di setelan."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Ubah akses lokasi <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> dari perkiraan ke lokasi presisi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses perkiraan lokasi perangkat ini?"</string>
-    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Akurat"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presisi"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Perkiraan"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses kalender?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengirim dan melihat SMS?"</string>
