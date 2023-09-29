@@ -27,6 +27,7 @@ import android.os.Looper;
 import android.safetycenter.SafetyCenterStatus;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +49,8 @@ import java.util.Objects;
 /** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
 @RequiresApi(TIRAMISU)
 public class SafetyStatusPreference extends Preference implements ComparablePreference {
+
+    private static final String TAG = "SafetyStatusPreference";
 
     @Nullable private StatusUiData mStatus;
     @Nullable private SafetyCenterViewModel mViewModel;
@@ -72,6 +75,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+        Log.d(TAG, String.format("onBindViewHolder called for status %s", mStatus));
 
         if (mStatus == null) {
             return;
@@ -335,6 +339,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     void setData(StatusUiData statusUiData) {
         mStatus = statusUiData;
+        Log.d(TAG, String.format("setData called for status %s", mStatus));
         safeNotifyChanged();
     }
 
@@ -349,7 +354,14 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     // Calling notifyChanged while recyclerview is scrolling or computing layout will result in an
     // IllegalStateException. Post to handler to wait for UI to settle.
     private void safeNotifyChanged() {
-        new Handler(Looper.getMainLooper()).post(this::notifyChanged);
+        new Handler(Looper.getMainLooper())
+                .post(
+                        () -> {
+                            Log.d(
+                                    TAG,
+                                    String.format("Calling notifyChanged for status %s", mStatus));
+                            notifyChanged();
+                        });
     }
 
     @Override
