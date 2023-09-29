@@ -17,6 +17,8 @@
 package android.safetycenter.functional.ui
 
 import android.content.Context
+import android.os.Build
+import android.safetycenter.SafetySourceData
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -105,6 +107,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationAndNoIssues_hasRescanButton() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        preSetDataOnT(SINGLE_SOURCE_ID, safetySourceTestData.information)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.information)
@@ -122,6 +125,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationAndNoIssues_hasContentDescriptions() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        preSetDataOnT(SINGLE_SOURCE_ID, safetySourceTestData.information)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.information)
@@ -136,6 +140,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withInformationIssue_doesNotHaveRescanButton() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        preSetDataOnT(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.informationWithIssue)
@@ -153,6 +158,10 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withRecommendationIssue_doesNotHaveRescanButton() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.recommendationWithGeneralIssue
+        )
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.recommendationWithGeneralIssue)
@@ -172,6 +181,10 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withCriticalWarningIssue_doesNotHaveRescanButton() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        safetyCenterTestHelper.setData(
+            SINGLE_SOURCE_ID,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.criticalWithResolvingGeneralIssue)
@@ -191,6 +204,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun withKnownStatus_displaysScanningOnRescan() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        preSetDataOnT(SINGLE_SOURCE_ID, safetySourceTestData.information)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.information)
@@ -214,6 +228,7 @@ class SafetyCenterStatusCardTest {
     @Test
     fun rescan_updatesDataAfterScanCompletes() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+        preSetDataOnT(SINGLE_SOURCE_ID, safetySourceTestData.information)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.information)
@@ -237,6 +252,16 @@ class SafetyCenterStatusCardTest {
                 ),
                 safetyCenterTestData.getAlertString(1)
             )
+        }
+    }
+
+    /**
+     * Sets the given data for the given source ID if this test is running on T builds. This is a
+     * mitigation for b/301234118 which seems to only fail consistently on T.
+     */
+    private fun preSetDataOnT(sourceId: String, safetySourceData: SafetySourceData) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU) {
+            safetyCenterTestHelper.setData(sourceId, safetySourceData)
         }
     }
 }
