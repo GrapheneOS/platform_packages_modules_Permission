@@ -33,7 +33,6 @@ import android.view.Display.DEFAULT_DISPLAY
 import android.virtualdevice.cts.common.FakeAssociationRule
 import android.virtualdevice.cts.common.util.VirtualDeviceTestUtils
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
@@ -45,6 +44,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Assume.assumeNotNull
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -60,12 +60,13 @@ class AppStreamingPermissionTest : BaseUsePermissionTest() {
 
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val defaultDeviceContext = instrumentation.targetContext
-    private val imageReader =  ImageReader.newInstance(
+    private val imageReader =
+        ImageReader.newInstance(
             /* width= */ DISPLAY_WIDTH,
             /* height= */ DISPLAY_HEIGHT,
             PixelFormat.RGBA_8888,
             /* maxImages= */ 1
-    )
+        )
 
     private lateinit var virtualDeviceManager: VirtualDeviceManager
     private lateinit var virtualDevice: VirtualDevice
@@ -116,9 +117,10 @@ class AppStreamingPermissionTest : BaseUsePermissionTest() {
         imageReader.close()
     }
 
-    // TODO(b/291737919): Enable test once flag is rolled out
-    @FlakyTest
+    // TODO(b/291737919) Re-enable test once the flag is rolled out.
+    // TODO(b/301272559) Make test dependent on flag value once fixed.
     @Test
+    @Ignore("b/291737919")
     fun requestPermission_onVirtualDevice_showsAffectedDevice() {
         installPackage(APP_APK_PATH_STREAMING)
         requestPermissionOnDevice(virtualDisplayId)
@@ -169,10 +171,11 @@ class AppStreamingPermissionTest : BaseUsePermissionTest() {
         assertThat(text).doesNotContain(deviceName)
     }
 
-    private fun getPermissionMessageResource(): String = when {
-        isAutomotive -> PERMISSION_MESSAGE_ID_AUTOMOTIVE
-        else -> PERMISSION_MESSAGE_ID
-    }
+    private fun getPermissionMessageResource(): String =
+        when {
+            isAutomotive -> PERMISSION_MESSAGE_ID_AUTOMOTIVE
+            else -> PERMISSION_MESSAGE_ID
+        }
 
     private fun findTextForView(selector: BySelector): String {
         val timeoutMs = 10000L
