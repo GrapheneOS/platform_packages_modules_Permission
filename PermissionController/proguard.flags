@@ -31,3 +31,13 @@
   *** set*(***);
   *** has*();
 }
+
+# Strip verbose logs.
+-assumenosideeffects class android.util.Log {
+  static *** v(...);
+  static *** isLoggable(...);
+}
+-assumenosideeffects class android.util.Slog {
+  static *** v(...);
+}
+-maximumremovedandroidloglevel 2
