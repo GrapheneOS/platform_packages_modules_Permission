@@ -4,4 +4,5 @@ yamasani@google.com
 michaelwr@google.com
 narayan@google.com
 roosa@google.com
-per-file automotive_android_manifest.xml = sgurun@google.com,keunyoung@google.com,felipeal@google.com,skeys@google.com
+per-file automotive_android_manifest.xml = skeys@google.com
+per-file automotive_android_manifest.xml = file:platform/packages/services/Car:/OWNERS
