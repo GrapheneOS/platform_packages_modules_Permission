@@ -166,6 +166,32 @@ class TestNotificationListener : NotificationListenerService() {
         }
 
         /**
+         * Waits for a success notification with the given [successMessage] after resolving an
+         * issue.
+         *
+         * Additional assertions can be made on the [StatusBarNotification] using [onNotification].
+         */
+        fun waitForSuccessNotification(
+            successMessage: String,
+            onNotification: (StatusBarNotification) -> Unit = {}
+        ) {
+            val successNotificationWithChannel =
+                waitForSingleNotificationMatching(
+                    NotificationCharacteristics(
+                        successMessage,
+                        "",
+                        actions = emptyList(),
+                    )
+                )
+            val statusBarNotification = successNotificationWithChannel.statusBarNotification
+            onNotification(statusBarNotification)
+            // Cancel the notification directly to speed up the tests as it's only auto-cancelled
+            // after 10 seconds, and the teardown waits for all notifications to be cancelled to
+            // avoid having unrelated notifications leaking between test cases.
+            cancelAndWait(statusBarNotification.key, waitForIssueCache = false)
+        }
+
+        /**
          * Blocks for [TIMEOUT_SHORT], or throw an [AssertionError] if any notification is posted or
          * removed before then.
          */
@@ -277,18 +303,20 @@ class TestNotificationListener : NotificationListenerService() {
         /**
          * Cancels a specific notification and then waits for it to be removed by the notification
          * manager and marked as dismissed in Safety Center, or throws if it has not been removed
-         * within [timeout].
+         * within [TIMEOUT_LONG].
          */
-        fun cancelAndWait(key: String, timeout: Duration = TIMEOUT_LONG) {
+        fun cancelAndWait(key: String, waitForIssueCache: Boolean = true) {
             getInstanceOrThrow().cancelNotification(key)
             waitForNotificationsToSatisfy(
-                timeout = timeout,
+                timeout = TIMEOUT_LONG,
                 description = "no notification with the key $key"
             ) { notifications ->
                 notifications.none { it.statusBarNotification.key == key }
             }
 
-            waitForIssueCacheToContainAnyDismissedNotification()
+            if (waitForIssueCache) {
+                waitForIssueCacheToContainAnyDismissedNotification()
+            }
         }
 
         private fun waitForIssueCacheToContainAnyDismissedNotification() {
