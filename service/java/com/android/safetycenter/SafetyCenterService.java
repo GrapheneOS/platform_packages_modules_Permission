@@ -342,9 +342,8 @@ public final class SafetyCenterService extends SystemService {
                 String safetySourceId, String packageName, @UserIdInt int userId) {
             requireNonNull(safetySourceId);
             requireNonNull(packageName);
-            getContext()
-                    .enforceCallingOrSelfPermission(
-                            SEND_SAFETY_CENTER_UPDATE, "getSafetySourceData");
+            enforceAnyCallingOrSelfPermissions(
+                    "getSafetySourceData", SEND_SAFETY_CENTER_UPDATE, MANAGE_SAFETY_CENTER);
             if (!enforceCrossUserPermission("getSafetySourceData", userId)
                     || !enforcePackage(Binder.getCallingUid(), packageName, userId)
                     || !checkApiEnabled("getSafetySourceData")) {
