@@ -116,11 +116,6 @@ public class LocationAccessCheckTest {
     private static final int LOCATION_ACCESS_CHECK_JOB_ID = 0;
     private static final int LOCATION_ACCESS_CHECK_NOTIFICATION_ID = 0;
 
-    /**
-     * Whether to show location access check notifications.
-     */
-    private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
-            "location_access_check_enabled";
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_DELAY_MILLIS =
             "location_access_check_delay_millis";
     private static final String PROPERTY_LOCATION_ACCESS_PERIODIC_INTERVAL_MILLIS =
@@ -165,14 +160,6 @@ public class LocationAccessCheckTest {
 
     @Rule
     public final ScreenRecordRule mScreenRecordRule = new ScreenRecordRule(false, false);
-
-    // Override location access check flag
-    @Rule
-    public DeviceConfigStateChangerRule mPrivacyDeviceConfig =
-            new DeviceConfigStateChangerRule(sContext,
-                    DeviceConfig.NAMESPACE_PRIVACY,
-                    PROPERTY_LOCATION_ACCESS_CHECK_ENABLED,
-                    Boolean.toString(true));
 
     // Override SafetyCenter enabled flag
     @Rule
@@ -442,22 +429,6 @@ public class LocationAccessCheckTest {
         sLocationAccessor = null;
     }
 
-    private void setDeviceConfigProperty(
-            @NonNull String propertyName,
-            @NonNull String value) {
-        runWithShellPermissionIdentity(() -> {
-            boolean valueWasSet = DeviceConfig.setProperty(
-                    DeviceConfig.NAMESPACE_PRIVACY,
-                    propertyName,
-                    value,
-                    false);
-            if (!valueWasSet) {
-                throw new IllegalStateException("Could not set " + propertyName + " to " + value);
-            }
-        });
-    }
-
-
     private static void installForegroundAccessApp() throws Exception {
         unbindService();
         runShellCommandOrThrow("pm install -r -g " + TEST_APP_LOCATION_FG_ACCESS_APK);
@@ -513,7 +484,7 @@ public class LocationAccessCheckTest {
     public void resetPermissionControllerBeforeEachTest() throws Throwable {
         // Has to be before resetPermissionController to make sure enablement time is the reset time
         // of permission controller
-        enableLocationAccessCheck();
+        runLocationCheck();
 
         resetPermissionController();
 
@@ -529,26 +500,6 @@ public class LocationAccessCheckTest {
     public void bypassBatterySavingRestrictions() {
         runShellCommand("cmd tare set-vip " + myUserHandle().getIdentifier()
                 + " " + PERMISSION_CONTROLLER_PKG + " true");
-    }
-
-    /**
-     * Enable location access check
-     */
-    public void enableLocationAccessCheck() throws Throwable {
-        setDeviceConfigProperty(PROPERTY_LOCATION_ACCESS_CHECK_ENABLED,
-                "true");
-        // Run a location access check to update enabled state inside permission controller
-        runLocationCheck();
-    }
-
-    /**
-     * Disable location access check
-     */
-    private void disableLocationAccessCheck() throws Throwable {
-        setDeviceConfigProperty(PROPERTY_LOCATION_ACCESS_CHECK_ENABLED,
-                "false");
-        // Run a location access check to update enabled state inside permission controller
-        runLocationCheck();
     }
 
     /**
@@ -749,50 +700,6 @@ public class LocationAccessCheckTest {
 
     @Test
     @AsbSecurityTest(cveBugId = 141028068)
-    public void noNotificationIfFeatureDisabled() throws Throwable {
-        assumeNotPlayManaged();
-
-        disableLocationAccessCheck();
-
-        accessLocation();
-        runLocationCheck();
-
-        assertNull(getNotification(false));
-    }
-
-    @Test
-    @AsbSecurityTest(cveBugId = 141028068)
-    public void notificationOnlyForAccessesSinceFeatureWasEnabled() throws Throwable {
-        assumeNotPlayManaged();
-
-        disableLocationAccessCheck();
-
-        accessLocation();
-        runLocationCheck();
-
-        // No notification expected for accesses before enabling the feature
-        assertNull(getNotification(false));
-
-        enableLocationAccessCheck();
-        Thread.sleep(2000);
-
-        // Trigger update of location enable time. In the real world it enabling happens on the
-        // first location check. I.e. accesses before this location check are ignored.
-        runLocationCheck();
-
-        // No notification expected for accesses before enabling the feature (even after feature is
-        // enabled now)
-        assertNull(getNotification(false));
-
-        // Notification expected for access after enabling the feature
-        accessLocation();
-        runLocationCheck();
-
-        eventually(() -> assertNotNull(getNotification(true)), EXPECTED_TIMEOUT_MILLIS);
-    }
-
-    @Test
-    @AsbSecurityTest(cveBugId = 141028068)
     public void noNotificationIfBlamerNotSystemOrLocationProvider() throws Throwable {
         assumeNotPlayManaged();
 
@@ -820,6 +727,54 @@ public class LocationAccessCheckTest {
         sContext.startActivity(intent);
 
         runLocationCheck();
+        assertNull(getNotification(false));
+    }
+
+    @Test
+    @AsbSecurityTest(cveBugId = 141028068)
+    public void noNotificationWhenLocationNeverAccessed() throws Throwable {
+        assumeNotPlayManaged();
+
+        // Reset to clear property location_access_check_enabled_time has been already happened
+        // when resetPermissionController() invoked from before test method
+
+        runLocationCheck();
+
+        // Not expecting notification as location is not accessed and previously set
+        // LOCATION_ACCESS_CHECK_ENABLED_TIME if any is cleaned up
+        assertNull(getNotification(false));
+    }
+
+    @Test
+    @AsbSecurityTest(cveBugId = 141028068)
+    public void notificationWhenLocationAccessed() throws Throwable {
+        assumeNotPlayManaged();
+
+        // Reset to clear property location_access_check_enabled_time has been already happened
+        // when resetPermissionController() invoked from before test method
+
+        accessLocation();
+        runLocationCheck();
+
+        // Expecting notification as accessing the location causes
+        // LOCATION_ACCESS_CHECK_ENABLED_TIME to be set
+        eventually(() -> assertNotNull(getNotification(true)), EXPECTED_TIMEOUT_MILLIS);
+    }
+
+    @Test
+    @AsbSecurityTest(cveBugId = 141028068)
+    public void noNotificationWhenLocationAccessedPriorToEnableTime() throws Throwable {
+        assumeNotPlayManaged();
+
+        accessLocation();
+
+        // Reset to clear the property location_access_check_enabled_time
+        resetPermissionController();
+
+        runLocationCheck();
+
+        // Not expecting the notification as the location
+        // access was prior to LOCATION_ACCESS_CHECK_ENABLED_TIME (No notification for prior events)
         assertNull(getNotification(false));
     }
 
