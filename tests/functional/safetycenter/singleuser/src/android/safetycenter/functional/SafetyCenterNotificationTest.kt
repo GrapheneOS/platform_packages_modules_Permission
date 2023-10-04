@@ -28,6 +28,7 @@ import android.safetycenter.SafetyCenterStatus
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
+import android.service.notification.StatusBarNotification
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -900,13 +901,7 @@ class SafetyCenterNotificationTest {
 
         sendActionPendingIntentAndWaitWithPermission(action)
 
-        TestNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(
-                "Issue solved",
-                "",
-                actions = emptyList(),
-            )
-        )
+        TestNotificationListener.waitForSuccessNotification("Issue solved")
     }
 
     @Test
@@ -924,16 +919,10 @@ class SafetyCenterNotificationTest {
             Response.SetData(safetySourceTestData.information)
         )
         sendActionPendingIntentAndWaitWithPermission(action)
-        val issueSolvedNotificationWithChannel =
-            TestNotificationListener.waitForSingleNotificationMatching(
-                NotificationCharacteristics(
-                    "Issue solved",
-                    "",
-                    actions = emptyList(),
-                )
-            )
 
-        assertThat(issueSolvedNotificationWithChannel.hasAutoCancel()).isTrue()
+        TestNotificationListener.waitForSuccessNotification("Issue solved") {
+            assertThat(it.hasAutoCancel()).isTrue()
+        }
     }
 
     // TODO(b/284271124): Decide what to do with existing notifications when flag flipped off
@@ -979,13 +968,7 @@ class SafetyCenterNotificationTest {
 
         sendActionPendingIntentAndWaitWithPermission(action)
 
-        TestNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(
-                "Issue solved",
-                "",
-                actions = emptyList(),
-            )
-        )
+        TestNotificationListener.waitForSuccessNotification("Issue solved")
     }
 
     @Test
@@ -1046,13 +1029,7 @@ class SafetyCenterNotificationTest {
 
         sendActionPendingIntentAndWaitWithPermission(action)
 
-        TestNotificationListener.waitForSingleNotificationMatching(
-            NotificationCharacteristics(
-                "Solved via notification action :)",
-                "",
-                actions = emptyList(),
-            )
-        )
+        TestNotificationListener.waitForSuccessNotification("Solved via notification action :)")
     }
 
     @Test
@@ -1120,7 +1097,7 @@ class SafetyCenterNotificationTest {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, safetySourceTestData.informationWithIssue)
         val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
 
-        assertThat(notificationWithChannel.hasAutoCancel()).isTrue()
+        assertThat(notificationWithChannel.statusBarNotification.hasAutoCancel()).isTrue()
     }
 
     @Test
@@ -1131,7 +1108,7 @@ class SafetyCenterNotificationTest {
         )
         val notificationWithChannel = TestNotificationListener.waitForSingleNotification()
 
-        assertThat(notificationWithChannel.hasAutoCancel()).isFalse()
+        assertThat(notificationWithChannel.statusBarNotification.hasAutoCancel()).isFalse()
     }
 
     private companion object {
@@ -1156,9 +1133,8 @@ class SafetyCenterNotificationTest {
                 sourceIds.map { "$it/$ISSUE_TYPE_ID" }.toSet()
         }
 
-        fun StatusBarNotificationWithChannel.hasAutoCancel(): Boolean {
-            val autoCancelMask =
-                statusBarNotification.notification.flags and Notification.FLAG_AUTO_CANCEL
+        fun StatusBarNotification.hasAutoCancel(): Boolean {
+            val autoCancelMask = notification.flags and Notification.FLAG_AUTO_CANCEL
             return autoCancelMask != 0
         }
 
