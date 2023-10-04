@@ -16,6 +16,9 @@
 
 package com.android.safetycenter.data;
 
+import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import static com.android.safetycenter.logging.SafetyCenterStatsdLogger.toSystemEventResult;
 
 import android.annotation.UserIdInt;
@@ -63,6 +66,7 @@ public final class SafetyCenterDataManager {
 
     private static final String TAG = "SafetyCenterDataManager";
 
+    private final Context mContext;
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
     private final SafetySourceDataRepository mSafetySourceDataRepository;
     private final SafetyCenterIssueDismissalRepository mSafetyCenterIssueDismissalRepository;
@@ -78,6 +82,7 @@ public final class SafetyCenterDataManager {
             SafetyCenterConfigReader safetyCenterConfigReader,
             SafetyCenterRefreshTracker safetyCenterRefreshTracker,
             ApiLock apiLock) {
+        mContext = context;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
         mSafetyCenterInFlightIssueActionRepository =
                 new SafetyCenterInFlightIssueActionRepository(context);
@@ -130,7 +135,11 @@ public final class SafetyCenterDataManager {
             String packageName,
             @UserIdInt int userId) {
         if (!mSafetySourceDataValidator.validateRequest(
-                safetySourceData, safetySourceId, packageName, userId)) {
+                safetySourceData,
+                /* callerCanAccessAnySource= */ false,
+                safetySourceId,
+                packageName,
+                userId)) {
             return false;
         }
         SafetySourceKey safetySourceKey = SafetySourceKey.of(safetySourceId, userId);
@@ -204,7 +213,11 @@ public final class SafetyCenterDataManager {
             String packageName,
             @UserIdInt int userId) {
         if (!mSafetySourceDataValidator.validateRequest(
-                /* safetySourceData= */ null, safetySourceId, packageName, userId)) {
+                /* safetySourceData= */ null,
+                /* callerCanAccessAnySource= */ false,
+                safetySourceId,
+                packageName,
+                userId)) {
             return false;
         }
         SafetyEvent safetyEvent = safetySourceErrorDetails.getSafetyEvent();
@@ -425,8 +438,14 @@ public final class SafetyCenterDataManager {
     @Nullable
     public SafetySourceData getSafetySourceData(
             String safetySourceId, String packageName, @UserIdInt int userId) {
+        boolean callerCanAccessAnySource =
+                mContext.checkCallingOrSelfPermission(MANAGE_SAFETY_CENTER) == PERMISSION_GRANTED;
         if (!mSafetySourceDataValidator.validateRequest(
-                /* safetySourceData= */ null, safetySourceId, packageName, userId)) {
+                /* safetySourceData= */ null,
+                callerCanAccessAnySource,
+                safetySourceId,
+                packageName,
+                userId)) {
             return null;
         }
         return mSafetySourceDataRepository.getSafetySourceData(

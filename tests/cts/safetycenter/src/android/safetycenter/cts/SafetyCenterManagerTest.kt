@@ -16,6 +16,7 @@
 
 package android.safetycenter.cts
 
+import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.content.Context
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -88,6 +89,7 @@ import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.CRITICAL_ISSUE_ID
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.EVENT_SOURCE_STATE_CHANGED
 import com.android.safetycenter.testing.SafetySourceTestData.Companion.RECOMMENDATION_ISSUE_ID
+import com.android.safetycenter.testing.ShellPermissions.callWithShellPermissionIdentity
 import com.android.safetycenter.testing.SupportsSafetyCenterRule
 import com.google.common.base.Preconditions.checkState
 import com.google.common.truth.Truth.assertThat
@@ -656,6 +658,18 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo("Unexpected safety source: $STATIC_BAREBONE_ID")
+    }
+
+    @Test
+    fun getSafetySourceData_differentPackageWithManageSafetyCenterPermission_returnsData() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexConfig)
+
+        val data =
+            callWithShellPermissionIdentity(MANAGE_SAFETY_CENTER) {
+                safetyCenterManager.getSafetySourceData(DYNAMIC_OTHER_PACKAGE_ID)
+            }
+
+        assertThat(data).isNull()
     }
 
     @Test

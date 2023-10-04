@@ -175,15 +175,19 @@ public final class SafetyCenterConfigReader {
      * source is expected to interact with Safety Center, but is currently being silenced / no-ops
      * while an override for tests is in place.
      *
-     * <p>The {@code callingPackageName} is used to differentiate a real source being overridden. It
-     * could be that a test is overriding a real source and as such the real source should not be
-     * able to provide data while its override is in place.
+     * <p>The {@code callingPackageName} can be used to differentiate a real source being
+     * overridden. It could be that a test is overriding a real source and as such the real source
+     * should not be able to provide data while its override is in place.
      */
-    public boolean isExternalSafetySourceActive(String safetySourceId, String callingPackageName) {
+    public boolean isExternalSafetySourceActive(
+            String safetySourceId, @Nullable String callingPackageName) {
         ExternalSafetySource externalSafetySourceInCurrentConfig =
                 getCurrentConfigInternal().getExternalSafetySources().get(safetySourceId);
         if (externalSafetySourceInCurrentConfig == null) {
             return false;
+        }
+        if (callingPackageName == null) {
+            return true;
         }
         return Objects.equals(
                 externalSafetySourceInCurrentConfig.getSafetySource().getPackageName(),
