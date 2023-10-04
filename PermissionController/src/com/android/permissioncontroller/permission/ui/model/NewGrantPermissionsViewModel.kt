@@ -804,7 +804,7 @@ class NewGrantPermissionsViewModel(
             safetyLabelInfoLiveData?.value?.safetyLabel,
             PermissionMapping.getGroupOfPlatformPermission(permission))
 
-        Log.v(LOG_TAG, "Permission grant result requestId=$sessionId " +
+        Log.i(LOG_TAG, "Permission grant result requestId=$sessionId " +
             "callingUid=${packageInfo.uid} callingPackage=$packageName permission=$permission " +
             "isImplicit=$isImplicit result=$result " +
             "isPermissionRationaleShown=$isPermissionRationaleShown")
@@ -1065,15 +1065,15 @@ class NewGrantPermissionsViewModel(
         }
 
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
-                groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
-                packageInfo.targetSdkVersion, selectedPrecision,
-                isPermissionRationaleShown)
-        Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
-                "$groupName uid=${packageInfo.uid} selectedPrecision=$selectedPrecision " +
-                "package=$packageName presentedButtons=$presentedButtons " +
-                "clickedButton=$clickedButton isPermissionRationaleShown=" +
-                "$isPermissionRationaleShown sessionId=$sessionId " +
-                "targetSdk=${packageInfo.targetSdkVersion}")
+            groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
+            packageInfo.targetSdkVersion, selectedPrecision,
+            isPermissionRationaleShown)
+        Log.i(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
+            "$groupName uid=${packageInfo.uid} selectedPrecision=$selectedPrecision " +
+            "package=$packageName presentedButtons=$presentedButtons " +
+            "clickedButton=$clickedButton isPermissionRationaleShown=" +
+            "$isPermissionRationaleShown sessionId=$sessionId " +
+            "targetSdk=${packageInfo.targetSdkVersion}")
     }
 
     /**

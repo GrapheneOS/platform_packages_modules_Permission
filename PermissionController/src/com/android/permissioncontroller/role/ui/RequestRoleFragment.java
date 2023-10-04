@@ -457,7 +457,7 @@ public class RequestRoleFragment extends DialogFragment {
     static void reportRequestResult(int requestingUid, String requestingPackageName,
             String roleName, int qualifyingCount, int currentUid, String currentPackageName,
             int grantedAnotherUid, String grantedAnotherPackageName, int result) {
-        Log.v(LOG_TAG, "Role request result"
+        Log.i(LOG_TAG, "Role request result"
                 + " requestingUid=" + requestingUid
                 + " requestingPackageName=" + requestingPackageName
                 + " roleName=" + roleName

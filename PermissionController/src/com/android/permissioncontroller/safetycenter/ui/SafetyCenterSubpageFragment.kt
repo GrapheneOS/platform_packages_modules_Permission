@@ -72,7 +72,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     override fun renderSafetyCenterData(uiData: SafetyCenterUiData?) {
-        Log.d(TAG, "renderSafetyCenterEntryGroup called with $uiData")
+        Log.v(TAG, "renderSafetyCenterEntryGroup called with $uiData")
         val entryGroup = uiData?.getMatchingGroup(sourceGroupId)
         if (entryGroup == null) {
             Log.w(TAG, "$sourceGroupId doesn't match any of the existing SafetySourcesGroup IDs")
@@ -136,7 +136,7 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
     }
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
-        Log.d(TAG, "updateSafetyCenterEntries called with $entryGroup")
+        Log.v(TAG, "updateSafetyCenterEntries called with $entryGroup")
         subpageEntryGroup.removeAll()
         for (entry in entryGroup.entries) {
             subpageEntryGroup.addPreference(

@@ -400,7 +400,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         }
         PermissionControllerStatsLog.write(APP_PERMISSIONS_FRAGMENT_VIEWED, sessionId, viewId,
                 permissionGroupName, uid, mPackageName, category);
-        Log.v(LOG_TAG, "AutoAppPermissionFragment view logged with sessionId=" + sessionId
+        Log.i(LOG_TAG, "AutoAppPermissionFragment view logged with sessionId=" + sessionId
                 + " viewId=" + viewId + " permissionGroupName=" + permissionGroupName + " uid="
                 + uid + " packageName="
                 + mPackageName + " category=" + category);

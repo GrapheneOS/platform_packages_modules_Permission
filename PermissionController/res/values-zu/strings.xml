@@ -455,48 +455,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Bonisa ukutholwa okucushwe umsizi"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Bonisa isithonjana kwibha yesaziso uma imakrofoni isetshenzisiwe ukusebenzisa umsizi wezwi"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele izithombe kanye nemidiya kudivayisi yakho?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (5934218468708513375) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithole ukufinyelela koxhumana nabo?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (2270563860206654757) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kundawo yale divayisi?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6641436550953715107) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Uhlelo lokusebenza luzoba nokufinyelela kuphela kundawo ngenkathi usebenzisa uhlelo lokusebenza"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kundawo yale divayisi?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (7660465507029650527) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Lolu hlelo lokusebenza lungafuna ukufinyelela indawo yakho ngaso sonke isikhathi, ngisho noma ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kokuthi izilungiselelo"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Shintsha ukufinyelela kwendawo kwe-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (4528266408056426513) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Lolu hlelo lokusebenza lufuna ukufinyelela kundawo yakho ngaso sonke isikhathi, nanoma ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kokuthi izilungiselelo"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithole, ixhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (7919687165848885665) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithole, ixhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze? "<annotation id="link">"Vumela kumasethingi."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Shintsha ukufinyelela indawo kwe-<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> kusuka kokulinganiselwayo kuya kokunembile?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (3947134846432067176) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele indawo elinganiselwe yale divayisi?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (9001956706241104626) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Kunembile"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Cishe"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kukhalenda yakho?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (3103987548035171850) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithumele iphinde ibuke imilayezo ye-SMS?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (7212083972999874267) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kuzithombe, imidiya, namafayela akudivayisi yakho?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (872629037299467086) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Vumela i-<xliff:g id="APP_NAME">%1$s</xliff:g> ukuba ifinyelele izithombe, amavidiyo, umculo, nokulalelwayo, kule divayisi?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vumela i-<xliff:g id="APP_NAME">%1$s</xliff:g> ukuba ifinyelele izithombe, amavidiyo, umculo, okulalelwayo, namanye amafayela kule divayisi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vumela i-<xliff:g id="APP_NAME">%1$s</xliff:g> ukuba ifinyelele umculo nokulalelwayo kule divayisi?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (3331524384339036668) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vumela i-<xliff:g id="APP_NAME">%1$s</xliff:g> ukuba ifinyelele izithombe namavidiyo kule divayisi?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (5492319750632751551) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Vumela &lt;i-<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; ukuba ifinyelele izithombe namavidiyo kule divayisi?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (8946782319103584021) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi irekhode umsindo?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (1266843551173029370) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Uhlelo lokusebenza luzokwazi ukurekhoda imisindo kuphela kuyilapho usebenzisa uhlelo lokusebenza"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi irekhode umsindo?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (4990337225146130185) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Lolu hlelo lokusebenza lungafuna ukurekhoda imisindo ngaso sonke isikhathi, ngisho nalapho ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kumasethingi."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Shintsha ukufinyelela kwemakrofoni kwe-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (222471025997100107) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Lolu hlelo lokusebenza lufuna ukurekhoda imisindo ngaso sonke isikhathi, ngisho nalapho ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kumasethingi."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kumsebenzi wakho womzimba?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (3408326850847755759) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthatha izithombe iphinde irekhode ividiyo?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (3525106924487608868) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Lolu hlelo lokusebenza luzokwazi ukuthatha izithombe futhi lirekhode ividiyo kuphela kuyilapho usebenzisa uhlelo lokusebenza"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthatha izithombe iphinde irekhode ividiyo?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (6718286540040964849) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Lolu hlelo lokusebenza lungafuna ukuthatha izithombe futhi lirekhode ividiyo ngaso sonke isikhathi, ngisho nalapho ungasebenzi uhlelo lokusebenza. "<annotation id="link">"Vumela kumasethingi."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Shintsha ukufinyelela kwekhamera kwe-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (4198765626608612156) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Lolu hlelo lokusebenza lufuna ukuthatha izithombe futhi lirekhode ividiyo ngaso sonke isikhathi, ngisho nalapho ungasebenzi uhlelo lokusebenza. "<annotation id="link">"Vumela kumasethingi."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukufinyelela kurekhodi lakho lamakholi wefoni?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (735079772627778095) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi yenze iphinde iphathe amakholi efoni?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (4389610977195521813) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (1900598688488188225) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Le app ifuna ukufinyelela kudatha yenzwa emayelana nezimpawu zakho ezibalulekile ngaso sonke isikhathi, ngisho noma ungasebenzisi i-app. "<annotation id="link">"iya kumasethingi."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (7691308331448239716) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Ukuze uvumele le app ukuba ifinyelele idatha yenzwa yomzimba ngaso sonke isikhathi, ngisho nalapho ungasebenzisi i-app, "<annotation id="link">"iya kumasethingi."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Qhubeka uvumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele inzwa yedatha yomzimba kuyilapho i-app isebenza?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (3310667992344623159) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ikuthumele izaziso?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (7307588961166360244) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Izimvume ezilawuliwe"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> inokufinyelela kwendawo"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Inhlangano yakho ivumela i-<xliff:g id="APP_NAME">%1$s</xliff:g> ukufinyelela indawo yakho"</string>

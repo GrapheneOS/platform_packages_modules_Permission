@@ -738,7 +738,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (Permission permission : group.getPermissions()) {
             if (permission.isGranted()) {
                 String permName = permission.getName();
-                Log.v(LOG_TAG,
+                Log.i(LOG_TAG,
                         "Permission grant result requestId=" + requestId + " callingUid="
                                 + uid + " callingPackage=" + packageName + " permission="
                                 + permName + " isImplicit=false" + " result=" + r);

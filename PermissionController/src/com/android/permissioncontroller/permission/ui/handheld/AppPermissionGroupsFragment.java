@@ -584,7 +584,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         }
         PermissionControllerStatsLog.write(APP_PERMISSIONS_FRAGMENT_VIEWED, sessionId, viewId,
                 permissionGroupName, uid, mPackageName, category);
-        Log.v(LOG_TAG, "AppPermissionFragment view logged with sessionId=" + sessionId + " viewId="
+        Log.i(LOG_TAG, "AppPermissionFragment view logged with sessionId=" + sessionId + " viewId="
                 + viewId + " permissionGroupName=" + permissionGroupName + " uid="
                 + uid + " packageName="
                 + mPackageName + " category=" + category);

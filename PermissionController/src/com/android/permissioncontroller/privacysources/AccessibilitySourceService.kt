@@ -142,7 +142,7 @@ class AccessibilitySourceService(
                     sessionId = random.nextLong()
                 }
                 if (DEBUG) {
-                    Log.v(LOG_TAG, "safety center accessibility privacy job started.")
+                    Log.d(LOG_TAG, "safety center accessibility privacy job started.")
                 }
                 interruptJobIfCanceled(cancel)
                 val a11yServiceList = getEnabledAccessibilityServices()
@@ -167,7 +167,7 @@ class AccessibilitySourceService(
 
                     if (toBeNotifiedServices.isNotEmpty()) {
                         if (DEBUG) {
-                            Log.v(LOG_TAG, "sending an accessibility service notification")
+                            Log.d(LOG_TAG, "sending an accessibility service notification")
                         }
                         val serviceToBeNotified: AccessibilityServiceInfo =
                             toBeNotifiedServices[random.nextInt(toBeNotifiedServices.size)]
@@ -262,7 +262,7 @@ class AccessibilitySourceService(
         markServiceAsNotified(ComponentName.unflattenFromString(serviceToBeNotified.id)!!)
 
         if (DEBUG) {
-            Log.v(LOG_TAG, "NOTIF_INTERACTION SEND metric, uid $uid session $sessionId")
+            Log.d(LOG_TAG, "NOTIF_INTERACTION SEND metric, uid $uid session $sessionId")
         }
         PermissionControllerStatsLog.write(
             PRIVACY_SIGNAL_NOTIFICATION_INTERACTION,
@@ -701,7 +701,7 @@ class AccessibilitySourceService(
         refreshEvent: RefreshEvent
     ) {
         if (DEBUG) {
-            Log.v(LOG_TAG, "rescan and push event from safety center $refreshEvent")
+            Log.d(LOG_TAG, "rescan and push event from safety center $refreshEvent")
         }
         val safetyCenterEvent = getSafetyCenterEvent(refreshEvent, intent)
         sendIssuesToSafetyCenter(safetyCenterEvent)
@@ -728,7 +728,7 @@ class AccessibilityPackageResetHandler : BroadcastReceiver() {
         val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
         coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
-                Log.v(LOG_TAG, "package reset event occurred for ${data.schemeSpecificPart}")
+                Log.d(LOG_TAG, "package reset event occurred for ${data.schemeSpecificPart}")
             }
             AccessibilitySourceService(context).run {
                 removePackageState(data.schemeSpecificPart)
@@ -747,7 +747,7 @@ class AccessibilityNotificationDeleteHandler : BroadcastReceiver() {
         val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
         coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
-                Log.v(LOG_TAG, "NOTIF_INTERACTION DISMISSED metric, uid $uid session $sessionId")
+                Log.d(LOG_TAG, "NOTIF_INTERACTION DISMISSED metric, uid $uid session $sessionId")
             }
             PermissionControllerStatsLog.write(
                 PRIVACY_SIGNAL_NOTIFICATION_INTERACTION,
@@ -776,7 +776,7 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
         val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
         coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
-                Log.v(LOG_TAG, "disabling a11y service ${a11yService.flattenToShortString()}")
+                Log.d(LOG_TAG, "disabling a11y service ${a11yService.flattenToShortString()}")
             }
             AccessibilitySourceService.lock.withLock {
                 val accessibilityService = AccessibilitySourceService(context)
@@ -805,7 +805,7 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
                 accessibilityService.sendIssuesToSafetyCenter(a11yEnabledServices, safetyEvent)
             }
             if (DEBUG) {
-                Log.v(LOG_TAG, "ISSUE_CARD_INTERACTION CTA1 metric, uid $uid session $sessionId")
+                Log.d(LOG_TAG, "ISSUE_CARD_INTERACTION CTA1 metric, uid $uid session $sessionId")
             }
             PermissionControllerStatsLog.write(
                 PRIVACY_SIGNAL_ISSUE_CARD_INTERACTION,
@@ -834,7 +834,7 @@ class AccessibilityWarningCardDismissalReceiver : BroadcastReceiver() {
         val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
         coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
-                Log.v(LOG_TAG, "removing notification for ${componentName.flattenToShortString()}")
+                Log.d(LOG_TAG, "removing notification for ${componentName.flattenToShortString()}")
             }
             val accessibilityService = AccessibilitySourceService(context)
             accessibilityService.removeAccessibilityNotification(componentName)
@@ -842,7 +842,7 @@ class AccessibilityWarningCardDismissalReceiver : BroadcastReceiver() {
         }
 
         if (DEBUG) {
-            Log.v(LOG_TAG, "ISSUE_CARD_INTERACTION DISMISSED metric, uid $uid session $sessionId")
+            Log.d(LOG_TAG, "ISSUE_CARD_INTERACTION DISMISSED metric, uid $uid session $sessionId")
         }
         PermissionControllerStatsLog.write(
             PRIVACY_SIGNAL_ISSUE_CARD_INTERACTION,
@@ -864,11 +864,11 @@ class AccessibilityOnBootReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (!isAccessibilitySourceSupported() || isProfile(context)) {
-            Log.v(LOG_TAG, "accessibility privacy job not supported, can't schedule the job")
+            Log.i(LOG_TAG, "accessibility privacy job not supported, can't schedule the job")
             return
         }
         if (DEBUG) {
-            Log.v(LOG_TAG, "scheduling safety center accessibility privacy source job")
+            Log.d(LOG_TAG, "scheduling safety center accessibility privacy source job")
         }
 
         val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
@@ -912,12 +912,12 @@ class AccessibilityJobService : JobService() {
         Log.v(LOG_TAG, "accessibility privacy source job started.")
         synchronized(mLock) {
             if (mCurrentJob != null) {
-                Log.v(LOG_TAG, "Accessibility privacy source job already running")
+                Log.i(LOG_TAG, "Accessibility privacy source job already running")
                 return false
             }
             if (!isAccessibilitySourceEnabled() ||
                 !isSafetyCenterEnabled(this@AccessibilityJobService)) {
-                Log.v(LOG_TAG, "either privacy source or safety center is not enabled")
+                Log.i(LOG_TAG, "either privacy source or safety center is not enabled")
                 jobFinished(params, false)
                 mCurrentJob = null
                 return false
@@ -965,20 +965,20 @@ class SafetyCenterAccessibilityListener(val context: Context) :
 
     override fun onAccessibilityServicesStateChanged(manager: AccessibilityManager) {
         if (!isAccessibilityListenerEnabled()) {
-            Log.v(LOG_TAG, "accessibility event occurred, listener not enabled.")
+            Log.i(LOG_TAG, "accessibility event occurred, listener not enabled.")
             return
         }
 
         if (!isAccessibilitySourceEnabled() || !isSafetyCenterEnabled(context) ||
             isProfile(context)) {
-            Log.v(LOG_TAG, "accessibility event occurred, safety center feature not enabled.")
+            Log.i(LOG_TAG, "accessibility event occurred, safety center feature not enabled.")
             return
         }
 
         val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
         coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
-                Log.v(LOG_TAG, "processing accessibility event")
+                Log.d(LOG_TAG, "processing accessibility event")
             }
             AccessibilitySourceService.lock.withLock {
                 val a11ySourceService = AccessibilitySourceService(context)

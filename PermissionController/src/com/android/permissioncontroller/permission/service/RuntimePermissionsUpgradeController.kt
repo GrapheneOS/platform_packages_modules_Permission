@@ -655,9 +655,9 @@ internal object RuntimePermissionsUpgradeController {
             for (permName in filterPermissions) {
                 val permission = permissionGroup.permissions[permName] ?: continue
                 PermissionControllerStatsLog.write(RUNTIME_PERMISSIONS_UPGRADE_RESULT,
-                        permission.name, uid, packageName)
-                Log.v(LOG_TAG, "Runtime permission upgrade logged for permissionName=" +
-                        permission.name + " uid=" + uid + " packageName=" + packageName)
+                    permission.name, uid, packageName)
+                Log.i(LOG_TAG, "Runtime permission upgrade logged for permissionName=" +
+                    permission.name + " uid=" + uid + " packageName=" + packageName)
             }
         }
     }

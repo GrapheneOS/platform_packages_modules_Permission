@@ -220,7 +220,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             int uid = intent.getIntExtra(Intent.EXTRA_UID, -1);
             long sessionId =
                     intent.getLongExtra(Constants.EXTRA_SESSION_ID, Constants.INVALID_SESSION_ID);
-            Log.v(
+            Log.i(
                     TAG,
                     "privacy source notification metric, source "
                             + privacySource

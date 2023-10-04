@@ -1152,7 +1152,7 @@ class AppPermissionViewModel(
         PermissionControllerStatsLog.write(APP_PERMISSION_FRAGMENT_ACTION_REPORTED, sessionId,
             changeId, uid, packageName, permission.permInfo.name,
             permission.isGrantedIncludingAppOp, permission.flags, buttonPressed)
-        Log.v(LOG_TAG, "Permission changed via UI with sessionId=$sessionId changeId=" +
+        Log.i(LOG_TAG, "Permission changed via UI with sessionId=$sessionId changeId=" +
             "$changeId uid=$uid packageName=$packageName permission=" + permission.permInfo.name +
             " isGranted=" + permission.isGrantedIncludingAppOp + " permissionFlags=" +
             permission.flags + " buttonPressed=$buttonPressed")
@@ -1170,7 +1170,7 @@ class AppPermissionViewModel(
             packageName,
             permGroupName,
             permissionRationaleShown)
-        Log.v(
+        Log.i(
             LOG_TAG,
             "AppPermission fragment viewed with sessionId=$sessionId uid=$uid " +
                 "packageName=$packageName permGroupName=$permGroupName " +

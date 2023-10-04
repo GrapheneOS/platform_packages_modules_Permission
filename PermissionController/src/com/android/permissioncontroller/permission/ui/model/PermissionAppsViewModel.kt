@@ -441,11 +441,11 @@ class PermissionAppsViewModel(
         val uid = getPackageUid(application,
                 packageName, user) ?: return
         PermissionControllerStatsLog.write(
-                PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED, sessionId, viewId,
-                permGroupName, uid, packageName, category)
-        Log.v(tag, tag + " created with sessionId=" + sessionId +
-                " permissionGroupName=" + permGroupName + " appUid=" + uid +
-                " packageName=" + packageName + " category=" + category)
+            PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED, sessionId, viewId,
+            permGroupName, uid, packageName, category)
+        Log.i(tag, tag + " created with sessionId=" + sessionId +
+            " permissionGroupName=" + permGroupName + " appUid=" + uid +
+            " packageName=" + packageName + " category=" + category)
     }
 }
 
