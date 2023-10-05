@@ -19,12 +19,15 @@ package com.android.permission.util;
 import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.os.Binder;
 import android.os.UserHandle;
 
-/**
- * Utility class for dealing with packages.
- */
+import java.util.List;
+
+/** Utility class for dealing with packages. */
 public final class PackageUtils {
     private PackageUtils() {}
 
@@ -33,8 +36,8 @@ public final class PackageUtils {
      *
      * @see PackageManager#canPackageQuery
      */
-    public static boolean canCallingOrSelfPackageQuery(@NonNull String packageName,
-            @UserIdInt int userId, @NonNull Context context) {
+    public static boolean canCallingOrSelfPackageQuery(
+            @NonNull String packageName, @UserIdInt int userId, @NonNull Context context) {
         final Context userContext = context.createContextAsUser(UserHandle.of(userId), 0);
         final PackageManager userPackageManager = userContext.getPackageManager();
         try {
@@ -42,6 +45,41 @@ public final class PackageUtils {
             return true;
         } catch (PackageManager.NameNotFoundException ignored) {
             return false;
+        }
+    }
+
+    /**
+     * Returns the activities {@link ResolveInfo} that match the given {@link Intent} for the given
+     * {@code flags} and {@code userId}.
+     */
+    @NonNull
+    public static List<ResolveInfo> queryUnfilteredIntentActivitiesAsUser(
+            @NonNull Intent intent, int flags, @UserIdInt int userId, @NonNull Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return packageManager.queryIntentActivitiesAsUser(intent, flags, UserHandle.of(userId));
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
+    /**
+     * Returns the broadcasts {@link ResolveInfo} that match the given {@link Intent} for the given
+     * {@code flags} and {@code userId}.
+     */
+    @NonNull
+    public static List<ResolveInfo> queryUnfilteredBroadcastReceiversAsUser(
+            @NonNull Intent intent, int flags, @UserIdInt int userId, @NonNull Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return packageManager.queryBroadcastReceiversAsUser(
+                    intent, flags, UserHandle.of(userId));
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
         }
     }
 }

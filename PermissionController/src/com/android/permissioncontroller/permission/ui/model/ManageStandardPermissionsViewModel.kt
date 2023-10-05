@@ -19,10 +19,11 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.app.Application
 import android.content.Intent
+import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.PermGroupsPackagesLiveData
@@ -47,9 +48,7 @@ class ManageStandardPermissionsViewModel(
     val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app,
         StandardPermGroupNamesLiveData)
     val numCustomPermGroups = NumCustomPermGroupsWithPackagesLiveData()
-    val numAutoRevoked = Transformations.map(unusedAutoRevokePackagesLiveData) {
-        it?.size ?: 0
-    }
+    val numAutoRevoked = unusedAutoRevokePackagesLiveData.map { it?.size ?: 0 }
 
     /**
      * Navigate to the Custom Permissions screen
@@ -71,6 +70,11 @@ class ManageStandardPermissionsViewModel(
         val groupName = args.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
         if (groupName == Manifest.permission_group.NOTIFICATIONS) {
             Utils.navigateToNotificationSettings(fragment.context!!)
+            return
+        }
+        if (Utils.isHealthPermissionUiEnabled() &&
+                groupName == HEALTH_PERMISSION_GROUP) {
+            Utils.navigateToHealthConnectSettings(fragment.context!!)
             return
         }
         fragment.findNavController().navigateSafe(R.id.manage_to_perm_apps, args)

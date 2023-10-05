@@ -20,9 +20,9 @@ import android.app.Application
 import android.content.pm.PackageManager
 import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.permission.utils.PermissionMapping.isRuntimePlatformPermission
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermInfo
 import com.android.permissioncontroller.permission.utils.Utils.OS_PKG
-import com.android.permissioncontroller.permission.utils.Utils.isRuntimePlatformPermission
 import kotlinx.coroutines.Job
 
 /**
