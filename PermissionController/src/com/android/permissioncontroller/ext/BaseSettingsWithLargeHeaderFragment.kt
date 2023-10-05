@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION")
 package com.android.permissioncontroller.ext
 
 import android.content.Context
