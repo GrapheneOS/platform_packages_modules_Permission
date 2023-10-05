@@ -129,7 +129,7 @@ import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
  * @param sessionId: A long to identify this session
  * @param storedState: Previous state, if this activity was stopped and is being recreated
  */
-class NewGrantPermissionsViewModel(
+class GrantPermissionsViewModel(
     private val app: Application,
     private val packageName: String,
     private val requestedPermissions: List<String>,
@@ -137,7 +137,7 @@ class NewGrantPermissionsViewModel(
     private val sessionId: Long,
     private val storedState: Bundle?
 ) : ViewModel() {
-    private val LOG_TAG = NewGrantPermissionsViewModel::class.java.simpleName
+    private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
     private val safetyLabelInfoLiveData =
@@ -207,7 +207,7 @@ class NewGrantPermissionsViewModel(
 
     val requestInfosLiveData = object :
         SmartUpdateMediatorLiveData<List<RequestInfo>>() {
-        private val LOG_TAG = NewGrantPermissionsViewModel::class.java.simpleName
+        private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
 
         init {
@@ -1131,7 +1131,7 @@ class NewGrantPermissionsViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return NewGrantPermissionsViewModel(app, packageName, requestedPermissions,
+        return GrantPermissionsViewModel(app, packageName, requestedPermissions,
             systemRequestedPermissions, sessionId, savedState) as T
     }
 }

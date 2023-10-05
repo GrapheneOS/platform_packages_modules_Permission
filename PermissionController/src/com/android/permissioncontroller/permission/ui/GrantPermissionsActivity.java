@@ -33,8 +33,8 @@ import static com.android.permissioncontroller.permission.ui.GrantPermissionsVie
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_USER_SELECTED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.LINKED_TO_PERMISSION_RATIONALE;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.LINKED_TO_SETTINGS;
-import static com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel.APP_PERMISSION_REQUEST_CODE;
-import static com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel.PHOTO_PICKER_REQUEST_CODE;
+import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.APP_PERMISSION_REQUEST_CODE;
+import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.PHOTO_PICKER_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
 import android.Manifest;
@@ -78,8 +78,8 @@ import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
 import com.android.permissioncontroller.permission.ui.model.DenyButton;
-import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel;
-import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel.RequestInfo;
+import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel;
+import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.RequestInfo;
 import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModelFactory;
 import com.android.permissioncontroller.permission.ui.model.Prompt;
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
@@ -171,7 +171,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     private int mRequestCounts = 0;
     private List<RequestInfo> mRequestInfos = new ArrayList<>();
     private GrantPermissionsViewHandler mViewHandler;
-    private NewGrantPermissionsViewModel mViewModel;
+    private GrantPermissionsViewModel mViewModel;
     /**
      * A list of other GrantPermissionActivities for the same package which passed their list of
      * permissions to this one. They need to be informed when this activity finishes.
@@ -303,7 +303,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                     new NewGrantPermissionsViewModelFactory(getApplication(), mTargetPackage,
                             mRequestedPermissions, mSystemRequestedPermissions, mSessionId,
                             icicle);
-            mViewModel = factory.create(NewGrantPermissionsViewModel.class);
+            mViewModel = factory.create(GrantPermissionsViewModel.class);
             mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         }
 
@@ -390,7 +390,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         NewGrantPermissionsViewModelFactory factory = new NewGrantPermissionsViewModelFactory(
                 getApplication(), mTargetPackage, mRequestedPermissions,
                 mSystemRequestedPermissions, mSessionId, oldState);
-        mViewModel = factory.create(NewGrantPermissionsViewModel.class);
+        mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         if (follower != null) {
             follower.mViewModel = mViewModel;
