@@ -84,6 +84,10 @@ final class SafetyCenterNotificationFactory {
             SafetySourceIssue issue,
             SafetySourceIssue.Action action,
             @UserIdInt int userId) {
+        if (action.getSuccessMessage() == null) {
+            return null;
+        }
+
         String channelId = mNotificationChannels.getCreatedChannelId(notificationManager, issue);
         if (channelId == null) {
             return null;

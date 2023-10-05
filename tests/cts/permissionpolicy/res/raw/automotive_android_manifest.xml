@@ -570,4 +570,8 @@
          android:protectionLevel="signature|privileged"
          android:label="@string/car_permission_label_control_windshield_wipers"
          android:description="@string/car_permission_desc_control_windshield_wipers"/>
+    <permission android:name="android.car.permission.QUERY_DISPLAY_COMPATIBILITY"
+         android:protectionLevel="signature|privileged"
+         android:label="@string/car_permission_label_query_display_compatibility"
+         android:description="@string/car_permission_desc_query_display_compatibility"/>
 </manifest>
