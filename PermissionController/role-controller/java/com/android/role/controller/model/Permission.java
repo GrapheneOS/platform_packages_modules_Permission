@@ -68,6 +68,21 @@ public class Permission {
         }
     }
 
+    /**
+     * Return a new permission with the specified minimum SDK version, or this permission if it
+     * already has the same minimum SDK version.
+     *
+     * @param minSdkVersion the minimum SDK version
+     * @return a permission with the specified minimum SDK version
+     */
+    @NonNull
+    public Permission withMinSdkVersion(int minSdkVersion) {
+        if (mMinSdkVersion == minSdkVersion) {
+            return this;
+        }
+        return new Permission(mName, minSdkVersion);
+    }
+
     @Override
     public String toString() {
         return "Permission{"
