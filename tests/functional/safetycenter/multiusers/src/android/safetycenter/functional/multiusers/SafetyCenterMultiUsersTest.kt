@@ -20,7 +20,6 @@ import android.Manifest.permission.INTERACT_ACROSS_USERS
 import android.Manifest.permission.INTERACT_ACROSS_USERS_FULL
 import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
@@ -60,7 +59,6 @@ import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.get
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
-import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_BAREBONE_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_DISABLED_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_GROUP_ID
@@ -244,69 +242,67 @@ class SafetyCenterMultiUsersTest {
     private val staticAllOptional =
         safetyCenterTestData.safetyCenterEntryDefaultStaticBuilder(STATIC_ALL_OPTIONAL_ID).build()
 
-    private fun staticAllOptionalForWorkBuilder(inQuietMode: Boolean = false) =
-        safetyCenterTestData
-            .safetyCenterEntryDefaultStaticBuilder(
-                STATIC_ALL_OPTIONAL_ID,
-                userId = deviceState.workProfile().id(),
-                title = "Paste"
-            )
-            .setPendingIntent(
-                createTestActivityRedirectPendingIntentForUser(
-                    deviceState.workProfile().userHandle(),
-                    inQuietMode
+    private val staticAllOptionalForWorkBuilder
+        get() =
+            safetyCenterTestData
+                .safetyCenterEntryDefaultStaticBuilder(
+                    STATIC_ALL_OPTIONAL_ID,
+                    userId = deviceState.workProfile().id(),
+                    title = "Paste"
                 )
-            )
+                .setPendingIntent(
+                    createTestActivityRedirectPendingIntentForUser(
+                        deviceState.workProfile().userHandle(),
+                        explicit = false
+                    )
+                )
 
     private val staticAllOptionalForWork
-        get() = staticAllOptionalForWorkBuilder().build()
+        get() = staticAllOptionalForWorkBuilder.build()
 
     private val staticAllOptionalForWorkPaused
         get() =
-            staticAllOptionalForWorkBuilder(inQuietMode = true)
+            staticAllOptionalForWorkBuilder
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .setEnabled(false)
                 .build()
 
-    private val staticEntry: SafetyCenterStaticEntry
-        get() =
-            SafetyCenterStaticEntry.Builder("OK")
-                .setSummary("OK")
-                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
-                .build()
+    private fun createStaticEntry(explicit: Boolean = true): SafetyCenterStaticEntry =
+        SafetyCenterStaticEntry.Builder("OK")
+            .setSummary("OK")
+            .setPendingIntent(
+                safetySourceTestData.createTestActivityRedirectPendingIntent(explicit)
+            )
+            .build()
 
     private val staticEntryUpdated: SafetyCenterStaticEntry
         get() =
             SafetyCenterStaticEntry.Builder("Unspecified title")
                 .setSummary("Unspecified summary")
-                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                .setPendingIntent(safetySourceTestData.createTestActivityRedirectPendingIntent())
                 .build()
 
-    private fun staticEntryForWorkBuilder(
-        title: CharSequence = "Paste",
-        inQuietMode: Boolean = false
-    ) =
+    private fun staticEntryForWorkBuilder(title: CharSequence = "Paste", explicit: Boolean = true) =
         SafetyCenterStaticEntry.Builder(title)
             .setSummary("OK")
             .setPendingIntent(
                 createTestActivityRedirectPendingIntentForUser(
                     deviceState.workProfile().userHandle(),
-                    inQuietMode
+                    explicit
                 )
             )
 
-    private val staticEntryForWork: SafetyCenterStaticEntry
-        get() = staticEntryForWorkBuilder().build()
+    private fun createStaticEntryForWork(explicit: Boolean = true): SafetyCenterStaticEntry =
+        staticEntryForWorkBuilder(explicit = explicit).build()
 
-    private val staticEntryForWorkPaused: SafetyCenterStaticEntry
-        get() =
-            staticEntryForWorkBuilder(inQuietMode = true)
-                .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
-                .build()
+    private fun createStaticEntryForWorkPaused(): SafetyCenterStaticEntry =
+        staticEntryForWorkBuilder(explicit = false)
+            .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
+            .build()
 
-    private val staticEntryForWorkPausedUpdated
+    private val staticEntryForWorkPausedUpdated: SafetyCenterStaticEntry
         get() =
-            staticEntryForWorkBuilder(title = "Unspecified title for Work", inQuietMode = true)
+            staticEntryForWorkBuilder(title = "Unspecified title for Work")
                 .setSummary(safetyCenterResourcesApk.getStringByName("work_profile_paused"))
                 .build()
 
@@ -314,7 +310,7 @@ class SafetyCenterMultiUsersTest {
         get() =
             SafetyCenterStaticEntry.Builder("Unspecified title for Work")
                 .setSummary("Unspecified summary")
-                .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                .setPendingIntent(safetySourceTestData.createTestActivityRedirectPendingIntent())
                 .build()
 
     private val safetyCenterDataForAdditionalUser
@@ -543,7 +539,12 @@ class SafetyCenterMultiUsersTest {
                             .build()
                     )
                 ),
-                listOf(SafetyCenterStaticEntryGroup("OK", listOf(staticEntry, staticEntry)))
+                listOf(
+                    SafetyCenterStaticEntryGroup(
+                        "OK",
+                        listOf(createStaticEntry(), createStaticEntry(explicit = false))
+                    )
+                )
             )
         assertThat(apiSafetyCenterData.withoutExtras()).isEqualTo(safetyCenterDataFromComplexConfig)
     }
@@ -589,7 +590,12 @@ class SafetyCenterMultiUsersTest {
                 listOf(
                     SafetyCenterStaticEntryGroup(
                         "OK",
-                        listOf(staticEntry, staticEntryForWork, staticEntry, staticEntryForWork)
+                        listOf(
+                            createStaticEntry(),
+                            createStaticEntryForWork(),
+                            createStaticEntry(explicit = false),
+                            createStaticEntryForWork(explicit = false)
+                        )
                     )
                 )
             )
@@ -639,9 +645,9 @@ class SafetyCenterMultiUsersTest {
                         "OK",
                         listOf(
                             staticEntryUpdated,
-                            staticEntryForWork,
-                            staticEntry,
-                            staticEntryForWork
+                            createStaticEntryForWork(),
+                            createStaticEntry(explicit = false),
+                            createStaticEntryForWork(explicit = false)
                         )
                     )
                 )
@@ -749,8 +755,8 @@ class SafetyCenterMultiUsersTest {
                         listOf(
                             staticEntryUpdated,
                             staticEntryForWorkUpdated,
-                            staticEntry,
-                            staticEntryForWork
+                            createStaticEntry(explicit = false),
+                            createStaticEntryForWork(explicit = false)
                         )
                     )
                 )
@@ -809,8 +815,8 @@ class SafetyCenterMultiUsersTest {
                         listOf(
                             staticEntryUpdated,
                             staticEntryForWorkPausedUpdated,
-                            staticEntry,
-                            staticEntryForWorkPaused
+                            createStaticEntry(explicit = false),
+                            createStaticEntryForWorkPaused()
                         )
                     )
                 )
@@ -1228,13 +1234,12 @@ class SafetyCenterMultiUsersTest {
 
     private fun createTestActivityRedirectPendingIntentForUser(
         user: UserHandle,
-        inQuietMode: Boolean = false
+        explicit: Boolean = true
     ): PendingIntent {
         return callWithShellPermissionIdentity(INTERACT_ACROSS_USERS) {
             SafetySourceTestData.createRedirectPendingIntent(
                 getContextForUser(user),
-                Intent(ACTION_TEST_ACTIVITY),
-                inQuietMode
+                SafetySourceTestData.createTestActivityIntent(getContextForUser(user), explicit)
             )
         }
     }
