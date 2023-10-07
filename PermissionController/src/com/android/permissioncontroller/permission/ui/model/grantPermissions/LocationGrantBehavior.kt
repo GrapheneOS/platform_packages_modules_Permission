@@ -44,8 +44,10 @@ object LocationGrantBehavior : GrantBehavior() {
         } else if (requestedPerms.contains(ACCESS_FINE_LOCATION)) {
             if (coarseGranted) {
                 Prompt.LOCATION_FINE_UPGRADE
+            } else if (isFineLocationHighlighted(group)){
+                Prompt.LOCATION_TWO_BUTTON_FINE_HIGHLIGHT
             } else {
-                Prompt.LOCATION_TWO_BUTTON
+                Prompt.LOCATION_TWO_BUTTON_COARSE_HIGHLIGHT
             }
         } else if (requestedPerms.contains(ACCESS_COARSE_LOCATION) && !coarseGranted) {
             Prompt.LOCATION_COARSE_ONLY
@@ -102,5 +104,22 @@ object LocationGrantBehavior : GrantBehavior() {
     private fun supportsLocationAccuracy(group: LightAppPermGroup): Boolean {
         return KotlinUtils.isLocationAccuracyEnabled() &&
                 group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.S
+    }
+
+    private fun isFineLocationHighlighted(group: LightAppPermGroup): Boolean {
+        // Steps to decide location accuracy default state
+        // 1. If none of the FINE and COARSE isSelectedLocationAccuracy
+        //    flags is set, then use default precision from device config.
+        // 2. Otherwise set to whichever isSelectedLocationAccuracy is true.
+        val coarseLocationPerm =
+            group.allPermissions[ACCESS_COARSE_LOCATION]
+        val fineLocationPerm =
+            group.allPermissions[ACCESS_FINE_LOCATION]
+        return if (coarseLocationPerm?.isSelectedLocationAccuracy == false &&
+            fineLocationPerm?.isSelectedLocationAccuracy == false) {
+            return KotlinUtils.getDefaultPrecision()
+        } else {
+            fineLocationPerm?.isSelectedLocationAccuracy == true
+        }
     }
 }

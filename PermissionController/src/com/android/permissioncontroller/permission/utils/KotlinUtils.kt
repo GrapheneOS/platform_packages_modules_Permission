@@ -166,8 +166,6 @@ object KotlinUtils {
     private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH =
         "safety_label_changes_job_service_kill_switch"
 
-    private const val PROPERTY_NEW_GRANT_DIALOG_BACKEND = "new_grand_dialog_backend"
-
     /**
      * Whether to show Camera and Mic Icons.
      *
@@ -318,11 +316,6 @@ object KotlinUtils {
             PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE,
             true
         )
-    }
-
-    fun isNewGrantDialogBackendEnabled(): Boolean {
-         return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_NEW_GRANT_DIALOG_BACKEND, true)
     }
 
     /**

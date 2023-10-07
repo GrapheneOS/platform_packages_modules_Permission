@@ -20,9 +20,9 @@ import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
-import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
@@ -56,6 +56,7 @@ import android.text.Annotation;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ClickableSpan;
+import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
@@ -76,22 +77,25 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
+import com.android.permissioncontroller.permission.ui.model.DenyButton;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.RequestInfo;
-import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModelFactory;
-import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.NewGrantPermissionsViewModelFactory;
+import com.android.permissioncontroller.permission.ui.model.Prompt;
 import com.android.permissioncontroller.permission.ui.wear.GrantPermissionsWearViewHandler;
 import com.android.permissioncontroller.permission.utils.ContextCompat;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * An activity which displays runtime permission prompts on behalf of an app.
@@ -245,15 +249,9 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        boolean useNewViewModel = KotlinUtils.INSTANCE.isNewGrantDialogBackendEnabled();
-        if (useNewViewModel) {
-            mRequestedPermissions = removeNullOrEmptyPermissions(requestedPermissionsArray);
-            if (mIsSystemTriggered) {
-                mSystemRequestedPermissions.addAll(mRequestedPermissions);
-            }
-        } else {
-            mRequestedPermissions = GrantPermissionsViewModel.Companion
-                    .getSanitizedPermissionsList(requestedPermissionsArray, permissionsSdkLevel);
+        mRequestedPermissions = removeNullOrEmptyPermissions(requestedPermissionsArray);
+        if (mIsSystemTriggered) {
+            mSystemRequestedPermissions.addAll(mRequestedPermissions);
         }
 
         if (mRequestedPermissions.isEmpty()) {
@@ -301,18 +299,11 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         if (!mDelegated) {
-            if (useNewViewModel) {
-                NewGrantPermissionsViewModelFactory factory =
-                        new NewGrantPermissionsViewModelFactory(getApplication(), mTargetPackage,
-                                mRequestedPermissions, mSystemRequestedPermissions, mSessionId,
-                                icicle);
-                mViewModel = factory.create(NewGrantPermissionsViewModel.class);
-            } else {
-                GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
-                        getApplication(), mTargetPackage, mRequestedPermissions, mSessionId,
-                        icicle);
-                mViewModel = factory.create(GrantPermissionsViewModel.class);
-            }
+            NewGrantPermissionsViewModelFactory factory =
+                    new NewGrantPermissionsViewModelFactory(getApplication(), mTargetPackage,
+                            mRequestedPermissions, mSystemRequestedPermissions, mSessionId,
+                            icicle);
+            mViewModel = factory.create(GrantPermissionsViewModel.class);
             mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         }
 
@@ -396,17 +387,10 @@ public class GrantPermissionsActivity extends SettingsActivity
         Bundle oldState = new Bundle();
         mViewModel.getRequestInfosLiveData().removeObservers(this);
         mViewModel.saveInstanceState(oldState);
-        if (KotlinUtils.INSTANCE.isNewGrantDialogBackendEnabled()) {
-            NewGrantPermissionsViewModelFactory factory = new NewGrantPermissionsViewModelFactory(
-                    getApplication(), mTargetPackage, mRequestedPermissions,
-                    mSystemRequestedPermissions, mSessionId, oldState);
-            mViewModel = factory.create(GrantPermissionsViewModel.class);
-        } else {
-            GrantPermissionsViewModelFactory factory = new GrantPermissionsViewModelFactory(
-                    getApplication(), mTargetPackage, mRequestedPermissions,
-                    mSessionId, oldState);
-            mViewModel = factory.create(GrantPermissionsViewModel.class);
-        }
+        NewGrantPermissionsViewModelFactory factory = new NewGrantPermissionsViewModelFactory(
+                getApplication(), mTargetPackage, mRequestedPermissions,
+                mSystemRequestedPermissions, mSessionId, oldState);
+        mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
         if (follower != null) {
             follower.mViewModel = mViewModel;
@@ -453,82 +437,34 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         // Only the top activity can receive activity results
         Activity top = mFollowerActivities.isEmpty() ? this : mFollowerActivities.get(0);
-        if (info.getSendToSettingsImmediately()) {
+        if (info.getPrompt() == Prompt.NO_UI_SETTINGS_REDIRECT) {
             mViewModel.sendDirectlyToSettings(top, info.getGroupName());
             return;
-        } else if (info.getOpenPhotoPicker()) {
+        } else if (info.getPrompt() == Prompt.NO_UI_PHOTO_PICKER_REDIRECT) {
             mViewModel.openPhotoPicker(top, GRANTED_USER_SELECTED);
             return;
-        } else if (!info.getFilteredPermissions().isEmpty()) {
+        } else if (info.getPrompt() == Prompt.NO_UI_FILTER_THIS_GROUP) {
             // Filtered permissions should be removed from the requested permissions list entirely,
             // and not have status returned to the app
-            mRequestedPermissions.removeAll(info.getFilteredPermissions());
+            List<String> permissionsToFilter =
+                    PermissionMapping.getPlatformPermissionNamesOfGroup(info.getGroupName());
+            mRequestedPermissions.removeAll(permissionsToFilter);
             mRequestInfos.remove(info);
             onRequestInfoLoad(mRequestInfos);
             return;
-        }
-
-        if (Utils.isHealthPermissionUiEnabled() && HEALTH_PERMISSION_GROUP.equals(
-                info.getGroupName())) {
+        } else if (info.getPrompt() == Prompt.NO_UI_HEALTH_REDIRECT) {
             mViewModel.handleHealthConnectPermissions(top);
             return;
         }
 
         String appLabel = KotlinUtils.INSTANCE.getPackageLabel(getApplication(),
                 mTargetPackage, Process.myUserHandle());
-
-        Icon icon = null;
         int deviceId = ContextCompat.getDeviceId(this);
-        int messageId = 0;
-        switch (info.getMessage()) {
-            case FG_MESSAGE:
-                messageId = Utils.getRequest(info.getGroupName(), deviceId);
-                break;
-            case FG_FINE_LOCATION_MESSAGE:
-                messageId = Utils.getFineLocationRequest(deviceId);
-                break;
-            case FG_COARSE_LOCATION_MESSAGE:
-                messageId = Utils.getCoarseLocationRequest(deviceId);
-                break;
-            case BG_MESSAGE:
-                messageId = Utils.getBackgroundRequest(info.getGroupName(), deviceId);
-                break;
-            case UPGRADE_MESSAGE:
-                messageId = Utils.getUpgradeRequest(info.getGroupName(), deviceId);
-                break;
-            case STORAGE_SUPERGROUP_MESSAGE_Q_TO_S:
-                icon = Icon.createWithResource(getPackageName(), mStoragePermGroupIcon);
-                messageId = R.string.permgrouprequest_storage_q_to_s;
-                break;
-            case STORAGE_SUPERGROUP_MESSAGE_PRE_Q:
-                icon = Icon.createWithResource(getPackageName(), mStoragePermGroupIcon);
-                messageId = R.string.permgrouprequest_storage_pre_q;
-                break;
-            case MORE_PHOTOS_MESSAGE:
-                messageId = Utils.getMorePhotosRequest(deviceId);
-                break;
-            default:
-                Log.w(LOG_TAG, "Unhandled message type: " + info.getMessage());
-        }
-
+        int messageId = getMessageId(info.getGroupName(), info.getPrompt(), deviceId);
         CharSequence message = getRequestMessage(appLabel, mTargetPackage, info.getGroupName(),
                 getDeviceName(info.getDeviceId()), this, deviceId, messageId);
 
-        int detailMessageId = 0;
-        switch (info.getDetailMessage()) {
-            case FG_MESSAGE:
-                detailMessageId = Utils.getRequestDetail(info.getGroupName());
-                break;
-            case BG_MESSAGE:
-                detailMessageId = Utils.getBackgroundRequestDetail(info.getGroupName());
-                break;
-            case UPGRADE_MESSAGE:
-                detailMessageId = Utils.getUpgradeRequestDetail(info.getGroupName());
-                break;
-            default:
-                Log.w(LOG_TAG, "Unhandled detail message type: " + info.getDetailMessage());
-        }
-
+        int detailMessageId = getDetailMessageId(info.getGroupName(), info.getPrompt());
         Spanned detailMessage = null;
         if (detailMessageId != 0) {
             detailMessage =
@@ -551,10 +487,16 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
         }
 
+        Icon icon = null;
         try {
-            icon = icon != null ? icon : Icon.createWithResource(
-                    info.getGroupInfo().getPackageName(),
-                    info.getGroupInfo().getIcon());
+            if (info.getPrompt() == Prompt.STORAGE_SUPERGROUP_Q_TO_S
+                    || info.getPrompt() == Prompt.STORAGE_SUPERGROUP_PRE_Q) {
+                icon = Icon.createWithResource(getPackageName(), mStoragePermGroupIcon);
+            } else {
+                icon = Icon.createWithResource(
+                        info.getGroupInfo().getPackageName(),
+                        info.getGroupInfo().getIcon());
+            }
         } catch (Resources.NotFoundException e) {
             Log.e(LOG_TAG, "Cannot load icon for group" + info.getGroupName(), e);
         }
@@ -566,14 +508,8 @@ public class GrantPermissionsActivity extends SettingsActivity
             setTitle(message);
         }
 
-        ArrayList<Integer> idxs = new ArrayList<>();
-        mButtonVisibilities = new boolean[info.getButtonVisibilities().size()];
-        for (int i = 0; i < info.getButtonVisibilities().size(); i++) {
-            mButtonVisibilities[i] = info.getButtonVisibilities().get(i);
-            if (mButtonVisibilities[i]) {
-                idxs.add(i);
-            }
-        }
+        mButtonVisibilities = getButtonsForPrompt(info.getPrompt(), info.getDeny(),
+                info.getShowRationale());
 
         CharSequence permissionRationaleMessage = null;
         if (isPermissionRationaleVisible()) {
@@ -583,10 +519,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                         info.getGroupName()));
         }
 
-        boolean[] locationVisibilities = new boolean[info.getLocationVisibilities().size()];
-        for (int i = 0; i < info.getLocationVisibilities().size(); i++) {
-            locationVisibilities[i] = info.getLocationVisibilities().get(i);
-        }
+        boolean[] locationVisibilities = getLocationButtonsForPrompt(info.getPrompt());
 
         if (mRequestCounts < mRequestInfos.size()) {
             mRequestCounts = mRequestInfos.size();
@@ -627,6 +560,90 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         throw new IllegalArgumentException("No device name for device: " + deviceId);
+    }
+    private int getMessageId(String permGroupName, Prompt prompt, int deviceId) {
+        return switch (prompt) {
+            case UPGRADE_SETTINGS_LINK, OT_UPGRADE_SETTINGS_LINK ->
+                    Utils.getUpgradeRequest(permGroupName, deviceId);
+            case SETTINGS_LINK_FOR_BG, SETTINGS_LINK_WITH_OT ->
+                    Utils.getBackgroundRequest(permGroupName, deviceId);
+            case LOCATION_FINE_UPGRADE -> Utils.getFineLocationRequest(deviceId);
+            case LOCATION_COARSE_ONLY -> Utils.getCoarseLocationRequest(deviceId);
+            case STORAGE_SUPERGROUP_PRE_Q -> R.string.permgrouprequest_storage_pre_q;
+            case STORAGE_SUPERGROUP_Q_TO_S -> R.string.permgrouprequest_storage_q_to_s;
+            case SELECT_MORE_PHOTOS -> Utils.getMorePhotosRequest(deviceId);
+            default -> Utils.getRequest(permGroupName, deviceId);
+        };
+    }
+
+    private int getDetailMessageId(String permGroupName, Prompt prompt) {
+        return switch (prompt) {
+            case UPGRADE_SETTINGS_LINK, OT_UPGRADE_SETTINGS_LINK ->
+                    Utils.getUpgradeRequestDetail(permGroupName);
+            case SETTINGS_LINK_FOR_BG, SETTINGS_LINK_WITH_OT ->
+                    Utils.getBackgroundRequestDetail(permGroupName);
+            default -> 0;
+        };
+    }
+
+    private boolean[] getButtonsForPrompt(Prompt prompt, DenyButton denyButton,
+                                          boolean shouldShowRationale) {
+        ArraySet<Integer> buttons = new ArraySet<>();
+        switch (prompt) {
+            case BASIC, STORAGE_SUPERGROUP_PRE_Q, STORAGE_SUPERGROUP_Q_TO_S ->
+                    buttons.add(ALLOW_BUTTON);
+            case FG_ONLY, SETTINGS_LINK_FOR_BG ->  buttons.add(ALLOW_FOREGROUND_BUTTON);
+            case ONE_TIME_FG, SETTINGS_LINK_WITH_OT, LOCATION_TWO_BUTTON_COARSE_HIGHLIGHT,
+                    LOCATION_TWO_BUTTON_FINE_HIGHLIGHT, LOCATION_COARSE_ONLY,
+                    LOCATION_FINE_UPGRADE ->
+                buttons.addAll(Arrays.asList(ALLOW_FOREGROUND_BUTTON, ALLOW_ONE_TIME_BUTTON));
+            case SELECT_PHOTOS, SELECT_MORE_PHOTOS ->
+                buttons.addAll(Arrays.asList(ALLOW_ALL_BUTTON, ALLOW_SELECTED_BUTTON));
+        }
+
+        switch (denyButton) {
+            case DENY -> buttons.add(DENY_BUTTON);
+            case DENY_DONT_ASK_AGAIN -> buttons.add(DENY_AND_DONT_ASK_AGAIN_BUTTON);
+            case DONT_SELECT_MORE -> buttons.add(DONT_ALLOW_MORE_SELECTED_BUTTON);
+            case NO_UPGRADE -> buttons.add(NO_UPGRADE_BUTTON);
+            case NO_UPGRADE_OT -> buttons.add(NO_UPGRADE_OT_BUTTON);
+            case NO_UPGRADE_AND_DONT_ASK_AGAIN ->
+                    buttons.add(NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON);
+            case NO_UPGRADE_AND_DONT_ASK_AGAIN_OT ->
+                    buttons.add(NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON);
+        }
+
+        if (shouldShowRationale) {
+            buttons.add(LINK_TO_PERMISSION_RATIONALE);
+        }
+        return convertSetToBoolList(buttons, NEXT_BUTTON);
+    }
+
+    private boolean[] getLocationButtonsForPrompt(Prompt prompt) {
+        ArraySet<Integer> locationButtons = new ArraySet<>();
+        switch (prompt) {
+            case LOCATION_TWO_BUTTON_COARSE_HIGHLIGHT ->
+                locationButtons.addAll(Arrays.asList(LOCATION_ACCURACY_LAYOUT,
+                        DIALOG_WITH_BOTH_LOCATIONS, COARSE_RADIO_BUTTON));
+            case LOCATION_TWO_BUTTON_FINE_HIGHLIGHT ->
+                locationButtons.addAll(Arrays.asList(LOCATION_ACCURACY_LAYOUT,
+                        DIALOG_WITH_BOTH_LOCATIONS, FINE_RADIO_BUTTON));
+            case LOCATION_COARSE_ONLY ->
+                locationButtons.addAll(Arrays.asList(LOCATION_ACCURACY_LAYOUT,
+                        DIALOG_WITH_COARSE_LOCATION_ONLY));
+            case LOCATION_FINE_UPGRADE ->
+                locationButtons.addAll(Arrays.asList(LOCATION_ACCURACY_LAYOUT,
+                        DIALOG_WITH_FINE_LOCATION_ONLY));
+        }
+        return convertSetToBoolList(locationButtons, NEXT_LOCATION_DIALOG);
+    }
+
+    private boolean[] convertSetToBoolList(Set<Integer> buttonSet, int size) {
+        boolean[] buttonArray = new boolean[size];
+        for (int button: buttonSet) {
+            buttonArray[button] = true;
+        }
+        return buttonArray;
     }
 
     // LINT.IfChange(dispatchTouchEvent)

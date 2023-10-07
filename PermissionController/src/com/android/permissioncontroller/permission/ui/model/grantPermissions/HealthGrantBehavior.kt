@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.ui.model.grantPermissions
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.ui.model.DenyButton
 import com.android.permissioncontroller.permission.ui.model.Prompt
+import com.android.permissioncontroller.permission.utils.Utils
 
 /**
  * Health permissions always redirect to the health connect UI.
@@ -29,7 +30,11 @@ object HealthGrantBehavior : GrantBehavior() {
         requestedPerms: Set<String>,
         isSystemTriggeredPrompt: Boolean
     ): Prompt {
-        return Prompt.NO_UI_HEALTH_REDIRECT
+        return if (Utils.isHealthPermissionUiEnabled()) {
+            Prompt.NO_UI_HEALTH_REDIRECT
+        } else {
+            Prompt.NO_UI_REJECT_THIS_GROUP
+        }
     }
 
     override fun getDenyButton(
