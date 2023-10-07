@@ -153,6 +153,7 @@ android_app {
         "safety-label",
         "role-controller",
         "permissions-flags-lib",
+        "android.permission.flags-aconfig-java",
         "androidx.compose.foundation_foundation",
         "androidx.compose.runtime_runtime",
         "androidx.compose.runtime_runtime-livedata",
