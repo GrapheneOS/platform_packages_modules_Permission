@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 @NonNullByDefault
-@RequiresTiramisuByDefault
+@RequiresApi(TIRAMISU)
 package com.android.safetycenter.notifications;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
+import android.annotation.RequiresApi;
+
 import com.android.safetycenter.annotations.NonNullByDefault;
-import com.android.safetycenter.annotations.RequiresTiramisuByDefault;
