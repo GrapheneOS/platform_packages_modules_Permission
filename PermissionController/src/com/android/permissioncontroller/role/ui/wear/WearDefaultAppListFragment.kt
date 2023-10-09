@@ -27,9 +27,7 @@ import com.android.permissioncontroller.role.ui.DefaultAppListViewModel
 
 class WearDefaultAppListFragment : Fragment() {
     companion object {
-        /**
-         * @return a new instance of [WearDefaultAppListFragment].
-         */
+        /** @return a new instance of [WearDefaultAppListFragment]. */
         fun newInstance(): WearDefaultAppListFragment {
             return WearDefaultAppListFragment()
         }

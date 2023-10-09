@@ -57,7 +57,8 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
             mapOf(
                 Manifest.permission_group.LOCATION to 0,
                 Manifest.permission_group.CAMERA to 1,
-                Manifest.permission_group.MICROPHONE to 2)
+                Manifest.permission_group.MICROPHONE to 2
+            )
         private const val DEFAULT_ORDER = 3
     }
 
@@ -79,7 +80,8 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
             false /*getUiInfo*/,
             false /*getNonPlatformPermissions*/,
             callback /*callback*/,
-            false /*sync*/)
+            false /*sync*/
+        )
     }
 
     /**
@@ -108,10 +110,16 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
         val permissionApps = filteredAppPermissionUsages.getRecentPermissionApps(startTime)
         val orderedPermissionGroupsWithUsage =
             filteredAppPermissionUsages.buildOrderedPermissionGroupsWithUsageCount(
-                context, startTime, showSystem)
+                context,
+                startTime,
+                showSystem
+            )
 
         return PermissionUsagesUiData(
-            permissionApps, displayShowSystemToggle, orderedPermissionGroupsWithUsage)
+            permissionApps,
+            displayShowSystemToggle,
+            orderedPermissionGroupsWithUsage
+        )
     }
 
     /**
@@ -150,7 +158,9 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
             .sortedWith(
                 compareBy(
                     { PERMISSION_GROUP_ORDER.getOrDefault(it.permGroup, DEFAULT_ORDER) },
-                    { getPermGroupLabel(context, it.permGroup).toString() }))
+                    { getPermGroupLabel(context, it.permGroup).toString() }
+                )
+            )
     }
 
     /** Extracts [PermissionApp] where there has been recent permission usage. */
@@ -163,7 +173,8 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
                         .filter { !EXEMPTED_PERMISSION_GROUPS.contains(it.group.name) }
                         .any { it.lastAccessTime >= startTime || it.lastAccessTime == 0L }
                 }
-                .map { it.app })
+                .map { it.app }
+        )
     }
 
     /**

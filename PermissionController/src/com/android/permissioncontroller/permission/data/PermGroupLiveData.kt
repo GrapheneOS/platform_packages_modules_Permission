@@ -36,19 +36,15 @@ import com.android.permissioncontroller.permission.utils.Utils
  * @param app The current application
  * @param groupName The name of the permission group this LiveData represents
  */
-class PermGroupLiveData private constructor(
-    private val app: Application,
-    private val groupName: String
-) : SmartUpdateMediatorLiveData<PermGroup>(),
-    PackageBroadcastReceiver.PackageBroadcastListener {
+class PermGroupLiveData
+private constructor(private val app: Application, private val groupName: String) :
+    SmartUpdateMediatorLiveData<PermGroup>(), PackageBroadcastReceiver.PackageBroadcastListener {
 
     private val LOG_TAG = this::class.java.simpleName
 
     private val context = app.applicationContext!!
 
-    /**
-     * Map<packageName, LiveData<PackageInfo>>
-     */
+    /** Map<packageName, LiveData<PackageInfo>> */
     private val packageLiveDatas = mutableMapOf<String, LightPackageInfoLiveData>()
 
     private lateinit var groupInfo: PackageItemInfo
@@ -69,24 +65,29 @@ class PermGroupLiveData private constructor(
     override fun onUpdate() {
         val permissionInfos = mutableMapOf<String, LightPermInfo>()
 
-        groupInfo = Utils.getGroupInfo(groupName, context) ?: run {
-            Log.e(LOG_TAG, "Invalid permission group $groupName")
-            invalidateSingle(groupName)
-            value = null
-            return
-        }
-
-        when (groupInfo) {
-            is PermissionGroupInfo -> {
-                val permInfos = try {
-                    Utils.getInstalledRuntimePermissionInfosForGroup(context.packageManager,
-                        groupName)
-                } catch (e: PackageManager.NameNotFoundException) {
+        groupInfo =
+            Utils.getGroupInfo(groupName, context)
+                ?: run {
                     Log.e(LOG_TAG, "Invalid permission group $groupName")
                     invalidateSingle(groupName)
                     value = null
                     return
                 }
+
+        when (groupInfo) {
+            is PermissionGroupInfo -> {
+                val permInfos =
+                    try {
+                        Utils.getInstalledRuntimePermissionInfosForGroup(
+                            context.packageManager,
+                            groupName
+                        )
+                    } catch (e: PackageManager.NameNotFoundException) {
+                        Log.e(LOG_TAG, "Invalid permission group $groupName")
+                        invalidateSingle(groupName)
+                        value = null
+                        return
+                    }
 
                 for (permInfo in permInfos) {
                     permissionInfos[permInfo.name] = LightPermInfo(permInfo)
@@ -105,8 +106,8 @@ class PermGroupLiveData private constructor(
 
         value = permGroup
 
-        val packageNames = permissionInfos.values.map { permInfo -> permInfo.packageName }
-            .toMutableSet()
+        val packageNames =
+            permissionInfos.values.map { permInfo -> permInfo.packageName }.toMutableSet()
         packageNames.add(groupInfo.packageName)
 
         // TODO ntmyren: What if the package isn't installed for the system user?
@@ -123,8 +124,8 @@ class PermGroupLiveData private constructor(
     }
 
     /**
-     * Load data, and register a package change listener. We must watch for package changes,
-     * because there is currently no listener for permission changes.
+     * Load data, and register a package change listener. We must watch for package changes, because
+     * there is currently no listener for permission changes.
      */
     override fun onActive() {
         update()
@@ -136,6 +137,7 @@ class PermGroupLiveData private constructor(
 
     /**
      * Repository for PermGroupLiveDatas.
+     *
      * <p> Key value is a string permission group name, value is its corresponding LiveData.
      */
     companion object : DataRepository<String, PermGroupLiveData>() {

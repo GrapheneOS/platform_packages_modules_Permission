@@ -22,12 +22,12 @@ import android.content.res.Resources.ID_NULL
 import android.os.UserHandle
 import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
+import java.io.FileNotFoundException
 import kotlinx.coroutines.Job
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParser.END_DOCUMENT
 import org.xmlpull.v1.XmlPullParser.END_TAG
 import org.xmlpull.v1.XmlPullParser.START_TAG
-import java.io.FileNotFoundException
 
 private const val MANIFEST_FILE_NAME = "AndroidManifest.xml"
 private const val MANIFEST_TAG = "manifest"
@@ -43,7 +43,8 @@ private const val LABEL_ATTR = "label"
  * <p>Obviously the resource is found in the package, hence needs to be loaded via a Resources
  * object created for this package.
  */
-class AttributionLabelLiveData private constructor(
+class AttributionLabelLiveData
+private constructor(
     private val app: Application,
     private val attributionTag: String?,
     private val packageName: String,
@@ -61,14 +62,15 @@ class AttributionLabelLiveData private constructor(
             return
         }
 
-        val pkgContext = try {
-            app.createPackageContextAsUser(packageName, 0, user)
-        } catch (e: NameNotFoundException) {
-            Log.e(LOG_TAG, "Cannot find $packageName for $user")
+        val pkgContext =
+            try {
+                app.createPackageContextAsUser(packageName, 0, user)
+            } catch (e: NameNotFoundException) {
+                Log.e(LOG_TAG, "Cannot find $packageName for $user")
 
-            postValue(null)
-            return
-        }
+                postValue(null)
+                return
+            }
 
         // TODO (moltmann): Read this from PackageInfo once available
         var cookie = 0
@@ -76,11 +78,12 @@ class AttributionLabelLiveData private constructor(
             // Some resources have multiple "AndroidManifest.xml" loaded and hence we need
             // to find the right one
             cookie++
-            val parser = try {
-                pkgContext.assets.openXmlResourceParser(cookie, MANIFEST_FILE_NAME)
-            } catch (e: FileNotFoundException) {
-                break
-            }
+            val parser =
+                try {
+                    pkgContext.assets.openXmlResourceParser(cookie, MANIFEST_FILE_NAME)
+                } catch (e: FileNotFoundException) {
+                    break
+                }
 
             try {
                 do {
@@ -109,8 +112,9 @@ class AttributionLabelLiveData private constructor(
                         }
 
                         if (parser.getAttributeValue(ANDROID_NS, TAG_ATTR) == attributionTag) {
-                            postValue(parser.getAttributeResourceValue(ANDROID_NS, LABEL_ATTR,
-                                    ID_NULL))
+                            postValue(
+                                parser.getAttributeResourceValue(ANDROID_NS, LABEL_ATTR, ID_NULL)
+                            )
                             return
                         } else {
                             parser.skipTag()
@@ -125,9 +129,7 @@ class AttributionLabelLiveData private constructor(
         postValue(null)
     }
 
-    /**
-     * Skip tag parser is currently pointing to (including all tags nested in it)
-     */
+    /** Skip tag parser is currently pointing to (including all tags nested in it) */
     private fun XmlPullParser.skipTag() {
         var depth = 1
         while (depth != 0) {
@@ -158,18 +160,25 @@ class AttributionLabelLiveData private constructor(
 
     /**
      * Repository for AttributionLiveData.
+     *
      * <p> Key value is a pair of string attribution tag, string package name, user handle, value is
      * its corresponding LiveData.
      */
-    companion object : DataRepository<Triple<String?, String, UserHandle>,
-            AttributionLabelLiveData>() {
+    companion object :
+        DataRepository<Triple<String?, String, UserHandle>, AttributionLabelLiveData>() {
         override fun newValue(key: Triple<String?, String, UserHandle>): AttributionLabelLiveData {
-            return AttributionLabelLiveData(PermissionControllerApplication.get(),
-                    key.first, key.second, key.third)
+            return AttributionLabelLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second,
+                key.third
+            )
         }
 
-        operator fun get(attributionTag: String?, packageName: String, user: UserHandle):
-                AttributionLabelLiveData =
-            get(Triple(attributionTag, packageName, user))
+        operator fun get(
+            attributionTag: String?,
+            packageName: String,
+            user: UserHandle
+        ): AttributionLabelLiveData = get(Triple(attributionTag, packageName, user))
     }
 }

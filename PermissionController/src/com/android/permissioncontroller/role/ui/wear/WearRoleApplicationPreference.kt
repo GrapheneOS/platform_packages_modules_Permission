@@ -24,8 +24,8 @@ import androidx.preference.TwoStatePreference
 import com.android.permissioncontroller.role.ui.RoleApplicationPreference
 
 /**
- * Role application preference for Wear.
- * The preference is only used to hand over the properties to ToggleChip.
+ * Role application preference for Wear. The preference is only used to hand over the properties to
+ * ToggleChip.
  */
 class WearRoleApplicationPreference(
     context: Context,
@@ -42,7 +42,8 @@ class WearRoleApplicationPreference(
                         .putExtra(DevicePolicyManager.EXTRA_RESTRICTION, restriction)
                 )
             }
-        } ?: onDefaultCheckChanged
+        }
+            ?: onDefaultCheckChanged
 
     override fun setUserRestriction(userRestriction: String?) {
         restriction = userRestriction

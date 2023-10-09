@@ -39,53 +39,51 @@ import com.android.settingslib.RestrictedLockUtils
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin
 import java.util.stream.Collectors
 
-/**
- * View model for legacy {@link ReviewPermissionsFragment}.
- */
-class ReviewPermissionsViewModel(
-    val app: Application,
-    val packageInfo: PackageInfo
-) : ViewModel() {
+/** View model for legacy {@link ReviewPermissionsFragment}. */
+class ReviewPermissionsViewModel(val app: Application, val packageInfo: PackageInfo) : ViewModel() {
 
     private val mUser = android.os.Process.myUserHandle()
 
-    /**
-     * Holds permission groups for a package or an empty map in case no user review is required.
-     */
+    /** Holds permission groups for a package or an empty map in case no user review is required. */
     val permissionGroupsLiveData =
         object : SmartUpdateMediatorLiveData<Map<String, LightAppPermGroup>>() {
             val packagePermsLiveData = PackagePermissionsLiveData[packageInfo.packageName, mUser]
 
             init {
-                addSource(packagePermsLiveData) {
-                    update()
-                }
+                addSource(packagePermsLiveData) { update() }
             }
 
             val permissionGroups = mutableMapOf<String, LightAppPermGroupLiveData>()
 
             override fun onUpdate() {
                 val permissionGroupsMap = packagePermsLiveData.value ?: return
-                val filteredGroups = permissionGroupsMap.keys.stream()
-                    .filter { it -> !it.equals(NON_RUNTIME_NORMAL_PERMS) }
-                    .collect(Collectors.toList())
+                val filteredGroups =
+                    permissionGroupsMap.keys
+                        .stream()
+                        .filter { it -> !it.equals(NON_RUNTIME_NORMAL_PERMS) }
+                        .collect(Collectors.toList())
 
                 val getPermGroupLiveData = { permGroupName: String ->
                     LightAppPermGroupLiveData[packageInfo.packageName, permGroupName, mUser]
                 }
                 setSourcesToDifference(filteredGroups, permissionGroups, getPermGroupLiveData)
-                if (permissionGroups.values.all { it.isInitialized } &&
-                    permissionGroups.values.all { !it.isStale }) {
-                    val permGroups: List<LightAppPermGroup?> = permissionGroups.values.map {
-                        it.value }
-                    val reviewGroups = permGroups.filterNotNull().filter {
-                        shouldShowPermission(it) &&
-                            Utils.OS_PKG == it.permGroupInfo.packageName
-                    }.associateBy {
-                        it.permGroupName
-                    }
-                    value = if (reviewGroups.any { it.value.isReviewRequired }) reviewGroups
-                    else emptyMap()
+                if (
+                    permissionGroups.values.all { it.isInitialized } &&
+                        permissionGroups.values.all { !it.isStale }
+                ) {
+                    val permGroups: List<LightAppPermGroup?> =
+                        permissionGroups.values.map { it.value }
+                    val reviewGroups =
+                        permGroups
+                            .filterNotNull()
+                            .filter {
+                                shouldShowPermission(it) &&
+                                    Utils.OS_PKG == it.permGroupInfo.packageName
+                            }
+                            .associateBy { it.permGroupName }
+                    value =
+                        if (reviewGroups.any { it.value.isReviewRequired }) reviewGroups
+                        else emptyMap()
                 }
             }
         }
@@ -110,15 +108,15 @@ class ReviewPermissionsViewModel(
     }
 
     /**
-     * Update the summary of a permission group that has background permission.
-     * This does not apply to permission groups that are fixed by policy
+     * Update the summary of a permission group that has background permission. This does not apply
+     * to permission groups that are fixed by policy
      */
-    fun getSummaryForPermGroupWithBackgroundPermission(
-        state: PermissionTarget
-    ): PermissionSummary {
+    fun getSummaryForPermGroupWithBackgroundPermission(state: PermissionTarget): PermissionSummary {
         if (state != PermissionTarget.PERMISSION_NONE) {
-            if (state.and(PermissionTarget.PERMISSION_BACKGROUND)
-                != PermissionTarget.PERMISSION_NONE.value) {
+            if (
+                state.and(PermissionTarget.PERMISSION_BACKGROUND) !=
+                    PermissionTarget.PERMISSION_NONE.value
+            ) {
                 return SummaryMessage.ACCESS_ALWAYS.toPermSummary()
             } else {
                 return SummaryMessage.ACCESS_ONLY_FOREGROUND.toPermSummary()
@@ -152,9 +150,7 @@ class ReviewPermissionsViewModel(
         }
     }
 
-    /**
-     * Show all individual permissions in this group in a new fragment.
-     */
+    /** Show all individual permissions in this group in a new fragment. */
     fun showAllPermissions(fragment: Fragment, args: Bundle) {
         val navController: NavController = NavHostFragment.findNavController(fragment)
         navController.navigateSafe(R.id.app_to_all_perms, args)
@@ -222,8 +218,10 @@ class ReviewPermissionsViewModel(
                     SummaryMessage.ENFORCED_BY_POLICY.toPermSummary()
                 }
             } else {
-                if (mState.and(PermissionTarget.PERMISSION_BACKGROUND) !=
-                    PermissionTarget.PERMISSION_NONE.value) {
+                if (
+                    mState.and(PermissionTarget.PERMISSION_BACKGROUND) !=
+                        PermissionTarget.PERMISSION_NONE.value
+                ) {
                     return if (hasAdmin) {
                         SummaryMessage.ENABLED_BY_ADMIN.toPermSummary()
                     } else {
@@ -242,8 +240,10 @@ class ReviewPermissionsViewModel(
         } else {
             // Part of the permission group can still be switched
             if (permGroup.background.isPolicyFixed) {
-                return if (mState.and(PermissionTarget.PERMISSION_BACKGROUND) !=
-                    PermissionTarget.PERMISSION_NONE.value) {
+                return if (
+                    mState.and(PermissionTarget.PERMISSION_BACKGROUND) !=
+                        PermissionTarget.PERMISSION_NONE.value
+                ) {
                     if (hasAdmin) {
                         SummaryMessage.ENABLED_BY_ADMIN_BACKGROUND_ONLY.toPermSummary(true)
                     } else {
@@ -277,11 +277,10 @@ class ReviewPermissionsViewModel(
         return mGroup.foreground.isPolicyFixed && !mGroup.isGranted
     }
 
-    /**
-     * Whether policy is system fixed or fully fixed or foreground disabled
-     */
+    /** Whether policy is system fixed or fully fixed or foreground disabled */
     fun isFixedOrForegroundDisabled(mGroup: LightAppPermGroup): Boolean {
-        return mGroup.isSystemFixed || mGroup.isPolicyFullyFixed ||
+        return mGroup.isSystemFixed ||
+            mGroup.isPolicyFullyFixed ||
             isForegroundDisabledByPolicy(mGroup)
     }
 

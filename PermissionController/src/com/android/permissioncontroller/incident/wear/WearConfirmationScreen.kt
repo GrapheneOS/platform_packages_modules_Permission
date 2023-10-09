@@ -18,21 +18,21 @@ package com.android.permissioncontroller.incident.wear
 
 import android.app.Activity
 import android.view.View
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.platform.ComposeView
-import androidx.wear.compose.foundation.lazy.ScalingLazyListState
-import com.android.permissioncontroller.permission.ui.wear.elements.AlertDialog
-import com.android.permissioncontroller.permission.ui.wear.elements.SingleButtonAlertDialog
 import androidx.compose.foundation.layout.Box
-import androidx.compose.ui.Modifier
-import androidx.wear.compose.material.CircularProgressIndicator
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.wear.compose.foundation.lazy.ScalingLazyListState
+import androidx.wear.compose.material.CircularProgressIndicator
+import com.android.permissioncontroller.permission.ui.wear.elements.AlertDialog
+import com.android.permissioncontroller.permission.ui.wear.elements.SingleButtonAlertDialog
 
 @Composable
 fun WearConfirmationScreen(viewModel: WearConfirmationActivityViewModel) {
@@ -76,11 +76,6 @@ fun WearConfirmationScreen(viewModel: WearConfirmationActivityViewModel) {
     }
 }
 
-fun createView(
-    activity: Activity,
-    viewModel: WearConfirmationActivityViewModel
-): View {
-    return ComposeView(activity).apply {
-        setContent { WearConfirmationScreen(viewModel) }
-    }
+fun createView(activity: Activity, viewModel: WearConfirmationActivityViewModel): View {
+    return ComposeView(activity).apply { setContent { WearConfirmationScreen(viewModel) } }
 }

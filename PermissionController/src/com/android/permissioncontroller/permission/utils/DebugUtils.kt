@@ -25,24 +25,21 @@ import java.util.Collections.reverse
  */
 fun shortStackTrace() = permissionsStackTrace().toShortString()
 
-/**
- * [StackTraceElement]s of only the permission-related frames
- */
-fun permissionsStackTrace() = stackTraceWithin("com.android.permissioncontroller")
-    .dropLastWhile { it.className.contains(".DebugUtils") }
+/** [StackTraceElement]s of only the permission-related frames */
+fun permissionsStackTrace() =
+    stackTraceWithin("com.android.permissioncontroller").dropLastWhile {
+        it.className.contains(".DebugUtils")
+    }
 
 /**
  * [StackTraceElement]s of only frames who's [full class name][StackTraceElement.getClassName]
  * starts with [pkgPrefix]
  */
-fun stackTraceWithin(pkgPrefix: String) = Thread
-    .currentThread()
-    .stackTrace
-    .dropWhile {
-        !it.className.startsWith(pkgPrefix)
-    }.takeWhile {
-        it.className.startsWith(pkgPrefix)
-    }
+fun stackTraceWithin(pkgPrefix: String) =
+    Thread.currentThread()
+        .stackTrace
+        .dropWhile { !it.className.startsWith(pkgPrefix) }
+        .takeWhile { it.className.startsWith(pkgPrefix) }
 
 /**
  * Renders a stack trace slice to a short-ish single-line string.

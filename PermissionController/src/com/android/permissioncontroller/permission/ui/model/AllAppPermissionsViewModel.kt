@@ -33,41 +33,34 @@ import com.android.permissioncontroller.permission.utils.Utils
  *
  * @param packageName The name of the package this viewModel is representing
  * @param user The user of the package this viewModel is representing
- * @param filterGroup An optional single group that should be shown, no other groups will be
- * shown
+ * @param filterGroup An optional single group that should be shown, no other groups will be shown
  */
-class AllAppPermissionsViewModel(
-    packageName: String,
-    user: UserHandle,
-    filterGroup: String?
-) : ViewModel() {
+class AllAppPermissionsViewModel(packageName: String, user: UserHandle, filterGroup: String?) :
+    ViewModel() {
 
-    val allPackagePermissionsLiveData = AllPackagePermissionsLiveData(packageName, user,
-        filterGroup)
+    val allPackagePermissionsLiveData =
+        AllPackagePermissionsLiveData(packageName, user, filterGroup)
 
     class AllPackagePermissionsLiveData(
         packageName: String,
         user: UserHandle,
         private val filterGroup: String?
-    ) : SmartUpdateMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards
-    Map<String, List<String>>>() {
+    ) : SmartUpdateMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards Map<String, List<String>>>() {
 
-        private val packagePermsLiveData =
-            PackagePermissionsLiveData[packageName, user]
+        private val packagePermsLiveData = PackagePermissionsLiveData[packageName, user]
         private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
 
         init {
-            addSource(packagePermsLiveData) {
-                update()
-            }
-            addSource(packageInfoLiveData) {
-                update()
-            }
+            addSource(packagePermsLiveData) { update() }
+            addSource(packageInfoLiveData) { update() }
         }
 
         override fun onUpdate() {
-            if (!packagePermsLiveData.isInitialized || packagePermsLiveData.isStale ||
-                !packageInfoLiveData.isInitialized) {
+            if (
+                !packagePermsLiveData.isInitialized ||
+                    packagePermsLiveData.isStale ||
+                    !packageInfoLiveData.isInitialized
+            ) {
                 return
             }
             val permissions = packagePermsLiveData.value
@@ -77,12 +70,17 @@ class AllAppPermissionsViewModel(
                 return
             }
 
-            value = permissions
-                .filter { filterGroup == null || it.key == filterGroup }
-                .filter { (it.key != Manifest.permission_group.STORAGE ||
-                        Utils.shouldShowStorage(packageInfo)) }
-                .filter { (!Utils.isHealthPermissionGroup(it.key) ||
-                        Utils.shouldShowHealthPermission(packageInfo, it.key))}
+            value =
+                permissions
+                    .filter { filterGroup == null || it.key == filterGroup }
+                    .filter {
+                        (it.key != Manifest.permission_group.STORAGE ||
+                            Utils.shouldShowStorage(packageInfo))
+                    }
+                    .filter {
+                        (!Utils.isHealthPermissionGroup(it.key) ||
+                            Utils.shouldShowHealthPermission(packageInfo, it.key))
+                    }
         }
     }
 }
@@ -93,8 +91,7 @@ class AllAppPermissionsViewModel(
  * @param app The current application
  * @param packageName The name of the package this viewModel is representing
  * @param user The user of the package this viewModel is representing
- * @param filterGroup An optional single group that should be shown, no other groups will be
- * shown
+ * @param filterGroup An optional single group that should be shown, no other groups will be shown
  */
 class AllAppPermissionsViewModelFactory(
     private val packageName: String,

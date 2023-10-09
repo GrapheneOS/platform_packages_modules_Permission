@@ -59,7 +59,8 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
                     .toMutableList()
                     .apply { add(safetyLabel) }
                     .sortedBy { it.receivedAt }
-                    .takeLast(maxToPersist))
+                    .takeLast(maxToPersist)
+            )
     }
 
     /** Data class representing the information about an app. */
@@ -90,7 +91,8 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
                 SafetyLabel(
                     AppInfo(packageName),
                     receivedAt,
-                    DataLabel.extractLocationSharingDataLabel(appMetadataSafetyLabel.dataLabel))
+                    DataLabel.extractLocationSharingDataLabel(appMetadataSafetyLabel.dataLabel)
+                )
         }
     }
 
@@ -113,7 +115,8 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
                         .filter { it.key == DataCategoryConstants.CATEGORY_LOCATION }
                         .mapValues { categoryEntry ->
                             DataCategory.fromAppMetadataDataCategory(categoryEntry.value)
-                        })
+                        }
+                )
         }
     }
 
@@ -134,7 +137,8 @@ data class AppsSafetyLabelHistory(val appSafetyLabelHistories: List<AppSafetyLab
                 DataCategory(
                     appMetadataDataCategory.dataTypes.values.any {
                         it.purposeSet.contains(PURPOSE_ADVERTISING)
-                    })
+                    }
+                )
         }
     }
 

@@ -72,7 +72,8 @@ object BackgroundGrantBehavior : GrantBehavior() {
             Log.w(
                 LOG_TAG,
                 "Cannot grant ${group.permGroupName} as the foreground permissions" +
-                    " are not requested or already granted.")
+                    " are not requested or already granted."
+            )
             return Prompt.NO_UI_REJECT_THIS_GROUP
         }
 
@@ -128,14 +129,16 @@ object BackgroundGrantBehavior : GrantBehavior() {
                 LOG_TAG,
                 "For SDK $splitSdk+ apps requesting $groupName, " +
                     "background permissions must be requested alone after foreground permissions " +
-                    "are already granted")
+                    "are already granted"
+            )
             return Prompt.NO_UI_REJECT_ALL_GROUPS
         } else if (!isFgGranted) {
             Log.e(
                 LOG_TAG,
                 "For SDK $splitSdk+ apps requesting, $groupName, " +
                     "background permissions must be requested after foreground permissions are " +
-                    "already granted")
+                    "already granted"
+            )
             Prompt.NO_UI_REJECT_THIS_GROUP
         }
         return Prompt.NO_UI_REJECT_ALL_GROUPS

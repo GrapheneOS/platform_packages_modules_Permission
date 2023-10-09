@@ -44,7 +44,8 @@ data class LightPackageOps(
     ) : this(
         packageOps.packageName,
         UserHandle.getUserHandleForUid(packageOps.uid),
-        createLastPermissionGroupAccessTimesMap(ops, packageOps))
+        createLastPermissionGroupAccessTimesMap(ops, packageOps)
+    )
 
     /** Companion object for [LightPackageOps]. */
     companion object {
@@ -70,7 +71,8 @@ data class LightPackageOps(
                 lastAccessTimeMs[permissionGroupOfOp] =
                     maxOf(
                         lastAccessTimeMs[permissionGroupOfOp] ?: -1,
-                        opEntry.getLastAccessTime(OPS_LAST_ACCESS_FLAGS))
+                        opEntry.getLastAccessTime(OPS_LAST_ACCESS_FLAGS)
+                    )
             }
 
             return lastAccessTimeMs

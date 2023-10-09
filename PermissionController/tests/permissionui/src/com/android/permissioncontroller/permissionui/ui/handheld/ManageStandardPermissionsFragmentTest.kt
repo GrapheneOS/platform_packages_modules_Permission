@@ -24,8 +24,8 @@ import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.revokePermission
 import android.permission.cts.PermissionUtils.uninstallApp
 import android.util.Log
-import androidx.test.uiautomator.By
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.getEventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
@@ -38,9 +38,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Simple tests for {@link ManageStandardPermissionsFragment}
- */
+/** Simple tests for {@link ManageStandardPermissionsFragment} */
 @RunWith(AndroidJUnit4::class)
 class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     @Before
@@ -49,9 +47,11 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
         runWithShellPermissionIdentity {
             removePackageIfInstalled()
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            })
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
+            )
         }
     }
 
@@ -64,8 +64,8 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     }
 
     /**
-     * The test packages are not expected to be installed already, remove them if they are
-     * already installed (i.e. leftover from another test) when a test starts.
+     * The test packages are not expected to be installed already, remove them if they are already
+     * installed (i.e. leftover from another test) when a test starts.
      */
     private fun removePackageIfInstalled() {
         val packageNames = listOf(LOCATION_USER_PKG, ADDITIONAL_DEFINER_PKG, ADDITIONAL_USER_PKG)
@@ -93,14 +93,15 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         waitFindObjectOrNull(By.textContains(ADDITIONAL_PERMISSIONS_LABEL)) ?: return 0
         // Sometimes the entire preference disappears while it's searching for the app count
         // (during uninstalling). Hence also return the count as 0 if count doesn't exist
-        val additionalPermissionsSummary = waitFindObjectOrNull(
-            By.textContains(ADDITIONAL_PERMISSIONS_SUMMARY)) ?: return 0
+        val additionalPermissionsSummary =
+            waitFindObjectOrNull(By.textContains(ADDITIONAL_PERMISSIONS_SUMMARY)) ?: return 0
         val additionalPermissionsSummaryText = additionalPermissionsSummary.getText()
 
         // Matches a single number out of the summary line, i.e. "...3..." -> "3"
         return getEventually {
             Regex("^[^\\d]*(\\d+)[^\\d]*\$")
-                .find(additionalPermissionsSummaryText)!!.groupValues[1]
+                .find(additionalPermissionsSummaryText)!!
+                .groupValues[1]
                 .toInt()
         }
     }
@@ -110,25 +111,30 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         val original = getUsageCountsFromUi(LOCATION_GROUP_LABEL)
 
         install(LOCATION_USER_APK)
-        eventually({
-            val afterInstall = getUsageCountsFromUi(LOCATION_GROUP_LABEL)
-            assertThat(afterInstall.granted).isEqualTo(original.granted)
-            assertThat(afterInstall.total).isEqualTo(original.total + 1)
-        }, TIMEOUT)
+        eventually(
+            {
+                val afterInstall = getUsageCountsFromUi(LOCATION_GROUP_LABEL)
+                assertThat(afterInstall.granted).isEqualTo(original.granted)
+                assertThat(afterInstall.total).isEqualTo(original.total + 1)
+            },
+            TIMEOUT
+        )
     }
 
     @Test
     fun groupSummaryGetsUpdatedWhenAppGetsUninstalled() {
         val original = getUsageCountsFromUi(LOCATION_GROUP_LABEL)
         install(LOCATION_USER_APK)
-        eventually({
-            assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL)).isNotEqualTo(original)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL)).isNotEqualTo(original) },
+            TIMEOUT
+        )
 
         uninstallApp(LOCATION_USER_PKG)
-        eventually({
-            assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL)).isEqualTo(original)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL)).isEqualTo(original) },
+            TIMEOUT
+        )
     }
 
     @Test
@@ -136,10 +142,13 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         val original = getUsageCountsFromUi(LOCATION_GROUP_LABEL)
 
         install(LOCATION_USER_APK)
-        eventually({
-            assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).total)
-                .isEqualTo(original.total + 1)
-        }, TIMEOUT)
+        eventually(
+            {
+                assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).total)
+                    .isEqualTo(original.total + 1)
+            },
+            TIMEOUT
+        )
 
         grantPermission(LOCATION_USER_PKG, ACCESS_COARSE_LOCATION)
         eventually {
@@ -154,12 +163,15 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
         install(LOCATION_USER_APK)
         grantPermission(LOCATION_USER_PKG, ACCESS_COARSE_LOCATION)
-        eventually({
-            assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).total)
-                .isNotEqualTo(original.total)
-            assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).granted)
-                .isNotEqualTo(original.granted)
-        }, TIMEOUT)
+        eventually(
+            {
+                assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).total)
+                    .isNotEqualTo(original.total)
+                assertThat(getUsageCountsFromUi(LOCATION_GROUP_LABEL).granted)
+                    .isNotEqualTo(original.granted)
+            },
+            TIMEOUT
+        )
 
         revokePermission(LOCATION_USER_PKG, ACCESS_COARSE_LOCATION)
         eventually {
@@ -174,10 +186,12 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
         install(ADDITIONAL_DEFINER_APK)
         install(ADDITIONAL_USER_APK)
-        eventually({
-            assertThat(getAdditionalPermissionCount())
-                .isEqualTo(additionalPermissionBefore + 1)
-        }, TIMEOUT)
+        eventually(
+            {
+                assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore + 1)
+            },
+            TIMEOUT
+        )
     }
 
     @Test
@@ -186,15 +200,16 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
         install(ADDITIONAL_DEFINER_APK)
         install(ADDITIONAL_USER_APK)
-        eventually({
-            assertThat(getAdditionalPermissionCount())
-                .isNotEqualTo(additionalPermissionBefore)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getAdditionalPermissionCount()).isNotEqualTo(additionalPermissionBefore) },
+            TIMEOUT
+        )
 
         uninstallApp(ADDITIONAL_USER_PKG)
-        eventually({
-            assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore) },
+            TIMEOUT
+        )
     }
 
     @Test
@@ -203,15 +218,16 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
 
         install(ADDITIONAL_DEFINER_APK)
         install(ADDITIONAL_USER_APK)
-        eventually({
-            assertThat(getAdditionalPermissionCount())
-                .isNotEqualTo(additionalPermissionBefore)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getAdditionalPermissionCount()).isNotEqualTo(additionalPermissionBefore) },
+            TIMEOUT
+        )
 
         uninstallApp(ADDITIONAL_DEFINER_PKG)
-        eventually({
-            assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore)
-        }, TIMEOUT)
+        eventually(
+            { assertThat(getAdditionalPermissionCount()).isEqualTo(additionalPermissionBefore) },
+            TIMEOUT
+        )
     }
 
     companion object {
@@ -220,11 +236,9 @@ class ManageStandardPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         private const val LOCATION_USER_APK =
             "/data/local/tmp/pc-permissionui/AppThatRequestsLocation.apk"
         private const val ADDITIONAL_DEFINER_APK =
-            "/data/local/tmp/pc-permissionui/" +
-                "PermissionUiDefineAdditionalPermissionApp.apk"
+            "/data/local/tmp/pc-permissionui/" + "PermissionUiDefineAdditionalPermissionApp.apk"
         private const val ADDITIONAL_USER_APK =
-            "/data/local/tmp/pc-permissionui/" +
-                "PermissionUiUseAdditionalPermissionApp.apk"
+            "/data/local/tmp/pc-permissionui/" + "PermissionUiUseAdditionalPermissionApp.apk"
         private const val LOCATION_USER_PKG = "android.permission.cts.appthatrequestpermission"
         private const val ADDITIONAL_DEFINER_PKG =
             "com.android.permissioncontroller.tests.appthatdefinespermission"

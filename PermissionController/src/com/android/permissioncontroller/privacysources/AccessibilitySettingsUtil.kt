@@ -32,24 +32,28 @@ object AccessibilitySettingsUtil {
     private val LOG_TAG = AccessibilitySettingsUtil::class.java.simpleName
     private val lock = Mutex()
 
-    /**
-     * Changes an accessibility component's state.
-     */
+    /** Changes an accessibility component's state. */
     suspend fun disableAccessibilityService(context: Context, serviceToBeDisabled: ComponentName) {
         lock.withLock {
             val settingsEnabledA11yServices = getEnabledServicesFromSettings(context)
-            if (settingsEnabledA11yServices.isEmpty() ||
-                !settingsEnabledA11yServices.contains(serviceToBeDisabled)
+            if (
+                settingsEnabledA11yServices.isEmpty() ||
+                    !settingsEnabledA11yServices.contains(serviceToBeDisabled)
             ) {
-                Log.w(LOG_TAG, "${serviceToBeDisabled.toShortString()} is already disabled " +
-                    "or not installed.")
+                Log.w(
+                    LOG_TAG,
+                    "${serviceToBeDisabled.toShortString()} is already disabled " +
+                        "or not installed."
+                )
                 return
             }
 
             settingsEnabledA11yServices.remove(serviceToBeDisabled)
 
-            val updatedEnabledServices = settingsEnabledA11yServices.map { it.flattenToString() }
-                .joinToString(separator = ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR.toString())
+            val updatedEnabledServices =
+                settingsEnabledA11yServices
+                    .map { it.flattenToString() }
+                    .joinToString(separator = ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR.toString())
 
             Settings.Secure.putString(
                 context.contentResolver,
@@ -59,27 +63,24 @@ object AccessibilitySettingsUtil {
         }
     }
 
-    /**
-     * @return the mutable set of enabled accessibility services.
-     */
+    /** @return the mutable set of enabled accessibility services. */
     fun getEnabledServicesFromSettings(context: Context): MutableSet<ComponentName> {
-        val enabledServicesSetting = Settings.Secure.getString(
-            context.contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
-        )
+        val enabledServicesSetting =
+            Settings.Secure.getString(
+                context.contentResolver,
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+            )
         val enabledServices = mutableSetOf<ComponentName>()
         if (TextUtils.isEmpty(enabledServicesSetting)) {
             return enabledServices
         }
 
-        val colonSplitter: TextUtils.StringSplitter = TextUtils.SimpleStringSplitter(
-            ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR
-        )
+        val colonSplitter: TextUtils.StringSplitter =
+            TextUtils.SimpleStringSplitter(ENABLED_ACCESSIBILITY_SERVICES_SEPARATOR)
         colonSplitter.setString(enabledServicesSetting)
 
         for (componentNameString in colonSplitter) {
-            val enabledService = ComponentName.unflattenFromString(
-                componentNameString
-            )
+            val enabledService = ComponentName.unflattenFromString(componentNameString)
             if (enabledService != null) {
                 enabledServices.add(enabledService)
             } else {

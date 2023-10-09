@@ -16,9 +16,7 @@
 
 package com.android.permissioncontroller.permission.data
 
-/**
- * An interface for classes that have an [Intent] action
- */
+/** An interface for classes that have an [Intent] action */
 interface HasIntentAction {
     val intentAction: String
 }

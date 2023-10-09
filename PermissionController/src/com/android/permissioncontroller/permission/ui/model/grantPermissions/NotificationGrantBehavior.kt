@@ -29,7 +29,6 @@ import com.android.permissioncontroller.permission.ui.model.Prompt
  *
  * It can't be explicitly requested from apps that don't yet target android T. If they try, we
  * remove it entirely from the request, do not return a result, and take no action on it.
- *
  */
 object NotificationGrantBehavior : GrantBehavior() {
     override fun getPrompt(

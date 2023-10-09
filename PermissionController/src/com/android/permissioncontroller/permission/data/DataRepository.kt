@@ -39,18 +39,16 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
     private val TIME_THRESHOLD_ALL_NANOS: Long = 0
 
     protected val lock = Any()
-    @GuardedBy("lock")
-    protected val data = mutableMapOf<K, V>()
+    @GuardedBy("lock") protected val data = mutableMapOf<K, V>()
 
-    /**
-     * Whether or not this data repository has been registered as a component callback yet
-     */
+    /** Whether or not this data repository has been registered as a component callback yet */
     private var registered = false
-    /**
-     * Whether or not this device is a low-RAM device.
-     */
-    private var isLowMemoryDevice = PermissionControllerApplication.get().getSystemService(
-        ActivityManager::class.java)?.isLowRamDevice ?: false
+    /** Whether or not this device is a low-RAM device. */
+    private var isLowMemoryDevice =
+        PermissionControllerApplication.get()
+            .getSystemService(ActivityManager::class.java)
+            ?.isLowRamDevice
+            ?: false
 
     init {
         PermissionControllerApplication.get().registerComponentCallbacks(this)
@@ -60,7 +58,6 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
      * Get a value from this repository, creating it if needed
      *
      * @param key The key associated with the desired Value
-     *
      * @return The cached or newly created Value for the given Key
      */
     operator fun get(key: K): V {
@@ -73,11 +70,9 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
      * Generate a new value type from the given data
      *
      * @param key Information about this value object, used to instantiate it
-     *
      * @return The generated Value
      */
-    @MainThread
-    protected abstract fun newValue(key: K): V
+    @MainThread protected abstract fun newValue(key: K): V
 
     /**
      * Remove LiveData objects with no observer based on the severity of the memory pressure. If
@@ -91,15 +86,18 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
             return
         }
 
-        trimInactiveData(threshold = when (level) {
-            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND -> TIME_THRESHOLD_LAX_NANOS
-            ComponentCallbacks2.TRIM_MEMORY_MODERATE -> TIME_THRESHOLD_TIGHT_NANOS
-            ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> TIME_THRESHOLD_ALL_NANOS
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE -> TIME_THRESHOLD_LAX_NANOS
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> TIME_THRESHOLD_TIGHT_NANOS
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> TIME_THRESHOLD_ALL_NANOS
-            else -> return
-        })
+        trimInactiveData(
+            threshold =
+                when (level) {
+                    ComponentCallbacks2.TRIM_MEMORY_BACKGROUND -> TIME_THRESHOLD_LAX_NANOS
+                    ComponentCallbacks2.TRIM_MEMORY_MODERATE -> TIME_THRESHOLD_TIGHT_NANOS
+                    ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> TIME_THRESHOLD_ALL_NANOS
+                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE -> TIME_THRESHOLD_LAX_NANOS
+                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> TIME_THRESHOLD_TIGHT_NANOS
+                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> TIME_THRESHOLD_ALL_NANOS
+                    else -> return
+                }
+        )
     }
 
     override fun onLowMemory() {
@@ -111,9 +109,7 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
     }
 
     fun invalidateSingle(key: K) {
-        synchronized(lock) {
-            data.remove(key)
-        }
+        synchronized(lock) { data.remove(key) }
     }
 
     private fun trimInactiveData(threshold: Long) {
@@ -127,8 +123,8 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
     }
 
     /**
-     * Interface which describes an object which can track how long it has been inactive, and if
-     * it has any observers.
+     * Interface which describes an object which can track how long it has been inactive, and if it
+     * has any observers.
      */
     interface InactiveTimekeeper {
 
@@ -156,8 +152,8 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
  * invalidating all values tied to a package. Expects key to be a pair or triple, with the package
  * name as the first value of the key.
  */
-abstract class DataRepositoryForPackage<K, V : DataRepository.InactiveTimekeeper>
-    : DataRepository<K, V>() {
+abstract class DataRepositoryForPackage<K, V : DataRepository.InactiveTimekeeper> :
+    DataRepository<K, V>() {
 
     /**
      * Invalidates every value with the packageName in the key.
@@ -175,9 +171,7 @@ abstract class DataRepositoryForPackage<K, V : DataRepository.InactiveTimekeeper
     }
 }
 
-/**
- * A convenience to retrieve data from a repository with a composite key
- */
+/** A convenience to retrieve data from a repository with a composite key */
 operator fun <K1, K2, V : DataRepository.InactiveTimekeeper> DataRepository<Pair<K1, K2>, V>.get(
     k1: K1,
     k2: K2
@@ -185,14 +179,10 @@ operator fun <K1, K2, V : DataRepository.InactiveTimekeeper> DataRepository<Pair
     return get(k1 to k2)
 }
 
-/**
- * A convenience to retrieve data from a repository with a composite key
- */
-operator fun <K1, K2, K3, V : DataRepository.InactiveTimekeeper>
-    DataRepository<Triple<K1, K2, K3>, V>.get(
-        k1: K1,
-        k2: K2,
-        k3: K3
-    ): V {
+/** A convenience to retrieve data from a repository with a composite key */
+operator fun <K1, K2, K3, V : DataRepository.InactiveTimekeeper> DataRepository<
+    Triple<K1, K2, K3>, V
+>
+    .get(k1: K1, k2: K2, k3: K3): V {
     return get(Triple(k1, k2, k3))
 }

@@ -83,10 +83,14 @@ class GrantPermissionsViewHandlerImpl(
     private val resultListener: ResultListener
 ) : GrantPermissionsViewHandler, OnClickListener {
 
-    private val LOCATION_ACCURACY_DIALOGS = listOf(DIALOG_WITH_BOTH_LOCATIONS,
-            DIALOG_WITH_FINE_LOCATION_ONLY, DIALOG_WITH_COARSE_LOCATION_ONLY)
-    private val LOCATION_ACCURACY_IMAGE_DIAMETER = mActivity.resources.getDimension(
-            R.dimen.location_accuracy_image_size)
+    private val LOCATION_ACCURACY_DIALOGS =
+        listOf(
+            DIALOG_WITH_BOTH_LOCATIONS,
+            DIALOG_WITH_FINE_LOCATION_ONLY,
+            DIALOG_WITH_COARSE_LOCATION_ONLY
+        )
+    private val LOCATION_ACCURACY_IMAGE_DIAMETER =
+        mActivity.resources.getDimension(R.dimen.location_accuracy_image_size)
 
     // Configuration of the current dialog
     private var groupName: String? = null
@@ -124,8 +128,10 @@ class GrantPermissionsViewHandlerImpl(
         arguments.putParcelable(ARG_GROUP_ICON, groupIcon)
         arguments.putCharSequence(ARG_GROUP_MESSAGE, groupMessage)
         arguments.putCharSequence(ARG_GROUP_DETAIL_MESSAGE, detailMessage)
-        arguments.putCharSequence(ARG_GROUP_PERMISSION_RATIONALE_MESSAGE,
-            permissionRationaleMessage)
+        arguments.putCharSequence(
+            ARG_GROUP_PERMISSION_RATIONALE_MESSAGE,
+            permissionRationaleMessage
+        )
         arguments.putBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES, buttonVisibilities)
         arguments.putBooleanArray(ARG_DIALOG_LOCATION_VISIBILITIES, locationVisibilities)
         arguments.putInt(ARG_DIALOG_SELECTED_PRECISION, selectedPrecision)
@@ -141,8 +147,9 @@ class GrantPermissionsViewHandlerImpl(
         permissionRationaleMessage =
             savedInstanceState.getCharSequence(ARG_GROUP_PERMISSION_RATIONALE_MESSAGE)
         setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES))
-        setLocationVisibilities(savedInstanceState.getBooleanArray(
-            ARG_DIALOG_LOCATION_VISIBILITIES))
+        setLocationVisibilities(
+            savedInstanceState.getBooleanArray(ARG_DIALOG_LOCATION_VISIBILITIES)
+        )
         selectedPrecision = savedInstanceState.getInt(ARG_DIALOG_SELECTED_PRECISION)
 
         updateAll()
@@ -159,7 +166,6 @@ class GrantPermissionsViewHandlerImpl(
         buttonVisibilities: BooleanArray?,
         locationVisibilities: BooleanArray?
     ) {
-
         this.groupName = groupName
         this.groupCount = groupCount
         this.groupIndex = groupIndex
@@ -187,21 +193,22 @@ class GrantPermissionsViewHandlerImpl(
         // Grow or shrink the content container to size of new content
         val growShrinkToNewContentSize = ChangeBounds()
         growShrinkToNewContentSize.duration = ANIMATION_DURATION_MILLIS
-        growShrinkToNewContentSize.interpolator = AnimationUtils.loadInterpolator(mActivity,
-            android.R.interpolator.fast_out_slow_in)
+        growShrinkToNewContentSize.interpolator =
+            AnimationUtils.loadInterpolator(mActivity, android.R.interpolator.fast_out_slow_in)
         TransitionManager.beginDelayedTransition(rootView, growShrinkToNewContentSize)
     }
 
     override fun createView(): View {
-        val useMaterial3PermissionGrantDialog = mActivity.resources
-                .getBoolean(R.bool.config_useMaterial3PermissionGrantDialog)
-        val rootView = if (useMaterial3PermissionGrantDialog || SdkLevel.isAtLeastT()) {
-            LayoutInflater.from(mActivity)
-                    .inflate(R.layout.grant_permissions_material3, null) as ViewGroup
-        } else {
-            LayoutInflater.from(mActivity)
-                    .inflate(R.layout.grant_permissions, null) as ViewGroup
-        }
+        val useMaterial3PermissionGrantDialog =
+            mActivity.resources.getBoolean(R.bool.config_useMaterial3PermissionGrantDialog)
+        val rootView =
+            if (useMaterial3PermissionGrantDialog || SdkLevel.isAtLeastT()) {
+                LayoutInflater.from(mActivity).inflate(R.layout.grant_permissions_material3, null)
+                    as ViewGroup
+            } else {
+                LayoutInflater.from(mActivity).inflate(R.layout.grant_permissions, null)
+                    as ViewGroup
+            }
         this.rootView = rootView
 
         // Uses the vertical gravity of the PermissionGrantSingleton style to position the window
@@ -257,14 +264,15 @@ class GrantPermissionsViewHandlerImpl(
     private fun getLottieDrawable(@RawRes rawResId: Int): LottieDrawable {
         val composition = LottieCompositionFactory.fromRawResSync(mActivity, rawResId).value!!
         val scale = LOCATION_ACCURACY_IMAGE_DIAMETER / composition.bounds.width()
-        val drawable = object : LottieDrawable() {
-            override fun getIntrinsicHeight(): Int {
-                return (super.getIntrinsicHeight() * scale).toInt()
+        val drawable =
+            object : LottieDrawable() {
+                override fun getIntrinsicHeight(): Int {
+                    return (super.getIntrinsicHeight() * scale).toInt()
+                }
+                override fun getIntrinsicWidth(): Int {
+                    return (super.getIntrinsicWidth() * scale).toInt()
+                }
             }
-            override fun getIntrinsicWidth(): Int {
-                return (super.getIntrinsicWidth() * scale).toInt()
-            }
-        }
         drawable.composition = composition
         return drawable
     }
@@ -282,21 +290,23 @@ class GrantPermissionsViewHandlerImpl(
 
     private fun setButtonVisibilities(visibilities: BooleanArray?) {
         for (i in buttonVisibilities.indices) {
-            buttonVisibilities[i] = if (visibilities != null && i < visibilities.size) {
-                visibilities[i]
-            } else {
-                false
-            }
+            buttonVisibilities[i] =
+                if (visibilities != null && i < visibilities.size) {
+                    visibilities[i]
+                } else {
+                    false
+                }
         }
     }
 
     private fun setLocationVisibilities(visibilities: BooleanArray?) {
         for (i in locationVisibilities.indices) {
-            locationVisibilities[i] = if (visibilities != null && i < visibilities.size) {
-                visibilities[i]
-            } else {
-                false
-            }
+            locationVisibilities[i] =
+                if (visibilities != null && i < visibilities.size) {
+                    visibilities[i]
+                } else {
+                    false
+                }
         }
     }
 
@@ -329,29 +339,38 @@ class GrantPermissionsViewHandlerImpl(
     private fun updateButtons() {
         for (i in 0 until BUTTON_RES_ID_TO_NUM.size()) {
             val pos = BUTTON_RES_ID_TO_NUM.valueAt(i)
-            buttons[pos]?.visibility = if (buttonVisibilities[pos]) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-            if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos]) {
-                if (locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
-                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
-                    buttons[pos]?.text = mActivity.resources.getString(
-                            R.string.grant_dialog_button_change_to_precise_location)
+            buttons[pos]?.visibility =
+                if (buttonVisibilities[pos]) {
+                    View.VISIBLE
                 } else {
-                    buttons[pos]?.text = mActivity.resources.getString(
-                            R.string.grant_dialog_button_allow_foreground)
+                    View.GONE
+                }
+            if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos]) {
+                if (
+                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]
+                ) {
+                    buttons[pos]?.text =
+                        mActivity.resources.getString(
+                            R.string.grant_dialog_button_change_to_precise_location
+                        )
+                } else {
+                    buttons[pos]?.text =
+                        mActivity.resources.getString(R.string.grant_dialog_button_allow_foreground)
                 }
             }
             if ((pos == DENY_BUTTON || pos == DENY_AND_DONT_ASK_AGAIN_BUTTON)) {
-                if (locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
-                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
-                    buttons[pos]?.text = mActivity.resources.getString(
-                            R.string.grant_dialog_button_keey_approximate_location)
+                if (
+                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]
+                ) {
+                    buttons[pos]?.text =
+                        mActivity.resources.getString(
+                            R.string.grant_dialog_button_keey_approximate_location
+                        )
                 } else {
-                    buttons[pos]?.text = mActivity.resources.getString(
-                            R.string.grant_dialog_button_deny)
+                    buttons[pos]?.text =
+                        mActivity.resources.getString(R.string.grant_dialog_button_deny)
                 }
             }
             buttons[pos]?.requestLayout()
@@ -365,11 +384,12 @@ class GrantPermissionsViewHandlerImpl(
             }
             locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.VISIBLE
             for (i in LOCATION_ACCURACY_DIALOGS) {
-                locationViews[i]?.visibility = if (locationVisibilities[i]) {
-                    View.VISIBLE
-                } else {
-                    View.GONE
-                }
+                locationViews[i]?.visibility =
+                    if (locationVisibilities[i]) {
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
             }
             if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
                 coarseRadioButton?.visibility = View.VISIBLE
@@ -388,11 +408,13 @@ class GrantPermissionsViewHandlerImpl(
                 }
             } else if (locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY]) {
                 (locationViews[DIALOG_WITH_COARSE_LOCATION_ONLY] as ImageView).setImageDrawable(
-                        coarseOnDrawable)
+                    coarseOnDrawable
+                )
                 coarseOnDrawable?.start()
             } else if (locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
                 (locationViews[DIALOG_WITH_FINE_LOCATION_ONLY] as ImageView).setImageDrawable(
-                        fineOnDrawable)
+                    fineOnDrawable
+                )
                 fineOnDrawable?.start()
             }
         } else {
@@ -408,10 +430,18 @@ class GrantPermissionsViewHandlerImpl(
         if (isFineSelected) {
             coarseOnDrawable?.stop()
             fineOffDrawable?.stop()
-            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, coarseOffDrawable,
-                    null, null)
-            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, fineOnDrawable,
-                    null, null)
+            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                coarseOffDrawable,
+                null,
+                null
+            )
+            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                fineOnDrawable,
+                null,
+                null
+            )
             coarseOffDrawable?.start()
             fineOnDrawable?.start()
             fineRadioButton?.setTypeface(null, Typeface.BOLD)
@@ -419,10 +449,18 @@ class GrantPermissionsViewHandlerImpl(
         } else {
             coarseOffDrawable?.stop()
             fineOnDrawable?.stop()
-            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, coarseOnDrawable,
-                    null, null)
-            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, fineOffDrawable,
-                    null, null)
+            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                coarseOnDrawable,
+                null,
+                null
+            )
+            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                fineOffDrawable,
+                null,
+                null
+            )
             fineOffDrawable?.start()
             coarseOnDrawable?.start()
             coarseRadioButton?.setTypeface(null, Typeface.BOLD)
@@ -471,8 +509,8 @@ class GrantPermissionsViewHandlerImpl(
                 R.id.permission_location_accuracy_radio_coarse ->
                     affectedForegroundPermissions = listOf(ACCESS_COARSE_LOCATION)
                 R.id.permission_location_accuracy_radio_fine ->
-                    affectedForegroundPermissions = listOf(ACCESS_FINE_LOCATION,
-                        ACCESS_COARSE_LOCATION)
+                    affectedForegroundPermissions =
+                        listOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
             }
         } else if (locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
             affectedForegroundPermissions = listOf(ACCESS_FINE_LOCATION)
@@ -481,52 +519,94 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         when (BUTTON_RES_ID_TO_NUM.get(id, -1)) {
-            ALLOW_ALL_BUTTON, ALLOW_BUTTON -> {
+            ALLOW_ALL_BUTTON,
+            ALLOW_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    GRANTED_ALWAYS)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    GRANTED_ALWAYS
+                )
             }
             ALLOW_FOREGROUND_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    GRANTED_FOREGROUND_ONLY)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    GRANTED_FOREGROUND_ONLY
+                )
             }
             ALLOW_ALWAYS_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    GRANTED_ALWAYS)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    GRANTED_ALWAYS
+                )
             }
             ALLOW_ONE_TIME_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    GRANTED_ONE_TIME)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    GRANTED_ONE_TIME
+                )
             }
             ALLOW_SELECTED_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    GRANTED_USER_SELECTED)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    GRANTED_USER_SELECTED
+                )
             }
             DONT_ALLOW_MORE_SELECTED_BUTTON -> {
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    DENIED_MORE)
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    DENIED_MORE
+                )
             }
-            DENY_BUTTON, NO_UPGRADE_BUTTON, NO_UPGRADE_OT_BUTTON -> {
+            DENY_BUTTON,
+            NO_UPGRADE_BUTTON,
+            NO_UPGRADE_OT_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    DENIED)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    DENIED
+                )
             }
-            DENY_AND_DONT_ASK_AGAIN_BUTTON, NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON,
+            DENY_AND_DONT_ASK_AGAIN_BUTTON,
+            NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON,
             NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON -> {
                 view.performAccessibilityAction(
-                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
-                resultListener.onPermissionGrantResult(groupName, affectedForegroundPermissions,
-                    DENIED_DO_NOT_ASK_AGAIN)
+                    AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS,
+                    null
+                )
+                resultListener.onPermissionGrantResult(
+                    groupName,
+                    affectedForegroundPermissions,
+                    DENIED_DO_NOT_ASK_AGAIN
+                )
             }
         }
     }
@@ -567,39 +647,57 @@ class GrantPermissionsViewHandlerImpl(
 
         init {
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_button, ALLOW_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_foreground_only_button,
-                ALLOW_FOREGROUND_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_allow_foreground_only_button,
+                ALLOW_FOREGROUND_BUTTON
+            )
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_deny_button, DENY_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_deny_and_dont_ask_again_button,
-                DENY_AND_DONT_ASK_AGAIN_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_one_time_button,
-                ALLOW_ONE_TIME_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_button,
-                NO_UPGRADE_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_and_dont_ask_again_button,
-                NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_button,
-                NO_UPGRADE_OT_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
-                NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_all_button,
-                ALLOW_ALL_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_selected_button,
-                ALLOW_SELECTED_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_dont_allow_more_selected_button,
-                DONT_ALLOW_MORE_SELECTED_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_deny_and_dont_ask_again_button,
+                DENY_AND_DONT_ASK_AGAIN_BUTTON
+            )
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_one_time_button, ALLOW_ONE_TIME_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_button, NO_UPGRADE_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_no_upgrade_and_dont_ask_again_button,
+                NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON
+            )
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_no_upgrade_one_time_button,
+                NO_UPGRADE_OT_BUTTON
+            )
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
+                NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
+            )
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_all_button, ALLOW_ALL_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_selected_button, ALLOW_SELECTED_BUTTON)
+            BUTTON_RES_ID_TO_NUM.put(
+                R.id.permission_dont_allow_more_selected_button,
+                DONT_ALLOW_MORE_SELECTED_BUTTON
+            )
 
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
-            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_fine,
-                FINE_RADIO_BUTTON)
-            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_coarse,
-                COARSE_RADIO_BUTTON)
-            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_group,
-                DIALOG_WITH_BOTH_LOCATIONS)
-            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_fine_only,
-                DIALOG_WITH_FINE_LOCATION_ONLY)
-            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_coarse_only,
-                DIALOG_WITH_COARSE_LOCATION_ONLY)
+            LOCATION_RES_ID_TO_NUM.put(
+                R.id.permission_location_accuracy_radio_fine,
+                FINE_RADIO_BUTTON
+            )
+            LOCATION_RES_ID_TO_NUM.put(
+                R.id.permission_location_accuracy_radio_coarse,
+                COARSE_RADIO_BUTTON
+            )
+            LOCATION_RES_ID_TO_NUM.put(
+                R.id.permission_location_accuracy_radio_group,
+                DIALOG_WITH_BOTH_LOCATIONS
+            )
+            LOCATION_RES_ID_TO_NUM.put(
+                R.id.permission_location_accuracy_fine_only,
+                DIALOG_WITH_FINE_LOCATION_ONLY
+            )
+            LOCATION_RES_ID_TO_NUM.put(
+                R.id.permission_location_accuracy_coarse_only,
+                DIALOG_WITH_COARSE_LOCATION_ONLY
+            )
         }
     }
 }

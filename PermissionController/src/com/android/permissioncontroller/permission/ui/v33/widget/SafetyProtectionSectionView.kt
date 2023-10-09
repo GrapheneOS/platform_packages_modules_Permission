@@ -49,11 +49,12 @@ class SafetyProtectionSectionView : LinearLayout {
     init {
         gravity = Gravity.CENTER
         orientation = HORIZONTAL
-        visibility = if (KotlinUtils.shouldShowSafetyProtectionResources(context)) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        visibility =
+            if (KotlinUtils.shouldShowSafetyProtectionResources(context)) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
     }
 
     override fun onFinishInflate() {
@@ -62,8 +63,9 @@ class SafetyProtectionSectionView : LinearLayout {
             LayoutInflater.from(context).inflate(R.layout.safety_protection_section, this)
             val safetyProtectionDisplayTextView =
                 requireViewById<TextView>(R.id.safety_protection_display_text)
-            safetyProtectionDisplayTextView.setText(Html.fromHtml(
-                context.getString(android.R.string.safety_protection_display_text), 0))
+            safetyProtectionDisplayTextView.setText(
+                Html.fromHtml(context.getString(android.R.string.safety_protection_display_text), 0)
+            )
         }
     }
 }

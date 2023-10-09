@@ -36,9 +36,7 @@ import com.android.permissioncontroller.permission.ui.wear.elements.toggleChipDi
 import com.android.permissioncontroller.role.ui.wear.model.ConfirmDialogArgs
 
 @Composable
-fun WearDefaultAppScreen(
-    helper: WearDefaultAppHelper
-) {
+fun WearDefaultAppScreen(helper: WearDefaultAppHelper) {
     val roleLiveData = helper.viewModel.roleLiveData.observeAsState(emptyList())
     val showConfirmDialog =
         helper.confirmDialogViewModel.showConfirmDialogLiveData.observeAsState(false)
@@ -61,11 +59,8 @@ private fun WearDefaultAppContent(
     qualifyingApplications: List<Pair<ApplicationInfo, Boolean>>,
     helper: WearDefaultAppHelper
 ) {
-    ScrollableScreen(
-        title = helper.getTitle(),
-        isLoading = isLoading
-    ) {
-        helper.getNonePreference(qualifyingApplications)?.let{
+    ScrollableScreen(title = helper.getTitle(), isLoading = isLoading) {
+        helper.getNonePreference(qualifyingApplications)?.let {
             item {
                 ToggleChip(
                     label = it.label,
@@ -82,11 +77,12 @@ private fun WearDefaultAppContent(
                 ToggleChip(
                     label = pref.label,
                     icon = pref.icon,
-                    colors = if (pref.isEnabled()) {
-                        ToggleChipDefaults.toggleChipColors()
-                    } else {
-                        toggleChipDisabledColors()
-                    },
+                    colors =
+                        if (pref.isEnabled()) {
+                            ToggleChipDefaults.toggleChipColors()
+                        } else {
+                            toggleChipDisabledColors()
+                        },
                     secondaryLabel = pref.summary?.toString(),
                     checked = pref.checked,
                     onCheckedChanged = pref.getOnCheckChanged(),
@@ -97,19 +93,12 @@ private fun WearDefaultAppContent(
             }
         }
 
-        item {
-            ListFooter(
-                description = helper.getDescription()
-            )
-        }
+        item { ListFooter(description = helper.getDescription()) }
     }
 }
 
 @Composable
-private fun ConfirmDialog(
-    showDialog: Boolean,
-    args: ConfirmDialogArgs?
-) {
+private fun ConfirmDialog(showDialog: Boolean, args: ConfirmDialogArgs?) {
     args?.let {
         AlertDialog(
             showDialog = showDialog,

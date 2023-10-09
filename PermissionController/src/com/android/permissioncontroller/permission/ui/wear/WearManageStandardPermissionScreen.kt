@@ -68,26 +68,25 @@ internal fun getPermGroupChipParams(
 ): List<PermGroupChipParam> {
     val context = LocalContext.current
     val collator = Collator.getInstance(context.resources.getConfiguration().getLocales().get(0))
-    val summary = if (context.resources.getBoolean(R.bool.config_useAlternativePermGroupSummary)) {
-        R.string.app_permissions_group_summary2
-    } else {
-        R.string.app_permissions_group_summary
-    }
-    return permissionGroups.mapNotNull {
-        val uiInfo = it.value ?: return@mapNotNull null
-        PermGroupChipParam(
-            permGroupName = it.key,
-            label = getPermGroupLabel(context, it.key).toString(),
-            icon = getPermGroupIcon(context, it.key),
-            secondaryLabel = stringResource(
-                summary,
-                uiInfo.nonSystemGranted,
-                uiInfo.nonSystemTotal
+    val summary =
+        if (context.resources.getBoolean(R.bool.config_useAlternativePermGroupSummary)) {
+            R.string.app_permissions_group_summary2
+        } else {
+            R.string.app_permissions_group_summary
+        }
+    return permissionGroups
+        .mapNotNull {
+            val uiInfo = it.value ?: return@mapNotNull null
+            PermGroupChipParam(
+                permGroupName = it.key,
+                label = getPermGroupLabel(context, it.key).toString(),
+                icon = getPermGroupIcon(context, it.key),
+                secondaryLabel =
+                    stringResource(summary, uiInfo.nonSystemGranted, uiInfo.nonSystemTotal)
             )
-        )
-    }.sortedWith { lhs, rhs ->
-        collator.compare(lhs.label, rhs.label)
-    }.toList()
+        }
+        .sortedWith { lhs, rhs -> collator.compare(lhs.label, rhs.label) }
+        .toList()
 }
 
 @Composable
@@ -112,9 +111,7 @@ internal fun WearManageStandardPermissionContent(
                     icon = params.icon,
                     secondaryLabel = params.secondaryLabel,
                     secondaryLabelMaxLines = 3,
-                    onClick = {
-                        onPermGroupClick(params.permGroupName)
-                    }
+                    onClick = { onPermGroupClick(params.permGroupName) }
                 )
             }
         }
@@ -125,11 +122,12 @@ internal fun WearManageStandardPermissionContent(
                     label = stringResource(R.string.additional_permissions),
                     labelMaxLines = 3,
                     icon = R.drawable.ic_more_horizontal,
-                    secondaryLabel = StringUtils.getIcuPluralsString(
-                        LocalContext.current,
-                        R.string.additional_permissions_more,
-                        numCustomPermGroups
-                    ),
+                    secondaryLabel =
+                        StringUtils.getIcuPluralsString(
+                            LocalContext.current,
+                            R.string.additional_permissions_more,
+                            numCustomPermGroups
+                        ),
                     secondaryLabelMaxLines = 3,
                     onClick = onCustomPermissionsClick
                 )

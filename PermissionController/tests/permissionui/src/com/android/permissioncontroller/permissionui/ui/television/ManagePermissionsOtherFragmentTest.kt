@@ -29,10 +29,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Run with:
- * atest ManagePermissionsOtherFragmentTest
- */
+/** Run with: atest ManagePermissionsOtherFragmentTest */
 @RunWith(AndroidJUnit4::class)
 class ManagePermissionsOtherFragmentTest : TelevisionUiBaseTest() {
 
@@ -45,20 +42,27 @@ class ManagePermissionsOtherFragmentTest : TelevisionUiBaseTest() {
         uiDevice.waitForIdle()
         // Making sure are on the "Other permission" page now.
         // For this we can check the Fragment's title.
-        assertEquals("\"Other permissions\" didn't open",
-            otherPermissionsLabel, uiDevice.fragmentDecorTitle)
+        assertEquals(
+            "\"Other permissions\" didn't open",
+            otherPermissionsLabel,
+            uiDevice.fragmentDecorTitle
+        )
     }
 
     @Test
     fun bodySensors_permissionGroup_isNotShown() {
-        assertFalse("Found \"Body sensors\" permission",
-            uiDevice.focusOnElementWithTitle(bodySensorsPermissionLabel))
+        assertFalse(
+            "Found \"Body sensors\" permission",
+            uiDevice.focusOnElementWithTitle(bodySensorsPermissionLabel)
+        )
     }
 
     @Test
     fun additionalPermissions_section_isNotShown_ifAllUnused() {
-        assertFalse("\"Additional permissions\" section is shown",
-            uiDevice.hasElementWithTitle(additionalPermissionsLabel))
+        assertFalse(
+            "\"Additional permissions\" section is shown",
+            uiDevice.hasElementWithTitle(additionalPermissionsLabel)
+        )
     }
 
     @Test
@@ -72,10 +76,14 @@ class ManagePermissionsOtherFragmentTest : TelevisionUiBaseTest() {
         grantTestAppPermission(TEST_APP_DEFINED_PERMISSION_A)
 
         // Make sure the "Additional permissions" section is now shown...
-        assertTrue("\"Additional permissions\" section should be shown",
-            uiDevice.hasElementWithTitle(additionalPermissionsLabel))
+        assertTrue(
+            "\"Additional permissions\" section should be shown",
+            uiDevice.hasElementWithTitle(additionalPermissionsLabel)
+        )
         // ... and that we now have "Permission A" row.
-        assertTrue("Could not find \"Permission A\" row",
-            uiDevice.focusOnElementWithTitle(TEST_APP_DEFINED_PERMISSION_A_LABEL))
+        assertTrue(
+            "Could not find \"Permission A\" row",
+            uiDevice.focusOnElementWithTitle(TEST_APP_DEFINED_PERMISSION_A_LABEL)
+        )
     }
 }

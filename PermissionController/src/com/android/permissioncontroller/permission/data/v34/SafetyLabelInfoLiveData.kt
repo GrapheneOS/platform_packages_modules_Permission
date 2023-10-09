@@ -115,7 +115,8 @@ private constructor(
             }
 
         return SafetyLabel.getSafetyLabelFromMetadata(
-            userContext.packageManager.getAppMetadata(packageName))
+            userContext.packageManager.getAppMetadata(packageName)
+        )
     }
 
     companion object :
@@ -124,7 +125,10 @@ private constructor(
 
         override fun newValue(key: Pair<String, UserHandle>): SafetyLabelInfoLiveData {
             return SafetyLabelInfoLiveData(
-                PermissionControllerApplication.get(), key.first, key.second)
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second
+            )
         }
     }
 }

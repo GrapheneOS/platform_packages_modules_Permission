@@ -29,17 +29,16 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param user The user the services should be determined for
  */
-class EnabledDeviceAdminsLiveData(
-    private val app: Application,
-    private val user: UserHandle
-) : SmartAsyncMediatorLiveData<List<String>>() {
+class EnabledDeviceAdminsLiveData(private val app: Application, private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<List<String>>() {
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
 
-        val packageNames = Utils.getUserContext(app, user)
+        val packageNames =
+            Utils.getUserContext(app, user)
                 .getSystemService(DevicePolicyManager::class.java)!!
                 .activeAdmins
                 ?.map { component -> component.packageName }
@@ -53,8 +52,7 @@ class EnabledDeviceAdminsLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            EnabledDeviceAdminsLiveData>() {
+    companion object : DataRepositoryForPackage<UserHandle, EnabledDeviceAdminsLiveData>() {
         override fun newValue(key: UserHandle): EnabledDeviceAdminsLiveData {
             return EnabledDeviceAdminsLiveData(PermissionControllerApplication.get(), key)
         }

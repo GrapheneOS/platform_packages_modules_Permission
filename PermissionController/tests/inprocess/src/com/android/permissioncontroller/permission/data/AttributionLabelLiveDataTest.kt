@@ -28,8 +28,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-private const val APK =
-        "/data/local/tmp/pc-inprocess/AppThatUsesCameraPermission.apk"
+private const val APK = "/data/local/tmp/pc-inprocess/AppThatUsesCameraPermission.apk"
 private const val PKG = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
 class AttributionLabelLiveDataTest {
@@ -43,8 +42,8 @@ class AttributionLabelLiveDataTest {
     @Test
     fun getValidTag() {
         AttributionLabelLiveData["testTag", PKG, myUserHandle()].withLoadedValue {
-            assertThat(context.packageManager.getResourcesForApplication(PKG)
-                    .getString(it!!)).isEqualTo("Test Attribution Label")
+            assertThat(context.packageManager.getResourcesForApplication(PKG).getString(it!!))
+                .isEqualTo("Test Attribution Label")
         }
     }
 

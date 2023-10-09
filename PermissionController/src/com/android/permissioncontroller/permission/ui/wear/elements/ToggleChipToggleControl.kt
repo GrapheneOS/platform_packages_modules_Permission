@@ -17,5 +17,7 @@
 package com.android.permissioncontroller.permission.ui.wear.elements
 
 public enum class ToggleChipToggleControl {
-    Switch, Radio, Checkbox
+    Switch,
+    Radio,
+    Checkbox
 }

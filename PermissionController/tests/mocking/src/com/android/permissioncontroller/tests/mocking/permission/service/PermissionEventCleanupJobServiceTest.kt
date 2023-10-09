@@ -28,6 +28,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService
 import com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService.Companion.DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY
 import com.android.permissioncontroller.permission.utils.Utils
+import java.io.File
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -38,7 +39,6 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.File
 
 @RunWith(AndroidJUnit4::class)
 class PermissionEventCleanupJobServiceTest {
@@ -47,10 +47,8 @@ class PermissionEventCleanupJobServiceTest {
         val application = Mockito.mock(PermissionControllerApplication::class.java)
     }
 
-    @Mock
-    lateinit var jobScheduler: JobScheduler
-    @Mock
-    lateinit var existingJob: JobInfo
+    @Mock lateinit var jobScheduler: JobScheduler
+    @Mock lateinit var existingJob: JobInfo
 
     private lateinit var context: Context
     private lateinit var mockitoSession: MockitoSession
@@ -59,19 +57,24 @@ class PermissionEventCleanupJobServiceTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         Mockito.`when`(PermissionControllerApplication.get()).thenReturn(application)
         context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
         Mockito.`when`(application.filesDir).thenReturn(filesDir)
         Mockito.`when`(jobScheduler.schedule(Mockito.any())).thenReturn(JobScheduler.RESULT_SUCCESS)
         Mockito.`when`(
-            DeviceConfig.getLong(eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                eq(Utils.PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS),
-                eq(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)))
+                DeviceConfig.getLong(
+                    eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                    eq(Utils.PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS),
+                    eq(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
+                )
+            )
             .thenReturn(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
     }
 
@@ -93,8 +96,8 @@ class PermissionEventCleanupJobServiceTest {
 
     @Test
     fun init_existingJob_doesNotScheduleNewJob() {
-        Mockito.`when`(existingJob.intervalMillis).thenReturn(
-            DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
+        Mockito.`when`(existingJob.intervalMillis)
+            .thenReturn(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
         Mockito.`when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID))
             .thenReturn(existingJob)
         PermissionEventCleanupJobService.scheduleOldDataCleanupIfNecessary(context, jobScheduler)

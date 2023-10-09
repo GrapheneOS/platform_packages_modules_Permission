@@ -39,18 +39,17 @@ class AutoReviewPermissionDecisionsViewAllFragment : AutoSettingsFrameFragment()
     companion object {
         private const val LOG_TAG = "AutoReviewPermissionDecisionsViewAllFragment"
 
-        /**
-         * Creates a new instance of [AutoReviewPermissionDecisionsViewAllFragment].
-         */
+        /** Creates a new instance of [AutoReviewPermissionDecisionsViewAllFragment]. */
         fun newInstance(
             sessionId: Long,
             userHandle: UserHandle
         ): AutoReviewPermissionDecisionsViewAllFragment {
             return AutoReviewPermissionDecisionsViewAllFragment().apply {
-                arguments = Bundle().apply {
-                    putLong(Constants.EXTRA_SESSION_ID, sessionId)
-                    putParcelable(Intent.EXTRA_USER, userHandle)
-                }
+                arguments =
+                    Bundle().apply {
+                        putLong(Constants.EXTRA_SESSION_ID, sessionId)
+                        putParcelable(Intent.EXTRA_USER, userHandle)
+                    }
             }
         }
     }
@@ -71,10 +70,9 @@ class AutoReviewPermissionDecisionsViewAllFragment : AutoSettingsFrameFragment()
             return
         }
         user = requireArguments().getParcelable<UserHandle>(Intent.EXTRA_USER)!!
-        val factory = ReviewPermissionDecisionsViewModelFactory(
-            requireActivity().getApplication()!!, user)
-        viewModel = ViewModelProvider(this,
-            factory)[ReviewPermissionDecisionsViewModel::class.java]
+        val factory =
+            ReviewPermissionDecisionsViewModelFactory(requireActivity().getApplication()!!, user)
+        viewModel = ViewModelProvider(this, factory)[ReviewPermissionDecisionsViewModel::class.java]
         viewModel.recentPermissionDecisionsLiveData.observe(this) { recentDecisions ->
             onRecentDecisionsChanged(recentDecisions)
         }
@@ -88,17 +86,19 @@ class AutoReviewPermissionDecisionsViewAllFragment : AutoSettingsFrameFragment()
     private fun onRecentDecisionsChanged(recentDecisions: List<PermissionDecision>) {
         preferenceScreen.removeAll()
         for (recentDecision in recentDecisions) {
-            val decisionPreference = CarUiPreference(context).apply {
-                icon = viewModel.getAppIcon(recentDecision.packageName)
-                title = viewModel.createPreferenceTitle(recentDecision)
-                summary = viewModel.createSummaryText(recentDecision)
-                onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                    viewModel.createManageAppPermissionIntent(recentDecision).also {
-                        startActivity(it)
-                    }
-                    false
+            val decisionPreference =
+                CarUiPreference(context).apply {
+                    icon = viewModel.getAppIcon(recentDecision.packageName)
+                    title = viewModel.createPreferenceTitle(recentDecision)
+                    summary = viewModel.createSummaryText(recentDecision)
+                    onPreferenceClickListener =
+                        Preference.OnPreferenceClickListener {
+                            viewModel.createManageAppPermissionIntent(recentDecision).also {
+                                startActivity(it)
+                            }
+                            false
+                        }
                 }
-            }
             preferenceScreen.addPreference(decisionPreference)
         }
     }

@@ -28,6 +28,7 @@ import androidx.annotation.RequiresApi
 object SafetyCenterTouchTarget {
     /**
      * Resizes the touch target of views by delegating to the parent component.
+     *
      * @param view component that will be expanded
      * @param minTouchTargetSizeResource required minimum touch target size
      */

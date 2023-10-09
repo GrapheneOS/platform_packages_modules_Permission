@@ -62,21 +62,24 @@ internal class SpacerPreference(context: Context, attrs: AttributeSet) :
         // we should ensure we won't add multiple listeners to the same view,
         // and Preferences API does not allow to do cleanups when onViewRecycled,
         // so we are keeping a track of the added listener attaching it as a tag to the View
-        val listener: View.OnLayoutChangeListener = spacer.tag as? View.OnLayoutChangeListener
-            ?: object : View.OnLayoutChangeListener {
-                    override fun onLayoutChange(
-                        v: View?,
-                        left: Int,
-                        top: Int,
-                        right: Int,
-                        bottom: Int,
-                        oldLeft: Int,
-                        oldTop: Int,
-                        oldRight: Int,
-                        oldBottom: Int
-                    ) {
-                        adjustHeight(spacer)
-                    }}.also { spacer.tag = it }
+        val listener: View.OnLayoutChangeListener =
+            spacer.tag as? View.OnLayoutChangeListener
+                ?: object : View.OnLayoutChangeListener {
+                        override fun onLayoutChange(
+                            v: View?,
+                            left: Int,
+                            top: Int,
+                            right: Int,
+                            bottom: Int,
+                            oldLeft: Int,
+                            oldTop: Int,
+                            oldRight: Int,
+                            oldBottom: Int
+                        ) {
+                            adjustHeight(spacer)
+                        }
+                    }
+                    .also { spacer.tag = it }
 
         spacer.removeOnLayoutChangeListener(listener)
         spacer.addOnLayoutChangeListener(listener)
@@ -96,12 +99,13 @@ internal class SpacerPreference(context: Context, attrs: AttributeSet) :
         // differently due to the auto-scroll to highlight a specific item,
         // and in this case we need to wait the content parent to be measured
         if (contentParent.height == 0) {
-            val globalLayoutObserver = object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    contentParent.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    adjustHeight(spacer)
+            val globalLayoutObserver =
+                object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        contentParent.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        adjustHeight(spacer)
+                    }
                 }
-            }
             contentParent.viewTreeObserver.addOnGlobalLayoutListener(globalLayoutObserver)
             return
         }
@@ -110,13 +114,14 @@ internal class SpacerPreference(context: Context, attrs: AttributeSet) :
         maxKnownToolbarHeight = max(maxKnownToolbarHeight, collapsingToolbar.height)
 
         val contentHeight = spacer.top + maxKnownToolbarHeight
-        val desiredSpacerHeight = if (contentHeight > contentParent.height) {
-            // making it 0 height will remove if from recyclerview
-            1
-        } else {
-            // to unlock the scrolling we need spacer to go slightly beyond the screen
-            contentParent.height - contentHeight + 1
-        }
+        val desiredSpacerHeight =
+            if (contentHeight > contentParent.height) {
+                // making it 0 height will remove if from recyclerview
+                1
+            } else {
+                // to unlock the scrolling we need spacer to go slightly beyond the screen
+                contentParent.height - contentHeight + 1
+            }
 
         val layoutParams = spacer.layoutParams
         if (layoutParams.height != desiredSpacerHeight) {

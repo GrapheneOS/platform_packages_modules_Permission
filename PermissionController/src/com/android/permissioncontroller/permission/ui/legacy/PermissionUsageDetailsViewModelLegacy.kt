@@ -44,8 +44,8 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
-import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.DAYS
@@ -93,7 +93,8 @@ class PermissionUsageDetailsViewModelLegacy(
             /* getUiInfo= */ false,
             /* getNonPlatformPermissions= */ false,
             /* callback= */ callback,
-            /* sync= */ false)
+            /* sync= */ false
+        )
     }
 
     /**
@@ -116,19 +117,26 @@ class PermissionUsageDetailsViewModelLegacy(
             }
         val startTime =
             (System.currentTimeMillis() - showPermissionUsagesDuration).coerceAtLeast(
-                Instant.EPOCH.toEpochMilli())
+                Instant.EPOCH.toEpochMilli()
+            )
         val appPermissionTimelineUsages: List<AppPermissionTimelineUsage> =
             extractAppPermissionTimelineUsagesForGroup(appPermissionUsages, permissionGroup)
         val shouldDisplayShowSystemToggle =
             shouldDisplayShowSystemToggle(appPermissionTimelineUsages)
         val permissionApps: List<PermissionApp> =
             getPermissionAppsWithRecentDiscreteUsage(
-                appPermissionTimelineUsages, showSystem, startTime)
+                appPermissionTimelineUsages,
+                showSystem,
+                startTime
+            )
         val appPermissionUsageEntries =
             buildDiscreteAccessClusterData(appPermissionTimelineUsages, showSystem, startTime)
 
         return PermissionUsageDetailsUiData(
-            permissionApps, shouldDisplayShowSystemToggle, appPermissionUsageEntries)
+            permissionApps,
+            shouldDisplayShowSystemToggle,
+            appPermissionUsageEntries
+        )
     }
 
     private fun getHistoryPreferenceData(
@@ -141,14 +149,14 @@ class PermissionUsageDetailsViewModelLegacy(
             getDurationSummary(discreteAccessClusterData, accessTimeList, context)
         val proxyLabel = getProxyPackageLabel(discreteAccessClusterData)
         val subattributionLabel = getSubattributionLabel(discreteAccessClusterData)
-        val showingSubattribution =
-            subattributionLabel != null && subattributionLabel.isNotEmpty()
+        val showingSubattribution = subattributionLabel != null && subattributionLabel.isNotEmpty()
         val summary =
             buildUsageSummary(durationSummaryLabel, proxyLabel, subattributionLabel, context)
 
         return HistoryPreferenceData(
             UserHandle.getUserHandleForUid(
-                discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.uid),
+                discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.uid
+            ),
             discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.packageName,
             discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.icon,
             discreteAccessClusterData.appPermissionTimelineUsage.permissionApp.label,
@@ -158,7 +166,8 @@ class PermissionUsageDetailsViewModelLegacy(
             summary,
             showingSubattribution,
             discreteAccessClusterData.appPermissionTimelineUsage.attributionTags,
-            sessionId)
+            sessionId
+        )
     }
 
     /**
@@ -180,7 +189,8 @@ class PermissionUsageDetailsViewModelLegacy(
             .map { appPermissionUsage ->
                 getAppPermissionTimelineUsages(
                     appPermissionUsage.app,
-                    appPermissionUsage.groupUsages.firstOrNull { it.group.name == group })
+                    appPermissionUsage.groupUsages.firstOrNull { it.group.name == group }
+                )
             }
             .flatten()
 
@@ -221,7 +231,10 @@ class PermissionUsageDetailsViewModelLegacy(
             .map { appPermissionTimelineUsages ->
                 val accessDataList =
                     extractRecentDiscreteAccessData(
-                        appPermissionTimelineUsages.timelineUsage, showSystem, startTime)
+                        appPermissionTimelineUsages.timelineUsage,
+                        showSystem,
+                        startTime
+                    )
 
                 if (accessDataList.size <= 1) {
                     return@map accessDataList.map {
@@ -235,7 +248,9 @@ class PermissionUsageDetailsViewModelLegacy(
             .sortedWith(
                 compareBy(
                     { -it.discreteAccessDataList.first().accessTimeMs },
-                    { it.appPermissionTimelineUsage.permissionApp.label }))
+                    { it.appPermissionTimelineUsage.permissionApp.label }
+                )
+            )
             .toList()
 
     /**
@@ -253,11 +268,15 @@ class PermissionUsageDetailsViewModelLegacy(
         for (discreteAccessData in discreteAccessDataList) {
             if (currentDiscreteAccessDataList.isEmpty()) {
                 currentDiscreteAccessDataList.add(discreteAccessData)
-            } else if (!canAccessBeAddedToCluster(
-                discreteAccessData, currentDiscreteAccessDataList)) {
+            } else if (
+                !canAccessBeAddedToCluster(discreteAccessData, currentDiscreteAccessDataList)
+            ) {
                 clusterDataList.add(
                     DiscreteAccessClusterData(
-                        appPermissionTimelineUsage, currentDiscreteAccessDataList.toMutableList()))
+                        appPermissionTimelineUsage,
+                        currentDiscreteAccessDataList.toMutableList()
+                    )
+                )
                 currentDiscreteAccessDataList.clear()
                 currentDiscreteAccessDataList.add(discreteAccessData)
             } else {
@@ -266,8 +285,8 @@ class PermissionUsageDetailsViewModelLegacy(
         }
         if (currentDiscreteAccessDataList.isNotEmpty()) {
             clusterDataList.add(
-                DiscreteAccessClusterData(
-                    appPermissionTimelineUsage, currentDiscreteAccessDataList))
+                DiscreteAccessClusterData(appPermissionTimelineUsage, currentDiscreteAccessDataList)
+            )
         }
         return clusterDataList
     }
@@ -282,8 +301,9 @@ class PermissionUsageDetailsViewModelLegacy(
         showSystem: Boolean,
         startTime: Long
     ): List<DiscreteAccessData> {
-        return if (timelineUsages.hasDiscreteData() &&
-            (showSystem || !timelineUsages.group.isSystem())) {
+        return if (
+            timelineUsages.hasDiscreteData() && (showSystem || !timelineUsages.group.isSystem())
+        ) {
             getRecentDiscreteAccessData(timelineUsages, startTime)
                 .sortedWith(compareBy { -it.accessTimeMs })
                 .toList()
@@ -377,7 +397,8 @@ class PermissionUsageDetailsViewModelLegacy(
                 getPackageLabel(
                     PermissionControllerApplication.get(),
                     it.proxy!!.packageName!!,
-                    UserHandle.getUserHandleForUid(it.proxy.uid))
+                    UserHandle.getUserHandleForUid(it.proxy.uid)
+                )
             }
 
     /** Returns the attribution label for the permission access, if any. */
@@ -406,10 +427,14 @@ class PermissionUsageDetailsViewModelLegacy(
                     R.string.history_preference_subtext_3,
                     subTextStrings[0],
                     subTextStrings[1],
-                    subTextStrings[2])
+                    subTextStrings[2]
+                )
             2 ->
                 context.getString(
-                    R.string.history_preference_subtext_2, subTextStrings[0], subTextStrings[1])
+                    R.string.history_preference_subtext_2,
+                    subTextStrings[0],
+                    subTextStrings[1]
+                )
             1 -> subTextStrings[0]
             else -> null
         }
@@ -434,7 +459,8 @@ class PermissionUsageDetailsViewModelLegacy(
         }
 
         return listOf(
-            AppPermissionTimelineUsage(permissionGroup, app, groupUsage, Resources.ID_NULL))
+            AppPermissionTimelineUsage(permissionGroup, app, groupUsage, Resources.ID_NULL)
+        )
     }
 
     /** Extracts to a set all the permission groups declared by the platform. */
@@ -448,15 +474,20 @@ class PermissionUsageDetailsViewModelLegacy(
     /** Initialize all relevant [TimeFilterItemMs] values. */
     private fun initializeTimeFilterItems(context: Context) {
         mTimeFilterItemMs.add(
-            TimeFilterItemMs(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time)))
+            TimeFilterItemMs(Long.MAX_VALUE, context.getString(R.string.permission_usage_any_time))
+        )
         mTimeFilterItemMs.add(
             TimeFilterItemMs(
                 DAYS.toMillis(7),
-                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 7)))
+                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 7)
+            )
+        )
         mTimeFilterItemMs.add(
             TimeFilterItemMs(
                 DAYS.toMillis(1),
-                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 1)))
+                StringUtils.getIcuPluralsString(context, R.string.permission_usage_last_n_days, 1)
+            )
+        )
 
         // TODO: theianchen add code for filtering by time here.
     }
@@ -554,7 +585,11 @@ class PermissionUsageDetailsViewModelFactoryLegacy(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return PermissionUsageDetailsViewModelLegacy(
-            application, roleManager, filterGroup, sessionId)
+            application,
+            roleManager,
+            filterGroup,
+            sessionId
+        )
             as T
     }
 }

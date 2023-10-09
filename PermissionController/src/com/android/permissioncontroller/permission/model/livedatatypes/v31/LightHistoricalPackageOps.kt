@@ -82,7 +82,10 @@ data class LightHistoricalPackageOps(
                 this.getDiscreteAccesses(permissionToOpNames.value)?.let {
                     appPermissionDiscreteAccesses.add(
                         AppPermissionDiscreteAccesses(
-                            AppPermissionId(packageName, userHandle, permissionToOpNames.key), it))
+                            AppPermissionId(packageName, userHandle, permissionToOpNames.key),
+                            it
+                        )
+                    )
                 }
             }
 
@@ -117,7 +120,9 @@ data class LightHistoricalPackageOps(
                                 mutableMapOf()
                         }
                         attributedAppPermissionDiscreteAccesses[appPermissionId]?.put(
-                            attributedHistoricalOps.tag ?: NO_ATTRIBUTION_TAG, discAccessData)
+                            attributedHistoricalOps.tag ?: NO_ATTRIBUTION_TAG,
+                            discAccessData
+                        )
                     }
                 }
             }
@@ -152,7 +157,9 @@ data class LightHistoricalPackageOps(
                         DiscreteAccess(
                             opEntry.getLastAccessTime(DISCRETE_ACCESS_OP_FLAGS),
                             opEntry.getLastDuration(DISCRETE_ACCESS_OP_FLAGS),
-                            opEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)))
+                            opEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)
+                        )
+                    )
                 }
             }
 
@@ -187,7 +194,9 @@ data class LightHistoricalPackageOps(
                         DiscreteAccess(
                             attributedOpEntry.getLastAccessTime(DISCRETE_ACCESS_OP_FLAGS),
                             attributedOpEntry.getLastDuration(DISCRETE_ACCESS_OP_FLAGS),
-                            attributedOpEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)))
+                            attributedOpEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)
+                        )
+                    )
                 }
             }
 

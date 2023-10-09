@@ -74,7 +74,10 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
         val safetySourceData: SafetySourceData? = createSafetySourceDataForWorkPolicy(context)
 
         safetyCenterManager.setSafetySourceData(
-            WORK_POLICY_INFO_SOURCE_ID, safetySourceData, safetyEvent)
+            WORK_POLICY_INFO_SOURCE_ID,
+            safetySourceData,
+            safetyEvent
+        )
     }
 
     private fun createSafetySourceDataForWorkPolicy(context: Context): SafetySourceData? {
@@ -84,16 +87,25 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
             when {
                 deviceOwnerIntent != null -> {
                     PendingIntent.getActivity(
-                        context, 0, deviceOwnerIntent, PendingIntent.FLAG_IMMUTABLE)
+                        context,
+                        0,
+                        deviceOwnerIntent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
                 }
                 profileOwnerIntent != null -> {
                     val managedProfileContext =
                         context.createPackageContextAsUser(
                             context.packageName,
                             0,
-                            UserHandle.of(workPolicyUtils.managedProfileUserId))
+                            UserHandle.of(workPolicyUtils.managedProfileUserId)
+                        )
                     PendingIntent.getActivity(
-                        managedProfileContext, 0, profileOwnerIntent, PendingIntent.FLAG_IMMUTABLE)
+                        managedProfileContext,
+                        0,
+                        profileOwnerIntent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
                 }
                 else -> null
             }
@@ -102,10 +114,17 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
         val safetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
                     Utils.getEnterpriseString(
-                        context, WORK_POLICY_TITLE, R.string.work_policy_title),
+                        context,
+                        WORK_POLICY_TITLE,
+                        R.string.work_policy_title
+                    ),
                     Utils.getEnterpriseString(
-                        context, WORK_POLICY_SUMMARY, R.string.work_policy_summary),
-                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+                        context,
+                        WORK_POLICY_SUMMARY,
+                        R.string.work_policy_summary
+                    ),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                )
                 .setPendingIntent(pendingIntent)
                 .build()
 
@@ -120,7 +139,8 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
             RefreshEvent.EVENT_REFRESH_REQUESTED -> {
                 val refreshBroadcastId =
                     intent.getStringExtra(
-                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
+                    )
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(refreshBroadcastId)
                     .build()

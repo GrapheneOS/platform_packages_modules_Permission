@@ -27,7 +27,7 @@ internal class CollapsableGroupCardHelper {
 
     private companion object {
         private const val EXPANDED_ENTRY_GROUPS_SAVED_INSTANCE_STATE_KEY =
-                "expanded_entry_groups_saved_instance_state_key"
+            "expanded_entry_groups_saved_instance_state_key"
     }
 
     fun restoreState(state: Bundle?) {
@@ -39,8 +39,8 @@ internal class CollapsableGroupCardHelper {
 
     fun saveState(outState: Bundle) {
         outState.putCharSequenceArray(
-                EXPANDED_ENTRY_GROUPS_SAVED_INSTANCE_STATE_KEY,
-                expandedGroups.toTypedArray()
+            EXPANDED_ENTRY_GROUPS_SAVED_INSTANCE_STATE_KEY,
+            expandedGroups.toTypedArray()
         )
     }
 
@@ -52,6 +52,5 @@ internal class CollapsableGroupCardHelper {
         expandedGroups.add(groupId)
     }
 
-    fun isGroupExpanded(groupId: CharSequence): Boolean =
-        expandedGroups.contains(groupId)
+    fun isGroupExpanded(groupId: CharSequence): Boolean = expandedGroups.contains(groupId)
 }

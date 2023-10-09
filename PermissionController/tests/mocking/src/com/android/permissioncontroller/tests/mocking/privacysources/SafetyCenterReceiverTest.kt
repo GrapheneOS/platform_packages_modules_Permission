@@ -38,7 +38,6 @@ import com.android.permissioncontroller.privacysources.PrivacySource
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_DEVICE_REBOOTED
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_REFRESH_REQUESTED
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -48,7 +47,6 @@ import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
@@ -56,16 +54,14 @@ import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when` as whenever
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyZeroInteractions
+import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
-/**
- * Unit tests for [SafetyCenterReceiver]
- */
+/** Unit tests for [SafetyCenterReceiver] */
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
@@ -80,48 +76,50 @@ class SafetyCenterReceiverTest {
 
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
-    @Mock
-    lateinit var mockSafetyCenterManager: SafetyCenterManager
-    @Mock
-    lateinit var mockPackageManager: PackageManager
-    @Mock
-    lateinit var mockPrivacySource: PrivacySource
-    @Mock
-    lateinit var mockPrivacySource2: PrivacySource
-    @Mock
-    lateinit var mockUserManager: UserManager
+    @Mock lateinit var mockSafetyCenterManager: SafetyCenterManager
+    @Mock lateinit var mockPackageManager: PackageManager
+    @Mock lateinit var mockPrivacySource: PrivacySource
+    @Mock lateinit var mockPrivacySource2: PrivacySource
+    @Mock lateinit var mockUserManager: UserManager
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var safetyCenterReceiver: SafetyCenterReceiver
 
-    private fun privacySourceMap(context: Context) = mapOf(
-        TEST_PRIVACY_SOURCE_ID to mockPrivacySource,
-        TEST_PRIVACY_SOURCE_ID_2 to mockPrivacySource2
-    )
+    private fun privacySourceMap(context: Context) =
+        mapOf(
+            TEST_PRIVACY_SOURCE_ID to mockPrivacySource,
+            TEST_PRIVACY_SOURCE_ID_2 to mockPrivacySource2
+        )
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
 
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(DeviceConfig::class.java)
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(Utils::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(DeviceConfig::class.java)
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(Utils::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(application)
         whenever(application.packageManager).thenReturn(mockPackageManager)
         whenever(mockSafetyCenterManager.isSafetyCenterEnabled).thenReturn(true)
         whenever(
-            Utils.getSystemServiceSafe(
-                any(ContextWrapper::class.java), eq(UserManager::class.java)
-            ))
+                Utils.getSystemServiceSafe(
+                    any(ContextWrapper::class.java),
+                    eq(UserManager::class.java)
+                )
+            )
             .thenReturn(mockUserManager)
         whenever(
-            Utils.getSystemServiceSafe(
-                any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java)
-            ))
+                Utils.getSystemServiceSafe(
+                    any(ContextWrapper::class.java),
+                    eq(SafetyCenterManager::class.java)
+                )
+            )
             .thenReturn(mockSafetyCenterManager)
         whenever(mockUserManager.isProfile).thenReturn(false)
 
@@ -140,12 +138,13 @@ class SafetyCenterReceiverTest {
 
     private fun mockQSTileSettingsFlag() {
         whenever(
-            DeviceConfig.getInt(
-                eq(DeviceConfig.NAMESPACE_PRIVACY),
-                eq(SafetyCenterQsTileService.QS_TILE_COMPONENT_SETTING_FLAGS),
-                ArgumentMatchers.anyInt()
+                DeviceConfig.getInt(
+                    eq(DeviceConfig.NAMESPACE_PRIVACY),
+                    eq(SafetyCenterQsTileService.QS_TILE_COMPONENT_SETTING_FLAGS),
+                    ArgumentMatchers.anyInt()
+                )
             )
-        ).thenReturn(PackageManager.DONT_KILL_APP)
+            .thenReturn(PackageManager.DONT_KILL_APP)
     }
 
     @Test

@@ -24,11 +24,13 @@ import org.junit.runner.RunWith
  * Simple tests for {@link PermissionAppsFragment} when showing location permission
  *
  * Currently, does NOT run on TV (same as the other tests that extend [PermissionAppsFragmentTest]).
+ *
  * TODO(b/178576541): Adapt and run on TV.
  */
 @RunWith(AndroidJUnit4::class)
-class LocationPermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/pc-permissionui/AppThatRequestsLocation.apk",
-    "android.permission.cts.appthatrequestpermission",
-    ACCESS_COARSE_LOCATION
-)
+class LocationPermissionAppsFragmentTest :
+    PermissionAppsFragmentTest(
+        "/data/local/tmp/pc-permissionui/AppThatRequestsLocation.apk",
+        "android.permission.cts.appthatrequestpermission",
+        ACCESS_COARSE_LOCATION
+    )

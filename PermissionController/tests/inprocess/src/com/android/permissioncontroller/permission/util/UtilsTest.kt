@@ -45,9 +45,9 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Ignore
 import org.junit.Test
-import kotlin.test.assertFailsWith
 
 class UtilsTest {
     private val context = InstrumentationRegistry.getInstrumentation().targetContext as Context
@@ -110,8 +110,14 @@ class UtilsTest {
     @Test
     @Ignore("b/277782895")
     fun getEnterpriseString() {
-        assertThat(Utils.getEnterpriseString(context, WorkPolicyInfo.WORK_POLICY_TITLE,
-            R.string.work_policy_title)).isInstanceOf(String::class.java)
+        assertThat(
+                Utils.getEnterpriseString(
+                    context,
+                    WorkPolicyInfo.WORK_POLICY_TITLE,
+                    R.string.work_policy_title
+                )
+            )
+            .isInstanceOf(String::class.java)
     }
 
     @Test
@@ -148,12 +154,26 @@ class UtilsTest {
 
     @Test
     fun getPermissionGroupDescriptionString_validPermissionGroup() {
-        val permissionGroupNames = listOf(ACTIVITY_RECOGNITION, CALENDAR, CALL_LOG,
-            CAMERA, CONTACTS, LOCATION, MICROPHONE, NEARBY_DEVICES, PHONE, READ_MEDIA_AURAL,
-            READ_MEDIA_VISUAL, SENSORS, SMS, STORAGE)
+        val permissionGroupNames =
+            listOf(
+                ACTIVITY_RECOGNITION,
+                CALENDAR,
+                CALL_LOG,
+                CAMERA,
+                CONTACTS,
+                LOCATION,
+                MICROPHONE,
+                NEARBY_DEVICES,
+                PHONE,
+                READ_MEDIA_AURAL,
+                READ_MEDIA_VISUAL,
+                SENSORS,
+                SMS,
+                STORAGE
+            )
         for (permissionGroupName in permissionGroupNames) {
             assertThat(Utils.getPermissionGroupDescriptionString(context, permissionGroupName, ""))
-                    .isNotNull()
+                .isNotNull()
         }
     }
 
@@ -167,8 +187,12 @@ class UtilsTest {
 
     @Test
     fun getPermissionLastAccessSummaryTimestamp_sensorDataPermission_lastAccessSummaryTimestampIsToday() {
-        val result = Utils.getPermissionLastAccessSummaryTimestamp(System.currentTimeMillis(),
-            context, LOCATION)
+        val result =
+            Utils.getPermissionLastAccessSummaryTimestamp(
+                System.currentTimeMillis(),
+                context,
+                LOCATION
+            )
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_24H_SENSOR_TODAY)
         assertThat(result.third).isNotEmpty()
@@ -176,8 +200,12 @@ class UtilsTest {
 
     @Test
     fun getPermissionLastAccessSummaryTimestamp_sensorDataPermission_lastAccessSummaryTimestampIsYesterday() {
-        val result = Utils.getPermissionLastAccessSummaryTimestamp(
-            System.currentTimeMillis() - 24 * 60 * 60 * 1000, context, LOCATION)
+        val result =
+            Utils.getPermissionLastAccessSummaryTimestamp(
+                System.currentTimeMillis() - 24 * 60 * 60 * 1000,
+                context,
+                LOCATION
+            )
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_24H_SENSOR_YESTERDAY)
         assertThat(result.third).isNotEmpty()
@@ -185,8 +213,12 @@ class UtilsTest {
 
     @Test
     fun getPermissionLastAccessSummaryTimestamp_sensorDataPermission_lastAccessSummaryTimestampIsLast7Days() {
-        val result = Utils.getPermissionLastAccessSummaryTimestamp(
-            System.currentTimeMillis() - 5 * 24 * 60 * 60 * 1000, context, LOCATION)
+        val result =
+            Utils.getPermissionLastAccessSummaryTimestamp(
+                System.currentTimeMillis() - 5 * 24 * 60 * 60 * 1000,
+                context,
+                LOCATION
+            )
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_7D_SENSOR)
         assertThat(result.third).isNotEmpty()
@@ -194,8 +226,12 @@ class UtilsTest {
 
     @Test
     fun getPermissionLastAccessSummaryTimestamp_nonSensorDataPermission_lastAccessSummaryTimestampIsLast24Hrs() {
-        val result = Utils.getPermissionLastAccessSummaryTimestamp(
-            System.currentTimeMillis(), context, STORAGE)
+        val result =
+            Utils.getPermissionLastAccessSummaryTimestamp(
+                System.currentTimeMillis(),
+                context,
+                STORAGE
+            )
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_24H_CONTENT_PROVIDER)
         assertThat(result.third).isNotEmpty()
@@ -203,8 +239,12 @@ class UtilsTest {
 
     @Test
     fun getPermissionLastAccessSummaryTimestamp_nonSensorDataPermission_lastAccessSummaryTimestampIs7Days() {
-        val result = Utils.getPermissionLastAccessSummaryTimestamp(
-            System.currentTimeMillis() - 5 * 60 * 60 * 24 * 1000, context, STORAGE)
+        val result =
+            Utils.getPermissionLastAccessSummaryTimestamp(
+                System.currentTimeMillis() - 5 * 60 * 60 * 24 * 1000,
+                context,
+                STORAGE
+            )
         assertThat(result.first).isNotEmpty()
         assertThat(result.second).isEqualTo(Utils.LAST_7D_CONTENT_PROVIDER)
         assertThat(result.third).isNotEmpty()

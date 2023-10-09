@@ -34,9 +34,7 @@ import com.android.permissioncontroller.permission.ui.wear.elements.ToggleChipTo
 import com.android.permissioncontroller.permission.ui.wear.model.RevokeDialogArgs
 
 @Composable
-fun WearAppPermissionGroupsScreen(
-    helper: WearAppPermissionGroupsHelper
-) {
+fun WearAppPermissionGroupsScreen(helper: WearAppPermissionGroupsHelper) {
     val packagePermGroups = helper.viewModel.packagePermGroupsLiveData.observeAsState(emptyMap())
     val autoRevoke = helper.viewModel.autoRevokeLiveData.observeAsState(null)
     val showRevokeDialog = helper.revokeDialogViewModel.showDialogLiveData.observeAsState(false)
@@ -65,17 +63,9 @@ internal fun WearAppPermissionGroupsContent(
     permissionGroupChipParams: List<PermissionGroupChipParam>,
     autoRevokeChipParam: AutoRevokeChipParam?
 ) {
-    ScrollableScreen(
-        title = stringResource(R.string.app_permissions),
-        isLoading = isLoading
-    ) {
+    ScrollableScreen(title = stringResource(R.string.app_permissions), isLoading = isLoading) {
         if (permissionGroupChipParams.isEmpty()) {
-            item {
-                Chip(
-                    label = stringResource(R.string.no_permissions),
-                    onClick = {}
-                )
-            }
+            item { Chip(label = stringResource(R.string.no_permissions), onClick = {}) }
         } else {
             for (info in permissionGroupChipParams) {
                 item {
@@ -90,9 +80,7 @@ internal fun WearAppPermissionGroupsContent(
                     } else {
                         Chip(
                             label = info.label,
-                            secondaryLabel = info.summary?.let {
-                                stringResource(info.summary)
-                            },
+                            secondaryLabel = info.summary?.let { stringResource(info.summary) },
                             enabled = info.enabled,
                             onClick = info.onClick
                         )
@@ -117,10 +105,7 @@ internal fun WearAppPermissionGroupsContent(
 }
 
 @Composable
-internal fun RevokeDialog(
-    showDialog: Boolean,
-    args: RevokeDialogArgs?
-) {
+internal fun RevokeDialog(showDialog: Boolean, args: RevokeDialogArgs?) {
     args?.let {
         AlertDialog(
             showDialog = showDialog,

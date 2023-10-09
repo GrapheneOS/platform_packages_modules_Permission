@@ -32,8 +32,8 @@ object SafetyLabelUtils {
         groupName: String
     ): Set<Int> {
         val purposeSet = mutableSetOf<Int>()
-        val categoriesForPermission = PermissionMapping
-            .getDataCategoriesForPermissionGroup(groupName)
+        val categoriesForPermission =
+            PermissionMapping.getDataCategoriesForPermissionGroup(groupName)
         categoriesForPermission.forEach categoryLoop@{ category ->
             val dataCategory: DataCategory? = safetyLabel.dataLabel.dataShared[category]
             if (dataCategory == null) {

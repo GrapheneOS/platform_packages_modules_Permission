@@ -39,12 +39,12 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISS
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION
+import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY
-import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel
@@ -63,6 +63,7 @@ import com.android.settingslib.RestrictedLockUtils
  * Show and manage a single permission group for an app.
  *
  * <p>Allows the user to control whether the app is granted the permission
+ *
  * <p>
  * Based on AppPermissionFragment in handheld code.
  */
@@ -76,14 +77,14 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         /**
          * Create a bundle with the arguments needed by this fragment
          *
-         * @param packageName   The name of the package
-         * @param permName      The name of the permission whose group this fragment is for (optional)
-         * @param groupName     The name of the permission group (required if permName not specified)
-         * @param userHandle    The user of the app permission group
-         * @param caller        The name of the fragment we called from
-         * @param sessionId     The current session ID
-         * @param grantCategory The grant status of this app permission group. Used to initially set the
-         * button state
+         * @param packageName The name of the package
+         * @param permName The name of the permission whose group this fragment is for (optional)
+         * @param groupName The name of the permission group (required if permName not specified)
+         * @param userHandle The user of the app permission group
+         * @param caller The name of the fragment we called from
+         * @param sessionId The current session ID
+         * @param grantCategory The grant status of this app permission group. Used to initially set
+         *   the button state
          * @return A bundle with all of the args placed
          */
         @JvmStatic
@@ -117,51 +118,52 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         savedInstanceState: Bundle?
     ): View? {
         val activity = requireActivity()
-        val packageName = arguments?.getString(Intent.EXTRA_PACKAGE_NAME)
-            ?: throw RuntimeException("Package name must not be null.")
-        val permGroupName = arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
-            ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
-            ?: throw RuntimeException("Permission name must not be null.")
+        val packageName =
+            arguments?.getString(Intent.EXTRA_PACKAGE_NAME)
+                ?: throw RuntimeException("Package name must not be null.")
+        val permGroupName =
+            arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
+                ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
+                    ?: throw RuntimeException("Permission name must not be null.")
 
         val isStorageGroup = permGroupName == Manifest.permission_group.STORAGE
 
-        val user = arguments?.let{
-            BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)
-        } ?: UserHandle.SYSTEM
-        val permGroupLabel = getPermGroupLabel(
-            activity,
-            permGroupName
-        ).toString()
+        val user =
+            arguments?.let {
+                BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)
+            }
+                ?: UserHandle.SYSTEM
+        val permGroupLabel = getPermGroupLabel(activity, permGroupName).toString()
 
         val sessionId = arguments?.getLong(EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
 
-        val factory = AppPermissionViewModelFactory(
-            activity.getApplication(),
-            packageName,
-            permGroupName,
-            user,
-            sessionId
-        )
-        val viewModel = ViewModelProvider(this, factory).get(
-            AppPermissionViewModel::class.java
-        )
-        confirmDialogViewModel =
-            ViewModelProvider(this, AppPermissionConfirmDialogViewModelFactory()).get(
-                AppPermissionConfirmDialogViewModel::class.java
+        val factory =
+            AppPermissionViewModelFactory(
+                activity.getApplication(),
+                packageName,
+                permGroupName,
+                user,
+                sessionId
             )
+        val viewModel = ViewModelProvider(this, factory).get(AppPermissionViewModel::class.java)
+        confirmDialogViewModel =
+            ViewModelProvider(this, AppPermissionConfirmDialogViewModelFactory())
+                .get(AppPermissionConfirmDialogViewModel::class.java)
 
         val onLocationSwitchChanged: (Boolean) -> Unit = { checked ->
             run {
-                val changeRequest = if (checked) {
-                    ChangeRequest.GRANT_FINE_LOCATION
-                } else {
-                    ChangeRequest.REVOKE_FINE_LOCATION
-                }
-                val buttonClicked = if (checked) {
-                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION
-                } else {
-                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION
-                }
+                val changeRequest =
+                    if (checked) {
+                        ChangeRequest.GRANT_FINE_LOCATION
+                    } else {
+                        ChangeRequest.REVOKE_FINE_LOCATION
+                    }
+                val buttonClicked =
+                    if (checked) {
+                        APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION
+                    } else {
+                        APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION
+                    }
                 viewModel.requestChange(false, this, this, changeRequest, buttonClicked)
             }
         }
@@ -191,44 +193,40 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
             }
         }
         val onFooterClicked: (RestrictedLockUtils.EnforcedAdmin) -> Unit = { admin ->
+            run { RestrictedLockUtils.sendShowAdminSupportDetailsIntent(requireContext(), admin) }
+        }
+        val onConfirmDialogOkButtonClick: (ConfirmDialogArgs) -> Unit = { args ->
             run {
-                RestrictedLockUtils.sendShowAdminSupportDetailsIntent(requireContext(), admin)
+                if (args.changeRequest == ChangeRequest.GRANT_All_FILE_ACCESS) {
+                    viewModel.setAllFilesAccess(true)
+                    viewModel.requestChange(
+                        false,
+                        this,
+                        this,
+                        ChangeRequest.GRANT_BOTH,
+                        APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW
+                    )
+                } else {
+                    viewModel.onDenyAnyWay(args.changeRequest, args.buttonPressed, args.oneTime)
+                }
+                confirmDialogViewModel.showConfirmDialogLiveData.value = false
             }
         }
-        val onConfirmDialogOkButtonClick: (ConfirmDialogArgs) -> Unit =
-            { args ->
-                run {
-                    if (args.changeRequest == ChangeRequest.GRANT_All_FILE_ACCESS) {
-                        viewModel.setAllFilesAccess(true)
-                        viewModel.requestChange(
-                            false,
-                            this,
-                            this,
-                            ChangeRequest.GRANT_BOTH,
-                            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW
-                        )
-                    } else {
-                        viewModel.onDenyAnyWay(args.changeRequest, args.buttonPressed, args.oneTime)
-                    }
-                    confirmDialogViewModel.showConfirmDialogLiveData.value = false
-                }
-            }
         val onConfirmDialogCancelButtonClick: () -> Unit = {
             confirmDialogViewModel.showConfirmDialogLiveData.value = false
         }
-        val onAdvancedConfirmDialogOkButtonClick: (AdvancedConfirmDialogArgs) -> Unit =
-            { args ->
-                run {
-                    viewModel.requestChange(
-                        args.setOneTime!!,
-                        this,
-                        this,
-                        args.changeRequest!!,
-                        args.buttonClicked!!
-                    )
-                    confirmDialogViewModel.showAdvancedConfirmDialogLiveData.value = false
-                }
+        val onAdvancedConfirmDialogOkButtonClick: (AdvancedConfirmDialogArgs) -> Unit = { args ->
+            run {
+                viewModel.requestChange(
+                    args.setOneTime!!,
+                    this,
+                    this,
+                    args.changeRequest!!,
+                    args.buttonClicked!!
+                )
+                confirmDialogViewModel.showAdvancedConfirmDialogLiveData.value = false
             }
+        }
         val onAdvancedConfirmDialogCancelButtonClick: () -> Unit = {
             confirmDialogViewModel.showAdvancedConfirmDialogLiveData.value = false
         }
@@ -257,12 +255,13 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         buttonPressed: Int,
         oneTime: Boolean
     ) {
-        confirmDialogViewModel.confirmDialogArgs = ConfirmDialogArgs(
-            messageId = messageId,
-            changeRequest = changeRequest,
-            buttonPressed = buttonPressed,
-            oneTime = oneTime
-        )
+        confirmDialogViewModel.confirmDialogArgs =
+            ConfirmDialogArgs(
+                messageId = messageId,
+                changeRequest = changeRequest,
+                buttonPressed = buttonPressed,
+                oneTime = oneTime
+            )
         confirmDialogViewModel.showConfirmDialogLiveData.value = true
     }
 
@@ -272,63 +271,68 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
     }
 
     private fun setResult(@GrantPermissionsViewHandler.Result result: Int, permGroupName: String) {
-        val intent: Intent = Intent()
-            .putExtra(ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED, permGroupName)
-            .putExtra(ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT, result)
+        val intent: Intent =
+            Intent()
+                .putExtra(
+                    ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED,
+                    permGroupName
+                )
+                .putExtra(ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT, result)
         requireActivity().setResult(Activity.RESULT_OK, intent)
     }
 
-    fun getGrantedStateChangeParam(buttonType: ButtonType) = when (buttonType) {
-        ButtonType.ALLOW -> GrantedStateChangeParam(
-            false,
-            ChangeRequest.GRANT_FOREGROUND,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW,
-            GRANTED_ALWAYS,
-            false
-        )
-
-        ButtonType.ALLOW_ALWAYS -> GrantedStateChangeParam(
-            false,
-            ChangeRequest.GRANT_BOTH,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_ALWAYS,
-            GRANTED_ALWAYS,
-            true
-        )
-
-        ButtonType.ALLOW_FOREGROUND -> GrantedStateChangeParam(
-            false,
-            ChangeRequest.GRANT_FOREGROUND_ONLY,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_FOREGROUND,
-            GRANTED_FOREGROUND_ONLY,
-            true
-        )
-
-        ButtonType.ASK -> GrantedStateChangeParam(
-            true,
-            ChangeRequest.REVOKE_BOTH,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ASK_EVERY_TIME,
-            DENIED,
-            false
-        )
-
-        ButtonType.DENY -> GrantedStateChangeParam(
-            false,
-            ChangeRequest.REVOKE_BOTH,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY,
-            DENIED_DO_NOT_ASK_AGAIN,
-            false
-        )
-
-        ButtonType.DENY_FOREGROUND -> GrantedStateChangeParam(
-            false,
-            ChangeRequest.REVOKE_FOREGROUND,
-            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND,
-            DENIED_DO_NOT_ASK_AGAIN,
-            false
-        )
-
-        else -> throw RuntimeException("Wrong button type: $buttonType")
-    }
+    fun getGrantedStateChangeParam(buttonType: ButtonType) =
+        when (buttonType) {
+            ButtonType.ALLOW ->
+                GrantedStateChangeParam(
+                    false,
+                    ChangeRequest.GRANT_FOREGROUND,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW,
+                    GRANTED_ALWAYS,
+                    false
+                )
+            ButtonType.ALLOW_ALWAYS ->
+                GrantedStateChangeParam(
+                    false,
+                    ChangeRequest.GRANT_BOTH,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_ALWAYS,
+                    GRANTED_ALWAYS,
+                    true
+                )
+            ButtonType.ALLOW_FOREGROUND ->
+                GrantedStateChangeParam(
+                    false,
+                    ChangeRequest.GRANT_FOREGROUND_ONLY,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_FOREGROUND,
+                    GRANTED_FOREGROUND_ONLY,
+                    true
+                )
+            ButtonType.ASK ->
+                GrantedStateChangeParam(
+                    true,
+                    ChangeRequest.REVOKE_BOTH,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ASK_EVERY_TIME,
+                    DENIED,
+                    false
+                )
+            ButtonType.DENY ->
+                GrantedStateChangeParam(
+                    false,
+                    ChangeRequest.REVOKE_BOTH,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY,
+                    DENIED_DO_NOT_ASK_AGAIN,
+                    false
+                )
+            ButtonType.DENY_FOREGROUND ->
+                GrantedStateChangeParam(
+                    false,
+                    ChangeRequest.REVOKE_FOREGROUND,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND,
+                    DENIED_DO_NOT_ASK_AGAIN,
+                    false
+                )
+            else -> throw RuntimeException("Wrong button type: $buttonType")
+        }
 }
 
 data class GrantedStateChangeParam(

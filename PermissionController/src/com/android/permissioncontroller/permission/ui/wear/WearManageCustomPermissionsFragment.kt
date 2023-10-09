@@ -37,10 +37,12 @@ class WearManageCustomPermissionsFragment : Fragment() {
         val application = activity.getApplication()
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
-        val viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(ManageCustomPermissionsViewModel::class.java)
+        val viewModel =
+            ViewModelProvider(
+                    this,
+                    ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+                )
+                .get(ManageCustomPermissionsViewModel::class.java)
 
         val onPermGroupClick: (String) -> Unit = { permGroupName ->
             viewModel.showPermissionApps(
@@ -50,12 +52,7 @@ class WearManageCustomPermissionsFragment : Fragment() {
         }
 
         return ComposeView(activity).apply {
-            setContent {
-                WearManageCustomPermissionScreen(
-                    viewModel,
-                    onPermGroupClick
-                )
-            }
+            setContent { WearManageCustomPermissionScreen(viewModel, onPermGroupClick) }
         }
     }
 }

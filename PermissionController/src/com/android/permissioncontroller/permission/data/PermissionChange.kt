@@ -19,10 +19,8 @@ package com.android.permissioncontroller.permission.data
 /**
  * A record of the user changing permissions for the app but not including any information on what
  * actual decision was made. This information is not included for privacy reasons and allows us to
- * persist the data for longer periods of time than we'd be able to otherwise
- * (e.g. [PermissionDecision]).
+ * persist the data for longer periods of time than we'd be able to otherwise (e.g.
+ * [PermissionDecision]).
  */
-data class PermissionChange(
-    override val packageName: String,
-    override val eventTime: Long
-) : PermissionEvent(packageName, eventTime)
+data class PermissionChange(override val packageName: String, override val eventTime: Long) :
+    PermissionEvent(packageName, eventTime)

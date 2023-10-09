@@ -25,10 +25,7 @@ import com.android.permissioncontroller.role.ui.RolePreference
 import com.android.permissioncontroller.role.ui.TwoTargetPreference.OnSecondTargetClickListener
 import com.android.settingslib.widget.TwoTargetPreference
 
-/**
- * Role preference for Wear.
- * The preference is only used to hand over the properties to Chip.
- */
+/** Role preference for Wear. The preference is only used to hand over the properties to Chip. */
 class WearRolePreference(
     context: Context,
     val label: String,
@@ -57,5 +54,6 @@ class WearRolePreference(
                         .putExtra(DevicePolicyManager.EXTRA_RESTRICTION, restriction)
                 )
             }
-        } ?: onDefaultClicked
+        }
+            ?: onDefaultClicked
 }

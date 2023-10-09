@@ -200,9 +200,7 @@ class WearUnusedAppsFragment : Fragment() {
                         }
 
                     val onChipClicked: () -> Unit = {
-                        run {
-                            viewModel.navigateToAppInfo(pkgName, user, sessionId)
-                        }
+                        run { viewModel.navigateToAppInfo(pkgName, user, sessionId) }
                     }
 
                     val chip =

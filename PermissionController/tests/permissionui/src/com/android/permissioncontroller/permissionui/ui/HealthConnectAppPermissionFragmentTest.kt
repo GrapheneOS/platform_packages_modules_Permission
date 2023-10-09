@@ -33,17 +33,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Simple tests for {@link AppPermissionsFragment} for Health Connect behaviors
- * Currently, does NOT run on TV.
- * TODO(b/178576541): Adapt and run on TV.
- * Run with:
- * atest HealthConnectAppPermissionFragmentTest
+ * Simple tests for {@link AppPermissionsFragment} for Health Connect behaviors Currently, does NOT
+ * run on TV.
+ *
+ * TODO(b/178576541): Adapt and run on TV. Run with: atest HealthConnectAppPermissionFragmentTest
  */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class HealthConnectAppPermissionFragmentTest : BasePermissionUiTest() {
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
+    @Before fun assumeNotTelevision() = assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {
@@ -60,9 +58,7 @@ class HealthConnectAppPermissionFragmentTest : BasePermissionUiTest() {
 
         startManageAppPermissionsActivity()
 
-        eventually {
-            waitFindObject(By.text(HEALTH_CONNECT_LABEL))
-        }
+        eventually { waitFindObject(By.text(HEALTH_CONNECT_LABEL)) }
     }
 
     @Test
@@ -81,19 +77,18 @@ class HealthConnectAppPermissionFragmentTest : BasePermissionUiTest() {
 
         startManageAppPermissionsActivity()
 
-        eventually {
-            waitFindObject(By.text(HEALTH_CONNECT_LABEL))
-        }
+        eventually { waitFindObject(By.text(HEALTH_CONNECT_LABEL)) }
     }
 
     private fun startManageAppPermissionsActivity() {
         runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
-                .apply {
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     putExtra(Intent.EXTRA_PACKAGE_NAME, PERM_USER_PACKAGE)
-                })
+                }
+            )
         }
     }
 

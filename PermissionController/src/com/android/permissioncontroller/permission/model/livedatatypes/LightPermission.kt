@@ -28,11 +28,11 @@ import com.android.permissioncontroller.permission.utils.Utils
  *
  * @param pkgInfo The package requesting the permission
  * @param permInfo The permissionInfo this represents
- * @param isGrantedIncludingAppOp Whether or not this permission is functionally granted.
- * A non-granted app op but granted permission is counted as not granted
+ * @param isGrantedIncludingAppOp Whether or not this permission is functionally granted. A
+ *   non-granted app op but granted permission is counted as not granted
  * @param flags The PermissionController flags for this permission
  * @param foregroundPerms The foreground permission names corresponding to this permission, if this
- * permission is a background permission
+ *   permission is a background permission
  */
 data class LightPermission(
     val pkgInfo: LightPackageInfo,
@@ -47,14 +47,13 @@ data class LightPermission(
         permInfo: LightPermInfo,
         permState: PermState,
         foregroundPerms: List<String>?
-    ) :
-        this(pkgInfo, permInfo, permState.granted, permState.permFlags, foregroundPerms)
+    ) : this(pkgInfo, permInfo, permState.granted, permState.permFlags, foregroundPerms)
 
     /** The name of this permission */
     val name = permInfo.name
     /** The background permission name of this permission, if it exists */
     val backgroundPermission: String? = permInfo.backgroundPermission
-    /** If this is a background permission **/
+    /** If this is a background permission */
     val isBackgroundPermission = foregroundPerms?.isNotEmpty() ?: false
     /** Whether this permission is fixed by policy */
     val isPolicyFixed = flags and PackageManager.FLAG_PERMISSION_POLICY_FIXED != 0
@@ -76,9 +75,10 @@ data class LightPermission(
     val isImplicit: Boolean by lazy {
         var implicit = false
         for ((permName, permFlags) in
-        pkgInfo.requestedPermissions.zip(pkgInfo.requestedPermissionsFlags)) {
-            if (permName == permInfo.name &&
-                (permFlags and PackageInfo.REQUESTED_PERMISSION_IMPLICIT) != 0
+            pkgInfo.requestedPermissions.zip(pkgInfo.requestedPermissionsFlags)) {
+            if (
+                permName == permInfo.name &&
+                    (permFlags and PackageInfo.REQUESTED_PERMISSION_IMPLICIT) != 0
             ) {
                 implicit = true
                 break
@@ -96,23 +96,25 @@ data class LightPermission(
     /** Whether this permission is set to be revoked upon being requested */
     val isRevokeWhenRequested = flags and PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED != 0
     /** Whether this permission is user sensitive in its current grant state */
-    val isUserSensitive = !isRuntimePlatformPermission(permInfo.name) ||
+    val isUserSensitive =
+        !isRuntimePlatformPermission(permInfo.name) ||
             (isGrantedIncludingAppOp &&
-                    (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED) != 0) ||
+                (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED) != 0) ||
             (!isGrantedIncludingAppOp &&
-                    (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED) != 0)
+                (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED) != 0)
     /** Whether the permission is restricted */
-    val isRestricted = when {
-        (permInfo.flags and PermissionInfo.FLAG_HARD_RESTRICTED) != 0 -> {
-            flags and Utils.FLAGS_PERMISSION_RESTRICTION_ANY_EXEMPT == 0
+    val isRestricted =
+        when {
+            (permInfo.flags and PermissionInfo.FLAG_HARD_RESTRICTED) != 0 -> {
+                flags and Utils.FLAGS_PERMISSION_RESTRICTION_ANY_EXEMPT == 0
+            }
+            (permInfo.flags and PermissionInfo.FLAG_SOFT_RESTRICTED) != 0 -> {
+                !SoftRestrictedPermissionPolicy.shouldShow(pkgInfo, permInfo.name, flags)
+            }
+            else -> {
+                false
+            }
         }
-        (permInfo.flags and PermissionInfo.FLAG_SOFT_RESTRICTED) != 0 -> {
-            !SoftRestrictedPermissionPolicy.shouldShow(pkgInfo, permInfo.name, flags)
-        }
-        else -> {
-            false
-        }
-    }
     /** Whether the permission is auto revoked */
     val isAutoRevoked = flags and PackageManager.FLAG_PERMISSION_AUTO_REVOKED != 0
     /**

@@ -30,19 +30,18 @@ import kotlinx.coroutines.Job
  *
  * @param app The current application
  * @param searchTimeMs The length of time, in milliseconds, that this LiveData will track. The time
- * will start when the liveData is loaded, and extend backwards searchTimeMs milliseconds.
+ *   will start when the liveData is loaded, and extend backwards searchTimeMs milliseconds.
  * @param interval The interval to measure in. Default is monthly.
  */
-class UsageStatsLiveData private constructor(
+class UsageStatsLiveData
+private constructor(
     private val app: Application,
     private val searchTimeMs: Long,
     private val interval: Int = INTERVAL_MONTHLY
 ) : SmartAsyncMediatorLiveData<Map<UserHandle, List<UsageStats>>>() {
 
     init {
-        addSource(UsersLiveData) {
-            update()
-        }
+        addSource(UsersLiveData) { update() }
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
@@ -58,8 +57,8 @@ class UsageStatsLiveData private constructor(
             if (Utils.isUserDisabledOrWorkProfile(user)) {
                 continue
             }
-            val statsManager = Utils.getUserContext(app, user).getSystemService(
-                UsageStatsManager::class.java)!!
+            val statsManager =
+                Utils.getUserContext(app, user).getSystemService(UsageStatsManager::class.java)!!
             statsManager.queryUsageStats(interval, now - searchTimeMs, now)?.let { stats ->
                 userMap[user] = stats
             }

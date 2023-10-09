@@ -26,10 +26,10 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.utils.SystemTimeSource
 import com.android.permissioncontroller.permission.utils.TimeSource
+import kotlin.math.abs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.math.abs
 
 /**
  * [BroadcastReceiver] to update the persisted timestamps when the date changes. Receives broadcasts
@@ -51,8 +51,7 @@ class PermissionStorageTimeChangeReceiver(
          * Key for the last known system time from the system. First initialized after boot
          * complete.
          */
-        @VisibleForTesting
-        const val PREF_KEY_SYSTEM_TIME_SNAPSHOT = "system_time_snapshot"
+        @VisibleForTesting const val PREF_KEY_SYSTEM_TIME_SNAPSHOT = "system_time_snapshot"
 
         /**
          * Key for the last known elapsed time since boot. First initialized after boot complete.
@@ -60,12 +59,9 @@ class PermissionStorageTimeChangeReceiver(
         @VisibleForTesting
         const val PREF_KEY_ELAPSED_REALTIME_SNAPSHOT = "elapsed_realtime_snapshot"
 
-        @VisibleForTesting
-        const val SNAPSHOT_UNINITIALIZED = -1L
+        @VisibleForTesting const val SNAPSHOT_UNINITIALIZED = -1L
 
-        /**
-         * The millisecond threshold for a time delta to be considered a time change.
-         */
+        /** The millisecond threshold for a time delta to be considered a time change. */
         private const val TIME_CHANGE_THRESHOLD_MILLIS = 60 * 1000L
     }
 
@@ -75,8 +71,11 @@ class PermissionStorageTimeChangeReceiver(
         }
         when (val action = intent.action) {
             Intent.ACTION_BOOT_COMPLETED -> {
-                persistTimeSnapshots(context, timeSource.currentTimeMillis(),
-                    timeSource.elapsedRealtime())
+                persistTimeSnapshots(
+                    context,
+                    timeSource.currentTimeMillis(),
+                    timeSource.elapsedRealtime()
+                )
             }
             Intent.ACTION_TIME_CHANGED -> {
                 checkForTimeChanged(context)
@@ -90,15 +89,16 @@ class PermissionStorageTimeChangeReceiver(
     private fun checkForTimeChanged(context: Context) {
         val systemTimeSnapshot = getSystemTimeSnapshot(context)
         val realtimeSnapshot = getElapsedRealtimeSnapshot(context)
-        if (realtimeSnapshot == SNAPSHOT_UNINITIALIZED ||
-            systemTimeSnapshot == SNAPSHOT_UNINITIALIZED) {
+        if (
+            realtimeSnapshot == SNAPSHOT_UNINITIALIZED ||
+                systemTimeSnapshot == SNAPSHOT_UNINITIALIZED
+        ) {
             DumpableLog.e(LOG_TAG, "Snapshots not initialized")
             return
         }
         val actualSystemTime = timeSource.currentTimeMillis()
         val actualRealtime = timeSource.elapsedRealtime()
-        val expectedSystemTime = (actualRealtime - realtimeSnapshot) +
-            systemTimeSnapshot
+        val expectedSystemTime = (actualRealtime - realtimeSnapshot) + systemTimeSnapshot
         val diffSystemTime = actualSystemTime - expectedSystemTime
         if (abs(diffSystemTime) > TIME_CHANGE_THRESHOLD_MILLIS) {
             DumpableLog.d(LOG_TAG, "Time changed by ${diffSystemTime / 1000} seconds")
@@ -131,13 +131,17 @@ class PermissionStorageTimeChangeReceiver(
     }
 
     private fun getSystemTimeSnapshot(context: Context): Long {
-        return context.sharedPreferences.getLong(PREF_KEY_SYSTEM_TIME_SNAPSHOT,
-            SNAPSHOT_UNINITIALIZED)
+        return context.sharedPreferences.getLong(
+            PREF_KEY_SYSTEM_TIME_SNAPSHOT,
+            SNAPSHOT_UNINITIALIZED
+        )
     }
 
     private fun getElapsedRealtimeSnapshot(context: Context): Long {
-        return context.sharedPreferences.getLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT,
-            SNAPSHOT_UNINITIALIZED)
+        return context.sharedPreferences.getLong(
+            PREF_KEY_ELAPSED_REALTIME_SNAPSHOT,
+            SNAPSHOT_UNINITIALIZED
+        )
     }
 
     val Context.sharedPreferences: SharedPreferences

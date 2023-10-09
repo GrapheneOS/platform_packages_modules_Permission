@@ -47,26 +47,18 @@ import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
-/**
- * Unit tests for [ReviewPermissionsViewModel]
- */
+/** Unit tests for [ReviewPermissionsViewModel] */
 @RunWith(AndroidJUnit4::class)
 class ReviewPermissionsViewModelTest {
 
     private val testPackageName = "test.package"
 
-    @Mock
-    private lateinit var application: PermissionControllerApplication
-    @Mock
-    private lateinit var permGroup: LightAppPermGroup
-    @Mock
-    private lateinit var foregroundSubGroup: LightAppPermGroup.AppPermSubGroup
-    @Mock
-    private lateinit var backgroundSubGroup: LightAppPermGroup.AppPermSubGroup
-    @Mock
-    private lateinit var admin: RestrictedLockUtils.EnforcedAdmin
-    @Mock
-    private lateinit var packageManager: PackageManager
+    @Mock private lateinit var application: PermissionControllerApplication
+    @Mock private lateinit var permGroup: LightAppPermGroup
+    @Mock private lateinit var foregroundSubGroup: LightAppPermGroup.AppPermSubGroup
+    @Mock private lateinit var backgroundSubGroup: LightAppPermGroup.AppPermSubGroup
+    @Mock private lateinit var admin: RestrictedLockUtils.EnforcedAdmin
+    @Mock private lateinit var packageManager: PackageManager
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var context: Context
@@ -76,10 +68,12 @@ class ReviewPermissionsViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(Utils::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(Utils::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         context = ApplicationProvider.getApplicationContext()
         val userHandle: UserHandle = android.os.Process.myUserHandle()
@@ -114,9 +108,9 @@ class ReviewPermissionsViewModelTest {
 
         val summary = model.getSummaryForIndividuallyControlledPermGroup(permGroup)
         assertEquals(
-            ReviewPermissionsViewModel.PermissionSummary(
-                SummaryMessage.REVOKED_COUNT, false, 1
-            ), summary)
+            ReviewPermissionsViewModel.PermissionSummary(SummaryMessage.REVOKED_COUNT, false, 1),
+            summary
+        )
     }
 
     @Test
@@ -124,48 +118,78 @@ class ReviewPermissionsViewModelTest {
         whenever(permGroup.isGranted).thenReturn(true)
         whenever(foregroundSubGroup.isPolicyFixed).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_FOREGROUND,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_POLICY_FOREGROUND_ONLY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
-            PERMISSION_FOREGROUND, permGroup, context)
-        assertEquals(SummaryMessage.ENABLED_BY_ADMIN_FOREGROUND_ONLY.toPermSummary(true),
-            summaryAdmin)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
+        assertEquals(
+            SummaryMessage.ENABLED_BY_ADMIN_FOREGROUND_ONLY.toPermSummary(true),
+            summaryAdmin
+        )
     }
 
     @Test
     fun getSummary_backgroundFixedPolicy_foregroundRequested() {
         whenever(backgroundSubGroup.isPolicyFixed).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_FOREGROUND,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.DISABLED_BY_POLICY_BACKGROUND_ONLY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
-            PERMISSION_FOREGROUND, permGroup, context)
-        assertEquals(SummaryMessage.DISABLED_BY_ADMIN_BACKGROUND_ONLY.toPermSummary(true),
-            summaryAdmin)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
+        assertEquals(
+            SummaryMessage.DISABLED_BY_ADMIN_BACKGROUND_ONLY.toPermSummary(true),
+            summaryAdmin
+        )
     }
 
     @Test
     fun getSummary_backgroundFixedPolicy() {
         whenever(backgroundSubGroup.isPolicyFixed).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BACKGROUND,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BACKGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_POLICY_BACKGROUND_ONLY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
-            PERMISSION_BACKGROUND, permGroup, context)
-        assertEquals(SummaryMessage.ENABLED_BY_ADMIN_BACKGROUND_ONLY.toPermSummary(true),
-            summaryAdmin)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BACKGROUND,
+                permGroup,
+                context
+            )
+        assertEquals(
+            SummaryMessage.ENABLED_BY_ADMIN_BACKGROUND_ONLY.toPermSummary(true),
+            summaryAdmin
+        )
     }
 
     @Test
@@ -173,14 +197,22 @@ class ReviewPermissionsViewModelTest {
         whenever(permGroup.isPolicyFullyFixed).thenReturn(true)
         whenever(permGroup.hasBackgroundGroup).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_FOREGROUND,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_POLICY_BACKGROUND_ONLY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
-            PERMISSION_FOREGROUND, permGroup, context)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_FOREGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_ADMIN_FOREGROUND_ONLY.toPermSummary(), summaryAdmin)
     }
 
@@ -189,14 +221,22 @@ class ReviewPermissionsViewModelTest {
         whenever(permGroup.isPolicyFullyFixed).thenReturn(true)
         whenever(permGroup.hasBackgroundGroup).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BACKGROUND,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BACKGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENFORCED_BY_POLICY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
-            PERMISSION_BACKGROUND, permGroup, context)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BACKGROUND,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_ADMIN.toPermSummary(), summaryAdmin)
     }
 
@@ -204,14 +244,18 @@ class ReviewPermissionsViewModelTest {
     fun getSummary_fullyFixedPolicy_hasNoBackgroundGroup() {
         whenever(permGroup.isPolicyFullyFixed).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH, permGroup, context)
         assertEquals(SummaryMessage.ENFORCED_BY_POLICY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val summaryAdmin = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH,
-            permGroup, context)
+        val summaryAdmin =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BOTH,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.ENABLED_BY_ADMIN.toPermSummary(), summaryAdmin)
     }
 
@@ -220,14 +264,18 @@ class ReviewPermissionsViewModelTest {
         whenever(foregroundSubGroup.isPolicyFixed).thenReturn(true)
         whenever(permGroup.isGranted).thenReturn(false)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH, permGroup, context)
         assertEquals(SummaryMessage.ENFORCED_BY_POLICY.toPermSummary(), summary)
 
         val spyViewModel = spy(model)
         doReturn(admin).`when`(spyViewModel).getAdmin(context, permGroup)
-        val adminSummary = spyViewModel.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH,
-            permGroup, context)
+        val adminSummary =
+            spyViewModel.getSummaryForFixedByPolicyPermissionGroup(
+                PERMISSION_BOTH,
+                permGroup,
+                context
+            )
         assertEquals(SummaryMessage.DISABLED_BY_ADMIN.toPermSummary(), adminSummary)
     }
 
@@ -235,8 +283,8 @@ class ReviewPermissionsViewModelTest {
     fun getSummary_systemFixedPolicy() {
         whenever(permGroup.isSystemFixed).thenReturn(true)
 
-        val summary = model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH,
-            permGroup, context)
+        val summary =
+            model.getSummaryForFixedByPolicyPermissionGroup(PERMISSION_BOTH, permGroup, context)
         assertEquals(SummaryMessage.ENABLED_SYSTEM_FIXED.toPermSummary(), summary)
     }
 

@@ -39,6 +39,7 @@ import org.junit.Test
  * <p>Leave abstract to prevent the test runner from trying to run it
  *
  * Currently, none of the tests that extend [PermissionAppsFragmentTest] run on TV.
+ *
  * TODO(b/178576541): Adapt and run on TV.
  */
 abstract class PermissionAppsFragmentTest(
@@ -53,10 +54,7 @@ abstract class PermissionAppsFragmentTest(
     private fun scrollFindFromTop(selector: BySelector): UiObject2? {
         val scrollable = uiDevice.findObject(By.scrollable(true))
         scrollable.scrollUntil(Direction.UP, Until.scrollFinished(Direction.UP))
-        return scrollable.scrollUntil(
-            Direction.DOWN,
-            Until.findObject(selector)
-        )
+        return scrollable.scrollUntil(Direction.DOWN, Until.findObject(selector))
     }
 
     @Before
@@ -67,45 +65,57 @@ abstract class PermissionAppsFragmentTest(
             install(definerApk)
         }
         uninstallApp(userPkg)
-        uiDevice.performActionAndWait({
-            runWithShellPermissionIdentity {
-                instrumentationContext.startActivity(
-                    Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                    .apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        putExtra(Intent.EXTRA_PERMISSION_NAME, perm)
-                    }
-                )
-            }
-        }, Until.newWindow(), Companion.NEW_WINDOW_TIMEOUT_MILLIS)
+        uiDevice.performActionAndWait(
+            {
+                runWithShellPermissionIdentity {
+                    instrumentationContext.startActivity(
+                        Intent(Intent.ACTION_MANAGE_PERMISSION_APPS).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            putExtra(Intent.EXTRA_PERMISSION_NAME, perm)
+                        }
+                    )
+                }
+            },
+            Until.newWindow(),
+            Companion.NEW_WINDOW_TIMEOUT_MILLIS
+        )
     }
 
     @Test
     fun testAppAppearanceReflectsInstallation() {
         // Expect *not* to find package listed on screen
-        eventually({
-            val pkg = scrollFindFromTop(pkgSelector)
-            assertThat(pkg).isNull()
-        }, Companion.SCROLL_TIMEOUT_MILLIS)
+        eventually(
+            {
+                val pkg = scrollFindFromTop(pkgSelector)
+                assertThat(pkg).isNull()
+            },
+            Companion.SCROLL_TIMEOUT_MILLIS
+        )
 
         // Install package
         install(userApk)
 
         // Expect to find package listed on screen
-        eventually({
-            val pkg = scrollFindFromTop(pkgSelector)
-            assertThat(pkg).isNotNull()
-        }, Companion.SCROLL_TIMEOUT_MILLIS)
+        eventually(
+            {
+                val pkg = scrollFindFromTop(pkgSelector)
+                assertThat(pkg).isNotNull()
+            },
+            Companion.SCROLL_TIMEOUT_MILLIS
+        )
 
         // Uninstall app
         uninstallApp(userPkg)
 
         // Expect *not* to find package listed on screen
-        eventually({
-            val pkg = scrollFindFromTop(pkgSelector)
-            assertThat(pkg).isNull()
-        }, Companion.SCROLL_TIMEOUT_MILLIS)
+        eventually(
+            {
+                val pkg = scrollFindFromTop(pkgSelector)
+                assertThat(pkg).isNull()
+            },
+            Companion.SCROLL_TIMEOUT_MILLIS
+        )
     }
 
     @After

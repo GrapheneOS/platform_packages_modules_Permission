@@ -29,24 +29,23 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param user The user the services should be determined for
  */
-class SelectedWallpaperServiceLiveData(
-    private val app: Application,
-    private val user: UserHandle
-) : SmartAsyncMediatorLiveData<String?>() {
+class SelectedWallpaperServiceLiveData(private val app: Application, private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<String?>() {
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
 
-        val packageName = try {
-            Utils.getUserContext(app, user)
+        val packageName =
+            try {
+                Utils.getUserContext(app, user)
                     .getSystemService(WallpaperManager::class.java)
                     ?.wallpaperInfo
                     ?.packageName
-        } catch (e: NullPointerException) {
-            null
-        }
+            } catch (e: NullPointerException) {
+                null
+            }
 
         postValue(packageName)
     }
@@ -56,8 +55,7 @@ class SelectedWallpaperServiceLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            SelectedWallpaperServiceLiveData>() {
+    companion object : DataRepositoryForPackage<UserHandle, SelectedWallpaperServiceLiveData>() {
         override fun newValue(key: UserHandle): SelectedWallpaperServiceLiveData {
             return SelectedWallpaperServiceLiveData(PermissionControllerApplication.get(), key)
         }

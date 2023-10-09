@@ -30,9 +30,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Simple tests for {@link ReviewOngoingUsageFragment}
- */
+/** Simple tests for {@link ReviewOngoingUsageFragment} */
 class ReviewOngoingUsageFragmentTest : PermissionHub2Test() {
 
     @Before
@@ -46,14 +44,15 @@ class ReviewOngoingUsageFragmentTest : PermissionHub2Test() {
     @Test
     fun cameraAccessShouldBeShown() {
         runWithShellPermissionIdentity {
-            context.startActivity(Intent(Intent.ACTION_REVIEW_ONGOING_PERMISSION_USAGE).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            context.startActivity(
+                Intent(Intent.ACTION_REVIEW_ONGOING_PERMISSION_USAGE).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            )
         }
 
         waitFindObject(By.textContains(CAMERA_TEST_APP_LABEL)).click()
     }
 
-    @After
-    fun cleanUp() = uninstallTestApps()
+    @After fun cleanUp() = uninstallTestApps()
 }

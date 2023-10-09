@@ -25,9 +25,7 @@ import com.android.permissioncontroller.hibernation.cancelUnusedAppsNotification
 import com.android.permissioncontroller.hibernation.rescanAndPushDataToSafetyCenter
 import java.util.Random
 
-/**
- * Privacy source for auto-revoked permissions.
- */
+/** Privacy source for auto-revoked permissions. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class AutoRevokePrivacySource : PrivacySource {
     override val shouldProcessProfileRequest: Boolean = false

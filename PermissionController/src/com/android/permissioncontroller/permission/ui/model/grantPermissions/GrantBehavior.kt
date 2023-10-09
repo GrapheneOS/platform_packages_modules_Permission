@@ -20,18 +20,17 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.ui.model.DenyButton
 import com.android.permissioncontroller.permission.ui.model.Prompt
 
-/**
- * The base behavior all grant behavior objects inherit from.
- */
+/** The base behavior all grant behavior objects inherit from. */
 abstract class GrantBehavior {
     val LOG_TAG = "GrantPermissionsViewModel"
 
     /**
      * Get the prompt type for the given set of requested permissions
+     *
      * @param group The LightAppPermGroup representing the state of the app and its permissions
      * @param requestedPerms The permissions requested by the app, after filtering
-     * @param isSystemTriggeredPrompt Whether the prompt was triggered by the system, instead of
-     * by the app.
+     * @param isSystemTriggeredPrompt Whether the prompt was triggered by the system, instead of by
+     *   the app.
      */
     abstract fun getPrompt(
         group: LightAppPermGroup,
@@ -43,6 +42,7 @@ abstract class GrantBehavior {
      * Get the deny button type for the given set of requested permissions. This is separate from
      * the prompt, because the same prompt can have multiple deny behaviors, based on if the user
      * has seen it before.
+     *
      * @param group The LightAppPermGroup representing the state of the app and its permissions
      * @param requestedPerms The permissions requested by the app, after filtering
      * @param prompt The prompt determined by the behavior.
@@ -57,10 +57,7 @@ abstract class GrantBehavior {
      * Whether the group is considered "fully granted". If it is, any remaining permissions in the
      * group not already granted will be granted.
      */
-    open fun isGroupFullyGranted(
-        group: LightAppPermGroup,
-        requestedPerms: Set<String>
-    ): Boolean {
+    open fun isGroupFullyGranted(group: LightAppPermGroup, requestedPerms: Set<String>): Boolean {
         return group.foreground.isGrantedExcludingRWROrAllRWR
     }
 

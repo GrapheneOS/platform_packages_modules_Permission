@@ -33,31 +33,26 @@ import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 
-/**
- * A slot based composable for creating a list footer item.
- */
+/** A slot based composable for creating a list footer item. */
 @Composable
-fun ListFooter(
-    description: String,
-    iconRes: Int? = null,
-    onClick: (() -> Unit)? = null
-) {
+fun ListFooter(description: String, iconRes: Int? = null, onClick: (() -> Unit)? = null) {
     val modifier = Modifier.fillMaxWidth()
     Row(
-        modifier = if (onClick == null) {
-            modifier
-        } else {
-            modifier.clickable(onClick = onClick)
-        }
+        modifier =
+            if (onClick == null) {
+                modifier
+            } else {
+                modifier.clickable(onClick = onClick)
+            }
     ) {
         iconRes?.let {
             Spacer(modifier = Modifier.width(LeadingIconStartSpacing))
             Icon(
                 painter = painterResource(id = it),
                 contentDescription = null,
-                modifier = Modifier
-                    .size(LeadingIconSize, LeadingIconSize)
-                    .align(Alignment.CenterVertically)
+                modifier =
+                    Modifier.size(LeadingIconSize, LeadingIconSize)
+                        .align(Alignment.CenterVertically)
             )
             Spacer(modifier = Modifier.width(LeadingIconEndSpacing))
         }
@@ -72,17 +67,11 @@ fun ListFooter(
     }
 }
 
-/**
- * The size of the spacing before the leading icon when they used inside a list footer.
- */
+/** The size of the spacing before the leading icon when they used inside a list footer. */
 private val LeadingIconStartSpacing = 4.dp
 
-/**
- * The size of the spacing between the leading icon and a text inside a list footer.
- */
+/** The size of the spacing between the leading icon and a text inside a list footer. */
 private val LeadingIconEndSpacing = 8.dp
 
-/**
- * The size of the leading icon.
- */
+/** The size of the leading icon. */
 private val LeadingIconSize = 24.dp

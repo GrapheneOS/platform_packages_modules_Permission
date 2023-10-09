@@ -28,7 +28,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.map
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
@@ -39,14 +38,15 @@ import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
+import java.util.function.IntConsumer
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
-import java.util.function.IntConsumer
 
 /**
  * A model for the PermissionControllerServiceImpl. Handles the data gathering for some methods of
@@ -57,10 +57,10 @@ class PermissionControllerServiceModel(private val service: PermissionController
     private val observedLiveDatas = mutableListOf<LiveData<*>>()
 
     /**
-     * *Must* be used instead of LiveData.observe, in order to allow the lifecycle state to
-     * be set to "started" correctly. If the liveData was inactive, create a no op observer, which
-     * will survive until the service goes inactive. Will remove the provided observer after one
-     * update (one non-stale update, in the case of a SmartUpdateMediatorLiveData).
+     * *Must* be used instead of LiveData.observe, in order to allow the lifecycle state to be set
+     * to "started" correctly. If the liveData was inactive, create a no op observer, which will
+     * survive until the service goes inactive. Will remove the provided observer after one update
+     * (one non-stale update, in the case of a SmartUpdateMediatorLiveData).
      *
      * @param liveData The livedata we wish to observe
      * @param onChangedFun The function we wish to be called upon livedata updates
@@ -72,14 +72,13 @@ class PermissionControllerServiceModel(private val service: PermissionController
         onChangedFun: (t: T?) -> Unit
     ) {
         GlobalScope.launch(Main.immediate) {
-
             if (service.lifecycle.currentState != Lifecycle.State.STARTED) {
                 service.setLifecycleToStarted()
             }
 
             if (!liveData.hasActiveObservers()) {
                 observedLiveDatas.add(liveData)
-                liveData.observe(service, Observer { })
+                liveData.observe(service, Observer {})
             }
 
             if (forceUpdate && liveData is SmartUpdateMediatorLiveData<T>) {
@@ -87,27 +86,28 @@ class PermissionControllerServiceModel(private val service: PermissionController
             }
 
             var updated = false
-            val observer = object : Observer<T> {
-                override fun onChanged(value: T) {
-                    if (updated) {
-                        return
-                    }
-                    if ((liveData is SmartUpdateMediatorLiveData<T> && !liveData.isStale) ||
-                        liveData !is SmartUpdateMediatorLiveData<T>) {
-                        onChangedFun(value)
-                        liveData.removeObserver(this)
-                        updated = true
+            val observer =
+                object : Observer<T> {
+                    override fun onChanged(value: T) {
+                        if (updated) {
+                            return
+                        }
+                        if (
+                            (liveData is SmartUpdateMediatorLiveData<T> && !liveData.isStale) ||
+                                liveData !is SmartUpdateMediatorLiveData<T>
+                        ) {
+                            onChangedFun(value)
+                            liveData.removeObserver(this)
+                            updated = true
+                        }
                     }
                 }
-            }
 
             liveData.observe(service, observer)
         }
     }
 
-    /**
-     * Stop observing all currently observed liveDatas
-     */
+    /** Stop observing all currently observed liveDatas */
     fun removeObservers() {
         GlobalScope.launch(Main.immediate) {
             for (liveData in observedLiveDatas) {
@@ -133,17 +133,16 @@ class PermissionControllerServiceModel(private val service: PermissionController
     ) {
         val packageInfosLiveData = UserPackageInfosLiveData[Process.myUserHandle()]
         observeAndCheckForLifecycleState(packageInfosLiveData) { packageInfos ->
-            onPackagesLoadedForCountPermissionApps(permissionNames, flags, callback,
-                packageInfos)
+            onPackagesLoadedForCountPermissionApps(permissionNames, flags, callback, packageInfos)
         }
     }
 
     /**
-     * Called upon receiving a list of packages which we want to filter by a list of permissions
-     * and flags. Observes the AppPermGroupUiInfoLiveData for every app, and, upon receiving a
-     * non-stale update, adds it to the count if it matches the permission list and flags. Will
-     * only use the first non-stale update, so if an app is updated after this update, but before
-     * execution is complete, the changes will not be reflected until the method is called again.
+     * Called upon receiving a list of packages which we want to filter by a list of permissions and
+     * flags. Observes the AppPermGroupUiInfoLiveData for every app, and, upon receiving a non-stale
+     * update, adds it to the count if it matches the permission list and flags. Will only use the
+     * first non-stale update, so if an app is updated after this update, but before execution is
+     * complete, the changes will not be reflected until the method is called again.
      *
      * @param permissionNames The list of permission names whose apps we want to count
      * @param flags Flags specifying if we want to count system apps, and count only granted apps
@@ -167,11 +166,12 @@ class PermissionControllerServiceModel(private val service: PermissionController
         // Store the group of all installed, runtime permissions in permissionNames
         val permToGroup = mutableMapOf<String, String?>()
         for (permName in permissionNames) {
-            val permInfo = try {
-                service.packageManager.getPermissionInfo(permName, 0)
-            } catch (e: PackageManager.NameNotFoundException) {
-                continue
-            }
+            val permInfo =
+                try {
+                    service.packageManager.getPermissionInfo(permName, 0)
+                } catch (e: PackageManager.NameNotFoundException) {
+                    continue
+                }
 
             if (Utils.isPermissionDangerousInstalledNotRemoved(permInfo)) {
                 permToGroup[permName] = PermissionMapping.getGroupOfPermission(permInfo)
@@ -184,8 +184,10 @@ class PermissionControllerServiceModel(private val service: PermissionController
             val packageUiLiveDatas = mutableSetOf<AppPermGroupUiInfoLiveData>()
             for (permName in permToGroup.keys) {
                 if (requestedPermissions.contains(permName)) {
-                    packageUiLiveDatas.add(AppPermGroupUiInfoLiveData[packageName,
-                        permToGroup[permName]!!, Process.myUserHandle()])
+                    packageUiLiveDatas.add(
+                        AppPermGroupUiInfoLiveData[
+                            packageName, permToGroup[permName]!!, Process.myUserHandle()]
+                    )
                 }
             }
             if (packageUiLiveDatas.isNotEmpty()) {
@@ -211,8 +213,9 @@ class PermissionControllerServiceModel(private val service: PermissionController
                     numPermAppsChecked++
 
                     if (uiInfo != null && uiInfo.shouldShow && (!uiInfo.isSystem || countSystem)) {
-                        val granted = uiInfo.permGrantState != PermGrantState.PERMS_DENIED &&
-                            uiInfo.permGrantState != PermGrantState.PERMS_ASK
+                        val granted =
+                            uiInfo.permGrantState != PermGrantState.PERMS_DENIED &&
+                                uiInfo.permGrantState != PermGrantState.PERMS_ASK
                         if (granted || !countOnlyGranted && !packageAdded) {
                             // The permission might not be granted, but some permissions of the
                             // group are granted. In this case the permission is granted silently
@@ -244,8 +247,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
         packageName: String,
         callback: Consumer<List<Pair<String, AppPermGroupUiInfo>>>
     ) {
-        val packageGroupsLiveData = PackagePermissionsLiveData[packageName,
-            Process.myUserHandle()]
+        val packageGroupsLiveData = PackagePermissionsLiveData[packageName, Process.myUserHandle()]
         observeAndCheckForLifecycleState(packageGroupsLiveData) { groups ->
             val groupNames = groups?.keys?.toMutableList() ?: mutableListOf()
             groupNames.remove(PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS)
@@ -260,8 +262,8 @@ class PermissionControllerServiceModel(private val service: PermissionController
                 // live datas, because this method is used primarily for UI, and there is inherent
                 // delay when calling this method, due to binder calls, so some staleness is
                 // acceptable
-                val uiInfoLiveData = AppPermGroupUiInfoLiveData[packageName, groupName,
-                    Process.myUserHandle()]
+                val uiInfoLiveData =
+                    AppPermGroupUiInfoLiveData[packageName, groupName, Process.myUserHandle()]
                 observeAndCheckForLifecycleState(uiInfoLiveData, forceUpdate = true) { uiInfo ->
                     numLiveDatasUpdated++
 
@@ -285,9 +287,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
      *
      * @param callback The callback our result will be returned to
      */
-    fun onCountUnusedApps(
-        callback: IntConsumer
-    ) {
+    fun onCountUnusedApps(callback: IntConsumer) {
         GlobalScope.launch(Main.immediate) {
             val unusedAppsCount = getUnusedPackages().map { it?.size ?: 0 }
             observeAndCheckForLifecycleState(unusedAppsCount) { count ->
@@ -297,21 +297,19 @@ class PermissionControllerServiceModel(private val service: PermissionController
     }
 
     /**
-     * Gets whether the package is eligible for hibernation. The logic is the same logic used by
-     * the app hibernation job when determining which apps to hibernate.
+     * Gets whether the package is eligible for hibernation. The logic is the same logic used by the
+     * app hibernation job when determining which apps to hibernate.
      *
      * @param packageName The package to check eligibility for
      * @param callback The callback the result will be returned to
      */
-    fun onGetHibernationEligibility(
-        packageName: String,
-        callback: IntConsumer
-    ) {
+    fun onGetHibernationEligibility(packageName: String, callback: IntConsumer) {
         val user = Process.myUserHandle()
         val hibernationSettingLiveData = HibernationSettingStateLiveData[packageName, user]
         observeAndCheckForLifecycleState(hibernationSettingLiveData) { hibernationSettingState ->
             callback.accept(
-                hibernationSettingState?.hibernationEligibility ?: HIBERNATION_ELIGIBILITY_UNKNOWN)
+                hibernationSettingState?.hibernationEligibility ?: HIBERNATION_ELIGIBILITY_UNKNOWN
+            )
         }
     }
 
@@ -325,9 +323,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
         return withTimeout(9000) {
             val dumpedLogs = GlobalScope.async(IO) { DumpableLog.get() }
 
-            PermissionControllerDumpProto.newBuilder()
-                    .addAllLogs(dumpedLogs.await())
-                    .build()
+            PermissionControllerDumpProto.newBuilder().addAllLogs(dumpedLogs.await()).build()
         }
     }
 }

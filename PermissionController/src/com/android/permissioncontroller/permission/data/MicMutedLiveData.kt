@@ -24,33 +24,35 @@ import android.media.AudioManager
 import com.android.permissioncontroller.PermissionControllerApplication
 import kotlinx.coroutines.Job
 
-/**
- * Tracks whether the mic is muted or not
- */
-val micMutedLiveData = object : SmartAsyncMediatorLiveData<Boolean>() {
-    private val app = PermissionControllerApplication.get()
+/** Tracks whether the mic is muted or not */
+val micMutedLiveData =
+    object : SmartAsyncMediatorLiveData<Boolean>() {
+        private val app = PermissionControllerApplication.get()
 
-    private val isMicMuteRecevicer = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
+        private val isMicMuteRecevicer =
+            object : BroadcastReceiver() {
+                override fun onReceive(context: Context?, intent: Intent?) {
+                    update()
+                }
+            }
+
+        override suspend fun loadDataAndPostValue(job: Job) {
+            postValue(app.getSystemService(AudioManager::class.java).isMicrophoneMute())
+        }
+
+        override fun onActive() {
+            super.onActive()
+
+            app.registerReceiver(
+                isMicMuteRecevicer,
+                IntentFilter(AudioManager.ACTION_MICROPHONE_MUTE_CHANGED)
+            )
             update()
         }
+
+        override fun onInactive() {
+            super.onInactive()
+
+            app.unregisterReceiver(isMicMuteRecevicer)
+        }
     }
-
-    override suspend fun loadDataAndPostValue(job: Job) {
-        postValue(app.getSystemService(AudioManager::class.java).isMicrophoneMute())
-    }
-
-    override fun onActive() {
-        super.onActive()
-
-        app.registerReceiver(isMicMuteRecevicer,
-                IntentFilter(AudioManager.ACTION_MICROPHONE_MUTE_CHANGED))
-        update()
-    }
-
-    override fun onInactive() {
-        super.onInactive()
-
-        app.unregisterReceiver(isMicMuteRecevicer)
-    }
-}

@@ -26,15 +26,13 @@ import android.provider.DeviceConfig
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.utils.Utils
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
-/**
- * A job to clean up old permission events.
- */
+/** A job to clean up old permission events. */
 class PermissionEventCleanupJobService : JobService() {
 
     companion object {
@@ -43,13 +41,15 @@ class PermissionEventCleanupJobService : JobService() {
 
         fun scheduleOldDataCleanupIfNecessary(context: Context, jobScheduler: JobScheduler) {
             if (isNewJobScheduleRequired(jobScheduler)) {
-                val jobInfo = JobInfo.Builder(
-                    Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID,
-                    ComponentName(context, PermissionEventCleanupJobService::class.java))
-                    .setPeriodic(getClearOldEventsCheckFrequencyMs())
-                    // persist this job across boots
-                    .setPersisted(true)
-                    .build()
+                val jobInfo =
+                    JobInfo.Builder(
+                            Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID,
+                            ComponentName(context, PermissionEventCleanupJobService::class.java)
+                        )
+                        .setPeriodic(getClearOldEventsCheckFrequencyMs())
+                        // persist this job across boots
+                        .setPersisted(true)
+                        .build()
                 val status = jobScheduler.schedule(jobInfo)
                 if (status != JobScheduler.RESULT_SUCCESS) {
                     DumpableLog.e(LOG_TAG, "Could not schedule job: $status")
@@ -64,8 +64,8 @@ class PermissionEventCleanupJobService : JobService() {
          */
         private fun isNewJobScheduleRequired(jobScheduler: JobScheduler): Boolean {
             var scheduleNewJob = false
-            val existingJob: JobInfo? = jobScheduler
-                .getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID)
+            val existingJob: JobInfo? =
+                jobScheduler.getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID)
             when {
                 existingJob == null -> {
                     DumpableLog.i(LOG_TAG, "No existing job, scheduling a new one")
@@ -83,9 +83,11 @@ class PermissionEventCleanupJobService : JobService() {
         }
 
         private fun getClearOldEventsCheckFrequencyMs() =
-            DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
+            DeviceConfig.getLong(
+                DeviceConfig.NAMESPACE_PERMISSIONS,
                 Utils.PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS,
-                DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
+                DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY
+            )
     }
 
     var job: Job? = null
@@ -98,15 +100,16 @@ class PermissionEventCleanupJobService : JobService() {
             return false
         }
         jobStartTime = System.currentTimeMillis()
-        job = GlobalScope.launch(Dispatchers.IO) {
-            for (storage in storages) {
-                val success = storage.removeOldData()
-                if (!success) {
-                    DumpableLog.e(LOG_TAG, "Failed to remove old data for $storage")
+        job =
+            GlobalScope.launch(Dispatchers.IO) {
+                for (storage in storages) {
+                    val success = storage.removeOldData()
+                    if (!success) {
+                        DumpableLog.e(LOG_TAG, "Failed to remove old data for $storage")
+                    }
                 }
+                jobFinished(params, false)
             }
-            jobFinished(params, false)
-        }
         return true
     }
 

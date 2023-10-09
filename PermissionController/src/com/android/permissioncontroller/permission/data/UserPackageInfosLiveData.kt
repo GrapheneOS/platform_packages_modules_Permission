@@ -85,11 +85,13 @@ private constructor(private val app: Application, private val user: UserHandle) 
                 )
             } else if (SdkLevel.isAtLeastS()) {
                 app.applicationContext.packageManager.getInstalledPackagesAsUser(
-                    GET_PERMISSIONS or GET_ATTRIBUTIONS or MATCH_ALL, user.identifier
+                    GET_PERMISSIONS or GET_ATTRIBUTIONS or MATCH_ALL,
+                    user.identifier
                 )
             } else {
                 app.applicationContext.packageManager.getInstalledPackagesAsUser(
-                    GET_PERMISSIONS or MATCH_ALL, user.identifier
+                    GET_PERMISSIONS or MATCH_ALL,
+                    user.identifier
                 )
             }
 

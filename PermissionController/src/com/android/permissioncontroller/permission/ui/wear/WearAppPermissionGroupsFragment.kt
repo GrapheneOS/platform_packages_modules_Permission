@@ -39,7 +39,6 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModelFactory
 
-
 class WearAppPermissionGroupsFragment : Fragment() {
     private lateinit var helper: WearAppPermissionGroupsHelper
     override fun onCreateView(
@@ -48,22 +47,22 @@ class WearAppPermissionGroupsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val packageName = arguments?.getString(Intent.EXTRA_PACKAGE_NAME) ?: ""
-        val user = arguments?.let {
-            BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)!!
-        } ?: UserHandle.SYSTEM
+        val user =
+            arguments?.let {
+                BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)!!
+            }
+                ?: UserHandle.SYSTEM
 
         val activity: Activity = requireActivity()
         val packageManager = activity.packageManager
 
-        val packageInfo: PackageInfo? = try {
-            packageManager.getPackageInfo(
-                packageName,
-                PackageManager.GET_PERMISSIONS
-            )
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.i(LOG_TAG, "No package:" + activity.getCallingPackage(), e)
-            null
-        }
+        val packageInfo: PackageInfo? =
+            try {
+                packageManager.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
+            } catch (e: PackageManager.NameNotFoundException) {
+                Log.i(LOG_TAG, "No package:" + activity.getCallingPackage(), e)
+                null
+            }
 
         if (packageInfo == null) {
             Toast.makeText(activity, R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show()
@@ -72,34 +71,24 @@ class WearAppPermissionGroupsFragment : Fragment() {
         }
         val sessionId = arguments?.getLong(EXTRA_SESSION_ID, 0) ?: 0
         val appPermissions = AppPermissions(activity, packageInfo, true, { activity.finish() })
-        val factory = AppPermissionGroupsViewModelFactory(
-            packageName,
-            user,
-            sessionId
-        )
+        val factory = AppPermissionGroupsViewModelFactory(packageName, user, sessionId)
         val viewModel =
             ViewModelProvider(this, factory).get(AppPermissionGroupsViewModel::class.java)
         val revokeDialogViewModel =
-            ViewModelProvider(this, AppPermissionGroupsRevokeDialogViewModelFactory()).get(
-                AppPermissionGroupsRevokeDialogViewModel::class.java
+            ViewModelProvider(this, AppPermissionGroupsRevokeDialogViewModelFactory())
+                .get(AppPermissionGroupsRevokeDialogViewModel::class.java)
+        helper =
+            WearAppPermissionGroupsHelper(
+                context = requireContext(),
+                fragment = this,
+                user = user,
+                sessionId = sessionId,
+                appPermissions = appPermissions,
+                viewModel = viewModel,
+                revokeDialogViewModel = revokeDialogViewModel
             )
-        helper = WearAppPermissionGroupsHelper(
-            context = requireContext(),
-            fragment = this,
-            user = user,
-            sessionId = sessionId,
-            appPermissions = appPermissions,
-            viewModel = viewModel,
-            revokeDialogViewModel = revokeDialogViewModel
-        )
 
-        return ComposeView(activity).apply {
-            setContent {
-                WearAppPermissionGroupsScreen(
-                    helper
-                )
-            }
-        }
+        return ComposeView(activity).apply { setContent { WearAppPermissionGroupsScreen(helper) } }
     }
 
     override fun onPause() {

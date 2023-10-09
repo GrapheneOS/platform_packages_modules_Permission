@@ -38,10 +38,12 @@ class WearManageStandardPermissionsFragment : Fragment() {
         val application = activity.getApplication()
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
-        val viewModel: ManageStandardPermissionsViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(ManageStandardPermissionsViewModel::class.java)
+        val viewModel: ManageStandardPermissionsViewModel =
+            ViewModelProvider(
+                    this,
+                    ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+                )
+                .get(ManageStandardPermissionsViewModel::class.java)
 
         val onPermGroupClick: (String) -> Unit = { permGroupName ->
             viewModel.showPermissionApps(

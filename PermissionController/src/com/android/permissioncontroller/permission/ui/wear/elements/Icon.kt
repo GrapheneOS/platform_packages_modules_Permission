@@ -45,10 +45,7 @@ public fun Icon(
     val shouldMirror =
         rtlMode == IconRtlMode.Mirrored && LocalLayoutDirection.current == LayoutDirection.Rtl
     Icon(
-        modifier = modifier.scale(
-            scaleX = if (shouldMirror) -1f else 1f,
-            scaleY = 1f
-        ),
+        modifier = modifier.scale(scaleX = if (shouldMirror) -1f else 1f, scaleY = 1f),
         imageVector = imageVector,
         contentDescription = contentDescription,
         tint = tint
@@ -73,10 +70,7 @@ public fun Icon(
     Icon(
         painter = painterResource(id = id),
         contentDescription = contentDescription,
-        modifier = modifier.scale(
-            scaleX = if (shouldMirror) -1f else 1f,
-            scaleY = 1f
-        ),
+        modifier = modifier.scale(scaleX = if (shouldMirror) -1f else 1f, scaleY = 1f),
         tint = tint
     )
 }
@@ -97,10 +91,7 @@ fun Icon(
     val shouldMirror =
         rtlMode == IconRtlMode.Mirrored && LocalLayoutDirection.current == LayoutDirection.Rtl
 
-    val iconModifier = modifier.scale(
-        scaleX = if (shouldMirror) -1f else 1f,
-        scaleY = 1f
-    )
+    val iconModifier = modifier.scale(scaleX = if (shouldMirror) -1f else 1f, scaleY = 1f)
     when (icon) {
         is ImageVector -> {
             Icon(
@@ -110,7 +101,6 @@ fun Icon(
                 tint = tint
             )
         }
-
         is Int -> {
             Icon(
                 painter = painterResource(id = icon),
@@ -119,7 +109,6 @@ fun Icon(
                 tint = tint
             )
         }
-
         is Drawable -> {
             Icon(
                 painter = rememberDrawablePainter(icon),
@@ -128,7 +117,6 @@ fun Icon(
                 tint = tint
             )
         }
-
         else -> throw IllegalArgumentException("Type not supported.")
     }
 }

@@ -65,9 +65,7 @@ internal fun WearManageCustomPermissionContent(
                     icon = params.icon,
                     secondaryLabel = params.secondaryLabel,
                     secondaryLabelMaxLines = 3,
-                    onClick = {
-                        onPermGroupClick(params.permGroupName)
-                    }
+                    onClick = { onPermGroupClick(params.permGroupName) }
                 )
             }
         }

@@ -35,7 +35,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.wear.compose.material.contentColorFor
 import androidx.wear.compose.material.ChipDefaults
 import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.MaterialTheme
@@ -43,6 +42,7 @@ import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.ToggleChip
 import androidx.wear.compose.material.ToggleChipColors
 import androidx.wear.compose.material.ToggleChipDefaults
+import androidx.wear.compose.material.contentColorFor
 import com.android.permissioncontroller.R
 
 /**
@@ -70,17 +70,16 @@ public fun ToggleChip(
 ) {
     val hasSecondaryLabel = secondaryLabel != null
 
-    val labelParam: (@Composable RowScope.() -> Unit) =
-        {
-            Text(
-                text = label,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Start,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = labelMaxLine ?: if (hasSecondaryLabel) 1 else 2,
-                style = MaterialTheme.typography.button
-            )
-        }
+    val labelParam: (@Composable RowScope.() -> Unit) = {
+        Text(
+            text = label,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Start,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = labelMaxLine ?: if (hasSecondaryLabel) 1 else 2,
+            style = MaterialTheme.typography.button
+        )
+    }
 
     val secondaryLabelParam: (@Composable RowScope.() -> Unit)? =
         secondaryLabel?.let {
@@ -96,19 +95,21 @@ public fun ToggleChip(
 
     val toggleControlParam: (@Composable () -> Unit) = {
         Icon(
-            imageVector = when (toggleControl) {
-                ToggleChipToggleControl.Switch -> ToggleChipDefaults.switchIcon(checked)
-                ToggleChipToggleControl.Radio -> ToggleChipDefaults.radioIcon(checked)
-                ToggleChipToggleControl.Checkbox -> ToggleChipDefaults.checkboxIcon(checked)
-            },
+            imageVector =
+                when (toggleControl) {
+                    ToggleChipToggleControl.Switch -> ToggleChipDefaults.switchIcon(checked)
+                    ToggleChipToggleControl.Radio -> ToggleChipDefaults.radioIcon(checked)
+                    ToggleChipToggleControl.Checkbox -> ToggleChipDefaults.checkboxIcon(checked)
+                },
             contentDescription = null,
             // This potentially be removed once this issue is addressed:
             // https://issuetracker.google.com/issues/287087138
-            rtlMode = if (toggleControl == ToggleChipToggleControl.Switch) {
-                IconRtlMode.Mirrored
-            } else {
-                IconRtlMode.Default
-            }
+            rtlMode =
+                if (toggleControl == ToggleChipToggleControl.Switch) {
+                    IconRtlMode.Mirrored
+                } else {
+                    IconRtlMode.Default
+                }
         )
     }
 
@@ -120,33 +121,31 @@ public fun ToggleChip(
                         icon = icon,
                         tint = iconColor,
                         contentDescription = null,
-                        modifier = Modifier
-                            .size(ChipDefaults.IconSize)
-                            .clip(CircleShape),
+                        modifier = Modifier.size(ChipDefaults.IconSize).clip(CircleShape),
                         rtlMode = iconRtlMode
                     )
                 }
             }
         }
 
-    val stateDescriptionSemantics = stringResource(
-        if (checked) {
-            R.string.on
-        } else {
-            R.string.off
-        }
-    )
+    val stateDescriptionSemantics =
+        stringResource(
+            if (checked) {
+                R.string.on
+            } else {
+                R.string.off
+            }
+        )
     ToggleChip(
         checked = checked,
         onCheckedChange = onCheckedChanged,
         label = labelParam,
         toggleControl = toggleControlParam,
-        modifier = modifier
-            .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
-            .fillMaxWidth()
-            .semantics {
-                stateDescription = stateDescriptionSemantics
-            },
+        modifier =
+            modifier
+                .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
+                .fillMaxWidth()
+                .semantics { stateDescription = stateDescriptionSemantics },
         appIcon = iconParam,
         secondaryLabel = secondaryLabelParam,
         colors = colors,
@@ -157,15 +156,15 @@ public fun ToggleChip(
 
 /**
  * ToggleChipColors that disabled alpha is applied based on [ToggleChipDefaults.toggleChipColors()].
- * It is used for a ToggleChip which would like to respond to click events,
- * meanwhile it seems disabled.
+ * It is used for a ToggleChip which would like to respond to click events, meanwhile it seems
+ * disabled.
  */
 @Composable
 fun toggleChipDisabledColors(): ToggleChipColors {
-    val checkedStartBackgroundColor = MaterialTheme.colors.surface.copy(alpha = 0f)
-        .compositeOver(MaterialTheme.colors.surface)
-    val checkedEndBackgroundColor = MaterialTheme.colors.primary.copy(alpha = 0.5f)
-        .compositeOver(MaterialTheme.colors.surface)
+    val checkedStartBackgroundColor =
+        MaterialTheme.colors.surface.copy(alpha = 0f).compositeOver(MaterialTheme.colors.surface)
+    val checkedEndBackgroundColor =
+        MaterialTheme.colors.primary.copy(alpha = 0.5f).compositeOver(MaterialTheme.colors.surface)
     val checkedContentColor = MaterialTheme.colors.onSurface
     val checkedSecondaryContentColor = MaterialTheme.colors.onSurfaceVariant
     val checkedToggleControlColor = MaterialTheme.colors.secondary
@@ -176,25 +175,21 @@ fun toggleChipDisabledColors(): ToggleChipColors {
     val uncheckedToggleControlColor = uncheckedContentColor
 
     return ToggleChipDefaults.toggleChipColors(
-        checkedStartBackgroundColor = checkedStartBackgroundColor
-            .copy(alpha = ContentAlpha.disabled),
-        checkedEndBackgroundColor = checkedEndBackgroundColor
-            .copy(alpha = ContentAlpha.disabled),
-        checkedContentColor = checkedContentColor
-            .copy(alpha = ContentAlpha.disabled),
-        checkedSecondaryContentColor = checkedSecondaryContentColor
-            .copy(alpha = ContentAlpha.disabled),
-        checkedToggleControlColor = checkedToggleControlColor
-            .copy(alpha = ContentAlpha.disabled),
-        uncheckedStartBackgroundColor = uncheckedStartBackgroundColor
-            .copy(alpha = ContentAlpha.disabled),
-        uncheckedEndBackgroundColor = uncheckedEndBackgroundColor
-            .copy(alpha = ContentAlpha.disabled),
-        uncheckedContentColor = uncheckedContentColor
-            .copy(alpha = ContentAlpha.disabled),
-        uncheckedSecondaryContentColor = uncheckedSecondaryContentColor
-            .copy(alpha = ContentAlpha.disabled),
-        uncheckedToggleControlColor = uncheckedToggleControlColor
-            .copy(alpha = ContentAlpha.disabled)
+        checkedStartBackgroundColor =
+            checkedStartBackgroundColor.copy(alpha = ContentAlpha.disabled),
+        checkedEndBackgroundColor = checkedEndBackgroundColor.copy(alpha = ContentAlpha.disabled),
+        checkedContentColor = checkedContentColor.copy(alpha = ContentAlpha.disabled),
+        checkedSecondaryContentColor =
+            checkedSecondaryContentColor.copy(alpha = ContentAlpha.disabled),
+        checkedToggleControlColor = checkedToggleControlColor.copy(alpha = ContentAlpha.disabled),
+        uncheckedStartBackgroundColor =
+            uncheckedStartBackgroundColor.copy(alpha = ContentAlpha.disabled),
+        uncheckedEndBackgroundColor =
+            uncheckedEndBackgroundColor.copy(alpha = ContentAlpha.disabled),
+        uncheckedContentColor = uncheckedContentColor.copy(alpha = ContentAlpha.disabled),
+        uncheckedSecondaryContentColor =
+            uncheckedSecondaryContentColor.copy(alpha = ContentAlpha.disabled),
+        uncheckedToggleControlColor =
+            uncheckedToggleControlColor.copy(alpha = ContentAlpha.disabled)
     )
 }

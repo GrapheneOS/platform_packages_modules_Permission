@@ -21,9 +21,7 @@ import com.android.permissioncontroller.permission.ui.model.DenyButton
 import com.android.permissioncontroller.permission.ui.model.Prompt
 import com.android.permissioncontroller.permission.utils.Utils
 
-/**
- * Health permissions always redirect to the health connect UI.
- */
+/** Health permissions always redirect to the health connect UI. */
 object HealthGrantBehavior : GrantBehavior() {
     override fun getPrompt(
         group: LightAppPermGroup,

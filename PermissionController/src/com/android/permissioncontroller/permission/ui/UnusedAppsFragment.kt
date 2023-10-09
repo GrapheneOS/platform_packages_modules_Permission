@@ -52,12 +52,14 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.text.Collator
 
 /**
- * A fragment displaying all applications that are unused as well as the option to remove them
- * and to open them.
+ * A fragment displaying all applications that are unused as well as the option to remove them and
+ * to open them.
  */
-class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
-        where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
-              UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+class UnusedAppsFragment<PF, UnusedAppPref> : Fragment() where
+PF : PreferenceFragmentCompat,
+PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+UnusedAppPref : Preference,
+UnusedAppPref : RemovablePref {
 
     private lateinit var viewModel: UnusedAppsViewModel
     private lateinit var collator: Collator
@@ -72,9 +74,11 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         private val LOG_TAG = UnusedAppsFragment::class.java.simpleName
 
         @JvmStatic
-        fun <PF, UnusedAppPref> newInstance(): UnusedAppsFragment<PF, UnusedAppPref>
-                where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
-                      UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+        fun <PF, UnusedAppPref> newInstance(): UnusedAppsFragment<PF, UnusedAppPref> where
+        PF : PreferenceFragmentCompat,
+        PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+        UnusedAppPref : Preference,
+        UnusedAppPref : RemovablePref {
             return UnusedAppsFragment()
         }
 
@@ -82,7 +86,6 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
          * Create the args needed for this fragment
          *
          * @param sessionId The current session Id
-         *
          * @return A bundle containing the session Id
          */
         @JvmStatic
@@ -101,29 +104,35 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         val preferenceFragment: PF = requirePreferenceFragment()
         isFirstLoad = true
 
-        collator = Collator.getInstance(
-            context!!.getResources().getConfiguration().getLocales().get(0))
+        collator =
+            Collator.getInstance(context!!.getResources().getConfiguration().getLocales().get(0))
         sessionId = arguments!!.getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)
         val factory = UnusedAppsViewModelFactory(activity!!.application, sessionId)
         viewModel = ViewModelProvider(this, factory).get(UnusedAppsViewModel::class.java)
-        viewModel.unusedPackageCategoriesLiveData.observe(this, Observer {
-            it?.let { pkgs ->
-                updatePackages(pkgs)
-                preferenceFragment.setLoadingState(loading = false, animate = true)
+        viewModel.unusedPackageCategoriesLiveData.observe(
+            this,
+            Observer {
+                it?.let { pkgs ->
+                    updatePackages(pkgs)
+                    preferenceFragment.setLoadingState(loading = false, animate = true)
+                }
             }
-        })
+        )
 
         activity?.getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
             val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({
-                if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
-                    preferenceFragment.setLoadingState(loading = true, animate = true)
-                } else {
-                    updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
-                }
-            }, SHOW_LOAD_DELAY_MS)
+            handler.postDelayed(
+                {
+                    if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
+                        preferenceFragment.setLoadingState(loading = true, animate = true)
+                    } else {
+                        updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
+                    }
+                },
+                SHOW_LOAD_DELAY_MS
+            )
         } else {
             updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
         }
@@ -150,15 +159,15 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         return requireParentFragment() as PF
     }
 
-    /**
-     * Create [PreferenceScreen] in the parent fragment.
-     */
+    /** Create [PreferenceScreen] in the parent fragment. */
     private fun createPreferenceScreen() {
         val preferenceFragment: PF = requirePreferenceFragment()
-        val preferenceScreen = preferenceFragment.preferenceManager.inflateFromResource(
-            context!!,
-            R.xml.unused_app_categories,
-            /* rootPreferences= */ null)
+        val preferenceScreen =
+            preferenceFragment.preferenceManager.inflateFromResource(
+                context!!,
+                R.xml.unused_app_categories,
+                /* rootPreferences= */ null
+            )
 
         for (period in allPeriods) {
             val periodCat = PreferenceCategory(context!!)
@@ -208,8 +217,10 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
             val category = preferenceScreen.findPreference<PreferenceCategory>(period.name)!!
             val months = period.months
             category.title =
-                MessageFormat.format(getString(R.string.last_opened_category_title),
-                    mapOf("count" to months))
+                MessageFormat.format(
+                    getString(R.string.last_opened_category_title),
+                    mapOf("count" to months)
+                )
             category.isVisible = packages.isNotEmpty()
             if (packages.isNotEmpty()) {
                 allCategoriesEmpty = false
@@ -221,39 +232,53 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
 
                 var pref = category.findPreference<UnusedAppPref>(key)
                 if (pref == null) {
-                    pref = removedPrefs[key] ?: preferenceFragment.createUnusedAppPref(
-                        activity!!.application, pkgName, user)
+                    pref =
+                        removedPrefs[key]
+                            ?: preferenceFragment.createUnusedAppPref(
+                                activity!!.application,
+                                pkgName,
+                                user
+                            )
                     pref.key = key
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
                 }
 
-                pref.setRemoveClickRunnable {
-                    viewModel.requestUninstallApp(this, pkgName, user)
-                }
+                pref.setRemoveClickRunnable { viewModel.requestUninstallApp(this, pkgName, user) }
                 pref.setRemoveComponentEnabled(!isSystemApp)
 
-                pref.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
-                    viewModel.navigateToAppInfo(pkgName, user, sessionId)
-                    true
-                }
+                pref.onPreferenceClickListener =
+                    Preference.OnPreferenceClickListener { _ ->
+                        viewModel.navigateToAppInfo(pkgName, user, sessionId)
+                        true
+                    }
 
                 val mostImportant = getMostImportantGroup(revokedPerms)
                 val importantLabel = KotlinUtils.getPermGroupLabel(context!!, mostImportant)
-                pref.summary = when {
-                    revokedPerms.isEmpty() -> null
-                    revokedPerms.size == 1 -> getString(R.string.auto_revoked_app_summary_one,
-                        importantLabel)
-                    revokedPerms.size == 2 -> {
-                        val otherLabel = if (revokedPerms[0] == mostImportant) {
-                            KotlinUtils.getPermGroupLabel(context!!, revokedPerms[1])
-                        } else {
-                            KotlinUtils.getPermGroupLabel(context!!, revokedPerms[0])
+                pref.summary =
+                    when {
+                        revokedPerms.isEmpty() -> null
+                        revokedPerms.size == 1 ->
+                            getString(R.string.auto_revoked_app_summary_one, importantLabel)
+                        revokedPerms.size == 2 -> {
+                            val otherLabel =
+                                if (revokedPerms[0] == mostImportant) {
+                                    KotlinUtils.getPermGroupLabel(context!!, revokedPerms[1])
+                                } else {
+                                    KotlinUtils.getPermGroupLabel(context!!, revokedPerms[0])
+                                }
+                            getString(
+                                R.string.auto_revoked_app_summary_two,
+                                importantLabel,
+                                otherLabel
+                            )
                         }
-                        getString(R.string.auto_revoked_app_summary_two, importantLabel, otherLabel)
+                        else ->
+                            getString(
+                                R.string.auto_revoked_app_summary_many,
+                                importantLabel,
+                                "${revokedPerms.size - 1}"
+                            )
                     }
-                    else -> getString(R.string.auto_revoked_app_summary_many, importantLabel,
-                        "${revokedPerms.size - 1}")
-                }
                 category.addPreference(pref)
                 KotlinUtils.sortPreferenceGroup(category, this::comparePreference, false)
             }
@@ -267,13 +292,19 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
             }
             Log.i(LOG_TAG, "sessionId: $sessionId Showed Auto Revoke Page")
             for (period in allPeriods) {
-                Log.i(LOG_TAG, "sessionId: $sessionId $period unused: " +
-                        "${categorizedPackages[period]}")
+                Log.i(
+                    LOG_TAG,
+                    "sessionId: $sessionId $period unused: " + "${categorizedPackages[period]}"
+                )
                 for (revokedPackageInfo in categorizedPackages[period]!!) {
                     for (groupName in revokedPackageInfo.revokedGroups) {
                         val isNewlyRevoked = period.isNewlyUnused()
-                        viewModel.logAppView(revokedPackageInfo.packageName,
-                            revokedPackageInfo.user, groupName, isNewlyRevoked)
+                        viewModel.logAppView(
+                            revokedPackageInfo.packageName,
+                            revokedPackageInfo.user,
+                            groupName,
+                            isNewlyRevoked
+                        )
                     }
                 }
             }
@@ -281,8 +312,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
     }
 
     private fun comparePreference(lhs: Preference, rhs: Preference): Int {
-        var result = collator.compare(lhs.title.toString(),
-            rhs.title.toString())
+        var result = collator.compare(lhs.title.toString(), rhs.title.toString())
         if (result == 0) {
             result = lhs.key.compareTo(rhs.key)
         }
@@ -324,23 +354,23 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
             val fragment = parentFragment as UnusedAppsFragment<*, *>
             val packageName = arguments!!.getString(Intent.EXTRA_PACKAGE_NAME)!!
             val user = arguments!!.getParcelable<UserHandle>(Intent.EXTRA_USER)!!
-            val b = AlertDialog.Builder(context!!)
-                .setMessage(R.string.app_disable_dlg_text)
-                .setPositiveButton(R.string.app_disable_dlg_positive) { _, _ ->
-                    fragment.viewModel.disableApp(packageName, user)
-                }
-                .setNegativeButton(R.string.cancel, null)
+            val b =
+                AlertDialog.Builder(context!!)
+                    .setMessage(R.string.app_disable_dlg_text)
+                    .setPositiveButton(R.string.app_disable_dlg_positive) { _, _ ->
+                        fragment.viewModel.disableApp(packageName, user)
+                    }
+                    .setNegativeButton(R.string.cancel, null)
             val d: Dialog = b.create()
             d.setCanceledOnTouchOutside(true)
             return d
         }
     }
 
-    /**
-     * Interface that the parent fragment must implement.
-     */
-    interface Parent<UnusedAppPref> where UnusedAppPref : Preference,
-                                          UnusedAppPref : RemovablePref {
+    /** Interface that the parent fragment must implement. */
+    interface Parent<UnusedAppPref> where
+    UnusedAppPref : Preference,
+    UnusedAppPref : RemovablePref {
 
         /**
          * Set the title of the current settings page.

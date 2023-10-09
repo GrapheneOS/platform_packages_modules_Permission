@@ -41,22 +41,13 @@ fun WearDefaultAppListScreen(
     defaultAppsLiveData: LiveData<List<RoleItem>>,
 ) {
     val defaultAppsState = defaultAppsLiveData.observeAsState(emptyList())
-    val defaultApps: List<RoleItem> by remember {
-        derivedStateOf {
-            defaultAppsState.value
-        }
-    }
+    val defaultApps: List<RoleItem> by remember { derivedStateOf { defaultAppsState.value } }
     val preferences = helper.getPreferences(defaultApps)
     var isLoading by remember { mutableStateOf(true) }
 
-    ScrollableScreen(
-        title = stringResource(R.string.default_apps),
-        isLoading = isLoading
-    ) {
+    ScrollableScreen(title = stringResource(R.string.default_apps), isLoading = isLoading) {
         if (preferences.isEmpty()) {
-            item {
-                Text(stringResource(R.string.no_default_apps))
-            }
+            item { Text(stringResource(R.string.no_default_apps)) }
             return@ScrollableScreen
         }
         preferences.forEach { pref ->
@@ -64,11 +55,12 @@ fun WearDefaultAppListScreen(
                 Chip(
                     label = pref.label,
                     icon = pref.icon,
-                    colors = if (pref.isEnabled()) {
-                        chipDefaultColors()
-                    } else {
-                        chipDisabledColors()
-                    },
+                    colors =
+                        if (pref.isEnabled()) {
+                            chipDefaultColors()
+                        } else {
+                            chipDisabledColors()
+                        },
                     secondaryLabel = pref.summary?.toString(),
                     onClick = pref.getOnClicked(),
                     modifier = Modifier.fillMaxWidth(),

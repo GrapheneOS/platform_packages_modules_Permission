@@ -42,21 +42,24 @@ object TestSafetyLabels {
         SafetyLabel(
             AppInfo(PACKAGE_NAME_1),
             DATE_2022_09_01,
-            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true))))
+            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))
+        )
 
     /** A Safety label for [PACKAGE_NAME_1]. */
     val SAFETY_LABEL_PKG_1_V2: SafetyLabel =
         SafetyLabel(
             AppInfo(PACKAGE_NAME_1),
             DATE_2022_10_14,
-            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false))))
+            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false)))
+        )
 
     /** A Safety label for [PACKAGE_NAME_1]. */
     val SAFETY_LABEL_PKG_1_V3: SafetyLabel =
         SafetyLabel(
             AppInfo(PACKAGE_NAME_1),
             DATE_2022_12_10,
-            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false))))
+            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false)))
+        )
 
     /** A Safety label for [PACKAGE_NAME_2]. */
     val SAFETY_LABEL_PKG_2_V1: SafetyLabel =
@@ -66,7 +69,10 @@ object TestSafetyLabels {
             DataLabel(
                 mapOf(
                     LOCATION_CATEGORY to DataCategory(true),
-                    FINANCIAL_CATEGORY to DataCategory(false))))
+                    FINANCIAL_CATEGORY to DataCategory(false)
+                )
+            )
+        )
 
     /** A Safety label for [PACKAGE_NAME_2]. */
     val SAFETY_LABEL_PKG_2_V2: SafetyLabel =
@@ -77,12 +83,14 @@ object TestSafetyLabels {
         SafetyLabel(
             AppInfo(PACKAGE_NAME_2),
             DATE_2022_12_30,
-            DataLabel(mapOf(FINANCIAL_CATEGORY to DataCategory(true))))
+            DataLabel(mapOf(FINANCIAL_CATEGORY to DataCategory(true)))
+        )
 
     /** A Safety label for [PACKAGE_NAME_3]. */
     val SAFETY_LABEL_PKG_3_V1: SafetyLabel =
         SafetyLabel(
             AppInfo(PACKAGE_NAME_3),
             DATE_2022_10_10,
-            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true))))
+            DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))
+        )
 }

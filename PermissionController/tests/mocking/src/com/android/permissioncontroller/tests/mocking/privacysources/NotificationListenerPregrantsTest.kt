@@ -47,9 +47,11 @@ class NotificationListenerPregrantsTest {
         MockitoAnnotations.initMocks(this)
         context = ApplicationProvider.getApplicationContext()
 
-        mockitoSession = ExtendedMockito.mockitoSession()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
                 .mockStatic(Utils::class.java)
-                .strictness(Strictness.LENIENT).startMocking()
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         notificationListenerPregrants = NotificationListenerPregrants(context)
     }

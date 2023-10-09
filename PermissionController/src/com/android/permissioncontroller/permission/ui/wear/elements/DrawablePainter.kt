@@ -42,9 +42,7 @@ import androidx.compose.ui.graphics.withSave
 import androidx.compose.ui.unit.LayoutDirection
 import kotlin.math.roundToInt
 
-private val MAIN_HANDLER by lazy(LazyThreadSafetyMode.NONE) {
-    Handler(Looper.getMainLooper())
-}
+private val MAIN_HANDLER by lazy(LazyThreadSafetyMode.NONE) { Handler(Looper.getMainLooper()) }
 
 /**
  * A [Painter] which draws an Android [Drawable] and supports [Animatable] drawables. Instances
@@ -52,9 +50,7 @@ private val MAIN_HANDLER by lazy(LazyThreadSafetyMode.NONE) {
  *
  * Instances are usually retrieved from [rememberDrawablePainter].
  */
-class DrawablePainter(
-    val drawable: Drawable
-) : Painter(), RememberObserver {
+class DrawablePainter(val drawable: Drawable) : Painter(), RememberObserver {
     private var drawInvalidateTick by mutableStateOf(0)
     private var drawableIntrinsicSize by mutableStateOf(drawable.intrinsicSize)
 
@@ -120,7 +116,8 @@ class DrawablePainter(
         return false
     }
 
-    override val intrinsicSize: Size get() = drawableIntrinsicSize
+    override val intrinsicSize: Size
+        get() = drawableIntrinsicSize
 
     override fun DrawScope.onDraw() {
         drawIntoCanvas { canvas ->
@@ -130,43 +127,44 @@ class DrawablePainter(
             // Update the Drawable's bounds
             drawable.setBounds(0, 0, size.width.roundToInt(), size.height.roundToInt())
 
-            canvas.withSave {
-                drawable.draw(canvas.nativeCanvas)
-            }
+            canvas.withSave { drawable.draw(canvas.nativeCanvas) }
         }
     }
 }
 
 /**
- * Remembers [Drawable] wrapped up as a [Painter]. This function attempts to un-wrap the
- * drawable contents and use Compose primitives where possible.
+ * Remembers [Drawable] wrapped up as a [Painter]. This function attempts to un-wrap the drawable
+ * contents and use Compose primitives where possible.
  *
  * If the provided [drawable] is `null`, an empty no-op painter is returned.
  *
- * This function tries to dispatch lifecycle events to [drawable] as much as possible from
- * within Compose.
+ * This function tries to dispatch lifecycle events to [drawable] as much as possible from within
+ * Compose.
  */
 @Composable
-fun rememberDrawablePainter(drawable: Drawable?): Painter = remember(drawable) {
-    when (drawable) {
-        null -> EmptyPainter
-        is ColorDrawable -> ColorPainter(Color(drawable.color))
-        // Since the DrawablePainter will be remembered and it implements RememberObserver, it
-        // will receive the necessary events
-        else -> DrawablePainter(drawable.mutate())
+fun rememberDrawablePainter(drawable: Drawable?): Painter =
+    remember(drawable) {
+        when (drawable) {
+            null -> EmptyPainter
+            is ColorDrawable -> ColorPainter(Color(drawable.color))
+            // Since the DrawablePainter will be remembered and it implements RememberObserver, it
+            // will receive the necessary events
+            else -> DrawablePainter(drawable.mutate())
+        }
     }
-}
 
 private val Drawable.intrinsicSize: Size
-    get() = when {
-        // Only return a finite size if the drawable has an intrinsic size
-        intrinsicWidth >= 0 && intrinsicHeight >= 0 -> {
-            Size(width = intrinsicWidth.toFloat(), height = intrinsicHeight.toFloat())
+    get() =
+        when {
+            // Only return a finite size if the drawable has an intrinsic size
+            intrinsicWidth >= 0 && intrinsicHeight >= 0 -> {
+                Size(width = intrinsicWidth.toFloat(), height = intrinsicHeight.toFloat())
+            }
+            else -> Size.Unspecified
         }
-        else -> Size.Unspecified
-    }
 
 internal object EmptyPainter : Painter() {
-    override val intrinsicSize: Size get() = Size.Unspecified
+    override val intrinsicSize: Size
+        get() = Size.Unspecified
     override fun DrawScope.onDraw() {}
 }

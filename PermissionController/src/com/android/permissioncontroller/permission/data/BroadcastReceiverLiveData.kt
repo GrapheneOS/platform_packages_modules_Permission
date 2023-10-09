@@ -41,9 +41,10 @@ class BroadcastReceiverLiveData(
     override val intentAction: String,
     private val permission: String,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<Set<String>>(),
-        PackageBroadcastReceiver.PackageBroadcastListener,
-        HasIntentAction {
+) :
+    SmartAsyncMediatorLiveData<Set<String>>(),
+    PackageBroadcastReceiver.PackageBroadcastListener,
+    HasIntentAction {
 
     private val name = intentAction.substringAfterLast(".")
 
@@ -51,9 +52,7 @@ class BroadcastReceiverLiveData(
 
     init {
         if (intentAction == DeviceAdminReceiver.ACTION_DEVICE_ADMIN_ENABLED) {
-            addSource(enabledDeviceAdminsLiveDataLiveData) {
-                updateAsync()
-            }
+            addSource(enabledDeviceAdminsLiveDataLiveData) { updateAsync() }
         }
     }
 
@@ -65,15 +64,20 @@ class BroadcastReceiverLiveData(
         if (job.isCancelled) {
             return
         }
-        if (intentAction == DeviceAdminReceiver.ACTION_DEVICE_ADMIN_ENABLED &&
-                !enabledDeviceAdminsLiveDataLiveData.isInitialized) {
+        if (
+            intentAction == DeviceAdminReceiver.ACTION_DEVICE_ADMIN_ENABLED &&
+                !enabledDeviceAdminsLiveDataLiveData.isInitialized
+        ) {
             return
         }
 
-        val packageNames = getUserContext(app, user).packageManager
+        val packageNames =
+            getUserContext(app, user)
+                .packageManager
                 .queryBroadcastReceivers(
-                        Intent(intentAction),
-                        PackageManager.GET_RECEIVERS or PackageManager.GET_META_DATA)
+                    Intent(intentAction),
+                    PackageManager.GET_RECEIVERS or PackageManager.GET_META_DATA
+                )
                 .mapNotNull { resolveInfo ->
                     if (resolveInfo?.activityInfo?.permission != permission) {
                         return@mapNotNull null
@@ -81,17 +85,22 @@ class BroadcastReceiverLiveData(
                     val packageName = resolveInfo.activityInfo?.packageName
                     if (!isReceiverEnabled(packageName)) {
                         if (DEBUG_HIBERNATION_POLICY) {
-                            DumpableLog.i(LOG_TAG,
-                                    "Not exempting $packageName - not an active $name " +
-                                            "for u${user.identifier}")
+                            DumpableLog.i(
+                                LOG_TAG,
+                                "Not exempting $packageName - not an active $name " +
+                                    "for u${user.identifier}"
+                            )
                         }
                         return@mapNotNull null
                     }
                     packageName
-                }.toSet()
+                }
+                .toSet()
         if (DEBUG_HIBERNATION_POLICY) {
-            DumpableLog.i(LOG_TAG,
-                    "Detected ${intentAction.substringAfterLast(".")}s: $packageNames")
+            DumpableLog.i(
+                LOG_TAG,
+                "Detected ${intentAction.substringAfterLast(".")}s: $packageNames"
+            )
         }
 
         postValue(packageNames)
@@ -127,13 +136,17 @@ class BroadcastReceiverLiveData(
      * <p> Key value is a (string intent action, required permission, user) triple, value is its
      * corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<Triple<String, String, UserHandle>,
-            BroadcastReceiverLiveData>() {
+    companion object :
+        DataRepositoryForPackage<Triple<String, String, UserHandle>, BroadcastReceiverLiveData>() {
         private const val LOG_TAG = "BroadcastReceiverLiveData"
 
         override fun newValue(key: Triple<String, String, UserHandle>): BroadcastReceiverLiveData {
-            return BroadcastReceiverLiveData(PermissionControllerApplication.get(),
-                    key.first, key.second, key.third)
+            return BroadcastReceiverLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second,
+                key.third
+            )
         }
     }
 }

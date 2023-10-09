@@ -28,7 +28,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.v33.PermissionDecision
@@ -37,9 +36,10 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
-import kotlinx.coroutines.Job
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.Job
 
 /** Viewmodel for [ReviewPermissionDecisionsFragment] */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -50,82 +50,94 @@ class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHan
     private val recentPermissionsLiveData = RecentPermissionDecisionsLiveData()
     private val userPackageInfosLiveData = UserPackageInfosLiveData[user]
 
-    val recentPermissionDecisionsLiveData = object
-        : SmartAsyncMediatorLiveData<List<PermissionDecision>>(
-        alwaysUpdateOnActive = false
-    ) {
+    val recentPermissionDecisionsLiveData =
+        object :
+            SmartAsyncMediatorLiveData<List<PermissionDecision>>(alwaysUpdateOnActive = false) {
 
-        init {
-            addSource(recentPermissionsLiveData) {
-                onUpdate()
+            init {
+                addSource(recentPermissionsLiveData) { onUpdate() }
+
+                addSource(userPackageInfosLiveData) { onUpdate() }
             }
 
-            addSource(userPackageInfosLiveData) {
-                onUpdate()
+            override suspend fun loadDataAndPostValue(job: Job) {
+                if (
+                    !recentPermissionsLiveData.isInitialized ||
+                        !userPackageInfosLiveData.isInitialized
+                ) {
+                    return
+                }
+
+                // create package info lookup map for performance
+                val packageToLightPackageInfo: MutableMap<String, LightPackageInfo> = mutableMapOf()
+                for (lightPackageInfo in userPackageInfosLiveData.value!!) {
+                    packageToLightPackageInfo[lightPackageInfo.packageName] = lightPackageInfo
+                }
+
+                // verify that permission state is still correct. Will also filter out any apps that
+                // were uninstalled
+                val decisionsToReview: MutableList<PermissionDecision> = mutableListOf()
+                for (recentDecision in recentPermissionsLiveData.value!!) {
+                    val lightPackageInfo = packageToLightPackageInfo[recentDecision.packageName]
+                    if (lightPackageInfo == null) {
+                        DumpableLog.e(
+                            LOG_TAG,
+                            "Package $recentDecision.packageName " + "is no longer installed"
+                        )
+                        continue
+                    }
+                    val grantedGroups: List<String?> =
+                        lightPackageInfo.grantedPermissions.map {
+                            PermissionMapping.getGroupOfPermission(
+                                app.packageManager.getPermissionInfo(it, /* flags= */ 0)
+                            )
+                        }
+                    val currentlyGranted =
+                        grantedGroups.contains(recentDecision.permissionGroupName)
+                    if (currentlyGranted && recentDecision.isGranted) {
+                        decisionsToReview.add(recentDecision)
+                    } else if (!currentlyGranted && !recentDecision.isGranted) {
+                        decisionsToReview.add(recentDecision)
+                    } else {
+                        // It's okay for this to happen - the state could change due to role
+                        // changes,
+                        // app hibernation, or other non-user-driven actions.
+                        DumpableLog.d(
+                            LOG_TAG,
+                            "Permission decision grant state (${recentDecision.isGranted}) " +
+                                "for ${recentDecision.packageName} access to " +
+                                "${recentDecision.permissionGroupName} does not match current " +
+                                "grant state $currentlyGranted"
+                        )
+                    }
+                }
+
+                postValue(decisionsToReview)
             }
         }
-
-        override suspend fun loadDataAndPostValue(job: Job) {
-            if (!recentPermissionsLiveData.isInitialized ||
-                !userPackageInfosLiveData.isInitialized) {
-                return
-            }
-
-            // create package info lookup map for performance
-            val packageToLightPackageInfo: MutableMap<String, LightPackageInfo> = mutableMapOf()
-            for (lightPackageInfo in userPackageInfosLiveData.value!!) {
-                packageToLightPackageInfo[lightPackageInfo.packageName] = lightPackageInfo
-            }
-
-            // verify that permission state is still correct. Will also filter out any apps that
-            // were uninstalled
-            val decisionsToReview: MutableList<PermissionDecision> = mutableListOf()
-            for (recentDecision in recentPermissionsLiveData.value!!) {
-                val lightPackageInfo = packageToLightPackageInfo[recentDecision.packageName]
-                if (lightPackageInfo == null) {
-                    DumpableLog.e(LOG_TAG, "Package $recentDecision.packageName " +
-                        "is no longer installed")
-                    continue
-                }
-                val grantedGroups: List<String?> = lightPackageInfo.grantedPermissions.map {
-                    PermissionMapping.getGroupOfPermission(
-                        app.packageManager.getPermissionInfo(it, /* flags= */ 0))
-                }
-                val currentlyGranted = grantedGroups.contains(recentDecision.permissionGroupName)
-                if (currentlyGranted && recentDecision.isGranted) {
-                    decisionsToReview.add(recentDecision)
-                } else if (!currentlyGranted && !recentDecision.isGranted) {
-                    decisionsToReview.add(recentDecision)
-                } else {
-                    // It's okay for this to happen - the state could change due to role changes,
-                    // app hibernation, or other non-user-driven actions.
-                    DumpableLog.d(LOG_TAG,
-                        "Permission decision grant state (${recentDecision.isGranted}) " +
-                            "for ${recentDecision.packageName} access to " +
-                            "${recentDecision.permissionGroupName} does not match current " +
-                            "grant state $currentlyGranted")
-                }
-            }
-
-            postValue(decisionsToReview)
-        }
-    }
 
     fun getAppIcon(packageName: String): Drawable? {
         return KotlinUtils.getBadgedPackageIcon(app, packageName, user)
     }
 
     fun createPreferenceTitle(permissionDecision: PermissionDecision): String {
-        val packageLabel = BidiFormatter.getInstance().unicodeWrap(
-            KotlinUtils.getPackageLabel(app, permissionDecision.packageName, user))
-        val permissionGroupLabel = KotlinUtils.getPermGroupLabel(app,
-            permissionDecision.permissionGroupName).toString()
+        val packageLabel =
+            BidiFormatter.getInstance()
+                .unicodeWrap(KotlinUtils.getPackageLabel(app, permissionDecision.packageName, user))
+        val permissionGroupLabel =
+            KotlinUtils.getPermGroupLabel(app, permissionDecision.permissionGroupName).toString()
         return if (permissionDecision.isGranted) {
-            app.getString(R.string.granted_permission_decision, packageLabel,
-                UCharacter.toLowerCase(permissionGroupLabel))
+            app.getString(
+                R.string.granted_permission_decision,
+                packageLabel,
+                UCharacter.toLowerCase(permissionGroupLabel)
+            )
         } else {
-            app.getString(R.string.denied_permission_decision, packageLabel,
-                UCharacter.toLowerCase(permissionGroupLabel))
+            app.getString(
+                R.string.denied_permission_decision,
+                packageLabel,
+                UCharacter.toLowerCase(permissionGroupLabel)
+            )
         }
     }
 
@@ -134,8 +146,10 @@ class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHan
             putExtra(Intent.EXTRA_PACKAGE_NAME, permissionDecision.packageName)
             putExtra(Intent.EXTRA_PERMISSION_NAME, permissionDecision.permissionGroupName)
             putExtra(Intent.EXTRA_USER, user)
-            putExtra(ManagePermissionsActivity.EXTRA_CALLER_NAME,
-                AutoReviewPermissionDecisionsFragment::class.java.name)
+            putExtra(
+                ManagePermissionsActivity.EXTRA_CALLER_NAME,
+                AutoReviewPermissionDecisionsFragment::class.java.name
+            )
         }
     }
 
@@ -146,15 +160,12 @@ class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHan
     }
 }
 
-/**
- * Factory for a [ReviewPermissionDecisionsViewModel]
- */
+/** Factory for a [ReviewPermissionDecisionsViewModel] */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class ReviewPermissionDecisionsViewModelFactory(val app: Application, val user: UserHandle) :
     ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return ReviewPermissionDecisionsViewModel(app, user) as T
+        @Suppress("UNCHECKED_CAST") return ReviewPermissionDecisionsViewModel(app, user) as T
     }
 }

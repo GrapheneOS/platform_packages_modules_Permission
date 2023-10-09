@@ -92,8 +92,7 @@ object StorageGrantBehavior : GrantBehavior() {
         group: LightAppPermGroup,
         requestedPerms: Set<String>
     ): Boolean {
-        if (!isPhotoPickerPromptSupported() ||
-            group.permGroupName != READ_MEDIA_VISUAL) {
+        if (!isPhotoPickerPromptSupported() || group.permGroupName != READ_MEDIA_VISUAL) {
             return super.isGroupFullyGranted(group, requestedPerms)
         }
 
@@ -104,8 +103,11 @@ object StorageGrantBehavior : GrantBehavior() {
 
     override fun isPermissionFixed(group: LightAppPermGroup, perm: String): Boolean {
         val userSelectedPerm = group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]
-        if (userSelectedPerm != null && userSelectedPerm.isGrantedIncludingAppOp &&
-            userSelectedPerm.isUserFixed) {
+        if (
+            userSelectedPerm != null &&
+                userSelectedPerm.isGrantedIncludingAppOp &&
+                userSelectedPerm.isUserFixed
+        ) {
             // If the user selected permission is fixed and granted, we immediately show the
             // photo picker, rather than filtering
             return false
@@ -117,9 +119,10 @@ object StorageGrantBehavior : GrantBehavior() {
         SdkLevel.isAtLeastT() && group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU
 
     private fun shouldShowPhotoPickerPromptForApp(group: LightAppPermGroup) =
-        isPhotoPickerPromptEnabled() && group.permGroupName == READ_MEDIA_VISUAL &&
+        isPhotoPickerPromptEnabled() &&
+            group.permGroupName == READ_MEDIA_VISUAL &&
             (group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
-            appSupportsPhotoPicker(group))
+                appSupportsPhotoPicker(group))
 
     private fun appSupportsPhotoPicker(group: LightAppPermGroup) =
         group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU &&

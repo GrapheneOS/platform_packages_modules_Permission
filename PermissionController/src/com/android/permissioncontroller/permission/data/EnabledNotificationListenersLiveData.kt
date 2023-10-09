@@ -40,20 +40,22 @@ class EnabledNotificationListenersLiveData(
             return
         }
 
-        val packageNames = Settings.Secure.getString(
-                Utils.getUserContext(app, user).contentResolver,
-                /* Settings.Secure.ENABLED_NOTIFICATION_LISTENERS */
-                "enabled_notification_listeners")
+        val packageNames =
+            Settings.Secure.getString(
+                    Utils.getUserContext(app, user).contentResolver,
+                    /* Settings.Secure.ENABLED_NOTIFICATION_LISTENERS */
+                    "enabled_notification_listeners"
+                )
                 ?.split(":")
                 ?.map { pkgOrComponent ->
                     if ('/' in pkgOrComponent) {
-                        ComponentName.unflattenFromString(pkgOrComponent)
-                                ?.packageName
-                                ?: pkgOrComponent
+                        ComponentName.unflattenFromString(pkgOrComponent)?.packageName
+                            ?: pkgOrComponent
                     } else {
                         pkgOrComponent
                     }
-                } ?: emptyList()
+                }
+                ?: emptyList()
 
         postValue(packageNames)
     }
@@ -63,8 +65,8 @@ class EnabledNotificationListenersLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            EnabledNotificationListenersLiveData>() {
+    companion object :
+        DataRepositoryForPackage<UserHandle, EnabledNotificationListenersLiveData>() {
         override fun newValue(key: UserHandle): EnabledNotificationListenersLiveData {
             return EnabledNotificationListenersLiveData(PermissionControllerApplication.get(), key)
         }

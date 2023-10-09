@@ -29,31 +29,41 @@ import org.junit.runner.RunWith
 class PermissionMappingTest {
     @Test
     fun testGetPlatformPermissionGroupForOp_healthPermissionGroup() {
-        assertThat(PermissionMapping.getPlatformPermissionGroupForOp(
-            AppOpsManager.OPSTR_READ_WRITE_HEALTH_DATA
-        )).isEqualTo(HealthPermissions.HEALTH_PERMISSION_GROUP)
+        assertThat(
+                PermissionMapping.getPlatformPermissionGroupForOp(
+                    AppOpsManager.OPSTR_READ_WRITE_HEALTH_DATA
+                )
+            )
+            .isEqualTo(HealthPermissions.HEALTH_PERMISSION_GROUP)
     }
 
     @Test
     fun testGetPlatformPermissionGroupForOp_microphone() {
-        assertThat(PermissionMapping.getPlatformPermissionGroupForOp(
-            AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE
-        )).isEqualTo(Manifest.permission_group.MICROPHONE)
+        assertThat(
+                PermissionMapping.getPlatformPermissionGroupForOp(
+                    AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE
+                )
+            )
+            .isEqualTo(Manifest.permission_group.MICROPHONE)
     }
 
     @Test
     fun testGetPlatformPermissionGroupForOp_camera() {
         assertThat(
-            PermissionMapping.getPlatformPermissionGroupForOp(AppOpsManager.OPSTR_PHONE_CALL_CAMERA)
-        ).isEqualTo(Manifest.permission_group.CAMERA)
+                PermissionMapping.getPlatformPermissionGroupForOp(
+                    AppOpsManager.OPSTR_PHONE_CALL_CAMERA
+                )
+            )
+            .isEqualTo(Manifest.permission_group.CAMERA)
     }
 
     @Test
     fun testGetPlatformPermissionGroupForOp_readContacts() {
         assertThat(
-            PermissionMapping.getPlatformPermissionGroupForOp(AppOpsManager.OPSTR_READ_CONTACTS)
-        ).isEqualTo(
-            PermissionMapping.getGroupOfPlatformPermission(Manifest.permission.READ_CONTACTS)
-        )
+                PermissionMapping.getPlatformPermissionGroupForOp(AppOpsManager.OPSTR_READ_CONTACTS)
+            )
+            .isEqualTo(
+                PermissionMapping.getGroupOfPlatformPermission(Manifest.permission.READ_CONTACTS)
+            )
     }
 }

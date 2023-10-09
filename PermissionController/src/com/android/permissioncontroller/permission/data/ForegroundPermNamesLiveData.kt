@@ -39,11 +39,12 @@ object ForegroundPermNamesLiveData : SmartAsyncMediatorLiveData<Map<String, List
         val systemGroups = PermissionMapping.getPlatformPermissionGroups()
         val permMap = mutableMapOf<String, MutableList<String>>()
         for (groupName in systemGroups) {
-            val permInfos = try {
-                Utils.getInstalledRuntimePermissionInfosForGroup(app.packageManager, groupName)
-            } catch (e: PackageManager.NameNotFoundException) {
-                continue
-            }
+            val permInfos =
+                try {
+                    Utils.getInstalledRuntimePermissionInfosForGroup(app.packageManager, groupName)
+                } catch (e: PackageManager.NameNotFoundException) {
+                    continue
+                }
             for (permInfo in permInfos) {
                 val backgroundPerm: String? = permInfo.backgroundPermission
                 if (backgroundPerm != null) {
