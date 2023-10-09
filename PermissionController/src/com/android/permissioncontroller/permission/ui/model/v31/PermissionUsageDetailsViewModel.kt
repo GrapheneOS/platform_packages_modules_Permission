@@ -625,11 +625,7 @@ class PermissionUsageDetailsViewModel(
         internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
 
         /** Returns all op names for all permissions in a list of permission groups. */
-        val opNames =
-            listOf(
-                    Manifest.permission_group.CAMERA,
-                    Manifest.permission_group.LOCATION,
-                    Manifest.permission_group.MICROPHONE)
+        val opNames = PermissionUsageControlPreferenceUtils.SENSOR_DATA_PERMISSIONS
                 .flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
                 .mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
                 .toMutableSet()
