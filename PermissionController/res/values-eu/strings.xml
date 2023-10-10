@@ -455,102 +455,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Erakutsi laguntzailea abiarazteko hautematea"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Mikrofonoa erabiltzen denean ahozko laguntza aktibatzeko, erakutsi dagokion ikonoa egoera-barran"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Gailuko argazkiak eta multimedia-edukia erabiltzeko baimena eman nahi diozu &lt;b&amp;gt<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (5934218468708513375) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko argazkiak eta multimedia-edukia erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Kontaktuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (2270563860206654757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko kontaktuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Gailuaren kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6641436550953715107) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; gailuaren kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Hura erabiltzen ari zarenean soilik atzituko du aplikazioak kokapena"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Gailuaren kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (7660465507029650527) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> gailuaren kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Baliteke aplikazioak beti atzitu behar izatea zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kokapenerako sarbidea aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (4528266408056426513) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuaren kokapena erabiltzeko baimena aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikazioak beti atzitu nahi du zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Inguruko gailuak aurkitu, haietara konektatu eta haien arteko distantzia erlatiboa zehazteko baimena eman &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (7919687165848885665) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan inguruko gailuak aurkitu, haietara konektatu eta haien distantzia erlatiboa zehazteko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Inguruko gailuak aurkitzeko, haietara konektatzeko eta haien arteko distantzia erlatiboa zehazteko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt aplikazioari? "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> aplikazioak gutxi gorabeherako kokapena atzi dezake. Kokapen zehatza erabiltzeko baimena eman nahi diozu?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (3947134846432067176) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> aplikazioak &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuaren gutxi gorabeherako kokapena erabil dezake. Kokapen zehatza erabiltzeko baimena eman nahi diozu?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gailuaren gutxi gorabeherako kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (9001956706241104626) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuaren gutxi gorabeherako kokapena erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Zehatza"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Gutxi gorabeherakoa"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Egutegia erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (3103987548035171850) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko egutegia erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS mezuak bidaltzeko eta ikusteko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (7212083972999874267) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan SMSak bidaltzeko eta ikusteko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Gailuko argazkiak, multimedia-edukia eta fitxategiak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (872629037299467086) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko argazkiak, multimedia-edukia eta fitxategiak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Gailuko &lt;b&gt;argazkiak, bideoak, musika eta audioa&lt;/b&gt; erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Gailuko &lt;b&gt;argazkiak, bideoak, musika, audioa eta bestelako fitxategiak&lt;/b&gt; erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Gailuko musika eta audioa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (3331524384339036668) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko musika eta audioa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Gailuko argazkiak eta bideoak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (5492319750632751551) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko argazki eta bideoak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Gailuko argazki eta bideo gehiago erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (8946782319103584021) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko argazki eta bideo gehiago erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (1266843551173029370) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikazioak hura erabiltzean soilik grabatuko du audioa"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (4990337225146130185) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan audioa grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Baliteke aplikazioak edonoiz grabatzea audioa, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Mikrofonorako sarbidea aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (222471025997100107) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko mikrofonoa erabiltzeko baimena aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Aplikazioak edonoiz grabatu nahi du audioa, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Zure jarduera fisikoa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (3408326850847755759) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko jarduera fisikoak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Argazkiak ateratzeko eta bideoak grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (3525106924487608868) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan argazkiak atera eta bideoak grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplikazioak hura erabiltzean soilik aterako ditu argazkiak, eta grabatuko bideoak"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Argazkiak atera eta bideoak grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (6718286540040964849) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan argazkiak atera eta bideoak grabatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Baliteke aplikazioak edonoiz ateratzea argazkiak eta grabatzea bideoak, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Kamerarako sarbidea aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (4198765626608612156) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko kamera erabiltzeko baimena aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Aplikazioak edonoiz atera nahi ditu argazkiak eta grabatu bideoak, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Telefonoko deien erregistroa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (735079772627778095) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko deien erregistroa erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Telefono-deiak egiteko eta kudeatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (4389610977195521813) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuan telefono-deiak egiteko eta kudeatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Bizi-konstanteei buruzko sentsorearen datuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (1900598688488188225) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko bizi-konstanteei buruzko sentsoreen datuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikazioak bizi-konstanteei buruzko sentsoreen datuak atzitu nahi ditu, baita aplikazioa erabiltzen ari ez zarenean ere. Aldaketa hori egiteko, "<annotation id="link">"joan ezarpenetara."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Bizi-konstanteei buruzko sentsoreen datuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (7691308331448239716) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko bizi-konstanteei buruzko sentsoreen datuak erabiltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Aplikazioari gorputz-sentsoreen datuak beti erabiltzeko baimena emateko (baita aplikazioa erabiltzen ari ez zarenean ere), "<annotation id="link">"joan ezarpenetara."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erabili bitartean gorputz-sentsoreen datuak erabiltzeko baimena eman nahi diozu aplikazio horri?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (3310667992344623159) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erabili bitartean &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailuko gorputz-sentsoreen datuak erabiltzeko baimena eman nahi diozu aplikazioari?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (7307588961166360244) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; gailura jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolatutako baimenak"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak kokapena erabil dezake"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Erakundeak kokapena erabiltzeko baimena eman dio <xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioari"</string>
@@ -641,13 +614,13 @@
     <string name="show_password_title" msgid="2877269286984684659">"Erakutsi pasahitzak"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Idatzi ahala, erakutsi karaktereak laburki"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
-    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datuak partekatzeko moduak eta kokapena"</string>
-    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nondik dator datuak partekatzeko moduei buruzko informazioa?"</string>
+    <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datuak partekatzeko aukera eta kokapena"</string>
+    <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nondik dator datuak partekatzeko aukerari buruzko informazioa?"</string>
     <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman dio gailuaren fabrikatzaileari garatzaileak. Baliteke garatzaileak informazio hori eguneratzea denboran zehar."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Aplikazioak datuak partekatzeko dituen moduei buruzko informazioa eman du "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" dendan garatzaileak. Baliteke garatzaileak informazio hori eguneratzea denboran zehar."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Baliteke hauetarako partekatzea kokapen-datuak:"</string>
-    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko moduak aldatu egiten dira"</string>
-    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea. "<annotation id="link">"Datuak partekatzeko moduei buruzko informazio gehiago"</annotation></string>
+    <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datuak partekatzeko aukerak aldatu egiten dira"</string>
+    <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea. "<annotation id="link">"Datuak partekatzeko aukerari buruzko informazio gehiago"</annotation></string>
     <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Litekeena da datuen inguruko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea."</string>
     <string name="permission_rationale_location_settings_title" msgid="7204145004850190953">"Kokapen-datuak"</string>
     <string name="permission_rationale_permission_settings_message" msgid="631286040979660267">"Aldatu aplikazioaren sarbidea "<annotation id="link">"pribatutasun-ezarpenetan"</annotation></string>
@@ -661,16 +634,16 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datuen babesa"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Baliteke kokapen-datuak partekatzea"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Agian hirugarrenekin kokapen-datuak partekatuko dituela adierazi du aplikazioaren garatzaileak"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kokapen-datuak partekatzeko jardunbideen berritasunak"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Kokapen-datuak partekatzeko aukeraren berritasunak"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Berrikusi kokapen-datuak partekatzeko modua aldatu duten aplikazioak"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio hauek. Agian ez zuten daturik partekatzen lehen, edo baliteke orain publizitate- edo marketin-helburuetarako partekatzea."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Datuak partekatzeko jardunbideei buruzko informazioa eman dute aplikazio-denda batean aplikazio hauen garatzaileek. Baliteke denboran zehar informazio hori eguneratzea.\n\nLitekeena da datuak partekatzeko jardunbideak aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoak izatea."</string>
-    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Datuak partekatzeko jardunbideei buruzko informazio gehiago"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Datuak partekatzeko aukerari buruzko informazioa eman dute aplikazio-denda batean aplikazio hauen garatzaileek. Baliteke denboran zehar informazio hori eguneratzea.\n\nLitekeena da datuak partekatzeko aukera aplikazioaren bertsioaren, erabileraren, lurraldearen eta adinaren araberakoa izatea."</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Datuak partekatzeko aukerari buruzko informazio gehiago"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Orain, kokapen-datuak hirugarrenekin partekatzen dira"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Orain, kokapen-datuak hirugarrenekin partekatzen dira publizitate- edo marketin-helburuetarako"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Atzo jaso ziren berritasunak}=1{Atzo jaso ziren berritasunak}other{Azken # egunetan jaso dira berritasunak}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Une honetan, ez dago berritasunik"</string>
-    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Datuak partekatzeko moduen inguruko berritasunak"</string>
+    <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Datuak partekatzeko aukeraren berritasunak"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Kokapen-datuak partekatzeko modua aldatu dute aplikazio batzuek"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"Ezarpenak"</string>
 </resources>
