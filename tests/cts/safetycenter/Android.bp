@@ -41,7 +41,7 @@ android_test {
         "safety-center-pending-intents",
         "safety-center-test-util-lib",
         "modules-utils-build",
-        "truth-prebuilt",
+        "truth",
     ],
     test_suites: [
         "cts",
