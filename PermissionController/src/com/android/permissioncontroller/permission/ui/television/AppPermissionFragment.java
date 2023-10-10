@@ -289,7 +289,7 @@ public class AppPermissionFragment extends SettingsWithHeader
         });
         mAllowAlwaysButton.setOnPreferenceClickListener((v) -> {
             if (mIsStorageGroup) {
-                showConfirmDialog(ChangeRequest.GRANT_All_FILE_ACCESS,
+                showConfirmDialog(ChangeRequest.GRANT_ALL_FILE_ACCESS,
                         R.string.special_file_access_dialog, -1, false);
             } else {
                 mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_BOTH,
@@ -464,7 +464,7 @@ public class AppPermissionFragment extends SettingsWithHeader
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AppPermissionFragment fragment = (AppPermissionFragment) getTargetFragment();
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
-                    == ChangeRequest.GRANT_All_FILE_ACCESS;
+                    == ChangeRequest.GRANT_ALL_FILE_ACCESS;
             int positiveButtonStringResId = R.string.grant_dialog_button_deny_anyway;
             if (isGrantFileAccess) {
                 positiveButtonStringResId = R.string.grant_dialog_button_allow;

@@ -164,6 +164,9 @@
     <!-- Title for the page of manage unused apps [CHAR LIMIT=30] -->
     <string name="unused_apps">Unused apps</string>
 
+    <!-- Description for the button that lets users change which photos an app has access to [CHAR LIMIT=none] -->
+    <string name="edit_photos_description">Edit selected photos for this app</string>
+
     <!-- Label when there are no unused apps [CHAR LIMIT=30] -->
     <string name="no_unused_apps">No unused apps</string>
 

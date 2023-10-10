@@ -39,9 +39,7 @@ import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
-import android.os.UserManager
 import android.permission.PermissionManager
-import android.provider.MediaStore
 import android.util.Log
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
@@ -125,6 +123,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegr
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptSupported
+import com.android.permissioncontroller.permission.utils.KotlinUtils.openPhotoPickerForApp
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
@@ -1623,22 +1622,8 @@ class GrantPermissionsViewModel(
             }
             requestInfosLiveData.update()
         }
-        // A clone profile doesn't have a MediaProvider. If this user is a clone profile, open
-        // the photo picker in the parent profile
-        val userManager = activity.getSystemService(UserManager::class.java)!!
-        val user =
-            if (userManager.isCloneProfile) {
-                userManager.getProfileParent(Process.myUserHandle()) ?: Process.myUserHandle()
-            } else {
-                Process.myUserHandle()
-            }
-        activity.startActivityForResultAsUser(
-            Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
-                .putExtra(Intent.EXTRA_UID, packageInfo.uid)
-                .setType(KotlinUtils.getMimeTypeForPermissions(unfilteredAffectedPermissions)),
-            PHOTO_PICKER_REQUEST_CODE,
-            user
-        )
+        openPhotoPickerForApp(activity, packageInfo.uid, unfilteredAffectedPermissions,
+            PHOTO_PICKER_REQUEST_CODE)
     }
 
     /**
