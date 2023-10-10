@@ -24,10 +24,9 @@ import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
-import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
+import com.android.compatibility.common.util.UiAutomatorUtils2.waitUntilObjectGone
 import com.android.permissioncontroller.permissionui.wakeUpScreen
 import org.junit.After
-import org.junit.Assert.assertNull
 import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
@@ -72,10 +71,7 @@ class HealthConnectAppPermissionFragmentTest : BasePermissionUiTest() {
 
         startManageAppPermissionsActivity()
 
-        // TODO(b/288286032): update to use waitUntilObjectGone
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(HEALTH_CONNECT_LABEL), TIMEOUT_SHORT))
-        }
+        waitUntilObjectGone(By.text(HEALTH_CONNECT_LABEL), TIMEOUT_SHORT)
     }
 
     @Test
