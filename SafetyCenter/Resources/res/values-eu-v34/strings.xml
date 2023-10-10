@@ -22,8 +22,8 @@
     <string name="privacy_sources_summary" msgid="4083646673569677049">"Baimenak, panela eta ezarpenak"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Osasuna, Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Kokapen-datuak partekatzeko moduaren inguruko berritasunak"</string>
-    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"datuak, datuak partekatzea, datuak partekatzeko moduaren inguruko berritasunak, kokapen-datuak partekatzeko moduaren inguruko berritasunak, partekatzea"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Kokapen-datuak partekatzeko aukeraren berritasunak"</string>
+    <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"datuak, datuak partekatzeko aukera, datuak partekatzeko aukeraren berritasunak, kokapen-datuak partekatzeko aukeraren berritasunak, partekatzea"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Beste ezarpen batzuk"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"Segurtasun eta pribatutasun gehiago"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Betetze automatikoa, jakinarazpenak eta abar"</string>
