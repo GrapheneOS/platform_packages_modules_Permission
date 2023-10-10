@@ -34,6 +34,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
+import com.android.compatibility.common.util.UiAutomatorUtils2
 import org.junit.AfterClass
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -462,6 +463,25 @@ class PhotoPickerPermissionTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { clickAllow() }
         }
         assertAppHasPermission(ACCESS_MEDIA_LOCATION, false)
+    }
+
+    @Test
+    fun testCanSelectPhotosInSettings() {
+        installPackage(APP_APK_PATH_LATEST)
+        navigateToIndividualPermissionSetting(READ_MEDIA_IMAGES)
+        click(By.res(SELECT_RADIO_BUTTON))
+        doAndWaitForWindowTransition {
+            click(By.res(EDIT_PHOTOS_BUTTON))
+        }
+        clickImageOrVideo()
+        clickAllow()
+    }
+
+    @Test
+    fun testEditButtonNotShownInSettingsWhenNoPhotosRequested() {
+        installPackage(APP_APK_PATH_LATEST)
+        navigateToIndividualPermissionSetting(READ_MEDIA_IMAGES)
+        UiAutomatorUtils2.waitUntilObjectGone(By.res(EDIT_PHOTOS_BUTTON))
     }
 
     private fun clickImageOrVideo() {

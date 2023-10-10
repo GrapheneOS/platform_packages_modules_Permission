@@ -41,7 +41,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.permission.PermissionManager
-import android.provider.MediaStore
 import android.util.Log
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
@@ -107,6 +106,7 @@ import com.android.permissioncontroller.permission.utils.ContextCompat
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantForegroundRuntimePermissions
+import com.android.permissioncontroller.permission.utils.KotlinUtils.openPhotoPickerForApp
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeBackgroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.KotlinUtils.revokeForegroundRuntimePermissions
 import com.android.permissioncontroller.permission.utils.PermissionMapping
@@ -1126,12 +1126,8 @@ class GrantPermissionsViewModel(
             }
             requestInfosLiveData.update()
         }
-        activity.startActivityForResult(
-            Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
-                .putExtra(Intent.EXTRA_UID, packageInfo.uid)
-                .setType(KotlinUtils.getMimeTypeForPermissions(unfilteredAffectedPermissions)),
-            PHOTO_PICKER_REQUEST_CODE
-        )
+        openPhotoPickerForApp(activity, packageInfo.uid, unfilteredAffectedPermissions,
+            PHOTO_PICKER_REQUEST_CODE)
     }
 
     /**

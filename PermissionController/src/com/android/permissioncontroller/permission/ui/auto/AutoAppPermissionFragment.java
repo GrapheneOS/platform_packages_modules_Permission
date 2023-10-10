@@ -418,7 +418,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
             // TODO(b/229024576): This code is duplicated, refactor ConfirmDialog for easier
             // NFF sharing
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
-                    == ChangeRequest.GRANT_All_FILE_ACCESS;
+                    == ChangeRequest.GRANT_ALL_FILE_ACCESS;
             boolean isGrantStorageSupergroup = getArguments().getSerializable(CHANGE_REQUEST)
                     == ChangeRequest.GRANT_STORAGE_SUPERGROUP;
             int positiveButtonStringResId = R.string.grant_dialog_button_deny_anyway;

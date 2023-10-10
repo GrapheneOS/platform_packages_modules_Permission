@@ -103,6 +103,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         implements AppPermissionViewModel.ConfirmDialogShowingFragment {
     private static final String LOG_TAG = "AppPermissionFragment";
     private static final long POST_DELAY_MS = 20;
+    private static final long EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS = 200L;
 
     static final String GRANT_CATEGORY = "grant_category";
 
@@ -117,6 +118,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull RadioButton mSelectPhotosButton;
     private @NonNull RadioButton mDenyButton;
     private @NonNull RadioButton mDenyForegroundButton;
+    private @NonNull ImageView mEditPhotosButton;
+    private @NonNull View mSelectPhotosLayout;
+    private @NonNull View mEditPhotosDivider;
     private @NonNull View mLocationAccuracy;
     private @NonNull Switch mLocationAccuracySwitch;
     private @NonNull View mDivider;
@@ -128,6 +132,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull UserHandle mUser;
     private boolean mIsStorageGroup;
     private boolean mIsInitialLoad;
+    // This prevents the user from clicking the photo picker button multiple times in succession
+    private boolean mPhotoPickerTriggered;
     private long mSessionId;
 
     private @NonNull String mPackageLabel;
@@ -209,7 +215,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         if (mIsStorageGroup) {
             mViewModel.getFullStorageStateLiveData().observe(this, this::setSpecialStorageState);
         }
-        mViewModel.registerPhotoPickerResultIfNeeded(this);
 
         mRoleManager = Utils.getSystemServiceSafe(getContext(), RoleManager.class);
     }
@@ -261,12 +266,15 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mSelectPhotosButton = root.requireViewById(R.id.select_radio_button);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
+
         mDivider = root.requireViewById(R.id.two_target_divider);
         mWidgetFrame = root.requireViewById(R.id.widget_frame);
         mPermissionDetails = root.requireViewById(R.id.permission_details);
         mLocationAccuracy = root.requireViewById(R.id.location_accuracy);
         mLocationAccuracySwitch = root.requireViewById(R.id.location_accuracy_switch);
-
+        mSelectPhotosLayout = root.requireViewById(R.id.radio_select_layout);
+        mEditPhotosButton = root.requireViewById(R.id.edit_selected_button);
+        mEditPhotosDivider = root.requireViewById(R.id.edit_photos_divider);
         mNestedScrollView = root.requireViewById(R.id.nested_scroll_view);
 
         if (mViewModel.getButtonStateLiveData().getValue() != null) {
@@ -280,6 +288,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             mDenyButton.setVisibility(View.GONE);
             mDenyForegroundButton.setVisibility(View.GONE);
             mLocationAccuracy.setVisibility(View.GONE);
+            mSelectPhotosLayout.setVisibility(View.GONE);
+            mEditPhotosDivider.setAlpha(0f);
+            mEditPhotosButton.setAlpha(0f);
         }
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized() && mIsStorageGroup) {
@@ -300,6 +311,12 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
                         mPermGroupLabel));
         return root;
+    }
+
+    public void onResume() {
+        super.onResume();
+        // If we're returning to the fragment, photo picker hasn't been triggered
+        mPhotoPickerTriggered = false;
     }
 
     private void showPermissionRationaleDialog(boolean showPermissionRationale) {
@@ -380,7 +397,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         });
         mAllowAlwaysButton.setOnClickListener((v) -> {
             if (mIsStorageGroup) {
-                showConfirmDialog(ChangeRequest.GRANT_All_FILE_ACCESS,
+                showConfirmDialog(ChangeRequest.GRANT_ALL_FILE_ACCESS,
                         R.string.special_file_access_dialog, -1, false);
             } else {
                 mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_BOTH,
@@ -411,6 +428,13 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PHOTOS_SELECTED;
             mViewModel.requestChange(false, this, this, ChangeRequest.PHOTOS_SELECTED,
                     buttonPressed);
+        });
+        mEditPhotosButton.setOnClickListener((v) -> {
+            ButtonState selectState = states.get(ButtonType.SELECT_PHOTOS);
+            if (selectState != null && selectState.isChecked() && !mPhotoPickerTriggered) {
+                mPhotoPickerTriggered = true;
+                mViewModel.openPhotoPicker(this);
+            }
         });
         mDenyButton.setOnClickListener((v) -> {
             if (mViewModel.getFullStorageStateLiveData().getValue() != null
@@ -484,6 +508,21 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
         if (mIsInitialLoad) {
             button.jumpDrawablesToCurrentState();
+        }
+
+        if (button == mSelectPhotosButton) {
+            mSelectPhotosLayout.setVisibility(visible);
+            float endOpacity = state.isChecked() ? 1f : 0f;
+            // On initial load, do not show the fade in/out animation
+            if (mIsInitialLoad) {
+                mEditPhotosDivider.setAlpha(endOpacity);
+                mEditPhotosButton.setAlpha(endOpacity);
+                return;
+            }
+            mEditPhotosButton.animate().alpha(endOpacity)
+                    .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
+            mEditPhotosDivider.animate().alpha(endOpacity)
+                    .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
         }
     }
 
@@ -630,7 +669,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             // NFF sharing
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
-                    == ChangeRequest.GRANT_All_FILE_ACCESS;
+                    == ChangeRequest.GRANT_ALL_FILE_ACCESS;
             int positiveButtonStringResId = R.string.grant_dialog_button_deny_anyway;
             if (isGrantFileAccess) {
                 positiveButtonStringResId = R.string.grant_dialog_button_allow;
