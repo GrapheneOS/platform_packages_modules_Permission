@@ -36,8 +36,9 @@ public class AutoRadioPreference extends TwoStatePreference implements
             new UserRestrictionAwarePreferenceMixin(this);
 
     public AutoRadioPreference(Context context) {
-        super(context, null, TypedArrayUtils.getAttr(context, R.attr.preferenceStyle,
-                android.R.attr.preferenceStyle));
+        super(context, null,
+                TypedArrayUtils.getAttr(context, androidx.preference.R.attr.preferenceStyle,
+                        android.R.attr.preferenceStyle));
         init();
     }
 

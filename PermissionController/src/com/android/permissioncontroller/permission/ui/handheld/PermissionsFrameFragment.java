@@ -87,8 +87,10 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
                 inflater, mPrefsView, savedInstanceState);
         setLoading(mIsLoading, false, true /* force */);
         mPrefsView.addView(mPreferencesContainer);
-        mProgressHeader = rootView.requireViewById(R.id.progress_bar_animation);
-        mProgressView = rootView.requireViewById(R.id.progress_bar_background);
+        mProgressHeader = rootView.requireViewById(
+                com.android.settingslib.widget.progressbar.R.id.progress_bar_animation);
+        mProgressView = rootView.requireViewById(
+                com.android.settingslib.widget.progressbar.R.id.progress_bar_background);
         setProgressBarVisible(false);
         getListView().setFocusable(false);
         return rootView;

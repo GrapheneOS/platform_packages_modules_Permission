@@ -953,8 +953,9 @@ public final class Utils {
         if (context.getPackageManager().resolveActivity(intent, 0) == null) {
             return;
         }
-        MenuItem searchItem = menu.add(Menu.NONE, Menu.NONE, Menu.NONE, R.string.search_menu);
-        searchItem.setIcon(R.drawable.ic_search_24dp);
+        MenuItem searchItem = menu.add(Menu.NONE, Menu.NONE, Menu.NONE,
+                com.android.settingslib.search.widget.R.string.search_menu);
+        searchItem.setIcon(com.android.settingslib.search.widget.R.drawable.ic_search_24dp);
         searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         searchItem.setOnMenuItemClickListener(item -> {
             try {

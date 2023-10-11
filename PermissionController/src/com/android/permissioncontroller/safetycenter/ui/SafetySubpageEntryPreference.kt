@@ -94,7 +94,7 @@ class SafetySubpageEntryPreference(
     private fun setupPreferenceKey() {
         val entryId: SafetyCenterEntryId = SafetyCenterIds.entryIdFromString(entry.id)
         val isWorkProfile =
-            context.getSystemService(UserManager::class.java).isManagedProfile(entryId.userId)
+            context.getSystemService(UserManager::class.java)!!.isManagedProfile(entryId.userId)
         val keySuffix = if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX
         setKey("${entryId.safetySourceId}_$keySuffix")
     }

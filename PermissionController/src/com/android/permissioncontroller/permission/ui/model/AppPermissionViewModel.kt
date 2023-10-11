@@ -799,7 +799,7 @@ class AppPermissionViewModel(
             // Refine showCDMWarning to only trigger for apps holding a device profile role
             val heldRoles =
                 context
-                    .getSystemService(android.app.role.RoleManager::class.java)
+                    .getSystemService(android.app.role.RoleManager::class.java)!!
                     .getHeldRolesFromController(packageName)
             val heldProfiles = heldRoles.filter { it.startsWith(DEVICE_PROFILE_ROLE_PREFIX) }
             showCDMWarning = showCDMWarning && heldProfiles.isNotEmpty()
@@ -1176,9 +1176,9 @@ class AppPermissionViewModel(
         } else if (hasAdmin) {
             // Permission is fully controlled by policy and cannot be switched
             if (isForegroundPolicyDenied) {
-                return R.string.disabled_by_admin
+                return com.android.settingslib.widget.restricted.R.string.disabled_by_admin
             } else if (isPolicyFullyFixedWithGrantedOrNoBkg) {
-                return R.string.enabled_by_admin
+                return com.android.settingslib.widget.restricted.R.string.enabled_by_admin
             } else if (group.isPolicyFullyFixed) {
                 return R.string.permission_summary_enabled_by_admin_foreground_only
             }

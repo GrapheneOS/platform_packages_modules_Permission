@@ -107,7 +107,8 @@ public abstract class SettingsWithLargeHeader extends PermissionsFrameFragment  
         if (header != null) {
             header.setVisibility(View.VISIBLE);
 
-            ImageView appIcon = header.requireViewById(R.id.entity_header_icon);
+            ImageView appIcon = header.requireViewById(
+                    com.android.settingslib.widget.preference.layout.R.id.entity_header_icon);
             appIcon.setImageDrawable(mIcon);
             if (mSmallIcon) {
                 int size = getContext().getResources().getDimensionPixelSize(
@@ -121,11 +122,18 @@ public abstract class SettingsWithLargeHeader extends PermissionsFrameFragment  
                 appIcon.setContentDescription(mLabel);
             }
 
-            TextView appName = header.requireViewById(R.id.entity_header_title);
+            TextView appName = header.requireViewById(
+                    com.android.settingslib.widget.preference.layout.R.id.entity_header_title);
             appName.setText(mLabel);
 
-            header.requireViewById(R.id.entity_header_summary).setVisibility(View.GONE);
-            header.requireViewById(R.id.entity_header_second_summary).setVisibility(View.GONE);
+
+            header.requireViewById(
+                    com.android.settingslib.widget.preference.layout.R.id.entity_header_summary)
+                    .setVisibility(View.GONE);
+
+            header.requireViewById(
+                    com.android.settingslib.widget.preference.layout.R.id.entity_header_second_summary)
+                    .setVisibility(View.GONE);
             header.requireViewById(R.id.header_link).setVisibility(View.GONE);
         }
     }
