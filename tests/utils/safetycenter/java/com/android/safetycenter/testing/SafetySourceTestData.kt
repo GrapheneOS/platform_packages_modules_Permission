@@ -114,14 +114,14 @@ class SafetySourceTestData(private val context: Context) {
         summary: String = "Information issue summary"
     ) =
         SafetySourceIssue.Builder(id, title, summary, SEVERITY_LEVEL_INFORMATION, ISSUE_TYPE_ID)
-            .addAction(
-                Action.Builder(
-                        INFORMATION_ISSUE_ACTION_ID,
-                        "Review",
-                        createTestActivityRedirectPendingIntent()
-                    )
-                    .build()
-            )
+            .addAction(action())
+
+    /** Creates an action with some defaults set. */
+    fun action(
+        id: String = INFORMATION_ISSUE_ACTION_ID,
+        label: String = "Review",
+        pendingIntent: PendingIntent = createTestActivityRedirectPendingIntent()
+    ) = Action.Builder(id, label, pendingIntent).build()
 
     /**
      * A [SafetySourceIssue] with a [SEVERITY_LEVEL_INFORMATION] and a redirecting [Action]. With
@@ -136,14 +136,7 @@ class SafetySourceTestData(private val context: Context) {
                 ISSUE_TYPE_ID
             )
             .setSubtitle("Information issue subtitle")
-            .addAction(
-                Action.Builder(
-                        INFORMATION_ISSUE_ACTION_ID,
-                        "Review",
-                        createTestActivityRedirectPendingIntent()
-                    )
-                    .build()
-            )
+            .addAction(action())
             .build()
 
     /**

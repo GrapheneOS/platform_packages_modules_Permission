@@ -71,7 +71,7 @@ public final class PendingIntentFactory {
      * is no valid target for the given {@code intentAction}.
      */
     @Nullable
-    PendingIntent getPendingIntent(
+    public PendingIntent getPendingIntent(
             String sourceId,
             @Nullable String intentAction,
             String packageName,
