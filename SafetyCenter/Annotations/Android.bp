@@ -32,7 +32,6 @@ java_library {
         ":safetycenter-annotations-sources",
     ],
     libs: [
-        "androidx.annotation_annotation",
         "jsr305",
     ],
     apex_available: [
