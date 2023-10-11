@@ -18,5 +18,4 @@ package com.android.permissioncontroller.tests.appthatrequestpermission
 
 import android.app.Activity
 
-class DummyActivity : Activity() {
-}
+class DummyActivity : Activity() {}

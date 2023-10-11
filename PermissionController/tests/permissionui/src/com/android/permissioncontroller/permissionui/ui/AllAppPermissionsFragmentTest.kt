@@ -19,8 +19,8 @@ package com.android.permissioncontroller.permissionui.ui
 import android.content.Intent
 import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
-import androidx.test.uiautomator.By
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
@@ -37,11 +37,9 @@ private const val MORE_OPTIONS = "More options"
 private const val ALL_PERMISSIONS = "All permissions"
 
 /**
- * Simple tests for {@link AllAppPermissionsFragment}
- * Currently, does NOT run on TV.
- * TODO(b/178576541): Adapt and run on TV.
- * Run with:
- * atest AllAppPermissionsFragmentTest
+ * Simple tests for {@link AllAppPermissionsFragment} Currently, does NOT run on TV.
+ *
+ * TODO(b/178576541): Adapt and run on TV. Run with: atest AllAppPermissionsFragmentTest
  */
 @RunWith(AndroidJUnit4::class)
 class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
@@ -62,8 +60,7 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
 
     private val TIMEOUT_SHORT = 500L
 
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
+    @Before fun assumeNotTelevision() = assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {
@@ -76,12 +73,13 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
         install(PERMISSION_USER_APK)
 
         runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
-                .apply {
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     putExtra(Intent.EXTRA_PACKAGE_NAME, USER_PKG)
-                })
+                }
+            )
         }
 
         waitFindObject(By.descContains(MORE_OPTIONS)).click()
@@ -98,30 +96,22 @@ class AllAppPermissionsFragmentTest : BasePermissionUiTest() {
         waitFindObject(By.text(PERM_LABEL))
 
         install(TWO_PERMISSION_USER_APK)
-        eventually {
-            waitFindObject(By.text(SECOND_PERM_LABEL))
-        }
+        eventually { waitFindObject(By.text(SECOND_PERM_LABEL)) }
     }
 
     @Test
     fun permissionsAreRemovedWhenAppIsUpdated() {
         install(TWO_PERMISSION_USER_APK)
-        eventually {
-            waitFindObject(By.text(SECOND_PERM_LABEL))
-        }
+        eventually { waitFindObject(By.text(SECOND_PERM_LABEL)) }
 
         install(PERMISSION_USER_APK)
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(SECOND_PERM_LABEL), TIMEOUT_SHORT))
-        }
+        eventually { assertNull(waitFindObjectOrNull(By.text(SECOND_PERM_LABEL), TIMEOUT_SHORT)) }
     }
 
     @Test
     fun activityIsClosedWhenUserIsUninstalled() {
         uninstallApp(USER_PKG)
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(ALL_PERMISSIONS), TIMEOUT_SHORT))
-        }
+        eventually { assertNull(waitFindObjectOrNull(By.text(ALL_PERMISSIONS), TIMEOUT_SHORT)) }
     }
 
     @After

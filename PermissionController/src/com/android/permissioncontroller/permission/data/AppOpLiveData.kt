@@ -27,12 +27,12 @@ import com.android.permissioncontroller.PermissionControllerApplication
  * @param packageName The name of the package
  * @param op The name of the appop
  * @param uid The uid of the package
- *
  * @see AppOpsManager
  */
 // TODO eugenesusla: observe appops
 // TODO eugenesusla: use for external storage
-class AppOpLiveData private constructor(
+class AppOpLiveData
+private constructor(
     private val app: Application,
     private val packageName: String,
     private val op: String,
@@ -52,13 +52,18 @@ class AppOpLiveData private constructor(
 
     /**
      * Repository for AppOpLiveData.
-     * <p> Key value is a triple of string package name, string appop, and
-     * package uid, value is its corresponding LiveData.
+     *
+     * <p> Key value is a triple of string package name, string appop, and package uid, value is its
+     * corresponding LiveData.
      */
     companion object : DataRepository<Triple<String, String, Int>, AppOpLiveData>() {
         override fun newValue(key: Triple<String, String, Int>): AppOpLiveData {
-            return AppOpLiveData(PermissionControllerApplication.get(),
-                key.first, key.second, key.third)
+            return AppOpLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second,
+                key.third
+            )
         }
     }
 }

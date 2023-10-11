@@ -138,8 +138,8 @@ class SafetyLabelChangesJobServiceTest {
         val captor = ArgumentCaptor.forClass(JobInfo::class.java)
         verify(mockJobScheduler, times(2)).schedule(captor.capture())
         val capturedJobIds = captor.getAllValues()
-        assertThat(capturedJobIds[0].id).isEqualTo(
-            Constants.SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
+        assertThat(capturedJobIds[0].id)
+            .isEqualTo(Constants.SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
         assertThat(capturedJobIds[1].id)
             .isEqualTo(Constants.SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID)
     }
@@ -155,7 +155,9 @@ class SafetyLabelChangesJobServiceTest {
                 DeviceConfig.getBoolean(
                     eq(DeviceConfig.NAMESPACE_PRIVACY),
                     eq(SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED),
-                    anyBoolean()))
+                    anyBoolean()
+                )
+            )
             .thenReturn(flagValue)
     }
 }

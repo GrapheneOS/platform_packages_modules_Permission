@@ -83,7 +83,10 @@ class SafetyCenterQsViewModel(
                     val userHandle = UserHandle.getUserHandleForUid(permGroupUsage.uid)
                     val lightAppPermissionGroupUsageKey =
                         LightAppPermissionGroupUsageKey(
-                            packageName, permissionGroupName, userHandle)
+                            packageName,
+                            permissionGroupName,
+                            userHandle
+                        )
                     val appPermGroupLiveData: LightAppPermGroupLiveData =
                         LightAppPermGroupLiveData[
                             Triple(packageName, permissionGroupName, userHandle)]
@@ -110,7 +113,8 @@ class SafetyCenterQsViewModel(
                 LightAppPermissionGroupUsageKey(
                     usage.packageName,
                     usage.permissionGroupName,
-                    UserHandle.getUserHandleForUid(usage.uid))]
+                    UserHandle.getUserHandleForUid(usage.uid)
+                )]
                 ?: return false
         return group.supportsRuntimePerms &&
             !group.hasInstallToRuntimeSplit &&
@@ -125,7 +129,8 @@ class SafetyCenterQsViewModel(
                 LightAppPermissionGroupUsageKey(
                     usage.packageName,
                     usage.permissionGroupName,
-                    UserHandle.getUserHandleForUid(usage.uid))]
+                    UserHandle.getUserHandleForUid(usage.uid)
+                )]
                 ?: return
 
         KotlinUtils.revokeForegroundRuntimePermissions(app, group)
@@ -177,13 +182,16 @@ class SafetyCenterQsViewModel(
                             getSensorState(
                                 Sensors.CAMERA,
                                 UserManager.DISALLOW_CAMERA_TOGGLE,
-                                configCameraToggleEnabled),
+                                configCameraToggleEnabled
+                            ),
                         MICROPHONE to
                             getSensorState(
                                 Sensors.MICROPHONE,
                                 UserManager.DISALLOW_MICROPHONE_TOGGLE,
-                                configMicToggleEnabled),
-                        LOCATION to SensorState(true, locationEnabled, locationEnforcedAdmin))
+                                configMicToggleEnabled
+                            ),
+                        LOCATION to SensorState(true, locationEnabled, locationEnforcedAdmin)
+                    )
             }
 
             @Suppress("OVERRIDE_DEPRECATION")
@@ -221,13 +229,14 @@ class SafetyCenterQsViewModel(
         return SensorState(
             sensorConfigEnabled && sensorPrivacyManager.supportsSensorToggle(sensor),
             !sensorPrivacyManager.isSensorPrivacyEnabled(TOGGLE_TYPE_SOFTWARE, sensor),
-            getEnforcedAdmin(restriction))
+            getEnforcedAdmin(restriction)
+        )
     }
 
     private fun getEnforcedAdmin(restriction: String) =
-        if (userManager
-            .getUserRestrictionSources(restriction, Process.myUserHandle())
-            .isNotEmpty()) {
+        if (
+            userManager.getUserRestrictionSources(restriction, Process.myUserHandle()).isNotEmpty()
+        ) {
             RestrictedLockUtils.getProfileOrDeviceOwner(app, Process.myUserHandle())
         } else {
             null
@@ -250,10 +259,12 @@ class SafetyCenterQsViewModel(
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         val resolveInfo: ResolveInfo? =
             context.packageManager.resolveActivity(intent, PackageManager.ResolveInfoFlags.of(0))
-        if (resolveInfo != null &&
-            resolveInfo.activityInfo != null &&
-            resolveInfo.activityInfo.permission ==
-                android.Manifest.permission.START_VIEW_PERMISSION_USAGE) {
+        if (
+            resolveInfo != null &&
+                resolveInfo.activityInfo != null &&
+                resolveInfo.activityInfo.permission ==
+                    android.Manifest.permission.START_VIEW_PERMISSION_USAGE
+        ) {
             intent.component = ComponentName(usage.packageName, resolveInfo.activityInfo.name)
             return intent
         }

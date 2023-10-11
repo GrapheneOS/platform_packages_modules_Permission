@@ -23,8 +23,8 @@ import androidx.lifecycle.SavedStateHandle
  * value forever.
  *
  * This even extends over live-cycle events as the data is stored in the {@link SaveStateHandle}.
- * This means that the data has to be writable to {@link SavedStateHandle} though, i.e.
- * Serialzable, Parcelable, list, set, map, or a literal
+ * This means that the data has to be writable to {@link SavedStateHandle} though, i.e. Serialzable,
+ * Parcelable, list, set, map, or a literal
  */
 class LoadAndFreezeLifeData<T>(
     private val state: SavedStateHandle,

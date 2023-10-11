@@ -22,9 +22,9 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.google.common.truth.Truth.assertThat
-import org.junit.Test
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import org.junit.Test
 
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class GetPermissionGroupInfoTest {
@@ -43,8 +43,8 @@ class GetPermissionGroupInfoTest {
                 latch.countDown()
             }
             latch.await(timeoutMs, TimeUnit.MILLISECONDS)
-            assertThat(returnedPerms).isEqualTo(
-                    PermissionMapping.getPlatformPermissionNamesOfGroup(group))
+            assertThat(returnedPerms)
+                .isEqualTo(PermissionMapping.getPlatformPermissionNamesOfGroup(group))
         }
     }
 
@@ -61,8 +61,8 @@ class GetPermissionGroupInfoTest {
                     latch.countDown()
                 }
                 latch.await(timeoutMs, TimeUnit.MILLISECONDS)
-                assertThat(permGroup).isEqualTo(
-                    PermissionMapping.getGroupOfPlatformPermission(permName))
+                assertThat(permGroup)
+                    .isEqualTo(PermissionMapping.getGroupOfPlatformPermission(permName))
             }
         }
     }

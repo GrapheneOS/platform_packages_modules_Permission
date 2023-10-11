@@ -41,19 +41,21 @@ class PermGroupUsageLiveData(
     private val usageDurationMs: Long
 ) : SmartUpdateMediatorLiveData<Map<String, List<OpAccess>>>() {
     /** Perm group name -> OpUsageLiveData */
-    private val permGroupUsages = permGroupsNames.map { permGroup ->
-        val appops = getPlatformPermissionNamesOfGroup(permGroup).mapNotNull { permName ->
-            permissionToOp(permName)
-        }
+    private val permGroupUsages =
+        permGroupsNames
+            .map { permGroup ->
+                val appops =
+                    getPlatformPermissionNamesOfGroup(permGroup).mapNotNull { permName ->
+                        permissionToOp(permName)
+                    }
 
-        permGroup to OpUsageLiveData[appops, usageDurationMs]
-    }.toMap()
+                permGroup to OpUsageLiveData[appops, usageDurationMs]
+            }
+            .toMap()
 
     init {
         for (usage in permGroupUsages.values) {
-            addSource(usage) {
-                update()
-            }
+            addSource(usage) { update() }
         }
     }
 
@@ -68,25 +70,33 @@ class PermGroupUsageLiveData(
         }
 
         // Only keep the last access for a permission group
-        value = permGroupUsages.map { (permGroupName, usageLiveData) ->
-            // (packageName, attributionTag) -> access
-            val lastAccess = mutableMapOf<Pair<String, String?>, OpAccess>()
-            for (access in usageLiveData.value!!.values.flatten()) {
-                val key = access.packageName to access.attributionTag
-                if (access.isRunning ||
-                        lastAccess[key]?.lastAccessTime ?: 0 < access.lastAccessTime) {
-                    lastAccess[key] = access
-                }
-            }
+        value =
+            permGroupUsages
+                .map { (permGroupName, usageLiveData) ->
+                    // (packageName, attributionTag) -> access
+                    val lastAccess = mutableMapOf<Pair<String, String?>, OpAccess>()
+                    for (access in usageLiveData.value!!.values.flatten()) {
+                        val key = access.packageName to access.attributionTag
+                        if (
+                            access.isRunning ||
+                                lastAccess[key]?.lastAccessTime ?: 0 < access.lastAccessTime
+                        ) {
+                            lastAccess[key] = access
+                        }
+                    }
 
-            permGroupName to lastAccess.values.toList()
-        }.toMap()
+                    permGroupName to lastAccess.values.toList()
+                }
+                .toMap()
     }
 
     companion object : DataRepository<Pair<List<String>, Long>, PermGroupUsageLiveData>() {
         override fun newValue(key: Pair<List<String>, Long>): PermGroupUsageLiveData {
-            return PermGroupUsageLiveData(PermissionControllerApplication.get(), key.first,
-                    key.second)
+            return PermGroupUsageLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second
+            )
         }
     }
 }

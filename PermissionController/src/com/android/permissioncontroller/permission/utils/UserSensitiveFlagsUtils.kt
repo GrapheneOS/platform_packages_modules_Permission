@@ -25,9 +25,9 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.UserSensitivityLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.UidSensitivityState
 import com.android.permissioncontroller.permission.utils.Utils.FLAGS_ALWAYS_USER_SENSITIVE
+import java.lang.IllegalStateException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.IllegalStateException
 
 private const val LOG_TAG = "UserSensitiveFlagsUtils"
 
@@ -35,10 +35,9 @@ private const val LOG_TAG = "UserSensitiveFlagsUtils"
  * Update the [PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED] and
  * [PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED] for all apps of this user.
  *
- * @see UserSensitivityLiveData.loadDataAndPostValue
- *
  * @param user The user for whom packages will be updated
  * @param callback A callback which will be executed when finished
+ * @see UserSensitivityLiveData.loadDataAndPostValue
  */
 fun updateUserSensitiveForUser(user: UserHandle, callback: Runnable) {
     GlobalScope.launch(IPC) {
@@ -47,7 +46,8 @@ fun updateUserSensitiveForUser(user: UserHandle, callback: Runnable) {
         if (uidUserSensitivity == null) {
             callback.run()
             throw IllegalStateException(
-                "All uids sensitivity liveData should not be null if initialized")
+                "All uids sensitivity liveData should not be null if initialized"
+            )
         }
         updateUserSensitiveForUidsInternal(uidUserSensitivity, user, callback)
     }
@@ -62,28 +62,38 @@ private fun updateUserSensitiveForUidsInternal(
     val pm = userContext.packageManager
 
     for ((uid, uidState) in uidsUserSensitivity) {
-            for (pkg in uidState.packages) {
-                for (perm in pkg.requestedPermissions) {
-                    var flags = uidState.permStates[perm] ?: continue
+        for (pkg in uidState.packages) {
+            for (perm in pkg.requestedPermissions) {
+                var flags = uidState.permStates[perm] ?: continue
 
-                    try {
-                        val oldFlags = pm.getPermissionFlags(perm, pkg.packageName, user) and
+                try {
+                    val oldFlags =
+                        pm.getPermissionFlags(perm, pkg.packageName, user) and
                             FLAGS_ALWAYS_USER_SENSITIVE
-                        if (flags != oldFlags) {
-                            pm.updatePermissionFlags(perm, pkg.packageName,
-                                FLAGS_ALWAYS_USER_SENSITIVE, flags, user)
-                        }
-                    } catch (e: IllegalArgumentException) {
-                        if (e.message?.startsWith("Unknown permission: ") == false) {
-                            Log.e(LOG_TAG, "Unexpected exception while updating flags for " +
-                                "${pkg.packageName} (uid $uid) permission $perm", e)
-                        } else {
-                            // Unknown permission - ignore
-                        }
+                    if (flags != oldFlags) {
+                        pm.updatePermissionFlags(
+                            perm,
+                            pkg.packageName,
+                            FLAGS_ALWAYS_USER_SENSITIVE,
+                            flags,
+                            user
+                        )
+                    }
+                } catch (e: IllegalArgumentException) {
+                    if (e.message?.startsWith("Unknown permission: ") == false) {
+                        Log.e(
+                            LOG_TAG,
+                            "Unexpected exception while updating flags for " +
+                                "${pkg.packageName} (uid $uid) permission $perm",
+                            e
+                        )
+                    } else {
+                        // Unknown permission - ignore
                     }
                 }
             }
         }
+    }
     callback?.run()
 }
 
@@ -98,8 +108,11 @@ fun updateUserSensitiveForUid(uid: Int, callback: Runnable? = null) {
     GlobalScope.launch(IPC) {
         val uidSensitivityState = UserSensitivityLiveData[uid].getInitializedValue()
         if (uidSensitivityState != null) {
-            updateUserSensitiveForUidsInternal(uidSensitivityState,
-                UserHandle.getUserHandleForUid(uid), callback)
+            updateUserSensitiveForUidsInternal(
+                uidSensitivityState,
+                UserHandle.getUserHandleForUid(uid),
+                callback
+            )
         } else {
             Log.e(LOG_TAG, "No packages associated with uid $uid, not updating flags")
             callback?.run()

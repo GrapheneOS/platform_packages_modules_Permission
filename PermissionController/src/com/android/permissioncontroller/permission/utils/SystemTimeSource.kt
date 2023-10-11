@@ -18,9 +18,7 @@ package com.android.permissioncontroller.permission.utils
 
 import android.os.SystemClock
 
-/**
- * Time source that uses the system time.
- */
+/** Time source that uses the system time. */
 class SystemTimeSource : TimeSource {
 
     override fun currentTimeMillis(): Long {

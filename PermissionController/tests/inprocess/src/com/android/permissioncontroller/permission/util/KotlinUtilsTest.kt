@@ -34,18 +34,16 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mockito.argThat
 import org.mockito.Mockito.mock
-import kotlin.test.assertFailsWith
 import org.mockito.Mockito.`when` as whenever
 
-/**
- * Unit tests for [KotlinUtils].
- */
+/** Unit tests for [KotlinUtils]. */
 @RunWith(AndroidJUnit4::class)
 class KotlinUtilsTest {
     private val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
@@ -85,19 +83,25 @@ class KotlinUtilsTest {
         whenever(mockContext.packageManager).thenReturn(mockPackageManager)
         val installerIntent = Intent(ACTION_SHOW_APP_INFO).setPackage(installerPackage)
         whenever(
-            mockPackageManager.resolveActivity(
-                argThat { intent -> intent.filterEquals(installerIntent) }, /* flags= */ anyInt()))
-            .thenReturn(ResolveInfo().apply {
-                activityInfo = ActivityInfo().apply {
-                    packageName = installerPackage
-                    name = installerActivity
+                mockPackageManager.resolveActivity(
+                    argThat { intent -> intent.filterEquals(installerIntent) },
+                    /* flags= */ anyInt()
+                )
+            )
+            .thenReturn(
+                ResolveInfo().apply {
+                    activityInfo =
+                        ActivityInfo().apply {
+                            packageName = installerPackage
+                            name = installerActivity
+                        }
                 }
-            })
+            )
 
         val intent = KotlinUtils.getAppStoreIntent(mockContext, installerPackage, appPackage)
 
         assertThat(intent).isNotNull()
-        with (intent!!) {
+        with(intent!!) {
             assertThat(action).isEqualTo(ACTION_SHOW_APP_INFO)
             assertThat(component?.packageName).isEqualTo(installerPackage)
             assertThat(component?.className).isEqualTo(installerActivity)
@@ -110,14 +114,16 @@ class KotlinUtilsTest {
         val mockContext = mock(Context::class.java)
         val mockPackageManager = mock(PackageManager::class.java)
         whenever(mockContext.packageManager).thenReturn(mockPackageManager)
-        whenever(
-            mockPackageManager.resolveActivity(any(), /* flags= */ anyInt()))
-            .thenReturn(ResolveInfo().apply {
-                activityInfo = ActivityInfo().apply {
-                    packageName = ""
-                    name = ""
+        whenever(mockPackageManager.resolveActivity(any(), /* flags= */ anyInt()))
+            .thenReturn(
+                ResolveInfo().apply {
+                    activityInfo =
+                        ActivityInfo().apply {
+                            packageName = ""
+                            name = ""
+                        }
                 }
-            })
+            )
 
         val intent = KotlinUtils.getAppStoreIntent(mockContext, "com.installer", appPackage)
 
@@ -149,7 +155,8 @@ class KotlinUtilsTest {
     @Test
     fun getMimeTypeForPermissions_bothReadMediaPermissions_returnsNull() {
         assertThat(
-            KotlinUtils.getMimeTypeForPermissions(listOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO)))
+                KotlinUtils.getMimeTypeForPermissions(listOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO))
+            )
             .isNull()
     }
 

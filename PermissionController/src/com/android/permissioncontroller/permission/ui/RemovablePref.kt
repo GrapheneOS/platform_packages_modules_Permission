@@ -16,17 +16,11 @@
 
 package com.android.permissioncontroller.permission.ui
 
-/**
- * Preference with a clickable UI component for removal.
- */
+/** Preference with a clickable UI component for removal. */
 interface RemovablePref {
-    /**
-     * Sets the action to run when the remove UI component is clicked.
-     */
+    /** Sets the action to run when the remove UI component is clicked. */
     fun setRemoveClickRunnable(runnable: Runnable)
 
-    /**
-     * Set whether the UI component for removal should be enabled or not.
-     */
+    /** Set whether the UI component for removal should be enabled or not. */
     fun setRemoveComponentEnabled(enabled: Boolean)
 }

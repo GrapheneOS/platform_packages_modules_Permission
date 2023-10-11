@@ -44,14 +44,14 @@ import kotlinx.coroutines.Job
  * @param packageName The package name whose state we want
  * @param user The user for whom we want the package
  */
-class HibernationSettingStateLiveData private constructor(
+class HibernationSettingStateLiveData
+private constructor(
     private val app: Application,
     private val packageName: String,
     private val user: UserHandle
 ) : SmartAsyncMediatorLiveData<HibernationSettingState>(), AppOpsManager.OnOpChangedListener {
 
-    private val packagePermsLiveData =
-        PackagePermissionsLiveData[packageName, user]
+    private val packagePermsLiveData = PackagePermissionsLiveData[packageName, user]
     private val packageLiveData = LightPackageInfoLiveData[packageName, user]
     private val permStateLiveDatas = mutableMapOf<String, PermStateLiveData>()
     private val exemptServicesLiveData = ExemptServicesLiveData[user]
@@ -65,26 +65,19 @@ class HibernationSettingStateLiveData private constructor(
     private var gotPastIsSystemExempt: Boolean = false
 
     init {
-        addSource(packagePermsLiveData) {
-            update()
-        }
-        addSource(packageLiveData) {
-            update()
-        }
-        addSource(exemptServicesLiveData) {
-            update()
-        }
-        addSource(HibernationEnabledLiveData) {
-            update()
-        }
-        Handler(app.mainLooper).postDelayed({
-            logState()
-        }, DELAY_MS)
+        addSource(packagePermsLiveData) { update() }
+        addSource(packageLiveData) { update() }
+        addSource(exemptServicesLiveData) { update() }
+        addSource(HibernationEnabledLiveData) { update() }
+        Handler(app.mainLooper).postDelayed({ logState() }, DELAY_MS)
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
-        if (!packageLiveData.isInitialized || !packagePermsLiveData.isInitialized ||
-            !exemptServicesLiveData.isInitialized) {
+        if (
+            !packageLiveData.isInitialized ||
+                !packagePermsLiveData.isInitialized ||
+                !exemptServicesLiveData.isInitialized
+        ) {
             return
         }
 
@@ -104,23 +97,29 @@ class HibernationSettingStateLiveData private constructor(
 
         val exemptBySystem = isPackageHibernationExemptBySystem(packageInfo, user)
         val exemptByUser = isPackageHibernationExemptByUser(app, packageInfo)
-        val eligibility = when {
-            !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
-            exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
-            else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
-        }
+        val eligibility =
+            when {
+                !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
+                exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+                else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+            }
         gotPastIsUserExempt = true
         val revocableGroups = mutableListOf<String>()
         if (!isPackageHibernationExemptBySystem(packageInfo, user)) {
             gotPastIsSystemExempt = true
             permStateLiveDatas.forEach { (groupName, liveData) ->
-                val default = liveData.value?.any { (_, permState) ->
-                    permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
-                            FLAG_PERMISSION_GRANTED_BY_ROLE) != 0
-                } ?: false
-                val allExempt = liveData.value?.all { (permName, _) ->
-                    permName in AUTO_REVOKE_EXEMPT_PERMISSIONS
-                } ?: false
+                val default =
+                    liveData.value?.any { (_, permState) ->
+                        permState.permFlags and
+                            (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
+                                FLAG_PERMISSION_GRANTED_BY_ROLE) != 0
+                    }
+                        ?: false
+                val allExempt =
+                    liveData.value?.all { (permName, _) ->
+                        permName in AUTO_REVOKE_EXEMPT_PERMISSIONS
+                    }
+                        ?: false
                 if (!default && !allExempt) {
                     revocableGroups.add(groupName)
                 }
@@ -152,29 +151,45 @@ class HibernationSettingStateLiveData private constructor(
         if (!isStale) {
             return
         }
-        Log.i(LOG_TAG, "overall state: isStale:$isStale, isInitialized:$isInitialized, " +
+        Log.i(
+            LOG_TAG,
+            "overall state: isStale:$isStale, isInitialized:$isInitialized, " +
                 "value:$value, got perm LiveDatas:$gotPermLiveDatas, " +
-                "got isUserExempt$gotPastIsUserExempt, got isSystemExempt$gotPastIsSystemExempt")
-        Log.i(LOG_TAG, "packagePermsLivedata isStale:${packagePermsLiveData.isStale}, " +
-                "isInitialized:${packagePermsLiveData.isInitialized}")
-        Log.i(LOG_TAG, "ExemptServicesLiveData isStale:${exemptServicesLiveData.isStale}, " +
-                "isInitialized:${exemptServicesLiveData.isInitialized}")
+                "got isUserExempt$gotPastIsUserExempt, got isSystemExempt$gotPastIsSystemExempt"
+        )
+        Log.i(
+            LOG_TAG,
+            "packagePermsLivedata isStale:${packagePermsLiveData.isStale}, " +
+                "isInitialized:${packagePermsLiveData.isInitialized}"
+        )
+        Log.i(
+            LOG_TAG,
+            "ExemptServicesLiveData isStale:${exemptServicesLiveData.isStale}, " +
+                "isInitialized:${exemptServicesLiveData.isInitialized}"
+        )
         Log.i(LOG_TAG, "HibernationEnabledLivedata value:${HibernationEnabledLiveData.value}")
         for ((group, liveData) in permStateLiveDatas) {
-            Log.i(LOG_TAG, "permStateLivedata $group isStale:${liveData.isStale}, " +
-                    "isInitialized:${liveData.isInitialized}")
+            Log.i(
+                LOG_TAG,
+                "permStateLivedata $group isStale:${liveData.isStale}, " +
+                    "isInitialized:${liveData.isInitialized}"
+            )
         }
     }
     /**
      * Repository for HibernationSettingStateLiveDatas.
+     *
      * <p> Key value is a pair of string package name and UserHandle, value is its corresponding
      * LiveData.
      */
-    companion object : DataRepositoryForPackage<Pair<String, UserHandle>,
-        HibernationSettingStateLiveData>() {
+    companion object :
+        DataRepositoryForPackage<Pair<String, UserHandle>, HibernationSettingStateLiveData>() {
         override fun newValue(key: Pair<String, UserHandle>): HibernationSettingStateLiveData {
-            return HibernationSettingStateLiveData(PermissionControllerApplication.get(),
-                key.first, key.second)
+            return HibernationSettingStateLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second
+            )
         }
     }
 }

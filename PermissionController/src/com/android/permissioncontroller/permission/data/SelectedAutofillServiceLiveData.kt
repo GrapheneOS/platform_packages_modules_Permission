@@ -29,20 +29,19 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param user The user the services should be determined for
  */
-class SelectedAutofillServiceLiveData(
-    private val app: Application,
-    private val user: UserHandle
-) : SmartAsyncMediatorLiveData<String?>() {
+class SelectedAutofillServiceLiveData(private val app: Application, private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<String?>() {
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
 
-        val packageName = Utils.getUserContext(app, user)
-            .getSystemService(AutofillManager::class.java)
-            ?.autofillServiceComponentName
-            ?.packageName
+        val packageName =
+            Utils.getUserContext(app, user)
+                .getSystemService(AutofillManager::class.java)
+                ?.autofillServiceComponentName
+                ?.packageName
 
         postValue(packageName)
     }
@@ -52,8 +51,7 @@ class SelectedAutofillServiceLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            SelectedAutofillServiceLiveData>() {
+    companion object : DataRepositoryForPackage<UserHandle, SelectedAutofillServiceLiveData>() {
         override fun newValue(key: UserHandle): SelectedAutofillServiceLiveData {
             return SelectedAutofillServiceLiveData(PermissionControllerApplication.get(), key)
         }

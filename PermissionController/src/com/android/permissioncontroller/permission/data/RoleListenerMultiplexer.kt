@@ -23,16 +23,14 @@ import android.os.UserHandle
 import androidx.annotation.GuardedBy
 import com.android.permissioncontroller.PermissionControllerApplication
 
-/**
- * Serves as a single shared Role Change Listener.
- */
+/** Serves as a single shared Role Change Listener. */
 object RoleListenerMultiplexer : OnRoleHoldersChangedListener {
 
     private val app: Application = PermissionControllerApplication.get()
 
     @GuardedBy("lock")
-    private val callbacks = mutableMapOf<UserHandle,
-            MutableMap<String, MutableList<RoleHoldersChangeCallback>>>()
+    private val callbacks =
+        mutableMapOf<UserHandle, MutableMap<String, MutableList<RoleHoldersChangeCallback>>>()
 
     private val roleManager = app.getSystemService(RoleManager::class.java)!!
 
@@ -40,12 +38,8 @@ object RoleListenerMultiplexer : OnRoleHoldersChangedListener {
 
     override fun onRoleHoldersChanged(roleName: String, user: UserHandle) {
         val callbacksCopy: List<RoleHoldersChangeCallback>?
-        synchronized(lock) {
-            callbacksCopy = callbacks[user]?.get(roleName)?.toList()
-        }
-        callbacksCopy?.forEach { listener ->
-            listener.onRoleHoldersChanged()
-        }
+        synchronized(lock) { callbacksCopy = callbacks[user]?.get(roleName)?.toList() }
+        callbacksCopy?.forEach { listener -> listener.onRoleHoldersChanged() }
     }
 
     fun addCallback(roleName: String, user: UserHandle, callback: RoleHoldersChangeCallback) {

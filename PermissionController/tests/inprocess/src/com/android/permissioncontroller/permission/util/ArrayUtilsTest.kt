@@ -23,8 +23,7 @@ import org.junit.Test
 class ArrayUtilsTest {
     @Test
     fun appendString_appendToNull_returnsArrayWithString() {
-        assertThat(ArrayUtils.appendString(null, TEST_STRING))
-                .isEqualTo(arrayOf(TEST_STRING))
+        assertThat(ArrayUtils.appendString(null, TEST_STRING)).isEqualTo(arrayOf(TEST_STRING))
     }
 
     @Test

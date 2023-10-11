@@ -122,14 +122,14 @@ class PermissionRationaleViewHandlerImpl(
         // Grow or shrink the content container to size of new content
         val growShrinkToNewContentSize = ChangeBounds()
         growShrinkToNewContentSize.duration = ANIMATION_DURATION_MILLIS
-        growShrinkToNewContentSize.interpolator = AnimationUtils.loadInterpolator(mActivity,
-            android.R.interpolator.fast_out_slow_in)
+        growShrinkToNewContentSize.interpolator =
+            AnimationUtils.loadInterpolator(mActivity, android.R.interpolator.fast_out_slow_in)
         TransitionManager.beginDelayedTransition(rootView, growShrinkToNewContentSize)
     }
 
     override fun createView(): View {
-        val rootView = LayoutInflater.from(mActivity)
-            .inflate(R.layout.permission_rationale, null) as ViewGroup
+        val rootView =
+            LayoutInflater.from(mActivity).inflate(R.layout.permission_rationale, null) as ViewGroup
 
         // Uses the vertical gravity of the PermissionGrantSingleton style to position the window
         val gravity =
@@ -160,13 +160,15 @@ class PermissionRationaleViewHandlerImpl(
             val settingsSectionView: ViewGroup? = rootView.findViewById(R.id.settings_section)
             settingsSectionView?.visibility = View.GONE
         }
-        backButton = rootView.findViewById<Button>(R.id.back_button)!!.apply {
-            setOnClickListener(this@PermissionRationaleViewHandlerImpl)
+        backButton =
+            rootView.findViewById<Button>(R.id.back_button)!!.apply {
+                setOnClickListener(this@PermissionRationaleViewHandlerImpl)
 
-            // Load the text color from the activity theme rather than the Material Design theme
-            val textColor = getColorStateListForAttr(mActivity, android.R.attr.textColorPrimary)!!
-            setTextColor(textColor)
-        }
+                // Load the text color from the activity theme rather than the Material Design theme
+                val textColor =
+                    getColorStateListForAttr(mActivity, android.R.attr.textColorPrimary)!!
+                setTextColor(textColor)
+            }
 
         this.rootView = rootView
 

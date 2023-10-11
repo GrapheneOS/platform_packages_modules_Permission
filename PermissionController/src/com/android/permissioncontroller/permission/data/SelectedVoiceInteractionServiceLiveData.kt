@@ -40,12 +40,14 @@ class SelectedVoiceInteractionServiceLiveData(
             return
         }
 
-        val packageName = Settings.Secure.getString(
-                Utils.getUserContext(app, user).contentResolver,
-                // Settings.Secure.VOICE_INTERACTION_SERVICE
-                "voice_interaction_service")
-            ?.let(ComponentName::unflattenFromString)
-            ?.packageName
+        val packageName =
+            Settings.Secure.getString(
+                    Utils.getUserContext(app, user).contentResolver,
+                    // Settings.Secure.VOICE_INTERACTION_SERVICE
+                    "voice_interaction_service"
+                )
+                ?.let(ComponentName::unflattenFromString)
+                ?.packageName
 
         postValue(packageName)
     }
@@ -55,11 +57,13 @@ class SelectedVoiceInteractionServiceLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            SelectedVoiceInteractionServiceLiveData>() {
+    companion object :
+        DataRepositoryForPackage<UserHandle, SelectedVoiceInteractionServiceLiveData>() {
         override fun newValue(key: UserHandle): SelectedVoiceInteractionServiceLiveData {
             return SelectedVoiceInteractionServiceLiveData(
-                PermissionControllerApplication.get(), key)
+                PermissionControllerApplication.get(),
+                key
+            )
         }
     }
 }

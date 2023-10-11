@@ -23,10 +23,9 @@ import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
 import android.util.Log
-
 import com.android.modules.utils.build.SdkLevel
-import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permission.safetylabel.DataCategoryConstants
+import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 
 /**
  * This file contains the canonical mapping of permission to permission group, used in the
@@ -36,15 +35,16 @@ object PermissionMapping {
 
     private val LOG_TAG = "PermissionMapping"
 
-    private val PERMISSION_GROUPS_TO_DATA_CATEGORIES: Map<String, List<String>> = mapOf(
-        Manifest.permission_group.LOCATION to listOf(DataCategoryConstants.CATEGORY_LOCATION))
+    private val PERMISSION_GROUPS_TO_DATA_CATEGORIES: Map<String, List<String>> =
+        mapOf(Manifest.permission_group.LOCATION to listOf(DataCategoryConstants.CATEGORY_LOCATION))
 
     @JvmField
     val SENSOR_DATA_PERMISSIONS: List<String> =
         listOf(
             Manifest.permission_group.LOCATION,
             Manifest.permission_group.CAMERA,
-            Manifest.permission_group.MICROPHONE)
+            Manifest.permission_group.MICROPHONE
+        )
 
     @JvmField
     val STORAGE_SUPERGROUP_PERMISSIONS: List<String> =
@@ -53,7 +53,8 @@ object PermissionMapping {
             listOf(
                 Manifest.permission_group.STORAGE,
                 Manifest.permission_group.READ_MEDIA_AURAL,
-                Manifest.permission_group.READ_MEDIA_VISUAL)
+                Manifest.permission_group.READ_MEDIA_VISUAL
+            )
 
     val PARTIAL_MEDIA_PERMISSIONS: MutableSet<String> = mutableSetOf()
 
@@ -67,7 +68,6 @@ object PermissionMapping {
     private val ONE_TIME_PERMISSION_GROUPS: MutableSet<String> = mutableSetOf()
 
     private val HEALTH_PERMISSIONS_SET: MutableSet<String> = mutableSetOf()
-
 
     init {
         PLATFORM_PERMISSIONS[Manifest.permission.READ_CONTACTS] = Manifest.permission_group.CONTACTS
@@ -202,7 +202,6 @@ object PermissionMapping {
      * platform permission.
      *
      * @param permission the permission to resolve
-     *
      * @return The group the permission belongs to
      */
     @JvmStatic
@@ -214,7 +213,6 @@ object PermissionMapping {
      * Get name of the permission group a permission belongs to.
      *
      * @param permission the [info][PermissionInfo] of the permission to resolve
-     *
      * @return The group the permission belongs to
      */
     @JvmStatic
@@ -230,9 +228,8 @@ object PermissionMapping {
      * Get the names for all platform permissions belonging to a group.
      *
      * @param group the group
-     *
      * @return The permission names or an empty list if the group does not have platform runtime
-     * permissions
+     *   permissions
      */
     @JvmStatic
     fun getPlatformPermissionNamesOfGroup(group: String): List<String> {
@@ -245,19 +242,19 @@ object PermissionMapping {
      *
      * @param pm Package manager to use to resolve permission infos
      * @param group the group
-     *
      * @return The infos for platform permissions belonging to the group or an empty list if the
-     * group does not have platform runtime permissions
+     *   group does not have platform runtime permissions
      */
     @JvmStatic
     fun getPlatformPermissionsOfGroup(pm: PackageManager, group: String): List<PermissionInfo> {
         val permInfos = mutableListOf<PermissionInfo>()
         for (permName in PLATFORM_PERMISSION_GROUPS[group] ?: emptyList()) {
-            val permInfo: PermissionInfo = try {
+            val permInfo: PermissionInfo =
+                try {
                     pm.getPermissionInfo(permName, 0)
-            } catch (e: PackageManager.NameNotFoundException) {
-                throw IllegalStateException("$permName not defined by platform", e)
-            }
+                } catch (e: PackageManager.NameNotFoundException) {
+                    throw IllegalStateException("$permName not defined by platform", e)
+                }
             permInfos.add(permInfo)
         }
         return permInfos
@@ -300,6 +297,7 @@ object PermissionMapping {
 
     /**
      * Whether the permission group supports one-time
+     *
      * @param permissionGroup The permission group to check
      * @return `true` iff the group supports one-time
      */
@@ -308,9 +306,7 @@ object PermissionMapping {
         return ONE_TIME_PERMISSION_GROUPS.contains(permissionGroup)
     }
 
-    /**
-     * Adds health permissions as platform permissions.
-     */
+    /** Adds health permissions as platform permissions. */
     @JvmStatic
     fun addHealthPermissionsToPlatform(permissions: Set<String>) {
         if (permissions.isEmpty()) {
@@ -338,8 +334,9 @@ object PermissionMapping {
             return emptySet()
         }
 
-        val appSupportsPickerPrompt = group
-            .permissions[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED]?.isImplicit == false
+        val appSupportsPickerPrompt =
+            group.permissions[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED]?.isImplicit ==
+                false
 
         return if (appSupportsPickerPrompt) {
             PARTIAL_MEDIA_PERMISSIONS
@@ -348,9 +345,7 @@ object PermissionMapping {
         }
     }
 
-    /**
-     * Returns true if the given permission is a health platform permission.
-     */
+    /** Returns true if the given permission is a health platform permission. */
     @JvmStatic
     fun isHealthPermission(permissionName: String): Boolean {
         return HEALTH_PERMISSIONS_SET.contains(permissionName)
@@ -386,8 +381,8 @@ object PermissionMapping {
     /**
      * Get the SafetyLabel categories pertaining to a specified permission group.
      *
-     * @return The categories, or an empty list if the group does not have a supported mapping
-     * to safety label category
+     * @return The categories, or an empty list if the group does not have a supported mapping to
+     *   safety label category
      */
     fun getDataCategoriesForPermissionGroup(permissionGroupName: String): List<String> {
         return if (isSafetyLabelAwarePermissionGroup(permissionGroupName)) {

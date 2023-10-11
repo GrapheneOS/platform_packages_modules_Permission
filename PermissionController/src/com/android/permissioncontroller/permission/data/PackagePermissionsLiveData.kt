@@ -35,11 +35,9 @@ import kotlinx.coroutines.Job
  * @param packageName The name of the package this LiveData will watch for mode changes for
  * @param user The user for whom the packageInfo will be defined
  */
-class PackagePermissionsLiveData private constructor(
-    private val app: Application,
-    packageName: String,
-    user: UserHandle
-) : SmartAsyncMediatorLiveData<Map<String, List<String>>?>() {
+class PackagePermissionsLiveData
+private constructor(private val app: Application, packageName: String, user: UserHandle) :
+    SmartAsyncMediatorLiveData<Map<String, List<String>>?>() {
 
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
 
@@ -60,25 +58,32 @@ class PackagePermissionsLiveData private constructor(
         for (permName in packageInfo.requestedPermissions) {
             var groupName = PermissionMapping.getGroupOfPlatformPermission(permName)
             if (groupName == null) {
-                val permInfo = try {
-                    app.packageManager.getPermissionInfo(permName, 0)
-                } catch (e: PackageManager.NameNotFoundException) {
+                val permInfo =
+                    try {
+                        app.packageManager.getPermissionInfo(permName, 0)
+                    } catch (e: PackageManager.NameNotFoundException) {
+                        continue
+                    }
+
+                if (
+                    permInfo.flags and PermissionInfo.FLAG_INSTALLED == 0 ||
+                        permInfo.flags and PermissionInfo.FLAG_REMOVED != 0
+                ) {
                     continue
                 }
 
-                if (permInfo.flags and PermissionInfo.FLAG_INSTALLED == 0 ||
-                    permInfo.flags and PermissionInfo.FLAG_REMOVED != 0) {
+                if (
+                    packageInfo.isInstantApp &&
+                        permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_INSTANT == 0
+                ) {
                     continue
                 }
 
-                if (packageInfo.isInstantApp && permInfo.protectionFlags and
-                    PermissionInfo.PROTECTION_FLAG_INSTANT == 0) {
-                    continue
-                }
-
-                if (packageInfo.targetSdkVersion < Build.VERSION_CODES.M &&
-                    (permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY) !=
-                    0) {
+                if (
+                    packageInfo.targetSdkVersion < Build.VERSION_CODES.M &&
+                        (permInfo.protectionFlags and
+                            PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY) != 0
+                ) {
                     continue
                 }
 
@@ -104,14 +109,17 @@ class PackagePermissionsLiveData private constructor(
 
     /**
      * Repository for PackagePermissionsLiveData objects
+     *
      * <p> Key value is a string package name and userHandle, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<Pair<String, UserHandle>,
-        PackagePermissionsLiveData>() {
-        override fun newValue(key: Pair<String, UserHandle>):
-            PackagePermissionsLiveData {
-            return PackagePermissionsLiveData(PermissionControllerApplication.get(), key.first,
-                key.second)
+    companion object :
+        DataRepositoryForPackage<Pair<String, UserHandle>, PackagePermissionsLiveData>() {
+        override fun newValue(key: Pair<String, UserHandle>): PackagePermissionsLiveData {
+            return PackagePermissionsLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second
+            )
         }
 
         const val NON_RUNTIME_NORMAL_PERMS = "nonRuntimeNormalPerms"

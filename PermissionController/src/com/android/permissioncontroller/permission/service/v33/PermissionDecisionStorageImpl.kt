@@ -29,11 +29,6 @@ import com.android.permissioncontroller.permission.data.v33.PermissionDecision
 import com.android.permissioncontroller.permission.service.BasePermissionEventStorage
 import com.android.permissioncontroller.permission.service.PermissionEventStorage
 import com.android.permissioncontroller.permission.utils.Utils
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.xmlpull.v1.XmlPullParser
-import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -43,10 +38,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
 
-/**
- * Implementation of [BasePermissionEventStorage] for storing [PermissionDecision] events.
- */
+/** Implementation of [BasePermissionEventStorage] for storing [PermissionDecision] events. */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionDecisionStorageImpl(
     context: Context,
@@ -56,9 +54,7 @@ class PermissionDecisionStorageImpl(
     // We don't use namespaces
     private val ns: String? = null
 
-    /**
-     * The format for how dates are stored.
-     */
+    /** The format for how dates are stored. */
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     companion object {
@@ -66,9 +62,7 @@ class PermissionDecisionStorageImpl(
 
         private const val DB_VERSION = 1
 
-        /**
-         * Config store file name for general shared store file.
-         */
+        /** Config store file name for general shared store file. */
         private const val STORE_FILE_NAME = "recent_permission_decisions.xml"
 
         private const val TAG_RECENT_PERMISSION_DECISIONS = "recent-permission-decisions"
@@ -81,13 +75,10 @@ class PermissionDecisionStorageImpl(
 
         private val DEFAULT_MAX_DATA_AGE_MS = TimeUnit.DAYS.toMillis(7)
 
-        @Volatile
-        private var INSTANCE: PermissionEventStorage<PermissionDecision>? = null
+        @Volatile private var INSTANCE: PermissionEventStorage<PermissionDecision>? = null
 
         fun getInstance(): PermissionEventStorage<PermissionDecision> =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: createInstance().also { INSTANCE = it }
-            }
+            INSTANCE ?: synchronized(this) { INSTANCE ?: createInstance().also { INSTANCE = it } }
 
         private fun createInstance(): PermissionEventStorage<PermissionDecision> {
             return PermissionDecisionStorageImpl(PermissionControllerApplication.get())
@@ -101,9 +92,15 @@ class PermissionDecisionStorageImpl(
         ) {
             if (isRecordPermissionsSupported(context)) {
                 GlobalScope.launch(Dispatchers.IO) {
-                    getInstance().storeEvent(
-                        PermissionDecision(packageName, System.currentTimeMillis(), permGroupName,
-                            isGranted))
+                    getInstance()
+                        .storeEvent(
+                            PermissionDecision(
+                                packageName,
+                                System.currentTimeMillis(),
+                                permGroupName,
+                                isGranted
+                            )
+                        )
                 }
             }
         }
@@ -148,9 +145,7 @@ class PermissionDecisionStorageImpl(
 
         parser.require(XmlPullParser.START_TAG, ns, TAG_RECENT_PERMISSION_DECISIONS)
         while (parser.next() != XmlPullParser.END_TAG) {
-            readPermissionDecision(parser)?.let {
-                entries.add(it)
-            }
+            readPermissionDecision(parser)?.let { entries.add(it) }
         }
         return entries
     }
@@ -163,9 +158,11 @@ class PermissionDecisionStorageImpl(
             val packageName = parser.getAttributeValueNullSafe(ns, ATTR_PACKAGE_NAME)
             val permissionGroup = parser.getAttributeValueNullSafe(ns, ATTR_PERMISSION_GROUP)
             val decisionDate = parser.getAttributeValueNullSafe(ns, ATTR_DECISION_TIME)
-            val decisionTime = dateFormat.parse(decisionDate)?.time
-                ?: throw IllegalArgumentException(
-                    "Could not parse date $decisionDate on package $packageName")
+            val decisionTime =
+                dateFormat.parse(decisionDate)?.time
+                    ?: throw IllegalArgumentException(
+                        "Could not parse date $decisionDate on package $packageName"
+                    )
             val isGranted = parser.getAttributeValueNullSafe(ns, ATTR_IS_GRANTED).toBoolean()
             decision = PermissionDecision(packageName, decisionTime, permissionGroup, isGranted)
         } catch (e: XmlPullParserException) {
@@ -185,7 +182,8 @@ class PermissionDecisionStorageImpl(
     private fun XmlPullParser.getAttributeValueNullSafe(namespace: String?, name: String): String {
         return this.getAttributeValue(namespace, name)
             ?: throw XmlPullParserException(
-                "Could not find attribute: namespace $namespace, name $name")
+                "Could not find attribute: namespace $namespace, name $name"
+            )
     }
 
     override fun getDatabaseFileName(): String {
@@ -193,9 +191,11 @@ class PermissionDecisionStorageImpl(
     }
 
     override fun getMaxDataAgeMs(): Long {
-        return DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
+        return DeviceConfig.getLong(
+            DeviceConfig.NAMESPACE_PERMISSIONS,
             Utils.PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS,
-            DEFAULT_MAX_DATA_AGE_MS)
+            DEFAULT_MAX_DATA_AGE_MS
+        )
     }
 
     override fun hasTheSamePrimaryKey(

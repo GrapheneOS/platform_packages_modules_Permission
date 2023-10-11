@@ -37,6 +37,7 @@ import org.junit.Test
  * <p>Leave abstract to prevent the test runner from trying to run it
  *
  * Currently, none of the tests that extend [PermissionAppsFragmentTest] run on TV.
+ *
  * TODO(b/178576541): Adapt and run on TV.
  */
 abstract class PermissionAppsFragmentTest(
@@ -47,8 +48,7 @@ abstract class PermissionAppsFragmentTest(
     val definerPkg: String? = null
 ) : BasePermissionUiTest() {
 
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
+    @Before fun assumeNotTelevision() = assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {
@@ -65,11 +65,12 @@ abstract class PermissionAppsFragmentTest(
     @Before
     fun startManagePermissionAppsActivity() {
         runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                .apply {
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_PERMISSION_APPS).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     putExtra(Intent.EXTRA_PERMISSION_NAME, perm)
-                })
+                }
+            )
         }
     }
 
@@ -78,9 +79,7 @@ abstract class PermissionAppsFragmentTest(
         assertNull(waitFindObjectOrNull(By.text(userPkg)))
 
         install(userApk)
-        eventually {
-            waitFindObject(By.text(userPkg))
-        }
+        eventually { waitFindObject(By.text(userPkg)) }
     }
 
     // TODO(b/280652042) Slow tests aren't good
@@ -89,14 +88,10 @@ abstract class PermissionAppsFragmentTest(
         assertNull(waitFindObjectOrNull(By.text(userPkg)))
 
         install(userApk)
-        eventually {
-            waitFindObject(By.text(userPkg))
-        }
+        eventually { waitFindObject(By.text(userPkg)) }
 
         uninstallApp(userPkg)
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(userPkg)))
-        }
+        eventually { assertNull(waitFindObjectOrNull(By.text(userPkg))) }
     }
 
     @After

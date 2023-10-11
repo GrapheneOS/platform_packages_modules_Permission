@@ -31,10 +31,9 @@ import com.android.permissioncontroller.permission.utils.Utils.OS_PKG
  *
  * @param app The current application
  */
-class PermGroupsPackagesLiveData private constructor(
-    private val app: Application,
-    groupNamesLiveData: LiveData<List<String>>
-) : SmartUpdateMediatorLiveData<Map<String, Set<Pair<String, UserHandle>>>>() {
+class PermGroupsPackagesLiveData
+private constructor(private val app: Application, groupNamesLiveData: LiveData<List<String>>) :
+    SmartUpdateMediatorLiveData<Map<String, Set<Pair<String, UserHandle>>>>() {
 
     private val packagesLiveData = AllPackageInfosLiveData
     private val permGroupLiveDatas = mutableMapOf<String, PermGroupLiveData>()
@@ -47,8 +46,10 @@ class PermGroupsPackagesLiveData private constructor(
 
             val getLiveData = { groupName: String -> PermGroupLiveData[groupName] }
             setSourcesToDifference(groupNames, permGroupLiveDatas, getLiveData) {
-                if (packagesLiveData.isInitialized &&
-                    permGroupLiveDatas.all { it.value.isInitialized }) {
+                if (
+                    packagesLiveData.isInitialized &&
+                        permGroupLiveDatas.all { it.value.isInitialized }
+                ) {
                     update()
                 }
             }
@@ -62,9 +63,9 @@ class PermGroupsPackagesLiveData private constructor(
     }
 
     /**
-     * Using the current list of permission groups, go through all packages in the system,
-     * and figure out which permission groups they have permissions for. If applicable, remove
-     * any lone-permission permission that are not requested by any packages.
+     * Using the current list of permission groups, go through all packages in the system, and
+     * figure out which permission groups they have permissions for. If applicable, remove any
+     * lone-permission permission that are not requested by any packages.
      */
     override fun onUpdate() {
         if (groupNames.isEmpty()) {
@@ -108,8 +109,10 @@ class PermGroupsPackagesLiveData private constructor(
          * group, if also empty.
          */
         for (permGroup in permGroups) {
-            if (permGroup.groupInfo.isSinglePermGroup ||
-                permGroup.name == Manifest.permission_group.UNDEFINED) {
+            if (
+                permGroup.groupInfo.isSinglePermGroup ||
+                    permGroup.name == Manifest.permission_group.UNDEFINED
+            ) {
                 val groupPackages = groupApps[permGroup.name] ?: continue
                 if (groupPackages.isEmpty()) {
                     groupApps.remove(permGroup.name)
@@ -121,17 +124,22 @@ class PermGroupsPackagesLiveData private constructor(
     }
 
     companion object {
-        private val customInstance = PermGroupsPackagesLiveData(
-            PermissionControllerApplication.get(), CustomPermGroupNamesLiveData)
-        private val standardInstance = PermGroupsPackagesLiveData(
-            PermissionControllerApplication.get(), StandardPermGroupNamesLiveData)
+        private val customInstance =
+            PermGroupsPackagesLiveData(
+                PermissionControllerApplication.get(),
+                CustomPermGroupNamesLiveData
+            )
+        private val standardInstance =
+            PermGroupsPackagesLiveData(
+                PermissionControllerApplication.get(),
+                StandardPermGroupNamesLiveData
+            )
 
         /**
          * Get either the PermGroupsPackageLiveData instance corresponding either to the custom
          * permission groups, or the standard permission group.
          *
          * @param customGroups Whether to get the custom groups instance, or the standard
-         *
          * @return The specified PermGroupsPackageLiveData
          */
         @JvmStatic

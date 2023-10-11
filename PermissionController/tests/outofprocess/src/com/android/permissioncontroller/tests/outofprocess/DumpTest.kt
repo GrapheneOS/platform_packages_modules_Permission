@@ -23,11 +23,11 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
 import com.google.common.truth.Truth.assertThat
 import com.google.protobuf.InvalidProtocolBufferException
+import java.nio.charset.StandardCharsets.UTF_8
 import org.junit.Assert.fail
 import org.junit.Assume.assumeTrue
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.nio.charset.StandardCharsets.UTF_8
 
 @RunWith(AndroidJUnit4::class)
 class DumpTest {
@@ -36,8 +36,8 @@ class DumpTest {
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
 
     private fun getDump(): PermissionControllerDumpProto {
-        val dumpFile = instrumentation.getUiAutomation()
-                .executeShellCommand("dumpsys permissionmgr --proto")
+        val dumpFile =
+            instrumentation.getUiAutomation().executeShellCommand("dumpsys permissionmgr --proto")
         val dump = AutoCloseInputStream(dumpFile).readBytes()
 
         try {
@@ -66,6 +66,6 @@ class DumpTest {
         assumeTrue(dump.autoRevoke.usersList.isNotEmpty())
 
         assertThat(dump.autoRevoke.usersList[myUserId()].packagesList.map { it.packageName })
-                .contains(OS_PKG)
+            .contains(OS_PKG)
     }
 }

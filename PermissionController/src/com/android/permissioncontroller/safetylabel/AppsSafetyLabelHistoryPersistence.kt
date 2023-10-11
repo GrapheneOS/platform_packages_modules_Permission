@@ -90,10 +90,14 @@ object AppsSafetyLabelHistoryPersistence {
             Log.e(LOG_TAG, "File not found: $file")
         } catch (e: IOException) {
             Log.e(
-                LOG_TAG, "Failed to read file: $file, encountered exception ${e.localizedMessage}")
+                LOG_TAG,
+                "Failed to read file: $file, encountered exception ${e.localizedMessage}"
+            )
         } catch (e: XmlPullParserException) {
             Log.e(
-                LOG_TAG, "Failed to parse file: $file, encountered exception ${e.localizedMessage}")
+                LOG_TAG,
+                "Failed to parse file: $file, encountered exception ${e.localizedMessage}"
+            )
         }
 
         return AppsSafetyLabelHistoryFileContent(appsSafetyLabelHistory = null, INITIAL_VERSION)
@@ -133,13 +137,15 @@ object AppsSafetyLabelHistoryPersistence {
                     AppsSafetyLabelHistory(
                         currentHistories.toMutableList().apply {
                             add(AppSafetyLabelHistory(appInfo, listOf(safetyLabel)))
-                        })
+                        }
+                    )
                 } else {
                     AppsSafetyLabelHistory(
                         currentHistories.map {
                             if (it.appInfo != appInfo) it
                             else it.addSafetyLabelIfChanged(safetyLabel)
-                        })
+                        }
+                    )
                 }
 
             write(file, updatedAppsSafetyLabelHistory)
@@ -231,7 +237,9 @@ object AppsSafetyLabelHistoryPersistence {
                         // to startTime. The aim is retain one safety label prior to start time to
                         // be used as the "before" safety label when determining updates.
                         AppSafetyLabelHistory(
-                            appHistory.appInfo, history.subList(last, history.size))
+                            appHistory.appInfo,
+                            history.subList(last, history.size)
+                        )
                     }
                 }
 
@@ -265,7 +273,10 @@ object AppsSafetyLabelHistoryPersistence {
             listeners.forEach { it.onSafetyLabelHistoryChanged() }
         } catch (e: Exception) {
             Log.i(
-                LOG_TAG, "Failed to write to $file. Previous version of file will be restored.", e)
+                LOG_TAG,
+                "Failed to write to $file. Previous version of file will be restored.",
+                e
+            )
             atomicFile.failWrite(outputStream)
         } finally {
             try {
@@ -284,10 +295,12 @@ object AppsSafetyLabelHistoryPersistence {
         return currentAppsSafetyLabelHistory.appSafetyLabelHistories.mapNotNull {
             val before = it.getSafetyLabelAt(startTime)
             val after = it.getLatestSafetyLabel()
-            if (before == null ||
-                after == null ||
-                before == after ||
-                before.receivedAt.isAfter(after.receivedAt))
+            if (
+                before == null ||
+                    after == null ||
+                    before == after ||
+                    before.receivedAt.isAfter(after.receivedAt)
+            )
                 null
             else AppSafetyLabelDiff(before, after)
         }
@@ -332,7 +345,8 @@ object AppsSafetyLabelHistoryPersistence {
                 else ->
                     throw IllegalArgumentException(
                         "Unexpected attribute ${getAttributeName(i)} in tag" +
-                            " $TAG_APPS_SAFETY_LABEL_HISTORY")
+                            " $TAG_APPS_SAFETY_LABEL_HISTORY"
+                    )
             }
         }
         if (version == null) {
@@ -350,7 +364,9 @@ object AppsSafetyLabelHistoryPersistence {
         next()
 
         return AppsSafetyLabelHistoryFileContent(
-            AppsSafetyLabelHistory(appSafetyLabelHistories), version)
+            AppsSafetyLabelHistory(appSafetyLabelHistories),
+            version
+        )
     }
 
     private fun XmlPullParser.parseAppSafetyLabelHistory(): AppSafetyLabelHistory {
@@ -379,7 +395,8 @@ object AppsSafetyLabelHistoryPersistence {
                 ATTRIBUTE_RECEIVED_AT -> receivedAt = parseInstant(getAttributeValue(i))
                 else ->
                     throw IllegalArgumentException(
-                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_SAFETY_LABEL")
+                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_SAFETY_LABEL"
+                    )
             }
         }
         if (receivedAt == null) {
@@ -432,7 +449,8 @@ object AppsSafetyLabelHistoryPersistence {
                 ATTRIBUTE_CONTAINS_ADS -> hasAds = getAttributeValue(i).toBoolean()
                 else ->
                     throw IllegalArgumentException(
-                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_DATA_SHARED_ENTRY")
+                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_DATA_SHARED_ENTRY"
+                    )
             }
         }
         if (category == null) {
@@ -440,7 +458,8 @@ object AppsSafetyLabelHistoryPersistence {
         }
         if (hasAds == null) {
             throw IllegalArgumentException(
-                "Missing $ATTRIBUTE_CONTAINS_ADS in $TAG_DATA_SHARED_ENTRY")
+                "Missing $ATTRIBUTE_CONTAINS_ADS in $TAG_DATA_SHARED_ENTRY"
+            )
         }
         nextTag()
 
@@ -458,7 +477,8 @@ object AppsSafetyLabelHistoryPersistence {
                 ATTRIBUTE_PACKAGE_NAME -> packageName = getAttributeValue(i)
                 else ->
                     throw IllegalArgumentException(
-                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_APP_INFO")
+                        "Unexpected attribute ${getAttributeName(i)} in tag $TAG_APP_INFO"
+                    )
             }
         }
         if (packageName == null) {
@@ -540,7 +560,8 @@ object AppsSafetyLabelHistoryPersistence {
         attribute(
             null,
             ATTRIBUTE_CONTAINS_ADS,
-            dataSharedEntry.value.containsAdvertisingPurpose.toString())
+            dataSharedEntry.value.containsAdvertisingPurpose.toString()
+        )
         endTag(null, TAG_DATA_SHARED_ENTRY)
     }
 
@@ -592,7 +613,10 @@ object AppsSafetyLabelHistoryPersistence {
      */
     private fun getMaxSafetyLabelsToPersist() =
         DeviceConfig.getInt(
-            DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP, 20)
+            DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP,
+            20
+        )
 
     /** An interface to listen to changes to persisted safety labels. */
     interface ChangeListener {

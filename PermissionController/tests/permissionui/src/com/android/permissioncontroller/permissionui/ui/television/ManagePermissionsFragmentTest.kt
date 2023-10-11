@@ -27,42 +27,49 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Run with:
- * atest ManagePermissionsFragmentTest
- */
+/** Run with: atest ManagePermissionsFragmentTest */
 @RunWith(AndroidJUnit4::class)
 class ManagePermissionsFragmentTest : TelevisionUiBaseTest() {
-    @Before
-    fun launch() = launchPermissionController()
+    @Before fun launch() = launchPermissionController()
 
     @Test
     fun test_bodySensors_permissionGroup_isNotShown() {
-        assertFalse("Found \"Body sensors\" permission",
-            uiDevice.hasElementWithTitle(bodySensorsPermissionLabel))
+        assertFalse(
+            "Found \"Body sensors\" permission",
+            uiDevice.hasElementWithTitle(bodySensorsPermissionLabel)
+        )
     }
 
     @Test
     fun test_camera_permissionGroup_isShown_whenUsed() {
         // Make sure Camera permission group is not shown at first.
-        assertFalse("Found \"Camera\" permission",
-            uiDevice.hasElementWithTitle(cameraPermissionLabel))
+        assertFalse(
+            "Found \"Camera\" permission",
+            uiDevice.hasElementWithTitle(cameraPermissionLabel)
+        )
 
         // Install app that uses Camera permission...
         installTestAppThatUsesCameraPermission()
         // ... grant the permission ...
         grantTestAppPermission(CAMERA)
         // ... make sure now the Camera permission is shown.
-        assertTrue("Could not find \"Camera\" permission",
-            uiDevice.focusOnElementWithTitle(cameraPermissionLabel))
+        assertTrue(
+            "Could not find \"Camera\" permission",
+            uiDevice.focusOnElementWithTitle(cameraPermissionLabel)
+        )
     }
 
     @Test
     fun test_otherPermissions_Button_isShown() {
         uiDevice.navigateToTheBottom()
-        assertEquals("The last item should be the \"Other permissions\" button",
-            otherPermissionsLabel, uiDevice.focusedElementTitle)
-        assertTrue("\"Other permissions\" button should be clickable",
-            uiDevice.focusedElement.isClickable)
+        assertEquals(
+            "The last item should be the \"Other permissions\" button",
+            otherPermissionsLabel,
+            uiDevice.focusedElementTitle
+        )
+        assertTrue(
+            "\"Other permissions\" button should be clickable",
+            uiDevice.focusedElement.isClickable
+        )
     }
 }

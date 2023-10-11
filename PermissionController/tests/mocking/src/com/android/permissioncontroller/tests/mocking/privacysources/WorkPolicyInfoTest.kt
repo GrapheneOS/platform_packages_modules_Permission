@@ -85,24 +85,34 @@ class WorkPolicyInfoTest {
         val application = Mockito.mock(PermissionControllerApplication::class.java)
         whenever(
                 Utils.getSystemServiceSafe(
-                    any(ContextWrapper::class.java), eq(UserManager::class.java)))
+                    any(ContextWrapper::class.java),
+                    eq(UserManager::class.java)
+                )
+            )
             .thenReturn(mockUserManager)
         whenever(
                 Utils.getSystemServiceSafe(
-                    any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java)))
+                    any(ContextWrapper::class.java),
+                    eq(SafetyCenterManager::class.java)
+                )
+            )
             .thenReturn(mockSafetyCenterManager)
         whenever(mockUserManager.isProfile).thenReturn(false)
         whenever(
                 Utils.getEnterpriseString(
                     any(ContextWrapper::class.java),
                     eq(WorkPolicyInfo.WORK_POLICY_TITLE),
-                    anyInt()))
+                    anyInt()
+                )
+            )
             .thenReturn(WORK_POLICY_TITLE)
         whenever(
                 Utils.getEnterpriseString(
                     any(ContextWrapper::class.java),
                     eq(WorkPolicyInfo.WORK_POLICY_SUMMARY),
-                    anyInt()))
+                    anyInt()
+                )
+            )
             .thenReturn(WORK_POLICY_SUMMARY)
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
@@ -121,7 +131,8 @@ class WorkPolicyInfoTest {
             Intent(Intent.ACTION_BOOT_COMPLETED)
                 .putExtra(
                     SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID,
-                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
+                )
 
         whenever(mockWorkPolicyUtils.workPolicyInfoIntentDO).thenReturn(intent)
         whenever(mockWorkPolicyUtils.workPolicyInfoIntentPO).thenReturn(null)
@@ -134,7 +145,8 @@ class WorkPolicyInfoTest {
             SafetySourceStatus.Builder(
                     WORK_POLICY_TITLE,
                     WORK_POLICY_SUMMARY,
-                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                )
                 .setPendingIntent(pendingIntent)
                 .build()
         val expectedSafetySourceData: SafetySourceData =
@@ -146,7 +158,8 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 
     @Test
@@ -170,7 +183,8 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 
     @Test
@@ -189,7 +203,10 @@ class WorkPolicyInfoTest {
         whenever(mockWorkPolicyUtils.workPolicyInfoIntentPO).thenReturn(null)
 
         workPolicyInfo.rescanAndPushSafetyCenterData(
-            context, intent, RefreshEvent.EVENT_DEVICE_REBOOTED)
+            context,
+            intent,
+            RefreshEvent.EVENT_DEVICE_REBOOTED
+        )
 
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
@@ -197,7 +214,8 @@ class WorkPolicyInfoTest {
             SafetySourceStatus.Builder(
                     WORK_POLICY_TITLE,
                     WORK_POLICY_SUMMARY,
-                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                )
                 .setPendingIntent(pendingIntent)
                 .build()
 
@@ -210,7 +228,8 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 
     @Test
@@ -219,13 +238,17 @@ class WorkPolicyInfoTest {
             Intent(Intent.ACTION_BOOT_COMPLETED)
                 .putExtra(
                     SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID,
-                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
+                )
 
         whenever(mockWorkPolicyUtils.workPolicyInfoIntentDO).thenReturn(intent)
         whenever(mockWorkPolicyUtils.workPolicyInfoIntentPO).thenReturn(null)
 
         workPolicyInfo.rescanAndPushSafetyCenterData(
-            context, intent, RefreshEvent.EVENT_REFRESH_REQUESTED)
+            context,
+            intent,
+            RefreshEvent.EVENT_REFRESH_REQUESTED
+        )
 
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
@@ -233,7 +256,8 @@ class WorkPolicyInfoTest {
             SafetySourceStatus.Builder(
                     WORK_POLICY_TITLE,
                     WORK_POLICY_SUMMARY,
-                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                )
                 .setPendingIntent(pendingIntent)
                 .build()
 
@@ -251,7 +275,8 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 
     @Test
@@ -270,7 +295,8 @@ class WorkPolicyInfoTest {
             SafetySourceStatus.Builder(
                     WORK_POLICY_TITLE,
                     WORK_POLICY_SUMMARY,
-                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
+                )
                 .setPendingIntent(pendingIntent)
                 .build()
 
@@ -283,7 +309,8 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 
     @Test
@@ -302,6 +329,7 @@ class WorkPolicyInfoTest {
             .setSafetySourceData(
                 WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
                 expectedSafetySourceData,
-                expectedSafetyEvent)
+                expectedSafetyEvent
+            )
     }
 }

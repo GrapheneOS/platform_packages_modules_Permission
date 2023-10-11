@@ -17,14 +17,15 @@ package com.android.permissioncontroller.safetycenter.ui
 
 import androidx.preference.Preference
 
-/** Allows comparison with a [Preference] to determine if it has been changed.
+/**
+ * Allows comparison with a [Preference] to determine if it has been changed.
  *
  * @see SafetyPreferenceComparisonCallback
  */
 internal interface ComparablePreference {
-    /** Returns true if given Preference represents an item of the same kind.  */
+    /** Returns true if given Preference represents an item of the same kind. */
     fun isSameItem(preference: Preference): Boolean
 
-    /** Returns true if given Preference contains the same data.  */
+    /** Returns true if given Preference contains the same data. */
     fun hasSameContents(preference: Preference): Boolean
 }

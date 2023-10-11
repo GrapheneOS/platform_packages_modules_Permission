@@ -28,19 +28,17 @@ import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 @RunWith(AndroidJUnit4::class)
 class RecentPermissionDecisionsLiveDataTest {
 
-    @Mock
-    lateinit var job: Job
+    @Mock lateinit var job: Job
 
-    @Mock
-    lateinit var recentDecision: PermissionDecision
+    @Mock lateinit var recentDecision: PermissionDecision
 
     private val recentPermissionDecisionStorage = FakeEventStorage<PermissionDecision>()
 
@@ -49,11 +47,9 @@ class RecentPermissionDecisionsLiveDataTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        runBlocking {
-            recentPermissionDecisionStorage.storeEvent(recentDecision)
-        }
-        recentPermissionDecisionsLiveData = spy(RecentPermissionDecisionsLiveData(
-            recentPermissionDecisionStorage))
+        runBlocking { recentPermissionDecisionStorage.storeEvent(recentDecision) }
+        recentPermissionDecisionsLiveData =
+            spy(RecentPermissionDecisionsLiveData(recentPermissionDecisionStorage))
     }
 
     @Test

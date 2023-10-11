@@ -38,8 +38,7 @@ private const val ADDITIONAL_PERM_DEFINER_APK =
 // All 4 of the AppThatUses_X_Permission(s) applications share the same package name.
 private const val PERM_DEFINER_PACKAGE =
     "com.android.permissioncontroller.tests.appthatdefinespermission"
-const val PERM_USER_PACKAGE =
-    "com.android.permissioncontroller.tests.appthatrequestpermission"
+const val PERM_USER_PACKAGE = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
 const val CAMERA_TEST_APP_LABEL = "CameraRequestApp"
 
@@ -52,12 +51,18 @@ const val TEST_APP_DEFINED_PERMISSION_B_LABEL = "Permission B"
 const val TEST_APP_DEFINED_PERMISSION_C_LABEL = "Permission C"
 
 fun installTestAppThatRequestsLocation() = install(LOCATION_PERM_USER_APK)
+
 fun installTestAppThatUsesCameraPermission() = install(CAMERA_PERM_USER_APK)
+
 fun installTestAppThatUsesHealthConnectPermission() = install(HEALTH_CONNECT_PERMISSION_USER_APK)
+
 fun installInvalidTestAppThatUsesHealthConnectPermission() =
     install(INVALID_HEALTH_CONNECT_PERMISSION_USER_APK)
+
 fun installTestAppThatUsesAdditionalPermission() = install(ADDITIONAL_PERM_USER_APK)
+
 fun installTestAppThatUsesTwoAdditionalPermissions() = install(TWO_ADDITIONAL_PERM_USER_APK)
+
 fun installTestAppThatDefinesAdditionalPermissions() = install(ADDITIONAL_PERM_DEFINER_APK)
 
 fun uninstallTestApps() {

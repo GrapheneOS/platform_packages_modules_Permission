@@ -27,6 +27,11 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.BasePermissionEventStorage
 import com.google.common.truth.Truth.assertThat
+import java.io.File
+import java.io.InputStream
+import java.io.OutputStream
+import java.util.Date
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -34,16 +39,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.any
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.File
-import java.io.InputStream
-import java.io.OutputStream
-import java.util.Date
-import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
 class BasePermissionEventStorageTest {
@@ -66,11 +66,9 @@ class BasePermissionEventStorageTest {
     private val parkingEvent = TestPermissionEvent("package.test.parking", jan22020)
     private val podcastEvent = TestPermissionEvent("package.test.podcast", jan22020)
 
-    @Mock
-    lateinit var jobScheduler: JobScheduler
+    @Mock lateinit var jobScheduler: JobScheduler
 
-    @Mock
-    lateinit var existingJob: JobInfo
+    @Mock lateinit var existingJob: JobInfo
 
     private lateinit var context: Context
     private lateinit var storage: BasePermissionEventStorage<TestPermissionEvent>
@@ -80,10 +78,12 @@ class BasePermissionEventStorageTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         `when`(PermissionControllerApplication.get()).thenReturn(application)
         context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
@@ -107,9 +107,7 @@ class BasePermissionEventStorageTest {
     @Test
     fun loadEvents_noData_returnsEmptyList() {
         init()
-        runBlocking {
-            assertThat(storage.loadEvents()).isEmpty()
-        }
+        runBlocking { assertThat(storage.loadEvents()).isEmpty() }
     }
 
     @Test
@@ -130,8 +128,7 @@ class BasePermissionEventStorageTest {
             storage.storeEvent(parkingEvent)
             storage.storeEvent(podcastEvent)
             assertThat(storage.loadEvents())
-                .containsExactly(musicEvent, mapEvent, parkingEvent,
-                    podcastEvent)
+                .containsExactly(musicEvent, mapEvent, parkingEvent, podcastEvent)
         }
     }
 
@@ -181,10 +178,10 @@ class BasePermissionEventStorageTest {
     fun removeOldData_removesOnlyOldData() {
         init()
         val todayEvent = parkingEvent.copy(eventTime = System.currentTimeMillis())
-        val sixDaysAgoEvent = podcastEvent.copy(
-            eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(6))
-        val eightDaysAgoEvent = parkingEvent.copy(
-            eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(8))
+        val sixDaysAgoEvent =
+            podcastEvent.copy(eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(6))
+        val eightDaysAgoEvent =
+            parkingEvent.copy(eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(8))
         runBlocking {
             storage.storeEvent(eightDaysAgoEvent)
             storage.storeEvent(sixDaysAgoEvent)
@@ -202,11 +199,10 @@ class BasePermissionEventStorageTest {
             storage.storeEvent(musicEvent)
             storage.updateEventsBySystemTimeDelta(TimeUnit.DAYS.toMillis(1))
 
-            assertThat(storage.loadEvents()).containsExactly(
-                musicEvent.copy(
-                    eventTime = musicEvent.eventTime + TimeUnit.DAYS.toMillis(1)
+            assertThat(storage.loadEvents())
+                .containsExactly(
+                    musicEvent.copy(eventTime = musicEvent.eventTime + TimeUnit.DAYS.toMillis(1))
                 )
-            )
         }
     }
 
@@ -217,18 +213,15 @@ class BasePermissionEventStorageTest {
             storage.storeEvent(musicEvent)
             storage.updateEventsBySystemTimeDelta(-TimeUnit.DAYS.toMillis(1))
 
-            assertThat(storage.loadEvents()).containsExactly(
-                musicEvent.copy(
-                    eventTime = musicEvent.eventTime - TimeUnit.DAYS.toMillis(1)
+            assertThat(storage.loadEvents())
+                .containsExactly(
+                    musicEvent.copy(eventTime = musicEvent.eventTime - TimeUnit.DAYS.toMillis(1))
                 )
-            )
         }
     }
 
-    private class TestPermissionEventStorage(
-        context: Context,
-        jobScheduler: JobScheduler
-    ) : BasePermissionEventStorage<TestPermissionEvent>(context, jobScheduler) {
+    private class TestPermissionEventStorage(context: Context, jobScheduler: JobScheduler) :
+        BasePermissionEventStorage<TestPermissionEvent>(context, jobScheduler) {
         lateinit var fakeDiskStore: List<TestPermissionEvent>
 
         override fun serialize(stream: OutputStream, events: List<TestPermissionEvent>) {

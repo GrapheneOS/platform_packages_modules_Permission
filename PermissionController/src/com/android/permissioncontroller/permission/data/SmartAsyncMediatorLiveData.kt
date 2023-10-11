@@ -36,14 +36,12 @@ abstract class SmartAsyncMediatorLiveData<T>(
 ) : SmartUpdateMediatorLiveData<T>(isStaticVal) {
 
     private var currentJob: Job? = null
-    @Volatile
-    private var jobQueued = false
-    @Volatile
-    private var jobRunning = false
+    @Volatile private var jobQueued = false
+    @Volatile private var jobRunning = false
 
     /**
-     * The main function which will load data. It should periodically check isCancelled to see if
-     * it should stop working. If data is loaded, it should call "postValue".
+     * The main function which will load data. It should periodically check isCancelled to see if it
+     * should stop working. If data is loaded, it should call "postValue".
      */
     abstract suspend fun loadDataAndPostValue(job: Job)
 
@@ -67,9 +65,7 @@ abstract class SmartAsyncMediatorLiveData<T>(
             jobRunning = false
             if (jobQueued) {
                 jobQueued = false
-                GlobalScope.launch(Main.immediate) {
-                    updateAsync()
-                }
+                GlobalScope.launch(Main.immediate) { updateAsync() }
             }
         }
     }

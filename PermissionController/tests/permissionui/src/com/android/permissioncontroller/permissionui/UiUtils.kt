@@ -16,12 +16,10 @@
 
 package com.android.permissioncontroller.permissionui
 
-import androidx.test.uiautomator.UiDevice
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 
-/**
- * Wake up screen
- */
+/** Wake up screen */
 fun wakeUpScreen() {
     val uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
@@ -29,9 +27,7 @@ fun wakeUpScreen() {
     uiDevice.executeShellCommand("wm dismiss-keyguard")
 }
 
-/**
- * Press the home button
- */
+/** Press the home button */
 fun pressHome() {
     val uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     uiDevice.pressHome()

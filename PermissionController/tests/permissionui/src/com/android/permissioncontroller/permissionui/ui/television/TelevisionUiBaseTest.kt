@@ -30,8 +30,7 @@ abstract class TelevisionUiBaseTest : BasePermissionUiTest() {
     val otherPermissionsLabel = "Other permissions"
     val additionalPermissionsLabel = "Additional permissions"
 
-    @Before
-    fun assumeTelevision() = assumeTrue(isTelevision)
+    @Before fun assumeTelevision() = assumeTrue(isTelevision)
 
     @Before
     fun wakeUpAndGoToHomeScreen() {
@@ -39,14 +38,15 @@ abstract class TelevisionUiBaseTest : BasePermissionUiTest() {
         uiDevice.pressHome()
     }
 
-    @After
-    fun cleanUp() = uninstallTestApps()
+    @After fun cleanUp() = uninstallTestApps()
 
     protected fun launchPermissionController() {
         SystemUtil.runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            )
         }
 
         uiDevice.waitForIdle()

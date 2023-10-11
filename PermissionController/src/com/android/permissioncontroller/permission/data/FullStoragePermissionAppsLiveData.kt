@@ -34,14 +34,13 @@ import kotlinx.coroutines.Job
 /**
  * A liveData which tracks all packages in the system which have full file permissions, as
  * represented by the OPSTR_LEGACY_STORAGE app op, not just media-only storage permissions.
- *
  */
 object FullStoragePermissionAppsLiveData :
     SmartAsyncMediatorLiveData<List<FullStoragePermissionAppsLiveData.FullStoragePackageState>>() {
 
     private val app: Application = PermissionControllerApplication.get()
-    private val standardPermGroupsPackagesLiveData = PermGroupsPackagesLiveData.get(
-        customGroups = false)
+    private val standardPermGroupsPackagesLiveData =
+        PermGroupsPackagesLiveData.get(customGroups = false)
 
     data class FullStoragePackageState(
         val packageName: String,
@@ -51,12 +50,8 @@ object FullStoragePermissionAppsLiveData :
     )
 
     init {
-        addSource(standardPermGroupsPackagesLiveData) {
-            updateAsync()
-        }
-        addSource(AllPackageInfosLiveData) {
-            updateAsync()
-        }
+        addSource(standardPermGroupsPackagesLiveData) { updateAsync() }
+        addSource(AllPackageInfosLiveData) { updateAsync() }
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
@@ -65,14 +60,16 @@ object FullStoragePermissionAppsLiveData :
 
         val fullStoragePackages = mutableListOf<FullStoragePackageState>()
         for ((user, packageInfoList) in AllPackageInfosLiveData.value ?: emptyMap()) {
-            val userPackages = packageInfoList.filter {
-                storagePackages.contains(it.packageName to user) ||
-                    it.requestedPermissions.contains(MANAGE_EXTERNAL_STORAGE)
-            }
+            val userPackages =
+                packageInfoList.filter {
+                    storagePackages.contains(it.packageName to user) ||
+                        it.requestedPermissions.contains(MANAGE_EXTERNAL_STORAGE)
+                }
 
             for (packageInfo in userPackages) {
-                fullStoragePackages.add(getFullStorageStateForPackage(appOpsManager,
-                    packageInfo, user) ?: continue)
+                fullStoragePackages.add(
+                    getFullStorageStateForPackage(appOpsManager, packageInfo, user) ?: continue
+                )
             }
         }
 
@@ -85,9 +82,8 @@ object FullStoragePermissionAppsLiveData :
      * @param appOpsManager The App Ops manager to use, if applicable
      * @param packageInfo The package whose state is to be determined
      * @param userHandle A preexisting UserHandle object to use. Otherwise, one will be created
-     *
      * @return the FullStoragePackageState for the package, or null if the package does not request
-     * full storage permissions
+     *   full storage permissions
      */
     fun getFullStorageStateForPackage(
         appOpsManager: AppOpsManager,
@@ -97,30 +93,50 @@ object FullStoragePermissionAppsLiveData :
         val sdk = packageInfo.targetSdkVersion
         val user = userHandle ?: UserHandle.getUserHandleForUid(packageInfo.uid)
         if (sdk < Build.VERSION_CODES.P) {
-            return FullStoragePackageState(packageInfo.packageName, user,
-                isLegacy = true, isGranted = true)
-        } else if (sdk <= Build.VERSION_CODES.Q &&
-            appOpsManager.unsafeCheckOpNoThrow(OPSTR_LEGACY_STORAGE, packageInfo.uid,
-                packageInfo.packageName) == MODE_ALLOWED) {
-            return FullStoragePackageState(packageInfo.packageName, user,
-                isLegacy = true, isGranted = true)
+            return FullStoragePackageState(
+                packageInfo.packageName,
+                user,
+                isLegacy = true,
+                isGranted = true
+            )
+        } else if (
+            sdk <= Build.VERSION_CODES.Q &&
+                appOpsManager.unsafeCheckOpNoThrow(
+                    OPSTR_LEGACY_STORAGE,
+                    packageInfo.uid,
+                    packageInfo.packageName
+                ) == MODE_ALLOWED
+        ) {
+            return FullStoragePackageState(
+                packageInfo.packageName,
+                user,
+                isLegacy = true,
+                isGranted = true
+            )
         }
         if (MANAGE_EXTERNAL_STORAGE in packageInfo.requestedPermissions) {
-            val mode = appOpsManager.unsafeCheckOpNoThrow(OPSTR_MANAGE_EXTERNAL_STORAGE,
-                packageInfo.uid, packageInfo.packageName)
-            val granted = mode == MODE_ALLOWED || mode == MODE_FOREGROUND ||
-                (mode == MODE_DEFAULT &&
-                    MANAGE_EXTERNAL_STORAGE in packageInfo.grantedPermissions)
-            return FullStoragePackageState(packageInfo.packageName, user,
-                isLegacy = false, isGranted = granted)
+            val mode =
+                appOpsManager.unsafeCheckOpNoThrow(
+                    OPSTR_MANAGE_EXTERNAL_STORAGE,
+                    packageInfo.uid,
+                    packageInfo.packageName
+                )
+            val granted =
+                mode == MODE_ALLOWED ||
+                    mode == MODE_FOREGROUND ||
+                    (mode == MODE_DEFAULT &&
+                        MANAGE_EXTERNAL_STORAGE in packageInfo.grantedPermissions)
+            return FullStoragePackageState(
+                packageInfo.packageName,
+                user,
+                isLegacy = false,
+                isGranted = granted
+            )
         }
         return null
     }
 
-    /**
-     * Recalculate the LiveData
-     * TODO ntmyren: Make livedata properly observe app ops
-     */
+    /** Recalculate the LiveData TODO ntmyren: Make livedata properly observe app ops */
     fun recalculate() {
         updateAsync()
     }

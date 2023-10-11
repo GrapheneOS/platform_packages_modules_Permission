@@ -297,17 +297,14 @@ object KotlinUtils {
             )
     }
 
-    /**
-     * Whether the Photo Picker Prompt is supported by the device
-     *
-     */
+    /** Whether the Photo Picker Prompt is supported by the device */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun isPhotoPickerPromptSupported(): Boolean {
         val app = PermissionControllerApplication.get()
         return SdkLevel.isAtLeastU() &&
-                !DeviceUtils.isAuto(app) &&
-                !DeviceUtils.isTelevision(app) &&
-                !DeviceUtils.isWear(app)
+            !DeviceUtils.isAuto(app) &&
+            !DeviceUtils.isTelevision(app) &&
+            !DeviceUtils.isWear(app)
     }
 
     /*

@@ -22,8 +22,8 @@ package com.android.permissioncontroller.permission.model.livedatatypes
  *
  * @param packages A LightPackageInfo for every package with this uid
  * @param permStates A map <requested permission name, use sensitive state>, with the state being a
- * combination of FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED and
- * FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED
+ *   combination of FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED and
+ *   FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED
  */
 data class UidSensitivityState(
     val packages: MutableSet<LightPackageInfo>,

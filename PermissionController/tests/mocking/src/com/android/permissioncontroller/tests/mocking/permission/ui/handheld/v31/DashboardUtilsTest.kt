@@ -21,189 +21,123 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.getTimeDiffStr
 import com.google.common.truth.Truth.assertThat
+import java.util.concurrent.TimeUnit
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.concurrent.TimeUnit
 
-/**
- * A suite of unit tests to test the permission dashboard utils.
- */
+/** A suite of unit tests to test the permission dashboard utils. */
 @RunWith(AndroidJUnit4::class)
 class DashboardUtilsTest {
 
     @Test
     fun getTimeDiffStr_durationSecondsOne() {
         val duration: Long = TimeUnit.SECONDS.toMillis(1L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 second")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 second")
     }
 
     @Test
     fun getTimeDiffStr_durationSecondsOther() {
         val duration: Long = TimeUnit.SECONDS.toMillis(59L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("59 seconds")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("59 seconds")
     }
 
     @Test
     fun getTimeDiffStr_durationMinutesOne() {
         val duration: Long = TimeUnit.MINUTES.toMillis(1L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 minute")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 minute")
     }
 
     @Test
     fun getTimeDiffStr_durationMinutesOther() {
         val duration: Long = TimeUnit.MINUTES.toMillis(59L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("59 minutes")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("59 minutes")
     }
 
     @Test
     fun getTimeDiffStr_durationHoursOne() {
         val duration: Long = TimeUnit.HOURS.toMillis(1L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 hour")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 hour")
     }
 
     @Test
     fun getTimeDiffStr_durationHoursOther() {
         val duration: Long = TimeUnit.HOURS.toMillis(23L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("23 hours")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("23 hours")
     }
 
     @Test
     fun getTimeDiffStr_durationDaysOne() {
         val duration: Long = TimeUnit.DAYS.toMillis(1L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 day")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 day")
     }
 
     @Test
     fun getTimeDiffStr_durationDaysOther() {
         val duration: Long = TimeUnit.DAYS.toMillis(2L)
-        assertThat(
-            getTimeDiffStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("2 days")
+        assertThat(getTimeDiffStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("2 days")
     }
 
     @Test
     fun getDurationUsedStr_durationSecondsOne() {
         val duration: Long = TimeUnit.SECONDS.toMillis(1L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 sec")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 sec")
     }
 
     @Test
     fun getDurationUsedStr_durationSecondsOther() {
         val duration: Long = TimeUnit.SECONDS.toMillis(59L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("59 secs")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("59 secs")
     }
 
     @Test
     fun getDurationUsedStr_durationMinutesOne() {
         val duration: Long = TimeUnit.MINUTES.toMillis(1L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 min")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 min")
     }
 
     @Test
     fun getDurationUsedStr_durationMinutesOther() {
         val duration: Long = TimeUnit.MINUTES.toMillis(59L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("59 mins")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("59 mins")
     }
 
     @Test
     fun getDurationUsedStr_durationHoursOne() {
         val duration: Long = TimeUnit.HOURS.toMillis(1L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 hour")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 hour")
     }
 
     @Test
     fun getDurationUsedStr_durationHoursOther() {
         val duration: Long = TimeUnit.HOURS.toMillis(23L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("23 hours")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("23 hours")
     }
 
     @Test
     fun getDurationUsedStr_durationDaysOne() {
         val duration: Long = TimeUnit.DAYS.toMillis(1L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("1 day")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("1 day")
     }
 
     @Test
     fun getDurationUsedStr_durationDaysOther() {
         val duration: Long = TimeUnit.DAYS.toMillis(2L)
-        assertThat(
-            getDurationUsedStr(
-                ApplicationProvider.getApplicationContext(),
-                duration
-            )
-        ).isEqualTo("2 days")
+        assertThat(getDurationUsedStr(ApplicationProvider.getApplicationContext(), duration))
+            .isEqualTo("2 days")
     }
 }

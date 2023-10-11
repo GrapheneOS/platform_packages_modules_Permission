@@ -27,16 +27,14 @@ import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment.Companion.INFO_MSG_CATEGORY
 
-/**
- * TV wrapper, with customizations, around [UnusedAppsFragment].
- */
-class TvUnusedAppsFragment : SettingsWithHeader(),
-        UnusedAppsFragment.Parent<TvUnusedAppsPreference> {
+/** TV wrapper, with customizations, around [UnusedAppsFragment]. */
+class TvUnusedAppsFragment :
+    SettingsWithHeader(), UnusedAppsFragment.Parent<TvUnusedAppsPreference> {
 
     companion object {
         private const val UNUSED_PREFERENCE_KEY = "unused_pref_row_key"
 
-        /** Create a new instance of this fragment.  */
+        /** Create a new instance of this fragment. */
         @JvmStatic
         fun newInstance(): TvUnusedAppsFragment {
             return TvUnusedAppsFragment()
@@ -50,15 +48,12 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState == null) {
-            val fragment:
-                UnusedAppsFragment<TvUnusedAppsFragment, TvUnusedAppsPreference> =
+            val fragment: UnusedAppsFragment<TvUnusedAppsFragment, TvUnusedAppsPreference> =
                 UnusedAppsFragment.newInstance()
             fragment.arguments = arguments
             // child fragment does not have its own UI - it will add to the preferences of this
             // parent fragment
-            childFragmentManager.beginTransaction()
-                .add(fragment, null)
-                .commit()
+            childFragmentManager.beginTransaction().add(fragment, null).commit()
         }
     }
 
@@ -67,8 +62,7 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
         if (isHibernationEnabled()) {
             preference.summary = getString(R.string.unused_apps_page_tv_summary)
         } else {
-            preference.summary =
-            getString(R.string.auto_revoked_apps_page_summary)
+            preference.summary = getString(R.string.auto_revoked_apps_page_summary)
         }
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
@@ -93,9 +87,9 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
 
     override fun setEmptyState(empty: Boolean) {
         val infoMsgCategory =
-                preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
+            preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
         val noUnusedAppsPreference: Preference? =
-                infoMsgCategory.findPreference<Preference>(UNUSED_PREFERENCE_KEY)
+            infoMsgCategory.findPreference<Preference>(UNUSED_PREFERENCE_KEY)
         if (empty && noUnusedAppsPreference == null) {
             infoMsgCategory.addPreference(createNoUnusedAppsPreference())
         } else if (noUnusedAppsPreference != null) {

@@ -21,8 +21,8 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.os.Build
 import android.os.UserHandle
 import android.util.Log
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
@@ -34,15 +34,13 @@ import kotlinx.coroutines.launch
  *
  * ```(packageName, user) -> [groupName]```
  */
-object AutoRevokedPackagesLiveData
-    : SmartAsyncMediatorLiveData<Map<Pair<String, UserHandle>, Set<String>>>() {
+object AutoRevokedPackagesLiveData :
+    SmartAsyncMediatorLiveData<Map<Pair<String, UserHandle>, Set<String>>>() {
 
     private val LOG_TAG = AutoRevokedPackagesLiveData::class.java.simpleName
 
     init {
-        addSource(AllPackageInfosLiveData) {
-            update()
-        }
+        addSource(AllPackageInfosLiveData) { update() }
     }
 
     private val permStateLiveDatas =
@@ -66,7 +64,8 @@ object AutoRevokedPackagesLiveData
                 for ((idx, requestedPerm) in pkg.requestedPermissions.withIndex()) {
                     val group =
                         PermissionMapping.getGroupOfPlatformPermission(requestedPerm) ?: continue
-                    val granted = (pkg.requestedPermissionsFlags[idx] and
+                    val granted =
+                        (pkg.requestedPermissionsFlags[idx] and
                             PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0
                     if (pkg.targetSdkVersion < Build.VERSION_CODES.M || !granted) {
                         pkgGroups.add(Triple(pkg.packageName, group, user))
@@ -85,7 +84,6 @@ object AutoRevokedPackagesLiveData
 
     private fun observePermStateLiveDatas(packageGroups: Set<Triple<String, String, UserHandle>>) {
         GlobalScope.launch(Main.immediate) {
-
             val (toAdd, toRemove) =
                 KotlinUtils.getMapAndListDifferences(packageGroups, permStateLiveDatas)
 
@@ -118,7 +116,8 @@ object AutoRevokedPackagesLiveData
                     } else if (permState != null) {
                         for ((_, state) in permState) {
                             if (state.permFlags and FLAG_PERMISSION_AUTO_REVOKED != 0) {
-                                packageAutoRevokedPermsList.getOrPut(packageUser) { mutableSetOf() }
+                                packageAutoRevokedPermsList
+                                    .getOrPut(packageUser) { mutableSetOf() }
                                     .add(packagePermGroup.second)
                                 added = true
                                 break
@@ -142,8 +141,7 @@ object AutoRevokedPackagesLiveData
     }
 
     private fun postCopyOfMap() {
-        val autoRevokedCopy =
-            mutableMapOf<Pair<String, UserHandle>, Set<String>>()
+        val autoRevokedCopy = mutableMapOf<Pair<String, UserHandle>, Set<String>>()
         for ((userPackage, permGroups) in packageAutoRevokedPermsList) {
             autoRevokedCopy[userPackage] = permGroups.toSet()
         }
@@ -155,9 +153,7 @@ object AutoRevokedPackagesLiveData
 private val autoRevokedPackagesSetLiveData =
     object : SmartUpdateMediatorLiveData<Set<Pair<String, UserHandle>>>() {
         init {
-            addSource(AutoRevokedPackagesLiveData) {
-                update()
-            }
+            addSource(AutoRevokedPackagesLiveData) { update() }
         }
 
         override fun onUpdate() {

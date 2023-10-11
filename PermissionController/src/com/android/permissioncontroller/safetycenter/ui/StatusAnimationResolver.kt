@@ -129,21 +129,24 @@ object StatusAnimationResolver {
 
     @JvmStatic
     fun getStatusChangeAnimation(fromSeverity: Int, toSeverity: Int): Int =
-        if (fromSeverity == toSeverity &&
-                fromSeverity != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK) {
+        if (
+            fromSeverity == toSeverity &&
+                fromSeverity != SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK
+        ) {
             0
-        } else when (fromSeverity) {
-            SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK ->
-                R.drawable.safety_status_info_to_info_anim
-            SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION ->
-                R.drawable.safety_status_recommend_to_info_anim
-            SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING -> {
-                if (toSeverity == SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK) {
-                    R.drawable.safety_status_warn_to_info_anim
-                } else {
-                    R.drawable.safety_status_warn_to_recommend_anim
+        } else
+            when (fromSeverity) {
+                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK ->
+                    R.drawable.safety_status_info_to_info_anim
+                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION ->
+                    R.drawable.safety_status_recommend_to_info_anim
+                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING -> {
+                    if (toSeverity == SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK) {
+                        R.drawable.safety_status_warn_to_info_anim
+                    } else {
+                        R.drawable.safety_status_warn_to_recommend_anim
+                    }
                 }
+                else -> 0
             }
-            else -> 0
-        }
 }

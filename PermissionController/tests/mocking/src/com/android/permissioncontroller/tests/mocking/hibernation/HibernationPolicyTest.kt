@@ -53,9 +53,7 @@ import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
-/**
- * Unit tests for [HibernationPolicy].
- */
+/** Unit tests for [HibernationPolicy]. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class HibernationPolicyTest {
@@ -77,10 +75,12 @@ class HibernationPolicyTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         `when`(PermissionControllerApplication.get()).thenReturn(application)
 
         realContext = ApplicationProvider.getApplicationContext()
@@ -109,12 +109,14 @@ class HibernationPolicyTest {
     fun onReceive_shouldInitializeAndAdjustStartTimeOfUnusedAppTracking() {
         receiver.onReceive(context, Intent(Intent.ACTION_BOOT_COMPLETED))
         val startTimeOfUnusedAppTracking =
-                sharedPreferences.getLong(PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
-                        SNAPSHOT_UNINITIALIZED)
+            sharedPreferences.getLong(
+                PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
+                SNAPSHOT_UNINITIALIZED
+            )
         val systemTimeSnapshot =
-                sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
-        val realtimeSnapshot = sharedPreferences.getLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT,
-            SNAPSHOT_UNINITIALIZED)
+            sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
+        val realtimeSnapshot =
+            sharedPreferences.getLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
         val currentTimeMillis = System.currentTimeMillis()
         val currentRealTime = SystemClock.elapsedRealtime()
         assertThat(startTimeOfUnusedAppTracking).isNotEqualTo(SNAPSHOT_UNINITIALIZED)
@@ -134,30 +136,28 @@ class HibernationPolicyTest {
     @Test
     fun getStartTimeOfUnusedAppTracking_shouldReturnExpectedValue() {
         assertThat(getStartTimeOfUnusedAppTracking(sharedPreferences))
-                .isNotEqualTo(SNAPSHOT_UNINITIALIZED)
+            .isNotEqualTo(SNAPSHOT_UNINITIALIZED)
         receiver.onReceive(context, Intent(Intent.ACTION_BOOT_COMPLETED))
-        val systemTimeSnapshot = sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT,
-                SNAPSHOT_UNINITIALIZED)
+        val systemTimeSnapshot =
+            sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
         sharedPreferences
-                .edit()
-                .putLong(PREF_KEY_BOOT_TIME_SNAPSHOT, systemTimeSnapshot - ONE_DAY_MS)
-                .apply()
+            .edit()
+            .putLong(PREF_KEY_BOOT_TIME_SNAPSHOT, systemTimeSnapshot - ONE_DAY_MS)
+            .apply()
         assertThat(getStartTimeOfUnusedAppTracking(sharedPreferences))
-                .isNotEqualTo(systemTimeSnapshot)
+            .isNotEqualTo(systemTimeSnapshot)
     }
 
-    private fun assertAdjustedTime(
-        systemTimeSnapshot: Long,
-        realtimeSnapshot: Long
-    ) {
+    private fun assertAdjustedTime(systemTimeSnapshot: Long, realtimeSnapshot: Long) {
         val newStartTimeOfUnusedAppTracking =
-                sharedPreferences.getLong(PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
-                        SNAPSHOT_UNINITIALIZED)
+            sharedPreferences.getLong(
+                PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
+                SNAPSHOT_UNINITIALIZED
+            )
         val newSystemTimeSnapshot =
-                sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
+            sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
         val newRealtimeSnapshot =
-                sharedPreferences.getLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT,
-                        SNAPSHOT_UNINITIALIZED)
+            sharedPreferences.getLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
         assertThat(newStartTimeOfUnusedAppTracking).isNotEqualTo(SNAPSHOT_UNINITIALIZED)
         assertThat(newSystemTimeSnapshot).isNotEqualTo(SNAPSHOT_UNINITIALIZED)
         assertThat(newSystemTimeSnapshot).isGreaterThan(systemTimeSnapshot)

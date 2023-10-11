@@ -114,7 +114,8 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
             subpageIssues,
             subpageDismissedIssues,
             uiData.resolvedIssues,
-            requireActivity().getTaskId())
+            requireActivity().getTaskId()
+        )
     }
 
     private fun updateSafetyCenterEntries(entryGroup: SafetyCenterEntryGroup) {
@@ -130,9 +131,13 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
                 SafetySubpageEntryPreference(
                     requireContext(),
                     PendingIntentSender.getTaskIdForEntry(
-                        entryId, sameTaskSourceIds, requireActivity()),
+                        entryId,
+                        sameTaskSourceIds,
+                        requireActivity()
+                    ),
                     entry,
-                    safetyCenterViewModel)
+                    safetyCenterViewModel
+                )
 
             if (sourceId == "AndroidPrivacyControls") {
                 // No action required here because the privacy controls are rendered separately
@@ -149,7 +154,11 @@ class PrivacySubpageFragment : SafetyCenterFragment() {
         fun setSwitchPreference(prefType: Pref) {
             val switchPreference: ClickableDisabledSwitchPreference? = findPreference(prefType.key)
             switchPreference?.setupState(
-                prefStates[prefType], prefType, privacyControlsViewModel, this)
+                prefStates[prefType],
+                prefType,
+                privacyControlsViewModel,
+                this
+            )
         }
 
         setSwitchPreference(Pref.MIC)

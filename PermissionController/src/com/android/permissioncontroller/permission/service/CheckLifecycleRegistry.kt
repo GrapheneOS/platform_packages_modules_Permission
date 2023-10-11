@@ -29,17 +29,13 @@ class CheckLifecycleRegistry(provider: LifecycleOwner) : LifecycleRegistry(provi
         if (Looper.myLooper() != Looper.getMainLooper()) {
             throw IllegalStateException("Lifecycle running on non main thread")
         }
-        synchronized(observerLock) {
-            super.addObserver(observer)
-        }
+        synchronized(observerLock) { super.addObserver(observer) }
     }
 
     override fun removeObserver(observer: LifecycleObserver) {
         if (Looper.myLooper() != Looper.getMainLooper()) {
             throw IllegalStateException("Lifecycle running on non main thread")
         }
-        synchronized(observerLock) {
-            super.removeObserver(observer)
-        }
+        synchronized(observerLock) { super.removeObserver(observer) }
     }
 }

@@ -29,8 +29,8 @@ import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.permissioncontroller.permissionui.PermissionHub2Test
-import com.android.permissioncontroller.permissionui.wakeUpScreen
 import com.android.permissioncontroller.permissionui.pressHome
+import com.android.permissioncontroller.permissionui.wakeUpScreen
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -61,8 +61,7 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
 
         runWithShellPermissionIdentity {
             context.startActivity(
-                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE)
-                .apply {
+                Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }

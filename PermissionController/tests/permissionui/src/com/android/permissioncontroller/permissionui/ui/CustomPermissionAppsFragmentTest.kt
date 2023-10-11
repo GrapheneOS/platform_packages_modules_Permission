@@ -17,8 +17,8 @@
 package com.android.permissioncontroller.permissionui.ui
 
 import android.permission.cts.PermissionUtils.uninstallApp
-import androidx.test.uiautomator.By
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull
 import org.junit.Assert.assertNull
@@ -32,24 +32,24 @@ private const val PERMISSION_APPS_DESCRIPTION = "Apps with this permission"
  * Simple tests for {@link PermissionAppsFragment} when showing custom permission
  *
  * Currently, does NOT run on TV (same as the other tests that extend [PermissionAppsFragmentTest]).
+ *
  * TODO(b/178576541): Adapt and run on TV.
  */
 @RunWith(AndroidJUnit4::class)
-class CustomPermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/permissioncontroller/tests/permissionui" +
-        "/PermissionUiUseAdditionalPermissionApp.apk",
-    "com.android.permissioncontroller.tests.appthatrequestpermission",
-    "com.android.permissioncontroller.tests.A",
-    "/data/local/tmp/permissioncontroller/tests/permissionui" +
-        "/PermissionUiDefineAdditionalPermissionApp.apk",
-    "com.android.permissioncontroller.tests.appthatdefinespermission"
-) {
+class CustomPermissionAppsFragmentTest :
+    PermissionAppsFragmentTest(
+        "/data/local/tmp/permissioncontroller/tests/permissionui" +
+            "/PermissionUiUseAdditionalPermissionApp.apk",
+        "com.android.permissioncontroller.tests.appthatrequestpermission",
+        "com.android.permissioncontroller.tests.A",
+        "/data/local/tmp/permissioncontroller/tests/permissionui" +
+            "/PermissionUiDefineAdditionalPermissionApp.apk",
+        "com.android.permissioncontroller.tests.appthatdefinespermission"
+    ) {
     @Ignore("b/155112992")
     @Test
     fun fragmentIsClosedWhenPermissionIsRemoved() {
         uninstallApp(definerApk!!)
-        eventually {
-            assertNull(waitFindObjectOrNull(By.text(PERMISSION_APPS_DESCRIPTION)))
-        }
+        eventually { assertNull(waitFindObjectOrNull(By.text(PERMISSION_APPS_DESCRIPTION))) }
     }
 }

@@ -25,6 +25,9 @@ import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.privacysources.PrivacySourceData
 import com.android.permissioncontroller.privacysources.TextStorageRepository
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -33,9 +36,6 @@ import org.junit.runner.RunWith
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
@@ -50,9 +50,11 @@ class TextStorageRepositoryTest {
         MockitoAnnotations.initMocks(this)
         context = ApplicationProvider.getApplicationContext()
 
-        mockitoSession = ExtendedMockito.mockitoSession()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
                 .mockStatic(DeviceConfig::class.java)
-                .strictness(Strictness.LENIENT).startMocking()
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         dataFile = context.getFileStreamPath("testFile")
     }
@@ -83,10 +85,12 @@ class TextStorageRepositoryTest {
     @Test
     fun testWrite_MultipleEntries() {
         val storageRepository = TextStorageRepository(dataFile)
-        val components = listOf(TestPrivacySourceComponent("a", 100),
+        val components =
+            listOf(
+                TestPrivacySourceComponent("a", 100),
                 TestPrivacySourceComponent("b", 200),
                 TestPrivacySourceComponent("c", 300)
-        )
+            )
         storageRepository.persistData(components)
         val dataList = storageRepository.readData(creator)
         Assert.assertEquals(3, dataList.size)
@@ -95,10 +99,12 @@ class TextStorageRepositoryTest {
     @Test
     fun testRead_Ignore_CorruptedEntries() {
         val storageRepository = TextStorageRepository(dataFile)
-        val components = listOf(TestPrivacySourceComponent("a", 100),
-            TestPrivacySourceComponent("b", 200),
-            TestPrivacySourceComponent("c", 300)
-        )
+        val components =
+            listOf(
+                TestPrivacySourceComponent("a", 100),
+                TestPrivacySourceComponent("b", 200),
+                TestPrivacySourceComponent("c", 300)
+            )
         storageRepository.persistData(components)
         appendCorruptedData(dataFile, "not_enough_parts")
         appendCorruptedData(dataFile, "not_enough_parts")
@@ -110,9 +116,8 @@ class TextStorageRepositoryTest {
     @Test
     fun testRead_Ignore_NumberFormatError() {
         val storageRepository = TextStorageRepository(dataFile)
-        val components = listOf(TestPrivacySourceComponent("a", 100),
-            TestPrivacySourceComponent("b", 200)
-        )
+        val components =
+            listOf(TestPrivacySourceComponent("a", 100), TestPrivacySourceComponent("b", 200))
         storageRepository.persistData(components)
         appendCorruptedData(dataFile, "com.example.TestService hundred")
         appendCorruptedData(dataFile, "com.example.TestService1 abc")
@@ -128,18 +133,17 @@ class TextStorageRepositoryTest {
         }
     }
 
-    private val creator = object : PrivacySourceData.Creator<TestPrivacySourceComponent> {
-        override fun fromStorageData(data: String): TestPrivacySourceComponent {
-            val lineComponents = data.split(" ")
-            return TestPrivacySourceComponent(lineComponents[0], lineComponents[1].toInt())
+    private val creator =
+        object : PrivacySourceData.Creator<TestPrivacySourceComponent> {
+            override fun fromStorageData(data: String): TestPrivacySourceComponent {
+                val lineComponents = data.split(" ")
+                return TestPrivacySourceComponent(lineComponents[0], lineComponents[1].toInt())
+            }
         }
-    }
 }
 
-class TestPrivacySourceComponent(
-    private val name: String,
-    private val timestamp: Int
-) : PrivacySourceData {
+class TestPrivacySourceComponent(private val name: String, private val timestamp: Int) :
+    PrivacySourceData {
     override fun toStorageData(): String {
         return "$name $timestamp"
     }

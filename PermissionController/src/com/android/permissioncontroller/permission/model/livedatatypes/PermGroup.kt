@@ -17,8 +17,8 @@
 package com.android.permissioncontroller.permission.model.livedatatypes
 
 /**
- * A permission Group, represented as a PackageItemInfo groupInfo, and a map of permission name
- * to PermissionInfo objects.
+ * A permission Group, represented as a PackageItemInfo groupInfo, and a map of permission name to
+ * PermissionInfo objects.
  *
  * @param groupInfo information about the permission group
  * @param permissionInfos the Permissions in this group

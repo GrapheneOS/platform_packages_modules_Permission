@@ -67,9 +67,9 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
 /**
- * ViewModel for the PermissionAppsFragment. Has a liveData with all of the UI info for each
- * package which requests permissions in this permission group, a liveData which tracks whether or
- * not to show system apps, and a liveData tracking whether there are any system apps which request
+ * ViewModel for the PermissionAppsFragment. Has a liveData with all of the UI info for each package
+ * which requests permissions in this permission group, a liveData which tracks whether or not to
+ * show system apps, and a liveData tracking whether there are any system apps which request
  * permissions in this group.
  *
  * @param app The current application
@@ -96,10 +96,10 @@ class PermissionAppsViewModel(
     val categorizedAppsLiveData = CategorizedAppsLiveData(groupName)
 
     @get:RequiresApi(Build.VERSION_CODES.S)
-    val sensorStatusLiveData: SensorStatusLiveData by lazy(LazyThreadSafetyMode.NONE)
-    @RequiresApi(Build.VERSION_CODES.S) {
-        SensorStatusLiveData()
-    }
+    val sensorStatusLiveData: SensorStatusLiveData by
+        lazy(LazyThreadSafetyMode.NONE) @RequiresApi(Build.VERSION_CODES.S) {
+            SensorStatusLiveData()
+        }
 
     fun updateShowSystem(showSystem: Boolean) {
         if (showSystem != state.get(SHOULD_SHOW_SYSTEM_KEY)) {
@@ -111,9 +111,7 @@ class PermissionAppsViewModel(
         get() = state.get(CREATION_LOGGED_KEY) ?: false
         set(value) = state.set(CREATION_LOGGED_KEY, value)
 
-    /**
-     * A LiveData that tracks the status (blocked or available) of a sensor
-     */
+    /** A LiveData that tracks the status (blocked or available) of a sensor */
     @RequiresApi(Build.VERSION_CODES.S)
     inner class SensorStatusLiveData() : SmartUpdateMediatorLiveData<Boolean>() {
         val sensorPrivacyManager = app.getSystemService(SensorPrivacyManager::class.java)!!
@@ -157,13 +155,9 @@ class PermissionAppsViewModel(
             }
         }
 
-        private val listener = { _: Int, status: Boolean ->
-            value = status
-        }
+        private val listener = { _: Int, status: Boolean -> value = status }
 
-        private val locListener = { status: Boolean ->
-            value = !status
-        }
+        private val locListener = { status: Boolean -> value = !status }
 
         override fun onUpdate() {
             // Do nothing
@@ -171,8 +165,9 @@ class PermissionAppsViewModel(
     }
 
     inner class CategorizedAppsLiveData(groupName: String) :
-        MediatorLiveData<@kotlin.jvm.JvmSuppressWildcards
-    Map<Category, List<Pair<String, UserHandle>>>>() {
+        MediatorLiveData<
+            @kotlin.jvm.JvmSuppressWildcards Map<Category, List<Pair<String, UserHandle>>>
+        >() {
         private val packagesUiInfoLiveData = SinglePermGroupPackagesUiInfoLiveData[groupName]
 
         init {
@@ -193,18 +188,18 @@ class PermissionAppsViewModel(
             }
 
             addSource(packagesUiInfoLiveData) {
-                if (fullStorageLiveData == null || fullStorageLiveData.isInitialized)
-                    update()
+                if (fullStorageLiveData == null || fullStorageLiveData.isInitialized) update()
             }
             addSource(shouldShowSystemLiveData) {
-                if (fullStorageLiveData == null || fullStorageLiveData.isInitialized)
-                    update()
+                if (fullStorageLiveData == null || fullStorageLiveData.isInitialized) update()
             }
 
-            if ((fullStorageLiveData == null || fullStorageLiveData.isInitialized) &&
-                packagesUiInfoLiveData.isInitialized) {
-                packagesWithFullFileAccess = fullStorageLiveData?.value?.filter { it.isGranted }
-                    ?: emptyList()
+            if (
+                (fullStorageLiveData == null || fullStorageLiveData.isInitialized) &&
+                    packagesUiInfoLiveData.isInitialized
+            ) {
+                packagesWithFullFileAccess =
+                    fullStorageLiveData?.value?.filter { it.isGranted } ?: emptyList()
                 update()
             }
         }
@@ -218,12 +213,14 @@ class PermissionAppsViewModel(
             categoryMap[Category.ASK] = mutableListOf()
             categoryMap[Category.DENIED] = mutableListOf()
 
-            val packageMap = packagesUiInfoLiveData.value ?: run {
-                if (packagesUiInfoLiveData.isInitialized) {
-                    value = categoryMap
-                }
-                return
-            }
+            val packageMap =
+                packagesUiInfoLiveData.value
+                    ?: run {
+                        if (packagesUiInfoLiveData.isInitialized) {
+                            value = categoryMap
+                        }
+                        return
+                    }
 
             val hasSystem = packageMap.any { it.value.isSystem && it.value.shouldShow }
             if (hasSystem != state.get(HAS_SYSTEM_APPS_KEY)) {
@@ -241,22 +238,31 @@ class PermissionAppsViewModel(
                     continue
                 }
 
-                if (uiInfo.permGrantState == PermGrantState.PERMS_ALLOWED_ALWAYS ||
-                    uiInfo.permGrantState == PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY) {
+                if (
+                    uiInfo.permGrantState == PermGrantState.PERMS_ALLOWED_ALWAYS ||
+                        uiInfo.permGrantState == PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
+                ) {
                     showAlwaysAllowedString = true
                 }
 
-                var category = when (uiInfo.permGrantState) {
-                    PermGrantState.PERMS_ALLOWED -> Category.ALLOWED
-                    PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY -> Category.ALLOWED_FOREGROUND
-                    PermGrantState.PERMS_ALLOWED_ALWAYS -> Category.ALLOWED
-                    PermGrantState.PERMS_DENIED -> Category.DENIED
-                    PermGrantState.PERMS_ASK -> Category.ASK
-                }
+                var category =
+                    when (uiInfo.permGrantState) {
+                        PermGrantState.PERMS_ALLOWED -> Category.ALLOWED
+                        PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY -> Category.ALLOWED_FOREGROUND
+                        PermGrantState.PERMS_ALLOWED_ALWAYS -> Category.ALLOWED
+                        PermGrantState.PERMS_DENIED -> Category.DENIED
+                        PermGrantState.PERMS_ASK -> Category.ASK
+                    }
 
-                if (!SdkLevel.isAtLeastT() && groupName == Manifest.permission_group.STORAGE &&
-                    packagesWithFullFileAccess.any { !it.isLegacy && it.isGranted &&
-                        it.packageName to it.user == packageUserPair }) {
+                if (
+                    !SdkLevel.isAtLeastT() &&
+                        groupName == Manifest.permission_group.STORAGE &&
+                        packagesWithFullFileAccess.any {
+                            !it.isLegacy &&
+                                it.isGranted &&
+                                it.packageName to it.user == packageUserPair
+                        }
+                ) {
                     category = Category.ALLOWED
                 }
                 categoryMap[category]!!.add(packageUserPair)
@@ -267,9 +273,9 @@ class PermissionAppsViewModel(
     }
 
     /**
-     * If this is the storage permission group, some apps have full access to storage, while
-     * others just have access to media files. This list contains the packages with full access.
-     * To listen for changes, create and observe a FullStoragePermissionAppsLiveData
+     * If this is the storage permission group, some apps have full access to storage, while others
+     * just have access to media files. This list contains the packages with full access. To listen
+     * for changes, create and observe a FullStoragePermissionAppsLiveData
      */
     private var packagesWithFullFileAccess = listOf<FullStoragePackageState>()
 
@@ -280,17 +286,15 @@ class PermissionAppsViewModel(
      *
      * @param packageName The name of the package we want to check
      * @param user The name of the user whose package we want to check
-     *
      * @return true if the package and user has full file access
      */
     fun packageHasFullStorage(packageName: String, user: UserHandle): Boolean {
-        return packagesWithFullFileAccess.any {
-            it.packageName == packageName && it.user == user }
+        return packagesWithFullFileAccess.any { it.packageName == packageName && it.user == user }
     }
 
     /**
-     * Whether or not packages have been loaded from the system.
-     * To update, need to observe the allPackageInfosLiveData.
+     * Whether or not packages have been loaded from the system. To update, need to observe the
+     * allPackageInfosLiveData.
      *
      * @return Whether or not all packages have been loaded
      */
@@ -313,16 +317,16 @@ class PermissionAppsViewModel(
         args: Bundle
     ) {
         val activity = fragment.activity!!
-        if (LocationUtils.isLocationGroupAndProvider(
-                activity, groupName, packageName)) {
+        if (LocationUtils.isLocationGroupAndProvider(activity, groupName, packageName)) {
             val intent = Intent(activity, LocationProviderInterceptDialog::class.java)
             intent.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
             activity.startActivityAsUser(intent, user)
             return
         }
 
-        if (LocationUtils.isLocationGroupAndControllerExtraPackage(
-                activity, groupName, packageName)) {
+        if (
+            LocationUtils.isLocationGroupAndControllerExtraPackage(activity, groupName, packageName)
+        ) {
             // Redirect to location controller extra package settings.
             LocationUtils.startLocationControllerExtraPackageSettings(activity, user)
             return
@@ -332,31 +336,38 @@ class PermissionAppsViewModel(
     }
 
     fun getFilterTimeBeginMillis(): Long {
-        val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
-            AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
+        val aggregateDataFilterBeginDays =
+            if (is7DayToggleEnabled()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+            else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
 
-        return max(System.currentTimeMillis() -
+        return max(
+            System.currentTimeMillis() -
                 TimeUnit.DAYS.toMillis(aggregateDataFilterBeginDays.toLong()),
-                Instant.EPOCH.toEpochMilli())
+            Instant.EPOCH.toEpochMilli()
+        )
     }
 
     /**
      * Return a mapping of user + packageName to their last access timestamps for the permission
      * group.
      */
-    fun extractGroupUsageLastAccessTime(appPermissionUsages: List<AppPermissionUsage>):
-            MutableMap<String, Long> {
+    fun extractGroupUsageLastAccessTime(
+        appPermissionUsages: List<AppPermissionUsage>
+    ): MutableMap<String, Long> {
         val accessTime: MutableMap<String, Long> = HashMap()
         if (!SdkLevel.isAtLeastS()) {
             return accessTime
         }
 
-        val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
-            AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
+        val aggregateDataFilterBeginDays =
+            if (is7DayToggleEnabled()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+            else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
         val now = System.currentTimeMillis()
-        val filterTimeBeginMillis = max(
+        val filterTimeBeginMillis =
+            max(
                 now - TimeUnit.DAYS.toMillis(aggregateDataFilterBeginDays.toLong()),
-                Instant.EPOCH.toEpochMilli())
+                Instant.EPOCH.toEpochMilli()
+            )
         val numApps: Int = appPermissionUsages.size
         for (appIndex in 0 until numApps) {
             val appUsage: AppPermissionUsage = appPermissionUsages.get(appIndex)
@@ -380,41 +391,39 @@ class PermissionAppsViewModel(
         return accessTime
     }
 
-    /**
-     * Return the String preference summary based on the last access time.
-     */
-    fun getPreferenceSummary(res: Resources, summaryTimestamp: Triple<String, Int, String>):
-            String {
+    /** Return the String preference summary based on the last access time. */
+    fun getPreferenceSummary(
+        res: Resources,
+        summaryTimestamp: Triple<String, Int, String>
+    ): String {
         return when (summaryTimestamp.second) {
-            Utils.LAST_24H_CONTENT_PROVIDER -> res.getString(
-                    R.string.app_perms_content_provider_24h)
-            Utils.LAST_7D_CONTENT_PROVIDER -> res.getString(
-                    R.string.app_perms_content_provider_7d)
-            Utils.LAST_24H_SENSOR_TODAY -> res.getString(R.string.app_perms_24h_access,
-                    summaryTimestamp.first)
-            Utils.LAST_24H_SENSOR_YESTERDAY -> res.getString(R.string.app_perms_24h_access_yest,
-                    summaryTimestamp.first)
-            Utils.LAST_7D_SENSOR -> res.getString(R.string.app_perms_7d_access,
-                    summaryTimestamp.third, summaryTimestamp.first)
+            Utils.LAST_24H_CONTENT_PROVIDER ->
+                res.getString(R.string.app_perms_content_provider_24h)
+            Utils.LAST_7D_CONTENT_PROVIDER -> res.getString(R.string.app_perms_content_provider_7d)
+            Utils.LAST_24H_SENSOR_TODAY ->
+                res.getString(R.string.app_perms_24h_access, summaryTimestamp.first)
+            Utils.LAST_24H_SENSOR_YESTERDAY ->
+                res.getString(R.string.app_perms_24h_access_yest, summaryTimestamp.first)
+            Utils.LAST_7D_SENSOR ->
+                res.getString(
+                    R.string.app_perms_7d_access,
+                    summaryTimestamp.third,
+                    summaryTimestamp.first
+                )
             else -> ""
         }
     }
 
-    /**
-     * Return two preferences to determine their ordering.
-     */
+    /** Return two preferences to determine their ordering. */
     fun comparePreference(collator: Collator, lhs: Preference, rhs: Preference): Int {
-        var result: Int = collator.compare(lhs.title.toString(),
-                rhs.title.toString())
+        var result: Int = collator.compare(lhs.title.toString(), rhs.title.toString())
         if (result == 0) {
             result = lhs.key.compareTo(rhs.key)
         }
         return result
     }
 
-    /**
-     * Log that the fragment was created.
-     */
+    /** Log that the fragment was created. */
     fun logPermissionAppsFragmentCreated(
         packageName: String,
         user: UserHandle,
@@ -439,14 +448,30 @@ class PermissionAppsViewModel(
                 category = PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__DENIED
             }
         }
-        val uid = getPackageUid(application,
-                packageName, user) ?: return
+        val uid = getPackageUid(application, packageName, user) ?: return
         PermissionControllerStatsLog.write(
-                PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED, sessionId, viewId,
-                permGroupName, uid, packageName, category)
-        Log.v(tag, tag + " created with sessionId=" + sessionId +
-                " permissionGroupName=" + permGroupName + " appUid=" + uid +
-                " packageName=" + packageName + " category=" + category)
+            PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED,
+            sessionId,
+            viewId,
+            permGroupName,
+            uid,
+            packageName,
+            category
+        )
+        Log.v(
+            tag,
+            tag +
+                " created with sessionId=" +
+                sessionId +
+                " permissionGroupName=" +
+                permGroupName +
+                " appUid=" +
+                uid +
+                " packageName=" +
+                packageName +
+                " category=" +
+                category
+        )
     }
 }
 
@@ -470,7 +495,6 @@ class PermissionAppsViewModelFactory(
         state.set(HAS_SYSTEM_APPS_KEY, state.get<Boolean>(HAS_SYSTEM_APPS_KEY) ?: true)
         state.set(SHOW_ALWAYS_ALLOWED, state.get<Boolean>(SHOW_ALWAYS_ALLOWED) ?: false)
         state.set(CREATION_LOGGED_KEY, state.get<Boolean>(CREATION_LOGGED_KEY) ?: false)
-        @Suppress("UNCHECKED_CAST")
-        return PermissionAppsViewModel(state, app, groupName) as T
+        @Suppress("UNCHECKED_CAST") return PermissionAppsViewModel(state, app, groupName) as T
     }
 }

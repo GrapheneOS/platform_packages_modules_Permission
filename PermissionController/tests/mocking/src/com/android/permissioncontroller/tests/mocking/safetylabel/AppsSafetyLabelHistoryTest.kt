@@ -49,7 +49,9 @@ class AppsSafetyLabelHistoryTest {
     fun createAppSafetyLabelHistory_requiresAllSafetyLabelsHaveSameApp() {
         Assert.assertThrows(IllegalArgumentException::class.java) {
             AppSafetyLabelHistory(
-                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_2_V1))
+                AppInfo(PACKAGE_NAME_1),
+                listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_2_V1)
+            )
         }
     }
 
@@ -57,7 +59,9 @@ class AppsSafetyLabelHistoryTest {
     fun createAppSafetyLabelHistory_requiresOrderedByReceivedAt() {
         Assert.assertThrows(IllegalArgumentException::class.java) {
             AppSafetyLabelHistory(
-                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V1))
+                AppInfo(PACKAGE_NAME_1),
+                listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V1)
+            )
         }
     }
 
@@ -65,7 +69,9 @@ class AppsSafetyLabelHistoryTest {
     fun withSafetyLabel_forDifferentApp_throwsIllegalArgumentException() {
         val appSafetyLabelHistory =
             AppSafetyLabelHistory(
-                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+                AppInfo(PACKAGE_NAME_1),
+                listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3)
+            )
 
         Assert.assertThrows(IllegalArgumentException::class.java) {
             appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_2_V1, 20)
@@ -76,25 +82,34 @@ class AppsSafetyLabelHistoryTest {
     fun withSafetyLabel_returnsOrderdSafetyLabels() {
         val appSafetyLabelHistory =
             AppSafetyLabelHistory(
-                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+                AppInfo(PACKAGE_NAME_1),
+                listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3)
+            )
 
         assertThat(appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_1_V2, 20))
             .isEqualTo(
                 AppSafetyLabelHistory(
                     AppInfo(PACKAGE_NAME_1),
-                    listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)))
+                    listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)
+                )
+            )
     }
 
     @Test
     fun withSafetyLabel_dropsOldLabelsWhenMaxPersisted() {
         val appSafetyLabelHistory =
             AppSafetyLabelHistory(
-                AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3))
+                AppInfo(PACKAGE_NAME_1),
+                listOf(SAFETY_LABEL_PKG_1_V1, SAFETY_LABEL_PKG_1_V3)
+            )
 
         assertThat(appSafetyLabelHistory.withSafetyLabel(SAFETY_LABEL_PKG_1_V2, 2))
             .isEqualTo(
                 AppSafetyLabelHistory(
-                    AppInfo(PACKAGE_NAME_1), listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)))
+                    AppInfo(PACKAGE_NAME_1),
+                    listOf(SAFETY_LABEL_PKG_1_V2, SAFETY_LABEL_PKG_1_V3)
+                )
+            )
     }
 
     @Test
@@ -105,7 +120,10 @@ class AppsSafetyLabelHistoryTest {
 
         val safetyLabelForPersistence =
             SafetyLabel.extractLocationSharingSafetyLabel(
-                PACKAGE_NAME_1, DATE_2022_09_01, appMetadataSafetyLabel)
+                PACKAGE_NAME_1,
+                DATE_2022_09_01,
+                appMetadataSafetyLabel
+            )
 
         assertThat(safetyLabelForPersistence)
             .isEqualTo(SafetyLabel(AppInfo(PACKAGE_NAME_1), DATE_2022_09_01, DataLabel(mapOf())))
@@ -119,14 +137,19 @@ class AppsSafetyLabelHistoryTest {
 
         val safetyLabelForPersistence =
             SafetyLabel.extractLocationSharingSafetyLabel(
-                PACKAGE_NAME_1, DATE_2022_10_10, appMetadataSafetyLabel)
+                PACKAGE_NAME_1,
+                DATE_2022_10_10,
+                appMetadataSafetyLabel
+            )
 
         assertThat(safetyLabelForPersistence)
             .isEqualTo(
                 SafetyLabel(
                     AppInfo(PACKAGE_NAME_1),
                     DATE_2022_10_10,
-                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false)))))
+                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(false)))
+                )
+            )
     }
 
     @Test
@@ -137,14 +160,19 @@ class AppsSafetyLabelHistoryTest {
 
         val safetyLabelForPersistence =
             SafetyLabel.extractLocationSharingSafetyLabel(
-                PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
+                PACKAGE_NAME_2,
+                DATE_2022_10_10,
+                appMetadataSafetyLabel
+            )
 
         assertThat(safetyLabelForPersistence)
             .isEqualTo(
                 SafetyLabel(
                     AppInfo(PACKAGE_NAME_2),
                     DATE_2022_10_10,
-                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))))
+                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))
+                )
+            )
     }
 
     @Test
@@ -155,7 +183,10 @@ class AppsSafetyLabelHistoryTest {
 
         val safetyLabelForPersistence =
             SafetyLabel.extractLocationSharingSafetyLabel(
-                PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
+                PACKAGE_NAME_2,
+                DATE_2022_10_10,
+                appMetadataSafetyLabel
+            )
 
         assertThat(safetyLabelForPersistence)
             .isEqualTo(SafetyLabel(AppInfo(PACKAGE_NAME_2), DATE_2022_10_10, DataLabel(mapOf())))
@@ -170,14 +201,19 @@ class AppsSafetyLabelHistoryTest {
 
         val safetyLabelForPersistence =
             SafetyLabel.extractLocationSharingSafetyLabel(
-                PACKAGE_NAME_2, DATE_2022_10_10, appMetadataSafetyLabel)
+                PACKAGE_NAME_2,
+                DATE_2022_10_10,
+                appMetadataSafetyLabel
+            )
 
         assertThat(safetyLabelForPersistence)
             .isEqualTo(
                 SafetyLabel(
                     AppInfo(PACKAGE_NAME_2),
                     DATE_2022_10_10,
-                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))))
+                    DataLabel(mapOf(LOCATION_CATEGORY to DataCategory(true)))
+                )
+            )
     }
 
     /** Companion object for [AppsSafetyLabelHistoryTest]. */
@@ -211,8 +247,10 @@ class AppsSafetyLabelHistoryTest {
                         PersistableBundle().apply {
                             putIntArray(
                                 PURPOSES_KEY,
-                                listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray())
-                        })
+                                listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray()
+                            )
+                        }
+                    )
                 }
 
             return PersistableBundle().apply {
@@ -227,7 +265,8 @@ class AppsSafetyLabelHistoryTest {
                         APPROX_LOCATION,
                         PersistableBundle().apply {
                             putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
-                        })
+                        }
+                    )
                 }
 
             return PersistableBundle().apply {
@@ -242,7 +281,8 @@ class AppsSafetyLabelHistoryTest {
                         FINANCIAL_PURCHASE_HISTORY,
                         PersistableBundle().apply {
                             putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
-                        })
+                        }
+                    )
                 }
 
             return PersistableBundle().apply {
@@ -257,7 +297,8 @@ class AppsSafetyLabelHistoryTest {
                         APPROX_LOCATION,
                         PersistableBundle().apply {
                             putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
-                        })
+                        }
+                    )
                 }
             val financeBundle =
                 PersistableBundle().apply {
@@ -265,7 +306,8 @@ class AppsSafetyLabelHistoryTest {
                         FINANCIAL_PURCHASE_HISTORY,
                         PersistableBundle().apply {
                             putIntArray(PURPOSES_KEY, listOf(PURPOSE_ADVERTISING).toIntArray())
-                        })
+                        }
+                    )
                 }
 
             return PersistableBundle().apply {

@@ -35,9 +35,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.AfterClass
 import org.junit.BeforeClass
 
-/**
- * Super class with utilities for testing permission hub 2 code
- */
+/** Super class with utilities for testing permission hub 2 code */
 open class PermissionHub2Test {
     private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
@@ -54,13 +52,18 @@ open class PermissionHub2Test {
         fun enablePermissionHub2() {
 
             runWithShellPermissionIdentity {
-                wasPermissionHubEnabled = DeviceConfig.getBoolean(NAMESPACE_PRIVACY,
-                    PROPERTY_PERMISSIONS_HUB_2_ENABLED, false)
+                wasPermissionHubEnabled =
+                    DeviceConfig.getBoolean(
+                        NAMESPACE_PRIVACY,
+                        PROPERTY_PERMISSIONS_HUB_2_ENABLED,
+                        false
+                    )
             }
 
             if (!wasPermissionHubEnabled) {
                 runShellCommand(
-                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED true")
+                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED true"
+                )
             }
         }
 
@@ -69,34 +72,43 @@ open class PermissionHub2Test {
         fun disablePermissionHub2() {
             if (!wasPermissionHubEnabled) {
                 runShellCommand(
-                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED false")
+                    "device_config put privacy $PROPERTY_PERMISSIONS_HUB_2_ENABLED false"
+                )
             }
         }
     }
 
-    /**
-     * Make {@value #APP} access the camera
-     */
+    /** Make {@value #APP} access the camera */
     protected fun accessCamera() {
         // App needs to be in foreground to be able to access camera
         context.startActivity(
-            Intent().setComponent(ComponentName.createRelative(APP, ".DummyActivity"))
-                .setFlags(FLAG_ACTIVITY_NEW_TASK))
+            Intent()
+                .setComponent(ComponentName.createRelative(APP, ".DummyActivity"))
+                .setFlags(FLAG_ACTIVITY_NEW_TASK)
+        )
 
         runWithShellPermissionIdentity {
             eventually {
                 assertThat(
-                    context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
-                        FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
-                ).isNotEqualTo(0)
+                        context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
+                            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
+                    )
+                    .isNotEqualTo(0)
             }
 
             eventually {
                 assertThat(
-                    context.getSystemService(AppOpsManager::class.java).startOp(
-                        OPSTR_CAMERA, context.packageManager.getPackageUid(APP, 0), APP, null, null
+                        context
+                            .getSystemService(AppOpsManager::class.java)
+                            .startOp(
+                                OPSTR_CAMERA,
+                                context.packageManager.getPackageUid(APP, 0),
+                                APP,
+                                null,
+                                null
+                            )
                     )
-                ).isEqualTo(MODE_ALLOWED)
+                    .isEqualTo(MODE_ALLOWED)
             }
         }
     }

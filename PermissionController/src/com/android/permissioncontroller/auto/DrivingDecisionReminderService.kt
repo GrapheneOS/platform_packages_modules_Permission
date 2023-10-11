@@ -55,9 +55,7 @@ import java.util.Random
  */
 class DrivingDecisionReminderService : Service() {
 
-    /**
-     * Information needed to show a reminder about a permission decisions.
-     */
+    /** Information needed to show a reminder about a permission decisions. */
     data class PermissionReminder(
         val packageName: String,
         val permissionGroup: String,
@@ -109,22 +107,26 @@ class DrivingDecisionReminderService : Service() {
             packageName: String,
             permGroupName: String
         ) {
-            Car.createCar(
-                context,
-                /* handler= */ null,
-                Car.CAR_WAIT_TIMEOUT_DO_NOT_WAIT) { car: Car, ready: Boolean ->
+            Car.createCar(context, /* handler= */ null, Car.CAR_WAIT_TIMEOUT_DO_NOT_WAIT) {
+                car: Car,
+                ready: Boolean ->
                 // just give up if we can't connect to the car
                 if (ready) {
-                    val restrictionsManager = car.getCarManager(
-                        Car.CAR_UX_RESTRICTION_SERVICE) as CarUxRestrictionsManager
-                    if (restrictionsManager.currentCarUxRestrictions
-                            .isRequiresDistractionOptimization) {
+                    val restrictionsManager =
+                        car.getCarManager(Car.CAR_UX_RESTRICTION_SERVICE)
+                            as CarUxRestrictionsManager
+                    if (
+                        restrictionsManager.currentCarUxRestrictions
+                            .isRequiresDistractionOptimization
+                    ) {
                         context.startService(
                             createIntent(
                                 context,
                                 packageName,
                                 permGroupName,
-                                Process.myUserHandle()))
+                                Process.myUserHandle()
+                            )
+                        )
                     }
                 }
                 car.disconnect()
@@ -156,28 +158,32 @@ class DrivingDecisionReminderService : Service() {
     }
 
     private fun scheduleNotificationForUnrestrictedState() {
-        Car.createCar(this, null,
-            Car.CAR_WAIT_TIMEOUT_DO_NOT_WAIT
-        ) { createdCar: Car?, ready: Boolean ->
+        Car.createCar(this, null, Car.CAR_WAIT_TIMEOUT_DO_NOT_WAIT) {
+            createdCar: Car?,
+            ready: Boolean ->
             car = createdCar
             if (ready) {
                 onCarReady()
             } else {
-                DumpableLog.w(LOG_TAG,
-                    "Car service disconnected, no notification will be scheduled")
+                DumpableLog.w(
+                    LOG_TAG,
+                    "Car service disconnected, no notification will be scheduled"
+                )
                 stopSelf()
             }
         }
     }
 
     private fun onCarReady() {
-        carUxRestrictionsManager = car?.getCarManager(
-            Car.CAR_UX_RESTRICTION_SERVICE) as CarUxRestrictionsManager
+        carUxRestrictionsManager =
+            car?.getCarManager(Car.CAR_UX_RESTRICTION_SERVICE) as CarUxRestrictionsManager
         DumpableLog.d(LOG_TAG, "Registering UX restriction listener")
         carUxRestrictionsManager?.registerListener { restrictions ->
             if (!restrictions.isRequiresDistractionOptimization) {
-                DumpableLog.d(LOG_TAG,
-                    "UX restrictions no longer required - showing reminder notification")
+                DumpableLog.d(
+                    LOG_TAG,
+                    "UX restrictions no longer required - showing reminder notification"
+                )
                 showRecentGrantDecisionsPostDriveNotification()
                 stopSelf()
             }
@@ -185,10 +191,12 @@ class DrivingDecisionReminderService : Service() {
     }
 
     private fun parseStartIntent(intent: Intent?): PermissionReminder? {
-        if (intent == null ||
-            !intent.hasExtra(EXTRA_PACKAGE_NAME) ||
-            !intent.hasExtra(EXTRA_PERMISSION_GROUP) ||
-            !intent.hasExtra(EXTRA_USER)) {
+        if (
+            intent == null ||
+                !intent.hasExtra(EXTRA_PACKAGE_NAME) ||
+                !intent.hasExtra(EXTRA_PERMISSION_GROUP) ||
+                !intent.hasExtra(EXTRA_USER)
+        ) {
             DumpableLog.e(LOG_TAG, "Missing extras from intent $intent")
             return null
         }
@@ -202,21 +210,25 @@ class DrivingDecisionReminderService : Service() {
     fun showRecentGrantDecisionsPostDriveNotification() {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
-        val permissionReminderChannel = NotificationChannel(
-            Constants.PERMISSION_REMINDER_CHANNEL_ID, getString(R.string.permission_reminders),
-            NotificationManager.IMPORTANCE_HIGH)
+        val permissionReminderChannel =
+            NotificationChannel(
+                Constants.PERMISSION_REMINDER_CHANNEL_ID,
+                getString(R.string.permission_reminders),
+                NotificationManager.IMPORTANCE_HIGH
+            )
         notificationManager.createNotificationChannel(permissionReminderChannel)
 
-        notificationManager.notify(DrivingDecisionReminderService::class.java.simpleName,
+        notificationManager.notify(
+            DrivingDecisionReminderService::class.java.simpleName,
             Constants.PERMISSION_DECISION_REMINDER_NOTIFICATION_ID,
-            createNotification(createNotificationTitle(), createNotificationContent()))
+            createNotification(createNotificationTitle(), createNotificationContent())
+        )
 
         logNotificationPresented()
     }
 
     private fun createNotificationTitle(): String {
-        return applicationContext
-            .getString(R.string.post_drive_permission_decision_reminder_title)
+        return applicationContext.getString(R.string.post_drive_permission_decision_reminder_title)
     }
 
     @VisibleForTesting
@@ -224,76 +236,106 @@ class DrivingDecisionReminderService : Service() {
         val packageLabels: MutableList<String> = mutableListOf()
         val permissionGroupNames: MutableList<String> = mutableListOf()
         for (permissionReminder in permissionReminders) {
-            val packageLabel = getLabelForPackage(permissionReminder.packageName,
-                permissionReminder.user)
-            val permissionGroupLabel = getPermGroupLabel(applicationContext,
-                permissionReminder.permissionGroup).toString()
+            val packageLabel =
+                getLabelForPackage(permissionReminder.packageName, permissionReminder.user)
+            val permissionGroupLabel =
+                getPermGroupLabel(applicationContext, permissionReminder.permissionGroup).toString()
             packageLabels.add(packageLabel)
             permissionGroupNames.add(permissionGroupLabel)
         }
         val packageLabelsDistinct = packageLabels.distinct()
         val permissionGroupNamesDistinct = permissionGroupNames.distinct()
         return if (packageLabelsDistinct.size > 1) {
-            StringUtils.getIcuPluralsString(applicationContext,
+            StringUtils.getIcuPluralsString(
+                applicationContext,
                 R.string.post_drive_permission_decision_reminder_summary_multi_apps,
-                (packageLabels.size - 1), packageLabelsDistinct[0])
+                (packageLabels.size - 1),
+                packageLabelsDistinct[0]
+            )
         } else if (permissionGroupNamesDistinct.size == 2) {
             getString(
                 R.string.post_drive_permission_decision_reminder_summary_1_app_2_permissions,
-                packageLabelsDistinct[0], permissionGroupNamesDistinct[0],
-                permissionGroupNamesDistinct[1])
+                packageLabelsDistinct[0],
+                permissionGroupNamesDistinct[0],
+                permissionGroupNamesDistinct[1]
+            )
         } else if (permissionGroupNamesDistinct.size > 2) {
             getString(
                 R.string.post_drive_permission_decision_reminder_summary_1_app_multi_permission,
-                permissionGroupNamesDistinct.size, packageLabelsDistinct[0])
+                permissionGroupNamesDistinct.size,
+                packageLabelsDistinct[0]
+            )
         } else {
             getString(
                 R.string.post_drive_permission_decision_reminder_summary_1_app_1_permission,
-                packageLabelsDistinct[0], permissionGroupNamesDistinct[0])
+                packageLabelsDistinct[0],
+                permissionGroupNamesDistinct[0]
+            )
         }
     }
 
     @VisibleForTesting
     fun getLabelForPackage(packageName: String, user: UserHandle): String {
-        return BidiFormatter.getInstance().unicodeWrap(
-            getPackageLabel(application, packageName, user))
+        return BidiFormatter.getInstance()
+            .unicodeWrap(getPackageLabel(application, packageName, user))
     }
 
     private fun createNotification(title: String, body: String): Notification {
-        val clickIntent = Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
-            putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-            putExtra(AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE,
-                AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE_NOTIFICATION)
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT or
-            PendingIntent.FLAG_IMMUTABLE)
+        val clickIntent =
+            Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
+                putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+                putExtra(
+                    AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE,
+                    AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE_NOTIFICATION
+                )
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+        val pendingIntent =
+            PendingIntent.getActivity(
+                this,
+                0,
+                clickIntent,
+                PendingIntent.FLAG_ONE_SHOT or
+                    PendingIntent.FLAG_UPDATE_CURRENT or
+                    PendingIntent.FLAG_IMMUTABLE
+            )
 
-        val settingsDrawable = KotlinUtils.getBadgedPackageIcon(
-            application,
-            getSettingsPackageName(applicationContext.packageManager),
-            permissionReminders.first().user)
-        val settingsIcon = if (settingsDrawable != null) {
-            KotlinUtils.convertToBitmap(settingsDrawable)
-        } else {
-            null
-        }
+        val settingsDrawable =
+            KotlinUtils.getBadgedPackageIcon(
+                application,
+                getSettingsPackageName(applicationContext.packageManager),
+                permissionReminders.first().user
+            )
+        val settingsIcon =
+            if (settingsDrawable != null) {
+                KotlinUtils.convertToBitmap(settingsDrawable)
+            } else {
+                null
+            }
 
-        val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
-            .setContentTitle(title)
-            .setContentText(body)
-            .setSmallIcon(R.drawable.ic_settings_24dp)
-            .setLargeIcon(settingsIcon)
-            .setColor(getColor(android.R.color.system_notification_accent_color))
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-            .addExtras(Bundle().apply {
-                putBoolean("com.android.car.notification.EXTRA_USE_LAUNCHER_ICON", false)
-            })
-            // Auto doesn't show icons for actions
-            .addAction(Notification.Action.Builder(/* icon= */ null,
-                getString(R.string.go_to_settings), pendingIntent).build())
+        val b =
+            Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSmallIcon(R.drawable.ic_settings_24dp)
+                .setLargeIcon(settingsIcon)
+                .setColor(getColor(android.R.color.system_notification_accent_color))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .addExtras(
+                    Bundle().apply {
+                        putBoolean("com.android.car.notification.EXTRA_USE_LAUNCHER_ICON", false)
+                    }
+                )
+                // Auto doesn't show icons for actions
+                .addAction(
+                    Notification.Action.Builder(
+                            /* icon= */ null,
+                            getString(R.string.go_to_settings),
+                            pendingIntent
+                        )
+                        .build()
+                )
         Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let { label ->
             val extras = Bundle()
             extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, label.toString())
@@ -311,6 +353,8 @@ class DrivingDecisionReminderService : Service() {
     private fun logNotificationPresented() {
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED,
-            sessionId, PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED)
+            sessionId,
+            PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED
+        )
     }
 }

@@ -78,7 +78,8 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
                             super.onTransitionEnd(transition)
                             fadeTextIn(textChanges, parentViewGroup, onFinish)
                         }
-                    })
+                    }
+                )
         parentViewGroup.post {
             TransitionManager.beginDelayedTransition(parentViewGroup, fadeOutTransition)
             for ((textView, _) in textChanges) {
@@ -101,7 +102,8 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
                             super.onTransitionEnd(transition)
                             onFinish?.run()
                         }
-                    })
+                    }
+                )
 
         parent.post {
             TransitionManager.beginDelayedTransition(parent, fadeInTransition)

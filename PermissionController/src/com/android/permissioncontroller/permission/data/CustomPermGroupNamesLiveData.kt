@@ -24,7 +24,6 @@ import com.android.permissioncontroller.permission.utils.PermissionMapping
 /**
  * A class which tracks the names of all custom permission groups in the system, including
  * non-grouped runtime permissions, the UNDEFINED group, and any group not defined by the system.
- *
  */
 object CustomPermGroupNamesLiveData : SmartUpdateMediatorLiveData<List<String>>() {
 
@@ -32,9 +31,7 @@ object CustomPermGroupNamesLiveData : SmartUpdateMediatorLiveData<List<String>>(
     private val packagesLiveData = AllPackageInfosLiveData
 
     init {
-        addSource(packagesLiveData) {
-            update()
-        }
+        addSource(packagesLiveData) { update() }
     }
 
     override fun onUpdate() {
@@ -49,15 +46,19 @@ object CustomPermGroupNamesLiveData : SmartUpdateMediatorLiveData<List<String>>(
                 packageInfo.permissions.let {
                     for (permission in it) {
                         // We care only about installed runtime permissions.
-                        if (permission.protection != PermissionInfo.PROTECTION_DANGEROUS ||
-                            permission.flags and PermissionInfo.FLAG_INSTALLED == 0) {
+                        if (
+                            permission.protection != PermissionInfo.PROTECTION_DANGEROUS ||
+                                permission.flags and PermissionInfo.FLAG_INSTALLED == 0
+                        ) {
                             continue
                         }
 
                         // If this permission is already in a group, no more work to do
-                        if (groupNames.contains(permission.group) ||
-                            platformGroupNames.contains(permission.group) ||
-                            groupNames.contains(permission.name)) {
+                        if (
+                            groupNames.contains(permission.group) ||
+                                platformGroupNames.contains(permission.group) ||
+                                groupNames.contains(permission.name)
+                        ) {
                             continue
                         }
 

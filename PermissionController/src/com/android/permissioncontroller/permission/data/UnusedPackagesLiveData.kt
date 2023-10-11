@@ -28,11 +28,12 @@ import com.android.permissioncontroller.hibernation.lastTimePackageUsed
 import com.android.permissioncontroller.permission.utils.Utils
 
 /**
- * Gets all unused packages from an existing live data that have not been opened in a few months
- * and the permission groups that have been revoked for them, if any. This will let us removed used
- * apps from the Unused Apps screen.
+ * Gets all unused packages from an existing live data that have not been opened in a few months and
+ * the permission groups that have been revoked for them, if any. This will let us removed used apps
+ * from the Unused Apps screen.
  *
  * @param sourceLiveData the live data for packages to base this list of unused apps on
+ *
  * ```(packageName, user) -> [groupName]```
  */
 class UnusedPackagesLiveData(
@@ -45,15 +46,9 @@ class UnusedPackagesLiveData(
     private var usageStatsLiveData = UsageStatsLiveData[unusedThreshold]
 
     init {
-        addSource(usageStatsLiveData) {
-            update()
-        }
-        addSource(AutoRevokedPackagesLiveData) {
-            update()
-        }
-        addSource(sourceLiveData) {
-            update()
-        }
+        addSource(usageStatsLiveData) { update() }
+        addSource(AutoRevokedPackagesLiveData) { update() }
+        addSource(sourceLiveData) { update() }
         DeviceConfig.addOnPropertiesChangedListener(
             NAMESPACE_PERMISSIONS,
             PermissionControllerApplication.get().mainExecutor,
@@ -63,9 +58,7 @@ class UnusedPackagesLiveData(
                         removeSource(usageStatsLiveData)
                         unusedThreshold = getUnusedThresholdMs()
                         usageStatsLiveData = UsageStatsLiveData[unusedThreshold]
-                        addSource(usageStatsLiveData) {
-                            update()
-                        }
+                        addSource(usageStatsLiveData) { update() }
                     }
                 }
             }
@@ -73,9 +66,11 @@ class UnusedPackagesLiveData(
     }
 
     override fun onUpdate() {
-        if (!usageStatsLiveData.isInitialized ||
-            !AutoRevokedPackagesLiveData.isInitialized ||
-            !sourceLiveData.isInitialized) {
+        if (
+            !usageStatsLiveData.isInitialized ||
+                !AutoRevokedPackagesLiveData.isInitialized ||
+                !sourceLiveData.isInitialized
+        ) {
             return
         }
 
@@ -92,8 +87,10 @@ class UnusedPackagesLiveData(
         for ((user, stats) in usageStatsLiveData.value!!) {
             for (stat in stats) {
                 val userPackage = stat.packageName to user
-                if (userPackage in autoRevokedPackages &&
-                    (now - stat.lastTimePackageUsed()) < unusedThreshold) {
+                if (
+                    userPackage in autoRevokedPackages &&
+                        (now - stat.lastTimePackageUsed()) < unusedThreshold
+                ) {
                     unusedPackages.remove(userPackage)
                 }
             }

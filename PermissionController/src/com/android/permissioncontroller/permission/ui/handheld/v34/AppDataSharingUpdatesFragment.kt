@@ -98,7 +98,8 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         val updatesCategory =
             preferenceScreen.findPreference<PreferenceCategory>(
                 LAST_PERIOD_UPDATES_PREFERENCE_CATEGORY_ID
-            ) ?: return
+            )
+                ?: return
 
         val preferencesToRemove = mutableSetOf<Preference>()
         for (i in 0 until (updatesCategory.preferenceCount)) {
@@ -192,11 +193,12 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
             it.isVisible = true
         }
 
-        val onFooterLinkClick = if (viewModel.canLinkToHelpCenter(requireActivity())) {
-            View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
-        } else {
-            null
-        }
+        val onFooterLinkClick =
+            if (viewModel.canLinkToHelpCenter(requireActivity())) {
+                View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
+            } else {
+                null
+            }
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)
@@ -231,11 +233,14 @@ class AppDataSharingUpdatesFragment : PermissionsFrameFragment() {
         footerPreference?.let {
             it.footerMessage = getString(R.string.data_sharing_updates_footer_message)
             it.footerLink = getString(R.string.learn_about_data_sharing)
-            it.onFooterLinkClick = if (viewModel.canLinkToHelpCenter(requireActivity())) {
-                View.OnClickListener { viewModel.openSafetyLabelsHelpCenterPage(requireActivity()) }
-            } else {
-                null
-            }
+            it.onFooterLinkClick =
+                if (viewModel.canLinkToHelpCenter(requireActivity())) {
+                    View.OnClickListener {
+                        viewModel.openSafetyLabelsHelpCenterPage(requireActivity())
+                    }
+                } else {
+                    null
+                }
             it.isVisible = true
         }
     }

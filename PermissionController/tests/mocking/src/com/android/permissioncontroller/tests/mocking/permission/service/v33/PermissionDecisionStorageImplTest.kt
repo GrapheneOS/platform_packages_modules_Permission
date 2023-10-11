@@ -27,6 +27,10 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.v33.PermissionDecision
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.google.common.truth.Truth.assertThat
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.util.Date
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -37,10 +41,6 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.util.Date
 
 @RunWith(AndroidJUnit4::class)
 class PermissionDecisionStorageImplTest {
@@ -53,13 +53,12 @@ class PermissionDecisionStorageImplTest {
 
     private val jan12020 = Date(2020, 0, 1).time
 
-    private val mapLocationGrant = PermissionDecision(
-        MAP_PACKAGE_NAME, jan12020, "location", /* isGranted */ true)
-    private val parkingLocationGrant = PermissionDecision(
-        "package.test.parking", jan12020, "location", /* isGranted */ false)
+    private val mapLocationGrant =
+        PermissionDecision(MAP_PACKAGE_NAME, jan12020, "location", /* isGranted */ true)
+    private val parkingLocationGrant =
+        PermissionDecision("package.test.parking", jan12020, "location", /* isGranted */ false)
 
-    @Mock
-    lateinit var jobScheduler: JobScheduler
+    @Mock lateinit var jobScheduler: JobScheduler
 
     private lateinit var context: Context
     private lateinit var storage: PermissionDecisionStorageImpl
@@ -69,10 +68,12 @@ class PermissionDecisionStorageImplTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         Mockito.`when`(PermissionControllerApplication.get()).thenReturn(application)
         context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
@@ -102,8 +103,8 @@ class PermissionDecisionStorageImplTest {
 
     @Test
     fun serialize_roundsTimeDownToDate() {
-        val laterInTheDayGrant = mapLocationGrant.copy(
-            eventTime = (mapLocationGrant.eventTime + FIVE_HOURS_MS))
+        val laterInTheDayGrant =
+            mapLocationGrant.copy(eventTime = (mapLocationGrant.eventTime + FIVE_HOURS_MS))
         val outStream = ByteArrayOutputStream()
         storage.serialize(outStream, listOf(laterInTheDayGrant))
 

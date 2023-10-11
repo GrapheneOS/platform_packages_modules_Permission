@@ -28,6 +28,10 @@ import com.android.permissioncontroller.permission.data.PermissionChange
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.utils.Utils
 import com.google.common.truth.Truth.assertThat
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.util.Date
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -39,10 +43,6 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.util.Date
 
 @RunWith(AndroidJUnit4::class)
 class PermissionChangeStorageImplTest {
@@ -57,8 +57,7 @@ class PermissionChangeStorageImplTest {
 
     private val mapChange = PermissionChange(MAP_PACKAGE_NAME, jan12020)
 
-    @Mock
-    lateinit var jobScheduler: JobScheduler
+    @Mock lateinit var jobScheduler: JobScheduler
 
     private lateinit var context: Context
     private lateinit var storage: PermissionChangeStorageImpl
@@ -68,10 +67,12 @@ class PermissionChangeStorageImplTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         Mockito.`when`(PermissionControllerApplication.get()).thenReturn(application)
         context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
@@ -101,8 +102,7 @@ class PermissionChangeStorageImplTest {
 
     @Test
     fun serialize_roundsTimeDownToDate() {
-        val laterInTheDayGrant = mapChange.copy(
-            eventTime = (mapChange.eventTime + FIVE_HOURS_MS))
+        val laterInTheDayGrant = mapChange.copy(eventTime = (mapChange.eventTime + FIVE_HOURS_MS))
         val outStream = ByteArrayOutputStream()
         storage.serialize(outStream, listOf(laterInTheDayGrant))
 
@@ -113,9 +113,12 @@ class PermissionChangeStorageImplTest {
     @Test
     fun serialize_exactTimeDataCanBeParsed() {
         Mockito.`when`(
-            DeviceConfig.getBoolean(ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
-                ArgumentMatchers.anyBoolean()))
+                DeviceConfig.getBoolean(
+                    ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                    ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
+                    ArgumentMatchers.anyBoolean()
+                )
+            )
             .thenReturn(true)
 
         val outStream = ByteArrayOutputStream()
@@ -131,9 +134,12 @@ class PermissionChangeStorageImplTest {
         storage.serialize(outStream, listOf(mapChange))
 
         Mockito.`when`(
-            DeviceConfig.getBoolean(ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
-                ArgumentMatchers.anyBoolean()))
+                DeviceConfig.getBoolean(
+                    ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                    ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
+                    ArgumentMatchers.anyBoolean()
+                )
+            )
             .thenReturn(true)
 
         val inStream = ByteArrayInputStream(outStream.toByteArray())
@@ -143,20 +149,25 @@ class PermissionChangeStorageImplTest {
     @Test
     fun serialize_afterStoresExactTimeChangedToFalse_roundsTimeDownToDate() {
         Mockito.`when`(
-            DeviceConfig.getBoolean(ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
-                ArgumentMatchers.anyBoolean()))
+                DeviceConfig.getBoolean(
+                    ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                    ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
+                    ArgumentMatchers.anyBoolean()
+                )
+            )
             .thenReturn(true)
 
-        val laterInTheDayEvent = mapChange.copy(
-            eventTime = (mapChange.eventTime + FIVE_HOURS_MS))
+        val laterInTheDayEvent = mapChange.copy(eventTime = (mapChange.eventTime + FIVE_HOURS_MS))
         val outStream = ByteArrayOutputStream()
         storage.serialize(outStream, listOf(laterInTheDayEvent))
 
         Mockito.`when`(
-            DeviceConfig.getBoolean(ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
-                ArgumentMatchers.anyBoolean()))
+                DeviceConfig.getBoolean(
+                    ArgumentMatchers.eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                    ArgumentMatchers.eq(Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME),
+                    ArgumentMatchers.anyBoolean()
+                )
+            )
             .thenReturn(false)
 
         val inStream = ByteArrayInputStream(outStream.toByteArray())

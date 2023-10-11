@@ -20,9 +20,7 @@ import android.util.AttributeSet
 import androidx.preference.Preference
 import com.android.permissioncontroller.R
 
-/**
- * Non-interactive preference that displays a horizontal divider.
- */
+/** Non-interactive preference that displays a horizontal divider. */
 class AutoDividerPreference : Preference {
     constructor(
         context: Context?,

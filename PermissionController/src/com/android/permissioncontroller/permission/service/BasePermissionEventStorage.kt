@@ -22,17 +22,14 @@ import android.util.AtomicFile
 import android.util.Log
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.data.PermissionEvent
-import org.xmlpull.v1.XmlPullParserException
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import org.xmlpull.v1.XmlPullParserException
 
-/**
- * Thread-safe implementation of [PermissionEventStorage] using an XML file as the
- * database.
- */
+/** Thread-safe implementation of [PermissionEventStorage] using an XML file as the database. */
 abstract class BasePermissionEventStorage<T : PermissionEvent>(
     private val context: Context,
     jobScheduler: JobScheduler = context.getSystemService(JobScheduler::class.java)!!
@@ -75,9 +72,7 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
     }
 
     override suspend fun clearEvents() {
-        synchronized(fileLock) {
-            dbFile.delete()
-        }
+        synchronized(fileLock) { dbFile.delete() }
     }
 
     override suspend fun removeOldData(): Boolean {
@@ -85,12 +80,15 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
             val existingEvents = readData()
 
             val originalCount = existingEvents.size
-            val newEvents = existingEvents.filter {
-                (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
-            }
+            val newEvents =
+                existingEvents.filter {
+                    (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
+                }
 
-            DumpableLog.d(LOG_TAG,
-                "${originalCount - newEvents.size} old permission events removed")
+            DumpableLog.d(
+                LOG_TAG,
+                "${originalCount - newEvents.size} old permission events removed"
+            )
 
             return writeData(newEvents)
         }
@@ -109,20 +107,19 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
         synchronized(fileLock) {
             val existingEvents = readData()
 
-            val newEvents = existingEvents.map {
-                it.copyWithTimeDelta(diffSystemTimeMillis)
-            }
+            val newEvents = existingEvents.map { it.copyWithTimeDelta(diffSystemTimeMillis) }
             return writeData(newEvents)
         }
     }
 
     private fun writeData(events: List<T>): Boolean {
-        val stream: FileOutputStream = try {
-            dbFile.startWrite()
-        } catch (e: IOException) {
-            Log.e(LOG_TAG, "Failed to save db file", e)
-            return false
-        }
+        val stream: FileOutputStream =
+            try {
+                dbFile.startWrite()
+            } catch (e: IOException) {
+                Log.e(LOG_TAG, "Failed to save db file", e)
+                return false
+            }
         try {
             serialize(stream, events)
             dbFile.finishWrite(stream)
@@ -167,23 +164,15 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
     @Throws(XmlPullParserException::class, IOException::class)
     abstract fun parse(inputStream: InputStream): List<T>
 
-    /**
-     * Returns file name for database.
-     */
+    /** Returns file name for database. */
     abstract fun getDatabaseFileName(): String
 
-    /**
-     * Returns max time that data should be persisted before being removed.
-     */
+    /** Returns max time that data should be persisted before being removed. */
     abstract fun getMaxDataAgeMs(): Long
 
-    /**
-     * Returns true if the two events have the same primary key for the database store.
-     */
+    /** Returns true if the two events have the same primary key for the database store. */
     abstract fun hasTheSamePrimaryKey(first: T, second: T): Boolean
 
-    /**
-     * Copies the event with the time delta applied to the [PermissionEvent.eventTime].
-     */
+    /** Copies the event with the time delta applied to the [PermissionEvent.eventTime]. */
     abstract fun T.copyWithTimeDelta(timeDelta: Long): T
 }

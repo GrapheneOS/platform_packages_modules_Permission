@@ -16,10 +16,10 @@
 
 package com.android.permissioncontroller.permission.ui.television
 
-import androidx.preference.Preference
 import android.app.Application
 import android.content.Context
 import android.os.UserHandle
+import androidx.preference.Preference
 import com.android.permissioncontroller.permission.ui.RemovablePref
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 

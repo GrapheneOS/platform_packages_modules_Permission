@@ -38,8 +38,8 @@ interface PermissionRationaleViewHandler {
     }
 
     /**
-     * Listener interface for getting notified when the user responds to a permission rationale
-     * user action.
+     * Listener interface for getting notified when the user responds to a permission rationale user
+     * action.
      */
     interface ResultListener {
         fun onPermissionRationaleResult(groupName: String?, @Result result: Int)
@@ -60,7 +60,7 @@ interface PermissionRationaleViewHandler {
      * @param groupName the name of the permission group
      * @param title the title for the dialog
      * @param dataSharingSourceMessage the data sharing source data usage comes from message to
-     * display the user
+     *   display the user
      * @param purposeTitle the data usage purposes title to display the user
      * @param purposeMessage the data usage purposes message to display the user
      * @param learnMoreMessage the more info about safety labels message to display the user
@@ -91,9 +91,7 @@ interface PermissionRationaleViewHandler {
     /** Gives a chance for handling the back key. */
     fun onBackPressed()
 
-    /**
-     * Handles cancel event for the permission rationale dialog.
-     */
+    /** Handles cancel event for the permission rationale dialog. */
     fun onCancelled() {}
 
     /**

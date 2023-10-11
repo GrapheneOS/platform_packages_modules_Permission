@@ -49,9 +49,7 @@ import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
-/**
- * Unit tests for [HibernationController].
- */
+/** Unit tests for [HibernationController]. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class HibernationControllerTest {
@@ -68,12 +66,9 @@ class HibernationControllerTest {
 
     private var mockitoSession: MockitoSession? = null
 
-    @Mock
-    lateinit var context: Context
-    @Mock
-    lateinit var appHibernationManager: AppHibernationManager
-    @Mock
-    lateinit var usageStatsManager: UsageStatsManager
+    @Mock lateinit var context: Context
+    @Mock lateinit var appHibernationManager: AppHibernationManager
+    @Mock lateinit var usageStatsManager: UsageStatsManager
 
     lateinit var filesDir: File
 
@@ -82,8 +77,11 @@ class HibernationControllerTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = mockitoSession().mockStatic(PermissionControllerApplication::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         filesDir = InstrumentationRegistry.getInstrumentation().getTargetContext().getCacheDir()
         whenever(application.filesDir).thenReturn(filesDir)
@@ -92,8 +90,8 @@ class HibernationControllerTest {
         doReturn(appHibernationManager).`when`(context).getSystemService(APP_HIBERNATION_SERVICE)
         doReturn(usageStatsManager).`when`(context).getSystemService(USAGE_STATS_SERVICE)
 
-        hibernationController = HibernationController(
-            context, TEST_UNUSED_THRESHOLD, true /* targetsPreS */)
+        hibernationController =
+            HibernationController(context, TEST_UNUSED_THRESHOLD, true /* targetsPreS */)
     }
 
     @After
@@ -123,8 +121,8 @@ class HibernationControllerTest {
         // GIVEN an app that is globally unused (i.e. unused at a package level)
         val userPackages = listOf(makePackageInfo(PACKAGE_NAME_1), makePackageInfo(PACKAGE_NAME_2))
         val map = mapOf(UserHandle.of(USER_ID) to userPackages)
-        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1)).thenReturn(
-            System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD + TEST_MOCK_DELAY))
+        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1))
+            .thenReturn(System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD + TEST_MOCK_DELAY))
 
         // WHEN the controller hibernates the apps
         hibernationController.hibernateApps(map)
@@ -138,8 +136,8 @@ class HibernationControllerTest {
         // GIVEN an app that has been used globally (i.e. used at a package level)
         val userPackages = listOf(makePackageInfo(PACKAGE_NAME_1), makePackageInfo(PACKAGE_NAME_2))
         val map = mapOf(UserHandle.of(USER_ID) to userPackages)
-        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1)).thenReturn(
-            System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD - TEST_MOCK_DELAY))
+        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1))
+            .thenReturn(System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD - TEST_MOCK_DELAY))
 
         // WHEN the controller hibernates the apps
         hibernationController.hibernateApps(map)
@@ -162,6 +160,7 @@ class HibernationControllerTest {
             0 /* firstInstallTime */,
             0 /* lastUpdateTime */,
             false /* areAttributionsUserVisible */,
-            emptyMap() /* attributionTagsToLabels */)
+            emptyMap() /* attributionTagsToLabels */
+        )
     }
 }

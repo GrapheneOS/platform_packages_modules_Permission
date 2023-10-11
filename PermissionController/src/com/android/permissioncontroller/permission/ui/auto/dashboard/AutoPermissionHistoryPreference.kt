@@ -23,8 +23,8 @@ import androidx.annotation.RequiresApi
 import androidx.preference.Preference.OnPreferenceClickListener
 import com.android.car.ui.preference.CarUiPreference
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
 import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageDetailsViewModelLegacy
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
 
 /** Preference that displays a permission usage for an app. */
 @RequiresApi(Build.VERSION_CODES.S)
@@ -40,7 +40,8 @@ class AutoPermissionHistoryPreference(
                 context.getString(
                     R.string.auto_permission_usage_timeline_summary,
                     DateFormat.getTimeFormat(context).format(historyPreferenceData.accessEndTime),
-                    historyPreferenceData.summaryText)
+                    historyPreferenceData.summaryText
+                )
             } else {
                 DateFormat.getTimeFormat(context).format(historyPreferenceData.accessEndTime)
             }
@@ -60,7 +61,9 @@ class AutoPermissionHistoryPreference(
                     accessEndTime = historyPreferenceData.accessEndTime,
                     accessStartTime = historyPreferenceData.accessStartTime,
                     showingAttribution = historyPreferenceData.showingAttribution,
-                    attributionTags = historyPreferenceData.attributionTags))
+                    attributionTags = historyPreferenceData.attributionTags
+                )
+            )
             true
         }
     }
