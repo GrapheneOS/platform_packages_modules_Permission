@@ -773,9 +773,12 @@ class GrantPermissionsViewModel(
         reportRequestResult(permissions, result)
         // group state has changed, reload liveData
         requestInfosLiveData.update()
-        PermissionDecisionStorageImpl.recordPermissionDecision(app.applicationContext,
-            packageName, groupState.group.permGroupName, granted)
-        PermissionChangeStorageImpl.recordPermissionChange(packageName)
+
+        if (SdkLevel.isAtLeastT()) {
+            PermissionDecisionStorageImpl.recordPermissionDecision(app.applicationContext,
+                packageName, groupState.group.permGroupName, granted)
+            PermissionChangeStorageImpl.recordPermissionChange(packageName)
+        }
         if (granted) {
             startDrivingDecisionReminderServiceIfNecessary(groupState.group.permGroupName)
         }
