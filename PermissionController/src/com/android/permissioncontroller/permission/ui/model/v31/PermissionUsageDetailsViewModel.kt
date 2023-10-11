@@ -28,6 +28,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -37,7 +38,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.modules.utils.build.SdkLevel
-import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.compat.IntentCompat
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
@@ -54,7 +54,6 @@ import com.android.permissioncontroller.permission.model.livedatatypes.v31.Light
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
 import com.android.permissioncontroller.permission.utils.KotlinUtils
-import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
@@ -79,6 +78,9 @@ class PermissionUsageDetailsViewModel(
         mutableMapOf<Pair<String, UserHandle>, LightPackageInfoLiveData>()
     val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
     val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
+
+    private val packageIconCache: MutableMap<Pair<String, UserHandle>, Drawable> = mutableMapOf()
+    private val packageLabelCache: MutableMap<String, String> = mutableMapOf()
 
     private val roleManager =
         Utils.getSystemServiceSafe(application.applicationContext, RoleManager::class.java)
@@ -399,12 +401,14 @@ class PermissionUsageDetailsViewModel(
         return AppPermissionAccessUiInfo(
             this.appPermissionId.userHandle,
             this.appPermissionId.packageName,
+            getPackageLabel(this.appPermissionId.packageName, this.appPermissionId.userHandle),
             permissionGroup,
             this.discreteAccesses.last().accessTimeMs,
             this.discreteAccesses.first().accessTimeMs,
             summary,
             showingSubAttribution,
-            ArrayList(this.attributionTags)
+            ArrayList(this.attributionTags),
+            getBadgedPackageIcon(this.appPermissionId.packageName, this.appPermissionId.userHandle)
         )
     }
 
@@ -482,10 +486,8 @@ class PermissionUsageDetailsViewModel(
             .firstOrNull { it.proxy?.packageName != null }
             ?.let {
                 getPackageLabel(
-                    PermissionControllerApplication.get(),
                     it.proxy!!.packageName!!,
-                    UserHandle.getUserHandleForUid(it.proxy.uid)
-                )
+                    UserHandle.getUserHandleForUid(it.proxy.uid))
             }
 
     /** Returns the attribution label for the permission access, if any. */
@@ -513,13 +515,15 @@ class PermissionUsageDetailsViewModel(
     /** Data used to create a preference for an app's permission usage. */
     data class AppPermissionAccessUiInfo(
         val userHandle: UserHandle,
-        val pkgName: String,
+        val packageName: String,
+        val packageLabel: String,
         val permissionGroup: String,
         val accessStartTime: Long,
         val accessEndTime: Long,
         val summaryText: CharSequence?,
         val showingAttribution: Boolean,
         val attributionTags: ArrayList<String>,
+        val badgedPackageIcon: Drawable?,
     )
 
     /**
@@ -637,6 +641,36 @@ class PermissionUsageDetailsViewModel(
                 value = buildPermissionUsageDetailsUiInfo()
             }
         }
+
+    /**
+     * Returns the icon for the provided package name and user, by first searching the cache
+     * otherwise retrieving it from the app's [android.content.pm.ApplicationInfo].
+     */
+    private fun getBadgedPackageIcon(packageName: String, userHandle: UserHandle): Drawable? {
+        val packageNameWithUser: Pair<String, UserHandle> = Pair(packageName, userHandle)
+        if (packageIconCache.containsKey(packageNameWithUser)) {
+            return requireNotNull(packageIconCache[packageNameWithUser])
+        }
+        val packageIcon = KotlinUtils.getBadgedPackageIcon(application, packageName, userHandle)
+        if (packageIcon != null) packageIconCache[packageNameWithUser] = packageIcon
+
+        return packageIcon
+    }
+
+    /**
+     * Returns the label for the provided package name, by first searching the cache otherwise
+     * retrieving it from the app's [android.content.pm.ApplicationInfo].
+     */
+    private fun getPackageLabel(packageName: String, user: UserHandle): String {
+        if (packageLabelCache.containsKey(packageName)) {
+            return requireNotNull(packageLabelCache[packageName])
+        }
+
+        val packageLabel = KotlinUtils.getPackageLabel(application, packageName, user)
+        packageLabelCache[packageName] = packageLabel
+
+        return packageLabel
+    }
 
     /** Companion object for [PermissionUsageDetailsViewModel]. */
     companion object {
