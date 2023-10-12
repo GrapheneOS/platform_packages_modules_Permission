@@ -20,9 +20,7 @@ import androidx.test.filters.FlakyTest
 import org.junit.Assume
 import org.junit.Test
 
-/**
- * Runtime permission behavior tests for upgrading apps.
- */
+/** Runtime permission behavior tests for upgrading apps. */
 @FlakyTest
 class PermissionUpgradeTest : BaseUsePermissionTest() {
 
@@ -43,34 +41,33 @@ class PermissionUpgradeTest : BaseUsePermissionTest() {
 
     private fun assertAllPermissionsGrantedByDefault() {
         arrayOf(
-            android.Manifest.permission.SEND_SMS,
-            android.Manifest.permission.RECEIVE_SMS,
-            // The APK does not request READ_CONTACTS because of other tests
-            android.Manifest.permission.WRITE_CONTACTS,
-            android.Manifest.permission.READ_CALENDAR,
-            android.Manifest.permission.WRITE_CALENDAR,
-            android.Manifest.permission.READ_SMS,
-            android.Manifest.permission.RECEIVE_WAP_PUSH,
-            android.Manifest.permission.RECEIVE_MMS,
-            "android.permission.READ_CELL_BROADCASTS",
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.READ_PHONE_STATE,
-            android.Manifest.permission.CALL_PHONE,
-            android.Manifest.permission.READ_CALL_LOG,
-            android.Manifest.permission.WRITE_CALL_LOG,
-            android.Manifest.permission.ADD_VOICEMAIL,
-            android.Manifest.permission.USE_SIP,
-            android.Manifest.permission.PROCESS_OUTGOING_CALLS,
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.BODY_SENSORS,
-            // Split permissions
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
-        ).forEach {
-            assertAppHasPermission(it, true)
-        }
+                android.Manifest.permission.SEND_SMS,
+                android.Manifest.permission.RECEIVE_SMS,
+                // The APK does not request READ_CONTACTS because of other tests
+                android.Manifest.permission.WRITE_CONTACTS,
+                android.Manifest.permission.READ_CALENDAR,
+                android.Manifest.permission.WRITE_CALENDAR,
+                android.Manifest.permission.READ_SMS,
+                android.Manifest.permission.RECEIVE_WAP_PUSH,
+                android.Manifest.permission.RECEIVE_MMS,
+                "android.permission.READ_CELL_BROADCASTS",
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.CALL_PHONE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.WRITE_CALL_LOG,
+                android.Manifest.permission.ADD_VOICEMAIL,
+                android.Manifest.permission.USE_SIP,
+                android.Manifest.permission.PROCESS_OUTGOING_CALLS,
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.BODY_SENSORS,
+                // Split permissions
+                android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            )
+            .forEach { assertAppHasPermission(it, true) }
     }
 
     private fun assertAllPermissionsGrantedOnUpgrade() {
@@ -125,34 +122,33 @@ class PermissionUpgradeTest : BaseUsePermissionTest() {
 
     private fun assertAppHasAllOrNoPermissions(expectPermissions: Boolean) {
         arrayOf(
-            android.Manifest.permission.SEND_SMS,
-            android.Manifest.permission.RECEIVE_SMS,
-            android.Manifest.permission.RECEIVE_WAP_PUSH,
-            android.Manifest.permission.RECEIVE_MMS,
-            android.Manifest.permission.READ_CALENDAR,
-            android.Manifest.permission.WRITE_CALENDAR,
-            android.Manifest.permission.WRITE_CONTACTS,
-            android.Manifest.permission.READ_SMS,
-            android.Manifest.permission.READ_PHONE_STATE,
-            android.Manifest.permission.READ_CALL_LOG,
-            android.Manifest.permission.WRITE_CALL_LOG,
-            android.Manifest.permission.ADD_VOICEMAIL,
-            android.Manifest.permission.CALL_PHONE,
-            android.Manifest.permission.USE_SIP,
-            android.Manifest.permission.PROCESS_OUTGOING_CALLS,
-            android.Manifest.permission.RECORD_AUDIO,
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.BODY_SENSORS,
-            android.Manifest.permission.READ_CELL_BROADCASTS,
-            // Split permissions
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-            // Storage permissions
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ).forEach {
-            assertAppHasPermission(it, expectPermissions)
-        }
+                android.Manifest.permission.SEND_SMS,
+                android.Manifest.permission.RECEIVE_SMS,
+                android.Manifest.permission.RECEIVE_WAP_PUSH,
+                android.Manifest.permission.RECEIVE_MMS,
+                android.Manifest.permission.READ_CALENDAR,
+                android.Manifest.permission.WRITE_CALENDAR,
+                android.Manifest.permission.WRITE_CONTACTS,
+                android.Manifest.permission.READ_SMS,
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.WRITE_CALL_LOG,
+                android.Manifest.permission.ADD_VOICEMAIL,
+                android.Manifest.permission.CALL_PHONE,
+                android.Manifest.permission.USE_SIP,
+                android.Manifest.permission.PROCESS_OUTGOING_CALLS,
+                android.Manifest.permission.RECORD_AUDIO,
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.BODY_SENSORS,
+                android.Manifest.permission.READ_CELL_BROADCASTS,
+                // Split permissions
+                android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                // Storage permissions
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            .forEach { assertAppHasPermission(it, expectPermissions) }
     }
 }

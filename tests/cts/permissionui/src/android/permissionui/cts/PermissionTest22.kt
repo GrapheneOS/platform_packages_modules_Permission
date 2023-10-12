@@ -21,9 +21,7 @@ import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Runtime permission behavior tests for apps targeting API 22.
- */
+/** Runtime permission behavior tests for apps targeting API 22. */
 @FlakyTest
 class PermissionTest22 : BaseUsePermissionTest() {
 
@@ -60,7 +58,8 @@ class PermissionTest22 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-            arrayOf(android.Manifest.permission.SEND_SMS), emptyArray(),
+            arrayOf(android.Manifest.permission.SEND_SMS),
+            emptyArray(),
             waitForWindowTransition = false
         ) {}
     }

@@ -97,7 +97,8 @@ class AppDataSharingUpdatesTest {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED,
-            true.toString())
+            true.toString()
+        )
 
     @get:Rule
     val deviceConfigDataSharingUpdatesPeriod =
@@ -105,7 +106,8 @@ class AppDataSharingUpdatesTest {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_DATA_SHARING_UPDATE_PERIOD_MILLIS,
-            "600000")
+            "600000"
+        )
 
     /**
      * This rule serves to limit the max number of safety labels that can be persisted, so that
@@ -117,12 +119,16 @@ class AppDataSharingUpdatesTest {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP,
-            "2")
+            "2"
+        )
 
     @Before
     fun registerInstallSessionResultReceiver() {
         context.registerReceiver(
-            installSessionResultReceiver, IntentFilter(INSTALL_ACTION_CALLBACK), RECEIVER_EXPORTED)
+            installSessionResultReceiver,
+            IntentFilter(INSTALL_ACTION_CALLBACK),
+            RECEIVER_EXPORTED
+        )
     }
 
     @After
@@ -140,7 +146,9 @@ class AppDataSharingUpdatesTest {
         installPackageViaSession(LOCATION_PACKAGE_APK_PATH, createAppMetadataWithNoSharing())
         waitForBroadcasts()
         installPackageViaSession(
-            LOCATION_PACKAGE_APK_PATH, createAppMetadataWithLocationSharingNoAds())
+            LOCATION_PACKAGE_APK_PATH,
+            createAppMetadataWithLocationSharingNoAds()
+        )
         waitForBroadcasts()
         grantLocationPermission(LOCATION_PACKAGE_NAME)
 
@@ -163,7 +171,9 @@ class AppDataSharingUpdatesTest {
         installPackageViaSession(LOCATION_PACKAGE_APK_PATH, createAppMetadataWithNoSharing())
         waitForBroadcasts()
         installPackageViaSession(
-            LOCATION_PACKAGE_APK_PATH, createAppMetadataWithLocationSharingNoAds())
+            LOCATION_PACKAGE_APK_PATH,
+            createAppMetadataWithLocationSharingNoAds()
+        )
         waitForBroadcasts()
         grantLocationPermission(LOCATION_PACKAGE_NAME)
 
@@ -307,7 +317,8 @@ class AppDataSharingUpdatesTest {
                     context,
                     0,
                     Intent(INSTALL_ACTION_CALLBACK).setPackage(context.packageName),
-                    FLAG_UPDATE_CURRENT or FLAG_MUTABLE)
+                    FLAG_UPDATE_CURRENT or FLAG_MUTABLE
+                )
             session.commit(installActionPendingIntent.intentSender)
         }
 
@@ -353,8 +364,10 @@ class AppDataSharingUpdatesTest {
                         PersistableBundle().apply {
                             putIntArray(
                                 KEY_PURPOSES,
-                                listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray())
-                        })
+                                listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray()
+                            )
+                        }
+                    )
                 }
 
             val dataSharedBundle =
@@ -399,7 +412,8 @@ class AppDataSharingUpdatesTest {
                     Intent(ACTION_REVIEW_APP_DATA_SHARING_UPDATES).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     },
-                    userHandle)
+                    userHandle
+                )
             }
         }
 
@@ -418,7 +432,9 @@ class AppDataSharingUpdatesTest {
 
         private fun grantLocationPermission(packageName: String) {
             uiAutomation.grantRuntimePermission(
-                packageName, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                packageName,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            )
         }
 
         protected fun waitFindObject(
@@ -465,11 +481,12 @@ class AppDataSharingUpdatesTest {
                     e
                 }
             val actual = exception == null
-            val message = if (expected) {
-                "Expected view $selector not found"
-            } else {
-                "Unexpected view found: $selector"
-            }
+            val message =
+                if (expected) {
+                    "Expected view $selector not found"
+                } else {
+                    "Unexpected view found: $selector"
+                }
             Assert.assertTrue(message, actual == expected)
         }
     }

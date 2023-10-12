@@ -24,9 +24,7 @@ import androidx.test.uiautomator.By
 import org.junit.Assert.assertNull
 import org.junit.Test
 
-/**
- * Runtime permission behavior apps targeting API 30
- */
+/** Runtime permission behavior apps targeting API 30 */
 @FlakyTest
 class PermissionTest30 : BaseUsePermissionTest() {
 
@@ -72,15 +70,22 @@ class PermissionTest30 : BaseUsePermissionTest() {
         assertAppHasPermission(ACCESS_FINE_LOCATION, false)
         assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
 
-        requestAppPermissionsAndAssertResult(ACCESS_FINE_LOCATION to false,
-                ACCESS_COARSE_LOCATION to false) {
+        requestAppPermissionsAndAssertResult(
+            ACCESS_FINE_LOCATION to false,
+            ACCESS_COARSE_LOCATION to false
+        ) {
             // Verify there's no location accuracy options
-            val locationAccuracyOptions = waitFindObjectOrNull(By.res(
-                    "com.android.permissioncontroller:id/permission_location_accuracy"), 1000L)
-            assertNull("For apps targetSDK < 31, location permission dialog shouldn't show " +
+            val locationAccuracyOptions =
+                waitFindObjectOrNull(
+                    By.res("com.android.permissioncontroller:id/permission_location_accuracy"),
+                    1000L
+                )
+            assertNull(
+                "For apps targetSDK < 31, location permission dialog shouldn't show " +
                     "accuracy options. Please update the system with " +
                     "the latest (at least Oct, 2021) mainline modules.",
-                    locationAccuracyOptions)
+                locationAccuracyOptions
+            )
             // Close dialog
             clickPermissionRequestDenyButton()
         }

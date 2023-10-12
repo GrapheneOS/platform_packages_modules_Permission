@@ -43,7 +43,7 @@ class RequestPermissions : Activity() {
 
     companion object {
         private const val EXTRA_PERMISSIONS =
-                "android.permission.cts.appthatrequestpermission.extra.PERMISSIONS"
+            "android.permission.cts.appthatrequestpermission.extra.PERMISSIONS"
         private val TAG = RequestPermissions::class.simpleName
     }
 }

@@ -20,9 +20,7 @@ import android.location.Criteria
 import android.location.LocationManager
 import android.os.Bundle
 
-/**
- * An activity that adds this package as a test location provider and uses microphone.
- */
+/** An activity that adds this package as a test location provider and uses microphone. */
 class AddLocationProviderActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +28,15 @@ class AddLocationProviderActivity : Activity() {
         val attrContext = createAttributionContext("test.tag")
         val locationManager = attrContext.getSystemService(LocationManager::class.java)!!
         locationManager.addTestProvider(
-            packageName, false, false, false, false, false, false, false, Criteria.POWER_LOW,
+            packageName,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            Criteria.POWER_LOW,
             Criteria.ACCURACY_COARSE
         )
 

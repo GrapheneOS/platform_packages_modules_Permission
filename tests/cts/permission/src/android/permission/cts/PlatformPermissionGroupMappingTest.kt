@@ -34,8 +34,11 @@ class PlatformPermissionGroupMappingTest {
     fun platformPermissionHasPermissionGroup() {
         val future = CompletableFuture<String>()
         packageManager.getGroupOfPlatformPermission(
-            android.Manifest.permission.READ_CALENDAR, context.mainExecutor
-        ) { future.complete(it) }
+            android.Manifest.permission.READ_CALENDAR,
+            context.mainExecutor
+        ) {
+            future.complete(it)
+        }
         val permissionGroupName = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         assertThat(permissionGroupName).isEqualTo(android.Manifest.permission_group.CALENDAR)
     }
@@ -44,8 +47,11 @@ class PlatformPermissionGroupMappingTest {
     fun platformPermissionGroupHasPermission() {
         val future = CompletableFuture<List<String>>()
         packageManager.getPlatformPermissionsForGroup(
-            android.Manifest.permission_group.CALENDAR, context.mainExecutor
-        ) { future.complete(it) }
+            android.Manifest.permission_group.CALENDAR,
+            context.mainExecutor
+        ) {
+            future.complete(it)
+        }
         val permissionNames = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         assertThat(permissionNames).contains(android.Manifest.permission.READ_CALENDAR)
     }

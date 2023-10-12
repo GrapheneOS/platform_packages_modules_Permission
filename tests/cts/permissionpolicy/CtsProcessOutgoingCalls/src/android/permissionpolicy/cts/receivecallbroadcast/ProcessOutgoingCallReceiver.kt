@@ -23,8 +23,9 @@ import android.content.Intent
 
 class ProcessOutgoingCallReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-        context!!.sendBroadcast(Intent(ACTION_TEST_APP_RECEIVED_OUTGOING_CALL).setPackage(
-            TEST_CLASS_PKG_NAME))
+        context!!.sendBroadcast(
+            Intent(ACTION_TEST_APP_RECEIVED_OUTGOING_CALL).setPackage(TEST_CLASS_PKG_NAME)
+        )
     }
 
     class BaseActivity : Activity()

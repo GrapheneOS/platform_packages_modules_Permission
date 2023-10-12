@@ -33,7 +33,8 @@ import org.junit.Test
 class RevokePermissionTest {
 
     private val APP_PKG_NAME = "android.permission.cts.appthatrequestcustompermission"
-    private val APK = "/data/local/tmp/cts-permission/" +
+    private val APK =
+        "/data/local/tmp/cts-permission/" +
             "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk"
 
     @Before
@@ -44,23 +45,22 @@ class RevokePermissionTest {
     @Test
     @AppModeFull(reason = "Instant apps can't revoke permissions.")
     fun testRevokePermission() {
-        testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = READ_CALENDAR,
-                isGranted = true)
+        testRevoke(packageName = APP_PKG_NAME, permission = READ_CALENDAR, isGranted = true)
     }
 
     @Test
     @AppModeFull(reason = "Instant apps can't revoke permissions.")
     fun testRevokePermissionNotRequested() {
         testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = CAMERA,
-                throwableType = SecurityException::class.java,
-                throwableMessages = listOf(
+            packageName = APP_PKG_NAME,
+            permission = CAMERA,
+            throwableType = SecurityException::class.java,
+            throwableMessages =
+                listOf(
                     "has not requested permission",
                     "Permission $CAMERA isn't requested by package $APP_PKG_NAME"
-                ))
+                )
+        )
     }
 
     @Test
@@ -68,13 +68,15 @@ class RevokePermissionTest {
     fun testRevokeFakePermission() {
         val fakePermissionName = "FAKE_PERMISSION"
         testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = fakePermissionName,
-                throwableType = java.lang.IllegalArgumentException::class.java,
-                throwableMessages = listOf(
+            packageName = APP_PKG_NAME,
+            permission = fakePermissionName,
+            throwableType = java.lang.IllegalArgumentException::class.java,
+            throwableMessages =
+                listOf(
                     "Unknown permission: $fakePermissionName",
                     "Unknown permission $fakePermissionName"
-                ))
+                )
+        )
     }
 
     @Test
@@ -82,33 +84,34 @@ class RevokePermissionTest {
     fun testRevokeFakePackage() {
         val fakePackageName = "fake.package.name.which.should.not.exist"
         assertPackageNotInstalled(fakePackageName)
-        testRevoke(
-                packageName = fakePackageName,
-                permission = READ_CALENDAR)
+        testRevoke(packageName = fakePackageName, permission = READ_CALENDAR)
     }
 
     @Test
     @AppModeFull(reason = "Instant apps can't revoke permissions.")
     fun testRevokePermissionWithReason() {
         testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = READ_CALENDAR,
-                reason = "test reason",
-                isGranted = true)
+            packageName = APP_PKG_NAME,
+            permission = READ_CALENDAR,
+            reason = "test reason",
+            isGranted = true
+        )
     }
 
     @Test
     @AppModeFull(reason = "Instant apps can't revoke permissions.")
     fun testRevokePermissionNotRequestedWithReason() {
         testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = CAMERA,
-                reason = "test reason",
-                throwableType = SecurityException::class.java,
-                throwableMessages = listOf(
+            packageName = APP_PKG_NAME,
+            permission = CAMERA,
+            reason = "test reason",
+            throwableType = SecurityException::class.java,
+            throwableMessages =
+                listOf(
                     "has not requested permission",
                     "Permission $CAMERA isn't requested by package $APP_PKG_NAME"
-                ))
+                )
+        )
     }
 
     @Test
@@ -116,14 +119,16 @@ class RevokePermissionTest {
     fun testRevokeFakePermissionWithReason() {
         val fakePermissionName = "FAKE_PERMISSION"
         testRevoke(
-                packageName = APP_PKG_NAME,
-                permission = fakePermissionName,
-                reason = "test reason",
-                throwableType = java.lang.IllegalArgumentException::class.java,
-                throwableMessages = listOf(
+            packageName = APP_PKG_NAME,
+            permission = fakePermissionName,
+            reason = "test reason",
+            throwableType = java.lang.IllegalArgumentException::class.java,
+            throwableMessages =
+                listOf(
                     "Unknown permission: $fakePermissionName",
                     "Unknown permission $fakePermissionName"
-                ))
+                )
+        )
     }
 
     @Test
@@ -132,9 +137,10 @@ class RevokePermissionTest {
         val fakePackageName = "fake.package.name.which.should.not.exist"
         assertPackageNotInstalled(fakePackageName)
         testRevoke(
-                packageName = fakePackageName,
-                permission = READ_CALENDAR,
-                reason = "test reason")
+            packageName = fakePackageName,
+            permission = READ_CALENDAR,
+            reason = "test reason"
+        )
     }
 
     @After
@@ -162,20 +168,30 @@ class RevokePermissionTest {
                 if (reason == null) {
                     pm.revokeRuntimePermission(packageName, permission, Process.myUserHandle())
                 } else {
-                    pm.revokeRuntimePermission(packageName, permission, Process.myUserHandle(),
-                            reason)
+                    pm.revokeRuntimePermission(
+                        packageName,
+                        permission,
+                        Process.myUserHandle(),
+                        reason
+                    )
                 }
             } else {
                 try {
                     if (reason == null) {
                         pm.revokeRuntimePermission(packageName, permission, Process.myUserHandle())
                     } else {
-                        pm.revokeRuntimePermission(packageName, permission, Process.myUserHandle(),
-                                reason)
+                        pm.revokeRuntimePermission(
+                            packageName,
+                            permission,
+                            Process.myUserHandle(),
+                            reason
+                        )
                     }
                 } catch (t: Throwable) {
-                    if (t::class.java.name == throwableType.name &&
-                        throwableMessages.any { t.message!!.contains(it) }) {
+                    if (
+                        t::class.java.name == throwableType.name &&
+                            throwableMessages.any { t.message!!.contains(it) }
+                    ) {
                         return@runWithShellPermissionIdentity
                     }
                     throw RuntimeException("Unexpected throwable", t)

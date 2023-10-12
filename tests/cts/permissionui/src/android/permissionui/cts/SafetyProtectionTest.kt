@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C) 2023 The Android Open Source Project
  *
@@ -31,9 +30,7 @@ import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
-/**
- * Tests for Safety Protection related features. This feature should only be enabled on T+.
- */
+/** Tests for Safety Protection related features. This feature should only be enabled on T+. */
 @FlakyTest
 class SafetyProtectionTest : BaseUsePermissionTest() {
     @get:Rule
@@ -113,9 +110,9 @@ class SafetyProtectionTest : BaseUsePermissionTest() {
                             .getIdentifier("config_safetyProtectionEnabled", "bool", "android")
                     ) &&
                     context.getDrawable(android.R.drawable.ic_safety_protection) != null &&
-                    !context.getString(
-                        android.R.string.safety_protection_display_text
-                    ).isNullOrEmpty()
+                    !context
+                        .getString(android.R.string.safety_protection_display_text)
+                        .isNullOrEmpty()
             } catch (e: Resources.NotFoundException) {
                 false
             }

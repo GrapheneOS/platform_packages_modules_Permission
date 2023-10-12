@@ -37,174 +37,177 @@ import org.junit.Test
 @FlakyTest
 class AppPermissionTest : BaseUsePermissionTest() {
 
-  @get:Rule
-  val deviceConfigPermissionRationaleEnabled =
-      DeviceConfigStateChangerRule(
-          context, DeviceConfig.NAMESPACE_PRIVACY, PERMISSION_RATIONALE_ENABLED, true.toString())
+    @get:Rule
+    val deviceConfigPermissionRationaleEnabled =
+        DeviceConfigStateChangerRule(
+            context,
+            DeviceConfig.NAMESPACE_PRIVACY,
+            PERMISSION_RATIONALE_ENABLED,
+            true.toString()
+        )
 
-  @Before
-  fun setup() {
-    Assume.assumeTrue("Permission rationale is only available on U+", SdkLevel.isAtLeastU())
-    Assume.assumeFalse(isAutomotive)
-    Assume.assumeFalse(isTv)
-    Assume.assumeFalse(isWatch)
+    @Before
+    fun setup() {
+        Assume.assumeTrue("Permission rationale is only available on U+", SdkLevel.isAtLeastU())
+        Assume.assumeFalse(isAutomotive)
+        Assume.assumeFalse(isTv)
+        Assume.assumeFalse(isWatch)
 
-    val userSetupComplete =
-        Settings.Secure.getInt(context.contentResolver, USER_SETUP_COMPLETE, 0) == 1
+        val userSetupComplete =
+            Settings.Secure.getInt(context.contentResolver, USER_SETUP_COMPLETE, 0) == 1
 
-    Truth.assertWithMessage("User setup must be complete before running this test")
-        .that(userSetupComplete)
-        .isTrue()
-  }
+        Truth.assertWithMessage("User setup must be complete before running this test")
+            .that(userSetupComplete)
+            .isTrue()
+    }
 
-  @Test
-  fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceUnspecified() {
-    // Unspecified is the default, so no need to explicitly set it
-    installPackageWithInstallSourceAndMetadata(APP_APK_NAME_31)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceUnspecified() {
+        // Unspecified is the default, so no need to explicitly set it
+        installPackageWithInstallSourceAndMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(true)
+        assertAppPermissionRationaleContainerIsVisible(true)
 
-    clickPermissionRationaleContentInAppPermission()
-    assertPermissionRationaleDialogIsVisible(expected = true, showSettingsSection = false)
-  }
+        clickPermissionRationaleContentInAppPermission()
+        assertPermissionRationaleDialogIsVisible(expected = true, showSettingsSection = false)
+    }
 
-  @Test
-  fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceStore() {
-    installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_31)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceStore() {
+        installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(true)
+        assertAppPermissionRationaleContainerIsVisible(true)
 
-    clickPermissionRationaleContentInAppPermission()
-    assertPermissionRationaleDialogIsVisible(expected = true, showSettingsSection = false)
-  }
+        clickPermissionRationaleContentInAppPermission()
+        assertPermissionRationaleDialogIsVisible(expected = true, showSettingsSection = false)
+    }
 
-  @Test
-  fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceLocalFile() {
-    installPackageWithInstallSourceAndMetadataFromLocalFile(APP_APK_NAME_31)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceLocalFile() {
+        installPackageWithInstallSourceAndMetadataFromLocalFile(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceDownloadedFile() {
-    installPackageWithInstallSourceAndMetadataFromDownloadedFile(APP_APK_NAME_31)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceDownloadedFile() {
+        installPackageWithInstallSourceAndMetadataFromDownloadedFile(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceOther() {
-    installPackageWithInstallSourceAndMetadataFromOther(APP_APK_NAME_31)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceOther() {
+        installPackageWithInstallSourceAndMetadataFromOther(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndNoMetadata() {
-    installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndNoMetadata() {
+        installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndNullMetadata() {
-    installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndNullMetadata() {
+        installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndEmptyMetadata() {
-    installPackageWithInstallSourceAndEmptyMetadata(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndEmptyMetadata() {
+        installPackageWithInstallSourceAndEmptyMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndInvalidMetadata() {
-    installPackageWithInstallSourceAndInvalidMetadata(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndInvalidMetadata() {
+        installPackageWithInstallSourceAndInvalidMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithoutTopLevelVersion() {
-    installPackageWithInstallSourceAndMetadataWithoutTopLevelVersion(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithoutTopLevelVersion() {
+        installPackageWithInstallSourceAndMetadataWithoutTopLevelVersion(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithInvalidTopLevelVersion() {
-    installPackageWithInstallSourceAndMetadataWithInvalidTopLevelVersion(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithInvalidTopLevelVersion() {
+        installPackageWithInstallSourceAndMetadataWithInvalidTopLevelVersion(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithoutSafetyLabelVersion() {
-    installPackageWithInstallSourceAndMetadataWithoutSafetyLabelVersion(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithoutSafetyLabelVersion() {
+        installPackageWithInstallSourceAndMetadataWithoutSafetyLabelVersion(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithInvalidSafetyLabelVersion()
-  {
-    installPackageWithInstallSourceAndMetadataWithInvalidSafetyLabelVersion(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withInstallSourceAndMetadataWithInvalidSafetyLabelVersion() {
+        installPackageWithInstallSourceAndMetadataWithInvalidSafetyLabelVersion(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withOutInstallSource() {
-    installPackageWithoutInstallSource(APP_APK_PATH_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withOutInstallSource() {
+        installPackageWithoutInstallSource(APP_APK_PATH_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  @Test
-  fun noShowPermissionRationaleContainer_withoutMetadata() {
-    installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
+    @Test
+    fun noShowPermissionRationaleContainer_withoutMetadata() {
+        installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31)
 
-    navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
-    assertAppPermissionRationaleContainerIsVisible(false)
-  }
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
 
-  private fun assertAppPermissionRationaleContainerIsVisible(expected: Boolean) {
-    findView(By.res(APP_PERMISSION_RATIONALE_CONTAINER_VIEW), expected)
-  }
+    private fun assertAppPermissionRationaleContainerIsVisible(expected: Boolean) {
+        findView(By.res(APP_PERMISSION_RATIONALE_CONTAINER_VIEW), expected)
+    }
 
-  companion object {
-    private const val PERMISSION_RATIONALE_ENABLED = "permission_rationale_enabled"
-  }
+    companion object {
+        private const val PERMISSION_RATIONALE_ENABLED = "permission_rationale_enabled"
+    }
 }

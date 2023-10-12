@@ -37,9 +37,7 @@ import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Banner card display tests on sensors being blocked
- */
+/** Banner card display tests on sensors being blocked */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
 @FlakyTest
 class SensorBlockedBannerTest : BaseUsePermissionTest() {
@@ -54,13 +52,19 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
     private val locationManager = context.getSystemService(LocationManager::class.java)!!
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
-    private val sensorToPermissionGroup = mapOf(CAMERA to CAMERA_PERMISSION_GROUP,
+    private val sensorToPermissionGroup =
+        mapOf(
+            CAMERA to CAMERA_PERMISSION_GROUP,
             MICROPHONE to MICROPHONE_PERMISSION_GROUP,
-            LOCATION to LOCATION_PERMISSION_GROUP)
+            LOCATION to LOCATION_PERMISSION_GROUP
+        )
 
-    private val permToTitle = mapOf(CAMERA to "blocked_camera_title",
+    private val permToTitle =
+        mapOf(
+            CAMERA to "blocked_camera_title",
             MICROPHONE to "blocked_microphone_title",
-            LOCATION to "blocked_location_title")
+            LOCATION to "blocked_location_title"
+        )
 
     @Before
     fun setup() {
@@ -74,13 +78,12 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
 
     private fun navigateAndTest(sensor: Int) {
         val permissionGroup = sensorToPermissionGroup.getOrDefault(sensor, "Break")
-        val intent = Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
+        val intent =
+            Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                 .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, permissionGroup)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        runWithShellPermissionIdentity {
-            context.startActivity(intent)
-        }
+        runWithShellPermissionIdentity { context.startActivity(intent) }
         val bannerTitle = permToTitle.getOrDefault(sensor, "Break")
         waitFindObject(By.text(getPermissionControllerString(bannerTitle)))
     }
@@ -139,8 +142,10 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
     private fun setSensor(sensor: Int, enable: Boolean) {
         if (sensor == LOCATION) {
             runWithShellPermissionIdentity {
-                locationManager.setLocationEnabledForUser(!enable,
-                    android.os.Process.myUserHandle())
+                locationManager.setLocationEnabledForUser(
+                    !enable,
+                    android.os.Process.myUserHandle()
+                )
                 if (enable) {
                     try {
                         val closePattern = Pattern.compile("close", Pattern.CASE_INSENSITIVE)
@@ -152,21 +157,20 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
             }
         } else {
             runWithShellPermissionIdentity {
-                sensorPrivacyManager.setSensorPrivacy(SensorPrivacyManager.Sources.OTHER,
-                    sensor, enable)
+                sensorPrivacyManager.setSensorPrivacy(
+                    SensorPrivacyManager.Sources.OTHER,
+                    sensor,
+                    enable
+                )
             }
         }
     }
 
     private fun isSensorPrivacyEnabled(sensor: Int): Boolean {
         return if (sensor == LOCATION) {
-            callWithShellPermissionIdentity {
-                !locationManager.isLocationEnabled()
-            }
+            callWithShellPermissionIdentity { !locationManager.isLocationEnabled() }
         } else {
-            callWithShellPermissionIdentity {
-                sensorPrivacyManager.isSensorPrivacyEnabled(sensor)
-            }
+            callWithShellPermissionIdentity { sensorPrivacyManager.isSensorPrivacyEnabled(sensor) }
         }
     }
 }

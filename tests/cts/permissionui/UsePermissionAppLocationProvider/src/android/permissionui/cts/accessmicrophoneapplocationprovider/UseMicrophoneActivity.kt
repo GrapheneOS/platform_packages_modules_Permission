@@ -26,9 +26,7 @@ import android.os.Handler
 private const val USE_DURATION_MS = 10000L
 private const val SAMPLE_RATE_HZ = 44100
 
-/**
- * An activity that uses microphone.
- */
+/** An activity that uses microphone. */
 class UseMicrophoneActivity : Activity() {
     private var recorder: AudioRecord? = null
 
@@ -52,15 +50,18 @@ class UseMicrophoneActivity : Activity() {
     }
 
     private fun useMic(context: Context) {
-        recorder = AudioRecord.Builder()
-            .setAudioSource(MediaRecorder.AudioSource.MIC)
-            .setAudioFormat(AudioFormat.Builder()
-                .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-                .setSampleRate(SAMPLE_RATE_HZ)
-                .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
-                .build())
-            .setContext(context)
-            .build()
+        recorder =
+            AudioRecord.Builder()
+                .setAudioSource(MediaRecorder.AudioSource.MIC)
+                .setAudioFormat(
+                    AudioFormat.Builder()
+                        .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                        .setSampleRate(SAMPLE_RATE_HZ)
+                        .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
+                        .build()
+                )
+                .setContext(context)
+                .build()
         recorder?.startRecording()
         Handler().postDelayed({ finish() }, USE_DURATION_MS)
     }

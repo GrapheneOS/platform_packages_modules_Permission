@@ -76,7 +76,8 @@ class ReviewAccessibilityServicesTest {
     fun assumeNotAutoTvOrWear() {
         Assume.assumeFalse(context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK))
         Assume.assumeFalse(
-            context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE))
+            context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
+        )
         Assume.assumeFalse(context.packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
     }
 
@@ -144,7 +145,8 @@ class ReviewAccessibilityServicesTest {
             try {
                 context.startActivity(
                     Intent(Intent.ACTION_REVIEW_ACCESSIBILITY_SERVICES)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                )
             } catch (e: Exception) {
                 throw RuntimeException("Caught exception", e)
             } finally {
@@ -153,12 +155,13 @@ class ReviewAccessibilityServicesTest {
         }
     }
 
-    private inline fun doAndWaitForWindowTransition(
-            crossinline block: () -> Unit
-    ) {
-        val timeoutOccurred: Boolean = !uiDevice.performActionAndWait({
-            block()
-        }, Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+    private inline fun doAndWaitForWindowTransition(crossinline block: () -> Unit) {
+        val timeoutOccurred: Boolean =
+            !uiDevice.performActionAndWait(
+                { block() },
+                Until.newWindow(),
+                NEW_WINDOW_TIMEOUT_MILLIS
+            )
 
         if (timeoutOccurred) {
             throw RuntimeException("Timed out waiting for window transition.")
@@ -178,22 +181,27 @@ class ReviewAccessibilityServicesTest {
     }
 
     private fun waitForSettingsButtonToDisappear() {
-        SystemUtil.eventually {
-            findObjectByText(false, "Settings")
-        }
+        SystemUtil.eventually { findObjectByText(false, "Settings") }
     }
 
-    private fun findObjectByTextWithoutRetry(shouldBePresent: Boolean, text: String, ): UiObject2? {
+    private fun findObjectByTextWithoutRetry(
+        shouldBePresent: Boolean,
+        text: String,
+    ): UiObject2? {
         val containsWithoutCaseSelector =
             By.text(Pattern.compile(".*$text.*", Pattern.CASE_INSENSITIVE))
-        val view = if (shouldBePresent) {
-            waitFindObjectOrNull(containsWithoutCaseSelector)
-        } else {
-            waitFindObjectOrNull(containsWithoutCaseSelector, EXPECTED_TIMEOUT_MS)
-        }
+        val view =
+            if (shouldBePresent) {
+                waitFindObjectOrNull(containsWithoutCaseSelector)
+            } else {
+                waitFindObjectOrNull(containsWithoutCaseSelector, EXPECTED_TIMEOUT_MS)
+            }
 
-        assertEquals("Expected to find view with text $text: $shouldBePresent",
-            shouldBePresent, view != null)
+        assertEquals(
+            "Expected to find view with text $text: $shouldBePresent",
+            shouldBePresent,
+            view != null
+        )
         return view
     }
 

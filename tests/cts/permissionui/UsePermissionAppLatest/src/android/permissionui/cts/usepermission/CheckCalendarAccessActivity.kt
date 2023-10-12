@@ -23,46 +23,48 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.CalendarContract
 
-/**
- * An activity that can check calendar access.
- */
+/** An activity that can check calendar access. */
 class CheckCalendarAccessActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val supportsRuntimePermissions = applicationInfo.targetSdkVersion >= Build.VERSION_CODES.M
         val hasAccess: Boolean
-        val uri = try {
-            contentResolver.insert(
-                CalendarContract.Calendars.CONTENT_URI, ContentValues().apply {
-                    put(CalendarContract.Calendars.NAME, "cts" + System.nanoTime())
-                    put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, "cts")
-                    put(CalendarContract.Calendars.CALENDAR_COLOR, 0xffff0000)
-                }
-            )!!
-        } catch (e: SecurityException) {
-            null
-        }
-        hasAccess = if (uri != null) {
-            val count = contentResolver.query(uri, null, null, null).use { it!!.count }
-            if (supportsRuntimePermissions) {
-                assert(count == 1)
-                true
-            } else {
-                // Without access we're handed back a "fake" Uri that doesn't contain
-                // any of the data we tried persisting
-                assert(count == 0 || count == 1)
-                count == 1
-            }
-        } else {
-            assert(supportsRuntimePermissions)
+        val uri =
             try {
-                contentResolver.query(CalendarContract.Calendars.CONTENT_URI, null, null, null)
-                    .use {}
-                error("Expected SecurityException")
-            } catch (e: SecurityException) {}
-            false
-        }
+                contentResolver.insert(
+                    CalendarContract.Calendars.CONTENT_URI,
+                    ContentValues().apply {
+                        put(CalendarContract.Calendars.NAME, "cts" + System.nanoTime())
+                        put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, "cts")
+                        put(CalendarContract.Calendars.CALENDAR_COLOR, 0xffff0000)
+                    }
+                )!!
+            } catch (e: SecurityException) {
+                null
+            }
+        hasAccess =
+            if (uri != null) {
+                val count = contentResolver.query(uri, null, null, null).use { it!!.count }
+                if (supportsRuntimePermissions) {
+                    assert(count == 1)
+                    true
+                } else {
+                    // Without access we're handed back a "fake" Uri that doesn't contain
+                    // any of the data we tried persisting
+                    assert(count == 0 || count == 1)
+                    count == 1
+                }
+            } else {
+                assert(supportsRuntimePermissions)
+                try {
+                    contentResolver
+                        .query(CalendarContract.Calendars.CONTENT_URI, null, null, null)
+                        .use {}
+                    error("Expected SecurityException")
+                } catch (e: SecurityException) {}
+                false
+            }
         setResult(RESULT_OK, Intent().apply { putExtra("$packageName.HAS_ACCESS", hasAccess) })
         finish()
     }

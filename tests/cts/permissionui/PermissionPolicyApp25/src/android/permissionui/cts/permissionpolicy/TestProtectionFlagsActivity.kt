@@ -22,15 +22,14 @@ import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Bundle
 
-/**
- * An activity that can test platform permission protection flags.
- */
+/** An activity that can test platform permission protection flags. */
 class TestProtectionFlagsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setResult(
-            RESULT_OK, Intent().apply {
+            RESULT_OK,
+            Intent().apply {
                 putExtra("$packageName.ERROR_MESSAGE", getProtectionFlagsErrorMessage())
             }
         )
@@ -42,22 +41,26 @@ class TestProtectionFlagsActivity : Activity() {
         val errorMessageBuilder = StringBuilder()
         for (declaredPermissionInfo in packageInfo.permissions ?: emptyArray()) {
             val permissionInfo = packageManager.getPermissionInfo(declaredPermissionInfo.name, 0)
-            val protection = permissionInfo.protection and (
-                PermissionInfo.PROTECTION_NORMAL
-                    or PermissionInfo.PROTECTION_DANGEROUS
-                    or PermissionInfo.PROTECTION_SIGNATURE
-                    or PermissionInfo.PROTECTION_INTERNAL
-                )
+            val protection =
+                permissionInfo.protection and
+                    (PermissionInfo.PROTECTION_NORMAL or
+                        PermissionInfo.PROTECTION_DANGEROUS or
+                        PermissionInfo.PROTECTION_SIGNATURE or
+                        PermissionInfo.PROTECTION_INTERNAL)
             val protectionFlags = permissionInfo.protectionLevel and protection.inv()
-            if ((protection == PermissionInfo.PROTECTION_NORMAL ||
-                    protection == PermissionInfo.PROTECTION_DANGEROUS) && protectionFlags != 0) {
+            if (
+                (protection == PermissionInfo.PROTECTION_NORMAL ||
+                    protection == PermissionInfo.PROTECTION_DANGEROUS) && protectionFlags != 0
+            ) {
                 errorMessageBuilder.apply {
                     if (isNotEmpty()) {
                         append("\n")
                     }
-                    append("Cannot add protection flags ${protectionFlagsToString(protectionFlags)
+                    append(
+                        "Cannot add protection flags ${protectionFlagsToString(protectionFlags)
                     } to a ${protectionToString(protection)} protection permission: ${
-                    permissionInfo.name}")
+                    permissionInfo.name}"
+                    )
                 }
             }
         }
@@ -100,7 +103,8 @@ class TestProtectionFlagsActivity : Activity() {
         appendProtectionFlag(PermissionInfo.PROTECTION_FLAG_ROLE, "role")
         if (unknownProtectionFlags != 0) {
             appendProtectionFlag(
-                unknownProtectionFlags, Integer.toHexString(unknownProtectionFlags)
+                unknownProtectionFlags,
+                Integer.toHexString(unknownProtectionFlags)
             )
         }
         return stringBuilder.toString()

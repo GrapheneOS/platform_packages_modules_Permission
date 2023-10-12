@@ -41,10 +41,13 @@ class RequestPermissionsActivity : Activity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        setResult(RESULT_OK, Intent().apply {
-            putExtra("$packageName.PERMISSIONS", permissions)
-            putExtra("$packageName.GRANT_RESULTS", grantResults)
-        })
+        setResult(
+            RESULT_OK,
+            Intent().apply {
+                putExtra("$packageName.PERMISSIONS", permissions)
+                putExtra("$packageName.GRANT_RESULTS", grantResults)
+            }
+        )
         finish()
     }
 

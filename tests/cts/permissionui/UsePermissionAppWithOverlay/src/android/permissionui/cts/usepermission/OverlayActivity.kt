@@ -15,7 +15,8 @@ class OverlayActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.overlay_activity)
         val params = window.attributes
-        params.flags = (WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS or
+        params.flags =
+            (WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS or
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
@@ -33,15 +34,19 @@ class OverlayActivity : Activity() {
             params.height = bottom - top
         }
 
-        registerReceiver(object : BroadcastReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                if (intent?.action != RequestPermissionsActivity.ACTION_HIDE_OVERLAY) {
-                    return
-                }
+        registerReceiver(
+            object : BroadcastReceiver() {
+                override fun onReceive(context: Context?, intent: Intent?) {
+                    if (intent?.action != RequestPermissionsActivity.ACTION_HIDE_OVERLAY) {
+                        return
+                    }
 
-                finish()
-            }
-        }, IntentFilter(RequestPermissionsActivity.ACTION_HIDE_OVERLAY), RECEIVER_EXPORTED)
+                    finish()
+                }
+            },
+            IntentFilter(RequestPermissionsActivity.ACTION_HIDE_OVERLAY),
+            RECEIVER_EXPORTED
+        )
     }
 
     companion object {

@@ -47,8 +47,8 @@ class StorageEscalationTest {
         const val APP_APK_PATH_29_FULL = "$APK_DIRECTORY/CtsStorageEscalationApp29Full.apk"
         const val APP_PACKAGE_NAME = "android.permission.cts.storageescalation"
         const val DELAY_TIME_MS: Long = 200
-        val permissions = listOf<String>(READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE,
-            ACCESS_MEDIA_LOCATION)
+        val permissions =
+            listOf<String>(READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, ACCESS_MEDIA_LOCATION)
     }
 
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
@@ -64,23 +64,24 @@ class StorageEscalationTest {
 
     private fun installPackage(apk: String) {
         var userString = ""
-        secondaryUserId?.let { userId ->
-            userString = " --user $userId"
-        }
+        secondaryUserId?.let { userId -> userString = " --user $userId" }
         val result = SystemUtil.runShellCommandOrThrow("pm install -r$userString $apk")
-        assertTrue("Expected output to contain \"Success\", but was \"$result\"",
-                result.contains("Success"))
+        assertTrue(
+            "Expected output to contain \"Success\", but was \"$result\"",
+            result.contains("Success")
+        )
     }
 
     private fun createSecondaryUser() {
         val createUserOutput: String = SystemUtil.runShellCommand("pm create-user secondary")
         var formatException: Exception? = null
-        val userId = try {
-            createUserOutput.split(" id ".toRegex())[1].trim { it <= ' ' }.toInt()
-        } catch (e: Exception) {
-            formatException = e
-            -1
-        }
+        val userId =
+            try {
+                createUserOutput.split(" id ".toRegex())[1].trim { it <= ' ' }.toInt()
+            } catch (e: Exception) {
+                formatException = e
+                -1
+            }
         assumeNoException("Failed to parse userId from $createUserOutput", formatException)
         SystemUtil.runShellCommand("am start-user -w $userId")
         secondaryUserId = userId
@@ -97,9 +98,7 @@ class StorageEscalationTest {
     private fun grantStoragePermissions() {
         for (permName in permissions) {
             var user = Process.myUserHandle()
-            secondaryUserId?.let {
-                user = UserHandle.of(it)
-            }
+            secondaryUserId?.let { user = UserHandle.of(it) }
             uiAutomation.grantRuntimePermissionAsUser(APP_PACKAGE_NAME, permName, user)
         }
     }
@@ -109,12 +108,19 @@ class StorageEscalationTest {
             var userContext = context
             secondaryUserId?.let { userId ->
                 SystemUtil.runWithShellPermissionIdentity {
-                    userContext = context.createPackageContextAsUser(
-                            APP_PACKAGE_NAME, 0, UserHandle.of(userId))
+                    userContext =
+                        context.createPackageContextAsUser(
+                            APP_PACKAGE_NAME,
+                            0,
+                            UserHandle.of(userId)
+                        )
                 }
             }
-            Assert.assertEquals(granted, userContext.packageManager.checkPermission(permName,
-                APP_PACKAGE_NAME) == PackageManager.PERMISSION_GRANTED)
+            Assert.assertEquals(
+                granted,
+                userContext.packageManager.checkPermission(permName, APP_PACKAGE_NAME) ==
+                    PackageManager.PERMISSION_GRANTED
+            )
         }
     }
 
