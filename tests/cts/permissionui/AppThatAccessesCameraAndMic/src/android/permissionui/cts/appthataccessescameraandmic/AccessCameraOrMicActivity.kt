@@ -73,7 +73,8 @@ class AccessCameraOrMicActivity : Activity() {
             throw RuntimeException(
                 "Activity was recreated (perhaps due to a configuration change?) " +
                     "and this activity doesn't currently know how to gracefully handle " +
-                    "configuration changes.")
+                    "configuration changes."
+            )
         }
     }
 
@@ -107,8 +108,11 @@ class AccessCameraOrMicActivity : Activity() {
             appOpsManager?.finishOp(AppOpsManager.OPSTR_CAMERA, Process.myUid(), packageName)
         }
         if (runHotword) {
-            appOpsManager?.finishOp(AppOpsManager.OPSTR_RECORD_AUDIO_HOTWORD, Process.myUid(),
-                    packageName)
+            appOpsManager?.finishOp(
+                AppOpsManager.OPSTR_RECORD_AUDIO_HOTWORD,
+                Process.myUid(),
+                packageName
+            )
         }
         appOpsManager = null
     }
@@ -118,59 +122,67 @@ class AccessCameraOrMicActivity : Activity() {
         finish()
     }
 
-    private val stateCallback = object : CameraDevice.StateCallback() {
-        override fun onOpened(@NonNull camDevice: CameraDevice) {
-            cameraDevice = camDevice
-            val config = cameraManager!!.getCameraCharacteristics(cameraId)
-                    .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
-            val outputFormat = config!!.outputFormats[0]
-            val outputSize: Size = config!!.getOutputSizes(outputFormat)[0]
-            val handler = Handler(mainLooper)
+    private val stateCallback =
+        object : CameraDevice.StateCallback() {
+            override fun onOpened(@NonNull camDevice: CameraDevice) {
+                cameraDevice = camDevice
+                val config =
+                    cameraManager!!
+                        .getCameraCharacteristics(cameraId)
+                        .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+                val outputFormat = config!!.outputFormats[0]
+                val outputSize: Size = config!!.getOutputSizes(outputFormat)[0]
+                val handler = Handler(mainLooper)
 
-            val imageReader = ImageReader.newInstance(
-                    outputSize.width, outputSize.height, outputFormat, 2)
+                val imageReader =
+                    ImageReader.newInstance(outputSize.width, outputSize.height, outputFormat, 2)
 
-            val builder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-            builder.addTarget(imageReader.surface)
-            val captureRequest = builder.build()
-            val sessionConfiguration = SessionConfiguration(
-                    SessionConfiguration.SESSION_REGULAR,
-                    listOf(OutputConfiguration(imageReader.surface)),
-                    mainExecutor,
-                    object : CameraCaptureSession.StateCallback() {
-                        override fun onConfigured(session: CameraCaptureSession) {
-                            session.capture(captureRequest, null, handler)
+                val builder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+                builder.addTarget(imageReader.surface)
+                val captureRequest = builder.build()
+                val sessionConfiguration =
+                    SessionConfiguration(
+                        SessionConfiguration.SESSION_REGULAR,
+                        listOf(OutputConfiguration(imageReader.surface)),
+                        mainExecutor,
+                        object : CameraCaptureSession.StateCallback() {
+                            override fun onConfigured(session: CameraCaptureSession) {
+                                session.capture(captureRequest, null, handler)
+                            }
+
+                            override fun onConfigureFailed(session: CameraCaptureSession) {}
+
+                            override fun onReady(session: CameraCaptureSession) {}
                         }
+                    )
 
-                        override fun onConfigureFailed(session: CameraCaptureSession) {}
-
-                        override fun onReady(session: CameraCaptureSession) {}
-                    })
-
-            imageReader.setOnImageAvailableListener({
-                GlobalScope.launch {
-                    delay(USE_DURATION_MS)
-                    if (!backupCameraOpRunning) {
-                        cameraFinished = true
-                        if (!runMic || micFinished) {
-                            finish()
+                imageReader.setOnImageAvailableListener(
+                    {
+                        GlobalScope.launch {
+                            delay(USE_DURATION_MS)
+                            if (!backupCameraOpRunning) {
+                                cameraFinished = true
+                                if (!runMic || micFinished) {
+                                    finish()
+                                }
+                            }
                         }
-                    }
-                }
-            }, handler)
-            cameraDevice!!.createCaptureSession(sessionConfiguration)
-        }
+                    },
+                    handler
+                )
+                cameraDevice!!.createCaptureSession(sessionConfiguration)
+            }
 
-        override fun onDisconnected(@NonNull camDevice: CameraDevice) {
-            Log.e("CameraMicIndicatorsPermissionTest", "camera disconnected")
-            startBackupCamera(camDevice)
-        }
+            override fun onDisconnected(@NonNull camDevice: CameraDevice) {
+                Log.e("CameraMicIndicatorsPermissionTest", "camera disconnected")
+                startBackupCamera(camDevice)
+            }
 
-        override fun onError(@NonNull camDevice: CameraDevice, error: Int) {
-            Log.e("CameraMicIndicatorsPermissionTest", "camera error $error")
-            startBackupCamera(camDevice)
+            override fun onError(@NonNull camDevice: CameraDevice, error: Int) {
+                Log.e("CameraMicIndicatorsPermissionTest", "camera error $error")
+                startBackupCamera(camDevice)
+            }
         }
-    }
 
     private fun startBackupCamera(camDevice: CameraDevice?) {
         // Something went wrong with the camera. Fallback to direct app op usage
@@ -222,8 +234,11 @@ class AccessCameraOrMicActivity : Activity() {
 
     private fun useHotword() {
         appOpsManager = getSystemService(AppOpsManager::class.java)
-        appOpsManager?.startOpNoThrow(AppOpsManager.OPSTR_RECORD_AUDIO_HOTWORD, Process.myUid(),
-                packageName)
+        appOpsManager?.startOpNoThrow(
+            AppOpsManager.OPSTR_RECORD_AUDIO_HOTWORD,
+            Process.myUid(),
+            packageName
+        )
 
         GlobalScope.launch {
             delay(USE_DURATION_MS)
@@ -233,8 +248,11 @@ class AccessCameraOrMicActivity : Activity() {
     }
 
     private fun finishIfAllDone() {
-        if ((!runMic || micFinished) && (!runCamera || cameraFinished) &&
-            (!runHotword || hotwordFinished)) {
+        if (
+            (!runMic || micFinished) &&
+                (!runCamera || cameraFinished) &&
+                (!runHotword || hotwordFinished)
+        ) {
             finish()
         }
     }

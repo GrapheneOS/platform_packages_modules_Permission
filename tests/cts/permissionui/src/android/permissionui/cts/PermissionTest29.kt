@@ -24,9 +24,7 @@ import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Runtime permission behavior tests for apps targeting API 29.
- */
+/** Runtime permission behavior tests for apps targeting API 29. */
 @FlakyTest
 class PermissionTest29 : BaseUsePermissionTest() {
     @Before
@@ -151,9 +149,7 @@ class PermissionTest29 : BaseUsePermissionTest() {
             assertAppHasPermission(android.Manifest.permission.ACCESS_FINE_LOCATION, false)
             assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
-            doAndWaitForWindowTransition {
-                clickPermissionRequestAllowForegroundButton()
-            }
+            doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
 
         // Step 2: Upgrade foreground to background, go to settings, do nothing
@@ -167,9 +163,7 @@ class PermissionTest29 : BaseUsePermissionTest() {
             assertAppHasPermission(android.Manifest.permission.ACCESS_FINE_LOCATION, true)
             assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
-            doAndWaitForWindowTransition {
-                clickPermissionRequestNoUpgradeAndDontAskAgainButton()
-            }
+            doAndWaitForWindowTransition { clickPermissionRequestNoUpgradeAndDontAskAgainButton() }
         }
     }
 

@@ -25,6 +25,5 @@ import org.junit.Test
 @CtsDownstreamingTest
 class PermissionNoOpGtsTest {
 
-    @Test
-    fun shouldAlwaysPass() {}
+    @Test fun shouldAlwaysPass() {}
 }

@@ -24,10 +24,8 @@ import org.junit.Assert
 import org.junit.Test
 
 private val APP_PKG_NAME = "android.permission.cts.usesystemalertwindowpermission"
-private val APK_22 = "/data/local/tmp/cts-permission/" +
-        "CtsAppThatRequestsSystemAlertWindow22.apk"
-private val APK_23 = "/data/local/tmp/cts-permission/" +
-        "CtsAppThatRequestsSystemAlertWindow23.apk"
+private val APK_22 = "/data/local/tmp/cts-permission/" + "CtsAppThatRequestsSystemAlertWindow22.apk"
+private val APK_23 = "/data/local/tmp/cts-permission/" + "CtsAppThatRequestsSystemAlertWindow23.apk"
 
 class RevokeSawPermissionTest {
 
@@ -56,7 +54,9 @@ class RevokeSawPermissionTest {
             } else {
                 PackageManager.PERMISSION_DENIED
             },
-            InstrumentationRegistry.getInstrumentation().getTargetContext().packageManager
+            InstrumentationRegistry.getInstrumentation()
+                .getTargetContext()
+                .packageManager
                 .checkPermission(permissionName, APP_PKG_NAME)
         )
     }

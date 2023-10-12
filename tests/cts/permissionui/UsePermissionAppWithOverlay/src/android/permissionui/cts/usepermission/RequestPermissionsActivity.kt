@@ -38,24 +38,30 @@ class RequestPermissionsActivity : Activity() {
             return
         }
 
-        registerReceiver(object : BroadcastReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                if (intent?.action != ACTION_SHOW_OVERLAY) {
-                    return
-                }
+        registerReceiver(
+            object : BroadcastReceiver() {
+                override fun onReceive(context: Context?, intent: Intent?) {
+                    if (intent?.action != ACTION_SHOW_OVERLAY) {
+                        return
+                    }
 
-                startActivity(intent
-                        .setAction(null)
-                        .setComponent(ComponentName(context!!, OverlayActivity::class.java))
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-            }
-        }, IntentFilter(ACTION_SHOW_OVERLAY), RECEIVER_EXPORTED)
+                    startActivity(
+                        intent
+                            .setAction(null)
+                            .setComponent(ComponentName(context!!, OverlayActivity::class.java))
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    )
+                }
+            },
+            IntentFilter(ACTION_SHOW_OVERLAY),
+            RECEIVER_EXPORTED
+        )
         Handler(mainLooper).post(this::eventuallyRequestPermission)
     }
 
     /**
-     * Keep trying to requestPermissions until the dialog shows. It may fail the first few times
-     * due to rapid install/uninstall tests do
+     * Keep trying to requestPermissions until the dialog shows. It may fail the first few times due
+     * to rapid install/uninstall tests do
      */
     private fun eventuallyRequestPermission() {
         if (!paused) {
@@ -72,10 +78,13 @@ class RequestPermissionsActivity : Activity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        setResult(RESULT_OK, Intent().apply {
-            putExtra("$packageName.PERMISSIONS", permissions)
-            putExtra("$packageName.GRANT_RESULTS", grantResults)
-        })
+        setResult(
+            RESULT_OK,
+            Intent().apply {
+                putExtra("$packageName.PERMISSIONS", permissions)
+                putExtra("$packageName.GRANT_RESULTS", grantResults)
+            }
+        )
         finish()
     }
 

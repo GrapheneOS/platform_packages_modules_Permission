@@ -47,32 +47,43 @@ object PhotoPickerUtils {
     }
 
     fun getMediaProviderPkgName(context: Context): String? {
-        return mediaProviderPkgName ?: callWithShellPermissionIdentity {
-            val pkgs = context.packageManager.getInstalledPackages(PackageManager.GET_PROVIDERS)
-            for (pkg in pkgs) {
-                pkg.providers?.let { providerInfos ->
-                    for (providerInfo in providerInfos) {
-                        if (providerInfo.authority == "media") {
-                            mediaProviderPkgName = pkg.packageName
-                            return@callWithShellPermissionIdentity mediaProviderPkgName
+        return mediaProviderPkgName
+            ?: callWithShellPermissionIdentity {
+                val pkgs = context.packageManager.getInstalledPackages(PackageManager.GET_PROVIDERS)
+                for (pkg in pkgs) {
+                    pkg.providers?.let { providerInfos ->
+                        for (providerInfo in providerInfos) {
+                            if (providerInfo.authority == "media") {
+                                mediaProviderPkgName = pkg.packageName
+                                return@callWithShellPermissionIdentity mediaProviderPkgName
+                            }
                         }
                     }
                 }
+                null
             }
-            null
-        }
     }
 
     @Throws(java.lang.Exception::class)
     fun createImage(context: Context): Uri {
-        return getPermissionAndStageMedia( context, R.raw.lg_g4_iso_800_jpg,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/jpeg").first
+        return getPermissionAndStageMedia(
+                context,
+                R.raw.lg_g4_iso_800_jpg,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                "image/jpeg"
+            )
+            .first
     }
 
     @Throws(java.lang.Exception::class)
     fun createVideo(context: Context): Uri {
-        return getPermissionAndStageMedia(context, R.raw.test_video,
-            MediaStore.Video.Media.EXTERNAL_CONTENT_URI, "video/mp4").first
+        return getPermissionAndStageMedia(
+                context,
+                R.raw.test_video,
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                "video/mp4"
+            )
+            .first
     }
 
     @Throws(Exception::class)

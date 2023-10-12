@@ -18,7 +18,5 @@ package android.permission.cts
 
 import android.accessibility.cts.common.InstrumentedAccessibilityService
 
-/**
- * Test Accessibility Service
- */
+/** Test Accessibility Service */
 class AccessibilityTestService : InstrumentedAccessibilityService()

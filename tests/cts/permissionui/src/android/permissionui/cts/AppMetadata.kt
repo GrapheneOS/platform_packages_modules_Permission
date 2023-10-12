@@ -143,8 +143,11 @@ object AppMetadata {
                     APPROX_LOCATION,
                     PersistableBundle().apply {
                         putIntArray(
-                            KEY_PURPOSES, listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray())
-                    })
+                            KEY_PURPOSES,
+                            listOf(PURPOSE_FRAUD_PREVENTION_SECURITY).toIntArray()
+                        )
+                    }
+                )
             }
 
         val dataSharedBundle =
@@ -164,7 +167,8 @@ object AppMetadata {
                     APPROX_LOCATION,
                     PersistableBundle().apply {
                         putIntArray(KEY_PURPOSES, listOf(PURPOSE_ADVERTISING).toIntArray())
-                    })
+                    }
+                )
             }
 
         val dataSharedBundle =

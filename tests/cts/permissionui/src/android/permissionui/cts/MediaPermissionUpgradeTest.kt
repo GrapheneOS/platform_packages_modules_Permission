@@ -26,9 +26,7 @@ import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.CddTest
 import org.junit.Test
 
-/**
- * Tests media storage permission behavior upon app upgrade.
- */
+/** Tests media storage permission behavior upon app upgrade. */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
 @CddTest(requirement = "9.1/C-0-1")
 @FlakyTest
@@ -51,10 +49,10 @@ class MediaPermissionUpgradeTest : BaseUsePermissionTest() {
 
         // Request READ_MEDIA_*
         requestAppPermissionsAndAssertResult(
-                READ_MEDIA_AUDIO to true,
-                READ_MEDIA_VIDEO to true,
-                READ_MEDIA_IMAGES to true,
-                waitForWindowTransition = false
+            READ_MEDIA_AUDIO to true,
+            READ_MEDIA_VIDEO to true,
+            READ_MEDIA_IMAGES to true,
+            waitForWindowTransition = false
         ) {
             // Don't click any grant dialog buttons because no grant dialog should appear
         }

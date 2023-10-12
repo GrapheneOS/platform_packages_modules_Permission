@@ -113,8 +113,7 @@ class MediaPermissionTest : BaseUsePermissionTest() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             waitForWindowTransition = false
-        ) {
-        }
+        ) {}
         assertStorageAndMediaPermissionState(false)
     }
 
@@ -136,13 +135,14 @@ class MediaPermissionTest : BaseUsePermissionTest() {
         installPackage(APP_APK_PATH_LATEST)
         requestAppPermissions(
             Manifest.permission.READ_MEDIA_VIDEO,
-            Manifest.permission.READ_MEDIA_IMAGES) {
-                if (isPhotoPickerPermissionPromptEnabled()) {
-                    clickPermissionRequestAllowAllButton()
-                } else {
-                    clickPermissionRequestAllowButton()
-                }
+            Manifest.permission.READ_MEDIA_IMAGES
+        ) {
+            if (isPhotoPickerPermissionPromptEnabled()) {
+                clickPermissionRequestAllowAllButton()
+            } else {
+                clickPermissionRequestAllowButton()
             }
+        }
         assertAppHasPermission(Manifest.permission.READ_EXTERNAL_STORAGE, false)
         assertAppHasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, false)
         assertAppHasPermission(Manifest.permission.READ_MEDIA_AUDIO, false)
@@ -154,15 +154,16 @@ class MediaPermissionTest : BaseUsePermissionTest() {
     fun testWhenA30AppRequestsStorageWhenMediaPermsHaveRWRFlag() {
         installPackage(APP_APK_PATH_30)
 
-        requestAppPermissionsAndAssertResult(
-            Manifest.permission.READ_EXTERNAL_STORAGE to true
-        ) {
+        requestAppPermissionsAndAssertResult(Manifest.permission.READ_EXTERNAL_STORAGE to true) {
             clickPermissionRequestAllowButton()
         }
 
-        fun setRevokeWhenRequested(permission: String) = SystemUtil.runShellCommandOrThrow(
-            "pm set-permission-flags android.permissionui.cts.usepermission " +
-                permission + " revoke-when-requested")
+        fun setRevokeWhenRequested(permission: String) =
+            SystemUtil.runShellCommandOrThrow(
+                "pm set-permission-flags android.permissionui.cts.usepermission " +
+                    permission +
+                    " revoke-when-requested"
+            )
         setRevokeWhenRequested("android.permission.READ_MEDIA_AUDIO")
         setRevokeWhenRequested("android.permission.READ_MEDIA_VIDEO")
         setRevokeWhenRequested("android.permission.READ_MEDIA_IMAGES")

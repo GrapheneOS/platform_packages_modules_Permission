@@ -28,20 +28,28 @@ object CtsNotificationListenerServiceUtils {
 
     @JvmStatic
     fun assertEmptyNotification(packageName: String, notificationId: Int) {
-        ensure({
-            Assert.assertNull(
-            "Expected no notification",
-            getNotification(packageName, notificationId))
-        }, NOTIFICATION_WAIT_MILLIS)
+        ensure(
+            {
+                Assert.assertNull(
+                    "Expected no notification",
+                    getNotification(packageName, notificationId)
+                )
+            },
+            NOTIFICATION_WAIT_MILLIS
+        )
     }
 
     @JvmStatic
     fun assertNotificationExist(packageName: String, notificationId: Int) {
-        eventually({
-            Assert.assertNotNull(
-                "Expected notification, none found",
-                getNotification(packageName, notificationId))
-        }, NOTIFICATION_WAIT_MILLIS)
+        eventually(
+            {
+                Assert.assertNotNull(
+                    "Expected notification, none found",
+                    getNotification(packageName, notificationId)
+                )
+            },
+            NOTIFICATION_WAIT_MILLIS
+        )
     }
 
     @JvmStatic
@@ -50,9 +58,10 @@ object CtsNotificationListenerServiceUtils {
         val notification = getNotification(packageName, notificationId)
         if (notification != null) {
             notificationService.cancelNotification(notification.key)
-            eventually({
-                Assert.assertTrue(getNotification(packageName, notificationId) == null)
-            }, NOTIFICATION_CANCELLATION_TIMEOUT_MILLIS)
+            eventually(
+                { Assert.assertTrue(getNotification(packageName, notificationId) == null) },
+                NOTIFICATION_CANCELLATION_TIMEOUT_MILLIS
+            )
         }
     }
 
@@ -64,17 +73,16 @@ object CtsNotificationListenerServiceUtils {
             notifications.forEach { notification ->
                 notificationService.cancelNotification(notification.key)
             }
-            eventually({
-                Assert.assertTrue(getNotifications(packageName).isEmpty())
-            }, NOTIFICATION_CANCELLATION_TIMEOUT_MILLIS)
+            eventually(
+                { Assert.assertTrue(getNotifications(packageName).isEmpty()) },
+                NOTIFICATION_CANCELLATION_TIMEOUT_MILLIS
+            )
         }
     }
 
     @JvmStatic
     fun getNotification(packageName: String, notificationId: Int): StatusBarNotification? {
-        return getNotifications(packageName).firstOrNull {
-            it.id == notificationId
-        }
+        return getNotifications(packageName).firstOrNull { it.id == notificationId }
     }
 
     @JvmStatic
@@ -98,9 +106,9 @@ object CtsNotificationListenerServiceUtils {
     @JvmStatic
     @Throws(Throwable::class)
     fun getNotificationForPackageAndId(
-            pkg: String,
-            id: Int,
-            cancelNotification: Boolean
+        pkg: String,
+        id: Int,
+        cancelNotification: Boolean
     ): StatusBarNotification? {
         val notifications: List<StatusBarNotification> = getNotifications(pkg)
         if (notifications.isEmpty()) {

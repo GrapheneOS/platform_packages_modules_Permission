@@ -17,7 +17,6 @@
 package android.app.role.cts
 
 import android.app.Instrumentation
-
 import android.app.role.RoleManager
 import android.content.Context
 import android.content.Intent
@@ -33,19 +32,17 @@ import com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.ThrowingSupplier
 import com.google.common.truth.Truth.assertThat
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.TimeUnit
-import java.util.function.Consumer
 
-/**
- * Tests RoleControllerManager APIs exposed on [RoleManager].
- */
+/** Tests RoleControllerManager APIs exposed on [RoleManager]. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class RoleControllerManagerTest {
@@ -73,10 +70,16 @@ class RoleControllerManagerTest {
     @Test
     fun settingsIsNotVisibleForHomeRole() {
         // Settings should never show as a possible home app even if qualified.
-        val settingsPackageName = packageManager.resolveActivity(
-            Intent(Settings.ACTION_SETTINGS), PackageManager.MATCH_DEFAULT_ONLY
-            or PackageManager.MATCH_DIRECT_BOOT_AWARE or PackageManager.MATCH_DIRECT_BOOT_UNAWARE
-        )!!.activityInfo.packageName
+        val settingsPackageName =
+            packageManager
+                .resolveActivity(
+                    Intent(Settings.ACTION_SETTINGS),
+                    PackageManager.MATCH_DEFAULT_ONLY or
+                        PackageManager.MATCH_DIRECT_BOOT_AWARE or
+                        PackageManager.MATCH_DIRECT_BOOT_UNAWARE
+                )!!
+                .activityInfo
+                .packageName
         assertAppIsVisibleForRole(settingsPackageName, RoleManager.ROLE_HOME, false)
     }
 
@@ -98,7 +101,10 @@ class RoleControllerManagerTest {
         runWithShellPermissionIdentity {
             val future = CompletableFuture<Boolean>()
             roleManager.isApplicationVisibleForRole(
-                roleName, packageName, context.mainExecutor, Consumer { future.complete(it) }
+                roleName,
+                packageName,
+                context.mainExecutor,
+                Consumer { future.complete(it) }
             )
             val isVisible = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
             assertThat(isVisible).isEqualTo(expectedIsVisible)
@@ -121,21 +127,25 @@ class RoleControllerManagerTest {
     }
 
     private fun isRoleVisible(roleName: String): Boolean =
-        runWithShellPermissionIdentity(ThrowingSupplier {
-            val future = CompletableFuture<Boolean>()
-            roleManager.isRoleVisible(
-                roleName, context.mainExecutor, Consumer { future.complete(it) }
-            )
-            future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
-        })
+        runWithShellPermissionIdentity(
+            ThrowingSupplier {
+                val future = CompletableFuture<Boolean>()
+                roleManager.isRoleVisible(
+                    roleName,
+                    context.mainExecutor,
+                    Consumer { future.complete(it) }
+                )
+                future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
+            }
+        )
 
     private fun installPackage(apkPath: String) {
         assertEquals(
             "Success",
             runShellCommandOrThrow(
-                "pm install -r --user ${Process.myUserHandle().identifier} $apkPath"
-            )
-            .trim()
+                    "pm install -r --user ${Process.myUserHandle().identifier} $apkPath"
+                )
+                .trim()
         )
     }
 

@@ -25,9 +25,7 @@ import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Runtime permission behavior tests for apps targeting API 23.
- */
+/** Runtime permission behavior tests for apps targeting API 23. */
 @FlakyTest
 class PermissionTest23 : BaseUsePermissionTest() {
     companion object {
@@ -117,8 +115,8 @@ class PermissionTest23 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is granted
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.WRITE_CONTACTS to true,
-                waitForWindowTransition = false
+            android.Manifest.permission.WRITE_CONTACTS to true,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -140,8 +138,8 @@ class PermissionTest23 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.WRITE_CONTACTS to false,
-                waitForWindowTransition = false
+            android.Manifest.permission.WRITE_CONTACTS to false,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -180,8 +178,10 @@ class PermissionTest23 : BaseUsePermissionTest() {
         }
 
         // Clear the denial with prejudice
-        uiAutomation.grantRuntimePermission(APP_PACKAGE_NAME,
-            android.Manifest.permission.READ_CALENDAR)
+        uiAutomation.grantRuntimePermission(
+            APP_PACKAGE_NAME,
+            android.Manifest.permission.READ_CALENDAR
+        )
         revokeAppPermissionsByUi(android.Manifest.permission.READ_CALENDAR)
 
         // Make sure we don't have the permission
@@ -215,8 +215,8 @@ class PermissionTest23 : BaseUsePermissionTest() {
         // Request the permission and do nothing
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-                NON_EXISTENT_PERMISSION to false,
-                waitForWindowTransition = false
+            NON_EXISTENT_PERMISSION to false,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -229,13 +229,14 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         // Request the permission and allow it
         // Expect the permission are granted
-        val result = requestAppPermissionsAndAssertResult(
-            android.Manifest.permission.WRITE_CONTACTS to true,
-            android.Manifest.permission.WRITE_CALENDAR to true
-        ) {
-            clickPermissionRequestAllowButton()
-            clickPermissionRequestAllowButton()
-        }
+        val result =
+            requestAppPermissionsAndAssertResult(
+                android.Manifest.permission.WRITE_CONTACTS to true,
+                android.Manifest.permission.WRITE_CALENDAR to true
+            ) {
+                clickPermissionRequestAllowButton()
+                clickPermissionRequestAllowButton()
+            }
 
         // In API < N_MR1 all permissions of a group are granted. I.e. the grant was "expanded"
         assertAppHasPermission(android.Manifest.permission.READ_CALENDAR, true)
@@ -252,7 +253,8 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         // Grant one permission via UI, and the rest via automation
         grantAppPermissionsByUi(android.Manifest.permission.WRITE_CALENDAR)
-        grantRuntimePermissions(android.Manifest.permission.WRITE_CONTACTS,
+        grantRuntimePermissions(
+            android.Manifest.permission.WRITE_CONTACTS,
             android.Manifest.permission.READ_SMS,
             android.Manifest.permission.CALL_PHONE,
             android.Manifest.permission.RECORD_AUDIO,
@@ -277,9 +279,9 @@ class PermissionTest23 : BaseUsePermissionTest() {
         val results: Array<Pair<String?, Boolean>> = arrayOf()
         // Go through normal grant flow
         requestAppPermissionsAndAssertResult(
-                permissions,
-                results,
-                waitForWindowTransition = false
+            permissions,
+            results,
+            waitForWindowTransition = false
         ) {}
     }
 
@@ -296,10 +298,12 @@ class PermissionTest23 : BaseUsePermissionTest() {
                 android.Manifest.permission.WRITE_CONTACTS,
                 null,
                 android.Manifest.permission.RECORD_AUDIO,
-                null),
+                null
+            ),
             arrayOf(
                 android.Manifest.permission.WRITE_CONTACTS to true,
-                android.Manifest.permission.RECORD_AUDIO to true)
+                android.Manifest.permission.RECORD_AUDIO to true
+            )
         ) {
             clickPermissionRequestAllowForegroundButton()
             clickPermissionRequestAllowButton()
@@ -311,15 +315,17 @@ class PermissionTest23 : BaseUsePermissionTest() {
         // Request the permission and allow it
         // Expect the permission is not granted
         requestAppPermissionsAndAssertResult(
-                INVALID_PERMISSION to false,
-                waitForWindowTransition = false
+            INVALID_PERMISSION to false,
+            waitForWindowTransition = false
         ) {}
     }
 
     @Test
     fun testAskButtonSetsFlags() {
-        Assume.assumeFalse("other form factors might not support the ask button",
-                isTv || isAutomotive || isWatch)
+        Assume.assumeFalse(
+            "other form factors might not support the ask button",
+            isTv || isAutomotive || isWatch
+        )
 
         grantAppPermissionsByUi(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
         assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, true)
@@ -328,18 +334,29 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
         revokeAppPermissionsByUi(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
         SystemUtil.runWithShellPermissionIdentity {
-            val perms = listOf(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+            val perms =
+                listOf(
+                    android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                     android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                )
             for (perm in perms) {
                 var flags = packageManager.getPermissionFlags(perm, APP_PACKAGE_NAME, context.user)
-                Assert.assertEquals("USER_SET should not be set for $perm", 0,
-                        flags and PackageManager.FLAG_PERMISSION_USER_SET)
-                Assert.assertEquals("USER_FIXED should not be set for $perm", 0,
-                        flags and PackageManager.FLAG_PERMISSION_USER_FIXED)
-                Assert.assertEquals("ONE_TIME should be set for $perm",
-                        PackageManager.FLAG_PERMISSION_ONE_TIME,
-                        flags and PackageManager.FLAG_PERMISSION_ONE_TIME)
+                Assert.assertEquals(
+                    "USER_SET should not be set for $perm",
+                    0,
+                    flags and PackageManager.FLAG_PERMISSION_USER_SET
+                )
+                Assert.assertEquals(
+                    "USER_FIXED should not be set for $perm",
+                    0,
+                    flags and PackageManager.FLAG_PERMISSION_USER_FIXED
+                )
+                Assert.assertEquals(
+                    "ONE_TIME should be set for $perm",
+                    PackageManager.FLAG_PERMISSION_ONE_TIME,
+                    flags and PackageManager.FLAG_PERMISSION_ONE_TIME
+                )
             }
         }
     }
@@ -354,34 +371,33 @@ class PermissionTest23 : BaseUsePermissionTest() {
 
     private fun assertAppHasAllOrNoPermissions(expectPermissions: Boolean) {
         arrayOf(
-            android.Manifest.permission.SEND_SMS,
-            android.Manifest.permission.RECEIVE_SMS,
-            android.Manifest.permission.RECEIVE_WAP_PUSH,
-            android.Manifest.permission.RECEIVE_MMS,
-            android.Manifest.permission.READ_CALENDAR,
-            android.Manifest.permission.WRITE_CALENDAR,
-            android.Manifest.permission.WRITE_CONTACTS,
-            android.Manifest.permission.READ_SMS,
-            android.Manifest.permission.READ_PHONE_STATE,
-            android.Manifest.permission.READ_CALL_LOG,
-            android.Manifest.permission.WRITE_CALL_LOG,
-            android.Manifest.permission.ADD_VOICEMAIL,
-            android.Manifest.permission.CALL_PHONE,
-            android.Manifest.permission.USE_SIP,
-            android.Manifest.permission.PROCESS_OUTGOING_CALLS,
-            android.Manifest.permission.RECORD_AUDIO,
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.BODY_SENSORS,
-            android.Manifest.permission.READ_CELL_BROADCASTS,
-            // Split permissions
-            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-            // Storage permissions
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ).forEach {
-            assertAppHasPermission(it, expectPermissions)
-        }
+                android.Manifest.permission.SEND_SMS,
+                android.Manifest.permission.RECEIVE_SMS,
+                android.Manifest.permission.RECEIVE_WAP_PUSH,
+                android.Manifest.permission.RECEIVE_MMS,
+                android.Manifest.permission.READ_CALENDAR,
+                android.Manifest.permission.WRITE_CALENDAR,
+                android.Manifest.permission.WRITE_CONTACTS,
+                android.Manifest.permission.READ_SMS,
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.WRITE_CALL_LOG,
+                android.Manifest.permission.ADD_VOICEMAIL,
+                android.Manifest.permission.CALL_PHONE,
+                android.Manifest.permission.USE_SIP,
+                android.Manifest.permission.PROCESS_OUTGOING_CALLS,
+                android.Manifest.permission.RECORD_AUDIO,
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.BODY_SENSORS,
+                android.Manifest.permission.READ_CELL_BROADCASTS,
+                // Split permissions
+                android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                // Storage permissions
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            .forEach { assertAppHasPermission(it, expectPermissions) }
     }
 }

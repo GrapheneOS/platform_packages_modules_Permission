@@ -37,8 +37,10 @@ class StartForFutureActivity : Activity() {
         future: CompletableFuture<Instrumentation.ActivityResult>
     ) {
         if (StartForFutureActivity.future != null) {
-            throw RuntimeException("StartForFutureActivity only supports launching one " +
-                "concurrent activity, but more than one was attempted.")
+            throw RuntimeException(
+                "StartForFutureActivity only supports launching one " +
+                    "concurrent activity, but more than one was attempted."
+            )
         }
 
         startActivityForResult(intent, 1)

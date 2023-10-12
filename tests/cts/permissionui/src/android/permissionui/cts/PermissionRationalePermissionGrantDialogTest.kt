@@ -45,7 +45,8 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PERMISSION_RATIONALE_ENABLED,
-            true.toString())
+            true.toString()
+        )
 
     @Before
     fun setup() {
@@ -165,8 +166,7 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
     }
 
     @Test
-    fun requestLocationPerm_invalidAppMetadataWithInvalidSafetyLabelVersion_noPermissionRationale()
-    {
+    fun requestLocationPerm_invalidAppMetadataWithInvalidSafetyLabelVersion_noPermissionRationale() {
         installPackageWithInstallSourceAndMetadataWithInvalidSafetyLabelVersion(APP_APK_NAME_31)
 
         assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
@@ -268,8 +268,7 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
     }
 
     @Test
-    fun requestLocationPerm_clicksPermissionRationale_startsPermissionRationaleActivity_comesBack(
-    ) {
+    fun requestLocationPerm_clicksPermissionRationale_startsPermissionRationaleActivity_comesBack() {
         installPackageWithInstallSourceAndMetadata(APP_APK_NAME_31)
 
         assertAppHasPermission(ACCESS_FINE_LOCATION, false)

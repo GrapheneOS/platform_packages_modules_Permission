@@ -54,8 +54,7 @@ class PermissionReviewTest : BaseUsePermissionTest() {
         installPackage(APP_APK_PATH_22_CALENDAR_ONLY)
     }
 
-    @get:Rule
-    val activityRule = ActivityTestRule(StartForFutureActivity::class.java, false, false)
+    @get:Rule val activityRule = ActivityTestRule(StartForFutureActivity::class.java, false, false)
 
     @Test
     fun testDenyCalendarDuringReview() {
@@ -139,24 +138,29 @@ class PermissionReviewTest : BaseUsePermissionTest() {
         // the service comes from a different app than the CTS tests.
         // This app will be considered idle on devices that have idling enabled (automotive),
         // and the service wouldn't be allowed to be started without the activity.
-        activityRule.launchActivity(null).startActivity(
-            Intent().apply {
-                component = ComponentName(
-                    APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.StartCheckPermissionServiceActivity"
-                )
-                putExtra(
-                    "$APP_PACKAGE_NAME.RESULT",
-                    object : ResultReceiver(Handler(Looper.getMainLooper())) {
-                        override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
-                            results.offer(resultCode)
+        activityRule
+            .launchActivity(null)
+            .startActivity(
+                Intent().apply {
+                    component =
+                        ComponentName(
+                            APP_PACKAGE_NAME,
+                            "$APP_PACKAGE_NAME.StartCheckPermissionServiceActivity"
+                        )
+                    putExtra(
+                        "$APP_PACKAGE_NAME.RESULT",
+                        object : ResultReceiver(Handler(Looper.getMainLooper())) {
+                            override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
+                                results.offer(resultCode)
+                            }
                         }
-                    }
-                )
-                putExtra(
-                    "$APP_PACKAGE_NAME.PERMISSION", android.Manifest.permission.READ_CALENDAR
-                )
-            }
-        )
+                    )
+                    putExtra(
+                        "$APP_PACKAGE_NAME.PERMISSION",
+                        android.Manifest.permission.READ_CALENDAR
+                    )
+                }
+            )
 
         // Service is not started before permission are reviewed
         assertNull(results.poll(UNEXPECTED_TIMEOUT_MILLIS.toLong(), TimeUnit.MILLISECONDS))
@@ -165,7 +169,8 @@ class PermissionReviewTest : BaseUsePermissionTest() {
 
         // Service should be started after permission review
         assertEquals(
-            PackageManager.PERMISSION_GRANTED, results.poll(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
+            PackageManager.PERMISSION_GRANTED,
+            results.poll(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         )
     }
 }

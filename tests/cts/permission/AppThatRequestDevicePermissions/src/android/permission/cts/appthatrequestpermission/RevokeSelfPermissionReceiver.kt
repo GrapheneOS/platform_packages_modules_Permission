@@ -21,9 +21,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Process
 
-/**
- * Revokes permission for a device provided in the intent.
- */
+/** Revokes permission for a device provided in the intent. */
 class RevokeSelfPermissionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val permissionName = intent.getStringExtra("permissionName")!!
@@ -34,8 +32,6 @@ class RevokeSelfPermissionReceiver : BroadcastReceiver() {
         // revokeSelfPermissionOnKill is an async API, and the work is executed by main
         // thread, so we add the kill to the queue to be executed after revoke call.
         val handler = Handler.createAsync(context.mainLooper)
-        handler.postDelayed({
-            Process.killProcess(Process.myPid())
-        }, 1000)
+        handler.postDelayed({ Process.killProcess(Process.myPid()) }, 1000)
     }
 }

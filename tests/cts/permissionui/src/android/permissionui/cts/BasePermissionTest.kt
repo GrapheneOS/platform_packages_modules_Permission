@@ -93,18 +93,16 @@ abstract class BasePermissionTest {
         @JvmStatic
         protected val instrumentation: Instrumentation =
             InstrumentationRegistry.getInstrumentation()
-        @JvmStatic
-        protected val context: Context = instrumentation.context
-        @JvmStatic
-        protected val uiAutomation: UiAutomation = instrumentation.uiAutomation
-        @JvmStatic
-        protected val uiDevice: UiDevice = UiDevice.getInstance(instrumentation)
-        @JvmStatic
-        protected val packageManager: PackageManager = context.packageManager
+        @JvmStatic protected val context: Context = instrumentation.context
+        @JvmStatic protected val uiAutomation: UiAutomation = instrumentation.uiAutomation
+        @JvmStatic protected val uiDevice: UiDevice = UiDevice.getInstance(instrumentation)
+        @JvmStatic protected val packageManager: PackageManager = context.packageManager
         private val packageInstaller = packageManager.packageInstaller
         @JvmStatic
-        private val mPermissionControllerResources: Resources = context.createPackageContext(
-            context.packageManager.permissionControllerPackageName, 0).resources
+        private val mPermissionControllerResources: Resources =
+            context
+                .createPackageContext(context.packageManager.permissionControllerPackageName, 0)
+                .resources
 
         @JvmStatic
         protected val isTv = packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
@@ -115,14 +113,11 @@ abstract class BasePermissionTest {
             packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
     }
 
-    @get:Rule
-    val screenRecordRule = ScreenRecordRule(false, false)
+    @get:Rule val screenRecordRule = ScreenRecordRule(false, false)
 
-    @get:Rule
-    val disableAnimationRule = DisableAnimationRule()
+    @get:Rule val disableAnimationRule = DisableAnimationRule()
 
-    @get:Rule
-    val freezeRotationRule = FreezeRotationRule()
+    @get:Rule val freezeRotationRule = FreezeRotationRule()
 
     var activityScenario: ActivityScenario<StartForFutureActivity>? = null
 
@@ -147,11 +142,12 @@ abstract class BasePermissionTest {
     @Before
     fun setUp() {
         runWithShellPermissionIdentity {
-            screenTimeoutBeforeTest = Settings.System.getLong(
-                context.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT
-            )
+            screenTimeoutBeforeTest =
+                Settings.System.getLong(context.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT)
             Settings.System.putLong(
-                context.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, 1800000L
+                context.contentResolver,
+                Settings.System.SCREEN_OFF_TIMEOUT,
+                1800000L
             )
         }
 
@@ -164,7 +160,10 @@ abstract class BasePermissionTest {
     @Before
     fun registerInstallSessionResultReceiver() {
         context.registerReceiver(
-            installSessionResultReceiver, IntentFilter(INSTALL_ACTION_CALLBACK), RECEIVER_EXPORTED)
+            installSessionResultReceiver,
+            IntentFilter(INSTALL_ACTION_CALLBACK),
+            RECEIVER_EXPORTED
+        )
     }
 
     @After
@@ -178,7 +177,8 @@ abstract class BasePermissionTest {
     fun tearDown() {
         runWithShellPermissionIdentity {
             Settings.System.putLong(
-                context.contentResolver, Settings.System.SCREEN_OFF_TIMEOUT,
+                context.contentResolver,
+                Settings.System.SCREEN_OFF_TIMEOUT,
                 screenTimeoutBeforeTest
             )
         }
@@ -202,25 +202,38 @@ abstract class BasePermissionTest {
                     DeviceConfig.NAMESPACE_PRIVACY,
                     /* name = */ propertyName,
                     /* value = */ value,
-                    /* makeDefault = */ false)
+                    /* makeDefault = */ false
+                )
             check(valueWasSet) { "Could not set $propertyName to $value" }
         }
     }
 
     protected fun getPermissionControllerString(res: String, vararg formatArgs: Any): Pattern {
-        val textWithHtml = mPermissionControllerResources.getString(
+        val textWithHtml =
+            mPermissionControllerResources.getString(
                 mPermissionControllerResources.getIdentifier(
-                        res, "string", "com.android.permissioncontroller"), *formatArgs)
+                    res,
+                    "string",
+                    "com.android.permissioncontroller"
+                ),
+                *formatArgs
+            )
         val textWithoutHtml = Html.fromHtml(textWithHtml, 0).toString()
-        return Pattern.compile(Pattern.quote(textWithoutHtml),
-                Pattern.CASE_INSENSITIVE or Pattern.UNICODE_CASE)
+        return Pattern.compile(
+            Pattern.quote(textWithoutHtml),
+            Pattern.CASE_INSENSITIVE or Pattern.UNICODE_CASE
+        )
     }
 
     protected fun getPermissionControllerResString(res: String): String? {
         try {
             return mPermissionControllerResources.getString(
-                    mPermissionControllerResources.getIdentifier(
-                            res, "string", "com.android.permissioncontroller"))
+                mPermissionControllerResources.getIdentifier(
+                    res,
+                    "string",
+                    "com.android.permissioncontroller"
+                )
+            )
         } catch (e: Resources.NotFoundException) {
             return null
         }
@@ -246,11 +259,13 @@ abstract class BasePermissionTest {
         expectSuccess: Boolean = true,
         installSource: String? = null
     ) {
-        val output = runShellCommandOrThrow(
-            "pm install${if (SdkLevel.isAtLeastU()) " --bypass-low-target-sdk-block" else ""} " +
-                "${if (reinstall) " -r" else ""}${if (grantRuntimePermissions) " -g"
+        val output =
+            runShellCommandOrThrow(
+                    "pm install${if (SdkLevel.isAtLeastU()) " --bypass-low-target-sdk-block" else ""} " +
+                        "${if (reinstall) " -r" else ""}${if (grantRuntimePermissions) " -g"
                 else ""}${if (installSource != null) " -i $installSource" else ""} $apkPath"
-        ).trim()
+                )
+                .trim()
         if (expectSuccess) {
             assertEquals("Success", output)
         } else {
@@ -290,8 +305,10 @@ abstract class BasePermissionTest {
     }
 
     protected fun waitFindObject(selector: BySelector, timeoutMillis: Long): UiObject2 {
-        return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObject(selector, t) },
-                timeoutMillis)!!
+        return findObjectWithRetry(
+            { t -> UiAutomatorUtils2.waitFindObject(selector, t) },
+            timeoutMillis
+        )!!
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector): UiObject2? {
@@ -299,8 +316,10 @@ abstract class BasePermissionTest {
     }
 
     protected fun waitFindObjectOrNull(selector: BySelector, timeoutMillis: Long): UiObject2? {
-        return findObjectWithRetry({ t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) },
-                timeoutMillis)
+        return findObjectWithRetry(
+            { t -> UiAutomatorUtils2.waitFindObjectOrNull(selector, t) },
+            timeoutMillis
+        )
     }
 
     private fun findObjectWithRetry(
@@ -323,24 +342,29 @@ abstract class BasePermissionTest {
         waitFindObject(selector, timeoutMillis).click()
     }
 
-    protected fun clickAndWaitForWindowTransition(selector: BySelector, timeoutMillis: Long = 20_000) {
+    protected fun clickAndWaitForWindowTransition(
+        selector: BySelector,
+        timeoutMillis: Long = 20_000
+    ) {
         waitFindObject(selector, timeoutMillis)
-                .clickAndWait(Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
+            .clickAndWait(Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     protected fun findView(selector: BySelector, expected: Boolean) {
-        val timeoutMs = if (expected) {
-            10000L
-        } else {
-            1000L
-        }
+        val timeoutMs =
+            if (expected) {
+                10000L
+            } else {
+                1000L
+            }
 
-        val exception = try {
-            waitFindObject(selector, timeoutMs)
-            null
-        } catch (e: Exception) {
-            e
-        }
+        val exception =
+            try {
+                waitFindObject(selector, timeoutMs)
+                null
+            } catch (e: Exception) {
+                e
+            }
         Assert.assertTrue("Expected to find view: $expected", (exception == null) == expected)
     }
 
@@ -361,14 +385,17 @@ abstract class BasePermissionTest {
     }
 
     private fun scrollToText(text: String, maxSearchSwipes: Int = MAX_SWIPES): UiObject2 {
-        val scrollable = UiScrollable(UiSelector().scrollable(true)).apply {
-            this.maxSearchSwipes = maxSearchSwipes
-        }
+        val scrollable =
+            UiScrollable(UiSelector().scrollable(true)).apply {
+                this.maxSearchSwipes = maxSearchSwipes
+            }
 
         scrollable.scrollTextIntoView(text)
 
-        val foundObject = uiDevice.findObject(
-                By.text(text).pkg(context.packageManager.permissionControllerPackageName))
+        val foundObject =
+            uiDevice.findObject(
+                By.text(text).pkg(context.packageManager.permissionControllerPackageName)
+            )
         Assert.assertNotNull("View not found after scrolling", foundObject)
 
         return foundObject
@@ -393,24 +420,26 @@ abstract class BasePermissionTest {
         intent: Intent
     ): CompletableFuture<Instrumentation.ActivityResult> =
         CompletableFuture<Instrumentation.ActivityResult>().also {
-            activityScenario = ActivityScenario.launch(
-                StartForFutureActivity::class.java).onActivity { activity ->
-                activity.startActivityForFuture(intent, it)
-            }
+            activityScenario =
+                ActivityScenario.launch(StartForFutureActivity::class.java).onActivity { activity ->
+                    activity.startActivityForFuture(intent, it)
+                }
         }
 
     open fun enableComponent(component: ComponentName) {
         packageManager.setComponentEnabledSetting(
             component,
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            PackageManager.DONT_KILL_APP)
+            PackageManager.DONT_KILL_APP
+        )
     }
 
     open fun disableComponent(component: ComponentName) {
         packageManager.setComponentEnabledSetting(
             component,
             PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-            PackageManager.DONT_KILL_APP)
+            PackageManager.DONT_KILL_APP
+        )
     }
 
     private fun createPackageInstallerSession(
@@ -446,7 +475,8 @@ abstract class BasePermissionTest {
                 context,
                 0,
                 Intent(INSTALL_ACTION_CALLBACK).setPackage(context.packageName),
-                FLAG_UPDATE_CURRENT or FLAG_MUTABLE)
+                FLAG_UPDATE_CURRENT or FLAG_MUTABLE
+            )
         session.commit(installActionPendingIntent.intentSender)
     }
 

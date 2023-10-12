@@ -31,9 +31,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Tests role shell commands.
- */
+/** Tests role shell commands. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class RoleShellCommandTest {
@@ -161,7 +159,8 @@ class RoleShellCommandTest {
     private fun getRoleHolders(): List<String> =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             runShellCommandOrThrow("cmd role get-role-holders --user $userId $ROLE_NAME")
-                .trim().let { if (it.isNotEmpty()) it.split(";") else emptyList() }
+                .trim()
+                .let { if (it.isNotEmpty()) it.split(";") else emptyList() }
         } else {
             callWithShellPermissionIdentity { roleManager.getRoleHolders(ROLE_NAME) }
         }
@@ -185,13 +184,12 @@ class RoleShellCommandTest {
             .isEqualTo("Success")
     }
 
-    private fun isBypassingRoleQualification(): Boolean =
-        callWithShellPermissionIdentity { roleManager.isBypassingRoleQualification() }
+    private fun isBypassingRoleQualification(): Boolean = callWithShellPermissionIdentity {
+        roleManager.isBypassingRoleQualification()
+    }
 
     private fun setBypassingRoleQualification(value: Boolean) {
-        callWithShellPermissionIdentity {
-            roleManager.setBypassingRoleQualification(value)
-        }
+        callWithShellPermissionIdentity { roleManager.setBypassingRoleQualification(value) }
     }
 
     companion object {
