@@ -296,8 +296,8 @@ class SafetyCenterNotificationTest {
 
     @Test
     fun setSafetySourceData_issueWithTwoActions_notificationWithTwoActions() {
-        val intent1 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "1")
-        val intent2 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "2")
+        val intent1 = safetySourceTestData.createTestActivityRedirectPendingIntent(identifier = "1")
+        val intent2 = safetySourceTestData.createTestActivityRedirectPendingIntent(identifier = "2")
 
         val data =
             safetySourceTestData
@@ -361,8 +361,8 @@ class SafetyCenterNotificationTest {
     @Test
     @SdkSuppress(minSdkVersion = UPSIDE_DOWN_CAKE)
     fun setSafetySourceData_withCustomNotification_usesCustomValues() {
-        val intent1 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "1")
-        val intent2 = safetySourceTestData.testActivityRedirectPendingIntent(identifier = "2")
+        val intent1 = safetySourceTestData.createTestActivityRedirectPendingIntent(identifier = "1")
+        val intent2 = safetySourceTestData.createTestActivityRedirectPendingIntent(identifier = "2")
 
         val notification =
             SafetySourceIssue.Notification.Builder("Custom title", "Custom text")
@@ -384,7 +384,7 @@ class SafetyCenterNotificationTest {
                             SafetySourceIssue.Action.Builder(
                                     "default_action",
                                     "Default action",
-                                    safetySourceTestData.testActivityRedirectPendingIntent
+                                    safetySourceTestData.createTestActivityRedirectPendingIntent()
                                 )
                                 .build()
                         )
@@ -422,7 +422,7 @@ class SafetyCenterNotificationTest {
                             SafetySourceIssue.Action.Builder(
                                     "default_action",
                                     "Default action",
-                                    safetySourceTestData.testActivityRedirectPendingIntent
+                                    safetySourceTestData.createTestActivityRedirectPendingIntent()
                                 )
                                 .build()
                         )
@@ -475,7 +475,7 @@ class SafetyCenterNotificationTest {
                             SafetySourceIssue.Action.Builder(
                                     "new_action",
                                     "New action",
-                                    safetySourceTestData.testActivityRedirectPendingIntent(
+                                    safetySourceTestData.createTestActivityRedirectPendingIntent(
                                         identifier = "new_action"
                                     )
                                 )

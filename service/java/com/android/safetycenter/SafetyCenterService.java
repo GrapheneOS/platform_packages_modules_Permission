@@ -76,9 +76,9 @@ import com.android.modules.utils.BackgroundThread;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.data.AndroidLockScreenFix;
 import com.android.safetycenter.data.SafetyCenterDataManager;
 import com.android.safetycenter.data.SafetyEventFix;
+import com.android.safetycenter.data.SafetySourceDataFix;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
@@ -120,6 +120,8 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
+    private final SafetySourceDataFix mSafetySourceDataFix;
+
     @GuardedBy("mApiLock")
     private final SafetyCenterDataManager mSafetyCenterDataManager;
 
@@ -151,6 +153,10 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterResourcesApk = new SafetyCenterResourcesApk(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(mSafetyCenterResourcesApk);
         mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(context);
+        PendingIntentFactory pendingIntentFactory =
+                new PendingIntentFactory(context, mSafetyCenterResourcesApk);
+        mSafetySourceDataFix =
+                new SafetySourceDataFix(context, pendingIntentFactory, mSafetyCenterConfigReader);
         mSafetyCenterDataManager =
                 new SafetyCenterDataManager(
                         context, mSafetyCenterConfigReader, mSafetyCenterRefreshTracker, mApiLock);
@@ -160,7 +166,7 @@ public final class SafetyCenterService extends SystemService {
                         mSafetyCenterResourcesApk,
                         mSafetyCenterConfigReader,
                         mSafetyCenterRefreshTracker,
-                        new PendingIntentFactory(context, mSafetyCenterResourcesApk),
+                        pendingIntentFactory,
                         mSafetyCenterDataManager);
         mSafetyCenterListeners = new SafetyCenterListeners(mSafetyCenterDataFactory);
         mNotificationChannels = new SafetyCenterNotificationChannels(mSafetyCenterResourcesApk);
@@ -310,8 +316,8 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.fromUser(getContext(), userId);
             synchronized (mApiLock) {
                 safetySourceData =
-                        AndroidLockScreenFix.maybeOverrideSafetySourceData(
-                                getContext(), safetySourceId, safetySourceData);
+                        mSafetySourceDataFix.maybeOverrideSafetySourceData(
+                                safetySourceId, safetySourceData, packageName, userId);
                 safetyEvent =
                         SafetyEventFix.maybeOverrideSafetyEvent(
                                 mSafetyCenterDataManager,

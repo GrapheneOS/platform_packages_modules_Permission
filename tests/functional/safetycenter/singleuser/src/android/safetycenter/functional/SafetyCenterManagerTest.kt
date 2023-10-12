@@ -16,7 +16,6 @@
 
 package android.safetycenter.functional
 
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
@@ -62,7 +61,6 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.compatibility.common.preconditions.ScreenLockHelper
 import com.android.compatibility.common.util.SystemUtil
 import com.android.modules.utils.build.SdkLevel
 import com.android.safetycenter.internaldata.SafetyCenterBundles
@@ -81,6 +79,7 @@ import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.ref
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
+import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ACTION_TEST_ACTIVITY_EXPORTED
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.ANDROID_LOCK_SCREEN_SOURCES_GROUP_ID
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.DYNAMIC_ALL_OPTIONAL_ID
@@ -137,7 +136,6 @@ import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import org.junit.Assume.assumeFalse
-import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -332,7 +330,9 @@ class SafetyCenterManagerTest {
                                 .setSeverityLevel(ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                                 .setSummary("OK")
                                 .setPendingIntent(
-                                    safetySourceTestData.testActivityRedirectPendingIntent
+                                    safetySourceTestData.createTestActivityRedirectPendingIntent(
+                                        explicit = false
+                                    )
                                 )
                                 .setSeverityUnspecifiedIconType(
                                     SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON
@@ -352,11 +352,19 @@ class SafetyCenterManagerTest {
                 "OK",
                 listOf(
                     SafetyCenterStaticEntry.Builder("OK")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent(
+                                explicit = false
+                            )
+                        )
                         .build(),
                     SafetyCenterStaticEntry.Builder("OK")
                         .setSummary("OK")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent(
+                                explicit = false
+                            )
+                        )
                         .build()
                 )
             )
@@ -368,11 +376,17 @@ class SafetyCenterManagerTest {
                 listOf(
                     SafetyCenterStaticEntry.Builder("OK")
                         .setSummary("OK")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent()
+                        )
                         .build(),
                     SafetyCenterStaticEntry.Builder("OK")
                         .setSummary("OK")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent(
+                                explicit = false
+                            )
+                        )
                         .build()
                 )
             )
@@ -385,11 +399,17 @@ class SafetyCenterManagerTest {
                 listOf(
                     SafetyCenterStaticEntry.Builder("Unspecified title")
                         .setSummary("Unspecified summary")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent()
+                        )
                         .build(),
                     SafetyCenterStaticEntry.Builder("OK")
                         .setSummary("OK")
-                        .setPendingIntent(safetySourceTestData.testActivityRedirectPendingIntent)
+                        .setPendingIntent(
+                            safetySourceTestData.createTestActivityRedirectPendingIntent(
+                                explicit = false
+                            )
+                        )
                         .build()
                 )
             )
@@ -457,7 +477,7 @@ class SafetyCenterManagerTest {
                             .safetyCenterEntryOkBuilder(SINGLE_SOURCE_ID)
                             .setIconAction(
                                 ICON_ACTION_TYPE_INFO,
-                                safetySourceTestData.testActivityRedirectPendingIntent
+                                safetySourceTestData.createTestActivityRedirectPendingIntent()
                             )
                             .build()
                     )
@@ -974,25 +994,102 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun getSafetyCenterData_withoutDataExplicitIntentConfig_defaultEntryHasExplicitIntent() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedExplicitPendingIntent =
+            SafetySourceTestData.createRedirectPendingIntent(
+                context,
+                Intent(ACTION_TEST_ACTIVITY).setPackage(context.packageName)
+            )
+        val defaultEntryPendingIntent =
+            apiSafetyCenterData.entriesOrGroups.firstOrNull()?.entry?.pendingIntent
+        val defaultEntryIntentFilterEqualsToExplicitIntent =
+            callWithShellPermissionIdentity("android.permission.GET_INTENT_SENDER_INTENT") {
+                expectedExplicitPendingIntent.intentFilterEquals(defaultEntryPendingIntent)
+            }
+        assertThat(defaultEntryIntentFilterEqualsToExplicitIntent).isTrue()
+    }
+
+    @Test
     fun getSafetyCenterData_withoutDataImplicitIntentConfig_defaultEntryHasImplicitIntent() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.implicitIntentSingleSourceConfig)
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
-        val implicitPendingIntentCreatedByCts =
-            PendingIntent.getActivity(
+        val expectedImplicitPendingIntent =
+            SafetySourceTestData.createRedirectPendingIntent(
                 context,
-                0 /* requestCode */,
-                Intent(ACTION_TEST_ACTIVITY_EXPORTED),
-                PendingIntent.FLAG_IMMUTABLE
+                Intent(ACTION_TEST_ACTIVITY_EXPORTED)
             )
         val defaultEntryPendingIntent =
             apiSafetyCenterData.entriesOrGroups.firstOrNull()?.entry?.pendingIntent
         val defaultEntryIntentFilterEqualsToImplicitIntent =
             callWithShellPermissionIdentity("android.permission.GET_INTENT_SENDER_INTENT") {
-                implicitPendingIntentCreatedByCts.intentFilterEquals(defaultEntryPendingIntent)
+                expectedImplicitPendingIntent.intentFilterEquals(defaultEntryPendingIntent)
             }
         assertThat(defaultEntryIntentFilterEqualsToImplicitIntent).isTrue()
+    }
+
+    @Test
+    fun getSafetyCenterData_withStaticImplicitResolving_implicitStaticEntry() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.staticSourcesConfig)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedImplicitPendingIntent =
+            SafetySourceTestData.createRedirectPendingIntent(
+                context,
+                Intent(ACTION_TEST_ACTIVITY_EXPORTED)
+            )
+        val staticEntryPendingIntent =
+            apiSafetyCenterData.staticEntryGroups
+                .firstOrNull()
+                ?.staticEntries
+                ?.firstOrNull()
+                ?.pendingIntent
+        val staticEntryIntentFilterEqualsToImplicitIntent =
+            callWithShellPermissionIdentity("android.permission.GET_INTENT_SENDER_INTENT") {
+                expectedImplicitPendingIntent.intentFilterEquals(staticEntryPendingIntent)
+            }
+        assertThat(staticEntryIntentFilterEqualsToImplicitIntent).isTrue()
+    }
+
+    @Test
+    fun getSafetyCenterData_withStaticImplicitNotExported_explicitStaticEntryUsingCallerPackage() {
+        safetyCenterTestHelper.setConfig(
+            safetyCenterTestConfigs.singleStaticImplicitIntentNotExportedConfig
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        val expectedExplicitPendingIntent =
+            SafetySourceTestData.createRedirectPendingIntent(
+                context,
+                Intent(ACTION_TEST_ACTIVITY).setPackage(context.packageName)
+            )
+        val staticEntryPendingIntent =
+            apiSafetyCenterData.staticEntryGroups
+                .firstOrNull()
+                ?.staticEntries
+                ?.firstOrNull()
+                ?.pendingIntent
+        val staticEntryIntentFilterEqualsToExplicitIntent =
+            callWithShellPermissionIdentity("android.permission.GET_INTENT_SENDER_INTENT") {
+                expectedExplicitPendingIntent.intentFilterEquals(staticEntryPendingIntent)
+            }
+        assertThat(staticEntryIntentFilterEqualsToExplicitIntent).isTrue()
+    }
+
+    @Test
+    fun getSafetyCenterData_withStaticNotResolving_noStaticEntry() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleStaticInvalidIntentConfig)
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.staticEntryGroups).isEmpty()
     }
 
     @Test
@@ -3632,46 +3729,6 @@ class SafetyCenterManagerTest {
 
             visibleSettingEntriesHaveData
         }
-    }
-
-    @Test
-    fun lockScreenSource_withoutReplaceLockScreenIconActionFlag_doesntReplace() {
-        // Must have a screen lock for the icon action to be set
-        assumeTrue(ScreenLockHelper.isDeviceSecure(context))
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.settingsLockScreenSourceConfig)
-        val listener = safetyCenterTestHelper.addListener()
-        SafetyCenterFlags.replaceLockScreenIconAction = false
-
-        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_PAGE_OPEN)
-        // Skip loading data.
-        listener.receiveSafetyCenterData()
-
-        val lockScreenSafetyCenterData = listener.receiveSafetyCenterData()
-        val lockScreenEntry = lockScreenSafetyCenterData.entriesOrGroups.first().entry!!
-        val entryPendingIntent = lockScreenEntry.pendingIntent!!
-        val iconActionPendingIntent = lockScreenEntry.iconAction!!.pendingIntent
-        // This test passes for now but will eventually start failing once we introduce the fix in
-        // the Settings app. This will warn if the assumption is failed rather than fail, at which
-        // point we can remove this test (and potentially even this magnificent hack).
-        assumeTrue(iconActionPendingIntent == entryPendingIntent)
-    }
-
-    @Test
-    fun lockScreenSource_withReplaceLockScreenIconActionFlag_replaces() {
-        // Must have a screen lock for the icon action to be set
-        assumeTrue(ScreenLockHelper.isDeviceSecure(context))
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.settingsLockScreenSourceConfig)
-        val listener = safetyCenterTestHelper.addListener()
-
-        safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_PAGE_OPEN)
-        // Skip loading data.
-        listener.receiveSafetyCenterData()
-
-        val lockScreenSafetyCenterData = listener.receiveSafetyCenterData()
-        val lockScreenEntry = lockScreenSafetyCenterData.entriesOrGroups.first().entry!!
-        val entryPendingIntent = lockScreenEntry.pendingIntent!!
-        val iconActionPendingIntent = lockScreenEntry.iconAction!!.pendingIntent
-        assertThat(iconActionPendingIntent).isNotEqualTo(entryPendingIntent)
     }
 
     @Test

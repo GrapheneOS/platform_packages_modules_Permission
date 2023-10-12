@@ -203,6 +203,18 @@ object SafetyCenterFlags {
         )
 
     /**
+     * Flag containing a map (a comma separated list of colon separated pairs) where the key is a
+     * Safety Source ID and the value is a vertical-bar-delimited list of Action IDs that should
+     * have their PendingIntent replaced with the source's default PendingIntent.
+     */
+    private val actionsToOverrideWithDefaultIntentFlag =
+        Flag(
+            "safety_center_actions_to_override_with_default_intent",
+            defaultValue = emptyMap(),
+            MapParser(StringParser(), SetParser(StringParser(), delimiter = "|"))
+        )
+
+    /**
      * Flag that represents a comma delimited list of IDs of sources that should only be refreshed
      * when Safety Center is on screen. We will refresh these sources only on page open and when the
      * scan button is clicked.
@@ -303,6 +315,7 @@ object SafetyCenterFlags {
             resurfaceIssueMaxCountsFlag,
             resurfaceIssueDelaysFlag,
             issueCategoryAllowlistsFlag,
+            actionsToOverrideWithDefaultIntentFlag,
             allowedAdditionalPackageCertsFlag,
             backgroundRefreshDeniedSourcesFlag,
             allowStatsdLoggingFlag,
@@ -357,6 +370,10 @@ object SafetyCenterFlags {
 
     /** A property that allows getting and setting the [issueCategoryAllowlistsFlag]. */
     var issueCategoryAllowlists: Map<Int, Set<String>> by issueCategoryAllowlistsFlag
+
+    /** A property that allows getting and setting the [actionsToOverrideWithDefaultIntentFlag]. */
+    var actionsToOverrideWithDefaultIntent: Map<String, Set<String>> by
+        actionsToOverrideWithDefaultIntentFlag
 
     var allowedAdditionalPackageCerts: Map<String, Set<String>> by allowedAdditionalPackageCertsFlag
 

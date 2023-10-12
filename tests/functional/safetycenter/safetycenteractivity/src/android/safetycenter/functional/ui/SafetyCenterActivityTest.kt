@@ -1452,7 +1452,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun startStaticEntryActivity_withConfigToBeSettingsActivity_trueExtraInBundle() {
-        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleStaticSettingsSource)
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleStaticSettingsSourceConfig)
 
         context.launchSafetyCenterActivity {
             waitDisplayed(By.text("OK")) { it.click() }

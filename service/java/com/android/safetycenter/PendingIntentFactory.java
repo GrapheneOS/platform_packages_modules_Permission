@@ -22,6 +22,7 @@ import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.ResolveInfoFlags;
 import android.content.pm.ResolveInfo;
@@ -60,9 +61,9 @@ public final class PendingIntentFactory {
      * Creates or retrieves a {@link PendingIntent} that will start a new {@code Activity} matching
      * the given {@code intentAction}.
      *
-     * <p>If the given {@code intentAction} resolves for the given {@code packageName}, the {@link
-     * PendingIntent} will explicitly target the {@code packageName}. If the {@code intentAction}
-     * resolves elsewhere, the {@link PendingIntent} will be implicit.
+     * <p>If the given {@code intentAction} resolves, the {@link PendingIntent} will use an implicit
+     * {@link Intent}. Otherwise, the {@link PendingIntent} will explicitly target the {@code
+     * packageName} if it resolves.
      *
      * <p>The {@code PendingIntent} is associated with a specific source given by {@code sourceId}.
      *
@@ -70,7 +71,7 @@ public final class PendingIntentFactory {
      * is no valid target for the given {@code intentAction}.
      */
     @Nullable
-    PendingIntent getPendingIntent(
+    public PendingIntent getPendingIntent(
             String sourceId,
             @Nullable String intentAction,
             String packageName,
@@ -113,18 +114,16 @@ public final class PendingIntentFactory {
             intent.setIdentifier("with_settings_homepage_extra");
         }
 
+        if (intentResolvesToActivity(packageContext, intent)) {
+            return intent;
+        }
+
         // If the intent resolves for the package provided, then we make the assumption that it is
         // the desired app and make the intent explicit. This is to workaround implicit internal
         // intents that may not be exported which will stop working on Android U+.
-        // This assumes that the source or the caller has the highest priority to resolve the intent
-        // action.
         Intent explicitIntent = new Intent(intent).setPackage(packageContext.getPackageName());
-        if (intentResolves(packageContext, explicitIntent)) {
+        if (intentResolvesToActivity(packageContext, explicitIntent)) {
             return explicitIntent;
-        }
-
-        if (intentResolves(packageContext, intent)) {
-            return intent;
         }
 
         // resolveActivity does not return any activity when the work profile is in quiet mode, even
@@ -133,6 +132,7 @@ public final class PendingIntentFactory {
         // to this dialog. This heuristic is preferable on U+ as it has a higher chance of resolving
         // once the work profile is enabled considering the implicit internal intent restriction.
         if (isQuietModeEnabled) {
+            // TODO(b/266538628): Find a way to fix this, this heuristic isn't ideal.
             return explicitIntent;
         }
 
@@ -147,8 +147,20 @@ public final class PendingIntentFactory {
                 .contains(sourceId);
     }
 
-    private static boolean intentResolves(Context packageContext, Intent intent) {
-        return resolveActivity(packageContext, intent) != null;
+    private static boolean intentResolvesToActivity(Context packageContext, Intent intent) {
+        ResolveInfo resolveInfo = resolveActivity(packageContext, intent);
+        if (resolveInfo == null) {
+            return false;
+        }
+        ActivityInfo activityInfo = resolveInfo.activityInfo;
+        if (activityInfo == null) {
+            return false;
+        }
+        boolean intentIsImplicit = intent.getPackage() == null && intent.getComponent() == null;
+        if (intentIsImplicit) {
+            return activityInfo.exported;
+        }
+        return true;
     }
 
     @Nullable

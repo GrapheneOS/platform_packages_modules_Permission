@@ -252,6 +252,9 @@ public class RoleParser {
             return null;
         }
 
+        int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
+
         List<Permission> permissions = new ArrayList<>();
 
         int type;
@@ -269,6 +272,8 @@ public class RoleParser {
                 if (permission == null) {
                     continue;
                 }
+                int mergedMinSdkVersion = Math.max(permission.getMinSdkVersion(), minSdkVersion);
+                permission = permission.withMinSdkVersion(mergedMinSdkVersion);
                 validateNoDuplicateElement(permission, permissions, "permission");
                 permissions.add(permission);
             } else {
@@ -738,13 +743,24 @@ public class RoleParser {
                     if (permissionSetName == null) {
                         continue;
                     }
-                    if (!permissionSets.containsKey(permissionSetName)) {
+                    PermissionSet permissionSet = permissionSets.get(permissionSetName);
+                    if (permissionSet == null) {
                         throwOrLogMessage("Unknown permission set:" + permissionSetName);
                         continue;
                     }
-                    PermissionSet permissionSet = permissionSets.get(permissionSetName);
-                    // We do allow intersection between permission sets.
-                    permissions.addAll(permissionSet.getPermissions());
+                    int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                            Build.VERSION_CODES.BASE);
+                    List<Permission> permissionsInSet = permissionSet.getPermissions();
+                    int permissionsInSetSize = permissionsInSet.size();
+                    for (int permissionsInSetIndex = 0;
+                            permissionsInSetIndex < permissionsInSetSize; permissionsInSetIndex++) {
+                        Permission permission = permissionsInSet.get(permissionsInSetIndex);
+                        int mergedMinSdkVersion =
+                                Math.max(permission.getMinSdkVersion(), minSdkVersion);
+                        permission = permission.withMinSdkVersion(mergedMinSdkVersion);
+                        // We do allow intersection between permission sets.
+                        permissions.add(permission);
+                    }
                     break;
                 }
                 case TAG_PERMISSION: {
