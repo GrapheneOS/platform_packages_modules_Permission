@@ -63,9 +63,13 @@ constructor(
         val imageView = holder.findViewById(android.R.id.icon) as ImageView
 
         imageView.maxWidth =
-            context.resources.getDimensionPixelSize(R.dimen.secondary_app_icon_size)
+            context.resources.getDimensionPixelSize(
+                com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size
+            )
         imageView.maxHeight =
-            context.resources.getDimensionPixelSize(R.dimen.secondary_app_icon_size)
+            context.resources.getDimensionPixelSize(
+                com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size
+            )
         imageView.setImageDrawable(KotlinUtils.getBadgedPackageIcon(app, packageName, user))
         imageView.visibility = View.VISIBLE
 

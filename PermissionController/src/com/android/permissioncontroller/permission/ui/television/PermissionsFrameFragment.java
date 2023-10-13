@@ -140,7 +140,7 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
     public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
                                              Bundle savedInstanceState) {
         VerticalGridView verticalGridView = (VerticalGridView) inflater.inflate(
-                R.layout.leanback_preferences_list, parent, false);
+                androidx.leanback.preference.R.layout.leanback_preferences_list, parent, false);
         verticalGridView.setWindowAlignment(VerticalGridView.WINDOW_ALIGN_BOTH_EDGE);
         verticalGridView.setFocusScrollStrategy(VerticalGridView.FOCUS_SCROLL_ALIGNED);
         mGridView = verticalGridView;

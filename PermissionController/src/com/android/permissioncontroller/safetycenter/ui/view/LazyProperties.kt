@@ -3,7 +3,7 @@ package com.android.permissioncontroller.safetycenter.ui.view
 import android.view.View
 
 /** Returns a lazy property wrapping a view with a given ID. */
-fun <T> View.lazyView(childViewId: Int): Lazy<T> = lazyView { findViewById(childViewId) }
+fun <T : View> View.lazyView(childViewId: Int): Lazy<T> = lazyView { requireViewById(childViewId) }
 
 /** Returns a lazy property wrapping a view produced by the given function. */
 fun <T> lazyView(viewProducer: () -> T): Lazy<T> =

@@ -111,9 +111,9 @@ public class ClickableDisabledSwitchPreference extends SwitchPreference {
                 });
 
         if (prefState.getAdmin() != null && prefState.getChecked()) {
-            setSummary(R.string.enabled_by_admin);
+            setSummary(com.android.settingslib.widget.restricted.R.string.enabled_by_admin);
         } else if (prefState.getAdmin() != null) {
-            setSummary(R.string.disabled_by_admin);
+            setSummary(com.android.settingslib.widget.restricted.R.string.disabled_by_admin);
         } else if (prefType.equals(Pref.MIC)) {
             setSummary(R.string.mic_toggle_description);
         } else if (prefType.equals(Pref.CAMERA)) {

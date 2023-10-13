@@ -47,10 +47,10 @@ constructor(
     private val titleView: TextView by lazyView(R.id.title)
     private val expandCollapseLayout: View by lazyView(android.R.id.widget_frame)
     private val counterView: TextView by lazyView {
-        expandCollapseLayout.findViewById(R.id.widget_title)
+        expandCollapseLayout.requireViewById(R.id.widget_title)
     }
     private val expandCollapseIcon: ImageView by lazyView {
-        expandCollapseLayout.findViewById(R.id.widget_icon)
+        expandCollapseLayout.requireViewById(R.id.widget_icon)
     }
     private var cornerAnimator: ValueAnimator? = null
 

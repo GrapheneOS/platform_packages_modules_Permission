@@ -23,7 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseFragment;
 
 /**
@@ -43,13 +42,15 @@ public abstract class PermissionsCollapsingToolbarBaseFragment
 
         PreferenceFragmentCompat preferenceFragment =
                 (PreferenceFragmentCompat) getChildFragmentManager()
-                        .findFragmentById(R.id.content_frame);
+                        .findFragmentById(
+                                com.android.settingslib.collapsingtoolbar.R.id.content_frame);
 
         if (preferenceFragment == null) {
             preferenceFragment = createPreferenceFragment();
             preferenceFragment.setArguments(getArguments());
             getChildFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, preferenceFragment)
+                    .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                            preferenceFragment)
                     .commit();
         }
     }

@@ -91,7 +91,10 @@ internal class SpacerPreference(context: Context, attrs: AttributeSet) :
             return
         }
 
-        val contentParent = root.findViewById<ViewGroup>(R.id.content_parent)
+        val contentParent =
+            root.findViewById<ViewGroup>(
+                com.android.settingslib.collapsingtoolbar.R.id.content_parent
+            )
         if (contentParent == null) {
             return
         }
@@ -110,8 +113,11 @@ internal class SpacerPreference(context: Context, attrs: AttributeSet) :
             return
         }
 
-        val collapsingToolbar = root.findViewById<View>(R.id.collapsing_toolbar)
-        maxKnownToolbarHeight = max(maxKnownToolbarHeight, collapsingToolbar.height)
+        val collapsingToolbar =
+            root.findViewById<View>(
+                com.android.settingslib.collapsingtoolbar.R.id.collapsing_toolbar
+            )
+        maxKnownToolbarHeight = max(maxKnownToolbarHeight, collapsingToolbar!!.height)
 
         val contentHeight = spacer.top + maxKnownToolbarHeight
         val desiredSpacerHeight =

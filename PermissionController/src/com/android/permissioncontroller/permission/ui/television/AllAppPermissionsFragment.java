@@ -228,7 +228,7 @@ public final class AllAppPermissionsFragment extends SettingsWithHeader {
         if (pref == null) {
             pref = new PreferenceCategory(getActivity());
             pref.setKey(group.name);
-            pref.setLayoutResource(R.layout.preference_category_material);
+            pref.setLayoutResource(androidx.preference.R.layout.preference_category_material);
             pref.setTitle(group.loadLabel(pm));
             prefs.add(pref);
             getPreferenceScreen().addPreference(pref);

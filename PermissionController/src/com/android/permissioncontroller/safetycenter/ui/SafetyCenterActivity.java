@@ -105,7 +105,7 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.content_frame, frag)
+                    .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, frag)
                     .commitNow();
         }
 
@@ -128,7 +128,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
     /** Decide whether a home/back button should be shown or not. */
     private void configureHomeButton() {
         ActionBar actionBar = getActionBar();
-        Fragment frag = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        Fragment frag = getSupportFragmentManager().findFragmentById(
+                com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (actionBar == null || frag == null) {
             return;
         }
