@@ -45,26 +45,28 @@ class OpUsageLiveData(
     private val app: Application,
     private val opNames: List<String>,
     private val usageDurationMs: Long
-) : SmartAsyncMediatorLiveData<@JvmSuppressWildcards Map<String, List<OpAccess>>>(),
-        AppOpsManager.OnOpActiveChangedListener {
+) :
+    SmartAsyncMediatorLiveData<@JvmSuppressWildcards Map<String, List<OpAccess>>>(),
+    AppOpsManager.OnOpActiveChangedListener {
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
 
     override suspend fun loadDataAndPostValue(job: Job) {
         val now = System.currentTimeMillis()
         val opMap = mutableMapOf<String, MutableList<OpAccess>>()
 
-        val packageOps = try {
-            appOpsManager.getPackagesForOps(opNames.toTypedArray())
-        } catch (e: NullPointerException) {
-            // older builds might not support all the app-ops requested
-            emptyList<AppOpsManager.PackageOps>()
-        }
+        val packageOps =
+            try {
+                appOpsManager.getPackagesForOps(opNames.toTypedArray())
+            } catch (e: NullPointerException) {
+                // older builds might not support all the app-ops requested
+                emptyList<AppOpsManager.PackageOps>()
+            }
         for (packageOp in packageOps) {
             for (opEntry in packageOp.ops) {
                 for ((attributionTag, attributedOpEntry) in opEntry.attributedOpEntries) {
                     val user = UserHandle.getUserHandleForUid(packageOp.uid)
-                    val lastAccessTime: Long = attributedOpEntry.getLastAccessTime(
-                            OP_FLAGS_ALL_TRUSTED)
+                    val lastAccessTime: Long =
+                        attributedOpEntry.getLastAccessTime(OP_FLAGS_ALL_TRUSTED)
 
                     if (lastAccessTime == -1L) {
                         // There was no access, so skip
@@ -78,34 +80,55 @@ class OpUsageLiveData(
                         lastAccessDuration = 0
                     }
 
-                    if (attributedOpEntry.isRunning ||
-                            lastAccessTime + lastAccessDuration > (now - usageDurationMs)) {
+                    if (
+                        attributedOpEntry.isRunning ||
+                            lastAccessTime + lastAccessDuration > (now - usageDurationMs)
+                    ) {
                         val accessList = opMap.getOrPut(opEntry.opStr) { mutableListOf() }
-                        val accessTime = if (attributedOpEntry.isRunning) {
-                            OpAccess.IS_RUNNING
-                        } else {
-                            lastAccessTime
-                        }
+                        val accessTime =
+                            if (attributedOpEntry.isRunning) {
+                                OpAccess.IS_RUNNING
+                            } else {
+                                lastAccessTime
+                            }
                         val proxy = attributedOpEntry.getLastProxyInfo(OP_FLAGS_ALL_TRUSTED)
                         var proxyAccess: OpAccess? = null
                         if (proxy != null && proxy.packageName != null) {
-                            proxyAccess = OpAccess(proxy.packageName!!, proxy.attributionTag,
-                                UserHandle.getUserHandleForUid(proxy.uid), accessTime)
+                            proxyAccess =
+                                OpAccess(
+                                    proxy.packageName!!,
+                                    proxy.attributionTag,
+                                    UserHandle.getUserHandleForUid(proxy.uid),
+                                    accessTime
+                                )
                         }
-                        accessList.add(OpAccess(packageOp.packageName, attributionTag,
-                            user, accessTime, proxyAccess))
+                        accessList.add(
+                            OpAccess(
+                                packageOp.packageName,
+                                attributionTag,
+                                user,
+                                accessTime,
+                                proxyAccess
+                            )
+                        )
 
                         // TODO ntmyren: remove logs once b/160724034 is fixed
-                        Log.i("OpUsageLiveData", "adding ${opEntry.opStr} for " +
+                        Log.i(
+                            "OpUsageLiveData",
+                            "adding ${opEntry.opStr} for " +
                                 "${packageOp.packageName}/$attributionTag, access time of " +
                                 "$lastAccessTime, isRunning: ${attributedOpEntry.isRunning} " +
                                 "current time $now, duration $lastAccessDuration, proxy: " +
-                                "${proxy?.packageName}")
+                                "${proxy?.packageName}"
+                        )
                     } else {
-                        Log.i("OpUsageLiveData", "NOT adding ${opEntry.opStr} for " +
+                        Log.i(
+                            "OpUsageLiveData",
+                            "NOT adding ${opEntry.opStr} for " +
                                 "${packageOp.packageName}/$attributionTag, access time of " +
                                 "$lastAccessTime, isRunning: ${attributedOpEntry.isRunning} " +
-                                "current time $now, duration $lastAccessDuration")
+                                "current time $now, duration $lastAccessDuration"
+                        )
                     }
                 }
             }
@@ -180,26 +203,31 @@ data class OpAccess(
         const val IS_RUNNING = -1L
 
         @JvmField
-        val CREATOR = object : Parcelable.Creator<OpAccess> {
-            override fun createFromParcel(parcel: Parcel): OpAccess {
-                val packageName = parcel.readString()!!
-                val attributionTag = parcel.readString()
-                val user: UserHandle = parcel.readParcelable(UserHandle::class.java.classLoader)!!
-                val lastAccessTime = parcel.readLong()
-                var proxyAccess: OpAccess? = null
-                val proxyPackageName = parcel.readString()
-                if (proxyPackageName != null) {
-                    proxyAccess = OpAccess(proxyPackageName,
-                        parcel.readString(),
-                        parcel.readParcelable(UserHandle::class.java.classLoader)!!,
-                        lastAccessTime)
+        val CREATOR =
+            object : Parcelable.Creator<OpAccess> {
+                override fun createFromParcel(parcel: Parcel): OpAccess {
+                    val packageName = parcel.readString()!!
+                    val attributionTag = parcel.readString()
+                    val user: UserHandle =
+                        parcel.readParcelable(UserHandle::class.java.classLoader)!!
+                    val lastAccessTime = parcel.readLong()
+                    var proxyAccess: OpAccess? = null
+                    val proxyPackageName = parcel.readString()
+                    if (proxyPackageName != null) {
+                        proxyAccess =
+                            OpAccess(
+                                proxyPackageName,
+                                parcel.readString(),
+                                parcel.readParcelable(UserHandle::class.java.classLoader)!!,
+                                lastAccessTime
+                            )
+                    }
+                    return OpAccess(packageName, attributionTag, user, lastAccessTime, proxyAccess)
                 }
-                return OpAccess(packageName, attributionTag, user, lastAccessTime, proxyAccess)
-            }
 
-            override fun newArray(size: Int): Array<OpAccess?> {
-                return arrayOfNulls(size)
+                override fun newArray(size: Int): Array<OpAccess?> {
+                    return arrayOfNulls(size)
+                }
             }
-        }
     }
 }

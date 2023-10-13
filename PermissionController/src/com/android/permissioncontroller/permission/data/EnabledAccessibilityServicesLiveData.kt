@@ -21,8 +21,8 @@ import android.app.Application
 import android.os.UserHandle
 import android.view.accessibility.AccessibilityManager
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.utils.componentInfo
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.componentInfo
 import kotlinx.coroutines.Job
 
 /**
@@ -42,7 +42,8 @@ class EnabledAccessibilityServicesLiveData(
             return
         }
 
-        val packageNames = Utils.getUserContext(app, user)
+        val packageNames =
+            Utils.getUserContext(app, user)
                 .getSystemService(AccessibilityManager::class.java)!!
                 .getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
                 .map { info: AccessibilityServiceInfo ->
@@ -62,8 +63,8 @@ class EnabledAccessibilityServicesLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            EnabledAccessibilityServicesLiveData>() {
+    companion object :
+        DataRepositoryForPackage<UserHandle, EnabledAccessibilityServicesLiveData>() {
         override fun newValue(key: UserHandle): EnabledAccessibilityServicesLiveData {
             return EnabledAccessibilityServicesLiveData(PermissionControllerApplication.get(), key)
         }

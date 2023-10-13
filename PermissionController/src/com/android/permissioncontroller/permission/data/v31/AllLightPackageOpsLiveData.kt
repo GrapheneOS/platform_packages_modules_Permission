@@ -117,7 +117,9 @@ class AllLightPackageOpsLiveData(app: Application) :
                 .filter { UserHandle.getUserHandleForUid(it.uid) in allProfilesInCurrentUser }
                 .associateBy(
                     { Pair(it.packageName, UserHandle.getUserHandleForUid(it.uid)) },
-                    { LightPackageOps(opNames, it) }))
+                    { LightPackageOps(opNames, it) }
+                )
+        )
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {

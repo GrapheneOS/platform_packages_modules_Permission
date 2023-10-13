@@ -76,14 +76,15 @@ class MinMaxSdkVersionTest {
     }
 
     private fun appRequestsPermission(permName: String): Boolean {
-        val packageInfo = mContext!!.packageManager.getPackageInfo(
-            TEST_APP_PKG_NAME, PackageManager.GET_PERMISSIONS)
+        val packageInfo =
+            mContext!!
+                .packageManager
+                .getPackageInfo(TEST_APP_PKG_NAME, PackageManager.GET_PERMISSIONS)
         return packageInfo.requestedPermissions.any { it == permName }
     }
 
     companion object {
-        private const val TEST_APP_NAME =
-            "CtsAppThatRequestsMultiplePermissionsWithMinMaxSdk.apk"
+        private const val TEST_APP_NAME = "CtsAppThatRequestsMultiplePermissionsWithMinMaxSdk.apk"
         private const val TMP_DIR = "/data/local/tmp/cts-permission/"
         private const val TEST_APP_PATH = TMP_DIR + TEST_APP_NAME
         private const val TEST_APP_PKG_NAME = "android.permission.cts.appthatrequestpermission"

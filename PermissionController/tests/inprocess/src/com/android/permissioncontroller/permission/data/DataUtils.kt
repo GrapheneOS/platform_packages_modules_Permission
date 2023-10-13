@@ -23,11 +23,12 @@ import java.util.concurrent.CompletableFuture
 
 fun <T> SmartUpdateMediatorLiveData<T>.withLoadedValue(block: (T?) -> Unit) {
     val v = CompletableFuture<T?>()
-    val observer = Observer<T?> {
-        if (isInitialized) {
-            v.complete(it)
+    val observer =
+        Observer<T?> {
+            if (isInitialized) {
+                v.complete(it)
+            }
         }
-    }
 
     Handler(Looper.getMainLooper()).post { observeForever(observer) }
     try {

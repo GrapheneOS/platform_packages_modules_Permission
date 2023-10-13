@@ -23,31 +23,26 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.UserHandle
 import android.os.UserManager
-
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.utils.Utils
 
 /**
  * Live data of the users of the current profile group.
- *
  *
  * Data source: system server
  */
 object UsersLiveData : SmartUpdateMediatorLiveData<List<UserHandle>>() {
 
-    @SuppressLint("StaticFieldLeak")
-    private val app = PermissionControllerApplication.get()
+    @SuppressLint("StaticFieldLeak") private val app = PermissionControllerApplication.get()
 
-    /** Monitors changes to the users on this device  */
-    private val mUserMonitor = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            onUpdate()
+    /** Monitors changes to the users on this device */
+    private val mUserMonitor =
+        object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                onUpdate()
+            }
         }
-    }
 
-    /**
-     * Update the encapsulated data with the current list of users.
-     */
+    /** Update the encapsulated data with the current list of users. */
     override fun onUpdate() {
         value = app.getSystemService(UserManager::class.java)!!.userProfiles
     }

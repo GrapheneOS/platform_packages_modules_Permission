@@ -36,7 +36,7 @@ import androidx.wear.compose.material.ButtonDefaults.SmallIconSize
 /**
  * This component is an alternative to [Button], providing the following:
  * - a convenient way of providing an icon and choosing its size from a range of sizes recommended
- * by the Wear guidelines;
+ *   by the Wear guidelines;
  */
 @Composable
 public fun Button(
@@ -64,7 +64,7 @@ public fun Button(
 /**
  * This component is an alternative to [Button], providing the following:
  * - a convenient way of providing an icon and choosing its size from a range of sizes recommended
- * by the Wear guidelines;
+ *   by the Wear guidelines;
  */
 @Composable
 public fun Button(
@@ -106,9 +106,7 @@ internal fun Button(
         enabled = enabled,
         colors = colors
     ) {
-        val iconModifier = Modifier
-            .size(buttonSize.iconSize)
-            .align(Alignment.Center)
+        val iconModifier = Modifier.size(buttonSize.iconSize).align(Alignment.Center)
 
         Icon(
             icon = icon,
@@ -119,10 +117,7 @@ internal fun Button(
     }
 }
 
-public sealed class ButtonSize(
-    public val iconSize: Dp,
-    public val tapTargetSize: Dp
-) {
+public sealed class ButtonSize(public val iconSize: Dp, public val tapTargetSize: Dp) {
     public object Default :
         ButtonSize(iconSize = DefaultIconSize, tapTargetSize = DefaultButtonSize)
 
@@ -130,7 +125,8 @@ public sealed class ButtonSize(
     public object Small : ButtonSize(iconSize = SmallIconSize, tapTargetSize = SmallButtonSize)
 
     /**
-     * Custom sizes should follow the [accessibility principles and guidance for touch targets](https://developer.android.com/training/wearables/accessibility#set-minimum).
+     * Custom sizes should follow the
+     * [accessibility principles and guidance for touch targets](https://developer.android.com/training/wearables/accessibility#set-minimum).
      */
     public data class Custom(val customIconSize: Dp, val customTapTargetSize: Dp) :
         ButtonSize(iconSize = customIconSize, tapTargetSize = customTapTargetSize)

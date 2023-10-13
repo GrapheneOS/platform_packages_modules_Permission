@@ -71,13 +71,16 @@ class AppDataSharingUpdatesPrivacySource : PrivacySource {
                         SafetySourceStatus.Builder(
                                 context.getString(R.string.data_sharing_updates_title),
                                 context.getString(R.string.data_sharing_updates_summary),
-                                SEVERITY_LEVEL_INFORMATION)
+                                SEVERITY_LEVEL_INFORMATION
+                            )
                             .setPendingIntent(
                                 PendingIntent.getActivity(
                                     context,
                                     /* requestCode= */ 0,
                                     Intent(ACTION_REVIEW_APP_DATA_SHARING_UPDATES),
-                                    FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE))
+                                    FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+                                )
+                            )
                             .build(),
                     )
                     .build()
@@ -88,7 +91,8 @@ class AppDataSharingUpdatesPrivacySource : PrivacySource {
         safetyCenterManager.setSafetySourceData(
             APP_DATA_SHARING_UPDATES_SOURCE_ID,
             safetySourceData,
-            createSafetyEventForDataSharingUpdates(refreshEvent, intent))
+            createSafetyEventForDataSharingUpdates(refreshEvent, intent)
+        )
     }
 
     private fun createSafetyEventForDataSharingUpdates(
@@ -99,7 +103,8 @@ class AppDataSharingUpdatesPrivacySource : PrivacySource {
             EVENT_REFRESH_REQUESTED -> {
                 val refreshBroadcastId =
                     intent.getStringExtra(
-                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
+                    )
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(refreshBroadcastId)
                     .build()

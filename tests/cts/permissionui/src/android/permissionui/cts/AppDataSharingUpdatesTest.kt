@@ -64,7 +64,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED,
-            true.toString())
+            true.toString()
+        )
 
     @get:Rule
     val deviceConfigDataSharingUpdatesPeriod =
@@ -72,7 +73,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_DATA_SHARING_UPDATE_PERIOD_MILLIS,
-            "600000")
+            "600000"
+        )
 
     /**
      * This rule serves to limit the max number of safety labels that can be persisted, so that
@@ -84,12 +86,15 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_MAX_SAFETY_LABELS_PERSISTED_PER_APP,
-            "2")
+            "2"
+        )
 
     @Before
     fun setup() {
         Assume.assumeTrue(
-            "Data sharing updates page is only available on U+", SdkLevel.isAtLeastU())
+            "Data sharing updates page is only available on U+",
+            SdkLevel.isAtLeastU()
+        )
         Assume.assumeFalse(isAutomotive)
         Assume.assumeFalse(isTv)
         Assume.assumeFalse(isWatch)
@@ -102,7 +107,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun startActivityWithIntent_whenAppGrantedCoarseLocation_noSharingToNoAdsSharing_showsUpdate() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -120,7 +128,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun startActivityWithIntent_whenAppGrantedFineLocation_showsUpdate() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
@@ -138,7 +149,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun startActivityWithIntent_whenAppGrantedBackgroundLocation_showsUpdate() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
         grantBackgroundLocationPermission(APP_PACKAGE_NAME)
 
@@ -156,7 +170,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun startActivityWithIntent_whenAppGrantedLocation_noSharingToAdsSharing_showsUpdate() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingAds())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -176,7 +193,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingNoAds(),
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingAds())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -196,7 +214,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingAds(),
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -215,7 +234,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingNoAds(),
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithNoSharing())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -234,7 +254,8 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingAds(),
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithNoSharing())
         grantCoarseLocationPermission(APP_PACKAGE_NAME)
 
@@ -261,7 +282,7 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
 
             clickAndWaitForWindowTransition(By.textContains(LEARN_ABOUT_DATA_SHARING))
 
-            eventually({assertHelpCenterLinkClickSuccessful()}, HELP_CENTER_TIMEOUT_MILLIS)
+            eventually({ assertHelpCenterLinkClickSuccessful() }, HELP_CENTER_TIMEOUT_MILLIS)
         } finally {
             pressBack()
             pressBack()
@@ -286,7 +307,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun clickUpdate_opensAppLocationPermissionPage() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
         grantFineLocationPermission(APP_PACKAGE_NAME)
         startAppDataSharingUpdatesActivity()
@@ -309,7 +333,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     @Test
     fun startActivityWithIntent_whenAppNotGrantedLocation_showsNoUpdates() {
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithNoSharing(), waitTillBroadcastProcessed = true)
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds())
 
         startAppDataSharingUpdatesActivity()
@@ -354,11 +381,13 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
             PACKAGE_SOURCE_UNSPECIFIED,
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingNoAds(),
-            PACKAGE_SOURCE_UNSPECIFIED)
+            PACKAGE_SOURCE_UNSPECIFIED
+        )
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
         startAppDataSharingUpdatesActivity()
@@ -378,9 +407,13 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
             PACKAGE_SOURCE_OTHER,
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds(), PACKAGE_SOURCE_OTHER)
+            APP_APK_NAME_31,
+            createAppMetadataWithLocationSharingNoAds(),
+            PACKAGE_SOURCE_OTHER
+        )
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
         startAppDataSharingUpdatesActivity()
@@ -398,9 +431,13 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
             PACKAGE_SOURCE_STORE,
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds(), PACKAGE_SOURCE_STORE)
+            APP_APK_NAME_31,
+            createAppMetadataWithLocationSharingNoAds(),
+            PACKAGE_SOURCE_STORE
+        )
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
         startAppDataSharingUpdatesActivity()
@@ -420,9 +457,13 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
             PACKAGE_SOURCE_LOCAL_FILE,
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(
-            APP_APK_NAME_31, createAppMetadataWithLocationSharingNoAds(), PACKAGE_SOURCE_LOCAL_FILE)
+            APP_APK_NAME_31,
+            createAppMetadataWithLocationSharingNoAds(),
+            PACKAGE_SOURCE_LOCAL_FILE
+        )
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
         startAppDataSharingUpdatesActivity()
@@ -440,11 +481,13 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
             PACKAGE_SOURCE_DOWNLOADED_FILE,
-            waitTillBroadcastProcessed = true)
+            waitTillBroadcastProcessed = true
+        )
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingNoAds(),
-            PACKAGE_SOURCE_DOWNLOADED_FILE)
+            PACKAGE_SOURCE_DOWNLOADED_FILE
+        )
         grantFineLocationPermission(APP_PACKAGE_NAME)
 
         startAppDataSharingUpdatesActivity()
@@ -489,15 +532,21 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
 
     private fun grantFineLocationPermission(packageName: String) {
         uiAutomation.grantRuntimePermission(
-                packageName, android.Manifest.permission.ACCESS_FINE_LOCATION)
+            packageName,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+        )
     }
     private fun grantCoarseLocationPermission(packageName: String) {
         uiAutomation.grantRuntimePermission(
-                packageName, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+            packageName,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        )
     }
     private fun grantBackgroundLocationPermission(packageName: String) {
         uiAutomation.grantRuntimePermission(
-                packageName, android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            packageName,
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+        )
     }
 
     private fun assertHelpCenterLinkClickSuccessful() {

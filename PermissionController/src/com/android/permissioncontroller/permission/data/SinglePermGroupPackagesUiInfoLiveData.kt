@@ -19,8 +19,8 @@ package com.android.permissioncontroller.permission.data
 import android.app.Application
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 
 /**
  * LiveData for the UI info for all packages in a single permission group. Tracks which packages
@@ -30,26 +30,21 @@ import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGr
  * @param app The current application
  * @param permGroupName The name of the permission group this LiveData represents
  */
-class SinglePermGroupPackagesUiInfoLiveData private constructor(
-    private val app: Application,
-    private val permGroupName: String
-) : SmartUpdateMediatorLiveData<Map<Pair<String, UserHandle>, AppPermGroupUiInfo>>() {
+class SinglePermGroupPackagesUiInfoLiveData
+private constructor(private val app: Application, private val permGroupName: String) :
+    SmartUpdateMediatorLiveData<Map<Pair<String, UserHandle>, AppPermGroupUiInfo>>() {
 
     private val permGroupLiveData = PermGroupLiveData[permGroupName]
     private val isCustomGroup =
         !PermissionMapping.getPlatformPermissionGroups().contains(permGroupName)
-    private val permGroupPackagesLiveData = PermGroupsPackagesLiveData.get(
-        customGroups = isCustomGroup)
+    private val permGroupPackagesLiveData =
+        PermGroupsPackagesLiveData.get(customGroups = isCustomGroup)
 
-    /**
-     * Map<Pair<package name, UserHandle>, UI data LiveData>
-     */
-    private val appPermGroupLiveDatas = mutableMapOf<Pair<String, UserHandle>,
-        AppPermGroupUiInfoLiveData>()
+    /** Map<Pair<package name, UserHandle>, UI data LiveData> */
+    private val appPermGroupLiveDatas =
+        mutableMapOf<Pair<String, UserHandle>, AppPermGroupUiInfoLiveData>()
 
-    /**
-     * Map<Pair<packageName, userHandle>, UI data>.
-     */
+    /** Map<Pair<packageName, userHandle>, UI data>. */
     private val shownPackages = mutableMapOf<Pair<String, UserHandle>, AppPermGroupUiInfo>()
 
     init {
@@ -60,9 +55,7 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
             }
         }
 
-        addSource(permGroupPackagesLiveData) {
-            update()
-        }
+        addSource(permGroupPackagesLiveData) { update() }
     }
 
     override fun onUpdate() {
@@ -71,9 +64,7 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
             addAndRemoveAppPermGroupLiveDatas(thisPermGroupPackages.toList())
 
             if (thisPermGroupPackages.isEmpty()) {
-                permGroupLiveData.value?.groupInfo?.let {
-                    value = emptyMap()
-                }
+                permGroupLiveData.value?.groupInfo?.let { value = emptyMap() }
             }
         }
     }
@@ -83,48 +74,46 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
             AppPermGroupUiInfoLiveData[key.first, permGroupName, key.second]
         }
 
-        val (_, removed) = setSourcesToDifference(pkgs, appPermGroupLiveDatas, getLiveData) { key ->
-            val appPermGroupUiInfoLiveData = appPermGroupLiveDatas[key]
-            val appPermGroupUiInfo = appPermGroupUiInfoLiveData?.value
-            shownPackages.remove(key)
+        val (_, removed) =
+            setSourcesToDifference(pkgs, appPermGroupLiveDatas, getLiveData) { key ->
+                val appPermGroupUiInfoLiveData = appPermGroupLiveDatas[key]
+                val appPermGroupUiInfo = appPermGroupUiInfoLiveData?.value
+                shownPackages.remove(key)
 
-            if (appPermGroupUiInfo == null) {
-                if (appPermGroupUiInfoLiveData != null &&
-                    appPermGroupUiInfoLiveData.isInitialized) {
-                    removeSource(appPermGroupUiInfoLiveData)
-                    appPermGroupLiveDatas.remove(key)
+                if (appPermGroupUiInfo == null) {
+                    if (
+                        appPermGroupUiInfoLiveData != null &&
+                            appPermGroupUiInfoLiveData.isInitialized
+                    ) {
+                        removeSource(appPermGroupUiInfoLiveData)
+                        appPermGroupLiveDatas.remove(key)
+                    }
+                } else {
+                    shownPackages[key] = appPermGroupUiInfo
                 }
-            } else {
-                shownPackages[key] = appPermGroupUiInfo
-            }
 
-            if (appPermGroupLiveDatas.all { entry -> entry.value.isInitialized }) {
-                permGroupLiveData.value?.groupInfo?.let {
-                    value = shownPackages.toMap()
+                if (appPermGroupLiveDatas.all { entry -> entry.value.isInitialized }) {
+                    permGroupLiveData.value?.groupInfo?.let { value = shownPackages.toMap() }
                 }
             }
-        }
 
         for (removedKey in removed) {
             shownPackages.remove(removedKey)
         }
 
         if (appPermGroupLiveDatas.all { entry -> entry.value.isInitialized }) {
-            permGroupLiveData.value?.groupInfo?.let {
-                value = shownPackages.toMap()
-            }
+            permGroupLiveData.value?.groupInfo?.let { value = shownPackages.toMap() }
         }
     }
 
     /**
      * Repository for SinglePermGroupPackagesUiInfoLiveData objects.
+     *
      * <p> Key value is a string permission group name, value is its corresponding LiveData.
      */
-    companion object : DataRepository<String,
-        SinglePermGroupPackagesUiInfoLiveData>() {
+    companion object : DataRepository<String, SinglePermGroupPackagesUiInfoLiveData>() {
         override fun newValue(key: String): SinglePermGroupPackagesUiInfoLiveData {
-            return SinglePermGroupPackagesUiInfoLiveData(PermissionControllerApplication.get(),
-                key)
+            return SinglePermGroupPackagesUiInfoLiveData(PermissionControllerApplication.get(), key)
         }
     }
 }

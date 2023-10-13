@@ -38,11 +38,11 @@ import com.android.permissioncontroller.permission.model.livedatatypes.PermGroup
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
-import com.android.permissioncontroller.permission.ui.model.ManagePermissionsViewModel
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils
 import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelFactoryLegacy
 import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelLegacy
 import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModelLegacy.PermissionGroupWithUsageCount
+import com.android.permissioncontroller.permission.ui.model.ManagePermissionsViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils
 import com.android.permissioncontroller.permission.utils.Utils
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -95,7 +95,9 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
                 PermissionUsageViewModelLegacy::class.java]
 
         managePermissionsViewModel.standardPermGroupsLiveData.observe(
-            this, this::onPermissionGroupsChanged)
+            this,
+            this::onPermissionGroupsChanged
+        )
         setLoading(true)
         reloadData()
     }
@@ -119,7 +121,8 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
             PermissionControllerStatsLog.write(
                 PERMISSION_USAGE_FRAGMENT_INTERACTION,
                 sessionId,
-                PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED)
+                PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED
+            )
         }
         showSystem = !showSystem
         updateAction()
@@ -143,7 +146,10 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
     /** Reloads the data to show. */
     private fun reloadData() {
         usageViewModel.loadPermissionUsages(
-            requireActivity().getLoaderManager(), permissionUsages, this)
+            requireActivity().getLoaderManager(),
+            permissionUsages,
+            this
+        )
         if (finishedInitialLoad) {
             setLoading(false)
         }
@@ -165,7 +171,11 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
 
         val permissionUsagesUiData =
             usageViewModel.buildPermissionUsagesUiData(
-                appPermissionUsages, show7Days, showSystem, requireContext())
+                appPermissionUsages,
+                show7Days,
+                showSystem,
+                requireContext()
+            )
         val permissionApps = permissionUsagesUiData.permissionApps
         val displayShowSystemToggle = permissionUsagesUiData.displayShowSystemToggle
 
@@ -213,7 +223,8 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
                         count,
                         showSystem,
                         sessionId,
-                        show7Days)
+                        show7Days
+                    )
                     getPreferenceScreen().addPreference(permissionUsagePreference)
                 }
                 finishedInitialLoad = true

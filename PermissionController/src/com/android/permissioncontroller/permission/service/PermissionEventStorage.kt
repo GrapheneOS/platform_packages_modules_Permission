@@ -18,9 +18,7 @@ package com.android.permissioncontroller.permission.service
 
 import com.android.permissioncontroller.permission.data.PermissionEvent
 
-/**
- * Persistent storage for retrieving persisted permission event data.
- */
+/** Persistent storage for retrieving persisted permission event data. */
 interface PermissionEventStorage<T : PermissionEvent> {
     /**
      * Persist a permission event for retrieval later.
@@ -36,9 +34,7 @@ interface PermissionEventStorage<T : PermissionEvent> {
      */
     suspend fun loadEvents(): List<T>
 
-    /**
-     * Clear all events.
-     */
+    /** Clear all events. */
     suspend fun clearEvents()
 
     /**
@@ -60,8 +56,8 @@ interface PermissionEventStorage<T : PermissionEvent> {
      * Update event timestamps based on the delta in system time.
      *
      * @param diffSystemTimeMillis the difference between the current and old system times. Positive
-     * values mean that the time has changed in the future and negative means the time was changed
-     * into the past.
+     *   values mean that the time has changed in the future and negative means the time was changed
+     *   into the past.
      * @return whether the storage was successful
      */
     suspend fun updateEventsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean

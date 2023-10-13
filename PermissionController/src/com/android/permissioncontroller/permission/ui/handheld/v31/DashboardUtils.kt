@@ -49,7 +49,6 @@ fun shouldShowSubattributionInPermissionsDashboard(): Boolean {
  *
  * @param context the context.
  * @param lastAccessTime the time in milliseconds.
- *
  * @return a string representing the time or date of the given time or null if the time is 0.
  */
 fun getAbsoluteTimeString(context: Context, lastAccessTime: Long): String? {
@@ -64,14 +63,13 @@ fun getAbsoluteTimeString(context: Context, lastAccessTime: Long): String? {
 }
 
 /**
- * Build a string representing the time of the most recent permission usage if it happened on
- * the current day and the date otherwise.
+ * Build a string representing the time of the most recent permission usage if it happened on the
+ * current day and the date otherwise.
  *
  * @param context the context.
  * @param groupUsage the permission usage.
- *
- * @return a string representing the time or date of the most recent usage or null if there are
- * no usages.
+ * @return a string representing the time or date of the most recent usage or null if there are no
+ *   usages.
  */
 @RequiresApi(Build.VERSION_CODES.S)
 fun getAbsoluteLastUsageString(context: Context, groupUsage: GroupUsage?): String? {
@@ -83,8 +81,7 @@ fun getAbsoluteLastUsageString(context: Context, groupUsage: GroupUsage?): Strin
 /**
  * Build a string representing the duration of a permission usage.
  *
- * @return a string representing the duration of this app's usage or null if there are no
- * usages.
+ * @return a string representing the duration of this app's usage or null if there are no usages.
  */
 @RequiresApi(Build.VERSION_CODES.S)
 fun getUsageDurationString(context: Context, groupUsage: GroupUsage?): String? {
@@ -94,9 +91,9 @@ fun getUsageDurationString(context: Context, groupUsage: GroupUsage?): String? {
 }
 
 /**
- * Build a string representing the number of milliseconds passed in.  It rounds to the nearest
- * unit.  For example, given a duration of 3500 and an English locale, this can return
- * "3 seconds".
+ * Build a string representing the number of milliseconds passed in. It rounds to the nearest unit.
+ * For example, given a duration of 3500 and an English locale, this can return "3 seconds".
+ *
  * @param context The context.
  * @param duration The number of milliseconds.
  * @return a string representing the given number of milliseconds.
@@ -104,37 +101,63 @@ fun getUsageDurationString(context: Context, groupUsage: GroupUsage?): String? {
 fun getTimeDiffStr(context: Context, duration: Long): String {
     val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
     return when (timeDiffAndUnit.second) {
-        SECONDS -> StringUtils.getIcuPluralsString(context,
-            R.string.seconds, timeDiffAndUnit.first.toInt())
-        MINUTES -> StringUtils.getIcuPluralsString(context,
-            R.string.minutes, timeDiffAndUnit.first.toInt())
-        HOURS -> StringUtils.getIcuPluralsString(context,
-            R.string.hours, timeDiffAndUnit.first.toInt())
-        else -> StringUtils.getIcuPluralsString(context,
-            R.string.days, timeDiffAndUnit.first.toInt())
+        SECONDS ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.seconds,
+                timeDiffAndUnit.first.toInt()
+            )
+        MINUTES ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.minutes,
+                timeDiffAndUnit.first.toInt()
+            )
+        HOURS ->
+            StringUtils.getIcuPluralsString(context, R.string.hours, timeDiffAndUnit.first.toInt())
+        else ->
+            StringUtils.getIcuPluralsString(context, R.string.days, timeDiffAndUnit.first.toInt())
     }
 }
 
 /**
  * Build a string representing the duration used of milliseconds passed in.
+ *
  * @return a string representing the duration used in the nearest unit. ex: Used for 3 mins
  */
 fun getDurationUsedStr(context: Context, duration: Long): String {
     val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
     return when (timeDiffAndUnit.second) {
-        SECONDS -> StringUtils.getIcuPluralsString(context,
-            R.string.duration_used_seconds, timeDiffAndUnit.first.toInt())
-        MINUTES -> StringUtils.getIcuPluralsString(context,
-            R.string.duration_used_minutes, timeDiffAndUnit.first.toInt())
-        HOURS -> StringUtils.getIcuPluralsString(context,
-            R.string.duration_used_hours, timeDiffAndUnit.first.toInt())
-        else -> StringUtils.getIcuPluralsString(context,
-            R.string.duration_used_days, timeDiffAndUnit.first.toInt())
+        SECONDS ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.duration_used_seconds,
+                timeDiffAndUnit.first.toInt()
+            )
+        MINUTES ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.duration_used_minutes,
+                timeDiffAndUnit.first.toInt()
+            )
+        HOURS ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.duration_used_hours,
+                timeDiffAndUnit.first.toInt()
+            )
+        else ->
+            StringUtils.getIcuPluralsString(
+                context,
+                R.string.duration_used_days,
+                timeDiffAndUnit.first.toInt()
+            )
     }
 }
 
 /**
  * Given the duration in milliseconds, calculate the time of that duration in the nearest unit.
+ *
  * @return a Pair of the <duration in the nearest unit, the nearest unit>
  */
 fun calculateTimeDiffAndUnit(duration: Long): Pair<Long, Int> {
@@ -159,7 +182,6 @@ fun calculateTimeDiffAndUnit(duration: Long): Pair<Long, Int> {
  * Check whether the given time (in milliseconds) is in the current day.
  *
  * @param time the time in milliseconds
- *
  * @return whether the given time is in the current day.
  */
 private fun isToday(time: Long): Boolean {

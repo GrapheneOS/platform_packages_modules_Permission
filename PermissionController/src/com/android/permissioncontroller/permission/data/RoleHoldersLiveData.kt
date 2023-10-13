@@ -29,7 +29,8 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param roleName The name of the role
  */
-class RoleHoldersLiveData private constructor(
+class RoleHoldersLiveData
+private constructor(
     private val app: Application,
     private val roleName: String,
     private val user: UserHandle
@@ -57,6 +58,7 @@ class RoleHoldersLiveData private constructor(
 
     /**
      * Repository for RoleHoldersLiveData.
+     *
      * <p> Key value is the name of the role.
      */
     companion object : DataRepository<Pair<String, UserHandle>, RoleHoldersLiveData>() {

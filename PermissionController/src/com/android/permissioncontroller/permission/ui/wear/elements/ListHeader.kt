@@ -39,20 +39,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.LocalContentColor
 import androidx.wear.compose.material.LocalTextStyle
+import androidx.wear.compose.material.MaterialTheme
 
 /**
- * A slot based composable for creating a list header item. [ListHeader]s are typically expected
- * to be a few words of text on a single line.
- * The contents will be start and end padded.
+ * A slot based composable for creating a list header item. [ListHeader]s are typically expected to
+ * be a few words of text on a single line. The contents will be start and end padded.
  *
  * @param modifier The modifier for the [ListHeader].
  * @param backgroundColor The background color to apply - typically Color.Transparent
  * @param contentColor The color to apply to content.
- * @param contentPadding The spacing values to apply internally between the container
- * and the content.
+ * @param contentPadding The spacing values to apply internally between the container and the
+ *   content.
  * @param content Slot for [ListHeader] content, expected to be a single line of text.
  */
 @Composable
@@ -65,13 +64,14 @@ fun ListHeader(
 ) {
     Row(
         horizontalArrangement = Arrangement.Center,
-        modifier = modifier
-            .defaultMinSize(minHeight = ListHeaderDefaults.Height)
-            .height(IntrinsicSize.Min)
-            .wrapContentSize()
-            .background(backgroundColor)
-            .padding(contentPadding)
-            .semantics(mergeDescendants = true) { heading() }
+        modifier =
+            modifier
+                .defaultMinSize(minHeight = ListHeaderDefaults.Height)
+                .height(IntrinsicSize.Min)
+                .wrapContentSize()
+                .background(backgroundColor)
+                .padding(contentPadding)
+                .semantics(mergeDescendants = true) { heading() }
     ) {
         CompositionLocalProvider(
             LocalContentColor provides contentColor,
@@ -83,15 +83,14 @@ fun ListHeader(
 }
 
 /**
- * A two slot based composable for creating a list subheader item.
- * [ListSubheader]s offer slots for an icon and for a text label.
- * The contents will be start and end padded.
+ * A two slot based composable for creating a list subheader item. [ListSubheader]s offer slots for
+ * an icon and for a text label. The contents will be start and end padded.
  *
  * @param modifier The modifier for the [ListSubheader].
  * @param backgroundColor The background color to apply - typically Color.Transparent
  * @param contentColor The color to apply to content.
- * @param contentPadding The spacing values to apply internally between the container
- * and the content.
+ * @param contentPadding The spacing values to apply internally between the container and the
+ *   content.
  * @param icon A slot for providing icon to the [ListSubheader].
  * @param label A slot for providing label to the [ListSubheader].
  */
@@ -107,14 +106,15 @@ fun ListSubheader(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
-        modifier = modifier
-            .defaultMinSize(minHeight = ListHeaderDefaults.Height)
-            .height(IntrinsicSize.Min)
-            .fillMaxWidth()
-            .wrapContentSize(align = Alignment.CenterStart)
-            .background(backgroundColor)
-            .padding(contentPadding)
-            .semantics(mergeDescendants = true) { heading() }
+        modifier =
+            modifier
+                .defaultMinSize(minHeight = ListHeaderDefaults.Height)
+                .height(IntrinsicSize.Min)
+                .fillMaxWidth()
+                .wrapContentSize(align = Alignment.CenterStart)
+                .background(backgroundColor)
+                .padding(contentPadding)
+                .semantics(mergeDescendants = true) { heading() }
     ) {
         CompositionLocalProvider(
             LocalContentColor provides contentColor,
@@ -139,16 +139,8 @@ object ListHeaderDefaults {
     private val HorizontalPadding = 14.dp
     internal val Height = 48.dp
 
-    val HeaderContentPadding = PaddingValues(
-        HorizontalPadding,
-        TopPadding,
-        HorizontalPadding,
-        HeaderBottomPadding
-    )
-    val SubheaderContentPadding = PaddingValues(
-        HorizontalPadding,
-        TopPadding,
-        HorizontalPadding,
-        SubheaderBottomPadding
-    )
+    val HeaderContentPadding =
+        PaddingValues(HorizontalPadding, TopPadding, HorizontalPadding, HeaderBottomPadding)
+    val SubheaderContentPadding =
+        PaddingValues(HorizontalPadding, TopPadding, HorizontalPadding, SubheaderBottomPadding)
 }

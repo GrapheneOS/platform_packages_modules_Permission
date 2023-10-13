@@ -16,62 +16,64 @@
 
 package com.android.permissioncontroller.tests.mocking.permission.utils
 
-import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.utils.StringUtils
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * A suite of unit tests to test the permission dashboard utils.
- */
+/** A suite of unit tests to test the permission dashboard utils. */
 @RunWith(AndroidJUnit4::class)
 class StringUtilsTest {
     @Test
     fun getIcuPluralsString_one_noArguments() {
         assertThat(
-            StringUtils.getIcuPluralsString(
-                ApplicationProvider.getApplicationContext(),
-                R.string.test_icu_plural,
-                1
+                StringUtils.getIcuPluralsString(
+                    ApplicationProvider.getApplicationContext(),
+                    R.string.test_icu_plural,
+                    1
+                )
             )
-        ).isEqualTo("1 test")
+            .isEqualTo("1 test")
     }
 
     @Test
     fun getIcuPluralsString_other_noArguments() {
         assertThat(
-            StringUtils.getIcuPluralsString(
-                ApplicationProvider.getApplicationContext(),
-                R.string.test_icu_plural,
-                2
+                StringUtils.getIcuPluralsString(
+                    ApplicationProvider.getApplicationContext(),
+                    R.string.test_icu_plural,
+                    2
+                )
             )
-        ).isEqualTo("2 tests")
+            .isEqualTo("2 tests")
     }
 
     @Test
     fun getIcuPluralsString_one_additionalArguments() {
         assertThat(
-            StringUtils.getIcuPluralsString(
-                ApplicationProvider.getApplicationContext(),
-                R.string.test_icu_plural_with_argument,
-                1,
-                "with argument"
+                StringUtils.getIcuPluralsString(
+                    ApplicationProvider.getApplicationContext(),
+                    R.string.test_icu_plural_with_argument,
+                    1,
+                    "with argument"
+                )
             )
-        ).isEqualTo("1 test with argument")
+            .isEqualTo("1 test with argument")
     }
 
     @Test
     fun getIcuPluralsString_other_additionalArguments() {
         assertThat(
-            StringUtils.getIcuPluralsString(
-                ApplicationProvider.getApplicationContext(),
-                R.string.test_icu_plural_with_argument,
-                2,
-                "with argument"
+                StringUtils.getIcuPluralsString(
+                    ApplicationProvider.getApplicationContext(),
+                    R.string.test_icu_plural_with_argument,
+                    2,
+                    "with argument"
+                )
             )
-        ).isEqualTo("2 tests with argument")
+            .isEqualTo("2 tests with argument")
     }
 }

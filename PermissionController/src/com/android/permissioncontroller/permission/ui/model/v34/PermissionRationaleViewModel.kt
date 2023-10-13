@@ -32,14 +32,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED
-import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__INSTALL_SOURCE
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__HELP_CENTER
+import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__INSTALL_SOURCE
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__PERMISSION_SETTINGS
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_RATIONALE_DIALOG_VIEWED
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
@@ -75,8 +75,8 @@ class PermissionRationaleViewModel(
         /**
          * Should be invoked by base activity when a valid onActivityResult is received
          *
-         * @param data [Intent] which may contain result data from a started Activity
-         * (various data can be attached to Intent "extras")
+         * @param data [Intent] which may contain result data from a started Activity (various data
+         *   can be attached to Intent "extras")
          * @return {@code true} if Activity should finish after processing this result
          */
         fun shouldFinishActivityForResult(data: Intent?): Boolean
@@ -88,12 +88,12 @@ class PermissionRationaleViewModel(
      * should be shown with it.
      */
     data class PermissionRationaleInfo(
-            val groupName: String,
-            val isPreloadedApp: Boolean,
-            val installSourcePackageName: String?,
-            val installSourceLabel: String?,
-            val purposeSet: Set<Int>
-        )
+        val groupName: String,
+        val isPreloadedApp: Boolean,
+        val installSourcePackageName: String?,
+        val installSourceLabel: String?,
+        val purposeSet: Set<Int>
+    )
 
     /** A [LiveData] which holds the currently pending PermissionRationaleInfo */
     val permissionRationaleInfoLiveData =
@@ -126,8 +126,11 @@ class PermissionRationaleViewModel(
                         KotlinUtils.getPackageLabel(app, it, Process.myUserHandle())
                     }
 
-                val purposes = SafetyLabelUtils.getSafetyLabelSharingPurposesForGroup(
-                        safetyLabelInfo.safetyLabel, permissionGroupName)
+                val purposes =
+                    SafetyLabelUtils.getSafetyLabelSharingPurposesForGroup(
+                        safetyLabelInfo.safetyLabel,
+                        permissionGroupName
+                    )
                 if (value == null) {
                     logPermissionRationaleDialogViewed(purposes)
                 }
@@ -137,7 +140,8 @@ class PermissionRationaleViewModel(
                         safetyLabelInfo.installSourceInfo.isPreloadedApp,
                         installSourcePackageName,
                         installSourceLabel,
-                        purposes)
+                        purposes
+                    )
             }
         }
 
@@ -147,7 +151,8 @@ class PermissionRationaleViewModel(
 
     fun sendToAppStore(context: Context, installSourcePackageName: String) {
         logPermissionRationaleDialogActionReported(
-            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__INSTALL_SOURCE)
+            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__INSTALL_SOURCE
+        )
         val storeIntent = getAppStoreIntent(context, installSourcePackageName, packageName)
         context.startActivity(storeIntent)
     }
@@ -162,14 +167,17 @@ class PermissionRationaleViewModel(
         if (activityResultCallback != null) {
             return
         }
-        activityResultCallback = object : ActivityResultCallback {
-            override fun shouldFinishActivityForResult(data: Intent?): Boolean {
-                val returnGroupName = data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED)
-                return (returnGroupName != null) && data.hasExtra(EXTRA_RESULT_PERMISSION_RESULT)
+        activityResultCallback =
+            object : ActivityResultCallback {
+                override fun shouldFinishActivityForResult(data: Intent?): Boolean {
+                    val returnGroupName = data?.getStringExtra(EXTRA_RESULT_PERMISSION_INTERACTED)
+                    return (returnGroupName != null) &&
+                        data.hasExtra(EXTRA_RESULT_PERMISSION_RESULT)
+                }
             }
-        }
         logPermissionRationaleDialogActionReported(
-            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__PERMISSION_SETTINGS)
+            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__PERMISSION_SETTINGS
+        )
         startAppPermissionFragment(activity, groupName)
     }
 
@@ -192,11 +200,13 @@ class PermissionRationaleViewModel(
         // Add in some extra locale query parameters
         val fullUri =
             HelpUtils.uriWithAddedParameters(activity, Uri.parse(getHelpCenterUrlString(activity)))
-        val intent = Intent(Intent.ACTION_VIEW, fullUri).apply {
-            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-        }
+        val intent =
+            Intent(Intent.ACTION_VIEW, fullUri).apply {
+                setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+            }
         logPermissionRationaleDialogActionReported(
-            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__HELP_CENTER)
+            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED__BUTTON_PRESSED__HELP_CENTER
+        )
         try {
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -206,14 +216,17 @@ class PermissionRationaleViewModel(
     }
 
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {
-        val intent = Intent(Intent.ACTION_MANAGE_APP_PERMISSION)
-            .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
-            .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
-            .putExtra(Intent.EXTRA_USER, user)
-            .putExtra(ManagePermissionsActivity.EXTRA_CALLER_NAME,
-                PermissionRationaleActivity::class.java.name)
-            .putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        val intent =
+            Intent(Intent.ACTION_MANAGE_APP_PERMISSION)
+                .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+                .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
+                .putExtra(Intent.EXTRA_USER, user)
+                .putExtra(
+                    ManagePermissionsActivity.EXTRA_CALLER_NAME,
+                    PermissionRationaleActivity::class.java.name
+                )
+                .putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         activity.startActivityForResult(intent, APP_PERMISSION_REQUEST_CODE)
     }
 
@@ -225,14 +238,24 @@ class PermissionRationaleViewModel(
         purposes.forEach { purposeInt ->
             purposesPresented = purposesPresented or 1.shl(purposeInt)
         }
-        PermissionControllerStatsLog.write(PERMISSION_RATIONALE_DIALOG_VIEWED, sessionId, uid,
-            permissionGroupName, purposesPresented)
+        PermissionControllerStatsLog.write(
+            PERMISSION_RATIONALE_DIALOG_VIEWED,
+            sessionId,
+            uid,
+            permissionGroupName,
+            purposesPresented
+        )
     }
 
     fun logPermissionRationaleDialogActionReported(buttonPressed: Int) {
         val uid = KotlinUtils.getPackageUid(app, packageName, user) ?: return
-        PermissionControllerStatsLog.write(PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED, sessionId,
-            uid, permissionGroupName, buttonPressed)
+        PermissionControllerStatsLog.write(
+            PERMISSION_RATIONALE_DIALOG_ACTION_REPORTED,
+            sessionId,
+            uid,
+            permissionGroupName,
+            buttonPressed
+        )
     }
 
     private fun getHelpCenterUrlString(context: Context): String? {
@@ -257,7 +280,12 @@ class PermissionRationaleViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return PermissionRationaleViewModel(
-            app, packageName, permissionGroupName, sessionId, savedState)
+            app,
+            packageName,
+            permissionGroupName,
+            sessionId,
+            savedState
+        )
             as T
     }
 }

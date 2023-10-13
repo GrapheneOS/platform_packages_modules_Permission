@@ -96,85 +96,89 @@ class UnusedAppsViewModel(private val app: Application, private val sessionId: L
     private data class PackageLastUsageTime(val packageName: String, val usageTime: Long)
 
     val unusedPackageCategoriesLiveData =
-        object : SmartAsyncMediatorLiveData<Map<UnusedPeriod, List<UnusedPackageInfo>>>(
-        alwaysUpdateOnActive = false
-    ) {
-        // Get apps usage stats from the longest interesting period (MAX_UNUSED_PERIOD_MILLIS)
-        private val usageStatsLiveData = UsageStatsLiveData[MAX_UNUSED_PERIOD_MILLIS]
-
-        init {
-            addSource(getUnusedPackages()) {
-                onUpdate()
-            }
-
-            addSource(AllPackageInfosLiveData) {
-                onUpdate()
-            }
-
-            addSource(usageStatsLiveData) {
-                onUpdate()
-            }
-        }
-
-        override suspend fun loadDataAndPostValue(job: Job) {
-            if (!getUnusedPackages().isInitialized ||
-                !usageStatsLiveData.isInitialized || !AllPackageInfosLiveData.isInitialized
+        object :
+            SmartAsyncMediatorLiveData<Map<UnusedPeriod, List<UnusedPackageInfo>>>(
+                alwaysUpdateOnActive = false
             ) {
-                return
+            // Get apps usage stats from the longest interesting period (MAX_UNUSED_PERIOD_MILLIS)
+            private val usageStatsLiveData = UsageStatsLiveData[MAX_UNUSED_PERIOD_MILLIS]
+
+            init {
+                addSource(getUnusedPackages()) { onUpdate() }
+
+                addSource(AllPackageInfosLiveData) { onUpdate() }
+
+                addSource(usageStatsLiveData) { onUpdate() }
             }
 
-            val unusedApps = getUnusedPackages().value!!
-            Log.i(LOG_TAG, "Unused apps: $unusedApps")
-            val categorizedApps = mutableMapOf<UnusedPeriod, MutableList<UnusedPackageInfo>>()
-            for (period in UnusedPeriod.allPeriods) {
-                categorizedApps[period] = mutableListOf()
-            }
-
-            // Get all packages which cannot be uninstalled.
-            val systemApps = getUnusedSystemApps(AllPackageInfosLiveData.value!!, unusedApps)
-            val lastUsedDataUnusedApps =
-                extractUnusedAppsUsageData(usageStatsLiveData.value!!, unusedApps)
-                { it: UsageStats ->
-                    PackageLastUsageTime(it.packageName, it.lastTimePackageUsed())
-                }
-            val firstInstallDataUnusedApps =
-                extractUnusedAppsUsageData(AllPackageInfosLiveData.value!!, unusedApps)
-                { it: LightPackageInfo ->
-                    PackageLastUsageTime(it.packageName, it.firstInstallTime)
+            override suspend fun loadDataAndPostValue(job: Job) {
+                if (
+                    !getUnusedPackages().isInitialized ||
+                        !usageStatsLiveData.isInitialized ||
+                        !AllPackageInfosLiveData.isInitialized
+                ) {
+                    return
                 }
 
-            val now = System.currentTimeMillis()
-            unusedApps.keys.forEach { (packageName, user) ->
-                val userPackage = packageName to user
+                val unusedApps = getUnusedPackages().value!!
+                Log.i(LOG_TAG, "Unused apps: $unusedApps")
+                val categorizedApps = mutableMapOf<UnusedPeriod, MutableList<UnusedPackageInfo>>()
+                for (period in UnusedPeriod.allPeriods) {
+                    categorizedApps[period] = mutableListOf()
+                }
 
-                // If we didn't find the stat for a package in our usageStats search, it is more than
-                // 6 months old, or the app has never been opened. Then use first install date instead.
-                var lastUsageTime =
-                    lastUsedDataUnusedApps[userPackage] ?: firstInstallDataUnusedApps[
-                            userPackage] ?: 0L
+                // Get all packages which cannot be uninstalled.
+                val systemApps = getUnusedSystemApps(AllPackageInfosLiveData.value!!, unusedApps)
+                val lastUsedDataUnusedApps =
+                    extractUnusedAppsUsageData(usageStatsLiveData.value!!, unusedApps) {
+                        it: UsageStats ->
+                        PackageLastUsageTime(it.packageName, it.lastTimePackageUsed())
+                    }
+                val firstInstallDataUnusedApps =
+                    extractUnusedAppsUsageData(AllPackageInfosLiveData.value!!, unusedApps) {
+                        it: LightPackageInfo ->
+                        PackageLastUsageTime(it.packageName, it.firstInstallTime)
+                    }
 
-                val period = UnusedPeriod.findLongestValidPeriod(now - lastUsageTime)
-                categorizedApps[period]!!.add(
-                    UnusedPackageInfo(
-                        packageName, user, systemApps.contains(userPackage),
-                        unusedApps[userPackage]!!
+                val now = System.currentTimeMillis()
+                unusedApps.keys.forEach { (packageName, user) ->
+                    val userPackage = packageName to user
+
+                    // If we didn't find the stat for a package in our usageStats search, it is more
+                    // than
+                    // 6 months old, or the app has never been opened. Then use first install date
+                    // instead.
+                    var lastUsageTime =
+                        lastUsedDataUnusedApps[userPackage]
+                            ?: firstInstallDataUnusedApps[userPackage] ?: 0L
+
+                    val period = UnusedPeriod.findLongestValidPeriod(now - lastUsageTime)
+                    categorizedApps[period]!!.add(
+                        UnusedPackageInfo(
+                            packageName,
+                            user,
+                            systemApps.contains(userPackage),
+                            unusedApps[userPackage]!!
+                        )
                     )
-                )
-            }
+                }
 
-            postValue(categorizedApps)
+                postValue(categorizedApps)
+            }
         }
-    }
 
     // Extract UserPackage information for unused system apps from source map.
     private fun getUnusedSystemApps(
         userPackages: Map<UserHandle, List<LightPackageInfo>>,
-                                    unusedApps: Map<UserPackage, Set<String>>,
+        unusedApps: Map<UserPackage, Set<String>>,
     ): List<UserPackage> {
-        return userPackages.flatMap { (userHandle, packageList) ->
-            packageList.filter { (it.appFlags and ApplicationInfo.FLAG_SYSTEM) != 0 }
-                .map { it.packageName to userHandle }
-        }.filter { unusedApps.contains(it) }
+        return userPackages
+            .flatMap { (userHandle, packageList) ->
+                packageList
+                    .filter { (it.appFlags and ApplicationInfo.FLAG_SYSTEM) != 0 }
+                    .map { it.packageName to userHandle }
+            }
+            .filter { unusedApps.contains(it) }
     }
 
     /**
@@ -187,9 +191,11 @@ class UnusedAppsViewModel(private val app: Application, private val sessionId: L
         unusedApps: Map<UserPackage, Set<String>>,
         extractUsageData: (fullData: PackageData) -> PackageLastUsageTime,
     ): Map<UserPackage, Long> {
-        return userPackages.flatMap { (userHandle, fullData) ->
-            fullData.map { userHandle to extractUsageData(it) }
-        }.associate { (handle, appData) -> (appData.packageName to handle) to appData.usageTime }
+        return userPackages
+            .flatMap { (userHandle, fullData) ->
+                fullData.map { userHandle to extractUsageData(it) }
+            }
+            .associate { (handle, appData) -> (appData.packageName to handle) to appData.usageTime }
             .filterKeys { unusedApps.contains(it) }
     }
 
@@ -215,37 +221,57 @@ class UnusedAppsViewModel(private val app: Application, private val sessionId: L
         Log.i(LOG_TAG, "sessionId: $sessionId, Disabling $packageName, $user")
         logAppInteraction(packageName, user, AUTO_REVOKED_APP_INTERACTION__ACTION__REMOVE)
         val userContext = Utils.getUserContext(app, user)
-        userContext.packageManager.setApplicationEnabledSetting(packageName,
-            PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER, 0)
+        userContext.packageManager.setApplicationEnabledSetting(
+            packageName,
+            PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER,
+            0
+        )
     }
 
     private fun logAppInteraction(packageName: String, user: UserHandle, action: Int) {
         GlobalScope.launch(IPC) {
             // If we are logging an app interaction, then the AllPackageInfosLiveData is not stale.
-            val uid = AllPackageInfosLiveData.value?.get(user)
-                ?.find { info -> info.packageName == packageName }?.uid
+            val uid =
+                AllPackageInfosLiveData.value
+                    ?.get(user)
+                    ?.find { info -> info.packageName == packageName }
+                    ?.uid
 
             if (uid != null) {
-                PermissionControllerStatsLog.write(AUTO_REVOKED_APP_INTERACTION, sessionId,
-                    uid, packageName, action)
+                PermissionControllerStatsLog.write(
+                    AUTO_REVOKED_APP_INTERACTION,
+                    sessionId,
+                    uid,
+                    packageName,
+                    action
+                )
             }
         }
     }
 
     fun logAppView(packageName: String, user: UserHandle, groupName: String, isNew: Boolean) {
         GlobalScope.launch(IPC) {
-            val uid = AllPackageInfosLiveData.value!![user]!!.find { info ->
-                info.packageName == packageName
-            }?.uid
+            val uid =
+                AllPackageInfosLiveData.value!![user]!!.find { info ->
+                        info.packageName == packageName
+                    }
+                    ?.uid
 
             if (uid != null) {
-                val bucket = if (isNew) {
-                    AUTO_REVOKE_FRAGMENT_APP_VIEWED__AGE__NEWER_BUCKET
-                } else {
-                    AUTO_REVOKE_FRAGMENT_APP_VIEWED__AGE__OLDER_BUCKET
-                }
-                PermissionControllerStatsLog.write(AUTO_REVOKE_FRAGMENT_APP_VIEWED, sessionId,
-                    uid, packageName, groupName, bucket)
+                val bucket =
+                    if (isNew) {
+                        AUTO_REVOKE_FRAGMENT_APP_VIEWED__AGE__NEWER_BUCKET
+                    } else {
+                        AUTO_REVOKE_FRAGMENT_APP_VIEWED__AGE__OLDER_BUCKET
+                    }
+                PermissionControllerStatsLog.write(
+                    AUTO_REVOKE_FRAGMENT_APP_VIEWED,
+                    sessionId,
+                    uid,
+                    packageName,
+                    groupName,
+                    bucket
+                )
             }
         }
     }
@@ -259,7 +285,6 @@ class UnusedAppsViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return UnusedAppsViewModel(app, sessionId) as T
+        @Suppress("UNCHECKED_CAST") return UnusedAppsViewModel(app, sessionId) as T
     }
 }

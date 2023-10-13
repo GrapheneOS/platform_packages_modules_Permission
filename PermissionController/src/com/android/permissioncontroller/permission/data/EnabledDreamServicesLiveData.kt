@@ -30,28 +30,26 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param user The user the services should be determined for
  */
-class EnabledDreamServicesLiveData(
-    private val app: Application,
-    private val user: UserHandle
-) : SmartAsyncMediatorLiveData<List<String>>() {
+class EnabledDreamServicesLiveData(private val app: Application, private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<List<String>>() {
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
 
-        val packageNames = Settings.Secure.getString(
-                Utils.getUserContext(app, user).contentResolver, SETTING)
+        val packageNames =
+            Settings.Secure.getString(Utils.getUserContext(app, user).contentResolver, SETTING)
                 ?.split(",")
                 ?.map { pkgOrComponent ->
                     if ('/' in pkgOrComponent) {
-                        ComponentName.unflattenFromString(pkgOrComponent)
-                                ?.packageName
-                                ?: pkgOrComponent
+                        ComponentName.unflattenFromString(pkgOrComponent)?.packageName
+                            ?: pkgOrComponent
                     } else {
                         pkgOrComponent
                     }
-                } ?: emptyList()
+                }
+                ?: emptyList()
 
         postValue(packageNames)
     }
@@ -61,8 +59,7 @@ class EnabledDreamServicesLiveData(
      *
      * <p> Key value is a user, value is its corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<UserHandle,
-            EnabledDreamServicesLiveData>() {
+    companion object : DataRepositoryForPackage<UserHandle, EnabledDreamServicesLiveData>() {
         /* Settings.Secure.ENABLED_NOTIFICATION_LISTENERS */
         private const val SETTING = "enabled_notification_listeners"
 

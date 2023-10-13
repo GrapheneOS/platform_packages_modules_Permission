@@ -36,7 +36,12 @@ private const val LOG_TAG = "AccessBluetoothOnCommand"
 class AccessBluetoothOnCommand : ContentProvider() {
 
     private enum class Result {
-        UNKNOWN, ERROR, EXCEPTION, EMPTY, FILTERED, FULL
+        UNKNOWN,
+        ERROR,
+        EXCEPTION,
+        EMPTY,
+        FILTERED,
+        FULL
     }
 
     override fun call(authority: String, method: String, arg: String?, extras: Bundle?): Bundle? {
@@ -48,30 +53,34 @@ class AccessBluetoothOnCommand : ContentProvider() {
 
         try {
 
-            scanner = context!!.getSystemService(BluetoothManager::class.java)
-                ?.adapter!!.bluetoothLeScanner
+            scanner =
+                context!!
+                    .getSystemService(BluetoothManager::class.java)
+                    ?.adapter!!
+                    .bluetoothLeScanner
 
             val observedScans: MutableSet<String> = ConcurrentHashMap.newKeySet()
             val observedErrorCode = AtomicInteger(0)
 
-            scanCallback = object : ScanCallback() {
-                override fun onScanResult(callbackType: Int, result: ScanResult) {
-                    Log.v(LOG_TAG, "onScanResult() - result = $result")
-                    observedScans.add(Base64.encodeToString(result.scanRecord!!.bytes, 0))
-                }
+            scanCallback =
+                object : ScanCallback() {
+                    override fun onScanResult(callbackType: Int, result: ScanResult) {
+                        Log.v(LOG_TAG, "onScanResult() - result = $result")
+                        observedScans.add(Base64.encodeToString(result.scanRecord!!.bytes, 0))
+                    }
 
-                override fun onBatchScanResults(results: List<ScanResult>) {
-                    Log.v(LOG_TAG, "onBatchScanResults() - results.size = ${results.size}")
-                    for (result in results) {
-                        onScanResult(0, result)
+                    override fun onBatchScanResults(results: List<ScanResult>) {
+                        Log.v(LOG_TAG, "onBatchScanResults() - results.size = ${results.size}")
+                        for (result in results) {
+                            onScanResult(0, result)
+                        }
+                    }
+
+                    override fun onScanFailed(errorCode: Int) {
+                        Log.e(LOG_TAG, "onScanFailed() - errorCode = $errorCode")
+                        observedErrorCode.set(errorCode)
                     }
                 }
-
-                override fun onScanFailed(errorCode: Int) {
-                    Log.e(LOG_TAG, "onScanFailed() - errorCode = $errorCode")
-                    observedErrorCode.set(errorCode)
-                }
-            }
 
             Log.v(LOG_TAG, "call() - startScan...")
             scanner.startScan(scanCallback)

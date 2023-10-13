@@ -46,7 +46,8 @@ object SafetyCenterUtils {
     @JvmStatic
     fun deviceSupportsSafetyCenter(context: Context): Boolean {
         return context.resources.getBoolean(
-            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android"))
+            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android")
+        )
     }
 
     /** Enabled or disable Safety Center */
@@ -61,7 +62,8 @@ object SafetyCenterUtils {
         context.startActivity(
             Intent(Intent.ACTION_SAFETY_CENTER)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        )
     }
 
     @JvmStatic
@@ -82,7 +84,8 @@ object SafetyCenterUtils {
                     DeviceConfig.NAMESPACE_PRIVACY,
                     /* name = */ propertyName,
                     /* value = */ value,
-                    /* makeDefault = */ false)
+                    /* makeDefault = */ false
+                )
             check(valueWasSet) { "Could not set $propertyName to $value" }
         }
     }
@@ -121,7 +124,8 @@ object SafetyCenterUtils {
         val safetyCenterIssueId = safetyCenterIssueId(sourceId, issueId, issueTypeId)
         Assert.assertTrue(
             "Expect issues in safety center",
-            getSafetyCenterIssues(automation).any { safetyCenterIssueId == it.id })
+            getSafetyCenterIssues(automation).any { safetyCenterIssueId == it.id }
+        )
     }
 
     @JvmStatic
@@ -134,7 +138,8 @@ object SafetyCenterUtils {
         val safetyCenterIssueId = safetyCenterIssueId(sourceId, issueId, issueTypeId)
         Assert.assertTrue(
             "Expect no issue in safety center",
-            getSafetyCenterIssues(automation).none { safetyCenterIssueId == it.id })
+            getSafetyCenterIssues(automation).none { safetyCenterIssueId == it.id }
+        )
     }
 
     private fun safetyCenterIssueId(sourceId: String, sourceIssueId: String, issueTypeId: String) =
@@ -145,7 +150,9 @@ object SafetyCenterUtils {
                         .setSafetySourceId(sourceId)
                         .setSafetySourceIssueId(sourceIssueId)
                         .setUserId(UserHandle.myUserId())
-                        .build())
+                        .build()
+                )
                 .setIssueTypeId(issueTypeId)
-                .build())
+                .build()
+        )
 }

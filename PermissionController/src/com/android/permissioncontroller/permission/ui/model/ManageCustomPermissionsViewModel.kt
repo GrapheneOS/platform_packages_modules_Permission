@@ -35,12 +35,9 @@ import com.android.permissioncontroller.permission.utils.navigateSafe
  *
  * @param app The current application of the fragment
  */
-class ManageCustomPermissionsViewModel(
-    private val app: Application
-) : AndroidViewModel(app) {
+class ManageCustomPermissionsViewModel(private val app: Application) : AndroidViewModel(app) {
 
-    val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app,
-        UsedCustomPermGroupNamesLiveData())
+    val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app, UsedCustomPermGroupNamesLiveData())
 
     /**
      * Navigate to a Permission Apps fragment
@@ -58,12 +55,10 @@ class ManageCustomPermissionsViewModel(
  *
  * @param app The current application of the fragment
  */
-class ManageCustomPermissionsViewModelFactory(
-    private val app: Application
-) : ViewModelProvider.Factory {
+class ManageCustomPermissionsViewModelFactory(private val app: Application) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return ManageCustomPermissionsViewModel(app) as T
+        @Suppress("UNCHECKED_CAST") return ManageCustomPermissionsViewModel(app) as T
     }
 }
 
@@ -72,14 +67,13 @@ class ManageCustomPermissionsViewModelFactory(
  * package. This includes single-permission permission groups, as well as the Undefined permission
  * group, and any other permission groups not defined by the system.
  */
-class UsedCustomPermGroupNamesLiveData :
-    SmartUpdateMediatorLiveData<List<String>>() {
+class UsedCustomPermGroupNamesLiveData : SmartUpdateMediatorLiveData<List<String>>() {
 
     init {
-        addSource(PermGroupsPackagesLiveData.get(customGroups = true)) {
-            value = it.keys.toList()
-        }
+        addSource(PermGroupsPackagesLiveData.get(customGroups = true)) { value = it.keys.toList() }
     }
 
-    override fun onUpdate() { /* No op override */ }
+    override fun onUpdate() {
+        /* No op override */
+    }
 }

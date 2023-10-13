@@ -29,11 +29,11 @@ abstract class BasePermissionUiTest {
     protected val instrumentationContext = instrumentation.context!!
     protected val targetContext = instrumentation.targetContext!!
     private val packageManager = instrumentationContext.packageManager!!
-    protected val isTelevision = packageManager.run {
-        hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
-            hasSystemFeature(PackageManager.FEATURE_LEANBACK_ONLY)
-    }
+    protected val isTelevision =
+        packageManager.run {
+            hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
+                hasSystemFeature(PackageManager.FEATURE_LEANBACK_ONLY)
+        }
 
-    @Rule
-    fun disableAnimationsRule() = DisableAnimationRule()
+    @Rule fun disableAnimationsRule() = DisableAnimationRule()
 }

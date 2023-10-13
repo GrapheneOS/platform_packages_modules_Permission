@@ -41,7 +41,10 @@ data class ParsedSafetyCenterIntent(
                 getParcelableExtra(EXTRA_SAFETY_SOURCE_USER_HANDLE, UserHandle::class.java)
             val safetyCenterIssueKey: SafetyCenterIssueKey? =
                 createSafetyCenterIssueKey(
-                    safetySourceId, safetySourceIssueId, safetySourceUserHandle)
+                    safetySourceId,
+                    safetySourceIssueId,
+                    safetySourceUserHandle
+                )
 
             // Check if we've navigated from QS or if focusing on single issue and issues should be
             // expanded
@@ -56,8 +59,8 @@ data class ParsedSafetyCenterIntent(
          *
          * @param safetySourceId source ID for a {@link SafetySourceIssue}
          * @param safetySourceIssueId an issue ID for a {@link SafetySourceIssue}
-         * @param safetySourceUserHandle the specific a {@link android.os.UserHandle} associated with
-         * issue
+         * @param safetySourceUserHandle the specific a {@link android.os.UserHandle} associated
+         *   with issue
          */
         private fun createSafetyCenterIssueKey(
             safetySourceId: String?,

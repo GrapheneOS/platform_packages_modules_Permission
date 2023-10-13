@@ -35,17 +35,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Simple tests for {@link AllAppPermissionsFragment} for Health Connect behaviors
- * Currently, does NOT run on TV.
- * TODO(b/178576541): Adapt and run on TV.
- * Run with:
- * atest HealthConnectAllAppPermissionFragmentTest
+ * Simple tests for {@link AllAppPermissionsFragment} for Health Connect behaviors Currently, does
+ * NOT run on TV.
+ *
+ * TODO(b/178576541): Adapt and run on TV. Run with: atest HealthConnectAllAppPermissionFragmentTest
  */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 class HealthConnectAllAppPermissionFragmentTest : BasePermissionUiTest() {
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
+    @Before fun assumeNotTelevision() = assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {
@@ -77,10 +75,18 @@ class HealthConnectAllAppPermissionFragmentTest : BasePermissionUiTest() {
 
         eventually {
             assertNull(waitFindObjectOrNull(By.text(HEALTH_CONNECT_LABEL), TIMEOUT_SHORT))
-            assertNull(waitFindObjectOrNull(
-                By.text(HEALTH_CONNECT_PERMISSION_READ_FLOORS_CLIMBED_LABEL), TIMEOUT_SHORT))
-            assertNull(waitFindObjectOrNull(
-                By.text(HEALTH_CONNECT_PERMISSION_READ_STEPS_LABEL), TIMEOUT_SHORT))
+            assertNull(
+                waitFindObjectOrNull(
+                    By.text(HEALTH_CONNECT_PERMISSION_READ_FLOORS_CLIMBED_LABEL),
+                    TIMEOUT_SHORT
+                )
+            )
+            assertNull(
+                waitFindObjectOrNull(
+                    By.text(HEALTH_CONNECT_PERMISSION_READ_STEPS_LABEL),
+                    TIMEOUT_SHORT
+                )
+            )
         }
     }
 
@@ -105,18 +111,21 @@ class HealthConnectAllAppPermissionFragmentTest : BasePermissionUiTest() {
     }
 
     private fun startManageAppPermissionsActivity() {
-        uiDevice.performActionAndWait({
-            runWithShellPermissionIdentity {
-                instrumentationContext.startActivity(
-                    Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
-                    .apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        putExtra(Intent.EXTRA_PACKAGE_NAME, PERM_USER_PACKAGE)
-                    }
-                )
-            }
-        }, Until.newWindow(), TIMEOUT_SHORT)
+        uiDevice.performActionAndWait(
+            {
+                runWithShellPermissionIdentity {
+                    instrumentationContext.startActivity(
+                        Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            putExtra(Intent.EXTRA_PACKAGE_NAME, PERM_USER_PACKAGE)
+                        }
+                    )
+                }
+            },
+            Until.newWindow(),
+            TIMEOUT_SHORT
+        )
 
         waitFindObject(By.descContains(MORE_OPTIONS)).click()
         waitFindObject(By.text(ALL_PERMISSIONS)).click()
@@ -129,8 +138,7 @@ class HealthConnectAllAppPermissionFragmentTest : BasePermissionUiTest() {
             "android.permission.health.READ_FLOORS_CLIMBED"
         private const val HEALTH_CONNECT_PERMISSION_READ_FLOORS_CLIMBED_LABEL =
             "Read floors climbed"
-        private const val HEALTH_CONNECT_PERMISSION_READ_STEPS_LABEL =
-            "Read steps"
+        private const val HEALTH_CONNECT_PERMISSION_READ_STEPS_LABEL = "Read steps"
 
         private const val MORE_OPTIONS = "More options"
         private const val ALL_PERMISSIONS = "All permissions"

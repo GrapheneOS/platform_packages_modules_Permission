@@ -55,7 +55,6 @@ import android.Manifest.permission.WRITE_CONTACTS
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.Manifest.permission_group.UNDEFINED
 import android.app.AppOpsManager.permissionToOp
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_PERMISSIONS
 import android.content.pm.PermissionInfo.PROTECTION_DANGEROUS
 import android.content.pm.PermissionInfo.PROTECTION_FLAG_APPOP
@@ -74,14 +73,13 @@ class RuntimePermissionProperties {
     private val pm = context.packageManager
 
     private val platformPkg = pm.getPackageInfo("android", GET_PERMISSIONS)
-    private val platformRuntimePerms = platformPkg.permissions
-            .filter { it.protection == PROTECTION_DANGEROUS }
+    private val platformRuntimePerms =
+        platformPkg.permissions.filter { it.protection == PROTECTION_DANGEROUS }
     private val platformBgPermNames = platformRuntimePerms.mapNotNull { it.backgroundPermission }
 
     @Test
     fun allRuntimeForegroundPermissionNeedAnAppOp() {
-        val platformFgPerms =
-            platformRuntimePerms.filter { !platformBgPermNames.contains(it.name) }
+        val platformFgPerms = platformRuntimePerms.filter { !platformBgPermNames.contains(it.name) }
 
         for (perm in platformFgPerms) {
             assertWithMessage("AppOp for ${perm.name}").that(permissionToOp(perm.name)).isNotNull()
@@ -97,7 +95,8 @@ class RuntimePermissionProperties {
 
     @Test
     fun allAppOpPermissionNeedAnAppOp() {
-        val platformAppOpPerms = platformPkg.permissions
+        val platformAppOpPerms =
+            platformPkg.permissions
                 .filter { (it.protectionFlags and PROTECTION_FLAG_APPOP) != 0 }
                 .filter {
                     // Grandfather incomplete definition of PACKAGE_USAGE_STATS
@@ -109,39 +108,60 @@ class RuntimePermissionProperties {
         }
     }
 
-    /**
-     * The permission of a background permission is the one of its foreground permission
-     */
+    /** The permission of a background permission is the one of its foreground permission */
     @Test
     fun allRuntimeBackgroundPermissionCantHaveAnAppOp() {
-        val platformBgPerms =
-            platformRuntimePerms.filter { platformBgPermNames.contains(it.name) }
+        val platformBgPerms = platformRuntimePerms.filter { platformBgPermNames.contains(it.name) }
 
         for (perm in platformBgPerms) {
             assertWithMessage("AppOp for ${perm.name}").that(permissionToOp(perm.name)).isNull()
         }
     }
 
-    /**
-     * Commonly a new runtime permission is created by splitting an old one into twice
-     */
+    /** Commonly a new runtime permission is created by splitting an old one into twice */
     @Test
     fun runtimePermissionsShouldHaveBeenSplitFromPreviousPermission() {
         // Runtime permissions in Android P
-        val expectedPerms = mutableSetOf(READ_CONTACTS, WRITE_CONTACTS, GET_ACCOUNTS, READ_CALENDAR,
-            WRITE_CALENDAR, SEND_SMS, RECEIVE_SMS, READ_SMS, RECEIVE_MMS, RECEIVE_WAP_PUSH,
-            READ_CELL_BROADCASTS, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE,
-            ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, READ_CALL_LOG, WRITE_CALL_LOG,
-            PROCESS_OUTGOING_CALLS, READ_PHONE_STATE, READ_PHONE_NUMBERS, CALL_PHONE,
-            ADD_VOICEMAIL, USE_SIP, ANSWER_PHONE_CALLS, ACCEPT_HANDOVER, RECORD_AUDIO, CAMERA,
-            BODY_SENSORS)
+        val expectedPerms =
+            mutableSetOf(
+                READ_CONTACTS,
+                WRITE_CONTACTS,
+                GET_ACCOUNTS,
+                READ_CALENDAR,
+                WRITE_CALENDAR,
+                SEND_SMS,
+                RECEIVE_SMS,
+                READ_SMS,
+                RECEIVE_MMS,
+                RECEIVE_WAP_PUSH,
+                READ_CELL_BROADCASTS,
+                READ_EXTERNAL_STORAGE,
+                WRITE_EXTERNAL_STORAGE,
+                ACCESS_FINE_LOCATION,
+                ACCESS_COARSE_LOCATION,
+                READ_CALL_LOG,
+                WRITE_CALL_LOG,
+                PROCESS_OUTGOING_CALLS,
+                READ_PHONE_STATE,
+                READ_PHONE_NUMBERS,
+                CALL_PHONE,
+                ADD_VOICEMAIL,
+                USE_SIP,
+                ANSWER_PHONE_CALLS,
+                ACCEPT_HANDOVER,
+                RECORD_AUDIO,
+                CAMERA,
+                BODY_SENSORS
+            )
 
         // Add permission split since P
         for (sdkVersion in Build.VERSION_CODES.P + 1..Build.VERSION_CODES.CUR_DEVELOPMENT + 1) {
             for (splitPerm in
                 context.getSystemService(PermissionManager::class.java)!!.splitPermissions) {
-                if (splitPerm.targetSdk == sdkVersion &&
-                    expectedPerms.contains(splitPerm.splitPermission)) {
+                if (
+                    splitPerm.targetSdk == sdkVersion &&
+                        expectedPerms.contains(splitPerm.splitPermission)
+                ) {
                     expectedPerms.addAll(splitPerm.newPermissions)
                 }
             }

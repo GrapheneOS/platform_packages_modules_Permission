@@ -37,16 +37,14 @@ import com.android.permissioncontroller.permission.utils.navigateSafe
 /**
  * A ViewModel for the ManageStandardPermissionsFragment. Provides a LiveData which watches over all
  * platform permission groups, and sends async updates when these groups have changes. It also
- * provides a liveData which watches the custom permission groups of the system, and provides
- * a list of group names.
+ * provides a liveData which watches the custom permission groups of the system, and provides a list
+ * of group names.
+ *
  * @param app The current application of the fragment
  */
-class ManageStandardPermissionsViewModel(
-    private val app: Application
-) : AndroidViewModel(app) {
+class ManageStandardPermissionsViewModel(private val app: Application) : AndroidViewModel(app) {
 
-    val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app,
-        StandardPermGroupNamesLiveData)
+    val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app, StandardPermGroupNamesLiveData)
     val numCustomPermGroups = NumCustomPermGroupsWithPackagesLiveData()
     val numAutoRevoked = unusedAutoRevokePackagesLiveData.map { it?.size ?: 0 }
 
@@ -72,8 +70,7 @@ class ManageStandardPermissionsViewModel(
             Utils.navigateToNotificationSettings(fragment.context!!)
             return
         }
-        if (Utils.isHealthPermissionUiEnabled() &&
-                groupName == HEALTH_PERMISSION_GROUP) {
+        if (Utils.isHealthPermissionUiEnabled() && groupName == HEALTH_PERMISSION_GROUP) {
             Utils.navigateToHealthConnectSettings(fragment.context!!)
             return
         }
@@ -89,15 +86,12 @@ class ManageStandardPermissionsViewModel(
  * A LiveData which tracks the number of custom permission groups that are used by at least one
  * package
  */
-class NumCustomPermGroupsWithPackagesLiveData() :
-    SmartUpdateMediatorLiveData<Int>() {
+class NumCustomPermGroupsWithPackagesLiveData() : SmartUpdateMediatorLiveData<Int>() {
 
     private val customPermGroupPackages = PermGroupsPackagesLiveData.get(customGroups = true)
 
     init {
-        addSource(customPermGroupPackages) {
-            update()
-        }
+        addSource(customPermGroupPackages) { update() }
     }
 
     override fun onUpdate() {

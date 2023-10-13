@@ -28,7 +28,6 @@ data class AdvancedConfirmDialogArgs(
     @StringRes val messageId: Int,
     @StringRes val negativeButtonTextId: Int,
     @StringRes val positiveButtonTextId: Int,
-
     val changeRequest: AppPermissionViewModel.ChangeRequest? = null,
     val setOneTime: Boolean? = null,
     val buttonClicked: Int? = null

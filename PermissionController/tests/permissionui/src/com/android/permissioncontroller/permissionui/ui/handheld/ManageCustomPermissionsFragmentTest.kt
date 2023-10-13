@@ -21,8 +21,8 @@ import android.permission.cts.PermissionUtils.grantPermission
 import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.revokePermission
 import android.permission.cts.PermissionUtils.uninstallApp
-import androidx.test.uiautomator.By
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
@@ -34,17 +34,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Simple tests for {@link ManageCustomPermissionsFragment}
- */
+/** Simple tests for {@link ManageCustomPermissionsFragment} */
 @RunWith(AndroidJUnit4::class)
 class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
     private val ONE_PERMISSION_DEFINER_APK =
-        "/data/local/tmp/pc-permissionui/" +
-            "PermissionUiDefineAdditionalPermissionApp.apk"
+        "/data/local/tmp/pc-permissionui/" + "PermissionUiDefineAdditionalPermissionApp.apk"
     private val PERMISSION_USER_APK =
-        "/data/local/tmp/pc-permissionui/" +
-            "PermissionUiUseAdditionalPermissionApp.apk"
+        "/data/local/tmp/pc-permissionui/" + "PermissionUiUseAdditionalPermissionApp.apk"
     private val DEFINER_PKG = "com.android.permissioncontroller.tests.appthatdefinespermission"
     private val USER_PKG = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
@@ -57,9 +53,11 @@ class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         wakeUpScreen()
 
         runWithShellPermissionIdentity {
-            instrumentationContext.startActivity(Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            instrumentationContext.startActivity(
+                Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            )
         }
     }
 
@@ -88,14 +86,10 @@ class ManageCustomPermissionsFragmentTest : BaseHandheldPermissionUiTest() {
         val original = getUsageCountsFromUi(PERM_LABEL)
 
         grantPermission(USER_PKG, PERM)
-        eventually {
-            assertThat(getUsageCountsFromUi(PERM_LABEL)).isNotEqualTo(original)
-        }
+        eventually { assertThat(getUsageCountsFromUi(PERM_LABEL)).isNotEqualTo(original) }
 
         revokePermission(USER_PKG, PERM)
-        eventually {
-            assertThat(getUsageCountsFromUi(PERM_LABEL)).isEqualTo(original)
-        }
+        eventually { assertThat(getUsageCountsFromUi(PERM_LABEL)).isEqualTo(original) }
     }
 
     @After

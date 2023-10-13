@@ -24,12 +24,10 @@ import android.view.ViewGroup
 import com.android.permissioncontroller.R
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseFragment
 
-/**
- * Wrapper over HandheldUnusedAppsFragment
- */
+/** Wrapper over HandheldUnusedAppsFragment */
 class HandheldUnusedAppsWrapperFragment : CollapsingToolbarBaseFragment() {
     companion object {
-        /** Create a new instance of this fragment.  */
+        /** Create a new instance of this fragment. */
         @JvmStatic
         fun newInstance(): HandheldUnusedAppsWrapperFragment {
             return HandheldUnusedAppsWrapperFragment()
@@ -48,15 +46,16 @@ class HandheldUnusedAppsWrapperFragment : CollapsingToolbarBaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        var preferenceFragment = childFragmentManager
-                .findFragmentById(R.id.preference_fragment_container)
+        var preferenceFragment =
+            childFragmentManager.findFragmentById(R.id.preference_fragment_container)
                 as HandheldUnusedAppsFragment?
         if (preferenceFragment == null) {
             preferenceFragment = HandheldUnusedAppsFragment.newInstance()
             preferenceFragment.arguments = arguments
-            childFragmentManager.beginTransaction()
-                    .add(R.id.preference_fragment_container, preferenceFragment)
-                    .commit()
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.preference_fragment_container, preferenceFragment)
+                .commit()
         }
     }
 }

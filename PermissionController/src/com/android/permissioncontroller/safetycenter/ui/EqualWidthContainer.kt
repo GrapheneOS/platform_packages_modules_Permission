@@ -43,7 +43,8 @@ class EqualWidthContainer @JvmOverloads constructor(context: Context, attrs: Att
         nonSpaceItems.forEach {
             it.measure(
                 MeasureSpec.makeMeasureSpec(neededWidthPerNonSpaceItem, EXACTLY),
-                MeasureSpec.makeMeasureSpec(it.measuredHeight, EXACTLY))
+                MeasureSpec.makeMeasureSpec(it.measuredHeight, EXACTLY)
+            )
         }
     }
 }

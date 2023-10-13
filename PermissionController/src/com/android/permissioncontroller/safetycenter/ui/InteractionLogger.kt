@@ -43,10 +43,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class InteractionLogger
-private constructor(
-    private val noLogSourceIds: Set<String?>
-) {
+class InteractionLogger private constructor(private val noLogSourceIds: Set<String?>) {
     var sessionId: Long = Constants.INVALID_SESSION_ID
     var viewType: ViewType = ViewType.UNKNOWN
     var navigationSource: NavigationSource = NavigationSource.UNKNOWN

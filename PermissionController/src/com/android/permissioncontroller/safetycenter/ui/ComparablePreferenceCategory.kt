@@ -25,13 +25,13 @@ import androidx.preference.PreferenceCategory
 import com.android.permissioncontroller.R
 
 /** A {@link PreferenceCategory} that implements {@link ComparablePreference} interface. */
-internal class ComparablePreferenceCategory @JvmOverloads constructor(
+internal class ComparablePreferenceCategory
+@JvmOverloads
+constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = getAttr(
-            context,
-            R.attr.preferenceCategoryStyle,
-            android.R.attr.preferenceCategoryStyle),
+    defStyleAttr: Int =
+        getAttr(context, R.attr.preferenceCategoryStyle, android.R.attr.preferenceCategoryStyle),
     defStyleRes: Int = 0
 ) : PreferenceCategory(context, attrs, defStyleAttr, defStyleRes), ComparablePreference {
 
@@ -47,8 +47,8 @@ internal class ComparablePreferenceCategory @JvmOverloads constructor(
     }
 
     override fun isSameItem(preference: Preference): Boolean =
-            preference is ComparablePreferenceCategory && TextUtils.equals(key, preference.key)
+        preference is ComparablePreferenceCategory && TextUtils.equals(key, preference.key)
 
     override fun hasSameContents(preference: Preference): Boolean =
-            preference is ComparablePreferenceCategory && TextUtils.equals(title, preference.title)
+        preference is ComparablePreferenceCategory && TextUtils.equals(title, preference.title)
 }

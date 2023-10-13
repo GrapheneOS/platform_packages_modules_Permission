@@ -30,38 +30,44 @@ import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.google.common.truth.Truth.assertThat
 
-/**
- * Super class with utilities for testing permission hub 2 code
- */
+/** Super class with utilities for testing permission hub 2 code */
 open class PermissionHub2Test {
     private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
 
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
     protected val context = instrumentation.targetContext
 
-    /**
-     * Make {@value #APP} access the camera
-     */
+    /** Make {@value #APP} access the camera */
     protected fun accessCamera() {
         // App needs to be in foreground to be able to access camera
         context.startActivity(
-            Intent().setComponent(ComponentName.createRelative(APP, ".DummyActivity"))
-                .setFlags(FLAG_ACTIVITY_NEW_TASK))
+            Intent()
+                .setComponent(ComponentName.createRelative(APP, ".DummyActivity"))
+                .setFlags(FLAG_ACTIVITY_NEW_TASK)
+        )
 
         runWithShellPermissionIdentity {
             eventually {
                 assertThat(
-                    context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
-                        FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
-                ).isNotEqualTo(0)
+                        context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
+                            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
+                    )
+                    .isNotEqualTo(0)
             }
 
             eventually {
                 assertThat(
-                    context.getSystemService(AppOpsManager::class.java).startOp(
-                        OPSTR_CAMERA, context.packageManager.getPackageUid(APP, 0), APP, null, null
+                        context
+                            .getSystemService(AppOpsManager::class.java)
+                            .startOp(
+                                OPSTR_CAMERA,
+                                context.packageManager.getPackageUid(APP, 0),
+                                APP,
+                                null,
+                                null
+                            )
                     )
-                ).isEqualTo(MODE_ALLOWED)
+                    .isEqualTo(MODE_ALLOWED)
             }
         }
     }

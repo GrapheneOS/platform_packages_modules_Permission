@@ -104,10 +104,13 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
     fun notificationPermissionAddedForLegacyApp() {
         installPackage(APP_APK_PATH_CREATE_NOTIFICATION_CHANNELS_31, expectSuccess = true)
         runWithShellPermissionIdentity {
-            Assert.assertTrue("SDK < 32 apps should have POST_NOTIFICATIONS added implicitly",
-                context.packageManager.getPackageInfo(APP_PACKAGE_NAME,
-                    PackageManager.GET_PERMISSIONS).requestedPermissions!!
-                    .contains(POST_NOTIFICATIONS))
+            Assert.assertTrue(
+                "SDK < 32 apps should have POST_NOTIFICATIONS added implicitly",
+                context.packageManager
+                    .getPackageInfo(APP_PACKAGE_NAME, PackageManager.GET_PERMISSIONS)
+                    .requestedPermissions!!
+                    .contains(POST_NOTIFICATIONS)
+            )
         }
     }
 
@@ -115,10 +118,14 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
     fun notificationPermissionIsNotImplicitlyAddedTo33Apps() {
         installPackage(APP_APK_PATH_LATEST_NONE, expectSuccess = true)
         runWithShellPermissionIdentity {
-            val requestedPerms = context.packageManager.getPackageInfo(APP_PACKAGE_NAME,
-                    PackageManager.GET_PERMISSIONS).requestedPermissions
-            Assert.assertTrue("SDK >= 33 apps should NOT have POST_NOTIFICATIONS added implicitly",
-                    requestedPerms == null || !requestedPerms.contains(POST_NOTIFICATIONS))
+            val requestedPerms =
+                context.packageManager
+                    .getPackageInfo(APP_PACKAGE_NAME, PackageManager.GET_PERMISSIONS)
+                    .requestedPermissions
+            Assert.assertTrue(
+                "SDK >= 33 apps should NOT have POST_NOTIFICATIONS added implicitly",
+                requestedPerms == null || !requestedPerms.contains(POST_NOTIFICATIONS)
+            )
         }
     }
 
@@ -255,8 +262,10 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
         runWithShellPermissionIdentity {
             val grantPermission = Intent(PackageManager.ACTION_REQUEST_PERMISSIONS_FOR_OTHER)
             grantPermission.putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
-            grantPermission.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES,
-                arrayOf(POST_NOTIFICATIONS))
+            grantPermission.putExtra(
+                PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES,
+                arrayOf(POST_NOTIFICATIONS)
+            )
             grantPermission.setPackage(context.packageManager.permissionControllerPackageName)
             grantPermission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(grantPermission)
@@ -388,9 +397,7 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
 
         val options = ActivityOptions.makeBasic()
         options.isEligibleForLegacyPermissionPrompt = isEligibleForPromptOption
-        doAndWaitForWindowTransition {
-            context.startActivity(intent, options.toBundle())
-        }
+        doAndWaitForWindowTransition { context.startActivity(intent, options.toBundle()) }
 
         // Watch does not have app bar
         if (!isWatch) {

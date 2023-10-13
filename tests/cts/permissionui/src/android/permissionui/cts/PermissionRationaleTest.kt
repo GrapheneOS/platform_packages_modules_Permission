@@ -57,7 +57,8 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
             context,
             DeviceConfig.NAMESPACE_PRIVACY,
             PERMISSION_RATIONALE_ENABLED,
-            true.toString())
+            true.toString()
+        )
 
     @Before
     fun setup() {
@@ -148,7 +149,7 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         clickHelpCenterLink()
 
-        eventually({assertHelpCenterLinkClickSuccessful()}, NEW_WINDOW_TIMEOUT_MILLIS)
+        eventually({ assertHelpCenterLinkClickSuccessful() }, NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
     @Test
@@ -169,9 +170,7 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         clicksSettings_doesNothing_leaves()
 
-        eventually {
-            assertPermissionRationaleDialogIsVisible(true)
-        }
+        eventually { assertPermissionRationaleDialogIsVisible(true) }
     }
 
     @Test
@@ -228,16 +227,14 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         eventually {
             // UiObject2 doesn't expose CharSequence.
-            val node = uiAutomation.rootInActiveWindow.findAccessibilityNodeInfosByViewId(
-                DATA_SHARING_SOURCE_MESSAGE_ID
-            )[0]
+            val node =
+                uiAutomation.rootInActiveWindow
+                    .findAccessibilityNodeInfosByViewId(DATA_SHARING_SOURCE_MESSAGE_ID)[0]
             assertTrue(node.isVisibleToUser)
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            doAndWaitForWindowTransition {
-                clickableSpan.onClick(View(context))
-            }
+            doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
         }
     }
 
@@ -246,16 +243,14 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         eventually {
             // UiObject2 doesn't expose CharSequence.
-            val node = uiAutomation.rootInActiveWindow.findAccessibilityNodeInfosByViewId(
-                LEARN_MORE_MESSAGE_ID
-            )[0]
+            val node =
+                uiAutomation.rootInActiveWindow
+                    .findAccessibilityNodeInfosByViewId(LEARN_MORE_MESSAGE_ID)[0]
             assertTrue(node.isVisibleToUser)
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            doAndWaitForWindowTransition {
-                clickableSpan.onClick(View(context))
-            }
+            doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
         }
     }
 
@@ -264,40 +259,32 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
 
         eventually {
             // UiObject2 doesn't expose CharSequence.
-            val node = uiAutomation.rootInActiveWindow.findAccessibilityNodeInfosByViewId(
-                SETTINGS_MESSAGE_ID
-            )[0]
+            val node =
+                uiAutomation.rootInActiveWindow
+                    .findAccessibilityNodeInfosByViewId(SETTINGS_MESSAGE_ID)[0]
             assertTrue(node.isVisibleToUser)
             val text = node.text as Spanned
             val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
             // We could pass in null here in Java, but we need an instance in Kotlin.
-            doAndWaitForWindowTransition {
-                clickableSpan.onClick(View(context))
-            }
+            doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
         }
     }
 
     private fun clicksSettings_doesNothing_leaves() {
         clickSettingsLink()
-        eventually {
-            assertPermissionSettingsVisible(true)
-        }
+        eventually { assertPermissionSettingsVisible(true) }
         pressBack()
     }
 
     private fun clicksSettings_allowsForeground_leaves() {
         clickSettingsLink()
-        eventually {
-            clickAllowForegroundInSettings()
-        }
+        eventually { clickAllowForegroundInSettings() }
         pressBack()
     }
 
     private fun clicksSettings_denies_leaves() {
         clickSettingsLink()
-        eventually {
-            clicksDenyInSettings()
-        }
+        eventually { clicksDenyInSettings() }
         pressBack()
     }
 
@@ -308,16 +295,15 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
         // Verify the link is (or isn't) in message
         eventually {
             // UiObject2 doesn't expose CharSequence.
-            val node = uiAutomation.rootInActiveWindow.findAccessibilityNodeInfosByViewId(
-                LEARN_MORE_MESSAGE_ID
-            )[0]
+            val node =
+                uiAutomation.rootInActiveWindow
+                    .findAccessibilityNodeInfosByViewId(LEARN_MORE_MESSAGE_ID)[0]
             assertTrue(node.isVisibleToUser)
             val text = node.text as Spanned
             val clickableSpans = text.getSpans(0, text.length, ClickableSpan::class.java)
 
             if (expected) {
-                assertFalse("Expected help center link, but none found",
-                    clickableSpans.isEmpty())
+                assertFalse("Expected help center link, but none found", clickableSpans.isEmpty())
             } else {
                 assertTrue("Expected no links, but found one", clickableSpans.isEmpty())
             }
@@ -335,23 +321,24 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
         SystemUtil.runWithShellPermissionIdentity {
             val runningTasks = activityManager!!.getRunningTasks(1)
 
-            assertFalse("Expected runningTasks to not be empty",
-                runningTasks.isEmpty())
+            assertFalse("Expected runningTasks to not be empty", runningTasks.isEmpty())
 
             val taskInfo = runningTasks[0]
             val observedIntentAction = taskInfo.baseIntent.action
             val observedPackageName = taskInfo.baseIntent.getStringExtra(Intent.EXTRA_PACKAGE_NAME)
             val observedInstallerPackageName = taskInfo.topActivity?.packageName
 
-            assertEquals("Unexpected intent action",
+            assertEquals(
+                "Unexpected intent action",
                 Intent.ACTION_SHOW_APP_INFO,
-                observedIntentAction)
-            assertEquals("Unexpected installer package name",
+                observedIntentAction
+            )
+            assertEquals(
+                "Unexpected installer package name",
                 installerPackageName,
-                observedInstallerPackageName)
-            assertEquals("Unexpected package name",
-                packageName,
-                observedPackageName)
+                observedInstallerPackageName
+            )
+            assertEquals("Unexpected package name", packageName, observedPackageName)
         }
     }
 

@@ -29,6 +29,8 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver
 import com.android.permissioncontroller.tests.mocking.permission.data.FakeEventStorage
 import com.google.common.truth.Truth.assertThat
+import java.io.File
+import java.util.Date
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -37,14 +39,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verifyZeroInteractions
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.File
-import java.util.Date
 
 @RunWith(AndroidJUnit4::class)
 class PersistedStoragePackageUninstalledReceiverTest {
@@ -55,14 +55,11 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
     private val musicEvent = TestPermissionEvent("package.test.music", Date(2020, 0, 1).time)
 
-    @Mock
-    lateinit var context: Context
+    @Mock lateinit var context: Context
 
-    @Mock
-    lateinit var packageManager: PackageManager
+    @Mock lateinit var packageManager: PackageManager
 
-    @Mock
-    lateinit var jobScheduler: JobScheduler
+    @Mock lateinit var jobScheduler: JobScheduler
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
@@ -72,17 +69,24 @@ class PersistedStoragePackageUninstalledReceiverTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(PermissionControllerApplication::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(PermissionControllerApplication::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
         `when`(PermissionControllerApplication.get()).thenReturn(application)
         val context: Context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
         `when`(application.filesDir).thenReturn(filesDir)
 
         permissionEventStorage = spy(FakeEventStorage())
-        receiver = spy(PersistedStoragePackageUninstalledReceiver(
-            listOf(permissionEventStorage), Dispatchers.Main.immediate))
+        receiver =
+            spy(
+                PersistedStoragePackageUninstalledReceiver(
+                    listOf(permissionEventStorage),
+                    Dispatchers.Main.immediate
+                )
+            )
     }
 
     @After
@@ -112,8 +116,6 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
         receiver.onReceive(context, intent)
 
-        runBlocking {
-            assertThat(permissionEventStorage.loadEvents().isEmpty())
-        }
+        runBlocking { assertThat(permissionEventStorage.loadEvents().isEmpty()) }
     }
 }

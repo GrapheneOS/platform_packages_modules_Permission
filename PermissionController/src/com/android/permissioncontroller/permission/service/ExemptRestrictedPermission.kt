@@ -8,8 +8,8 @@ import android.os.Process
 import android.os.UserHandle
 
 /**
- * For manually exempting a restricted permission.
- * STOPSHIP This functionality should not be in the final release.
+ * For manually exempting a restricted permission. STOPSHIP This functionality should not be in the
+ * final release.
  */
 class ExemptRestrictedPermission : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -21,7 +21,10 @@ class ExemptRestrictedPermission : BroadcastReceiver() {
 
         // Use upgrade flag. If the permission needs to be manually exempted then it probably
         // should have been done on upgrade.
-        userContext.packageManager.addWhitelistedRestrictedPermission(packageName, permission,
-                PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE)
+        userContext.packageManager.addWhitelistedRestrictedPermission(
+            packageName,
+            permission,
+            PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
+        )
     }
 }

@@ -27,17 +27,13 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import kotlinx.coroutines.Job
 
-/**
- * Packages that are the installer of record for some package on the device.
- */
+/** Packages that are the installer of record for some package on the device. */
 @RequiresApi(Build.VERSION_CODES.S)
-class InstallerPackagesLiveData(private val user: UserHandle)
-    : SmartAsyncMediatorLiveData<Set<String>>() {
+class InstallerPackagesLiveData(private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<Set<String>>() {
 
     init {
-        addSource(AllPackageInfosLiveData) {
-            update()
-        }
+        addSource(AllPackageInfosLiveData) { update() }
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {

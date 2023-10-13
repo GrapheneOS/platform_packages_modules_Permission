@@ -25,12 +25,6 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.data.PermissionChange
 import com.android.permissioncontroller.permission.utils.Utils
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.xmlpull.v1.XmlPullParser
-import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -39,6 +33,12 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
 
 /**
  * Implementation of [BasePermissionEventStorage] for storing [PermissionChange] events for long
@@ -52,14 +52,10 @@ class PermissionChangeStorageImpl(
     // We don't use namespaces
     private val ns: String? = null
 
-    /**
-     * The format for how dates are stored.
-     */
+    /** The format for how dates are stored. */
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
-    /**
-     * Exact format if [PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME] is true
-     */
+    /** Exact format if [PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME] is true */
     private val exactTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US)
 
     companion object {
@@ -67,9 +63,7 @@ class PermissionChangeStorageImpl(
 
         private const val DB_VERSION = 1
 
-        /**
-         * Config store file name for general shared store file.
-         */
+        /** Config store file name for general shared store file. */
         private const val STORE_FILE_NAME = "permission_changes.xml"
 
         private const val TAG_PERMISSION_CHANGES = "permission-changes"
@@ -79,13 +73,10 @@ class PermissionChangeStorageImpl(
         private const val ATTR_PACKAGE_NAME = "package-name"
         private const val ATTR_EVENT_TIME = "event-time"
 
-        @Volatile
-        private var INSTANCE: PermissionEventStorage<PermissionChange>? = null
+        @Volatile private var INSTANCE: PermissionEventStorage<PermissionChange>? = null
 
         fun getInstance(): PermissionEventStorage<PermissionChange> =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: createInstance().also { INSTANCE = it }
-            }
+            INSTANCE ?: synchronized(this) { INSTANCE ?: createInstance().also { INSTANCE = it } }
 
         private fun createInstance(): PermissionEventStorage<PermissionChange> {
             return PermissionChangeStorageImpl(PermissionControllerApplication.get())
@@ -142,9 +133,7 @@ class PermissionChangeStorageImpl(
         val storesExactTime = storesExactTime()
         val truncateToDay = didStoreExactTime != storesExactTime && !storesExactTime
         while (parser.next() != XmlPullParser.END_TAG) {
-            readPermissionChange(parser, format, truncateToDay)?.let {
-                entries.add(it)
-            }
+            readPermissionChange(parser, format, truncateToDay)?.let { entries.add(it) }
         }
         return entries
     }
@@ -160,9 +149,11 @@ class PermissionChangeStorageImpl(
         try {
             val packageName = parser.getAttributeValueNullSafe(ns, ATTR_PACKAGE_NAME)
             val changeDate = parser.getAttributeValueNullSafe(ns, ATTR_EVENT_TIME)
-            var changeTime = format.parse(changeDate)?.time
-                ?: throw IllegalArgumentException(
-                    "Could not parse date $changeDate on package $packageName")
+            var changeTime =
+                format.parse(changeDate)?.time
+                    ?: throw IllegalArgumentException(
+                        "Could not parse date $changeDate on package $packageName"
+                    )
             if (truncateToDay) {
                 changeTime = dateFormat.parse(dateFormat.format(Date(changeTime)))!!.time
             }
@@ -184,7 +175,8 @@ class PermissionChangeStorageImpl(
     private fun XmlPullParser.getAttributeValueNullSafe(namespace: String?, name: String): String {
         return this.getAttributeValue(namespace, name)
             ?: throw XmlPullParserException(
-                "Could not find attribute: namespace $namespace, name $name")
+                "Could not find attribute: namespace $namespace, name $name"
+            )
     }
 
     override fun getDatabaseFileName(): String {
@@ -204,11 +196,12 @@ class PermissionChangeStorageImpl(
         return this.copy(eventTime = this.eventTime + timeDelta)
     }
 
-    /**
-     * Should only be true in tests and never true in prod.
-     */
+    /** Should only be true in tests and never true in prod. */
     private fun storesExactTime(): Boolean {
-        return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PERMISSIONS,
-            Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME, /* defaultValue= */ false)
+        return DeviceConfig.getBoolean(
+            DeviceConfig.NAMESPACE_PERMISSIONS,
+            Utils.PROPERTY_PERMISSION_CHANGES_STORE_EXACT_TIME,
+            /* defaultValue= */ false
+        )
     }
 }

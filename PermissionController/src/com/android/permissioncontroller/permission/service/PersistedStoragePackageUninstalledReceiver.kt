@@ -29,8 +29,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /**
- * [BroadcastReceiver] to clear user decision information when a package has its data cleared or
- * is fully removed.
+ * [BroadcastReceiver] to clear user decision information when a package has its data cleared or is
+ * fully removed.
  */
 class PersistedStoragePackageUninstalledReceiver(
     @VisibleForTesting
@@ -48,8 +48,10 @@ class PersistedStoragePackageUninstalledReceiver(
             return
         }
         val action = intent.action
-        if (!(action == Intent.ACTION_PACKAGE_DATA_CLEARED ||
-                action == Intent.ACTION_PACKAGE_FULLY_REMOVED)) {
+        if (
+            !(action == Intent.ACTION_PACKAGE_DATA_CLEARED ||
+                action == Intent.ACTION_PACKAGE_FULLY_REMOVED)
+        ) {
             return
         }
         intent.data?.let {

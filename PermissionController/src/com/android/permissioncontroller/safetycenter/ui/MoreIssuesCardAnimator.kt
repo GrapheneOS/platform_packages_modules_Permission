@@ -46,16 +46,19 @@ class MoreIssuesCardAnimator {
                         super.onAnimationEnd(drawable)
                         statusIcon.setImageResource(endSeverityLevelResId)
                     }
-                })
+                }
+            )
             setStatusIconDrawable.start()
         }
     }
 
     fun cancelStatusAnimation(statusIcon: ImageView) {
         val statusDrawable: Drawable? = statusIcon.drawable
-        if (statusDrawable != null &&
-            statusDrawable is AnimatedVectorDrawable &&
-            statusDrawable.isRunning) {
+        if (
+            statusDrawable != null &&
+                statusDrawable is AnimatedVectorDrawable &&
+                statusDrawable.isRunning
+        ) {
             statusDrawable.clearAnimationCallbacks()
             statusDrawable.stop()
         }
@@ -106,7 +109,10 @@ class MoreIssuesCardAnimator {
                 Log.e(
                     MoreIssuesCardPreference.TAG,
                     String.format(
-                        "Unexpected SafetyCenterIssue.IssueSeverityLevel: %d", endSeverityLevel))
+                        "Unexpected SafetyCenterIssue.IssueSeverityLevel: %d",
+                        endSeverityLevel
+                    )
+                )
                 R.drawable.ic_safety_null_state
             }
         }

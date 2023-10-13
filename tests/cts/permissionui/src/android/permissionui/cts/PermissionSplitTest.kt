@@ -23,9 +23,7 @@ import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Runtime permission behavior tests for permission splits.
- */
+/** Runtime permission behavior tests for permission splits. */
 @FlakyTest
 class PermissionSplitTest : BaseUsePermissionTest() {
     @Before
@@ -83,15 +81,13 @@ class PermissionSplitTest : BaseUsePermissionTest() {
         assertAppHasPermission(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION, false)
 
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.ACCESS_FINE_LOCATION to true,
-                waitForWindowTransition = false
+            android.Manifest.permission.ACCESS_FINE_LOCATION to true,
+            waitForWindowTransition = false
         ) {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                doAndWaitForWindowTransition {
-                    clickPermissionRequestAllowForegroundButton()
-                }
+                doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
             }
         }
 
@@ -103,15 +99,13 @@ class PermissionSplitTest : BaseUsePermissionTest() {
         assertAppHasPermission(android.Manifest.permission.BODY_SENSORS_BACKGROUND, false)
 
         requestAppPermissionsAndAssertResult(
-                android.Manifest.permission.BODY_SENSORS to true,
-                waitForWindowTransition = false
+            android.Manifest.permission.BODY_SENSORS to true,
+            waitForWindowTransition = false
         ) {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                doAndWaitForWindowTransition {
-                    clickPermissionRequestAllowForegroundButton()
-                }
+                doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
             }
         }
 

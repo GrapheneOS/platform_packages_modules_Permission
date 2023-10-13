@@ -22,17 +22,17 @@ package com.android.permissioncontroller.permission.model.livedatatypes
  *
  * @param name The name of the permission group whose UI data this represents
  * @param nonSystemTotal The total number of non-system applications that request permissions in
- * this group
+ *   this group
  * @param nonSystemGranted The total number of non-system applications that request permissions in
- * this group, and have at least one permission in this group granted.
+ *   this group, and have at least one permission in this group granted.
  * @param nonSystemUserSetOrPreGranted The total number of non-system applications that request
- * permissions in this group, and have at least one permission in this group granted, or one
- * permission denied by the user
- * @param systemGranted The total number of system applications that request permissions in
- * this group, and have at least one permission in this group granted.
- * @param systemUserSetOrPreGranted The total number of system applications that request
- * permissions in this group, and have at least one permission in this group granted, or one
- * permission denied by the user
+ *   permissions in this group, and have at least one permission in this group granted, or one
+ *   permission denied by the user
+ * @param systemGranted The total number of system applications that request permissions in this
+ *   group, and have at least one permission in this group granted.
+ * @param systemUserSetOrPreGranted The total number of system applications that request permissions
+ *   in this group, and have at least one permission in this group granted, or one permission denied
+ *   by the user
  */
 data class PermGroupPackagesUiInfo(
     val name: String,

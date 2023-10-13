@@ -23,6 +23,7 @@ import androidx.test.filters.SdkSuppress
 import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
+
 /**
  * This test validates multi device permission APIs.
  *

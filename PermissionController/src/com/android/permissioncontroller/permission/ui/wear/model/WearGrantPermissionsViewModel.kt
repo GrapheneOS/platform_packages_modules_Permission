@@ -54,12 +54,9 @@ class WearGrantPermissionsViewModel : ViewModel() {
     }
 }
 
-/**
- * Factory for a WearGrantPermissionsViewModel
- */
+/** Factory for a WearGrantPermissionsViewModel */
 class WearGrantPermissionsViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return WearGrantPermissionsViewModel() as T
+        @Suppress("UNCHECKED_CAST") return WearGrantPermissionsViewModel() as T
     }
 }

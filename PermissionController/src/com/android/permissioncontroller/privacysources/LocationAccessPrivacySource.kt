@@ -20,7 +20,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
-
 import com.android.permissioncontroller.permission.service.LocationAccessCheck
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
 

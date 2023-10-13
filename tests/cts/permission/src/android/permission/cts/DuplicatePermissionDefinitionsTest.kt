@@ -37,32 +37,32 @@ private const val APK_PATH = "/data/local/tmp/cts-permission/"
 private const val APK_DEFINING_PERM_A = "${APK_PATH}CtsAppThatDefinesPermissionA.apk"
 private const val APK_ALSO_DEFINING_PERM_A = "${APK_PATH}CtsAppThatAlsoDefinesPermissionA.apk"
 private const val APK_ALSO_DEFINING_PERM_A_DIFFERENT_CERT =
-        "${APK_PATH}CtsAppThatAlsoDefinesPermissionADifferentCert.apk"
+    "${APK_PATH}CtsAppThatAlsoDefinesPermissionADifferentCert.apk"
 private const val APK_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT =
-        "${APK_PATH}CtsAppThatAlsoDefinesPermissionGroupADifferentCert.apk"
+    "${APK_PATH}CtsAppThatAlsoDefinesPermissionGroupADifferentCert.apk"
 private const val APK_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT_SDK_30 =
-        "${APK_PATH}CtsAppThatAlsoDefinesPermissionGroupADifferentCert30.apk"
+    "${APK_PATH}CtsAppThatAlsoDefinesPermissionGroupADifferentCert30.apk"
 private const val APK_DEFINING_PERM_WITH_INVALID_GROUP =
-        "${APK_PATH}CtsAppThatDefinesPermissionWithInvalidGroup.apk"
+    "${APK_PATH}CtsAppThatDefinesPermissionWithInvalidGroup.apk"
 private const val APK_DEFINING_PERM_WITH_INVALID_GROUP_SDK_30 =
-        "${APK_PATH}CtsAppThatDefinesPermissionWithInvalidGroup30.apk"
+    "${APK_PATH}CtsAppThatDefinesPermissionWithInvalidGroup30.apk"
 private const val APK_DEFINING_PERM_IN_PLATFORM_GROUP =
-        "${APK_PATH}CtsAppThatDefinesPermissionInPlatformGroup.apk"
+    "${APK_PATH}CtsAppThatDefinesPermissionInPlatformGroup.apk"
 
 private const val APP_DEFINING_PERM_A = "android.permission.cts.appthatdefinespermissiona"
 private const val APP_ALSO_DEFINING_PERM_A = "android.permission.cts.appthatalsodefinespermissiona"
 private const val APP_ALSO_DEFINING_PERM_A_DIFFERENT_CERT =
-        "android.permission.cts.appthatdefinespermissiona.differentcert"
+    "android.permission.cts.appthatdefinespermissiona.differentcert"
 private const val APP_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT =
-        "android.permission.cts.appthatdefinespermissiongroupa.differentcert"
+    "android.permission.cts.appthatdefinespermissiongroupa.differentcert"
 private const val APP_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT_SDK_30 =
-        "android.permission.cts.appthatdefinespermissiongroupa.differentcert30"
+    "android.permission.cts.appthatdefinespermissiongroupa.differentcert30"
 private const val APP_DEFINING_PERM_IN_PLATFORM_GROUP =
-        "android.permission.cts.appthatdefinespermissioninplatformgroup"
+    "android.permission.cts.appthatdefinespermissioninplatformgroup"
 private const val APP_DEFINING_PERM_WITH_INVALID_GROUP =
-        "android.permission.cts.appthatdefinespermissionwithinvalidgroup"
+    "android.permission.cts.appthatdefinespermissionwithinvalidgroup"
 private const val APP_DEFINING_PERM_WITH_INVALID_GROUP_SDK_30 =
-        "android.permission.cts.appthatdefinespermissionwithinvalidgroup30"
+    "android.permission.cts.appthatdefinespermissionwithinvalidgroup30"
 
 private const val PERM_A = "com.android.cts.duplicatepermission.permA"
 private const val GROUP_A = "com.android.cts.duplicatepermission.groupA"
@@ -123,8 +123,11 @@ class DuplicatePermissionDefinitionsTest {
         install(APK_DEFINING_PERM_A)
         install(APK_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT_SDK_30)
 
-        assertThat(allPackages).containsAtLeast(APP_DEFINING_PERM_A,
-                APP_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT_SDK_30)
+        assertThat(allPackages)
+            .containsAtLeast(
+                APP_DEFINING_PERM_A,
+                APP_ALSO_DEFINING_PERM_GROUP_A_DIFFERENT_CERT_SDK_30
+            )
 
         assertThat(groupAInfo.packageName).isEqualTo(APP_DEFINING_PERM_A)
     }
@@ -151,8 +154,10 @@ class DuplicatePermissionDefinitionsTest {
 
         assertThat(permAInfo.packageName).isEqualTo(APP_DEFINING_PERM_IN_PLATFORM_GROUP)
         assertThat(permAInfo.group).isEqualTo(android.Manifest.permission_group.CAMERA)
-        assertThat(pm.getPermissionGroupInfo(android.Manifest.permission_group.CAMERA, 0)!!
-                .packageName).isEqualTo("android")
+        assertThat(
+                pm.getPermissionGroupInfo(android.Manifest.permission_group.CAMERA, 0)!!.packageName
+            )
+            .isEqualTo("android")
     }
 
     @Test

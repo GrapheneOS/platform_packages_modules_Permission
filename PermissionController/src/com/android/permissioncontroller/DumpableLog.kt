@@ -20,9 +20,7 @@ import android.util.Log
 import com.android.permissioncontroller.Constants.LOGS_TO_DUMP_FILE
 import java.io.File
 
-/**
- * Like {@link Log} but stores the logs in a file which can later be dumped via {@link #dump}
- */
+/** Like {@link Log} but stores the logs in a file which can later be dumped via {@link #dump} */
 object DumpableLog {
     private const val MAX_FILE_SIZE = 64 * 1024
 
@@ -33,41 +31,31 @@ object DumpableLog {
         file.createNewFile()
     }
 
-    /**
-     * Equivalent to {@link Log.v}
-     */
+    /** Equivalent to {@link Log.v} */
     fun v(tag: String, message: String, exception: Throwable? = null) {
         Log.v(tag, message, exception)
         addLogToDump("v", tag, message, exception)
     }
 
-    /**
-     * Equivalent to {@link Log.d}
-     */
+    /** Equivalent to {@link Log.d} */
     fun d(tag: String, message: String, exception: Throwable? = null) {
         Log.d(tag, message, exception)
         addLogToDump("d", tag, message, exception)
     }
 
-    /**
-     * Equivalent to {@link Log.i}
-     */
+    /** Equivalent to {@link Log.i} */
     fun i(tag: String, message: String, exception: Throwable? = null) {
         Log.i(tag, message, exception)
         addLogToDump("i", tag, message, exception)
     }
 
-    /**
-     * Equivalent to {@link Log.w}
-     */
+    /** Equivalent to {@link Log.w} */
     fun w(tag: String, message: String, exception: Throwable? = null) {
         Log.w(tag, message, exception)
         addLogToDump("w", tag, message, exception)
     }
 
-    /**
-     * Equivalent to {@link Log.e}
-     */
+    /** Equivalent to {@link Log.e} */
     fun e(tag: String, message: String, exception: Throwable? = null) {
         Log.e(tag, message, exception)
         addLogToDump("e", tag, message, exception)
@@ -83,14 +71,14 @@ object DumpableLog {
                 dump.subList(dump.size / 2, dump.size).forEach { file.appendText(it + "\n") }
             }
 
-            file.appendText("${System.currentTimeMillis()} $tag:$level $message " +
-                    "${exception?.let { it.message + Log.getStackTraceString(it) } ?: ""}\n")
+            file.appendText(
+                "${System.currentTimeMillis()} $tag:$level $message " +
+                    "${exception?.let { it.message + Log.getStackTraceString(it) } ?: ""}\n"
+            )
         }
     }
 
-    /**
-     * @return the previously logged entries
-     */
+    /** @return the previously logged entries */
     suspend fun get(): List<String> {
         synchronized(lock) {
             return file.readLines()

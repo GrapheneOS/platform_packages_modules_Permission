@@ -24,12 +24,13 @@ import org.junit.runner.RunWith
  * Simple tests for {@link PermissionAppsFragment} when showing location permission
  *
  * Currently, does NOT run on TV (same as the other tests that extend [PermissionAppsFragmentTest]).
+ *
  * TODO(b/178576541): Adapt and run on TV.
  */
 @RunWith(AndroidJUnit4::class)
-class StoragePermissionAppsFragmentTest : PermissionAppsFragmentTest(
-    "/data/local/tmp/pc-permissionui" +
-        "/PermissionUiUseStoragePermissionApp.apk",
-    "com.android.permissioncontroller.tests.appthatrequestpermission",
-    READ_EXTERNAL_STORAGE
-)
+class StoragePermissionAppsFragmentTest :
+    PermissionAppsFragmentTest(
+        "/data/local/tmp/pc-permissionui" + "/PermissionUiUseStoragePermissionApp.apk",
+        "com.android.permissioncontroller.tests.appthatrequestpermission",
+        READ_EXTERNAL_STORAGE
+    )

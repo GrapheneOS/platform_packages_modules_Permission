@@ -102,9 +102,7 @@ class DevicePermissionsTest {
     fun testDeviceAwareRuntimePermissionGrantIsInherited() {
         grantPermissionAndAssertGranted(Manifest.permission.CAMERA, defaultDeviceContext)
 
-        assertPermission(
-            Manifest.permission.CAMERA, PERMISSION_GRANTED, virtualDeviceContext
-        )
+        assertPermission(Manifest.permission.CAMERA, PERMISSION_GRANTED, virtualDeviceContext)
     }
 
     @Test
@@ -112,7 +110,9 @@ class DevicePermissionsTest {
         grantPermissionAndAssertGranted(Manifest.permission.READ_CONTACTS, defaultDeviceContext)
 
         assertPermission(
-            Manifest.permission.READ_CONTACTS, PERMISSION_GRANTED, virtualDeviceContext
+            Manifest.permission.READ_CONTACTS,
+            PERMISSION_GRANTED,
+            virtualDeviceContext
         )
     }
 
@@ -127,7 +127,9 @@ class DevicePermissionsTest {
     fun testNonDeviceAwareRuntimePermissionIsRevokedForDefaultDevice() {
         grantPermissionAndAssertGranted(Manifest.permission.READ_CONTACTS, defaultDeviceContext)
         assertPermission(
-            Manifest.permission.READ_CONTACTS, PERMISSION_GRANTED, virtualDeviceContext
+            Manifest.permission.READ_CONTACTS,
+            PERMISSION_GRANTED,
+            virtualDeviceContext
         )
         // Revoke call from virtualDeviceContext should revoke for default device as well.
         revokePermissionAndAssertDenied(Manifest.permission.READ_CONTACTS, virtualDeviceContext)
@@ -148,15 +150,25 @@ class DevicePermissionsTest {
     fun testOneTimePermissionIsRevoked() {
         grantPermissionAndAssertGranted(Manifest.permission.RECORD_AUDIO, virtualDeviceContext)
         virtualDeviceContext.packageManager.updatePermissionFlags(
-            Manifest.permission.RECORD_AUDIO, TEST_PACKAGE_NAME, FLAG_PERMISSION_ONE_TIME,
-            FLAG_PERMISSION_ONE_TIME, UserHandle.of(virtualDeviceContext.userId)
+            Manifest.permission.RECORD_AUDIO,
+            TEST_PACKAGE_NAME,
+            FLAG_PERMISSION_ONE_TIME,
+            FLAG_PERMISSION_ONE_TIME,
+            UserHandle.of(virtualDeviceContext.userId)
         )
 
         permissionManager.startOneTimePermissionSession(
-            TEST_PACKAGE_NAME, 0, 0, IMPORTANCE_FOREGROUND, IMPORTANCE_FOREGROUND_SERVICE)
+            TEST_PACKAGE_NAME,
+            0,
+            0,
+            IMPORTANCE_FOREGROUND,
+            IMPORTANCE_FOREGROUND_SERVICE
+        )
         eventually {
             assertPermission(
-                Manifest.permission.RECORD_AUDIO, PERMISSION_DENIED, virtualDeviceContext
+                Manifest.permission.RECORD_AUDIO,
+                PERMISSION_DENIED,
+                virtualDeviceContext
             )
         }
     }
@@ -168,7 +180,9 @@ class DevicePermissionsTest {
         revokeSelfPermission(Manifest.permission.RECORD_AUDIO, virtualDeviceContext)
         eventually {
             assertPermission(
-                Manifest.permission.RECORD_AUDIO, PERMISSION_DENIED, virtualDeviceContext
+                Manifest.permission.RECORD_AUDIO,
+                PERMISSION_DENIED,
+                virtualDeviceContext
             )
         }
     }
@@ -184,14 +198,18 @@ class DevicePermissionsTest {
 
     private fun grantPermissionAndAssertGranted(permissionName: String, context: Context) {
         context.packageManager.grantRuntimePermission(
-            TEST_PACKAGE_NAME, permissionName, UserHandle.of(context.userId)
+            TEST_PACKAGE_NAME,
+            permissionName,
+            UserHandle.of(context.userId)
         )
         assertPermission(permissionName, PERMISSION_GRANTED, context)
     }
 
     private fun revokePermissionAndAssertDenied(permissionName: String, context: Context) {
         context.packageManager.revokeRuntimePermission(
-            TEST_PACKAGE_NAME, permissionName, UserHandle.of(context.userId)
+            TEST_PACKAGE_NAME,
+            permissionName,
+            UserHandle.of(context.userId)
         )
         assertPermission(permissionName, PERMISSION_DENIED, context)
     }

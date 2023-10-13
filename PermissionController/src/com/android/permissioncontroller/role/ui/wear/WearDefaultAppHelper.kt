@@ -28,9 +28,7 @@ import com.android.permissioncontroller.role.ui.wear.model.DefaultAppConfirmDial
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils
 import com.android.role.controller.model.Role
 
-/**
- * A helper class to retrieve default apps to [WearDefaultAppScreen].
- */
+/** A helper class to retrieve default apps to [WearDefaultAppScreen]. */
 class WearDefaultAppHelper(
     val context: Context,
     val user: UserHandle,
@@ -42,64 +40,70 @@ class WearDefaultAppHelper(
 
     fun getNonePreference(
         qualifyingApplications: List<Pair<ApplicationInfo, Boolean>>
-    ): WearRoleApplicationPreference? = if (role.shouldShowNone()) {
-        WearRoleApplicationPreference(
-            context = context,
-            label = context.getString(R.string.default_app_none),
-            checked = !hasHolderApplication(qualifyingApplications),
-            onDefaultCheckChanged = { _ ->
-                viewModel.setNoneDefaultApp()
-            }
-        ).apply {
-            icon = context.getDrawable(R.drawable.ic_remove_circle)
+    ): WearRoleApplicationPreference? =
+        if (role.shouldShowNone()) {
+            WearRoleApplicationPreference(
+                    context = context,
+                    label = context.getString(R.string.default_app_none),
+                    checked = !hasHolderApplication(qualifyingApplications),
+                    onDefaultCheckChanged = { _ -> viewModel.setNoneDefaultApp() }
+                )
+                .apply { icon = context.getDrawable(R.drawable.ic_remove_circle) }
+        } else {
+            null
         }
-    } else {
-        null
-    }
 
     fun getPreferences(
         qualifyingApplications: List<Pair<ApplicationInfo, Boolean>>
     ): List<WearRoleApplicationPreference> {
-        return qualifyingApplications.map { pair ->
-            WearRoleApplicationPreference(
-                context = context,
-                label = Utils.getFullAppLabel(pair.first, context),
-                checked = pair.second,
-                onDefaultCheckChanged = { _ ->
-                    run {
-                        val packageName = pair.first.packageName
-                        val confirmationMessage = RoleUiBehaviorUtils.getConfirmationMessage(
-                            role, packageName, context
-                        )
-                        if (confirmationMessage != null) {
-                            showConfirmDialog(packageName, confirmationMessage.toString())
-                        } else {
-                            setDefaultApp(packageName)
+        return qualifyingApplications
+            .map { pair ->
+                WearRoleApplicationPreference(
+                        context = context,
+                        label = Utils.getFullAppLabel(pair.first, context),
+                        checked = pair.second,
+                        onDefaultCheckChanged = { _ ->
+                            run {
+                                val packageName = pair.first.packageName
+                                val confirmationMessage =
+                                    RoleUiBehaviorUtils.getConfirmationMessage(
+                                        role,
+                                        packageName,
+                                        context
+                                    )
+                                if (confirmationMessage != null) {
+                                    showConfirmDialog(packageName, confirmationMessage.toString())
+                                } else {
+                                    setDefaultApp(packageName)
+                                }
+                            }
                         }
+                    )
+                    .apply { icon = pair.first.loadIcon(context.packageManager) }
+                    .let {
+                        RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(
+                            role,
+                            it,
+                            pair.first,
+                            user,
+                            context
+                        )
+                        return@map it
                     }
-                }
-            ).apply {
-                icon = pair.first.loadIcon(context.packageManager)
-            }.let {
-                RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(
-                    role, it, pair.first, user, context
-                )
-                return@map it
             }
-        }.toList()
+            .toList()
     }
 
     private fun showConfirmDialog(packageName: String, message: String) {
-        confirmDialogViewModel.confirmDialogArgs = ConfirmDialogArgs(
-            message = message,
-            onOkButtonClick = {
-                setDefaultApp(packageName)
-                dismissConfirmDialog()
-            },
-            onCancelButtonClick = {
-                dismissConfirmDialog()
-            }
-        )
+        confirmDialogViewModel.confirmDialogArgs =
+            ConfirmDialogArgs(
+                message = message,
+                onOkButtonClick = {
+                    setDefaultApp(packageName)
+                    dismissConfirmDialog()
+                },
+                onCancelButtonClick = { dismissConfirmDialog() }
+            )
         confirmDialogViewModel.showConfirmDialogLiveData.value = true
     }
 

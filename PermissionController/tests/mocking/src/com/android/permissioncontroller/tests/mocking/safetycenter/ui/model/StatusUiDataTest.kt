@@ -72,8 +72,8 @@ class StatusUiDataTest {
         assertThat(StatusUiData(STATUS).originalSummary).isEqualTo(STATUS.summary)
         assertThat(StatusUiData(ANOTHER_STATUS).originalSummary).isEqualTo(ANOTHER_STATUS.summary)
         assertThat(
-                StatusUiData(SafetyCenterData(STATUS, listOf(), listOf(), listOf()))
-                    .originalSummary)
+                StatusUiData(SafetyCenterData(STATUS, listOf(), listOf(), listOf())).originalSummary
+            )
             .isEqualTo(STATUS.summary)
     }
 
@@ -83,7 +83,8 @@ class StatusUiDataTest {
         assertThat(StatusUiData(ANOTHER_STATUS).severityLevel)
             .isEqualTo(ANOTHER_STATUS.severityLevel)
         assertThat(
-                StatusUiData(SafetyCenterData(STATUS, listOf(), listOf(), listOf())).severityLevel)
+                StatusUiData(SafetyCenterData(STATUS, listOf(), listOf(), listOf())).severityLevel
+            )
             .isEqualTo(STATUS.severityLevel)
     }
 
@@ -114,7 +115,9 @@ class StatusUiDataTest {
                 mockContext.getString(
                     R.string.safety_status_preference_title_and_summary_content_description,
                     STATUS.title,
-                    STATUS.summary))
+                    STATUS.summary
+                )
+            )
             .thenReturn(expectedContentDescription)
 
         val actualContentDescription = StatusUiData(STATUS).getContentDescription(mockContext)
@@ -163,14 +166,16 @@ class StatusUiDataTest {
     @Test
     fun isRefreshInProgress_dataFetch_isTrue() {
         assertThat(
-                uiDataForRefreshStatus(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS).isRefreshInProgress)
+                uiDataForRefreshStatus(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS).isRefreshInProgress
+            )
             .isTrue()
     }
 
     @Test
     fun isRefreshInProgress_fullRescan_isTrue() {
         assertThat(
-                uiDataForRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS).isRefreshInProgress)
+                uiDataForRefreshStatus(REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS).isRefreshInProgress
+            )
             .isTrue()
     }
 
@@ -185,8 +190,10 @@ class StatusUiDataTest {
                 StatusUiData(
                         statusForSeverity(OVERALL_SEVERITY_LEVEL_OK),
                         hasIssues = false,
-                        hasPendingActions = false)
-                    .shouldShowRescanButton())
+                        hasPendingActions = false
+                    )
+                    .shouldShowRescanButton()
+            )
             .isTrue()
     }
 
@@ -196,8 +203,10 @@ class StatusUiDataTest {
                 StatusUiData(
                         statusForSeverity(OVERALL_SEVERITY_LEVEL_UNKNOWN),
                         hasIssues = false,
-                        hasPendingActions = false)
-                    .shouldShowRescanButton())
+                        hasPendingActions = false
+                    )
+                    .shouldShowRescanButton()
+            )
             .isTrue()
     }
 
@@ -207,8 +216,10 @@ class StatusUiDataTest {
                 StatusUiData(
                         statusForSeverity(OVERALL_SEVERITY_LEVEL_OK),
                         hasIssues = true,
-                        hasPendingActions = false)
-                    .shouldShowRescanButton())
+                        hasPendingActions = false
+                    )
+                    .shouldShowRescanButton()
+            )
             .isFalse()
     }
 
@@ -218,8 +229,10 @@ class StatusUiDataTest {
                 StatusUiData(
                         statusForSeverity(OVERALL_SEVERITY_LEVEL_OK),
                         hasIssues = false,
-                        hasPendingActions = true)
-                    .shouldShowRescanButton())
+                        hasPendingActions = true
+                    )
+                    .shouldShowRescanButton()
+            )
             .isFalse()
     }
 
@@ -227,13 +240,17 @@ class StatusUiDataTest {
     fun shouldShowRescanButton_severityNotOkOrUnknown_isFalse() {
         for (severity in
             listOf(
-                OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING, OVERALL_SEVERITY_LEVEL_RECOMMENDATION)) {
+                OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING,
+                OVERALL_SEVERITY_LEVEL_RECOMMENDATION
+            )) {
             assertThat(
                     StatusUiData(
                             statusForSeverity(severity),
                             hasIssues = false,
-                            hasPendingActions = false)
-                        .shouldShowRescanButton())
+                            hasPendingActions = false
+                        )
+                        .shouldShowRescanButton()
+                )
                 .isFalse()
         }
     }

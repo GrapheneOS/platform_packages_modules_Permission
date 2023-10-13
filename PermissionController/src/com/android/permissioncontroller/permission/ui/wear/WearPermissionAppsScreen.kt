@@ -32,13 +32,9 @@ import com.android.permissioncontroller.permission.ui.wear.elements.Chip
 import com.android.permissioncontroller.permission.ui.wear.elements.ListSubheader
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 
-/**
- * Compose the screen associated to a [WearPermissionAppsFragment].
- */
+/** Compose the screen associated to a [WearPermissionAppsFragment]. */
 @Composable
-fun WearPermissionAppsScreen(
-    helper: WearPermissionAppsHelper
-) {
+fun WearPermissionAppsScreen(helper: WearPermissionAppsHelper) {
     val categorizedApps = helper.categorizedAppsLiveData().observeAsState(emptyMap())
     val hasSystemApps = helper.hasSystemAppsLiveData().observeAsState(false)
     val showSystem = helper.shouldShowSystemLiveData().observeAsState(false)
@@ -77,18 +73,14 @@ internal fun WearPermissionAppsContent(
     isLoading: Boolean,
     onShowSystemClick: (showSystem: Boolean) -> Unit
 ) {
-    ScrollableScreen (
-        title = title,
-        subtitle = subtitle,
-        isLoading = isLoading
-    ) {
+    ScrollableScreen(title = title, subtitle = subtitle, isLoading = isLoading) {
         for (category in categoryOrder) {
             val chips = chipsByCategory[category]
             if (chips.isNullOrEmpty()) {
                 continue
             }
             item {
-                ListSubheader{
+                ListSubheader {
                     Text(text = stringResource(getCategoryString(category, showAlways)))
                 }
             }
@@ -99,9 +91,7 @@ internal fun WearPermissionAppsContent(
                         labelMaxLines = Int.MAX_VALUE,
                         icon = it.icon,
                         enabled = it.enabled,
-                        onClick = {
-                            it.onClick()
-                        },
+                        onClick = { it.onClick() },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -111,15 +101,14 @@ internal fun WearPermissionAppsContent(
         if (hasSystemApps) {
             item {
                 Chip(
-                    label = if (showSystem) {
-                        stringResource(R.string.menu_hide_system)
-                    } else {
-                        stringResource(R.string.menu_show_system)
-                    },
+                    label =
+                        if (showSystem) {
+                            stringResource(R.string.menu_hide_system)
+                        } else {
+                            stringResource(R.string.menu_show_system)
+                        },
                     labelMaxLines = Int.MAX_VALUE,
-                    onClick = {
-                        onShowSystemClick(!showSystem)
-                    },
+                    onClick = { onShowSystemClick(!showSystem) },
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
@@ -143,11 +132,12 @@ internal fun getCategoryString(category: String, showAlways: Boolean) =
         else -> throw IllegalArgumentException("Wrong category: $category")
     }
 
-internal val categoryOrder = listOf(
-    "allowed_storage_full",
-    "allowed_storage_scoped",
-    Category.ALLOWED.categoryName,
-    Category.ALLOWED_FOREGROUND.categoryName,
-    Category.ASK.categoryName,
-    Category.DENIED.categoryName
-)
+internal val categoryOrder =
+    listOf(
+        "allowed_storage_full",
+        "allowed_storage_scoped",
+        Category.ALLOWED.categoryName,
+        Category.ALLOWED_FOREGROUND.categoryName,
+        Category.ASK.categoryName,
+        Category.DENIED.categoryName
+    )

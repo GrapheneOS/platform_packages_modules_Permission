@@ -23,29 +23,27 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-/**
- * Rule that enables and disables the CTS NotificationListenerService
- */
+/** Rule that enables and disables the CTS NotificationListenerService */
 class CtsNotificationListenerHelperRule(context: Context) : TestRule {
 
-    private val notificationListenerComponentName = ComponentName(
-        context,
-        CtsNotificationListenerService::class.java
-    )
+    private val notificationListenerComponentName =
+        ComponentName(context, CtsNotificationListenerService::class.java)
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
                 try {
                     // Allow NLS used to verify notifications sent
-                    SystemUtil.runShellCommand(ALLOW_NLS_COMMAND +
-                        notificationListenerComponentName.flattenToString())
+                    SystemUtil.runShellCommand(
+                        ALLOW_NLS_COMMAND + notificationListenerComponentName.flattenToString()
+                    )
 
                     base.evaluate()
                 } finally {
                     // Disallow NLS used to verify notifications sent
-                    SystemUtil.runShellCommand(DISALLOW_NLS_COMMAND +
-                        notificationListenerComponentName.flattenToString())
+                    SystemUtil.runShellCommand(
+                        DISALLOW_NLS_COMMAND + notificationListenerComponentName.flattenToString()
+                    )
                 }
             }
         }

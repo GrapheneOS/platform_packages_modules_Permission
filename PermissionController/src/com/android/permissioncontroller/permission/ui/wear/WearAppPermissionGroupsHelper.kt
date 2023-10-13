@@ -77,24 +77,26 @@ class WearAppPermissionGroupsHelper(
 
         val list: MutableList<PermissionGroupChipParam> = ArrayList()
 
-        groups.filter { Utils.shouldShowPermission(context, it) }
+        groups
+            .filter { Utils.shouldShowPermission(context, it) }
             .partition { it.declaringPackage == Utils.OS_PKG }
-            .let { it.first.plus(it.second) }.forEach { group ->
+            .let { it.first.plus(it.second) }
+            .forEach { group ->
                 if (Utils.areGroupPermissionsIndividuallyControlled(context, group.name)) {
                     // If permission is controlled individually, we show all requested permission
                     // inside this group.
                     for (perm in getPermissionInfosFromGroup(group)) {
-                        list.add(PermissionGroupChipParam(
-                            group = group,
-                            perm = perm,
-                            label = perm.loadLabel(context.packageManager).toString(),
-                            checked = group.areRuntimePermissionsGranted(arrayOf(perm.name)),
-                            onCheckedChanged = { checked ->
-                                run {
-                                    onPermissionGrantedStateChanged(group, perm, checked)
+                        list.add(
+                            PermissionGroupChipParam(
+                                group = group,
+                                perm = perm,
+                                label = perm.loadLabel(context.packageManager).toString(),
+                                checked = group.areRuntimePermissionsGranted(arrayOf(perm.name)),
+                                onCheckedChanged = { checked ->
+                                    run { onPermissionGrantedStateChanged(group, perm, checked) }
                                 }
-                            }
-                        ))
+                            )
+                        )
                     }
                 } else {
                     val category = grantedTypes[group.name]
@@ -103,12 +105,11 @@ class WearAppPermissionGroupsHelper(
                             PermissionGroupChipParam(
                                 group = group,
                                 label = group.label.toString(),
-                                summary = bookKeeping[group.name]?.let {
-                                    getSummary(category, it.subtitle)
-                                },
-                                onClick = {
-                                    onPermissionGroupClicked(group, category.categoryName)
-                                }
+                                summary =
+                                    bookKeeping[group.name]?.let {
+                                        getSummary(category, it.subtitle)
+                                    },
+                                onClick = { onPermissionGroupClicked(group, category.categoryName) }
                             )
                         )
                     }
@@ -117,16 +118,15 @@ class WearAppPermissionGroupsHelper(
         return list
     }
 
-    private fun getSummary(
-        category: Category?,
-        subtitle: PermSubtitle
-    ): Int? {
+    private fun getSummary(category: Category?, subtitle: PermSubtitle): Int? {
         if (category != null) {
             when (category) {
                 Category.ALLOWED -> return R.string.allowed_header
                 Category.ASK -> return R.string.ask_header
                 Category.DENIED -> return R.string.denied_header
-                else -> { /* Fallback though */ }
+                else -> {
+                    /* Fallback though */
+                }
             }
         }
         return when (subtitle) {
@@ -138,16 +138,19 @@ class WearAppPermissionGroupsHelper(
     }
 
     private fun getPermissionInfosFromGroup(group: AppPermissionGroup): List<PermissionInfo> =
-        group.permissions.map {
-            it?.let {
-                try {
-                    context.packageManager.getPermissionInfo(it.name, 0)
-                } catch (e: PackageManager.NameNotFoundException) {
-                    Log.w(TAG, "No permission:" + it.name)
-                    null
+        group.permissions
+            .map {
+                it?.let {
+                    try {
+                        context.packageManager.getPermissionInfo(it.name, 0)
+                    } catch (e: PackageManager.NameNotFoundException) {
+                        Log.w(TAG, "No permission:" + it.name)
+                        null
+                    }
                 }
             }
-        }.filterNotNull().toList()
+            .filterNotNull()
+            .toList()
 
     private fun onPermissionGrantedStateChanged(
         group: AppPermissionGroup,
@@ -157,8 +160,9 @@ class WearAppPermissionGroupsHelper(
         if (checked) {
             group.grantRuntimePermissions(true, false, arrayOf(perm.name))
 
-            if (Utils.areGroupPermissionsIndividuallyControlled(context, group.name) &&
-                group.doesSupportRuntimePermissions()
+            if (
+                Utils.areGroupPermissionsIndividuallyControlled(context, group.name) &&
+                    group.doesSupportRuntimePermissions()
             ) {
                 // We are granting a permission from a group but since this is an
                 // individual permission control other permissions in the group may
@@ -171,9 +175,8 @@ class WearAppPermissionGroupsHelper(
                 for (i in 0 until permissionCount) {
                     val current = group.permissions[i]
                     if (!current.isGranted && !current.isUserFixed) {
-                        revokedPermissionsToFix = ArrayUtils.appendString(
-                            revokedPermissionsToFix, current.name
-                        )
+                        revokedPermissionsToFix =
+                            ArrayUtils.appendString(revokedPermissionsToFix, current.name)
                     }
                 }
                 if (revokedPermissionsToFix != null) {
@@ -185,15 +188,18 @@ class WearAppPermissionGroupsHelper(
             val appPerm: Permission = getPermissionFromGroup(group, perm.name) ?: return
 
             val grantedByDefault = appPerm.isGrantedByDefault
-            if (grantedByDefault ||
-                (!group.doesSupportRuntimePermissions() &&
-                        !revokeDialogViewModel.hasConfirmedRevoke)) {
+            if (
+                grantedByDefault ||
+                    (!group.doesSupportRuntimePermissions() &&
+                        !revokeDialogViewModel.hasConfirmedRevoke)
+            ) {
                 showRevocationWarningDialog(
-                    messageId = if (grantedByDefault) {
-                        R.string.system_warning
-                    } else {
-                        R.string.old_sdk_deny_warning
-                    },
+                    messageId =
+                        if (grantedByDefault) {
+                            R.string.system_warning
+                        } else {
+                            R.string.old_sdk_deny_warning
+                        },
                     onOkButtonClick = {
                         revokePermissionInGroup(group, perm.name)
                         if (!appPerm.isGrantedByDefault) {
@@ -209,24 +215,30 @@ class WearAppPermissionGroupsHelper(
     }
 
     private fun getPermissionFromGroup(group: AppPermissionGroup, permName: String): Permission? {
-        return group.permissions.find { it.name == permName } ?: let{
-            if ("user" == Build.TYPE) {
-                Log.e(TAG,
-                    "The impossible happens, permission $permName is not in group $group.name.")
-                null
-            } else {
-                // This is impossible, throw a fatal error in non-user build.
-                throw IllegalArgumentException("Permission $permName is not in group $group.name%s")
+        return group.permissions.find { it.name == permName }
+            ?: let {
+                if ("user" == Build.TYPE) {
+                    Log.e(
+                        TAG,
+                        "The impossible happens, permission $permName is not in group $group.name."
+                    )
+                    null
+                } else {
+                    // This is impossible, throw a fatal error in non-user build.
+                    throw IllegalArgumentException(
+                        "Permission $permName is not in group $group.name%s"
+                    )
+                }
             }
-        }
     }
 
     private fun revokePermissionInGroup(group: AppPermissionGroup, permName: String) {
         group.revokeRuntimePermissions(true, arrayOf(permName))
 
-        if (Utils.areGroupPermissionsIndividuallyControlled(context, group.name) &&
-            group.doesSupportRuntimePermissions() &&
-            !group.areRuntimePermissionsGranted()
+        if (
+            Utils.areGroupPermissionsIndividuallyControlled(context, group.name) &&
+                group.doesSupportRuntimePermissions() &&
+                !group.areRuntimePermissionsGranted()
         ) {
             // If we just revoked the last permission we need to clear
             // the user fixed state as now the app should be able to
@@ -240,11 +252,12 @@ class WearAppPermissionGroupsHelper(
         onOkButtonClick: () -> Unit,
         onCancelButtonClick: () -> Unit = { revokeDialogViewModel.dismissDialog() }
     ) {
-        revokeDialogViewModel.revokeDialogArgs = RevokeDialogArgs(
-            messageId = messageId,
-            onOkButtonClick = onOkButtonClick,
-            onCancelButtonClick = onCancelButtonClick
-        )
+        revokeDialogViewModel.revokeDialogArgs =
+            RevokeDialogArgs(
+                messageId = messageId,
+                onOkButtonClick = onOkButtonClick,
+                onCancelButtonClick = onCancelButtonClick
+            )
         revokeDialogViewModel.showDialogLiveData.value = true
     }
 
@@ -256,13 +269,11 @@ class WearAppPermissionGroupsHelper(
         addToggledGroup(group)
 
         if (LocationUtils.isLocationGroupAndProvider(context, permGroupName, packageName)) {
-            val intent = Intent(
-                context,
-                LocationProviderInterceptDialog::class.java
-            )
+            val intent = Intent(context, LocationProviderInterceptDialog::class.java)
             intent.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
             context.startActivityAsUser(intent, user)
-        } else if (LocationUtils.isLocationGroupAndControllerExtraPackage(
+        } else if (
+            LocationUtils.isLocationGroupAndControllerExtraPackage(
                 context,
                 permGroupName,
                 packageName
@@ -271,15 +282,16 @@ class WearAppPermissionGroupsHelper(
             // Redirect to location controller extra package settings.
             LocationUtils.startLocationControllerExtraPackageSettings(context, user)
         } else {
-            val args = AppPermissionFragment.createArgs(
-                packageName,
-                null,
-                permGroupName,
-                user,
-                caller,
-                sessionId,
-                grantCategory
-            )
+            val args =
+                AppPermissionFragment.createArgs(
+                    packageName,
+                    null,
+                    permGroupName,
+                    user,
+                    caller,
+                    sessionId,
+                    grantCategory
+                )
             fragment.findNavController().navigateSafe(R.id.perm_groups_to_app, args)
         }
     }
@@ -296,11 +308,12 @@ class WearAppPermissionGroupsHelper(
     fun getAutoRevokeChipParam(state: HibernationSettingState?): AutoRevokeChipParam? =
         state?.let {
             AutoRevokeChipParam(
-                labelRes = if (isHibernationEnabled()) {
-                    R.string.unused_apps_label_v2
-                } else {
-                    R.string.auto_revoke_label
-                },
+                labelRes =
+                    if (isHibernationEnabled()) {
+                        R.string.unused_apps_label_v2
+                    } else {
+                        R.string.auto_revoke_label
+                    },
                 visible = it.revocableGroupNames.isNotEmpty(),
                 checked = it.isEligibleForHibernation(),
                 onCheckedChanged = { checked ->

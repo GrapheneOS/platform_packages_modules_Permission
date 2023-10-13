@@ -26,28 +26,30 @@ private const val SUMMARY_TEXT = "apps allowed"
  * Read the {@link UsageCount} of the group of the permission from the Ui.
  *
  * @param groupLabel label fo the group the count should be read for
- *
  * @return usage counts for the group of the permission
  */
 fun getUsageCountsFromUi(groupLabel: CharSequence): UsageCount {
     waitFindObject(By.text(groupLabel.toString()))
 
     return getEventually {
-        val summaryText = waitFindObject(By.hasChild(By.text(groupLabel.toString()))
-            .hasChild(By.textContains(SUMMARY_TEXT))).findObject(By.textContains(SUMMARY_TEXT)).text
+        val summaryText =
+            waitFindObject(
+                    By.hasChild(By.text(groupLabel.toString()))
+                        .hasChild(By.textContains(SUMMARY_TEXT))
+                )
+                .findObject(By.textContains(SUMMARY_TEXT))
+                .text
 
         // Matches two numbers out of the summary line, i.e. "...3...12..." -> "3", "12"
-        val groups = Regex("^[^\\d]*(\\d+)[^\\d]*(\\d+)[^\\d]*\$")
-            .find(summaryText)?.groupValues
-            ?: throw Exception("No usage counts found")
+        val groups =
+            Regex("^[^\\d]*(\\d+)[^\\d]*(\\d+)[^\\d]*\$").find(summaryText)?.groupValues
+                ?: throw Exception("No usage counts found")
 
         UsageCount(groups[1].toInt(), groups[2].toInt())
     }
 }
 
-/**
- * Usage counts as read via {@link #getUsageCountsFromUi}.
- */
+/** Usage counts as read via {@link #getUsageCountsFromUi}. */
 data class UsageCount(
     /** Number of apps with permission granted */
     val granted: Int,

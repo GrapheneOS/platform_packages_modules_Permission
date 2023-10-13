@@ -20,24 +20,19 @@ import android.app.Application
 import android.content.pm.PackageManager
 import com.android.permissioncontroller.PermissionControllerApplication
 
-/**
- * Serves as a single shared Permission Change Listener for all AppPermissionGroupLiveDatas.
- *
- */
+/** Serves as a single shared Permission Change Listener for all AppPermissionGroupLiveDatas. */
 object PermissionListenerMultiplexer : PackageManager.OnPermissionsChangedListener {
 
     private val app: Application = PermissionControllerApplication.get()
     /**
-     * Map<UID, list of PermissionChangeCallbacks that wish to be informed when
-     * permissions are updated for that UID>
+     * Map<UID, list of PermissionChangeCallbacks that wish to be informed when permissions are
+     * updated for that UID>
      */
     private val callbacks = mutableMapOf<Int, MutableList<PermissionChangeCallback>>()
     private val pm = app.applicationContext.packageManager
 
     override fun onPermissionsChanged(uid: Int) {
-        callbacks[uid]?.toList()?.forEach { callback ->
-            callback.onPermissionChange()
-        }
+        callbacks[uid]?.toList()?.forEach { callback -> callback.onPermissionChange() }
     }
 
     fun addOrReplaceCallback(oldUid: Int?, newUid: Int, callback: PermissionChangeCallback) {

@@ -28,9 +28,7 @@ import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Tests permission review screen can't be tapjacked
- */
+/** Tests permission review screen can't be tapjacked */
 @FlakyTest
 class PermissionReviewTapjackingTest : BaseUsePermissionTest() {
 
@@ -47,34 +45,39 @@ class PermissionReviewTapjackingTest : BaseUsePermissionTest() {
         installPackage(HELPER_APP_OVERLAY)
 
         SystemUtil.runShellCommandOrThrow(
-                "appops set $HELPER_PACKAGE_NAME android:system_alert_window allow")
+            "appops set $HELPER_PACKAGE_NAME android:system_alert_window allow"
+        )
     }
 
     @After
     fun uninstallPackages() {
-        SystemUtil.runShellCommandOrThrow(
-                "pm uninstall $APP_PACKAGE_NAME")
-        SystemUtil.runShellCommandOrThrow(
-                "pm uninstall $HELPER_PACKAGE_NAME")
+        SystemUtil.runShellCommandOrThrow("pm uninstall $APP_PACKAGE_NAME")
+        SystemUtil.runShellCommandOrThrow("pm uninstall $HELPER_PACKAGE_NAME")
     }
 
     @Test
     fun testOverlaysAreHidden() {
-        context.startActivity(Intent()
-                .setComponent(ComponentName(HELPER_PACKAGE_NAME,
-                        "$HELPER_PACKAGE_NAME.OverlayActivity"))
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        context.startActivity(
+            Intent()
+                .setComponent(
+                    ComponentName(HELPER_PACKAGE_NAME, "$HELPER_PACKAGE_NAME.OverlayActivity")
+                )
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        )
         findOverlay()
 
-        context.startActivity(Intent()
-                .setComponent(ComponentName(APP_PACKAGE_NAME,
-                        "$APP_PACKAGE_NAME.FinishOnCreateActivity"))
+        context.startActivity(
+            Intent()
+                .setComponent(
+                    ComponentName(APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.FinishOnCreateActivity")
+                )
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         )
 
         if (isWatch) {
             waitFindObject(
-                By.text(getPermissionControllerString("review_button_cancel")), TIMEOUT_MILLIS * 2
+                By.text(getPermissionControllerString("review_button_cancel")),
+                TIMEOUT_MILLIS * 2
             )
         } else {
             waitFindObject(By.res("com.android.permissioncontroller:id/permissions_message"))

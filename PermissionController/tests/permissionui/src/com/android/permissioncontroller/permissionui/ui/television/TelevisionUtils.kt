@@ -34,17 +34,20 @@ val UiDevice.fragmentDecorTitle: String?
     get() = wait(Until.findObject(SELECTOR_RES_ID_PC_DECOR_TITLE), WAIT_DELAY)?.text
 
 val UiDevice.focusedElement: UiObject2
-    get() = wait(Until.findObject(SELECTOR_FOCUSED), WAIT_DELAY)
-        ?: error("Focused item is not found")
+    get() =
+        wait(Until.findObject(SELECTOR_FOCUSED), WAIT_DELAY) ?: error("Focused item is not found")
 
 private val UiObject2.titleElement: UiObject2
-    get() = wait(Until.findObject(SELECTOR_RES_ID_ANDROID_TITLE), WAIT_DELAY)
-        ?: error("Could not retrieve title")
+    get() =
+        wait(Until.findObject(SELECTOR_RES_ID_ANDROID_TITLE), WAIT_DELAY)
+            ?: error("Could not retrieve title")
 
 val UiDevice.focusedElementTitle: String?
     get() {
         repeat(RETRIES) {
-            try { return focusedElement.titleElement.text } catch (e: StaleObjectException) {}
+            try {
+                return focusedElement.titleElement.text
+            } catch (e: StaleObjectException) {}
         }
         error("Could not get title text")
     }
@@ -63,13 +66,13 @@ fun UiDevice.navigateToTheTop() {
     while (navigateUp()) {}
 }
 
-fun UiDevice.focusOnElementWithTitle(title: CharSequence): Boolean =
-    checkAllItemsIfNeeded { focusedElementTitle == title }
+fun UiDevice.focusOnElementWithTitle(title: CharSequence): Boolean = checkAllItemsIfNeeded {
+    focusedElementTitle == title
+}
 
-fun UiDevice.hasElementWithTitle(title: CharSequence): Boolean =
-    checkAllItemsIfNeeded {
-        hasObject(By.copy(SELECTOR_RES_ID_ANDROID_TITLE).text(title.toString()))
-    }
+fun UiDevice.hasElementWithTitle(title: CharSequence): Boolean = checkAllItemsIfNeeded {
+    hasObject(By.copy(SELECTOR_RES_ID_ANDROID_TITLE).text(title.toString()))
+}
 
 private fun UiDevice.checkAllItemsIfNeeded(predicate: () -> Boolean): Boolean {
     // Let's do one quick check first, right where we are. If it does not work - we'll do the walk.

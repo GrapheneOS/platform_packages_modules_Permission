@@ -56,10 +56,10 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SH
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__DISMISSED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_DATA_SHARING_UPDATES_NOTIFICATION_INTERACTION__ACTION__NOTIFICATION_SHOWN
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.v34.AppDataSharingUpdatesLiveData
+import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_ALWAYS
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
@@ -419,9 +419,7 @@ class SafetyLabelChangesJobService : JobService() {
     //  preinstalled apps.
     private suspend fun getAllStoreInstalledPackagesRequestingLocation():
         Set<Pair<String, UserHandle>> =
-        getAllPackagesRequestingLocation()
-            .filter { isSafetyLabelSupported(it) }
-            .toSet()
+        getAllPackagesRequestingLocation().filter { isSafetyLabelSupported(it) }.toSet()
 
     private suspend fun getAllPackagesRequestingLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
@@ -439,7 +437,7 @@ class SafetyLabelChangesJobService : JobService() {
 
     private suspend fun isSafetyLabelSupported(packageUser: Pair<String, UserHandle>): Boolean {
         val lightInstallSourceInfo =
-                LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
+            LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
         return lightInstallSourceInfo.supportsSafetyLabel
     }
 
@@ -531,8 +529,9 @@ class SafetyLabelChangesJobService : JobService() {
         createNotificationChannel(context, notificationManager)
 
         val (appLabel, smallIcon, color) = KotlinUtils.getSafetyCenterNotificationResources(this)
-        val smallIconCompat = IconCompat.createFromIcon(smallIcon)
-            ?: IconCompat.createWithResource(this, R.drawable.ic_info)
+        val smallIconCompat =
+            IconCompat.createFromIcon(smallIcon)
+                ?: IconCompat.createWithResource(this, R.drawable.ic_info)
         val title = context.getString(R.string.safety_label_changes_notification_title)
         val text = context.getString(R.string.safety_label_changes_notification_desc)
         var notificationBuilder =

@@ -25,44 +25,49 @@ import com.android.permissioncontroller.role.ui.RoleItem
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils
 import com.android.role.controller.model.Roles
 
-/**
- * A helper class to retrieve default apps to [WearDefaultAppListScreen].
- */
-class WearDefaultAppListHelper(
-    val context: Context,
-    val user: UserHandle
-) {
+/** A helper class to retrieve default apps to [WearDefaultAppListScreen]. */
+class WearDefaultAppListHelper(val context: Context, val user: UserHandle) {
     fun getPreferences(defaultRole: List<RoleItem>): List<WearRolePreference> {
-        return defaultRole.map { roleItem ->
-            WearRolePreference(
-                context = context,
-                label = context.getString(roleItem.role.shortLabelResource),
-                onDefaultClicked = {
-                    run {
-                        val roleName: String = roleItem.role.name
-                        val role = Roles.get(context)[roleName]
-                        var intent =
-                            RoleUiBehaviorUtils.getManageIntentAsUser(role!!, user, context)
-                        if (intent == null) {
-                            intent = DefaultAppActivity.createIntent(roleName, user, context)
+        return defaultRole
+            .map { roleItem ->
+                WearRolePreference(
+                        context = context,
+                        label = context.getString(roleItem.role.shortLabelResource),
+                        onDefaultClicked = {
+                            run {
+                                val roleName: String = roleItem.role.name
+                                val role = Roles.get(context)[roleName]
+                                var intent =
+                                    RoleUiBehaviorUtils.getManageIntentAsUser(role!!, user, context)
+                                if (intent == null) {
+                                    intent =
+                                        DefaultAppActivity.createIntent(roleName, user, context)
+                                }
+                                context.startActivity(intent)
+                            }
                         }
-                        context.startActivity(intent)
+                    )
+                    .apply {
+                        val holderApplicationInfos = roleItem.holderApplicationInfos
+                        if (holderApplicationInfos.isEmpty()) {
+                            icon = null
+                            summary = context.getString(R.string.default_app_none)
+                        } else {
+                            val holderApplicationInfo = holderApplicationInfos[0]
+                            icon = Utils.getBadgedIcon(context, holderApplicationInfo)
+                            summary = Utils.getAppLabel(holderApplicationInfo, context)
+                        }
                     }
-                }
-            ).apply {
-                val holderApplicationInfos = roleItem.holderApplicationInfos
-                if (holderApplicationInfos.isEmpty()) {
-                    icon = null
-                    summary = context.getString(R.string.default_app_none)
-                } else {
-                    val holderApplicationInfo = holderApplicationInfos[0]
-                    icon = Utils.getBadgedIcon(context, holderApplicationInfo)
-                    summary = Utils.getAppLabel(holderApplicationInfo, context)
-                }
-            }.let {
-                RoleUiBehaviorUtils.preparePreferenceAsUser(roleItem.role, it, user, context)
-                return@map it
+                    .let {
+                        RoleUiBehaviorUtils.preparePreferenceAsUser(
+                            roleItem.role,
+                            it,
+                            user,
+                            context
+                        )
+                        return@map it
+                    }
             }
-        }.toList()
+            .toList()
     }
 }

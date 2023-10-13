@@ -56,8 +56,9 @@ class CreateNotificationChannelsActivity : Activity() {
         if (savedInstanceState != null) {
             throw RuntimeException(
                 "Activity was recreated (perhaps due to a configuration change?) " +
-                "and this activity doesn't currently know how to gracefully handle " +
-                    "configuration changes.")
+                    "and this activity doesn't currently know how to gracefully handle " +
+                    "configuration changes."
+            )
         }
 
         registerReceiver(receiver, IntentFilter(BROADCAST_ACTION), RECEIVER_EXPORTED)
@@ -72,15 +73,16 @@ class CreateNotificationChannelsActivity : Activity() {
             providedIntent.getBooleanExtra(EXTRA_START_SECOND_ACTIVITY, false)
         notificationManager = baseContext.getSystemService(NotificationManager::class.java)!!
         if (providedIntent.getBooleanExtra(EXTRA_START_SECOND_APP, false)) {
-            handler.postDelayed({
-                val intent2 = Intent(SECONDARY_APP_INTENT)
-                intent2.`package` = SECONDARY_APP_PKG
-                intent2.addCategory(Intent.CATEGORY_DEFAULT)
-                handler.postDelayed({
-                    createChannel()
-                }, DELAY_MS)
-                startActivity(intent2)
-            }, LONG_DELAY_MS)
+            handler.postDelayed(
+                {
+                    val intent2 = Intent(SECONDARY_APP_INTENT)
+                    intent2.`package` = SECONDARY_APP_PKG
+                    intent2.addCategory(Intent.CATEGORY_DEFAULT)
+                    handler.postDelayed({ createChannel() }, DELAY_MS)
+                    startActivity(intent2)
+                },
+                LONG_DELAY_MS
+            )
         } else if (providedIntent.getBooleanExtra(EXTRA_CREATE_CHANNELS, false)) {
             createChannel()
             if (launchSecondActivity) {
@@ -103,20 +105,24 @@ class CreateNotificationChannelsActivity : Activity() {
         }
     }
 
-    private val receiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            handleIntent(intent, true)
+    private val receiver =
+        object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                handleIntent(intent, true)
+            }
         }
-    }
 
     private fun launchSecondActivity() {
-        handler.postDelayed({
-            val intent2 = Intent(Intent.ACTION_MAIN)
-            intent2.`package` = packageName
-            intent2.addCategory(Intent.CATEGORY_DEFAULT)
-            intent2.putExtra(EXTRA_CREATE_CHANNELS, true)
-            startActivity(intent2)
-                            }, LONG_DELAY_MS)
+        handler.postDelayed(
+            {
+                val intent2 = Intent(Intent.ACTION_MAIN)
+                intent2.`package` = packageName
+                intent2.addCategory(Intent.CATEGORY_DEFAULT)
+                intent2.putExtra(EXTRA_CREATE_CHANNELS, true)
+                startActivity(intent2)
+            },
+            LONG_DELAY_MS
+        )
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -135,8 +141,13 @@ class CreateNotificationChannelsActivity : Activity() {
         }
 
         if (notificationManager.getNotificationChannel(CHANNEL_ID_31) == null) {
-            notificationManager.createNotificationChannel(NotificationChannel(CHANNEL_ID_31,
-                "Foreground Services", NotificationManager.IMPORTANCE_HIGH))
+            notificationManager.createNotificationChannel(
+                NotificationChannel(
+                    CHANNEL_ID_31,
+                    "Foreground Services",
+                    NotificationManager.IMPORTANCE_HIGH
+                )
+            )
         }
     }
 
@@ -161,9 +172,13 @@ class CreateNotificationChannelsActivity : Activity() {
             }
         }
         sendBroadcast(
-            Intent(BROADCAST_ACTION).putStringArrayListExtra(
-            PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, grantedPerms)
-                .setPackage(TEST_PKG))
+            Intent(BROADCAST_ACTION)
+                .putStringArrayListExtra(
+                    PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS,
+                    grantedPerms
+                )
+                .setPackage(TEST_PKG)
+        )
     }
 
     companion object {

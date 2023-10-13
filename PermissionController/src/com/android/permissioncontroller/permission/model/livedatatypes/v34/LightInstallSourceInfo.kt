@@ -36,12 +36,12 @@ class LightInstallSourceInfo {
         // default source of unspecified. All other sources should be explicitly set to another
         // PACKAGE_SOURCE_ value
         val isStoreInstalled =
-                initiatingPackageName != null &&
-                        (packageSource == PACKAGE_SOURCE_STORE ||
-                                packageSource == PACKAGE_SOURCE_UNSPECIFIED)
+            initiatingPackageName != null &&
+                (packageSource == PACKAGE_SOURCE_STORE ||
+                    packageSource == PACKAGE_SOURCE_UNSPECIFIED)
 
-        isPreloadedApp = initiatingPackageName == null &&
-                packageSource == PACKAGE_SOURCE_UNSPECIFIED
+        isPreloadedApp =
+            initiatingPackageName == null && packageSource == PACKAGE_SOURCE_UNSPECIFIED
         supportsSafetyLabel = isStoreInstalled || isPreloadedApp
     }
 

@@ -20,9 +20,7 @@ import android.app.IntentService
 import android.content.Intent
 import android.os.ResultReceiver
 
-/**
- * A service that can check if a permission is currently granted
- */
+/** A service that can check if a permission is currently granted */
 class CheckPermissionService : IntentService(CheckPermissionService::class.java.simpleName) {
     companion object {
         private const val TEST_PACKAGE_NAME = "android.permissionui.cts"
@@ -31,9 +29,8 @@ class CheckPermissionService : IntentService(CheckPermissionService::class.java.
     override fun onHandleIntent(intent: Intent?) {
         val extras = intent!!.extras!!
         // Load bundle with context of client package so ResultReceiver class can be resolved
-        val testContext = createPackageContext(
-            TEST_PACKAGE_NAME, CONTEXT_INCLUDE_CODE or CONTEXT_IGNORE_SECURITY
-        )
+        val testContext =
+            createPackageContext(TEST_PACKAGE_NAME, CONTEXT_INCLUDE_CODE or CONTEXT_IGNORE_SECURITY)
         extras.classLoader = testContext.classLoader
         val result = extras.getParcelable<ResultReceiver>("$packageName.RESULT")!!
         val permission = extras.getString("$packageName.PERMISSION")!!

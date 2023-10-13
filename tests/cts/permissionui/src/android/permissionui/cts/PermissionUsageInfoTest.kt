@@ -24,9 +24,7 @@ import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Tests permission usage info action.
- */
+/** Tests permission usage info action. */
 @FlakyTest
 class PermissionUsageInfoTest : BaseUsePermissionTest() {
     @Before
@@ -46,10 +44,10 @@ class PermissionUsageInfoTest : BaseUsePermissionTest() {
         doAndWaitForWindowTransition {
             runWithShellPermissionIdentity {
                 context.startActivity(
-                        Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
-                            putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
-                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        }
+                    Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
+                        putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
                 )
             }
         }

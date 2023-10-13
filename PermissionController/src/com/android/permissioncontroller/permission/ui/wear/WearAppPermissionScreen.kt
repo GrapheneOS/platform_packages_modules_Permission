@@ -100,10 +100,7 @@ internal fun WearAppPermissionContent(
     onGrantedStateChanged: (ButtonType, Boolean) -> Unit,
     onFooterClicked: (RestrictedLockUtils.EnforcedAdmin) -> Unit
 ) {
-    ScrollableScreen(
-        title = title,
-        isLoading = isLoading
-    ) {
+    ScrollableScreen(title = title, isLoading = isLoading) {
         buttonState[ButtonType.LOCATION_ACCURACY]?.let {
             if (it.isShown) {
                 item {
@@ -141,38 +138,42 @@ internal fun WearAppPermissionContent(
                 ListFooter(
                     description = stringResource(detailResIds.first),
                     iconRes = R.drawable.ic_info,
-                    onClick = if (admin != null) {
-                        { onFooterClicked(admin) }
-                    } else {
-                        null
-                    }
+                    onClick =
+                        if (admin != null) {
+                            { onFooterClicked(admin) }
+                        } else {
+                            null
+                        }
                 )
             }
         }
     }
 }
 
-internal val buttonTypeOrder = listOf(
-    ButtonType.ALLOW,
-    ButtonType.ALLOW_ALWAYS,
-    ButtonType.ALLOW_FOREGROUND,
-    ButtonType.ASK_ONCE,
-    ButtonType.ASK,
-    ButtonType.DENY,
-    ButtonType.DENY_FOREGROUND
-)
+internal val buttonTypeOrder =
+    listOf(
+        ButtonType.ALLOW,
+        ButtonType.ALLOW_ALWAYS,
+        ButtonType.ALLOW_FOREGROUND,
+        ButtonType.ASK_ONCE,
+        ButtonType.ASK,
+        ButtonType.DENY,
+        ButtonType.DENY_FOREGROUND
+    )
 
 @Composable
-internal fun labelsByButton(buttonType: ButtonType) = when (buttonType) {
-    ButtonType.ALLOW -> stringResource(R.string.app_permission_button_allow)
-    ButtonType.ALLOW_ALWAYS -> stringResource(R.string.app_permission_button_allow_always)
-    ButtonType.ALLOW_FOREGROUND -> stringResource(R.string.app_permission_button_allow_foreground)
-    ButtonType.ASK_ONCE -> stringResource(R.string.app_permission_button_ask)
-    ButtonType.ASK -> stringResource(R.string.app_permission_button_ask)
-    ButtonType.DENY -> stringResource(R.string.app_permission_button_deny)
-    ButtonType.DENY_FOREGROUND -> stringResource(R.string.app_permission_button_deny)
-    else -> ""
-}
+internal fun labelsByButton(buttonType: ButtonType) =
+    when (buttonType) {
+        ButtonType.ALLOW -> stringResource(R.string.app_permission_button_allow)
+        ButtonType.ALLOW_ALWAYS -> stringResource(R.string.app_permission_button_allow_always)
+        ButtonType.ALLOW_FOREGROUND ->
+            stringResource(R.string.app_permission_button_allow_foreground)
+        ButtonType.ASK_ONCE -> stringResource(R.string.app_permission_button_ask)
+        ButtonType.ASK -> stringResource(R.string.app_permission_button_ask)
+        ButtonType.DENY -> stringResource(R.string.app_permission_button_deny)
+        ButtonType.DENY_FOREGROUND -> stringResource(R.string.app_permission_button_deny)
+        else -> ""
+    }
 
 @Composable
 internal fun ConfirmDialog(
@@ -185,9 +186,7 @@ internal fun ConfirmDialog(
         AlertDialog(
             showDialog = showDialog,
             message = stringResource(it.messageId),
-            onOKButtonClick = {
-                onOkButtonClick(it)
-            },
+            onOKButtonClick = { onOkButtonClick(it) },
             onCancelButtonClick = onCancelButtonClick,
             scalingLazyListState = rememberScalingLazyListState()
         )
@@ -204,18 +203,17 @@ internal fun AdvancedConfirmDialog(
     args?.let {
         AlertDialog(
             showDialog = showDialog,
-            title = if (it.titleId != 0) {
-                stringResource(it.titleId)
-            } else {
-                ""
-            },
+            title =
+                if (it.titleId != 0) {
+                    stringResource(it.titleId)
+                } else {
+                    ""
+                },
             iconRes = it.iconId,
             message = stringResource(it.messageId),
             okButtonContentDescription = stringResource(it.positiveButtonTextId),
             cancelButtonContentDescription = stringResource(it.negativeButtonTextId),
-            onOKButtonClick = {
-                onOkButtonClick(it)
-            },
+            onOKButtonClick = { onOkButtonClick(it) },
             onCancelButtonClick = onCancelButtonClick,
             scalingLazyListState = rememberScalingLazyListState()
         )

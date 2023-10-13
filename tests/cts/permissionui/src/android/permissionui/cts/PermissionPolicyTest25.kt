@@ -26,9 +26,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Tests for the platform permission policy around apps targeting API 25.
- */
+/** Tests for the platform permission policy around apps targeting API 25. */
 @FlakyTest
 class PermissionPolicyTest25 : BasePermissionTest() {
     companion object {
@@ -49,13 +47,16 @@ class PermissionPolicyTest25 : BasePermissionTest() {
 
     @Test
     fun testNoProtectionFlagsAddedToNonSignatureProtectionPermissions() {
-        val future = startActivityForFuture(
-            Intent().apply {
-                component = ComponentName(
-                    APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.TestProtectionFlagsActivity"
-                )
-            }
-        )
+        val future =
+            startActivityForFuture(
+                Intent().apply {
+                    component =
+                        ComponentName(
+                            APP_PACKAGE_NAME,
+                            "$APP_PACKAGE_NAME.TestProtectionFlagsActivity"
+                        )
+                }
+            )
         val result = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         assertEquals(Activity.RESULT_OK, result.resultCode)
         assertEquals("", result.resultData!!.getStringExtra("$APP_PACKAGE_NAME.ERROR_MESSAGE"))

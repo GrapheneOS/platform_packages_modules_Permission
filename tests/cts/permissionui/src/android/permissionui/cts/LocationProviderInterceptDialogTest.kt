@@ -58,7 +58,8 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
         AppOpsUtils.setOpMode(
             MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME,
             AppOpsManager.OPSTR_MOCK_LOCATION,
-            AppOpsManager.MODE_ALLOWED)
+            AppOpsManager.MODE_ALLOWED
+        )
         enableMicrophoneAppAsLocationProvider()
     }
 
@@ -68,9 +69,7 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     fun clickLocationPermission_showDialog_clickOk() {
         openPermissionScreenForApp()
         clickAndWaitForWindowTransition(By.text("Location"))
-        findView(
-            By.textContains("Location access can be modified from location settings"),
-            true)
+        findView(By.textContains("Location access can be modified from location settings"), true)
         click(By.res(OK_BUTTON_RES))
     }
 
@@ -80,9 +79,7 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     fun clickLocationPermission_showDialog_clickLocationAccess() {
         openPermissionScreenForApp()
         clickAndWaitForWindowTransition(By.text("Location"))
-        findView(
-            By.textContains("Location access can be modified from location settings"),
-            true)
+        findView(By.textContains("Location access can be modified from location settings"), true)
         clickAndWaitForWindowTransition(By.res(LOCATION_ACCESS_BUTTON_RES))
         findView(By.res(USE_LOCATION_LABEL_ID), true)
     }
@@ -91,9 +88,11 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
     @Ignore("b/288471744")
     @MtsIgnore(bugId = 288471744)
     fun checkRestrictedPermissions() {
-        context.sendBroadcast(Intent(PermissionTapjackingTest.ACTION_SHOW_OVERLAY)
-            .putExtra("package", MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
-            .putExtra("permission", "android.permission.BACKGROUND_CAMERA"))
+        context.sendBroadcast(
+            Intent(PermissionTapjackingTest.ACTION_SHOW_OVERLAY)
+                .putExtra("package", MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
+                .putExtra("permission", "android.permission.BACKGROUND_CAMERA")
+        )
     }
 
     private fun openPermissionScreenForApp() {
@@ -123,19 +122,21 @@ class LocationProviderInterceptDialogTest : BaseUsePermissionTest() {
                     component =
                         ComponentName(
                             MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME,
-                            "$MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME.AddLocationProviderActivity")
-                })
+                            "$MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME.AddLocationProviderActivity"
+                        )
+                }
+            )
         val result = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
         Assert.assertEquals(Activity.RESULT_OK, result.resultCode)
         Assert.assertTrue(
             SystemUtil.callWithShellPermissionIdentity {
                 locationManager.isProviderPackage(MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME)
-            })
+            }
+        )
     }
 
     companion object {
-        private const val USE_LOCATION_LABEL_ID =
-            "com.android.settings:id/switch_text"
+        private const val USE_LOCATION_LABEL_ID = "com.android.settings:id/switch_text"
         private const val MIC_LOCATION_PROVIDER_APP_APK_PATH =
             "$APK_DIRECTORY/CtsAccessMicrophoneAppLocationProvider.apk"
         private const val MIC_LOCATION_PROVIDER_APP_PACKAGE_NAME =

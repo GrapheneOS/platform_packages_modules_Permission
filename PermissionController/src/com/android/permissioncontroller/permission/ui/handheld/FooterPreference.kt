@@ -28,10 +28,10 @@ import com.android.permissioncontroller.R
  * placement.
  */
 class FooterPreference : Preference {
-    constructor(c: Context): super(c)
-    constructor(c: Context, a: AttributeSet): super(c, a)
-    constructor(c: Context, a: AttributeSet, attr: Int): super(c, a, attr)
-    constructor(c: Context, a: AttributeSet, attr: Int, res: Int): super(c, a, attr, res)
+    constructor(c: Context) : super(c)
+    constructor(c: Context, a: AttributeSet) : super(c, a)
+    constructor(c: Context, a: AttributeSet, attr: Int) : super(c, a, attr)
+    constructor(c: Context, a: AttributeSet, attr: Int, res: Int) : super(c, a, attr, res)
 
     init {
         layoutResource = R.layout.footer_preference

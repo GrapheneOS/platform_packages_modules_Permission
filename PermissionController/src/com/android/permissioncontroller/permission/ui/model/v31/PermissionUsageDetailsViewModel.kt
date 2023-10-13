@@ -109,14 +109,19 @@ class PermissionUsageDetailsViewModel(
             }
         val startTime =
             (System.currentTimeMillis() - showPermissionUsagesDuration).coerceAtLeast(
-                Instant.EPOCH.toEpochMilli())
+                Instant.EPOCH.toEpochMilli()
+            )
 
         return PermissionUsageDetailsUiInfo(
             show7Days,
             showSystem,
             buildAppPermissionAccessUiInfoList(
-                allLightHistoricalPackageOpsLiveData, startTime, showSystem),
-            containsSystemAppUsages(allLightHistoricalPackageOpsLiveData, startTime))
+                allLightHistoricalPackageOpsLiveData,
+                startTime,
+                showSystem
+            ),
+            containsSystemAppUsages(allLightHistoricalPackageOpsLiveData, startTime)
+        )
     }
 
     /**
@@ -162,9 +167,11 @@ class PermissionUsageDetailsViewModel(
         // The Telecom doesn't request microphone or camera permissions. However, telecom app may
         // use these permissions and they are considered system app permissions, so we return true
         // even if the AppPermGroupUiInfo is unavailable.
-        if (appPermissionId.packageName == TELECOM_PACKAGE &&
-            (appPermissionId.permissionGroup == Manifest.permission_group.CAMERA ||
-                appPermissionId.permissionGroup == Manifest.permission_group.MICROPHONE)) {
+        if (
+            appPermissionId.packageName == TELECOM_PACKAGE &&
+                (appPermissionId.permissionGroup == Manifest.permission_group.CAMERA ||
+                    appPermissionId.permissionGroup == Manifest.permission_group.MICROPHONE)
+        ) {
             return true
         }
         return false
@@ -244,7 +251,8 @@ class PermissionUsageDetailsViewModel(
                     it.appPermissionId,
                     it.attributionLabel,
                     it.attributionTags,
-                    updatedDiscreteAccesses)
+                    updatedDiscreteAccesses
+                )
         }
 
     /** Filters out data for apps and permissions that don't need to be displayed in the UI. */
@@ -268,7 +276,8 @@ class PermissionUsageDetailsViewModel(
             this.appPermissionId,
             Resources.ID_NULL,
             attributionTags = emptyList(),
-            this.discreteAccesses)
+            this.discreteAccesses
+        )
 
     /** Groups tag-attributed accesses for the provided app and permission by attribution label. */
     private fun AttributedAppPermissionDiscreteAccesses.groupAccessesByLabel(
@@ -307,7 +316,9 @@ class PermissionUsageDetailsViewModel(
                     appPermissionId,
                     label,
                     tags,
-                    discreteAccesses.sortedBy { -1 * it.accessTimeMs }))
+                    discreteAccesses.sortedBy { -1 * it.accessTimeMs }
+                )
+            )
         }
 
         return appPermissionDiscreteAccessWithLabels
@@ -334,7 +345,9 @@ class PermissionUsageDetailsViewModel(
                         appPermAccesses.appPermissionId,
                         appPermAccesses.attributionLabel,
                         appPermAccesses.attributionTags,
-                        currentDiscreteAccesses.toMutableList()))
+                        currentDiscreteAccesses.toMutableList()
+                    )
+                )
                 currentDiscreteAccesses.clear()
                 currentDiscreteAccesses.add(discreteAccess)
             } else {
@@ -348,7 +361,9 @@ class PermissionUsageDetailsViewModel(
                     appPermAccesses.appPermissionId,
                     appPermAccesses.attributionLabel,
                     appPermAccesses.attributionTags,
-                    currentDiscreteAccesses.toMutableList()))
+                    currentDiscreteAccesses.toMutableList()
+                )
+            )
         }
         return clusters
     }
@@ -389,7 +404,8 @@ class PermissionUsageDetailsViewModel(
             this.discreteAccesses.first().accessTimeMs,
             summary,
             showingSubAttribution,
-            ArrayList(this.attributionTags))
+            ArrayList(this.attributionTags)
+        )
     }
 
     /** Builds a summary of the permission access. */
@@ -410,10 +426,14 @@ class PermissionUsageDetailsViewModel(
                     R.string.history_preference_subtext_3,
                     subTextStrings[0],
                     subTextStrings[1],
-                    subTextStrings[2])
+                    subTextStrings[2]
+                )
             2 ->
                 context.getString(
-                    R.string.history_preference_subtext_2, subTextStrings[0], subTextStrings[1])
+                    R.string.history_preference_subtext_2,
+                    subTextStrings[0],
+                    subTextStrings[1]
+                )
             1 -> subTextStrings[0]
             else -> null
         }
@@ -464,7 +484,8 @@ class PermissionUsageDetailsViewModel(
                 getPackageLabel(
                     PermissionControllerApplication.get(),
                     it.proxy!!.packageName!!,
-                    UserHandle.getUserHandleForUid(it.proxy.uid))
+                    UserHandle.getUserHandleForUid(it.proxy.uid)
+                )
             }
 
     /** Returns the attribution label for the permission access, if any. */
@@ -593,13 +614,17 @@ class PermissionUsageDetailsViewModel(
                 setSourcesToDifference(
                     appPermissionIds,
                     appPermGroupUiInfoLiveDataList,
-                    getAppPermGroupUiInfoLiveData) {
-                        update()
-                    }
+                    getAppPermGroupUiInfoLiveData
+                ) {
+                    update()
+                }
                 setSourcesToDifference(
-                    allPackages, lightPackageInfoLiveDataMap, getLightPackageInfoLiveData) {
-                        update()
-                    }
+                    allPackages,
+                    lightPackageInfoLiveDataMap,
+                    getLightPackageInfoLiveData
+                ) {
+                    update()
+                }
 
                 if (appPermGroupUiInfoLiveDataList.any { it.value.isStale }) {
                     return
@@ -629,7 +654,8 @@ class PermissionUsageDetailsViewModel(
             listOf(
                     Manifest.permission_group.CAMERA,
                     Manifest.permission_group.LOCATION,
-                    Manifest.permission_group.MICROPHONE)
+                    Manifest.permission_group.MICROPHONE
+                )
                 .flatMap { group -> PermissionMapping.getPlatformPermissionNamesOfGroup(group) }
                 .mapNotNull { permName -> AppOpsManager.permissionToOp(permName) }
                 .toMutableSet()
@@ -659,7 +685,8 @@ class PermissionUsageDetailsViewModel(
                 accessStartTime,
                 accessEndTime,
                 showingAttribution,
-                attributionTags)
+                attributionTags
+            )
                 ?: getDefaultManageAppPermissionsIntent(packageName, userHandle)
         }
 
@@ -692,11 +719,16 @@ class PermissionUsageDetailsViewModel(
                 }
             val resolveInfo =
                 context.packageManager.resolveActivity(
-                    intent, PackageManager.ResolveInfoFlags.of(0))
-            if (resolveInfo?.activityInfo == null ||
-                !Objects.equals(
-                    resolveInfo.activityInfo.permission,
-                    Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                    intent,
+                    PackageManager.ResolveInfoFlags.of(0)
+                )
+            if (
+                resolveInfo?.activityInfo == null ||
+                    !Objects.equals(
+                        resolveInfo.activityInfo.permission,
+                        Manifest.permission.START_VIEW_PERMISSION_USAGE
+                    )
+            ) {
                 return null
             }
             intent.component = ComponentName(packageName, resolveInfo.activityInfo.name)

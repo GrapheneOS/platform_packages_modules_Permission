@@ -16,18 +16,12 @@
 
 package com.android.permissioncontroller.permission.utils
 
-/**
- * Interface for system time components.
- */
+/** Interface for system time components. */
 interface TimeSource {
 
-    /**
-     * Returns the current time in milliseconds.
-     */
+    /** Returns the current time in milliseconds. */
     fun currentTimeMillis(): Long
 
-    /**
-     * Returns milliseconds since boot, including time spent in sleep.
-     */
+    /** Returns milliseconds since boot, including time spent in sleep. */
     fun elapsedRealtime(): Long
 }

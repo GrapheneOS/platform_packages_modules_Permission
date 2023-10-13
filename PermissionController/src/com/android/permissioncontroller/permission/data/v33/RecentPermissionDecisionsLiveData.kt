@@ -20,8 +20,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
-import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.service.PermissionEventStorage
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import kotlinx.coroutines.Job
 
 /** Gets all recent permission decisions made by the user. */
@@ -39,8 +39,6 @@ class RecentPermissionDecisionsLiveData(
 
         // no need to subscribe to decision changes, since those will also be bubbled up through
         // package info changes
-        recentDecisionsStorage.loadEvents().also {
-            postValue(it)
-        }
+        recentDecisionsStorage.loadEvents().also { postValue(it) }
     }
 }

@@ -21,18 +21,13 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 
-/**
- * Singleton of all supported [PermissionEventStorage] on the device.
- */
+/** Singleton of all supported [PermissionEventStorage] on the device. */
 class PermissionEventStorageImpls {
     companion object {
-        @Volatile
-        private var INSTANCE: List<PermissionEventStorage<out PermissionEvent>>? = null
+        @Volatile private var INSTANCE: List<PermissionEventStorage<out PermissionEvent>>? = null
 
         fun getInstance(): List<PermissionEventStorage<out PermissionEvent>> =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: createInstance().also { INSTANCE = it }
-            }
+            INSTANCE ?: synchronized(this) { INSTANCE ?: createInstance().also { INSTANCE = it } }
 
         @SuppressLint("NewApi")
         private fun createInstance(): List<PermissionEventStorage<out PermissionEvent>> {

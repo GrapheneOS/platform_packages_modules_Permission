@@ -22,8 +22,8 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -74,18 +74,15 @@ fun ScrollableScreen(
 
     MaterialTheme {
         Scaffold(
-            modifier = Modifier.onRotaryScrollEvent {
-                coroutineScope.launch {
-                    listState.scrollBy(it.verticalScrollPixels)
-                }
-                true
-            }
-                .focusRequester(focusRequester)
-                .focusable(),
+            modifier =
+                Modifier.onRotaryScrollEvent {
+                        coroutineScope.launch { listState.scrollBy(it.verticalScrollPixels) }
+                        true
+                    }
+                    .focusRequester(focusRequester)
+                    .focusable(),
             timeText = {
-                // TODO(b/302002254): Temperately skip broken library. Please revert back once
-                // b/300996348 is resolved.
-                if (false && showTimeText && !isLoading) {
+                if (showTimeText && !isLoading) {
                     TimeText(
                         modifier = Modifier.scrollAway(listState),
                         contentPadding = PaddingValues(15.dp)
@@ -101,14 +98,11 @@ fun ScrollableScreen(
                 } else {
                     ScalingLazyColumn(
                         state = listState,
-                        // Set autoCentering to null to avoid adding extra padding based on the content.
+                        // Set autoCentering to null to avoid adding extra padding based on the
+                        // content.
                         autoCentering = null,
-                        contentPadding = PaddingValues(
-                            start = 10.dp,
-                            end = 10.dp,
-                            top = 32.dp,
-                            bottom = 70.dp
-                        )
+                        contentPadding =
+                            PaddingValues(start = 10.dp, end = 10.dp, top = 32.dp, bottom = 70.dp)
                     ) {
                         image?.let {
                             when (image) {
@@ -126,16 +120,11 @@ fun ScrollableScreen(
                                             contentDescription = null
                                         )
                                     }
-                                else -> {
-                                }
+                                else -> {}
                             }
                         }
                         if (title != null) {
-                            item {
-                                ListHeader {
-                                    Text(text = title, textAlign = TextAlign.Center)
-                                }
-                            }
+                            item { ListHeader { Text(text = title, textAlign = TextAlign.Center) } }
                         }
                         if (subtitle != null) {
                             item {

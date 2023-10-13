@@ -34,8 +34,8 @@ import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewMo
 
 /**
  * This is a condensed version of
- * [com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment],
- * tailored for Wear.
+ * [com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment], tailored for
+ * Wear.
  *
  * Show and manage apps which request a single permission group.
  *
@@ -49,26 +49,21 @@ class WearPermissionAppsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val permGroupName = arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
-            ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
-            ?: throw RuntimeException("Permission group name must not be null.")
+        val permGroupName =
+            arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
+                ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
+                    ?: throw RuntimeException("Permission group name must not be null.")
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
-        val isStorageAndLessThanT = !SdkLevel.isAtLeastT() &&
-                permGroupName == Manifest.permission_group.STORAGE
+        val isStorageAndLessThanT =
+            !SdkLevel.isAtLeastT() && permGroupName == Manifest.permission_group.STORAGE
 
         val activity = requireActivity()
-        val factory = PermissionAppsViewModelFactory(
-            activity.getApplication(),
-            permGroupName,
-            this,
-            Bundle()
-        )
-        val viewModel =
-            ViewModelProvider(this, factory).get(PermissionAppsViewModel::class.java)
+        val factory =
+            PermissionAppsViewModelFactory(activity.getApplication(), permGroupName, this, Bundle())
+        val viewModel = ViewModelProvider(this, factory).get(PermissionAppsViewModel::class.java)
 
-        val onAppClick: (String, UserHandle, String) -> Unit = {
-                packageName, user, category ->
+        val onAppClick: (String, UserHandle, String) -> Unit = { packageName, user, category ->
             run {
                 viewModel.navigateToAppPermission(
                     this,
@@ -88,19 +83,24 @@ class WearPermissionAppsFragment : Fragment() {
         }
 
         val onShowSystemClick: (Boolean) -> Unit = { showSystem ->
-            run {
-                viewModel.updateShowSystem(showSystem)
-            }
+            run { viewModel.updateShowSystem(showSystem) }
         }
 
         val logPermissionAppsFragmentCreated:
-                    (String, UserHandle, Long, Boolean, Boolean, Boolean) -> Unit =
+            (String, UserHandle, Long, Boolean, Boolean, Boolean) -> Unit =
             { packageName, user, viewId, isAllowed, isAllowedForeground, isDenied ->
                 run {
                     viewModel.logPermissionAppsFragmentCreated(
-                        packageName, user, viewId, isAllowed,
-                        isAllowedForeground, isDenied, sessionId, activity.getApplication(),
-                        permGroupName, LOG_TAG
+                        packageName,
+                        user,
+                        viewId,
+                        isAllowed,
+                        isAllowedForeground,
+                        isDenied,
+                        sessionId,
+                        activity.getApplication(),
+                        permGroupName,
+                        LOG_TAG
                     )
                 }
             }

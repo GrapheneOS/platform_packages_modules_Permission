@@ -40,14 +40,16 @@ class TextStorageRepository(private val file: File) : PrivacySourceStorageReposi
     override fun <T> readData(creator: PrivacySourceData.Creator<T>): List<T> {
         try {
             BufferedReader(FileReader(file)).useLines { lines ->
-                return lines.mapNotNull {
-                    try {
-                        creator.fromStorageData(it)
-                    } catch (ex: Exception) {
-                        Log.e(LOG_TAG, "corrupted data : $it in file ${file.absolutePath}", ex)
-                        null
+                return lines
+                    .mapNotNull {
+                        try {
+                            creator.fromStorageData(it)
+                        } catch (ex: Exception) {
+                            Log.e(LOG_TAG, "corrupted data : $it in file ${file.absolutePath}", ex)
+                            null
+                        }
                     }
-                }.toList()
+                    .toList()
             }
         } catch (ignored: FileNotFoundException) {
             Log.e(LOG_TAG, "Could not find file ${file.absolutePath}")

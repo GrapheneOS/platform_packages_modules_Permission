@@ -28,14 +28,12 @@ import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment.Companion.INFO_MSG_CATEGORY
 
-/**
- * Handheld wrapper, with customizations, around [UnusedAppsFragment].
- */
-class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
-    UnusedAppsFragment.Parent<UnusedAppPreference> {
+/** Handheld wrapper, with customizations, around [UnusedAppsFragment]. */
+class HandheldUnusedAppsFragment :
+    PermissionsFrameFragment(), UnusedAppsFragment.Parent<UnusedAppPreference> {
 
     companion object {
-        /** Create a new instance of this fragment.  */
+        /** Create a new instance of this fragment. */
         @JvmStatic
         fun newInstance(): HandheldUnusedAppsFragment {
             return HandheldUnusedAppsFragment()
@@ -55,15 +53,12 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState == null) {
-            val fragment:
-                UnusedAppsFragment<HandheldUnusedAppsFragment, UnusedAppPreference> =
+            val fragment: UnusedAppsFragment<HandheldUnusedAppsFragment, UnusedAppPreference> =
                 UnusedAppsFragment.newInstance()
             fragment.arguments = arguments
             // child fragment does not have its own UI - it will add to the preferences of this
             // parent fragment
-            childFragmentManager.beginTransaction()
-                .add(fragment, null)
-                .commit()
+            childFragmentManager.beginTransaction().add(fragment, null).commit()
         }
     }
 
@@ -113,7 +108,7 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
 
     override fun setEmptyState(empty: Boolean) {
         val infoMsgCategory =
-                preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
+            preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
         infoMsgCategory.isVisible = !empty
     }
 }

@@ -36,13 +36,10 @@ class AppPermissionGroupsRevokeDialogViewModel : ViewModel() {
     }
 }
 
-/**
- * Factory for an AppPermissionGroupsRevokeDialogViewModel
- */
+/** Factory for an AppPermissionGroupsRevokeDialogViewModel */
 class AppPermissionGroupsRevokeDialogViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return AppPermissionGroupsRevokeDialogViewModel() as T
+        @Suppress("UNCHECKED_CAST") return AppPermissionGroupsRevokeDialogViewModel() as T
     }
 }
 

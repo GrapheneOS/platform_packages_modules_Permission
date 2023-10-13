@@ -50,8 +50,8 @@ import com.android.permissioncontroller.R
 /**
  * This component is an alternative to [Chip], providing the following:
  * - a convenient way of providing a label and a secondary label;
- * - a convenient way of providing an icon, and choosing their size based on the
- * sizes recommended by the Wear guidelines;
+ * - a convenient way of providing an icon, and choosing their size based on the sizes recommended
+ *   by the Wear guidelines;
  */
 @Composable
 public fun Chip(
@@ -72,16 +72,15 @@ public fun Chip(
     val iconParam: (@Composable BoxScope.() -> Unit)? =
         icon?.let {
             {
-                val iconSize = if (largeIcon) {
-                    ChipDefaults.LargeIconSize
-                } else {
-                    ChipDefaults.IconSize
-                }
+                val iconSize =
+                    if (largeIcon) {
+                        ChipDefaults.LargeIconSize
+                    } else {
+                        ChipDefaults.IconSize
+                    }
 
                 Row {
-                    val iconModifier = Modifier
-                        .size(iconSize)
-                        .clip(CircleShape)
+                    val iconModifier = Modifier.size(iconSize).clip(CircleShape)
                     when (icon) {
                         is ImageVector ->
                             Icon(
@@ -90,7 +89,6 @@ public fun Chip(
                                 contentDescription = iconContentDescription,
                                 modifier = iconModifier
                             )
-
                         is Int ->
                             Icon(
                                 painter = painterResource(id = icon),
@@ -105,8 +103,7 @@ public fun Chip(
                                 contentDescription = iconContentDescription,
                                 modifier = iconModifier
                             )
-                        else -> {
-                        }
+                        else -> {}
                     }
                 }
             }
@@ -130,8 +127,8 @@ public fun Chip(
 /**
  * This component is an alternative to [Chip], providing the following:
  * - a convenient way of providing a label and a secondary label;
- * - a convenient way of providing an icon, and choosing their size based on the
- * sizes recommended by the Wear guidelines;
+ * - a convenient way of providing an icon, and choosing their size based on the sizes recommended
+ *   by the Wear guidelines;
  */
 @Composable
 public fun Chip(
@@ -186,18 +183,17 @@ public fun Chip(
     val hasSecondaryLabel = secondaryLabel != null
     val hasIcon = icon != null
 
-    val labelParam: (@Composable RowScope.() -> Unit) =
-        {
-            Text(
-                text = label,
-                color = textColor,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
-                style = MaterialTheme.typography.button
-            )
-        }
+    val labelParam: (@Composable RowScope.() -> Unit) = {
+        Text(
+            text = label,
+            color = textColor,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
+            style = MaterialTheme.typography.button
+        )
+    }
 
     val secondaryLabelParam: (@Composable RowScope.() -> Unit)? =
         secondaryLabel?.let {
@@ -212,24 +208,26 @@ public fun Chip(
             }
         }
 
-    val contentPadding = if (largeIcon) {
-        val verticalPadding = ChipDefaults.ChipVerticalPadding
-        PaddingValues(
-            start = 10.dp,
-            top = verticalPadding,
-            end = ChipDefaults.ChipHorizontalPadding,
-            bottom = verticalPadding
-        )
-    } else {
-        ChipDefaults.ContentPadding
-    }
+    val contentPadding =
+        if (largeIcon) {
+            val verticalPadding = ChipDefaults.ChipVerticalPadding
+            PaddingValues(
+                start = 10.dp,
+                top = verticalPadding,
+                end = ChipDefaults.ChipHorizontalPadding,
+                bottom = verticalPadding
+            )
+        } else {
+            ChipDefaults.ContentPadding
+        }
 
     Chip(
         label = labelParam,
         onClick = onClick,
-        modifier = modifier
-            .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
-            .fillMaxWidth(),
+        modifier =
+            modifier
+                .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
+                .fillMaxWidth(),
         secondaryLabel = secondaryLabelParam,
         icon = icon,
         colors = colors,
@@ -238,17 +236,12 @@ public fun Chip(
     )
 }
 
-/**
- * Default colors of a Chip.
- */
-@Composable
-fun chipDefaultColors(): ChipColors =
-    ChipDefaults.secondaryChipColors()
+/** Default colors of a Chip. */
+@Composable fun chipDefaultColors(): ChipColors = ChipDefaults.secondaryChipColors()
 
 /**
- * ChipColors that disabled alpha is applied based on [ChipDefaults.secondaryChipColors()].
- * It is used for a Chip which would like to respond to click events,
- * meanwhile it seems disabled.
+ * ChipColors that disabled alpha is applied based on [ChipDefaults.secondaryChipColors()]. It is
+ * used for a Chip which would like to respond to click events, meanwhile it seems disabled.
  */
 @Composable
 fun chipDisabledColors(): ChipColors {

@@ -29,9 +29,7 @@ import com.android.settingslib.utils.applications.AppUtils
 import java.text.Collator
 import java.util.Random
 
-/**
- * Helper class for WearPermissionsAppScreen.
- */
+/** Helper class for WearPermissionsAppScreen. */
 class WearPermissionAppsHelper(
     val application: Application,
     val permGroupName: String,
@@ -61,21 +59,23 @@ class WearPermissionAppsHelper(
             if (category == Category.ALLOWED && isStorageAndLessThanT) {
                 val allowedList = categorizedApps[Category.ALLOWED]
                 if (!allowedList.isNullOrEmpty()) {
-                    allowedList.partition { p ->
-                        viewModel.packageHasFullStorage(
-                            p.first,
-                            p.second
-                        )
-                    }.let {
-                        if (it.first.isNotEmpty()) {
-                            chipsByCategory[STORAGE_ALLOWED_FULL] =
-                                convertToChips(category, it.first, viewIdForLogging, comparator)
+                    allowedList
+                        .partition { p -> viewModel.packageHasFullStorage(p.first, p.second) }
+                        .let {
+                            if (it.first.isNotEmpty()) {
+                                chipsByCategory[STORAGE_ALLOWED_FULL] =
+                                    convertToChips(category, it.first, viewIdForLogging, comparator)
+                            }
+                            if (it.second.isNotEmpty()) {
+                                chipsByCategory[STORAGE_ALLOWED_SCOPED] =
+                                    convertToChips(
+                                        category,
+                                        it.second,
+                                        viewIdForLogging,
+                                        comparator
+                                    )
+                            }
                         }
-                        if (it.second.isNotEmpty()) {
-                            chipsByCategory[STORAGE_ALLOWED_SCOPED] =
-                                convertToChips(category, it.second, viewIdForLogging, comparator)
-                        }
-                    }
                 }
                 continue
             }
@@ -97,16 +97,19 @@ class WearPermissionAppsHelper(
         viewIdForLogging: Long,
         comparator: Comparator<ChipInfo>
     ) =
-        list.map { p ->
-            createAppChipInfo(
-                application,
-                p.first,
-                p.second,
-                category,
-                onAppClick,
-                viewIdForLogging
-            )
-        }.sortedWith(comparator).toMutableList()
+        list
+            .map { p ->
+                createAppChipInfo(
+                    application,
+                    p.first,
+                    p.second,
+                    category,
+                    onAppClick,
+                    viewIdForLogging
+                )
+            }
+            .sortedWith(comparator)
+            .toMutableList()
 
     fun setCreationLogged(isLogged: Boolean) {
         viewModel.creationLogged = isLogged
@@ -132,11 +135,8 @@ class WearPermissionAppsHelper(
         }
         return ChipInfo(
             title = KotlinUtils.getPackageLabel(application, packageName, user),
-            contentDescription = AppUtils.getAppContentDescription(
-                application,
-                packageName,
-                user.getIdentifier()
-            ),
+            contentDescription =
+                AppUtils.getAppContentDescription(application, packageName, user.getIdentifier()),
             icon = KotlinUtils.getBadgedPackageIcon(application, packageName, user),
             onClick = { onClick(packageName, user, category.categoryName) }
         )
@@ -169,12 +169,10 @@ class WearPermissionAppsHelper(
         titleResId: Int
     ) {
         if (chipsByCategory[categoryName].isNullOrEmpty()) {
-            chipsByCategory[categoryName] = mutableListOf(
-                ChipInfo(
-                    title = application.resources.getString(titleResId),
-                    enabled = false
+            chipsByCategory[categoryName] =
+                mutableListOf(
+                    ChipInfo(title = application.resources.getString(titleResId), enabled = false)
                 )
-            )
         }
     }
 
@@ -192,9 +190,7 @@ class ChipInfo(
     val enabled: Boolean = true
 )
 
-internal class ChipComparator(
-    val collator: Collator
-) : Comparator<ChipInfo> {
+internal class ChipComparator(val collator: Collator) : Comparator<ChipInfo> {
     override fun compare(lhs: ChipInfo, rhs: ChipInfo): Int {
         var result = collator.compare(lhs.title, rhs.title)
         if (result == 0) {

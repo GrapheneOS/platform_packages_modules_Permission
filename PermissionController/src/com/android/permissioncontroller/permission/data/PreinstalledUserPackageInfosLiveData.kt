@@ -33,23 +33,23 @@ import kotlinx.coroutines.Job
  * @param app The current application
  * @param user The user whose packages are desired
  */
-class PreinstalledUserPackageInfosLiveData private constructor(
-    private val app: Application,
-    private val user: UserHandle
-) : SmartAsyncMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards List<LightPackageInfo>>(
-    isStaticVal = true, alwaysUpdateOnActive = false
-) {
+class PreinstalledUserPackageInfosLiveData
+private constructor(private val app: Application, private val user: UserHandle) :
+    SmartAsyncMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards List<LightPackageInfo>>(
+        isStaticVal = true,
+        alwaysUpdateOnActive = false
+    ) {
 
-    /**
-     * Get all of the preinstalled packages in the system for this user
-     */
+    /** Get all of the preinstalled packages in the system for this user */
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
             return
         }
-        val packageInfos = app.applicationContext.packageManager
-                .getInstalledPackagesAsUser(GET_PERMISSIONS or MATCH_UNINSTALLED_PACKAGES
-                        or MATCH_FACTORY_ONLY, user.identifier)
+        val packageInfos =
+            app.applicationContext.packageManager.getInstalledPackagesAsUser(
+                GET_PERMISSIONS or MATCH_UNINSTALLED_PACKAGES or MATCH_FACTORY_ONLY,
+                user.identifier
+            )
         postValue(packageInfos.map { packageInfo -> LightPackageInfo(packageInfo) })
     }
 

@@ -49,27 +49,29 @@ class WearDefaultAppFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val roleName = arguments?.getString(Intent.EXTRA_ROLE_NAME) ?: ""
-        val user = arguments?.let {
-            BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)!!
-        } ?: UserHandle.SYSTEM
+        val user =
+            arguments?.let {
+                BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)!!
+            }
+                ?: UserHandle.SYSTEM
 
         val activity = requireActivity()
-        role = Roles.get(activity)[roleName] ?: let {
-            Log.e(TAG, "Unknown role: $roleName")
-            activity.finish()
-            return null
-        }
+        role =
+            Roles.get(activity)[roleName]
+                ?: let {
+                    Log.e(TAG, "Unknown role: $roleName")
+                    activity.finish()
+                    return null
+                }
 
-        viewModel = ViewModelProvider(
-            this,
-            DefaultAppViewModel.Factory(role, user, activity.application)
-        ).get(DefaultAppViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, DefaultAppViewModel.Factory(role, user, activity.application))
+                .get(DefaultAppViewModel::class.java)
         viewModel.manageRoleHolderStateLiveData.observe(this, this::onManageRoleHolderStateChanged)
 
-        val confirmDialogViewModel = ViewModelProvider(
-            this,
-            DefaultAppConfirmDialogViewModelFactory()
-        ).get(DefaultAppConfirmDialogViewModel::class.java)
+        val confirmDialogViewModel =
+            ViewModelProvider(this, DefaultAppConfirmDialogViewModelFactory())
+                .get(DefaultAppConfirmDialogViewModel::class.java)
 
         return ComposeView(activity).apply {
             setContent {
@@ -90,7 +92,6 @@ class WearDefaultAppFragment : Fragment() {
                 }
                 liveData.resetState()
             }
-
             ManageRoleHolderStateLiveData.STATE_FAILURE -> liveData.resetState()
         }
     }
@@ -98,15 +99,14 @@ class WearDefaultAppFragment : Fragment() {
     companion object {
         const val TAG = "WearDefaultAppFragment"
 
-        /**
-         * Creates a new instance of [WearDefaultAppFragment].
-         */
+        /** Creates a new instance of [WearDefaultAppFragment]. */
         fun newInstance(roleName: String, user: UserHandle): WearDefaultAppFragment {
             return WearDefaultAppFragment().apply {
-                arguments = Bundle().apply {
-                    putString(Intent.EXTRA_ROLE_NAME, roleName)
-                    putParcelable(Intent.EXTRA_USER, user)
-                }
+                arguments =
+                    Bundle().apply {
+                        putString(Intent.EXTRA_ROLE_NAME, roleName)
+                        putParcelable(Intent.EXTRA_USER, user)
+                    }
             }
         }
     }

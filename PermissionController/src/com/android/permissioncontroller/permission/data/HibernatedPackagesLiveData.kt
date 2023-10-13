@@ -25,17 +25,12 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils.getUserContext
 import kotlinx.coroutines.Job
 
-/**
- * Tracks which packages have been hibernated.
- */
-object HibernatedPackagesLiveData
-    : SmartAsyncMediatorLiveData<Set<Pair<String, UserHandle>>>() {
+/** Tracks which packages have been hibernated. */
+object HibernatedPackagesLiveData : SmartAsyncMediatorLiveData<Set<Pair<String, UserHandle>>>() {
     private val LOG_TAG = HibernatedPackagesLiveData::class.java.simpleName
 
     init {
-        addSource(AllPackageInfosLiveData) {
-            update()
-        }
+        addSource(AllPackageInfosLiveData) { update() }
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
@@ -57,8 +52,10 @@ object HibernatedPackagesLiveData
                         hibernatingPackages.add(pkg.packageName to user)
                     }
                 } catch (e: Exception) {
-                    DumpableLog.e(LOG_TAG,
-                        "Failed to get hibernation state of package: ${pkg.packageName}")
+                    DumpableLog.e(
+                        LOG_TAG,
+                        "Failed to get hibernation state of package: ${pkg.packageName}"
+                    )
                 }
             }
         }
@@ -69,25 +66,23 @@ object HibernatedPackagesLiveData
     }
 }
 
-private val hibernatedOrRevokedPackagesLiveData = object
-    : SmartUpdateMediatorLiveData<Set<Pair<String, UserHandle>>>() {
+private val hibernatedOrRevokedPackagesLiveData =
+    object : SmartUpdateMediatorLiveData<Set<Pair<String, UserHandle>>>() {
 
-    init {
-        addSource(AutoRevokedPackagesLiveData) {
-            update()
+        init {
+            addSource(AutoRevokedPackagesLiveData) { update() }
+            addSource(HibernatedPackagesLiveData) { update() }
         }
-        addSource(HibernatedPackagesLiveData) {
-            update()
+
+        override fun onUpdate() {
+            if (
+                !AutoRevokedPackagesLiveData.isInitialized ||
+                    !HibernatedPackagesLiveData.isInitialized
+            ) {
+                return
+            }
+            value = AutoRevokedPackagesLiveData.value!!.keys + HibernatedPackagesLiveData.value!!
         }
     }
-
-    override fun onUpdate() {
-        if (!AutoRevokedPackagesLiveData.isInitialized ||
-            !HibernatedPackagesLiveData.isInitialized) {
-            return
-        }
-        value = AutoRevokedPackagesLiveData.value!!.keys + HibernatedPackagesLiveData.value!!
-    }
-}
 val unusedHibernatedOrRevokedPackagesLiveData =
     UnusedPackagesLiveData(hibernatedOrRevokedPackagesLiveData)

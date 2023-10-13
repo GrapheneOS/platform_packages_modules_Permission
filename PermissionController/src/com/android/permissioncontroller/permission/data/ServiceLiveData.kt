@@ -49,9 +49,10 @@ class ServiceLiveData(
     override val intentAction: String,
     private val permission: String,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<Set<String>>(),
-        PackageBroadcastReceiver.PackageBroadcastListener,
-        HasIntentAction {
+) :
+    SmartAsyncMediatorLiveData<Set<String>>(),
+    PackageBroadcastReceiver.PackageBroadcastListener,
+    HasIntentAction {
 
     private val name = intentAction.substringAfterLast(".")
 
@@ -60,7 +61,7 @@ class ServiceLiveData(
     private val enabledNotificationListenersLiveData = EnabledNotificationListenersLiveData[user]
     private val selectedWallpaperServiceLiveData = SelectedWallpaperServiceLiveData[user]
     private val selectedVoiceInteractionServiceLiveData =
-            SelectedVoiceInteractionServiceLiveData[user]
+        SelectedVoiceInteractionServiceLiveData[user]
     private val selectedAutofillServiceLiveData = SelectedAutofillServiceLiveData[user]
     private val enabledDreamServicesLiveData = EnabledDreamServicesLiveData[user]
     private val disabledPrintServicesLiveData = DisabledPrintServicesLiveData[user]
@@ -68,49 +69,31 @@ class ServiceLiveData(
 
     init {
         if (intentAction == AccessibilityService.SERVICE_INTERFACE) {
-            addSource(enabledAccessibilityServicesLiveData) {
-                updateAsync()
-            }
+            addSource(enabledAccessibilityServicesLiveData) { updateAsync() }
         }
         if (intentAction == InputMethod.SERVICE_INTERFACE) {
-            addSource(enabledInputMethodsLiveData) {
-                updateAsync()
-            }
+            addSource(enabledInputMethodsLiveData) { updateAsync() }
         }
         if (intentAction == NotificationListenerService.SERVICE_INTERFACE) {
-            addSource(enabledNotificationListenersLiveData) {
-                updateAsync()
-            }
+            addSource(enabledNotificationListenersLiveData) { updateAsync() }
         }
         if (intentAction == WallpaperService.SERVICE_INTERFACE) {
-            addSource(selectedWallpaperServiceLiveData) {
-                updateAsync()
-            }
+            addSource(selectedWallpaperServiceLiveData) { updateAsync() }
         }
         if (intentAction == VoiceInteractionService.SERVICE_INTERFACE) {
-            addSource(selectedVoiceInteractionServiceLiveData) {
-                updateAsync()
-            }
+            addSource(selectedVoiceInteractionServiceLiveData) { updateAsync() }
         }
         if (intentAction == AutofillService.SERVICE_INTERFACE) {
-            addSource(selectedAutofillServiceLiveData) {
-                updateAsync()
-            }
+            addSource(selectedAutofillServiceLiveData) { updateAsync() }
         }
         if (intentAction == DreamService.SERVICE_INTERFACE) {
-            addSource(enabledDreamServicesLiveData) {
-                updateAsync()
-            }
+            addSource(enabledDreamServicesLiveData) { updateAsync() }
         }
         if (intentAction == PrintService.SERVICE_INTERFACE) {
-            addSource(disabledPrintServicesLiveData) {
-                updateAsync()
-            }
+            addSource(disabledPrintServicesLiveData) { updateAsync() }
         }
         if (intentAction == DevicePolicyManager.ACTION_DEVICE_ADMIN_SERVICE) {
-            addSource(enabledDeviceAdminsLiveDataLiveData) {
-                updateAsync()
-            }
+            addSource(enabledDeviceAdminsLiveDataLiveData) { updateAsync() }
         }
     }
 
@@ -122,48 +105,69 @@ class ServiceLiveData(
         if (job.isCancelled) {
             return
         }
-        if (intentAction == AccessibilityService.SERVICE_INTERFACE &&
-                !enabledAccessibilityServicesLiveData.isInitialized) {
+        if (
+            intentAction == AccessibilityService.SERVICE_INTERFACE &&
+                !enabledAccessibilityServicesLiveData.isInitialized
+        ) {
             return
         }
-        if (intentAction == InputMethod.SERVICE_INTERFACE &&
-                !enabledInputMethodsLiveData.isInitialized) {
+        if (
+            intentAction == InputMethod.SERVICE_INTERFACE &&
+                !enabledInputMethodsLiveData.isInitialized
+        ) {
             return
         }
-        if (intentAction == NotificationListenerService.SERVICE_INTERFACE &&
-                !enabledNotificationListenersLiveData.isInitialized) {
-            return
-        }
-
-        if (intentAction == WallpaperService.SERVICE_INTERFACE &&
-                !selectedWallpaperServiceLiveData.isInitialized) {
-            return
-        }
-        if (intentAction == VoiceInteractionService.SERVICE_INTERFACE &&
-                !selectedVoiceInteractionServiceLiveData.isInitialized) {
-            return
-        }
-        if (intentAction == AutofillService.SERVICE_INTERFACE &&
-                !selectedAutofillServiceLiveData.isInitialized) {
-            return
-        }
-        if (intentAction == DreamService.SERVICE_INTERFACE &&
-                !enabledDreamServicesLiveData.isInitialized) {
-            return
-        }
-        if (intentAction == PrintService.SERVICE_INTERFACE &&
-                !disabledPrintServicesLiveData.isInitialized) {
-            return
-        }
-        if (intentAction == DevicePolicyManager.ACTION_DEVICE_ADMIN_SERVICE &&
-                !enabledDeviceAdminsLiveDataLiveData.isInitialized) {
+        if (
+            intentAction == NotificationListenerService.SERVICE_INTERFACE &&
+                !enabledNotificationListenersLiveData.isInitialized
+        ) {
             return
         }
 
-        val packageNames = getUserContext(app, user).packageManager
+        if (
+            intentAction == WallpaperService.SERVICE_INTERFACE &&
+                !selectedWallpaperServiceLiveData.isInitialized
+        ) {
+            return
+        }
+        if (
+            intentAction == VoiceInteractionService.SERVICE_INTERFACE &&
+                !selectedVoiceInteractionServiceLiveData.isInitialized
+        ) {
+            return
+        }
+        if (
+            intentAction == AutofillService.SERVICE_INTERFACE &&
+                !selectedAutofillServiceLiveData.isInitialized
+        ) {
+            return
+        }
+        if (
+            intentAction == DreamService.SERVICE_INTERFACE &&
+                !enabledDreamServicesLiveData.isInitialized
+        ) {
+            return
+        }
+        if (
+            intentAction == PrintService.SERVICE_INTERFACE &&
+                !disabledPrintServicesLiveData.isInitialized
+        ) {
+            return
+        }
+        if (
+            intentAction == DevicePolicyManager.ACTION_DEVICE_ADMIN_SERVICE &&
+                !enabledDeviceAdminsLiveDataLiveData.isInitialized
+        ) {
+            return
+        }
+
+        val packageNames =
+            getUserContext(app, user)
+                .packageManager
                 .queryIntentServices(
-                        Intent(intentAction),
-                        PackageManager.GET_SERVICES or PackageManager.GET_META_DATA)
+                    Intent(intentAction),
+                    PackageManager.GET_SERVICES or PackageManager.GET_META_DATA
+                )
                 .mapNotNull { resolveInfo ->
                     if (resolveInfo?.serviceInfo?.permission != permission) {
                         return@mapNotNull null
@@ -171,17 +175,19 @@ class ServiceLiveData(
                     val packageName = resolveInfo.serviceInfo?.packageName
                     if (!isServiceEnabled(packageName)) {
                         if (DEBUG_HIBERNATION_POLICY) {
-                            DumpableLog.i(LOG_TAG,
-                                    "Not exempting $packageName - not an active $name " +
-                                            "for u${user.identifier}")
+                            DumpableLog.i(
+                                LOG_TAG,
+                                "Not exempting $packageName - not an active $name " +
+                                    "for u${user.identifier}"
+                            )
                         }
                         return@mapNotNull null
                     }
                     packageName
-                }.toSet()
+                }
+                .toSet()
         if (DEBUG_HIBERNATION_POLICY) {
-            DumpableLog.i(LOG_TAG,
-                    "Detected ${name}s: $packageNames")
+            DumpableLog.i(LOG_TAG, "Detected ${name}s: $packageNames")
         }
 
         postValue(packageNames)
@@ -241,13 +247,17 @@ class ServiceLiveData(
      * <p> Key value is a (string service name, required permission, user) triple, value is its
      * corresponding LiveData.
      */
-    companion object : DataRepositoryForPackage<Triple<String, String, UserHandle>,
-            ServiceLiveData>() {
+    companion object :
+        DataRepositoryForPackage<Triple<String, String, UserHandle>, ServiceLiveData>() {
         private const val LOG_TAG = "ServiceLiveData"
 
         override fun newValue(key: Triple<String, String, UserHandle>): ServiceLiveData {
-            return ServiceLiveData(PermissionControllerApplication.get(),
-                    key.first, key.second, key.third)
+            return ServiceLiveData(
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second,
+                key.third
+            )
         }
     }
 }

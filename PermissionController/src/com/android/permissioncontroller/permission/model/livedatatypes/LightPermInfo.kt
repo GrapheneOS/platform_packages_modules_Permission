@@ -40,23 +40,29 @@ data class LightPermInfo(
     val protectionFlags: Int,
     val flags: Int
 ) {
-    constructor (permInfo: PermissionInfo): this(permInfo.name, permInfo.packageName,
-        permInfo.group, permInfo.backgroundPermission, permInfo.protection,
-        permInfo.protectionFlags, permInfo.flags)
+    constructor(
+        permInfo: PermissionInfo
+    ) : this(
+        permInfo.name,
+        permInfo.packageName,
+        permInfo.group,
+        permInfo.backgroundPermission,
+        permInfo.protection,
+        permInfo.protectionFlags,
+        permInfo.flags
+    )
 
     /**
      * Gets the PermissionInfo for this permission from the system.
      *
      * @param app The current application, which will be used to get the PermissionInfo
-     *
-     * @return The PermissionInfo corresponding to this permission, or null, if no
-     * such permission exists
+     * @return The PermissionInfo corresponding to this permission, or null, if no such permission
+     *   exists
      */
     fun toPermissionInfo(app: Application): PermissionInfo? {
         try {
             return app.packageManager.getPermissionInfo(name, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-        }
+        } catch (e: PackageManager.NameNotFoundException) {}
         return null
     }
 }

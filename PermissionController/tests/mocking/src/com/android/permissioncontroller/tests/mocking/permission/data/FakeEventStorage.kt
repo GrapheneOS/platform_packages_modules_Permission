@@ -19,9 +19,7 @@ package com.android.permissioncontroller.tests.mocking.permission.data
 import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.service.PermissionEventStorage
 
-/**
- * Fake event storage class used for tests
- */
+/** Fake event storage class used for tests */
 class FakeEventStorage<T : PermissionEvent> : PermissionEventStorage<T> {
     val events: MutableList<T> = mutableListOf()
 

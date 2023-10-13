@@ -33,8 +33,8 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
-import org.junit.runner.RunWith
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
@@ -53,8 +53,7 @@ import org.mockito.quality.Strictness
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
 class AccessibilitySourceServiceTest {
 
-    @Mock
-    lateinit var jobService: AccessibilityJobService
+    @Mock lateinit var jobService: AccessibilityJobService
     private lateinit var context: Context
     private lateinit var mockitoSession: MockitoSession
     private lateinit var accessibilitySourceService: AccessibilitySourceService
@@ -66,9 +65,11 @@ class AccessibilitySourceServiceTest {
         MockitoAnnotations.initMocks(this)
         context = ApplicationProvider.getApplicationContext()
 
-        mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(DeviceConfig::class.java)
-            .strictness(Strictness.LENIENT).startMocking()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
+                .mockStatic(DeviceConfig::class.java)
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         accessibilitySourceService = runWithShellPermissionIdentity {
             AccessibilitySourceService(context)
@@ -91,10 +92,9 @@ class AccessibilitySourceServiceTest {
 
         runWithShellPermissionIdentity {
             runBlocking {
-                accessibilitySourceService.processAccessibilityJob(
-                    jobParameters,
-                    jobService
-                ) { shouldCancel }
+                accessibilitySourceService.processAccessibilityJob(jobParameters, jobService) {
+                    shouldCancel
+                }
             }
         }
         verify(jobService).jobFinished(jobParameters, true)
@@ -103,9 +103,7 @@ class AccessibilitySourceServiceTest {
     @Test
     fun markServiceAsNotified() {
         val a11yService = ComponentName("com.test.package", "AccessibilityService")
-        runBlocking {
-            accessibilitySourceService.markServiceAsNotified(a11yService)
-        }
+        runBlocking { accessibilitySourceService.markServiceAsNotified(a11yService) }
 
         val storedServices = getNotifiedServices()
         assertThat(storedServices.size).isEqualTo(1)
@@ -143,9 +141,7 @@ class AccessibilitySourceServiceTest {
         val allServices = listOf(a11yService, a11yService2, a11yService3)
 
         val notifiedServices = runBlocking {
-            allServices.forEach {
-                accessibilitySourceService.markServiceAsNotified(it)
-            }
+            allServices.forEach { accessibilitySourceService.markServiceAsNotified(it) }
             accessibilitySourceService.removeFromNotifiedServices(a11yService2)
             getNotifiedServices()
         }
@@ -164,9 +160,7 @@ class AccessibilitySourceServiceTest {
         val testComponents = listOf(testComponent, testComponent2, testComponent3)
 
         val notifiedServices = runBlocking {
-            testComponents.forEach {
-                accessibilitySourceService.markServiceAsNotified(it)
-            }
+            testComponents.forEach { accessibilitySourceService.markServiceAsNotified(it) }
             accessibilitySourceService.removePackageState(testComponent.packageName)
             getNotifiedServices()
         }
@@ -182,9 +176,7 @@ class AccessibilitySourceServiceTest {
         val testComponents = listOf(testComponent, testComponent2)
 
         val notifiedServices = runBlocking {
-            testComponents.forEach {
-                accessibilitySourceService.markServiceAsNotified(it)
-            }
+            testComponents.forEach { accessibilitySourceService.markServiceAsNotified(it) }
             accessibilitySourceService.removePackageState(testComponent.packageName)
             getNotifiedServices()
         }

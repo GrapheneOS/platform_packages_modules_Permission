@@ -30,16 +30,14 @@ import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment.Companion.INFO_MSG_CATEGORY
 
-/**
- * Auto wrapper, with customizations, around [UnusedAppsFragment].
- */
-class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
-    UnusedAppsFragment.Parent<AutoUnusedAppsPreference> {
+/** Auto wrapper, with customizations, around [UnusedAppsFragment]. */
+class AutoUnusedAppsFragment :
+    AutoSettingsFrameFragment(), UnusedAppsFragment.Parent<AutoUnusedAppsPreference> {
 
     companion object {
         private const val UNUSED_PREFERENCE_KEY = "unused_pref_row_key"
 
-        /** Create a new instance of this fragment.  */
+        /** Create a new instance of this fragment. */
         @JvmStatic
         fun newInstance(): AutoUnusedAppsFragment {
             return AutoUnusedAppsFragment()
@@ -53,15 +51,12 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState == null) {
-            val fragment:
-                UnusedAppsFragment<AutoUnusedAppsFragment, AutoUnusedAppsPreference> =
+            val fragment: UnusedAppsFragment<AutoUnusedAppsFragment, AutoUnusedAppsPreference> =
                 UnusedAppsFragment.newInstance()
             fragment.arguments = arguments
             // child fragment does not have its own UI - it will add to the preferences of this
             // parent fragment
-            childFragmentManager.beginTransaction()
-                .add(fragment, null)
-                .commit()
+            childFragmentManager.beginTransaction().add(fragment, null).commit()
         }
 
         // initially focus on focus parking view and then shift focus to recyclerview once it has
@@ -76,10 +71,12 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
         if (isHibernationEnabled()) {
             preference.summary = getString(R.string.unused_apps_page_summary)
         } else {
-            preference.summary = """
+            preference.summary =
+                """
             ${getString(R.string.auto_revoked_apps_page_summary)}
             ${getString(R.string.auto_revoke_open_app_message)}
-            """.trimIndent()
+            """
+                    .trimIndent()
         }
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
@@ -104,9 +101,9 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
 
     override fun setEmptyState(empty: Boolean) {
         val infoMsgCategory =
-                preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
+            preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
         val noUnusedAppsPreference: Preference? =
-                infoMsgCategory.findPreference<Preference>(UNUSED_PREFERENCE_KEY)
+            infoMsgCategory.findPreference<Preference>(UNUSED_PREFERENCE_KEY)
         if (empty && noUnusedAppsPreference == null) {
             infoMsgCategory.addPreference(createNoUnusedAppsPreference())
         } else if (noUnusedAppsPreference != null) {

@@ -95,7 +95,9 @@ class NotificationListenerCheckInternalTest {
         // Setup Safety Center
         doReturn(mockSafetyCenterManager).`when` {
             Utils.getSystemServiceSafe(
-                any(ContextWrapper::class.java), eq(SafetyCenterManager::class.java))
+                any(ContextWrapper::class.java),
+                eq(SafetyCenterManager::class.java)
+            )
         }
 
         notificationListenerCheck = runWithShellPermissionIdentity {
@@ -121,7 +123,9 @@ class NotificationListenerCheckInternalTest {
         runWithShellPermissionIdentity {
             runBlocking {
                 notificationListenerCheck.getEnabledNotificationListenersAndNotifyIfNeeded(
-                    jobParameters, mockNotificationListenerCheckJobService)
+                    jobParameters,
+                    mockNotificationListenerCheckJobService
+                )
             }
         }
 
@@ -135,7 +139,9 @@ class NotificationListenerCheckInternalTest {
         runWithShellPermissionIdentity {
             runBlocking {
                 notificationListenerCheck.getEnabledNotificationListenersAndNotifyIfNeeded(
-                    jobParameters, mockNotificationListenerCheckJobService)
+                    jobParameters,
+                    mockNotificationListenerCheckJobService
+                )
             }
         }
 
@@ -149,7 +155,9 @@ class NotificationListenerCheckInternalTest {
         runWithShellPermissionIdentity {
             runBlocking {
                 notificationListenerCheck.getEnabledNotificationListenersAndNotifyIfNeeded(
-                    jobParameters, mockNotificationListenerCheckJobService)
+                    jobParameters,
+                    mockNotificationListenerCheckJobService
+                )
             }
         }
 
@@ -157,7 +165,8 @@ class NotificationListenerCheckInternalTest {
             .setSafetySourceData(
                 eq(SC_NLS_SOURCE_ID),
                 any(SafetySourceData::class.java),
-                any(SafetyEvent::class.java))
+                any(SafetyEvent::class.java)
+            )
     }
 
     @Test
@@ -185,7 +194,8 @@ class NotificationListenerCheckInternalTest {
         val updatedNlsComponents = runWithShellPermissionIdentity {
             runBlocking {
                 notificationListenerCheck.removeDisabledComponentsFromNotifiedComponents(
-                    updatedEnabledComponents)
+                    updatedEnabledComponents
+                )
                 getNotifiedComponents()
             }
         }
@@ -445,7 +455,9 @@ class NotificationListenerCheckInternalTest {
         val testAppLabel = "TestApp Label"
         doReturn(PackageInfo().apply { applicationInfo = ApplicationInfo() }).`when` {
             Utils.getPackageInfoForComponentName(
-                any(Context::class.java), any(ComponentName::class.java))
+                any(Context::class.java),
+                any(ComponentName::class.java)
+            )
         }
         doReturn(testAppLabel).`when` {
             Utils.getApplicationLabel(any(Context::class.java), any(ApplicationInfo::class.java))
@@ -453,7 +465,8 @@ class NotificationListenerCheckInternalTest {
 
         val safetySourceIssue =
             Preconditions.checkNotNull(
-                notificationListenerCheck.createSafetySourceIssue(testComponent, 0))
+                notificationListenerCheck.createSafetySourceIssue(testComponent, 0)
+            )
 
         val expectedId = "notification_listener_${testComponent.flattenToString()}"
         val expectedTitle =
@@ -470,21 +483,28 @@ class NotificationListenerCheckInternalTest {
             }
         val expectedDismissPendingIntent =
             PendingIntent.getBroadcast(
-                context, 0, expectedDismissIntent, PendingIntent.FLAG_IMMUTABLE)
+                context,
+                0,
+                expectedDismissIntent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
         val expectedAction1 =
             SafetySourceIssue.Action.Builder(
                     SC_NLS_DISABLE_ACTION_ID,
                     context.getString(R.string.notification_listener_remove_access_button_label),
-                    getDisableNlsPendingIntent(context, expectedId, testComponent))
+                    getDisableNlsPendingIntent(context, expectedId, testComponent)
+                )
                 .setWillResolve(true)
                 .setSuccessMessage(
-                    context.getString(R.string.notification_listener_remove_access_success_label))
+                    context.getString(R.string.notification_listener_remove_access_success_label)
+                )
                 .build()
         val expectedAction2 =
             SafetySourceIssue.Action.Builder(
                     NotificationListenerCheckInternal.SC_SHOW_NLS_SETTINGS_ACTION_ID,
                     context.getString(R.string.notification_listener_review_app_button_label),
-                    getNotificationListenerSettingsPendingIntent(context, testComponent))
+                    getNotificationListenerSettingsPendingIntent(context, testComponent)
+                )
                 .build()
 
         assertThat(safetySourceIssue.id).isEqualTo(expectedId)
@@ -501,9 +521,7 @@ class NotificationListenerCheckInternalTest {
     @Test
     fun exemptPackagesNotInitializedUntilUsed() {
         assertThat(notificationListenerCheck.exemptPackagesDelegate.isInitialized()).isFalse()
-        runWithShellPermissionIdentity {
-            notificationListenerCheck.exemptPackages
-        }
+        runWithShellPermissionIdentity { notificationListenerCheck.exemptPackages }
         assertThat(notificationListenerCheck.exemptPackagesDelegate.isInitialized()).isTrue()
     }
 
@@ -542,7 +560,8 @@ class NotificationListenerCheckInternalTest {
                 identifier = componentName.flattenToString()
                 putExtra(
                     Settings.EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME,
-                    componentName.flattenToString())
+                    componentName.flattenToString()
+                )
             }
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
     }

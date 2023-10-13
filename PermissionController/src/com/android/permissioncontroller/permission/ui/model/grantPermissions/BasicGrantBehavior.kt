@@ -20,9 +20,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.ui.model.DenyButton
 import com.android.permissioncontroller.permission.ui.model.Prompt
 
-/**
- * A basic group. Shows "allow" and "deny", does not allow fixed permissions to be re-requested
- */
+/** A basic group. Shows "allow" and "deny", does not allow fixed permissions to be re-requested */
 object BasicGrantBehavior : GrantBehavior() {
 
     override fun getPrompt(
@@ -48,8 +46,13 @@ object BasicGrantBehavior : GrantBehavior() {
     }
 
     // A list of prompts without any deny behavior
-    private val noDenyButtonPrompts = listOf(Prompt.NO_UI_SETTINGS_REDIRECT,
-        Prompt.NO_UI_PHOTO_PICKER_REDIRECT, Prompt.NO_UI_HEALTH_REDIRECT,
-        Prompt.NO_UI_REJECT_THIS_GROUP, Prompt.NO_UI_REJECT_ALL_GROUPS,
-        Prompt.NO_UI_FILTER_THIS_GROUP)
+    private val noDenyButtonPrompts =
+        listOf(
+            Prompt.NO_UI_SETTINGS_REDIRECT,
+            Prompt.NO_UI_PHOTO_PICKER_REDIRECT,
+            Prompt.NO_UI_HEALTH_REDIRECT,
+            Prompt.NO_UI_REJECT_THIS_GROUP,
+            Prompt.NO_UI_REJECT_ALL_GROUPS,
+            Prompt.NO_UI_FILTER_THIS_GROUP
+        )
 }

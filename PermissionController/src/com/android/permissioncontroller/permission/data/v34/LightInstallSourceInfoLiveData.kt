@@ -74,7 +74,9 @@ private constructor(
             try {
                 val installSourceInfo = getInstallSourceInfo(packageName)
                 LightInstallSourceInfo(
-                    installSourceInfo.packageSource, installSourceInfo.initiatingPackageName)
+                    installSourceInfo.packageSource,
+                    installSourceInfo.initiatingPackageName
+                )
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "InstallSourceInfo for $packageName not found")
                 invalidateSingle(packageName to user)
@@ -101,7 +103,10 @@ private constructor(
 
         override fun newValue(key: Pair<String, UserHandle>): LightInstallSourceInfoLiveData {
             return LightInstallSourceInfoLiveData(
-                PermissionControllerApplication.get(), key.first, key.second)
+                PermissionControllerApplication.get(),
+                key.first,
+                key.second
+            )
         }
     }
 }

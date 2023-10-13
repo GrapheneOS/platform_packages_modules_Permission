@@ -53,20 +53,19 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
         private const val LOG_TAG = "AutoReviewPermissionDecisionsFragment"
         private const val MAX_DECISIONS = 3
 
-        /**
-         * Creates a new instance of [AutoReviewPermissionDecisionsFragment].
-         */
+        /** Creates a new instance of [AutoReviewPermissionDecisionsFragment]. */
         fun newInstance(
             sessionId: Long,
             userHandle: UserHandle,
             source: String?
         ): AutoReviewPermissionDecisionsFragment {
             return AutoReviewPermissionDecisionsFragment().apply {
-                arguments = Bundle().apply {
-                    putLong(Constants.EXTRA_SESSION_ID, sessionId)
-                    putParcelable(Intent.EXTRA_USER, userHandle)
-                    putString(EXTRA_SOURCE, source)
-                }
+                arguments =
+                    Bundle().apply {
+                        putLong(Constants.EXTRA_SESSION_ID, sessionId)
+                        putParcelable(Intent.EXTRA_USER, userHandle)
+                        putString(EXTRA_SOURCE, source)
+                    }
             }
         }
     }
@@ -95,21 +94,23 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
         }
         user = requireArguments().getParcelable<UserHandle>(Intent.EXTRA_USER)!!
         sessionId = requireArguments().getLong(Constants.EXTRA_SESSION_ID)
-        if (requireArguments().containsKey(EXTRA_SOURCE) &&
-            (requireArguments().getString(EXTRA_SOURCE) == EXTRA_SOURCE_NOTIFICATION)) {
+        if (
+            requireArguments().containsKey(EXTRA_SOURCE) &&
+                (requireArguments().getString(EXTRA_SOURCE) == EXTRA_SOURCE_NOTIFICATION)
+        ) {
             logDecisionReminderNotificationClicked()
         }
-        val factory = ReviewPermissionDecisionsViewModelFactory(
-            requireActivity().getApplication()!!, user)
-        viewModel = ViewModelProvider(this,
-            factory)[ReviewPermissionDecisionsViewModel::class.java]
+        val factory =
+            ReviewPermissionDecisionsViewModelFactory(requireActivity().getApplication()!!, user)
+        viewModel = ViewModelProvider(this, factory)[ReviewPermissionDecisionsViewModel::class.java]
 
         addPrivacyDashboardPreference()
         addPermissionManagerPreference()
         preferenceScreen.addPreference(AutoDividerPreference(context))
-        recentPermissionsGroup = PreferenceCategory(context!!).apply {
-            title = getString(R.string.review_permission_decisions)
-        }
+        recentPermissionsGroup =
+            PreferenceCategory(context!!).apply {
+                title = getString(R.string.review_permission_decisions)
+            }
         preferenceScreen.addPreference(recentPermissionsGroup)
 
         viewModel.recentPermissionDecisionsLiveData.observe(this) { recentDecisions ->
@@ -138,34 +139,43 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
     }
 
     private fun addPrivacyDashboardPreference() {
-        val preference = CarUiPreference(context).apply {
-            title = getString(R.string.permission_usage_title)
-            summary = getString(R.string.auto_permission_usage_summary)
-            onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
-                val intent = Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
-                    putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-                }
-                startActivity(intent)
-                true
+        val preference =
+            CarUiPreference(context).apply {
+                title = getString(R.string.permission_usage_title)
+                summary = getString(R.string.auto_permission_usage_summary)
+                onPreferenceClickListener =
+                    Preference.OnPreferenceClickListener { _ ->
+                        val intent =
+                            Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
+                                putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+                            }
+                        startActivity(intent)
+                        true
+                    }
             }
-        }
         preferenceScreen.addPreference(preference)
     }
 
     private fun addPermissionManagerPreference() {
-        val preference = CarUiPreference(context).apply {
-            title = getString(R.string.app_permission_manager)
-            summary = getString(R.string.auto_permission_manager_summary)
-            onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
-                val intent = Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
-                    putExtra(Intent.EXTRA_USER, user)
-                    putExtra(ManagePermissionsActivity.EXTRA_CALLER_NAME, javaClass.name)
-                    putExtra(Constants.EXTRA_SESSION_ID, sessionId)
-                }
-                startActivity(intent)
-                true
+        val preference =
+            CarUiPreference(context).apply {
+                title = getString(R.string.app_permission_manager)
+                summary = getString(R.string.auto_permission_manager_summary)
+                onPreferenceClickListener =
+                    Preference.OnPreferenceClickListener { _ ->
+                        val intent =
+                            Intent(Intent.ACTION_MANAGE_PERMISSIONS).apply {
+                                putExtra(Intent.EXTRA_USER, user)
+                                putExtra(
+                                    ManagePermissionsActivity.EXTRA_CALLER_NAME,
+                                    javaClass.name
+                                )
+                                putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+                            }
+                        startActivity(intent)
+                        true
+                    }
             }
-        }
         preferenceScreen.addPreference(preference)
     }
 
@@ -175,46 +185,57 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
     ) {
         for (i in 0 until min(recentDecisions.size, MAX_DECISIONS)) {
             val recentDecision = recentDecisions[i]
-            val decisionPreference = CarUiPreference(context).apply {
-                icon = viewModel.getAppIcon(recentDecision.packageName)
-                title = viewModel.createPreferenceTitle(recentDecision)
-                summary = viewModel.createSummaryText(recentDecision)
-                onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                    viewModel.createManageAppPermissionIntent(recentDecision).also {
-                        startActivity(it)
-                    }
-                    logPermissionDecisionClicked(recentDecision.packageName,
-                        recentDecision.permissionGroupName)
-                    true
+            val decisionPreference =
+                CarUiPreference(context).apply {
+                    icon = viewModel.getAppIcon(recentDecision.packageName)
+                    title = viewModel.createPreferenceTitle(recentDecision)
+                    summary = viewModel.createSummaryText(recentDecision)
+                    onPreferenceClickListener =
+                        Preference.OnPreferenceClickListener {
+                            viewModel.createManageAppPermissionIntent(recentDecision).also {
+                                startActivity(it)
+                            }
+                            logPermissionDecisionClicked(
+                                recentDecision.packageName,
+                                recentDecision.permissionGroupName
+                            )
+                            true
+                        }
                 }
-            }
             preferenceGroup.addPreference(decisionPreference)
         }
     }
 
     private fun addViewAllPreference(preferenceGroup: PreferenceGroup) {
         val viewAllIcon = requireContext().getDrawable(R.drawable.car_ic_apps)
-        val preference = CarUiPreference(context).apply {
-            icon = Utils.applyTint(context, viewAllIcon, android.R.attr.colorControlNormal)
-            title = getString(R.string.review_permission_decisions_view_all)
-            onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                val frag = AutoReviewPermissionDecisionsViewAllFragment.newInstance(sessionId,
-                    user)
-                getParentFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, frag)
-                    .addToBackStack(null)
-                    .commit()
-                logViewAllClicked()
-                true
+        val preference =
+            CarUiPreference(context).apply {
+                icon = Utils.applyTint(context, viewAllIcon, android.R.attr.colorControlNormal)
+                title = getString(R.string.review_permission_decisions_view_all)
+                onPreferenceClickListener =
+                    Preference.OnPreferenceClickListener {
+                        val frag =
+                            AutoReviewPermissionDecisionsViewAllFragment.newInstance(
+                                sessionId,
+                                user
+                            )
+                        getParentFragmentManager()
+                            .beginTransaction()
+                            .replace(android.R.id.content, frag)
+                            .addToBackStack(null)
+                            .commit()
+                        logViewAllClicked()
+                        true
+                    }
             }
-        }
         preferenceGroup.addPreference(preference)
     }
 
     private fun addNoRecentDecisionsPreference(preferenceGroup: PreferenceGroup) {
-        val preference = CarUiPreference(context).apply {
-            title = getString(R.string.review_permission_decisions_empty)
-        }
+        val preference =
+            CarUiPreference(context).apply {
+                title = getString(R.string.review_permission_decisions_empty)
+            }
         preferenceGroup.addPreference(preference)
     }
 
@@ -224,7 +245,8 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
             sessionId,
             RECENT_PERMISSION_DECISIONS_INTERACTED__ACTION__SCREEN_VIEWED,
             0,
-            null)
+            null
+        )
     }
 
     private fun logViewAllClicked() {
@@ -233,7 +255,8 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
             sessionId,
             RECENT_PERMISSION_DECISIONS_INTERACTED__ACTION__VIEW_ALL_CLICKED,
             0,
-            null)
+            null
+        )
     }
 
     private fun logPermissionDecisionClicked(packageName: String, permissionGroupName: String) {
@@ -243,12 +266,15 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
             sessionId,
             RECENT_PERMISSION_DECISIONS_INTERACTED__ACTION__REVIEW_DECISION,
             uid,
-            permissionGroupName)
+            permissionGroupName
+        )
     }
 
     private fun logDecisionReminderNotificationClicked() {
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED,
-            sessionId, PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_CLICKED)
+            sessionId,
+            PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_CLICKED
+        )
     }
 }

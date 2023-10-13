@@ -21,6 +21,5 @@ import org.junit.Assume.assumeFalse
 import org.junit.Before
 
 abstract class BaseHandheldPermissionUiTest : BasePermissionUiTest() {
-    @Before
-    fun assumeNotTelevision() = assumeFalse(isTelevision)
+    @Before fun assumeNotTelevision() = assumeFalse(isTelevision)
 }

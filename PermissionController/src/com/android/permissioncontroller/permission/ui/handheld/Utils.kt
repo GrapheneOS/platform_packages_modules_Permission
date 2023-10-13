@@ -19,9 +19,7 @@ package com.android.permissioncontroller.permission.ui.handheld
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
-/**
- * Press back and close the activity if this is the last fragment.
- */
+/** Press back and close the activity if this is the last fragment. */
 fun Fragment.pressBack() {
     val wasBackExecuted = findNavController().popBackStack()
     if (!wasBackExecuted) {
