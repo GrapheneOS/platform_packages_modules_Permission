@@ -4419,6 +4419,10 @@
     <permission android:name="android.permission.READ_LOGS"
         android:protectionLevel="signature|privileged|development" />
 
+    <!-- Allows an application to access the data in Dropbox-->
+    <permission android:name="android.permission.READ_DROPBOX_DATA"
+        android:protectionLevel="signature|privileged|development" />
+
     <!-- Configure an application for debugging.
     <p>Not for use by third-party applications. -->
     <permission android:name="android.permission.SET_DEBUG_APP"
