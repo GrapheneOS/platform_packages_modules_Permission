@@ -81,6 +81,7 @@ android_app {
     updatable: true,
     privileged: true,
     certificate: "platform",
+    use_resource_processor: true,
     rename_resources_package: false,
     privapp_allowlist: ":privapp_allowlist_com.android.permissioncontroller.xml",
 

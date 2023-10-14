@@ -415,12 +415,6 @@ public class LocationAccessCheck {
     @WorkerThread
     private void addLocationNotificationIfNeeded(@NonNull JobParameters params,
             @NonNull LocationAccessCheckJobService service) {
-        if (!checkLocationAccessCheckEnabledAndUpdateEnabledTime()) {
-            Log.i(LOG_TAG, "LocationAccessCheck feature is not enabled.");
-            service.jobFinished(params, false);
-            return;
-        }
-
         synchronized (sLock) {
             try {
                 if (currentTimeMillis() - mSharedPrefs.getLong(
@@ -588,8 +582,8 @@ public class LocationAccessCheck {
                 // to handle cases where the feature is remotely toggled since we don't want to
                 // notify for accesses before the feature was turned on.
                 long featureEnabledTime = getLocationAccessCheckEnabledTime();
-                if (featureEnabledTime >= 0 && entry.getLastAccessBackgroundTime(
-                        AppOpsManager.OP_FLAGS_ALL_TRUSTED) >= featureEnabledTime) {
+                if (entry.getLastAccessBackgroundTime(AppOpsManager.OP_FLAGS_ALL_TRUSTED)
+                        >= featureEnabledTime) {
                     pkgsWithLocationAccess.add(userPkg);
                     break;
                 }
@@ -606,36 +600,27 @@ public class LocationAccessCheck {
     }
 
     /**
-     * Checks whether the location access check feature is enabled and updates the
-     * time when the feature was first enabled. If the feature is enabled and no
-     * enabled time persisted we persist the current time as the enabled time. If
-     * the feature is disabled and an enabled time is persisted we delete the
-     * persisted time.
-     *
-     * @return Whether the location access feature is enabled.
+     * Sets the LocationAccessCheckEnabledTime if not set.
      */
-    private boolean checkLocationAccessCheckEnabledAndUpdateEnabledTime() {
-        final long enabledTime = getLocationAccessCheckEnabledTime();
-        if (Utils.isLocationAccessCheckEnabled()) {
-            if (enabledTime <= 0) {
-                mSharedPrefs.edit().putLong(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME,
-                        currentTimeMillis()).commit();
-            }
-            return true;
-        } else {
-            if (enabledTime > 0) {
-                mSharedPrefs.edit().remove(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME)
-                        .commit();
-            }
-            return false;
+    private void setLocationAccessCheckEnabledTime() {
+        if (isLocationAccessCheckEnabledTimeNotSet()) {
+            mSharedPrefs.edit().putLong(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME,
+                    currentTimeMillis()).apply();
         }
     }
 
     /**
-     * @return The time the location access check was enabled, or 0 if not enabled.
+     * @return true if the LocationAccessCheckEnabledTime has not been set, else false.
+     */
+    private boolean isLocationAccessCheckEnabledTimeNotSet() {
+        return mSharedPrefs.getLong(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME, 0) == 0;
+    }
+
+    /**
+     * @return The time the location access check was enabled, or currentTimeMillis if not set.
      */
     private long getLocationAccessCheckEnabledTime() {
-        return mSharedPrefs.getLong(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME, 0);
+        return mSharedPrefs.getLong(KEY_LOCATION_ACCESS_CHECK_ENABLED_TIME, currentTimeMillis());
     }
 
     /**
@@ -1144,7 +1129,7 @@ public class LocationAccessCheck {
             }
 
             // Init LocationAccessCheckEnabledTime if needed
-            locationAccessCheck.checkLocationAccessCheckEnabledAndUpdateEnabledTime();
+            locationAccessCheck.setLocationAccessCheckEnabledTime();
 
             if (jobScheduler.getPendingJob(PERIODIC_LOCATION_ACCESS_CHECK_JOB_ID) == null) {
                 JobInfo.Builder b = (new JobInfo.Builder(PERIODIC_LOCATION_ACCESS_CHECK_JOB_ID,

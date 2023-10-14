@@ -37,7 +37,7 @@ val micMutedLiveData =
             }
 
         override suspend fun loadDataAndPostValue(job: Job) {
-            postValue(app.getSystemService(AudioManager::class.java).isMicrophoneMute())
+            postValue(app.getSystemService(AudioManager::class.java)!!.isMicrophoneMute())
         }
 
         override fun onActive() {

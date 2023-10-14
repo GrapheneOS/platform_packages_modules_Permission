@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permissionui.ui
 import android.content.Intent
 import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
+import android.util.Log
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.Direction
@@ -27,7 +28,7 @@ import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.permissioncontroller.permissionui.wakeUpScreen
-import com.google.common.truth.Truth.assertThat
+import com.google.common.truth.Truth.assertWithMessage
 import org.junit.After
 import org.junit.Assume.assumeFalse
 import org.junit.Before
@@ -50,15 +51,28 @@ abstract class PermissionAppsFragmentTest(
     val definerPkg: String? = null
 ) : BasePermissionUiTest() {
     val pkgSelector = By.text(userPkg)
+    var startTimeMillis: Long = 0
 
     private fun scrollFindFromTop(selector: BySelector): UiObject2? {
         val scrollable = uiDevice.findObject(By.scrollable(true))
-        scrollable.scrollUntil(Direction.UP, Until.scrollFinished(Direction.UP))
-        return scrollable.scrollUntil(Direction.DOWN, Until.findObject(selector))
+        if (scrollable != null) {
+            logCheckPoint("found scrollable, so proceeding to scroll")
+            logCheckPoint("starting scroll up")
+            scrollable.scrollUntil(Direction.UP, Until.scrollFinished(Direction.UP))
+            logCheckPoint("finished scroll up")
+            logCheckPoint("starting scroll down")
+            var uiObject = scrollable.scrollUntil(Direction.DOWN, Until.findObject(selector))
+            logCheckPoint("finished scroll down")
+            return uiObject
+        }
+        logCheckPoint("no scrollable on screen, so finding object directly")
+        return uiDevice.findObject(selector)
     }
 
     @Before
-    fun startManagePermissionAppsActivity() {
+    fun setUp() {
+        startTimeMillis = System.currentTimeMillis()
+        logCheckPoint("setUp: started")
         assumeFalse(isTelevision)
         wakeUpScreen()
         if (definerApk != null) {
@@ -78,48 +92,56 @@ abstract class PermissionAppsFragmentTest(
                 }
             },
             Until.newWindow(),
-            Companion.NEW_WINDOW_TIMEOUT_MILLIS
+            NEW_WINDOW_TIMEOUT_MILLIS
         )
+        logCheckPoint("setUp: finished")
     }
 
     @Test
     fun testAppAppearanceReflectsInstallation() {
-        // Expect *not* to find package listed on screen
-        eventually(
-            {
-                val pkg = scrollFindFromTop(pkgSelector)
-                assertThat(pkg).isNull()
-            },
-            Companion.SCROLL_TIMEOUT_MILLIS
-        )
+        logCheckPoint("testAppAppearanceReflectsInstallation: started")
 
         // Install package
         install(userApk)
+        logCheckPoint("installed app")
 
-        // Expect to find package listed on screen
+        // Expect *to* find package listed on screen
         eventually(
             {
                 val pkg = scrollFindFromTop(pkgSelector)
-                assertThat(pkg).isNotNull()
+                assertWithMessage(
+                        "Package '$userPkg' was NOT visible after installing, but should be"
+                    )
+                    .that(pkg)
+                    .isNotNull()
             },
             Companion.SCROLL_TIMEOUT_MILLIS
         )
 
         // Uninstall app
         uninstallApp(userPkg)
+        logCheckPoint("uninstalled app")
 
-        // Expect *not* to find package listed on screen
+        // Expect *not to* find package listed on screen
         eventually(
             {
                 val pkg = scrollFindFromTop(pkgSelector)
-                assertThat(pkg).isNull()
+                assertWithMessage(
+                        "Package '$userPkg' was visible after uninstalling, but should NOT be"
+                    )
+                    .that(pkg)
+                    .isNull()
             },
             Companion.SCROLL_TIMEOUT_MILLIS
         )
+
+        logCheckPoint("confirmed installed app shown on screen")
+        logCheckPoint("testAppAppearanceReflectsInstallation: finished")
     }
 
     @After
     fun tearDown() {
+        logCheckPoint("tearDown: started")
         if (definerPkg != null) {
             uninstallApp(definerPkg)
         }
@@ -127,10 +149,17 @@ abstract class PermissionAppsFragmentTest(
 
         uiDevice.pressBack()
         uiDevice.pressHome()
+        logCheckPoint("tearDown: finished")
+    }
+
+    fun logCheckPoint(logMessage: String) {
+        val elapsedSeconds = (System.currentTimeMillis() - startTimeMillis) / 1000
+        Log.v(TAG, "(${elapsedSeconds}s): $logMessage")
     }
 
     companion object {
         const val NEW_WINDOW_TIMEOUT_MILLIS = 25_000L
         const val SCROLL_TIMEOUT_MILLIS = 25_000L
+        val TAG = PermissionAppsFragmentTest::class.java.simpleName
     }
 }

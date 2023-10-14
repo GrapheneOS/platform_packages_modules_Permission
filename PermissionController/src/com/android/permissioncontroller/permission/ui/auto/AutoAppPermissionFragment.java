@@ -382,8 +382,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
     private static class SelectedPermissionPreference extends TwoStatePreference {
 
         SelectedPermissionPreference(Context context) {
-            super(context, null, TypedArrayUtils.getAttr(context, R.attr.preferenceStyle,
-                    android.R.attr.preferenceStyle));
+            super(context, null,
+                    TypedArrayUtils.getAttr(context, androidx.preference.R.attr.preferenceStyle,
+                            android.R.attr.preferenceStyle));
             setPersistent(false);
             setLayoutResource(R.layout.car_radio_button_preference);
             setWidgetLayoutResource(R.layout.radio_button_preference_widget);

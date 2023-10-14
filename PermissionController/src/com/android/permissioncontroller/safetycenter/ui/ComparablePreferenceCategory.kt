@@ -31,7 +31,11 @@ constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int =
-        getAttr(context, R.attr.preferenceCategoryStyle, android.R.attr.preferenceCategoryStyle),
+        getAttr(
+            context,
+            androidx.preference.R.attr.preferenceCategoryStyle,
+            android.R.attr.preferenceCategoryStyle
+        ),
     defStyleRes: Int = 0
 ) : PreferenceCategory(context, attrs, defStyleAttr, defStyleRes), ComparablePreference {
 

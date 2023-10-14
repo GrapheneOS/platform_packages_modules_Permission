@@ -177,9 +177,11 @@ public class PermissionControlPreference extends Preference {
         if (mUseSmallerIcon) {
             ImageView icon = ((ImageView) holder.findViewById(android.R.id.icon));
             icon.setMaxWidth(
-                    mContext.getResources().getDimensionPixelSize(R.dimen.secondary_app_icon_size));
+                    mContext.getResources().getDimensionPixelSize(
+                            com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size));
             icon.setMaxHeight(
-                    mContext.getResources().getDimensionPixelSize(R.dimen.secondary_app_icon_size));
+                    mContext.getResources().getDimensionPixelSize(
+                            com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size));
         }
 
         super.onBindViewHolder(holder);

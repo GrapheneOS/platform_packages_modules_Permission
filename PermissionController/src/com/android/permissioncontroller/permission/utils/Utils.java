@@ -44,8 +44,10 @@ import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
 import static android.health.connect.HealthConnectManager.ACTION_MANAGE_HEALTH_PERMISSIONS;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static android.os.UserHandle.myUserId;
+
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 import android.Manifest;
@@ -167,10 +169,6 @@ public final class Utils {
     /** The delay before ending a one-time permission session when all processes are dead */
     private static final String PROPERTY_ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS =
             "one_time_permissions_killed_delay_millis";
-
-    /** Whether to show location access check notifications. */
-    private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
-            "location_access_check_enabled";
 
     /** Whether to show health permission in various permission controller UIs. */
     private static final String PROPERTY_HEALTH_PERMISSION_UI_ENABLED =
@@ -953,8 +951,9 @@ public final class Utils {
         if (context.getPackageManager().resolveActivity(intent, 0) == null) {
             return;
         }
-        MenuItem searchItem = menu.add(Menu.NONE, Menu.NONE, Menu.NONE, R.string.search_menu);
-        searchItem.setIcon(R.drawable.ic_search_24dp);
+        MenuItem searchItem = menu.add(Menu.NONE, Menu.NONE, Menu.NONE,
+                com.android.settingslib.search.widget.R.string.search_menu);
+        searchItem.setIcon(com.android.settingslib.search.widget.R.drawable.ic_search_24dp);
         searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         searchItem.setOnMenuItemClickListener(item -> {
             try {
@@ -1029,16 +1028,6 @@ public final class Utils {
                 return context.getString(R.string.permission_description_summary_generic,
                         description);
         }
-    }
-
-    /**
-     * Whether the Location Access Check is enabled.
-     *
-     * @return {@code true} iff the Location Access Check is enabled.
-     */
-    public static boolean isLocationAccessCheckEnabled() {
-        return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_LOCATION_ACCESS_CHECK_ENABLED, true);
     }
 
     /**

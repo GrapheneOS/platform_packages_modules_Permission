@@ -123,9 +123,11 @@ class SensorBlockedBannerTest : BaseUsePermissionTest() {
     @Test
     fun testCardClickOpenPrivacyControls() {
         Assume.assumeTrue(sensorPrivacyManager.supportsSensorToggle(CAMERA))
+        var isSafetyCenterEnabled = false
         runWithShellPermissionIdentity {
-            Assume.assumeTrue(safetyCenterManager.isSafetyCenterEnabled)
+            isSafetyCenterEnabled = safetyCenterManager.isSafetyCenterEnabled
         }
+        Assume.assumeTrue(isSafetyCenterEnabled)
         // Disable global camera toggle
         val blocked = isSensorPrivacyEnabled(CAMERA)
         if (!blocked) {
