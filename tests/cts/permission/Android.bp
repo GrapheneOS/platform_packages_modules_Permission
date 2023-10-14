@@ -38,7 +38,7 @@ android_test {
         "guava",
         "android-ex-camera2",
         "compatibility-device-util-axt",
-        "truth-prebuilt",
+        "truth",
         "androidx.annotation_annotation",
         "platformprotosnano",
         "permission-test-util-lib",

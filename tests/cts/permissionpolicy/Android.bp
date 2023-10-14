@@ -34,7 +34,7 @@ android_test {
         "ctstestrunner-axt",
         "guava",
         "androidx.test.ext.junit-nodeps",
-        "truth-prebuilt",
+        "truth",
         "permission-test-util-lib",
     ],
     srcs: [
