@@ -23,6 +23,7 @@ import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
 
@@ -41,7 +42,8 @@ private constructor(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
-    private val user: UserHandle
+    private val user: UserHandle,
+    private val deviceId: Int
 ) :
     SmartAsyncMediatorLiveData<Map<String, PermState>>(),
     PermissionListenerMultiplexer.PermissionChangeCallback {
@@ -74,7 +76,7 @@ private constructor(
         val packageInfo = packageInfoLiveData.value
         val permissionGroup = groupLiveData.value
         if (packageInfo == null || permissionGroup == null) {
-            invalidateSingle(Triple(packageName, permGroupName, user))
+            invalidateSingle(KotlinUtils.Quadruple(packageName, permGroupName, user, deviceId))
             postValue(null)
             return
         }
@@ -137,13 +139,19 @@ private constructor(
      * UserHandle, value is its corresponding LiveData.
      */
     companion object :
-        DataRepositoryForPackage<Triple<String, String, UserHandle>, PermStateLiveData>() {
-        override fun newValue(key: Triple<String, String, UserHandle>): PermStateLiveData {
+        DataRepositoryForDevice<
+            KotlinUtils.Quadruple<String, String, UserHandle, Int>, PermStateLiveData
+        >() {
+        override fun newValue(
+            key: KotlinUtils.Quadruple<String, String, UserHandle, Int>,
+            deviceId: Int
+        ): PermStateLiveData {
             return PermStateLiveData(
                 PermissionControllerApplication.get(),
                 key.first,
                 key.second,
-                key.third
+                key.third,
+                deviceId
             )
         }
     }
