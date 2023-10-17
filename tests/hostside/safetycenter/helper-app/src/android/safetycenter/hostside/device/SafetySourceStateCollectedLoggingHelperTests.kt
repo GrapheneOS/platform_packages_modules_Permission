@@ -23,7 +23,6 @@ import android.safetycenter.SafetySourceErrorDetails
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.compatibility.common.util.SystemUtil
-import com.android.safetycenter.testing.*
 import com.android.safetycenter.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_1
 import com.android.safetycenter.testing.SafetyCenterTestConfigs.Companion.SOURCE_ID_2
@@ -154,8 +153,9 @@ class SafetySourceStateCollectedLoggingHelperTests {
         if (source3Response != null) {
             SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
         }
+
+        val listener = safetyCenterTestHelper.addListener()
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
-        // Give time for responses to all sources
-        Thread.sleep(Coroutines.TIMEOUT_SHORT.toMillis())
+        listener.waitForSafetyCenterRefresh()
     }
 }
