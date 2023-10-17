@@ -124,7 +124,7 @@ class AccessibilitySourceService(val context: Context, val random: Random = Rand
         getSystemServiceSafe(parentUserContext, SafetyCenterManager::class.java)
 
     @WorkerThread
-    internal suspend fun processAccessibilityJob(
+    suspend fun processAccessibilityJob(
         params: JobParameters?,
         jobService: AccessibilityJobService,
         cancel: BooleanSupplier?
@@ -518,7 +518,7 @@ class AccessibilitySourceService(val context: Context, val random: Random = Rand
         return notifications.firstOrNull { it.id == Constants.ACCESSIBILITY_CHECK_NOTIFICATION_ID }
     }
 
-    internal suspend fun removeFromNotifiedServices(a11Service: ComponentName) {
+    suspend fun removeFromNotifiedServices(a11Service: ComponentName) {
         sharedPrefsLock.withLock {
             val notifiedServices = getNotifiedServices()
             val filteredServices =
@@ -533,7 +533,7 @@ class AccessibilitySourceService(val context: Context, val random: Random = Rand
         }
     }
 
-    internal suspend fun markServiceAsNotified(a11Service: ComponentName) {
+    suspend fun markServiceAsNotified(a11Service: ComponentName) {
         sharedPrefsLock.withLock {
             val alreadyNotifiedServices = getNotifiedServices()
             alreadyNotifiedServices.add(a11Service.flattenToShortString())
@@ -562,7 +562,7 @@ class AccessibilitySourceService(val context: Context, val random: Random = Rand
     }
 
     @VisibleForTesting
-    internal fun getSharedPreference(): SharedPreferences {
+    fun getSharedPreference(): SharedPreferences {
         return sharedPrefs
     }
 
@@ -604,7 +604,7 @@ class AccessibilitySourceService(val context: Context, val random: Random = Rand
             .cancel(notificationTag, Constants.ACCESSIBILITY_CHECK_NOTIFICATION_ID)
     }
 
-    internal suspend fun removePackageState(pkg: String) {
+    suspend fun removePackageState(pkg: String) {
         sharedPrefsLock.withLock {
             removeAccessibilityNotification(pkg)
             val notifiedServices =

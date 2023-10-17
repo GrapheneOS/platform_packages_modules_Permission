@@ -38,8 +38,6 @@ android_test {
     ],
 
     srcs: [
-        ":permissioncontroller-sources",
-
         "src/**/*.kt",
     ],
 
@@ -50,6 +48,7 @@ android_test {
     ],
 
     static_libs: [
+        "PermissionController-lib",
         "iconloader_sc_mainline_prod",
         "com.google.android.material_material",
         "androidx.transition_transition",
@@ -128,18 +127,11 @@ android_test {
         "mockito-target-extended-minus-junit4",
     ],
 
-    proto: {
-        type: "lite",
-        include_dirs: ["packages/modules/Permission/PermissionController/src/com/android/permissioncontroller"],
-    },
-
     jni_libs: [
         "libdexmakerjvmtiagent",
         "libstaticjvmtiagent",
     ],
     compile_multilib: "both",
-
-    aaptflags: ["--custom-package com.android.permissioncontroller"],
 
     test_suites: [
         "device-tests",

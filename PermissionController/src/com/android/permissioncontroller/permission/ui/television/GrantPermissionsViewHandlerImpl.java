@@ -194,25 +194,19 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.permission_allow_button:
-                mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ALWAYS);
-                break;
-            case R.id.permission_allow_always_button:
-                mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ALWAYS);
-                break;
-            case R.id.permission_allow_foreground_only_button:
-                mResultListener.onPermissionGrantResult(mGroupName, GRANTED_FOREGROUND_ONLY);
-                break;
-            case R.id.permission_allow_one_time_button:
-                mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ONE_TIME);
-                break;
-            case R.id.permission_deny_button:
-                mResultListener.onPermissionGrantResult(mGroupName, DENIED);
-                break;
-            case R.id.permission_deny_dont_ask_again_button:
-                mResultListener.onPermissionGrantResult(mGroupName, DENIED_DO_NOT_ASK_AGAIN);
-                break;
+        final int id = view.getId();
+        if (id == R.id.permission_allow_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ALWAYS);
+        } else if (id == R.id.permission_allow_always_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ALWAYS);
+        } else if (id == R.id.permission_allow_foreground_only_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, GRANTED_FOREGROUND_ONLY);
+        } else if (id == R.id.permission_allow_one_time_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, GRANTED_ONE_TIME);
+        } else if (id == R.id.permission_deny_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, DENIED);
+        } else if (id == R.id.permission_deny_dont_ask_again_button) {
+            mResultListener.onPermissionGrantResult(mGroupName, DENIED_DO_NOT_ASK_AGAIN);
         }
     }
 

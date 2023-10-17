@@ -24,7 +24,7 @@ import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
  * [onStartScanningAnimationStart], [onStartScanningAnimationEnd], etc.) it changes its internal
  * state and may provide a presentation instruction in the form of [Action].
  */
-internal class SafetyStatusAnimationSequencer {
+class SafetyStatusAnimationSequencer {
 
     private var isIconChangeAnimationRunning: Boolean = false
     private var isScanAnimationRunning: Boolean = false
