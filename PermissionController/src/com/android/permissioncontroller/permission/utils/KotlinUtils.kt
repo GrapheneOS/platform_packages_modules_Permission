@@ -142,9 +142,6 @@ object KotlinUtils {
     /** Whether to show 7-day toggle in privacy hub. */
     private const val PRIVACY_DASHBOARD_7_DAY_TOGGLE = "privacy_dashboard_7_day_toggle"
 
-    /** Default location precision */
-    private const val PROPERTY_LOCATION_PRECISION = "location_precision"
-
     /** Whether to show the photo picker option in permission prompts. */
     private const val PROPERTY_PHOTO_PICKER_PROMPT_ENABLED = "photo_picker_prompt_enabled"
 
@@ -204,16 +201,6 @@ object KotlinUtils {
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun isLocationAccuracyEnabled(): Boolean {
         return SdkLevel.isAtLeastS()
-    }
-
-    /** Default state of location precision true: default is FINE. false: default is COARSE. */
-    fun getDefaultPrecision(): Boolean {
-        return !SdkLevel.isAtLeastS() ||
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_LOCATION_PRECISION,
-                true
-            )
     }
 
     /**
