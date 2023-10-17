@@ -43,7 +43,7 @@
     <string name="permission_warning_template" msgid="2247087781222679458">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإجراء <xliff:g id="ACTION">%2$s</xliff:g>؟"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"‏هل تريد السماح دائمًا للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بهذا الإجراء <xliff:g id="ACTION">%2$s</xliff:g>؟"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"أثناء استخدام التطبيق فقط"</string>
-    <string name="allow_permission_always" msgid="5194342531206054051">"دائمًا"</string>
+    <string name="allow_permission_always" msgid="5194342531206054051">"دومًا"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"عدم السماح وعدم طرح السؤال مرةً أخرى"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> إذن موقوف"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"كل الأذونات موقوفة."</string>
@@ -71,7 +71,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{اليوم}=1{قبل يوم واحد}two{قبل يومَين}few{قبل # أيام}many{قبل # يومًا}other{قبل # يوم}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"إيقاف التطبيق"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏قد يؤدي إيقاف هذا التطبيق إلى عدم عمل نظام Android وتطبيقات أخرى على النحو المنشود. تجدر الإشارة إلى أنه لا يمكنك حذف هذا التطبيق لأنه من التطبيقات المثبّتة تلقائيًا على جهازك. ويعني إيقاف التطبيق أنه سيتم إيقافه وإخفاؤه على جهازك."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"إدارة الأذونات"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"مدير الأذونات"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"عدم السؤال مجدّدًا"</string>
     <string name="no_permissions" msgid="3881676756371148563">"ليس هناك أيّ أذونات."</string>
     <string name="additional_permissions" msgid="5801285469338873430">"أذونات إضافية"</string>
@@ -129,7 +129,7 @@
     <string name="permission_group_usage_title" msgid="2595013198075285173">"استخدام <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"عرض الأذونات الأخرى"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"‫\"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>\" و\"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>\" و<xliff:g id="NUM">%3$s</xliff:g> تطبيق آخر"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> و<xliff:g id="PERMGROUP_1">%2$s</xliff:g> و<xliff:g id="NUM">%3$s</xliff:g> تطبيق آخر"</string>
     <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"المخطط الزمني لاستخدام <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"المخطط الزمني لاستخدام <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 7 أيام"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"وقت استخدام هذا التطبيق لإذن <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -221,7 +221,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"التطبيقات غير المستخدمة"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"في حال عدم استخدام التطبيق لبضعة أشهر:\n\n• تتم إزالة الأذونات لحماية بياناتك.\n• يتم إيقاف الإشعارات لتوفير شحن البطارية.\n• تتم إزالة الملفات المؤقتة لتوفير مساحة.\n\nلمنح الأذونات والسماح للتطبيقات مرة أخرى، افتح التطبيق."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"في حال عدم استخدام تطبيق لمدة شهر:\n\n• تتم إزالة الأذونات لحماية بياناتك.\n• تتم إزالة الملفات المؤقتة لإخلاء بعض المساحة.\n\nللسماح بالأذونات مرة أخرى، افتَح التطبيق."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهر واحد}zero{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}two{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهرَين}few{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # أشهر}many{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهرًا}other{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهر واحد}zero{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}two{التطبيقات التي تم فتحها آخر مرة قبل أكثر من شهرَين}few{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهور}many{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهرًا}other{التطبيقات التي تم فتحها آخر مرة قبل أكثر من # شهر}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخر مرة تم فتح التطبيق فيها: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخر مرة تم فتحه: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"في حال السماح لهذا التطبيق بإدارة كل الملفات، سيتمكن من الوصول إلى أي ملفات وتعديلها وحذفها من مساحة التخزين العادية على هذا الجهاز أو أجهزة التخزين المتصلة. يمكن أن يصل التطبيق إلى الملفات بدون طلب موافقتك."</string>
@@ -245,13 +245,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"مرفوض حاليًا / تاريخ آخر وصول: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح لها"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
-    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها بالوصول"</string>
+    <string name="denied_header" msgid="903209608358177654">"الأذونات غير المسموح بها"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"الاطّلاع على تطبيقات أكثر يمكنها الوصول إلى كل الملفات"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{يوم واحد}zero{# يوم}two{يومان}few{# أيام}many{# يومًا}other{# يوم}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{ساعة واحدة}zero{# ساعة}two{ساعتان}few{# ساعات}many{# ساعةً}other{# ساعة}}"</string>
@@ -340,7 +340,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"لم يتم السماح لأي تطبيقات."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"ما من تطبيقات تم منحها إذن الوصول إلى جميع الملفات."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"ما من تطبيقات تم منحها إذن الوصول إلى الوسائط فقط."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"لم يتم رفض أي تطبيقات."</string>
     <string name="car_permission_selected" msgid="180837028920791596">"مُختار"</string>
     <string name="settings" msgid="5409109923158713323">"الإعدادات"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"تحظى خدمة <xliff:g id="SERVICE_NAME">%s</xliff:g> بوصول كامل إلى جهازك."</string>
@@ -483,7 +483,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"‏هل تريد تغيير إذن الوصول إلى الميكروفون بالنسبة إلى &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;؟"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"يحتاج هذا التطبيق إلى تسجيل الصوت طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى بيانات نشاطك البدني؟"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديوهات؟"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديو؟"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"لن يتمكن هذا التطبيق من التقاط صور وتسجيل فيديوهات إلا عندما يكون قيد الاستخدام"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالتقاط صور وتسجيل فيديوهات؟"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"قد يحتاج هذا التطبيق إلى التقاط صور وتسجيل فيديوهات طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏هل تريد مواصلة السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; عند استخدامه بالوصول إلى بيانات أجهزة استشعار الجسم؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال إشعارات إليك؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"تطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" مسموح له بالوصول إلى الموقع الجغرافي"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"تسمح مؤسستك لتطبيق \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" بالوصول إلى موقعك الجغرافي."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"الأذونات الأخرى"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"الأذونات المستخدمة من قِبل النظام"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"الأذونات المستخدمة من قِبل تطبيقات النظام فقط"</string>
@@ -547,7 +549,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"يتم الاستخدام في المكالمة الهاتفية"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"تم الاستخدام مؤخرًا في مكالمة هاتفية"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"يتم الاستخدام من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"تم الاستخدام مؤخرًا من قِبل \"<xliff:g id="APP_NAME">%1$s</xliff:g>\""</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"تم الاستخدام مؤخرًا من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"يتم الاستخدام من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"تم الاستخدام مؤخرًا من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"يتم الاستخدام من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
@@ -583,13 +585,12 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"بالنسبة للتطبيقات والخدمات. إذا كان هذا الخيار غير مفعّل، قد يظل بالإمكان مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"عرض التطبيقات والخدمات التي يمكنها الوصول إلى الموقع الجغرافي"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"عرض إشعار عند الوصول إلى الحافظة"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه."</string>
     <string name="show_password_title" msgid="2877269286984684659">"عرض كلمات المرور"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"عرض الأحرف لفترة وجيزة أثناء الكتابة"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"وضَّح هذا التطبيق أنه يمكنه مشاركة بيانات الموقع الجغرافي مع جهات خارجية."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"مشاركة البيانات والموقع الجغرافي"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"من أين تأتي معلومات مشاركة البيانات؟"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"قدَّم المطوّر معلومات إلى الشركة المصنّعة لهذا الجهاز عن الطريقة التي يشارك بها هذا التطبيق البيانات. يمكن أنّ يعدّل المطوّر هذه المعلومات بمرور الوقت."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"‏قدَّم المطوّر معلومات إلى "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" عن كيفية مشاركة هذا التطبيق للبيانات. يمكن أنّ يعدّل المطوّر هذه المعلومات بمرور الوقت."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"قد يشارك التطبيق بيانات الموقع الجغرافي من أجل:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"اختلاف مشاركة البيانات"</string>
@@ -607,8 +608,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"أمان البيانات"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"قد تتم مشاركة بيانات الموقع الجغرافي"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"وضَّح هذا التطبيق أنّه قد يشارك بيانات موقعك الجغرافي مع جهات خارجية."</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"يتعذَّر فتح هذا الرابط"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"تعديلات مشاركة بيانات الموقع الجغرافي"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"مراجعة التطبيقات التي غيّرت الطريقة التي قد تشارك بها بيانات موقعك الجغرافي"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"راجِع التطبيقات التي غيّرت الطريقة التي قد تشارك بها بيانات موقعك الجغرافي."</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"غيّرت هذه التطبيقات الطريقة التي قد تشارك بها بيانات موقعك الجغرافي. ربما لم تشارك هذه التطبيقات بياناتك من قبل، أو قد تشاركها الآن لأغراض إعلانية أو تسويقية."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"قدَّم مطوّرو هذه التطبيقات معلومات حول الممارسات المتعلقة بمشاركة البيانات مع متجر التطبيقات. ويمكن أن يعدّلوا تلك المعلومات بمرور الوقت.\n\nقد تختلف الممارسات المتعلقة بمشاركة البيانات بناءً على إصدار تطبيقك وآلية استخدامك له ومنطقتك وعمرك."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"التعرّف على مشاركة البيانات"</string>

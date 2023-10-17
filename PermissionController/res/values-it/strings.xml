@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Consenti sempre tutto"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Seleziona foto e video"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Seleziona più messaggi"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Non selezionare altro"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Non selezionare altri dati"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non consentire comunque"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignora"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> di <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -245,13 +245,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Al momento rifiutata/Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Accesso mai eseguito"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Rifiutata/Accesso mai effettuato"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Autorizzata"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Autorizzate"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Autorizzazione sempre concessa"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzazione concessa solo durante l\'uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="903209608358177654">"Non autorizzata"</string>
+    <string name="denied_header" msgid="903209608358177654">"Non autorizzate"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Visualizza altre app che possono accedere a tutti i file"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 giorno}many{# giorni}other{# giorni}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# ora}many{# ore}other{# ore}}"</string>
@@ -338,7 +338,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Nessuna autorizzazione consentita"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nessuna autorizzazione rifiutata"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nessuna app autorizzata"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"Nessuna app autorizzata per tutti i file"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"Nessuna app consentita per tutti i file"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Nessuna app autorizzata solo per i contenuti multimediali"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"A nessuna app è stata negata l\'autorizzazione"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Selezionato"</string>
@@ -532,7 +532,7 @@
     <string name="security_settings" msgid="3808106921175271317">"Impostazioni di sicurezza"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Autorizzazioni"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicurezza e privacy"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica stato"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Verifica lo stato"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Controlli per la privacy"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Altre impostazioni"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accesso alla fotocamera"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Questa app ha dichiarato che potrebbe condividere dati sulla posizione con terze parti"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Condivisione dei dati e posizione"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Da dove provengono le informazioni sulla condivisione dei dati"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Lo sviluppatore ha fornito al produttore di questo dispositivo le informazioni sulla modalità di condivisione dei dati nell\'app. Lo sviluppatore potrebbe aggiornare queste informazioni nel tempo."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Lo sviluppatore ha fornito a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informazioni sulla modalità di condivisione dei dati in questa app. Lo sviluppatore potrebbe aggiornare queste informazioni nel tempo."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'app può condividere dati sulla posizione per:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La condivisione dei dati varia"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sicurezza dei dati"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Potrebbero essere condivisi dati sulla posizione"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Questa app ha dichiarato che potrebbe condividere i tuoi dati sulla posizione con terze parti"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossibile aprire questo link"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aggiornamenti relativi alla condivisione dei dati sulla posizione"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Controlla le app che hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Le app che seguono hanno cambiato la modalità di condivisione dei tuoi dati sulla posizione. Potrebbero non averli condivisi in precedenza oppure ora potrebbero condividerli per scopi pubblicitari o di marketing."</string>

@@ -51,6 +51,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.service.notification.StatusBarNotification;
 import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
@@ -95,24 +96,23 @@ public class AutoGrantPermissionsNotifier {
      */
     private final ArrayList<String> mGrantedPermissions = new ArrayList<>();
 
+    private final NotificationManager mNotificationManager;
+
     public AutoGrantPermissionsNotifier(@NonNull Context context,
             @NonNull PackageInfo packageInfo) {
         mPackageInfo = packageInfo;
+        mNotificationManager = getSystemServiceSafe(context, NotificationManager.class);
         UserHandle callingUser = getUserHandleForUid(mPackageInfo.applicationInfo.uid);
         mContext = context.createContextAsUser(callingUser, 0);
     }
 
     /**
-     * Create the channel to which the notification about auto-granted permission should be posted
-     * to.
+     * Create the channel to which the notification about auto-granted permission should be posted.
      *
      * @param user The user for which the permission was auto-granted.
      * @param shouldAlertUser
      */
     private void createAutoGrantNotifierChannel(boolean shouldNotifySilently) {
-        NotificationManager notificationManager = getSystemServiceSafe(mContext,
-                NotificationManager.class);
-
         NotificationChannel autoGrantedPermissionsChannel = new NotificationChannel(
                 getNotificationChannelId(shouldNotifySilently),
                 mContext.getString(R.string.auto_granted_permissions),
@@ -121,7 +121,7 @@ public class AutoGrantPermissionsNotifier {
             autoGrantedPermissionsChannel.enableVibration(false);
             autoGrantedPermissionsChannel.setSound(Uri.EMPTY, null);
         }
-        notificationManager.createNotificationChannel(autoGrantedPermissionsChannel);
+        mNotificationManager.createNotificationChannel(autoGrantedPermissionsChannel);
     }
 
     /**
@@ -160,12 +160,14 @@ public class AutoGrantPermissionsNotifier {
         String messageText = Utils.getEnterpriseString(mContext, LOCATION_AUTO_GRANTED_MESSAGE,
                 R.string.auto_granted_permission_notification_body, pkgLabel);
         Notification.Builder notificationBuilder = (new Notification.Builder(mContext,
-                getNotificationChannelId(shouldNotifySilently))).setContentTitle(title)
+                getNotificationChannelId(shouldNotifySilently)))
+                .setContentTitle(title)
                 .setContentText(messageText)
                 .setStyle(new Notification.BigTextStyle().bigText(messageText).setBigContentTitle(
                         title))
                 .setGroup(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_GROUP_ID)
                 // NOTE: Different icons would be needed for different permissions.
+                .setGroupAlertBehavior(Notification.GROUP_ALERT_SUMMARY)
                 .setSmallIcon(R.drawable.ic_pin_drop)
                 .setLargeIcon(pkgIconBmp)
                 .setColor(mContext.getColor(android.R.color.system_notification_accent_color))
@@ -180,29 +182,33 @@ public class AutoGrantPermissionsNotifier {
             notificationBuilder.addExtras(extras);
         }
 
-        String summaryTitle = mContext.getString(R.string.auto_granted_permissions);
-
-        Notification.Builder summaryNotificationBuilder = new Notification.Builder(mContext,
-                getNotificationChannelId(shouldNotifySilently))
-                .setContentTitle(summaryTitle)
-                .setSmallIcon(R.drawable.ic_pin_drop)
-                .setGroup(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_GROUP_ID)
-                .setGroupSummary(true);
-
-        NotificationManager notificationManager = getSystemServiceSafe(mContext,
-                NotificationManager.class);
         // Cancel previous notifications for the same package to avoid redundant notifications.
         // This code currently only deals with location-related notifications, which would all lead
         // to the same Settings activity for managing location permissions.
         // If ever extended to cover multiple types of notifications, then only multiple
         // notifications of the same group should be canceled.
-        notificationManager.cancel(
+        mNotificationManager.cancel(
                 mPackageInfo.packageName, PERMISSION_GRANTED_BY_ADMIN_NOTIFICATION_ID);
-        notificationManager.notify(mPackageInfo.packageName,
+
+        mNotificationManager.notify(mPackageInfo.packageName,
                 PERMISSION_GRANTED_BY_ADMIN_NOTIFICATION_ID,
                 notificationBuilder.build());
-        notificationManager.notify(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_SUMMARY_ID,
-                summaryNotificationBuilder.build());
+
+        // only show the summary notification if it is not already showing. Otherwise, this
+        // breaks the alerting behaviour.
+        if (!isNotificationActive(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_SUMMARY_ID)) {
+            String summaryTitle = mContext.getString(R.string.auto_granted_permissions);
+
+            Notification.Builder summaryNotificationBuilder = new Notification.Builder(mContext,
+                    getNotificationChannelId(shouldNotifySilently))
+                    .setContentTitle(summaryTitle)
+                    .setSmallIcon(R.drawable.ic_pin_drop)
+                    .setGroup(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_GROUP_ID)
+                    .setGroupSummary(true);
+
+            mNotificationManager.notify(ADMIN_AUTO_GRANTED_PERMISSIONS_NOTIFICATION_SUMMARY_ID,
+                    summaryNotificationBuilder.build());
+        }
     }
 
     /**
@@ -247,6 +253,15 @@ public class AutoGrantPermissionsNotifier {
         } else {
             return ADMIN_AUTO_GRANTED_PERMISSIONS_ALERTING_NOTIFICATION_CHANNEL_ID;
         }
+    }
+
+    private boolean isNotificationActive(int notificationId) {
+        for (StatusBarNotification notification : mNotificationManager.getActiveNotifications()) {
+            if (notification.getId() == notificationId) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

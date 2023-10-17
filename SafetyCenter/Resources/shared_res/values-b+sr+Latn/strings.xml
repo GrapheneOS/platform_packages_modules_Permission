@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Skenira se"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Proveravamo podešavanja uređaja…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Sve je u redu"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nije pronađen nijedan problem"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Prikaži preporuku}one{Prikaži preporuke}few{Prikaži preporuke}other{Prikaži preporuke}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nije pronađen nijedan problem"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Dostupan je savet}one{Dostupni su saveti}few{Dostupni su saveti}other{Dostupni su saveti}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Preduzeta radnja}one{Preduzete radnje}few{Preduzete radnje}other{Preduzete radnje}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Pregledajte podešavanja"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Proverite listu podešavanja"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Pronađeni su potencijalni rizici"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Pronađeni su rizici"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Nalog je možda ugrožen"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Nalog je ugrožen"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Prikaži obaveštenje}one{Prikaži obaveštenja}few{Prikaži obaveštenja}other{Prikaži obaveštenja}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Nalog je ugrožen"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Pogledajte upozorenje ispod}one{Pogledajte upozorenja ispod}few{Pogledajte upozorenja ispod}other{Pogledajte upozorenja ispod}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Otvaranje stranice nije uspelo"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Rešavanje obaveštenja nije uspelo"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Osvežavanje podešavanja nije uspelo"</string>

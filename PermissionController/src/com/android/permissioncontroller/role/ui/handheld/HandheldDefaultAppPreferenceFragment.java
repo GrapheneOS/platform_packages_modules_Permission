@@ -24,11 +24,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.TwoStatePreference;
 
 import com.android.permissioncontroller.role.ui.DefaultAppChildFragment;
+import com.android.permissioncontroller.role.ui.RoleApplicationPreference;
 import com.android.settingslib.widget.FooterPreference;
-import com.android.settingslib.widget.SelectorWithWidgetPreference;
 
 /**
  * Handheld preference fragment for a default app.
@@ -96,8 +95,8 @@ public class HandheldDefaultAppPreferenceFragment extends PreferenceFragmentComp
 
     @NonNull
     @Override
-    public TwoStatePreference createApplicationPreference() {
-        return new SelectorWithWidgetPreference(requireContext());
+    public RoleApplicationPreference createApplicationPreference() {
+        return new HandheldRadioPreference(requireContext());
     }
 
     @NonNull

@@ -28,7 +28,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.RolePreference;
+import com.android.permissioncontroller.role.ui.UserRestrictionAwarePreferenceMixin;
+import com.android.settingslib.widget.TwoTargetPreference;
 
 /**
  * {@link Preference} with a settings button.
@@ -36,33 +38,35 @@ import com.android.permissioncontroller.role.ui.TwoTargetPreference;
  * @see com.android.settings.widget.GearPreference
  */
 // Made public for com.android.permissioncontroller.role.ui.specialappaccess.handheld
-public class SettingsButtonPreference extends com.android.settingslib.widget.TwoTargetPreference
-        implements TwoTargetPreference {
+public class HandheldRolePreference extends TwoTargetPreference implements RolePreference {
+
+    private final UserRestrictionAwarePreferenceMixin mUserRestrictionAwarePreferenceMixin =
+            new UserRestrictionAwarePreferenceMixin(this);
 
     @Nullable
     private OnSecondTargetClickListener mOnSecondTargetClickListener;
 
-    public SettingsButtonPreference(@NonNull Context context, @Nullable AttributeSet attrs,
+    public HandheldRolePreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
         init();
     }
 
-    public SettingsButtonPreference(@NonNull Context context, @Nullable AttributeSet attrs,
+    public HandheldRolePreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init();
     }
 
-    public SettingsButtonPreference(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public HandheldRolePreference(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         init();
     }
 
-    public SettingsButtonPreference(@NonNull Context context) {
+    public HandheldRolePreference(@NonNull Context context) {
         super(context);
 
         init();
@@ -89,6 +93,11 @@ public class SettingsButtonPreference extends com.android.settingslib.widget.Two
     }
 
     @Override
+    public void setUserRestriction(@Nullable String userRestriction) {
+        mUserRestrictionAwarePreferenceMixin.setUserRestriction(userRestriction);
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
@@ -103,5 +112,12 @@ public class SettingsButtonPreference extends com.android.settingslib.widget.Two
         }
         // Make the settings button enabled even if the preference itself is disabled.
         settingsButton.setEnabled(true);
+
+        mUserRestrictionAwarePreferenceMixin.onAfterBindViewHolder(holder);
+    }
+
+    @Override
+    public HandheldRolePreference asPreference() {
+        return this;
     }
 }

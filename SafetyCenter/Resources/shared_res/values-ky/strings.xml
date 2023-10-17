@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Текшерилүүдө"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Түзмөктүн параметрлери текшерилүүдө…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Жакшы эле окшойт"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Маселелер жок"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Сунушту көрүү}other{Сунуштарды көрүү}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Баары жайында!"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Кеңеш бар}other{Кеңештер бар}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Аткарылган аракет}other{Аткарылган аракеттер}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Параметрлерди карап чыгуу"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Параметрлердин тизмесин текшерүү"</string>
@@ -36,11 +36,11 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Мүмкүн болгон коркунучтар табылды"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Коркунучтар табылды"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Аккаунт коркунучта болушу мүмкүн"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Аккаунт коркунучта"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Эскетүүнү көрүү}other{Эскертүүлөрдү көрүү}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Аккаунттун коопсуздугу коркунучта"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Төмөнкү эскертүүнү көрүү}other{Төмөнкү эскертүүлөрдү көрүү}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Барак ачылган жок"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Эскертүү чечилген жок"</string>
-    <string name="refresh_timeout" msgid="251734999692581852">"Параметрлер жаңырган жок"</string>
+    <string name="refresh_timeout" msgid="251734999692581852">"Параметрлер жаңыртылган жок"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Параметр текшерилген жок}other{Параметрлер текшерилген жок}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Жумуш профили тындырылды"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Азырынча маалымат жок"</string>

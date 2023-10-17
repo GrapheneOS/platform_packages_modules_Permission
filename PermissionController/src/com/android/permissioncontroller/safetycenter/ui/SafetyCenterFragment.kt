@@ -50,7 +50,7 @@ abstract class SafetyCenterFragment : PreferenceFragmentCompat() {
     }
 
     override fun onCreateAdapter(
-        preferenceScreen: PreferenceScreen?
+        preferenceScreen: PreferenceScreen
     ): RecyclerView.Adapter<RecyclerView.ViewHolder> {
         /* The scroll-to-result functionality for settings search is currently implemented only for
          * subpages i.e. non expand-and-collapse type entries. Hence, we check that the flag is

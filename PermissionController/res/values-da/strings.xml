@@ -68,7 +68,7 @@
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Administrer adgang til data for kalender, opkaldshistorik m.m."</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Du har givet <xliff:g id="APP_NAME">%1$s</xliff:g> adgang til <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Du har nægtet <xliff:g id="APP_NAME">%1$s</xliff:g> adgang til <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{I dag}=1{1 dag siden}one{# dag siden}other{# dage siden}}"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{I dag}=1{For 1 dag siden}one{for # dag siden}other{for # dage siden}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiver appen"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Hvis du deaktiverer denne app, kan det medføre, at Android-apps og andre apps ikke fungerer korrekt. Vær opmærksom på, at du ikke kan slette denne app, da den er forudinstalleret på din enhed. Hvis du slår appen fra, deaktiveres og skjules den på din enhed."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Tilladelses­administrator"</string>
@@ -295,13 +295,13 @@
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Se apps med fuld adgang"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Adgangen er blevet fjernet"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-system"</string>
-    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Apptilladelserne blev fjernet for at beskytte dit privatliv"</string>
+    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Apptilladelserne blev fjernet for at beskytte dine personlige oplysninger"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> og 1 anden app er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"<xliff:g id="APP_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> andre apps er ikke blevet brugt i et par måneder. Tryk for at gennemgå."</string>
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"1 app bruges ikke"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps bruges ikke"</string>
-    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Tilladelserne fjernes for at beskytte dit privatliv. Tryk for at gennemgå."</string>
+    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Tilladelserne fjernes for at beskytte dine personlige oplysninger. Tryk for at gennemgå."</string>
     <string name="unused_apps_title" msgid="8589298917717872239">"Apps, du ikke bruger"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Tilladelserne blev fjernet fra"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Tilladelserne fjernes fra"</string>
@@ -373,7 +373,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardnødapp?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Der kræves ingen tilladelser"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"i nødsituationer"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Standard­startapp"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Standardstartapp"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Startapp"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Apps (ofte kaldet launchers), som erstatter startskærmene på din Android-enhed og giver dig adgang til indhold og funktioner på din enhed"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardstartapp?"</string>
@@ -443,7 +443,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> vil gerne uploade fejretningsoplysninger."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"Vil du dele fejlretningsdata?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Systemet har registreret et problem."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> anmoder om at uploade en fejlrapport fra denne enhed, som stammer fra <xliff:g id="DATE">%2$s</xliff:g> kl. <xliff:g id="TIME">%3$s</xliff:g>. Fejlrapporter indeholder personlige oplysninger om din enhed eller registreres af apps, f.eks. brugernavne, lokationsdata, enheds-id\'er og netværksoplysninger. Oplysningerne i fejlrapporterne må kun deles med personer og apps, du har tillid til. Vil du give <xliff:g id="APP_NAME_1">%4$s</xliff:g> tilladelse til at uploade en fejlrapport?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> anmoder om at uploade en fejlrapport fra denne enhed, som stammer fra <xliff:g id="DATE">%2$s</xliff:g> kl. <xliff:g id="TIME">%3$s</xliff:g>. Fejlrapporter indeholder personlige oplysninger om din enhed eller registreres af apps, f.eks. brugernavne, steddata, enheds-id\'er og netværksoplysninger. Oplysningerne i fejlrapporterne må kun deles med personer og apps, du har tillid til. Vil du give <xliff:g id="APP_NAME_1">%4$s</xliff:g> tilladelse til at uploade en fejlrapport?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Der opstod en fejl i behandlingen af fejlrapporten for <xliff:g id="APP_NAME">%1$s</xliff:g>. Det er derfor ikke muligt at dele detaljerede fejlretningsdata. Vi beklager ulejligheden."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Tillad"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Afvis"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsætte med at give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til kropssensordata, mens appen er i brug?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at sende dig notifikationer?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Administrerede tilladelser"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har lokationsadgang"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Din organisation har givet <xliff:g id="APP_NAME">%1$s</xliff:g> tilladelse til at tilgå din lokation"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Andre tilladelser"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Tilladelse, der anvendes af systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Tilladelser, der kun anvendes af systemapps"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Denne app har angivet, at den muligvis deler lokationsdata med tredjeparter"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datadeling og lokation"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvor oplysninger om datadeling stammer fra"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Udvikleren har stillet oplysninger om, hvordan denne app deler data, til rådighed for producenten af denne enhed. Udvikleren opdaterer muligvis disse oplysninger senere."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Udvikleren gav oplysninger til "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" om, hvordan denne app deler data. Udvikleren opdaterer muligvis disse oplysninger senere."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Denne app deler muligvis lokationsdata for:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling varierer"</string>
@@ -602,11 +603,13 @@
     <string name="permission_rationale_purpose_developer_communications" msgid="6453047018892062374">"Kommunikation fra udvikleren"</string>
     <string name="permission_rationale_purpose_advertising" msgid="7156966429245180236">"Annoncering eller marketing"</string>
     <string name="permission_rationale_purpose_fraud_prevention_security" msgid="4262104770357031902">"Sikkerhed, overholdelse og forebyggelse af svindel"</string>
-    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Personlig tilpasning"</string>
+    <string name="permission_rationale_purpose_personalization" msgid="1589973273682238708">"Tilpasning"</string>
     <string name="permission_rationale_purpose_account_management" msgid="2985772421946688879">"Kontoadministration"</string>
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datasikkerhed"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Lokationsdata deles muligvis"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Denne app har angivet, at den muligvis deler dine lokationsdata med tredjeparter"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Dette link kan ikke åbnes"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Opdateringer om deling af lokationsdata"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gennemse apps, der har ændret måden, hvorpå de kan dele dine lokationsdata"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Disse apps har ændret den måde, hvorpå de kan dele dine lokationsdata. De har muligvis ikke delt dataene før eller kan nu anvende dem til annoncering eller marketing."</string>

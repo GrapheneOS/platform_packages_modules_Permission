@@ -36,12 +36,12 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Uvijek dopusti sve"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Odaberite slike i videozapise"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Odaberite više"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nemoj dopustiti"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nemojte odabrati više"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ipak nemoj dopustiti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odbaci"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> od <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Dopuštate li da aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; može <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Dopuštate li da aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; može <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Želite li uvijek dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sljedeće: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Samo dok se aplikacija koristi"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Uvijek"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Nemoj dopustiti i više ne pitaj"</string>
@@ -126,7 +126,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Nepoznato"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Nadzorna ploča za privatnost"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Prikaz aplikacija koje su nedavno upotrebljavale dopuštenja"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Upotreba dopuštenja: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Upotreba grupe dopuštenja: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Pogledajte ostala dopuštenja"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> i još <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -356,7 +356,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za preglednik?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nije potrebno nijedno dopuštenje"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Zadana aplikacija telefona"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija za pozive"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija telefona"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije koje vam omogućuju upućivanje i primanje telefonskih poziva na uređaju"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao svoju zadanu aplikaciju telefona?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplikacija će dobiti pristup vašoj kameri, kontaktima, mikrofonu, telefonu i SMS-ovima"</string>
@@ -455,14 +455,14 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Prikaz otkrivanja okidača asistenta"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Prikazuje ikonu na traci statusa kada se za aktiviranje glasovne pomoći upotrebljava mikrofon"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa fotografijama i medijima na vašem uređaju?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa vašim kontaktima?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa lokaciji ovog uređaja?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa vašim kontaktima?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa lokaciji ovog uređaja?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Aplikacija će imati pristup lokaciji samo dok upotrebljavate aplikaciju"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa lokaciji ovog uređaja?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa lokaciji ovog uređaja?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ova aplikacija možda će uvijek htjeti imati pristup vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Želite li promijeniti pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ova aplikacija želi uvijek pristupati vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da traži uređaje u blizini, povezuje se s njima i određuje njihov približni položaj?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; traži uređaje u blizini, poveže se s njima i odredi njihov približni položaj?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; traži uređaje u blizini, poveže se s njima i odredi njihov približni položaj? "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Želite li aplikaciji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> promijeniti pristup iz približne lokacije u točnu?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa približnoj lokaciji ovog uređaja?"</string>
@@ -474,32 +474,34 @@
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audiodatotekama i glazbi&lt;/b&gt; na ovom uređaju?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dopustiti apl. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audio i drugim datotekama te glazbi&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup glazbi i audiodatotekama na ovom uređaju?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup fotografijama i videozapisima na ovom uređaju?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima audiozapise?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup fotografijama i videozapisima na ovom uređaju?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći snimati audiozapise samo dok je upotrebljavate"</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima audiozapise?"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima audiozapise?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Aplikacija će možda snimati audiozapise u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Želite li promijeniti pristup mikrofonu za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Aplikacija traži dopuštenje za snimanje audiozapisa u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Želite li dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa vašoj tjelesnoj aktivnosti?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima fotografije i videozapise?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima fotografije i videozapise?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplikacija će moći snimati fotografije i videozapise samo dok je upotrebljavate"</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima fotografije i videozapise?"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima fotografije i videozapise?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Aplikacija će možda snimati fotografije i videozapise u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Želite li promijeniti pristup kameri za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Aplikacija traži dopuštenje za snimanje fotografija i videozapisa u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa zapisnicima poziva vašeg telefona?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da upućuje telefonske pozive i upravlja njima?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa zapisnicima poziva vašeg telefona?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje telefonske pozive i upravlja njima?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikacija želi uvijek pristupati podacima senzora o vašim vitalnim znakovima, čak i kad je ne upotrebljavate. Da biste unijeli tu promjenu, "<annotation id="link">"otvorite postavke"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Da biste omogućili aplikaciji da uvijek pristupa podacima s biometrijskih senzora, čak i kada je ne upotrebljavate, "<annotation id="link">"otvorite postavke."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Nastaviti dopuštati aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup podacima s biometrijskih senzora dok je upotrebljavate?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da vam šalje obavijesti?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da vam šalje obavijesti?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana dopuštenja"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ima pristup lokaciji"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaša organizacija dopušta da <xliff:g id="APP_NAME">%1$s</xliff:g> pristupa vašoj lokaciji"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Ostala dopuštenja"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Dopuštenja koja upotrebljava sustav"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dopuštenja koja upotrebljavaju samo aplikacije sustava."</string>
@@ -547,7 +549,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Koristi telefonski poziv"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno korišteno tijekom telefonskog poziva"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nedavno je koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
@@ -583,13 +585,12 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"Za aplikacije i usluge. Ako je ta postavka isključena, podaci mikrofona i dalje se mogu dijeliti kad nazovete broj hitne službe."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Pogledajte aplikacije i usluge koje imaju pristup lokaciji"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Prikaži pristup međuspremniku"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Prikazuje se poruka kad aplikacije pristupe tekstu, slikama ili drugom kopiranom sadržaju"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Primite poruku kad aplikacije pristupe tekstu, slikama ili drugom kopiranom sadržaju"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Prikaži zaporke"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Znakovi se nakratko prikazuju tijekom unosa"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Nakratko prikaži znakove tijekom unosa"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplikacija je navela da može dijeliti podatke o lokaciji s trećim stranama"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Dijeljenje podataka i lokacije"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Tko određuje kako se podaci dijele"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Razvojni programer pružio je proizvođaču ovog uređaja informacije o načinu na koji ova aplikacija dijeli podatke. Razvojni programer može s vremenom ažurirati te informacije."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Razvojni programer je usluzi "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" poslao informacije o načinu na koji aplikacija dijeli podatke. Razvojni programer može s vremenom ažurirati informacije."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplikacija može dijeliti podatke o lokaciji radi:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Način dijeljenja može se razlikovati"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sigurnost podataka"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Podaci o lokaciji mogu se dijeliti"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikacija je navela da vaše podatke o lokaciji može dijeliti s trećim stranama"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Vezu nije moguće otvoriti"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ažuriranja o dijeljenju podataka za lokaciju"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Pregledajte aplikacije koje su promijenile način na koji mogu dijeliti vaše podatke o lokaciji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ove su aplikacije promijenile način na koji mogu dijeliti vaše podatke o lokaciji. Ranije ih možda nisu dijelile ili ih sada mogu dijeliti u svrhe oglašavanja ili marketinga."</string>

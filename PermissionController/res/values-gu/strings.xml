@@ -130,7 +130,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"અન્ય પરવાનગીઓ જુઓ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> અને વધુ <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની ટાઇમલાઇન"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"છેલ્લા 24 કલાકમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"છેલ્લા 7 દિવસમાં ઍપ દ્વારા તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ ક્યારે કરવામાં આવ્યો, તેની સમયરેખા"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"જ્યારે આ ઍપ દ્વારા તમારી <xliff:g id="PERMGROUP">%1$s</xliff:g>ની પરવાનગીનો ઉપયોગ કરવામાં આવ્યો"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"વધુ જાણો"</string>
@@ -226,13 +226,13 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"તમે બધી ફાઇલો મેનેજ કરવાની મંજૂરી આપશો, તો આ ઍપ, આ ડિવાઇસના સામાન્ય સ્ટોરેજમાં અથવા કનેક્ટ કરેલા સ્ટોરેજ ડિવાઇસમાં રહેલી કોઈપણ ફાઇલને ઍક્સેસ કરી શકશે, તેમાં ફેરફાર કરી શકશે અથવા તેને ડિલીટ કરી શકશે. ઍપ તમને પૂછ્યા વિના ફાઇલો ઍક્સેસ કરે તેમ બની શકે છે."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ડિવાઇસમાં અથવા કનેક્ટ કરેલા સ્ટોરેજ ડિવાઇસમાં રહેલી ફાઇલોને ઍક્સેસ કરવાની, તેમાં ફેરફાર કરવાની અથવા તેને ડિલીટ કરવાની મંજૂરી આપીએ? આ ઍપ તમને પૂછ્યા વિના ફાઇલો ઍક્સેસ કરે તેમ બની શકે છે."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"આ પરવાનગી ધરાવતી ઍપ આ કરી શકે છે: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"આ પરવાનગી ધરાવતી ઍપ <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"આ પરવાનગી ધરાવતી ઍપ તમારી શારીરિક પ્રવૃત્તિ જેમ કે ચાલવું, બાઇકિંગ, ડ્રાઇવિંગ, પગલાંની સંખ્યા અને બીજી ઘણી બધી પ્રવૃત્તિ ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"આ પરવાનગી ધરાવતી ઍપ તમારા કૅલેન્ડરને ઍક્સેસ કરી શકશે"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ લૉગ વાંચી અને લખી શકે છે"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"આ પરવાનગી ધરાવતી ઍપ ફોટા લઈ શકે છે અને વીડિયો રેકોર્ડ કરી શકે છે"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"આ પરવાનગી ધરાવતી ઍપ તમારા સંપર્કોને ઍક્સેસ કરી શકશે"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું લોકેશન ઍક્સેસ કરી શકે છે"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસનું સ્થાન ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"આ પરવાનગી ધરાવતી ઍપ નજીકના ડિવાઇસ શોધી શકે છે, તેઓને કનેક્ટ કરી શકે છે તેમજ સંબંધિત અંતર નક્કી કરી શકે છે"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"આ પરવાનગી ધરાવતી ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ કરી શકશે અને તેને મેનેજ કરી શકશે"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ઍપ ઉપયોગમાં હોય ત્યારે &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને બૉડી સેન્સર ડેટા ઍક્સેસ કરવાની મંજૂરી આપવાનું ચાલુ રાખીએ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપીએ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"નિયંત્રિત પરવાનગીઓ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> પાસે લોકેશન ઍક્સેસ છે"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"તમારી સંસ્થા <xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારું લોકેશન ઍક્સેસ કરવાની મંજૂરી આપે છે"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"અન્ય પરવાનગીઓ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"સિસ્ટમ દ્વારા ઉપયોગમાં લેવાતી પરવાનગીઓ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ફક્ત સિસ્ટમ ઍપ્લિકેશન દ્વારા ઉપયોગમાં લેવાતી પરવાનગીઓ."</string>
@@ -572,10 +574,10 @@
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"આ ઍપ Androidના નવીનતમ વર્ઝનને સપોર્ટ કરતી નથી. જો આ ઍપ મ્યુઝિક અને ઑડિયો ફાઇલોને ઍક્સેસ કરી શકતી ન હોય, તો તેને ફોટા અને વીડિયોને પણ ઍક્સેસ કરવાની મંજૂરી આપવામાં આવશે નહીં."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"બૅકગ્રાઉન્ડમાં સ્થાનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે, ઍપ બંધ હોય ત્યારે પણ"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"બૅકગ્રાઉન્ડમાં લોકેશનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"બૅકગ્રાઉન્ડમાં સ્થાનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"આ ઍપ તમારું લોકેશન હંમેશાં ઍક્સેસ કરી શકે છે, તે બંધ હોય ત્યારે પણ.\n\nસલામતી અને ઇમર્જન્સી સેવા સંબંધી અમુક ઍપને ધાર્યા મુજબ કામ કરવા માટે, બૅકગ્રાઉન્ડમાં તમારા લોકેશનનો ઍક્સેસ હોવો આવશ્યક છે."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"ઍક્સેસ કરવા સંબંધિત પરવાનગી બદલાઈ ગઈ"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"લોકેશનનો તાજેતરનો વપરાશ જુઓ"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"સ્થાનનો તાજેતરનો વપરાશ જુઓ"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"પ્રાઇવસીને લગતાં નિયંત્રણ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"કૅમેરાનો ઍક્સેસ"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"માઇક્રોફોનનો ઍક્સેસ"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"આ ઍપ દ્વારા જણાવવામાં આવ્યું છે કે તે ત્રીજા પક્ષો સાથે લોકેશન ડેટા શેર કરી શકે છે"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ડેટા શેરિંગ અને લોકેશન"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ડેટા શેરિંગ સંબંધિત માહિતી ક્યાંથી આવે છે"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવાની રીત વિશેની માહિતી આ ડિવાઇસના નિર્માતાને પૂરી પાડી છે. સમય જતાં કદાચ ડેવલપર આ માહિતી અપડેટ કરી શકે છે."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ઍપના ડેવલપરે આ ઍપની ડેટા શેર કરવા વિશેની માહિતી "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ને પૂરી પાડી છે. સમય જતાં કદાચ ડેવલપર આ માહિતી અપડેટ કરી શકે છે."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"આ ઍપ આ માટે લોકેશન ડેટા શેર કરી શકે છે:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ડેટા શેરિંગમાં ફેરફાર થતો રહે છે"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ડેટા સલામતી"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"લોકેશન ડેટા શેર કરવામાં આવી શકે છે"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"આ ઍપ દ્વારા જણાવવામાં આવ્યું છે કે તે ત્રીજા પક્ષો સાથે તમારો લોકેશન ડેટા શેર કરી શકે છે"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"આ લિંક ખોલી શકાતી નથી"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"લોકેશન માટે ડેટા શેરિંગ સંબંધિત અપડેટ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"તે ઍપનું રિવ્યૂ કરો જેમણે તમારા લોકેશન ડેટાને શેર કરવાની રીત બદલી છે"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"આ ઍપ દ્વારા તમારા લોકેશન ડેટાને શેર કરવાની રીત બદલવામાં આવી હોઈ શકે છે. તેઓએ તેને પહેલાં શેર કર્યો ન હોય એવું બની શકે છે અથવા હવે તેને જાહેરાત અથવા માર્કેટિંગ હેતુઓ માટે શેર કરી શકે છે."</string>

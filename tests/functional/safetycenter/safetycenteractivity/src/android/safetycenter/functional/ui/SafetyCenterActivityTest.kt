@@ -21,7 +21,6 @@ import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.Bundle
-import android.platform.test.rule.ScreenRecordRule
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -86,8 +85,6 @@ class SafetyCenterActivityTest {
     @get:Rule val disableAnimationRule = DisableAnimationRule()
 
     @get:Rule val freezeRotationRule = FreezeRotationRule()
-
-    @get:Rule val screenRecordRule = ScreenRecordRule()
 
     private val context: Context = getApplicationContext()
 
@@ -430,7 +427,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun entryListWithEntryGroup_clickingAClickableDisabledEntry_redirectsToDifferentScreen() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
@@ -486,7 +482,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun entryListWithSingleSource_clickingDefaultEntryImplicitIntent_redirectsToDifferentScreen() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.implicitIntentSingleSourceConfig)
 
@@ -932,7 +927,6 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    @ScreenRecordRule.ScreenRecord
     fun launchActivity_fromQuickSettings_issuesExpanded() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
@@ -1156,7 +1150,7 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun moreIssuesCard_twoIssuesAlreadyShown_expandAdditionalIssueCards() {
+    fun moreIssuesCard_withThreeIssues_showsTopIssuesAndMoreIssuesCard() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         safetyCenterTestHelper.setData(
             SOURCE_ID_1,
@@ -1176,14 +1170,31 @@ class SafetyCenterActivityTest {
             waitSourceIssueDisplayed(safetySourceTestData.recommendationGeneralIssue)
             waitAllTextDisplayed(MORE_ISSUES_LABEL)
             waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_twoIssuesAlreadyShown_expandAdditionalIssueCards() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            safetySourceTestData.criticalWithResolvingGeneralIssue
+        )
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_2,
+            safetySourceTestData.recommendationWithGeneralIssue
+        )
+        safetyCenterTestHelper.setData(SOURCE_ID_3, safetySourceTestData.informationWithIssue)
+
+        val bundle = Bundle()
+        bundle.putString(EXTRA_SAFETY_SOURCE_ID, SOURCE_ID_2)
+        bundle.putString(EXTRA_SAFETY_SOURCE_ISSUE_ID, RECOMMENDATION_ISSUE_ID)
+        context.launchSafetyCenterActivity(bundle) {
+            waitSourceIssueNotDisplayed(safetySourceTestData.informationIssue)
 
             clickMoreIssuesCard()
 
-            waitExpandedIssuesDisplayed(
-                safetySourceTestData.criticalResolvingGeneralIssue,
-                safetySourceTestData.recommendationGeneralIssue,
-                safetySourceTestData.informationIssue
-            )
+            waitSourceIssueDisplayed(safetySourceTestData.informationIssue)
         }
     }
 

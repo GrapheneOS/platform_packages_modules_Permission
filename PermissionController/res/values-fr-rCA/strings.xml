@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Toujours tout autoriser"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Sélectionner des photos et des vidéos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Sélectionner d\'autres photos"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne pas en sélectionner d\'autres"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne pas sélectionner plus de données"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser quand même"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Fermer"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> sur <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si vous autorisez la gestion de tous les fichiers, cette application pourra accéder à tous les fichiers enregistrés dans l\'espace de stockage partagé sur cet appareil ou sur des appareils de stockage connectés, les modifier et les supprimer. L\'application pourra accéder à des fichiers sans vous demander la permission."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Autoriser cette application à accéder aux fichiers qui se trouvent sur cet appareil ou sur des appareils de stockage connectés et à les modifier et les supprimer. Cette application pourra accéder à des fichiers sans vous demander la permission."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les applications ayant cette autorisation peuvent <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les applications qui possèdent l\'autorisation peuvent <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Les applications qui possèdent cette autorisation peuvent accéder aux données relatives à vos activités physiques, comme la marche, le vélo, la conduite, le nombre de pas effectués et plus encore"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Les applications qui possèdent cette autorisation peuvent accéder à votre agenda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Les applications qui possèdent cette autorisation peuvent lire et écrire des journaux d\'appels téléphoniques"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Voulez-vous continuer à autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs corporels pendant l\'utilisation de l\'appli?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à vous envoyer des notifications?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorisations contrôlées"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> dispose d\'un accès à la position"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Votre organisation permet à <xliff:g id="APP_NAME">%1$s</xliff:g> d\'accéder à votre position"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Autres autorisations"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Autorisations utilisées par le système"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées par les applications système."</string>
@@ -535,7 +537,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Vérification de l\'état"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Paramètres de confidentialité"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Plus de paramètres"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accès à la caméra"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Accès à l\'appareil photo"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Accès au microphone"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"L\'autorisation a été retirée"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Consulter les utilisations récentes de l\'appareil photo"</string>
@@ -577,19 +579,18 @@
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Accès modifié"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Voir les utilisations récentes de la position"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Paramètres de confidentialité"</string>
-    <string name="camera_toggle_title" msgid="1251201397431837666">"Accès à la caméra"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Accès à l\'appareil photo"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Accès au microphone"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Pour les applications et les services"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Pour les applications et les services. Si ce paramètre est désactivé, il est possible que les données du microphone soient partagées lorsque vous appelez un numéro d\'urgence."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Voir les applications et les services qui ont accès à votre emplacement"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Afficher l\'accès au presse-papiers"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Un message s\'affiche lorsque les applications accèdent à du texte, à des images ou à d\'autres contenus que vous avez copiés"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Afficher un message lorsque les applications accèdent à du texte, à des images ou à d\'autres contenus que vous avez copiés"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Afficher les mots de passe"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Les caractères s\'affichent brièvement pendant la saisie"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Afficher les caractères brièvement pendant la saisie"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Cette application indique qu\'elle peut partager des données de localisation avec des tiers"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Partage des données et localisation"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Provenance des renseignements sur le partage des données"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Le développeur a fourni des renseignements au fabricant de cet appareil sur la façon dont cette application partage les données. Le développeur peut mettre à jour ces renseignements au fil du temps."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Le développeur a fourni des renseignements à "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sur la façon dont cette application partage les données. Le développeur peut mettre à jour ces renseignements au fil du temps."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"L\'appli peut partager des données de loc. pour :"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Les pratiques de partage de données peuvent varier"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Sécurité des données"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Les données de localisation peuvent être partagées"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Cette application indique qu\'elle peut partager vos données de localisation avec des tiers"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Impossible d\'ouvrir ce lien"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour des pratiques de partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Passez en revue les applications qui ont changé la façon dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applications ont modifié la façon dont elles peuvent partager vos données de localisation. Elles peuvent ne pas les avoir partagées auparavant, ou peuvent maintenant les partager à des fins d\'annonces ou de marketing."</string>

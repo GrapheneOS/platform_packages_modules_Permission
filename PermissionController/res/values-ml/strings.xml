@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"മൂന്നാം കക്ഷികളുമായി ലൊക്കേഷൻ ഡാറ്റ പങ്കിട്ടേക്കാമെന്ന് ഈ ആപ്പ് പ്രസ്താവിക്കുന്നു"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ഡാറ്റ പങ്കിടലും ലൊക്കേഷനും"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ഡാറ്റ പങ്കിടുന്നതിനെ കുറിച്ചുള്ള വിവരങ്ങൾ ലഭിക്കുന്നത് എവിടെ നിന്നാണ്"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ഈ ആപ്പ് എങ്ങനെയാണ് ഡാറ്റ പങ്കിടുന്നത് എന്നതിനെ കുറിച്ചുള്ള വിവരങ്ങൾ ഡെവലപ്പർ ഈ ഉപകരണത്തിന്റെ നിർമ്മാതാവിന് നൽകിയിട്ടുണ്ട്. കാലക്രമേണ ഡെവലപ്പർ ഈ വിവരങ്ങൾ അപ്ഡേറ്റ് ചെയ്തേക്കാം."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ഈ ആപ്പ് എങ്ങനെയാണ് ഡാറ്റ പങ്കിടുന്നത് എന്നതിനെ കുറിച്ച് ഡെവലപ്പർ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" എന്നതിൽ വിവരങ്ങൾ നൽകിയിട്ടുണ്ട്. കാലക്രമേണ ഡെവലപ്പർ ഈ വിവരങ്ങൾ അപ്ഡേറ്റ് ചെയ്തേക്കാം."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ഇവയ്ക്ക് ഈ ആപ്പ് ലൊക്കേഷൻ ഡാറ്റ പങ്കിട്ടേക്കാം:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ഡാറ്റ പങ്കിടുന്നത് വ്യത്യാസപ്പെടുന്നു"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ഡാറ്റാ സുരക്ഷ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ലൊക്കേഷൻ ഡാറ്റ പങ്കിട്ടേക്കാം"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"മൂന്നാം കക്ഷികളുമായി നിങ്ങളുടെ ലൊക്കേഷൻ ഡാറ്റ പങ്കിട്ടേക്കാമെന്ന് ഈ ആപ്പ് വ്യക്തമാക്കിയിട്ടുണ്ട്"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ഈ ലിങ്ക് തുറക്കാനാകുന്നില്ല"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ലൊക്കേഷൻ ഡാറ്റ പങ്കിടുന്നതിനുള്ള അപ്‌ഡേറ്റുകൾ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"നിങ്ങളുടെ ലൊക്കേഷൻ ഡാറ്റ പങ്കിടുന്ന രീതി മാറ്റിയ ആപ്പുകൾ അവലോകനം ചെയ്യുക"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"നിങ്ങളുടെ ലൊക്കേഷൻ ഡാറ്റ പങ്കിടുന്ന രീതി ഈ ആപ്പുകൾ മാറ്റി. അവ ഇത് മുമ്പ് പങ്കിട്ടിട്ടുണ്ടാകില്ല, അല്ലെങ്കിൽ ഇപ്പോൾ പരസ്യം ചെയ്യൽ, മാർക്കറ്റിംഗ് എന്നിവയുമായി ബന്ധപ്പെട്ട ആവശ്യങ്ങൾക്ക് പങ്കിട്ടേക്കാം."</string>

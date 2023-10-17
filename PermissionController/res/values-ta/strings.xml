@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"கடைசியாகத் திறந்தது: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"அனைத்து ஃபைல்களையும் நிர்வகிப்பதற்கு அனுமதி வழங்கினால் இந்தச் சாதனத்தின் பொதுவான சேமிப்பகத்திலோ இணைக்கப்பட்டுள்ள சேமிப்பகச் சாதனங்களிலோ உள்ள ஃபைல்களை அணுகவும் நீக்கவும் அவற்றில் மாற்றங்களைச் செய்யவும் இந்த ஆப்ஸால் முடியும். உங்களிடம் கேட்காமலேயே ஃபைல்களை ஆப்ஸ் அணுகக்கூடும்."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"இந்தச் சாதனத்திலோ இணைக்கப்பட்டுள்ள சேமிப்பகச் சாதனங்களிலோ உள்ள ஃபைல்களை அணுகவும் நீக்கவும் அவற்றில் மாற்றங்களைச் செய்யவும் இந்த ஆப்ஸை அனுமதிக்கவா? உங்களிடம் கேட்காமலேயே ஃபைல்களை இந்த ஆப்ஸ் அணுகக்கூடும்."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் இதைச் செய்ய முடியும்: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸானது <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் நடத்தல், சைக்கிள் ஓட்டுதல், வாகனம் ஓட்டுதல், படிகளில் ஏறி இறங்குதல் மற்றும் பல உடல்ரீதியான செயல்பாடுகளை அணுக இயலும்"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் கேலெண்டரை அணுக இயலும்"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸ் மொபைல் அழைப்புப் பதிவைப் படிக்கும், எழுதும்"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ஆப்ஸ் பயன்பாட்டில் இருக்கும்போது உடல் சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt ஆப்ஸுக்குத் தொடர்ந்து அனுமதியளிக்கவா?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"உங்களுக்கு அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"கட்டுப்படுத்தப்பட்ட அனுமதிகள்"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸுக்கு இருப்பிட அணுகல் உள்ளது"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"உங்கள் இருப்பிடத்தை <xliff:g id="APP_NAME">%1$s</xliff:g> அணுக உங்கள் நிறுவனம் அனுமதிக்கிறது"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"பிற அனுமதிகள்"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"சிஸ்டத்தால் பயன்படுத்தப்படும் அனுமதி"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"சிஸ்டம் ஆப்ஸால் மட்டுமே பயன்படுத்தப்படும் அனுமதிகள்."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவைப் பகிரலாம் என இந்த ஆப்ஸ் குறிப்பிடுகிறது"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"தரவுப் பகிர்வு மற்றும் இருப்பிடம்"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"தரவுப் பகிர்வு குறித்த தகவல்கள் எங்கிருந்து பெறப்படுகின்றன?"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"இந்த ஆப்ஸ் எப்படித் தரவைப் பகிர்கிறது என்பது குறித்த தகவல்களை டெவலப்பர் இந்தச் சாதனத்தின் உற்பத்தியாளருக்கு வழங்கியுள்ளார். டெவெலப்பர் காலப்போக்கில் இந்தத் தகவல்களைப் புதுப்பிக்கக்கூடும்."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"இந்த ஆப்ஸ் எப்படித் தரவைப் பகிர்கிறது என்பது குறித்த தகவல்களை டெவெலப்பர் "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" என்பதற்கு வழங்கியுள்ளார். டெவெலப்பர் காலப்போக்கில் இந்தத் தகவல்களை மாற்றக்கூடும்."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ஆப்ஸ் இவற்றுக்காக இருப்பிடத் தரவைப் பகிரக்கூடும்:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"தரவுப் பகிர்வு வேறுபடுகிறது"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"தரவுப் பாதுகாப்பு"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"இருப்பிடத் தரவு பகிரப்படலாம்"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"இந்த ஆப்ஸில் குறிப்பிட்டுள்ளபடி மூன்றாம் தரப்பினருடன் இருப்பிடத் தரவை இது பகிரலாம்"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"இந்த இணைப்பைத் திறக்க முடியவில்லை"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"இருப்பிடத்திற்கான தரவுப் பகிர்வு குறித்த அறிவிப்புகள்"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"உங்கள் இருப்பிடத் தரவைப் பகிரும் விதத்தை மாற்றிய ஆப்ஸ் எவை எனப் பாருங்கள்"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"உங்கள் இருப்பிடத் தரவைப் பகிரும் விதத்தை இந்த ஆப்ஸ் மாற்றியுள்ளன. இதற்குமுன் அவற்றைப் பகிராமல் இருந்திருக்கலாம் அல்லது விளம்பரப்படுத்தல், மார்கெட்டிங் போன்ற நோக்கங்களுக்காக இப்போது பகிரக்கூடும்."</string>

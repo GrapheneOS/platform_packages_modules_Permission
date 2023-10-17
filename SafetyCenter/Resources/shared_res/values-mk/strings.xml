@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Скенирање"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Се проверуваат поставките за уредот…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Изгледа добро"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Не се најдени проблеми"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Видете ја препораката}one{Видете ги препораките}other{Видете ги препораките}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Не се најдени проблеми"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Достапен е совет}one{Достапни се совети}other{Достапни се совети}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Преземено дејство}one{Преземени дејства}other{Преземени дејства}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Прегледајте ги поставките"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Проверете го списокот со поставки"</string>
@@ -35,9 +35,9 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"Под ризик сте"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Најдени се потенцијални ризици"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Најдени се ризици"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Сметката можеби е изложена на ризик"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Сметката е изложена на ризик"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Видете го предупредувањето}one{Видете ги предупредувањата}other{Видете ги предупредувањата}}"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Сметката можеби е под ризик"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Сметката е под ризик"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Видете го предупредувањето подолу}one{Видете ги предупредувањата подолу}other{Видете ги предупредувањата подолу}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Не можеше да се отвори страницата"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Не можеше да се реши предупредувањето"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Не можеше да се освежат поставките"</string>

@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"마지막 실행 날짜: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"모든 파일 관리를 허용하면 앱이 이 기기의 공통 저장용량 또는 연결된 저장장치에 있는 모든 파일에 액세스하거나 이러한 파일을 수정, 삭제할 수 있습니다. 앱이 사용자에게 요청하지 않고도 파일에 액세스할 수 있습니다."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"앱이 이 기기 또는 연결된 저장장치에 있는 파일에 액세스하거나 이러한 파일을 수정, 삭제하도록 허용하시겠습니까? 앱이 사용자에게 요청하지 않고도 파일에 액세스할 수 있습니다."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"이 권한이 있는 앱은 다음 작업을 할 수 있습니다: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"이 권한이 있는 앱은 <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"이 권한이 있는 앱은 걷기, 자전거 타기, 운전, 걸음 수 등 내 신체 활동 정보에 액세스할 수 있습니다."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"이 권한이 있는 앱은 내 캘린더에 액세스할 수 있습니다."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"이 권한이 있는 앱은 전화 통화 기록을 읽고 쓸 수 있습니다."</string>
@@ -456,7 +456,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"음성 어시스턴트 활성화를 위해 마이크가 사용되면 상태 표시줄에 아이콘 표시"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진 및 미디어에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 연락처에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 이 기기의 위치 정보에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기의 위치 정보에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"앱을 사용할 때만 앱에서 위치에 액세스합니다."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 기기의 위치 정보에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 할 수 있습니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱을 사용하는 중에만 생체 신호 센서 데이터에 액세스하도록 허용하는 설정을 유지하시겠습니까?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 알림을 보내도록 허용하시겠습니까?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"관리 대상 권한"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱이 위치 액세스 권한을 보유함"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"조직에서 <xliff:g id="APP_NAME">%1$s</xliff:g> 앱이 내 위치에 액세스하도록 허용했습니다."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"기타 권한"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"시스템에서 사용하는 권한"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"시스템 애플리케이션에서만 사용하는 권한입니다."</string>
@@ -570,10 +572,10 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 있는 경우 음악 및 오디오 파일에 대한 액세스도 허용됩니다."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"백그라운드 위치 정보 액세스 권한이 있는 앱 검토하기"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"백그라운드 위치 액세스 권한이 있는 앱 검토하기"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> 앱은 닫혀 있는 동안에도 내 위치 정보에 항상 액세스할 수 있습니다."</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"백그라운드 위치 정보 액세스 권한이 있는 앱 검토하기"</string>
-    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"이 앱은 닫혀 있는 동안에도 내 위치 정보에 항상 액세스할 수 있습니다.\n\n일부 안전 및 긴급 대응 앱은 의도한 대로 작동하기 위해 백그라운드에서 내 위치 정보에 액세스할 수 있는 권한이 필요합니다."</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"백그라운드 위치 액세스 권한이 있는 앱 검토하기"</string>
+    <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"이 앱은 앱이 닫혀 있는 동안에도 내 위치 정보에 항상 액세스할 수 있습니다.\n\n일부 안전 및 긴급 대응 앱은 의도한 대로 작동하기 위해 백그라운드에서 내 위치 정보에 액세스하는 권한이 필요합니다."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"액세스 권한이 변경되었습니다."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"최근 위치 정보 사용 내역 보기"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"개인 정보 보호 설정"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"데이터 공유 및 위치"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"데이터 공유 정보 출처"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"개발자가 이 기기의 제조업체에 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 시간이 지난 후 개발자가 이 정보를 업데이트할 수도 있습니다."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"개발자가 "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"에게 이 앱의 데이터 공유 방법에 관한 정보를 제공했습니다. 시간이 지난 후 개발자가 이 정보를 업데이트할 수도 있습니다."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"이 앱은 다음 목적으로 위치 데이터를 공유할 수 있습니다."</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"다양한 데이터 공유 방식"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"데이터 보안"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"위치 데이터가 공유될 수 있습니다."</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"앱에서 위치 데이터를 서드 파티와 공유할 수 있다고 명시했습니다."</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"링크를 열 수 없음"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"위치 데이터 공유 방법 업데이트"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"위치 데이터 공유 방법을 변경한 앱 검토"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"다음 앱에서 위치 데이터 공유 방법을 변경했습니다. 이전에 위치 데이터를 공유하지 않았던 앱이거나, 이제 광고 또는 마케팅 목적으로 데이터를 공유하는 앱일 수 있습니다."</string>

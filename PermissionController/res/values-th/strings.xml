@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"อนุญาตทั้งหมดตลอดเวลา"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"เลือกรูปภาพและวิดีโอ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"เลือกเพิ่มเติม"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ไม่เลือกเพิ่มแล้ว"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ไม่ต้องเลือกเพิ่มเติม"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ยังคงไม่อนุญาต"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ปิด"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> จาก <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> รายการ"</string>
@@ -397,9 +397,9 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและได้รับสิทธิ์เข้าถึงโทรศัพท์, SMS, รายชื่อติดต่อ และปฏิทิน"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและสตรีมแอปไปยังอุปกรณ์ที่เชื่อมต่อ"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"บริการนี้แชร์รูปภาพ สื่อ และการแจ้งเตือนจากโทรศัพท์ของคุณไปยังอุปกรณ์อื่น"</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"แอปโน้ตเริ่มต้น"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"แอปโน้ต"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"แอปที่ให้คุณจดโน้ตในอุปกรณ์ได้"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"แอปการจดบันทึกเริ่มต้น"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"แอปการจดบันทึก"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"แอปที่ให้คุณจดบันทึกในอุปกรณ์ได้"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"บันทึก"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"แอปเริ่มต้นปัจจุบัน"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ไม่ต้องถามอีก"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์ร่างกายได้ตลอดขณะใช้งานแอปไหม"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งการแจ้งเตือนถึงคุณไหม"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"สิทธิ์ที่มีการควบคุม"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> มีสิทธิ์เข้าถึงตำแหน่ง"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"องค์กรของคุณอนุญาตให้ <xliff:g id="APP_NAME">%1$s</xliff:g> เข้าถึงตำแหน่ง"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"สิทธิ์อื่นๆ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"สิทธิ์ที่ใช้โดยระบบ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"สิทธิ์ที่ใช้โดยแอปพลิเคชันระบบเท่านั้น"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"แอปนี้ระบุว่าแอปอาจแชร์ข้อมูลตำแหน่งกับองค์กรบุคคลที่สามของแอป"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"การแชร์ข้อมูลและตำแหน่ง"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"แหล่งที่มาของรายละเอียดการแชร์ข้อมูล"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"นักพัฒนาแอปได้ให้รายละเอียดเกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูลไว้กับผู้ผลิตอุปกรณ์นี้ โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"นักพัฒนาแอปได้ให้รายละเอียดเกี่ยวกับวิธีที่แอปนี้แชร์ข้อมูลไว้ใน "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" โดยอาจอัปเดตข้อมูลนี้เมื่อเวลาผ่านไป"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"แอปนี้อาจแชร์ข้อมูลตำแหน่งเพื่อ"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"การแชร์ข้อมูลแตกต่างกันไปตามปัจจัยต่างๆ"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ความปลอดภัยของข้อมูล"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"อาจมีการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"แอปนี้ระบุว่าอาจแชร์ข้อมูลตำแหน่งของคุณกับบุคคลที่สาม"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"เปิดลิงก์นี้ไม่ได้"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ตรวจสอบแอปที่เปลี่ยนแปลงวิธีที่อาจใช้แชร์ข้อมูลตำแหน่งของคุณ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"แอปต่อไปนี้ได้เปลี่ยนแปลงวิธีที่แอปอาจแชร์ข้อมูลตำแหน่งของคุณ โดยที่แอปอาจไม่เคยแชร์มาก่อน หรืออาจแชร์ในตอนนี้เพื่อวัตถุประสงค์ในการโฆษณาหรือการตลาดก็ได้"</string>

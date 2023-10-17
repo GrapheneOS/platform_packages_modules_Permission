@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"正在扫描"</string>
     <string name="loading_summary" msgid="3740846439782713910">"正在检查设备设置…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"没问题"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"未发现任何问题"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{查看建议}other{查看建议}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"未发现问题"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{有可用的提示}other{有可用的提示}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{已采取措施}other{已采取措施}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"检查设置"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"请检查设置列表"</string>
@@ -35,9 +35,9 @@
     <string name="overall_severity_level_critical_personal_warning_title" msgid="5070434468955164734">"您目前有风险"</string>
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"发现潜在风险"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"发现风险"</string>
-    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"账号可能存在风险"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"账号存在风险"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{查看提醒}other{查看提醒}}"</string>
+    <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"帐号可能存在风险"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"帐号存在风险"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{请查看下方提醒}other{请查看下方提醒}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"无法打开页面"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"无法解决提醒事项"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"无法刷新设置"</string>

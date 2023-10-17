@@ -126,11 +126,11 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Управление на поверителността"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Преглед на приложенията, които наскоро са използвали разрешения"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и още <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Хронология за използването на „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ от приложенията през последните 24 часа"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Хронология за използването на <xliff:g id="PERMGROUP">%1$s</xliff:g> от приложенията през последните 24 часа"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Хронология за използването на <xliff:g id="PERMGROUP">%1$s</xliff:g> от приложенията през последните 7 дни"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога това приложение е използвало разрешението за достъп до <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Научете повече"</string>
@@ -197,7 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Когато точното местоположение е изключено, приложенията могат да осъществяват достъп до приблизителното ви местоположение"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение за: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Достъп до „<xliff:g id="PERM">%1$s</xliff:g>“ за това приложение"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения, предоставени за: <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения, предоставени за <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Преглед на всички приложения с това разрешение"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показване на употребата на микрофона за Асистент"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки за неизползваните приложения"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако разрешите управлението на всички файлове, това приложение може да осъществява достъп до, да променя и изтрива всички файлове в стандартното хранилище на устройството или в свързаните хранилища. Приложението може да осъществява достъп до файловете, без да ви пита."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Да се разреши ли на това приложение да осъществява достъп до, да променя и изтрива файлове на устройството или в свързаните хранилища? Приложението може да осъществява достъп до файловете, без да ви пита."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложенията с това разрешение могат да осъществяват <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложенията с това разрешение имат достъп до физическата ви активност, като например ходене, колоездене, шофиране, брой крачки и др."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Приложенията с това разрешение имат достъп до календара ви"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Приложенията с това разрешение могат да четат списъка с телефонните обаждания и да записват в него"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Да се предоставя ли достъп на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до данните от сензорите за тяло, докато приложението се използва?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да ви изпраща известия?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролирани разрешения"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> има достъп до местоположението"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Организацията ви разрешава на <xliff:g id="APP_NAME">%1$s</xliff:g> да осъществява достъп до местоположението ви"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Други разрешения"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Разрешения, използвани от системата"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Разрешения, които се използват само от системните приложения."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Това приложение посочи, че може да споделя с трети страни данни за местоположението"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Споделяне на данни и достъп до местоположението"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Източници на информацията за споделянето на данни"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Програмистът предостави на производителя на това устройство информация за начина, по който приложението споделя данни. Програмистът може да актуализира съответната информация с течение на времето."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Програмистът предостави на "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" информация за начина, по който това приложение споделя данни. Програмистът може да актуализира съответната информация с течение на времето."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Това прил. може да споделя данни за местоп. с цел:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Споделянето на данни варира"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безопасност на данните"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Възможно е да бъдат споделяни данни за местоположението"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Това приложение посочи, че може да споделя с трети страни данни за местоположението ви"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Тази връзка не може да се отвори"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Актуализации за споделянето на данни за местоположението"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Прегледайте приложенията, променили начина, по който могат да споделят данни за местоположението ви"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Тези приложения са променили начина, по който могат да споделят данни за местоположението ви. Може да не са ги споделяли преди или вече да го правят с рекламни или маркетингови цели."</string>

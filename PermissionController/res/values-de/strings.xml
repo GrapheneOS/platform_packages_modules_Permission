@@ -58,7 +58,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Verwaltung aller Dateien zulassen"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Zugriff auf Mediendateien zulassen"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"App-Berech­tigungen"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"App-Berechtigungen"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nicht verwendete Apps"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Keine nicht verwendeten Apps"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Keine nicht verwendeten Apps"</string>
@@ -426,7 +426,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Weitere Standard-Apps"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Links öffnen"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standard-Apps für Arbeit"</string>
-    <string name="default_app_none" msgid="9084592086808194457">"Keine"</string>
+    <string name="default_app_none" msgid="9084592086808194457">"Keine App"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standardeinstellung)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Keine Apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Ausgewählt"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Zugriff auf Körpersensordaten bei Verwendung weiter erlauben?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, dir Benachrichtigungen zu senden?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Erteilte Berechtigungen"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> hat Standortzugriff"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Deine Organisation erlaubt <xliff:g id="APP_NAME">%1$s</xliff:g> den Zugriff auf deinen Standort"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Weitere Berechtigungen"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Berechtigungen, die vom System verwendet werden"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Berechtigungen, die nur von Systemanwendungen verwendet werden."</string>
@@ -520,7 +522,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Für Apps und Dienste"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Die Mikrofondaten können immer noch geteilt werden, wenn du den Notruf wählst."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ändern"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Sicherheit &amp; Datenschutz"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Sicherheit und Datenschutz"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Gerät prüfen"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Schließen"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Diese Warnung schließen?"</string>
@@ -531,7 +533,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Sicherheits- und Datenschutzstatus. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sicherheitseinstellungen"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Berechtigungen"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicherheit &amp; Datenschutz"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Sicherheit und Datenschutz"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Status prüfen"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Datenschutzeinstellungen"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Weitere Einstellungen"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"In dieser App wurde angegeben, dass sie eventuell Standortdaten an Dritte weitergibt"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datenweitergabe und Standort"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Ursprung der Informationen zur Datenweitergabe"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Die Informationen darüber, wie diese App Daten weitergibt, hat der Hersteller des Geräts vom Entwickler erhalten. Der Entwickler kann die Art und Weise der Datenweitergabe jederzeit ändern."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Der Entwickler hat "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" Informationen darüber zur Verfügung gestellt, wie diese App Daten weitergibt. Der Entwickler kann diese Informationen jederzeit ändern."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Diese App kann Standortdaten weitergeben für:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datenweitergabe variiert"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datensicherheit"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Die App kann Standortdaten weitergeben"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Für diese App wurde angegeben, dass deine Standortdaten an Dritte weitergegeben werden können"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Link konnte nicht geöffnet werden"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Änderungen bei der Weitergabe von Standortdaten"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Apps ansehen, bei denen sich die Art der Weitergabe deiner Standortdaten geändert hat"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bei diesen Apps hat sich die Art der Weitergabe deiner Standortdaten geändert. Möglicherweise wurden sie zuvor nicht weitergegeben oder sie werden jetzt zu Werbe- oder Marketingzwecken weitergegeben."</string>

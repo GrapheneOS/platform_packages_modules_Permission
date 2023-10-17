@@ -27,12 +27,12 @@
     <string name="off" msgid="1438489226422866263">"ਬੰਦ"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ਅਣਸਥਾਪਤ ਕਰੋ ਜਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ਐਪ ਨਹੀਂ ਮਿਲੀ"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਆਗਿਆ ਨਾ ਦਿਓ"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਨਾ ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ਆਗਿਆ ਨਾ ਦਿਓ ਅਤੇ ਦੁਬਾਰਾ ਨਾ ਪੁੱਛੋ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ਐਪ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ” ਨੂੰ ਰੱਖੋ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ਸਿਰਫ਼ ਇਸ ਸਮੇਂ ਲਈ ਇਜਾਜ਼ਤ ਦਿਓ” ਰੱਖੋ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ਹੋਰ ਜਾਣਕਾਰੀ"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ਸਭ \'ਤੇ ਕਰਨ ਦਿਓ"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"ਸਭ ਨੂੰ ਆਗਿਆ ਦਿਓ"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ਹਮੇਸ਼ਾਂ ਸਭ ਨੂੰ ਆਗਿਆ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਚੁਣੋ"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ਹੋਰ ਚੁਣੋ"</string>
@@ -195,7 +195,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"ਅੰਦਾਜ਼ਨ ਟਿਕਾਣਾ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ਸਹੀ ਟਿਕਾਣਾ ਵਰਤੋ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ਜਦੋਂ ਸਹੀ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਬੰਦ ਹੋਵੇ, ਤਾਂ ਐਪਾਂ ਤੁਹਾਡੀ ਅੰਦਾਜ਼ਨ ਟਿਕਾਣੇ ਦੀ ਜਾਣਕਾਰੀ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਸੰਬੰਧੀ ਇਜਾਜ਼ਤ"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ਇਜਾਜ਼ਤ"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ਇਸ ਐਪ ਲਈ <xliff:g id="PERM">%1$s</xliff:g> ਪਹੁੰਚ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ਦੀਆਂ ਸਾਰੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੇਖੋ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਦੇਖੋ"</string>
@@ -221,12 +221,12 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ਅਣਵਰਤੀਆਂ ਐਪਾਂ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਦੁਬਾਰਾ ਇਜਾਜ਼ਤਾਂ ਦੇਣ ਅਤੇ ਸੂਚਨਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ, ਐਪ ਖੋਲ੍ਹੋ।"</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਇੱਕ ਮਹੀਨੇ ਤੱਕ ਨਹੀਂ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਇਜਾਜ਼ਤਾਂ ਦੀ ਦੁਬਾਰਾ ਆਗਿਆ ਦੇਣ ਲਈ, ਐਪ ਨੂੰ ਖੋਲ੍ਹੋ।"</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}one{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}other{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨਿਆਂ ਤੋਂ ਵੱਧ ਸਮਾਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}one{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}other{ਪਿਛਲੀ ਵਾਰ # ਮਹੀਨਿਆਂ ਤੋਂ ਵੱਧ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ਐਪ ਨੂੰ ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ਜੇ ਤੁਸੀਂ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਇਹ ਐਪ ਇਸ ਡੀਵਾਈਸ ਜਾਂ ਕਨੈਕਟ ਕੀਤੇ ਸਟੋਰੇਜ ਡੀਵਾਈਸਾਂ ਦੀ ਸਾਂਝੀ ਸਟੋਰੇਜ ਵਿੱਚ ਕਿਸੇ ਵੀ ਫ਼ਾਈਲ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ, ਉਸ ਵਿੱਚ ਸੋਧ ਕਰ ਸਕਦੀ ਅਤੇ ਉਸ ਨੂੰ ਮਿਟਾ ਸਕਦੀ ਹੈ। ਐਪ ਤੁਹਾਨੂੰ ਪੁੱਛੇ ਬਿਨਾਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ਕੀ ਇਸ ਐਪ ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਜਾਂ ਕਨੈਕਟ ਕੀਤੇ ਸਟੋਰੇਜ ਡੀਵਾਈਸਾਂ \'ਤੇ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ, ਉਹਨਾਂ ਨੂੰ ਸੋਧਣ ਅਤੇ ਮਿਟਾਉਣ ਦੇਣਾ ਹੈ? ਇਹ ਐਪ ਤੁਹਾਨੂੰ ਪੁੱਛੇ ਬਿਨਾਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਇਹ ਕਰ ਸਕਦੀਆਂ ਹਨ: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੀ ਸਰੀਰਕ ਸਰਗਰਮੀ, ਜਿਵੇਂ ਕਿ ਪੈਦਲ-ਸੈਰ, ਸਾਈਕਲ ਚਲਾਉਣਾ, ਗੱਡੀ ਚਲਾਉਣਾ, ਕਦਮਾਂ ਦੀ ਗਿਣਤੀ ਅਤੇ ਹੋਰ ਚੀਜ਼ਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲ ਲੌਗ ਪੜ੍ਹ-ਲਿਖ ਸਕਦੀਆਂ ਹਨ"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ਕੀ ਐਪ ਦੇ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ ਸਰੀਰ ਸੰਬੰਧੀ ਸੈਂਸਰ ਦੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣ ਲਈ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਗਿਆ ਦੇਣਾ ਜਾਰੀ ਰੱਖਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ਨਿਯੰਤਰਿਤ ਇਜਾਜ਼ਤਾਂ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਦੀ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਹੈ"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"ਤੁਹਾਡੀ ਸੰਸਥਾ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦੀ ਹੈ"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"ਹੋਰ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ਸਿਸਟਮ ਵੱਲੋਂ ਵਰਤੀ ਗਈ ਇਜਾਜ਼ਤ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ਸਿਰਫ਼ ਸਿਸਟਮ ਐਪਲੀਕੇਸ਼ਨਾਂ ਵੱਲੋਂ ਵਰਤੀਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅਤੇ ਟਿਕਾਣਾ"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਜਾਣਕਾਰੀ ਕਿੱਥੋਂ ਆਉਂਦੀ ਹੈ"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ਵਿਕਾਸਕਾਰ ਨੇ ਇਸ ਐਪ ਵੱਲੋਂ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦੇ ਤਰੀਕੇ ਬਾਰੇ ਜਾਣਕਾਰੀ ਇਸ ਡੀਵਾਈਸ ਦੇ ਨਿਰਮਾਤਾ ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਵਿਕਾਸਕਾਰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਇਸ ਜਾਣਕਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ਵਿਕਾਸਕਾਰ ਨੇ ਇਸ ਐਪ ਵੱਲੋਂ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦੇ ਤਰੀਕੇ ਬਾਰੇ ਜਾਣਕਾਰੀ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ਨੂੰ ਮੁਹੱਈਆ ਕਰਵਾਈ ਹੈ। ਵਿਕਾਸਕਾਰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਇਸ ਜਾਣਕਾਰੀ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ਇਹ ਐਪ ਇਸ ਲਈ ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਵੱਖ-ਵੱਖ ਹੁੰਦਾ ਹੈ"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ਡਾਟਾ ਸੁਰੱਖਿਆ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ਟਿਕਾਣੇ ਦਾ ਡਾਟਾ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ਇਸ ਐਪ ਨੇ ਸਪਸ਼ਟ ਕੀਤਾ ਕਿ ਇਹ ਤੀਜੀਆਂ ਧਿਰਾਂ ਨਾਲ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੀ ਹੈ"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ਇਸ ਲਿੰਕ ਨੂੰ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ਟਿਕਾਣੇ ਲਈ ਡਾਟਾ ਸਾਂਝਾਕਰਨ ਅੱਪਡੇਟ"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ਉਨ੍ਹਾਂ ਐਪਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ ਜਿਨ੍ਹਾਂ ਨੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ਇਨ੍ਹਾਂ ਐਪਾਂ ਨੇ ਉਨ੍ਹਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਦੇ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕੀਤੇ ਜਾਣ ਦਾ ਤਰੀਕਾ ਬਦਲ ਦਿੱਤਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੇ ਸ਼ਾਇਦ ਇਸਨੂੰ ਪਹਿਲਾਂ ਸਾਂਝਾ ਨਾ ਕੀਤਾ ਹੋਵੇ, ਜਾਂ ਉਹ ਸ਼ਾਇਦ ਹੁਣ ਵਿਗਿਆਪਨ ਜਾਂ ਮਾਰਕੀਟਿੰਗ ਸੰਬੰਧੀ ਉਦੇਸ਼ਾਂ ਲਈ ਹੁਣ ਇਸਨੂੰ ਸਾਂਝਾ ਕਰਨ।"</string>

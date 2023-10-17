@@ -19,9 +19,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Kontroluje sa"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Kontrolujú sa nastavenia zariadenia…"</string>
-    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Všetko v poriadku"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nenašli sa žiadne problémy"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Zobraziť odporúčanie}few{Zobraziť odporúčania}many{See recommendations}other{Zobraziť odporúčania}}"</string>
+    <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Je to v poriadku"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nenašli sa žiadne problémy"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{K dispozícii je tip}few{K dispozícii sú tipy}many{Tips available}other{K dispozícii sú tipy}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Bola vykonaná akcia}few{Boli vykonané akcie}many{Actions taken}other{Boli vykonané akcie}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Kontrola nastavení"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrolný zoznam nastavení"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Boli nájdené potenciálne riziká"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Boli nájdené riziká"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Účet môže byť ohrozený"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Účet je ohrozený"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Zobraziť upozornenie}few{Zobraziť upozornenia}many{See alerts}other{Zobraziť upozornenia}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Účet je ohrozený"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Prečítajte si upozornenie nižšie}few{Prečítajte si upozornenia nižšie}many{See alerts below}other{Prečítajte si upozornenia nižšie}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Stránku sa nepodarilo otvoriť"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Upozornenie sa nepodarilo vyriešiť"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nastavenia sa nepodarilo obnoviť"</string>

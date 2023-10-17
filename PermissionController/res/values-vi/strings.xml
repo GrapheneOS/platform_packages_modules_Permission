@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Vẫn không cho phép"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Đóng"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Bạn có muốn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> không?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Bạn có muốn luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> không?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Chỉ khi dùng ứng dụng"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Luôn luôn"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Không cho phép và không hỏi lại"</string>
@@ -130,7 +130,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Xem các quyền khác"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> và <xliff:g id="NUM">%3$s</xliff:g> mục khác"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Mốc thời gian các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Lịch trình các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Lịch trình các ứng dụng dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 7 ngày qua"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Thời điểm ứng dụng này sử dụng quyền <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Tìm hiểu thêm"</string>
@@ -201,7 +201,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Xem tất cả ứng dụng có quyền này"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Hiển thị việc sử dụng micrô của Trợ lý"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Chế độ cài đặt cho ứng dụng không dùng đến"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu bạn không dùng ứng dụng"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu không dùng ứng dụng"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Thu hồi quyền và giải phóng dung lượng"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Tạm dừng hoạt động trong ứng dụng nếu không dùng"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Loại bỏ quyền, xoá tệp tạm thời và dừng thông báo"</string>
@@ -221,7 +221,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Nếu một ứng dụng không được dùng đến trong vài tháng, hệ thống sẽ:\n\n• Thu hồi các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng bộ nhớ\n\nĐể cho phép lại các quyền và thông báo, hãy mở ứng dụng đó."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Nếu bạn không dùng một ứng dụng trong một tháng, thì hệ thống sẽ:\n\n• Xoá các quyền để bảo vệ dữ liệu của bạn\n• Xoá các tệp tạm thời để giải phóng dung lượng\n\nĐể cấp lại các quyền, hãy mở ứng dụng đó."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Không dùng trong hơn # tháng}other{Không dùng trong hơn # tháng}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Lần mở gần đây nhất là hơn # tháng trước}other{Lần mở gần đây nhất là hơn # tháng trước}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Nếu bạn cho phép quản lý tất cả các tệp, thì ứng dụng này có thể truy cập, sửa đổi và xóa bất kỳ tệp nào trong bộ nhớ chung trên thiết bị này hoặc các thiết bị lưu trữ được kết nối. Ứng dụng có thể truy cập vào tệp mà không cần hỏi bạn."</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến cơ thể trong khi đang dùng ứng dụng?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi thông báo cho bạn?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Các quyền bị kiểm soát"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> có quyền truy cập thông tin vị trí"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Tổ chức của bạn cho phép <xliff:g id="APP_NAME">%1$s</xliff:g> truy cập thông tin vị trí của bạn"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Quyền khác"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Quyền mà hệ thống sử dụng"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Quyền mà chỉ có ứng dụng hệ thống sử dụng."</string>
@@ -517,7 +519,7 @@
     <string name="blocked_camera_title" msgid="1128510551791284384">"Quyền truy cập vào máy ảnh của thiết bị đã bị chặn"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Quyền truy cập vào micrô của thiết bị đã bị chặn"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Tuỳ chọn vị trí thiết bị đang tắt"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Áp dụng cho các ứng dụng và dịch vụ"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Đối với các ứng dụng và dịch vụ"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Thay đổi"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Bảo mật và quyền riêng tư"</string>
@@ -535,8 +537,8 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Kiểm tra trạng thái"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Các chế độ kiểm soát quyền riêng tư"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Tùy chọn cài đặt khác"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Quyền truy cập máy ảnh"</string>
-    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Quyền truy cập micrô"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Truy cập máy ảnh"</string>
+    <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Truy cập micrô"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Đã thu hồi quyền sử dụng"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Xem mức sử dụng của máy ảnh gần đây"</string>
     <string name="microphone_usage_qs" msgid="8527666682168170417">"Xem mức sử dụng của micrô gần đây"</string>
@@ -575,21 +577,20 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Xem lại ứng dụng có quyền truy cập thông tin vị trí ở chế độ nền"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ứng dụng này luôn truy cập được vào thông tin vị trí của bạn, kể cả khi đang đóng.\n\nMột số ứng dụng khẩn cấp và an toàn cần truy cập vào thông tin vị trí của bạn ở chế độ nền để hoạt động như mong đợi."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Đã thay đổi quyền truy cập"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin về hoạt động sử dụng thông tin vị trí gần đây"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Xem thông tin gần đây về việc sử dụng thông tin vị trí"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Chế độ kiểm soát quyền riêng tư"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Quyền truy cập máy ảnh"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Quyền truy cập micrô"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Áp dụng cho các ứng dụng và dịch vụ"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Áp dụng cho các ứng dụng và dịch vụ. Nếu bạn tắt chế độ cài đặt, dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Đối với các ứng dụng và dịch vụ"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Đối với các ứng dụng và dịch vụ. Nếu chế độ cài đặt này tắt, dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Xem các ứng dụng và dịch vụ có quyền truy cập vào thông tin vị trí của thiết bị"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Hiện quyền truy cập vào bảng nhớ tạm"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Hiện thông báo khi có ứng dụng truy cập vào văn bản, hình ảnh hoặc nội dung khác mà bạn đã sao chép"</string>
-    <string name="show_password_title" msgid="2877269286984684659">"Hiện mật khẩu"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Hiện các ký tự trong thời gian ngắn khi bạn nhập"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"Hiển thị mật khẩu"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Hiển thị các ký tự ngắn gọn khi bạn nhập"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Nhà phát triển nêu rõ ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Chia sẻ dữ liệu và thông tin vị trí"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Nguồn cung cấp thông tin về cách thức chia sẻ dữ liệu"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Nhà phát triển đã cung cấp cho nhà sản xuất thiết bị này thông tin về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Nhà phát triển đã cung cấp thông tin cho "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" về cách thức ứng dụng này chia sẻ dữ liệu. Nhà phát triển có thể cập nhật thông tin này theo thời gian."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ứng dụng này có thể chia sẻ dữ liệu vị trí cho:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Nhiều cách thức chia sẻ dữ liệu"</string>
@@ -607,10 +608,12 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"An toàn dữ liệu"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Dữ liệu vị trí có thể được chia sẻ"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Nhà phát triển nêu rõ rằng ứng dụng này có thể chia sẻ dữ liệu vị trí với bên thứ ba"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Không mở được đường liên kết này"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Nội dung cập nhật về cách thức chia sẻ dữ liệu vị trí"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Xem xét những ứng dụng đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Những ứng dụng này đã thay đổi cách thức có thể được dùng để chia sẻ dữ liệu vị trí của bạn. Có thể những ứng dụng này trước đây chưa từng chia sẻ dữ liệu vị trí, nhưng bây giờ mới chia sẻ dữ liệu đó nhằm mục đích quảng cáo hoặc tiếp thị."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Nhà phát triển của những ứng dụng này đã cung cấp thông tin cho một cửa hàng ứng dụng về cách thức ứng dụng của họ chia sẻ dữ liệu. Họ có thể cập nhật thông tin này theo thời gian.\n\nCách thức chia sẻ dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Nhà phát triển của những ứng dụng này đã cung cấp thông tin cho cửa hàng ứng dụng về cách thức ứng dụng của họ chia sẻ dữ liệu. Họ có thể cập nhật thông tin này theo thời gian.\n\nCách thức chia sẻ dữ liệu có thể thay đổi tuỳ theo phiên bản ứng dụng, cách sử dụng, khu vực và độ tuổi của bạn."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Tìm hiểu về chế độ chia sẻ dữ liệu"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Dữ liệu vị trí của bạn nay được chia sẻ với bên thứ ba"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Dữ liệu vị trí của bạn giờ đây được chia sẻ với các bên thứ ba để quảng cáo hoặc tiếp thị"</string>

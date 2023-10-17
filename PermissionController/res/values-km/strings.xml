@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"មិនអីទេ មិនអនុញ្ញាត"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ច្រានចោល"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> ក្នុងចំណោម <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>​មែនទេ?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>​ជានិច្ចមែនទេ?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> មែនទេ?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g> ជានិច្ចមែនទេ?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"ខណៈពេលប្រើ​កម្មវិធីតែប៉ុណ្ណោះ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"ជានិច្ច"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"មិនអនុញ្ញាត និងកុំសួរម្ដងទៀត"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"កម្មវិធីនេះបានបញ្ជាក់ថា វាអាចចែករំលែកទិន្នន័យទីតាំងជាមួយភាគីទីបី"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ការចែករំលែកទិន្នន័យ និងទីតាំង"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"កន្លែងដែលព័ត៌មាន​អំពីការចែករំលែក​ទិន្នន័យបានមកពី"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"អ្នកអភិវឌ្ឍន៍បានផ្ដល់ព័ត៌មាន​ដល់ក្រុមហ៊ុនផលិតឧបករណ៍នេះ​អំពីរបៀបដែលកម្មវិធីនេះ​ចែករំលែកទិន្នន័យ។ អ្នក​អភិវឌ្ឍន៍អាចនឹងធ្វើបច្ចុប្បន្នភាព​ព័ត៌មាននេះ​ទៅតាមពេលវេលា។"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"អ្នកអភិវឌ្ឍន៍​បានផ្ដល់ព័ត៌មានដល់ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" អំពីរបៀបដែល​កម្មវិធីនេះ​ចែករំលែកទិន្នន័យ។ អ្នក​អភិវឌ្ឍន៍អាចនឹងធ្វើបច្ចុប្បន្នភាព​ព័ត៌មាននេះ​ទៅតាមពេលវេលា។"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"កម្មវិធីនេះ​អាចនឹងចែករំលែក​ទិន្នន័យទីតាំងសម្រាប់៖"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ភាពខុសគ្នានៃ​ការចែករំលែកទិន្នន័យ"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"សុវត្ថិភាព​ទិន្នន័យ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ទិន្នន័យទីតាំងអាចនឹង​ត្រូវបានចែករំលែក"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"កម្មវិធីនេះ​បានបញ្ជាក់ថា វាអាចចែករំលែក​ទិន្នន័យទីតាំងរបស់អ្នក​ជាមួយភាគីទីបី"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"មិនអាចបើកតំណនេះបានទេ"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"បច្ចុប្បន្នភាពការចែករំលែកទិន្នន័យសម្រាប់ទីតាំង"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ពិនិត្យមើលកម្មវិធីដែលបានផ្លាស់ប្ដូររបៀបដែលកម្មវិធីទាំងនោះអាចចែករំលែកទិន្នន័យទីតាំងរបស់អ្នក"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"កម្មវិធីទាំងនេះ​បានផ្លាស់ប្ដូររបៀបដែលវា​អាចចែករំលែកទិន្នន័យ​ទីតាំងរបស់អ្នក។ កម្មវិធីទាំងនេះ​ប្រហែលជាមិនបានចែករំលែកទិន្នន័យទីតាំងពីមុនទេ ឬឥឡូវនេះប្រហែលជា​ចែករំលែកទិន្នន័យទីតាំងនេះ​សម្រាប់គោលបំណង​ផ្សាយពាណិជ្ជកម្ម ឬធ្វើទីផ្សារ។"</string>

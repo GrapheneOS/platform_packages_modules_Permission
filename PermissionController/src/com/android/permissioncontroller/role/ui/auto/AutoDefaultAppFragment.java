@@ -23,11 +23,11 @@ import android.os.UserHandle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
-import androidx.preference.TwoStatePreference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.role.ui.DefaultAppChildFragment;
+import com.android.permissioncontroller.role.ui.RoleApplicationPreference;
 import com.android.role.controller.model.Role;
 
 /** Screen to pick a default app for a particular {@link Role}. */
@@ -90,8 +90,8 @@ public class AutoDefaultAppFragment extends AutoSettingsFrameFragment implements
 
     @NonNull
     @Override
-    public TwoStatePreference createApplicationPreference() {
-        return new AutoDefaultAppPreference(requireContext());
+    public RoleApplicationPreference createApplicationPreference() {
+        return new AutoRadioPreference(requireContext());
     }
 
     @NonNull

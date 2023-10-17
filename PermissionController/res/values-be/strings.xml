@@ -40,7 +40,7 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усё роўна не дазваляць"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Адхіліць"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Дазволіць &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Заўсёды дазваляць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Толькі пры актыўнай праграме"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Заўсёды"</string>
@@ -49,12 +49,12 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"усе адключаны"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"няма адключаных"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Дазволіць"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазваляць заўсёды"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Падчас выкарыстання праграмы"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Пераключыцца на дакладнае вызначэнне месцазнаходжання"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Пакінуць прыблізнае месцазнаходжанне"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Толькі ў гэты раз"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазваляць заўсёды"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дазволіць доступ да файлаў мультымедыя"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Праграмы"</string>
@@ -107,7 +107,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"Дазваляць заўсёды"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"Дазволіць заўсёды"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Падчас карыстання праграмай"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Не дазваляць"</string>
     <string name="loading" msgid="4789365003890741082">"Загрузка…"</string>
@@ -186,8 +186,8 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Дазволіць"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дазволіць доступ толькі да мультымедыя"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазваляць заўсёды"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дазваляць толькі падчас карыстання праграмай"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазволіць заўсёды"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дазволіць толькі падчас карыстання праграмай"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Заўсёды дазваляць усе"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Заўсёды пытацца"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Не дазваляць"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Адкрывалася ў апошні раз <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Калі вы дазволіце кіраванне ўсімі файламі, гэта праграма зможа атрымліваць доступ да ўсіх файлаў у агульным сховішчы на гэтай прыладзе ці ў сховішчах падключаных прылад, а таксама змяняць і выдаляць гэтыя файлы. Праграма зможа атрымліваць доступ да файлаў без вашага ведама."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Дазволіць гэтай праграме атрымліваць доступ да файлаў на гэтай прыладзе і ў любых падключаных сховішчах, а такама змяняць і выдаляць файлы? Гэта праграма зможа атрымліваць доступ да файлаў без вашага ведама."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Праграмы з гэтым дазволам могуць <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Характарыстыка дазволу: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Праграмы з такім дазволам могуць мець доступ да звестак пра вашу фізічную актыўнасць, напрыклад перамяшчэнні пешшу, язду на веласіпедзе, на аўтамабілі, колькасць крокаў і многае іншае"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Праграмы з гэтым дазволам могуць мець доступ да календара"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Праграмы з гэтым дазволам могуць чытаць журнал выклікаў тэлефона і дадаваць у яго запісы"</string>
@@ -251,7 +251,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Дазволены доступ толькі да мультымедыя"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Дазволена кіраванне ўсімі файламі"</string>
     <string name="ask_header" msgid="2633816846459944376">"Заўсёды пытацца"</string>
-    <string name="denied_header" msgid="903209608358177654">"Забароненыя"</string>
+    <string name="denied_header" msgid="903209608358177654">"Забаронена"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Праглядзець іншыя праграмы, якія маюць доступ да ўсіх файлаў"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 дзень}one{# дзень}few{# дні}many{# дзён}other{# дня}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# гадзіна}one{# гадзіна}few{# гадзіны}many{# гадзін}other{# гадзіны}}"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць вам апавяшчэнні?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Кіраваныя дазволы"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мае доступ да даных геалакацыі"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ваша арганізацыя дазволіла праграме \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мець доступ да вашага месцазнаходжання"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Iншыя дазволы"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Дазвол, які выкарыстоўваецца сістэмай"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Дазволы, якія выкарыстоўваюцца толькі сістэмнымі праграмамі."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Абагульванне даных і даныя пра месцазнаходжанне"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Адкуль бярэцца інфармацыя пра абагульванне даных"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Распрацоўшчык перадаў вытворцы прылады інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэта інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Распрацоўшчык дадаў (сюды: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>") інфармацыю пра тое, як гэтая праграма абагульвае даныя. З цягам часу гэтая інфармацыя можа быць зменена распрацоўшчыкам."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Праграма можа абагульваць геаданыя для наступнага:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Абагульванне даных залежыць ад розных умоў"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Бяспека даных"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Дазвол на абагульванне даных пра месцазнаходжанне"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Гэта праграма можа абагульваць даныя пра месцазнаходжанне з трэцімі бакамі"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не ўдалося адкрыць гэтую спасылку"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Змяненні ў абагульванні даных пра месцазнаходжанне"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Праглядзець праграмы, для якіх быў зменены спосаб абагульвання даных пра месцазнаходжанне"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Для гэтых праграм спосаб абагульвання даных пра месцазнаходжанне змяніўся. Магчыма, яны раней увогуле не абагульвалі такія даныя альбо цяпер пачалі іх абагульваць у мэтах рэкламы ці маркетынгу."</string>

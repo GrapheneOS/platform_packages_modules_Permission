@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Paskutinį kartą atidaryta <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jei leisite valdyti visus failus, ši programa galės pasiekti, keisti ir ištrinti bet kuriuos failus, esančius šio įrenginio bendroje saugykloje arba susietų saugyklų įrenginiuose. Programa gali pasiekti failus nepaklaususi."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Leisti šiai programai pasiekti, keisti ir ištrinti failus, esančius šiame įrenginyje ar bet kuriuose susietų saugyklų įrenginiuose? Ši programa gali pasiekti failus nepaklaususi."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Programos, kurioms suteiktas šis leidimas, gali: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Programos, kurioms suteiktas šis leidimas, gali <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jūsų fizinę veiklą, pvz., ėjimą, važiavimą dviračiu, vairavimą, žingsnių skaičių ir daugiau"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jūsų kalendorių"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Programos, kurioms suteiktas šis leidimas, gali skaityti ir rašyti telefono skambučių žurnalą"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Toliau leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kūno jutiklių duomenis, kai programa naudojama?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siųsti jums pranešimus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Valdomi leidimai"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ gali pasiekti vietovę"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Jūsų organizacija leidžia programai „<xliff:g id="APP_NAME">%1$s</xliff:g>“ pasiekti jūsų vietovę"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Kiti leidimai"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Leidimai, kuriuos naudoja sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Leidimai, kuriuos naudoja tik sistemos programos."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Duomenų bendrinimas ir vietovė"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Iš kur gaunama duomenų bendrinimo informacija"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Kūrėjas pateikė informacijos šio įrenginio gamintojui apie tai, kaip ši programa bendrina duomenis. Bėgant laikui kūrėjas gali atnaujinti šią informaciją."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Kūrėjas pateikė informacijos "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" apie duomenų bendrinimą šioje programoje. Bėgant laikui kūrėjas gali atnaujinti šią informaciją."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Ši programa gali bendrinti vietovės duomenis dėl:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Duomenų bendrinimas skiriasi"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Duomenų sauga"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Vietovės duomenys gali būti bendrinami"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Šios nuorodos atidaryti nepavyko"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Duomenų bendrinimo atnaujinimai pagal vietovę"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Peržiūrėkite programas, kuriose pakeisti vietovės duomenų bendrinimo metodai"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Šiose programose pakeisti vietovės duomenų bendrinimo metodai Gali būti, kad anksčiau jie nebuvo bendrinami, arba dabar jie gali būti bendrinami reklamavimo ar rinkodaros tikslais."</string>

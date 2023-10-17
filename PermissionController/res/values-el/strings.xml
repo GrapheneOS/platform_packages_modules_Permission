@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Διατήρηση της επιλογής \"Όταν χρησιμοποιείται η εφαρμογή\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Διατήρηση μόνο αυτήν τη φορά"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Περισσότερα"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Να επιτρέπεται"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Να επιτρέπονται όλα"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Να επιτρέπονται πάντα όλα"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Επιλογή φωτογραφιών και βίντεο"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Επιλέξτε περισσότερα"</string>
@@ -496,10 +496,12 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Για να επιτρέψετε σε αυτήν την εφαρμογή να έχει πρόσβαση σε δεδομένα αισθητήρων σώματος οποιαδήποτε στιγμή, ακόμα και όταν δεν χρησιμοποιείτε την εφαρμογή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Επιτρέπετε στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ελεγχόμενες άδειες"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> έχει πρόσβαση στην τοποθεσία"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ο οργανισμός σας επιτρέπει στην εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> να έχει πρόσβαση στην τοποθεσία σας"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Άλλες άδειες"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Άδεια που χρησιμοποιείται από το σύστημα"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Άδειες που χρησιμοποιούνται από εφαρμογές του συστήματος."</string>
@@ -589,9 +591,8 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει δεδομένα τοποθεσίας σε τρίτα μέρη."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Κοινοποίηση δεδομένων και τοποθεσία"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Προέλευση πληροφοριών κοινοποίησης δεδομένων"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Ο προγραμματιστής παρείχε πληροφορίες στον κατασκευαστή της συσκευής για το πώς η εφαρμογή μοιράζεται δεδομένα. Ο προγραμματιστής μπορεί να ενημερώσει αυτές τις πληροφορίες με την πάροδο του χρόνου."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Ο προγραμματιστής έχει καταχωρίσει πληροφορίες στο "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" σχετικά με το πώς αυτή η εφαρμογή κοινοποιεί δεδομένα. Ο προγραμματιστής μπορεί να ενημερώσει αυτές τις πληροφορίες με την πάροδο του χρόνου."</string>
-    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Η εφαρμογή μπορεί να κοινοποιεί δεδομένα τοποθεσίας για:"</string>
+    <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Η εφαρμ. μπορεί να κοινοποιεί δεδομ. τοποθεσ. για:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Η κοινοποίηση δεδομένων διαφέρει"</string>
     <string name="permission_rationale_data_sharing_varies_message" msgid="4224469559084489222">"Οι πρακτικές απορρήτου μπορεί να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας. "<annotation id="link">"Περισσότερα σχετικά με την κοινοποίηση δεδομένων"</annotation></string>
     <string name="permission_rationale_data_sharing_varies_message_without_link" msgid="4912763761399025094">"Οι πρακτικές διαχείρισης δεδομένων μπορεί να διαφέρουν ανάλογα με την έκδοση και τη χρήση της εφαρμογής, καθώς και με την περιοχή και την ηλικία σας."</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Ασφάλεια δεδομένων"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Τα δεδομένα τοποθεσίας ενδέχεται να κοινοποιούνται"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Αυτή η εφαρμογή έχει δηλώσει ότι ενδέχεται να κοινοποιήσει τα δεδομένα τοποθεσίας σας σε τρίτα μέρη"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Δεν είναι δυνατό το άνοιγμα αυτού του συνδέσμου"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Ενημερώσεις στην κοινοποίηση δεδ. για τοποθεσία"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ελέγξτε εφαρμογές που άλλαξαν τον τρόπο με τον οποίο ενδέχεται να κοινοποιούν τα δεδομένα τοποθεσίας"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Αυτές οι εφαρμογές έχουν αλλάξει τον τρόπο με τον οποίο μπορούν να κοινοποιούν τα δεδομένα τοποθεσία σας. Ενδέχεται να μην τα έχουν κοινοποιήσει στο παρελθόν ή να τα κοινοποιούν τώρα για σκοπούς διαφήμισης ή μάρκετινγκ."</string>

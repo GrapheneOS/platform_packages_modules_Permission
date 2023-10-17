@@ -34,14 +34,14 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mais inform."</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Permitir tudo"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Sempre permitir tudo"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Selecionar fotos e vídeos"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Alguns vídeos e fotos"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Selecionar mais"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Não selecionar mais"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Não permitir mesmo assim"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Dispensar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Permitir o acesso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Sempre permitir o acesso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Sempre permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Apenas ao usar o app"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Sempre"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Não permitir e não perguntar de novo"</string>
@@ -369,7 +369,7 @@
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensagem de texto, enviar mensagens de texto, mensagens"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"App padrão de emergência"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"App de emergência"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"Apps que permitem registrar informações de saúde e disponibilizá-las para socorristas, receber alertas sobre eventos climáticos graves e desastres e notificar outras pessoas se você precisar de ajuda"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"Apps que permitem registrar informações médicas e disponibilizá-las para socorristas, receber alertas sobre eventos climáticos graves e desastres e notificar outras pessoas se você precisar de ajuda"</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app padrão de emergência?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nenhuma permissão necessária"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"em emergências"</string>
@@ -508,7 +508,7 @@
     <string name="privdash_label_camera" msgid="1426440033626198096">"Câmera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Microfone"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Localização"</string>
-    <string name="privdash_label_other" msgid="3710394147423236033">"Outras"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Outra"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Nenhuma"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Nos últimos\nsete dias"</string>
@@ -532,7 +532,7 @@
     <string name="security_settings" msgid="3808106921175271317">"Configurações de segurança"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Permissões"</string>
     <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Segurança e privacidade"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Checar status"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Ver status"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Seus controles de privacidade"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Mais configurações"</string>
     <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Acesso à câmera"</string>
@@ -547,7 +547,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Em uso pela chamada telefônica"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Usada recentemente em uma chamada telefônica"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Uso recente por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Usada recentemente por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Usada recentemente por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
@@ -575,7 +575,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Revisar apps com acesso à localização em segundo plano"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Este app sempre pode acessar sua localização, mesmo quando está fechado.\n\nAlguns apps de segurança e emergência exigem acesso à sua localização em segundo plano para funcionar corretamente."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"O acesso foi mudado"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Verificar o uso recente da localização"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ver o uso recente da localização"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Controles de privacidade"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Acesso à câmera"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Acesso ao microfone"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Este app declarou que pode compartilhar dados de local com terceiros"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Local e compartilhamento de dados"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De onde vêm as informações do compartilhamento de dados"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"O desenvolvedor forneceu informações para o fabricante do dispositivo sobre como este app compartilha dados. O desenvolvedor pode atualizar essas informações com o tempo."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"O desenvolvedor forneceu informações para "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre como esse app compartilha dados. O desenvolvedor pode atualizar essas informações com o tempo."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esse app pode compartilhar dados de local para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"O compartilhamento de dados varia"</string>
@@ -607,8 +606,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Segurança dos dados"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Os dados de local podem ser compartilhados"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Este app indicou que pode compartilhar seus dados de local com terceiros"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Não é possível abrir esse link"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Atualizações no compartilhamento de dados de local"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Conferir apps que mudaram a forma de compartilhar dados de local"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Revise os apps que mudaram a forma de compartilhar os dados de local"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Esses apps mudaram a forma de compartilhar os dados de local. É possível que eles não tenham compartilhado antes ou que agora compartilhem para fins de publicidade ou marketing."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os desenvolvedores desses apps oferecem informações sobre as práticas deles de compartilhamento de dados com uma app store. Eles podem atualizar essas informações com o tempo.\n\nAs práticas de compartilhamento de dados podem variar de acordo com a versão do app e com a idade, o uso e a região do usuário."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre o compartilhamento de dados"</string>

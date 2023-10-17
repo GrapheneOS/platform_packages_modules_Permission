@@ -34,9 +34,9 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Bővebben"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Összes engedélyezése"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Összes engedélyezése mindig"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotók és videók kijelölése"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Jelöljön ki fotókat, videókat"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Több kijelölése"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nem jelölök ki többet"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Ne válasszon ki többet"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Semmiképpen se engedélyezze"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Elvetés"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>/<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>."</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Továbbra is hozzáférhessen használat közben a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; alkalmazás a testérzékelők adataihoz?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy értesítéseket küldjön Önnek?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Szabályozott engedélyek"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> hozzáfér a tartózkodási helyhez"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Szervezete lehetővé teszi a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára, hogy hozzáférjen az Ön tartózkodási helyéhez"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"További engedélyek"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Rendszer által használt engedélyek"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Csak rendszeralkalmazások által használt engedélyek."</string>
@@ -521,7 +523,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Segélyhívó szám hívásakor a rendszer továbbra is megoszthatja a mikrofonadatokat."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Módosítás"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Biztonság és adatvédelem"</string>
-    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Eszközvizsgálat"</string>
+    <string name="safety_center_rescan_button" msgid="4517514567809409596">"Keresés az eszközön"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Elvetés"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Elveti ezt az értesítést?"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"Bármikor áttekintheti biztonsági és adatvédelmi beállításait, és növelheti a védelmet"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Az alkalmazás jelezte, hogy megoszthat helyadatokat harmadik felekkel"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Adatmegosztás és hely"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Az adatmegosztással kapcsolatos információ forrása"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"A fejlesztő információt adott meg az eszköz gyártójának arról, hogy az alkalmazás minként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"A fejlesztő információt adott meg "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" számára arról, hogy az alkalmazás miként oszt meg adatokat. A fejlesztő idővel módosíthatja ezt az információt."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Az app helyadatokat oszthat meg az alábbi célból:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Az adatmegosztás változik"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Adatbiztonság"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Az alkalmazás megoszthat helyadatokat"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Az alkalmazás jelezte, hogy megoszthatja az Ön helyadatait harmadik felekkel"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Nem sikerült megnyitni a linket"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"A helyadatok megosztását érintő frissítések"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Áttekintheti az appokat, amelyek módosították, hogy miként oszthatják meg a helyadatait"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ezek az alkalmazások módosították, hogy miként oszthatják meg az Ön helyadatait. Előfordulhat, hogy korábban nem osztották meg az adatokat, illetve ezentúl hirdetési vagy marketing célokra oszthatják meg őket."</string>

@@ -367,12 +367,12 @@
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کی ڈیفالٹ SMS ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"‏اس ایپ کو آپ کے کیمرا، رابطوں، فائلز اور میڈیا، مائیکروفون، فون اور SMS تک رسائی دی جائے گی"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ٹیکسٹ پیغام، پیغام بھیجنا، پیغامات، پیغام رسانی"</string>
-    <string name="role_emergency_label" msgid="7028825857206842366">"ڈیفالٹ ایمرجنسی ایپ"</string>
-    <string name="role_emergency_short_label" msgid="2388431453335350348">"ایمرجنسی ایپ"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"وہ ایپس جو آپ کو آپ کی طبی معلومات ریکارڈ کرنے اور اسے ایمرجنسی طبی مدد فراہم کنندگان کے لیے قابل رسائی بنانے؛ خطرناک موسمی واقعات اور آفات کے بارے میں الرٹس حاصل کرنے؛ آپ کو مدد درکار ہونے پر دوسروں کو اطلاع دینے کی اجازت دیتی ہیں"</string>
-    <string name="role_emergency_request_title" msgid="8469579020654348567">"<xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کی ڈیفالٹ ایمرجنسی ایپ کے بطور سیٹ کریں؟"</string>
+    <string name="role_emergency_label" msgid="7028825857206842366">"ڈیفالٹ ہنگامی ایپ"</string>
+    <string name="role_emergency_short_label" msgid="2388431453335350348">"ہنگامی ایپ"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"وہ ایپس جو آپ کو آپ کی طبی معلومات ریکارڈ کرنے اور اسے ہنگامی طبی مدد فراہم کنندگان کے لیے قابل رسائی بنانے؛ خطرناک موسمی واقعات اور آفات کے بارے میں الرٹس حاصل کرنے؛ آپ کو مدد درکار ہونے پر دوسروں کو اطلاع دینے کی اجازت دیتی ہیں"</string>
+    <string name="role_emergency_request_title" msgid="8469579020654348567">"<xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کی ڈیفالٹ ہنگامی ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"کوئی اجازت درکار نہیں ہے"</string>
-    <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ایمرجنسی، آئس، ایپ، ڈیفالٹ"</string>
+    <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ہنگامی، آئس، ایپ، ڈیفالٹ"</string>
     <string name="role_home_label" msgid="3871847846649769412">"ڈیفالٹ ہوم ایپ"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"ہوم ایپ"</string>
     <string name="role_home_description" msgid="7997371519626556675">"‏وہ ایپس، جنہیں اکثر لانچرز کہا جاتا ہے، جو آپ کے Android آلہ پر ہوم اسکرینز کی جگہ لے لیتی ہیں اور آپ کے آلہ کے مواد اور خصوصیات تک آپ کو رسائی فراہم کرتی ہیں"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏ایپ کے استعمال میں ہونے کے دوران ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو باڈی سینسر ڈیٹا تک رسائی کی اجازت دینا جاری رکھیں؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;/b&gt; کو آپ کو اطلاعات بھیجنے کی اجازت دیں؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"کنٹرول کی گئی اجازتیں"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے پاس مقام تک رسائی حاصل ہے"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"آپ کی تنظیم <xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کے مقام تک رسائی کی اجازت دیتی ہے"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"دیگر اجازتیں"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"سسٹم کے ذریعے استعمال کردہ اجازتیں"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"صرف سسٹم ایپلیکیشنز کے ذریعے استعمال کردہ اجازتیں۔"</string>
@@ -547,7 +549,7 @@
     <string name="active_call_usage_qs" msgid="8559974395932523391">"فون کال کے ذریعے استعمال کیا جا رہا ہے"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"فون کال میں حال ہی میں استعمال کیا گیا"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے ذریعے استعمال کیا جا رہا ہے"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"حال ہی میں <xliff:g id="APP_NAME">%1$s</xliff:g> نے استعمال کیا"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے ذریعے حال ہی میں استعمال کیا گیا"</string>
     <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) کے ذریعے استعمال کیا جا رہا ہے"</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) کے ذریعے حال ہی میں استعمال کیا گیا"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) کے ذریعے استعمال کیا جا رہا ہے"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"اس ایپ نے بتایا ہے کہ یہ مقام کے ڈیٹا کا اشتراک فریقین ثالث کے ساتھ کر سکتی ہے"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ڈیٹا کا اشتراک اور مقام"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ڈیٹا کے اشتراک کی معلومات کا ذریعہ"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ڈویلپر نے اس آلہ کے مینوفیکچرر کو معلومات فراہم کی کہ یہ ایپ ڈیٹا کا اشتراک کیسے کرتی ہے۔ ڈویلپر وقت کے ساتھ اس معلومات کو اپ ڈیٹ کر سکتا ہے۔"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"‏ڈویلپر نے "<annotation id="link"><annotation id="install_source" example="App Store">"‏%1$s"</annotation></annotation>" کو معلومات فراہم کی کہ یہ ایپ ڈیٹا کا اشتراک کیسے کرتی ہے۔ ڈویلپر وقت کے ساتھ اس معلومات کو اپ ڈیٹ کر سکتا ہے۔"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"یہ ایپ ذیل کے لیے مقام کے ڈیٹا کا اشتراک کر سکتی ہے:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ڈیٹا کا اشتراک مختلف ہوتا ہے"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ڈیٹا کی حفاظت"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"مقام کے ڈیٹا کا اشتراک کیا جا سکتا ہے"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"اس ایپ نے بتایا ہے کہ یہ آپ کے مقام کے ڈیٹا کا اشتراک فریقین ثالث کے ساتھ کر سکتی ہے"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"اس لنک کو کھولا نہیں جا سکتا"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"مقام کیلئے ڈیٹا کے اشتراک کی اپ ڈیٹس"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ان ایپس کا جائزہ لیں جنہوں نے آپ کے مقام کے ڈیٹا کے اشتراک کے اپنے ممکنہ طریقے کو تبدیل کر دیا"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ان ایپس نے آپ کے مقام کے ڈیٹا کے اشتراک کے اپنے ممکنہ طریقے کو تبدیل کر دیا ہے۔ ہو سکتا ہے کہ انہوں نے پہلے اس کا اشتراک نہ کیا ہو یا ممکنہ طور پر اب تشہیر یا مارکیٹنگ کے مقاصد کے لیے اس کا اشتراک کر سکتی ہیں۔"</string>

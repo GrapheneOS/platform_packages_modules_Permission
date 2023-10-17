@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Skan edilir"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Cihaz ayarları yoxlanılır…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Yaxşı görünür"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Problem tapılmadı"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Tövsiyəyə baxın}other{Tövsiyələrə baxın}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Heç bir problem tapılmadı"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{İpucu əlçatandır}other{İpucları əlçatandır}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Görülən tədbir}other{Görülən tədbirlər}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Ayarları nəzərdən keçirin"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Ayarlar siyahısını yoxlayın"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Potensial risklər tapıldı"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Risklər tapıldı"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Hesab risk altında ola bilər"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Hesab risk altındadır"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Xəbərdarlığa baxın}other{Xəbərdarlıqlara baxın}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Hesab risk altındadır"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Aşağıdakı siqnala baxın}other{Aşağıdakı siqnallara baxın}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Səhifəni açmaq mümkün olmadı"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Siqnalı həll etmək mümkün olmadı"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Ayarları yeniləmək mümkün olmadı"</string>
