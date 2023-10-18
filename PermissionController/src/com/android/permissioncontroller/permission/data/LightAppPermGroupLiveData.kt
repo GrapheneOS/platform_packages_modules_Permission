@@ -27,6 +27,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.OS_PKG
@@ -44,7 +45,8 @@ private constructor(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
-    private val user: UserHandle
+    private val user: UserHandle,
+    private val deviceId: Int
 ) : SmartUpdateMediatorLiveData<LightAppPermGroup?>(), LocationUtils.LocationListener {
 
     private val LOG_TAG = this::class.java.simpleName
@@ -66,7 +68,7 @@ private constructor(
 
         addSource(fgPermNamesLiveData) { update() }
 
-        val key = Triple(packageName, permGroupName, user)
+        val key = KotlinUtils.Quadruple(packageName, permGroupName, user, deviceId)
 
         addSource(permStateLiveData) { permStates ->
             if (permStates == null && permStateLiveData.isInitialized) {
@@ -217,13 +219,19 @@ private constructor(
      * UserHandle, value is its corresponding LiveData.
      */
     companion object :
-        DataRepositoryForPackage<Triple<String, String, UserHandle>, LightAppPermGroupLiveData>() {
-        override fun newValue(key: Triple<String, String, UserHandle>): LightAppPermGroupLiveData {
+        DataRepositoryForDevice<
+            KotlinUtils.Quadruple<String, String, UserHandle, Int>, LightAppPermGroupLiveData
+        >() {
+        override fun newValue(
+            key: KotlinUtils.Quadruple<String, String, UserHandle, Int>,
+            deviceId: Int
+        ): LightAppPermGroupLiveData {
             return LightAppPermGroupLiveData(
                 PermissionControllerApplication.get(),
                 key.first,
                 key.second,
-                key.third
+                key.third,
+                deviceId
             )
         }
     }
