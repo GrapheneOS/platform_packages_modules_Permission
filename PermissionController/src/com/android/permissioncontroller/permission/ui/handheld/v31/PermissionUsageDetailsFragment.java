@@ -368,15 +368,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                     new PermissionHistoryPreference(
                             getContext(),
                             appPermissionAccessUiInfo.getUserHandle(),
-                            appPermissionAccessUiInfo.getPkgName(),
-                            KotlinUtils.INSTANCE.getBadgedPackageIcon(
-                                    mViewModel.getApplication(),
-                                    appPermissionAccessUiInfo.getPkgName(),
-                                    appPermissionAccessUiInfo.getUserHandle()),
-                            KotlinUtils.INSTANCE.getPackageLabel(
-                                    mViewModel.getApplication(),
-                                    appPermissionAccessUiInfo.getPkgName(),
-                                    appPermissionAccessUiInfo.getUserHandle()),
+                            appPermissionAccessUiInfo.getPackageName(),
+                            appPermissionAccessUiInfo.getBadgedPackageIcon(),
+                            appPermissionAccessUiInfo.getPackageLabel(),
                             appPermissionAccessUiInfo.getPermissionGroup(),
                             appPermissionAccessUiInfo.getAccessStartTime(),
                             appPermissionAccessUiInfo.getAccessEndTime(),

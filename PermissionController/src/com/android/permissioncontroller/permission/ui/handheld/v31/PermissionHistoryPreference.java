@@ -77,7 +77,7 @@ public class PermissionHistoryPreference extends Preference {
 
     public PermissionHistoryPreference(@NonNull Context context,
             @NonNull UserHandle userHandle, @NonNull String pkgName,
-            @NonNull Drawable appIcon,
+            @Nullable Drawable appIcon,
             @NonNull String preferenceTitle,
             @NonNull String permissionGroup,
             @NonNull long accessStartTime,
