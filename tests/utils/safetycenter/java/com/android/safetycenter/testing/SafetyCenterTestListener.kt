@@ -18,14 +18,9 @@ package com.android.safetycenter.testing
 
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
-import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
-import android.safetycenter.SafetyCenterStaticEntry
-import android.safetycenter.SafetyCenterStatus
-import android.text.TextUtils
 import androidx.annotation.RequiresApi
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.android.safetycenter.testing.Coroutines.TIMEOUT_LONG
 import com.android.safetycenter.testing.Coroutines.runBlockingWithTimeout
 import java.time.Duration
@@ -69,47 +64,6 @@ class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
         }
 
     /**
-     * Waits for a full Safety Center refresh to complete, where each change to the underlying
-     * [SafetyCenterData] must happen within the given [timeout].
-     *
-     * @param withErrorEntry optionally check whether we should expect the [SafetyCenterData] to
-     *   have or not have at least one an error entry after the refresh completes
-     * @return the [SafetyCenterData] after the refresh completes
-     */
-    fun waitForSafetyCenterRefresh(
-        timeout: Duration = TIMEOUT_LONG,
-        withErrorEntry: Boolean? = null
-    ): SafetyCenterData {
-        receiveSafetyCenterData(timeout) {
-            it.status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS ||
-                it.status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS
-        }
-        val afterRefresh =
-            receiveSafetyCenterData(timeout) {
-                it.status.refreshStatus == SafetyCenterStatus.REFRESH_STATUS_NONE
-            }
-        if (withErrorEntry == null) {
-            return afterRefresh
-        }
-        val errorMessage =
-            SafetyCenterTestData(getApplicationContext())
-                .getRefreshErrorString(numberOfErrorEntries = 1)
-        val containsErrorEntry = afterRefresh.containsAnyEntryWithSummary(errorMessage)
-        if (withErrorEntry && !containsErrorEntry) {
-            throw AssertionError(
-                "No error entry with message: \"$errorMessage\" found in SafetyCenterData" +
-                    " after refresh: $afterRefresh"
-            )
-        } else if (!withErrorEntry && containsErrorEntry) {
-            throw AssertionError(
-                "Found an error entry with message: \"$errorMessage\" in SafetyCenterData" +
-                    " after refresh: $afterRefresh"
-            )
-        }
-        return afterRefresh
-    }
-
-    /**
      * Waits for a [SafetyCenterErrorDetails] update from SafetyCenter within the given [timeout].
      */
     fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
@@ -119,24 +73,5 @@ class SafetyCenterTestListener : OnSafetyCenterDataChangedListener {
     fun cancel() {
         dataChannel.cancel()
         errorChannel.cancel()
-    }
-
-    private companion object {
-        fun SafetyCenterData.containsAnyEntryWithSummary(summary: CharSequence): Boolean =
-            entries().any { TextUtils.equals(it.summary, summary) } ||
-                staticEntries().any { TextUtils.equals(it.summary, summary) }
-
-        fun SafetyCenterData.entries(): List<SafetyCenterEntry> =
-            entriesOrGroups.flatMap {
-                val entry = it.entry
-                if (entry != null) {
-                    listOf(entry)
-                } else {
-                    it.entryGroup!!.entries
-                }
-            }
-
-        fun SafetyCenterData.staticEntries(): List<SafetyCenterStaticEntry> =
-            staticEntryGroups.flatMap { it.staticEntries }
     }
 }
