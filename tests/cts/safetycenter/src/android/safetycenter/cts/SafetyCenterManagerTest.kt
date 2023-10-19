@@ -1206,11 +1206,11 @@ class SafetyCenterManagerTest {
         )
 
         // Because wrong ID, refresh hasn't finished. Wait for timeout.
-        listener.receiveSafetyCenterErrorDetails()
+        listener.waitForSafetyCenterRefresh(withErrorEntry = true)
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
 
         SafetySourceReceiver.setResponse(
-            Request.Rescan(SINGLE_SOURCE_ID),
+            Request.Refresh(SINGLE_SOURCE_ID),
             Response.SetData(safetySourceTestData.information)
         )
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1280,7 +1280,7 @@ class SafetyCenterManagerTest {
             safetyCenterManager.getSafetySourceDataWithPermission(SINGLE_SOURCE_ID)
         assertThat(apiSafetySourceData1).isNull()
         // Wait for the ongoing refresh to timeout.
-        listener.receiveSafetyCenterErrorDetails()
+        listener.waitForSafetyCenterRefresh(withErrorEntry = true)
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_LONG)
         SafetySourceReceiver.setResponse(
             Request.Refresh(SINGLE_SOURCE_ID),
@@ -1332,18 +1332,11 @@ class SafetyCenterManagerTest {
             REFRESH_REASON_RESCAN_BUTTON_CLICK
         )
 
-        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
-        assertThat(safetyCenterErrorDetailsFromListener)
-            .isEqualTo(
-                SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("refresh_timeout")
-                )
-            )
+        listener.waitForSafetyCenterRefresh(withErrorEntry = true)
     }
 
     @Test
     fun refreshSafetySources_withUntrackedSourceThatTimesOut_doesNotTimeOut() {
-        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1)
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         // SOURCE_ID_1 will timeout
@@ -1359,14 +1352,11 @@ class SafetyCenterManagerTest {
             REFRESH_REASON_RESCAN_BUTTON_CLICK
         )
 
-        assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
-        }
+        listener.waitForSafetyCenterRefresh(withErrorEntry = false)
     }
 
     @Test
     fun refreshSafetySources_withMultipleUntrackedSourcesThatTimeOut_doesNotTimeOut() {
-        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         SafetyCenterFlags.untrackedSources = setOf(SOURCE_ID_1, SOURCE_ID_2)
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.multipleSourcesConfig)
         // SOURCE_ID_1 and SOURCE_ID_2 will timeout
@@ -1380,9 +1370,7 @@ class SafetyCenterManagerTest {
             REFRESH_REASON_RESCAN_BUTTON_CLICK
         )
 
-        assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
-        }
+        listener.waitForSafetyCenterRefresh(withErrorEntry = false)
     }
 
     @Test
@@ -1396,25 +1384,20 @@ class SafetyCenterManagerTest {
             REFRESH_REASON_RESCAN_BUTTON_CLICK
         )
 
-        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
-        assertThat(safetyCenterErrorDetailsFromListener)
-            .isEqualTo(
-                SafetyCenterErrorDetails(
-                    safetyCenterResourcesContext.getStringByName("refresh_timeout")
-                )
-            )
+        listener.waitForSafetyCenterRefresh(withErrorEntry = true)
     }
 
     @Test
     fun refreshSafetySources_withTrackedSourceThatHasNoReceiver_doesNotTimeOut() {
-        SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceOtherPackageConfig)
         val listener = safetyCenterTestHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            listener.receiveSafetyCenterErrorDetails(TIMEOUT_SHORT)
+            // In this case a refresh isn't even started because there is only a single source
+            // without a receiver.
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 

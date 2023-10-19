@@ -731,9 +731,8 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_withShowEntriesOnTimeout_marksSafetySourceAsError() {
+    fun refreshSafetySources_timeout_marksSafetySourceAsError() {
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
-        SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         val listener = safetyCenterTestHelper.addListener()
 
@@ -751,9 +750,8 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_withShowEntriesOnTimeout_keepsShowingErrorUntilClearedBySource() {
+    fun refreshSafetySources_timeout_keepsShowingErrorUntilClearedBySource() {
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
-        SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         val listener = safetyCenterTestHelper.addListener()
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -781,18 +779,15 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_withShowEntriesOnTimeout_doesntSetErrorForBackgroundRefreshes() {
+    fun refreshSafetySources_timeout_doesntSetErrorForBackgroundRefreshes() {
         SafetyCenterFlags.setAllRefreshTimeoutsTo(TIMEOUT_SHORT)
-        SafetyCenterFlags.showErrorEntriesOnTimeout = true
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
         val listener = safetyCenterTestHelper.addListener()
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(REFRESH_REASON_OTHER)
 
-        val safetyCenterBeforeTimeout = listener.receiveSafetyCenterData()
-        assertThat(safetyCenterBeforeTimeout.status.refreshStatus)
-            .isEqualTo(REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
-        val safetyCenterDataAfterTimeout = listener.receiveSafetyCenterData()
+        val safetyCenterDataAfterTimeout =
+            listener.waitForSafetyCenterRefresh(withErrorEntry = false)
         assertThat(safetyCenterDataAfterTimeout).isEqualTo(safetyCenterDataFromConfig)
     }
 
