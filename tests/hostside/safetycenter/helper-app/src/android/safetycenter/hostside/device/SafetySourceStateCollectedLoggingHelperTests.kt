@@ -154,8 +154,9 @@ class SafetySourceStateCollectedLoggingHelperTests {
         if (source3Response != null) {
             SafetySourceReceiver.setResponse(Request.Refresh(SOURCE_ID_3), source3Response)
         }
+
+        val listener = safetyCenterTestHelper.addListener()
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(refreshReason)
-        // Give time for responses to all sources
-        Thread.sleep(Coroutines.TIMEOUT_SHORT.toMillis())
+        listener.waitForSafetyCenterRefresh()
     }
 }
