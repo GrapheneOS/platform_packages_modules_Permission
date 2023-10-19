@@ -117,7 +117,8 @@ object LocationGrantBehavior : GrantBehavior() {
             coarseLocationPerm?.isSelectedLocationAccuracy == false &&
                 fineLocationPerm?.isSelectedLocationAccuracy == false
         ) {
-            return KotlinUtils.getDefaultPrecision()
+            // default location precision is true, indicates FINE
+            return true
         } else {
             fineLocationPerm?.isSelectedLocationAccuracy == true
         }
