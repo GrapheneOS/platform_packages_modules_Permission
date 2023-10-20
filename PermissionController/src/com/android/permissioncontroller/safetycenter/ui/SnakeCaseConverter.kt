@@ -17,7 +17,7 @@
 package com.android.permissioncontroller.safetycenter.ui
 
 /** Class used to convert a [String] to the `snake_case` format */
-internal object SnakeCaseConverter {
+object SnakeCaseConverter {
 
     /** Converts a [String] from `camelCase` to `snake_case` */
     fun fromCamelCase(input: String): String {
