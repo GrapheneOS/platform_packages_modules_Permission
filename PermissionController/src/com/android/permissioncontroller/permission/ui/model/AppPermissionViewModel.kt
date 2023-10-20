@@ -29,19 +29,14 @@ import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_ERRORED
 import android.app.AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
-import android.provider.MediaStore
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
-import androidx.core.util.Consumer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -80,6 +75,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getDefaultPrecision
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
+import com.android.permissioncontroller.permission.utils.KotlinUtils.openPhotoPickerForApp
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
@@ -113,7 +109,6 @@ class AppPermissionViewModel(
     companion object {
         private val LOG_TAG = AppPermissionViewModel::class.java.simpleName
         private const val DEVICE_PROFILE_ROLE_PREFIX = "android.app.role"
-        const val PHOTO_PICKER_REQUEST_CODE = 1
     }
 
     interface ConfirmDialogShowingFragment {
@@ -135,7 +130,7 @@ class AppPermissionViewModel(
         GRANT_BOTH(GRANT_FOREGROUND.value or GRANT_BACKGROUND.value),
         REVOKE_BOTH(REVOKE_FOREGROUND.value or REVOKE_BACKGROUND.value),
         GRANT_FOREGROUND_ONLY(GRANT_FOREGROUND.value or REVOKE_BACKGROUND.value),
-        GRANT_All_FILE_ACCESS(1 shl 4),
+        GRANT_ALL_FILE_ACCESS(1 shl 4),
         GRANT_FINE_LOCATION(1 shl 5),
         REVOKE_FINE_LOCATION(1 shl 6),
         GRANT_STORAGE_SUPERGROUP(1 shl 7),
@@ -167,8 +162,6 @@ class AppPermissionViewModel(
         permGroupName == Manifest.permission_group.STORAGE && !SdkLevel.isAtLeastT()
     private var hasConfirmedRevoke = false
     private var lightAppPermGroup: LightAppPermGroup? = null
-    private var photoPickerLauncher: ActivityResultLauncher<Unit>? = null
-    private var photoPickerResultConsumer: Consumer<Int>? = null
 
     private val mediaStorageSupergroupPermGroups = mutableMapOf<String, LightAppPermGroup>()
 
@@ -513,32 +506,6 @@ class AppPermissionViewModel(
         return !userSelectedPerm.isImplicit
     }
 
-    fun registerPhotoPickerResultIfNeeded(fragment: Fragment) {
-        if (permGroupName != READ_MEDIA_VISUAL) {
-            return
-        }
-        photoPickerLauncher =
-            fragment.registerForActivityResult(
-                object : ActivityResultContract<Unit, Int>() {
-                    override fun parseResult(resultCode: Int, intent: Intent?): Int {
-                        return resultCode
-                    }
-
-                    override fun createIntent(context: Context, input: Unit): Intent {
-                        return Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
-                            .putExtra(Intent.EXTRA_UID, lightAppPermGroup?.packageInfo?.uid)
-                            .setType(
-                                KotlinUtils.getMimeTypeForPermissions(
-                                    lightAppPermGroup?.foregroundPermNames ?: emptyList()
-                                )
-                            )
-                    }
-                }
-            ) { result ->
-                photoPickerResultConsumer?.accept(result)
-            }
-    }
-
     private fun isFineLocationChecked(group: LightAppPermGroup): Boolean {
         if (shouldShowLocationAccuracy == true) {
             val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!
@@ -685,6 +652,12 @@ class AppPermissionViewModel(
         }
 
         fragment.findNavController().navigateSafe(actionId, args)
+    }
+
+    fun openPhotoPicker(fragment: Fragment) {
+        val appPermGroup = lightAppPermGroup ?: return
+        openPhotoPickerForApp(fragment.requireActivity(), appPermGroup.packageInfo.uid,
+            appPermGroup.foregroundPermNames, 0)
     }
 
     /**
@@ -991,7 +964,6 @@ class AppPermissionViewModel(
         groupName: String,
         targetSdk: Int
     ) {
-
         val aural = groupName == Manifest.permission_group.READ_MEDIA_AURAL
         val visual = groupName == Manifest.permission_group.READ_MEDIA_VISUAL
         val allow = changeRequest === ChangeRequest.GRANT_STORAGE_SUPERGROUP
