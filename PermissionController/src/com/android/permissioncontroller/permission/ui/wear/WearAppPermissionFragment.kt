@@ -183,7 +183,7 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
                     )
                 } else {
                     showConfirmDialog(
-                        ChangeRequest.GRANT_All_FILE_ACCESS,
+                        ChangeRequest.GRANT_ALL_FILE_ACCESS,
                         R.string.special_file_access_dialog,
                         -1,
                         false
@@ -197,7 +197,7 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         }
         val onConfirmDialogOkButtonClick: (ConfirmDialogArgs) -> Unit = { args ->
             run {
-                if (args.changeRequest == ChangeRequest.GRANT_All_FILE_ACCESS) {
+                if (args.changeRequest == ChangeRequest.GRANT_ALL_FILE_ACCESS) {
                     viewModel.setAllFilesAccess(true)
                     viewModel.requestChange(
                         false,

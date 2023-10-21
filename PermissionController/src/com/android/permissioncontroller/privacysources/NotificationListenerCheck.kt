@@ -190,7 +190,7 @@ private fun getSafetySourceIssueIdFromComponentName(componentName: ComponentName
  */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @VisibleForTesting
-internal class NotificationListenerCheckInternal(
+class NotificationListenerCheckInternal(
     context: Context,
     private val shouldCancel: BooleanSupplier?
 ) {
@@ -255,7 +255,7 @@ internal class NotificationListenerCheckInternal(
      * <p>Always run async inside a {@NotificationListenerCheckJobService} via coroutine.
      */
     @WorkerThread
-    internal suspend fun getEnabledNotificationListenersAndNotifyIfNeeded(
+    suspend fun getEnabledNotificationListenersAndNotifyIfNeeded(
         params: JobParameters,
         service: NotificationListenerCheckJobService
     ) {
@@ -343,11 +343,11 @@ internal class NotificationListenerCheckInternal(
     }
 
     @VisibleForTesting
-    internal fun getNotifiedComponents(): MutableSet<String> {
+    fun getNotifiedComponents(): MutableSet<String> {
         return sharedPrefs.getStringSet(KEY_ALREADY_NOTIFIED_COMPONENTS, mutableSetOf<String>())!!
     }
 
-    internal suspend fun removeDisabledComponentsFromNotifiedComponents(
+    suspend fun removeDisabledComponentsFromNotifiedComponents(
         enabledComponents: Collection<ComponentName>
     ) {
         sharedPrefsLock.withLock {
@@ -364,7 +364,7 @@ internal class NotificationListenerCheckInternal(
         }
     }
 
-    internal suspend fun markComponentAsNotified(component: ComponentName) {
+    suspend fun markComponentAsNotified(component: ComponentName) {
         sharedPrefsLock.withLock {
             val notifiedComponents = getNotifiedComponents()
             notifiedComponents.add(component.flattenToShortString())
@@ -375,7 +375,7 @@ internal class NotificationListenerCheckInternal(
         }
     }
 
-    internal suspend fun removeFromNotifiedComponents(packageName: String) {
+    suspend fun removeFromNotifiedComponents(packageName: String) {
         sharedPrefsLock.withLock {
             val notifiedComponents = getNotifiedComponents()
             val filteredServices =
@@ -394,7 +394,7 @@ internal class NotificationListenerCheckInternal(
         }
     }
 
-    internal suspend fun removeFromNotifiedComponents(component: ComponentName) {
+    suspend fun removeFromNotifiedComponents(component: ComponentName) {
         val componentNameShortString = component.flattenToShortString()
         sharedPrefsLock.withLock {
             val notifiedComponents = getNotifiedComponents()

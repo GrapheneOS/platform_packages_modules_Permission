@@ -83,53 +83,77 @@
                     android:id="@+id/permission_message"
                     style="@style/AppPermissionMessage" />
 
-                <RadioGroup
-                    android:id="@+id/radiogroup"
-                    android:animateLayoutChanges="true"
+                <RadioButton
+                    android:id="@+id/allow_radio_button"
+                    android:text="@string/app_permission_button_allow"
+                    style="@style/AppPermissionRadioButton" />
+
+                <RadioButton
+                    android:id="@+id/allow_always_radio_button"
+                    android:text="@string/app_permission_button_allow_always"
+                    style="@style/AppPermissionRadioButton" />
+
+                <RadioButton
+                    android:id="@+id/allow_foreground_only_radio_button"
+                    android:text="@string/app_permission_button_allow_foreground"
+                    style="@style/AppPermissionRadioButton" />
+
+                <RelativeLayout
+                    android:id="@+id/radio_select_layout"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
                     android:layout_height="wrap_content">
-
-                    <RadioButton
-                        android:id="@+id/allow_radio_button"
-                        android:text="@string/app_permission_button_allow"
-                        style="@style/AppPermissionRadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/allow_always_radio_button"
-                        android:text="@string/app_permission_button_allow_always"
-                        style="@style/AppPermissionRadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/allow_foreground_only_radio_button"
-                        android:text="@string/app_permission_button_allow_foreground"
-                        style="@style/AppPermissionRadioButton" />
 
                     <RadioButton
                         android:id="@+id/select_radio_button"
                         android:text="@string/app_permission_button_ask"
-                        style="@style/AppPermissionRadioButton" />
+                        android:layout_alignParentStart="true"
+                        style="@style/AppPermissionRadioButton"
+                        android:layout_marginTop="0dp" />
 
-                    <RadioButton
-                        android:id="@+id/ask_one_time_radio_button"
-                        android:text="@string/app_permission_button_ask"
-                        style="@style/AppPermissionRadioButton" />
+                    <View
+                        android:id="@+id/edit_photos_divider"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@id/edit_selected_button"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignBottom="@+id/select_radio_button"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:theme="@style/PreferenceDivider"/>
 
-                    <RadioButton
-                        android:id="@+id/ask_radio_button"
-                        android:text="@string/app_permission_button_ask"
-                        style="@style/AppPermissionRadioButton" />
+                    <ImageButton
+                        android:id="@+id/edit_selected_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/edit_photos_description"
+                        android:background="@null"
+                        android:src="@drawable/ic_edit"/>
+                </RelativeLayout>
 
-                    <RadioButton
-                        android:id="@+id/deny_radio_button"
-                        android:text="@string/app_permission_button_deny"
-                        style="@style/AppPermissionRadioButton" />
+                <RadioButton
+                    android:id="@+id/ask_one_time_radio_button"
+                    android:text="@string/app_permission_button_ask"
+                    style="@style/AppPermissionRadioButton" />
 
-                    <RadioButton
-                        android:id="@+id/deny_foreground_radio_button"
-                        android:text="@string/app_permission_button_deny"
-                        style="@style/AppPermissionRadioButton" />
+                <RadioButton
+                    android:id="@+id/ask_radio_button"
+                    android:text="@string/app_permission_button_ask"
+                    style="@style/AppPermissionRadioButton" />
 
-                </RadioGroup>
+                <RadioButton
+                    android:id="@+id/deny_radio_button"
+                    android:text="@string/app_permission_button_deny"
+                    style="@style/AppPermissionRadioButton" />
+
+                <RadioButton
+                    android:id="@+id/deny_foreground_radio_button"
+                    android:text="@string/app_permission_button_deny"
+                    style="@style/AppPermissionRadioButton" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

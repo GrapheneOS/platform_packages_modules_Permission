@@ -25,6 +25,7 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission_group.NOTIFICATIONS
+import android.app.Activity
 import android.app.ActivityManager
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
@@ -59,8 +60,10 @@ import android.health.connect.HealthConnectManager
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import android.os.UserManager
 import android.permission.PermissionManager
 import android.provider.DeviceConfig
+import android.provider.MediaStore
 import android.provider.Settings
 import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
@@ -632,6 +635,28 @@ object KotlinUtils {
                 null
             }
         }
+    }
+
+    fun openPhotoPickerForApp(
+        activity: Activity,
+        uid: Int,
+        requestedPermissions: List<String>,
+        requestCode: Int
+    ) {
+        // A clone profile doesn't have a MediaProvider. If the app's user is a clone profile, open
+        // the photo picker in the parent profile
+        val appUser = UserHandle.getUserHandleForUid(uid)
+        val userManager =
+            activity.createContextAsUser(appUser, 0).getSystemService(UserManager::class.java)!!
+        val user = if (userManager.isCloneProfile) {
+            userManager.getProfileParent(appUser) ?: appUser
+        } else {
+            appUser
+        }
+        val pickerIntent = Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
+            .putExtra(Intent.EXTRA_UID, uid)
+            .setType(getMimeTypeForPermissions(requestedPermissions))
+        activity.startActivityForResultAsUser(pickerIntent, requestCode, user)
     }
 
     /** Return a specific MIME type, if a set of permissions is associated with one */

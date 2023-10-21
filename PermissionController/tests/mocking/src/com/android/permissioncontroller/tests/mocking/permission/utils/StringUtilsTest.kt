@@ -18,8 +18,8 @@ package com.android.permissioncontroller.tests.mocking.permission.utils
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.StringUtils
+import com.android.permissioncontroller.tests.mocking.R
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith

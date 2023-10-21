@@ -50,7 +50,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /** This class handles upgrading the runtime permissions database */
-internal object RuntimePermissionsUpgradeController {
+object RuntimePermissionsUpgradeController {
     private val LOG_TAG = RuntimePermissionsUpgradeController::class.java.simpleName
 
     // The latest version of the runtime permissions database

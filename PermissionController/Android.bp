@@ -54,38 +54,33 @@ java_library {
     ],
 }
 
-// File to be included by permission controller app an mocking tests
-filegroup {
-    name: "permissioncontroller-sources",
-    srcs: [
-        "src/**/*.java",
-        "src/**/*.kt",
-        ":permissioncontroller-protos",
-    ],
-}
-
-filegroup {
+java_library {
     name: "permissioncontroller-protos",
+    sdk_version: "system_current",
+    min_sdk_version: "30",
     srcs: [
         "src/**/*.proto",
     ],
+    proto: {
+        type: "lite",
+        include_dirs: ["packages/modules/Permission/PermissionController/src/com/android/permissioncontroller"],
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.permission",
+    ],
 }
 
-android_app {
-    name: "PermissionController",
-    // Compiling against "module_current" would allow using non-APIs within the permission APEX
-    // boundaries, which may be unsafe because PermissionController is also shipped as a standalone
-    // artifact. See also b/209458854.
+android_library {
+    name: "PermissionController-lib",
     sdk_version: "system_current",
     min_sdk_version: "30",
-    updatable: true,
-    privileged: true,
-    certificate: "platform",
     use_resource_processor: true,
-    rename_resources_package: false,
-    privapp_allowlist: ":privapp_allowlist_com.android.permissioncontroller.xml",
-
-    srcs: [":permissioncontroller-sources"],
+    manifest: "AndroidManifest-lib.xml",
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+    ],
 
     //javacflags: ["-Werror"],
     kotlincflags: [
@@ -96,13 +91,11 @@ android_app {
 
     libs: [
         "android.car-stubs",
-        // Soong fails to automatically add this dependency because all the
-        // *.kt sources are inside a filegroup.
-        "kotlin-annotations",
         "safety-center-annotations",
     ],
 
     static_libs: [
+        "permissioncontroller-protos",
         "iconloader_sc_mainline_prod",
         "com.google.android.material_material",
         "androidx.transition_transition",
@@ -162,10 +155,32 @@ android_app {
         "androidx.wear.compose_compose-material",
     ],
 
-    proto: {
-        type: "lite",
-        include_dirs: ["packages/modules/Permission/PermissionController/src/com/android/permissioncontroller"],
+    lint: {
+        strict_updatability_linting: true,
+        error_checks: ["Recycle"],
     },
+
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.permission",
+    ],
+}
+
+android_app {
+    name: "PermissionController",
+    // Compiling against "module_current" would allow using non-APIs within the permission APEX
+    // boundaries, which may be unsafe because PermissionController is also shipped as a standalone
+    // artifact. See also b/209458854.
+    sdk_version: "system_current",
+    min_sdk_version: "30",
+    updatable: true,
+    privileged: true,
+    certificate: "platform",
+    use_resource_processor: true,
+    rename_resources_package: false,
+    privapp_allowlist: ":privapp_allowlist_com.android.permissioncontroller.xml",
+
+    static_libs: ["PermissionController-lib"],
 
     lint: {
         strict_updatability_linting: true,
