@@ -53,6 +53,7 @@ class ReviewAccessibilityServicesTest {
     private val uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     private val testService1String = context.getString(R.string.test_accessibility_service)
     private val testService2String = context.getString(R.string.test_accessibility_service_2)
+    private val packageName = context.packageManager.permissionControllerPackageName
 
     companion object {
         private const val EXPECTED_TIMEOUT_MS = 500L
@@ -181,7 +182,12 @@ class ReviewAccessibilityServicesTest {
     }
 
     private fun waitForSettingsButtonToDisappear() {
-        SystemUtil.eventually { findObjectByText(false, "Settings") }
+        SystemUtil.eventually {
+            findPCObjectByClassAndText(false,
+              "android.widget.Button",
+              "Settings"
+          )
+        }
     }
 
     private fun findObjectByTextWithoutRetry(
@@ -211,6 +217,21 @@ class ReviewAccessibilityServicesTest {
         } catch (stale: StaleObjectException) {
             return findObjectByTextWithoutRetry(expected, text)
         }
+    }
+
+    private fun findPCObjectByClassAndText(
+        shouldBePresent: Boolean,
+        className: String,
+        text: String
+    ): UiObject2? {
+        val selector = By.pkg(packageName)
+            .clazz(className)
+            .text(text)
+        val view = waitFindObjectOrNull(selector)
+        assertEquals(
+            "Expected to find view with packageName '$packageName' className '$className' " +
+                    "text '$text' : $shouldBePresent", shouldBePresent, view != null)
+        return view
     }
 }
 
