@@ -18,8 +18,8 @@ package com.android.role.controller.util;
 
 import android.app.role.RoleManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.UserHandle;
+import android.permission.flags.Flags;
 
 import androidx.annotation.NonNull;
 
@@ -31,16 +31,7 @@ import com.android.role.controller.model.Role;
  */
 public class RoleManagerCompat {
 
-    /**
-     * Key in the generic shared preferences that stores if the user manually selected the "none"
-     * role holder for a role.
-     */
-    private static final String IS_NONE_ROLE_HOLDER_SELECTED_KEY = "is_none_role_holder_selected:";
 
-    /**
-     * Name of generic shared preferences file.
-     */
-    private static final String PREFERENCES_FILE = "preferences";
 
     private RoleManagerCompat() {}
 
@@ -56,47 +47,34 @@ public class RoleManagerCompat {
     }
 
     /**
-     * Get a device protected storage based shared preferences. Avoid storing sensitive data in it.
-     *
-     * @param context the context to get the shared preferences
-     * @return a device protected storage based shared preferences
-     */
-    @NonNull
-    private static SharedPreferences getDeviceProtectedSharedPreferences(@NonNull Context context) {
-        if (!context.isDeviceProtectedStorage()) {
-            context = context.createDeviceProtectedStorageContext();
-        }
-        return context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
-    }
-
-    /**
      * Check whether the role has the fallback holder enabled.
      *
      * @return whether the "none" role holder is not selected
      */
     public static boolean isRoleFallbackEnabledAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        Context userContext = UserUtils.getUserContext(context, user);
-        boolean isNoneHolderSelected = getDeviceProtectedSharedPreferences(userContext)
-                .getBoolean(IS_NONE_ROLE_HOLDER_SELECTED_KEY + role.getName(), false);
-        return !isNoneHolderSelected;
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
+            Context userContext = UserUtils.getUserContext(context, user);
+            RoleManager userRoleManager = userContext.getSystemService(RoleManager.class);
+            return userRoleManager.isRoleFallbackEnabled(role.getName());
+        } else {
+            return LegacyRoleFallbackEnabledUtils.isRoleFallbackEnabledAsUser(role.getName(), user,
+                    context);
+        }
     }
 
     /**
      * Set whether the role has fallback holder enabled.
-     *
      */
     public static void setRoleFallbackEnabledAsUser(@NonNull Role role,
             boolean fallbackEnabled, @NonNull UserHandle user, @NonNull Context context) {
-        Context userContext = UserUtils.getUserContext(context, user);
-        if (fallbackEnabled) {
-            getDeviceProtectedSharedPreferences(userContext).edit()
-                    .remove(IS_NONE_ROLE_HOLDER_SELECTED_KEY + role.getName())
-                    .apply();
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
+            Context userContext = UserUtils.getUserContext(context, user);
+            RoleManager userRoleManager = userContext.getSystemService(RoleManager.class);
+            userRoleManager.setRoleFallbackEnabled(role.getName(), fallbackEnabled);
         } else {
-            getDeviceProtectedSharedPreferences(userContext).edit()
-                    .putBoolean(IS_NONE_ROLE_HOLDER_SELECTED_KEY + role.getName(), true)
-                    .apply();
+            LegacyRoleFallbackEnabledUtils.setRoleFallbackEnabledAsUser(role.getName(),
+                    fallbackEnabled, user, context);
         }
     }
 }

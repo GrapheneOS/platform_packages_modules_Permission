@@ -252,7 +252,38 @@ public class RoleService extends SystemService implements RoleUserState.Callback
 
     @Override
     public void onUserStarting(@NonNull TargetUser user) {
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
+            upgradeLegacyFallbackEnabledRolesIfNeeded(user);
+        }
+
         maybeGrantDefaultRolesSync(user.getUserHandle().getIdentifier());
+    }
+
+    private void upgradeLegacyFallbackEnabledRolesIfNeeded(@NonNull TargetUser user) {
+        int userId = user.getUserHandle().getIdentifier();
+        RoleUserState userState = getOrCreateUserState(userId);
+        if (!userState.isVersionUpgradeNeeded()) {
+            return;
+        }
+        List<String> legacyFallbackDisabledRoles = getLegacyFallbackDisabledRolesSync(userId);
+        if (legacyFallbackDisabledRoles == null) {
+            return;
+        }
+        userState.upgradeVersion(legacyFallbackDisabledRoles);
+    }
+
+    @MainThread
+    private List<String> getLegacyFallbackDisabledRolesSync(@UserIdInt int userId) {
+        AndroidFuture<List<String>> future = new AndroidFuture<>();
+        RoleController controller = new RemoteRoleController(UserHandle.of(userId), getContext());
+        controller.getLegacyFallbackDisabledRoles(ForegroundThread.getExecutor(), future::complete);
+        try {
+            return future.get(30, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            Log.e(LOG_TAG, "Failed to get the legacy role fallback disabled state for user "
+                    + userId, e);
+            return null;
+        }
     }
 
     @MainThread
@@ -493,8 +524,7 @@ public class RoleService extends SystemService implements RoleUserState.Callback
             Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
             Objects.requireNonNull(callback, "callback cannot be null");
 
-            getOrCreateController(userId).onAddRoleHolder(roleName, packageName, flags,
-                    callback);
+            getOrCreateController(userId).onAddRoleHolder(roleName, packageName, flags, callback);
         }
 
         @Override

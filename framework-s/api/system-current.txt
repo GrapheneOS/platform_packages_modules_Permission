@@ -10,6 +10,7 @@ package android.app.role {
     method @Deprecated @WorkerThread public abstract boolean onAddRoleHolder(@NonNull String, @NonNull String, int);
     method @Deprecated @Nullable public final android.os.IBinder onBind(@Nullable android.content.Intent);
     method @Deprecated @WorkerThread public abstract boolean onClearRoleHolders(@NonNull String, int);
+    method @Deprecated @FlaggedApi("android.permission.flags.system_server_role_controller_enabled") @NonNull public java.util.List<java.lang.String> onGetLegacyFallbackDisabledRoles();
     method @Deprecated @WorkerThread public abstract boolean onGrantDefaultRoles();
     method @Deprecated public abstract boolean onIsApplicationQualifiedForRole(@NonNull String, @NonNull String);
     method @Deprecated public boolean onIsApplicationVisibleForRole(@NonNull String, @NonNull String);

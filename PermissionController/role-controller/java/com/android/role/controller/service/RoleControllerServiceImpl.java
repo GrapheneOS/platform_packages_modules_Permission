@@ -32,6 +32,7 @@ import androidx.annotation.WorkerThread;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 import com.android.role.controller.util.CollectionUtils;
+import com.android.role.controller.util.LegacyRoleFallbackEnabledUtils;
 import com.android.role.controller.util.PackageUtils;
 import com.android.role.controller.util.UserUtils;
 
@@ -467,6 +468,13 @@ public class RoleControllerServiceImpl extends RoleControllerService {
 
         return role.isVisibleAsUser(mUser, mContext);
     }
+
+    @Override
+    @NonNull
+    public List<String> onGetLegacyFallbackDisabledRoles() {
+        return LegacyRoleFallbackEnabledUtils.getFallbackDisabledRoles(mUser, mContext);
+    }
+
 
     private static boolean checkFlags(int flags, int allowedFlags) {
         if ((flags & allowedFlags) != flags) {

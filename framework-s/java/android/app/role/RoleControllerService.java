@@ -17,6 +17,7 @@
 package android.app.role;
 
 import android.Manifest;
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
@@ -31,9 +32,12 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteCallback;
 import android.os.UserHandle;
+import android.permission.flags.Flags;
 
 import com.android.internal.util.Preconditions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
@@ -175,6 +179,19 @@ public abstract class RoleControllerService extends Service {
                 boolean visible = onIsRoleVisible(roleName);
                 callback.sendResult(visible ? Bundle.EMPTY : null);
             }
+
+            @Override
+            public void getLegacyFallbackDisabledRoles(RemoteCallback callback) {
+                enforceCallerSystemUid("getLegacyFallbackDisabledRoles");
+
+                Objects.requireNonNull(callback, "callback cannot be null");
+
+                List<String> legacyFallbackDisabledRoles = onGetLegacyFallbackDisabledRoles();
+                Bundle result = new Bundle();
+                result.putStringArrayList(RoleControllerManager.KEY_LEGACY_FALLBACK_DISABLED_ROLES,
+                        new ArrayList<>(legacyFallbackDisabledRoles));
+                callback.sendResult(result);
+            }
         };
     }
 
@@ -301,4 +318,15 @@ public abstract class RoleControllerService extends Service {
      * @return whether the role should be visible to user
      */
     public abstract boolean onIsRoleVisible(@NonNull String roleName);
+
+    /**
+     * Get the legacy fallback disabled state.
+     *
+     * @return A list of role names with disabled fallback state.
+     */
+    @FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED)
+    @NonNull
+    public List<String> onGetLegacyFallbackDisabledRoles() {
+        throw new UnsupportedOperationException();
+    }
 }

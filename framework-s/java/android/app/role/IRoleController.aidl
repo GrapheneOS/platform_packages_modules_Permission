@@ -40,4 +40,6 @@ oneway interface IRoleController {
             in RemoteCallback callback);
 
     void isRoleVisible(in String roleName, in RemoteCallback callback);
+
+    void getLegacyFallbackDisabledRoles(in RemoteCallback callback);
 }

@@ -37,6 +37,7 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.infra.AndroidFuture;
 import com.android.internal.infra.ServiceConnector;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -47,6 +48,12 @@ import java.util.function.Consumer;
  * @hide
  */
 public class RoleControllerManager {
+
+    /**
+     * Bundle key for getting legacy fallback disabled roles
+     */
+    public static final String KEY_LEGACY_FALLBACK_DISABLED_ROLES =
+            "LEGACY_FALLBACK_DISABLED_ROLES";
 
     private static final String LOG_TAG = RoleControllerManager.class.getSimpleName();
 
@@ -187,8 +194,7 @@ public class RoleControllerManager {
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback) {
         AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
             AndroidFuture<Bundle> future = new AndroidFuture<>();
-            service.onClearRoleHolders(roleName, flags,
-                    new RemoteCallback(future::complete));
+            service.onClearRoleHolders(roleName, flags, new RemoteCallback(future::complete));
             return future;
         });
         propagateCallback(operation, "onClearRoleHolders", callback);
@@ -225,6 +231,35 @@ public class RoleControllerManager {
             return future;
         });
         propagateCallback(operation, "isRoleVisible", executor, callback);
+    }
+
+    /**
+     * @see RoleControllerService#onGrantDefaultRoles()
+     *
+     * @hide
+     */
+    public void getLegacyFallbackDisabledRoles(@NonNull @CallbackExecutor Executor executor,
+            @NonNull Consumer<List<String>> callback) {
+        mRemoteService.postAsync(service -> {
+            AndroidFuture<Bundle> future = new AndroidFuture<>();
+            service.getLegacyFallbackDisabledRoles(new RemoteCallback(future::complete));
+            return future;
+        }).orTimeout(REQUEST_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
+                .whenComplete((res, err) -> executor.execute(() -> {
+                    final long token = Binder.clearCallingIdentity();
+                    try {
+                        if (err != null) {
+                            Log.e(LOG_TAG, "Error calling getLegacyFallbackDisabledRoles()",
+                                    err);
+                            callback.accept(null);
+                        } else {
+                            callback.accept(res.getStringArrayList(
+                                    KEY_LEGACY_FALLBACK_DISABLED_ROLES));
+                        }
+                    } finally {
+                        Binder.restoreCallingIdentity(token);
+                    }
+                }));
     }
 
     private void propagateCallback(AndroidFuture<Bundle> operation, String opName,

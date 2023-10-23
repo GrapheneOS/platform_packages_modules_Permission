@@ -22,7 +22,6 @@ import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.annotation.SystemApi.Client;
 import android.permission.flags.Flags;
-import android.util.ArraySet;
 
 import java.util.Map;
 import java.util.Objects;
@@ -68,7 +67,7 @@ public final class RolesState {
      */
     public RolesState(int version, @Nullable String packagesHash,
             @NonNull Map<String, Set<String>> roles) {
-        this(version, packagesHash, roles, new ArraySet<>());
+        this(version, packagesHash, roles, roles.keySet());
     }
 
     /**
