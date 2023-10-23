@@ -1153,6 +1153,18 @@ public class RoleManagerTest {
         });
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM,
+            codeName = "VanillaIceCream")
+    @Test
+    public void testSetAndGetRoleFallbackEnabled() {
+        assumeTrue(sRoleManager.isRoleAvailable(RoleManager.ROLE_SMS));
+
+        runWithShellPermissionIdentity(() -> {
+            sRoleManager.setRoleFallbackEnabled(RoleManager.ROLE_SMS, true);
+            assertThat(sRoleManager.isRoleFallbackEnabled(RoleManager.ROLE_SMS)).isTrue();
+        });
+    }
+
     @NonNull
     private List<String> getRoleHolders(@NonNull String roleName) throws Exception {
         return callWithShellPermissionIdentity(() -> sRoleManager.getRoleHolders(roleName));

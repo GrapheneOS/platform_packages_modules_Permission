@@ -108,6 +108,7 @@ java_sdk_library {
         "service-permission-shared",
         "service-permission-statsd",
         "service-permission-proto-stream",
+        "android.permission.flags-aconfig-java",
     ],
     errorprone: {
         javacflags: ["-Xep:GuardedBy:ERROR"],
