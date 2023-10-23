@@ -60,6 +60,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikacije"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Dozvole za aplikacije"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Aplikacije koje se ne koriste"</string>
+    <!-- no translation found for edit_photos_description (5540108003480078892) -->
+    <skip />
     <string name="no_unused_apps" msgid="12809387670415295">"Nema aplik. koje se ne koriste"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 aplikac. koje se ne koriste"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Nedavne odluke o dozvolama"</string>
@@ -93,7 +95,7 @@
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> pruža usluge lokacije za ovaj uređaj. Pristup lokaciji možete da izmenite u podešavanjima lokacije."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ako odbijete ovu dozvolu, osnovne funkcije uređaja možda neće više ispravno raditi."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Ova aplikacija je dizajnirana za stariju verziju Android-a. Ako ovoj aplikaciji odbijete pristup za slike i video snimke, povlači se i pristup muzici i drugim audio snimcima."</string>
-    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Ova aplikacija je dizajnirana za stariju verziju Android-a. Ako ovoj aplikaciji odbijete pristup za muziku i druge audio snimke, povlači se i pristup slikama i video snimcima."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Ova aplikacija je dizajnirana za stariju verziju Android-a. Ako ovoj aplikaciji odbijete pristup za muziku i druge audio snimke, povlači se i pristup slikama i videima."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ako odbijete ovu dozvolu, neke funkcije uređaja kojima upravlja ova aplikacija možda neće više ispravno raditi."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Primenjuje se u skladu sa smernicama"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Pristup u pozadini je onemogućen smernicama"</string>
@@ -240,7 +242,7 @@
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije sa ovom dozvolom mogu da šalju i pregledaju SMS-ove"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama, medijskom sadržaju i fajlovima na uređaju"</string>
     <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Aplikacije sa ovom dozvolom mogu da pristupaju muzici i drugim audio fajlovima na ovom uređaju"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama i video snimcima na ovom uređaju"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama i videima na ovom uređaju"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno odbijeno/poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bez pristupa"</string>
@@ -475,7 +477,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Pristup slikama, videu, muzici, zvuku i drugom na uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Dozvoljavate li pristup muzici i zvuku na ovom uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Dozvoljavate li pristup slikama i videu na ovom uređaju za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Dozvoljavate li da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa i drugim slikama i video snimcima na ovom uređaju?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Dozvoljavate li da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa i drugim slikama i videima na ovom uređaju?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći da snima zvuk samo dok koristite aplikaciju"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
@@ -558,18 +560,18 @@
     <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Ni pristup drugim fajlovima neće biti dozvoljen"</string>
     <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Biće dozvoljen pristup i drugim fajlovima"</string>
     <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Ni pristup drugim fajlovima neće biti dozvoljen"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Biće dozvoljen pristup i slikama i video snimcima"</string>
-    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Ni pristup slikama i video snimcima neće biti dozvoljen"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Biće dozvoljen pristup i slikama i videima"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Ni pristup slikama i videima neće biti dozvoljen"</string>
     <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Biće dozvoljen pristup i muzici i audio fajlovima"</string>
     <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Ni pristup muzici i audio fajlovima neće biti dozvoljen"</string>
-    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama, video snimcima i drugim fajlovima."</string>
-    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama, video snimcima i drugim fajlovima."</string>
-    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i video snimcima, biće joj dozvoljeno i da pristupa muzici, audio i drugim fajlovima."</string>
-    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa slikama i video snimcima, neće joj biti dozvoljeno ni da pristupa muzici, audio i drugim fajlovima."</string>
-    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama i video snimcima."</string>
-    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i video snimcima."</string>
-    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i video snimcima, biće joj dozvoljeno i da pristupa muzici i audio fajlovima."</string>
-    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i video snimcima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama, videima i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama, videima i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i videima, biće joj dozvoljeno i da pristupa muzici, audio i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa slikama i videima, neće joj biti dozvoljeno ni da pristupa muzici, audio i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama i videima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i videima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i videima, biće joj dozvoljeno i da pristupa muzici i audio fajlovima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i videima."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Pregledajte aplikaciju sa pristupom lokaciji u pozadini"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> uvek može da pristupa vašoj lokaciji, čak i kad je aplikacija zatvorena"</string>
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Pregledajte aplikaciju sa pristupom lokaciji u pozadini"</string>

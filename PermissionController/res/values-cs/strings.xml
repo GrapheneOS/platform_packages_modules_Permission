@@ -60,6 +60,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikace"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Oprávnění aplikace"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nepoužívané aplikace"</string>
+    <!-- no translation found for edit_photos_description (5540108003480078892) -->
+    <skip />
     <string name="no_unused_apps" msgid="12809387670415295">"Žádné nepoužívané aplikace"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Žádné nepoužívané aplikace"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Nedávná rozhodnutí o oprávnění"</string>

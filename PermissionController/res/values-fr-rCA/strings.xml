@@ -60,6 +60,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Applications"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorisations des applications"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Applications non utilisées"</string>
+    <!-- no translation found for edit_photos_description (5540108003480078892) -->
+    <skip />
     <string name="no_unused_apps" msgid="12809387670415295">"Aucune application inutilisée"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Aucune application inutilisée"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"Décisions d\'autorisation récentes"</string>
