@@ -415,22 +415,33 @@ public class RoleService extends SystemService implements RoleUserState.Callback
     private class Stub extends IRoleManager.Stub {
 
         @Override
-        public boolean isRoleAvailable(@NonNull String roleName) {
+        public boolean isRoleAvailableAsUser(@NonNull String roleName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "isRoleAvailableAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
             Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
 
-            int userId = UserHandleCompat.getUserId(getCallingUid());
             return getOrCreateUserState(userId).isRoleAvailable(roleName);
         }
 
         @Override
-        public boolean isRoleHeld(@NonNull String roleName, @NonNull String packageName) {
-            int callingUid = getCallingUid();
-            mAppOpsManager.checkPackage(callingUid, packageName);
+        public boolean isRoleHeldAsUser(@NonNull String roleName, @NonNull String packageName,
+                @UserIdInt int userId) {
+            mAppOpsManager.checkPackage(getCallingUid(), packageName);
+
+            UserUtils.enforceCrossUserPermission(userId, false, "isRoleHeldAsUser", getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
 
             Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
             Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
 
-            int userId = UserHandleCompat.getUserId(callingUid);
             ArraySet<String> roleHolders = getOrCreateUserState(userId).getRoleHolders(roleName);
             if (roleHolders == null) {
                 return false;
@@ -685,54 +696,80 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         }
 
         @Override
-        public void setRoleNamesFromController(@NonNull List<String> roleNames) {
+        public void setRoleNamesFromControllerAsUser(@NonNull List<String> roleNames,
+                @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "setRoleNamesFromControllerAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return;
+            }
+
             getContext().enforceCallingOrSelfPermission(
                     RoleManager.PERMISSION_MANAGE_ROLES_FROM_CONTROLLER,
-                    "setRoleNamesFromController");
+                    "setRoleNamesFromControllerAsUser");
 
             Objects.requireNonNull(roleNames, "roleNames cannot be null");
 
-            int userId = UserHandleCompat.getUserId(Binder.getCallingUid());
             getOrCreateUserState(userId).setRoleNames(roleNames);
         }
 
         @Override
-        public boolean addRoleHolderFromController(@NonNull String roleName,
-                @NonNull String packageName) {
+        public boolean addRoleHolderFromControllerAsUser(@NonNull String roleName,
+                @NonNull String packageName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false,
+                    "addRoleHolderFromControllerAsUser", getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
             getContext().enforceCallingOrSelfPermission(
                     RoleManager.PERMISSION_MANAGE_ROLES_FROM_CONTROLLER,
-                    "addRoleHolderFromController");
+                    "addRoleHolderFromControllerAsUser");
 
             Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
             Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
 
-            int userId = UserHandleCompat.getUserId(Binder.getCallingUid());
             return getOrCreateUserState(userId).addRoleHolder(roleName, packageName);
         }
 
         @Override
-        public boolean removeRoleHolderFromController(@NonNull String roleName,
-                @NonNull String packageName) {
+        public boolean removeRoleHolderFromControllerAsUser(@NonNull String roleName,
+                @NonNull String packageName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false,
+                    "removeRoleHolderFromControllerAsUser", getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
             getContext().enforceCallingOrSelfPermission(
                     RoleManager.PERMISSION_MANAGE_ROLES_FROM_CONTROLLER,
-                    "removeRoleHolderFromController");
+                    "removeRoleHolderFromControllerAsUser");
 
             Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
             Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
 
-            int userId = UserHandleCompat.getUserId(Binder.getCallingUid());
             return getOrCreateUserState(userId).removeRoleHolder(roleName, packageName);
         }
 
         @Override
-        public List<String> getHeldRolesFromController(@NonNull String packageName) {
+        public List<String> getHeldRolesFromControllerAsUser(@NonNull String packageName,
+                @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false,
+                    "getHeldRolesFromControllerAsUser", getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return Collections.emptyList();
+            }
+
             getContext().enforceCallingOrSelfPermission(
                     RoleManager.PERMISSION_MANAGE_ROLES_FROM_CONTROLLER,
-                    "getRolesHeldFromController");
+                    "getHeldRolesFromControllerAsUser");
 
             Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
 
-            int userId = UserHandleCompat.getUserId(Binder.getCallingUid());
             return getOrCreateUserState(userId).getHeldRoles(packageName);
         }
 

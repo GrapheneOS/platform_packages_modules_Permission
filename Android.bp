@@ -21,6 +21,9 @@ apex {
     name: "com.android.permission",
     defaults: ["com.android.permission-defaults"],
     manifest: "apex_manifest.json",
+    compat_configs: [
+        "framework-permission-s-compat-config"
+    ],
 }
 
 apex_defaults {
