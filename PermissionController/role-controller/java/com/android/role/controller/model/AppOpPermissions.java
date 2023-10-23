@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Process;
 
 import androidx.annotation.NonNull;
 
@@ -48,8 +49,8 @@ public class AppOpPermissions {
      */
     public static boolean grant(@NonNull String packageName, @NonNull String appOpPermission,
             boolean overrideNonDefaultMode, @NonNull Context context) {
-        PackageInfo packageInfo = PackageUtils.getPackageInfo(packageName,
-                PackageManager.GET_PERMISSIONS, context);
+        PackageInfo packageInfo = PackageUtils.getPackageInfoAsUser(packageName,
+                PackageManager.GET_PERMISSIONS, Process.myUserHandle(), context);
         if (packageInfo == null) {
             return false;
         }

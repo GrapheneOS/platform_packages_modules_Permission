@@ -57,7 +57,8 @@ public class EmergencyRoleBehavior implements RoleBehavior {
         for (int i = 0; i < packageNamesSize; i++) {
             String packageName = packageNames.get(i);
 
-            PackageInfo packageInfo = PackageUtils.getPackageInfo(packageName, 0, context);
+            PackageInfo packageInfo = PackageUtils.getPackageInfoAsUser(packageName, 0,
+                    Process.myUserHandle(), context);
             if (packageInfo == null) {
                 continue;
             }

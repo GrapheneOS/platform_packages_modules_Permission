@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Process;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -36,19 +37,21 @@ public final class PackageUtils {
      * Retrieve the {@link PackageInfo} of an application.
      *
      * @param packageName the package name of the application
-     * @param extraFlags the extra flags to pass to {@link PackageManager#getPackageInfo(String,
-     *                   int)}
-     * @param context the {@code Context} to retrieve system services
-     *
+     * @param extraFlags  the extra flags to pass to {@link PackageManager#getPackageInfo(String,
+     *                    int)}
+     * @param user        the user of the application
+     * @param context     the {@code Context} to retrieve system services
      * @return the {@link PackageInfo} of the application, or {@code null} if not found
      */
     @Nullable
-    public static PackageInfo getPackageInfo(@NonNull String packageName, int extraFlags,
-            @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
+    public static PackageInfo getPackageInfoAsUser(@NonNull String packageName, int extraFlags,
+            @NonNull UserHandle user, @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         try {
-            return packageManager.getPackageInfo(packageName, PackageManager.MATCH_DIRECT_BOOT_AWARE
-                    | PackageManager.MATCH_DIRECT_BOOT_UNAWARE | extraFlags);
+            return userPackageManager.getPackageInfo(packageName,
+                    PackageManager.MATCH_DIRECT_BOOT_AWARE
+                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE | extraFlags);
         } catch (PackageManager.NameNotFoundException e) {
             return null;
         }
@@ -63,7 +66,8 @@ public final class PackageUtils {
      * @return whether the package is a system package
      */
     public static boolean isSystemPackage(@NonNull String packageName, @NonNull Context context) {
-        return getPackageInfo(packageName, PackageManager.MATCH_SYSTEM_ONLY, context) != null;
+        return getPackageInfoAsUser(packageName, PackageManager.MATCH_SYSTEM_ONLY,
+                Process.myUserHandle(), context) != null;
     }
 
     /**
