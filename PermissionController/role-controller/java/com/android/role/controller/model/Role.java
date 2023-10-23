@@ -584,7 +584,8 @@ public class Role {
         }
 
         if (mBehavior != null) {
-            Boolean isPackageQualified = mBehavior.isPackageQualified(this, packageName, context);
+            Boolean isPackageQualified = mBehavior.isPackageQualifiedAsUser(this, packageName,
+                    Process.myUserHandle(), context);
             if (isPackageQualified != null) {
                 return isPackageQualified;
             }
