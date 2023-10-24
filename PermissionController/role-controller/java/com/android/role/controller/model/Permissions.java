@@ -568,10 +568,10 @@ public class Permissions {
     @Nullable
     private static PackageInfo getPackageInfo(@NonNull String packageName, int extraFlags,
             @NonNull Context context) {
-        return PackageUtils.getPackageInfo(packageName, extraFlags
+        return PackageUtils.getPackageInfoAsUser(packageName, extraFlags
                 // TODO: Why MATCH_UNINSTALLED_PACKAGES?
                 | PackageManager.MATCH_UNINSTALLED_PACKAGES | PackageManager.GET_PERMISSIONS,
-                context);
+                Process.myUserHandle(), context);
     }
 
     private static boolean isUpdatedSystemApp(@NonNull PackageInfo packageInfo) {

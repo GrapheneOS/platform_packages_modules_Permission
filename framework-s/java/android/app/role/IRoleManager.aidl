@@ -54,6 +54,10 @@ interface IRoleManager {
 
     void setBypassingRoleQualification(boolean bypassRoleQualification);
 
+    boolean isRoleFallbackEnabledAsUser(in String roleName, int userId);
+
+    void setRoleFallbackEnabledAsUser(in String roleName, boolean fallbackEnabled, int userId);
+
     void setRoleNamesFromController(in List<String> roleNames);
 
     boolean addRoleHolderFromController(in String roleName, in String packageName);

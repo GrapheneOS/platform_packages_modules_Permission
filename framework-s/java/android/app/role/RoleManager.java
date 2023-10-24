@@ -18,6 +18,7 @@ package android.app.role;
 
 import android.Manifest;
 import android.annotation.CallbackExecutor;
+import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -35,6 +36,7 @@ import android.os.Process;
 import android.os.RemoteCallback;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.permission.flags.Flags;
 import android.util.ArrayMap;
 import android.util.SparseArray;
 
@@ -684,6 +686,53 @@ public final class RoleManager {
     public void setBypassingRoleQualification(boolean bypassRoleQualification) {
         try {
             mService.setBypassingRoleQualification(bypassRoleQualification);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Check whether role currently enables fallback to default holder.
+     * <p>
+     * This is based on the "None" holder being actively selected, in which case don't fallback.
+     *
+     * @param roleName the name of the role being queried
+     *
+     * @return whether fallback is enabled for the provided role
+     *
+     * @hide
+     */
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
+    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @UserHandleAware
+    @SystemApi
+    public boolean isRoleFallbackEnabled(@NonNull String roleName) {
+        try {
+            return mService.isRoleFallbackEnabledAsUser(roleName,
+                    mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Set whether role should fallback to a default role holder.
+     *
+     * @param roleName the name of the role being queried.
+     * @param fallbackEnabled whether to enable fallback holders for this role.
+     *
+     * @hide
+     */
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
+    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @UserHandleAware
+    @SystemApi
+    public void setRoleFallbackEnabled(@NonNull String roleName, boolean fallbackEnabled) {
+        try {
+            mService.setRoleFallbackEnabledAsUser(roleName, fallbackEnabled,
+                    mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }

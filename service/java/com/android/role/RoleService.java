@@ -649,6 +649,42 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         }
 
         @Override
+        public boolean isRoleFallbackEnabledAsUser(@NonNull String roleName,
+                @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "isRoleFallbackEnabledAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
+            getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
+                    "isRoleFallbackEnabledAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+
+            return getOrCreateUserState(userId).isFallbackEnabled(roleName);
+        }
+
+        @Override
+        public void setRoleFallbackEnabledAsUser(@NonNull String roleName, boolean fallbackEnabled,
+                @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "setRoleFallbackEnabledAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return;
+            }
+
+            getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
+                    "setRoleFallbackEnabledAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+
+            getOrCreateUserState(userId).setFallbackEnabled(roleName, fallbackEnabled);
+        }
+
+        @Override
         public void setRoleNamesFromController(@NonNull List<String> roleNames) {
             getContext().enforceCallingOrSelfPermission(
                     RoleManager.PERMISSION_MANAGE_ROLES_FROM_CONTROLLER,

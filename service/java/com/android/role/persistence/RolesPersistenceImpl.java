@@ -66,6 +66,7 @@ public class RolesPersistenceImpl implements RolesPersistence {
 
     private static final String ATTRIBUTE_VERSION = "version";
     private static final String ATTRIBUTE_NAME = "name";
+    private static final String ATTRIBUTE_FALLBACK_ENABLED = "fallbackEnabled";
     private static final String ATTRIBUTE_PACKAGES_HASH = "packagesHash";
 
     @VisibleForTesting
@@ -142,6 +143,7 @@ public class RolesPersistenceImpl implements RolesPersistence {
         String packagesHash = parser.getAttributeValue(null, ATTRIBUTE_PACKAGES_HASH);
 
         Map<String, Set<String>> roles = new ArrayMap<>();
+        Set<String> fallbackEnabledRoles = new ArraySet<>();
         int type;
         int depth;
         int innerDepth = parser.getDepth() + 1;
@@ -153,12 +155,16 @@ public class RolesPersistenceImpl implements RolesPersistence {
 
             if (parser.getName().equals(TAG_ROLE)) {
                 String roleName = parser.getAttributeValue(null, ATTRIBUTE_NAME);
+                String fallbackEnabled = parser.getAttributeValue(null, ATTRIBUTE_FALLBACK_ENABLED);
+                if (Boolean.parseBoolean(fallbackEnabled)) {
+                    fallbackEnabledRoles.add(roleName);
+                }
                 Set<String> roleHolders = parseRoleHolders(parser);
                 roles.put(roleName, roleHolders);
             }
         }
 
-        return new RolesState(version, packagesHash, roles);
+        return new RolesState(version, packagesHash, roles, fallbackEnabledRoles);
     }
 
     @NonNull
@@ -238,12 +244,16 @@ public class RolesPersistenceImpl implements RolesPersistence {
             serializer.attribute(null, ATTRIBUTE_PACKAGES_HASH, packagesHash);
         }
 
+        Set<String> fallbackEnabledRoles = roles.getFallbackEnabledRoles();
         for (Map.Entry<String, Set<String>> entry : roles.getRoles().entrySet()) {
             String roleName = entry.getKey();
             Set<String> roleHolders = entry.getValue();
+            boolean isFallbackEnabled = fallbackEnabledRoles.contains(roleName);
 
             serializer.startTag(null, TAG_ROLE);
             serializer.attribute(null, ATTRIBUTE_NAME, roleName);
+            serializer.attribute(null, ATTRIBUTE_FALLBACK_ENABLED,
+                    Boolean.toString(isFallbackEnabled));
             serializeRoleHolders(serializer, roleHolders);
             serializer.endTag(null, TAG_ROLE);
         }

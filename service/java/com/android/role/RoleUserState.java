@@ -53,6 +53,8 @@ class RoleUserState {
 
     public static final int VERSION_UNDEFINED = -1;
 
+    public static final int VERSION_FALLBACK_STATE_MIGRATED = 1;
+
     private static final long WRITE_DELAY_MILLIS = 200;
 
     private final RolesPersistence mPersistence = RolesPersistence.createInstance();
@@ -85,6 +87,13 @@ class RoleUserState {
     @GuardedBy("mLock")
     @NonNull
     private ArrayMap<String, ArraySet<String>> mRoles = new ArrayMap<>();
+
+    /**
+     *
+     */
+    @GuardedBy("mLock")
+    @NonNull
+    private ArraySet<String> mFallbackEnabledRoles = new ArraySet<>();
 
     @GuardedBy("mLock")
     private boolean mWriteScheduled;
@@ -189,6 +198,31 @@ class RoleUserState {
                 return;
             }
             mBypassingRoleQualification = bypassingRoleQualification;
+            scheduleWriteFileLocked();
+        }
+    }
+
+    public boolean isFallbackEnabled(@NonNull String roleName) {
+        synchronized (mLock) {
+            return mFallbackEnabledRoles.contains(roleName);
+        }
+    }
+
+    public void setFallbackEnabled(@NonNull String roleName, boolean fallbackEnabled) {
+        synchronized (mLock) {
+            if (!mRoles.containsKey(roleName)) {
+                Log.e(LOG_TAG, "Cannot set fallback enabled for unknown role, role: " + roleName
+                        + ", fallbackEnabled: " + fallbackEnabled);
+                return;
+            }
+            if (mFallbackEnabledRoles.contains(roleName) == fallbackEnabled) {
+                return;
+            }
+            if (fallbackEnabled) {
+                mFallbackEnabledRoles.add(roleName);
+            } else {
+                mFallbackEnabledRoles.remove(roleName);
+            }
             scheduleWriteFileLocked();
         }
     }
@@ -386,7 +420,8 @@ class RoleUserState {
             // Force a reconciliation on next boot if we are bypassing role qualification now.
             String packagesHash = mBypassingRoleQualification ? null : mPackagesHash;
             roles = new RolesState(mVersion, packagesHash,
-                    (Map<String, Set<String>>) (Map<String, ?>) snapshotRolesLocked());
+                    (Map<String, Set<String>>) (Map<String, ?>) snapshotRolesLocked(),
+                    snapshotFallbackEnabledRoles());
         }
 
         mPersistence.writeForUser(roles, UserHandle.of(mUserId));
@@ -413,6 +448,9 @@ class RoleUserState {
 
             if (roleState == null) {
                 scheduleWriteFileLocked();
+            } else {
+                mFallbackEnabledRoles.clear();
+                mFallbackEnabledRoles.addAll(roleState.getFallbackEnabledRoles());
             }
         }
     }
@@ -427,10 +465,12 @@ class RoleUserState {
         int version;
         String packagesHash;
         ArrayMap<String, ArraySet<String>> roles;
+        ArraySet<String> fallbackEnabledRoles;
         synchronized (mLock) {
             version = mVersion;
             packagesHash = mPackagesHash;
             roles = snapshotRolesLocked();
+            fallbackEnabledRoles = snapshotFallbackEnabledRoles();
         }
 
         long fieldToken = dumpOutputStream.start(fieldName, fieldId);
@@ -442,10 +482,12 @@ class RoleUserState {
         for (int rolesIndex = 0; rolesIndex < rolesSize; rolesIndex++) {
             String roleName = roles.keyAt(rolesIndex);
             ArraySet<String> roleHolders = roles.valueAt(rolesIndex);
+            boolean fallbackEnabled = fallbackEnabledRoles.contains(roleName);
 
             long rolesToken = dumpOutputStream.start("roles", RoleUserStateProto.ROLES);
             dumpOutputStream.write("name", RoleProto.NAME, roleName);
-
+            dumpOutputStream.write("fallback_enabled", RoleProto.FALLBACK_ENABLED,
+                    Boolean.toString(fallbackEnabled));
             int roleHoldersSize = roleHolders.size();
             for (int roleHoldersIndex = 0; roleHoldersIndex < roleHoldersSize; roleHoldersIndex++) {
                 String roleHolder = roleHolders.valueAt(roleHoldersIndex);
@@ -483,6 +525,12 @@ class RoleUserState {
             roles.put(roleName, roleHolders);
         }
         return roles;
+    }
+
+    @GuardedBy("mLock")
+    @NonNull
+    private ArraySet<String> snapshotFallbackEnabledRoles() {
+        return new ArraySet<>(mFallbackEnabledRoles);
     }
 
     /**

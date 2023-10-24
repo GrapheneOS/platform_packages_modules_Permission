@@ -53,4 +53,7 @@ message RoleProto {
 
   // The package names of the holders of this role.
   repeated string holders = 2;
+
+  // Whether fallback holders are enabled for this role.
+  optional bool fallback_enabled = 3;
 }

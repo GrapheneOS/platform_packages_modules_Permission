@@ -60,6 +60,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"แอป"</string>
     <string name="app_permissions" msgid="3369917736607944781">"สิทธิ์ของแอป"</string>
     <string name="unused_apps" msgid="2058057455175955094">"แอปที่ไม่ได้ใช้"</string>
+    <!-- no translation found for edit_photos_description (5540108003480078892) -->
+    <skip />
     <string name="no_unused_apps" msgid="12809387670415295">"ไม่มีแอปที่ไม่ได้ใช้งาน"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"แอปที่ไม่ได้ใช้ 0 รายการ"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"สิทธิ์ที่กำหนดไว้ล่าสุด"</string>

@@ -20,7 +20,6 @@ import android.content.ApexEnvironment
 import android.content.Context
 import android.os.Process
 import android.os.UserHandle
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.google.common.truth.Truth.assertThat
@@ -29,6 +28,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
@@ -37,27 +37,36 @@ import org.mockito.MockitoAnnotations.initMocks
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(Parameterized::class)
 class RolesPersistenceTest {
     private val context = InstrumentationRegistry.getInstrumentation().context
 
     private lateinit var mockDataDirectory: File
-
     private lateinit var mockitoSession: MockitoSession
     @Mock lateinit var apexEnvironment: ApexEnvironment
+    @Parameterized.Parameter(0) lateinit var stateVersion: StateVersion
+    private lateinit var state: RolesState
 
     private val persistence = RolesPersistenceImpl {}
-    private val state = RolesState(1, "packagesHash", mapOf("role" to setOf("holder1", "holder2")))
+    private val defaultRoles = mapOf(ROLE_NAME to setOf(HOLDER_1, HOLDER_2))
+    private val stateVersionUndefined = RolesState(VERSION_UNDEFINED, PACKAGE_HASH, defaultRoles)
+    private val stateVersionFallbackMigrated =
+        RolesState(VERSION_FALLBACK_MIGRATED, PACKAGE_HASH, defaultRoles, setOf(ROLE_NAME))
     private val user = Process.myUserHandle()
 
     @Before
-    fun createMockDataDirectory() {
+    fun setUp() {
+        createMockDataDirectory()
+        mockApexEnvironment()
+        state = getState()
+    }
+
+    private fun createMockDataDirectory() {
         mockDataDirectory = context.getDir("mock_data", Context.MODE_PRIVATE)
         mockDataDirectory.listFiles()!!.forEach { assertThat(it.deleteRecursively()).isTrue() }
     }
 
-    @Before
-    fun mockApexEnvironment() {
+    private fun mockApexEnvironment() {
         initMocks(this)
         mockitoSession =
             mockitoSession()
@@ -80,7 +89,7 @@ class RolesPersistenceTest {
         persistence.writeForUser(state, user)
         val persistedState = persistence.readForUser(user)
 
-        checkPersistedState(persistedState)
+        assertThat(persistedState).isEqualTo(state)
     }
 
     @Test
@@ -91,7 +100,7 @@ class RolesPersistenceTest {
             .writeText("<roles version=\"-1\"><role name=\"com.foo.bar\"><holder")
         val persistedState = persistence.readForUser(user)
 
-        checkPersistedState(persistedState)
+        assertThat(persistedState).isEqualTo(state)
     }
 
     @Test
@@ -102,15 +111,28 @@ class RolesPersistenceTest {
 
         assertThat(persistedState).isNull()
     }
+    private fun getState(): RolesState =
+        when (stateVersion) {
+            StateVersion.VERSION_UNDEFINED -> stateVersionUndefined
+            StateVersion.VERSION_FALLBACK_MIGRATED -> stateVersionFallbackMigrated
+        }
 
-    private fun checkPersistedState(persistedState: RolesState?) {
-        assertThat(persistedState).isEqualTo(state)
-        assertThat(persistedState?.version).isEqualTo(state.version)
-        assertThat(persistedState?.packagesHash).isEqualTo(state.packagesHash)
-        assertThat(persistedState?.roles).isEqualTo(state.roles)
+    enum class StateVersion {
+        VERSION_UNDEFINED,
+        VERSION_FALLBACK_MIGRATED
     }
 
     companion object {
+        @Parameterized.Parameters(name = "{0}")
+        @JvmStatic
+        fun data(): Array<StateVersion> = StateVersion.values()
+
+        private const val VERSION_UNDEFINED = -1
+        private const val VERSION_FALLBACK_MIGRATED = 1
         private const val APEX_MODULE_NAME = "com.android.permission"
+        private const val PACKAGE_HASH = "packagesHash"
+        private const val ROLE_NAME = "roleName"
+        private const val HOLDER_1 = "holder1"
+        private const val HOLDER_2 = "holder2"
     }
 }

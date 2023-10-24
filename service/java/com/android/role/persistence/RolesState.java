@@ -16,10 +16,13 @@
 
 package com.android.role.persistence;
 
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.annotation.SystemApi.Client;
+import android.permission.flags.Flags;
+import android.util.ArraySet;
 
 import java.util.Map;
 import java.util.Objects;
@@ -33,7 +36,6 @@ import java.util.Set;
  */
 @SystemApi(client = Client.SYSTEM_SERVER)
 public final class RolesState {
-
     /**
      * The version of the roles.
      */
@@ -52,6 +54,12 @@ public final class RolesState {
     private final Map<String, Set<String>> mRoles;
 
     /**
+     * The names of roles with fallback enabled.
+     */
+    @NonNull
+    private final Set<String> mFallbackEnabledRoles;
+
+    /**
      * Create a new instance of this class.
      *
      * @param version the version of the roles
@@ -60,9 +68,24 @@ public final class RolesState {
      */
     public RolesState(int version, @Nullable String packagesHash,
             @NonNull Map<String, Set<String>> roles) {
+        this(version, packagesHash, roles, new ArraySet<>());
+    }
+
+    /**
+     * Create a new instance of this class.
+     *
+     * @param version the version of the roles
+     * @param packagesHash the hash of all packages in the system
+     * @param roles the roles
+     * @param fallbackEnabledRoles the roles with fallback enabled
+     */
+    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    public RolesState(int version, @Nullable String packagesHash,
+            @NonNull Map<String, Set<String>> roles, @NonNull Set<String> fallbackEnabledRoles) {
         mVersion = version;
         mPackagesHash = packagesHash;
         mRoles = roles;
+        mFallbackEnabledRoles = fallbackEnabledRoles;
     }
 
     /**
@@ -94,6 +117,17 @@ public final class RolesState {
         return mRoles;
     }
 
+    /**
+     * Get the fallback enabled roles.
+     *
+     * @return fallback enabled roles
+     */
+    @NonNull
+    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    public Set<String> getFallbackEnabledRoles() {
+        return mFallbackEnabledRoles;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -105,11 +139,12 @@ public final class RolesState {
         RolesState that = (RolesState) object;
         return mVersion == that.mVersion
                 && Objects.equals(mPackagesHash, that.mPackagesHash)
-                && Objects.equals(mRoles, that.mRoles);
+                && Objects.equals(mRoles, that.mRoles)
+                && Objects.equals(mFallbackEnabledRoles, that.mFallbackEnabledRoles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mVersion, mPackagesHash, mRoles);
+        return Objects.hash(mVersion, mPackagesHash, mRoles, mFallbackEnabledRoles);
     }
 }
