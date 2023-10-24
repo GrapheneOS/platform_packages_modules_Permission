@@ -60,7 +60,8 @@ fun WearGrantPermissionsScreen(
         showTimeText = false,
         image = icon.value,
         title = groupMessage.value,
-        subtitle = detailMessage.value
+        subtitle = detailMessage.value,
+        titleTestTag = "com.android.permissioncontroller:id/permission_message",
     ) {
         if (
             locationVisibilities.value.getOrElse(LOCATION_ACCURACY_LAYOUT) { false } &&
