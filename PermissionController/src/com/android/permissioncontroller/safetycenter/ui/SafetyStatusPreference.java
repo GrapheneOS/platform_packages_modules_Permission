@@ -75,7 +75,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        Log.d(TAG, String.format("onBindViewHolder called for status %s", mStatus));
+        Log.v(TAG, String.format("onBindViewHolder called for status %s", mStatus));
 
         if (mStatus == null) {
             return;
@@ -144,12 +144,14 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         if (mIsTextChangeAnimationRunning) {
             return;
         }
+        Log.v(TAG, "Starting status text animation");
         String titleText = mStatus.getTitle().toString();
         String summaryText = mStatus.getSummary(getContext()).toString();
         boolean titleEquals = titleView.getText().toString().equals(titleText);
         boolean summaryEquals = summaryView.getText().toString().equals(summaryText);
         Runnable onFinish =
                 () -> {
+                    Log.v(TAG, "Finishing status text animation");
                     mIsTextChangeAnimationRunning = false;
                     runTextAnimationIfNeeded(titleView, summaryView);
                 };
@@ -339,7 +341,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
 
     void setData(StatusUiData statusUiData) {
         mStatus = statusUiData;
-        Log.d(TAG, String.format("setData called for status %s", mStatus));
+        Log.v(TAG, String.format("setData called for status %s", mStatus));
         safeNotifyChanged();
     }
 
@@ -357,7 +359,7 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
         new Handler(Looper.getMainLooper())
                 .post(
                         () -> {
-                            Log.d(
+                            Log.v(
                                     TAG,
                                     String.format("Calling notifyChanged for status %s", mStatus));
                             notifyChanged();
