@@ -193,3 +193,41 @@ fun toggleChipDisabledColors(): ToggleChipColors {
             uncheckedToggleControlColor.copy(alpha = ContentAlpha.disabled)
     )
 }
+
+/**
+ * ToggleChipColors that theme background color is applied based on
+ * [ToggleChipDefaults.toggleChipColors()]. It is used for a ToggleChip having the same background
+ * color of the screen.
+ */
+@Composable
+fun toggleChipBackgroundColors(): ToggleChipColors {
+    val checkedStartBackgroundColor =
+        MaterialTheme.colors.background
+            .copy(alpha = 0f)
+            .compositeOver(MaterialTheme.colors.background)
+    val checkedEndBackgroundColor =
+        MaterialTheme.colors.primary
+            .copy(alpha = 0.5f)
+            .compositeOver(MaterialTheme.colors.background)
+    val checkedContentColor = MaterialTheme.colors.onBackground
+    val checkedSecondaryContentColor = MaterialTheme.colors.onSurfaceVariant
+    val checkedToggleControlColor = MaterialTheme.colors.secondary
+    val uncheckedStartBackgroundColor = MaterialTheme.colors.background
+    val uncheckedEndBackgroundColor = uncheckedStartBackgroundColor
+    val uncheckedContentColor = contentColorFor(checkedEndBackgroundColor)
+    val uncheckedSecondaryContentColor = uncheckedContentColor
+    val uncheckedToggleControlColor = uncheckedContentColor
+
+    return ToggleChipDefaults.toggleChipColors(
+        checkedStartBackgroundColor = checkedStartBackgroundColor,
+        checkedEndBackgroundColor = checkedEndBackgroundColor,
+        checkedContentColor = checkedContentColor,
+        checkedSecondaryContentColor = checkedSecondaryContentColor,
+        checkedToggleControlColor = checkedToggleControlColor,
+        uncheckedStartBackgroundColor = uncheckedStartBackgroundColor,
+        uncheckedEndBackgroundColor = uncheckedEndBackgroundColor,
+        uncheckedContentColor = uncheckedContentColor,
+        uncheckedSecondaryContentColor = uncheckedSecondaryContentColor,
+        uncheckedToggleControlColor = uncheckedToggleControlColor
+    )
+}
