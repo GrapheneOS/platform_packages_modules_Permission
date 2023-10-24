@@ -33,7 +33,6 @@ android_test {
     min_sdk_version: "30",
 
     resource_dirs: [
-        "main_res",
         "test_res",
     ],
 
