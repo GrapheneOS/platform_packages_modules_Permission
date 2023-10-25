@@ -59,7 +59,8 @@ public class AppOpPermissions {
         }
         String appOp = AppOpsManagerCompat.permissionToOp(appOpPermission);
         if (!overrideNonDefaultMode) {
-            Integer currentMode = Permissions.getAppOpMode(packageName, appOp, context);
+            Integer currentMode = Permissions.getAppOpModeAsUser(packageName, appOp,
+                    Process.myUserHandle(), context);
             if (currentMode != null && currentMode != Permissions.getDefaultAppOpMode(appOp)) {
                 return false;
             }

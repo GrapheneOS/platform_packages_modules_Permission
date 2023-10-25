@@ -292,7 +292,8 @@ public class Permissions {
             if (appOp == null) {
                 return true;
             }
-            Integer appOpMode = getAppOpMode(packageName, appOp, context);
+            Integer appOpMode = getAppOpModeAsUser(packageName, appOp, Process.myUserHandle(),
+                    context);
             if (appOpMode == null) {
                 return false;
             }
@@ -318,7 +319,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                Integer foregroundAppOpMode = getAppOpMode(packageName, foregroundAppOp, context);
+                Integer foregroundAppOpMode = getAppOpModeAsUser(packageName, foregroundAppOp,
+                        Process.myUserHandle(), context);
                 if (foregroundAppOpMode == null) {
                     continue;
                 }
@@ -826,10 +828,10 @@ public class Permissions {
     }
 
     @Nullable
-    static Integer getAppOpMode(@NonNull String packageName, @NonNull String appOp,
-            @NonNull Context context) {
+    static Integer getAppOpModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            @NonNull UserHandle user, @NonNull Context context) {
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+                user, context);
         if (applicationInfo == null) {
             return null;
         }
@@ -843,22 +845,23 @@ public class Permissions {
 
     static boolean setAppOpUidMode(@NonNull String packageName, @NonNull String appOp, int mode,
             @NonNull Context context) {
-        return setAppOpMode(packageName, appOp, mode, true, context);
+        return setAppOpModeAsUser(packageName, appOp, mode, true, Process.myUserHandle(), context);
     }
 
     static boolean setAppOpPackageMode(@NonNull String packageName, @NonNull String appOp, int mode,
             @NonNull Context context) {
-        return setAppOpMode(packageName, appOp, mode, false, context);
+        return setAppOpModeAsUser(packageName, appOp, mode, false, Process.myUserHandle(),
+                context);
     }
 
-    private static boolean setAppOpMode(@NonNull String packageName, @NonNull String appOp,
-            int mode, boolean setUidMode, @NonNull Context context) {
-        Integer currentMode = getAppOpMode(packageName, appOp, context);
+    private static boolean setAppOpModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, boolean setUidMode, @NonNull UserHandle user, @NonNull Context context) {
+        Integer currentMode = getAppOpModeAsUser(packageName, appOp, user, context);
         if (currentMode != null && currentMode == mode) {
             return false;
         }
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             Log.e(LOG_TAG, "Cannot get ApplicationInfo for package to set app op mode: "
                     + packageName);
