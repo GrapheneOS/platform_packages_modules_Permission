@@ -338,6 +338,10 @@ public class SafetyStatusPreference extends Preference implements ComparablePref
     }
 
     void setData(StatusUiData statusUiData) {
+        if (Objects.equals(mStatus, statusUiData)) {
+            return;
+        }
+
         mStatus = statusUiData;
         Log.d(TAG, String.format("setData called for status %s", mStatus));
         safeNotifyChanged();
