@@ -105,7 +105,8 @@ public class Permissions {
                     + " granted by default, but not both");
         }
 
-        PackageInfo packageInfo = getPackageInfo(packageName, context);
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, Process.myUserHandle(),
+                context);
         if (packageInfo == null) {
             return false;
         }
@@ -142,7 +143,8 @@ public class Permissions {
         // apps, (default grants on first boot and user creation) we don't grant default
         // permissions if the version on the system image does not declare them.
         if (!overrideDisabledSystemPackage && isUpdatedSystemApp(packageInfo)) {
-            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfo(packageName, context);
+            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfoAsUser(packageName,
+                    Process.myUserHandle(), context);
             if (disabledSystemPackageInfo != null) {
                 if (ArrayUtils.isEmpty(disabledSystemPackageInfo.requestedPermissions)) {
                     return false;
@@ -391,7 +393,8 @@ public class Permissions {
     public static boolean revoke(@NonNull String packageName, @NonNull List<String> permissions,
             boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
             boolean overrideSystemFixed, @NonNull Context context) {
-        PackageInfo packageInfo = getPackageInfo(packageName, context);
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, Process.myUserHandle(),
+                context);
         if (packageInfo == null) {
             return false;
         }
@@ -554,24 +557,25 @@ public class Permissions {
     }
 
     @Nullable
-    private static PackageInfo getPackageInfo(@NonNull String packageName,
-            @NonNull Context context) {
-        return getPackageInfo(packageName, 0, context);
+    private static PackageInfo getPackageInfoAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return getPackageInfoAsUser(packageName, 0, user, context);
     }
 
     @Nullable
-    private static PackageInfo getFactoryPackageInfo(@NonNull String packageName,
-            @NonNull Context context) {
-        return getPackageInfo(packageName, PackageManager.MATCH_FACTORY_ONLY, context);
+    private static PackageInfo getFactoryPackageInfoAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return getPackageInfoAsUser(packageName, PackageManager.MATCH_FACTORY_ONLY,
+                user, context);
     }
 
     @Nullable
-    private static PackageInfo getPackageInfo(@NonNull String packageName, int extraFlags,
-            @NonNull Context context) {
+    private static PackageInfo getPackageInfoAsUser(@NonNull String packageName, int extraFlags,
+            @NonNull UserHandle user, @NonNull Context context) {
         return PackageUtils.getPackageInfoAsUser(packageName, extraFlags
                 // TODO: Why MATCH_UNINSTALLED_PACKAGES?
                 | PackageManager.MATCH_UNINSTALLED_PACKAGES | PackageManager.GET_PERMISSIONS,
-                Process.myUserHandle(), context);
+                user, context);
     }
 
     private static boolean isUpdatedSystemApp(@NonNull PackageInfo packageInfo) {
