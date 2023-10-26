@@ -654,7 +654,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         permissions: Array<out String?>,
         permissionAndExpectedGrantResults: Array<out Pair<String?, Boolean>>,
         askTwice: Boolean = false,
-        waitForWindowTransition: Boolean = true,
+        waitForWindowTransition: Boolean = !isWatch,
         crossinline block: () -> Unit
     ) {
         val result =
@@ -705,7 +705,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     protected inline fun requestAppPermissionsAndAssertResult(
         vararg permissionAndExpectedGrantResults: Pair<String?, Boolean>,
         askTwice: Boolean = false,
-        waitForWindowTransition: Boolean = true,
+        waitForWindowTransition: Boolean = !isWatch,
         crossinline block: () -> Unit
     ) {
         requestAppPermissionsAndAssertResult(
@@ -1179,11 +1179,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                 // Due to the limited real estate, Wear uses buttons with icons instead of text
                 // for dialogs
                 if (isWatch) {
-                    click(
-                        By.res(
-                            "com.android.permissioncontroller:id/wear_alertdialog_positive_button"
-                        )
-                    )
+                    click(By.desc(getPermissionControllerString("ok")))
                 } else {
                     val resources =
                         context

@@ -93,7 +93,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             String roleName = addedRoleNames.valueAt(i);
 
             Role role = roleMap.get(roleName);
-            role.onRoleAdded(this);
+            role.onRoleAddedAsUser(Process.myUserHandle(), this);
         }
 
         // Go through the holders of all roles.

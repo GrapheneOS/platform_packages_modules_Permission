@@ -360,11 +360,12 @@ public class Role {
     /**
      * Callback when this role is added to the system for the first time.
      *
+     * @param user the user to add the role for
      * @param context the {@code Context} to retrieve system services
      */
-    public void onRoleAdded(@NonNull Context context) {
+    public void onRoleAddedAsUser(@NonNull UserHandle user, @NonNull Context context) {
         if (mBehavior != null) {
-            mBehavior.onRoleAdded(this, context);
+            mBehavior.onRoleAddedAsUser(this, user, context);
         }
     }
 
