@@ -101,13 +101,13 @@ public class Permissions {
             boolean overrideDisabledSystemPackage, boolean overrideUserSetAndFixed,
             boolean setGrantedByRole, boolean setGrantedByDefault, boolean setSystemFixed,
             @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         if (setGrantedByRole == setGrantedByDefault) {
             throw new IllegalArgumentException("Permission must be either granted by role, or"
                     + " granted by default, but not both");
         }
 
-        PackageInfo packageInfo = getPackageInfoAsUser(packageName, Process.myUserHandle(),
-                context);
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, user, context);
         if (packageInfo == null) {
             return false;
         }
@@ -145,7 +145,7 @@ public class Permissions {
         // permissions if the version on the system image does not declare them.
         if (!overrideDisabledSystemPackage && isUpdatedSystemApp(packageInfo)) {
             PackageInfo disabledSystemPackageInfo = getFactoryPackageInfoAsUser(packageName,
-                    Process.myUserHandle(), context);
+                    user, context);
             if (disabledSystemPackageInfo != null) {
                 if (ArrayUtils.isEmpty(disabledSystemPackageInfo.requestedPermissions)) {
                     return false;
@@ -194,18 +194,18 @@ public class Permissions {
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
 
-            permissionOrAppOpChanged |= grantSingle(packageName, permission,
+            permissionOrAppOpChanged |= grantSingleAsUser(packageName, permission,
                     overrideUserSetAndFixed, setGrantedByRole, setGrantedByDefault, setSystemFixed,
-                    context);
+                    user, context);
         }
 
         return permissionOrAppOpChanged;
     }
 
-    private static boolean grantSingle(@NonNull String packageName, @NonNull String permission,
-            boolean overrideUserSetAndFixed, boolean setGrantedByRole, boolean setGrantedByDefault,
-            boolean setSystemFixed, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    private static boolean grantSingleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean overrideUserSetAndFixed, boolean setGrantedByRole,
+            boolean setGrantedByDefault, boolean setSystemFixed, @NonNull UserHandle user,
+            @NonNull Context context) {
         boolean wasPermissionOrAppOpGranted = isPermissionAndAppOpGrantedAsUser(packageName,
                 permission, user, context);
         if (isPermissionFixedAsUser(packageName, permission, false,
@@ -236,8 +236,8 @@ public class Permissions {
             }
         }
 
-        boolean permissionOrAppOpChanged = grantPermissionAndAppOp(packageName, permission,
-                context);
+        boolean permissionOrAppOpChanged = grantPermissionAndAppOpAsUser(packageName, permission,
+                user, context);
 
         // Update permission flags.
         int newFlags = 0;
@@ -260,8 +260,7 @@ public class Permissions {
         // If a component gets a permission for being the default handler A and also default handler
         // B, we grant the weaker grant form. This only applies to default permission grant.
         if (setGrantedByDefault && !setSystemFixed) {
-            int oldFlags = getPermissionFlagsAsUser(packageName, permission, user,
-                    context);
+            int oldFlags = getPermissionFlagsAsUser(packageName, permission, user, context);
             if ((oldFlags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0
                     && (oldFlags & PackageManager.FLAG_PERMISSION_SYSTEM_FIXED) != 0) {
                 if (DEBUG) {
@@ -336,9 +335,8 @@ public class Permissions {
         }
     }
 
-    private static boolean grantPermissionAndAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    private static boolean grantPermissionAndAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         // Grant the permission.
         boolean permissionOrAppOpChanged = grantPermissionWithoutAppOpAsUser(packageName,
                 permission, user, context);
@@ -404,8 +402,8 @@ public class Permissions {
     public static boolean revoke(@NonNull String packageName, @NonNull List<String> permissions,
             boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
             boolean overrideSystemFixed, @NonNull Context context) {
-        PackageInfo packageInfo = getPackageInfoAsUser(packageName, Process.myUserHandle(),
-                context);
+        UserHandle user = Process.myUserHandle();
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, user, context);
         if (packageInfo == null) {
             return false;
         }
@@ -452,11 +450,11 @@ public class Permissions {
         for (int i = 0; i < sortedPermissionsToRevokeLength; i++) {
             String permission = sortedPermissionsToRevoke[i];
 
-            permissionOrAppOpChanged |= revokeSingle(packageName, permission, onlyIfGrantedByRole,
-                    onlyIfGrantedByDefault, overrideSystemFixed, context);
+            permissionOrAppOpChanged |= revokeSingleAsUser(packageName, permission,
+                    onlyIfGrantedByRole, onlyIfGrantedByDefault, overrideSystemFixed, user,
+                    context);
 
             // Remove from the system whitelist only if not granted by default.
-            UserHandle user = Process.myUserHandle();
             if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)
                     && whitelistedRestrictedPermissions.remove(permission)) {
                 packageManager.removeWhitelistedRestrictedPermission(packageName, permission,
@@ -467,10 +465,9 @@ public class Permissions {
         return permissionOrAppOpChanged;
     }
 
-    private static boolean revokeSingle(@NonNull String packageName, @NonNull String permission,
-            boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
-            boolean overrideSystemFixed, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    private static boolean revokeSingleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
+            boolean overrideSystemFixed, @NonNull UserHandle user, @NonNull Context context) {
         if (onlyIfGrantedByRole == onlyIfGrantedByDefault) {
             throw new IllegalArgumentException("Permission can be revoked only if either granted by"
                     + " role, or granted by default, but not both");
@@ -511,19 +508,19 @@ public class Permissions {
             }
         }
 
-        return revokePermissionAndAppOp(packageName, permission, context);
+        return revokePermissionAndAppOpAsUser(packageName, permission, user, context);
     }
 
-    private static boolean revokePermissionAndAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    private static boolean revokePermissionAndAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         boolean permissionOrAppOpChanged = false;
+
         boolean isRuntimePermissionsSupported = isRuntimePermissionsSupportedAsUser(packageName,
                 user, context);
         if (isRuntimePermissionsSupported) {
             // Revoke the permission.
-            permissionOrAppOpChanged |= revokePermissionWithoutAppOp(packageName, permission,
-                    context);
+            permissionOrAppOpChanged |= revokePermissionWithoutAppOpAsUser(packageName, permission,
+                    user, context);
         }
 
         // Revoke the app op.
@@ -688,9 +685,8 @@ public class Permissions {
         return true;
     }
 
-    private static boolean revokePermissionWithoutAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    private static boolean revokePermissionWithoutAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         if (!isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user,
                 context)) {
             return false;
