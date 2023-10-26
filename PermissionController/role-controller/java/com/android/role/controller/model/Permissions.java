@@ -206,7 +206,8 @@ public class Permissions {
             boolean setSystemFixed, @NonNull Context context) {
         boolean wasPermissionOrAppOpGranted = isPermissionAndAppOpGranted(packageName, permission,
                 context);
-        if (isPermissionFixed(packageName, permission, false, overrideUserSetAndFixed, context)
+        if (isPermissionFixedAsUser(packageName, permission, false,
+                overrideUserSetAndFixed, Process.myUserHandle(), context)
                 && !wasPermissionOrAppOpGranted) {
             // Stop granting if this permission is fixed to revoked.
             return false;
@@ -256,7 +257,8 @@ public class Permissions {
         // If a component gets a permission for being the default handler A and also default handler
         // B, we grant the weaker grant form. This only applies to default permission grant.
         if (setGrantedByDefault && !setSystemFixed) {
-            int oldFlags = getPermissionFlags(packageName, permission, context);
+            int oldFlags = getPermissionFlagsAsUser(packageName, permission, Process.myUserHandle(),
+                    context);
             if ((oldFlags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0
                     && (oldFlags & PackageManager.FLAG_PERMISSION_SYSTEM_FIXED) != 0) {
                 if (DEBUG) {
@@ -445,7 +447,8 @@ public class Permissions {
                     onlyIfGrantedByDefault, overrideSystemFixed, context);
 
             // Remove from the system whitelist only if not granted by default.
-            if (!isPermissionGrantedByDefault(packageName, permission, context)
+            UserHandle user = Process.myUserHandle();
+            if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)
                     && whitelistedRestrictedPermissions.remove(permission)) {
                 packageManager.removeWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
@@ -472,7 +475,8 @@ public class Permissions {
         }
 
         if (onlyIfGrantedByDefault) {
-            if (!isPermissionGrantedByDefault(packageName, permission, context)) {
+            if (!isPermissionGrantedByDefaultAsUser(packageName, permission,
+                    Process.myUserHandle(), context)) {
                 return false;
             }
             // Remove the granted-by-default permission flag.
@@ -482,7 +486,8 @@ public class Permissions {
             // set.
         }
 
-        if (isPermissionFixed(packageName, permission, overrideSystemFixed, false, context)
+        if (isPermissionFixedAsUser(packageName, permission, overrideSystemFixed, false,
+                Process.myUserHandle(), context)
                 && isPermissionAndAppOpGranted(packageName, permission, context)) {
             // Stop revoking if this permission is fixed to granted.
             return false;
@@ -593,17 +598,16 @@ public class Permissions {
         return applicationInfo.targetSdkVersion >= Build.VERSION_CODES.M;
     }
 
-    private static int getPermissionFlags(@NonNull String packageName, @NonNull String permission,
-            @NonNull Context context) {
+    private static int getPermissionFlagsAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         return packageManager.getPermissionFlags(permission, packageName, user);
     }
 
-    private static boolean isPermissionFixed(@NonNull String packageName,
+    private static boolean isPermissionFixedAsUser(@NonNull String packageName,
             @NonNull String permission, boolean overrideSystemFixed,
-            boolean overrideUserSetAndFixed, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+            boolean overrideUserSetAndFixed, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         int fixedFlags = PackageManager.FLAG_PERMISSION_POLICY_FIXED;
         if (!overrideSystemFixed) {
             fixedFlags |= PackageManager.FLAG_PERMISSION_SYSTEM_FIXED;
@@ -615,21 +619,23 @@ public class Permissions {
         return (flags & fixedFlags) != 0;
     }
 
-    private static boolean isPermissionGrantedByDefault(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+    private static boolean isPermissionGrantedByDefaultAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0;
     }
 
     static boolean isPermissionGrantedByRole(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+        int flags = getPermissionFlagsAsUser(packageName, permission, Process.myUserHandle(),
+                context);
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE) != 0;
     }
 
     private static boolean isPermissionReviewRequired(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+        int flags = getPermissionFlagsAsUser(packageName, permission, Process.myUserHandle(),
+                context);
         return (flags & PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED) != 0;
     }
 
