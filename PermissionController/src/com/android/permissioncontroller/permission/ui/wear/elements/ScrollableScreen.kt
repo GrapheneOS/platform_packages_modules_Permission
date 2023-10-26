@@ -44,6 +44,7 @@ import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
@@ -80,6 +81,7 @@ fun ScrollableScreen(
     subtitle: String? = null,
     image: Any? = null,
     isLoading: Boolean = false,
+    titleTestTag: String? = null,
     content: ScalingLazyListScope.() -> Unit,
 ) {
     var dismissed by remember { mutableStateOf(false) }
@@ -97,11 +99,11 @@ fun ScrollableScreen(
             if (isBackground || dismissed) {
                 Box(modifier = Modifier.fillMaxSize())
             } else {
-                Scaffold(showTimeText, title, subtitle, image, isLoading, content)
+                Scaffold(showTimeText, title, subtitle, image, isLoading, content, titleTestTag)
             }
         }
     } else {
-        Scaffold(showTimeText, title, subtitle, image, isLoading, content)
+        Scaffold(showTimeText, title, subtitle, image, isLoading, content, titleTestTag)
     }
 }
 
@@ -114,6 +116,7 @@ internal fun Scaffold(
     image: Any?,
     isLoading: Boolean,
     content: ScalingLazyListScope.() -> Unit,
+    titleTestTag: String? = null,
 ) {
     val focusRequester = remember { FocusRequester() }
     val listState = remember { ScalingLazyListState(initialCenterItemIndex = 0) }
@@ -177,7 +180,19 @@ internal fun Scaffold(
                             }
                         }
                         if (title != null) {
-                            item { ListHeader { Text(text = title, textAlign = TextAlign.Center) } }
+                            item {
+                                var modifier: Modifier = Modifier
+                                if (titleTestTag != null) {
+                                    modifier = modifier.testTag(titleTestTag)
+                                }
+                                ListHeader {
+                                    Text(
+                                        text = title,
+                                        textAlign = TextAlign.Center,
+                                        modifier = modifier
+                                    )
+                                }
+                            }
                         }
                         if (subtitle != null) {
                             item {
