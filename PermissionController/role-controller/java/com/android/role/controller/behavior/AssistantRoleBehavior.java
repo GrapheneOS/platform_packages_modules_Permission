@@ -85,9 +85,9 @@ public class AssistantRoleBehavior implements RoleBehavior {
 
     @Nullable
     @Override
-    public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
-        return !getQualifyingPackagesInternal(packageName, Process.myUserHandle(), context)
+    public Boolean isPackageQualifiedAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return !getQualifyingPackagesInternal(packageName, user, context)
                 .isEmpty();
     }
 
