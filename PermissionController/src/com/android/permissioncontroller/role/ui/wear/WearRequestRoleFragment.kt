@@ -343,6 +343,7 @@ class WearRequestRoleFragment : Fragment() {
         const val TAG = "WearRequestRoleFragment"
 
         /** Creates a new instance of [WearRequestRoleFragment]. */
+        @JvmStatic
         fun newInstance(roleName: String, packageName: String): WearRequestRoleFragment {
             return WearRequestRoleFragment().apply {
                 arguments =
@@ -353,6 +354,7 @@ class WearRequestRoleFragment : Fragment() {
             }
         }
 
+        @JvmStatic
         fun reportRequestResult(
             requestingUid: Int,
             requestingPackageName: String,
