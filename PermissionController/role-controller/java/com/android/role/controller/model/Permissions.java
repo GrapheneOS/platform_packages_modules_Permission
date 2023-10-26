@@ -361,7 +361,8 @@ public class Permissions {
                         appOpMode = AppOpsManager.MODE_ALLOWED;
                     }
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, appOp, appOpMode, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, appOp, appOpMode,
+                        user, context);
             }
         } else {
             // This permission is a background permission, set all its foreground permissions' app
@@ -375,8 +376,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, foregroundAppOp,
-                        AppOpsManager.MODE_ALLOWED, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, foregroundAppOp,
+                        AppOpsManager.MODE_ALLOWED, user, context);
             }
         }
 
@@ -515,10 +516,10 @@ public class Permissions {
 
     private static boolean revokePermissionAndAppOp(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         boolean permissionOrAppOpChanged = false;
-
         boolean isRuntimePermissionsSupported = isRuntimePermissionsSupportedAsUser(packageName,
-                Process.myUserHandle(), context);
+                user, context);
         if (isRuntimePermissionsSupported) {
             // Revoke the permission.
             permissionOrAppOpChanged |= revokePermissionWithoutAppOp(packageName, permission,
@@ -532,7 +533,8 @@ public class Permissions {
                 // This permission is an ordinary or foreground permission, reset its app op mode to
                 // default.
                 int appOpMode = getDefaultAppOpMode(appOp);
-                boolean appOpModeChanged = setAppOpUidMode(packageName, appOp, appOpMode, context);
+                boolean appOpModeChanged = setAppOpUidModeAsUser(packageName, appOp, appOpMode,
+                        user, context);
                 permissionOrAppOpChanged |= appOpModeChanged;
 
                 if (appOpModeChanged) {
@@ -544,7 +546,7 @@ public class Permissions {
                         setPermissionFlagsAsUser(packageName, permission,
                                 PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
                                 PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
-                                Process.myUserHandle(), context);
+                                user, context);
                     }
                 }
             }
@@ -564,8 +566,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, foregroundAppOp,
-                        AppOpsManager.MODE_FOREGROUND, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, foregroundAppOp,
+                        AppOpsManager.MODE_FOREGROUND, user, context);
             }
         }
 
@@ -853,15 +855,14 @@ public class Permissions {
         return AppOpsManager.opToDefaultMode(appOp);
     }
 
-    static boolean setAppOpUidMode(@NonNull String packageName, @NonNull String appOp, int mode,
-            @NonNull Context context) {
-        return setAppOpModeAsUser(packageName, appOp, mode, true, Process.myUserHandle(), context);
+    static boolean setAppOpUidModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, @NonNull UserHandle user, @NonNull Context context) {
+        return setAppOpModeAsUser(packageName, appOp, mode, true, user, context);
     }
 
-    static boolean setAppOpPackageMode(@NonNull String packageName, @NonNull String appOp, int mode,
-            @NonNull Context context) {
-        return setAppOpModeAsUser(packageName, appOp, mode, false, Process.myUserHandle(),
-                context);
+    static boolean setAppOpPackageModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, @NonNull UserHandle user, @NonNull Context context) {
+        return setAppOpModeAsUser(packageName, appOp, mode, false, user, context);
     }
 
     private static boolean setAppOpModeAsUser(@NonNull String packageName, @NonNull String appOp,

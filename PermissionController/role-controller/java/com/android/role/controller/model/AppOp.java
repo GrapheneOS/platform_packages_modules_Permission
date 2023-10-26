@@ -19,6 +19,7 @@ package com.android.role.controller.model;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -81,7 +82,8 @@ public class AppOp {
         if (!checkTargetSdkVersion(packageName, context)) {
             return false;
         }
-        return Permissions.setAppOpUidMode(packageName, mName, mMode, context);
+        UserHandle user = Process.myUserHandle();
+        return Permissions.setAppOpUidModeAsUser(packageName, mName, mMode, user, context);
     }
 
     /**
@@ -97,7 +99,8 @@ public class AppOp {
             return false;
         }
         int defaultMode = Permissions.getDefaultAppOpMode(mName);
-        return Permissions.setAppOpUidMode(packageName, mName, defaultMode, context);
+        UserHandle user = Process.myUserHandle();
+        return Permissions.setAppOpUidModeAsUser(packageName, mName, defaultMode, user, context);
     }
 
     private boolean checkTargetSdkVersion(@NonNull String packageName, @NonNull Context context) {
