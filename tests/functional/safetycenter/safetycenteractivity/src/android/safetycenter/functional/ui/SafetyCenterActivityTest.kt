@@ -1133,18 +1133,14 @@ class SafetyCenterActivityTest {
         context.launchSafetyCenterActivity {
             clickMoreIssuesCard()
 
-            val uiDevice = getUiDevice()
-            uiDevice.waitForIdle()
-
-            // Verify cards initially expanded
-            waitExpandedIssuesDisplayed(
-                safetySourceTestData.criticalResolvingGeneralIssue,
-                safetySourceTestData.recommendationGeneralIssue,
-                safetySourceTestData.informationIssue
-            )
+            // Not checking that all the cards are correctly expanded here, as it is already covered
+            // by other tests and makes this tests too slow otherwise. See b/288381777.
+            // We still check that the middle card title is displayed though, as this helps ensure
+            // the expansion did go through.
+            waitAllTextDisplayed(safetySourceTestData.recommendationGeneralIssue.title)
 
             // Device rotation to trigger usage of savedinstancestate via config update
-            uiDevice.rotate()
+            getUiDevice().rotate()
 
             // Verify cards remain expanded
             waitExpandedIssuesDisplayed(
