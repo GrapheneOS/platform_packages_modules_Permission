@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 import com.android.role.controller.util.ArrayUtils;
 import com.android.role.controller.util.CollectionUtils;
 import com.android.role.controller.util.PackageUtils;
+import com.android.role.controller.util.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -277,13 +278,15 @@ public class Permissions {
 
     private static boolean isPermissionAndAppOpGranted(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         // Check this permission.
-        if (!isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+        if (!isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user,
+                context)) {
             return false;
         }
 
         // Check if the permission is review required.
-        if (isPermissionReviewRequired(packageName, permission, context)) {
+        if (isPermissionReviewRequiredAsUser(packageName, permission, user, context)) {
             return false;
         }
 
@@ -293,8 +296,7 @@ public class Permissions {
             if (appOp == null) {
                 return true;
             }
-            Integer appOpMode = getAppOpModeAsUser(packageName, appOp, Process.myUserHandle(),
-                    context);
+            Integer appOpMode = getAppOpModeAsUser(packageName, appOp, user, context);
             if (appOpMode == null) {
                 return false;
             }
@@ -321,7 +323,7 @@ public class Permissions {
                     continue;
                 }
                 Integer foregroundAppOpMode = getAppOpModeAsUser(packageName, foregroundAppOp,
-                        Process.myUserHandle(), context);
+                        user, context);
                 if (foregroundAppOpMode == null) {
                     continue;
                 }
@@ -335,9 +337,10 @@ public class Permissions {
 
     private static boolean grantPermissionAndAppOp(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         // Grant the permission.
-        boolean permissionOrAppOpChanged = grantPermissionWithoutAppOp(packageName, permission,
-                context);
+        boolean permissionOrAppOpChanged = grantPermissionWithoutAppOpAsUser(packageName,
+                permission, user, context);
 
         // Grant the app op.
         if (!isBackgroundPermission(permission, context)) {
@@ -470,7 +473,8 @@ public class Permissions {
         }
 
         if (onlyIfGrantedByRole) {
-            if (!isPermissionGrantedByRole(packageName, permission, context)) {
+            if (!isPermissionGrantedByRoleAsUser(packageName, permission, Process.myUserHandle(),
+                    context)) {
                 return false;
             }
             setPermissionFlagsAsUser(packageName, permission, 0,
@@ -513,7 +517,8 @@ public class Permissions {
             @NonNull String permission, @NonNull Context context) {
         boolean permissionOrAppOpChanged = false;
 
-        boolean isRuntimePermissionsSupported = isRuntimePermissionsSupported(packageName, context);
+        boolean isRuntimePermissionsSupported = isRuntimePermissionsSupportedAsUser(packageName,
+                Process.myUserHandle(), context);
         if (isRuntimePermissionsSupported) {
             // Revoke the permission.
             permissionOrAppOpChanged |= revokePermissionWithoutAppOp(packageName, permission,
@@ -594,10 +599,10 @@ public class Permissions {
                 & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
     }
 
-    static boolean isRuntimePermissionsSupported(@NonNull String packageName,
-            @NonNull Context context) {
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+    static boolean isRuntimePermissionsSupportedAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             return false;
         }
@@ -631,17 +636,15 @@ public class Permissions {
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0;
     }
 
-    static boolean isPermissionGrantedByRole(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlagsAsUser(packageName, permission, Process.myUserHandle(),
-                context);
+    static boolean isPermissionGrantedByRoleAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE) != 0;
     }
 
-    private static boolean isPermissionReviewRequired(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlagsAsUser(packageName, permission, Process.myUserHandle(),
-                context);
+    private static boolean isPermissionReviewRequiredAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED) != 0;
     }
 
@@ -664,31 +667,33 @@ public class Permissions {
      * Most of the time {@link #isPermissionAndAppOpGranted(String, String, Context)} should be used
      * instead.
      */
-    private static boolean isPermissionGrantedWithoutCheckingAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        return packageManager.checkPermission(permission, packageName)
+    private static boolean isPermissionGrantedWithoutCheckingAppOpAsUser(
+            @NonNull String packageName, @NonNull String permission, @NonNull UserHandle user,
+            @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
+        return userPackageManager.checkPermission(permission, packageName)
                 == PackageManager.PERMISSION_GRANTED;
     }
 
-    private static boolean grantPermissionWithoutAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        if (isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+    private static boolean grantPermissionWithoutAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        if (isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user, context)) {
             return false;
         }
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.grantRuntimePermission(packageName, permission, user);
         return true;
     }
 
     private static boolean revokePermissionWithoutAppOp(@NonNull String packageName,
             @NonNull String permission, @NonNull Context context) {
-        if (!isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+        UserHandle user = Process.myUserHandle();
+        if (!isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user,
+                context)) {
             return false;
         }
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.revokeRuntimePermission(packageName, permission, user);
         return true;
     }

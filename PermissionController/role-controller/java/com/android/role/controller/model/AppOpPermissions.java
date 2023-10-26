@@ -22,6 +22,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
@@ -84,14 +85,16 @@ public class AppOpPermissions {
      */
     public static boolean revoke(@NonNull String packageName, @NonNull String appOpPermission,
             @NonNull Context context) {
-        if (!Permissions.isPermissionGrantedByRole(packageName, appOpPermission, context)) {
+        UserHandle user = Process.myUserHandle();
+        if (!Permissions.isPermissionGrantedByRoleAsUser(packageName, appOpPermission, user,
+                context)) {
             return false;
         }
         String appOp = AppOpsManager.permissionToOp(appOpPermission);
         int defaultMode = Permissions.getDefaultAppOpMode(appOp);
         boolean changed = setAppOpMode(packageName, appOp, defaultMode, context);
         Permissions.setPermissionGrantedByRoleAsUser(packageName, appOpPermission, false,
-                Process.myUserHandle(), context);
+                user, context);
         return changed;
     }
 
