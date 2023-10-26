@@ -67,7 +67,8 @@ public class AppOpPermissions {
         }
         boolean changed = setAppOpMode(packageName, appOp, AppOpsManager.MODE_ALLOWED, context);
         if (changed) {
-            Permissions.setPermissionGrantedByRole(packageName, appOpPermission, true, context);
+            Permissions.setPermissionGrantedByRoleAsUser(packageName, appOpPermission, true,
+                    Process.myUserHandle(), context);
         }
         return changed;
     }
@@ -89,7 +90,8 @@ public class AppOpPermissions {
         String appOp = AppOpsManager.permissionToOp(appOpPermission);
         int defaultMode = Permissions.getDefaultAppOpMode(appOp);
         boolean changed = setAppOpMode(packageName, appOp, defaultMode, context);
-        Permissions.setPermissionGrantedByRole(packageName, appOpPermission, false, context);
+        Permissions.setPermissionGrantedByRoleAsUser(packageName, appOpPermission, false,
+                Process.myUserHandle(), context);
         return changed;
     }
 

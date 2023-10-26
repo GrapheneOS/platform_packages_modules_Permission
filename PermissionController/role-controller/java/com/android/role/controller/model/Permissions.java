@@ -269,7 +269,8 @@ public class Permissions {
             }
         }
 
-        setPermissionFlags(packageName, permission, newFlags, newMask, context);
+        setPermissionFlagsAsUser(packageName, permission, newFlags, newMask,
+                Process.myUserHandle(), context);
 
         return permissionOrAppOpChanged;
     }
@@ -472,8 +473,9 @@ public class Permissions {
             if (!isPermissionGrantedByRole(packageName, permission, context)) {
                 return false;
             }
-            setPermissionFlags(packageName, permission, 0,
-                    PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, context);
+            setPermissionFlagsAsUser(packageName, permission, 0,
+                    PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, Process.myUserHandle(),
+                    context);
         }
 
         if (onlyIfGrantedByDefault) {
@@ -482,8 +484,9 @@ public class Permissions {
                 return false;
             }
             // Remove the granted-by-default permission flag.
-            setPermissionFlags(packageName, permission, 0,
-                    PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT, context);
+            setPermissionFlagsAsUser(packageName, permission, 0,
+                    PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT, Process.myUserHandle(),
+                    context);
             // Note that we do not revoke FLAG_PERMISSION_SYSTEM_FIXED. That bit remains sticky once
             // set.
         }
@@ -533,9 +536,10 @@ public class Permissions {
                                     || appOpMode == AppOpsManager.MODE_ALLOWED)) {
                         // We've reset this permission's app op mode to be permissive, so we'll need
                         // the user to review it again.
-                        setPermissionFlags(packageName, permission,
+                        setPermissionFlagsAsUser(packageName, permission,
                                 PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
-                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED, context);
+                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
+                                Process.myUserHandle(), context);
                     }
                 }
             }
@@ -641,18 +645,19 @@ public class Permissions {
         return (flags & PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED) != 0;
     }
 
-    private static void setPermissionFlags(@NonNull String packageName, @NonNull String permission,
-            int flags, int mask, @NonNull Context context) {
+    private static void setPermissionFlagsAsUser(@NonNull String packageName,
+            @NonNull String permission, int flags, int mask, @NonNull UserHandle user,
+            @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.updatePermissionFlags(permission, packageName, mask, flags, user);
     }
 
-    static void setPermissionGrantedByRole(@NonNull String packageName,
-            @NonNull String permission, boolean grantedByRole, @NonNull Context context) {
-        setPermissionFlags(packageName, permission,
+    static void setPermissionGrantedByRoleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean grantedByRole, @NonNull UserHandle user,
+            @NonNull Context context) {
+        setPermissionFlagsAsUser(packageName, permission,
                 grantedByRole ? PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE : 0,
-                PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, context);
+                PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, user, context);
     }
 
     /**
