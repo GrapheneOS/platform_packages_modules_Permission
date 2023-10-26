@@ -60,7 +60,6 @@
         <option name="push" value="CtsUsePermissionApp30WithBluetooth.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionApp30WithBluetooth.apk" />
         <option name="push" value="CtsUsePermissionApp31.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionApp31.apk" />
         <option name="push" value="CtsUsePermissionApp32.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionApp32.apk" />
-        <option name="push" value="CtsUsePermissionAppStreaming.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppStreaming.apk" />
         <option name="push" value="CtsUsePermissionAppLatest.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppLatest.apk" />
         <option name="push" value="CtsUsePermissionAppLatestNone.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppLatestNone.apk" />
         <option name="push" value="CtsUsePermissionAppWithOverlay.apk->/data/local/tmp/cts-permissionui/CtsUsePermissionAppWithOverlay.apk" />

@@ -18,7 +18,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.permissionui.cts.usepermission">
+    package="android.permissionmultidevice.cts.accessremotedevicecamera">
 
     <uses-permission android:name="android.permission.CAMERA" />
 
