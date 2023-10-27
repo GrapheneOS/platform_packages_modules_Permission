@@ -72,7 +72,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         for (int i = 0; i < roleMapSize; i++) {
             Role role = roleMap.valueAt(i);
 
-            if (!role.isAvailable(this)) {
+            if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
                 continue;
             }
             roles.add(role);
@@ -199,7 +199,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
@@ -258,7 +258,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
@@ -292,7 +292,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
@@ -422,7 +422,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         if (role == null) {
             return false;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             return false;
         }
         if (!role.isPackageQualified(packageName, this)) {
@@ -442,7 +442,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         if (role == null) {
             return false;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             return false;
         }
 

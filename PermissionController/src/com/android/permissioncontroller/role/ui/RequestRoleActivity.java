@@ -105,7 +105,7 @@ public class RequestRoleActivity extends FragmentActivity {
             return;
         }
 
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is unavailable: " + mRoleName);
             reportRequestResult(
                     PermissionControllerStatsLog.ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED);
