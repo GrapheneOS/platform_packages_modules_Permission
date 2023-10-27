@@ -140,56 +140,61 @@ public class HomeRoleBehavior implements RoleBehavior {
     }
 
     @Override
-    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+    public void grantAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
-            Permissions.grant(packageName, AUTOMOTIVE_PERMISSIONS,
-                    true, false, true, false, false, context);
+            Permissions.grantAsUser(packageName, AUTOMOTIVE_PERMISSIONS,
+                    true, false, true, false, false, user, context);
         }
 
         // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
         if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
-            Permissions.grant(packageName,
+            Permissions.grantAsUser(packageName,
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
-                    true, false, true, false, false, context);
+                    true, false, true, false, false, user, context);
         }
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
             if (SdkLevel.isAtLeastT()) {
-                Permissions.grant(packageName, WEAR_PERMISSIONS_T,
-                        true, false, true, false, false, context);
+                Permissions.grantAsUser(packageName, WEAR_PERMISSIONS_T,
+                        true, false, true, false, false, user, context);
                 for (String permission : WEAR_APP_OP_PERMISSIONS) {
-                    AppOpPermissions.grant(packageName, permission, true, context);
+                    AppOpPermissions.grantAsUser(packageName, permission, true, user, context);
                 }
             }
             if (SdkLevel.isAtLeastV()) {
-                Permissions.grant(packageName, WEAR_PERMISSIONS_V,
-                        true, false, true, false, false, context);
+                Permissions.grantAsUser(packageName, WEAR_PERMISSIONS_V,
+                        true, false, true, false, false, user, context);
             }
         }
     }
 
     @Override
-    public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+    public void revokeAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
-            Permissions.revoke(packageName, AUTOMOTIVE_PERMISSIONS, true, false, false, context);
+            Permissions.revokeAsUser(packageName, AUTOMOTIVE_PERMISSIONS, true, false, false,
+                    user, context);
         }
 
         // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
         if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
-            Permissions.revoke(packageName,
+            Permissions.revokeAsUser(packageName,
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
-                    true, false, false, context);
+                    true, false, false, user, context);
         }
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
             if (SdkLevel.isAtLeastT()) {
-                Permissions.revoke(packageName, WEAR_PERMISSIONS_T, true, false, false, context);
+                Permissions.revokeAsUser(packageName, WEAR_PERMISSIONS_T, true, false, false,
+                        user, context);
                 for (String permission : WEAR_APP_OP_PERMISSIONS) {
-                    AppOpPermissions.revoke(packageName, permission, context);
+                    AppOpPermissions.revokeAsUser(packageName, permission, user, context);
                 }
             }
             if (SdkLevel.isAtLeastV()) {
-                Permissions.revoke(packageName, WEAR_PERMISSIONS_V, true, false, false, context);
+                Permissions.revokeAsUser(packageName, WEAR_PERMISSIONS_V, true, false, false,
+                        user, context);
             }
         }
     }

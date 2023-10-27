@@ -19,7 +19,6 @@ package com.android.role.controller.behavior;
 import android.app.admin.DevicePolicyManager;
 import android.app.admin.ManagedSubscriptionsPolicy;
 import android.content.Context;
-import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telephony.TelephonyManager;
@@ -113,20 +112,21 @@ public class SmsRoleBehavior implements RoleBehavior {
     }
 
     @Override
-    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public void grantAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (SdkLevel.isAtLeastS() && PackageUtils.isSystemPackageAsUser(packageName, user,
                 context)) {
-            Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
-                    true, false, false, context);
+            Permissions.grantAsUser(packageName, SYSTEM_SMS_PERMISSIONS, false, false, true,
+                    false, false, user, context);
         }
     }
 
     @Override
-    public void revoke(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
+    public void revokeAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (SdkLevel.isAtLeastS()) {
-            Permissions.revoke(packageName, SYSTEM_SMS_PERMISSIONS, true, false, false, context);
+            Permissions.revokeAsUser(packageName, SYSTEM_SMS_PERMISSIONS, true, false, false,
+                    user, context);
         }
     }
 }

@@ -324,7 +324,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
     @WorkerThread
     private boolean addRoleHolderInternal(@NonNull Role role, @NonNull String packageName,
             boolean dontKillApp, boolean overrideUser, boolean added) {
-        role.grant(packageName, dontKillApp, overrideUser, this);
+        UserHandle user = Process.myUserHandle();
+        role.grantAsUser(packageName, dontKillApp, overrideUser, user, this);
 
         String roleName = role.getName();
         if (!added) {
@@ -346,7 +347,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         }
 
         if (applicationInfo != null) {
-            role.revoke(packageName, dontKillApp, false, this);
+            role.revokeAsUser(packageName, dontKillApp, false, Process.myUserHandle(), this);
         }
 
         String roleName = role.getName();
