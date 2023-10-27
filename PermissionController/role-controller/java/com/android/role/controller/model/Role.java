@@ -812,8 +812,9 @@ public class Role {
             mBehavior.grant(this, packageName, context);
         }
 
-        if (!dontKillApp && permissionOrAppOpChanged && !Permissions.isRuntimePermissionsSupported(
-                packageName, context)) {
+        if (!dontKillApp && permissionOrAppOpChanged
+                && !Permissions.isRuntimePermissionsSupportedAsUser(packageName,
+                        Process.myUserHandle(), context)) {
             killApp(packageName, context);
         }
     }
