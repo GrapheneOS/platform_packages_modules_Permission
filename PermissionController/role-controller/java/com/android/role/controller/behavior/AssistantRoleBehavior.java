@@ -26,7 +26,6 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-import android.os.Process;
 import android.os.UserHandle;
 import android.service.voice.VoiceInteractionService;
 import android.util.ArraySet;

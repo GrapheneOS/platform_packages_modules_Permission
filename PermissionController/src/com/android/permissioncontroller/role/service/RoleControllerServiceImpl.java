@@ -132,11 +132,11 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             if (currentPackageNamesSize == 0 || isStaticRole) {
                 List<String> packageNamesToAdd = null;
                 if (addedRoleNames.contains(roleName) || isStaticRole) {
-                    packageNamesToAdd = role.getDefaultHolders(this);
+                    packageNamesToAdd = role.getDefaultHoldersAsUser(Process.myUserHandle(), this);
                 }
                 if (packageNamesToAdd == null || packageNamesToAdd.isEmpty()) {
-                    packageNamesToAdd = CollectionUtils.singletonOrEmpty(role.getFallbackHolder(
-                            this));
+                    packageNamesToAdd = CollectionUtils.singletonOrEmpty(
+                            role.getFallbackHolderAsUser(Process.myUserHandle(), this));
                 }
 
                 int packageNamesToAddSize = packageNamesToAdd.size();
@@ -386,7 +386,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return true;
         }
 
-        String fallbackPackageName = role.getFallbackHolder(this);
+        String fallbackPackageName = role.getFallbackHolderAsUser(Process.myUserHandle(), this);
         if (fallbackPackageName == null) {
             return true;
         }

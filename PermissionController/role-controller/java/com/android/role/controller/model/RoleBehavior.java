@@ -48,7 +48,8 @@ public interface RoleBehavior {
      * @see Role#getDefaultHolders(Context)
      */
     @NonNull
-    default List<String> getDefaultHolders(@NonNull Role role, @NonNull Context context) {
+    default List<String> getDefaultHoldersAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
         return Collections.emptyList();
     }
 
@@ -56,7 +57,8 @@ public interface RoleBehavior {
      * @see Role#getFallbackHolder(Context)
      */
     @Nullable
-    default String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
+    default String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
         return null;
     }
 

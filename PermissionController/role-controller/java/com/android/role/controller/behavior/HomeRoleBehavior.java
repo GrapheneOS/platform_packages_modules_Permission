@@ -78,10 +78,12 @@ public class HomeRoleBehavior implements RoleBehavior {
      */
     @Nullable
     @Override
-    public String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
+    public String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         Intent intent = role.getRequiredComponents().get(0).getIntentFilterData().createIntent();
-        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent,
+        List<ResolveInfo> resolveInfos = userPackageManager.queryIntentActivities(intent,
                 PackageManager.MATCH_DEFAULT_ONLY | PackageManager.MATCH_DIRECT_BOOT_AWARE
                 | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
 
@@ -94,7 +96,8 @@ public class HomeRoleBehavior implements RoleBehavior {
             // Leave the fallback to PackageManagerService if there is only the fallback home in
             // Settings, because if we fallback to it here, we cannot fallback to a normal home
             // later, and user cannot see the fallback home in the UI anyway.
-            if (isSettingsApplication(resolveInfo.activityInfo.applicationInfo, context)) {
+            if (isSettingsApplicationAsUser(resolveInfo.activityInfo.applicationInfo, user,
+                    context)) {
                 continue;
             }
             if (resolveInfo.priority > priority) {
@@ -110,10 +113,11 @@ public class HomeRoleBehavior implements RoleBehavior {
     /**
      * Check if the application is a settings application
      */
-    public static boolean isSettingsApplication(@NonNull ApplicationInfo applicationInfo,
-            @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        ResolveInfo resolveInfo = packageManager.resolveActivity(
+    public static boolean isSettingsApplicationAsUser(@NonNull ApplicationInfo applicationInfo,
+            @NonNull UserHandle user, @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
+        ResolveInfo resolveInfo = userPackageManager.resolveActivity(
                 new Intent(Settings.ACTION_SETTINGS), PackageManager.MATCH_DEFAULT_ONLY
                 | PackageManager.MATCH_DIRECT_BOOT_AWARE
                 | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);

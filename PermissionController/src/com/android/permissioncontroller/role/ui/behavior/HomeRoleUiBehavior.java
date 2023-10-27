@@ -86,7 +86,7 @@ public class HomeRoleUiBehavior implements RoleUiBehavior {
             @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
             @NonNull Context context) {
         // Home is not available for work profile, so we can just use the current user.
-        return !HomeRoleBehavior.isSettingsApplication(applicationInfo, context);
+        return !HomeRoleBehavior.isSettingsApplicationAsUser(applicationInfo, user, context);
     }
 
     @Override
