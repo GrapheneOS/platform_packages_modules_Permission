@@ -112,7 +112,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                     currentPackageNamesIndex++) {
                 String packageName = currentPackageNames.get(currentPackageNamesIndex);
 
-                if (role.isPackageQualified(packageName, this)) {
+                if (role.isPackageQualifiedAsUser(packageName, Process.myUserHandle(), this)) {
                     // We should not override user set or fixed permissions because we are only
                     // redoing the grant here. Otherwise, user won't be able to revoke permissions
                     // granted by role.
@@ -149,7 +149,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                         // static roles.
                         continue;
                     }
-                    if (!role.isPackageQualified(packageName, this)) {
+                    if (!role.isPackageQualifiedAsUser(packageName, Process.myUserHandle(),
+                            this)) {
                         Log.e(LOG_TAG, "Default/fallback role holder package doesn't qualify for"
                                 + " the role, package: " + packageName + ", role: " + roleName);
                         continue;
@@ -204,7 +205,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        if (!role.isPackageQualified(packageName, this)) {
+        if (!role.isPackageQualifiedAsUser(packageName, Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Package does not qualify for the role, package: " + packageName
                     + ", role: " + roleName);
             return false;
@@ -391,7 +392,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return true;
         }
 
-        if (!role.isPackageQualified(fallbackPackageName, this)) {
+        if (!role.isPackageQualifiedAsUser(fallbackPackageName, Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Fallback role holder package doesn't qualify for the role, package: "
                     + fallbackPackageName + ", role: " + roleName);
             return false;
@@ -425,7 +426,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             return false;
         }
-        if (!role.isPackageQualified(packageName, this)) {
+        if (!role.isPackageQualifiedAsUser(packageName, Process.myUserHandle(), this)) {
             return false;
         }
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(packageName, this);

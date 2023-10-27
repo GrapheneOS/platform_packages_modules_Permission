@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Process;
 
 import androidx.annotation.NonNull;
 
@@ -70,8 +71,8 @@ public class PreferredActivity {
      * @param context the {@code Context} to retrieve system services
      */
     public void configure(@NonNull String packageName, @NonNull Context context) {
-        ComponentName packageActivity = mActivity.getQualifyingComponentForPackage(
-                packageName, context);
+        ComponentName packageActivity = mActivity.getQualifyingComponentForPackageAsUser(
+                packageName, Process.myUserHandle(), context);
         if (packageActivity == null) {
             // We might be running into some race condition here, but we can't do anything about it.
             // This should be handled by a future reconciliation started by the package change.

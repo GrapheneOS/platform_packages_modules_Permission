@@ -556,12 +556,13 @@ public class Role {
      * components (plus meeting some other general restrictions).
      *
      * @param packageName the package name to check for
+     * @param user the user to check for
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether the package is qualified for a role
      */
-    public boolean isPackageQualified(@NonNull String packageName, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public boolean isPackageQualifiedAsUser(@NonNull String packageName, @NonNull UserHandle user,
+            @NonNull Context context) {
         RoleManager roleManager = context.getSystemService(RoleManager.class);
         if (shouldAllowBypassingQualification(context)
                 && RoleManagerCompat.isBypassingRoleQualification(roleManager)) {
@@ -594,7 +595,8 @@ public class Role {
                 continue;
             }
 
-            if (requiredComponent.getQualifyingComponentForPackage(packageName, context) == null) {
+            if (requiredComponent.getQualifyingComponentForPackageAsUser(packageName, user, context)
+                    == null) {
                 Log.i(LOG_TAG, packageName + " not qualified for " + mName
                         + " due to missing " + requiredComponent);
                 return false;

@@ -167,7 +167,7 @@ public class RequestRoleActivity extends FragmentActivity {
             return;
         }
 
-        if (!role.isPackageQualified(mPackageName, this)) {
+        if (!role.isPackageQualifiedAsUser(mPackageName, Process.myUserHandle(), this)) {
             Log.w(LOG_TAG, "Application doesn't qualify for role, role: " + mRoleName
                     + ", package: " + mPackageName);
             reportRequestResult(PermissionControllerStatsLog

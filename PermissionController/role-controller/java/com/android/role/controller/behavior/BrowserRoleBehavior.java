@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
 
@@ -133,10 +134,11 @@ public class BrowserRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
         //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
         if (SdkLevel.isAtLeastS()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
                 Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, true,
                         false, false, context);
             }
@@ -146,7 +148,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
         if (SdkLevel.isAtLeastT()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, Process.myUserHandle(), context)) {
                 Permissions.revoke(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false, false,
                         context);
             }

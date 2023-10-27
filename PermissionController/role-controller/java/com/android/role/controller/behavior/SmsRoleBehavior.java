@@ -19,6 +19,7 @@ package com.android.role.controller.behavior;
 import android.app.admin.DevicePolicyManager;
 import android.app.admin.ManagedSubscriptionsPolicy;
 import android.content.Context;
+import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telephony.TelephonyManager;
@@ -113,7 +114,9 @@ public class SmsRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        if (SdkLevel.isAtLeastS() && PackageUtils.isSystemPackage(packageName, context)) {
+        UserHandle user = Process.myUserHandle();
+        if (SdkLevel.isAtLeastS() && PackageUtils.isSystemPackageAsUser(packageName, user,
+                context)) {
             Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
                     true, false, false, context);
         }
