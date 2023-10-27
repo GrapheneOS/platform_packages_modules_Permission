@@ -17,6 +17,8 @@
 package com.android.role.controller.behavior;
 
 import android.content.Context;
+import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
@@ -31,11 +33,13 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        NotificationUtils.grantNotificationAccessForPackageAsUser(packageName, user, context);
     }
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        NotificationUtils.revokeNotificationAccessForPackageAsUser(packageName, user, context);
     }
 }
