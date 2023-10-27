@@ -585,7 +585,8 @@ public class Role {
         }
 
         if (mBehavior != null) {
-            Boolean isPackageQualified = mBehavior.isPackageQualified(this, packageName, context);
+            Boolean isPackageQualified = mBehavior.isPackageQualifiedAsUser(this, packageName,
+                    Process.myUserHandle(), context);
             if (isPackageQualified != null) {
                 return isPackageQualified;
             }
@@ -811,8 +812,9 @@ public class Role {
             mBehavior.grant(this, packageName, context);
         }
 
-        if (!dontKillApp && permissionOrAppOpChanged && !Permissions.isRuntimePermissionsSupported(
-                packageName, context)) {
+        if (!dontKillApp && permissionOrAppOpChanged
+                && !Permissions.isRuntimePermissionsSupportedAsUser(packageName,
+                        Process.myUserHandle(), context)) {
             killApp(packageName, context);
         }
     }

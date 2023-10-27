@@ -95,10 +95,10 @@ public class BrowserRoleBehavior implements RoleBehavior {
 
     @Nullable
     @Override
-    public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
+    public Boolean isPackageQualifiedAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         List<String> packageNames = getQualifyingPackagesAsUserInternal(packageName, false,
-                Process.myUserHandle(), context);
+                user, context);
         return !packageNames.isEmpty();
     }
 

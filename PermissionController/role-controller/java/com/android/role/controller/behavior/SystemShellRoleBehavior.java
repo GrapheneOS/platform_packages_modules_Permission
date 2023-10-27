@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.util.UserUtils;
 
 /**
  * Class for behavior of the system shell role.
@@ -33,12 +34,13 @@ import com.android.role.controller.model.RoleBehavior;
 public class SystemShellRoleBehavior implements RoleBehavior {
     @Nullable
     @Override
-    public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
+    public Boolean isPackageQualifiedAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         int uid;
         try {
-            uid = packageManager.getPackageUid(packageName, 0);
+            uid = userPackageManager.getPackageUid(packageName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

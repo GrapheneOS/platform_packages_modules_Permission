@@ -73,8 +73,8 @@ public interface RoleBehavior {
      * @see Role#isPackageQualified(String, Context)
      */
     @Nullable
-    default Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
+    default Boolean isPackageQualifiedAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         return null;
     }
 

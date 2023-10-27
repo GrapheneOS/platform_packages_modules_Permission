@@ -19,6 +19,8 @@ package com.android.permissioncontroller.tests.mocking.permission.service
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACCESS_MEDIA_LOCATION
+import android.Manifest.permission.BODY_SENSORS
+import android.Manifest.permission.BODY_SENSORS_BACKGROUND
 import android.Manifest.permission.READ_CALL_LOG
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.READ_MEDIA_AUDIO
@@ -52,6 +54,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.RuntimePermissionsUpgradeController
 import com.android.permissioncontroller.tests.mocking.permission.data.dataRepositories
@@ -242,6 +245,15 @@ class RuntimePermissionsUpgradeControllerTest {
         // We cannot use thenReturn(mutableListOf()) because that would return the same instance.
         whenever(packageManager.queryPermissionsByGroup(any(), anyInt())).thenAnswer {
             mutableListOf<PermissionInfo>()
+        }
+
+        whenever(packageManager.hasSystemFeature(any())).thenAnswer {
+            val featureName = it.arguments[0] as String
+
+            InstrumentationRegistry.getInstrumentation()
+                .getTargetContext()
+                .packageManager
+                .hasSystemFeature(featureName)
         }
     }
 
@@ -618,6 +630,105 @@ class RuntimePermissionsUpgradeControllerTest {
         upgradeIfNeeded()
         verify(permissionManager).runtimePermissionsVersion =
             AdditionalMatchers.not(eq(Int.MAX_VALUE))
+    }
+
+    @Test
+    fun bodySensorsInheritToBodySensorsBackgroundWhenBodySensorsWasGrantedAndTargetingR() {
+        Assume.assumeTrue(DeviceUtils.isWear(application))
+        Assume.assumeTrue(SdkLevel.isAtLeastT())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(
+                TEST_PKG_NAME,
+                Permission(BODY_SENSORS, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(BODY_SENSORS_BACKGROUND, isGranted = false),
+                targetSdkVersion = 30
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyGranted(TEST_PKG_NAME, BODY_SENSORS_BACKGROUND)
+    }
+
+    @Test
+    fun bodySensorsNotInheritToBodySensorsBackgroundWhenBodySensorsWasNotGrantedAndTargetingR() {
+        Assume.assumeTrue(DeviceUtils.isWear(application))
+        Assume.assumeTrue(SdkLevel.isAtLeastT())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(
+                TEST_PKG_NAME,
+                Permission(BODY_SENSORS, isGranted = false, flags = FLAG_PERMISSION_USER_SET),
+                Permission(BODY_SENSORS_BACKGROUND, isGranted = false),
+                targetSdkVersion = 30
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyNotGranted(TEST_PKG_NAME, BODY_SENSORS_BACKGROUND)
+    }
+
+    @Test
+    fun bodySensorsInheritToBodySensorsBackgroundWhenBodySensorsWasGrantedAndTargetingT() {
+        Assume.assumeTrue(DeviceUtils.isWear(application))
+        Assume.assumeTrue(SdkLevel.isAtLeastT())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(
+                TEST_PKG_NAME,
+                Permission(BODY_SENSORS, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                Permission(BODY_SENSORS_BACKGROUND, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyGranted(TEST_PKG_NAME, BODY_SENSORS_BACKGROUND)
+    }
+
+    @Test
+    fun bodySensorsNotInheritToBodySensorsBackgroundWhenBodySensorsWasNotGrantedAndTargetingT() {
+        Assume.assumeTrue(DeviceUtils.isWear(application))
+        Assume.assumeTrue(SdkLevel.isAtLeastT())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(
+                TEST_PKG_NAME,
+                Permission(BODY_SENSORS, isGranted = false, flags = FLAG_PERMISSION_USER_SET),
+                Permission(BODY_SENSORS_BACKGROUND, isGranted = false),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyNotGranted(TEST_PKG_NAME, BODY_SENSORS_BACKGROUND)
+    }
+
+    @Test
+    fun bodySensorsNotInheritToBodySensorsBackgroundWhenBackgroundNotDeclaredAndTargetingT() {
+        Assume.assumeTrue(DeviceUtils.isWear(application))
+        Assume.assumeTrue(SdkLevel.isAtLeastT())
+        whenever(packageManager.isDeviceUpgrading).thenReturn(true)
+        setInitialDatabaseVersion(9)
+        setPackages(
+            Package(
+                TEST_PKG_NAME,
+                Permission(BODY_SENSORS, isGranted = true, flags = FLAG_PERMISSION_USER_SET),
+                targetSdkVersion = 33
+            )
+        )
+
+        upgradeIfNeeded()
+
+        verifyNotGranted(TEST_PKG_NAME, BODY_SENSORS_BACKGROUND)
     }
 
     @After

@@ -28,8 +28,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
-
-import java.util.Arrays;
+import com.android.role.controller.util.UserUtils;
 
 /**
  * Class for behavior of the Retail Demo role.
@@ -38,16 +37,17 @@ import java.util.Arrays;
 public class RetailDemoRoleBehavior implements RoleBehavior {
 
     @Override
-    public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {
+    public Boolean isPackageQualifiedAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (Settings.Global.getInt(context.getContentResolver(),
                 Settings.Global.DEVICE_DEMO_MODE, 0) == 0) {
             return false;
         }
-        DevicePolicyManager devicePolicyManager =
-                context.getSystemService(DevicePolicyManager.class);
-        if (!(devicePolicyManager.isDeviceOwnerApp(packageName)
-                || devicePolicyManager.isProfileOwnerApp(packageName))) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        DevicePolicyManager userDevicePolicyManager =
+                userContext.getSystemService(DevicePolicyManager.class);
+        if (!(userDevicePolicyManager.isDeviceOwnerApp(packageName)
+                || userDevicePolicyManager.isProfileOwnerApp(packageName))) {
             return false;
         }
         // Fallback to do additional default check.

@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 import com.android.role.controller.util.ArrayUtils;
 import com.android.role.controller.util.CollectionUtils;
 import com.android.role.controller.util.PackageUtils;
+import com.android.role.controller.util.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,12 +101,13 @@ public class Permissions {
             boolean overrideDisabledSystemPackage, boolean overrideUserSetAndFixed,
             boolean setGrantedByRole, boolean setGrantedByDefault, boolean setSystemFixed,
             @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         if (setGrantedByRole == setGrantedByDefault) {
             throw new IllegalArgumentException("Permission must be either granted by role, or"
                     + " granted by default, but not both");
         }
 
-        PackageInfo packageInfo = getPackageInfo(packageName, context);
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, user, context);
         if (packageInfo == null) {
             return false;
         }
@@ -142,7 +144,8 @@ public class Permissions {
         // apps, (default grants on first boot and user creation) we don't grant default
         // permissions if the version on the system image does not declare them.
         if (!overrideDisabledSystemPackage && isUpdatedSystemApp(packageInfo)) {
-            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfo(packageName, context);
+            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfoAsUser(packageName,
+                    user, context);
             if (disabledSystemPackageInfo != null) {
                 if (ArrayUtils.isEmpty(disabledSystemPackageInfo.requestedPermissions)) {
                     return false;
@@ -191,20 +194,22 @@ public class Permissions {
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
 
-            permissionOrAppOpChanged |= grantSingle(packageName, permission,
+            permissionOrAppOpChanged |= grantSingleAsUser(packageName, permission,
                     overrideUserSetAndFixed, setGrantedByRole, setGrantedByDefault, setSystemFixed,
-                    context);
+                    user, context);
         }
 
         return permissionOrAppOpChanged;
     }
 
-    private static boolean grantSingle(@NonNull String packageName, @NonNull String permission,
-            boolean overrideUserSetAndFixed, boolean setGrantedByRole, boolean setGrantedByDefault,
-            boolean setSystemFixed, @NonNull Context context) {
-        boolean wasPermissionOrAppOpGranted = isPermissionAndAppOpGranted(packageName, permission,
-                context);
-        if (isPermissionFixed(packageName, permission, false, overrideUserSetAndFixed, context)
+    private static boolean grantSingleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean overrideUserSetAndFixed, boolean setGrantedByRole,
+            boolean setGrantedByDefault, boolean setSystemFixed, @NonNull UserHandle user,
+            @NonNull Context context) {
+        boolean wasPermissionOrAppOpGranted = isPermissionAndAppOpGrantedAsUser(packageName,
+                permission, user, context);
+        if (isPermissionFixedAsUser(packageName, permission, false,
+                overrideUserSetAndFixed, user, context)
                 && !wasPermissionOrAppOpGranted) {
             // Stop granting if this permission is fixed to revoked.
             return false;
@@ -217,7 +222,8 @@ public class Permissions {
             for (int i = 0; i < foregroundPermissionsSize; i++) {
                 String foregroundPermission = foregroundPermissions.get(i);
 
-                if (isPermissionAndAppOpGranted(packageName, foregroundPermission, context)) {
+                if (isPermissionAndAppOpGrantedAsUser(packageName, foregroundPermission, user,
+                        context)) {
                     isAnyForegroundPermissionGranted = true;
                     break;
                 }
@@ -230,8 +236,8 @@ public class Permissions {
             }
         }
 
-        boolean permissionOrAppOpChanged = grantPermissionAndAppOp(packageName, permission,
-                context);
+        boolean permissionOrAppOpChanged = grantPermissionAndAppOpAsUser(packageName, permission,
+                user, context);
 
         // Update permission flags.
         int newFlags = 0;
@@ -254,7 +260,7 @@ public class Permissions {
         // If a component gets a permission for being the default handler A and also default handler
         // B, we grant the weaker grant form. This only applies to default permission grant.
         if (setGrantedByDefault && !setSystemFixed) {
-            int oldFlags = getPermissionFlags(packageName, permission, context);
+            int oldFlags = getPermissionFlagsAsUser(packageName, permission, user, context);
             if ((oldFlags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0
                     && (oldFlags & PackageManager.FLAG_PERMISSION_SYSTEM_FIXED) != 0) {
                 if (DEBUG) {
@@ -265,20 +271,22 @@ public class Permissions {
             }
         }
 
-        setPermissionFlags(packageName, permission, newFlags, newMask, context);
+        setPermissionFlagsAsUser(packageName, permission, newFlags, newMask,
+                user, context);
 
         return permissionOrAppOpChanged;
     }
 
-    private static boolean isPermissionAndAppOpGranted(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
+    private static boolean isPermissionAndAppOpGrantedAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         // Check this permission.
-        if (!isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+        if (!isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user,
+                context)) {
             return false;
         }
 
         // Check if the permission is review required.
-        if (isPermissionReviewRequired(packageName, permission, context)) {
+        if (isPermissionReviewRequiredAsUser(packageName, permission, user, context)) {
             return false;
         }
 
@@ -288,7 +296,7 @@ public class Permissions {
             if (appOp == null) {
                 return true;
             }
-            Integer appOpMode = getAppOpMode(packageName, appOp, context);
+            Integer appOpMode = getAppOpModeAsUser(packageName, appOp, user, context);
             if (appOpMode == null) {
                 return false;
             }
@@ -314,7 +322,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                Integer foregroundAppOpMode = getAppOpMode(packageName, foregroundAppOp, context);
+                Integer foregroundAppOpMode = getAppOpModeAsUser(packageName, foregroundAppOp,
+                        user, context);
                 if (foregroundAppOpMode == null) {
                     continue;
                 }
@@ -326,11 +335,11 @@ public class Permissions {
         }
     }
 
-    private static boolean grantPermissionAndAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
+    private static boolean grantPermissionAndAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         // Grant the permission.
-        boolean permissionOrAppOpChanged = grantPermissionWithoutAppOp(packageName, permission,
-                context);
+        boolean permissionOrAppOpChanged = grantPermissionWithoutAppOpAsUser(packageName,
+                permission, user, context);
 
         // Grant the app op.
         if (!isBackgroundPermission(permission, context)) {
@@ -345,13 +354,15 @@ public class Permissions {
                     // This permission is a foreground permission, set its app op mode according to
                     // whether its background permission is granted.
                     String backgroundPermission = getBackgroundPermission(permission, context);
-                    if (!isPermissionAndAppOpGranted(packageName, backgroundPermission, context)) {
+                    if (!isPermissionAndAppOpGrantedAsUser(packageName, backgroundPermission,
+                            user, context)) {
                         appOpMode = AppOpsManager.MODE_FOREGROUND;
                     } else {
                         appOpMode = AppOpsManager.MODE_ALLOWED;
                     }
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, appOp, appOpMode, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, appOp, appOpMode,
+                        user, context);
             }
         } else {
             // This permission is a background permission, set all its foreground permissions' app
@@ -365,8 +376,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, foregroundAppOp,
-                        AppOpsManager.MODE_ALLOWED, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, foregroundAppOp,
+                        AppOpsManager.MODE_ALLOWED, user, context);
             }
         }
 
@@ -391,7 +402,8 @@ public class Permissions {
     public static boolean revoke(@NonNull String packageName, @NonNull List<String> permissions,
             boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
             boolean overrideSystemFixed, @NonNull Context context) {
-        PackageInfo packageInfo = getPackageInfo(packageName, context);
+        UserHandle user = Process.myUserHandle();
+        PackageInfo packageInfo = getPackageInfoAsUser(packageName, user, context);
         if (packageInfo == null) {
             return false;
         }
@@ -438,11 +450,12 @@ public class Permissions {
         for (int i = 0; i < sortedPermissionsToRevokeLength; i++) {
             String permission = sortedPermissionsToRevoke[i];
 
-            permissionOrAppOpChanged |= revokeSingle(packageName, permission, onlyIfGrantedByRole,
-                    onlyIfGrantedByDefault, overrideSystemFixed, context);
+            permissionOrAppOpChanged |= revokeSingleAsUser(packageName, permission,
+                    onlyIfGrantedByRole, onlyIfGrantedByDefault, overrideSystemFixed, user,
+                    context);
 
             // Remove from the system whitelist only if not granted by default.
-            if (!isPermissionGrantedByDefault(packageName, permission, context)
+            if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)
                     && whitelistedRestrictedPermissions.remove(permission)) {
                 packageManager.removeWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
@@ -452,59 +465,62 @@ public class Permissions {
         return permissionOrAppOpChanged;
     }
 
-    private static boolean revokeSingle(@NonNull String packageName, @NonNull String permission,
-            boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
-            boolean overrideSystemFixed, @NonNull Context context) {
+    private static boolean revokeSingleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
+            boolean overrideSystemFixed, @NonNull UserHandle user, @NonNull Context context) {
         if (onlyIfGrantedByRole == onlyIfGrantedByDefault) {
             throw new IllegalArgumentException("Permission can be revoked only if either granted by"
                     + " role, or granted by default, but not both");
         }
 
         if (onlyIfGrantedByRole) {
-            if (!isPermissionGrantedByRole(packageName, permission, context)) {
+            if (!isPermissionGrantedByRoleAsUser(packageName, permission, user, context)) {
                 return false;
             }
-            setPermissionFlags(packageName, permission, 0,
-                    PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, context);
+            setPermissionFlagsAsUser(packageName, permission, 0,
+                    PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, user, context);
         }
 
         if (onlyIfGrantedByDefault) {
-            if (!isPermissionGrantedByDefault(packageName, permission, context)) {
+            if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)) {
                 return false;
             }
             // Remove the granted-by-default permission flag.
-            setPermissionFlags(packageName, permission, 0,
-                    PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT, context);
+            setPermissionFlagsAsUser(packageName, permission, 0,
+                    PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT, user, context);
             // Note that we do not revoke FLAG_PERMISSION_SYSTEM_FIXED. That bit remains sticky once
             // set.
         }
 
-        if (isPermissionFixed(packageName, permission, overrideSystemFixed, false, context)
-                && isPermissionAndAppOpGranted(packageName, permission, context)) {
+        if (isPermissionFixedAsUser(packageName, permission, overrideSystemFixed, false,
+                user, context)
+                && isPermissionAndAppOpGrantedAsUser(packageName, permission, user, context)) {
             // Stop revoking if this permission is fixed to granted.
             return false;
         }
 
         if (isForegroundPermission(permission, context)) {
             String backgroundPermission = getBackgroundPermission(permission, context);
-            if (isPermissionAndAppOpGranted(packageName, backgroundPermission, context)) {
+            if (isPermissionAndAppOpGrantedAsUser(packageName, backgroundPermission, user,
+                    context)) {
                 // Stop revoking if this foreground permission has a granted background permission.
                 return false;
             }
         }
 
-        return revokePermissionAndAppOp(packageName, permission, context);
+        return revokePermissionAndAppOpAsUser(packageName, permission, user, context);
     }
 
-    private static boolean revokePermissionAndAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
+    private static boolean revokePermissionAndAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         boolean permissionOrAppOpChanged = false;
 
-        boolean isRuntimePermissionsSupported = isRuntimePermissionsSupported(packageName, context);
+        boolean isRuntimePermissionsSupported = isRuntimePermissionsSupportedAsUser(packageName,
+                user, context);
         if (isRuntimePermissionsSupported) {
             // Revoke the permission.
-            permissionOrAppOpChanged |= revokePermissionWithoutAppOp(packageName, permission,
-                    context);
+            permissionOrAppOpChanged |= revokePermissionWithoutAppOpAsUser(packageName, permission,
+                    user, context);
         }
 
         // Revoke the app op.
@@ -514,7 +530,8 @@ public class Permissions {
                 // This permission is an ordinary or foreground permission, reset its app op mode to
                 // default.
                 int appOpMode = getDefaultAppOpMode(appOp);
-                boolean appOpModeChanged = setAppOpUidMode(packageName, appOp, appOpMode, context);
+                boolean appOpModeChanged = setAppOpUidModeAsUser(packageName, appOp, appOpMode,
+                        user, context);
                 permissionOrAppOpChanged |= appOpModeChanged;
 
                 if (appOpModeChanged) {
@@ -523,9 +540,9 @@ public class Permissions {
                                     || appOpMode == AppOpsManager.MODE_ALLOWED)) {
                         // We've reset this permission's app op mode to be permissive, so we'll need
                         // the user to review it again.
-                        setPermissionFlags(packageName, permission,
+                        setPermissionFlagsAsUser(packageName, permission,
                                 PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
-                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED, context);
+                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED, user, context);
                     }
                 }
             }
@@ -537,7 +554,8 @@ public class Permissions {
             for (int i = 0; i < foregroundPermissionsSize; i++) {
                 String foregroundPermission = foregroundPermissions.get(i);
 
-                if (!isPermissionAndAppOpGranted(packageName, foregroundPermission, context)) {
+                if (!isPermissionAndAppOpGrantedAsUser(packageName, foregroundPermission, user,
+                        context)) {
                     continue;
                 }
 
@@ -545,8 +563,8 @@ public class Permissions {
                 if (foregroundAppOp == null) {
                     continue;
                 }
-                permissionOrAppOpChanged |= setAppOpUidMode(packageName, foregroundAppOp,
-                        AppOpsManager.MODE_FOREGROUND, context);
+                permissionOrAppOpChanged |= setAppOpUidModeAsUser(packageName, foregroundAppOp,
+                        AppOpsManager.MODE_FOREGROUND, user, context);
             }
         }
 
@@ -554,24 +572,25 @@ public class Permissions {
     }
 
     @Nullable
-    private static PackageInfo getPackageInfo(@NonNull String packageName,
-            @NonNull Context context) {
-        return getPackageInfo(packageName, 0, context);
+    private static PackageInfo getPackageInfoAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return getPackageInfoAsUser(packageName, 0, user, context);
     }
 
     @Nullable
-    private static PackageInfo getFactoryPackageInfo(@NonNull String packageName,
-            @NonNull Context context) {
-        return getPackageInfo(packageName, PackageManager.MATCH_FACTORY_ONLY, context);
+    private static PackageInfo getFactoryPackageInfoAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return getPackageInfoAsUser(packageName, PackageManager.MATCH_FACTORY_ONLY,
+                user, context);
     }
 
     @Nullable
-    private static PackageInfo getPackageInfo(@NonNull String packageName, int extraFlags,
-            @NonNull Context context) {
+    private static PackageInfo getPackageInfoAsUser(@NonNull String packageName, int extraFlags,
+            @NonNull UserHandle user, @NonNull Context context) {
         return PackageUtils.getPackageInfoAsUser(packageName, extraFlags
                 // TODO: Why MATCH_UNINSTALLED_PACKAGES?
                 | PackageManager.MATCH_UNINSTALLED_PACKAGES | PackageManager.GET_PERMISSIONS,
-                Process.myUserHandle(), context);
+                user, context);
     }
 
     private static boolean isUpdatedSystemApp(@NonNull PackageInfo packageInfo) {
@@ -579,27 +598,26 @@ public class Permissions {
                 & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
     }
 
-    static boolean isRuntimePermissionsSupported(@NonNull String packageName,
-            @NonNull Context context) {
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+    static boolean isRuntimePermissionsSupportedAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             return false;
         }
         return applicationInfo.targetSdkVersion >= Build.VERSION_CODES.M;
     }
 
-    private static int getPermissionFlags(@NonNull String packageName, @NonNull String permission,
-            @NonNull Context context) {
+    private static int getPermissionFlagsAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         return packageManager.getPermissionFlags(permission, packageName, user);
     }
 
-    private static boolean isPermissionFixed(@NonNull String packageName,
+    private static boolean isPermissionFixedAsUser(@NonNull String packageName,
             @NonNull String permission, boolean overrideSystemFixed,
-            boolean overrideUserSetAndFixed, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+            boolean overrideUserSetAndFixed, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         int fixedFlags = PackageManager.FLAG_PERMISSION_POLICY_FIXED;
         if (!overrideSystemFixed) {
             fixedFlags |= PackageManager.FLAG_PERMISSION_SYSTEM_FIXED;
@@ -611,67 +629,69 @@ public class Permissions {
         return (flags & fixedFlags) != 0;
     }
 
-    private static boolean isPermissionGrantedByDefault(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+    private static boolean isPermissionGrantedByDefaultAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT) != 0;
     }
 
-    static boolean isPermissionGrantedByRole(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+    static boolean isPermissionGrantedByRoleAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE) != 0;
     }
 
-    private static boolean isPermissionReviewRequired(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        int flags = getPermissionFlags(packageName, permission, context);
+    private static boolean isPermissionReviewRequiredAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        int flags = getPermissionFlagsAsUser(packageName, permission, user, context);
         return (flags & PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED) != 0;
     }
 
-    private static void setPermissionFlags(@NonNull String packageName, @NonNull String permission,
-            int flags, int mask, @NonNull Context context) {
+    private static void setPermissionFlagsAsUser(@NonNull String packageName,
+            @NonNull String permission, int flags, int mask, @NonNull UserHandle user,
+            @NonNull Context context) {
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.updatePermissionFlags(permission, packageName, mask, flags, user);
     }
 
-    static void setPermissionGrantedByRole(@NonNull String packageName,
-            @NonNull String permission, boolean grantedByRole, @NonNull Context context) {
-        setPermissionFlags(packageName, permission,
+    static void setPermissionGrantedByRoleAsUser(@NonNull String packageName,
+            @NonNull String permission, boolean grantedByRole, @NonNull UserHandle user,
+            @NonNull Context context) {
+        setPermissionFlagsAsUser(packageName, permission,
                 grantedByRole ? PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE : 0,
-                PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, context);
+                PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE, user, context);
     }
 
     /**
      * Most of the time {@link #isPermissionAndAppOpGranted(String, String, Context)} should be used
      * instead.
      */
-    private static boolean isPermissionGrantedWithoutCheckingAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        return packageManager.checkPermission(permission, packageName)
+    private static boolean isPermissionGrantedWithoutCheckingAppOpAsUser(
+            @NonNull String packageName, @NonNull String permission, @NonNull UserHandle user,
+            @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
+        return userPackageManager.checkPermission(permission, packageName)
                 == PackageManager.PERMISSION_GRANTED;
     }
 
-    private static boolean grantPermissionWithoutAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        if (isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+    private static boolean grantPermissionWithoutAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        if (isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user, context)) {
             return false;
         }
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.grantRuntimePermission(packageName, permission, user);
         return true;
     }
 
-    private static boolean revokePermissionWithoutAppOp(@NonNull String packageName,
-            @NonNull String permission, @NonNull Context context) {
-        if (!isPermissionGrantedWithoutCheckingAppOp(packageName, permission, context)) {
+    private static boolean revokePermissionWithoutAppOpAsUser(@NonNull String packageName,
+            @NonNull String permission, @NonNull UserHandle user, @NonNull Context context) {
+        if (!isPermissionGrantedWithoutCheckingAppOpAsUser(packageName, permission, user,
+                context)) {
             return false;
         }
         PackageManager packageManager = context.getPackageManager();
-        UserHandle user = Process.myUserHandle();
         packageManager.revokeRuntimePermission(packageName, permission, user);
         return true;
     }
@@ -816,10 +836,10 @@ public class Permissions {
     }
 
     @Nullable
-    static Integer getAppOpMode(@NonNull String packageName, @NonNull String appOp,
-            @NonNull Context context) {
+    static Integer getAppOpModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            @NonNull UserHandle user, @NonNull Context context) {
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+                user, context);
         if (applicationInfo == null) {
             return null;
         }
@@ -831,24 +851,24 @@ public class Permissions {
         return AppOpsManager.opToDefaultMode(appOp);
     }
 
-    static boolean setAppOpUidMode(@NonNull String packageName, @NonNull String appOp, int mode,
-            @NonNull Context context) {
-        return setAppOpMode(packageName, appOp, mode, true, context);
+    static boolean setAppOpUidModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, @NonNull UserHandle user, @NonNull Context context) {
+        return setAppOpModeAsUser(packageName, appOp, mode, true, user, context);
     }
 
-    static boolean setAppOpPackageMode(@NonNull String packageName, @NonNull String appOp, int mode,
-            @NonNull Context context) {
-        return setAppOpMode(packageName, appOp, mode, false, context);
+    static boolean setAppOpPackageModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, @NonNull UserHandle user, @NonNull Context context) {
+        return setAppOpModeAsUser(packageName, appOp, mode, false, user, context);
     }
 
-    private static boolean setAppOpMode(@NonNull String packageName, @NonNull String appOp,
-            int mode, boolean setUidMode, @NonNull Context context) {
-        Integer currentMode = getAppOpMode(packageName, appOp, context);
+    private static boolean setAppOpModeAsUser(@NonNull String packageName, @NonNull String appOp,
+            int mode, boolean setUidMode, @NonNull UserHandle user, @NonNull Context context) {
+        Integer currentMode = getAppOpModeAsUser(packageName, appOp, user, context);
         if (currentMode != null && currentMode == mode) {
             return false;
         }
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             Log.e(LOG_TAG, "Cannot get ApplicationInfo for package to set app op mode: "
                     + packageName);
