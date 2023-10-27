@@ -57,7 +57,9 @@ public class RetailDemoRoleBehavior implements RoleBehavior {
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        UserManager userManager = context.getSystemService(UserManager.class);
-        return userManager.isSystemUser() || userManager.isMainUser() || userManager.isDemoUser();
+        Context userContext = UserUtils.getUserContext(context, user);
+        UserManager userUserManager = userContext.getSystemService(UserManager.class);
+        return userUserManager.isSystemUser() || userUserManager.isMainUser()
+                || userUserManager.isDemoUser();
     }
 }
