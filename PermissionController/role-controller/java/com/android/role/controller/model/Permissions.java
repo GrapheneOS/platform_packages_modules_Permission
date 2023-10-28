@@ -179,9 +179,10 @@ public class Permissions {
 
         boolean permissionOrAppOpChanged = false;
 
-        PackageManager packageManager = context.getPackageManager();
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         Set<String> whitelistedRestrictedPermissions = new ArraySet<>(
-                packageManager.getWhitelistedRestrictedPermissions(packageName,
+                userPackageManager.getWhitelistedRestrictedPermissions(packageName,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
 
         int sortedPermissionsToGrantLength = sortedPermissionsToGrant.length;
@@ -190,7 +191,7 @@ public class Permissions {
 
             if (isRestrictedPermission(permission, context)
                     && whitelistedRestrictedPermissions.add(permission)) {
-                packageManager.addWhitelistedRestrictedPermission(packageName, permission,
+                userPackageManager.addWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
 
@@ -437,9 +438,10 @@ public class Permissions {
             }
         }
 
-        PackageManager packageManager = context.getPackageManager();
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         Set<String> whitelistedRestrictedPermissions =
-                packageManager.getWhitelistedRestrictedPermissions(packageName,
+                userPackageManager.getWhitelistedRestrictedPermissions(packageName,
                     PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM
                     | PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
                     | PackageManager.FLAG_PERMISSION_WHITELIST_INSTALLER);
@@ -457,7 +459,7 @@ public class Permissions {
             // Remove from the system whitelist only if not granted by default.
             if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)
                     && whitelistedRestrictedPermissions.remove(permission)) {
-                packageManager.removeWhitelistedRestrictedPermission(packageName, permission,
+                userPackageManager.removeWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
         }

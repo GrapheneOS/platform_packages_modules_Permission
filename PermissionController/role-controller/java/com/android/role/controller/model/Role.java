@@ -801,7 +801,7 @@ public class Role {
         int preferredActivitiesSize = mPreferredActivities.size();
         for (int i = 0; i < preferredActivitiesSize; i++) {
             PreferredActivity preferredActivity = mPreferredActivities.get(i);
-            preferredActivity.configure(packageName, context);
+            preferredActivity.configureAsUser(packageName, Process.myUserHandle(), context);
         }
 
         if (mBehavior != null) {
@@ -825,8 +825,9 @@ public class Role {
      */
     public void revoke(@NonNull String packageName, boolean dontKillApp,
             boolean overrideSystemFixedPermissions, @NonNull Context context) {
-        RoleManager roleManager = context.getSystemService(RoleManager.class);
-        List<String> otherRoleNames = roleManager.getHeldRolesFromController(packageName);
+        Context userContext = UserUtils.getUserContext(context, Process.myUserHandle());
+        RoleManager userRoleManager = userContext.getSystemService(RoleManager.class);
+        List<String> otherRoleNames = userRoleManager.getHeldRolesFromController(packageName);
         otherRoleNames.remove(mName);
 
         List<String> permissionsToRevoke = Permissions.filterBySdkVersion(mPermissions);
