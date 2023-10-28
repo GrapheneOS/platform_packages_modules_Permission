@@ -18,7 +18,6 @@ package com.android.role.controller.behavior;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.os.Process;
 import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
@@ -49,16 +48,16 @@ public class EmergencyRoleBehavior implements RoleBehavior {
 
     @Nullable
     @Override
-    public String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
-        List<String> packageNames = role.getQualifyingPackagesAsUser(Process.myUserHandle(),
-                context);
+    public String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        List<String> packageNames = role.getQualifyingPackagesAsUser(user, context);
         PackageInfo fallbackPackageInfo = null;
         int packageNamesSize = packageNames.size();
         for (int i = 0; i < packageNamesSize; i++) {
             String packageName = packageNames.get(i);
 
             PackageInfo packageInfo = PackageUtils.getPackageInfoAsUser(packageName, 0,
-                    Process.myUserHandle(), context);
+                    user, context);
             if (packageInfo == null) {
                 continue;
             }

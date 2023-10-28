@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Process;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -61,13 +60,15 @@ public final class PackageUtils {
      * Retrieve if a package is a system package.
      *
      * @param packageName the name of the package
+     * @param user the user of the package
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether the package is a system package
      */
-    public static boolean isSystemPackage(@NonNull String packageName, @NonNull Context context) {
-        return getPackageInfoAsUser(packageName, PackageManager.MATCH_SYSTEM_ONLY,
-                Process.myUserHandle(), context) != null;
+    public static boolean isSystemPackageAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        return getPackageInfoAsUser(packageName, PackageManager.MATCH_SYSTEM_ONLY, user, context)
+                != null;
     }
 
     /**

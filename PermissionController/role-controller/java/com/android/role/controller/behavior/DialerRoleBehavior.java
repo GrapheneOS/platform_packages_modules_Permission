@@ -17,6 +17,7 @@
 package com.android.role.controller.behavior;
 
 import android.content.Context;
+import android.os.Process;
 import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
@@ -56,8 +57,9 @@ public class DialerRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         if (SdkLevel.isAtLeastS()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
                 Permissions.grant(packageName, SYSTEM_DIALER_PERMISSIONS, false, false,
                         true, false, false, context);
             }
