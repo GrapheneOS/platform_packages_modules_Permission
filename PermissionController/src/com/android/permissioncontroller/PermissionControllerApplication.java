@@ -21,6 +21,7 @@ import android.content.ComponentName;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Process;
 import android.util.ArrayMap;
 import android.view.accessibility.AccessibilityManager;
 
@@ -71,7 +72,8 @@ public final class PermissionControllerApplication extends Application {
         for (int i = 0; i < rolesSize; i++) {
             Role role = roles.valueAt(i);
 
-            if (!role.isAvailable(this) || !RoleUiBehaviorUtils.isVisible(role, this)) {
+            if (!role.isAvailableAsUser(Process.myUserHandle(), this)
+                    || !RoleUiBehaviorUtils.isVisible(role, this)) {
                 continue;
             }
             if (!role.isExclusive()) {

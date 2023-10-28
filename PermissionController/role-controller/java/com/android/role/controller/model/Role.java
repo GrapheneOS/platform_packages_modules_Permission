@@ -402,17 +402,6 @@ public class Role {
         }
     }
 
-    /**
-     * Check whether this role is available, for current user.
-     *
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether this role is available.
-     */
-    public boolean isAvailable(@NonNull Context context) {
-        return isAvailableAsUser(Process.myUserHandle(), context);
-    }
-
     public boolean isStatic() {
         return mStatic;
     }
@@ -814,8 +803,8 @@ public class Role {
 
         if (!dontKillApp && permissionOrAppOpChanged
                 && !Permissions.isRuntimePermissionsSupportedAsUser(packageName,
-                        Process.myUserHandle(), context)) {
-            killApp(packageName, context);
+                Process.myUserHandle(), context)) {
+            killAppAsUser(packageName, Process.myUserHandle(), context);
         }
     }
 
@@ -880,18 +869,19 @@ public class Role {
         }
 
         if (!dontKillApp && permissionOrAppOpChanged) {
-            killApp(packageName, context);
+            killAppAsUser(packageName, Process.myUserHandle(), context);
         }
     }
 
-    private void killApp(@NonNull String packageName, @NonNull Context context) {
+    private void killAppAsUser(@NonNull String packageName, @NonNull UserHandle user,
+            @NonNull Context context) {
         if (DEBUG) {
             Log.i(LOG_TAG, "Killing " + packageName + " due to "
                     + Thread.currentThread().getStackTrace()[3].getMethodName()
                     + "(" + mName + ")");
         }
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName);
             return;

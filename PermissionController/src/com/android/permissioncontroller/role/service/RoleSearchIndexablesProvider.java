@@ -20,6 +20,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Binder;
+import android.os.Process;
 import android.provider.SearchIndexablesContract;
 import android.util.ArrayMap;
 
@@ -61,8 +62,8 @@ public class RoleSearchIndexablesProvider extends BaseSearchIndexablesProvider {
 
             long token = Binder.clearCallingIdentity();
             try {
-                if (!role.isAvailable(context) || !RoleUiBehaviorUtils.isVisible(role,
-                        context)) {
+                if (!role.isAvailableAsUser(Process.myUserHandle(), context)
+                        || !RoleUiBehaviorUtils.isVisible(role, context)) {
                     continue;
                 }
             } finally {

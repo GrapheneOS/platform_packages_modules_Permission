@@ -19,6 +19,7 @@ package com.android.permissioncontroller.role.ui.specialappaccess;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Process;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -71,7 +72,7 @@ public class SpecialAppAccessActivity extends SettingsActivity {
             finish();
             return;
         }
-        if (!role.isAvailable(this)) {
+        if (!role.isAvailableAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             finish();
             return;
