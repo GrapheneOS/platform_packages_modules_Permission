@@ -17,7 +17,7 @@
 package com.android.role.controller.behavior;
 
 import android.content.Context;
-import android.os.Process;
+import android.os.UserHandle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -36,9 +36,9 @@ public class DocumentManagerRoleBehavior implements RoleBehavior {
 
     @NonNull
     @Override
-    public List<String> getDefaultHolders(@NonNull Role role, @NonNull Context context) {
-        List<String> qualifyingPackageNames = role.getQualifyingPackagesAsUser(
-                Process.myUserHandle(), context);
+    public List<String> getDefaultHoldersAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        List<String> qualifyingPackageNames = role.getQualifyingPackagesAsUser(user, context);
         if (qualifyingPackageNames.size() == 1) {
             return qualifyingPackageNames;
         } else {

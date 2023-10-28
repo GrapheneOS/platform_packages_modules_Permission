@@ -61,10 +61,10 @@ public class BrowserRoleBehavior implements RoleBehavior {
 
     @Nullable
     @Override
-    public String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
-        List<String> qualifyingPackageNames = getQualifyingPackagesAsUserInternal(null, false, user,
-                context);
+    public String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        List<String> qualifyingPackageNames = getQualifyingPackagesAsUserInternal(null, false,
+                user, context);
         if (qualifyingPackageNames.size() == 1) {
             return qualifyingPackageNames.get(0);
         }
@@ -76,7 +76,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
                 return qualifyingSystemPackageNames.get(0);
             }
 
-            List<String> defaultPackageNames = role.getDefaultHolders(context);
+            List<String> defaultPackageNames = role.getDefaultHoldersAsUser(user, context);
             return CollectionUtils.firstOrNull(defaultPackageNames);
         } else {
             return null;
@@ -134,10 +134,11 @@ public class BrowserRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        UserHandle user = Process.myUserHandle();
         // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
         //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
         if (SdkLevel.isAtLeastS()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
                 Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, true,
                         false, false, context);
             }
@@ -147,7 +148,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
         if (SdkLevel.isAtLeastT()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, Process.myUserHandle(), context)) {
                 Permissions.revoke(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false, false,
                         context);
             }

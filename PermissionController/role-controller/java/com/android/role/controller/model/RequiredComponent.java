@@ -25,7 +25,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
 
@@ -145,15 +144,16 @@ public abstract class RequiredComponent {
      * Get the component that matches this required component within a package, if any.
      *
      * @param packageName the package name for this query
+     * @param user the user of the component
      * @param context the {@code Context} to retrieve system services
      *
      * @return the matching component, or {@code null} if none.
      */
     @Nullable
-    public ComponentName getQualifyingComponentForPackage(@NonNull String packageName,
-            @NonNull Context context) {
-        List<ComponentName> componentNames = getQualifyingComponentsInternal(packageName,
-                Process.myUserHandle(), context);
+    public ComponentName getQualifyingComponentForPackageAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        List<ComponentName> componentNames = getQualifyingComponentsAsUserInternal(packageName,
+                user, context);
         return !componentNames.isEmpty() ? componentNames.get(0) : null;
     }
 
@@ -171,11 +171,11 @@ public abstract class RequiredComponent {
     @NonNull
     public List<ComponentName> getQualifyingComponentsAsUser(@NonNull UserHandle user,
             @NonNull Context context) {
-        return getQualifyingComponentsInternal(null, user, context);
+        return getQualifyingComponentsAsUserInternal(null, user, context);
     }
 
     @NonNull
-    private List<ComponentName> getQualifyingComponentsInternal(@Nullable String packageName,
+    private List<ComponentName> getQualifyingComponentsAsUserInternal(@Nullable String packageName,
             @NonNull UserHandle user, @NonNull Context context) {
         Intent intent = mIntentFilterData.createIntent();
         if (packageName != null) {

@@ -410,15 +410,16 @@ public class Role {
      * Get the default holders of this role, which will be added when the role is added for the
      * first time.
      *
+     * @param user the user of the role
      * @param context the {@code Context} to retrieve system services
-     *
      * @return the list of package names of the default holders
      */
     @NonNull
-    public List<String> getDefaultHolders(@NonNull Context context) {
+    public List<String> getDefaultHoldersAsUser(@NonNull UserHandle user,
+            @NonNull Context context) {
         if (mDefaultHoldersResourceName == null) {
             if (mBehavior != null) {
-                return mBehavior.getDefaultHolders(this, context);
+                return mBehavior.getDefaultHoldersAsUser(this, user, context);
             }
             return Collections.emptyList();
         }
@@ -444,7 +445,8 @@ public class Role {
         }
 
         if (isExclusive()) {
-            String packageName = getQualifiedDefaultHolderPackageName(defaultHolders, context);
+            String packageName = getQualifiedDefaultHolderPackageNameAsUser(defaultHolders, user,
+                    context);
             if (packageName == null) {
                 return Collections.emptyList();
             }
@@ -452,7 +454,8 @@ public class Role {
         } else {
             List<String> packageNames = new ArrayList<>();
             for (String defaultHolder : defaultHolders.split(DEFAULT_HOLDER_SEPARATOR)) {
-                String packageName = getQualifiedDefaultHolderPackageName(defaultHolders, context);
+                String packageName = getQualifiedDefaultHolderPackageNameAsUser(defaultHolders,
+                        user, context);
                 if (packageName != null) {
                     packageNames.add(packageName);
                 }
@@ -462,8 +465,8 @@ public class Role {
     }
 
     @Nullable
-    private String getQualifiedDefaultHolderPackageName(@NonNull String defaultHolder,
-            @NonNull Context context) {
+    private String getQualifiedDefaultHolderPackageNameAsUser(@NonNull String defaultHolder,
+            @NonNull UserHandle user, @NonNull Context context) {
         String packageName;
         byte[] certificate;
         int certificateSeparatorIndex = defaultHolder.indexOf(CERTIFICATE_SEPARATOR);
@@ -482,8 +485,9 @@ public class Role {
         }
 
         if (certificate != null) {
-            PackageManager packageManager = context.getPackageManager();
-            if (!packageManager.hasSigningCertificate(packageName, certificate,
+            Context userContext = UserUtils.getUserContext(context, user);
+            PackageManager userPackageManager = userContext.getPackageManager();
+            if (!userPackageManager.hasSigningCertificate(packageName, certificate,
                     PackageManager.CERT_INPUT_SHA256)) {
                 Log.w(LOG_TAG, "Default holder doesn't have required signing certificate: "
                         + defaultHolder);
@@ -491,7 +495,7 @@ public class Role {
             }
         } else {
             ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                    Process.myUserHandle(), context);
+                    user, context);
             if (applicationInfo == null) {
                 Log.w(LOG_TAG, "Cannot get ApplicationInfo for default holder: " + packageName);
                 return null;
@@ -511,20 +515,20 @@ public class Role {
      * <p>
      * Should return {@code null} if this role {@link #mShowNone shows a "None" item}.
      *
+     * @param user the user of the role
      * @param context the {@code Context} to retrieve system services
-     *
      * @return the package name of the fallback holder, or {@code null} if none
      */
     @Nullable
-    public String getFallbackHolder(@NonNull Context context) {
-        if (!RoleManagerCompat.isRoleFallbackEnabledAsUser(this, Process.myUserHandle(), context)) {
+    public String getFallbackHolderAsUser(@NonNull UserHandle user, @NonNull Context context) {
+        if (!RoleManagerCompat.isRoleFallbackEnabledAsUser(this, user, context)) {
             return null;
         }
         if (mFallBackToDefaultHolder) {
-            return CollectionUtils.firstOrNull(getDefaultHolders(context));
+            return CollectionUtils.firstOrNull(getDefaultHoldersAsUser(user, context));
         }
         if (mBehavior != null) {
-            return mBehavior.getFallbackHolder(this, context);
+            return mBehavior.getFallbackHolderAsUser(this, user, context);
         }
         return null;
     }
@@ -552,30 +556,32 @@ public class Role {
      * components (plus meeting some other general restrictions).
      *
      * @param packageName the package name to check for
+     * @param user the user to check for
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether the package is qualified for a role
      */
-    public boolean isPackageQualified(@NonNull String packageName, @NonNull Context context) {
+    public boolean isPackageQualifiedAsUser(@NonNull String packageName, @NonNull UserHandle user,
+            @NonNull Context context) {
         RoleManager roleManager = context.getSystemService(RoleManager.class);
         if (shouldAllowBypassingQualification(context)
                 && RoleManagerCompat.isBypassingRoleQualification(roleManager)) {
             return true;
         }
 
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                Process.myUserHandle(), context);
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                context);
         if (applicationInfo == null) {
             Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName);
             return false;
         }
-        if (!isPackageMinimallyQualifiedAsUser(applicationInfo, Process.myUserHandle(), context)) {
+        if (!isPackageMinimallyQualifiedAsUser(applicationInfo, user, context)) {
             return false;
         }
 
         if (mBehavior != null) {
             Boolean isPackageQualified = mBehavior.isPackageQualifiedAsUser(this, packageName,
-                    Process.myUserHandle(), context);
+                    user, context);
             if (isPackageQualified != null) {
                 return isPackageQualified;
             }
@@ -589,14 +595,15 @@ public class Role {
                 continue;
             }
 
-            if (requiredComponent.getQualifyingComponentForPackage(packageName, context) == null) {
+            if (requiredComponent.getQualifyingComponentForPackageAsUser(packageName, user, context)
+                    == null) {
                 Log.i(LOG_TAG, packageName + " not qualified for " + mName
                         + " due to missing " + requiredComponent);
                 return false;
             }
         }
 
-        if (mStatic && !getDefaultHolders(context).contains(packageName)) {
+        if (mStatic && !getDefaultHoldersAsUser(user, context).contains(packageName)) {
             return false;
         }
 

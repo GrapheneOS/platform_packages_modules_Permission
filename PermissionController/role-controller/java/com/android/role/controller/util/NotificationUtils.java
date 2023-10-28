@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
+import android.os.UserHandle;
 import android.service.notification.NotificationListenerService;
 import android.util.Log;
 
@@ -44,41 +45,45 @@ public final class NotificationUtils {
     /**
      * Grants the NotificationListener access.
      *
-     * @param context     the {@code Context} to retrieve system services
      * @param packageName the package name implements the NotificationListener
+     * @param user the user of the component
+     * @param context the {@code Context} to retrieve system services
      */
-    public static void grantNotificationAccessForPackage(@NonNull Context context,
-            @NonNull String packageName) {
-        setNotificationGrantStateForPackage(context, packageName, true);
+    public static void grantNotificationAccessForPackageAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        setNotificationGrantStateForPackageAsUser(packageName, true, user, context);
     }
 
     /**
      * Revokes the NotificationListener access.
      *
-     * @param context     the {@code Context} to retrieve system services
      * @param packageName the package name implements the NotificationListener
+     * @param user the user of the component
+     * @param context the {@code Context} to retrieve system services
      */
-    public static void revokeNotificationAccessForPackage(@NonNull Context context,
-            @NonNull String packageName) {
-        setNotificationGrantStateForPackage(context, packageName, false);
+    public static void revokeNotificationAccessForPackageAsUser(@NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        setNotificationGrantStateForPackageAsUser(packageName, false, user, context);
     }
 
 
-    private static void setNotificationGrantStateForPackage(@NonNull Context context,
-            @NonNull String packageName, boolean granted) {
+    private static void setNotificationGrantStateForPackageAsUser(@NonNull String packageName,
+            boolean granted, @NonNull UserHandle user, @NonNull Context context) {
         List<ComponentName> notificationListenersForPackage =
-                getNotificationListenersForPackage(packageName, context);
-        NotificationManager notificationManager =
-                context.getSystemService(NotificationManager.class);
+                getNotificationListenersForPackageAsUser(packageName, user, context);
+        Context userContext = UserUtils.getUserContext(context, user);
+        NotificationManager userNotificationManager =
+                userContext.getSystemService(NotificationManager.class);
         for (ComponentName componentName : notificationListenersForPackage) {
-            notificationManager.setNotificationListenerAccessGranted(
+            userNotificationManager.setNotificationListenerAccessGranted(
                     componentName, granted, false);
         }
     }
 
-    private static List<ComponentName> getNotificationListenersForPackage(
-            @NonNull String packageName, @NonNull Context context) {
-        List<ResolveInfo> allListeners = context.getPackageManager().queryIntentServices(
+    private static List<ComponentName> getNotificationListenersForPackageAsUser(
+            @NonNull String packageName, @NonNull UserHandle user, @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        List<ResolveInfo> allListeners = userContext.getPackageManager().queryIntentServices(
                 new Intent(NotificationListenerService.SERVICE_INTERFACE).setPackage(packageName),
                 PackageManager.MATCH_DIRECT_BOOT_AWARE | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
         ArrayList<ComponentName> pkgListeners = new ArrayList<>();
