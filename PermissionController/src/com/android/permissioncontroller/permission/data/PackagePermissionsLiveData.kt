@@ -22,6 +22,7 @@ import android.content.pm.PermissionInfo
 import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.permission.utils.HealthPermissionUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import kotlinx.coroutines.Job
 
@@ -37,8 +38,8 @@ import kotlinx.coroutines.Job
  */
 class PackagePermissionsLiveData private constructor(
     private val app: Application,
-    packageName: String,
-    user: UserHandle
+    private val packageName: String,
+    private val user: UserHandle
 ) : SmartAsyncMediatorLiveData<Map<String, List<String>>?>() {
 
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
@@ -94,6 +95,12 @@ class PackagePermissionsLiveData private constructor(
                 }
 
                 groupName = PermissionMapping.getGroupOfPermission(permInfo) ?: permName
+            }
+
+            if (HealthPermissionUtils.isHealthPermissionAndShowing(groupName)) {
+                if (!HealthPermissionUtils.hasRationaleIntent(app, packageName, user)) {
+                    continue
+                }
             }
 
             permissionMap.getOrPut(groupName) { mutableListOf() }.add(permName)
