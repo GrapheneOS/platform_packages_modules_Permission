@@ -33,6 +33,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
 import com.android.permissioncontroller.permission.utils.PermissionMapping.isPlatformPermissionGroup
+import com.android.permissioncontroller.permission.utils.HealthPermissionUtils
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
@@ -127,6 +128,7 @@ class AppPermGroupUiInfoLiveData private constructor(
 
         val shouldShow = packageInfo.enabled &&
             isGrantableAndNotLegacyPlatform(packageInfo, groupInfo, requestedPermissionInfos) &&
+            (!HealthPermissionUtils.isHealthPermissionAndShowing(groupInfo.name) || HealthPermissionUtils.hasRationaleIntent(app, packageName, user)) &&
             (!isStorage || Utils.shouldShowStorage(packageInfo))
 
         val isSystemApp = !isUserSensitive(permissionState)
