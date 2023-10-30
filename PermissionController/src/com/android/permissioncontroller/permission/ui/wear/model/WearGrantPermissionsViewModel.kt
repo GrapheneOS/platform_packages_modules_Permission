@@ -32,7 +32,7 @@ class WearGrantPermissionsViewModel : ViewModel() {
     val groupMessageLiveData = MutableLiveData<String>()
 
     /** A livedata which stores the permission group detail message. */
-    val detailMessageLiveData = MutableLiveData<String?>()
+    val detailMessageLiveData = MutableLiveData<CharSequence?>()
 
     /** A livedata which stores the permission group location-granularity visibilities. */
     val locationVisibilitiesLiveData = MutableLiveData<List<Boolean>>()
