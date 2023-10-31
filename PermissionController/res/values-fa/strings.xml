@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="6098036489833144040">"کنترل‌کننده اجازه"</string>
     <string name="ok" msgid="1936281769725676272">"تأیید"</string>
-    <string name="permission_search_keyword" msgid="1214451577494730543">"مجوزها"</string>
+    <string name="permission_search_keyword" msgid="1214451577494730543">"اجازه‌ها"</string>
     <string name="cancel" msgid="8943320028373963831">"لغو"</string>
     <string name="back" msgid="6249950659061523680">"برگشت"</string>
     <string name="available" msgid="6007778121920339498">"دردسترس"</string>
@@ -111,7 +111,7 @@
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"فقط هنگام استفاده از برنامه مجاز است"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"اجازه ندادن"</string>
     <string name="loading" msgid="4789365003890741082">"درحال بارگیری…"</string>
-    <string name="all_permissions" msgid="6911125611996872522">"همه مجوزها"</string>
+    <string name="all_permissions" msgid="6911125611996872522">"همه اجازه‌ها"</string>
     <string name="other_permissions" msgid="2901186127193849594">"سایر قابلیت‌های برنامه"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"درخواست اجازه"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
@@ -143,7 +143,7 @@
     <string name="duration_used_hours" msgid="4983814806123370332">"{count,plural, =1{# ساعت}one{# ساعت}other{# ساعت}}"</string>
     <string name="duration_used_minutes" msgid="1701379522897227819">"{count,plural, =1{# دقیقه}one{# دقیقه}other{# دقیقه}}"</string>
     <string name="duration_used_seconds" msgid="4067390990568727715">"{count,plural, =1{# ثانیه}one{# ثانیه}other{# ثانیه}}"</string>
-    <string name="permission_usage_any_permission" msgid="6358023078298106997">"همه مجوزها"</string>
+    <string name="permission_usage_any_permission" msgid="6358023078298106997">"همه اجازه‌ها"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"هر زمانی"</string>
     <string name="permission_usage_last_n_days" msgid="7882626467375714145">"{count,plural, =1{# روز گذشته}one{# روز گذشته}other{# روز گذشته}}"</string>
     <string name="permission_usage_last_n_hours" msgid="8490466053680267858">"{count,plural, =1{# ساعت گذشته}one{# ساعت گذشته}other{# ساعت گذشته}}"</string>
@@ -158,9 +158,9 @@
     <string name="permission_usage_bar_chart_title_any_time" msgid="2845251288192246754">"پراستفاده‌ترین مجوز در هرزمانی"</string>
     <string name="permission_usage_bar_chart_title_last_7_days" msgid="5796577162176938349">"پراستفاده‌ترین مجوز در ۷ روز گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"پراستفاده‌ترین مجوز در ۲۴ ساعت گذشته"</string>
-    <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"پراستفاده‌ترین مجوزها در ۱ ساعت گذشته"</string>
+    <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"پراستفاده‌ترین اجازه‌ها در ۱ ساعت گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"پراستفاده‌ترین مجوزها در ۱۵ دقیقه گذشته"</string>
-    <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"پراستفاده‌ترین مجوزها در ۱ دقیقه گذشته"</string>
+    <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"پراستفاده‌ترین اجازه‌ها در ۱ دقیقه گذشته"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{در # روز گذشته استفاده نشده است}one{در # روز گذشته استفاده نشده است}other{در # روز گذشته استفاده نشده است}}"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{در # ساعت گذشته استفاده نشده است}one{در # ساعت گذشته استفاده نشده است}other{در # ساعت گذشته استفاده نشده است}}"</string>
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{یک برنامه از آن استفاده کرده است}one{# برنامه از آن استفاده کرده است}other{# برنامه از آن استفاده کرده است}}"</string>
@@ -168,9 +168,9 @@
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"فیلترشده براساس: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"حذف فیلتر"</string>
     <string name="filter_by_title" msgid="7300368602759958031">"فیلتر کردن براساس"</string>
-    <string name="filter_by_permissions" msgid="7613462963111282568">"فیلتر کردن براساس مجوزها"</string>
+    <string name="filter_by_permissions" msgid="7613462963111282568">"فیلتر کردن براساس اجازه‌ها"</string>
     <string name="filter_by_time" msgid="6667864816999691642">"فیلتر براساس زمان"</string>
-    <string name="sort_spinner_most_permissions" msgid="1704349738096822836">"بیشترین مجوزها"</string>
+    <string name="sort_spinner_most_permissions" msgid="1704349738096822836">"بیشترین اجازه‌ها"</string>
     <string name="sort_spinner_most_accesses" msgid="5283913004357220161">"بیشترین تعداد دسترسی"</string>
     <string name="sort_spinner_recent" msgid="7513845273076525203">"اخیر"</string>
     <string name="sort_by_app" msgid="4055799843051138087">"به‌ترتیب استفاده برنامه"</string>
@@ -450,7 +450,7 @@
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"تنظیمات پیشرفته"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"تنظیمات پیشرفته"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"نمایش استفادهٔ برنامه سیستم"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"نمایش استفاده برنامه سیستم از مجوزها در نوار وضعیت، داشبورد، و جاهای دیگر"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"نمایش استفاده برنامه سیستم از اجازه‌ها در نوار وضعیت، داشبورد، و جاهای دیگر"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"برجسته کردن استفاده برای موارد زیر"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"نمایش دستیار تشخیص راه‌انداز"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"نمایش نماد مربوطه در نوار وضعیت وقتی از میکروفون برای فعال کردن دستیار صوتی استفاده می‌شود"</string>
