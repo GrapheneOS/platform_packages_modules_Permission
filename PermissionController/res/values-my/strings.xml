@@ -60,8 +60,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"အက်ပ်များ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"အက်ပ်ခွင့်ပြုချက်များ"</string>
     <string name="unused_apps" msgid="2058057455175955094">"အသုံးမပြုသော အက်ပ်များ"</string>
-    <!-- no translation found for edit_photos_description (5540108003480078892) -->
-    <skip />
+    <string name="edit_photos_description" msgid="5540108003480078892">"ဤအက်ပ်အတွက် ရွေးထားသောဓာတ်ပုံများကို ပြင်ရန်"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"အသုံးမပြုသောအက်ပ်များ မရှိပါ"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"အသုံးမပြုသောအက်ပ် 0 ခု"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"လတ်တလောခွင့်ပြုသည့် ဆုံးဖြတ်ချက်များ"</string>
