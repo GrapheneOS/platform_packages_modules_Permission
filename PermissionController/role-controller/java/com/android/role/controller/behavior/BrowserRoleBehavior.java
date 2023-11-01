@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
 
@@ -133,24 +132,25 @@ public class BrowserRoleBehavior implements RoleBehavior {
     }
 
     @Override
-    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public void grantAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
         //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
         if (SdkLevel.isAtLeastS()) {
             if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
-                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, true,
-                        false, false, context);
+                Permissions.grantAsUser(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false,
+                        true, false, false, user, context);
             }
         }
     }
 
     @Override
-    public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+    public void revokeAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (SdkLevel.isAtLeastT()) {
-            if (PackageUtils.isSystemPackageAsUser(packageName, Process.myUserHandle(), context)) {
-                Permissions.revoke(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false, false,
-                        context);
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
+                Permissions.revokeAsUser(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false,
+                        false, user, context);
             }
         }
     }

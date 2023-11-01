@@ -22,9 +22,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
+
+import com.android.role.controller.util.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,18 +70,21 @@ public class PreferredActivity {
      * Configure this preferred activity specification for an application.
      *
      * @param packageName the package name of the application
+     * @param user the user of the application
      * @param context the {@code Context} to retrieve system services
      */
-    public void configure(@NonNull String packageName, @NonNull Context context) {
+    public void configureAsUser(@NonNull String packageName, @NonNull UserHandle user,
+            @NonNull Context context) {
         ComponentName packageActivity = mActivity.getQualifyingComponentForPackageAsUser(
-                packageName, Process.myUserHandle(), context);
+                packageName, user, context);
         if (packageActivity == null) {
             // We might be running into some race condition here, but we can't do anything about it.
             // This should be handled by a future reconciliation started by the package change.
             return;
         }
 
-        PackageManager packageManager = context.getPackageManager();
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         int intentFilterDatasSize = mIntentFilterDatas.size();
         for (int i = 0; i < intentFilterDatasSize; i++) {
             IntentFilterData intentFilterData = mIntentFilterDatas.get(i);
@@ -93,7 +98,7 @@ public class PreferredActivity {
                     ? IntentFilter.MATCH_CATEGORY_SCHEME : IntentFilter.MATCH_CATEGORY_EMPTY;
 
             Intent intent = intentFilterData.createIntent();
-            List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent,
+            List<ResolveInfo> resolveInfos = userPackageManager.queryIntentActivities(intent,
                     PackageManager.MATCH_DIRECT_BOOT_AWARE
                             | PackageManager.MATCH_DIRECT_BOOT_UNAWARE
                             | PackageManager.MATCH_DEFAULT_ONLY);
@@ -108,7 +113,7 @@ public class PreferredActivity {
                 set.add(componentName);
             }
 
-            packageManager.replacePreferredActivity(intentFilter, match, set, packageActivity);
+            userPackageManager.replacePreferredActivity(intentFilter, match, set, packageActivity);
         }
     }
 

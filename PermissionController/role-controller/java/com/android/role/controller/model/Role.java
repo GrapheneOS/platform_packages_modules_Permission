@@ -26,7 +26,6 @@ import android.content.pm.SharedLibraryInfo;
 import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Process;
 import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.ArrayMap;
@@ -776,42 +775,42 @@ public class Role {
      * @param packageName the package name of the application to be granted this role to
      * @param dontKillApp whether this application should not be killed despite changes
      * @param overrideUser whether to override user when granting privileges
+     * @param user the user of the application
      * @param context the {@code Context} to retrieve system services
      */
-    public void grant(@NonNull String packageName, boolean dontKillApp,
-            boolean overrideUser, @NonNull Context context) {
-        boolean permissionOrAppOpChanged = Permissions.grant(packageName,
+    public void grantAsUser(@NonNull String packageName, boolean dontKillApp,
+            boolean overrideUser, @NonNull UserHandle user, @NonNull Context context) {
+        boolean permissionOrAppOpChanged = Permissions.grantAsUser(packageName,
                 Permissions.filterBySdkVersion(mPermissions),
                 SdkLevel.isAtLeastS() ? !mSystemOnly : true, overrideUser, true, false, false,
-                context);
+                user, context);
 
         List<String> appOpPermissionsToGrant = Permissions.filterBySdkVersion(mAppOpPermissions);
         int appOpPermissionsSize = appOpPermissionsToGrant.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
             String appOpPermission = appOpPermissionsToGrant.get(i);
-            AppOpPermissions.grant(packageName, appOpPermission, overrideUser, context);
+            AppOpPermissions.grantAsUser(packageName, appOpPermission, overrideUser, user, context);
         }
 
         int appOpsSize = mAppOps.size();
         for (int i = 0; i < appOpsSize; i++) {
             AppOp appOp = mAppOps.get(i);
-            appOp.grant(packageName, context);
+            appOp.grantAsUser(packageName, user, context);
         }
 
         int preferredActivitiesSize = mPreferredActivities.size();
         for (int i = 0; i < preferredActivitiesSize; i++) {
             PreferredActivity preferredActivity = mPreferredActivities.get(i);
-            preferredActivity.configure(packageName, context);
+            preferredActivity.configureAsUser(packageName, user, context);
         }
 
         if (mBehavior != null) {
-            mBehavior.grant(this, packageName, context);
+            mBehavior.grantAsUser(this, packageName, user, context);
         }
 
         if (!dontKillApp && permissionOrAppOpChanged
-                && !Permissions.isRuntimePermissionsSupportedAsUser(packageName,
-                Process.myUserHandle(), context)) {
-            killAppAsUser(packageName, Process.myUserHandle(), context);
+                && !Permissions.isRuntimePermissionsSupportedAsUser(packageName, user, context)) {
+            killAppAsUser(packageName, user, context);
         }
     }
 
@@ -821,12 +820,15 @@ public class Role {
      * @param packageName the package name of the application to be granted this role to
      * @param dontKillApp whether this application should not be killed despite changes
      * @param overrideSystemFixedPermissions whether system-fixed permissions can be revoked
+     * @param user the user of the role
      * @param context the {@code Context} to retrieve system services
      */
-    public void revoke(@NonNull String packageName, boolean dontKillApp,
-            boolean overrideSystemFixedPermissions, @NonNull Context context) {
-        RoleManager roleManager = context.getSystemService(RoleManager.class);
-        List<String> otherRoleNames = roleManager.getHeldRolesFromController(packageName);
+    public void revokeAsUser(@NonNull String packageName, boolean dontKillApp,
+            boolean overrideSystemFixedPermissions, @NonNull UserHandle user,
+            @NonNull Context context) {
+        Context userContext = UserUtils.getUserContext(context, user);
+        RoleManager userRoleManager = userContext.getSystemService(RoleManager.class);
+        List<String> otherRoleNames = userRoleManager.getHeldRolesFromController(packageName);
         otherRoleNames.remove(mName);
 
         List<String> permissionsToRevoke = Permissions.filterBySdkVersion(mPermissions);
@@ -838,8 +840,8 @@ public class Role {
             permissionsToRevoke.removeAll(Permissions.filterBySdkVersion(role.mPermissions));
         }
 
-        boolean permissionOrAppOpChanged = Permissions.revoke(packageName, permissionsToRevoke,
-                true, false, overrideSystemFixedPermissions, context);
+        boolean permissionOrAppOpChanged = Permissions.revokeAsUser(packageName,
+                permissionsToRevoke, true, false, overrideSystemFixedPermissions, user, context);
 
         List<String> appOpPermissionsToRevoke = Permissions.filterBySdkVersion(mAppOpPermissions);
         for (int i = 0; i < otherRoleNamesSize; i++) {
@@ -851,7 +853,7 @@ public class Role {
         int appOpPermissionsSize = appOpPermissionsToRevoke.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
             String appOpPermission = appOpPermissionsToRevoke.get(i);
-            AppOpPermissions.revoke(packageName, appOpPermission, context);
+            AppOpPermissions.revokeAsUser(packageName, appOpPermission, user, context);
         }
 
         List<AppOp> appOpsToRevoke = new ArrayList<>(mAppOps);
@@ -863,7 +865,7 @@ public class Role {
         int appOpsSize = appOpsToRevoke.size();
         for (int i = 0; i < appOpsSize; i++) {
             AppOp appOp = appOpsToRevoke.get(i);
-            appOp.revoke(packageName, context);
+            appOp.revokeAsUser(packageName, user, context);
         }
 
         // TODO: Revoke preferred activities? But this is unnecessary for most roles using it as
@@ -872,11 +874,11 @@ public class Role {
         //  wrong thing when we are removing a exclusive role holder for adding another.
 
         if (mBehavior != null) {
-            mBehavior.revoke(this, packageName, context);
+            mBehavior.revokeAsUser(this, packageName, user, context);
         }
 
         if (!dontKillApp && permissionOrAppOpChanged) {
-            killAppAsUser(packageName, Process.myUserHandle(), context);
+            killAppAsUser(packageName, user, context);
         }
     }
 

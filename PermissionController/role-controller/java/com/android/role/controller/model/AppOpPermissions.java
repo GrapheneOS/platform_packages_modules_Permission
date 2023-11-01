@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Process;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -44,13 +43,13 @@ public class AppOpPermissions {
      * @param appOpPermission the name of the app op permission
      * @param overrideNonDefaultMode whether to override the app opp mode if it isn't in the default
      *        mode
+     * @param user the user of the application
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether any app op mode has changed
      */
-    public static boolean grant(@NonNull String packageName, @NonNull String appOpPermission,
-            boolean overrideNonDefaultMode, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public static boolean grantAsUser(@NonNull String packageName, @NonNull String appOpPermission,
+            boolean overrideNonDefaultMode, @NonNull UserHandle user, @NonNull Context context) {
         PackageInfo packageInfo = PackageUtils.getPackageInfoAsUser(packageName,
                 PackageManager.GET_PERMISSIONS, user, context);
         if (packageInfo == null) {
@@ -80,13 +79,13 @@ public class AppOpPermissions {
      *
      * @param packageName the package name of the application
      * @param appOpPermission the name of the app op permission
+     * @param user the user of the application
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether any app op mode has changed
      */
-    public static boolean revoke(@NonNull String packageName, @NonNull String appOpPermission,
-            @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public static boolean revokeAsUser(@NonNull String packageName, @NonNull String appOpPermission,
+            @NonNull UserHandle user, @NonNull Context context) {
         if (!Permissions.isPermissionGrantedByRoleAsUser(packageName, appOpPermission, user,
                 context)) {
             return false;
