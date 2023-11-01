@@ -78,10 +78,11 @@ import kotlinx.coroutines.launch
 fun ScrollableScreen(
     showTimeText: Boolean = true,
     title: String? = null,
-    subtitle: String? = null,
+    subtitle: CharSequence? = null,
     image: Any? = null,
     isLoading: Boolean = false,
     titleTestTag: String? = null,
+    subtitleTestTag: String? = null,
     content: ScalingLazyListScope.() -> Unit,
 ) {
     var dismissed by remember { mutableStateOf(false) }
@@ -99,11 +100,29 @@ fun ScrollableScreen(
             if (isBackground || dismissed) {
                 Box(modifier = Modifier.fillMaxSize())
             } else {
-                Scaffold(showTimeText, title, subtitle, image, isLoading, content, titleTestTag)
+                Scaffold(
+                    showTimeText,
+                    title,
+                    subtitle,
+                    image,
+                    isLoading,
+                    content,
+                    titleTestTag,
+                    subtitleTestTag
+                )
             }
         }
     } else {
-        Scaffold(showTimeText, title, subtitle, image, isLoading, content, titleTestTag)
+        Scaffold(
+            showTimeText,
+            title,
+            subtitle,
+            image,
+            isLoading,
+            content,
+            titleTestTag,
+            subtitleTestTag
+        )
     }
 }
 
@@ -112,11 +131,12 @@ fun ScrollableScreen(
 internal fun Scaffold(
     showTimeText: Boolean,
     title: String?,
-    subtitle: String?,
+    subtitle: CharSequence?,
     image: Any?,
     isLoading: Boolean,
     content: ScalingLazyListScope.() -> Unit,
     titleTestTag: String? = null,
+    subtitleTestTag: String? = null,
 ) {
     val focusRequester = remember { FocusRequester() }
     val listState = remember { ScalingLazyListState(initialCenterItemIndex = 0) }
@@ -196,11 +216,17 @@ internal fun Scaffold(
                         }
                         if (subtitle != null) {
                             item {
-                                Text(
+                                var modifier: Modifier = Modifier
+                                if (subtitleTestTag != null) {
+                                    modifier = modifier.testTag(subtitleTestTag)
+                                }
+                                AnnotatedText(
                                     text = subtitle,
-                                    style = MaterialTheme.typography.body2,
-                                    modifier = Modifier.fillMaxWidth(),
-                                    textAlign = TextAlign.Center
+                                    style =
+                                        MaterialTheme.typography.body2.copy(
+                                            color = MaterialTheme.colors.onSurfaceVariant
+                                        ),
+                                    modifier = modifier.fillMaxWidth(),
                                 )
                             }
                         }
