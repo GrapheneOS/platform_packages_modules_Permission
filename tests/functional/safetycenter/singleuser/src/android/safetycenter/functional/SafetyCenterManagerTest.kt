@@ -16,6 +16,7 @@
 
 package android.safetycenter.functional
 
+import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
@@ -784,6 +785,18 @@ class SafetyCenterManagerTest {
 
     @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
     @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+
+    @Test
+    fun getSafetySourceData_differentPackageWithManageSafetyCenterPermission_returnsData() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.complexConfig)
+
+        val data =
+            callWithShellPermissionIdentity(MANAGE_SAFETY_CENTER) {
+                safetyCenterManager.getSafetySourceData(DYNAMIC_OTHER_PACKAGE_ID)
+            }
+
+        assertThat(data).isNull()
+    }
 
     @Test
     fun refreshSafetySources_timeout_marksSafetySourceAsError() {
