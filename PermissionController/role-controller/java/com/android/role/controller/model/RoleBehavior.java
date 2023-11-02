@@ -90,15 +90,16 @@ public interface RoleBehavior {
     }
 
     /**
-     * @see Role#grant(String, boolean, boolean, boolean, Context)
+     * @see Role#grantAsUser(String, boolean, boolean, UserHandle, Context)
      */
-    default void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {}
+    default void grantAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {}
 
     /**
-     * @see Role#revoke(String, boolean, boolean, Context)
+     * @see Role#revokeAsUser(String, boolean, boolean, UserHandle, Context)
      */
-    default void revoke(@NonNull Role role, @NonNull String packageName,
-            @NonNull Context context) {}
+    default void revokeAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {}
 
     /**
      * @see Role#onHolderSelectedAsUser(String, UserHandle, Context)

@@ -24,7 +24,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.os.Build;
-import android.os.Process;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
 import android.util.ArrayMap;
@@ -90,6 +89,7 @@ public class Permissions {
      * @param setGrantedByRole whether the permissions will be granted as granted-by-role
      * @param setGrantedByDefault whether the permissions will be granted as granted-by-default
      * @param setSystemFixed whether the permissions will be granted as system-fixed
+     * @param user the user of the application
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether any permission or app op changed
@@ -97,11 +97,10 @@ public class Permissions {
      * @see com.android.server.pm.permission.DefaultPermissionGrantPolicy#grantRuntimePermissions(
      *      PackageInfo, java.util.Set, boolean, boolean, int)
      */
-    public static boolean grant(@NonNull String packageName, @NonNull List<String> permissions,
-            boolean overrideDisabledSystemPackage, boolean overrideUserSetAndFixed,
-            boolean setGrantedByRole, boolean setGrantedByDefault, boolean setSystemFixed,
-            @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public static boolean grantAsUser(@NonNull String packageName,
+            @NonNull List<String> permissions, boolean overrideDisabledSystemPackage,
+            boolean overrideUserSetAndFixed, boolean setGrantedByRole, boolean setGrantedByDefault,
+            boolean setSystemFixed, @NonNull UserHandle user, @NonNull Context context) {
         if (setGrantedByRole == setGrantedByDefault) {
             throw new IllegalArgumentException("Permission must be either granted by role, or"
                     + " granted by default, but not both");
@@ -144,8 +143,8 @@ public class Permissions {
         // apps, (default grants on first boot and user creation) we don't grant default
         // permissions if the version on the system image does not declare them.
         if (!overrideDisabledSystemPackage && isUpdatedSystemApp(packageInfo)) {
-            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfoAsUser(packageName,
-                    user, context);
+            PackageInfo disabledSystemPackageInfo = getFactoryPackageInfoAsUser(packageName, user,
+                    context);
             if (disabledSystemPackageInfo != null) {
                 if (ArrayUtils.isEmpty(disabledSystemPackageInfo.requestedPermissions)) {
                     return false;
@@ -179,9 +178,10 @@ public class Permissions {
 
         boolean permissionOrAppOpChanged = false;
 
-        PackageManager packageManager = context.getPackageManager();
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         Set<String> whitelistedRestrictedPermissions = new ArraySet<>(
-                packageManager.getWhitelistedRestrictedPermissions(packageName,
+                userPackageManager.getWhitelistedRestrictedPermissions(packageName,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
 
         int sortedPermissionsToGrantLength = sortedPermissionsToGrant.length;
@@ -190,7 +190,7 @@ public class Permissions {
 
             if (isRestrictedPermission(permission, context)
                     && whitelistedRestrictedPermissions.add(permission)) {
-                packageManager.addWhitelistedRestrictedPermission(packageName, permission,
+                userPackageManager.addWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
 
@@ -393,16 +393,17 @@ public class Permissions {
      * @param onlyIfGrantedByDefault revoke the permission only if it is granted by default
      * @param overrideSystemFixed whether system-fixed permissions can be revoked
      * @param context the {@code Context} to retrieve system services
+     * @param user the user of the application
      *
      * @return whether any permission or app op changed
      *
      * @see com.android.server.pm.permission.DefaultPermissionGrantPolicy#revokeRuntimePermissions(
      *      String, java.util.Set, boolean, int)
      */
-    public static boolean revoke(@NonNull String packageName, @NonNull List<String> permissions,
-            boolean onlyIfGrantedByRole, boolean onlyIfGrantedByDefault,
-            boolean overrideSystemFixed, @NonNull Context context) {
-        UserHandle user = Process.myUserHandle();
+    public static boolean revokeAsUser(@NonNull String packageName,
+            @NonNull List<String> permissions, boolean onlyIfGrantedByRole,
+            boolean onlyIfGrantedByDefault, boolean overrideSystemFixed, @NonNull UserHandle user,
+            @NonNull Context context) {
         PackageInfo packageInfo = getPackageInfoAsUser(packageName, user, context);
         if (packageInfo == null) {
             return false;
@@ -437,9 +438,10 @@ public class Permissions {
             }
         }
 
-        PackageManager packageManager = context.getPackageManager();
+        Context userContext = UserUtils.getUserContext(context, user);
+        PackageManager userPackageManager = userContext.getPackageManager();
         Set<String> whitelistedRestrictedPermissions =
-                packageManager.getWhitelistedRestrictedPermissions(packageName,
+                userPackageManager.getWhitelistedRestrictedPermissions(packageName,
                     PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM
                     | PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
                     | PackageManager.FLAG_PERMISSION_WHITELIST_INSTALLER);
@@ -457,7 +459,7 @@ public class Permissions {
             // Remove from the system whitelist only if not granted by default.
             if (!isPermissionGrantedByDefaultAsUser(packageName, permission, user, context)
                     && whitelistedRestrictedPermissions.remove(permission)) {
-                packageManager.removeWhitelistedRestrictedPermission(packageName, permission,
+                userPackageManager.removeWhitelistedRestrictedPermission(packageName, permission,
                         PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
             }
         }
