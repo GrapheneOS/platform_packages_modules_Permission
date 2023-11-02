@@ -521,7 +521,7 @@
             </intent-filter>
         </service>
 
-        <service android:name="com.android.permissioncontroller.role.service.RoleControllerServiceImpl"
+        <service android:name="com.android.role.controller.service.RoleControllerServiceImpl"
                  android:exported="true">
             <intent-filter android:priority="1">
                 <action android:name="android.app.role.RoleControllerService"/>
