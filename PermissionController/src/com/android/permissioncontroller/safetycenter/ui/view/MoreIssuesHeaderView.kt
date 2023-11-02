@@ -168,6 +168,7 @@ constructor(
 
         if (animateTextChange) {
             counterView.text = previousText
+            Log.v(TAG, "Starting more issues card text animation")
             moreIssuesCardAnimator.animateChangeText(counterView, newText)
         } else {
             counterView.text = newText
