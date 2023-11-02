@@ -21,6 +21,7 @@ import android.transition.Transition
 import android.transition.TransitionListenerAdapter
 import android.transition.TransitionManager
 import android.transition.TransitionSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
@@ -64,6 +65,9 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
         if (textChanges.isEmpty()) {
             return
         }
+
+        Log.v(TAG, "Starting text animation")
+
         val firstView = textChanges[0].first
         val parentViewGroup: ViewGroup = firstView.parent as ViewGroup
         val fadeOutTransition =
@@ -71,17 +75,14 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
                 .clone()
                 .addListener(
                     object : TransitionListenerAdapter() {
-                        override fun onTransitionStart(transition: Transition?) {
-                            super.onTransitionStart(transition)
-                        }
                         override fun onTransitionEnd(transition: Transition?) {
-                            super.onTransitionEnd(transition)
                             fadeTextIn(textChanges, parentViewGroup, onFinish)
                         }
                     }
                 )
         parentViewGroup.post {
             TransitionManager.beginDelayedTransition(parentViewGroup, fadeOutTransition)
+            Log.v(TAG, "Starting text fade-out transition")
             for ((textView, _) in textChanges) {
                 textView.visibility = View.INVISIBLE
             }
@@ -99,7 +100,7 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
                 .addListener(
                     object : TransitionListenerAdapter() {
                         override fun onTransitionEnd(transition: Transition?) {
-                            super.onTransitionEnd(transition)
+                            Log.v(TAG, String.format("Finishing text animation"))
                             onFinish?.run()
                         }
                     }
@@ -107,6 +108,7 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
 
         parent.post {
             TransitionManager.beginDelayedTransition(parent, fadeInTransition)
+            Log.v(TAG, "Starting text fade-in transition")
             for ((textView, text) in textChanges) {
                 textView.text = text
                 textView.visibility = View.VISIBLE
@@ -119,6 +121,7 @@ constructor(targetIds: List<Int>, changeDuration: Duration = DEFAULT_TEXT_CHANGE
     }
 
     companion object {
+        private const val TAG = "TextFadeAnimator"
         // Duration is for fade-out & fade-in individually, not combined
         private val DEFAULT_TEXT_CHANGE_DURATION = Duration.ofMillis(167)
         private val linearInterpolator = LinearInterpolator()
