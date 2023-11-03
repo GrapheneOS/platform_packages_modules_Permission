@@ -34,20 +34,6 @@ import com.android.role.controller.model.Role;
 public interface RoleUiBehavior {
 
     /**
-     * Check whether this role should be visible to user.
-     *
-     * @param role the role to check for
-     * @param user the user to check for
-     * @param context the `Context` to retrieve system services
-     *
-     * @return whether this role should be visible to user
-     */
-    default boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return true;
-    }
-
-    /**
      * Get the {@link Intent} to manage this role, or {@code null} to use the default UI.
      *
      * @param role the role to get the intent for
@@ -74,21 +60,6 @@ public interface RoleUiBehavior {
             @NonNull TwoTargetPreference preference,
             @NonNull UserHandle user,
             @NonNull Context context) {}
-
-    /**
-     * Check whether a qualifying application should be visible to user.
-     *
-     * @param applicationInfo the {@link ApplicationInfo} for the application
-     * @param user the user for the application
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether the qualifying application should be visible to user
-     */
-    default boolean isApplicationVisibleAsUser(@NonNull Role role,
-            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return true;
-    }
 
     /**
      * Prepare a {@link Preference} for this role.

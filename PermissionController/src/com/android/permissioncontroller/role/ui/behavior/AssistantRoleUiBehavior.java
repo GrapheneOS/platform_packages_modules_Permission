@@ -26,19 +26,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.model.VisibilityMixin;
 import com.android.role.controller.model.Role;
 
 /***
  * Class for UI behavior of Assistant role
  */
 public class AssistantRoleUiBehavior implements RoleUiBehavior {
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return VisibilityMixin.isVisible("config_showDefaultAssistant", context);
-    }
 
     @Nullable
     @Override

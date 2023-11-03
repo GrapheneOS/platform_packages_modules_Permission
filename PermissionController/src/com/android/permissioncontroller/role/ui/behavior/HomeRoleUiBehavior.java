@@ -34,10 +34,8 @@ import androidx.preference.Preference;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.role.model.VisibilityMixin;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.UserUtils;
-import com.android.role.controller.behavior.HomeRoleBehavior;
 import com.android.role.controller.model.Role;
 
 /***
@@ -46,12 +44,6 @@ import com.android.role.controller.model.Role;
 public class HomeRoleUiBehavior implements RoleUiBehavior {
 
     private static final String LOG_TAG = HomeRoleUiBehavior.class.getSimpleName();
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return VisibilityMixin.isVisible("config_showDefaultHome", context);
-    }
 
     @Override
     public void preparePreferenceAsUser(@NonNull Role role, @NonNull TwoTargetPreference preference,
@@ -79,14 +71,6 @@ public class HomeRoleUiBehavior implements RoleUiBehavior {
             }
         }
         preference.setOnSecondTargetClickListener(listener);
-    }
-
-    @Override
-    public boolean isApplicationVisibleAsUser(@NonNull Role role,
-            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
-            @NonNull Context context) {
-        // Home is not available for work profile, so we can just use the current user.
-        return !HomeRoleBehavior.isSettingsApplicationAsUser(applicationInfo, user, context);
     }
 
     @Override

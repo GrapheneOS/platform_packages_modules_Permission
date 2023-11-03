@@ -164,8 +164,7 @@
         overrideUserWhenGranting="true"
         requestDescription="@string/role_browser_request_description"
         requestTitle="@string/role_browser_request_title"
-        shortLabel="@string/role_browser_short_label"
-        uiBehavior="BrowserRoleUiBehavior">
+        shortLabel="@string/role_browser_short_label">
         <!--
           ~ Required components matching is handled in BrowserRoleBehavior because it needs the
           ~ PackageManager.MATCH_ALL flag and other manual filtering, which cannot fit in our

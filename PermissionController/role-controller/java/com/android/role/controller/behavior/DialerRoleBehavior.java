@@ -26,6 +26,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.model.Permissions;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.model.VisibilityMixin;
 import com.android.role.controller.util.PackageUtils;
 
 import java.util.Arrays;
@@ -72,5 +73,11 @@ public class DialerRoleBehavior implements RoleBehavior {
             Permissions.revokeAsUser(packageName, SYSTEM_DIALER_PERMISSIONS, true, false, false,
                     user, context);
         }
+    }
+
+    @Override
+    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return VisibilityMixin.isVisible("config_showDialerRole", true, user, context);
     }
 }
