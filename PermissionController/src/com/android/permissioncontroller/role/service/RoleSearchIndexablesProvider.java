@@ -29,7 +29,6 @@ import androidx.annotation.Nullable;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.BaseSearchIndexablesProvider;
 import com.android.permissioncontroller.role.model.RoleParserInitializer;
-import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
@@ -63,7 +62,7 @@ public class RoleSearchIndexablesProvider extends BaseSearchIndexablesProvider {
             long token = Binder.clearCallingIdentity();
             try {
                 if (!role.isAvailableAsUser(Process.myUserHandle(), context)
-                        || !RoleUiBehaviorUtils.isVisible(role, context)) {
+                        || !role.isVisibleAsUser(Process.myUserHandle(), context)) {
                     continue;
                 }
             } finally {

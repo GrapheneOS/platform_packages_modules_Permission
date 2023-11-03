@@ -17,6 +17,7 @@
 package com.android.role.controller.model;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
@@ -112,4 +113,34 @@ public interface RoleBehavior {
      */
     default void onHolderChangedAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {}
+
+    /**
+     * Check whether this role should be visible to user.
+     *
+     * @param role the role to check for
+     * @param user the user to check for
+     * @param context the `Context` to retrieve system services
+     *
+     * @return whether this role should be visible to user
+     */
+    default boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return true;
+    }
+
+    /**
+     * Check whether a qualifying application should be visible to user.
+     *
+     * @param role the role to check for
+     * @param applicationInfo the {@link ApplicationInfo} for the application
+     * @param user the user for the application
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return whether the qualifying application should be visible to user
+     */
+    default boolean isApplicationVisibleAsUser(@NonNull Role role,
+            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return true;
+    }
 }
