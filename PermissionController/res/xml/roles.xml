@@ -550,6 +550,7 @@
         <app-op-permissions>
             <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
             <app-op-permission name="android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER" />
+            <app-op-permission name="android.permission.MEDIA_ROUTING_CONTROL" minSdkVersion="35" />
         </app-op-permissions>
     </role>
 
