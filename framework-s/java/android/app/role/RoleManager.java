@@ -28,6 +28,9 @@ import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.annotation.UserHandleAware;
 import android.annotation.UserIdInt;
+import android.app.compat.CompatChanges;
+import android.compat.annotation.ChangeId;
+import android.compat.annotation.EnabledSince;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
@@ -212,6 +215,17 @@ public final class RoleManager {
     public static final int MANAGE_HOLDERS_FLAG_DONT_KILL_APP = 1;
 
     /**
+     * For apps targeting Android V and above, several methods are now user-handle-aware, which
+     * means they use the user contained within the context. For apps targeting an SDK version
+     * <em>below</em> this, the user of the calling process will be used.
+     *
+     * @hide
+     */
+    @ChangeId
+    @EnabledSince(targetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    public static final long ROLE_MANAGER_USER_HANDLE_AWARE = 303742236L;
+
+    /**
      * The action used to request user approval of a role for an application.
      *
      * @hide
@@ -286,10 +300,12 @@ public final class RoleManager {
      *
      * @return whether the role is available in the system
      */
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public boolean isRoleAvailable(@NonNull String roleName) {
         Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            return mService.isRoleAvailable(roleName);
+            return mService.isRoleAvailableAsUser(roleName, user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -302,10 +318,13 @@ public final class RoleManager {
      *
      * @return whether the calling application is holding the role
      */
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public boolean isRoleHeld(@NonNull String roleName) {
         Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            return mService.isRoleHeld(roleName, mContext.getPackageName());
+            return mService.isRoleHeldAsUser(roleName, mContext.getPackageName(),
+                    user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -328,8 +347,9 @@ public final class RoleManager {
     @NonNull
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     @SystemApi
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public List<String> getRoleHolders(@NonNull String roleName) {
-        return getRoleHoldersAsUser(roleName, Process.myUserHandle());
+        return getRoleHoldersAsUser(roleName, getContextUserIfAppropriate());
     }
 
     /**
@@ -755,10 +775,12 @@ public final class RoleManager {
     @Deprecated
     @RequiresPermission(PERMISSION_MANAGE_ROLES_FROM_CONTROLLER)
     @SystemApi
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public void setRoleNamesFromController(@NonNull List<String> roleNames) {
         Objects.requireNonNull(roleNames, "roleNames cannot be null");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            mService.setRoleNamesFromController(roleNames);
+            mService.setRoleNamesFromControllerAsUser(roleNames, user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -789,12 +811,15 @@ public final class RoleManager {
     @Deprecated
     @RequiresPermission(PERMISSION_MANAGE_ROLES_FROM_CONTROLLER)
     @SystemApi
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public boolean addRoleHolderFromController(@NonNull String roleName,
             @NonNull String packageName) {
         Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
         Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            return mService.addRoleHolderFromController(roleName, packageName);
+            return mService.addRoleHolderFromControllerAsUser(roleName, packageName,
+                    user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -825,12 +850,15 @@ public final class RoleManager {
     @Deprecated
     @RequiresPermission(PERMISSION_MANAGE_ROLES_FROM_CONTROLLER)
     @SystemApi
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public boolean removeRoleHolderFromController(@NonNull String roleName,
             @NonNull String packageName) {
         Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
         Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            return mService.removeRoleHolderFromController(roleName, packageName);
+            return mService.removeRoleHolderFromControllerAsUser(roleName, packageName,
+                    user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -851,13 +879,20 @@ public final class RoleManager {
     @NonNull
     @RequiresPermission(PERMISSION_MANAGE_ROLES_FROM_CONTROLLER)
     @SystemApi
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public List<String> getHeldRolesFromController(@NonNull String packageName) {
         Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
+        UserHandle user = getContextUserIfAppropriate();
         try {
-            return mService.getHeldRolesFromController(packageName);
+            return mService.getHeldRolesFromControllerAsUser(packageName, user.getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
+    }
+
+    private UserHandle getContextUserIfAppropriate() {
+        return CompatChanges.isChangeEnabled(ROLE_MANAGER_USER_HANDLE_AWARE) ? mContext.getUser()
+                : Process.myUserHandle();
     }
 
     /**
