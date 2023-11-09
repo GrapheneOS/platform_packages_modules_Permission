@@ -25,9 +25,9 @@ import android.os.RemoteCallback;
  */
 interface IRoleManager {
 
-    boolean isRoleAvailable(in String roleName);
+    boolean isRoleAvailableAsUser(in String roleName, int userId);
 
-    boolean isRoleHeld(in String roleName, in String packageName);
+    boolean isRoleHeldAsUser(in String roleName, in String packageName, int userId);
 
     List<String> getRoleHoldersAsUser(in String roleName, int userId);
 
@@ -58,13 +58,15 @@ interface IRoleManager {
 
     void setRoleFallbackEnabledAsUser(in String roleName, boolean fallbackEnabled, int userId);
 
-    void setRoleNamesFromController(in List<String> roleNames);
+    void setRoleNamesFromControllerAsUser(in List<String> roleNames, int userId);
 
-    boolean addRoleHolderFromController(in String roleName, in String packageName);
+    boolean addRoleHolderFromControllerAsUser(in String roleName, in String packageName,
+            int userId);
 
-    boolean removeRoleHolderFromController(in String roleName, in String packageName);
+    boolean removeRoleHolderFromControllerAsUser(in String roleName, in String packageName,
+            int userId);
 
-    List<String> getHeldRolesFromController(in String packageName);
+    List<String> getHeldRolesFromControllerAsUser(in String packageName, int userId);
 
     String getBrowserRoleHolder(int userId);
 

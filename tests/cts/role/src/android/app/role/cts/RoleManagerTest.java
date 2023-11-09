@@ -20,8 +20,8 @@ import static com.android.compatibility.common.util.SystemUtil.callWithShellPerm
 import static com.android.compatibility.common.util.SystemUtil.runShellCommand;
 import static com.android.compatibility.common.util.SystemUtil.runShellCommandOrThrow;
 import static com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity;
-import static com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject;
-import static com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull;
+import static com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject;
+import static com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObjectOrNull;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -43,10 +43,6 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Telephony;
-import android.support.test.uiautomator.By;
-import android.support.test.uiautomator.BySelector;
-import android.support.test.uiautomator.UiObject2;
-import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
@@ -56,6 +52,10 @@ import androidx.test.filters.FlakyTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
+import androidx.test.uiautomator.By;
+import androidx.test.uiautomator.BySelector;
+import androidx.test.uiautomator.UiObject2;
+import androidx.test.uiautomator.UiObjectNotFoundException;
 
 import com.android.compatibility.common.util.DisableAnimationRule;
 import com.android.compatibility.common.util.FreezeRotationRule;
