@@ -73,6 +73,9 @@
     <!-- Title for the dialog button to allow access to all of a resource always. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_always_allow_all">Always allow all</string>
 
+    <!-- Title for the dialog button to allow limited access. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_allow_limited_access">Allow limited access</string>
+
     <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_selected_photos">Select photos and videos</string>
 
