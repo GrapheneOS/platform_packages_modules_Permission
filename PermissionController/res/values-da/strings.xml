@@ -263,7 +263,7 @@
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Nogle tilladelser blev fjernet for at beskytte dit privatliv. Tryk for at gennemgå dem"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Tilladelser er fjernet for ubrugte apps"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Nogle apps er ikke blevet brugt i et par måneder. Tryk for at gennemgå dem."</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ubrugt app}one{# ubrugt app}other{# ubrugt apps}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ubrugt app}one{# ubrugt app}other{# ubrugte apps}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Tilladelser og midlertidige filer er blevet fjernet, og notifikationer blev stoppet. Tryk for at se."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Gennemgå apps, som har fået fjernet tilladelser"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Tilladelser og midlertidige filer for de apps, du ikke har brugt for nylig, blev fjernet, og notifikationer ophørte."</string>
