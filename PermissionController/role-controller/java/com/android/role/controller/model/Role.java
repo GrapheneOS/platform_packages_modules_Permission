@@ -453,7 +453,7 @@ public class Role {
         } else {
             List<String> packageNames = new ArrayList<>();
             for (String defaultHolder : defaultHolders.split(DEFAULT_HOLDER_SEPARATOR)) {
-                String packageName = getQualifiedDefaultHolderPackageNameAsUser(defaultHolders,
+                String packageName = getQualifiedDefaultHolderPackageNameAsUser(defaultHolder,
                         user, context);
                 if (packageName != null) {
                     packageNames.add(packageName);
