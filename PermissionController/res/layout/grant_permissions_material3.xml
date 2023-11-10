@@ -144,7 +144,7 @@
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_selected_button"
-                    android:text="@string/grant_dialog_button_allow_selected_photos"
+                    android:text="@string/grant_dialog_button_allow_limited_access"
                     style="@style/PermissionGrantButtonAllowSelectedMaterial3" />
 
                 <com.android.permissioncontroller.permission.ui.widget.SecureButton
