@@ -48,4 +48,14 @@ public interface RoleController {
      */
     void onClearRoleHolders(@NonNull String roleName,
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback);
+
+    /**
+     * @see android.app.role.RoleControllerManager#isRoleVisible
+     */
+    boolean isRoleVisible(@NonNull String roleName);
+
+    /**
+     * @see android.app.role.RoleControllerManager#isApplicationVisibleForRole
+     */
+    boolean isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName);
 }

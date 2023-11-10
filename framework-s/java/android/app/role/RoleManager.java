@@ -47,6 +47,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.Preconditions;
+import com.android.modules.utils.build.SdkLevel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -975,10 +976,29 @@ public final class RoleManager {
      */
     @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     @SystemApi
     public void isRoleVisible(@NonNull String roleName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        getRoleControllerManager().isRoleVisible(roleName, executor, callback);
+        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+            int userId = getContextUserIfAppropriate().getIdentifier();
+            boolean visible;
+            try {
+                visible = mService.isRoleVisibleAsUser(roleName, userId);
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
+            executor.execute(() -> {
+                final long token = Binder.clearCallingIdentity();
+                try {
+                    callback.accept(visible);
+                } finally {
+                    Binder.restoreCallingIdentity(token);
+                }
+            });
+        } else {
+            getRoleControllerManager().isRoleVisible(roleName, executor, callback);
+        }
     }
 
     /**
@@ -997,11 +1017,21 @@ public final class RoleManager {
      */
     @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
+    @UserHandleAware(enabledSinceTargetSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     @SystemApi
     public void isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        getRoleControllerManager().isApplicationVisibleForRole(roleName, packageName, executor,
-                callback);
+        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+            int userId = getContextUserIfAppropriate().getIdentifier();
+            try {
+                mService.isApplicationVisibleForRoleAsUser(roleName, packageName, userId);
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
+        } else {
+            getRoleControllerManager().isApplicationVisibleForRole(roleName, packageName, executor,
+                    callback);
+        }
     }
 
     @NonNull

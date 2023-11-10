@@ -82,4 +82,15 @@ public class LocalRoleController implements RoleController {
             callback.sendResult(successful ? Bundle.EMPTY : null);
         });
     }
+
+    @Override
+    public boolean isRoleVisible(@NonNull String roleName) {
+        return mService.onIsRoleVisible(roleName);
+    }
+
+    @Override
+    public boolean isApplicationVisibleForRole(@NonNull String roleName,
+            @NonNull String packageName) {
+        return mService.onIsApplicationVisibleForRole(roleName, packageName);
+    }
 }

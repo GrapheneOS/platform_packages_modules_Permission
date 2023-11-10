@@ -893,6 +893,42 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         }
 
         @Override
+        public boolean isRoleVisibleAsUser(@NonNull String roleName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false, "isRoleVisibleAsUser",
+                    getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
+            getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
+                    "isRoleVisibleAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+
+            return getOrCreateController(userId).isRoleVisible(roleName);
+        }
+
+        @Override
+        public boolean isApplicationVisibleForRoleAsUser(@NonNull String roleName,
+                @NonNull String packageName, @UserIdInt int userId) {
+            UserUtils.enforceCrossUserPermission(userId, false,
+                    "isApplicationVisibleForRoleAsUser", getContext());
+            if (!UserUtils.isUserExistent(userId, getContext())) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return false;
+            }
+
+            getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
+                    "isApplicationVisibleForRoleAsUser");
+
+            Preconditions.checkStringNotEmpty(roleName, "roleName cannot be null or empty");
+            Preconditions.checkStringNotEmpty(packageName, "packageName cannot be null or empty");
+
+            return getOrCreateController(userId).isApplicationVisibleForRole(roleName, packageName);
+        }
+
+        @Override
         protected void dump(@NonNull FileDescriptor fd, @NonNull PrintWriter fout,
                 @Nullable String[] args) {
             if (!checkDumpPermission("role", fout)) {

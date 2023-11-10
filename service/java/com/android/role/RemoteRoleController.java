@@ -62,4 +62,15 @@ public class RemoteRoleController implements RoleController {
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback) {
         mRoleControllerManager.onClearRoleHolders(roleName, flags, callback);
     }
+
+    @Override
+    public boolean isRoleVisible(@NonNull String roleName) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean isApplicationVisibleForRole(@NonNull String roleName,
+            @NonNull String packageName) {
+        throw new UnsupportedOperationException();
+    }
 }
