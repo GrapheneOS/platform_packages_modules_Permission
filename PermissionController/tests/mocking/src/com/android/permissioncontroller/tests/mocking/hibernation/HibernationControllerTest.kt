@@ -31,6 +31,7 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.hibernation.v31.HibernationController
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.utils.ContextCompat
 import java.io.File
 import org.junit.After
 import org.junit.Assert.assertTrue
@@ -160,7 +161,8 @@ class HibernationControllerTest {
             0 /* firstInstallTime */,
             0 /* lastUpdateTime */,
             false /* areAttributionsUserVisible */,
-            emptyMap() /* attributionTagsToLabels */
+            emptyMap() /* attributionTagsToLabels */,
+            ContextCompat.DEVICE_ID_DEFAULT
         )
     }
 }

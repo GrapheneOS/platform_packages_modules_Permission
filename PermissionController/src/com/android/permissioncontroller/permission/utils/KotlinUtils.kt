@@ -25,6 +25,7 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission_group.NOTIFICATIONS
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
 import android.app.AppOpsManager
@@ -648,14 +649,16 @@ object KotlinUtils {
         val appUser = UserHandle.getUserHandleForUid(uid)
         val userManager =
             activity.createContextAsUser(appUser, 0).getSystemService(UserManager::class.java)!!
-        val user = if (userManager.isCloneProfile) {
-            userManager.getProfileParent(appUser) ?: appUser
-        } else {
-            appUser
-        }
-        val pickerIntent = Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
-            .putExtra(Intent.EXTRA_UID, uid)
-            .setType(getMimeTypeForPermissions(requestedPermissions))
+        val user =
+            if (userManager.isCloneProfile) {
+                userManager.getProfileParent(appUser) ?: appUser
+            } else {
+                appUser
+            }
+        val pickerIntent =
+            Intent(MediaStore.ACTION_USER_SELECT_IMAGES_FOR_APP)
+                .putExtra(Intent.EXTRA_UID, uid)
+                .setType(getMimeTypeForPermissions(requestedPermissions))
         activity.startActivityForResultAsUser(pickerIntent, requestCode, user)
     }
 
@@ -745,6 +748,10 @@ object KotlinUtils {
             }
         }
 
+        val deviceId = group.deviceId
+        // Create a new context with the given deviceId so that permission updates will be bound
+        // to the device
+        val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
         val newPerms = mutableMapOf<String, LightPermission>()
         for ((permName, perm) in group.permissions) {
             if (permName !in filterPermissions) {
@@ -752,7 +759,7 @@ object KotlinUtils {
             }
             // Check if flags need to be updated
             if (flagMask and (perm.flags xor flagsToSet) != 0) {
-                app.packageManager.updatePermissionFlags(
+                context.packageManager.updatePermissionFlags(
                     permName,
                     group.packageName,
                     group.userHandle,
@@ -836,6 +843,7 @@ object KotlinUtils {
         )
     }
 
+    @SuppressLint("MissingPermission")
     private fun grantRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
@@ -845,6 +853,7 @@ object KotlinUtils {
         withoutAppOps: Boolean = false,
         filterPermissions: Collection<String> = group.permissions.keys
     ): LightAppPermGroup {
+        val deviceId = group.deviceId
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
         for (permName in filterPermissions) {
@@ -857,13 +866,18 @@ object KotlinUtils {
                 shouldKillForAnyPermission = shouldKillForAnyPermission || shouldKill
             }
         }
+
+        // Create a new context with the given deviceId so that permission updates will be bound
+        // to the device
+        val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
+
         if (!newPerms.isEmpty()) {
             val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
             for (groupPerm in group.allPermissions.values) {
                 var permFlags = groupPerm.flags
                 permFlags = permFlags.clearFlag(FLAG_PERMISSION_AUTO_REVOKED)
                 if (groupPerm.flags != permFlags) {
-                    app.packageManager.updatePermissionFlags(
+                    context.packageManager.updatePermissionFlags(
                         groupPerm.name,
                         group.packageInfo.packageName,
                         PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,
@@ -891,20 +905,24 @@ object KotlinUtils {
         // If any permission in the group is one time granted, start one time permission session.
         if (newGroup.permissions.any { it.value.isOneTime && it.value.isGrantedIncludingAppOp }) {
             if (SdkLevel.isAtLeastT()) {
-                app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
-                    group.packageName,
-                    Utils.getOneTimePermissionsTimeout(),
-                    Utils.getOneTimePermissionsKilledDelay(false),
-                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE
-                )
+                context
+                    .getSystemService(PermissionManager::class.java)!!
+                    .startOneTimePermissionSession(
+                        group.packageName,
+                        Utils.getOneTimePermissionsTimeout(),
+                        Utils.getOneTimePermissionsKilledDelay(false),
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE
+                    )
             } else {
-                app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
-                    group.packageName,
-                    Utils.getOneTimePermissionsTimeout(),
-                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE
-                )
+                context
+                    .getSystemService(PermissionManager::class.java)!!
+                    .startOneTimePermissionSession(
+                        group.packageName,
+                        Utils.getOneTimePermissionsTimeout(),
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE
+                    )
             }
         }
         return newGroup
@@ -934,6 +952,7 @@ object KotlinUtils {
     ): Pair<LightPermission, Boolean> {
         val pkgInfo = group.packageInfo
         val user = UserHandle.getUserHandleForUid(pkgInfo.uid)
+        val deviceId = group.deviceId
         val supportsRuntime = pkgInfo.targetSdkVersion >= Build.VERSION_CODES.M
         val isGrantingAllowed =
             (!pkgInfo.isInstantApp || perm.isInstantPerm) &&
@@ -948,6 +967,10 @@ object KotlinUtils {
         var isGranted = perm.isGrantedIncludingAppOp
         var shouldKill = false
 
+        // Create a new context with the given deviceId so that permission updates will be bound
+        // to the device
+        val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
+
         // Grant the permission if needed.
         if (!perm.isGrantedIncludingAppOp) {
             val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
@@ -958,16 +981,17 @@ object KotlinUtils {
                 // flag, so that the PermissionPolicyService doesn't reset the app op state
                 if (affectsAppOp && withoutAppOps) {
                     oldFlags = oldFlags.setFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
-                    app.packageManager.updatePermissionFlags(
+                    context.packageManager.updatePermissionFlags(
                         perm.name,
                         group.packageName,
                         PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,
                         oldFlags,
                         user
                     )
+                    // TODO: Update this method once AppOp is device aware
                     disallowAppOp(app, perm, group)
                 }
-                app.packageManager.grantRuntimePermission(group.packageName, perm.name, user)
+                context.packageManager.grantRuntimePermission(group.packageName, perm.name, user)
                 isGranted = true
             } else if (affectsAppOp) {
                 // Legacy apps do not know that they have to retry access to a
@@ -988,6 +1012,7 @@ object KotlinUtils {
             // If this permission affects an app op, ensure the permission app op is enabled
             // before the permission grant.
             if (affectsAppOp && !withoutAppOps) {
+                // TODO: Update this method once AppOp is device aware
                 allowAppOp(app, perm, group)
             }
         }
@@ -1032,7 +1057,7 @@ object KotlinUtils {
         }
 
         if (oldFlags != newFlags) {
-            app.packageManager.updatePermissionFlags(
+            context.packageManager.updatePermissionFlags(
                 perm.name,
                 group.packageInfo.packageName,
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,
@@ -1120,6 +1145,7 @@ object KotlinUtils {
         forceRemoveRevokedCompat: Boolean = false,
         filterPermissions: Collection<String>
     ): LightAppPermGroup {
+        val deviceId = group.deviceId
         val wasOneTime = group.isOneTime
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
@@ -1158,9 +1184,12 @@ object KotlinUtils {
             )
 
         if (wasOneTime && !anyPermsOfPackageOneTimeGranted(app, newGroup.packageInfo, newGroup)) {
-            app.getSystemService(PermissionManager::class.java)!!.stopOneTimePermissionSession(
-                group.packageName
-            )
+            // Create a new context with the given deviceId so that permission updates will be bound
+            // to the device
+            val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
+            context
+                .getSystemService(PermissionManager::class.java)!!
+                .stopOneTimePermissionSession(group.packageName)
         }
         return newGroup
     }
@@ -1253,11 +1282,16 @@ object KotlinUtils {
 
         val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
         var newFlags = perm.flags
+        val deviceId = group.deviceId
         var isGranted = perm.isGrantedIncludingAppOp
         val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
         var shouldKill = false
 
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
+
+        // Create a new context with the given deviceId so that permission updates will be bound
+        // to the device
+        val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
 
         if (perm.isGrantedIncludingAppOp || (perm.isCompatRevoked && forceRemoveRevokedCompat)) {
             if (
@@ -1269,7 +1303,7 @@ object KotlinUtils {
                     )
             ) {
                 // Revoke the permission if needed.
-                app.packageManager.revokeRuntimePermission(
+                context.packageManager.revokeRuntimePermission(
                     group.packageInfo.packageName,
                     perm.name,
                     user
@@ -1292,6 +1326,7 @@ object KotlinUtils {
 
             newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED)
             if (affectsAppOp) {
+                // TODO: Update this method once AppOp is device aware
                 disallowAppOp(app, perm, group)
             }
         }
@@ -1311,7 +1346,7 @@ object KotlinUtils {
         newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED)
 
         if (perm.flags != newFlags) {
-            app.packageManager.updatePermissionFlags(
+            context.packageManager.updatePermissionFlags(
                 perm.name,
                 group.packageInfo.packageName,
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,

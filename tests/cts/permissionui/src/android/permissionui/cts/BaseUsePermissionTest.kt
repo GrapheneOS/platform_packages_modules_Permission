@@ -76,7 +76,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         const val APP_APK_PATH_30 = "$APK_DIRECTORY/CtsUsePermissionApp30.apk"
         const val APP_APK_PATH_31 = "$APK_DIRECTORY/$APP_APK_NAME_31"
         const val APP_APK_PATH_32 = "$APK_DIRECTORY/CtsUsePermissionApp32.apk"
-        const val APP_APK_PATH_STREAMING = "$APK_DIRECTORY/CtsUsePermissionAppStreaming.apk"
 
         const val APP_APK_PATH_30_WITH_BACKGROUND =
             "$APK_DIRECTORY/CtsUsePermissionApp30WithBackground.apk"
@@ -159,9 +158,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             "com.android.permissioncontroller:id/settings_section"
         const val SETTINGS_TITLE_ID = "com.android.permissioncontroller:id/settings_title"
         const val SETTINGS_MESSAGE_ID = "com.android.permissioncontroller:id/settings_message"
-        const val PERMISSION_MESSAGE_ID = "com.android.permissioncontroller:id/permission_message"
-        const val PERMISSION_MESSAGE_ID_AUTOMOTIVE =
-            "com.android.permissioncontroller:id/car_ui_alert_title"
 
         const val REQUEST_LOCATION_MESSAGE = "permgrouprequest_location"
 
@@ -1163,8 +1159,11 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                     permission in MEDIA_PERMISSIONS
             if (shouldShowStorageWarning) {
                 if (isWatch) {
-                    click(By.desc(
-                        getPermissionControllerString("media_confirm_dialog_positive_button")))
+                    click(
+                        By.desc(
+                            getPermissionControllerString("media_confirm_dialog_positive_button")
+                        )
+                    )
                 } else {
                     click(By.res(ALERT_DIALOG_OK_BUTTON))
                 }

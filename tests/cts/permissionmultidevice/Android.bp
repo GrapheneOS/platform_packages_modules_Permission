@@ -18,17 +18,34 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-android_test_helper_app {
-    name: "CtsUsePermissionAppStreaming",
+android_test {
+    name: "CtsPermissionMultiDeviceTestCases",
+    defaults: ["mts-target-sdk-version-current"],
+    sdk_version: "test_current",
+    min_sdk_version: "30",
     srcs: [
-        ":CtsUsePermissionAppSrc",
         "src/**/*.kt",
     ],
     static_libs: [
-        "kotlin-stdlib",
+        "androidx.test.core",
+        "androidx.test.rules",
         "compatibility-device-util-axt",
+        "ctstestrunner-axt",
+        "modules-utils-build_system",
+        "cts-wm-util",
+        "flag-junit",
+        "CtsVirtualDeviceCommonLib",
+        "android.companion.virtual.flags-aconfig-java",
+        "permission-test-util-lib",
+        "permission-multidevice-test-util-lib",
+        "android.permission.flags-aconfig-java",
     ],
-    certificate: ":cts-testkey2",
-    min_sdk_version: "34",
-    target_sdk_version: "34",
+    data: [
+        ":CtsAccessRemoteDeviceCamera",
+    ],
+    test_suites: [
+        "cts",
+        "general-tests",
+        "mts-permission",
+    ],
 }
