@@ -19,6 +19,7 @@ package com.android.permissioncontroller.role.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.Log;
@@ -62,6 +63,30 @@ public final class RoleUiBehaviorUtils {
     }
 
     /**
+     * @see RoleUiBehavior#isVisibleAsUser
+     */
+    public static boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        RoleUiBehavior uiBehavior = getUiBehavior(role);
+        if (uiBehavior == null) {
+            return role.isVisible();
+        }
+        return role.isVisible() && uiBehavior.isVisibleAsUser(role, user, context);
+    }
+
+    /**
+     * Check whether this role should be visible to user, for current user.
+     *
+     * @param context the `Context` to retrieve system services
+     *
+     * @return whether this role should be visible to user.
+     */
+    public static boolean isVisible(@NonNull Role role, @NonNull Context context) {
+        return isVisibleAsUser(role, Process.myUserHandle(), context);
+    }
+
+
+    /**
      * @see RoleUiBehavior#getManageIntentAsUser
      */
     @Nullable
@@ -87,6 +112,19 @@ public final class RoleUiBehaviorUtils {
             return;
         }
         uiBehavior.preparePreferenceAsUser(role, preference, user, context);
+    }
+
+    /**
+     * @see RoleUiBehavior#isApplicationVisibleAsUser
+     */
+    public static boolean isApplicationVisibleAsUser(@NonNull Role role,
+            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
+            @NonNull Context context) {
+        RoleUiBehavior uiBehavior = getUiBehavior(role);
+        if (uiBehavior == null) {
+            return true;
+        }
+        return uiBehavior.isApplicationVisibleAsUser(role, applicationInfo, user, context);
     }
 
     /**

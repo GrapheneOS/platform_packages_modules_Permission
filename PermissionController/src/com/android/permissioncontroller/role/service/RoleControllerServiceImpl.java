@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.service;
+package com.android.permissioncontroller.role.service;
 
 import android.app.role.RoleControllerService;
 import android.app.role.RoleManager;
@@ -29,10 +29,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 
+import com.android.permissioncontroller.permission.utils.CollectionUtils;
+import com.android.permissioncontroller.role.utils.PackageUtils;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
-import com.android.role.controller.util.CollectionUtils;
-import com.android.role.controller.util.PackageUtils;
 import com.android.role.controller.util.UserUtils;
 
 import java.util.ArrayList;
@@ -52,22 +53,12 @@ public class RoleControllerServiceImpl extends RoleControllerService {
 
     private RoleManager mUserRoleManager;
 
-    public RoleControllerServiceImpl() {}
-
-    public RoleControllerServiceImpl(@NonNull UserHandle user, @NonNull Context context) {
-        init(user, context);
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
 
-        init(Process.myUserHandle(), this);
-    }
-
-    private void init(@NonNull UserHandle user, @NonNull Context context) {
-        mUser = user;
-        Context userContext = UserUtils.getUserContext(context, mUser);
+        mUser = Process.myUserHandle();
+        Context userContext = UserUtils.getUserContext(this, mUser);
         mUserRoleManager = userContext.getSystemService(RoleManager.class);
     }
 
@@ -446,8 +437,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         }
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
                 mUser, this);
-        if (applicationInfo == null || !role.isApplicationVisibleAsUser(applicationInfo, mUser,
-                this)) {
+        if (applicationInfo == null || !RoleUiBehaviorUtils.isApplicationVisibleAsUser(role,
+                applicationInfo, mUser, this)) {
             return false;
         }
         return true;
@@ -463,7 +454,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        return role.isVisibleAsUser(mUser, this);
+        return RoleUiBehaviorUtils.isVisibleAsUser(role, mUser, this);
     }
 
     private static boolean checkFlags(int flags, int allowedFlags) {
