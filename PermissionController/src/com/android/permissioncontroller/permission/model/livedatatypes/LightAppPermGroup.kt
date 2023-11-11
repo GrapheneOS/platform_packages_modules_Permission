@@ -61,6 +61,9 @@ data class LightAppPermGroup(
     /** The current userHandle of this AppPermGroup. */
     val userHandle: UserHandle = UserHandle.getUserHandleForUid(packageInfo.uid)
 
+    /** The device ID of this group, inferred from LightPackageInfo */
+    val deviceId = packageInfo.deviceId
+
     /**
      * The names of all background permissions in the permission group which are requested by the
      * package.

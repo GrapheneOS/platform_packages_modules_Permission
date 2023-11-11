@@ -798,9 +798,9 @@ public final class Utils {
             @NonNull String groupName,
             @NonNull String deviceLabel,
             @NonNull Context context,
-            int deviceId,
+            Boolean isDeviceAwareMessage,
             @StringRes int requestRes) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
+        if (!isDeviceAwareMessage) {
             return getRequestMessage(appLabel, packageName, groupName, context, requestRes);
         }
         String escapedAppLabel = Html.escapeHtml(appLabel);
@@ -1181,7 +1181,7 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getRequest(String groupName) {
-        return getRequest(groupName, ContextCompat.DEVICE_ID_DEFAULT);
+        return getRequest(groupName, false);
     }
 
     /**
@@ -1190,11 +1190,11 @@ public final class Utils {
      * @param groupName Permission group name
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
-    public static int getRequest(String groupName, int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return PERM_GROUP_REQUEST_RES.getOrDefault(groupName, 0);
-        } else {
+    public static int getRequest(String groupName, Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return PERM_GROUP_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_REQUEST_RES.getOrDefault(groupName, 0);
         }
     }
 
@@ -1213,7 +1213,7 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getBackgroundRequest(String groupName) {
-        return getBackgroundRequest(groupName, ContextCompat.DEVICE_ID_DEFAULT);
+        return getBackgroundRequest(groupName, false);
     }
 
     /**
@@ -1223,11 +1223,11 @@ public final class Utils {
      * @param groupName Permission group name
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
-    public static int getBackgroundRequest(String groupName, int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return PERM_GROUP_BACKGROUND_REQUEST_RES.getOrDefault(groupName, 0);
-        } else {
+    public static int getBackgroundRequest(String groupName, Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return PERM_GROUP_BACKGROUND_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_BACKGROUND_REQUEST_RES.getOrDefault(groupName, 0);
         }
     }
 
@@ -1246,19 +1246,20 @@ public final class Utils {
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
     public static int getUpgradeRequest(String groupName) {
-        return getUpgradeRequest(groupName, ContextCompat.DEVICE_ID_DEFAULT);
+        return getUpgradeRequest(groupName, false);
     }
 
     /**
      * The resource id for the upgrade request message for a permission group for a specific device.
+     *
      * @param groupName Permission group name
      * @return The id or 0 if the permission group doesn't exist or have a message
      */
-    public static int getUpgradeRequest(String groupName, int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return PERM_GROUP_UPGRADE_REQUEST_RES.getOrDefault(groupName, 0);
-        } else {
+    public static int getUpgradeRequest(String groupName, Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return PERM_GROUP_UPGRADE_REQUEST_DEVICE_AWARE_RES.getOrDefault(groupName, 0);
+        } else {
+            return PERM_GROUP_UPGRADE_REQUEST_RES.getOrDefault(groupName, 0);
         }
     }
 
@@ -1273,37 +1274,40 @@ public final class Utils {
 
     /**
      * The resource id for the fine location request message for a specific device
+     *
      * @return The id
      */
-    public static int getFineLocationRequest(int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return R.string.permgrouprequest_fineupgrade;
-        } else {
+    public static int getFineLocationRequest(Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return R.string.permgrouprequest_device_aware_fineupgrade;
+        } else {
+            return R.string.permgrouprequest_fineupgrade;
         }
     }
 
     /**
      * The resource id for the coarse location request message for a specific device
+     *
      * @return The id
      */
-    public static int getCoarseLocationRequest(int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return R.string.permgrouprequest_coarselocation;
-        } else {
+    public static int getCoarseLocationRequest(Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return R.string.permgrouprequest_device_aware_coarselocation;
+        } else {
+            return R.string.permgrouprequest_coarselocation;
         }
     }
 
     /**
-     * The resource id for the get more photos  request message for a specific device
+     * The resource id for the get more photos request message for a specific device
+     *
      * @return The id
      */
-    public static int getMorePhotosRequest(int deviceId) {
-        if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
-            return R.string.permgrouprequest_more_photos;
-        } else {
+    public static int getMorePhotosRequest(Boolean isDeviceAwareMessage) {
+        if (isDeviceAwareMessage) {
             return R.string.permgrouprequest_device_aware_more_photos;
+        } else {
+            return R.string.permgrouprequest_more_photos;
         }
     }
 

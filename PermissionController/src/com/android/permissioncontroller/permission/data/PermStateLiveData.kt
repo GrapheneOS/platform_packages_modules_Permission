@@ -23,6 +23,7 @@ import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
+import com.android.permissioncontroller.permission.utils.ContextCompat
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
@@ -48,8 +49,13 @@ private constructor(
     SmartAsyncMediatorLiveData<Map<String, PermState>>(),
     PermissionListenerMultiplexer.PermissionChangeCallback {
 
-    private val context = Utils.getUserContext(app, user)
-    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
+    private val context =
+        Utils.getUserContext(app, user).let {
+            if (deviceId == ContextCompat.DEVICE_ID_DEFAULT) {
+                it
+            } else ContextCompat.createDeviceContext(it, deviceId)
+        }
+    private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user, deviceId]
     private val groupLiveData = PermGroupLiveData[permGroupName]
 
     private var uid: Int? = null

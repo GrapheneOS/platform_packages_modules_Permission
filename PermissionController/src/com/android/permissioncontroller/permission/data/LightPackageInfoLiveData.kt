@@ -18,6 +18,8 @@
 package com.android.permissioncontroller.permission.data
 
 import android.app.Application
+import android.content.Context
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.UserHandle
 import android.os.UserManager
@@ -27,6 +29,8 @@ import androidx.lifecycle.Observer
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.utils.ContextCompat
+import com.android.permissioncontroller.permission.utils.MultiDeviceUtils.isPermissionDeviceAware
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
 
@@ -104,11 +108,25 @@ private constructor(
                     flags = flags or PackageManager.GET_ATTRIBUTIONS
                 }
 
-                LightPackageInfo(
-                    Utils.getUserContext(app, user)
-                        .packageManager
-                        .getPackageInfo(packageName, flags)
-                )
+                val packageManager = Utils.getUserContext(app, user).packageManager
+                val pI = packageManager.getPackageInfo(packageName, flags)
+
+                // PackageInfo#requestedPermissionsFlags is not device aware. Hence for device aware
+                // permissions if the deviceId is not the primary device we need to separately check
+                // permission for that device and update requestedPermissionsFlags.
+                if (SdkLevel.isAtLeastV() && deviceId != ContextCompat.DEVICE_ID_DEFAULT) {
+                    val requestedPermissionsFlagsForDevice =
+                        getPermissionsFlagsForDevice(
+                            pI.requestedPermissions?.toList() ?: emptyList(),
+                            pI.requestedPermissionsFlags?.toList() ?: emptyList(),
+                            pI.applicationInfo!!.uid,
+                            deviceId
+                        )
+
+                    LightPackageInfo(pI, deviceId, requestedPermissionsFlagsForDevice)
+                } else {
+                    LightPackageInfo(pI)
+                }
             } catch (e: Exception) {
                 if (e is PackageManager.NameNotFoundException) {
                     Log.w(LOG_TAG, "Package \"$packageName\" not found for user $user")
@@ -170,6 +188,16 @@ private constructor(
                 watchingUserPackagesLiveData = false
             }
 
+            if (SdkLevel.isAtLeastV() && deviceId != Context.DEVICE_ID_DEFAULT) {
+                packageInfo.deviceId = deviceId
+                packageInfo.requestedPermissionsFlags =
+                    getPermissionsFlagsForDevice(
+                        packageInfo.requestedPermissions,
+                        packageInfo.requestedPermissionsFlags,
+                        packageInfo.uid,
+                        deviceId
+                    )
+            }
             value = packageInfo
         } else {
             // If the UserPackageInfosLiveData does not contain this package, check for removal, and
@@ -192,11 +220,44 @@ private constructor(
         }
     }
 
+    // Given permission flags of the default device and an external device Id, return a new list of
+    // permission flags for that device by checking grant state of device aware permissions for the
+    // device.
+    private fun getPermissionsFlagsForDevice(
+        requestedPermissions: List<String>,
+        requestedPermissionsFlags: List<Int>,
+        uid: Int,
+        deviceId: Int
+    ): List<Int> {
+        val requestedPermissionsFlagsForDevice = requestedPermissionsFlags.toMutableList()
+        val deviceContext = ContextCompat.createDeviceContext(app, deviceId)
+
+        for ((idx, permName) in requestedPermissions.withIndex()) {
+            if (isPermissionDeviceAware(permName)) {
+                val result = deviceContext.checkPermission(permName, -1, uid)
+
+                if (result == PackageManager.PERMISSION_GRANTED) {
+                    requestedPermissionsFlagsForDevice[idx] =
+                        requestedPermissionsFlagsForDevice[idx] or
+                            PackageInfo.REQUESTED_PERMISSION_GRANTED
+                }
+
+                if (result == PackageManager.PERMISSION_DENIED) {
+                    requestedPermissionsFlagsForDevice[idx] =
+                        requestedPermissionsFlagsForDevice[idx] and
+                            PackageInfo.REQUESTED_PERMISSION_GRANTED.inv()
+                }
+            }
+        }
+
+        return requestedPermissionsFlagsForDevice
+    }
+
     /**
      * Repository for LightPackageInfoLiveDatas
      *
-     * <p> Key value is a string package name and UserHandle pair, value is its corresponding
-     * LiveData.
+     * <p> Key value is a triple of package name, UserHandle and virtual deviceId, value is its
+     * corresponding LiveData.
      */
     companion object :
         DataRepositoryForDevice<Triple<String, UserHandle, Int>, LightPackageInfoLiveData>() {
