@@ -17,25 +17,17 @@
 package com.android.permissioncontroller.role.ui.behavior;
 
 import android.content.Context;
-import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.role.model.EncryptionUnawareConfirmationMixin;
-import com.android.permissioncontroller.role.model.VisibilityMixin;
 import com.android.role.controller.model.Role;
 
 /***
  * Class for UI behavior of Emergency role
  */
 public class EmergencyRoleUiBehavior implements RoleUiBehavior {
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return VisibilityMixin.isVisible("config_showDefaultEmergency", context);
-    }
 
     @Nullable
     @Override

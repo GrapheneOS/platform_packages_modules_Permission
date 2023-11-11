@@ -949,6 +949,40 @@ public class Role {
         RoleManagerCompat.setRoleFallbackEnabledAsUser(this, false, user, context);
     }
 
+    /**
+     * Check whether this role should be visible to user.
+     *
+     * @param user the user to check for
+     * @param context the `Context` to retrieve system services
+     *
+     * @return whether this role should be visible to user
+     */
+    public boolean isVisibleAsUser(@NonNull UserHandle user, @NonNull Context context) {
+        RoleBehavior behavior = getBehavior();
+        if (behavior == null) {
+            return isVisible();
+        }
+        return isVisible() && behavior.isVisibleAsUser(this, user, context);
+    }
+
+    /**
+     * Check whether a qualifying application should be visible to user.
+     *
+     * @param applicationInfo the {@link ApplicationInfo} for the application
+     * @param user the user for the application
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return whether the qualifying application should be visible to user
+     */
+    public boolean isApplicationVisibleAsUser(@NonNull ApplicationInfo applicationInfo,
+            @NonNull UserHandle user,  @NonNull Context context) {
+        RoleBehavior behavior = getBehavior();
+        if (behavior == null) {
+            return true;
+        }
+        return behavior.isApplicationVisibleAsUser(this, applicationInfo, user, context);
+    }
+
     @Override
     public String toString() {
         return "Role{"

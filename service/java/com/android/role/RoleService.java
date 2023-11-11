@@ -45,6 +45,7 @@ import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.permission.jarjar.android.permission.flags.Flags;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.ArraySet;
@@ -68,6 +69,7 @@ import com.android.permission.util.ForegroundThread;
 import com.android.permission.util.PackageUtils;
 import com.android.permission.util.ThrottledRunnable;
 import com.android.permission.util.UserUtils;
+import com.android.role.controller.service.RoleControllerServiceImpl;
 import com.android.server.LocalManagerRegistry;
 import com.android.server.SystemService;
 import com.android.server.role.RoleServicePlatformHelper;
@@ -130,7 +132,7 @@ public class RoleService extends SystemService implements RoleUserState.Callback
      */
     @GuardedBy("mLock")
     @NonNull
-    private final SparseArray<RoleControllerManager> mControllers = new SparseArray<>();
+    private final SparseArray<RoleController> mControllers = new SparseArray<>();
 
     /**
      * Maps user id to its list of listeners.
@@ -321,14 +323,21 @@ public class RoleService extends SystemService implements RoleUserState.Callback
     }
 
     @NonNull
-    private RoleControllerManager getOrCreateController(@UserIdInt int userId) {
+    private RoleController getOrCreateController(@UserIdInt int userId) {
         synchronized (mLock) {
-            RoleControllerManager controller = mControllers.get(userId);
+            RoleController controller = mControllers.get(userId);
             if (controller == null) {
+                UserHandle user = UserHandle.of(userId);
                 Context systemContext = getContext();
-                Context userContext = systemContext.createContextAsUser(UserHandle.of(userId), 0);
-                controller = RoleControllerManager.createWithInitializedRemoteServiceComponentName(
-                        ForegroundThread.getHandler(), userContext);
+                if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+                    controller = new LocalRoleController(new RoleControllerServiceImpl(user,
+                            systemContext));
+                } else {
+                    Context userContext = systemContext.createContextAsUser(user, 0);
+                    controller = new RemoteRoleController(
+                            RoleControllerManager.createWithInitializedRemoteServiceComponentName(
+                                    ForegroundThread.getHandler(), userContext));
+                }
                 mControllers.put(userId, controller);
             }
             return controller;
@@ -577,11 +586,11 @@ public class RoleService extends SystemService implements RoleUserState.Callback
             Preconditions.checkArgumentIsSupported(DEFAULT_APPLICATION_ROLES, roleName);
             Objects.requireNonNull(callback, "callback cannot be null");
 
-            RoleControllerManager roleControllerManager = getOrCreateController(userId);
+            RoleController roleController = getOrCreateController(userId);
             if (packageName != null) {
-                roleControllerManager.onAddRoleHolder(roleName, packageName, flags, callback);
+                roleController.onAddRoleHolder(roleName, packageName, flags, callback);
             } else {
-                roleControllerManager.onClearRoleHolders(roleName, flags, callback);
+                roleController.onClearRoleHolders(roleName, flags, callback);
             }
         }
 

@@ -17,12 +17,10 @@
 package com.android.permissioncontroller.role.ui.behavior;
 
 import android.content.Context;
-import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.model.EncryptionUnawareConfirmationMixin;
 import com.android.role.controller.model.Role;
 
@@ -30,12 +28,6 @@ import com.android.role.controller.model.Role;
  * Class for UI behavior of SMS role
  */
 public class SmsRoleUiBehavior implements RoleUiBehavior {
-
-    @Override
-    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        return context.getResources().getBoolean(R.bool.config_showSmsRole);
-    }
 
     @Nullable
     @Override
