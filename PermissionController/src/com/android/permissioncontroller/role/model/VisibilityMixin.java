@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.model;
+package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,7 +23,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.android.role.controller.util.ContextUtils;
+import com.android.role.controller.model.Role;
+import com.android.role.controller.model.RoleBehavior;
 
 /**
  * Mixin for {@link RoleBehavior#isVisibleAsUser(Role, UserHandle, Context)} that returns whether
@@ -36,26 +37,11 @@ public class VisibilityMixin {
     private VisibilityMixin() {}
 
     /**
-     * Get the boolean resource value that represents whether a role is visible to the user.
-     *
-     * @param resourceName the name of the resource
-     * @param isPermissionControllerResource if {@code true}, and if the current SDK level is at
-     *        least V, get the resource from a PermissionController context for the given user.
-     *        Otherwise, get the resource the provided context.
-     * @param user the user to get the PermissionController context for
-     * @param context the `Context` to retrieve the resource (and system services)
-     *
-     * @return whether this role should be visible to user
+     * @see Role#isVisibleAsUser(UserHandle, Context)
      */
-    public static boolean isVisible(@NonNull String resourceName,
-            boolean isPermissionControllerResource, @NonNull UserHandle user,
-            @NonNull Context context) {
-        Context packageContext = isPermissionControllerResource
-                ? ContextUtils.getPermissionControllerContext(user, context) : context;
-        Resources resources = packageContext.getResources();
-        String packageName = isPermissionControllerResource ? packageContext.getPackageName() :
-                "android";
-        int resourceId = resources.getIdentifier(resourceName, "bool", packageName);
+    public static boolean isVisible(@NonNull String resourceName, @NonNull Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier(resourceName, "bool", "android");
         if (resourceId == 0) {
             Log.w(LOG_TAG, "Cannot find resource for visibility: " + resourceName);
             return true;

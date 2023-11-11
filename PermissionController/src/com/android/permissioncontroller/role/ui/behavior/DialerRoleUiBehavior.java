@@ -49,6 +49,12 @@ public class DialerRoleUiBehavior implements RoleUiBehavior {
         }
     }
 
+    @Override
+    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return context.getResources().getBoolean(R.bool.config_showDialerRole);
+    }
+
     @Nullable
     @Override
     public CharSequence getConfirmationMessage(@NonNull Role role, @NonNull String packageName,

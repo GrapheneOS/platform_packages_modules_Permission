@@ -30,6 +30,7 @@ import androidx.lifecycle.LiveData;
 
 import com.android.permissioncontroller.AsyncTaskLiveData;
 import com.android.permissioncontroller.role.utils.PackageUtils;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
@@ -96,7 +97,7 @@ public class RoleListLiveData extends AsyncTaskLiveData<List<RoleItem>>
                 continue;
             }
 
-            if (!role.isVisibleAsUser(mUser, mContext)) {
+            if (!RoleUiBehaviorUtils.isVisibleAsUser(role, mUser, mContext)) {
                 continue;
             }
 
