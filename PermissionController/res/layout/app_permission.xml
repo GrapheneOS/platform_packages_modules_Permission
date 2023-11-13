@@ -107,7 +107,7 @@
 
                     <RadioButton
                         android:id="@+id/select_radio_button"
-                        android:text="@string/app_permission_button_ask"
+                        android:text="@string/grant_dialog_button_allow_limited_access"
                         android:layout_alignParentStart="true"
                         style="@style/AppPermissionRadioButton"
                         android:layout_marginTop="0dp" />
