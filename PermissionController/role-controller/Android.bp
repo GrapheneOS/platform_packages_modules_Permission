@@ -26,6 +26,7 @@ java_library {
     ],
     static_libs: [
         "modules-utils-build_system",
+        "android.permission.flags-aconfig-java",
     ],
     apex_available: [
         "com.android.permission",
