@@ -34,6 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Ətraflı məlumat"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Hamısına icazə verin"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Həmişə hamısına icazə verin"</string>
+    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"Məhdud girişə icazə verin"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Foto və videolar seçin"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Digərlərini seçin"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Daha seçməyin"</string>
