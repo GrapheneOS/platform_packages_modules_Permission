@@ -34,6 +34,8 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Info lengkap"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Izinkan semua"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Selalu izinkan semua"</string>
+    <!-- no translation found for grant_dialog_button_allow_limited_access (5713551784422137594) -->
+    <skip />
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Pilih foto dan video"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Pilih lainnya"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Jangan pilih lainnya"</string>
