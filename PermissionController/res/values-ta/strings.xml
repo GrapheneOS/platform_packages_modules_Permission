@@ -34,8 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"மேலும் தகவல்"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"அனைத்தையும் அனுமதி"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"எப்போதும் அனைத்தையும் அனுமதி"</string>
-    <!-- no translation found for grant_dialog_button_allow_limited_access (5713551784422137594) -->
-    <skip />
+    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"வரம்பிற்குட்பட்ட அணுகலை அனுமதி"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"படங்களையும் வீடியோக்களையும் தேர்ந்தெடுங்கள்"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"இன்னும் தேர்ந்தெடுங்கள்"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"கூடுதலாகத் தேர்ந்தெடுக்க வேண்டாம்"</string>
