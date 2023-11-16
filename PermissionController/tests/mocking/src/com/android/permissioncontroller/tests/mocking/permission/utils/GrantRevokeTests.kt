@@ -42,6 +42,7 @@ import android.os.Build
 import android.os.UserHandle
 import android.permission.PermissionManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
@@ -119,7 +120,9 @@ class GrantRevokeTests {
 
         val aom: AppOpsManager = mock(AppOpsManager::class.java)
 
-        `when`(context.deviceId).thenReturn(ContextCompat.DEVICE_ID_DEFAULT)
+        if (SdkLevel.isAtLeastU()) {
+            `when`(context.deviceId).thenReturn(ContextCompat.DEVICE_ID_DEFAULT)
+        }
         `when`(context.packageManager).thenReturn(mock(PackageManager::class.java))
         `when`(context.getSystemService(PermissionManager::class.java))
             .thenReturn(mock(PermissionManager::class.java))

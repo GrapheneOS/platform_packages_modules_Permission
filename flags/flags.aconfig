@@ -13,3 +13,10 @@ flag {
     description: "Enables device aware grant permission flow"
     bug: "292252664"
 }
+
+flag {
+    name: "wear_privacy_dashboard_enabled"
+    namespace: "wear_security"
+    description: "This flag is used to support Privacy dashboard for Wear"
+    bug: "309721061"
+}
