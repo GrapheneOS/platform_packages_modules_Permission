@@ -34,6 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mere info"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tillad alle"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Tillad altid alle"</string>
+    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"Tillad begrænset adgang"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Vælg billeder og videoer"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Vælg flere"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Vælg ikke flere"</string>
