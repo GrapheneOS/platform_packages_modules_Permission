@@ -74,6 +74,7 @@ class DeviceAwarePermissionGrantTest {
         uninstallPackage(APP_PACKAGE_NAME, requireSuccess = false)
     }
 
+    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS)
     @Test
     fun onHostDevice_requestPermissionForHostDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
