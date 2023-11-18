@@ -31,6 +31,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.model.Permissions;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.model.VisibilityMixin;
 import com.android.role.controller.util.CollectionUtils;
 import com.android.role.controller.util.PackageUtils;
 import com.android.role.controller.util.UserUtils;
@@ -153,5 +154,11 @@ public class BrowserRoleBehavior implements RoleBehavior {
                         false, user, context);
             }
         }
+    }
+
+    @Override
+    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return VisibilityMixin.isVisible("config_showBrowserRole", true, user, context);
     }
 }

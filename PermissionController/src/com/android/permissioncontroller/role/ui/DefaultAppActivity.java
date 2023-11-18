@@ -32,7 +32,6 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.ui.auto.AutoDefaultAppFragment;
 import com.android.permissioncontroller.role.ui.handheld.HandheldDefaultAppFragment;
 import com.android.permissioncontroller.role.ui.wear.WearDefaultAppFragment;
-import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
@@ -89,7 +88,7 @@ public class DefaultAppActivity extends SettingsActivity {
             return;
         }
 
-        if (!RoleUiBehaviorUtils.isVisibleAsUser(role, user, this)) {
+        if (!role.isVisibleAsUser(user, this)) {
             Log.e(LOG_TAG, "Role is invisible: " + roleName);
             finish();
             return;
