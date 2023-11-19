@@ -73,4 +73,9 @@ interface IRoleManager {
     boolean setBrowserRoleHolder(String packageName, int userId);
 
     String getSmsRoleHolder(int userId);
+
+    boolean isRoleVisibleAsUser(in String roleName, int userId);
+
+    boolean isApplicationVisibleForRoleAsUser(in String roleName, in String packageName,
+            int userId);
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.role.service;
+package com.android.role.controller.service;
 
 import android.app.role.RoleControllerService;
 import android.app.role.RoleManager;
@@ -29,11 +29,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 
-import com.android.permissioncontroller.permission.utils.CollectionUtils;
-import com.android.permissioncontroller.role.utils.PackageUtils;
-import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
+import com.android.role.controller.util.CollectionUtils;
+import com.android.role.controller.util.PackageUtils;
 import com.android.role.controller.util.UserUtils;
 
 import java.util.ArrayList;
@@ -49,16 +48,28 @@ public class RoleControllerServiceImpl extends RoleControllerService {
 
     private static final boolean DEBUG = false;
 
-    private UserHandle mUser;
 
+    private UserHandle mUser;
+    private Context mContext;
     private RoleManager mUserRoleManager;
+
+    public RoleControllerServiceImpl() {}
+
+    public RoleControllerServiceImpl(@NonNull UserHandle user, @NonNull Context context) {
+        init(user, context);
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        mUser = Process.myUserHandle();
-        Context userContext = UserUtils.getUserContext(this, mUser);
+        init(Process.myUserHandle(), this);
+    }
+
+    private void init(@NonNull UserHandle user, @NonNull Context context) {
+        mUser = user;
+        mContext = context;
+        Context userContext = UserUtils.getUserContext(context, user);
         mUserRoleManager = userContext.getSystemService(RoleManager.class);
     }
 
@@ -70,7 +81,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         }
 
         // Gather the available roles for current user.
-        ArrayMap<String, Role> roleMap = Roles.get(this);
+        ArrayMap<String, Role> roleMap = Roles.get(mContext);
         List<Role> roles = new ArrayList<>();
         List<String> roleNames = new ArrayList<>();
         ArraySet<String> addedRoleNames = new ArraySet<>();
@@ -78,7 +89,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         for (int i = 0; i < roleMapSize; i++) {
             Role role = roleMap.valueAt(i);
 
-            if (!role.isAvailableAsUser(mUser, this)) {
+            if (!role.isAvailableAsUser(mUser, mContext)) {
                 continue;
             }
             roles.add(role);
@@ -99,7 +110,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             String roleName = addedRoleNames.valueAt(i);
 
             Role role = roleMap.get(roleName);
-            role.onRoleAddedAsUser(mUser, this);
+            role.onRoleAddedAsUser(mUser, mContext);
         }
 
         // Go through the holders of all roles.
@@ -118,7 +129,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                     currentPackageNamesIndex++) {
                 String packageName = currentPackageNames.get(currentPackageNamesIndex);
 
-                if (role.isPackageQualifiedAsUser(packageName, mUser, this)) {
+                if (role.isPackageQualifiedAsUser(packageName, mUser, mContext)) {
                     // We should not override user set or fixed permissions because we are only
                     // redoing the grant here. Otherwise, user won't be able to revoke permissions
                     // granted by role.
@@ -138,11 +149,11 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             if (currentPackageNamesSize == 0 || isStaticRole) {
                 List<String> packageNamesToAdd = null;
                 if (addedRoleNames.contains(roleName) || isStaticRole) {
-                    packageNamesToAdd = role.getDefaultHoldersAsUser(mUser, this);
+                    packageNamesToAdd = role.getDefaultHoldersAsUser(mUser, mContext);
                 }
                 if (packageNamesToAdd == null || packageNamesToAdd.isEmpty()) {
                     packageNamesToAdd = CollectionUtils.singletonOrEmpty(
-                            role.getFallbackHolderAsUser(mUser, this));
+                            role.getFallbackHolderAsUser(mUser, mContext));
                 }
 
                 int packageNamesToAddSize = packageNamesToAdd.size();
@@ -155,7 +166,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                         // static roles.
                         continue;
                     }
-                    if (!role.isPackageQualifiedAsUser(packageName, mUser, this)) {
+                    if (!role.isPackageQualifiedAsUser(packageName, mUser, mContext)) {
                         Log.e(LOG_TAG, "Default/fallback role holder package doesn't qualify for"
                                 + " the role, package: " + packageName + ", role: " + roleName);
                         continue;
@@ -200,17 +211,17 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        Role role = Roles.get(this).get(roleName);
+        Role role = Roles.get(mContext).get(roleName);
         if (role == null) {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailableAsUser(mUser, this)) {
+        if (!role.isAvailableAsUser(mUser, mContext)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
 
-        if (!role.isPackageQualifiedAsUser(packageName, mUser, this)) {
+        if (!role.isPackageQualifiedAsUser(packageName, mUser, mContext)) {
             Log.e(LOG_TAG, "Package does not qualify for the role, package: " + packageName
                     + ", role: " + roleName);
             return false;
@@ -245,8 +256,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        role.onHolderAddedAsUser(packageName, mUser, this);
-        role.onHolderChangedAsUser(mUser, this);
+        role.onHolderAddedAsUser(packageName, mUser, mContext);
+        role.onHolderChangedAsUser(mUser, mContext);
 
         return true;
     }
@@ -259,12 +270,12 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        Role role = Roles.get(this).get(roleName);
+        Role role = Roles.get(mContext).get(roleName);
         if (role == null) {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailableAsUser(mUser, this)) {
+        if (!role.isAvailableAsUser(mUser, mContext)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
@@ -281,7 +292,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        role.onHolderChangedAsUser(mUser, this);
+        role.onHolderChangedAsUser(mUser, mContext);
 
         return true;
     }
@@ -293,12 +304,12 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        Role role = Roles.get(this).get(roleName);
+        Role role = Roles.get(mContext).get(roleName);
         if (role == null) {
             Log.e(LOG_TAG, "Unknown role: " + roleName);
             return false;
         }
-        if (!role.isAvailableAsUser(mUser, this)) {
+        if (!role.isAvailableAsUser(mUser, mContext)) {
             Log.e(LOG_TAG, "Role is unavailable: " + roleName);
             return false;
         }
@@ -315,7 +326,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
 
-        role.onHolderChangedAsUser(mUser, this);
+        role.onHolderChangedAsUser(mUser, mContext);
 
         return true;
     }
@@ -329,7 +340,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
     @WorkerThread
     private boolean addRoleHolderInternal(@NonNull Role role, @NonNull String packageName,
             boolean dontKillApp, boolean overrideUser, boolean added) {
-        role.grantAsUser(packageName, dontKillApp, overrideUser, mUser, this);
+        role.grantAsUser(packageName, dontKillApp, overrideUser, mUser, mContext);
 
         String roleName = role.getName();
         if (!added) {
@@ -346,13 +357,13 @@ public class RoleControllerServiceImpl extends RoleControllerService {
     private boolean removeRoleHolderInternal(@NonNull Role role, @NonNull String packageName,
             boolean dontKillApp) {
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                mUser, this);
+                mUser, mContext);
         if (applicationInfo == null) {
             Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName);
         }
 
         if (applicationInfo != null) {
-            role.revokeAsUser(packageName, dontKillApp, false, mUser, this);
+            role.revokeAsUser(packageName, dontKillApp, false, mUser, mContext);
         }
 
         String roleName = role.getName();
@@ -393,12 +404,12 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return true;
         }
 
-        String fallbackPackageName = role.getFallbackHolderAsUser(mUser, this);
+        String fallbackPackageName = role.getFallbackHolderAsUser(mUser, mContext);
         if (fallbackPackageName == null) {
             return true;
         }
 
-        if (!role.isPackageQualifiedAsUser(fallbackPackageName, mUser, this)) {
+        if (!role.isPackageQualifiedAsUser(fallbackPackageName, mUser, mContext)) {
             Log.e(LOG_TAG, "Fallback role holder package doesn't qualify for the role, package: "
                     + fallbackPackageName + ", role: " + roleName);
             return false;
@@ -425,20 +436,20 @@ public class RoleControllerServiceImpl extends RoleControllerService {
     @Override
     public boolean onIsApplicationVisibleForRole(@NonNull String roleName,
             @NonNull String packageName) {
-        Role role = Roles.get(this).get(roleName);
+        Role role = Roles.get(mContext).get(roleName);
         if (role == null) {
             return false;
         }
-        if (!role.isAvailableAsUser(mUser, this)) {
+        if (!role.isAvailableAsUser(mUser, mContext)) {
             return false;
         }
-        if (!role.isPackageQualifiedAsUser(packageName, mUser, this)) {
+        if (!role.isPackageQualifiedAsUser(packageName, mUser, mContext)) {
             return false;
         }
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName,
-                mUser, this);
-        if (applicationInfo == null || !RoleUiBehaviorUtils.isApplicationVisibleAsUser(role,
-                applicationInfo, mUser, this)) {
+                mUser, mContext);
+        if (applicationInfo == null || !role.isApplicationVisibleAsUser(applicationInfo, mUser,
+                mContext)) {
             return false;
         }
         return true;
@@ -446,15 +457,15 @@ public class RoleControllerServiceImpl extends RoleControllerService {
 
     @Override
     public boolean onIsRoleVisible(@NonNull String roleName) {
-        Role role = Roles.get(this).get(roleName);
+        Role role = Roles.get(mContext).get(roleName);
         if (role == null) {
             return false;
         }
-        if (!role.isAvailableAsUser(mUser, this)) {
+        if (!role.isAvailableAsUser(mUser, mContext)) {
             return false;
         }
 
-        return RoleUiBehaviorUtils.isVisibleAsUser(role, mUser, this);
+        return role.isVisibleAsUser(mUser, mContext);
     }
 
     private static boolean checkFlags(int flags, int allowedFlags) {

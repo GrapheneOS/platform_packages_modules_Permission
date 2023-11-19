@@ -21,8 +21,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Build;
+import android.permission.flags.Flags;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Pair;
@@ -31,7 +33,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.behavior.BrowserRoleBehavior;
+import com.android.role.controller.util.ResourceUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -149,7 +153,7 @@ public class RoleParser {
      */
     @NonNull
     public ArrayMap<String, Role> parse() {
-        try (XmlResourceParser parser = sGetRolesXml.apply(mContext)) {
+        try (XmlResourceParser parser = getRolesXml()) {
             Pair<ArrayMap<String, PermissionSet>, ArrayMap<String, Role>> xml = parseXml(parser);
             if (xml == null) {
                 return new ArrayMap<>();
@@ -161,6 +165,20 @@ public class RoleParser {
         } catch (XmlPullParserException | IOException e) {
             throwOrLogMessage("Unable to parse roles.xml", e);
             return new ArrayMap<>();
+        }
+    }
+
+    /**
+     * Retrieves the roles.xml resource from a context
+     */
+    private XmlResourceParser getRolesXml() {
+        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+            Resources resources = ResourceUtils.getPermissionControllerResources(mContext);
+            int resourceId = resources.getIdentifier("roles", "xml",
+                    ResourceUtils.RESOURCE_PACKAGE_NAME_PERMISSION_CONTROLLER);
+            return resources.getXml(resourceId);
+        } else {
+            return sGetRolesXml.apply(mContext);
         }
     }
 

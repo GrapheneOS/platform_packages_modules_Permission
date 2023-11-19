@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.model.VisibilityMixin;
 import com.android.role.controller.util.PackageUtils;
 
 import java.util.List;
@@ -67,5 +68,11 @@ public class EmergencyRoleBehavior implements RoleBehavior {
             }
         }
         return fallbackPackageInfo != null ? fallbackPackageInfo.packageName : null;
+    }
+
+    @Override
+    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return VisibilityMixin.isVisible("config_showDefaultEmergency", false, user, context);
     }
 }

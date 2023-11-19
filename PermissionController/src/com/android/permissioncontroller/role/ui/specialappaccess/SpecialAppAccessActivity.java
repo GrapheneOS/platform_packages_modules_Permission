@@ -31,7 +31,6 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.ui.SettingsActivity;
 import com.android.permissioncontroller.role.ui.auto.AutoSpecialAppAccessFragment;
 import com.android.permissioncontroller.role.ui.specialappaccess.handheld.HandheldSpecialAppAccessFragment;
-import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
@@ -78,7 +77,7 @@ public class SpecialAppAccessActivity extends SettingsActivity {
             return;
         }
 
-        if (!RoleUiBehaviorUtils.isVisible(role, this)) {
+        if (!role.isVisibleAsUser(Process.myUserHandle(), this)) {
             Log.e(LOG_TAG, "Role is invisible: " + roleName);
             finish();
             return;

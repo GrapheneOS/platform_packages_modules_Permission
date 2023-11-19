@@ -35,6 +35,7 @@ import com.android.role.controller.model.AppOpPermissions;
 import com.android.role.controller.model.Permissions;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.model.VisibilityMixin;
 import com.android.role.controller.util.UserUtils;
 
 import java.util.Arrays;
@@ -113,7 +114,7 @@ public class HomeRoleBehavior implements RoleBehavior {
     /**
      * Check if the application is a settings application
      */
-    public static boolean isSettingsApplicationAsUser(@NonNull ApplicationInfo applicationInfo,
+    private static boolean isSettingsApplicationAsUser(@NonNull ApplicationInfo applicationInfo,
             @NonNull UserHandle user, @NonNull Context context) {
         Context userContext = UserUtils.getUserContext(context, user);
         PackageManager userPackageManager = userContext.getPackageManager();
@@ -212,5 +213,18 @@ public class HomeRoleBehavior implements RoleBehavior {
         }
         final int flags = permissionInfo.getProtectionFlags();
         return (flags & PermissionInfo.PROTECTION_FLAG_ROLE) == PermissionInfo.PROTECTION_FLAG_ROLE;
+    }
+
+    @Override
+    public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return VisibilityMixin.isVisible("config_showDefaultHome", false, user, context);
+    }
+
+    @Override
+    public boolean isApplicationVisibleAsUser(@NonNull Role role,
+            @NonNull ApplicationInfo applicationInfo, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return !isSettingsApplicationAsUser(applicationInfo, user, context);
     }
 }
