@@ -139,6 +139,10 @@ java_sdk_library {
         "com.android.role",
         "com.android.safetycenter",
     ],
+    optimize: {
+        proguard_compatibility: false, // TODO(b/215530220): remove when this is default behavior
+        proguard_flags_files: ["proguard.flags"],
+    },
 }
 
 genrule {
