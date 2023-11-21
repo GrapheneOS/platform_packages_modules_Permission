@@ -34,7 +34,6 @@ android_test {
         "modules-utils-build_system",
         "cts-wm-util",
         "flag-junit",
-        "CtsVirtualDeviceCommonLib",
         "android.companion.virtual.flags-aconfig-java",
         "permission-test-util-lib",
         "permission-multidevice-test-util-lib",

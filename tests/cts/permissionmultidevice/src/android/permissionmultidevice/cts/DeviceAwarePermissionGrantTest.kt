@@ -17,6 +17,7 @@
 package android.permissionmultidevice.cts
 
 import android.Manifest
+import android.app.ActivityOptions
 import android.app.Instrumentation
 import android.content.ComponentName
 import android.content.Intent
@@ -33,7 +34,6 @@ import android.permissionmultidevice.cts.UiAutomatorUtils.waitFindObject
 import android.platform.test.annotations.RequiresFlagsEnabled
 import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.view.Display
-import android.virtualdevice.cts.common.util.VirtualDeviceTestUtils
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
@@ -176,7 +176,7 @@ class DeviceAwarePermissionGrantTest {
     }
 
     private fun requestPermissionOnDevice(displayId: Int, targetDeviceId: Int) {
-        val options = VirtualDeviceTestUtils.createActivityOptions(displayId)
+        val options = ActivityOptions.makeBasic().setLaunchDisplayId(displayId).toBundle()
 
         val intent =
             Intent()
