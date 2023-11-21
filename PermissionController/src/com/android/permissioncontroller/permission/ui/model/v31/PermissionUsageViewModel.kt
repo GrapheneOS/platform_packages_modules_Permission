@@ -315,11 +315,26 @@ class PermissionUsageViewModel(
                 if (mAllLightPackageOpsLiveData.isStale) {
                     return
                 }
+                if (
+                    appPermGroupUiInfoLiveDataList.any {
+                        !it.value.isInitialized || it.value.isStale
+                    }
+                ) {
+                    return
+                }
+                if (
+                    lightPackageInfoLiveDataMap.any { !it.value.isInitialized || it.value.isStale }
+                ) {
+                    return
+                }
 
+                val packageOps: Map<Pair<String, UserHandle>, LightPackageOps> =
+                    mAllLightPackageOpsLiveData.value ?: emptyMap()
                 val appPermissionIds = mutableListOf<AppPermissionId>()
-                val allPackages = mAllLightPackageOpsLiveData.value?.keys ?: setOf()
-                for (packageWithUserHandle: Pair<String, UserHandle> in allPackages) {
-                    for (permissionGroup in getAllEligiblePermissionGroups()) {
+                val allPackages = packageOps.keys
+
+                packageOps.forEach { (packageWithUserHandle, pkgOps) ->
+                    pkgOps.lastPermissionGroupAccessTimesMs.keys.forEach { permissionGroup ->
                         appPermissionIds.add(
                             AppPermissionId(
                                 packageWithUserHandle.first,
