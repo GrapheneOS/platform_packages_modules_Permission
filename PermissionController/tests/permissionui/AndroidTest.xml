@@ -53,6 +53,8 @@
                 value="/data/local/tmp/pc-permissionui/PermissionUiUseAdditionalPermissionApp.apk" />
         <option name="push-file" key="PermissionUiUseTwoAdditionalPermissionsApp.apk"
                 value="/data/local/tmp/pc-permissionui/PermissionUiUseTwoAdditionalPermissionsApp.apk" />
+        <option name="push-file" key="PermissionUiReadCalendarPermissionApp.apk"
+                value="/data/local/tmp/pc-permissionui/PermissionUiReadCalendarPermissionApp.apk" />
     </target_preparer>
 
     <!-- Uninstall test-apps -->

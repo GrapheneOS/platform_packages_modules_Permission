@@ -18,9 +18,23 @@ package com.android.permissioncontroller.permissionui.ui.wear
 
 import android.content.pm.PackageManager
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.By
+import com.android.compatibility.common.util.SystemUtil.eventually
+import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
+import org.junit.Assert.assertNotNull
+
+private const val TIMEOUT = 30_000L
 
 fun isWear() =
     InstrumentationRegistry.getInstrumentation()
         .targetContext
         .packageManager
         .hasSystemFeature(PackageManager.FEATURE_WATCH)
+
+fun clickObject(text: String) {
+    eventually {
+        val obj = waitFindObject(By.textContains(text), TIMEOUT)
+        assertNotNull(obj)
+        obj.click()
+    }
+}
