@@ -1023,11 +1023,20 @@ public final class RoleManager {
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
         if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
             int userId = getContextUserIfAppropriate().getIdentifier();
+            boolean visible;
             try {
-                mService.isApplicationVisibleForRoleAsUser(roleName, packageName, userId);
+                visible = mService.isApplicationVisibleForRoleAsUser(roleName, packageName, userId);
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }
+            executor.execute(() -> {
+                final long token = Binder.clearCallingIdentity();
+                try {
+                    callback.accept(visible);
+                } finally {
+                    Binder.restoreCallingIdentity(token);
+                }
+            });
         } else {
             getRoleControllerManager().isApplicationVisibleForRole(roleName, packageName, executor,
                     callback);
