@@ -31,6 +31,8 @@ import android.platform.test.annotations.AppModeFull;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.android.compatibility.common.util.SystemUtil;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,13 +46,14 @@ import java.util.concurrent.TimeUnit;
 @AppModeFull(reason = "Instant apps cannot access properties of other apps")
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class PermissionUpdateListenerTest {
+    private static final String LOG_TAG = PermissionUpdateListenerTest.class.getSimpleName();
     private static final String APK =
             "/data/local/tmp/cts-permission/"
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String PACKAGE_NAME =
             "android.permission.cts.appthatrequestcustompermission";
     private static final String PERMISSION_NAME = "android.permission.READ_CONTACTS";
-    private static final int TIMEOUT = 30000;
+    private static final int TIMEOUT = 10000;
 
     private final Context mContext =
             InstrumentationRegistry.getInstrumentation().getContext();
@@ -59,8 +62,12 @@ public class PermissionUpdateListenerTest {
     private int mTestAppUid;
 
     @Before
-    public void setup() throws PackageManager.NameNotFoundException {
-        runShellCommandOrThrow("pm install -r " + APK);
+    public void setup() throws PackageManager.NameNotFoundException, InterruptedException {
+        runShellCommandOrThrow("pm install " + APK);
+        // permission change events are generated for a package install, the wait helps prevent
+        // those permission change events interfere with the test.
+        SystemUtil.waitForBroadcasts();
+        Thread.sleep(1000);
         mTestAppUid = mPackageManager.getPackageUid(PACKAGE_NAME, 0);
     }
 
@@ -116,6 +123,8 @@ public class PermissionUpdateListenerTest {
         TestOnPermissionsChangedListener permissionsChangedListener =
                 new TestOnPermissionsChangedListener(1);
         runWithShellPermissionIdentity(() -> {
+            mPackageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
+                    mContext.getUser());
             mPackageManager.addOnPermissionsChangeListener(permissionsChangedListener);
             mPackageManager.revokeRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
                     mContext.getUser());
