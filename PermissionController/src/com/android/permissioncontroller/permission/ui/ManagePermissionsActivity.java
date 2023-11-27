@@ -78,6 +78,7 @@ import com.android.permissioncontroller.permission.ui.handheld.v34.AppDataSharin
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.wear.WearAppPermissionFragment;
+import com.android.permissioncontroller.permission.ui.wear.WearPermissionUsageDetailsFragment;
 import com.android.permissioncontroller.permission.ui.wear.WearPermissionUsageFragment;
 import com.android.permissioncontroller.permission.ui.wear.WearUnusedAppsFragment;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -253,6 +254,9 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment = AutoPermissionUsageDetailsFragment.Companion.newInstance(
                             groupName, showSystem, sessionId);
+                } else if (DeviceUtils.isWear(this)) {
+                    androidXFragment = WearPermissionUsageDetailsFragment
+                            .newInstance(groupName, showSystem, show7Days);
                 } else {
                     androidXFragment = PermissionDetailsWrapperFragment
                             .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId,
