@@ -17,10 +17,13 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
+import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
 import com.android.permissioncontroller.role.utils.NotificationUtils;
+import com.android.permissioncontroller.role.utils.UserUtils;
 
 /**
  * Class for behavior of the "Computer" Companion device profile role.
@@ -29,11 +32,17 @@ public class CompanionDeviceComputerRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isManagedProfile(user, context)) {
+            NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+        }
     }
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isManagedProfile(user, context)) {
+            NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
+        }
     }
 }
