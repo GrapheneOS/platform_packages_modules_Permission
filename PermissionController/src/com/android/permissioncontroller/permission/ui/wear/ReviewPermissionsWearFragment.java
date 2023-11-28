@@ -20,11 +20,14 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteCallback;
 import android.os.UserHandle;
@@ -96,11 +99,6 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
         mAppPermissions = new AppPermissions(activity, packageInfo, false,
                 () -> getActivity().finish());
 
-        if (mAppPermissions.getPermissionGroups().isEmpty()) {
-            activity.finish();
-            return;
-        }
-
         boolean reviewRequired = false;
         for (AppPermissionGroup group : mAppPermissions.getPermissionGroups()) {
             if (group.isReviewRequired()) {
@@ -110,6 +108,7 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
         }
 
         if (!reviewRequired) {
+            confirmPermissionsReview();
             activity.finish();
         }
     }
@@ -142,19 +141,22 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
         final boolean isPackageUpdated = isPackageUpdated();
         int permOrder = ORDER_PERM_OFFSET_START;
 
+        PackageInfo pkg = mAppPermissions.getPackageInfo();
+        ApplicationInfo appInfo = pkg.applicationInfo;
+
         for (AppPermissionGroup group : mAppPermissions.getPermissionGroups()) {
             if (!Utils.shouldShowPermission(getContext(), group)
                     || !Utils.OS_PKG.equals(group.getDeclaringPackage())) {
                 continue;
             }
 
-            final SwitchPreference preference;
+            final PermissionSwitchPreference preference;
             Preference cachedPreference = oldNewPermissionsCategory != null
                     ? oldNewPermissionsCategory.findPreference(group.getName()) : null;
-            if (cachedPreference instanceof SwitchPreference) {
-                preference = (SwitchPreference) cachedPreference;
+            if (cachedPreference instanceof PermissionSwitchPreference) {
+                preference = (PermissionSwitchPreference) cachedPreference;
             } else {
-                preference = new SwitchPreference(getActivity());
+                preference = new PermissionSwitchPreference(getActivity());
 
                 preference.setKey(group.getName());
                 preference.setTitle(group.getLabel());
@@ -164,7 +166,8 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
                 preference.setOnPreferenceChangeListener(this);
             }
 
-            if (group.isReviewRequired() ) {
+            if (appInfo.targetSdkVersion < Build.VERSION_CODES.M &&
+                    group.isReviewRequired() ) {
                 preference.setChecked(true);
             } else {
                 preference.setChecked(group.areRuntimePermissionsGranted());
@@ -218,14 +221,16 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-      Log.d(TAG, "onPreferenceChange " + preference.getTitle());
+        Log.d(TAG, "onPreferenceChange " + preference.getTitle());
         if (mHasConfirmedRevoke) {
             return true;
         }
-        if (preference instanceof SwitchPreference) {
-            SwitchPreference switchPreference = (SwitchPreference) preference;
-            if (switchPreference.isChecked()) {
-                showWarnRevokeDialog(switchPreference);
+        if (preference instanceof PermissionSwitchPreference) {
+            PermissionSwitchPreference permPreference = (PermissionSwitchPreference)
+                    preference;
+            permPreference.setChanged();
+            if (permPreference.isChecked()) {
+                showWarnRevokeDialog(permPreference);
             } else {
                 return true;
             }
@@ -266,16 +271,29 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
             final int preferenceCount = preferenceGroup.getPreferenceCount();
             for (int i = 0; i < preferenceCount; i++) {
                 Preference preference = preferenceGroup.getPreference(i);
-                if (preference instanceof TwoStatePreference) {
-                    TwoStatePreference twoStatePreference = (TwoStatePreference) preference;
+                if (preference instanceof PermissionSwitchPreference) {
+                    PermissionSwitchPreference permPreference = (PermissionSwitchPreference)
+                            preference;
                     String groupName = preference.getKey();
                     AppPermissionGroup group = mAppPermissions.getPermissionGroup(groupName);
-                    if (twoStatePreference.isChecked()) {
-                        group.grantRuntimePermissions(true, false);
-                    } else {
-                        group.revokeRuntimePermissions(false);
+                    if (group.isReviewRequired() || permPreference.wasChanged()) {
+                        if (permPreference.isChecked()) {
+                            Log.i(TAG, groupName + " permPreference.isChecked()");
+                            group.grantRuntimePermissions(true, false);
+                        } else {
+                            Log.i(TAG, groupName + " !permPreference.isChecked()");
+                            group.revokeRuntimePermissions(false);
+                        }
                     }
-                    group.unsetReviewRequired();
+
+                    AppPermissionGroup backgroundGroup = group.getBackgroundPermissions();
+                    if (backgroundGroup != null) {
+                        // If the preference wasn't toggled we show it as "fully granted"
+                        if (backgroundGroup.isReviewRequired() && !permPreference.wasChanged()) {
+                            backgroundGroup.grantRuntimePermissions(true, false);
+                        }
+                        backgroundGroup.unsetReviewRequired();
+                    }
                 }
             }
         }
@@ -401,6 +419,34 @@ public class ReviewPermissionsWearFragment extends PreferenceFragmentCompat
             Bundle result = new Bundle();
             result.putBoolean(Intent.EXTRA_RETURN_RESULT, success);
             callback.sendResult(result);
+        }
+    }
+
+    /**
+     * Extend the {@link SwitchPreference}:
+     * <ul>
+     *     <li>Monitor the changed state</li>
+     * </ul>
+     */
+    private static class PermissionSwitchPreference extends SwitchPreference {
+        private boolean mWasChanged = false;
+
+        PermissionSwitchPreference(Context context) {
+            super(context);
+        }
+
+        /**
+         * Mark the permission as changed by the user
+         */
+        void setChanged() {
+            mWasChanged = true;
+        }
+
+        /**
+         * @return {@code true} iff the permission was changed by the user
+         */
+        boolean wasChanged() {
+            return mWasChanged;
         }
     }
 }
