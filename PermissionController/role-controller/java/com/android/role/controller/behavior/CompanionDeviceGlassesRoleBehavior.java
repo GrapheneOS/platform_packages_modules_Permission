@@ -17,12 +17,15 @@
 package com.android.role.controller.behavior;
 
 import android.content.Context;
+import android.os.Process;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 import com.android.role.controller.util.NotificationUtils;
+import com.android.role.controller.util.UserUtils;
 
 /**
  * Class for behavior of the "glasses" Companion device profile role.
@@ -31,11 +34,17 @@ public class CompanionDeviceGlassesRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isManagedProfile(user, context)) {
+            NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+        }
     }
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isManagedProfile(user, context)) {
+            NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
+        }
     }
 }
