@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
+import android.os.Process;
+import android.os.UserHandle;
 import android.service.notification.NotificationListenerService;
 import android.util.Log;
 
@@ -31,6 +33,8 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.android.permissioncontroller.role.utils.UserUtils;
 
 /**
  * Class for behavior of the "watch" Companion device profile role.
@@ -41,9 +45,12 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        List<ComponentName> notificationListenersForPackage =
-                getNotificationListenersForPackage(packageName, context);
-        setNotificationGrantState(context, notificationListenersForPackage, true);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isWorkProfile(user, context)) {
+            List<ComponentName> notificationListenersForPackage =
+                    getNotificationListenersForPackage(packageName, context);
+            setNotificationGrantState(context, notificationListenersForPackage, true);
+        }
     }
 
     private void setNotificationGrantState(@NonNull Context context,
@@ -80,10 +87,13 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationManager notificationManager =
-                context.getSystemService(NotificationManager.class);
-        List<ComponentName> enabledNotificationListeners =
-                notificationManager.getEnabledNotificationListeners();
-        setNotificationGrantState(context, enabledNotificationListeners, false);
+        UserHandle user = Process.myUserHandle();
+        if (!UserUtils.isWorkProfile(user, context)) {
+            NotificationManager notificationManager =
+                    context.getSystemService(NotificationManager.class);
+            List<ComponentName> enabledNotificationListeners =
+                    notificationManager.getEnabledNotificationListeners();
+            setNotificationGrantState(context, enabledNotificationListeners, false);
+        }
     }
 }
