@@ -18,3 +18,4 @@ per-file WEAR_OWNERS = file:/PermissionController/WEAR_OWNERS
 per-file src/com/android/permissioncontroller/permission/ui/wear/** = file:/PermissionController/WEAR_OWNERS
 per-file src/com/android/permissioncontroller/role/ui/wear/** = file:/PermissionController/WEAR_OWNERS
 per-file res/*-watch/* = file:/PermissionController/WEAR_OWNERS
+per-file tests/permissionui/src/com/android/permissioncontroller/permissionui/ui/wear/** = file:/PermissionController/WEAR_OWNERS
