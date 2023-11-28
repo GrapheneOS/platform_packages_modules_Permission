@@ -1,0 +1,1 @@
+rule android.permission.flags.** com.android.permissioncontroller.jarjar.@0
