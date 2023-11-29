@@ -123,6 +123,11 @@ public class NoSystemFunctionPermissionTest extends AndroidTestCase {
     public void testVibrator() {
         Vibrator vibrator = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
+        if (!vibrator.hasVibrator()) {
+            // If the test device does not have a vibrator, then abort test.
+            return;
+        }
+
         try {
             vibrator.cancel();
             fail("Vibrator.cancel() did not throw SecurityException as expected.");
