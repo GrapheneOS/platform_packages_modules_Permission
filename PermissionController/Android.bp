@@ -164,6 +164,9 @@ android_library {
         "//apex_available:platform",
         "com.android.permission",
     ],
+
+    // TODO(b/313706381): Remove jarjar once flagging lib is fixed
+    jarjar_rules: "jarjar-rules.txt",
 }
 
 android_app {
