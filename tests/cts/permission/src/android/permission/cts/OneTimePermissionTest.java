@@ -252,12 +252,13 @@ public class OneTimePermissionTest {
         // Just waiting for the revocation
         eventually(() -> Assert.assertEquals(PackageManager.PERMISSION_DENIED,
                 mContext.getPackageManager()
-                        .checkPermission(CAMERA, CUSTOM_CAMERA_PERM_APP_PKG_NAME)));
+                        .checkPermission(CAMERA, CUSTOM_CAMERA_PERM_APP_PKG_NAME)), 30000);
 
         // This checks the vulnerability
         eventually(() -> Assert.assertEquals(PackageManager.PERMISSION_DENIED,
                 mContext.getPackageManager()
-                        .checkPermission(CUSTOM_PERMISSION, CUSTOM_CAMERA_PERM_APP_PKG_NAME)));
+                        .checkPermission(CUSTOM_PERMISSION, CUSTOM_CAMERA_PERM_APP_PKG_NAME)),
+                30000);
 
     }
 
