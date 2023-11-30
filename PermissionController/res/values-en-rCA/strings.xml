@@ -421,7 +421,7 @@
     <string name="ongoing_usage_dialog_separator" msgid="1715181526581520068">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" and "</string>
     <string name="default_app_search_keyword" msgid="8330125736889689743">"default apps"</string>
-    <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"Microphone &amp; Camera"</string>
+    <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"Microphone and camera"</string>
     <string name="settings_button" msgid="4414988414732479636">"Settings"</string>
     <string name="default_apps" msgid="5119201969348748639">"Default apps"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"No default apps"</string>
