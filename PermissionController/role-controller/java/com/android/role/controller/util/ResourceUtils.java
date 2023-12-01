@@ -42,7 +42,7 @@ public class ResourceUtils {
 
     @NonNull
     private static Context getPermissionControllerContext(@NonNull Context context) {
-        if (!SdkLevel.isAtLeastV() || !Flags.roleControllerInSystemServer()) {
+        if (!SdkLevel.isAtLeastV() || !Flags.systemServerRoleControllerEnabled()) {
             // We don't have the getPermissionControllerPackageName() API below V,
             // but role controller always runs in PermissionController below V.
             return context;
