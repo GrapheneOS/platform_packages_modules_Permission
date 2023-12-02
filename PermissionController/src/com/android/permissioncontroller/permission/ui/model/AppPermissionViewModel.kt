@@ -254,7 +254,6 @@ class AppPermissionViewModel(
                 mutableMapOf<String, LightAppPermGroupLiveData>()
 
             init {
-
                 addSource(appPermGroupLiveData) { appPermGroup ->
                     lightAppPermGroup = appPermGroup
                     if (permGroupName in PermissionMapping.STORAGE_SUPERGROUP_PERMISSIONS) {
@@ -397,6 +396,17 @@ class AppPermissionViewModel(
                     deniedState.isChecked = !group.isGranted
                     selectState.isChecked = isPartialStorageGrant(group)
                     allowedState.isChecked = group.isGranted && !isPartialStorageGrant(group)
+                    if (group.foreground.isPolicyFixed || group.foreground.isSystemFixed) {
+                        allowedState.isEnabled = false
+                        selectState.isEnabled = false
+                        deniedState.isEnabled = false
+                        showAdminSupportLiveData.value = admin
+                        val detailId =
+                            getDetailResIdForFixedByPolicyPermissionGroup(group, admin != null)
+                        if (detailId != 0) {
+                            detailResIdLiveData.value = detailId to null
+                        }
+                    }
                 } else {
                     // Allow / Deny case
                     allowedState.isShown = true
@@ -657,8 +667,12 @@ class AppPermissionViewModel(
 
     fun openPhotoPicker(fragment: Fragment) {
         val appPermGroup = lightAppPermGroup ?: return
-        openPhotoPickerForApp(fragment.requireActivity(), appPermGroup.packageInfo.uid,
-            appPermGroup.foregroundPermNames, 0)
+        openPhotoPickerForApp(
+            fragment.requireActivity(),
+            appPermGroup.packageInfo.uid,
+            appPermGroup.foregroundPermNames,
+            0
+        )
     }
 
     /**

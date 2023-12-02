@@ -49,7 +49,7 @@ class SafetyCenterTestConfigs(private val context: Context) {
                         context.packageName,
                         PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
                     )
-                    .signingInfo
+                    .signingInfo!!
                     .apkContentsSigners[0]
                     .toByteArray()
             )
