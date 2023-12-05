@@ -2285,7 +2285,7 @@
          @hide
     -->
     <permission android:name="android.permission.SUSPEND_APPS"
-        android:protectionLevel="signature|role" />
+        android:protectionLevel="signature|role|verifier" />
 
     <!-- @SystemApi
          @hide
