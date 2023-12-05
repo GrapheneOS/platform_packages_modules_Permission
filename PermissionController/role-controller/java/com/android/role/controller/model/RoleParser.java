@@ -172,7 +172,7 @@ public class RoleParser {
      * Retrieves the roles.xml resource from a context
      */
     private XmlResourceParser getRolesXml() {
-        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
             Resources resources = ResourceUtils.getPermissionControllerResources(mContext);
             int resourceId = resources.getIdentifier("roles", "xml",
                     ResourceUtils.RESOURCE_PACKAGE_NAME_PERMISSION_CONTROLLER);

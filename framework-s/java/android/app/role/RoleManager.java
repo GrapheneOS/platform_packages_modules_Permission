@@ -728,7 +728,7 @@ public final class RoleManager {
      */
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
-    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED)
     @UserHandleAware
     @SystemApi
     public boolean isRoleFallbackEnabled(@NonNull String roleName) {
@@ -750,7 +750,7 @@ public final class RoleManager {
      */
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
-    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED)
     @UserHandleAware
     @SystemApi
     public void setRoleFallbackEnabled(@NonNull String roleName, boolean fallbackEnabled) {
@@ -980,7 +980,7 @@ public final class RoleManager {
     @SystemApi
     public void isRoleVisible(@NonNull String roleName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
             int userId = getContextUserIfAppropriate().getIdentifier();
             boolean visible;
             try {
@@ -1021,7 +1021,7 @@ public final class RoleManager {
     @SystemApi
     public void isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+        if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
             int userId = getContextUserIfAppropriate().getIdentifier();
             boolean visible;
             try {

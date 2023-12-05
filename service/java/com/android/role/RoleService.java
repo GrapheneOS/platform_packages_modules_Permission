@@ -328,7 +328,7 @@ public class RoleService extends SystemService implements RoleUserState.Callback
             if (controller == null) {
                 UserHandle user = UserHandle.of(userId);
                 Context context = getContext();
-                if (SdkLevel.isAtLeastV() && Flags.roleControllerInSystemServer()) {
+                if (SdkLevel.isAtLeastV() && Flags.systemServerRoleControllerEnabled()) {
                     controller = new LocalRoleController(user, context);
                 } else {
                     controller = new RemoteRoleController(user, context);
