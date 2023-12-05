@@ -40,14 +40,18 @@ import android.content.pm.PackageManager;
 import android.os.Process;
 import android.os.SystemClock;
 import android.platform.test.annotations.AppModeFull;
+import android.provider.DeviceConfig;
 import android.util.ArraySet;
 import android.util.Base64;
 import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
 
+import com.android.compatibility.common.util.DeviceConfigStateChangerRule;
 import com.android.compatibility.common.util.EnableLocationRule;
 import com.android.compatibility.common.util.SystemUtil;
+
+import com.google.common.util.concurrent.Uninterruptibles;
 
 import org.junit.After;
 import org.junit.Before;
@@ -58,6 +62,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Tests behaviour when performing bluetooth scans with renounced location permission.
@@ -73,11 +79,22 @@ public class NearbyDevicesRenouncePermissionTest {
     public static final EnableBluetoothRule sEnableBluetoothRule = new EnableBluetoothRule(true);
 
     @Rule
+    public DeviceConfigStateChangerRule safetyLabelChangeNotificationsEnabledConfig =
+            new DeviceConfigStateChangerRule(
+                    mContext,
+                    DeviceConfig.NAMESPACE_BLUETOOTH,
+                    "scan_quota_count",
+                    Integer.toString(1000)
+            );
+
+    @Rule
     public final EnableLocationRule enableLocationRule = new EnableLocationRule();
 
     private AppOpsManager mAppOpsManager;
-    private int mLocationNoteCount;
-    private int mScanNoteCount;
+
+    private volatile long mTestStartTimestamp;
+    private final AtomicInteger mLocationNoteCount = new AtomicInteger(0);
+    private final AtomicInteger mScanNoteCount = new AtomicInteger(0);
 
     private enum Result {
         UNKNOWN, EXCEPTION, EMPTY, FILTERED, FULL
@@ -89,6 +106,13 @@ public class NearbyDevicesRenouncePermissionTest {
 
     @Before
     public void setUp() throws Exception {
+        // Sleep to guarantee that past noteOp timestamps are less than mTestStartTimestamp
+        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.MILLISECONDS);
+        mTestStartTimestamp = System.currentTimeMillis();
+
+        mLocationNoteCount.set(0);
+        mScanNoteCount.set(0);
+
         mAppOpsManager = getApplicationContext().getSystemService(AppOpsManager.class);
         mAppOpsManager.setOnOpNotedCallback(getApplicationContext().getMainExecutor(),
                 new AppOpsManager.OnOpNotedCallback() {
@@ -96,10 +120,12 @@ public class NearbyDevicesRenouncePermissionTest {
                     public void onNoted(SyncNotedAppOp op) {
                         switch (op.getOp()) {
                             case OPSTR_FINE_LOCATION:
-                                mLocationNoteCount++;
+                                logNoteOp(op);
+                                mLocationNoteCount.incrementAndGet();
                                 break;
                             case OPSTR_BLUETOOTH_SCAN:
-                                mScanNoteCount++;
+                                logNoteOp(op);
+                                mScanNoteCount.incrementAndGet();
                                 break;
                             default:
                         }
@@ -113,10 +139,22 @@ public class NearbyDevicesRenouncePermissionTest {
                     public void onAsyncNoted(AsyncNotedAppOp asyncOp) {
                         switch (asyncOp.getOp()) {
                             case OPSTR_FINE_LOCATION:
-                                mLocationNoteCount++;
+                                logNoteOp(asyncOp);
+                                if (asyncOp.getTime() < mTestStartTimestamp) {
+                                    Log.i(TAG, "ignoring asyncOp that originated before test "
+                                            + "start");
+                                    return;
+                                }
+                                mLocationNoteCount.incrementAndGet();
                                 break;
                             case OPSTR_BLUETOOTH_SCAN:
-                                mScanNoteCount++;
+                                logNoteOp(asyncOp);
+                                if (asyncOp.getTime() < mTestStartTimestamp) {
+                                    Log.i(TAG, "ignoring asyncOp that originated before test "
+                                            + "start");
+                                    return;
+                                }
+                                mScanNoteCount.incrementAndGet();
                                 break;
                             default:
                         }
@@ -124,14 +162,20 @@ public class NearbyDevicesRenouncePermissionTest {
                 });
     }
 
+    private void logNoteOp(SyncNotedAppOp op) {
+        Log.i(TAG, "OnOpNotedCallback::onNoted(op=" + op.getOp() + ")");
+    }
+
+    private void logNoteOp(AsyncNotedAppOp asyncOp) {
+        Log.i(TAG, "OnOpNotedCallback::"
+                + "onAsyncNoted(op=" + asyncOp.getOp()
+                + ", testStartTimestamp=" + mTestStartTimestamp
+                + ", noteOpTimestamp=" + asyncOp.getTime() + ")");
+    }
+
     @After
     public void tearDown() throws Exception {
         mAppOpsManager.setOnOpNotedCallback(null, null);
-    }
-
-    private void clearNoteCounts() {
-        mLocationNoteCount = 0;
-        mScanNoteCount = 0;
     }
 
     @AppModeFull
@@ -139,11 +183,10 @@ public class NearbyDevicesRenouncePermissionTest {
     public void scanWithoutRenouncingNotesBluetoothAndLocation() throws Exception {
         assumeTrue(supportsBluetoothLe());
 
-        clearNoteCounts();
         assertThat(performScan(Scenario.DEFAULT)).isEqualTo(Result.FULL);
         SystemUtil.eventually(() -> {
-            assertThat(mLocationNoteCount).isGreaterThan(0);
-            assertThat(mScanNoteCount).isGreaterThan(0);
+            assertThat(mLocationNoteCount.get()).isGreaterThan(0);
+            assertThat(mScanNoteCount.get()).isGreaterThan(0);
         });
     }
 
@@ -152,11 +195,10 @@ public class NearbyDevicesRenouncePermissionTest {
     public void scanRenouncingLocationNotesBluetoothButNotLocation() throws Exception {
         assumeTrue(supportsBluetoothLe());
 
-        clearNoteCounts();
         assertThat(performScan(Scenario.RENOUNCE)).isEqualTo(Result.FILTERED);
         SystemUtil.eventually(() -> {
-            assertThat(mLocationNoteCount).isEqualTo(0);
-            assertThat(mScanNoteCount).isGreaterThan(0);
+            assertThat(mLocationNoteCount.get()).isEqualTo(0);
+            assertThat(mScanNoteCount.get()).isGreaterThan(0);
         });
     }
 
@@ -165,22 +207,20 @@ public class NearbyDevicesRenouncePermissionTest {
     public void scanRenouncingInMiddleOfChainNotesBluetoothButNotLocation() throws Exception {
         assumeTrue(supportsBluetoothLe());
 
-        clearNoteCounts();
         assertThat(performScan(Scenario.RENOUNCE_MIDDLE)).isEqualTo(Result.FILTERED);
         SystemUtil.eventually(() -> {
-            assertThat(mLocationNoteCount).isEqualTo(0);
-            assertThat(mScanNoteCount).isGreaterThan(0);
+            assertThat(mLocationNoteCount.get()).isEqualTo(0);
+            assertThat(mScanNoteCount.get()).isGreaterThan(0);
         });
     }
 
     @AppModeFull
     @Test
     public void scanRenouncingAtEndOfChainNotesBluetoothButNotLocation() throws Exception {
-        clearNoteCounts();
         assertThat(performScan(Scenario.RENOUNCE_END)).isEqualTo(Result.FILTERED);
         SystemUtil.eventually(() -> {
-            assertThat(mLocationNoteCount).isEqualTo(0);
-            assertThat(mScanNoteCount).isGreaterThan(0);
+            assertThat(mLocationNoteCount.get()).isEqualTo(0);
+            assertThat(mScanNoteCount.get()).isGreaterThan(0);
         });
     }
 
