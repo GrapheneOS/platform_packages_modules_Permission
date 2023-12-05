@@ -545,6 +545,7 @@
             <permission-set name="sms" />
             <permission-set name="contacts" />
             <permission-set name="nearby_devices" />
+            <permission-set name="notifications" minSdkVersion="35" />
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
