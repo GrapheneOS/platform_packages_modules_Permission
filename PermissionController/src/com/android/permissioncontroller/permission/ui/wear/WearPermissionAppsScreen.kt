@@ -38,12 +38,14 @@ fun WearPermissionAppsScreen(helper: WearPermissionAppsHelper) {
     val categorizedApps = helper.categorizedAppsLiveData().observeAsState(emptyMap())
     val hasSystemApps = helper.hasSystemAppsLiveData().observeAsState(false)
     val showSystem = helper.shouldShowSystemLiveData().observeAsState(false)
+    val appPermissionUsages = helper.wearViewModel.appPermissionUsages.observeAsState(emptyList())
     var isLoading by remember { mutableStateOf(true) }
 
     val title = helper.getTitle()
     val subTitle = helper.getSubTitle()
     val showAlways = helper.showAlways()
-    val chipsByCategory = helper.getChipsByCategory(categorizedApps.value)
+    val chipsByCategory =
+        helper.getChipsByCategory(categorizedApps.value, appPermissionUsages.value)
 
     WearPermissionAppsContent(
         chipsByCategory,
@@ -89,6 +91,8 @@ internal fun WearPermissionAppsContent(
                     Chip(
                         label = it.title,
                         labelMaxLines = Int.MAX_VALUE,
+                        secondaryLabel = it.summary,
+                        secondaryLabelMaxLines = Int.MAX_VALUE,
                         icon = it.icon,
                         enabled = it.enabled,
                         onClick = { it.onClick() },
