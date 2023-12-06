@@ -16,9 +16,6 @@
 
 package com.android.permissioncontroller.permission.ui.wear.elements
 
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
 import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
@@ -30,11 +27,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -42,7 +36,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -50,7 +43,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
@@ -60,7 +52,6 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
-import androidx.wear.compose.material.SwipeToDismissBox
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
@@ -85,45 +76,16 @@ fun ScrollableScreen(
     subtitleTestTag: String? = null,
     content: ScalingLazyListScope.() -> Unit,
 ) {
-    var dismissed by remember { mutableStateOf(false) }
-    val activity = LocalContext.current.findActivity()
-
-    // To support Swipe-dismiss effect,
-    // add the view to SwipeToDismissBox if the screen is not on the top fragment.
-    if (getBackStackEntryCount(activity) > 0) {
-        SwipeToDismissBox(
-            onDismissed = {
-                dismiss(activity)
-                dismissed = true
-            }
-        ) { isBackground ->
-            if (isBackground || dismissed) {
-                Box(modifier = Modifier.fillMaxSize())
-            } else {
-                Scaffold(
-                    showTimeText,
-                    title,
-                    subtitle,
-                    image,
-                    isLoading,
-                    content,
-                    titleTestTag,
-                    subtitleTestTag
-                )
-            }
-        }
-    } else {
-        Scaffold(
-            showTimeText,
-            title,
-            subtitle,
-            image,
-            isLoading,
-            content,
-            titleTestTag,
-            subtitleTestTag
-        )
-    }
+    Scaffold(
+        showTimeText,
+        title,
+        subtitle,
+        image,
+        isLoading,
+        content,
+        titleTestTag,
+        subtitleTestTag
+    )
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -248,36 +210,4 @@ private fun RequestFocusOnResume(focusRequester: FocusRequester) {
             focusRequester.requestFocus()
         }
     }
-}
-
-internal fun dismiss(activity: Activity) {
-    if (activity is FragmentActivity) {
-        if (!activity.getSupportFragmentManager().popBackStackImmediate()) {
-            activity.finish()
-        }
-    } else {
-        activity.finish()
-    }
-}
-
-internal fun getBackStackEntryCount(activity: Activity): Int {
-    return if (activity is FragmentActivity) {
-        activity
-            .getSupportFragmentManager()
-            .primaryNavigationFragment
-            ?.childFragmentManager
-            ?.backStackEntryCount
-            ?: 0
-    } else {
-        0
-    }
-}
-
-internal fun Context.findActivity(): Activity {
-    var context = this
-    while (context is ContextWrapper) {
-        if (context is Activity) return context
-        context = context.baseContext
-    }
-    throw IllegalStateException("The screen should be called in the context of an Activity")
 }
