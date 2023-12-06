@@ -478,9 +478,9 @@
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو موسیقی اور آڈیو تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو اس آلے پر مزید تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏آڈیو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت دیں؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"جب آپ ایپ استعمال کر رہے ہوں تب ایپ صرف آڈیو ریکارڈ کر پائے گی"</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏آڈیو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ممکن ہے یہ ایپ ہر وقت آڈیو ریکارڈ کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;? کے ليے مائیکروفون تک رسائی تبدیل کریں؟"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"یہ ایپ ہر وقت آڈیو ریکارڈ کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
