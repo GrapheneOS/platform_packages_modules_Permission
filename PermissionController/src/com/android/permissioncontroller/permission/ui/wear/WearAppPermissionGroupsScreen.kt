@@ -37,13 +37,14 @@ import com.android.permissioncontroller.permission.ui.wear.model.RevokeDialogArg
 fun WearAppPermissionGroupsScreen(helper: WearAppPermissionGroupsHelper) {
     val packagePermGroups = helper.viewModel.packagePermGroupsLiveData.observeAsState(emptyMap())
     val autoRevoke = helper.viewModel.autoRevokeLiveData.observeAsState(null)
+    val appPermissionUsages = helper.wearViewModel.appPermissionUsages.observeAsState(emptyList())
     val showRevokeDialog = helper.revokeDialogViewModel.showDialogLiveData.observeAsState(false)
     var isLoading by remember { mutableStateOf(true) }
 
     Box {
         WearAppPermissionGroupsContent(
             isLoading,
-            helper.getPermissionGroupChipParams(),
+            helper.getPermissionGroupChipParams(appPermissionUsages.value),
             helper.getAutoRevokeChipParam(autoRevoke.value)
         )
         RevokeDialog(
@@ -80,7 +81,9 @@ internal fun WearAppPermissionGroupsContent(
                     } else {
                         Chip(
                             label = info.label,
-                            secondaryLabel = info.summary?.let { stringResource(info.summary) },
+                            labelMaxLines = Integer.MAX_VALUE,
+                            secondaryLabel = info.summary?.let { info.summary },
+                            secondaryLabelMaxLines = Integer.MAX_VALUE,
                             enabled = info.enabled,
                             onClick = info.onClick
                         )

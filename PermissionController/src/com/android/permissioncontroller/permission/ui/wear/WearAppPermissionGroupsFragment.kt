@@ -20,6 +20,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
@@ -27,20 +28,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissions
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModelFactory
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModelFactory
+import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
+import java.time.Instant
+import java.util.concurrent.TimeUnit
 
-class WearAppPermissionGroupsFragment : Fragment() {
+class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallback {
+    private lateinit var permissionUsages: PermissionUsages
+    private lateinit var wearViewModel: WearAppPermissionUsagesViewModel
     private lateinit var helper: WearAppPermissionGroupsHelper
+
+    // Suppress warning of the deprecated class [android.app.LoaderManager] since other form factors
+    // are using the class to load PermissionUsages.
+    @Suppress("DEPRECATION")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -74,17 +91,54 @@ class WearAppPermissionGroupsFragment : Fragment() {
         val factory = AppPermissionGroupsViewModelFactory(packageName, user, sessionId)
         val viewModel =
             ViewModelProvider(this, factory).get(AppPermissionGroupsViewModel::class.java)
+        wearViewModel =
+            ViewModelProvider(this, WearAppPermissionUsagesViewModelFactory())
+                .get(WearAppPermissionUsagesViewModel::class.java)
         val revokeDialogViewModel =
             ViewModelProvider(this, AppPermissionGroupsRevokeDialogViewModelFactory())
                 .get(AppPermissionGroupsRevokeDialogViewModel::class.java)
+
+        val context = requireContext()
+
+        // If the build type is below S, the app ops for permission usage can't be found. Thus, we
+        // shouldn't load permission usages, for them.
+        if (SdkLevel.isAtLeastS()) {
+            permissionUsages = PermissionUsages(context)
+            val aggregateDataFilterBeginDays =
+                (if (is7DayToggleEnabled())
+                        AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+                    else AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1)
+                    .toLong()
+
+            val filterTimeBeginMillis =
+                Math.max(
+                    System.currentTimeMillis() -
+                        TimeUnit.DAYS.toMillis(aggregateDataFilterBeginDays),
+                    Instant.EPOCH.toEpochMilli()
+                )
+            permissionUsages.load(
+                null,
+                null,
+                filterTimeBeginMillis,
+                Long.MAX_VALUE,
+                PermissionUsages.USAGE_FLAG_LAST,
+                requireActivity().getLoaderManager(),
+                false,
+                false,
+                this,
+                false
+            )
+        }
         helper =
             WearAppPermissionGroupsHelper(
-                context = requireContext(),
+                context = context,
                 fragment = this,
                 user = user,
+                packageName = packageName,
                 sessionId = sessionId,
                 appPermissions = appPermissions,
                 viewModel = viewModel,
+                wearViewModel = wearViewModel,
                 revokeDialogViewModel = revokeDialogViewModel
             )
 
@@ -94,6 +148,19 @@ class WearAppPermissionGroupsFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         helper.logAndClearToggledGroups()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    override fun onPermissionUsagesChanged() {
+        if (permissionUsages.usages.isEmpty()) {
+            return
+        }
+        if (getContext() == null) {
+            // Async result has come in after our context is gone.
+            return
+        }
+        wearViewModel.appPermissionUsages.value =
+            ArrayList<AppPermissionUsage>(permissionUsages.usages)
     }
 
     companion object {
