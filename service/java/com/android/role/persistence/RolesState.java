@@ -79,7 +79,7 @@ public final class RolesState {
      * @param roles the roles
      * @param fallbackEnabledRoles the roles with fallback enabled
      */
-    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED)
     public RolesState(int version, @Nullable String packagesHash,
             @NonNull Map<String, Set<String>> roles, @NonNull Set<String> fallbackEnabledRoles) {
         mVersion = version;
@@ -123,7 +123,7 @@ public final class RolesState {
      * @return fallback enabled roles
      */
     @NonNull
-    @FlaggedApi(Flags.FLAG_ROLE_CONTROLLER_IN_SYSTEM_SERVER)
+    @FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED)
     public Set<String> getFallbackEnabledRoles() {
         return mFallbackEnabledRoles;
     }
