@@ -19,12 +19,16 @@ package com.android.permissioncontroller.permission.ui.wear
 import android.app.Application
 import android.graphics.drawable.Drawable
 import android.os.UserHandle
+import com.android.permission.flags.Flags
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupDescription
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.Utils
 import com.android.settingslib.utils.applications.AppUtils
 import java.text.Collator
 import java.util.Random
@@ -34,6 +38,7 @@ class WearPermissionAppsHelper(
     val application: Application,
     val permGroupName: String,
     val viewModel: PermissionAppsViewModel,
+    val wearViewModel: WearAppPermissionUsagesViewModel,
     private val isStorageAndLessThanT: Boolean,
     private val onAppClick: (String, UserHandle, String) -> Unit,
     val onShowSystemClick: (Boolean) -> Unit,
@@ -46,9 +51,14 @@ class WearPermissionAppsHelper(
     fun getTitle() = getPermGroupLabel(application, permGroupName).toString()
     fun getSubTitle() = getPermGroupDescription(application, permGroupName).toString()
     fun getChipsByCategory(
-        categorizedApps: Map<Category, List<Pair<String, UserHandle>>>
+        categorizedApps: Map<Category, List<Pair<String, UserHandle>>>,
+        appPermissionUsages: List<AppPermissionUsage>
     ): Map<String, List<ChipInfo>> {
         val chipsByCategory: MutableMap<String, MutableList<ChipInfo>> = HashMap()
+
+        // A mapping of user + packageName to their last access timestamps for the permission group.
+        val groupUsageLastAccessTime: Map<String, Long> =
+            viewModel.extractGroupUsageLastAccessTime(appPermissionUsages)
 
         val context = application
         val collator = Collator.getInstance(context.resources.configuration.locales.get(0))
@@ -64,7 +74,13 @@ class WearPermissionAppsHelper(
                         .let {
                             if (it.first.isNotEmpty()) {
                                 chipsByCategory[STORAGE_ALLOWED_FULL] =
-                                    convertToChips(category, it.first, viewIdForLogging, comparator)
+                                    convertToChips(
+                                        category,
+                                        it.first,
+                                        viewIdForLogging,
+                                        comparator,
+                                        groupUsageLastAccessTime
+                                    )
                             }
                             if (it.second.isNotEmpty()) {
                                 chipsByCategory[STORAGE_ALLOWED_SCOPED] =
@@ -72,7 +88,8 @@ class WearPermissionAppsHelper(
                                         category,
                                         it.second,
                                         viewIdForLogging,
-                                        comparator
+                                        comparator,
+                                        groupUsageLastAccessTime
                                     )
                             }
                         }
@@ -82,7 +99,13 @@ class WearPermissionAppsHelper(
             val list = categorizedApps[category]
             if (!list.isNullOrEmpty()) {
                 chipsByCategory[category.categoryName] =
-                    convertToChips(category, list, viewIdForLogging, comparator)
+                    convertToChips(
+                        category,
+                        list,
+                        viewIdForLogging,
+                        comparator,
+                        groupUsageLastAccessTime
+                    )
             }
         }
 
@@ -95,17 +118,20 @@ class WearPermissionAppsHelper(
         category: Category,
         list: List<Pair<String, UserHandle>>,
         viewIdForLogging: Long,
-        comparator: Comparator<ChipInfo>
+        comparator: Comparator<ChipInfo>,
+        groupUsageLastAccessTime: Map<String, Long>
     ) =
         list
             .map { p ->
+                val lastAccessTime = groupUsageLastAccessTime[(p.second.toString() + p.first)]
                 createAppChipInfo(
                     application,
                     p.first,
                     p.second,
                     category,
                     onAppClick,
-                    viewIdForLogging
+                    viewIdForLogging,
+                    lastAccessTime
                 )
             }
             .sortedWith(comparator)
@@ -121,7 +147,8 @@ class WearPermissionAppsHelper(
         user: UserHandle,
         category: Category,
         onClick: (packageName: String, user: UserHandle, category: String) -> Unit,
-        viewIdForLogging: Long
+        viewIdForLogging: Long,
+        lastAccessTime: Long?
     ): ChipInfo {
         if (!viewModel.creationLogged) {
             logFragmentCreated(
@@ -133,8 +160,24 @@ class WearPermissionAppsHelper(
                 category == Category.DENIED
             )
         }
+        val summary =
+            if (Flags.wearPrivacyDashboardEnabled()) {
+                lastAccessTime?.let {
+                    viewModel.getPreferenceSummary(
+                        application.resources,
+                        Utils.getPermissionLastAccessSummaryTimestamp(
+                            lastAccessTime,
+                            application,
+                            permGroupName
+                        )
+                    )
+                }
+            } else {
+                null
+            }
         return ChipInfo(
             title = KotlinUtils.getPackageLabel(application, packageName, user),
+            summary = summary,
             contentDescription =
                 AppUtils.getAppContentDescription(application, packageName, user.getIdentifier()),
             icon = KotlinUtils.getBadgedPackageIcon(application, packageName, user),
@@ -184,6 +227,7 @@ class WearPermissionAppsHelper(
 
 class ChipInfo(
     val title: String,
+    val summary: String? = null,
     val contentDescription: String? = null,
     val onClick: () -> Unit = {},
     val icon: Drawable? = null,
