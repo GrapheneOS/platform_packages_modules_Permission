@@ -101,10 +101,8 @@ internal fun Scaffold(
     titleTestTag: String? = null,
     subtitleTestTag: String? = null,
 ) {
-    val initialCenterIndex = 0
-    val scrollContentTopPadding = 32.dp
     val focusRequester = remember { FocusRequester() }
-    val listState = remember { ScalingLazyListState(initialCenterItemIndex = initialCenterIndex) }
+    val listState = remember { ScalingLazyListState(initialCenterItemIndex = 0) }
     val coroutineScope = rememberCoroutineScope()
 
     MaterialTheme {
@@ -123,12 +121,7 @@ internal fun Scaffold(
             timeText = {
                 if (showTimeText && !isLoading) {
                     TimeText(
-                        modifier =
-                            Modifier.scrollAway(
-                                listState,
-                                initialCenterIndex,
-                                scrollContentTopPadding
-                            ),
+                        modifier = Modifier.scrollAway(listState),
                         contentPadding = PaddingValues(15.dp)
                     )
                 }
@@ -146,12 +139,7 @@ internal fun Scaffold(
                         // content.
                         autoCentering = null,
                         contentPadding =
-                            PaddingValues(
-                                start = 10.dp,
-                                end = 10.dp,
-                                top = scrollContentTopPadding,
-                                bottom = 70.dp
-                            )
+                            PaddingValues(start = 10.dp, end = 10.dp, top = 32.dp, bottom = 70.dp)
                     ) {
                         image?.let {
                             val imageModifier = Modifier.size(24.dp)
