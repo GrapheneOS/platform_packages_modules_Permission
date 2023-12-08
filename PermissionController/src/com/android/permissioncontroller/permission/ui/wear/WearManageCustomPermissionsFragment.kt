@@ -21,18 +21,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.wear.widget.SwipeDismissFrameLayout
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment
 import com.android.permissioncontroller.permission.ui.model.ManageCustomPermissionsViewModel
 
 class WearManageCustomPermissionsFragment : Fragment() {
+    private val composeViewTag = "wear_app_permission_fragment_compose_view"
+
+    private val swipeDismissCallback =
+        object : SwipeDismissFrameLayout.Callback() {
+            override fun onDismissed(layout: SwipeDismissFrameLayout) {
+                val viewGroup = view as? ViewGroup
+                val composeView = viewGroup?.findViewWithTag<ComposeView>(composeViewTag)
+                if (composeView != null) {
+                    viewGroup.removeView(composeView)
+                }
+                parentFragmentManager.popBackStackImmediate()
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val activity = requireActivity()
         val application = activity.getApplication()
         val sessionId: Long =
@@ -51,8 +67,19 @@ class WearManageCustomPermissionsFragment : Fragment() {
             )
         }
 
-        return ComposeView(activity).apply {
-            setContent { WearManageCustomPermissionScreen(viewModel, onPermGroupClick) }
+        val composeView =
+            ComposeView(activity).apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent { WearManageCustomPermissionScreen(viewModel, onPermGroupClick) }
+                tag = composeViewTag
+            }
+
+        return SwipeDismissFrameLayout(activity).apply {
+            addView(composeView)
+            addCallback(swipeDismissCallback)
+            setSwipeDismissible(true)
         }
     }
 }
