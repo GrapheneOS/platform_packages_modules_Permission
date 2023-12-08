@@ -19,7 +19,6 @@ package com.android.permissioncontroller.permission.ui.wear.elements
 import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -109,10 +108,7 @@ internal fun Scaffold(
         Scaffold(
             modifier =
                 Modifier.onRotaryScrollEvent {
-                        coroutineScope.launch {
-                            listState.scrollBy(it.verticalScrollPixels)
-                            listState.animateScrollBy(0f)
-                        }
+                        coroutineScope.launch { listState.scrollBy(it.verticalScrollPixels) }
                         true
                     }
                     .focusRequester(focusRequester)
