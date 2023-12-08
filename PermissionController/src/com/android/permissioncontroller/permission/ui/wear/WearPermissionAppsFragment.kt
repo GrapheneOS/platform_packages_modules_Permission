@@ -18,19 +18,26 @@ package com.android.permissioncontroller.permission.ui.wear
 
 import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModelFactory
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModelFactory
 
 /**
  * This is a condensed version of
@@ -41,9 +48,15 @@ import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewMo
  *
  * <p>Shows a list of apps which request at least on permission of this group.
  */
-class WearPermissionAppsFragment : Fragment() {
+class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
     private val LOG_TAG = "PermissionAppsFragment"
 
+    private lateinit var permissionUsages: PermissionUsages
+    private lateinit var wearViewModel: WearAppPermissionUsagesViewModel
+
+    // Suppress warning of the deprecated class [android.app.LoaderManager] since other form factors
+    // are using the class to load PermissionUsages.
+    @Suppress("DEPRECATION")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +75,9 @@ class WearPermissionAppsFragment : Fragment() {
         val factory =
             PermissionAppsViewModelFactory(activity.getApplication(), permGroupName, this, Bundle())
         val viewModel = ViewModelProvider(this, factory).get(PermissionAppsViewModel::class.java)
+        wearViewModel =
+            ViewModelProvider(this, WearAppPermissionUsagesViewModelFactory())
+                .get(WearAppPermissionUsagesViewModel::class.java)
 
         val onAppClick: (String, UserHandle, String) -> Unit = { packageName, user, category ->
             run {
@@ -105,6 +121,26 @@ class WearPermissionAppsFragment : Fragment() {
                 }
             }
 
+        // If the build type is below S, the app ops for permission usage can't be found. Thus, we
+        // shouldn't load permission usages, for them.
+        if (SdkLevel.isAtLeastS()) {
+            permissionUsages = PermissionUsages(requireContext())
+
+            val filterTimeBeginMillis: Long = viewModel.getFilterTimeBeginMillis()
+            permissionUsages.load(
+                null,
+                null,
+                filterTimeBeginMillis,
+                Long.MAX_VALUE,
+                PermissionUsages.USAGE_FLAG_LAST,
+                requireActivity().getLoaderManager(),
+                false,
+                false,
+                this,
+                false
+            )
+        }
+
         return ComposeView(requireContext()).apply {
             setContent {
                 WearPermissionAppsScreen(
@@ -112,6 +148,7 @@ class WearPermissionAppsFragment : Fragment() {
                         activity.getApplication(),
                         permGroupName,
                         viewModel,
+                        wearViewModel,
                         isStorageAndLessThanT,
                         onAppClick,
                         onShowSystemClick,
@@ -120,5 +157,18 @@ class WearPermissionAppsFragment : Fragment() {
                 )
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    override fun onPermissionUsagesChanged() {
+        if (permissionUsages.usages.isEmpty()) {
+            return
+        }
+        if (context == null) {
+            // Async result has come in after our context is gone.
+            return
+        }
+        wearViewModel.appPermissionUsages.value =
+            ArrayList<AppPermissionUsage>(permissionUsages.usages)
     }
 }

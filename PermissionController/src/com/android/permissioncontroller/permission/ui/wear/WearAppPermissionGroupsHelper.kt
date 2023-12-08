@@ -26,12 +26,14 @@ import android.util.ArraySet
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.android.permission.flags.Flags
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.AppPermissions
 import com.android.permissioncontroller.permission.model.Permission
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
@@ -40,6 +42,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.PermSubtitle
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.RevokeDialogArgs
+import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
 import com.android.permissioncontroller.permission.utils.ArrayUtils
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
@@ -50,16 +53,26 @@ class WearAppPermissionGroupsHelper(
     val context: Context,
     val fragment: Fragment,
     val user: UserHandle,
+    val packageName: String,
     val sessionId: Long,
     private val appPermissions: AppPermissions,
     val viewModel: AppPermissionGroupsViewModel,
+    val wearViewModel: WearAppPermissionUsagesViewModel,
     val revokeDialogViewModel: AppPermissionGroupsRevokeDialogViewModel,
     private val toggledGroups: ArraySet<AppPermissionGroup> = ArraySet()
 ) {
-    fun getPermissionGroupChipParams(): List<PermissionGroupChipParam> {
+    fun getPermissionGroupChipParams(
+        appPermissionUsages: List<AppPermissionUsage>
+    ): List<PermissionGroupChipParam> {
         if (DEBUG) {
             Log.d(TAG, "getPermissionGroupChipParams() called")
         }
+        val groupUsageLastAccessTime: MutableMap<String, Long> = HashMap()
+        viewModel.extractGroupUsageLastAccessTime(
+            groupUsageLastAccessTime,
+            appPermissionUsages,
+            packageName
+        )
         val groupUiInfos = viewModel.packagePermGroupsLiveData.value
         val groups: List<AppPermissionGroup> = appPermissions.permissionGroups
 
@@ -107,7 +120,11 @@ class WearAppPermissionGroupsHelper(
                                 label = group.label.toString(),
                                 summary =
                                     bookKeeping[group.name]?.let {
-                                        getSummary(category, it.subtitle)
+                                        getSummary(
+                                            category,
+                                            it,
+                                            groupUsageLastAccessTime[it.groupName]
+                                        )
                                     },
                                 onClick = { onPermissionGroupClicked(group, category.categoryName) }
                             )
@@ -118,7 +135,29 @@ class WearAppPermissionGroupsHelper(
         return list
     }
 
-    private fun getSummary(category: Category?, subtitle: PermSubtitle): Int? {
+    private fun getSummary(
+        category: Category?,
+        groupUiInfo: GroupUiInfo,
+        lastAccessTime: Long?
+    ): String {
+        val grantSummary =
+            getGrantSummary(category, groupUiInfo)?.let { context.getString(it) } ?: ""
+        if (!Flags.wearPrivacyDashboardEnabled()) {
+            return grantSummary
+        }
+        val accessSummary =
+            viewModel.getPreferenceSummary(groupUiInfo, context, lastAccessTime).let {
+                if (it.isNotEmpty()) {
+                    System.lineSeparator() + it
+                } else {
+                    it
+                }
+            }
+        return grantSummary + accessSummary
+    }
+
+    private fun getGrantSummary(category: Category?, groupUiInfo: GroupUiInfo): Int? {
+        val subtitle = groupUiInfo.subtitle
         if (category != null) {
             when (category) {
                 Category.ALLOWED -> return R.string.allowed_header
@@ -335,7 +374,7 @@ data class PermissionGroupChipParam(
     val group: AppPermissionGroup,
     val perm: PermissionInfo? = null,
     val label: String,
-    val summary: Int? = null,
+    val summary: String? = null,
     val enabled: Boolean = true,
     val checked: Boolean? = null,
     val onClick: () -> Unit = {},
