@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Používat přesnou polohu"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Když je přesná poloha vypnutá, aplikace mají přístup k vaší přibližné poloze"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Oprávnění: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: přístup této aplikace"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Aplikace má přístup k: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobrazit všechna oprávnění aplikace <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Zobrazit všechny aplikace s tímto oprávněním"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Zobrazit používání mikrofonu asistentem"</string>
@@ -399,7 +399,7 @@
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Tato služba sdílí vaše fotky, média a oznámení z telefonu s ostatními zařízeními."</string>
     <string name="role_notes_label" msgid="7451627001058089536">"Výchozí aplikace pro poznámky"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikace pro poznámky"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"Aplikace, které umožňují dělat si na zařízení poznámky."</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"Aplikace, které umožňují dělat si na zařízení poznámky"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"poznámky"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuálně výchozí"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Příště se neptat"</string>
@@ -431,7 +431,7 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Žádné aplikace"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybráno"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Vybráno – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"zvláštní přístup aplikací"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"přístup ke speciálním aplikacím"</string>
     <string name="special_app_access" msgid="5019319067120213797">"Přístupy pro aplikace"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"Žádný přístup ke spec. aplik."</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Žádné aplikace"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete, aby aplikace &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dál měla přístup k datům z tělesných senzorů během používání aplikace?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odesílat oznámení?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Spravovaná oprávnění"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> má přístup k poloze"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaše organizace umožňuje aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> přístup k vaší poloze"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Jiná oprávnění"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Oprávnění používaná systémem"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Oprávnění, která jsou používaná pouze systémovými aplikacemi."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Tato aplikace uvedla, že může sdílet údaje o poloze se třetími stranami"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Sdílení dat a poloha"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Odkud informace o sdílení dat pocházejí"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Vývojář poskytl výrobci tohoto zařízení informace o tom, jak tato aplikace sdílí data. Tyto informace může vývojář průběžně aktualizovat."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Vývojář poskytl obchodu "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informace o tom, jak tato aplikace sdílí data. Tyto informace může vývojář průběžně aktualizovat."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Možné účely sdílení údajů o poloze touto aplikací:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Sdílení dat se liší"</string>
@@ -607,8 +608,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Zabezpečení údajů"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Mohou být sdíleny údaje o poloze"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Tato aplikace uvedla, že může sdílet údaje o vaší poloze se třetími stranami"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Odkaz nelze otevřít"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizace sdílení údajů o poloze"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Kontrola aplikací, které změnily způsob, jakým mohou sdílet údaje o vaší poloze"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Zkontrolujte aplikace, které změnily způsob, jakým mohou sdílet údaje o vaší poloze"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tyto aplikace změnily způsob, jakým mohou sdílet údaje o vaší poloze. Buď je dříve nesdílely, nebo je nyní mohou sdílet pro reklamní nebo marketingové účely."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Vývojáři těchto aplikací poskytli obchodu s aplikacemi informace o svých postupech sdílení dat. Tyto informace mohou průběžně aktualizovat.\n\nPostupy sdílení dat se mohou lišit v závislosti na verzi aplikace, použití, oblasti a věku uživatele."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Informace o sdílení dat"</string>

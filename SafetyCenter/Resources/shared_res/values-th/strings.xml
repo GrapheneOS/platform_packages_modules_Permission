@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"การสแกน"</string>
     <string name="loading_summary" msgid="3740846439782713910">"กำลังตรวจสอบการตั้งค่าอุปกรณ์…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"ดูดีแล้ว"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"ไม่พบปัญหา"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{ดูคำแนะนำ}other{ดูคำแนะนำ}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ไม่พบปัญหา"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{เคล็ดลับที่นำไปใช้ได้}other{เคล็ดลับที่นำไปใช้ได้}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{ดำเนินการแล้ว}other{ดำเนินการแล้ว}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"ตรวจสอบการตั้งค่า"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"ตรวจสอบรายการการตั้งค่า"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"พบความเสี่ยงที่อาจเกิดขึ้น"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"พบความเสี่ยง"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"บัญชีอาจมีความเสี่ยง"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"บัญชีมีความเสี่ยง"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ดูการแจ้งเตือน}other{ดูการแจ้งเตือน}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"บัญชีมีความเสี่ยง"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{ดูการแจ้งเตือนด้านล่าง}other{ดูการแจ้งเตือนด้านล่าง}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"เปิดหน้าไม่ได้"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"แก้ไขการแจ้งเตือนไม่ได้"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"รีเฟรชการตั้งค่าไม่ได้"</string>

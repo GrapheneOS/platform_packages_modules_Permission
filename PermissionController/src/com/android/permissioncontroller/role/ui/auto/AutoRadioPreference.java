@@ -19,16 +19,23 @@ package com.android.permissioncontroller.role.ui.auto;
 import android.content.Context;
 import android.widget.RadioButton;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.PreferenceViewHolder;
 import androidx.preference.TwoStatePreference;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.role.ui.RoleApplicationPreference;
+import com.android.permissioncontroller.role.ui.UserRestrictionAwarePreferenceMixin;
 
 /** Preference used to represent apps that can be picked as a default app. */
-public class AutoDefaultAppPreference extends TwoStatePreference {
+public class AutoRadioPreference extends TwoStatePreference implements
+        RoleApplicationPreference {
 
-    public AutoDefaultAppPreference(Context context) {
+    private final UserRestrictionAwarePreferenceMixin mUserRestrictionAwarePreferenceMixin =
+            new UserRestrictionAwarePreferenceMixin(this);
+
+    public AutoRadioPreference(Context context) {
         super(context, null, TypedArrayUtils.getAttr(context, R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
         init();
@@ -45,6 +52,18 @@ public class AutoDefaultAppPreference extends TwoStatePreference {
 
         RadioButton radioButton = (RadioButton) holder.findViewById(R.id.radio_button);
         radioButton.setChecked(isChecked());
+
+        mUserRestrictionAwarePreferenceMixin.onAfterBindViewHolder(holder);
+    }
+
+    @Override
+    public void setUserRestriction(@Nullable String userRestriction) {
+        mUserRestrictionAwarePreferenceMixin.setUserRestriction(userRestriction);
+    }
+
+    @Override
+    public AutoRadioPreference asTwoStatePreference() {
+        return this;
     }
 }
 

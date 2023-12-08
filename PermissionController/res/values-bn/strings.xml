@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"যাই হোক, অনুমতি দেবেন না"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"বাতিল করুন"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>টির মধ্যে <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> নম্বর"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপটিকে এটি করার অনুমতি দেবেন?: <xliff:g id="ACTION">%2$s</xliff:g>"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপটিকে সব সময় এটি করার অনুমতি দেবেন?: <xliff:g id="ACTION">%2$s</xliff:g>"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপটিকে <xliff:g id="ACTION">%2$s</xliff:g> করার অনুমতি দেবেন?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপটিকে সব সময় <xliff:g id="ACTION">%2$s</xliff:g> করার অনুমতি দেবেন?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"শুধুমাত্র অ্যাপ ব্যবহার করার সময়"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"সব সময়"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"অনুমতি দেবেন না এবং আর জিজ্ঞাসা করবেন না"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ব্যবহার করার সময় &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে বডি সেন্সর ডেটার অ্যাক্সেস দিয়ে রাখতে চান?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে বিজ্ঞপ্তি পাঠানোর অনুমতি দেবেন?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"নিয়ন্ত্রিত অনুমতি"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>-এর লোকেশন অ্যাক্সেস আছে"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"আপনার সংস্থা <xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার লোকেশন অ্যাক্সেস করার অনুমতি দেয়"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"অন্যান্য অনুমতি"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"যেসব অনুমতি শুধু সিস্টেম অ্যাপ ব্যবহার করেছে"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"যেসব অনুমতি শুধুমাত্র সিস্টেম অ্যাপ্লিকেশনে ব্যবহার করা হয়।"</string>
@@ -575,21 +577,20 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"ব্যাকগ্রাউন্ডে লোকেশন অ্যাক্সেস করার অনুমতি আছে এমন অ্যাপ পর্যালোচনা করুন"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"এই অ্যাপ সব সময় আপনার লোকেশন অ্যাক্সেস করতে পারে, এমনকি অ্যাপটি বন্ধ করা থাকলেও।\n\nসঠিকভাবে কাজ করার জন্য কিছু সুরক্ষা ও জরুরি অ্যাপকে ব্যাকগ্রাউন্ডে আপনার লোকেশন অ্যাক্সেস করতে দিতে হবে।"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"অ্যাক্সেস পরিবর্তন করা হয়েছে"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"লোকেশন ব্যবহারের সাম্প্রতিক তথ্য দেখুন"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"সম্প্রতি লোকেশন ব্যবহার সম্পর্কিত তথ্য দেখুন"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"গোপনীয়তা নিয়ন্ত্রণ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"ক্যামেরা অ্যাক্সেস"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"মাইক্রোফোনে অ্যাক্সেস"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"অ্যাপ ও পরিষেবার জন্য"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"অ্যাপ ও পরিষেবার জন্য। এই সেটিং বন্ধ থাকলেও, মাইক্রোফোনের ডেটা শেয়ার করা যেতে পারে। আপনি কোনও জরুরি নম্বরে কল করলে এমন হতে পারে।"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"লোকেশনে অ্যাক্সেস রয়েছে এমন অ্যাপ ও পরিষেবা দেখা"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ক্লিপবোর্ড অ্যাক্সেস সংক্রান্ত তথ্য দেখানো"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"ক্লিপবোর্ড অ্যাক্সেস দেখায়"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"আপনার কপি করা টেক্সট, ছবি বা অন্যান্য কন্টেন্ট অ্যাপ অ্যাক্সেস করলে মেসেজ দেখায়"</string>
     <string name="show_password_title" msgid="2877269286984684659">"পাসওয়ার্ড দেখুন"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"টাইপ করার সময় অক্ষরগুলি কয়েক মুহূর্তের জন্য দেখুন"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই অ্যাপ, থার্ড-পার্টির সাথে লোকেশন ডেটা শেয়ার করার অনুমতি চাইতে পারে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শেয়ারিং ও লোকেশন"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শেয়ারিং সম্পর্কিত তথ্য কোথা থেকে পাওয়া যায়"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"কীভাবে এই অ্যাপ ডেটা শেয়ার করে তার ব্যাপারে ডেভেলপার ডিভাইসের প্রস্তুতকারককে তথ্য প্রদান করেছে। ভবিষ্যতে ডেভেলপার এই তথ্য আপডেট করতে পারে।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"কীভাবে এই অ্যাপ ডেটা শেয়ার করে, তার ব্যাপারে ডেভেলপার "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"-কে তথ্য প্রদান করেছে। ভবিষ্যতে ডেভেলপার এই তথ্য আপডেট করতে পারে।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এই অ্যাপ যে জন্য লোকেশন ডেটা শেয়ার করতে পারে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শেয়ারিংয়ের ক্ষেত্রে হওয়া পরিবর্তন"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ডেটা সুরক্ষা"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"লোকেশন ডেটা শেয়ার করা হতে পারে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই অ্যাপ জানিয়েছে যে, এটি থার্ড পার্টির সাথে আপনার লোকেশন ডেটা শেয়ার করতে পারে"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিঙ্কটি খুলতে পারা যাচ্ছে না"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"লোকেশনের জন্য ডেটা শেয়ারিং সম্পর্কিত আপডেট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"যেসব অ্যাপ আপনার লোকেশন ডেটা শেয়ার করার উপায়ের ক্ষেত্রে পরিবর্তন করেছে, সেগুলি পর্যালোচনা করুন"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এইসব অ্যাপ আপনার লোকেশন ডেটা শেয়ার করার উপায়ের ক্ষেত্রে পরিবর্তন করেছে। এগুলি আগে হয়ত শেয়ার করেনি অথবা এখন বিজ্ঞাপন বা মার্কেটিং সংক্রান্ত উদ্দেশ্যে শেয়ার করতে পারে।"</string>

@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Säilita valik „Rakenduse kasutamise ajal”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Säilita ainult sel korral"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Lisateave"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Anna juurdepääs kõigile"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Luba kõik"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Luba alati kõik"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Valige fotod ja videod"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Valige rohkem"</string>
@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ära luba ikkagi"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Loobu"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Kas lubada rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul luba <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Kas lubada rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul alati luba <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Kas lubada rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul toiming <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Kas lubada rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul alati toiming <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Ainult rakenduse kasutamisel"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Alati"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Ära luba ja ära enam küsi"</string>
@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Luba alati"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Luba ainult rakenduse kasutamise ajal"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Luba rakenduse kasutamise ajal"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Ära luba"</string>
     <string name="loading" msgid="4789365003890741082">"Laadimine …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Kõik load"</string>
@@ -187,7 +187,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Luba kõikide failide haldamine"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Luba juurdepääs ainult meediale"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Luba alati"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Luba ainult rakenduse kasutamise ajal"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Luba rakenduse kasutamise ajal"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Luba alati kõik"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Küsi iga kord"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ära luba"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"See rakendus andis teada, et võib asukohaandmeid jagada kolmandate osapooltega"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Andmete jagamine ja asukoht"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Andmete jagamise teabe päritolu"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Arendaja on esitanud selle seadme tootjale teavet selle kohta, kuidas see rakendus andmeid jagab. Arendaja võib seda teavet aja jooksul muuta."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Arendaja on esitanud rakenduste poele "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" teavet selle kohta, kuidas see rakendus andmeid jagab. Arendaja võib seda teavet aja jooksul muuta."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Rakendus võib asukohaandmeid jagada järgmiseks."</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Andmete jagamine võib olla erinev"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Andmete ohutus"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Asukohaandmeid võidakse jagada"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"See rakendus andis teada, et võib jagada teie asukohaandmeid kolmandate osapooltega."</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Seda linki ei saa avada"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Andmete jagamise värskendused asukoha kohta"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Vaadake üle rakendused, mis on muutnud teie asukohaandmete jagamise viisi"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Need rakendused on muutnud teie asukohaandmete jagamise viisi. Võib-olla ei jaganud nad neid varem või hakkasid neid nüüd jagama reklaami- või turunduseesmärgil."</string>

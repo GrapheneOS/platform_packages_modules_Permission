@@ -59,7 +59,7 @@ internal class PreferenceHighlightManager(private val fragment: PreferenceFragme
 
     /** Creates a new [HighlightablePreferenceGroupAdapter] instance */
     fun createAdapter(
-        preferenceScreen: PreferenceScreen?,
+        preferenceScreen: PreferenceScreen,
     ): RecyclerView.Adapter<RecyclerView.ViewHolder> {
         val intent = fragment.getActivity()?.getIntent()
         preferenceGroupAdapter =

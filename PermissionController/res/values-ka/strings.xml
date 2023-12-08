@@ -36,7 +36,7 @@
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"ყოველთვის ყველას დაშვება"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ფოტოებისა და ვიდეოების არჩევა"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"მეტის არჩევა"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"მეტის აღარ არჩევა"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ნუ აირჩევთ მეტს"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"მაინც არ დაიშვას"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"დახურვა"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> / <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>-დან"</string>
@@ -475,7 +475,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკაზე, აუდიო და სხვა &lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის მუსიკასა და აუდიოფაილებზე?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
-    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"მიენიჭოს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომა თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
+    <string name="permgrouprequest_more_photos" msgid="128933814654231321">"მიანიჭეთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომა თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ეს აპი აუდიოს ჩაწერას მხოლოდ მაშინ შეძლებს, როცა მას იყენებთ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"გსურთ გამოყენებისას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს მიანიჭოთ სხეულის სენსორების მონაცემებზე წვდომა?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"მისცემთ უფლებას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს, გამოგიგზავნოთ შეტყობინებები?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"კონტროლირებული ნებართვები"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>-ს მდებარეობაზე წვდომა აქვს"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"თქვენი ორგანიზაცია ნებას რთავს <xliff:g id="APP_NAME">%1$s</xliff:g>-ს, წვდომა ჰქონდეს თქვენ მდებარეობაზე"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"სხვა ნებართვები"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ნებართვები, რომლებსაც სისტემა იყენებს"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ნებართვები, რომლებსაც მხოლოდ სისტემის აპლიკაციები იყენებს."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ამ აპის თანახმად, მან შესაძლოა გაუზიაროს მდებარეობის მონაცემები მესამე მხარეს"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"მონაცემთა გაზიარება და მდებარეობა"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"საიდან მოდის მონაცემთა გაზიარების ინფორმაცია"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"დეველოპერმა მოცემული მოწყობილობის მწარმოებელს მიაწოდა ინფორმაცია ამ აპის მიერ ინფორმაციის გაზიარების შესახებ. დეველოპერმა, შესაძლოა, დროთა განმავლობაში განაახლოს ეს ინფორმაცია."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"დეველოპერმა ინფორმაცია დაურთო "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"-ს ამ აპის მიერ ინფორმაციის გაზიარების შესახებ. დეველოპერმა შესაძლოა, დროთა განმავლობაში განაახლოს ეს ინფორმაცია."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"აპმა შესაძლოა, გაუზიაროს მდებარეობის მონაცემები:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"მონაცემთა გაზიარება განსხვავდება"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"მონაცემთა უსაფრთხოება"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"მდებარეობის მონაცემები შესაძლოა გაზიარებულია"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ამ აპის თანახმად, მან შესაძლოა გაუზიაროს თქვენი მდებარეობის მონაცემები მესამე მხარეს"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ამ ბმულის გახსნა შეუძლებელია"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"მონაცემების გაზიარ. განახლებები მდებარეობისთვის"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"გადახედეთ აპებს, რომლებშიც შეიცვალა თქვენი მდებარეობის მონაცემების გაზიარების მეთოდი"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ამ აპებმა შეცვალა თქვენი მდებარეობის მონაცემების გაზიარების გზები. შესაძლოა, ისინი ადრე არ გაუზიარებიათ, ან გაზიარდა ახლა რეკლამირების ან მარკეტინგული მიზნით."</string>

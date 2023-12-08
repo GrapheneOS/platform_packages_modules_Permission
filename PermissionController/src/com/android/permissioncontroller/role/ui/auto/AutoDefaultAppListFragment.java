@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.role.ui.DefaultAppListChildFragment;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.RolePreference;
 
 /** Shows various roles for which a default app can be picked. */
 public class AutoDefaultAppListFragment extends AutoSettingsFrameFragment implements
@@ -57,8 +57,8 @@ public class AutoDefaultAppListFragment extends AutoSettingsFrameFragment implem
 
     @NonNull
     @Override
-    public TwoTargetPreference createPreference() {
-        return new AutoSettingsPreference(requireContext());
+    public RolePreference createPreference() {
+        return new AutoRolePreference(requireContext());
     }
 
     @Override

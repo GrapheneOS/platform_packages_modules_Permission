@@ -41,7 +41,7 @@
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына <xliff:g id="ACTION">%2$s</xliff:g> рұқсатын беру керек пе?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына <xliff:g id="ACTION">%2$s</xliff:g> рұқсаты әрдайым берілсін бе?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы үшін <xliff:g id="ACTION">%2$s</xliff:g> әрекетіне әрқашан рұқсат етілсін бе?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Қолданба пайдаланылғанда ғана"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Әрқашан"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Рұқсат бермеу және қайта сұрамау"</string>
@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Рұқсаттың соңғы 1 минутта пайдаланылуы"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{Соңғы # күнде пайдаланылмады.}other{Соңғы # күнде пайдаланылмады.}}"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{Соңғы # сағатта пайдаланылмады.}other{Соңғы # сағатта пайдаланылмады.}}"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды.}other{# қолданба пайдаланды.}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 қолданба пайдаланды}other{# қолданба пайдаланды}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Барлығын бақылау тақтасынан көру"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Сүзгі шарты: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Сүзгіні өшіру"</string>
@@ -258,12 +258,12 @@
     <string name="minutes" msgid="4868414855445375753">"{count,plural, =1{# минут}other{# минут}}"</string>
     <string name="seconds" msgid="5893958182059842734">"{count,plural, =1{# секунд}other{# секунд}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"Рұқсат туралы еске салғыштар"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 қолданба пайдаланылмайды"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> қолданба пайдаланылмайды бар"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 пайдаланылмайтын қолданба"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> пайдаланылмайтын қолданба бар"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Құпиялықты қорғау үшін рұқсаттар өшірілді. Көру үшін түртіңіз."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Пайдаланылмайтын қолданбалар үшін рұқсаттар өшірілді"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған. Көру үшін түртіңіз."</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# қолданба пайдаланылмайды}other{# қолданба пайдаланылмайды}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# пайдаланылмайтын қолданба}other{# пайдаланылмайтын қолданба}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Рұқсаттар мен уақытша файлдар өшірілді және хабарландырулар тоқтатылды. Көру үшін түртіңіз."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Рұқсаттары өшірілген қолданбаларды қарап шығыңыз"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"Біраз уақыттан бері пайдаланылмаған қолданбалар бойынша рұқсаттар мен уақытша файлдар өшірілді және хабарландырулар тоқтатылды."</string>
@@ -455,7 +455,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Көмекшінің іске қосылғанын анықтауды көрсету"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Микрофон арқылы дауыс көмекшісін іске қосқанда, күй жолағында белгішені көрсету"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына құрылғыдағы суреттерді, медиафайлдарды пайдалануға рұқсат берілсін бе?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына контактілерді пайдалануға рұқсат берілсін бе?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына контактілерге кіруге рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Қолданбаны пайдалану кезінде ғана оған геодеректеріңізді көруге рұқсат етіледі."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы дене датчигінен алынған деректі одан әрі пайдалана берсін бе?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы локацияны пайдаланады"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ұйымыңыз <xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына локацияңызды пайдалануға рұқсат береді."</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Басқа рұқсаттар"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Жүйе пайдаланатын рұқсаттар"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Тек жүйе қолданбалары пайдаланатын рұқсаттар."</string>
@@ -514,8 +516,8 @@
     <string name="privdash_label_7d" msgid="5645301995348656931">"Соңғы\n7 күн"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялық тақтасында көрсетілмейді."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялық тақтасында көрсетілмейді."</string>
-    <string name="blocked_camera_title" msgid="1128510551791284384">"Құрылғы камерасы блокталған"</string>
-    <string name="blocked_microphone_title" msgid="1631517143648232585">"Құрылғы микрофоны блокталған"</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Құрылғы камерасы бөгелген"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Құрылғы микрофоны бөгелген"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Құрылғы геодерегі өшірулі"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Қолданбалар мен қызметтер үшін"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Құтқару қызметінің нөміріне қоңырау шалу кезінде микрофон деректері әлі бөлісіліп жатуы мүмкін."</string>
@@ -546,11 +548,11 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Рұқсаттарды басқару"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Телефон қоңырауы үшін пайдаланылуда."</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Соңғы рет телефон қоңырауы үшін пайдаланылды."</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> пайдаланып жатыр."</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> пайдалануда."</string>
     <string name="recent_app_usage_qs" msgid="6650259601306212327">"Соңғы рет <xliff:g id="APP_NAME">%1$s</xliff:g> пайдаланды."</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) пайдаланып жатыр."</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) пайдалануда."</string>
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Соңғы рет <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) пайдаланды."</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) пайдаланып жатыр."</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) пайдалануда."</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Соңғы рет <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) пайдаланды."</string>
     <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Растау"</string>
     <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Артқа"</string>
@@ -579,7 +581,7 @@
     <string name="privacy_controls_title" msgid="7605929972256835199">"Құпиялық параметрлері"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Камераны пайдалану"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Микрофонды пайдалану"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Қолданбалар мен қызметтерге арналған."</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Қолданбалар мен қызметтер үшін"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Қолданбалар мен қызметтерге арналған. Бұл параметр өшірілсе де, құтқару қызметінің нөміріне қоңырау шалғанда, микрофон деректері жіберілуі мүмкін."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Локацияны пайдалана алатын қолданбалар мен қызметтерді көру"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Буфер пайдаланылғанын көрсету"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Бұл қолданба геодеректі үшінші тараптармен бөлісуі мүмкін екенін мәлімдеді."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Деректерді бөлісу және локация"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Деректерді бөлісу туралы ақпарат қайдан алынады?"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Әзірлеуші осы құрылғының өндірушісіне қолданбаның деректерді қалай бөлісетіні туралы ақпарат берді. Әзірлеуші бұл ақпаратты уақыт өте келе жаңарта алады."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Әзірлеуші "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" қызметінде бұл қолданбаның деректерді бөлісу жолы туралы ақпарат берді. Ол бұл ақпаратты уақыт өте келе жаңарта алады."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Қолданбаның локация деректерін бөлісу мақсаттары:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Деректерді бөлісу әртүрлі болады"</string>
@@ -607,8 +608,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Дерек қауіпсіздігі"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Локация деректері жіберілуі мүмкін."</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Бұл қолданба локация деректеріңізді үшінші тараптармен бөлісе алатынын мәлімдеді."</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Бұл сілтемені ашу мүмкін емес"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Локация деректерін бөлісу жаңартулары"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Локация деректеріңізді бөлісу жолын өзгерткен қолданбаларды тексеру"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Локация деректеріңізді бөлісу жолын өзгерткен қолданбаларды қарап шығыңыз."</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Осы қолданбалар локация деректерін бөлісу жолын өзгертті. Олар деректерді бұрын бөліспей, енді жарнамалау не маркетинг үшін бөлісуі мүмкін."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Бұл қолданбалардың әзірлеушілері App Store дүкенінде өздерінің деректерді бөлісу тәртібі туралы ақпарат берді. Олар уақыт өте келе оны жаңарта алады.\n\nДеректерді бөлісу тәртібі қолданбаңыздың нұсқасына, пайдаланылуына, аймағыңыз бен жасыңызға байланысты әртүрлі болуы мүмкін."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Деректерді бөлісу туралы ақпарат"</string>

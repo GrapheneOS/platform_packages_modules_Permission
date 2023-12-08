@@ -112,8 +112,10 @@ class AutoPermissionUsageDetailsFragment :
             activity?.finish()
             return
         }
-        if (!requireArguments().containsKey(Intent.EXTRA_PERMISSION_GROUP_NAME) or
-            (requireArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME) == null)) {
+        if (
+            !requireArguments().containsKey(Intent.EXTRA_PERMISSION_GROUP_NAME) or
+                (requireArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME) == null)
+        ) {
             DumpableLog.e(LOG_TAG, "Missing argument ${Intent.EXTRA_USER}")
             activity?.finish()
             return
@@ -128,14 +130,19 @@ class AutoPermissionUsageDetailsFragment :
         headerLabel =
             resources.getString(
                 R.string.permission_group_usage_title,
-                getPermGroupLabel(requireContext(), filterGroup))
+                getPermGroupLabel(requireContext(), filterGroup)
+            )
 
         val context = preferenceManager.getContext()
         permissionUsages = PermissionUsages(context)
         roleManager = Utils.getSystemServiceSafe(context, RoleManager::class.java)
         val usageViewModelFactory =
             PermissionUsageDetailsViewModelFactoryLegacy(
-                PermissionControllerApplication.get(), roleManager, filterGroup, sessionId)
+                PermissionControllerApplication.get(),
+                roleManager,
+                filterGroup,
+                sessionId
+            )
         usageViewModel =
             ViewModelProvider(this, usageViewModelFactory)[
                 PermissionUsageDetailsViewModelLegacy::class.java]
@@ -157,7 +164,11 @@ class AutoPermissionUsageDetailsFragment :
     /** Reloads the data to show. */
     private fun reloadData() {
         usageViewModel.loadPermissionUsages(
-            requireActivity().getLoaderManager(), permissionUsages, this, FILTER_24_HOURS)
+            requireActivity().getLoaderManager(),
+            permissionUsages,
+            this,
+            FILTER_24_HOURS
+        )
         if (finishedInitialLoad) {
             setLoading(true)
         }
@@ -176,7 +187,8 @@ class AutoPermissionUsageDetailsFragment :
             PermissionControllerStatsLog.write(
                 PERMISSION_USAGE_FRAGMENT_INTERACTION,
                 sessionId,
-                PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED)
+                PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED
+            )
         }
         showSystem = !showSystem
         updateAction()
@@ -206,19 +218,25 @@ class AutoPermissionUsageDetailsFragment :
 
         val uiData =
             usageViewModel.buildPermissionUsageDetailsUiData(
-                appPermissionUsages, showSystem, SHOW_7_DAYS)
+                appPermissionUsages,
+                showSystem,
+                SHOW_7_DAYS
+            )
 
         if (hasSystemApps != uiData.shouldDisplayShowSystemToggle) {
             hasSystemApps = uiData.shouldDisplayShowSystemToggle
             updateAction()
         }
 
-        val category = AtomicReference(PreferenceCategory(context))
+        val category = AtomicReference(PreferenceCategory(requireContext()))
         preferenceScreen.addPreference(category.get())
 
         AppDataLoader(context) {
                 renderHistoryPreferences(
-                    uiData.getHistoryPreferenceDataList(), category, preferenceScreen)
+                    uiData.getHistoryPreferenceDataList(),
+                    category,
+                    preferenceScreen
+                )
 
                 setLoading(false)
                 finishedInitialLoad = true
@@ -239,7 +257,8 @@ class AutoPermissionUsageDetailsFragment :
                 summary =
                     getString(
                         R.string.permission_group_usage_subtitle_24h,
-                        getPermGroupLabel(requireContext(), filterGroup))
+                        getPermGroupLabel(requireContext(), filterGroup)
+                    )
                 isSelectable = false
             }
         preferenceScreen.addPreference(preference)
@@ -252,7 +271,8 @@ class AutoPermissionUsageDetailsFragment :
                 summary =
                     getString(
                         R.string.manage_permission_summary,
-                        getPermGroupLabel(requireContext(), filterGroup))
+                        getPermGroupLabel(requireContext(), filterGroup)
+                    )
                 onPreferenceClickListener =
                     Preference.OnPreferenceClickListener {
                         val intent =
@@ -279,12 +299,13 @@ class AutoPermissionUsageDetailsFragment :
             val currentDateMs =
                 ZonedDateTime.ofInstant(
                         Instant.ofEpochMilli(usageTimestamp),
-                        Clock.system(ZoneId.systemDefault()).zone)
+                        Clock.system(ZoneId.systemDefault()).zone
+                    )
                     .truncatedTo(ChronoUnit.DAYS)
                     .toEpochSecond() * 1000L
             if (currentDateMs != previousDateMs) {
                 if (previousDateMs != 0L) {
-                    category.set(PreferenceCategory(context))
+                    category.set(PreferenceCategory(requireContext()))
                     preferenceScreen.addPreference(category.get())
                 }
                 if (usageTimestamp > MIDNIGHT_TODAY) {

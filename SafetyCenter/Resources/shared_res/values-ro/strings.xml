@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Se scanează"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Se verifică setările dispozitivului…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Pare în regulă"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nu s-au găsit probleme"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Vezi recomandarea}few{Vezi recomandările}other{Vezi recomandările}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nu s-au găsit probleme"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Sfat disponibil}few{Sfaturi disponibile}other{Sfaturi disponibile}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Măsură luată}few{Măsuri luate}other{Măsuri luate}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Verifică setările"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Verifică lista de setări"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"S-au găsit riscuri potențiale"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Riscuri descoperite"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Contul poate fi în pericol"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Cont în pericol"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Vezi alerta}few{Vezi alertele}other{Vezi alertele}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Contul este în pericol"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Vezi alerta mai jos}few{Vezi alertele mai jos}other{Vezi alertele mai jos}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Pagina nu s-a putut deschide"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Nu s-a putut rezolva alerta"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Nu s-au putut actualiza setările"</string>

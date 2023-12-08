@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.RolePreference;
 import com.android.permissioncontroller.role.ui.specialappaccess.SpecialAppAccessListChildFragment;
 
 /** Automotive fragment for the list of role related special app accesses. */
@@ -59,8 +59,8 @@ public class AutoSpecialAppAccessListFragment extends AutoSettingsFrameFragment 
 
     @NonNull
     @Override
-    public TwoTargetPreference createPreference(@NonNull Context context) {
-        return new AutoSettingsPreference(context);
+    public RolePreference createPreference(@NonNull Context context) {
+        return new AutoRolePreference(context);
     }
 
     @Override

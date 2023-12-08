@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"No permitir de todas formas"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Cerrar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"¿Permitir a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lo siguiente? <xliff:g id="ACTION">%2$s</xliff:g>"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"¿Permitir siempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lo siguiente? <xliff:g id="ACTION">%2$s</xliff:g>"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"¿Permitir a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"¿Quieres permitir siempre a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Solo mientras se usa la aplicación"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Siempre"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"No permitir y no volver a preguntar"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación podrá consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"¿Permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden hacer lo siguiente: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las aplicaciones con este permiso pueden acceder a tu actividad física, como paseos a pie o en bici, trayectos en coche, número de pasos y más"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las aplicaciones con este permiso pueden acceder a tu calendario"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Las aplicaciones con este permiso pueden leer y editar el registro de llamadas del teléfono"</string>
@@ -246,12 +246,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No ha accedido nunca"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegado / Último acceso: Nunca"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Permitido"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Permitidas siempre"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Permitido siempre"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitidas solo mientras se usan"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Pueden acceder solo al contenido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden gestionar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
-    <string name="denied_header" msgid="903209608358177654">"No permitidas"</string>
+    <string name="denied_header" msgid="903209608358177654">"No permitido"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Ver más aplicaciones que pueden acceder a todos los archivos"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 día}many{# días}other{# días}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# hora}many{# horas}other{# horas}}"</string>
@@ -347,7 +347,7 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> aplicaciones de accesibilidad tienen acceso completo a tu dispositivo"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> puede ver tu pantalla, lo que haces y lo que introduces; realizar acciones; y controlar la pantalla."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Estas aplicaciones pueden ver tu pantalla, lo que haces y lo que introduces; realizar acciones; y controlar la pantalla."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Asistente predeterminado"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Asistente digital predeterminado"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Asistente digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Las aplicaciones de asistencia te ayudan según la información que aparezca en la pantalla. Algunas aplicaciones admiten tanto el menú de aplicaciones como los servicios de entrada de voz para ofrecerte asistencia integrada."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicación de navegador predeterminada"</string>
@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y acceder a tu teléfono, SMS, contactos y calendario."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y reproducir tus aplicaciones en el dispositivo conectado."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este servicio comparte las fotos, el contenido multimedia y las notificaciones de tu teléfono con otros dispositivos."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"Aplicación de notas predeterminada"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"App de notas predeterminada"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplicación de notas"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Aplicaciones que te permiten tomar notas en tu dispositivo"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notas"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Seguir permitiendo que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> tiene acceso a la ubicación"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Tu organización permite que <xliff:g id="APP_NAME">%1$s</xliff:g> acceda a tu ubicación"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Otros permisos"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permiso usado por el sistema"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisos usados solo por las aplicaciones del sistema."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Esta aplicación ha indicado que puede compartir datos de ubicación con terceros"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datos compartidos y ubicación"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De dónde procede la información sobre cómo se comparten los datos"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"El desarrollador ha proporcionado información al fabricante de este dispositivo sobre cómo comparte datos esta aplicación. Es posible que el desarrollador actualice esta información con el tiempo."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"El desarrollador ha proporcionado información a "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sobre cómo comparte datos esta aplicación. Es posible que el desarrollador actualice esta información con el tiempo."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Esta app puede compartir datos de ubicación para:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"La forma de compartir datos varía"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Seguridad de los datos"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Tus datos de ubicación pueden compartirse"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Esta aplicación ha indicado que es posible que comparta tus datos de ubicación con terceros"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"No se puede abrir este enlace"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Cambios en los datos compartidos de ubicación"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Consulta las aplicaciones que han cambiado cómo comparten tus datos de ubicación"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas aplicaciones han cambiado cómo pueden compartir tus datos de ubicación. Puede que no los hayan compartido antes, o que ahora lo hagan con fines publicitarios o de marketing."</string>

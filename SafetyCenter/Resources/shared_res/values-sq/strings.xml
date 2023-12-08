@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Po skanohet"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Po kontrollohen cilësimet pajisjes…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Duket mirë"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Nuk u gjet asnjë problem"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Shiko rekomandimin}other{Shiko rekomandimet}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Nuk u gjetën probleme"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Ofrohet këshillë}other{Ofrohen këshilla}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Masa e marrë}other{Masat e marra}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Rishiko cilësimet"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Kontrollo listën e cilësimeve"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"U gjetën rreziqe të mundshme"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"U gjetën rreziqe"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Llogaria mund të jetë në rrezik"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Llogaria në rrezik"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Shiko sinjalizimin}other{Shiko sinjalizimet}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Llogaria është në rrezik"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Shiko sinjalizimin më poshtë}other{Shiko sinjalizimet më poshtë}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Faqja nuk mund të hapej"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Sinjalizimi nuk mund të zgjidhej"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Cilësimet nuk mund të rifreskoheshin"</string>

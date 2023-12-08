@@ -42,7 +42,7 @@ internal class SafetyBrandChipPreference(context: Context, attrs: AttributeSet) 
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
-        val brandChipButton = holder.findViewById(R.id.brand_chip)
+        val brandChipButton = holder.findViewById(R.id.brand_chip)!!
         brandChipButton.setOnClickListener(brandChipClickListener)
     }
 

@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ສືບຕໍ່ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີຮ່າງກາຍໃນຂະນະທີ່ກຳລັງໃຊ້ແອັບຢູ່ບໍ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ສົ່ງການແຈ້ງເຕືອນຫາທ່ານບໍ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ສິດອະນຸຍາດທີ່ມີການຄວບຄຸມ"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ມີສິດເຂົ້າເຖິງສະຖານທີ່"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"ອົງກອນຂອງທ່ານອະນຸຍາດ <xliff:g id="APP_NAME">%1$s</xliff:g> ໃຫ້ເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານ"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"ການອະນຸຍາດອື່ນໆ"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"ການອະນຸຍາດທີ່ໃຊ້ໂດຍລະບົບ"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ການອະນຸຍາດທີ່ໃຊ້ໂດຍແອັບພລິເຄຊັນລະບົບເທົ່ານັ້ນ."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ແອັບນີ້ລະບຸວ່າມັນອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ກັບພາກສ່ວນທີສາມ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ການແບ່ງປັນຂໍ້ມູນ ແລະ ສະຖານທີ່"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ແຫຼ່ງທີ່ມາຂອງລາຍລະອຽດການແບ່ງປັນຂໍ້ມູນ"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"ນັກພັດທະນາແອັບໄດ້ໃຫ້ຂໍ້ມູນກັບຜູ້ຜະລິດອຸປະກອນນີ້ກ່ຽວກັບວິທີທີ່ແອັບນີ້ແບ່ງປັນຂໍ້ມູນ. ນັກພັດທະນາແອັບອາດອັບເດດຂໍ້ມູນນີ້ເມື່ອເວລາຜ່ານໄປ."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ນັກພັດທະນາແອັບໄດ້ໃຫ້ຂໍ້ມູນໄວ້ໃນ "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" ກ່ຽວກັບວິທີທີ່ແອັບນີ້ແບ່ງປັນຂໍ້ມູນ. ນັກພັດທະນາອາດອັບເດດຂໍ້ມູນນີ້ເມື່ອເວລາຜ່ານໄປ."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ແອັບນີ້ອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຍ້ອນ:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ການແບ່ງປັນຂໍ້ມູນອາດແຕກຕ່າງກັນໄປ"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ຄວາມປອດໄພຂອງຂໍ້ມູນ"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"ອາດມີການແບ່ງປັນຂໍ້ມູນສະຖານທີ່"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ແອັບນີ້ລະບຸວ່າມັນອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ກັບພາກສ່ວນທີສາມ"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ບໍ່ສາມາດເປີດລິ້ງນີ້ໄດ້"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"ການອັບເດດການແບ່ງປັນຂໍ້ມູນສະຖານທີ່"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"ກວດສອບແອັບທີ່ປ່ຽນແປງວິທີທີ່ແອັບອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຂອງທ່ານ"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ແອັບເຫຼົ່ານີ້ໄດ້ປ່ຽນແປງວິທີທີ່ແອັບອາດແບ່ງປັນຂໍ້ມູນສະຖານທີ່ຂອງທ່ານແລ້ວ. ແອັບເຫຼົ່ານີ້ອາດບໍ່ເຄີຍແບ່ງປັນຂໍ້ມູນມາກ່ອນ ຫຼື ອາດແບ່ງປັນຂໍ້ມູນເພື່ອຈຸດປະສົງໃນການໂຄສະນາ ຫຼື ການຕະຫຼາດ."</string>

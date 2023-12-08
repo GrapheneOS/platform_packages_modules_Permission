@@ -48,7 +48,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> er slått av"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"alt er slått av"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ingen er slått av"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Tillat"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Ja"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Tillat hele tiden"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Når appen brukes"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Bytt til nøyaktig posisjon"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Bruk nøyaktig posisjon"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Når nøyaktig posisjon er av, har apper tilgang til den omtrentlige posisjonen din"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Tillatelse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Tilgang for denne appen: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: tilgang for denne appen"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>
@@ -397,7 +397,7 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tillatelse til å samhandle med varslene dine og får tilgang til Telefon, SMS, kontakter og Kalender."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tillatelse til å samhandle med varslene dine og strømme appene dine til den tilkoblede enheten."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"Denne tjenesten deler bildene, mediene og varslene dine fra telefonen din til andre enheter."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"Standard notatapp"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"Standard notatapper"</string>
     <string name="role_notes_short_label" msgid="8796604147546125285">"Notatapp"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Apper du kan bruke til å ta notater på enheten"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notater"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsette å gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til data fra kroppssensorer mens appen er i bruk?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende deg varsler?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrollerte tillatelser"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har posisjonstilgang"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organisasjonen din lar <xliff:g id="APP_NAME">%1$s</xliff:g> se hvor du er"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Andre tillatelser"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Tillatelser som brukes av systemet"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Tillatelser som bare brukes av systemappene."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Denne appen har oppgitt at den kan dele posisjonsdata med tredjeparter"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datadeling og posisjon"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Hvor kommer informasjon om datadeling fra?"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Utvikleren har gitt produsenten av denne enheten informasjon om hvordan denne appen deler data. Utvikleren kan oppdatere denne informasjonen over tid."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Utvikleren har gitt informasjon til "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" om hvordan denne appen deler data. Utvikleren kan oppdatere denne informasjonen over tid."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Denne appen kan dele posisjonsdata for"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datadeling varierer"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Datasikkerhet"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Posisjonsdata kan deles"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Denne appen har oppgitt at den kan dele posisjonsdataene dine med tredjeparter"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Kan ikke åpne denne linken"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Oppdatering av datadeling for posisjon"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gjennomgå apper som har endret hvordan de deler posisjonsdataene dine"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Disse appene har endret hvordan de kan dele posisjonsdataene dine. De har muligens ikke delt dem før eller kan nå dele dem for annonsering eller markedsføring."</string>

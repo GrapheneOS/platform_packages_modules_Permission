@@ -34,14 +34,14 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Mai multe info."</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Permite-le pe toate"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Permite-le întotdeauna pe toate"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Alege fotografii și videoclipuri"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Alege fotografii și videoclipuri."</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"Selectează mai multe"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"Nu selecta mai multe"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Nu permite în nicio situație"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Închide"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> din <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Permiți întotdeauna ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Permiți întotdeauna &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Doar când folosești aplicația"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Mereu"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Nu permite și nu mai întreba"</string>
@@ -490,7 +490,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Modifici accesul la camera foto pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Aplicația dorește să fotografieze și să înregistreze videoclipuri permanent, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți acceseze jurnalele de apeluri?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să dea și să gestioneze apeluri telefonice?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să facă și să gestioneze apeluri telefonice?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplicația solicită acces permanent la datele de la senzori despre semnele vitale, chiar și când nu o folosești. Pentru a face această modificare, "<annotation id="link">"accesează setările"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale?"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permiți în continuare accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la datele de la senzorii corporali în timpul folosirii aplicației?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți trimită notificări?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisiuni controlate"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> are acces la locație"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organizația ta permite ca <xliff:g id="APP_NAME">%1$s</xliff:g> să-ți acceseze locația"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Alte permisiuni"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Permisiuni folosite de sistem"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisiuni folosite numai de aplicațiile sistemului."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Aplicația afirmă că poate trimite terților date privind locațiile"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Locația și permiterea accesului la date"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"De unde provin informațiile despre permiterea accesului la date"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Dezvoltatorul a trimis producătorului acestui dispozitiv informații despre modul în care această aplicație permite accesul la date. Dezvoltatorul poate actualiza informațiile în timp."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Dezvoltatorul a trimis la "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" informații despre modul în care această aplicație permite accesul la date. Dezvoltatorul poate actualiza informațiile în timp."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Aplicația poate permite accesul la date pentru:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Permiterea accesului la date variază"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Siguranța datelor"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Se poate permite accesul la datele privind locațiile tale"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplicația afirmă că le poate trimite terților date privind locațiile tale"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Linkul nu poate fi deschis"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Actualizări privind permiterea accesului la date pentru locație"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Examinează aplicațiile care au schimbat modul în care pot permite accesul la datele tale privind locațiile"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aceste aplicații au schimbat modul în care pot permite accesul la datele tale privind locațiile. Este posibil să nu fi permis accesul la ele anterior sau să-l permită acum în scopuri de publicitate sau de marketing."</string>

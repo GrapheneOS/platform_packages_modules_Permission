@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"ස්කෑන් කෙරේ"</string>
     <string name="loading_summary" msgid="3740846439782713910">"උපාංග සැකසීම් පරීක්ෂා කරමින්…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"හොඳ බව පෙනේ"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"ගැටලු හමු නොවිණි"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{නිර්දේශය බලන්න}one{නිර්දේශ බලන්න}other{නිර්දේශ බලන්න}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"ගැටලු හමු වූයේ නැත"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{ඉඟිය තිබේ}one{ඉඟි තිබේ}other{ඉඟි තිබේ}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{ගත් ක්‍රියාමාර්ගය}one{ගත් ක්‍රියාමාර්ග}other{ගත් ක්‍රියාමාර්ග}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"සැකසීම් සමාලෝචනය කරන්න"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"සැකසීම් ලැයිස්තුව පරීක්ෂා කරන්න"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"විය හැකි අවදානම් හමු විය"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"අවදානම් හමු විය"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"ගිණුම අවදානමේ තිබිය හැක"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"ගිණුම අවදානමේ ඇත"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{ඇඟවීම බලන්න}one{ඇඟවීම් බලන්න}other{ඇඟවීම් බලන්න}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"ගිණුම අවදානමේ පවතී"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{පහත ඇඟවීම බලන්න}one{පහත ඇඟවීම් බලන්න}other{පහත ඇඟවීම් බලන්න}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"පිටුව විවෘත කළ නොහැකි විය"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"ඇඟවීම විසඳිය නොහැකි විය"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"සැකසීම් නැවුම් කිරීමට නොහැකි විය"</string>

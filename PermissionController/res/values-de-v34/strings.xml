@@ -22,6 +22,7 @@
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"App-Zugriff auf Gesundheitsdaten verwalten"</string>
     <string name="location_settings" msgid="8863940440881290182">"Standortzugriff"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Für Apps und Dienste. Wenn du eine Notrufnummer wählst, können Mikrofondaten trotz Deaktivierung dieser Berechtigung weitergegeben werden."</string>
+    <!-- no translation found for mic_toggle_description (1504101620086616040) -->
+    <skip />
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Für Apps und Dienste"</string>
 </resources>

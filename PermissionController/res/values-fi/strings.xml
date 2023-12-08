@@ -40,7 +40,7 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Älä salli silti"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ohita"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aina <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Sallitaanko toiminto <xliff:g id="ACTION">%2$s</xliff:g> sovellukselle &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aina <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Vain sovelluksen käytön aikana"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Aina"</string>
@@ -108,7 +108,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Salli aina"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Salli vain, kun sovellus käytössä"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Salli vain, kun sov. on käyt."</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Älä salli"</string>
     <string name="loading" msgid="4789365003890741082">"Ladataan…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Kaikki luvat"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Haluatko edelleen sallia pääsyn kehoanturidataan, kun &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; on käytössä?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lähettää sinulle ilmoituksia?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Automaattisesti myönnetyt käyttöoikeudet"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Sovelluksella (<xliff:g id="APP_NAME">%1$s</xliff:g>) on pääsy sijaintiin"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organisaatiosi sallii sovelluksen (<xliff:g id="APP_NAME">%1$s</xliff:g>) pääsyn sijaintiin"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Muut luvat"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Järjestelmän käyttämät luvat"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Vain järjestelmäsovellusten käyttämät luvat"</string>
@@ -520,7 +522,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Sovellusten ja palvelujen osalta"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofonidataa saatetaan silti jakaa, kun soitat hätänumeroon."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Muuta"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Turvallisuus ja yksityisyys"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Tietoturva ja yksityisyys"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Tarkista laite"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ohita"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Ohitetaanko tämä hälytys?"</string>
@@ -531,7 +533,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Tietoturvan ja yksityisyyden tila. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Turvallisuusasetukset"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Luvat"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Turvallisuus ja yksityisyys"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Tietoturva ja yksityisyys"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Tarkista tila"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Yksityisyysasetukset"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Lisää asetuksia"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Sovellus on ilmoittanut, että se saattaa jakaa sijaintitietoja kolmansille osapuolille"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datan jakaminen ja sijainti"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Mistä datan jakotiedot tulevat"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Kehittäjä on antanut laitteen valmistajalle tietoja tavoista, joilla sovellus jakaa dataa. Kehittäjä voi päivittää tietoja ajan mittaan."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883"><annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" sisältää kehittäjän lisäämiä tietoja tavoista, joilla sovellus jakaa dataa. Kehittäjä voi päivittää tietoja ajan mittaan."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Sijaintitietoja voidaan jakaa näihin tarkoituksiin"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Datan jakaminen vaihtelee"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Dataturvallisuus"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Sijaintitietoja voidaan jakaa"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Sovellus on ilmoittanut, että se saattaa jakaa sijaintitietoja kolmansille osapuolille"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Linkki ei avaudu"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Sijaintidatan jakamisen päivitykset"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Tarkista sovellukset, jotka ovat muuttaneet tapaa, jolla ne voivat jakaa sijaintitietoja"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Nämä sovellukset ovat muuttaneet tapaa, jolla ne voivat jakaa sijaintitietoja. Ne eivät ehkä ole jakaneet niitä aiemmin tai ne saattavat nyt jakaa niitä mainonta- tai markkinointitarkoituksiin."</string>

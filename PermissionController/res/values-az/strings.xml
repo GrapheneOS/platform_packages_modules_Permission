@@ -41,7 +41,7 @@
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"İmtina edin"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə <xliff:g id="ACTION">%2$s</xliff:g> fəaliyyəti üçün icazə verilsin?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin <xliff:g id="ACTION">%2$s</xliff:g> fəaliyyətinə hər zaman icazə verilsin?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin <xliff:g id="ACTION">%2$s</xliff:g> əməliyyatına daima icazə verilsin?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Ancaq tətbiq istifadəsi zamanı"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Həmişə"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"İcazə verməyin və bir daha soruşmayın"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin istifadə zamanı bədən sensoru datasına giriş etməsinə icazə verilməyə davam edilsin?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sizə bildiriş göndərmək icazəsi verilsin?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"İdarə edilən icazələr"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> tətbiqinin məkan icazəsi var"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Təşkilat <xliff:g id="APP_NAME">%1$s</xliff:g> tətbiqinə məkan icazəsi verir"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Digər icazələr"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Sistem tərəfindən istifadə edilən icazə"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Yalnız sistem tətbiqləri tərəfindən istifadə edilən icazələr."</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Bu tətbiq məkan datasını üçüncü tərəflərlə paylaşa biləcəyini bildirib"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Data paylaşımı və məkan"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Data paylaşma məlumatı haradan əldə edilir"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Developer bu tətbiqin datanı paylaşması haqqında cihaz istehsalçısına məlumat verib. Developer bu məlumatı vaxtaşırı yeniləyə bilər."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Developer tətbiqin datanı necə paylaşması haqqında məlumatı bu ünvana təqdim edib: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Developer bu məlumatı vaxtaşırı yeniləyə bilər."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Tətbiq bunun üçün məkan datasını paylaşa bilər:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Data paylaşma dəyişə bilər"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Data təhlükəsizliyi"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Məkan datası paylaşıla bilər"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Bu tətbiq məkan datasını üçüncü tərəflərlə paylaşa biləcəyini bildirib"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Bu linki açmaq olmur"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Məkan üzrə data paylaşma yenilikləri"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Məkan datasını paylaşma üsulunu dəyişən tətbiqləri nəzərdən keçirin"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bu tətbiqlər məkan datasını paylaşma üsulunu dəyişib. Ola bilsin ki, onu daha öncə paylaşmayıblar və ya indi reklam, yaxud marketinq məqsədləri üçün paylaşırlar."</string>

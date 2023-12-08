@@ -32,11 +32,11 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"ऐप्लिकेशन इस्तेमाल करते समय\" अनुमति बनाए रखें"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“सिर्फ़ इस बार अनुमति दें” को बनाए रखें"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ज़्यादा जानकारी"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सभी के लिए अनुमति दें"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सभी को अनुमति दें"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"हमेशा के लिए सभी को अनुमति दें"</string>
-    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"चुनिंदा फ़ोटो और वीडियो को अनुमति दें"</string>
+    <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फ़ोटो और वीडियो चुनें"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"ज़्यादा फ़ोटो चुनें"</string>
-    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ज़्यादा फ़ोटो और वीडियो न चुनें"</string>
+    <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"ज़्यादा डेटा न चुनें"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"फिर भी अनुमति न दें"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"खारिज करें"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> में से <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"जगह की सटीक जानकारी का इस्तेमाल करें"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"जगह की सटीक जानकारी देने वाली सुविधा बंद होने पर, ऐप्लिकेशन आपकी अनुमानित जगह की जानकारी को ऐक्सेस कर सकते हैं"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> की अनुमति"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए, <xliff:g id="PERM">%1$s</xliff:g> ऐक्सेस करने की अनुमति चाहिए"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए <xliff:g id="PERM">%1$s</xliff:g> की अनुमति चाहिए"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> को मिली सभी अनुमतियां देखें"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"असिस्टेंट माइक्रोफ़ोन के इस्तेमाल से जुड़ा डेटा दिखाएं"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन यह कर सकते हैं: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाले ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें पैदल चलने, बाइक चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"इस अनुमति वाले ऐप्लिकेशन आपके कैलेंडर को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ऐसे ऐप्लिकेशन जिनके पास अनुमति है, वे फ़ोन में कॉल लॉग को पढ़ सकते हैं और लिख सकते हैं"</string>
@@ -397,9 +397,9 @@
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं को पढ़ सकेगा और उन पर कार्रवाई कर पाएगा. साथ ही, यह आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों को भी ऐक्सेस कर पाएगा."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं पर कार्रवाई कर पाएगा. साथ ही, यह आपके कनेक्ट किए गए डिवाइस पर, आपके ऐप्लिकेशन का कॉन्टेंट चला पाएगा."</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"यह सेवा आपके फ़ोन की फ़ोटो, मीडिया, और सूचनाओं को दूसरे डिवाइसों पर शेयर करती है."</string>
-    <string name="role_notes_label" msgid="7451627001058089536">"नोट लिखने का डिफ़ॉल्ट ऐप्लिकेशन"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"नोट लिखने के लिए ऐप्लिकेशन"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"आपके डिवाइस पर नोट लिखने की सुविधा देने वाले ऐप्लिकेशन"</string>
+    <string name="role_notes_label" msgid="7451627001058089536">"नोट लेने का डिफ़ॉल्ट ऐप्लिकेशन"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"नोट लेने के लिए ऐप्लिकेशन"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"आपके डिवाइस पर नोट लेने की सुविधा देने वाले ऐप्लिकेशन"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"नोट"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फिर से न पूछें"</string>
@@ -465,7 +465,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"क्या आपको &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आस-पास मौजूद डिवाइसों को खोजने, उनसे कनेक्ट करने, और उनकी जगह की जानकारी का पता लगाने की अनुमति देनी है?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आस-पास मौजूद डिवाइसों को खोजने, उनसे कनेक्ट करने, और उनकी जगह की जानकारी का पता लगाने की अनुमति देना चाहते हैं? "<annotation id="link">"सेटिंग में जाकर अनुमति दें."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"क्या <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> आपकी जगह की अनुमानित जानकारी के बजाय सटीक जानकारी ऐक्सेस करे?"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"क्या आपको &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की अनुमानित जानकारी ऐक्सेस करने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की अनुमानित जानकारी ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"सटीक जगह"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित जगह"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर ऐक्सेस करने की अनुमति देना है?"</string>
@@ -582,14 +582,13 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"ऐप्लिकेशन और सेवाओं के लिए"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"ऐप्लिकेशन और सेवाओं के लिए. इस सेटिंग के बंद होने पर भी, माइक्रोफ़ोन डेटा को शेयर किया जा सकता है. ऐसा तब होता है, जब किसी आपातकालीन नंबर पर कॉल किया जाता है."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"उन ऐप्लिकेशन और सेवाओं को देखें जिनके पास जगह की जानकारी का ऐक्सेस है"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्ड का डेटा ऐक्सेस किए जाने पर मैसेज दिखाएं"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"जब कोई ऐप्लिकेशन आपके कॉपी किए गए टेक्स्ट, इमेज या अन्य कॉन्टेंट को ऐक्सेस करे, तो मैसेज दिखाएं"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्ड का डेटा ऐक्सेस किए जाने पर मैसेज पाएं"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"जब कोई ऐप्लिकेशन आपके कॉपी किए गए टेक्स्ट, इमेज या अन्य कॉन्टेंट को ऐक्सेस करे, तो मैसेज से इसकी सूचना पाएं"</string>
     <string name="show_password_title" msgid="2877269286984684659">"पासवर्ड दिखाएं"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"टाइप करते समय वर्ण दिखाएं"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"इस ऐप्लिकेशन ने बताया है कि यह जगह की जानकारी का डेटा, तीसरे पक्ष के साथ शेयर कर सकता है"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"डेटा शेयर करने का तरीका और जगह की जानकारी"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"डेटा शेयर करने के तरीके की जानकारी यहां से मिलती है:"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"डेवलपर ने डिवाइस बनाने वाली कंपनी को, इस ऐप्लिकेशन के डेटा शेयर करने के तरीकों की जानकारी दी है. डेवलपर समय-समय पर इस जानकारी को अपडेट कर सकता है."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"डेवलपर ने "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" पर, इस ऐप्लिकेशन के डेटा शेयर करने के तरीकों की जानकारी दी है. डेवलपर समय-समय पर इस जानकारी को अपडेट कर सकता है."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ऐप जगह की जानकारी का डेटा इनके लिए शेयर करता है:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"डेटा शेयर करने के अलग-अलग तरीके"</string>
@@ -607,8 +606,10 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"डेटा की सुरक्षा"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"जगह की जानकारी का डेटा शेयर किया जा सकता है"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"इस ऐप्लिकेशन में बताया गया है कि यह तीसरे पक्ष के साथ जगह की जानकारी का डेटा शेयर कर सकता है"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"यह लिंक नहीं खोला जा सका"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"जगह की जानकारी का डेटा शेयर करने के तरीके के बारे में अपडेट"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ऐसे ऐप्लिकेशन देखें जिन्होंने शायद आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"ऐसे ऐप्लिकेशन देखें जिन्होंने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"इन ऐप्लिकेशन ने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है. ऐसा हो सकता है कि ये ऐप्लिकेशन पहले जगह की जानकारी का डेटा शेयर न करते हों या फिर अब विज्ञापन या मार्केटिंग के लिए यह डेटा शेयर किया हो."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"इन ऐप्लिकेशन के डेवलपर ने किसी ऐप स्टोर पर डेटा शेयर करने के उनके तरीकों की जानकारी बताई है. वे समय-समय पर इस जानकारी को अपडेट कर सकते हैं.\n\nडेटा शेयर करने के तरीके अलग-अलग हो सकते हैं. ये आपकी जगह, उम्र, ऐप्लिकेशन के वर्शन, और उसके इस्तेमाल के हिसाब से तय किए जाते हैं."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"डेटा शेयर करने की नीतियों के बारे में जानें"</string>

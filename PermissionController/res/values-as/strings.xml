@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“এপ্‌টো ব্যৱহাৰ হৈ থকা অৱস্থাত” ৰাখক"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“কেৱল এইবাৰৰ বাবে অনুমতি দিয়ক” বিকল্পটো ৰাখক"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"অধিক তথ্য"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"আটাইবোৰৰে অনুমতি দিয়ক"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"আটাইবোৰকে অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"ফট’ আৰু ভিডিঅ’ বাছনি কৰক"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"অধিক বাছনি কৰক"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"আপুনি যদি আটাইবোৰ ফাইল পৰিচালনাৰ অনুমতি দিয়ে, এই এপ্‌টোৱে এই ডিভাইচটোৰ যৌথ ষ্ট\'ৰেজত থকা যিকোনো ফাইল অথবা সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহ এক্সেছ কৰিব, সংশোধন কৰিব আৰু মচিব পাৰে। এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"এই এপ্‌টোক ডিভাইচটোত থকা অথবা যিকোনো সংযুক্ত ষ্ট\'ৰেজ ডিভাইচসমূহৰ ফাইলসমূহ এক্সেছ কৰিবলৈ, সংশোধন কৰিবলৈ আৰু মচিবলৈ অনুমতি দিবনে? এই এপ্‌টোৱে আপোনাক নোসোধাকৈয়ে ফাইলসমূহ এক্সেছ কৰিব পাৰে।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে কৰিব পাৰে: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"অনুমতি থকা এপ্‌সমূহে <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"এই অনুমতিটো লাভ কৰা এপে আপোনাৰ শাৰীৰিক কাৰ্যকলাপ, যেনে খোজকঢ়া, বাইক চলোৱা, গাড়ী চলোৱা, পদক্ষেপৰ পৰিমাণ আৰু বহুতো তথ্য এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"এই অনুমতি থকা এপ্‌সমূহে আপোনাৰ কেলেণ্ডাৰ এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"এই অনুমতি থকা এপ্‌সমূহে ফ’ন কল লগ পঢ়িব আৰু লিখিব পাৰে"</string>
@@ -374,7 +374,7 @@
     <string name="role_emergency_request_description" msgid="131645948770262850">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"বৰফ"</string>
     <string name="role_home_label" msgid="3871847846649769412">"ডিফ’ল্ট হ’ম এপ্"</string>
-    <string name="role_home_short_label" msgid="8544733747952272337">"Home এপ্"</string>
+    <string name="role_home_short_label" msgid="8544733747952272337">"হ’ম এপ্"</string>
     <string name="role_home_description" msgid="7997371519626556675">"যিবোৰ এপক সাধাৰণতে লঞ্চাৰ বুলি কোৱা হয় সেই এপ্‌বোৰে আপোনাৰ Android ডিভাইচত গৃহ স্ক্ৰীনৰ ঠাই লয় আৰু আপোনাক নিজৰ ডিভাইচৰ সমল আৰু সুবিধাবোৰৰ এক্সেছ দিয়ে"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট হ’ম এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"ডেটা শ্বেয়াৰ কৰা আৰু অৱস্থান"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"ডেটা শ্বেয়াৰ কৰাৰ তথ্যখিনি ক’ৰ পৰা আহে"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই নিৰ্মাতাক তথ্য দিছে। বিকাশকৰ্তাগৰাকীয়ে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"এই এপ্‌টোৱে কেনেকৈ ডেটা শ্বেয়াৰ কৰে সেই বিষয়ে বিকাশকৰ্তাই "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"ক তথ্য দিছে। বিকাশকৰ্তাগৰাকীয়ে এই তথ্যখিনি সময়ৰ লগে লগে আপডে’ট কৰিব পাৰে।"</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"এপ্‌টোৱে ইয়াৰ বাবে অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"ডেটা শ্বেয়াৰ কৰা কার্যটো ভিন্ন হয়"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"ডেটা সুৰক্ষা"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"অৱস্থানৰ ডেটা শ্বেয়াৰ কৰা হ’ব পাৰে"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"এই এপ্‌টোৱে তৃতীয় পক্ষৰ সৈতে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পাৰে বুলি জনাইছে"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"এই লিংকটো খুলিব নোৱাৰি"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"অৱস্থানৰ বাবে ডেটা শ্বেয়াৰ কৰাৰ আপডে’ট"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰা এপ্‌সমূহ পৰ্যালোচনা কৰক"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"এই এপ্‌সমূহে আপোনাৰ অৱস্থানৰ ডেটা শ্বেয়াৰ কৰিব পৰাৰ ধৰণসমূহ সলনি কৰিছে। সেইবোৰে পূৰ্বে এয়া শ্বেয়াৰ নকৰিব পাৰে অথবা এতিয়া বিজ্ঞাপন অথবা মাৰ্কেটিঙৰ উদ্দেশ্যে শ্বেয়াৰ কৰিব পাৰে।"</string>

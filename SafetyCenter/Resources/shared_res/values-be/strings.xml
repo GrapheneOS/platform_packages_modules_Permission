@@ -20,8 +20,8 @@
     <string name="scanning_title" msgid="5424849039854311398">"Выконваецца праверка"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Праверка налад прылады…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Усё ў парадку"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Праблем не знойдзена"</string>
-    <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Паглядзець рэкамендацыю}one{Паглядзець рэкамендацыі}few{Паглядзець рэкамендацыі}many{Паглядзець рэкамендацыі}other{Паглядзець рэкамендацыі}}"</string>
+    <string name="overall_severity_level_ok_summary" msgid="7219520381757200598">"Праблемы не знойдзены"</string>
+    <string name="overall_severity_level_tip_summary" msgid="5582440812368113766">"{count,plural, =1{Скарыстайце параду}one{Скарыстайце парады}few{Скарыстайце парады}many{Скарыстайце парады}other{Скарыстайце парады}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Мера прынята}one{Меры прыняты}few{Меры прыняты}many{Меры прыняты}other{Меры прыняты}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Праглядзець налады"</string>
     <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Праверыць спіс налад"</string>
@@ -36,8 +36,8 @@
     <string name="overall_severity_level_safety_recommendation_title" msgid="4291797434760242793">"Выяўлена патэнцыяльная небяспека"</string>
     <string name="overall_severity_level_critical_safety_warning_title" msgid="6666640109779586868">"Выяўлена небяспека"</string>
     <string name="overall_severity_level_account_recommendation_title" msgid="2267542168734275090">"Уліковы запіс можа быць у небяспецы"</string>
-    <string name="overall_severity_level_critical_account_warning_title" msgid="1913235490583842004">"Уліковы запіс у небяспецы"</string>
-    <string name="overall_severity_n_alerts_summary" msgid="3262010942295408403">"{count,plural, =1{Паглядзець абвестку}one{Паглядзець абвесткі}few{Паглядзець абвесткі}many{Паглядзець абвесткі}other{Паглядзець абвесткі}}"</string>
+    <string name="overall_severity_level_critical_account_warning_title" msgid="4402278408972158353">"Уліковы запіс у небяспецы"</string>
+    <string name="overall_severity_n_alerts_summary" msgid="6527386677095695234">"{count,plural, =1{Глядзіце апавяшчэнне ніжэй}one{Глядзіце апавяшчэнні ніжэй}few{Глядзіце апавяшчэнні ніжэй}many{Глядзіце апавяшчэнні ніжэй}other{Глядзіце апавяшчэнні ніжэй}}"</string>
     <string name="redirecting_error" msgid="8146983632878233202">"Не ўдалося адкрыць старонку"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"Не ўдалося вырашыць праблему"</string>
     <string name="refresh_timeout" msgid="251734999692581852">"Не ўдалося абнавіць налады"</string>

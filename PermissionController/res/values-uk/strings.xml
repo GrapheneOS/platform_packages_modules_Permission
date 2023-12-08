@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Усе одно не дозволяти"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Закрити"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Завжди дозволяти додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; таке: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Завжди дозволяти додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; таке: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Лише коли додаток активний"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Завжди"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Не дозволяти й більше не запитувати"</string>
@@ -71,7 +71,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Сьогодні}=1{1 день тому}one{# день тому}few{# дні тому}many{# днів тому}other{# дня тому}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Вимкнути додаток"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Якщо вимкнути цей додаток, система Android та інші додатки можуть працювати неналежним чином. Важливо: ви не можете видалити цей додаток, оскільки він був попередньо встановлений на пристрої. Вимкнений додаток буде приховано."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Менеджер дозволів"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Диспетчер дозволів"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Більше не запитувати"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Немає дозволів"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Додаткові дозволи"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Надавати й надалі додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до показників датчиків на тілі, коли він використовується?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> має доступ до геоданих"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ваша організація надає додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до ваших геоданих"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Інші дозволи"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Дозволи, які використовує система"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Дозволи, які використовують лише системні додатки."</string>
@@ -513,7 +515,7 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Минулі\n24 години"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Останні\n7 днів"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, дозволи, які використовує цей додаток, не відображаються на панелі керування дозволами чи в рядку стану."</string>
-    <string name="exempt_info_label" msgid="6286190981253476699">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, дозволи, які використовує цей додаток, не відображаються на панелі керування дозволами."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, дозволи, які використовує цей додаток, не відображаються на панелі керування дозволами чи в рядку стану."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камеру пристрою заблоковано"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Мікрофон пристрою заблоковано"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Геодані пристрою вимкнено"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Цей додаток зазначає, що може передавати дані про місцезнаходження третім особам"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Передавання даних і місцезнаходження"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Звідки надходить інформація про передавання даних"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Розробник надав виробнику цього пристрою інформацію про те, як цей додаток передає дані. Розробник може періодично оновлювати цю інформацію."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Розробник надав "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>" інформацію про те, як цей додаток передає дані. Розробник може періодично оновлювати цю інформацію."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Цілі передавання геоданих цим додатком"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Спосіб передавання даних може різнитися"</string>
@@ -607,7 +608,9 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Безпека даних"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Можуть передаватися геодані"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Цей додаток повідомляє, що може передавати ваші геодані третім особам"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Зміни в передаванні геоданих"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Не вдається відкрити це посилання"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Оновлення способу передавання геоданих"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Перегляньте додатки, які змінили спосіб передавання ваших геоданих"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ці додатки змінили спосіб передавання ваших геоданих. Можливо, ваші дані раніше не передавалися або тепер вони можуть використовуватися для реклами й маркетингу."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Розробники надали магазину додатків інформацію про свої методи передавання даних. Вони можуть періодично вносити зміни в цю інформацію.\n\nМетоди передавання даних можуть різнитися залежно від версії додатка, його використання, регіону й віку користувача."</string>

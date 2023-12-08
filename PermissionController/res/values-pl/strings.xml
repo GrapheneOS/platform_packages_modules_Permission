@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"I tak nie zezwalaj"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Odrzuć"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> z <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na to działanie: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Zawsze zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na to działanie: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Zawsze zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Tylko przy używaniu aplikacji"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Zawsze"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Nie zezwalaj i nie pytaj ponownie"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ostatnio otwarto <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jeśli pozwolisz zarządzać wszystkimi plikami, ta aplikacja będzie mogła odczytywać, modyfikować i usuwać dowolne pliki na tym urządzeniu lub zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Zezwól tej aplikacji na odczytywanie, modyfikowanie i usuwanie plików na tym urządzeniu oraz wszelkich podłączonych zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mogą wykonać to działanie: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mogą <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacje z tym uprawnieniem mają dostęp do danych o Twojej aktywności fizycznej takiej jak spacery, jazda na rowerze, jazda samochodem, liczba kroków i inne"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacje z tym uprawnieniem mają dostęp do kalendarza"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
@@ -462,8 +462,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Zmienić uprawnienia dostępu do lokalizacji w przypadku aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>”?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie względnego położenia urządzeń w pobliżu?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie względnego położenia urządzeń w pobliżu? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie lokalizacji tego urządzenia?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na znalezienie, połączenie i ustalenie lokalizacji tego urządzenia? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Zmienić dostęp aplikacji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> do lokalizacji przybliżonej na dostęp do lokalizacji dokładnej?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do przybliżonej lokalizacji urządzenia?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dokładna"</string>
@@ -498,8 +498,10 @@
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Czy nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do czujników na ciele podczas jej używania?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie powiadomień?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Pozwolenia kontrolowane"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma dostęp do lokalizacji"</string>
-    <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organizacja zezwala na dostęp aplikacji <xliff:g id="APP_NAME">%1$s</xliff:g> do Twojej lokalizacji"</string>
+    <!-- no translation found for auto_granted_location_permission_notification_title (7570818224669050377) -->
+    <skip />
+    <!-- no translation found for auto_granted_permission_notification_body (5040234389205471318) -->
+    <skip />
     <string name="other_permissions_label" msgid="8986184335503271992">"Inne uprawnienia"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Uprawnienia używane przez system"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Uprawnienia używane tylko przez aplikacje systemowe."</string>
@@ -570,17 +572,17 @@
     <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ta aplikacja nie obsługuje najnowszej wersji Androida. Jeśli ta aplikacja nie ma dostępu do muzyki i plików audio, nie będzie również miała dostępu do zdjęć i filmów."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ta aplikacja nie obsługuje najnowszej wersji Androida. Jeśli ta aplikacja ma dostęp do zdjęć i filmów, będzie również miała dostęp do muzyki i plików audio."</string>
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ta aplikacja nie obsługuje najnowszej wersji Androida. Jeśli ta aplikacja nie ma dostępu do muzyki i plików audio, nie będzie również miała dostępu do zdjęć i filmów."</string>
-    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Zweryfikuj aplikację z dostępem w tle do lokalizacji"</string>
+    <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Zweryfikuj aplikację z dostępem do lokalizacji w tle"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> ma dostęp do Twojej lokalizacji, nawet kiedy jest zamknięta"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Zweryfikuj aplikację z dostępem w tle do lokalizacji"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Zweryfikuj aplikację z dostępem do lokalizacji w tle"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Ta aplikacja ma dostęp do Twojej lokalizacji nawet wtedy, kiedy jest zamknięta.\n\nNiektóre aplikacje z dziedziny bezpieczeństwa i alarmowe wymagają dostępu w tle do lokalizacji, aby mogły działać zgodnie z oczekiwaniami."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Uprawnienia dostępu zostały zmienione"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Zobacz ostatnie użycie lokalizacji"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Ustawienia prywatności"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Dostęp do aparatu"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Dostęp do mikrofonu"</string>
-    <string name="perm_toggle_description" msgid="7801326363741451379">"Dotyczy aplikacji i usług"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Dotyczy aplikacji i usług. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
+    <string name="perm_toggle_description" msgid="7801326363741451379">"Aplikacje i usługi"</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Aplikacje i usługi. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Wyświetl aplikacje i usługi z dostępem do lokalizacji"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Pokazuj dostęp do schowka"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Pokazuj komunikat, gdy aplikacja uzyskuje dostęp do skopiowanego tekstu, obrazów lub innych treści"</string>
@@ -589,7 +591,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Ta aplikacja deklaruje, że może udostępniać dane o lokalizacji osobom trzecim"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Udostępnianie danych i lokalizacja"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Źródło informacji o udostępnianiu danych"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Deweloper przekazał producentowi urządzenia informacje o tym, jak aplikacja udostępnia dane. Informacje mogą być aktualizowane."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"Deweloper zamieścił informacje o tym, jak aplikacja udostępnia dane, w: "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>". Informacje mogą być aktualizowane."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"Możliwe cele udostępniania danych o lokalizacji:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"Różnice w udostępnianiu danych"</string>
@@ -607,6 +608,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Bezpieczeństwo danych"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Dane o lokalizacji mogą być udostępniane"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ta aplikacja deklaruje, że może udostępniać Twoje dane o lokalizacji innym podmiotom"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"Nie można otworzyć tego linku"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Zmiany w udostępnianiu danych o lokalizacji"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Przejrzyj aplikacje, które zmieniły sposób udostępniania Twoich danych o lokalizacji"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Te aplikacje zmieniły sposób udostępniania Twoich danych o lokalizacji. Wcześniej mogły ich nie udostępniać lub teraz zaczęły je udostępniać w celach marketingowych."</string>

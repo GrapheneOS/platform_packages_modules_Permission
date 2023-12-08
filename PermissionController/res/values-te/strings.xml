@@ -40,8 +40,8 @@
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ఏదేమైనా అనుమతించవద్దు"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"విస్మరించు"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> యొక్క <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను ఈ చర్య చేయడానికి అనుమతించాలా? - <xliff:g id="ACTION">%2$s</xliff:g>"</string>
-    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"ఈ చర్యను చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను ఎల్లప్పుడూ అనుమతించాలా? - <xliff:g id="ACTION">%2$s</xliff:g>"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని <xliff:g id="ACTION">%2$s</xliff:g> చేయడానికి అనుమతించాలా?"</string>
+    <string name="permission_add_background_warning_template" msgid="1812914855915092273">"<xliff:g id="ACTION">%2$s</xliff:g> చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను ఎల్లప్పుడూ అనుమతించాలా?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"ఎల్లప్పుడూ"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"అనుమతించవద్దు, మళ్లీ అడగవద్దు"</string>
@@ -194,9 +194,9 @@
     <string name="precise_image_description" msgid="6349638632303619872">"ఖచ్చితమైన లొకేషన్"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"సుమారు లొకేషన్"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ఖచ్చితమైన లొకేషన్‌ను ఉపయోగించండి"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ఖచ్చితమైన లొకేషన్ అనే సెట్టింగ్ ఆఫ్‌లో ఉన్నప్పుడు, యాప్‌లు మీ సుమారు లొకేషన్‌ను యాక్సెస్ చేయగలవు"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ఖచ్చితమైన లొకేషన్ ఆఫ్‌లో ఉన్నప్పుడు, యాప్‌లు మీ సుమారు లొకేషన్‌ను యాక్సెస్ చేయగలగవచ్చు"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"\'<xliff:g id="PERM">%1$s</xliff:g>\' అనుమతి"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్‌ను ఇవ్వాలా? వద్దా"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ఈ అనుమతి ఉన్న అన్ని యాప్‌లను చూడండి"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"అసిస్టెంట్ మైక్రోఫోన్ వినియోగాన్ని చూపు"</string>
@@ -226,7 +226,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"చివరిగా తెరిచినది <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"మీరు అన్ని ఫైళ్ల మేనేజ్‌మెంట్‌కు అనుమతిస్తే,ఈ పరికరంలో లేదా కనెక్ట్ చేయబడిన స్టోరేజ్ పరికరాలలో ఉమ్మడి స్టోరేజ్‌లోని ఏ ఫైళ్లను అయినా ఈ యాప్ యాక్సెస్ చేయగలదు, సవరించగలదు, లేదా తొలగించగలదు. యాప్ మీ అనుమతి తీసుకోకుండానే ఫైళ్లను యాక్సెస్ చేయవచ్చు."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ఈ పరికరంలో లేదా ఏవైనా కనెక్ట్ చేయబడిన స్టోరేజ్ పరికరాలలో ఫైళ్లను యాక్సెస్ చేయడానికి, ఎడిట్ చేయడానికి, లేదా తొలగించడానికి ఈ యాప్‌నకు అనుమతి ఇవ్వాలా? ఈ యాప్ మీ అనుమతి తీసుకోకుండానే ఫైళ్లను యాక్సెస్ చేయవచ్చు."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ఈ అనుమ‌తి ఉన్న యాప్‌లు ఇది చేయగలవు- <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ఈ యాప్‌ల‌కు ఈ అనుమ‌తి ఇస్తుంది- <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"వాకింగ్, బైకింగ్, సైక్లింగ్, అడుగులను లెక్కించడం మొదలైన శారీరక శ్రమను, ఇంకా మరిన్నింటిని ఈ అనుమతి ఉన్న యాప్‌లు యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ఈ అనుమతి ఉన్న యాప్‌లు మీ క్యాలెండర్‌ను యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ఈ అనుమతి ఉన్న యాప్‍‌లు ఫోన్ కాల్ లాగ్‌ను చదవగలుగుతాయి, దానిలో రాయగలుగుతాయి"</string>
@@ -250,7 +250,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"ఉపయోగించేటప్పుడు మాత్రమే అనుమతి ఇవ్వాలి"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"మీడియాకు మాత్రమే యాక్సెస్ అనుమతించబడినవి"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ఫైల్స్ అన్నింటినీ మేనేజ్ చేసేందుకు అనుమతించబడినవి"</string>
-    <string name="ask_header" msgid="2633816846459944376">"ప్రతిసారి అడగాలి"</string>
+    <string name="ask_header" msgid="2633816846459944376">"ప్రతిసారి అడుగు"</string>
     <string name="denied_header" msgid="903209608358177654">"అనుమతించబడలేదు"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"అన్ని ఫైళ్లను యాక్సెస్ చేయగల మరిన్ని యాప్‌లను చూడండి"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 రోజు}other{# రోజులు}}"</string>
@@ -572,7 +572,7 @@
     <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ఈ యాప్ Android తాజా వెర్షన్‌కు సపోర్ట్ ఇవ్వదు. ఈ యాప్ మ్యూజిక్, ఆడియో ఫైల్స్‌ను యాక్సెస్ చేయలేకపోతే, ఫోటోలు, వీడియోలను యాక్సెస్ చేయడానికి కూడా ఇది అనుమతించబడదు."</string>
     <string name="safety_center_background_location_access_notification_title" msgid="8933610618810588237">"Review app with background location access"</string>
     <string name="safety_center_background_location_access_reminder_notification_content" msgid="4066560182507301022">"<xliff:g id="APP_NAME">%s</xliff:g> can always access your location, even when the app is closed"</string>
-    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"బ్యాక్‌గ్రౌండ్ లొకేషన్‌కు యాక్సెస్‌ ఉన్న యాప్‌ను రివ్యూ చేయండి"</string>
+    <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"బ్యాక్‌గ్రౌండ్ లొకేషన్‌కు యాక్సెస్‌ను కలిగి ఉన్న యాప్‌ను రివ్యూ చేయండి"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ఈ యాప్ అది మూసివేసి ఉన్నప్పుడు కూడా, మీ లొకేషన్‌ను ఎల్లప్పుడూ యాక్సెస్ చేయగలదు.\n\nకొన్ని భద్రత, ఎమర్జెన్సీ యాప్‌లు ఉద్దేశించిన విధంగా పని చేయడానికి, వాటికి బ్యాక్‌గ్రౌండ్‌లో మీ లొకేషన్‌కు యాక్సెస్ అవసరం."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"యాక్సెస్‌ మార్చబడింది."</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"ఇటీవలి లొకేషన్‌ వినియోగాన్ని చూడండి"</string>
@@ -589,7 +589,6 @@
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"ఈ యాప్, అది లొకేషన్ డేటాను థర్డ్-పార్టీలతో షేర్ చేయవచ్చని పేర్కొంది"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"డేటా షేరింగ్ &amp; లొకేషన్"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"డేటా షేరింగ్‌కు సంబంధించిన సమాచారం ఎక్కడి నుంచి వస్తుంది"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"డెవలపర్ ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని పరికర తయారీదారుకు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_data_sharing_source_message" msgid="8330794595417986883">"ఈ యాప్, డేటాను ఎలా షేర్ చేస్తుంది అనే సమాచారాన్ని డెవలపర్  "<annotation id="link"><annotation id="install_source" example="App Store">"%1$s"</annotation></annotation>"‌కు అందించారు. డెవలపర్ ఈ సమాచారాన్ని కాలానుగుణంగా అప్‌డేట్ చేయవచ్చు."</string>
     <string name="permission_rationale_location_purpose_title" msgid="5115877143670012618">"ఈ యాప్ లొకేషన్ డేటాను వీటి కోసం షేర్ చేయవచ్చు:"</string>
     <string name="permission_rationale_permission_data_sharing_varies_title" msgid="9103718980919908316">"డేటా షేరింగ్ మారుతూ ఉంటుంది"</string>
@@ -607,6 +606,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"డేటా భద్రత"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"లొకేషన్ డేటా షేర్ చేయబడవచ్చు"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"ఈ యాప్ మీ లొకేషన్ డేటాను థర్డ్-పార్టీలతో షేర్ చేయవచ్చని పేర్కొంది"</string>
+    <string name="permission_rationale_data_sharing_link_error_title" msgid="4496607694785370249">"ఈ లింక్‌ను తెరవడం సాధ్యపడదు"</string>
+    <string name="permission_rationale_data_sharing_link_error_message" msgid="8118116480850030215"></string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"లొకేషన్‌కు సంబంధించిన డేటా షేరింగ్ అప్‌డేట్‌లు"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"మీ లొకేషన్ డేటాను షేర్ చేసే విధానాన్ని మార్చిన యాప్‌లను రివ్యూ చేయండి"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"ఈ యాప్‌లు మీ లొకేషన్ డేటాను షేర్ చేయగల విధానాన్ని మార్చాయి. అవి దీన్ని ఇంతకు ముందు షేర్ చేసి ఉండకపోవచ్చు, లేదా ఇప్పుడు అడ్వర్టయిజింగ్ లేదా మార్కెటింగ్ ప్రయోజనాల కోసం షేర్ చేయవచ్చు."</string>
