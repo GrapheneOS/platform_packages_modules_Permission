@@ -45,8 +45,8 @@ package com.android.role.persistence {
 
   public final class RolesState {
     ctor public RolesState(int, @Nullable String, @NonNull java.util.Map<java.lang.String,java.util.Set<java.lang.String>>);
-    ctor @FlaggedApi(android.permission.flags.Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) public RolesState(int, @Nullable String, @NonNull java.util.Map<java.lang.String,java.util.Set<java.lang.String>>, @NonNull java.util.Set<java.lang.String>);
-    method @FlaggedApi(android.permission.flags.Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) @NonNull public java.util.Set<java.lang.String> getFallbackEnabledRoles();
+    ctor @FlaggedApi("android.permission.flags.system_server_role_controller_enabled") public RolesState(int, @Nullable String, @NonNull java.util.Map<java.lang.String,java.util.Set<java.lang.String>>, @NonNull java.util.Set<java.lang.String>);
+    method @FlaggedApi("android.permission.flags.system_server_role_controller_enabled") @NonNull public java.util.Set<java.lang.String> getFallbackEnabledRoles();
     method @Nullable public String getPackagesHash();
     method @NonNull public java.util.Map<java.lang.String,java.util.Set<java.lang.String>> getRoles();
     method public int getVersion();
