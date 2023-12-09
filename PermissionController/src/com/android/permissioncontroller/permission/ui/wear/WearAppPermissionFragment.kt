@@ -26,11 +26,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.wear.widget.SwipeDismissFrameLayout
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW
@@ -71,20 +69,7 @@ import com.android.settingslib.RestrictedLockUtils
  */
 class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
 
-    private val composeViewTag = "wear_app_permission_fragment_compose_view"
     private lateinit var confirmDialogViewModel: AppPermissionConfirmDialogViewModel
-
-    private val swipeDismissCallback =
-        object : SwipeDismissFrameLayout.Callback() {
-            override fun onDismissed(layout: SwipeDismissFrameLayout) {
-                val viewGroup = view as? ViewGroup
-                val composeView = viewGroup?.findViewWithTag<ComposeView>(composeViewTag)
-                if (composeView != null) {
-                    viewGroup.removeView(composeView)
-                }
-                parentFragmentManager.popBackStackImmediate()
-            }
-        }
 
     companion object {
         private const val GRANT_CATEGORY = "grant_category"
@@ -131,7 +116,7 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val activity = requireActivity()
         val packageName =
             arguments?.getString(Intent.EXTRA_PACKAGE_NAME)
@@ -165,7 +150,6 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
             ViewModelProvider(this, AppPermissionConfirmDialogViewModelFactory())
                 .get(AppPermissionConfirmDialogViewModel::class.java)
 
-        @Suppress("ktlint:standard:max-line-length")
         val onLocationSwitchChanged: (Boolean) -> Unit = { checked ->
             run {
                 val changeRequest =
@@ -247,32 +231,21 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
             confirmDialogViewModel.showAdvancedConfirmDialogLiveData.value = false
         }
 
-        val composeView =
-            ComposeView(activity).apply {
-                setViewCompositionStrategy(
-                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+        return ComposeView(activity).apply {
+            setContent {
+                WearAppPermissionScreen(
+                    permGroupLabel,
+                    viewModel,
+                    confirmDialogViewModel,
+                    onLocationSwitchChanged,
+                    onGrantedStateChanged,
+                    onFooterClicked,
+                    onConfirmDialogOkButtonClick,
+                    onConfirmDialogCancelButtonClick,
+                    onAdvancedConfirmDialogOkButtonClick,
+                    onAdvancedConfirmDialogCancelButtonClick
                 )
-                setContent {
-                    WearAppPermissionScreen(
-                        permGroupLabel,
-                        viewModel,
-                        confirmDialogViewModel,
-                        onLocationSwitchChanged,
-                        onGrantedStateChanged,
-                        onFooterClicked,
-                        onConfirmDialogOkButtonClick,
-                        onConfirmDialogCancelButtonClick,
-                        onAdvancedConfirmDialogOkButtonClick,
-                        onAdvancedConfirmDialogCancelButtonClick
-                    )
-                }
-                tag = composeViewTag
             }
-
-        return SwipeDismissFrameLayout(activity).apply {
-            addView(composeView)
-            addCallback(swipeDismissCallback)
-            setSwipeDismissible(true)
         }
     }
 

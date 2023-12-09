@@ -28,7 +28,6 @@ import androidx.annotation.RequiresApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.wear.widget.SwipeDismissFrameLayout
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
@@ -51,18 +50,6 @@ import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissi
  */
 class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
     private val LOG_TAG = "PermissionAppsFragment"
-    private val composeViewTag = "wear_permission_app_fragment_compose_view"
-    private val swipeDismissCallback =
-        object : SwipeDismissFrameLayout.Callback() {
-            override fun onDismissed(layout: SwipeDismissFrameLayout) {
-                val viewGroup = view as? ViewGroup
-                val composeView = viewGroup?.findViewWithTag<ComposeView>(composeViewTag)
-                if (composeView != null) {
-                    viewGroup.removeView(composeView)
-                }
-                parentFragmentManager.popBackStackImmediate()
-            }
-        }
 
     private lateinit var permissionUsages: PermissionUsages
     private lateinit var wearViewModel: WearAppPermissionUsagesViewModel
@@ -74,7 +61,7 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val permGroupName =
             arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
                 ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
@@ -154,38 +141,20 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
             )
         }
 
-        val composeView =
-            ComposeView(requireContext()).apply {
-                setContent {
-                    WearPermissionAppsScreen(
-                        WearPermissionAppsHelper(
-                            activity.getApplication(),
-                            permGroupName,
-                            viewModel,
-                            wearViewModel,
-                            isStorageAndLessThanT,
-                            onAppClick,
-                            onShowSystemClick,
-                            logPermissionAppsFragmentCreated
-                        )
+        return ComposeView(requireContext()).apply {
+            setContent {
+                WearPermissionAppsScreen(
+                    WearPermissionAppsHelper(
+                        activity.getApplication(),
+                        permGroupName,
+                        viewModel,
+                        wearViewModel,
+                        isStorageAndLessThanT,
+                        onAppClick,
+                        onShowSystemClick,
+                        logPermissionAppsFragmentCreated
                     )
-                }
-                tag = composeViewTag
-            }
-
-        val backstackCount =
-            activity.supportFragmentManager.primaryNavigationFragment
-                ?.childFragmentManager
-                ?.backStackEntryCount
-                ?: 0
-
-        return if (backstackCount == 0) {
-            composeView
-        } else {
-            SwipeDismissFrameLayout(context).apply {
-                addView(composeView)
-                addCallback(swipeDismissCallback)
-                setSwipeDismissible(true)
+                )
             }
         }
     }
