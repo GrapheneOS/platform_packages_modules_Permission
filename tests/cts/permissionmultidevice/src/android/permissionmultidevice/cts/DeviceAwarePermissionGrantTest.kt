@@ -74,7 +74,7 @@ class DeviceAwarePermissionGrantTest {
         uninstallPackage(APP_PACKAGE_NAME, requireSuccess = false)
     }
 
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS)
+    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
     @Test
     fun onHostDevice_requestPermissionForHostDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
@@ -87,7 +87,7 @@ class DeviceAwarePermissionGrantTest {
         )
     }
 
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS)
+    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
     @Test
     fun onHostDevice_requestPermissionForRemoteDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
@@ -100,7 +100,7 @@ class DeviceAwarePermissionGrantTest {
         )
     }
 
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS)
+    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
     @Test
     fun onRemoteDevice_requestPermissionForHostDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
@@ -113,7 +113,7 @@ class DeviceAwarePermissionGrantTest {
         )
     }
 
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS)
+    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
     @Test
     fun onRemoteDevice_requestPermissionForRemoteDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(

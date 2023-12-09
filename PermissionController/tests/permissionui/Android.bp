@@ -65,6 +65,7 @@ android_test {
         ":PermissionUiDefineAdditionalPermissionApp",
         ":PermissionUiUseAdditionalPermissionApp",
         ":PermissionUiUseTwoAdditionalPermissionsApp",
+        ":PermissionUiReadCalendarPermissionApp",
     ],
     per_testcase_directory: true,
 }
