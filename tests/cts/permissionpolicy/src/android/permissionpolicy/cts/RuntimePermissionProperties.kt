@@ -74,7 +74,7 @@ class RuntimePermissionProperties {
 
     private val platformPkg = pm.getPackageInfo("android", GET_PERMISSIONS)
     private val platformRuntimePerms =
-        platformPkg.permissions.filter { it.protection == PROTECTION_DANGEROUS }
+        platformPkg.permissions!!.filter { it.protection == PROTECTION_DANGEROUS }
     private val platformBgPermNames = platformRuntimePerms.mapNotNull { it.backgroundPermission }
 
     @Test
@@ -96,7 +96,7 @@ class RuntimePermissionProperties {
     @Test
     fun allAppOpPermissionNeedAnAppOp() {
         val platformAppOpPerms =
-            platformPkg.permissions
+            platformPkg.permissions!!
                 .filter { (it.protectionFlags and PROTECTION_FLAG_APPOP) != 0 }
                 .filter {
                     // Grandfather incomplete definition of PACKAGE_USAGE_STATS
