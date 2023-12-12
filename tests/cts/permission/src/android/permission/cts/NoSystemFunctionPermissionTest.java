@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.platform.test.annotations.AppModeFull;
 import android.telephony.gsm.SmsManager;
 import android.test.AndroidTestCase;
@@ -121,7 +122,12 @@ public class NoSystemFunctionPermissionTest extends AndroidTestCase {
      */
     @SmallTest
     public void testVibrator() {
-        Vibrator vibrator = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        Vibrator vibrator = mContext.getSystemService(VibratorManager.class).getDefaultVibrator();
+
+        if (!vibrator.hasVibrator()) {
+            // Run the test only if a vibrator is present.
+            return;
+        }
 
         try {
             vibrator.cancel();
