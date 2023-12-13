@@ -53,9 +53,11 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.wear.compose.foundation.SwipeToDismissValue
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
 import androidx.wear.compose.foundation.lazy.ScalingLazyListState
+import androidx.wear.compose.foundation.rememberSwipeToDismissBoxState
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
@@ -87,30 +89,30 @@ fun ScrollableScreen(
 ) {
     var dismissed by remember { mutableStateOf(false) }
     val activity = LocalContext.current.findActivity()
+    val state = rememberSwipeToDismissBoxState()
+
+    LaunchedEffect(state.currentValue) {
+        if (state.currentValue == SwipeToDismissValue.Dismissed) {
+            dismiss(activity)
+            dismissed = true
+            state.snapTo(SwipeToDismissValue.Default)
+        }
+    }
 
     // To support Swipe-dismiss effect,
     // add the view to SwipeToDismissBox if the screen is not on the top fragment.
     if (getBackStackEntryCount(activity) > 0) {
-        SwipeToDismissBox(
-            onDismissed = {
-                dismiss(activity)
-                dismissed = true
-            }
-        ) { isBackground ->
-            if (isBackground || dismissed) {
-                Box(modifier = Modifier.fillMaxSize())
-            } else {
-                Scaffold(
-                    showTimeText,
-                    title,
-                    subtitle,
-                    image,
-                    isLoading,
-                    content,
-                    titleTestTag,
-                    subtitleTestTag
-                )
-            }
+        SwipeToDismissBox(state = state) { isBackground ->
+            Scaffold(
+                showTimeText,
+                title,
+                subtitle,
+                image,
+                isLoading = isLoading || isBackground || dismissed,
+                content,
+                titleTestTag,
+                subtitleTestTag
+            )
         }
     } else {
         Scaffold(
