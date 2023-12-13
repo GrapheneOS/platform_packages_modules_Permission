@@ -7070,6 +7070,13 @@
     <permission android:name="android.permission.MANAGE_ACCESSIBILITY"
         android:protectionLevel="signature|setup|recents|role" />
 
+    <!-- @FlaggedApi("com.android.server.accessibility.motion_event_observing")
+    @hide
+    @TestApi
+    Allows an accessibility service to observe motion events without consuming them. -->
+    <permission android:name="android.permission.ACCESSIBILITY_MOTION_EVENT_OBSERVING"
+                android:protectionLevel="signature" />
+                
     <!-- @SystemApi Allows an app to grant a profile owner access to device identifiers.
          <p>Not for use by third-party applications.
          @deprecated
