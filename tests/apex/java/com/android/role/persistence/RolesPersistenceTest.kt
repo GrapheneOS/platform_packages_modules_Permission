@@ -111,6 +111,7 @@ class RolesPersistenceTest {
 
         assertThat(persistedState).isNull()
     }
+
     private fun getState(): RolesState =
         when (stateVersion) {
             StateVersion.VERSION_UNDEFINED -> stateVersionUndefined

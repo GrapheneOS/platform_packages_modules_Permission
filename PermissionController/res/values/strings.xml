@@ -337,11 +337,6 @@
    <!-- Title of the permission dialog for accessibility purposes- spoken to the user. [CHAR LIMIT=none] -->
    <string name="permission_request_title">Permission request</string>
 
-    <!-- Title of dialog telling users that Install/Uninstall action is not supported on Android Wear. [CHAR LIMIT=30] -->
-    <string name="wear_not_allowed_dlg_title">Android Wear</string>
-    <!-- Title of dialog telling users that Install/Uninstall action is not supported on Android Wear. [CHAR LIMIT=none] -->
-    <string name="wear_not_allowed_dlg_text">Install/Uninstall actions not supported on Wear.</string>
-
     <!-- Review of runtime permissions for legacy apps -->
 
     <!-- Template for the screen title when app permissions are reviewed on install. [CHAR LIMIT=none] -->

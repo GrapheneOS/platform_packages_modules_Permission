@@ -89,7 +89,7 @@ class RoleUserState {
     private ArrayMap<String, ArraySet<String>> mRoles = new ArrayMap<>();
 
     /**
-     *
+     * Role names of the roles with fallback enabled.
      */
     @GuardedBy("mLock")
     @NonNull
@@ -146,6 +146,15 @@ class RoleUserState {
             }
             mVersion = version;
             scheduleWriteFileLocked();
+        }
+    }
+
+    /**
+     * Checks the version and returns whether a version upgrade is needed.
+     */
+    public boolean isVersionUpgradeNeeded() {
+        synchronized (mLock) {
+            return mVersion < VERSION_FALLBACK_STATE_MIGRATED;
         }
     }
 
@@ -228,6 +237,23 @@ class RoleUserState {
     }
 
     /**
+     * Upgrade this user state to the latest version if needed.
+     */
+    public void upgradeVersion(@NonNull List<String> legacyFallbackDisabledRoles) {
+        synchronized (mLock) {
+            if (mVersion < VERSION_FALLBACK_STATE_MIGRATED) {
+                int legacyFallbackDisabledRolesSize = legacyFallbackDisabledRoles.size();
+                for (int i = 0; i < legacyFallbackDisabledRolesSize; i++) {
+                    String roleName = legacyFallbackDisabledRoles.get(i);
+                    mFallbackEnabledRoles.remove(roleName);
+                }
+                mVersion = VERSION_FALLBACK_STATE_MIGRATED;
+                scheduleWriteFileLocked();
+            }
+        }
+    }
+
+    /**
      * Get whether the role is available.
      *
      * @param roleName the name of the role to get the holders for
@@ -269,6 +295,7 @@ class RoleUserState {
         synchronized (mLock) {
             if (!mRoles.containsKey(roleName)) {
                 mRoles.put(roleName, new ArraySet<>());
+                mFallbackEnabledRoles.add(roleName);
                 Log.i(LOG_TAG, "Added new role: " + roleName);
                 scheduleWriteFileLocked();
                 return true;
@@ -297,6 +324,7 @@ class RoleUserState {
                                 + " role: " + roleName + ", holders: " + packageNames);
                     }
                     mRoles.removeAt(i);
+                    mFallbackEnabledRoles.remove(roleName);
                     changed = true;
                 }
             }
@@ -432,12 +460,15 @@ class RoleUserState {
             RolesState roleState = mPersistence.readForUser(UserHandle.of(mUserId));
 
             Map<String, Set<String>> roles;
+            Set<String> fallbackEnabledRoles;
             if (roleState != null) {
                 mVersion = roleState.getVersion();
                 mPackagesHash = roleState.getPackagesHash();
                 roles = roleState.getRoles();
+                fallbackEnabledRoles = roleState.getFallbackEnabledRoles();
             } else {
                 roles = mPlatformHelper.getLegacyRoleState(mUserId);
+                fallbackEnabledRoles = roles.keySet();
             }
             mRoles.clear();
             for (Map.Entry<String, Set<String>> entry : roles.entrySet()) {
@@ -445,12 +476,10 @@ class RoleUserState {
                 ArraySet<String> roleHolders = new ArraySet<>(entry.getValue());
                 mRoles.put(roleName, roleHolders);
             }
-
+            mFallbackEnabledRoles.clear();
+            mFallbackEnabledRoles.addAll(fallbackEnabledRoles);
             if (roleState == null) {
                 scheduleWriteFileLocked();
-            } else {
-                mFallbackEnabledRoles.clear();
-                mFallbackEnabledRoles.addAll(roleState.getFallbackEnabledRoles());
             }
         }
     }

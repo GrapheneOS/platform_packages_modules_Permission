@@ -16,6 +16,7 @@
 
 package com.android.role;
 
+import android.annotation.CallbackExecutor;
 import android.app.role.RoleControllerService;
 import android.app.role.RoleManager;
 import android.content.Context;
@@ -29,6 +30,7 @@ import androidx.annotation.NonNull;
 
 import com.android.role.controller.service.RoleControllerServiceImpl;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
@@ -92,5 +94,11 @@ public class LocalRoleController implements RoleController {
     public boolean isApplicationVisibleForRole(@NonNull String roleName,
             @NonNull String packageName) {
         return mService.onIsApplicationVisibleForRole(roleName, packageName);
+    }
+
+    @Override
+    public void getLegacyFallbackDisabledRoles(@NonNull @CallbackExecutor Executor executor,
+            @NonNull Consumer<List<String>> callback) {
+        throw new UnsupportedOperationException();
     }
 }

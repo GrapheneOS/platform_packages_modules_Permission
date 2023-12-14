@@ -23,26 +23,18 @@ import static com.android.compatibility.common.util.SystemUtil.runWithShellPermi
 import static com.google.common.truth.Truth.assertThat;
 
 import android.companion.virtual.VirtualDeviceManager;
-import android.companion.virtual.VirtualDeviceParams;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.OnPermissionsChangedListener;
-import android.permission.flags.Flags;
 import android.platform.test.annotations.AppModeFull;
-import android.platform.test.annotations.RequiresFlagsEnabled;
-import android.platform.test.flag.junit.CheckFlagsRule;
-import android.platform.test.flag.junit.DeviceFlagsValueProvider;
-import android.virtualdevice.cts.common.FakeAssociationRule;
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.android.compatibility.common.util.AdoptShellPermissionsRule;
 import com.android.compatibility.common.util.SystemUtil;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -60,27 +52,14 @@ public class PermissionUpdateListenerTest {
                     + "CtsAppThatRequestsCalendarContactsBodySensorCustomPermission.apk";
     private static final String PACKAGE_NAME =
             "android.permission.cts.appthatrequestcustompermission";
-    private static final String PERMISSION_NAME = "android.permission.CAMERA";
+    private static final String PERMISSION_NAME = "android.permission.READ_CONTACTS";
     private static final int TIMEOUT = 10000;
 
-    private final Context mDefaultContext =
+    private final Context mContext =
             InstrumentationRegistry.getInstrumentation().getContext();
-    private final PackageManager mPackageManager = mDefaultContext.getPackageManager();
+    private final PackageManager mPackageManager = mContext.getPackageManager();
 
     private int mTestAppUid;
-
-    private VirtualDeviceManager mVirtualDeviceManager;
-
-    @Rule
-    public FakeAssociationRule mFakeAssociationRule = new FakeAssociationRule();
-
-    @Rule
-    public AdoptShellPermissionsRule mAdoptShellPermissionsRule = new AdoptShellPermissionsRule(
-            InstrumentationRegistry.getInstrumentation().getUiAutomation(),
-            android.Manifest.permission.CREATE_VIRTUAL_DEVICE);
-
-    @Rule
-    public final CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
 
     @Before
     public void setup() throws PackageManager.NameNotFoundException, InterruptedException {
@@ -90,7 +69,6 @@ public class PermissionUpdateListenerTest {
         SystemUtil.waitForBroadcasts();
         Thread.sleep(1000);
         mTestAppUid = mPackageManager.getPackageUid(PACKAGE_NAME, 0);
-        mVirtualDeviceManager = mDefaultContext.getSystemService(VirtualDeviceManager.class);
     }
 
     @After
@@ -111,7 +89,7 @@ public class PermissionUpdateListenerTest {
         runWithShellPermissionIdentity(() -> {
             mPackageManager.addOnPermissionsChangeListener(permissionsChangedListener);
             mPackageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
-                    mDefaultContext.getUser());
+                    mContext.getUser());
         });
         countDownLatch.await(TIMEOUT, TimeUnit.MILLISECONDS);
         runWithShellPermissionIdentity(() -> {
@@ -122,117 +100,61 @@ public class PermissionUpdateListenerTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
-    public void testVirtualDeviceGrantPermissionNotifyListener() throws InterruptedException {
-        VirtualDeviceManager.VirtualDevice virtualDevice =
-                mVirtualDeviceManager.createVirtualDevice(
-                        mFakeAssociationRule.getAssociationInfo().getId(),
-                        new VirtualDeviceParams.Builder().build());
-        Context deviceContext = mDefaultContext.createDeviceContext(virtualDevice.getDeviceId());
-        testGrantPermissionNotifyListener(deviceContext, virtualDevice.getPersistentDeviceId());
-    }
-
-    @Test
-    public void testDefaultDeviceGrantPermissionNotifyListener() throws InterruptedException {
-        testGrantPermissionNotifyListener(
-                mDefaultContext, VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
-    }
-
-    private void testGrantPermissionNotifyListener(
-            Context context, String expectedDeviceId) throws InterruptedException {
-        final PackageManager packageManager = context.getPackageManager();
+    public void testGrantPermissionNotifyListener() throws InterruptedException {
         TestOnPermissionsChangedListener permissionsChangedListener =
                 new TestOnPermissionsChangedListener(1);
         runWithShellPermissionIdentity(() -> {
-            packageManager.addOnPermissionsChangeListener(permissionsChangedListener);
-            packageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
-                    mDefaultContext.getUser());
+            mPackageManager.addOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
+                    mContext.getUser());
         });
 
         permissionsChangedListener.waitForPermissionChangedCallbacks();
         runWithShellPermissionIdentity(() -> {
-            packageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
         });
 
         String deviceId = permissionsChangedListener.getNotifiedDeviceId(mTestAppUid);
-        assertThat(deviceId).isEqualTo(expectedDeviceId);
+        assertThat(deviceId).isEqualTo(VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
     }
 
     @Test
-    public void testDefaultDeviceRevokePermissionNotifyListener() throws InterruptedException {
-        testRevokePermissionNotifyListener(
-                mDefaultContext, VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
-    }
-
-    @Test
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
-    public void testVirtualDeviceRevokePermissionNotifyListener() throws InterruptedException {
-        VirtualDeviceManager.VirtualDevice virtualDevice =
-                mVirtualDeviceManager.createVirtualDevice(
-                        mFakeAssociationRule.getAssociationInfo().getId(),
-                        new VirtualDeviceParams.Builder().build());
-        Context deviceContext = mDefaultContext.createDeviceContext(virtualDevice.getDeviceId());
-        testRevokePermissionNotifyListener(
-                deviceContext, virtualDevice.getPersistentDeviceId());
-    }
-
-    private void testRevokePermissionNotifyListener(
-            Context context, String expectedDeviceId) throws InterruptedException {
-        final PackageManager packageManager = context.getPackageManager();
+    public void testRevokePermissionNotifyListener() throws InterruptedException {
         TestOnPermissionsChangedListener permissionsChangedListener =
                 new TestOnPermissionsChangedListener(1);
         runWithShellPermissionIdentity(() -> {
-            packageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
-                    mDefaultContext.getUser());
-            packageManager.addOnPermissionsChangeListener(permissionsChangedListener);
-            packageManager.revokeRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
-                    mDefaultContext.getUser());
+            mPackageManager.grantRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
+                    mContext.getUser());
+            mPackageManager.addOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.revokeRuntimePermission(PACKAGE_NAME, PERMISSION_NAME,
+                    mContext.getUser());
         });
         permissionsChangedListener.waitForPermissionChangedCallbacks();
         runWithShellPermissionIdentity(() -> {
-            packageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
         });
 
         String deviceId = permissionsChangedListener.getNotifiedDeviceId(mTestAppUid);
-        assertThat(deviceId).isEqualTo(expectedDeviceId);
+        assertThat(deviceId).isEqualTo(VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
     }
 
     @Test
-    public void testDefaultDeviceUpdatePermissionFlagsNotifyListener() throws InterruptedException {
-        testUpdatePermissionFlagsNotifyListener(
-                mDefaultContext, VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
-    }
-
-    @Test
-    @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
-    public void testVirtualDeviceUpdatePermissionFlagsNotifyListener() throws InterruptedException {
-        VirtualDeviceManager.VirtualDevice virtualDevice =
-                mVirtualDeviceManager.createVirtualDevice(
-                        mFakeAssociationRule.getAssociationInfo().getId(),
-                        new VirtualDeviceParams.Builder().build());
-        Context deviceContext = mDefaultContext.createDeviceContext(virtualDevice.getDeviceId());
-        testUpdatePermissionFlagsNotifyListener(
-                deviceContext, virtualDevice.getPersistentDeviceId());
-    }
-
-    private void testUpdatePermissionFlagsNotifyListener(
-            Context context, String expectedDeviceId) throws InterruptedException {
+    public void testUpdatePermissionFlagsNotifyListener() throws InterruptedException {
         TestOnPermissionsChangedListener permissionsChangedListener =
                 new TestOnPermissionsChangedListener(1);
-        final PackageManager packageManager = context.getPackageManager();
         runWithShellPermissionIdentity(() -> {
-            packageManager.addOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.addOnPermissionsChangeListener(permissionsChangedListener);
             int flag = PackageManager.FLAG_PERMISSION_USER_SET;
-            packageManager.updatePermissionFlags(PERMISSION_NAME, PACKAGE_NAME, flag, flag,
-                    mDefaultContext.getUser());
+            mPackageManager.updatePermissionFlags(PERMISSION_NAME, PACKAGE_NAME, flag, flag,
+                    mContext.getUser());
         });
         permissionsChangedListener.waitForPermissionChangedCallbacks();
         runWithShellPermissionIdentity(() -> {
-            packageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
+            mPackageManager.removeOnPermissionsChangeListener(permissionsChangedListener);
         });
 
         String deviceId = permissionsChangedListener.getNotifiedDeviceId(mTestAppUid);
-        assertThat(deviceId).isEqualTo(expectedDeviceId);
+        assertThat(deviceId).isEqualTo(VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT);
     }
 
     private class TestOnPermissionsChangedListener

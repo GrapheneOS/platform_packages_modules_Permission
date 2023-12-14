@@ -21,6 +21,7 @@ import android.annotation.NonNull;
 import android.app.role.RoleManager;
 import android.os.RemoteCallback;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
@@ -58,4 +59,10 @@ public interface RoleController {
      * @see android.app.role.RoleControllerManager#isApplicationVisibleForRole
      */
     boolean isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName);
+
+    /**
+     * @see android.app.role.RoleControllerManager#getLegacyFallbackDisabledRoles
+     */
+    void getLegacyFallbackDisabledRoles(@NonNull @CallbackExecutor Executor executor,
+            @NonNull Consumer<List<String>> callback);
 }
