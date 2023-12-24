@@ -187,7 +187,7 @@ public final class StorageScopesFragment extends PackageExtraConfigFragment {
         boolean killUid;
         if (enabled) {
             // GMS often needs a restart to properly handle permission grants
-            killUid = GmsCompat.isGmsApp(pkgName, Process.myUserHandle().getIdentifier());
+            killUid = GmsCompat.isEnabledFor(pkgName, Process.myUserHandle().getIdentifier());
 
             if (revokeStoragePermissions(context, pkgName)) {
                 getToastManager().showToast(R.string.sscopes_storage_permissions_revoked);
