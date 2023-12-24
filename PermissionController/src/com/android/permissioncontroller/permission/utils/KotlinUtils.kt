@@ -929,7 +929,7 @@ object KotlinUtils {
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK, newFlags, user)
         }
 
-        if (GmsCompat.isGmsApp(pkgInfo.packageName, user.identifier)) {
+        if (GmsCompat.isEnabledFor(pkgInfo.packageName, user.identifier)) {
             // in many cases, GMS needs a restart to properly handle permission grants
             if (
                 // Google Search app handles permission grants properly.
