@@ -37,23 +37,35 @@ fun PreferenceFragmentCompat.createCategory(title: Int): PreferenceCategory {
 }
 
 fun createPref(ctx: Context, title: CharSequence, @DrawableRes icon: Int,
-                                        l: Preference.OnPreferenceClickListener): Preference {
+                                        l: Preference.OnPreferenceClickListener?): Preference {
     val p = Preference(ctx)
     p.title = title
     if (icon != 0) {
         p.setIcon(icon)
     }
-    p.onPreferenceClickListener = l
+    if (l != null) {
+        p.onPreferenceClickListener = l
+    }
     return p
 }
 
-fun PreferenceFragmentCompat.addPref(title: CharSequence, l: Preference.OnPreferenceClickListener) {
-    addPref(title, 0, l)
+fun PreferenceFragmentCompat.addPref(title: CharSequence, icon: Int = 0, l: Preference.OnPreferenceClickListener? = null): Preference {
+    return preferenceScreen.addPref(title, icon, l)
 }
 
-fun PreferenceFragmentCompat.addPref(title: CharSequence, icon: Int, l: Preference.OnPreferenceClickListener) {
-    val p = createPref(requireContext(), title, icon, l)
-    preferenceScreen.addPreference(p)
+fun PreferenceGroup.addPref(title: CharSequence, icon: Int = 0, l: Preference.OnPreferenceClickListener? = null): Preference {
+    val p = createPref(this.context, title, icon, l)
+    addPreference(p)
+    return p
+}
+
+fun PreferenceGroup.addCategory(@StringRes title: Int) = addCategory(context.getText(title))
+
+fun PreferenceGroup.addCategory(title: CharSequence): PreferenceCategory {
+    return PreferenceCategory(this.context).apply {
+        this.title = title
+        this@addCategory.addPreference(this)
+    }
 }
 
 fun PreferenceFragmentCompat.addOrRemove(p: Preference, add: Boolean) {
