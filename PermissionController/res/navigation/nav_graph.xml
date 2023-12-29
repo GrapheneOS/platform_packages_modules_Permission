@@ -202,4 +202,10 @@
         android:name="com.android.permissioncontroller.cscopes.ContactScopesWrapperFragment"
         android:label="ContactScopes"/>
 
+
+    <fragment
+        android:id="@+id/android_auto_config"
+        android:name="com.android.permissioncontroller.ext.aauto.AndroidAutoConfigWrapperFragment"
+        android:label="AndroidAutoConfig"/>
+
 </navigation>
