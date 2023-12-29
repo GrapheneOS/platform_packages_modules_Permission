@@ -13,6 +13,9 @@
     <permission android:name="com.android.permissioncontroller.permission.MANAGE_ROLES_FROM_CONTROLLER"
                 android:protectionLevel="signature" />
 
+    <permission android:name="com.android.permissioncontroller.permission.LAUNCH_GMSCOMPAT_ACTIVITIES"
+                android:protectionLevel="internal|preinstalled" />
+
     <uses-permission android:name="android.permission.MANAGE_USERS" />
     <uses-permission android:name="android.permission.GRANT_RUNTIME_PERMISSIONS" />
     <uses-permission android:name="android.permission.REVOKE_RUNTIME_PERMISSIONS" />
@@ -642,6 +645,12 @@
             android:name="com.android.permissioncontroller.cscopes.ContactScopesActivity"
             android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
             android:permission="android.permission.WRITE_SECURE_SETTINGS"
+            android:exported="true" />
+
+        <activity
+            android:name="com.android.permissioncontroller.ext.aauto.AndroidAutoConfigActivity"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:permission="com.android.permissioncontroller.permission.LAUNCH_GMSCOMPAT_ACTIVITIES"
             android:exported="true" />
 
     </application>
