@@ -3,8 +3,8 @@
 @file:Suppress("DEPRECATION")
 package com.android.permissioncontroller.ext.aauto
 
+import android.Manifest
 import android.app.compat.gms.AndroidAuto
-import android.app.compat.gms.GmsCompat
 import android.app.compat.gms.GmsUtils
 import android.content.BroadcastReceiver
 import android.content.ComponentName
@@ -13,6 +13,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.GosPackageState
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.content.pm.ServiceInfo
 import android.ext.PackageId
 import android.net.Uri
@@ -49,6 +50,9 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
     lateinit var aautoSettingsPref: Preference
     val pkgFlagPrefs = mutableMapOf<Long, SwitchPreference>()
     val packagePrefs = mutableMapOf<String, Preference>()
+
+    lateinit var potentialIssues: PreferenceGroup
+    lateinit var aautoVoiceCommandIssues: Preference
 
     val pkgChangeReceiver = object : BroadcastReceiver() {
         override fun onReceive(ctx: Context, intent: Intent) {
@@ -98,6 +102,12 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
             addPref(getText(R.string.notif_listener_settings_title)).apply {
                 setSummary(R.string.notif_listener_settings_summary)
                 intent = getNotifListenerSettingsIntent()
+            }
+        }
+
+        potentialIssues = screen.addCategory(R.string.potential_issues_category).apply {
+            addPref(getText(R.string.aauto_issue_voice_commands)).let {
+                aautoVoiceCommandIssues = it
             }
         }
 
@@ -235,6 +245,23 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
             }
         }
 
+        aautoVoiceCommandIssues.apply {
+            val text = getVoiceCommandIssuesText()
+            isVisible = text != null
+
+            if (text != null) {
+                onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+                    AlertDialog.Builder(requireContext()).run {
+                        setMessage(text)
+                        show()
+                    }
+                    true
+                }
+            }
+        }
+
+        potentialIssues.isVisible = aautoVoiceCommandIssues.isVisible
+
         val ps = GosPackageState.getOrDefault(PKG_NAME)
 
         pkgFlagPrefs.entries.forEach {
@@ -261,6 +288,52 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
                         else R.string.app_dep_disabled)
             }
         }
+    }
+
+    private fun getVoiceCommandIssuesText(): CharSequence? {
+        val list = getVoiceCommandIssues()
+        if (list.isEmpty()) {
+            return null
+        }
+        return getString(R.string.aauto_issue_voice_commands_header) + "\n\n" +
+                list.map {"• " + getString(it) }.joinToString("\n")
+    }
+
+    private fun getVoiceCommandIssues(): List<Int> {
+        val list = arrayListOf<Int>()
+
+        if (pkgManager.checkPermission(Manifest.permission.RECORD_AUDIO, PackageId.ANDROID_AUTO_NAME) != PERMISSION_GRANTED) {
+            list += R.string.aauto_issue_aauto_no_microphone_perm
+        }
+
+        val gsaName = PackageId.G_SEARCH_APP_NAME
+        val gsaAppInfo = pkgManager.getAppInfoOrNull(gsaName)
+
+        var gsaInstalled = false
+
+        if (gsaAppInfo != null && gsaAppInfo.ext().packageId == PackageId.G_SEARCH_APP) {
+            val src = pkgManager.getInstallSourceInfo(gsaName)
+            gsaInstalled = src.initiatingPackageName == PackageId.PLAY_STORE_NAME
+        }
+
+        if (!gsaInstalled) {
+            list += R.string.aauto_issue_gsa_not_installed
+            return list
+        }
+
+        if (!gsaAppInfo!!.enabled) {
+            list += R.string.aauto_issue_gsa_disabled
+        }
+
+        if (pkgManager.checkPermission(Manifest.permission.INTERNET, gsaName) != PERMISSION_GRANTED) {
+            list += R.string.aauto_issue_gsa_no_network_perm
+        }
+
+        if (pkgManager.checkPermission(Manifest.permission.RECORD_AUDIO, gsaName) != PERMISSION_GRANTED) {
+            list += R.string.aauto_issue_gsa_no_microphone_perm
+        }
+
+        return list
     }
 
     private fun getNotifListenerSettingsIntent(): Intent? {
