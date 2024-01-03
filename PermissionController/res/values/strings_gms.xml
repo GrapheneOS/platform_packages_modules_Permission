@@ -35,6 +35,8 @@ Microphone permission is allowed.</string>
 • Read the device serial number, Bluetooth MAC address, Wi-Fi MAC address
 • Send and receive car display data
 • Launch apps that have opted-in to Android Auto on the car display
+
+The network permission will also be allowed, it’s needed for communication with the car over Wi-Fi.
 "
     </string>
 
