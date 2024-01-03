@@ -57,6 +57,16 @@ The network permission will also be allowed, it’s needed for communication wit
     <string name="notif_listener_settings_title">Notification access settings</string>
     <string name="notif_listener_settings_summary">Select which notifications can be accessed by Android Auto</string>
 
+    <string name="potential_issues_category">Potential issues</string>
+
+    <string name="aauto_issue_voice_commands">Voice commands</string>
+    <string name="aauto_issue_voice_commands_header">In order for voice commands to work:</string>
+    <string name="aauto_issue_aauto_no_microphone_perm">Android Auto needs the Microphone permission</string>
+    <string name="aauto_issue_gsa_not_installed">Google app needs to be installed from the Play Store</string>
+    <string name="aauto_issue_gsa_disabled">Google app has to be enabled</string>
+    <string name="aauto_issue_gsa_no_network_perm">Google app needs the Network permission</string>
+    <string name="aauto_issue_gsa_no_microphone_perm">Google app needs the Microphone permission</string>
+
     <string name="optional_deps_category">Optional dependencies</string>
 
     <string name="app_dep_missing_summary">Not installed, tap to open Play Store</string>
@@ -66,6 +76,6 @@ The network permission will also be allowed, it’s needed for communication wit
 
     <string name="google_maps_app">Google Maps</string>
     <string name="speech_services_app">Speech Recognition &amp; Synthesis</string>
-    <string name="google_search_app">Google Search</string>
+    <string name="google_search_app">Google app</string>
 
 </resources>
