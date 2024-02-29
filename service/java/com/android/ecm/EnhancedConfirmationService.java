@@ -16,6 +16,7 @@
 
 package com.android.ecm;
 
+import android.Manifest;
 import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.UserIdInt;
@@ -114,6 +115,24 @@ public class EnhancedConfirmationService extends SystemService {
         private static final ArraySet<String> PROTECTED_SETTINGS = new ArraySet<>();
 
         static {
+            // Runtime permissions
+            // TODO(b/310654818): Construct this list by permission group instead of by permission
+            PROTECTED_SETTINGS.add(Manifest.permission.READ_PHONE_STATE);
+            PROTECTED_SETTINGS.add(Manifest.permission.READ_PHONE_NUMBERS);
+            PROTECTED_SETTINGS.add(Manifest.permission.CALL_PHONE);
+            PROTECTED_SETTINGS.add(Manifest.permission.ADD_VOICEMAIL);
+            PROTECTED_SETTINGS.add(Manifest.permission.USE_SIP);
+            PROTECTED_SETTINGS.add(Manifest.permission.ANSWER_PHONE_CALLS);
+            PROTECTED_SETTINGS.add(Manifest.permission.ACCEPT_HANDOVER);
+
+            PROTECTED_SETTINGS.add(Manifest.permission.SEND_SMS);
+            PROTECTED_SETTINGS.add(Manifest.permission.RECEIVE_SMS);
+            PROTECTED_SETTINGS.add(Manifest.permission.READ_SMS);
+            PROTECTED_SETTINGS.add(Manifest.permission.RECEIVE_MMS);
+            PROTECTED_SETTINGS.add(Manifest.permission.RECEIVE_WAP_PUSH);
+            PROTECTED_SETTINGS.add(Manifest.permission.READ_CELL_BROADCASTS);
+            // TODO(b/310654818): Add other explicitly protected runtime permissions
+            // App ops
             PROTECTED_SETTINGS.add(AppOpsManager.OPSTR_BIND_ACCESSIBILITY_SERVICE);
             PROTECTED_SETTINGS.add(AppOpsManager.OPSTR_ACCESS_NOTIFICATIONS);
             // Default application roles.
@@ -125,6 +144,8 @@ public class EnhancedConfirmationService extends SystemService {
             PROTECTED_SETTINGS.add(RoleManager.ROLE_HOME);
             PROTECTED_SETTINGS.add(RoleManager.ROLE_SMS);
             PROTECTED_SETTINGS.add(RoleManager.ROLE_WALLET);
+            // Other settings
+            PROTECTED_SETTINGS.add(AppOpsManager.OPSTR_BIND_ACCESSIBILITY_SERVICE);
             // TODO(b/310654015): Add other explicitly protected settings
         }
 
@@ -333,7 +354,6 @@ public class EnhancedConfirmationService extends SystemService {
             if (PROTECTED_SETTINGS.contains(settingIdentifier)) {
                 return true;
             }
-            // TODO(b/310654818): If this is a permission, coerce it into a PermissionGroup.
             // TODO(b/310218979): Add role selections as protected settings
             return false;
         }

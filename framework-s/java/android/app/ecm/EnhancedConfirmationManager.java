@@ -33,7 +33,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.RemoteException;
 import android.permission.flags.Flags;
-import android.provider.Settings;
 import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
@@ -343,7 +342,7 @@ public final class EnhancedConfirmationManager {
      */
     public @NonNull Intent createRestrictedSettingDialogIntent(@NonNull String packageName,
             @NonNull String settingIdentifier) throws NameNotFoundException {
-        Intent intent = new Intent(Settings.ACTION_SHOW_RESTRICTED_SETTING_DIALOG);
+        Intent intent = new Intent(ACTION_SHOW_ECM_RESTRICTED_SETTING_DIALOG);
         intent.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName);
         intent.putExtra(Intent.EXTRA_UID, getPackageUid(packageName));
         intent.putExtra(Intent.EXTRA_SUBJECT, settingIdentifier);

@@ -233,6 +233,25 @@ public class RoleManagerTest {
         assertIsRoleHolder(ROLE_NAME, APP_PACKAGE_NAME, true);
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+            "VanillaIceCream")
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
+    @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
+    public void requestRoleAndSelectRestrictedAppThenRestrictedSettingDialog() throws Exception {
+        assumeFalse(sIsWatch || sIsAutomotive || sIsTelevision);
+        runWithShellPermissionIdentity(
+                () -> setEnhancedConfirmationRestrictedAppOpMode(sContext, APP_PACKAGE_NAME,
+                        AppOpsManager.MODE_ERRORED));
+
+        requestRole(ROLE_NAME);
+        waitFindObject(By.text(APP_LABEL).enabled(false))
+                .clickAndWait(Until.newWindow(), TIMEOUT_MILLIS);
+        waitFindObject(By.textContains("Restricted setting"), TIMEOUT_MILLIS);
+        pressBack();
+        respondToRoleRequest(false);
+    }
+
     @Test
     @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
     public void requestRoleFirstTimeNoDontAskAgain() throws Exception {
@@ -636,6 +655,8 @@ public class RoleManagerTest {
         pressBack();
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+            "VanillaIceCream")
     @Test
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
     @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
@@ -653,11 +674,11 @@ public class RoleManagerTest {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
 
-        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).enabled(false).checked(
-                false)).hasDescendant(By.text(APP_LABEL))).clickAndWait(Until.newWindow(),
+        waitFindObject(By.text(APP_LABEL).enabled(false)).clickAndWait(Until.newWindow(),
                 TIMEOUT_MILLIS);
 
-        waitFindObject(By.textContains("Restricted setting"), UNEXPECTED_TIMEOUT_MILLIS);
+        waitFindObject(By.textContains("Restricted setting"), TIMEOUT_MILLIS);
+        pressBack();
 
         pressBack();
     }

@@ -324,7 +324,7 @@ public final class UserProfileGroup {
             case PROFILE_TYPE_PRIVATE:
                 //TODO(b/286539356) add the new feature flag protection when available.
                 return mPrivateProfileRunning
-                    ? new int[] {} : new int[] {mPrivateProfileUserId};
+                    ? new int[] {mPrivateProfileUserId} : new int[] {};
             default:
                 Log.w(TAG, "Unexpected profile type " + profileType);
                 return new int[] {};

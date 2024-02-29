@@ -29,6 +29,7 @@ import android.content.pm.PackageInstaller.PACKAGE_SOURCE_DOWNLOADED_FILE
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_LOCAL_FILE
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_OTHER
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
+import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -63,6 +64,7 @@ import org.junit.Before
 abstract class BaseUsePermissionTest : BasePermissionTest() {
     companion object {
         const val APP_APK_NAME_31 = "CtsUsePermissionApp31.apk"
+        const val APP_APK_NAME_LATEST = "CtsUsePermissionAppLatest.apk"
 
         const val APP_APK_PATH_22 = "$APK_DIRECTORY/CtsUsePermissionApp22.apk"
         const val APP_APK_PATH_22_CALENDAR_ONLY =
@@ -440,6 +442,17 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             apkName,
             AppMetadata.createDefaultAppMetadata(),
             PACKAGE_SOURCE_DOWNLOADED_FILE
+        )
+    }
+
+    protected fun installPackageWithInstallSourceFromDownloadedFileAndAllowHardRestrictedPerms(
+        apkName: String
+    ) {
+        installPackageViaSession(
+            apkName,
+            AppMetadata.createDefaultAppMetadata(),
+            PACKAGE_SOURCE_DOWNLOADED_FILE,
+            allowlistedRestrictedPermissions = SessionParams.RESTRICTED_PERMISSIONS_ALL
         )
     }
 

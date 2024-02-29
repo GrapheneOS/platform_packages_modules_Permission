@@ -35,7 +35,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -155,7 +154,6 @@ public class RequestRoleFragment extends DialogFragment {
 
         View viewLayout = inflater.inflate(R.layout.request_role_view, null);
         mListView = viewLayout.requireViewById(R.id.list);
-        mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         mListView.setOnItemClickListener((parent, view, position, id) -> onItemClicked(position));
         mAdapter = new Adapter(mListView, mRole);
         if (savedInstanceState != null) {
@@ -415,9 +413,9 @@ public class RequestRoleFragment extends DialogFragment {
                 // Skip the "None" item.
                 continue;
             }
-            ApplicationInfo qualifyingApplicationInfo = qualifyingApplication.first;
-            if (Objects.equals(qualifyingApplicationInfo.packageName, packageName)) {
-                return qualifyingApplicationInfo.uid;
+            ApplicationInfo applicationInfo = qualifyingApplication.first;
+            if (Objects.equals(applicationInfo.packageName, packageName)) {
+                return applicationInfo.uid;
             }
         }
         return -1;
@@ -440,19 +438,7 @@ public class RequestRoleFragment extends DialogFragment {
         if (mAdapter == null) {
             return null;
         }
-        int count = mAdapter.getCount();
-        for (int i = 0; i < count; i++) {
-            Pair<ApplicationInfo, Boolean> qualifyingApplication = mAdapter.getItem(i);
-            if (qualifyingApplication == null) {
-                // Skip the "None" item.
-                continue;
-            }
-            boolean isHolderApplication = qualifyingApplication.second;
-            if (isHolderApplication) {
-                return qualifyingApplication.first.packageName;
-            }
-        }
-        return null;
+        return mAdapter.mHolderPackageName;
     }
 
     static void reportRequestResult(int requestingUid, String requestingPackageName,
@@ -478,8 +464,8 @@ public class RequestRoleFragment extends DialogFragment {
 
         private static final String STATE_USER_CHECKED = Adapter.class.getName()
                 + ".state.USER_CHECKED";
-        private static final String STATE_USER_CHECKED_PACKAGE_NAME = Adapter.class.getName()
-                + ".state.USER_CHECKED_PACKAGE_NAME";
+        private static final String STATE_CHECKED_PACKAGE_NAME = Adapter.class.getName()
+                + ".state.CHECKED_PACKAGE_NAME";
 
         private static final int LAYOUT_TRANSITION_DURATION_MILLIS = 150;
 
@@ -494,7 +480,8 @@ public class RequestRoleFragment extends DialogFragment {
         private final List<Pair<ApplicationInfo, Boolean>> mQualifyingApplications =
                 new ArrayList<>();
 
-        private boolean mHasHolderApplication;
+        @Nullable
+        private String mHolderPackageName;
 
         private boolean mDontAskAgain;
 
@@ -502,10 +489,8 @@ public class RequestRoleFragment extends DialogFragment {
         // the current holder as checked.
         private boolean mUserChecked;
 
-        private boolean mPendingUserChecked;
-        // We may use a null to represent the "None" item.
         @Nullable
-        private String mPendingUserCheckedPackageName;
+        private String mCheckedPackageName;
 
         Adapter(@NonNull ListView listView, @NonNull Role role) {
             mListView = listView;
@@ -515,15 +500,14 @@ public class RequestRoleFragment extends DialogFragment {
         public void onSaveInstanceState(@NonNull Bundle outState) {
             outState.putBoolean(STATE_USER_CHECKED, mUserChecked);
             if (mUserChecked) {
-                outState.putString(STATE_USER_CHECKED_PACKAGE_NAME, getCheckedPackageName());
+                outState.putString(STATE_CHECKED_PACKAGE_NAME, mCheckedPackageName);
             }
         }
 
         public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-            mPendingUserChecked = savedInstanceState.getBoolean(STATE_USER_CHECKED);
-            if (mPendingUserChecked) {
-                mPendingUserCheckedPackageName = savedInstanceState.getString(
-                        STATE_USER_CHECKED_PACKAGE_NAME);
+            mUserChecked = savedInstanceState.getBoolean(STATE_USER_CHECKED);
+            if (mUserChecked) {
+                mCheckedPackageName = savedInstanceState.getString(STATE_CHECKED_PACKAGE_NAME);
             }
         }
 
@@ -534,14 +518,28 @@ public class RequestRoleFragment extends DialogFragment {
             mDontAskAgain = dontAskAgain;
             if (mDontAskAgain) {
                 mUserChecked = false;
-                updateItemChecked();
+                mCheckedPackageName = mHolderPackageName;
             }
             notifyDataSetChanged();
         }
 
         public void onItemClicked(int position) {
-            mUserChecked = true;
-            // We may need to change description based on checked state.
+            Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(position);
+            if (qualifyingApplication == null) {
+                mUserChecked = true;
+                mCheckedPackageName = null;
+            } else {
+                ApplicationInfo applicationInfo = qualifyingApplication.first;
+                Intent restrictionIntent = mRole.getApplicationRestrictionIntentAsUser(
+                        applicationInfo, Process.myUserHandle(), mListView.getContext());
+                if (restrictionIntent != null) {
+                    mListView.getContext().startActivity(restrictionIntent);
+                    return;
+                } else {
+                    mUserChecked = true;
+                    mCheckedPackageName = applicationInfo.packageName;
+                }
+            }
             notifyDataSetChanged();
         }
 
@@ -551,42 +549,10 @@ public class RequestRoleFragment extends DialogFragment {
                 mQualifyingApplications.add(0, null);
             }
             mQualifyingApplications.addAll(qualifyingApplications);
-            mHasHolderApplication = hasHolderApplication(qualifyingApplications);
-            notifyDataSetChanged();
+            mHolderPackageName = getHolderPackageName(qualifyingApplications);
 
-            if (mPendingUserChecked) {
-                restoreItemChecked();
-                mPendingUserChecked = false;
-                mPendingUserCheckedPackageName = null;
-            }
-
-            if (!mUserChecked) {
-                updateItemChecked();
-            }
-        }
-
-        private static boolean hasHolderApplication(
-                @NonNull List<Pair<ApplicationInfo, Boolean>> qualifyingApplications) {
-            int qualifyingApplicationsSize = qualifyingApplications.size();
-            for (int i = 0; i < qualifyingApplicationsSize; i++) {
-                Pair<ApplicationInfo, Boolean> qualifyingApplication = qualifyingApplications.get(
-                        i);
-                boolean isHolderApplication = qualifyingApplication.second;
-
-                if (isHolderApplication) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private void restoreItemChecked() {
-            if (mPendingUserCheckedPackageName == null) {
-                if (mRole.shouldShowNone()) {
-                    mUserChecked = true;
-                    mListView.setItemChecked(0, true);
-                }
-            } else {
+            if (mUserChecked && mCheckedPackageName != null) {
+                boolean isCheckedPackageNameFound = false;
                 int count = getCount();
                 for (int i = 0; i < count; i++) {
                     Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(i);
@@ -595,55 +561,52 @@ public class RequestRoleFragment extends DialogFragment {
                     }
                     String packageName = qualifyingApplication.first.packageName;
 
-                    if (Objects.equals(packageName, mPendingUserCheckedPackageName)) {
+                    if (Objects.equals(packageName, mCheckedPackageName)) {
                         mUserChecked = true;
-                        mListView.setItemChecked(i, true);
+                        isCheckedPackageNameFound = true;
                         break;
                     }
                 }
-            }
-        }
-
-        private void updateItemChecked() {
-            if (!mHasHolderApplication) {
-                if (mRole.shouldShowNone()) {
-                    mListView.setItemChecked(0, true);
-                } else {
-                    mListView.clearChoices();
-                }
-            } else {
-                int count = getCount();
-                for (int i = 0; i < count; i++) {
-                    Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(i);
-                    if (qualifyingApplication == null) {
-                        continue;
-                    }
-                    boolean isHolderApplication = qualifyingApplication.second;
-
-                    if (isHolderApplication) {
-                        mListView.setItemChecked(i, true);
-                        break;
-                    }
+                if (!isCheckedPackageNameFound) {
+                    mUserChecked = false;
+                    mCheckedPackageName = null;
                 }
             }
+
+            if (!mUserChecked) {
+                mCheckedPackageName = mHolderPackageName;
+            }
+
+            notifyDataSetChanged();
         }
 
         @Nullable
-        public Pair<ApplicationInfo, Boolean> getCheckedItem() {
-            int position = mListView.getCheckedItemPosition();
-            return position != AdapterView.INVALID_POSITION ? getItem(position) : null;
+        private static String getHolderPackageName(
+                @NonNull List<Pair<ApplicationInfo, Boolean>> qualifyingApplications) {
+            int qualifyingApplicationSize = qualifyingApplications.size();
+            for (int i = 0; i < qualifyingApplicationSize; i++) {
+                Pair<ApplicationInfo, Boolean> qualifyingApplication = qualifyingApplications.get(
+                        i);
+                if (qualifyingApplication == null) {
+                    continue;
+                }
+                ApplicationInfo applicationInfo = qualifyingApplication.first;
+                boolean isHolderApplication = qualifyingApplication.second;
+
+                if (isHolderApplication) {
+                    return applicationInfo.packageName;
+                }
+            }
+            return null;
         }
 
         @Nullable
         public String getCheckedPackageName() {
-            Pair<ApplicationInfo, Boolean> qualifyingApplication = getCheckedItem();
-            return qualifyingApplication == null ? null : qualifyingApplication.first.packageName;
+            return mCheckedPackageName;
         }
 
         public boolean isHolderApplicationChecked() {
-            Pair<ApplicationInfo, Boolean> qualifyingApplication = getCheckedItem();
-            return qualifyingApplication == null ? !mHasHolderApplication
-                    : qualifyingApplication.second;
+            return Objects.equals(mCheckedPackageName, mHolderPackageName);
         }
 
         @Override
@@ -685,7 +648,7 @@ public class RequestRoleFragment extends DialogFragment {
             }
             Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(position);
             if (qualifyingApplication == null) {
-                return !mHasHolderApplication;
+                return mHolderPackageName == null;
             } else {
                 boolean isHolderApplication = qualifyingApplication.second;
                 return isHolderApplication;
@@ -696,13 +659,13 @@ public class RequestRoleFragment extends DialogFragment {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             Context context = parent.getContext();
-            View view = convertView;
+            CheckableLinearLayout view = (CheckableLinearLayout) convertView;
             ViewHolder holder;
             if (view != null) {
                 holder = (ViewHolder) view.getTag();
             } else {
-                view = LayoutInflater.from(context).inflate(R.layout.request_role_item, parent,
-                        false);
+                view = (CheckableLinearLayout) LayoutInflater.from(context).inflate(
+                        R.layout.request_role_item, parent, false);
                 holder = new ViewHolder(view);
                 view.setTag(holder);
 
@@ -710,28 +673,36 @@ public class RequestRoleFragment extends DialogFragment {
                         LAYOUT_TRANSITION_DURATION_MILLIS);
             }
 
-            UiUtils.setViewTreeEnabled(view, isEnabled(position));
-
             Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(position);
+            boolean restricted;
+            boolean checked;
             Drawable icon;
             String title;
             String subtitle;
             if (qualifyingApplication == null) {
+                restricted = false;
+                checked = mCheckedPackageName == null;
                 icon = AppCompatResources.getDrawable(context, R.drawable.ic_remove_circle);
                 title = context.getString(R.string.default_app_none);
-                subtitle = !mHasHolderApplication ? context.getString(
+                subtitle = mHolderPackageName != null ? context.getString(
                         R.string.request_role_current_default) : null;
             } else {
-                ApplicationInfo qualifyingApplicationInfo = qualifyingApplication.first;
-                icon = Utils.getBadgedIcon(context, qualifyingApplicationInfo);
-                title = Utils.getAppLabel(qualifyingApplicationInfo, context);
+                ApplicationInfo applicationInfo = qualifyingApplication.first;
+                restricted = mRole.getApplicationRestrictionIntentAsUser(applicationInfo,
+                        Process.myUserHandle(), context) != null;
+                checked = Objects.equals(applicationInfo.packageName, mCheckedPackageName);
+                icon = Utils.getBadgedIcon(context, applicationInfo);
+                title = Utils.getAppLabel(applicationInfo, context);
                 boolean isHolderApplication = qualifyingApplication.second;
                 subtitle = isHolderApplication
                         ? context.getString(R.string.request_role_current_default)
-                        : mListView.isItemChecked(position)
-                                ? context.getString(mRole.getRequestDescriptionResource()) : null;
+                        : checked ? context.getString(mRole.getRequestDescriptionResource()) : null;
             }
 
+            boolean enabled = isEnabled(position);
+            UiUtils.setViewTreeEnabled(view, enabled && !restricted);
+            view.setEnabled(enabled);
+            view.setChecked(checked);
             holder.iconImage.setImageDrawable(icon);
             holder.titleText.setText(title);
             holder.subtitleText.setVisibility(!TextUtils.isEmpty(subtitle) ? View.VISIBLE

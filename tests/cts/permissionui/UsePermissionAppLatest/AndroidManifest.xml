@@ -20,6 +20,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.permissionui.cts.usepermission">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
     <!-- Request two different permissions within the same group -->
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
