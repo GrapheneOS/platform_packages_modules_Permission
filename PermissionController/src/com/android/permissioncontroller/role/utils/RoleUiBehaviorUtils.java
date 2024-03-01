@@ -25,6 +25,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.permissioncontroller.role.ui.RequestRoleItemView;
 import com.android.permissioncontroller.role.ui.RoleApplicationPreference;
 import com.android.permissioncontroller.role.ui.RolePreference;
 import com.android.permissioncontroller.role.ui.behavior.RoleUiBehavior;
@@ -58,6 +59,19 @@ public final class RoleUiBehaviorUtils {
             return null;
         }
         return uiBehavior;
+    }
+
+    /**
+     * @see RoleUiBehavior#prepareRequestRoleItemViewAsUser
+     */
+    public static void prepareRequestRoleItemViewAsUser(@NonNull Role role,
+            @NonNull RequestRoleItemView itemView, @NonNull ApplicationInfo applicationInfo,
+            @NonNull UserHandle user, @NonNull Context context) {
+        RoleUiBehavior uiBehavior = getUiBehavior(role);
+        if (uiBehavior == null) {
+            return;
+        }
+        uiBehavior.prepareRequestRoleItemViewAsUser(role, itemView, applicationInfo, user, context);
     }
 
     /**

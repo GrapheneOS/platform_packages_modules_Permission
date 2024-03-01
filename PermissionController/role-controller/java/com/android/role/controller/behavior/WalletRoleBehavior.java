@@ -40,6 +40,7 @@ import androidx.annotation.RequiresApi;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
+import com.android.role.controller.util.CollectionUtils;
 import com.android.role.controller.util.UserUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -77,6 +78,13 @@ public class WalletRoleBehavior implements RoleBehavior {
         }
 
         return null;
+    }
+
+    @Nullable
+    @Override
+    public String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return CollectionUtils.firstOrNull(role.getDefaultHoldersAsUser(user, context));
     }
 
     @Nullable

@@ -279,10 +279,13 @@ public class EnhancedConfirmationService extends SystemService {
                 return true;
             }
 
+            // If applicable, trust packages installed via non-allowlisted installers
+            if (trustPackagesInstalledViaNonAllowlistedInstallers()) return false;
+
             // ECM doesn't consider a transitive chain of trust for install sources.
             // If this package hasn't been explicitly handled by this point
             // then it is exempt from ECM if the immediate parent is a trusted installer
-            return isAllowlistedInstaller(installSource.getInstallingPackageName());
+            return !isAllowlistedInstaller(installSource.getInstallingPackageName());
         }
 
         private boolean isAllowlistedPackage(String packageName) {
@@ -306,6 +309,10 @@ public class EnhancedConfirmationService extends SystemService {
                 }
             }
             return false;
+        }
+
+        private boolean trustPackagesInstalledViaNonAllowlistedInstallers() {
+            return true; // TODO(b/327469700): Make this configurable
         }
 
         private boolean isPackagePreinstalled(@NonNull String packageName, @UserIdInt int userId) {

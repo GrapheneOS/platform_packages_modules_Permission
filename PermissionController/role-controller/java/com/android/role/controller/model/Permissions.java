@@ -61,16 +61,19 @@ public class Permissions {
      * Filter a list of permissions based on their SDK versions.
      *
      * @param permissions the list of permissions
+     * @param user the user to check for
+     * @param context the {@code Context} to retrieve system services
      *
      * @return the filtered list of permission names.
      */
     @NonNull
-    public static List<String> filterBySdkVersion(@NonNull List<Permission> permissions) {
+    public static List<String> filterBySdkVersionAsUser(@NonNull List<Permission> permissions,
+            @NonNull UserHandle user, @NonNull Context context) {
         List<String> permissionNames = new ArrayList<>();
         int permissionsSize = permissions.size();
         for (int i = 0; i < permissionsSize; i++) {
             Permission permission = permissions.get(i);
-            if (!permission.isAvailable()) {
+            if (!permission.isAvailableAsUser(user, context)) {
                 continue;
             }
             permissionNames.add(permission.getName());

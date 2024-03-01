@@ -142,7 +142,7 @@
             <permission name="android.permission.EXECUTE_APP_ACTION"
                 minSdkVersion="34" />
             <permission name="android.permission.MANAGE_CONTENT_SUGGESTIONS"
-                minSdkVersion="34" />
+                minSdkVersion="35" optionalMinSdkVersion="34" />
             <permission name="android.permission.EMBED_ANY_APP_IN_UNTRUSTED_MODE"
                 minSdkVersion="35" />
         </permissions>
@@ -448,8 +448,9 @@
             </preferred-activity>
         </preferred-activities>
         <permissions>
-            <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
-            <permission name="android.permission.READ_HOME_APP_SEARCH_DATA" minSdkVersion="33"/>
+            <permission name="android.permission.READ_HOME_APP_SEARCH_DATA" minSdkVersion="33" />
+            <permission name="android.permission.ALLOW_SLIPPERY_TOUCHES" minSdkVersion="33" optionalMinSdkVersion="30" />
+            <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35" />
         </permissions>
     </role>
 

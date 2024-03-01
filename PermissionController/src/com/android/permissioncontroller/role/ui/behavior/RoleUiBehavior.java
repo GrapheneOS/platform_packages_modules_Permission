@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
+import com.android.permissioncontroller.role.ui.RequestRoleItemView;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.role.controller.model.Role;
 
@@ -34,6 +35,19 @@ import java.util.List;
  * Interface for UI behavior for roles
  */
 public interface RoleUiBehavior {
+
+    /**
+     * Prepare a {@link RequestRoleItemView} for this role and an application.
+     *
+     * @param role the role to prepare the preference for
+     * @param itemView the {@link RequestRoleItemView} for the application
+     * @param applicationInfo the {@link ApplicationInfo} for the application
+     * @param user the user for this role
+     * @param context the {@code Context} to retrieve system services
+     */
+    default void prepareRequestRoleItemViewAsUser(@NonNull Role role,
+            @NonNull RequestRoleItemView itemView, @NonNull ApplicationInfo applicationInfo,
+            @NonNull UserHandle user, @NonNull Context context) {}
 
     /**
      * Get the {@link Intent} to manage this role, or {@code null} to use the default UI.
@@ -62,14 +76,14 @@ public interface RoleUiBehavior {
     default void preparePreferenceAsUser(@NonNull Role role,
             @NonNull TwoTargetPreference preference,
             @NonNull List<ApplicationInfo> applicationInfos,
-            @NonNull UserHandle user,
-            @NonNull Context context) {}
+            @NonNull UserHandle user, @NonNull Context context) {}
 
     /**
-     * Prepare a {@link Preference} for this role.
+     * Prepare a {@link Preference} for this role and an application.
      *
      * @param role the role to prepare the preference for
-     * @param preference the {@link Preference} for this role
+     * @param preference the {@link Preference} for the application
+     * @param applicationInfo the {@link ApplicationInfo} for the application
      * @param user the user for this role
      * @param context the {@code Context} to retrieve system services
      */

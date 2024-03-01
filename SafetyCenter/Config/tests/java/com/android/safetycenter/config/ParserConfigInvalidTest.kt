@@ -483,8 +483,8 @@ class ParserConfigInvalidTest {
                     Params(
                         "ConfigStaticSafetySourceWithPrivatePreV",
                         R.raw.config_static_safety_source_with_private_profile,
-                        "Element static-safety-source invalid",
                         "Unexpected attribute static-safety-source.titleForPrivateProfile",
+                        null,
                         !SdkLevel.isAtLeastV()
                     ),
                     Params(

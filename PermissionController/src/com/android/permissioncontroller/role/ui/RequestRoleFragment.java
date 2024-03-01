@@ -53,6 +53,7 @@ import com.android.permissioncontroller.permission.utils.PackageRemovalMonitor;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.model.UserDeniedManager;
 import com.android.permissioncontroller.role.utils.PackageUtils;
+import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
 import com.android.permissioncontroller.role.utils.UiUtils;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
@@ -674,12 +675,14 @@ public class RequestRoleFragment extends DialogFragment {
             }
 
             Pair<ApplicationInfo, Boolean> qualifyingApplication = getItem(position);
+            ApplicationInfo applicationInfo;
             boolean restricted;
             boolean checked;
             Drawable icon;
             String title;
             String subtitle;
             if (qualifyingApplication == null) {
+                applicationInfo = null;
                 restricted = false;
                 checked = mCheckedPackageName == null;
                 icon = AppCompatResources.getDrawable(context, R.drawable.ic_remove_circle);
@@ -687,7 +690,7 @@ public class RequestRoleFragment extends DialogFragment {
                 subtitle = mHolderPackageName != null ? context.getString(
                         R.string.request_role_current_default) : null;
             } else {
-                ApplicationInfo applicationInfo = qualifyingApplication.first;
+                applicationInfo = qualifyingApplication.first;
                 restricted = mRole.getApplicationRestrictionIntentAsUser(applicationInfo,
                         Process.myUserHandle(), context) != null;
                 checked = Objects.equals(applicationInfo.packageName, mCheckedPackageName);
@@ -708,11 +711,13 @@ public class RequestRoleFragment extends DialogFragment {
             holder.subtitleText.setVisibility(!TextUtils.isEmpty(subtitle) ? View.VISIBLE
                     : View.GONE);
             holder.subtitleText.setText(subtitle);
+            RoleUiBehaviorUtils.prepareRequestRoleItemViewAsUser(mRole, holder, applicationInfo,
+                    Process.myUserHandle(), context);
 
             return view;
         }
 
-        private static class ViewHolder {
+        private static class ViewHolder implements RequestRoleItemView {
 
             @NonNull
             public final ImageView iconImage;
@@ -728,6 +733,21 @@ public class RequestRoleFragment extends DialogFragment {
                 titleAndSubtitleLayout = view.requireViewById(R.id.title_and_subtitle);
                 titleText = view.requireViewById(R.id.title);
                 subtitleText = view.requireViewById(R.id.subtitle);
+            }
+
+            @Override
+            public ImageView getIconImageView() {
+                return iconImage;
+            }
+
+            @Override
+            public TextView getTitleTextView() {
+                return titleText;
+            }
+
+            @Override
+            public TextView getSubtitleTextView() {
+                return subtitleText;
             }
         }
     }

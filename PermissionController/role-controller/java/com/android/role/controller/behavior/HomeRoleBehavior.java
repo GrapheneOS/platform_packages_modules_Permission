@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.UserHandle;
@@ -148,13 +147,6 @@ public class HomeRoleBehavior implements RoleBehavior {
                     true, false, true, false, false, user, context);
         }
 
-        // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
-        if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
-            Permissions.grantAsUser(packageName,
-                    Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
-                    true, false, true, false, false, user, context);
-        }
-
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
             if (SdkLevel.isAtLeastT()) {
                 Permissions.grantAsUser(packageName, WEAR_PERMISSIONS_T,
@@ -178,13 +170,6 @@ public class HomeRoleBehavior implements RoleBehavior {
                     user, context);
         }
 
-        // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
-        if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
-            Permissions.revokeAsUser(packageName,
-                    Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
-                    true, false, false, user, context);
-        }
-
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
             if (SdkLevel.isAtLeastT()) {
                 Permissions.revokeAsUser(packageName, WEAR_PERMISSIONS_T, true, false, false,
@@ -198,21 +183,6 @@ public class HomeRoleBehavior implements RoleBehavior {
                         user, context);
             }
         }
-    }
-
-    /**
-     * Return true if the permission exists, and has 'role' protection level.
-     * Return false otherwise.
-     */
-    private boolean isRolePermission(@NonNull String permissionName, @NonNull Context context) {
-        PermissionInfo permissionInfo;
-        try {
-            permissionInfo = context.getPackageManager().getPermissionInfo(permissionName, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-        final int flags = permissionInfo.getProtectionFlags();
-        return (flags & PermissionInfo.PROTECTION_FLAG_ROLE) == PermissionInfo.PROTECTION_FLAG_ROLE;
     }
 
     @Override

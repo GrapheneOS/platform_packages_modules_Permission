@@ -24,6 +24,7 @@
             <!-- START HELP LINKS -->
             <item type="string" name="help_app_permissions" />
             <item type="string" name="data_sharing_help_center_link" />
+            <item type="string" name="help_url_action_disabled_by_restricted_settings" />
             <!-- END HELP LINKS -->
 
             <!-- START PERMISSION GRANT DIALOG -->
