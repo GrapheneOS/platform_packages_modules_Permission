@@ -656,4 +656,6 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Último acceso: onte, <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <!-- no translation found for test_otp_msg (7559110574222727550) -->
+    <skip />
 </resources>

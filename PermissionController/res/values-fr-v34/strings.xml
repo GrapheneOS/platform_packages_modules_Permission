@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"Accès à la position"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Pour les applis et services. Si ce paramètre est désactivé, il est possible que les données du micro soient quand même partagées quand vous appelez un numéro d\'urgence"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Pour les applis et services"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Paramètre restreint"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Pour votre sécurité, ce paramètre est actuellement indisponible."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"En savoir plus"</string>
 </resources>

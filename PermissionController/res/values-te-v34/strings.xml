@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"లొకేషన్ యాక్సెస్"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"యాప్‌లు, సర్వీస్‌ల కోసం. ఈ సెట్టింగ్ ఆఫ్ చేసి ఉన్నా కూడా, మీరు ఎమర్జెన్సీ నంబర్‌కు కాల్ చేసినప్పుడు మైక్రోఫోన్ డేటా షేర్ చేయబడవచ్చు"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"యాప్‌లు, సర్వీస్‌ల కోసం"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"పరిమితం చేయబడిన సెట్టింగ్"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"మీ సెక్యూరిటీ కోసం, ఈ సెట్టింగ్ ప్రస్తుతం అందుబాటులో లేదు."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"మరింత తెలుసుకోండి"</string>
 </resources>

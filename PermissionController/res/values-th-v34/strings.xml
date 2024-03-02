@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"สิทธิ์เข้าถึงตำแหน่ง"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"สำหรับแอปและบริการ หากปิดการตั้งค่านี้ ระบบอาจยังคงแชร์ข้อมูลไมโครโฟนเมื่อคุณโทรหาหมายเลขฉุกเฉิน"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"สำหรับแอปและบริการ"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"การตั้งค่าที่จำกัด"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"การตั้งค่านี้ใช้ไม่ได้ในตอนนี้เพื่อความปลอดภัยของคุณ"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"ดูข้อมูลเพิ่มเติม"</string>
 </resources>

@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"위치 정보 액세스"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"앱 및 서비스에 적용됩니다. 설정이 꺼져 있어도 긴급 전화번호로 전화를 걸 때 마이크 데이터가 계속 공유될 수 있습니다."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"앱 및 서비스에 적용"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"제한된 설정"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"보안을 위해 이 설정은 현재 사용할 수 없습니다."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"자세히 알아보기"</string>
 </resources>

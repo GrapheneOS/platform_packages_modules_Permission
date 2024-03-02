@@ -22,4 +22,11 @@
     <string name="permission_summary_enforced_by_policy" msgid="2352478756952948019">"ပြောင်းလဲ မရနိုင်ပါ"</string>
     <string name="generic_yes" msgid="2489207724988649846">"Yes"</string>
     <string name="generic_cancel" msgid="2631708607129269698">"မလုပ်တော့"</string>
+    <string name="permission_access_always" msgid="2107115233573823032">"အချိန်တိုင်း"</string>
+    <string name="permission_access_only_foreground" msgid="4412115020089923986">"အက်ပ်ကို သုံးနေစဉ်"</string>
+    <string name="app_permission_button_allow_always" msgid="4920899432212307102">"အချိန်တိုင်း"</string>
+    <string name="app_permission_button_allow_foreground" msgid="7186980598244864830">"အက်ပ်ကို သုံးနေစဉ်"</string>
+    <string name="grant_dialog_button_allow_always" msgid="7130695257254694576">"အချိန်တိုင်း"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="8917595344037255090">"အက်ပ်ကို သုံးနေစဉ်"</string>
+    <string name="grant_dialog_button_allow_background" msgid="6104993390936535493">"အချိန်တိုင်း"</string>
 </resources>

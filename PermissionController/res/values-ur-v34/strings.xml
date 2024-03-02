@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"مقام تک رسائی"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ایپس اور سروسز کے لیے۔ اگر یہ ترتیب آف ہو تو آپ کے ایمرجنسی نمبر پر کال کرتے وقت بھی مائیکروفون کے ڈیٹا کا اشتراک کیا جا سکتا ہے"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ایپس اور سروسز کے لیے"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"محدود ترتیب"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"آپ کی سیکیورٹی کے لیے، یہ ترتیب فی الحال دستیاب نہیں ہے۔"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"مزید جانیں"</string>
 </resources>

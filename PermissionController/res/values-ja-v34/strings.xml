@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"位置情報へのアクセス"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"アプリとサービスによるアクセス"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"制限付き設定"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"セキュリティ保護のため、この設定は現在利用できません。"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"詳細"</string>
 </resources>

@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"Приступ локацији"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"За апликације и услуге. Ако је ово подешавање искључено, подаци микрофона могу и даље да се деле када позовете број за хитне случајеве"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"За апликације и услуге"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Ограничено подешавање"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Ово подешавање је тренутно недоступно ради ваше безбедности."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Сазнајте више"</string>
 </resources>

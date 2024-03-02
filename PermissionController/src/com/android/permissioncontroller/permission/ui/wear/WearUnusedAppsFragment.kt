@@ -304,6 +304,13 @@ class WearUnusedAppsFragment : Fragment() {
     private fun updateWearViewModel(isLoading: Boolean) {
         wearViewModel.loadingLiveData.value = isLoading
         wearViewModel.unusedPeriodCategoryVisibilitiesLiveData.setValue(categoryVisibilities)
-        wearViewModel.unusedAppChipsLiveData.setValue(unusedAppsMap)
+
+        // Need to copy to non mutable maps or compose will not update correctly
+        val map = mutableMapOf<UnusedPeriod, Map<String, UnusedAppChip>>()
+        for (period in allPeriods) {
+            map.put(period, unusedAppsMap[period]!!.toMap())
+        }
+
+        wearViewModel.unusedAppChipsLiveData.setValue(map.toMap())
     }
 }

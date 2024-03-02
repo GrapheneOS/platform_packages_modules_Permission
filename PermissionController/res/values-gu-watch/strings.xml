@@ -22,4 +22,11 @@
     <string name="permission_summary_enforced_by_policy" msgid="2352478756952948019">"બદલી શકતાં નથી"</string>
     <string name="generic_yes" msgid="2489207724988649846">"હા"</string>
     <string name="generic_cancel" msgid="2631708607129269698">"રદ કરો"</string>
+    <string name="permission_access_always" msgid="2107115233573823032">"હંમેશાં"</string>
+    <string name="permission_access_only_foreground" msgid="4412115020089923986">"ઍપનો ઉપયોગ કરતા હો ત્યારે"</string>
+    <string name="app_permission_button_allow_always" msgid="4920899432212307102">"હંમેશાં"</string>
+    <string name="app_permission_button_allow_foreground" msgid="7186980598244864830">"ઍપનો ઉપયોગ કરતા હો ત્યારે"</string>
+    <string name="grant_dialog_button_allow_always" msgid="7130695257254694576">"હંમેશાં"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="8917595344037255090">"ઍપનો ઉપયોગ કરતા હો ત્યારે"</string>
+    <string name="grant_dialog_button_allow_background" msgid="6104993390936535493">"હંમેશાં"</string>
 </resources>

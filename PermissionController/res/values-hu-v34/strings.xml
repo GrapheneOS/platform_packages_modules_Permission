@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"Helyhozzáférés"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Alkalmazásoknál és szolgáltatásoknál. Ha ki van kapcsolva ez a beállítás, segélyhívó szám hívásakor a rendszer továbbra is megoszthatja a mikrofonadatokat."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Alkalmazásoknál és szolgáltatásoknál"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Korlátozott beállítás"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Biztonsága érdekében ez a beállítás jelenleg nem használható."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"További információ"</string>
 </resources>

@@ -34,7 +34,7 @@ class WearUnusedAppsViewModel : ViewModel() {
 
     /** A livedata which stores a map of unused apps group by UnusedPeriod. */
     val unusedAppChipsLiveData =
-        MutableLiveData<MutableMap<UnusedPeriod, MutableMap<String, UnusedAppChip>>>()
+        MutableLiveData<Map<UnusedPeriod, Map<String, UnusedAppChip>>>()
 
     data class UnusedAppChip(
         val label: String,

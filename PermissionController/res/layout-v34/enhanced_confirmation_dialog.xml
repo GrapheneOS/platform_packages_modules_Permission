@@ -33,7 +33,7 @@
             android:layout_width="@dimen/enhanced_confirmation_dialog_icon_size"
             android:layout_height="@dimen/enhanced_confirmation_dialog_icon_size"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_lock_closed"
+            android:src="@drawable/ic_safety_center_shield"
             android:tint="?android:attr/colorAccent"
             android:contentDescription="@null"/>
         <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.EnhancedConfirmationDialogMessage"
                 android:maxLength="200"
-                android:gravity="center_horizontal"
+                android:gravity="start"
                 android:autoLink="email|phone|web"
                 android:text="@string/enhanced_confirmation_dialog_desc"
                 android:textColor="?android:attr/textColorSecondary"/>

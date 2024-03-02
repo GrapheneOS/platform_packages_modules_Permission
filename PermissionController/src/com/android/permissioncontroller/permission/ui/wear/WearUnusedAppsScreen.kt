@@ -37,7 +37,7 @@ fun WearUnusedAppsScreen(viewModel: WearUnusedAppsViewModel) {
         viewModel.unusedPeriodCategoryVisibilitiesLiveData.observeAsState(emptyList())
     val infoMsgCategoryVisibility =
         viewModel.infoMsgCategoryVisibilityLiveData.observeAsState(false)
-    val unusedAppChips = viewModel.unusedAppChipsLiveData.observeAsState(mutableMapOf())
+    val unusedAppChips = viewModel.unusedAppChipsLiveData.observeAsState(mapOf())
 
     ScrollableScreen(
         showTimeText = true,

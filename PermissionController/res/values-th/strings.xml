@@ -656,4 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"เข้าถึงตอน <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"เข้าถึงเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"เข้าถึงเมื่อวันที่ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ตอน <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="test_otp_msg" msgid="7559110574222727550">"รหัสผ่านที่สามารถใช้งานได้เพียงครั้งเดียวของคุณคือ 132435"</string>
 </resources>

@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"Access sa lokasyon"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Para sa mga app at serbisyo. Kung naka-off ang setting na ito, posible pa ring ibahagi ang data ng mikropono kapag tumawag ka sa isang pang-emergency na numero"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Para sa mga app at serbisyo"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Pinaghihigpitang setting"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Para sa iyong seguridad, hindi available ang setting na ito sa ngayon."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Matuto pa"</string>
 </resources>

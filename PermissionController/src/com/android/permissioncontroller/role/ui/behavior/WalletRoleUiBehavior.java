@@ -104,10 +104,12 @@ public class WalletRoleUiBehavior implements RoleUiBehavior {
         offHostApduIntent.setPackage(packageName);
         List<ResolveInfo> hostApduServices = packageManager.queryIntentServicesAsUser(
                 hostApduIntent,
-                PackageManager.ResolveInfoFlags.of(PackageManager.GET_META_DATA), user);
+                PackageManager.ResolveInfoFlags.of(PackageManager.GET_META_DATA
+                        | PackageManager.MATCH_DISABLED_COMPONENTS), user);
         List<ResolveInfo> offHostApduServices = packageManager.queryIntentServicesAsUser(
                 offHostApduIntent,
-                PackageManager.ResolveInfoFlags.of(PackageManager.GET_META_DATA), user);
+                PackageManager.ResolveInfoFlags.of(PackageManager.GET_META_DATA
+                        | PackageManager.MATCH_DISABLED_COMPONENTS), user);
         List<ApduServiceInfo> nfcServices = new ArrayList<>();
         int apduServiceInfoSize = hostApduServices.size();
         for (int i = 0; i < apduServiceInfoSize; i++) {

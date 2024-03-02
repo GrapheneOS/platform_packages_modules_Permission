@@ -1137,13 +1137,13 @@ public class RoleManagerTest {
                 && callWithShellPermissionIdentity(() ->
                 telephonyManager.isEmergencyAssistanceEnabled())) {
             String emergencyAssistancePackageName = callWithShellPermissionIdentity(() ->
-                    telephonyManager.getEmergencyAssistancePackage());
+                    telephonyManager.getEmergencyAssistancePackageName());
             assertThat(emergencyRoleHolders).hasSize(1);
             assertThat(emergencyAssistancePackageName).isEqualTo(emergencyRoleHolders.get(0));
         } else {
             assertThrows(IllegalStateException.class, () ->
                     callWithShellPermissionIdentity(() ->
-                            telephonyManager.getEmergencyAssistancePackage()));
+                            telephonyManager.getEmergencyAssistancePackageName()));
         }
     }
 

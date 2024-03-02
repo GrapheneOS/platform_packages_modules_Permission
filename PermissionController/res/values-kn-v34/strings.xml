@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"ಸ್ಥಳದ ಆ್ಯಕ್ಸೆಸ್"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ. ಈ ಸೆಟ್ಟಿಂಗ್ ಆಫ್ ಆಗಿದ್ದಾಗಲೂ, ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಯೊಂದಕ್ಕೆ ಕರೆ ಮಾಡಿದಾಗ ಮೈಕ್ರೊಫೋನ್ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"ನಿರ್ಬಂಧಿಸಲಾದ ಸೆಟ್ಟಿಂಗ್"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"ನಿಮ್ಮ ಸುರಕ್ಷತೆಗಾಗಿ ಈ ಸೆಟ್ಟಿಂಗ್ ಪ್ರಸ್ತುತ ಲಭ್ಯವಿಲ್ಲ."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"</string>
 </resources>

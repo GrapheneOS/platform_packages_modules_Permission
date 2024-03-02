@@ -46,17 +46,20 @@ public class EnhancedConfirmationDialog extends Activity implements
         if (TextUtils.isEmpty(packageName)) {
             throw new IllegalArgumentException("EXTRA_PACKAGE_NAME cannot be null or empty");
         }
+
         final int uid = getIntent().getIntExtra(Intent.EXTRA_UID, android.os.Process.INVALID_UID);
         if (uid == android.os.Process.INVALID_UID) {
             throw new IllegalArgumentException("EXTRA_UID cannot be null or invalid");
         }
         final UserHandle user = UserHandle.getUserHandleForUid(uid);
 
+        final String settingIdentifier = getIntent().getStringExtra(Intent.EXTRA_SUBJECT);
+        if (settingIdentifier == null) {
+            throw new IllegalArgumentException("EXTRA_SUBJECT cannot be null or invalid");
+        }
+
         EnhancedConfirmationDialogHelper dialogHelper = new EnhancedConfirmationDialogHelper(this);
-        dialogHelper
-                .prepareDialogBuilder()
-                .setOnDismissListener(this)
-                .show();
+        dialogHelper.show(settingIdentifier, this);
 
         setClearRestrictionAllowed(packageName, user);
     }

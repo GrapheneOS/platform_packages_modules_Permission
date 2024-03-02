@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"位置信息访问权限"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"针对应用和服务。关闭此设置后，系统仍可能在您拨打紧急电话号码时分享麦克风数据"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"针对应用和服务"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"受限设置"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"出于安全考虑，此设置目前不可用。"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"了解详情"</string>
 </resources>

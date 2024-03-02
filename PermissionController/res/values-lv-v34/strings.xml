@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"Piekļuve atrašanās vietai"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Lietotnēm un pakalpojumiem. Ja šis iestatījums ir izslēgts, mikrofona dati joprojām var tikt kopīgoti, kad zvanīsiet uz ārkārtas numuru."</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Lietotnēm un pakalpojumiem"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Ierobežots iestatījums"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Drošības apsvērumu dēļ šis iestatījums pašlaik nav pieejams."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Uzzināt vairāk"</string>
 </resources>

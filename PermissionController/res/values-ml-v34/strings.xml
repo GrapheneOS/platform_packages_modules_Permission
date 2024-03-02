@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"ലൊക്കേഷൻ ആക്‌സസ്"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും. ഈ ക്രമീകരണം ഓഫാണെങ്കിൽ, നിങ്ങൾ അടിയന്തര നമ്പറിൽ വിളിക്കുമ്പോഴും മൈക്രോഫോൺ ഡാറ്റ തുടർന്നും പങ്കിട്ടേക്കാം"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"നിയന്ത്രിത ക്രമീകരണം"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"നിങ്ങളുടെ സുരക്ഷയ്ക്ക്, ഈ ക്രമീകരണം നിലവിൽ ലഭ്യമല്ല."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"കൂടുതലറിയുക"</string>
 </resources>

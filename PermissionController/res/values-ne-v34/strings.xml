@@ -24,10 +24,7 @@
     <string name="location_settings" msgid="8863940440881290182">"लोकेसन एक्सेस"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"एप तथा सेवाहरूका हकमा। यो सेटिङ अफ गरिएको अवस्थामा तपाईंले आपत्‍कालीन नम्बरमा कल गर्नुभयो भने माइक्रोफोनसम्बन्धी जानकारी अझै पनि सेयर गरिन सक्छ"</string>
     <string name="location_settings_subtitle" msgid="6846532794702613851">"एप तथा सेवाहरूका हकमा"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title (2832934608609739884) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc (6748252577225517533) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_learn_more (3177813037495926648) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"प्रतिबन्ध लगाइएका सेटिङ"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"तपाईंको खाताको सुरक्षार्थ यो सेटिङ हाल उपलब्ध छैन।"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"थप जान्नुहोस्"</string>
 </resources>
