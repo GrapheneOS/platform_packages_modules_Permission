@@ -1961,4 +1961,25 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- A string representing a message (sms, email, etc.) telling the user about a one time password. Used for testing [CHAR LIMIT=NONE] -->
     <string name="test_otp_msg">Your one time password is 132435</string>
+
+    <!-- START ENHANCED CONFIRMATION DIALOG -->
+
+    <!--Title for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=50] -->
+    <string name="enhanced_confirmation_dialog_title">Restricted setting</string>
+    <!--Content for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=NONE] -->
+    <string name="enhanced_confirmation_dialog_desc">For your security, this setting is currently unavailable.</string>
+
+    <!--Title for dialog displayed to tell user that permissions are blocked by setting restrictions [CHAR LIMIT=50] -->
+    <string name="enhanced_confirmation_dialog_title_permission">Permission to use <xliff:g id="permission_name" example="contacts">%1$s</xliff:g> has been denied</string>
+    <!--Content for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=NONE] -->
+    <string name="enhanced_confirmation_dialog_desc_permission">This app has requested the <xliff:g id="permission_name" example="contacts">%1$s</xliff:g> permission, which is a restricted setting because it can put your security &amp; privacy at risk. Restriction to this permission may prevent this app from working.</string>
+
+    <!-- Button label to allow the user to view additional information [CHAR LIMIT=NONE] -->
+    <string name="enhanced_confirmation_dialog_learn_more">Learn more</string>
+    <!-- Button label of the ok button [CHAR LIMIT=NONE] -->
+    <string name="enhanced_confirmation_dialog_ok">Got it</string>
+    <!-- Help URI, action disabled by restricted settings [DO NOT TRANSLATE] -->
+    <string name="help_url_action_disabled_by_restricted_settings" translatable="false"></string>
+
+    <!-- END ENHANCED CONFIRMATION DIALOG -->
 </resources>
