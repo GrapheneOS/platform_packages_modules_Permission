@@ -656,6 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"<xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"ଗତକାଲି <xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
-    <!-- no translation found for test_otp_msg (7559110574222727550) -->
-    <skip />
+    <string name="test_otp_msg" msgid="7559110574222727550">"ଆପଣଙ୍କ ଗୋଟିଏ ଥରର ପାସୱାର୍ଡ ହେଉଛି 132435"</string>
 </resources>

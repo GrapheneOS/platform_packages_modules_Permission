@@ -45,13 +45,9 @@ constructor(
     private val moreIssuesCardAnimator = MoreIssuesCardAnimator()
     private val statusIconView: ImageView by lazyView(R.id.status_icon)
     private val titleView: TextView by lazyView(R.id.title)
-    private val expandCollapseLayout: View by lazyView(android.R.id.widget_frame)
-    private val counterView: TextView by lazyView {
-        expandCollapseLayout.requireViewById(R.id.widget_title)
-    }
-    private val expandCollapseIcon: ImageView by lazyView {
-        expandCollapseLayout.requireViewById(R.id.widget_icon)
-    }
+    private val expandCollapseLayout: View by lazyView(R.id.widget_frame)
+    private val counterView: TextView by lazyView(R.id.widget_title)
+    private val expandCollapseIcon: ImageView by lazyView(R.id.widget_icon)
     private var cornerAnimator: ValueAnimator? = null
 
     fun showExpandableHeader(

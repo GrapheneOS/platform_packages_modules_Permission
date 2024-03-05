@@ -23,7 +23,7 @@
     <string name="lock_screen_title" msgid="4069104894527169877">"قفل صفحه"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"هنوز اطلاعاتی دردسترس نیست"</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"قفل دستگاه، قفل صفحه، صفحه قفل، صفحه‌قفل، گذرواژه، پین، الگو"</string>
-    <string name="biometrics_title" msgid="5859504610285212938">"زیست‌سنجشی"</string>
+    <string name="biometrics_title" msgid="5859504610285212938">"داده‌های زیست‌سنجشی"</string>
     <string name="biometrics_search_terms" msgid="6040319118762671981">"اثر انگشت، انگشت، افزودن اثر انگشت، قفل‌گشایی با چهره، چهره"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"حریم خصوصی"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"داشبورد، اجازه‌ها، کنترل‌ها"</string>

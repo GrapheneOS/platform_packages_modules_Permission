@@ -26,5 +26,11 @@
     <string name="location_settings_subtitle" msgid="6846532794702613851">"ສຳລັບແອັບ ແລະ ບໍລິການຕ່າງໆ"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"ການຕັ້ງຄ່າທີ່ຈຳກັດ"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"ເພື່ອຄວາມປອດໄພຂອງທ່ານ, ການຕັ້ງຄ່ານີ້ຈຶ່ງບໍ່ສາມາດໃຊ້ໄດ້ໃນຕອນນີ້."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"ສຶກສາເພີ່ມເຕີມ"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
+    <skip />
 </resources>

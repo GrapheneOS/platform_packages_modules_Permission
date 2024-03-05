@@ -27,6 +27,6 @@
     <string name="app_permission_button_allow_always" msgid="4920899432212307102">"Tout le temps"</string>
     <string name="app_permission_button_allow_foreground" msgid="7186980598244864830">"Quand l\'appli est utilisée"</string>
     <string name="grant_dialog_button_allow_always" msgid="7130695257254694576">"Tout le temps"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="8917595344037255090">"Quand l\'appli est utilisée"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="8917595344037255090">"Lorsque vous utilisez l\'appli"</string>
     <string name="grant_dialog_button_allow_background" msgid="6104993390936535493">"Tout le temps"</string>
 </resources>

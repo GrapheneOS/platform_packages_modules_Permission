@@ -26,5 +26,11 @@
     <string name="location_settings_subtitle" msgid="6846532794702613851">"Per app e servizi"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Impostazione con limitazioni"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Per la tua sicurezza, questa impostazione non è al momento disponibile."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Scopri di più"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
+    <skip />
 </resources>

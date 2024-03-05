@@ -193,7 +193,7 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Não permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Localização exata"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Localização aproximada"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar localização exata"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Localização exata"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quando a localização exata está desativada, as apps podem aceder à sua localização aproximada"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorização de <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Acesso desta app a <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -656,6 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"Acedido à(s) <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Acedido ontem à(s) <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Acedido a <xliff:g id="TIME_DATE_0">%1$s</xliff:g> à(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <!-- no translation found for test_otp_msg (7559110574222727550) -->
-    <skip />
+    <string name="test_otp_msg" msgid="7559110574222727550">"A sua palavra-passe de utilização única é 132435"</string>
 </resources>

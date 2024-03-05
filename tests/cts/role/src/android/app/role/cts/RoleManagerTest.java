@@ -140,6 +140,18 @@ public class RoleManagerTest {
             PackageManager.FEATURE_TELEVISION);
     private static final boolean sIsWatch = sPackageManager.hasSystemFeature(
             PackageManager.FEATURE_WATCH);
+
+    // TODO(b/327528959): consider using resource selectors for Wear too, once the underlying
+    // issue is handled.
+    private static final BySelector NEGATIVE_BUTTON_SELECTOR =
+            sIsWatch ? By.text("Cancel") : By.res("android:id/button2");
+    private static final BySelector POSITIVE_BUTTON_SELECTOR =
+            sIsWatch ? By.text("Set as default") : By.res("android:id/button1");
+    private static final BySelector DONT_ASK_AGAIN_TOGGLE_SELECTOR =
+            sIsWatch
+                    ? By.text("Don\u2019t ask again")
+                    : By.res("com.android.permissioncontroller:id/dont_ask_again");
+
     @Rule
     public CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
     @Rule
@@ -327,7 +339,7 @@ public class RoleManagerTest {
 
         TestUtils.waitUntil("Find and respond to request role UI", () -> {
             requestRole(ROLE_NAME);
-            UiObject2 cancelButton = waitFindObjectOrNull(By.res("android:id/button2"));
+            UiObject2 cancelButton = waitFindObjectOrNull(NEGATIVE_BUTTON_SELECTOR);
             if (cancelButton == null) {
                 // Dialog not found, try again later.
                 return false;
@@ -363,7 +375,7 @@ public class RoleManagerTest {
 
         TestUtils.waitUntil("Find and respond to request role UI", () -> {
             requestRole(ROLE_NAME);
-            UiObject2 cancelButton = waitFindObjectOrNull(By.res("android:id/button2"));
+            UiObject2 cancelButton = waitFindObjectOrNull(NEGATIVE_BUTTON_SELECTOR);
             if (cancelButton == null) {
                 // Dialog not found, try again later.
                 return false;
@@ -433,10 +445,9 @@ public class RoleManagerTest {
 
     @Nullable
     private UiObject2 findDontAskAgainCheck(boolean expected) throws UiObjectNotFoundException {
-        BySelector selector = By.res("com.android.permissioncontroller:id/dont_ask_again");
         return expected
-                ? waitFindObject(selector)
-                : waitFindObjectOrNull(selector, UNEXPECTED_TIMEOUT_MILLIS);
+                ? waitFindObject(DONT_ASK_AGAIN_TOGGLE_SELECTOR)
+                : waitFindObjectOrNull(DONT_ASK_AGAIN_TOGGLE_SELECTOR, UNEXPECTED_TIMEOUT_MILLIS);
     }
 
     @Nullable
@@ -447,7 +458,7 @@ public class RoleManagerTest {
     @NonNull
     private Pair<Integer, Intent> clickButtonAndWaitForResult(boolean positive)
             throws InterruptedException, UiObjectNotFoundException {
-        waitFindObject(By.res(positive ? "android:id/button1" : "android:id/button2")).click();
+        waitFindObject(positive ? POSITIVE_BUTTON_SELECTOR : NEGATIVE_BUTTON_SELECTOR).click();
         return waitForResult();
     }
 
@@ -510,7 +521,7 @@ public class RoleManagerTest {
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, APP_28_PACKAGE_NAME)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         waitFindObject(By.text(APP_28_LABEL)).click();
-        waitFindObject(By.res("android:id/button1")).click();
+        waitFindObject(POSITIVE_BUTTON_SELECTOR).click();
 
         // TODO(b/149037075): Use TelecomManager.getDefaultDialerPackage() once the bug is fixed.
         //TelecomManager telecomManager = sContext.getSystemService(TelecomManager.class);
@@ -531,7 +542,7 @@ public class RoleManagerTest {
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, APP_28_PACKAGE_NAME)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         waitFindObject(By.text(APP_28_LABEL)).click();
-        waitFindObject(By.res("android:id/button1")).click();
+        waitFindObject(POSITIVE_BUTTON_SELECTOR).click();
 
         TestUtils.waitUntil("App is not set as default sms app", () -> Objects.equals(
                 Telephony.Sms.getDefaultSmsPackage(sContext), APP_28_PACKAGE_NAME));
@@ -583,7 +594,7 @@ public class RoleManagerTest {
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         waitFindObject(By.text(APP_LABEL)).click();
-        waitFindObject(By.res("android:id/button1")).click();
+        waitFindObject(POSITIVE_BUTTON_SELECTOR).click();
 
         // TODO(b/149037075): Use TelecomManager.getDefaultDialerPackage() once the bug is fixed.
         //TelecomManager telecomManager = sContext.getSystemService(TelecomManager.class);
@@ -629,7 +640,7 @@ public class RoleManagerTest {
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         waitFindObject(By.text(APP_LABEL)).click();
-        waitFindObject(By.res("android:id/button1")).click();
+        waitFindObject(POSITIVE_BUTTON_SELECTOR).click();
 
         TestUtils.waitUntil("App is not set as default sms app", () -> Objects.equals(
                 Telephony.Sms.getDefaultSmsPackage(sContext), APP_PACKAGE_NAME));

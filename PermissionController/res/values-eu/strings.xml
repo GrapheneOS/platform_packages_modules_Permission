@@ -377,7 +377,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Hasierako aplikazio lehenetsia"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Hasierako aplikazioa"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Android-eko gailuko hasierako pantailak ordezten dituzten aplikazioak (\"abiarazle\" ere deitzen zaie). Gailuko eduki eta eginbideetarako sarbidea ematen dute."</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Android-eko gailuko orri nagusiak ordezten dituzten aplikazioak (\"abiarazle\" ere deitzen zaie). Gailuko eduki eta eginbideetarako sarbidea ematen dute."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu hasierako aplikazio lehenetsi gisa?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Ez du behar baimenik"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"abiarazlea"</string>
@@ -656,6 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"Atzitze-data: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Atzo atzitu zen (<xliff:g id="TIME_DATE">%1$s</xliff:g>)"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Atzitze-data: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> (<xliff:g id="TIME_DATE_1">%2$s</xliff:g>)"</string>
-    <!-- no translation found for test_otp_msg (7559110574222727550) -->
-    <skip />
+    <string name="test_otp_msg" msgid="7559110574222727550">"Zure erabilera bakarreko pasahitza 132435 da"</string>
 </resources>

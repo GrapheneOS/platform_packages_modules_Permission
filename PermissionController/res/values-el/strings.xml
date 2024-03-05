@@ -202,7 +202,7 @@
     <string name="assistant_mic_label" msgid="1011432357152323896">"Εμφάνιση χρήσης μικροφώνου βοηθού"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Ρυθμίσεις μη χρησιμοποιούμενων εφαρμογών"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Καταργήστε τις άδειες, εάν η εφαρμογή δεν χρησιμοποιείται."</string>
-    <string name="unused_apps_label" msgid="2595428768404901064">"Κατάργηση αδειών και απελευθέρωση χώρου"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Κατάργηση αδειών και αποδέσμευση χώρου"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Παύση δραστηριότητας αδρανούς εφαρμογής"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"Διαχείρ. εφαρμ. αν δεν χρησιμοποιείται"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Κατάργηση αδειών, διαγραφή προσωρινών αρχείων και διακοπή ειδοποιήσεων"</string>
@@ -221,8 +221,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Καταργήθηκαν οι άδειες <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> και <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Καταργήθηκε η άδεια <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> και <xliff:g id="NUMBER">%2$s</xliff:g> ακόμη άδειες"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Εφαρμογές που δεν χρησιμοποιούνται"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για λίγους μήνες:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Οι ειδοποιήσεις διακόπτονται για την εξοικονόμηση μπαταρίας\n• Τα προσωρινά αρχεία καταργούνται για την απελευθέρωση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες και τις ειδοποιήσεις, ανοίξτε την εφαρμογή."</string>
-    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για έναν μήνα:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Τα προσωρινά αρχεία καταργούνται για την απελευθέρωση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες, ανοίξτε την εφαρμογή."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για λίγους μήνες:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Οι ειδοποιήσεις διακόπτονται για την εξοικονόμηση μπαταρίας\n• Τα προσωρινά αρχεία καταργούνται για την αποδέσμευση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες και τις ειδοποιήσεις, ανοίξτε την εφαρμογή."</string>
+    <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Εάν μια εφαρμογή δεν χρησιμοποιηθεί για έναν μήνα:\n\n• Οι άδειες καταργούνται για την προστασία των δεδομένων σας\n• Τα προσωρινά αρχεία καταργούνται για την αποδέσμευση χώρου\n\nΓια να επιτρέψετε ξανά τις άδειες, ανοίξτε την εφαρμογή."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Τελευταίο άνοιγμα πάνω από # μήνα πριν}other{Τελευταίο άνοιγμα πάνω από # μήνες πριν}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Τελευταίο άνοιγμα εφαρμογής <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Τελευταίο άνοιγμα <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -656,6 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"Πρόσβαση στις <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Πρόσβαση χθες, στις <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Πρόσβαση στις <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <!-- no translation found for test_otp_msg (7559110574222727550) -->
-    <skip />
+    <string name="test_otp_msg" msgid="7559110574222727550">"Ο κωδικός πρόσβασης μίας χρήσης είναι 132435"</string>
 </resources>

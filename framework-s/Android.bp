@@ -45,6 +45,7 @@ java_library {
     name: "framework-permission-s-shared",
     srcs: [":framework-permission-s-shared-srcs"],
     libs: [
+        "error_prone_annotations",
         "framework-annotations-lib",
         "unsupportedappusage",
     ],

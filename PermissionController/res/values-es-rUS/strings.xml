@@ -453,7 +453,7 @@
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> solicita subir un informe de errores de este dispositivo generado el <xliff:g id="DATE">%2$s</xliff:g> a las <xliff:g id="TIME">%3$s</xliff:g>. Los informes de errores pueden incluir información personal sobre tu dispositivo o registrada por apps, como nombres de usuario, datos de ubicación, identificadores del dispositivo y datos de red. Solo debes compartir los informes de errores con personas y apps de confianza. ¿Permitir que <xliff:g id="APP_NAME_1">%4$s</xliff:g> suba un informe de errores?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Se produjo un error al procesar el informe de errores para <xliff:g id="APP_NAME">%1$s</xliff:g>. Por lo tanto, no es posible compartir los datos detallados de depuración. Lamentamos la interrupción."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Permitir"</string>
-    <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Denegar"</string>
+    <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Rechazar"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Configuración avanzada"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"Configuración avanzada"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Mostrar uso de las apps del sistema"</string>
@@ -656,6 +656,5 @@
     <string name="wear_app_perms_24h_access" msgid="8668121661337328895">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Último acceso: ayer a la(s) <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Último acceso: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a la(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <!-- no translation found for test_otp_msg (7559110574222727550) -->
-    <skip />
+    <string name="test_otp_msg" msgid="7559110574222727550">"Tu contraseña de un solo uso es 132435"</string>
 </resources>

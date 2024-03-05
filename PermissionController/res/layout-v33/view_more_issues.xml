@@ -15,31 +15,58 @@
   -->
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+       xmlns:tools="http://schemas.android.com/tools"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <ImageView
         android:id="@+id/status_icon"
         android:importantForAccessibility="no"
         android:src="@drawable/safety_status_info"
-        style="@style/SafetyCenterMoreIssuesIcon"/>
+        style="@style/SafetyCenterMoreIssuesIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/title"/>
 
     <TextView
-        android:id="@+id/title"
-        style="@style/SafetyCenterMoreIssuesTitle"/>
+        android:id="@id/title"
+        style="@style/SafetyCenterMoreIssuesTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/status_icon"
+        app:layout_constraintEnd_toStartOf="@+id/widget_title"/>
 
-    <LinearLayout
-        android:id="@android:id/widget_frame"
-        style="@style/SafetyCenterMoreIssuesCounter">
+    <View
+        android:id="@+id/widget_background"
+        style="@style/SafetyCenterMoreIssuesCounter"
+        app:layout_constraintTop_toTopOf="@id/widget_title"
+        app:layout_constraintBottom_toBottomOf="@id/widget_title"
+        app:layout_constraintStart_toStartOf="@id/widget_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/widget_title"
-            style="@style/SafetyCenterMoreIssuesWidgetTitle" />
+    <TextView
+        android:id="@id/widget_title"
+        style="@style/SafetyCenterMoreIssuesWidgetTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/title"
+        app:layout_constraintEnd_toStartOf="@+id/widget_icon"/>
 
-        <ImageView
-            android:id="@+id/widget_icon"
-            android:importantForAccessibility="no"
-            style="@style/SafetyCenterMoreIssuesWidgetIcon" />
+    <ImageView
+        android:id="@id/widget_icon"
+        android:importantForAccessibility="no"
+        style="@style/SafetyCenterMoreIssuesWidgetIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/widget_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/widget_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="widget_background,widget_title,widget_icon"/>
+
 </merge>
