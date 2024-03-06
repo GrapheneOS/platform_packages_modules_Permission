@@ -30,6 +30,7 @@ android_test_helper_app {
         "cts",
         "mts-permission",
         "general-tests",
+        "mcts-permission",
     ],
     srcs: ["src/**/*.java"],
 }

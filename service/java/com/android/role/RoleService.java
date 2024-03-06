@@ -320,6 +320,11 @@ public class RoleService extends SystemService implements RoleUserState.Callback
     @AnyThread
     @NonNull
     private AndroidFuture<Void> maybeGrantDefaultRolesInternal(@UserIdInt int userId) {
+        if (!UserUtils.isUserExistent(userId, getContext())) {
+            Log.w(LOG_TAG, "User " + userId + " does not exist");
+            return AndroidFuture.completedFuture(null);
+        }
+
         RoleUserState userState = getOrCreateUserState(userId);
         String oldPackagesHash = userState.getPackagesHash();
         String newPackagesHash = mPlatformHelper.computePackageStateHash(userId);

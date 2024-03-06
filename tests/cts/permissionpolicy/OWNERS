@@ -5,3 +5,4 @@ include platform/frameworks/base:/core/java/android/permission/OWNERS
 per-file NoLocationPermissionTest.java = tgunn@google.com
 per-file RestrictedStoragePermissionSharedUidTest.java = nandana@google.com
 per-file RestrictedStoragePermissionTest.java = nandana@google.com
+per-file NoReceiveSmsPermissionTest.java = sasindran@google.com
