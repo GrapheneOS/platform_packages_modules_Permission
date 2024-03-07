@@ -207,7 +207,8 @@ suspend fun revokeAppPermissions(
                             permName,
                             false,
                             SERVER_LOG_ID,
-                            /* permission_rationale_shown = */ false
+                            /* permission_rationale_shown = */ false,
+                            /* TODO: 324254847 use real ECM value */ false
                         )
                     }
 

@@ -1021,7 +1021,8 @@ class GrantPermissionsViewModel(
             permission,
             isImplicit,
             result,
-            isPermissionRationaleShown
+            isPermissionRationaleShown,
+            /* TODO: 324254847 use real ECM value */ false
         )
     }
 

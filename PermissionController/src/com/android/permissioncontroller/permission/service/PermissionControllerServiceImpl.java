@@ -746,7 +746,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                 PermissionControllerStatsLog.write(
                         PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED,
                         requestId, uid, packageName, permName, false, r,
-                        /* permission_rationale_shown = */ false);
+                        /* permission_rationale_shown = */ false,
+                        /* TODO: 324254847 use real ECM value */ false);
             }
         }
     }
