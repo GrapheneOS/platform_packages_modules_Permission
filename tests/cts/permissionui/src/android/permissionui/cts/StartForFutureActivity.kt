@@ -21,7 +21,9 @@ import android.app.Instrumentation
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.LruCache
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.atomic.AtomicInteger
 
 class StartForFutureActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,26 +38,25 @@ class StartForFutureActivity : Activity() {
         intent: Intent,
         future: CompletableFuture<Instrumentation.ActivityResult>
     ) {
-        if (StartForFutureActivity.future != null) {
-            throw RuntimeException(
-                "StartForFutureActivity only supports launching one " +
-                    "concurrent activity, but more than one was attempted."
-            )
-        }
-
-        startActivityForResult(intent, 1)
-        StartForFutureActivity.future = future
+        val requestCode = nextRequestCode.getAndIncrement()
+        futures.put(requestCode, future)
+        startActivityForResult(intent, requestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        future!!.complete(Instrumentation.ActivityResult(resultCode, data))
-        future = null
+        val future =
+            futures.remove(requestCode)
+                ?: throw IllegalStateException(
+                    "StartForFutureActivity received an activity result with an unknown requestCode"
+                )
+        future.complete(Instrumentation.ActivityResult(resultCode, data))
         finish()
     }
 
     companion object {
-        private var future: CompletableFuture<Instrumentation.ActivityResult>? = null
         private val TAG = StartForFutureActivity::class.simpleName
+        private var nextRequestCode = AtomicInteger(1)
+        private val futures = LruCache<Int, CompletableFuture<Instrumentation.ActivityResult>>(10)
     }
 }

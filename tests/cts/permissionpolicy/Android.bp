@@ -36,6 +36,7 @@ android_test {
         "truth",
         "permission-test-util-lib",
         "androidx.test.rules",
+        "flag-junit",
     ],
     srcs: [
         "src/**/*.java",
