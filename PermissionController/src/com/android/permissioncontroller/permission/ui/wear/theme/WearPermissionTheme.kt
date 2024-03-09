@@ -3,12 +3,19 @@ package com.android.permissioncontroller.permission.ui.wear.theme
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.DeviceFontFamilyName
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.wear.compose.material.Colors
 import androidx.wear.compose.material.MaterialTheme
+import androidx.wear.compose.material.Typography
+import com.android.permissioncontroller.R
 
 /** The Material 3 Theme Wrapper for Supporting RRO. */
 @Composable
@@ -21,7 +28,7 @@ fun WearPermissionTheme(content: @Composable () -> Unit) {
         } else {
             MaterialTheme.colors
         }
-    MaterialTheme(colors = colors, content = content)
+    MaterialTheme(colors = colors, typography = oemTypography(context), content = content)
 }
 
 /**
@@ -51,5 +58,74 @@ internal fun overlayColors(context: Context): Colors {
         surface = tonalPalette.neutral20,
         onSurface = tonalPalette.neutral95,
         onSurfaceVariant = tonalPalette.neutralVariant80,
+    )
+}
+
+private fun fontFamily(context: Context, @StringRes id: Int): FontFamily {
+    val typefaceName = context.resources.getString(id)
+    val font = Font(familyName = DeviceFontFamilyName(typefaceName))
+    return FontFamily(font)
+}
+
+/*
+ Only customizes font family. The material 3 roles to 2.5 are mapped to the best case matching of
+ google3/java/com/google/android/wearable/libraries/compose/theme/GoogleMaterialTheme.kt
+*/
+internal fun oemTypography(context: Context): Typography {
+    return Typography(
+        display1 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_display_1_font_family)
+            ),
+        display2 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_display_2_font_family)
+            ),
+        display3 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_display_3_font_family)
+            ),
+        title1 =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_title_1_font_family)
+            ),
+        title2 =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_title_2_font_family)
+            ),
+        title3 =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_title_3_font_family)
+            ),
+        body1 =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_body_1_font_family)
+            ),
+        body2 =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_body_2_font_family)
+            ),
+        button =
+            TextStyle(
+                fontFamily = fontFamily(context, R.string.wear_material_compose_button_font_family)
+            ),
+        caption1 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_caption_1_font_family)
+            ),
+        caption2 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_caption_2_font_family)
+            ),
+        caption3 =
+            TextStyle(
+                fontFamily =
+                    fontFamily(context, R.string.wear_material_compose_caption_3_font_family)
+            ),
     )
 }

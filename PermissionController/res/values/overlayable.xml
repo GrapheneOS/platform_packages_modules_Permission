@@ -379,6 +379,21 @@
             <item type="style" name="AppDataSharingUpdateSettingsIcon" />
             <!-- END SAFETY LABELS STYLE -->
 
+            <!--START WEAR SPECIFIC FONT STRINGS -->
+            <item type="string" name="wear_material_compose_display_1_font_family" />
+            <item type="string" name="wear_material_compose_display_2_font_family" />
+            <item type="string" name="wear_material_compose_display_3_font_family" />
+            <item type="string" name="wear_material_compose_title_1_font_family" />
+            <item type="string" name="wear_material_compose_title_2_font_family" />
+            <item type="string" name="wear_material_compose_title_3_font_family" />
+            <item type="string" name="wear_material_compose_body_1_font_family" />
+            <item type="string" name="wear_material_compose_body_2_font_family" />
+            <item type="string" name="wear_material_compose_button_font_family" />
+            <item type="string" name="wear_material_compose_caption_1_font_family" />
+            <item type="string" name="wear_material_compose_caption_2_font_family" />
+            <item type="string" name="wear_material_compose_caption_3_font_family" />
+            <!--END WEAR SPECIFIC FONT STRINGS -->
+
         </policy>
 
     </overlayable>
