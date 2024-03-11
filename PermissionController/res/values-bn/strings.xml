@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"গতকাল <xliff:g id="TIME_DATE">%1$s</xliff:g>-এ অ্যাক্সেস করা হয়েছে"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g><xliff:g id="TIME_DATE_1">%2$s</xliff:g>-এ অ্যাক্সেস করা হয়েছে"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"আপনার একবার ব্যবহারের পাসওয়ার্ড হল ১২৩৪৩৫"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"বিধিনিষেধযুক্ত সেটিংস"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"আপনার নিরাপত্তার জন্য, এই সেটিং বর্তমানে উপলভ্য নেই।"</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ব্যবহার করার অনুমতি বাতিল করা হয়েছে"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"এই অ্যাপটি <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> সংক্রান্ত অনুমতির জন্য অনুরোধ করেছে। এটি হল একটি বিধিনিষেধযুক্ত সেটিং এবং এর কারণে আপনার নিরাপত্তা ও গোপনীয়তা সংক্রান্ত ঝুঁকি তৈরি হতে পারে। এই অনুমতিতে বিধিনিষেধ যোগ করলে, এই অ্যাপটি কাজ নাও করতে পারে।"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"আরও জানুন"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"বুঝেছি"</string>
 </resources>

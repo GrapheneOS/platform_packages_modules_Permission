@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"ਸਿਹਤ ਸੰਬੰਧੀ ਡਾਟੇ ਤੱਕ ਐਪ ਦੀ ਪਹੁੰਚ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
     <string name="location_settings" msgid="8863940440881290182">"ਟਿਕਾਣਾ ਪਹੁੰਚ"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ਐਪਾਂ ਅਤੇ ਸੇਵਾਵਾਂ ਲਈ। ਇਸ ਸੈਟਿੰਗ ਦੇ ਬੰਦ ਹੋਣ \'ਤੇ, ਜਦੋਂ ਤੁਸੀਂ ਕਿਸੇ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਦੇ ਹੋ ਤਾਂ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਡਾਟੇ ਨੂੰ ਫਿਰ ਵੀ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"ਐਪਾਂ ਅਤੇ ਸੇਵਾਵਾਂ ਲਈ"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"ਪ੍ਰਤਿਬੰਧਿਤ ਸੈਟਿੰਗਾਂ"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਲਈ, ਫ਼ਿਲਹਾਲ ਇਹ ਸੈਟਿੰਗ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"ਹੋਰ ਜਾਣੋ"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Апошні раз доступ быў атрыманы ўчора ў <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Апошні раз доступ быў атрыманы ў <xliff:g id="TIME_DATE_1">%2$s</xliff:g> <xliff:g id="TIME_DATE_0">%1$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Ваш аднаразовы пароль: 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Налада з абмежаваным доступам"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"У мэтах бяспекі гэта налада цяпер недаступная."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Дазвол \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" не дадзены"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Гэта праграма запытала дазвол \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\", доступ да якога абмежаваны, бо яго выкарыстанне можа паставіць вашу бяспеку і прыватнасць пад пагрозу. Без гэтага дазволу праграма можа не працаваць."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Даведацца больш"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
 </resources>

@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"Колдонмо үчүн ден соолукка байланыштуу нерселердин жеткиликтүүлүгүн тескейсиз"</string>
     <string name="location_settings" msgid="8863940440881290182">"Жайгашкан жерди көрсөтүү"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Колдонмолор жана кызматтар үчүн. Бул параметр өчүп турса да, кырсыктаганда жардамга келчү кызматтын номерине чалганыңызда микрофондогу нерселер өткөрүлүшү мүмкүн."</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Колдонмолор жана кызматтар үчүн"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Чектелген функция"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Коопсуздук максатында бул параметр азырынча иштебейт."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Кеңири маалымат"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

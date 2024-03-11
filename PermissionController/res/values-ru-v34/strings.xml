@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"Настроить доступ приложений к данным о здоровье"</string>
     <string name="location_settings" msgid="8863940440881290182">"Доступ к геоданным"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Для приложений и сервисов. Даже если эта функция отключена, данные микрофона могут передаваться при звонке на номер экстренной службы."</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Для приложений и сервисов"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Настройки с ограниченным доступом"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"В целях безопасности доступ к этой функции пока ограничен."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Подробнее"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

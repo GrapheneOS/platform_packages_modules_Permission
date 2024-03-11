@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"आरोग्यविषयक डेटासंबंधित अ‍ॅपचा अ‍ॅक्सेस व्यवस्थापित करा"</string>
     <string name="location_settings" msgid="8863940440881290182">"स्थान अ‍ॅक्सेस"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ॲप्स आणि सेवांसाठी. हे सेटिंग बंद असल्यास, तुम्ही आणीबाणी नंबरवर कॉल करता, तेव्हा मायक्रोफोन डेटा तरीही शेअर केला जाऊ शकतो"</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"ॲप्स आणि सेवांसाठी"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"प्रतिबंधित सेटिंग"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"तुमच्या सुरक्षेसाठी, हे सेटिंग सध्या उपलब्ध नाही."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"अधिक जाणून घ्या"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

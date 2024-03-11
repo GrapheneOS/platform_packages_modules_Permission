@@ -292,7 +292,7 @@
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"S\'ha suprimit l\'accés"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="2971317234668807566">"Revisa l\'aplicació amb accés complet al dispositiu"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="7389454158175306720">"<xliff:g id="APP_NAME">%s</xliff:g> pot veure la pantalla i dur a terme accions al dispositiu. Les aplicacions d\'accessibilitat necessiten aquest tipus d\'accés perquè funcionin de la manera prevista."</string>
-    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Aquesta aplicació pot veure la pantalla i dur a terme accions al dispositiu. Les aplicacions d\'accessibilitat necessiten aquest tipus d\'accés perquè funcionin de la manera prevista, però comprova l\'aplicació i assegura\'t que sigui de confiança."</string>
+    <string name="accessibility_access_warning_card_content" msgid="4370327190293217358">"Aquesta aplicació pot veure la pantalla i dur a terme accions al dispositiu. Les aplicacions d\'accessibilitat necessiten aquest tipus d\'accés perquè funcionin de la manera prevista, però comprova l\'aplicació i assegura\'t que hi confies."</string>
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Suprimeix l\'accés"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Veure les aplicacions amb accés complet"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"S\'ha suprimit l\'accés"</string>
@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"S\'hi va accedir ahir a les <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"S\'hi ha accedit el dia <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a les <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"La contrasenya d\'un sol ús és 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Opció de configuració restringida"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Per a la teva seguretat, aquesta opció de configuració no està disponible en aquests moments."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"El permís per utilitzar <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> s\'ha rebutjat"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Aquesta aplicació ha sol·licitat el permís de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, que és una opció de configuració restringida perquè pot posar en perill la teva seguretat i privadesa. És possible que la restricció d\'aquest permís impedeixi que aquesta aplicació funcioni."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Més informació"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Entesos"</string>
 </resources>

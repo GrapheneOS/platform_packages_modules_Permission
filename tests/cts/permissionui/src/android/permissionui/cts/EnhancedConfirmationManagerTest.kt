@@ -154,6 +154,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         ) {
             click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS)
         }
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
+        }
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -170,6 +173,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         ) {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
+        }
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
         }
     }
 
@@ -190,6 +196,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
+        }
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -209,6 +218,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
+        }
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -227,6 +239,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+        }
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
         }
     }
 

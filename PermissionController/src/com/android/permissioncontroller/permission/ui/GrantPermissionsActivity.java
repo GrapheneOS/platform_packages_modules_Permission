@@ -358,7 +358,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                 String nextRestrictedPermissionGroup = mRestrictedRequestedPermissionGroups.remove(
                         0);
                 try {
-                    Intent intent = ecm.createRestrictedSettingDialogIntent(getPackageName(),
+                    Intent intent = ecm.createRestrictedSettingDialogIntent(getCallingPackage(),
                             nextRestrictedPermissionGroup);
                     startActivityForResult(intent, ECM_REQUEST_CODE);
                     return;

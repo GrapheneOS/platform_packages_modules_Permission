@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Acedido ontem à(s) <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Acedido a <xliff:g id="TIME_DATE_0">%1$s</xliff:g> à(s) <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"A sua palavra-passe de utilização única é 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Definição restrita"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Para sua segurança, esta definição está indisponível atualmente."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"A autorização de utilização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> foi recusada"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Esta app pediu a autorização <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, que é uma definição restrita porque pode pôr em risco a sua segurança e privacidade. A restrição desta autorização pode impedir o funcionamento desta app."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saber mais"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
 </resources>

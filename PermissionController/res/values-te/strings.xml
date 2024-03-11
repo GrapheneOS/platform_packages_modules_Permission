@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g>‌కు యాక్సెస్‌ చేశారు"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g>‌న<xliff:g id="TIME_DATE_1">%2$s</xliff:g>‌కు యాక్సెస్‌ చేశారు"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"మీ ఒకసారి ఉపయోగించగల పాస్‌వర్డ్ 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"పరిమితం చేయబడిన సెట్టింగ్"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"మీ సెక్యూరిటీ కోసం, ఈ సెట్టింగ్ ప్రస్తుతం అందుబాటులో లేదు."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>‌ను ఉపయోగించడానికి అనుమతి నిరాకరించబడింది"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"ఈ యాప్ పరిమితం చేయబడిన సెట్టింగ్ అయిన <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> అనుమతిని రిక్వెస్ట్ చేసింది, దీనివల్ల మీ సెక్యూరిటీకీ, &amp; గోప్యతకు ప్రమాదం ఏర్పడవచ్చు. ఈ అనుమతికి పరిమితి విధించడం వలన ఈ యాప్‌ను పని చేయకుండా నిరోధించవచ్చు."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"మరింత తెలుసుకోండి"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"సరే"</string>
 </resources>

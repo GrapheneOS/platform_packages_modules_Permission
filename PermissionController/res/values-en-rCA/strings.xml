@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Accessed yesterday <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Accessed <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Your one time password is 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Restricted setting"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"For your security, this setting is currently unavailable."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Permission to use <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> has been denied"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"This app has requested the <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> permission, which is a restricted setting because it can put your security &amp; privacy at risk. Restriction to this permission may prevent this app from working."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Learn more"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Got it"</string>
 </resources>

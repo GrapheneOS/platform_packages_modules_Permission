@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Diakses semalam <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Diakses <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Kata laluan sekali guna anda ialah 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Tetapan terhad"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Untuk keselamatan anda, tetapan ini tidak tersedia pada masa ini."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Kebenaran untuk menggunakan <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> telah ditolak"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Apl ini telah meminta kebenaran <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> yang merupakan tetapan yang dihadkan kerana kebenaran ini boleh merisikokan keselamatan &amp; privasi anda. Pengehadan terhadap kebenaran ini mungkin menghalang apl ini daripada berfungsi."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Ketahui lebih lanjut"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
 </resources>

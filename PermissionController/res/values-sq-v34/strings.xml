@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"Menaxho qasjen e aplikacioneve te të dhënat e shëndetit"</string>
     <string name="location_settings" msgid="8863940440881290182">"Qasja te vendndodhja"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"Për aplikacionet dhe shërbimet. Nëse ky cilësim është joaktiv, të dhënat e mikrofonit mund të vazhdojnë të ndahen kur telefonon një numër urgjence."</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"Për aplikacionet dhe shërbimet"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"Cilësim i kufizuar"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"Për sigurinë tënde, ky cilësim nuk ofrohet për momentin."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"Mëso më shumë"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

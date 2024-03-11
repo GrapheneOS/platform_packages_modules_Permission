@@ -23,14 +23,4 @@
     <string name="health_connect_summary" msgid="815473513776882296">"គ្រប់គ្រងសិទ្ធិរបស់កម្មវិធី​ក្នុងការចូលប្រើទិន្នន័យសុខភាព"</string>
     <string name="location_settings" msgid="8863940440881290182">"ការចូលប្រើប្រាស់ទីតាំង"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"សម្រាប់កម្មវិធី និងសេវាកម្ម។ ប្រសិនបើការកំណត់នេះ​ត្រូវ​បាន​បិទ ទិន្នន័យមីក្រូហ្វូននៅតែអាចត្រូវបានចែករំលែកដដែល នៅពេលអ្នកហៅទៅលេខសង្គ្រោះបន្ទាន់"</string>
-    <string name="location_settings_subtitle" msgid="6846532794702613851">"សម្រាប់កម្មវិធី និងសេវាកម្ម"</string>
-    <string name="enhanced_confirmation_dialog_title" msgid="2832934608609739884">"ការកំណត់​ដែលបានរឹតបន្តឹង"</string>
-    <string name="enhanced_confirmation_dialog_desc" msgid="6748252577225517533">"ដើម្បីសុវត្ថិភាព​របស់អ្នក បច្ចុប្បន្នមិនអាចប្រើការកំណត់នេះបានទេ។"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (4171764439444061362) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (824942107481213903) -->
-    <skip />
-    <string name="enhanced_confirmation_dialog_learn_more" msgid="3177813037495926648">"ស្វែងយល់បន្ថែម"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (3269454443884744764) -->
-    <skip />
 </resources>

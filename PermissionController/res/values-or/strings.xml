@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"ଗତକାଲି <xliff:g id="TIME_DATE">%1$s</xliff:g>ରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ରେ ଆକ୍ସେସ କରାଯାଇଛି"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"ଆପଣଙ୍କ ଗୋଟିଏ ଥରର ପାସୱାର୍ଡ ହେଉଛି 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ପ୍ରତିବନ୍ଧିତ ସେଟିଂ"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"ଆପଣଙ୍କ ସୁରକ୍ଷା ପାଇଁ ଏହି ସେଟିଂ ବର୍ତ୍ତମାନ ଅନୁପଲବ୍ଧ ଅଟେ।"</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ବ୍ୟବହାର କରିବା ପାଇଁ ଅନୁମତିକୁ ଅଗ୍ରାହ୍ୟ କରାଯାଇଛି"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"ଏହି ଆପ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଅନୁମତି ପାଇଁ ଅନୁରୋଧ କରିଛି, ଯାହା ଏକ ପ୍ରତିବନ୍ଧିତ ସେଟିଂସ ଅଟେ କାରଣ ଏହା ଆପଣଙ୍କ ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତାକୁ ବିପଦରେ ପକାଇପାରେ। ଏହି ଅନୁମତି ଉପରେ ପ୍ରତିବନ୍ଧକ ଏ ଆପକୁ କାର୍ଯ୍ୟ କରିବାରୁ ପ୍ରତିରୋଧ କରିପାରେ।"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ଅଧିକ ଜାଣନ୍ତୁ"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"ବୁଝିଗଲି"</string>
 </resources>

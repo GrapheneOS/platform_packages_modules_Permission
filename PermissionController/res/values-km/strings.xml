@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"បានចូលប្រើម្សិលមិញនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"បានចូលប្រើនៅថ្ងៃទី <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"ពាក្យ​សម្ងាត់​ប្រើបាន​តែ​ម្ដងរបស់អ្នកគឺ 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ការកំណត់​ដែលបានដាក់កំហិត"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"ដើម្បីសុវត្ថិភាព​របស់អ្នក បច្ចុប្បន្នមិនអាចប្រើការកំណត់នេះបានទេ។"</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"ការអនុញ្ញាតឱ្យប្រើ<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ត្រូវបានបដិសេធ"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"កម្មវិធីនេះបានស្នើសុំការអនុញ្ញាតឱ្យប្រើ<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ដែលជាការកំណត់ដែលបានដាក់កំហិត ដោយសារវាអាចធ្វើឱ្យសុវត្ថិភាព និងឯកជនភាពរបស់អ្នកប្រឈមនឹងហានិភ័យ។ ការដាក់កំហិតលើការអនុញ្ញាតនេះអាចទប់ស្កាត់កម្មវិធីនេះមិនឱ្យដំណើរការ។"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ស្វែងយល់បន្ថែម"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"យល់ហើយ"</string>
 </resources>

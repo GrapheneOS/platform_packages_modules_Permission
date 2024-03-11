@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"ઍક્સેસ કર્યાનો સમય ગઈકાલે <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"ઍક્સેસ કર્યાનો સમય <xliff:g id="TIME_DATE_0">%1$s</xliff:g>ના રોજ <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"તમારો એક-વખત વપરાશનો પાસવર્ડ 132435 છે"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"પ્રતિબંધિત સેટિંગ"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"તમારી સુરક્ષા માટે, આ સેટિંગ હાલમાં ઉપલબ્ધ નથી."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>નો ઉપયોગ કરવાની પરવાનગી નકારવામાં આવી છે"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"આ ઍપ દ્વારા <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> માટેની પરવાનગીની વિનંતી કરવામાં આવી છે, જે કોઈ પ્રતિબંધિત સેટિંગ છે કારણ કે તે તમારી સુરક્ષા અને પ્રાઇવસીને જોખમમાં મૂકી શકે છે. આ પરવાનગીને પ્રતિબંધિત કરવાથી, આ ઍપને કામ કરવાથી રોકી શકાય છે."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"વધુ જાણો"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"સમજાઈ ગયું"</string>
 </resources>

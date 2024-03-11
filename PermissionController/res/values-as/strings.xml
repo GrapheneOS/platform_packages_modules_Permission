@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"আপোনাৰ এবাৰ ব্যৱহাৰযোগ্য পাছৱর্ড হৈছে ১৩২৪৩৫"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"প্ৰতিবন্ধিত ছেটিং"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"আপোনাৰ সুৰক্ষাৰ বাবে, এই ছেটিংটো বৰ্তমান উপলব্ধ নহয়।"</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ অনুৰোধটো অস্বীকাৰ কৰা হৈছে"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"এই এপ্‌টোৱে <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ অনুমতি বিচাৰিছে, যিটো হৈছে এটা প্ৰতিবন্ধিত ছেটিং কাৰণ এইটোৱে আপোনাৰ সুৰক্ষা আৰু গোপনীয়তা বিপদাপন্ন কৰিব পাৰে। এই অনুমতিৰ প্ৰতিবন্ধকতাই এই এপ্‌টোক কাম কৰাত বাধা দিব পাৰে।"</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"অধিক জানক"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"বুজি পালোঁ"</string>
 </resources>

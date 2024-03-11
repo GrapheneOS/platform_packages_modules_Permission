@@ -657,4 +657,10 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ಸಮಯಕ್ಕೆ ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g> ಸಮಯಕ್ಕೆ ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"ನಿಮ್ಮ ಒನ್‌-ಟೈಮ್ ಪಾಸ್‌ವರ್ಡ್ 132435"</string>
+    <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ನಿರ್ಬಂಧಿಸಲಾದ ಸೆಟ್ಟಿಂಗ್"</string>
+    <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"ನಿಮ್ಮ ಸುರಕ್ಷತೆಗಾಗಿ, ಈ ಸೆಟ್ಟಿಂಗ್ ಪ್ರಸ್ತುತ ಲಭ್ಯವಿಲ್ಲ."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ಅನ್ನು ಬಳಸುವ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಲಾಗಿದೆ"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"ಈ ಆ್ಯಪ್ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ಅನುಮತಿಯನ್ನು ವಿನಂತಿಸಿದ್ದು, ಅದು ನಿರ್ಬಂಧಿಸಲಾದ ಸೆಟ್ಟಿಂಗ್ ಆಗಿದೆ ಏಕೆಂದರೆ ಅದು ಭದ್ರತೆ ಮತ್ತು ಗೌಪ್ಯತೆಯನ್ನು ಅಪಾಯಕ್ಕೆ ಸಿಲುಕಿಸಬಹುದು. ಈ ಅನುಮತಿಗೆ ಇರುವ ನಿರ್ಬಂಧವು ಕೆಲಸ ಮಾಡದಂತೆ ಈ ಆ್ಯಪ್ ಅನ್ನು ತಡೆಯಬಹುದು."</string>
+    <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"</string>
+    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"ಅರ್ಥವಾಯಿತು"</string>
 </resources>
