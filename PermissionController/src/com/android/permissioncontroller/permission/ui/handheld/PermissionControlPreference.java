@@ -21,6 +21,7 @@ import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.GRANT_CATEGORY;
+import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.PERSISTENT_DEVICE_ID;
 import static com.android.permissioncontroller.permission.utils.KotlinUtilsKt.navigateSafe;
 
 import android.Manifest;
@@ -69,6 +70,7 @@ public class PermissionControlPreference extends Preference {
     private @NonNull long mSessionId;
     private boolean mHasNavGraph;
     private @NonNull UserHandle mUser;
+    private @Nullable String mPersistentDeviceId;
 
     public PermissionControlPreference(@NonNull Context context,
             @NonNull AppPermissionGroup group, @NonNull String caller) {
@@ -237,6 +239,7 @@ public class PermissionControlPreference extends Preference {
                 args.putString(EXTRA_CALLER_NAME, mCaller);
                 args.putLong(EXTRA_SESSION_ID, mSessionId);
                 args.putString(GRANT_CATEGORY, mGranted);
+                args.putString(PERSISTENT_DEVICE_ID, mPersistentDeviceId);
                 navigateSafe(Navigation.findNavController(holder.itemView), R.id.perm_groups_to_app,
                         args);
             } else {
@@ -252,6 +255,10 @@ public class PermissionControlPreference extends Preference {
             }
             return true;
         });
+    }
+
+    public void setPersistentDeviceId(String persistentDeviceId) {
+        this.mPersistentDeviceId = persistentDeviceId;
     }
 
     private void setIcons(PreferenceViewHolder holder, @Nullable List<Integer> icons, int frameId) {

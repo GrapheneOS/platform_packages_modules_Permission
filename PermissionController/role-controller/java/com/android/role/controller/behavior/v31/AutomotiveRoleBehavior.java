@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,25 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.behavior;
+package com.android.role.controller.behavior.v31;
 
-import android.app.admin.DevicePolicyManager;
 import android.content.Context;
-import android.os.Build;
+import android.content.pm.PackageManager;
+import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 
 /**
- * Class for behavior of the device policy management role.
+ * Class for behavior of the Automotive role.
  */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
-public class DevicePolicyManagementRoleBehavior implements RoleBehavior {
+public class AutomotiveRoleBehavior implements RoleBehavior {
 
     @Override
-    public Boolean shouldAllowBypassingQualification(@NonNull Role role,
-                                                     @NonNull Context context) {
-        DevicePolicyManager devicePolicyManager =
-                context.getSystemService(DevicePolicyManager.class);
-        return devicePolicyManager.shouldAllowBypassingDevicePolicyManagementRoleQualification();
+    public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
+            @NonNull Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
     }
 }

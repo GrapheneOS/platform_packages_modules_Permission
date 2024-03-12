@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.behavior;
+package com.android.role.controller.behavior.v33;
 
 import android.content.Context;
 import android.os.UserHandle;
@@ -27,9 +27,9 @@ import com.android.role.controller.util.NotificationUtils;
 import com.android.role.controller.util.UserUtils;
 
 /**
- * Class for behavior of the "App Streaming" Companion device profile role.
+ * Class for behavior of the "Computer" Companion device profile role.
  */
-public class CompanionDeviceAppStreamingRoleBehavior implements RoleBehavior {
+public class CompanionDeviceComputerRoleBehavior implements RoleBehavior {
 
     @Override
     public void grantAsUser(@NonNull Role role, @NonNull String packageName,

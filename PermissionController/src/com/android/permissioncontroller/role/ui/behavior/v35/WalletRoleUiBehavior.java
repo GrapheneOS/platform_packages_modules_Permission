@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.role.ui.behavior;
+package com.android.permissioncontroller.role.ui.behavior.v35;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +38,7 @@ import androidx.core.util.Pair;
 import androidx.preference.Preference;
 
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
+import com.android.permissioncontroller.role.ui.behavior.RoleUiBehavior;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.util.UserUtils;
 

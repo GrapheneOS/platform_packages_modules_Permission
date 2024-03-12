@@ -14,26 +14,37 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.behavior;
+package com.android.role.controller.behavior.v33;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.UserHandle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 
-/**
- * The base behaviour class for the roles available only on TV.
- */
-public class TelevisionRoleBehavior implements RoleBehavior {
+import java.util.Collections;
+import java.util.List;
 
+/**
+ * Class for behavior of the Document Manager role.
+ */
+public class DocumentManagerRoleBehavior implements RoleBehavior {
+    private static final String TAG = "DocumentManagerRoleBehavior";
+
+    @NonNull
     @Override
-    public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
+    public List<String> getDefaultHoldersAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        // Role is only available on Leanback devices
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK);
+        List<String> qualifyingPackageNames = role.getQualifyingPackagesAsUser(user, context);
+        if (qualifyingPackageNames.size() == 1) {
+            return qualifyingPackageNames;
+        } else {
+            Log.e(TAG, "There should be exactly one documenter; found "
+                    + qualifyingPackageNames.size() + ": matches=" + qualifyingPackageNames);
+            return Collections.emptyList();
+        }
     }
 }

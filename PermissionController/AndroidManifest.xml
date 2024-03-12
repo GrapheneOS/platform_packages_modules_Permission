@@ -487,7 +487,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.permissioncontroller.role.ui.ChangeDefaultCardEmulationActivity"
+        <activity android:name="com.android.permissioncontroller.role.ui.v35.ChangeDefaultCardEmulationActivity"
             android:enabled="@bool/is_at_least_v"
             android:excludeFromRecents="true"
             android:noHistory="true"

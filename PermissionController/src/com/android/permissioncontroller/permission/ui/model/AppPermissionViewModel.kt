@@ -52,9 +52,11 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
+import com.android.permissioncontroller.permission.data.PackagePermissionsVirtualDeviceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.service.PermissionChangeStorageImpl
@@ -76,6 +78,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationA
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.openPhotoPickerForApp
 import com.android.permissioncontroller.permission.utils.LocationUtils
+import com.android.permissioncontroller.permission.utils.MultiDeviceUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
@@ -96,15 +99,17 @@ import kotlin.collections.component2
  * @param permGroupName The name of the permission group this ViewModel represents
  * @param user The user of the package
  * @param sessionId A session ID used in logs to identify this particular session
+ * @param persistentDeviceId Indicates the device in the context of virtual devices, can be null
+ *   indicating default device
  */
 class AppPermissionViewModel(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle,
-    private val sessionId: Long
+    private val sessionId: Long,
+    private val persistentDeviceId: String?
 ) : ViewModel() {
-
     companion object {
         private val LOG_TAG = AppPermissionViewModel::class.java.simpleName
         private const val DEVICE_PROFILE_ROLE_PREFIX = "android.app.role"
@@ -223,6 +228,7 @@ class AppPermissionViewModel(
                     value = null
                 }
             }
+
             override fun onUpdate() {
                 for (state in FullStoragePermissionAppsLiveData.value ?: return) {
                     if (state.packageName == packageName && state.user == user) {
@@ -302,8 +308,58 @@ class AppPermissionViewModel(
                 }
             }
 
+            // TODO: b/328839130 (Merge this with default device implementation)
+            private fun getVirtualDeviceButtonStates(): Map<ButtonType, ButtonState> {
+                val allowedForegroundState = ButtonState()
+                allowedForegroundState.isShown = true
+
+                val askState = ButtonState()
+                askState.isShown = true
+
+                val deniedState = ButtonState()
+                deniedState.isShown = true
+
+                val virtualDeviceGrantInfoList =
+                    PackagePermissionsVirtualDeviceLiveData[packageName, user].value
+
+                virtualDeviceGrantInfoList!!
+                    .filter {
+                        it.groupName == permGroupName && it.persistentDeviceId == persistentDeviceId
+                    }
+                    .map { it.permGrantState }
+                    .forEach {
+                        when (it) {
+                            AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY ->
+                                allowedForegroundState.isChecked = true
+                            AppPermGroupUiInfo.PermGrantState.PERMS_ASK -> askState.isChecked = true
+                            AppPermGroupUiInfo.PermGrantState.PERMS_DENIED ->
+                                deniedState.isChecked = true
+                            else -> {
+                                Log.e(LOG_TAG, "Unsupported PermGrantState=$it")
+                            }
+                        }
+                    }
+                return mapOf(
+                    ALLOW to ButtonState(),
+                    ALLOW_ALWAYS to ButtonState(),
+                    ALLOW_FOREGROUND to allowedForegroundState,
+                    ASK_ONCE to ButtonState(),
+                    ASK to askState,
+                    DENY to deniedState,
+                    DENY_FOREGROUND to ButtonState(),
+                    LOCATION_ACCURACY to ButtonState(),
+                    SELECT_PHOTOS to ButtonState()
+                )
+            }
+
             override fun onUpdate() {
+                if (!MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
+                    value = getVirtualDeviceButtonStates()
+                    return
+                }
+
                 val group = appPermGroupLiveData.value ?: return
+
                 for (mediaGroupLiveData in mediaStorageSupergroupLiveData.values) {
                     if (!mediaGroupLiveData.isInitialized) {
                         return
@@ -1315,16 +1371,41 @@ class AppPermissionViewModel(
  * @param permGroupName The name of the permission group this ViewModel represents
  * @param user The user of the package
  * @param sessionId A session ID used in logs to identify this particular session
+ * @param persistentDeviceId Indicates the device in the context of virtual devices
  */
 class AppPermissionViewModelFactory(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle,
-    private val sessionId: Long
+    private val sessionId: Long,
+    private val persistentDeviceId: String
 ) : ViewModelProvider.Factory {
+    constructor(
+        app: Application,
+        packageName: String,
+        permGroupName: String,
+        user: UserHandle,
+        sessionId: Long
+    ) : this(
+        app,
+        packageName,
+        permGroupName,
+        user,
+        sessionId,
+        MultiDeviceUtils.getDefaultDevicePersistentDeviceId()
+    )
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return AppPermissionViewModel(app, packageName, permGroupName, user, sessionId) as T
+        return AppPermissionViewModel(
+            app,
+            packageName,
+            permGroupName,
+            user,
+            sessionId,
+            persistentDeviceId
+        )
+            as T
     }
 }

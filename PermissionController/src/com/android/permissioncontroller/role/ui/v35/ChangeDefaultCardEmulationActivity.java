@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.role.ui;
+package com.android.permissioncontroller.role.ui.v35;
 
 import android.app.Activity;
 import android.app.role.RoleManager;
@@ -30,6 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.role.ui.DefaultAppActivity;
 
 import java.util.List;
 import java.util.Objects;

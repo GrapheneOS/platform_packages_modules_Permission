@@ -47,4 +47,38 @@ object MultiDeviceUtils {
         }
         throw IllegalArgumentException("No device name for device: $deviceId")
     }
+
+    @JvmStatic
+    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    fun isDefaultDeviceId(persistentDeviceId: String?) =
+        !SdkLevel.isAtLeastV() ||
+            persistentDeviceId.isNullOrBlank() ||
+            persistentDeviceId == VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT
+
+    @JvmStatic
+    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    fun getDeviceName(context: Context, persistentDeviceId: String): String {
+        if (
+            !SdkLevel.isAtLeastV() ||
+                persistentDeviceId == VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT
+        ) {
+            return Settings.Global.getString(context.contentResolver, Settings.Global.DEVICE_NAME)
+        }
+        val vdm: VirtualDeviceManager =
+            context.getSystemService(VirtualDeviceManager::class.java)
+                ?: throw RuntimeException("Device manager not found")
+        val deviceName =
+            vdm.getDisplayNameForPersistentDeviceId(persistentDeviceId)
+                ?: DEFAULT_REMOTE_DEVICE_NAME
+        return deviceName.toString()
+    }
+
+    @JvmStatic
+    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    fun getDefaultDevicePersistentDeviceId(): String =
+        if (!SdkLevel.isAtLeastV()) {
+            "default: ${ContextCompat.DEVICE_ID_DEFAULT}"
+        } else {
+            VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT
+        }
 }

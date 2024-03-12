@@ -624,6 +624,9 @@
     <!-- Description for showing an app's permission [CHAR LIMIT=60] -->
     <string name="app_permission_header"><xliff:g id="perm" example="location">%1$s</xliff:g> access for this app</string>
 
+    <!-- Description for showing an app's permission along with device name [CHAR LIMIT=NONE] -->
+    <string name="app_permission_header_with_device_name"><xliff:g id="perm" example="camera">%1$s</xliff:g> access for this app on <xliff:g id="device_name" example="tablet">%2$s</xliff:g></string>
+
     <!-- Text for linking to the page that shows an app's permissions [CHAR LIMIT=none] -->
     <string name="app_permission_footer_app_permissions_link">See all <xliff:g id="app" example="Maps">%1$s</xliff:g> permissions</string>
 
@@ -798,6 +801,9 @@
 
     <!-- Header for denied permissions/apps [CHAR LIMIT=40] -->
     <string name="denied_header">Not allowed</string>
+
+    <!-- Header to display the Permission group name along with corresponding device name [CHAR LIMIT=None] -->
+    <string name="permission_group_name_with_device_name"><xliff:g id="perm_group_name" example="camera">%1$s</xliff:g> on <xliff:g id="device_name" example="tablet">%2$s</xliff:g></string>
 
     <!-- Text of hyperlink shown in storage_footer [CHAR LIMIT=60] -->
     <string name="storage_footer_hyperlink_text">See more apps that can access all files</string>

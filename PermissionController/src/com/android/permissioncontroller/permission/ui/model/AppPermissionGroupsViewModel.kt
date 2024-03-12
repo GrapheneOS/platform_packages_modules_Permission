@@ -44,6 +44,7 @@ import com.android.permissioncontroller.permission.data.HibernationSettingStateL
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
+import com.android.permissioncontroller.permission.data.PackagePermissionsVirtualDeviceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
@@ -51,6 +52,7 @@ import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.MultiDeviceUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.AppPermsLastAccessType
@@ -93,12 +95,29 @@ class AppPermissionGroupsViewModel(
     data class GroupUiInfo(
         val groupName: String,
         val isSystem: Boolean = false,
-        val subtitle: PermSubtitle
+        val subtitle: PermSubtitle,
+        val persistentDeviceId: String,
     ) {
         constructor(
             groupName: String,
             isSystem: Boolean
-        ) : this(groupName, isSystem, PermSubtitle.NONE)
+        ) : this(
+            groupName,
+            isSystem,
+            PermSubtitle.NONE,
+            MultiDeviceUtils.getDefaultDevicePersistentDeviceId()
+        )
+
+        constructor(
+            groupName: String,
+            isSystem: Boolean,
+            subtitle: PermSubtitle,
+        ) : this(
+            groupName,
+            isSystem,
+            subtitle,
+            MultiDeviceUtils.getDefaultDevicePersistentDeviceId()
+        )
     }
 
     // Auto-revoke and hibernation share the same settings
@@ -107,6 +126,8 @@ class AppPermissionGroupsViewModel(
     private val packagePermsLiveData = PackagePermissionsLiveData[packageName, user]
     private val appPermGroupUiInfoLiveDatas = mutableMapOf<String, AppPermGroupUiInfoLiveData>()
     private val fullStoragePermsLiveData = FullStoragePermissionAppsLiveData
+    private val packagePermsVirtualDeviceLiveData =
+        PackagePermissionsVirtualDeviceLiveData[packageName, user]
 
     /**
      * LiveData whose data is a map of grant category (either allowed or denied) to a list of
@@ -214,6 +235,61 @@ class AppPermissionGroupsViewModel(
                                     GroupUiInfo(groupName, isSystem)
                                 )
                         }
+                    }
+                }
+
+                packagePermsVirtualDeviceLiveData.value?.forEach { virtualDeviceGrantInfo ->
+                    val groupName = virtualDeviceGrantInfo.groupName
+                    val isSystem =
+                        PermissionMapping.getPlatformPermissionGroups().contains(groupName)
+                    val persistentDeviceId = virtualDeviceGrantInfo.persistentDeviceId
+                    when (virtualDeviceGrantInfo.permGrantState) {
+                        PermGrantState.PERMS_ALLOWED -> {
+                            groupGrantStates[Category.ALLOWED]!!.add(
+                                GroupUiInfo(
+                                    groupName,
+                                    isSystem,
+                                    PermSubtitle.NONE,
+                                    persistentDeviceId
+                                )
+                            )
+                        }
+                        PermGrantState.PERMS_ALLOWED_ALWAYS ->
+                            groupGrantStates[Category.ALLOWED]!!.add(
+                                GroupUiInfo(
+                                    groupName,
+                                    isSystem,
+                                    PermSubtitle.BACKGROUND,
+                                    persistentDeviceId
+                                )
+                            )
+                        PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY ->
+                            groupGrantStates[Category.ALLOWED]!!.add(
+                                GroupUiInfo(
+                                    groupName,
+                                    isSystem,
+                                    PermSubtitle.FOREGROUND_ONLY,
+                                    persistentDeviceId
+                                )
+                            )
+                        PermGrantState.PERMS_DENIED ->
+                            groupGrantStates[Category.DENIED]!!.add(
+                                GroupUiInfo(
+                                    groupName,
+                                    isSystem,
+                                    PermSubtitle.NONE,
+                                    persistentDeviceId
+                                )
+                            )
+                        PermGrantState.PERMS_ASK ->
+                            groupGrantStates[Category.ASK]!!.add(
+                                GroupUiInfo(
+                                    groupName,
+                                    isSystem,
+                                    PermSubtitle.NONE,
+                                    persistentDeviceId
+                                )
+                            )
                     }
                 }
 

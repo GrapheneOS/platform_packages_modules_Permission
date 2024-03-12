@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.role.controller.behavior;
+package com.android.role.controller.behavior.v35;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;

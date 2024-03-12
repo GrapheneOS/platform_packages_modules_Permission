@@ -75,6 +75,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.MultiDeviceUtils;
 import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
@@ -350,7 +351,19 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 PermissionControlPreference preference = new PermissionControlPreference(context,
                         mPackageName, groupName, mUser, AppPermissionGroupsFragment.class.getName(),
                         sessionId, grantCategory.getCategoryName(), true);
-                preference.setTitle(KotlinUtils.INSTANCE.getPermGroupLabel(context, groupName));
+
+                CharSequence permissionGroupName = KotlinUtils.INSTANCE.getPermGroupLabel(context,
+                        groupName);
+                if (MultiDeviceUtils.isDefaultDeviceId(groupInfo.getPersistentDeviceId())) {
+                    preference.setTitle(permissionGroupName);
+                } else {
+                    final String deviceName = MultiDeviceUtils.getDeviceName(context,
+                            groupInfo.getPersistentDeviceId());
+                    preference.setTitle(context.getString(
+                            R.string.permission_group_name_with_device_name,
+                            permissionGroupName, deviceName));
+                    preference.setPersistentDeviceId(groupInfo.getPersistentDeviceId());
+                }
                 preference.setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(context, groupName));
                 preference.setKey(groupName);
                 String summary = mViewModel.getPreferenceSummary(groupInfo, context,
