@@ -1274,14 +1274,12 @@ class SafetyCenterMultiUsersTest {
                 emptyList()
             )
 
-        checkState(
-            safetyCenterManager.getSafetyCenterDataWithPermission() ==
-                safetyCenterDataWithPrivateProfile
-        )
-        checkState(
-            privateSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission() ==
-                safetyCenterDataWithPrivateProfile
-        )
+        assertThat(safetyCenterManager.getSafetyCenterDataWithPermission())
+            .isEqualTo(safetyCenterDataWithPrivateProfile)
+        assertThat(
+                privateSafetyCenterManager.getSafetyCenterDataWithInteractAcrossUsersPermission()
+            )
+            .isEqualTo(safetyCenterDataWithPrivateProfile)
 
         deviceState.privateProfile().remove()
 

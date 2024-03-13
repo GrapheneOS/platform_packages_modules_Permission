@@ -796,7 +796,7 @@ class SafetyCenterTestConfigs(private val context: Context) {
             .setTitleForWorkResId(android.R.string.paste)
             .apply {
                 if (SdkLevel.isAtLeastV() && Flags.privateProfileTitleApi()) {
-                    setTitleForPrivateProfileResId(android.R.string.paste)
+                    setTitleForPrivateProfileResId(android.R.string.unknownName)
                 }
             }
 

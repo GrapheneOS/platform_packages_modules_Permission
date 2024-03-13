@@ -103,4 +103,7 @@ java_sdk_library {
         "android.safetycenter",
         "android.safetylabel",
     ],
+    aconfig_declarations: [
+        "permissions-aconfig-flags",
+    ],
 }
