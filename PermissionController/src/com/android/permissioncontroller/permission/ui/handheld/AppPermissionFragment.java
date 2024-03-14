@@ -58,6 +58,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -112,6 +113,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull AppPermissionViewModel mViewModel;
     private @NonNull ViewGroup mAppPermissionRationaleContainer;
     private @NonNull ViewGroup mAppPermissionRationaleContent;
+    private @NonNull FrameLayout mAllowButtonFrame;
     private @NonNull RadioButton mAllowButton;
     private @NonNull RadioButton mAllowAlwaysButton;
     private @NonNull RadioButton mAllowForegroundButton;
@@ -272,6 +274,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             footerInfoText.setVisibility(View.GONE);
         }
 
+        mAllowButtonFrame = root.requireViewById(R.id.allow_radio_button_frame);
         mAllowButton = root.requireViewById(R.id.allow_radio_button);
         mAllowAlwaysButton = root.requireViewById(R.id.allow_always_radio_button);
         mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
@@ -403,12 +406,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         } else if (states == null) {
             return;
         }
-
-        mAllowButton.setOnClickListener((v) -> {
-            mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FOREGROUND,
-                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW);
-            setResult(GRANTED_ALWAYS);
-        });
+        mAllowButtonFrame.setOnClickListener((v) -> allowButtonFrameClickListener());
         mAllowAlwaysButton.setOnClickListener((v) -> {
             if (mIsStorageGroup) {
                 showConfirmDialog(ChangeRequest.GRANT_ALL_FILE_ACCESS,
@@ -510,6 +508,17 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized()) {
             setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue());
+        }
+    }
+
+    private void allowButtonFrameClickListener() {
+        if (!mAllowButton.isEnabled()) {
+            mViewModel.handleDisabledAllowButton(this);
+        } else {
+            mAllowButton.setChecked(true);
+            mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FOREGROUND,
+                    APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW);
+            setResult(GRANTED_ALWAYS);
         }
     }
 

@@ -473,7 +473,10 @@ class AppPermissionViewModel(
                     askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                     askOneTimeState.isShown = askOneTimeState.isChecked
                     deniedState.isChecked = !group.foreground.isGranted && !group.isOneTime
-
+                    if (Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
+                            user, app, packageName, permGroupName) != null) {
+                        allowedState.isEnabled = false
+                    }
                     if (group.foreground.isPolicyFixed || group.foreground.isSystemFixed) {
                         allowedState.isEnabled = false
                         askState.isEnabled = false
@@ -556,6 +559,15 @@ class AppPermissionViewModel(
                     )
             }
         }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.VANILLA_ICE_CREAM, codename = "VanillaIceCream")
+    fun handleDisabledAllowButton(fragment: Fragment) {
+        if (lightAppPermGroup!!.foreground.isSystemFixed ||
+            lightAppPermGroup!!.foreground.isPolicyFixed) return
+        val restrictionIntent = Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
+            user, app, packageName, permGroupName) ?: return
+        fragment.startActivity(restrictionIntent)
+    }
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     private fun shouldShowPhotoPickerPromptForApp(group: LightAppPermGroup): Boolean {

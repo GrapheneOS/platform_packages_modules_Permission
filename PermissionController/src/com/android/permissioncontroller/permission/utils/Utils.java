@@ -54,6 +54,7 @@ import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
 import android.app.admin.DevicePolicyManager;
+import android.app.ecm.EnhancedConfirmationManager;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -81,6 +82,7 @@ import android.os.Build;
 import android.os.Parcelable;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.permission.flags.Flags;
 import android.provider.DeviceConfig;
 import android.provider.Settings;
 import android.text.Html;
@@ -1617,5 +1619,42 @@ public final class Utils {
         var userProperties = userManager.getUserProperties(userHandle);
         return !userManager.isQuietModeEnabled(userHandle)
                 || userProperties.getShowInQuietMode() != UserProperties.SHOW_IN_QUIET_MODE_HIDDEN;
+    }
+
+    /**
+     * Check whether an application is restricted for this setting identifier and return the
+     * {@code Intent} for the restriction if it is.
+     *
+     * @param user the user to check for
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return the {@code Intent} for the restriction if the application is restricted for this
+     *         setting identifier, or {@code null} otherwise.
+     */
+    @Nullable
+    public static Intent getApplicationEnhancedConfirmationRestrictedIntentAsUser(
+            @NonNull UserHandle user,
+            @NonNull Context context,
+            @Nullable String packageName,
+            @Nullable String settingIdentifier) {
+        if (SdkLevel.isAtLeastV() && Flags.enhancedConfirmationModeApisEnabled()) {
+            Context userContext = Utils.getUserContext(context, user);
+            EnhancedConfirmationManager userEnhancedConfirmationManager =
+                    userContext.getSystemService(EnhancedConfirmationManager.class);
+            if (packageName == null || settingIdentifier == null) return null;
+            try {
+                boolean isRestricted = userEnhancedConfirmationManager.isRestricted(packageName,
+                        settingIdentifier);
+                if (isRestricted) {
+                    return userEnhancedConfirmationManager.createRestrictedSettingDialogIntent(
+                            packageName, settingIdentifier);
+                }
+
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w(LOG_TAG, "Cannot check enhanced confirmation restriction for package: "
+                        + packageName, e);
+            }
+        }
+        return null;
     }
 }

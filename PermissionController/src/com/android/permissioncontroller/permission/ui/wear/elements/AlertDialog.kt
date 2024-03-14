@@ -16,40 +16,35 @@
 
 package com.android.permissioncontroller.permission.ui.wear.elements
 
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.animateScrollBy
-import androidx.compose.foundation.gestures.scrollBy
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.input.rotary.onRotaryScrollEvent
-import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
 import androidx.wear.compose.foundation.lazy.ScalingLazyListState
-import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.Icon
+import androidx.wear.compose.material.LocalTextStyle
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.dialog.Alert
 import androidx.wear.compose.material.dialog.Dialog
-import kotlinx.coroutines.launch
+import com.android.permissioncontroller.permission.ui.wear.elements.layout.ScalingLazyColumnDefaults
+import com.android.permissioncontroller.permission.ui.wear.elements.layout.ScalingLazyColumnState
+import com.android.permissioncontroller.permission.ui.wear.elements.layout.rememberColumnState
 
 /**
- * This component is an alternative to [Alert], providing the following:
+ * This component is an alternative to [AlertContent], providing the following:
  * - a convenient way of passing a title and a message;
+ * - additional content can be specified between the message and the buttons
  * - default positive and negative buttons;
  * - wrapped in a [Dialog];
  */
@@ -62,7 +57,7 @@ fun AlertDialog(
     showDialog: Boolean,
     scalingLazyListState: ScalingLazyListState,
     modifier: Modifier = Modifier,
-    title: String = "",
+    title: String? = null,
     okButtonContentDescription: String = stringResource(android.R.string.ok),
     cancelButtonContentDescription: String = stringResource(android.R.string.cancel)
 ) {
@@ -72,13 +67,12 @@ fun AlertDialog(
         scrollState = scalingLazyListState,
         modifier = modifier
     ) {
-        Alert(
+        AlertContent(
             title = title,
-            iconRes = iconRes,
-            body = message,
-            scrollState = scalingLazyListState,
-            onCancelButtonClick = onCancelButtonClick,
-            onOKButtonClick = onOKButtonClick,
+            icon = { AlertIcon(iconRes) },
+            message = message,
+            onCancel = onCancelButtonClick,
+            onOk = onOKButtonClick,
             okButtonContentDescription = okButtonContentDescription,
             cancelButtonContentDescription = cancelButtonContentDescription
         )
@@ -99,7 +93,7 @@ fun SingleButtonAlertDialog(
     showDialog: Boolean,
     scalingLazyListState: ScalingLazyListState,
     modifier: Modifier = Modifier,
-    title: String = "",
+    title: String? = null,
     buttonContentDescription: String = stringResource(android.R.string.ok)
 ) {
     Dialog(
@@ -108,100 +102,97 @@ fun SingleButtonAlertDialog(
         scrollState = scalingLazyListState,
         modifier = modifier
     ) {
-        SingleButtonAlert(
+        AlertContent(
             title = title,
-            iconRes = iconRes,
-            body = message,
-            scrollState = scalingLazyListState,
-            onButtonClick = onButtonClick,
-            buttonContentDescription = buttonContentDescription
+            icon = { AlertIcon(iconRes) },
+            message = message,
+            onOk = onButtonClick,
+            okButtonContentDescription = buttonContentDescription
         )
     }
 }
 
 @Composable
-internal fun Alert(
-    title: String,
-    iconRes: Int? = null,
-    body: String,
-    scrollState: ScalingLazyListState,
-    onCancelButtonClick: () -> Unit,
-    onOKButtonClick: () -> Unit,
-    okButtonContentDescription: String,
-    cancelButtonContentDescription: String
+public fun AlertContent(
+    onCancel: (() -> Unit)? = null,
+    onOk: (() -> Unit)? = null,
+    icon: @Composable (() -> Unit)? = null,
+    title: String? = null,
+    message: String? = null,
+    okButtonContentDescription: String = stringResource(android.R.string.ok),
+    cancelButtonContentDescription: String = stringResource(android.R.string.cancel),
+    state: ScalingLazyColumnState =
+        rememberColumnState(
+            ScalingLazyColumnDefaults.responsive(
+                additionalPaddingAtBottom = 0.dp,
+            ),
+        ),
+    showPositionIndicator: Boolean = true,
+    content: (ScalingLazyListScope.() -> Unit)? = null,
 ) {
-    val focusRequester = remember { FocusRequester() }
-    val coroutineScope = rememberCoroutineScope()
-    Alert(
-        modifier =
-            Modifier.onRotaryScrollEvent {
-                    coroutineScope.launch {
-                        scrollState.scrollBy(it.verticalScrollPixels)
-                        scrollState.animateScrollBy(0f)
-                    }
-                    true
+    val density = LocalDensity.current
+    val maxScreenWidthPx = with(density) { LocalConfiguration.current.screenWidthDp.dp.toPx() }
+
+    ResponsiveDialogContent(
+        icon = icon,
+        title =
+            title?.let {
+                {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it,
+                        color = MaterialTheme.colors.onBackground,
+                        textAlign = TextAlign.Center,
+                        maxLines = if (icon == null) 3 else 2,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                 }
-                .focusRequester(focusRequester)
-                .focusable(),
-        contentPadding = DefaultContentPadding(),
-        scrollState = scrollState,
-        title = { AlertTitleText(title) },
-        icon = { AlertIcon(iconRes) },
-        content = { AlertBodyText(body) },
-        negativeButton = { NegativeButton(onCancelButtonClick, cancelButtonContentDescription) },
-        positiveButton = { PositiveButton(onOKButtonClick, okButtonContentDescription) }
+            },
+        message =
+            message?.let {
+                {
+                    // Should message be start or center aligned?
+                    val textMeasurer = rememberTextMeasurer()
+                    val textStyle = LocalTextStyle.current
+                    val totalPaddingPercentage =
+                        globalHorizontalPadding + messageExtraHorizontalPadding
+                    val lineCount =
+                        remember(it, density, textStyle, textMeasurer) {
+                            textMeasurer
+                                .measure(
+                                    text = it,
+                                    style = textStyle,
+                                    constraints =
+                                        Constraints(
+                                            // Available width is reduced by responsive dialog
+                                            // horizontal
+                                            // padding.
+                                            maxWidth =
+                                                (maxScreenWidthPx *
+                                                        (1f - totalPaddingPercentage * 2f / 100f))
+                                                    .toInt(),
+                                        ),
+                                )
+                                .lineCount
+                        }
+                    val textAlign = if (lineCount <= 3) TextAlign.Center else TextAlign.Start
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it,
+                        color = MaterialTheme.colors.onBackground,
+                        textAlign = textAlign,
+                    )
+                }
+            },
+        content = content,
+        onOk = onOk,
+        onCancel = onCancel,
+        okButtonContentDescription = okButtonContentDescription,
+        cancelButtonContentDescription = cancelButtonContentDescription,
+        state = state,
+        showPositionIndicator = showPositionIndicator,
     )
-    RequestFocusOnResume(focusRequester = focusRequester)
 }
-
-@Composable
-private fun RequestFocusOnResume(focusRequester: FocusRequester) {
-    val lifecycleOwner = LocalLifecycleOwner.current
-    LaunchedEffect(Unit) {
-        lifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.RESUMED) {
-            focusRequester.requestFocus()
-        }
-    }
-}
-
-@Composable
-private fun SingleButtonAlert(
-    title: String,
-    iconRes: Int? = null,
-    body: String,
-    scrollState: ScalingLazyListState,
-    isOkButton: Boolean = true,
-    onButtonClick: () -> Unit,
-    buttonContentDescription: String,
-) {
-    Alert(
-        contentPadding = DefaultContentPadding(),
-        title = { AlertTitleText(title) },
-        scrollState = scrollState,
-        icon = { AlertIcon(iconRes) },
-        message = { AlertBodyText(body) }
-    ) {
-        item {
-            if (isOkButton) {
-                PositiveButton(onButtonClick, buttonContentDescription)
-            } else {
-                NegativeButton(onButtonClick, buttonContentDescription)
-            }
-        }
-    }
-}
-
-@Composable private fun DefaultContentPadding() = PaddingValues(top = 24.dp, bottom = 24.dp)
-
-@Composable
-private fun AlertTitleText(title: String) =
-    Text(
-        text = title,
-        color = MaterialTheme.colors.onBackground,
-        textAlign = TextAlign.Center,
-        maxLines = 3,
-        style = MaterialTheme.typography.title3
-    )
 
 @Composable
 private fun AlertIcon(iconRes: Int?) =
@@ -210,29 +201,3 @@ private fun AlertIcon(iconRes: Int?) =
     } else {
         null
     }
-
-@Composable
-private fun AlertBodyText(body: String) =
-    Text(
-        text = body,
-        color = MaterialTheme.colors.onBackground,
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.body2
-    )
-
-@Composable
-private fun PositiveButton(onClick: () -> Unit, contentDescription: String) =
-    Button(
-        imageVector = Icons.Default.Check,
-        contentDescription = contentDescription,
-        onClick = onClick
-    )
-
-@Composable
-private fun NegativeButton(onClick: () -> Unit, contentDescription: String) =
-    Button(
-        imageVector = Icons.Default.Close,
-        contentDescription = contentDescription,
-        onClick = onClick,
-        colors = ButtonDefaults.secondaryButtonColors()
-    )

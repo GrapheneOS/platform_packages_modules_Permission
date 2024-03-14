@@ -335,22 +335,29 @@ public class GrantPermissionsActivity extends SettingsActivity
             // If these lists aren't persisted yet, it means we haven't yet divided
             // mRequestedPermissions into restricted-vs-unrestricted, so do so.
             if (mRestrictedRequestedPermissionGroups == null) {
-                String packageName = getCallingPackage();
                 ArraySet<String> restrictedPermGroups = new ArraySet<>();
                 ArrayList<String> unrestrictedPermissions = new ArrayList<>();
 
                 for (String requestedPermission : mRequestedPermissions) {
                     String requestedPermGroup =
                             PermissionMapping.getGroupOfPlatformPermission(requestedPermission);
-                    if (restrictedPermGroups.contains(requestedPermGroup)
-                            || isPermissionEcmRestricted(ecm, requestedPermission, packageName)) {
+                    if (restrictedPermGroups.contains(requestedPermGroup)) {
+                        continue;
+                    }
+                    if (isPermissionEcmRestricted(ecm, requestedPermission, mTargetPackage)) {
                         restrictedPermGroups.add(requestedPermGroup);
                     } else {
                         unrestrictedPermissions.add(requestedPermission);
                     }
                 }
-                mRestrictedRequestedPermissionGroups = new ArrayList<>(restrictedPermGroups);
                 mUnrestrictedRequestedPermissions = unrestrictedPermissions;
+                // If the ECM dialog has already been shown for this app, then we don't want to
+                // show it again. To do this, we'll simply ignore all restricted permission groups.
+                if (wasEcmDialogAlreadyShown(ecm, mTargetPackage)) {
+                    mRestrictedRequestedPermissionGroups = new ArrayList<>();
+                } else {
+                    mRestrictedRequestedPermissionGroups = new ArrayList<>(restrictedPermGroups);
+                }
             }
             // If there are remaining restricted permission groups to process, show the ECM dialog
             // for the next one, then recreate this activity.
@@ -358,7 +365,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                 String nextRestrictedPermissionGroup = mRestrictedRequestedPermissionGroups.remove(
                         0);
                 try {
-                    Intent intent = ecm.createRestrictedSettingDialogIntent(getCallingPackage(),
+                    Intent intent = ecm.createRestrictedSettingDialogIntent(mTargetPackage,
                             nextRestrictedPermissionGroup);
                     startActivityForResult(intent, ECM_REQUEST_CODE);
                     return;
@@ -472,6 +479,15 @@ public class GrantPermissionsActivity extends SettingsActivity
             String requestedPermission, String packageName) {
         try {
             return ecm.isRestricted(packageName, requestedPermission);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    private boolean wasEcmDialogAlreadyShown(EnhancedConfirmationManager ecm,
+            String packageName) {
+        try {
+            return ecm.isClearRestrictionAllowed(packageName);
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

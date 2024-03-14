@@ -23,6 +23,7 @@ import android.app.ecm.EnhancedConfirmationManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Process
 import android.permission.flags.Flags
 import android.platform.test.annotations.AppModeFull
 import android.platform.test.annotations.RequiresFlagsEnabled
@@ -33,6 +34,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -48,6 +50,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val context: Context = instrumentation.targetContext
     private val ecm by lazy { context.getSystemService(EnhancedConfirmationManager::class.java)!! }
+    private val appOpsManager by lazy { context.getSystemService(AppOpsManager::class.java)!! }
 
     @Rule
     @JvmField
@@ -60,6 +63,18 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
         )
         Assume.assumeFalse(context.packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
+    }
+
+    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
+    @Test
+    fun installedAppStartsWithModeDefault() {
+        installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_LATEST)
+        runWithShellPermissionIdentity {
+            assertEquals(
+                getAppEcmState(context, appOpsManager, APP_PACKAGE_NAME),
+                AppOpsManager.MODE_DEFAULT
+            )
+        }
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -95,7 +110,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_LATEST)
         runWithShellPermissionIdentity {
             eventually { assertFalse(ecm.isRestricted(APP_PACKAGE_NAME, PROTECTED_SETTING)) }
-            setAppEcmState(context, APP_PACKAGE_NAME, MODE_ERRORED)
+            setAppEcmState(context, appOpsManager, APP_PACKAGE_NAME, AppOpsManager.MODE_ERRORED)
             eventually { assertTrue(ecm.isRestricted(APP_PACKAGE_NAME, PROTECTED_SETTING)) }
         }
     }
@@ -258,23 +273,39 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
 
         private const val NON_PROTECTED_SETTING = "example_setting_which_is_not_protected"
         private const val PROTECTED_SETTING = "android:bind_accessibility_service"
-        private const val MODE_ERRORED = 2
 
         @Throws(PackageManager.NameNotFoundException::class)
-        private fun setAppEcmState(context: Context, packageName: String, mode: Int) {
-            val appOpsManager = context.getSystemService(AppOpsManager::class.java)!!
+        private fun setAppEcmState(
+            context: Context,
+            appOpsManager: AppOpsManager,
+            packageName: String,
+            mode: Int
+        ) =
             appOpsManager.setMode(
                 AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
-                context.packageManager
-                    .getApplicationInfoAsUser(
-                        packageName,
-                        /* flags */ 0,
-                        android.os.Process.myUserHandle()
-                    )
-                    .uid,
+                getPackageUid(context, packageName),
                 packageName,
                 mode
             )
-        }
+
+        @Throws(PackageManager.NameNotFoundException::class)
+        private fun getAppEcmState(
+            context: Context,
+            appOpsManager: AppOpsManager,
+            packageName: String
+        ) =
+            appOpsManager.noteOpNoThrow(
+                AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
+                getPackageUid(context, packageName),
+                packageName,
+                context.attributionTag,
+                /* message */ null
+            )
+
+        @Throws(PackageManager.NameNotFoundException::class)
+        private fun getPackageUid(context: Context, packageName: String) =
+            context.packageManager
+                .getApplicationInfoAsUser(packageName, /* flags */ 0, Process.myUserHandle())
+                .uid
     }
 }

@@ -1366,7 +1366,7 @@
             <permission name="android.permission.MANAGE_DEVICE_POLICY_BLOCK_UNINSTALL" minSdkVersion="35" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_CAMERA_TOGGLE" minSdkVersion="35" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_MICROPHONE_TOGGLE" minSdkVersion="35" />
-            <permission name="android.permission.MANAGE_DEVICE_POLICY_THEFT_DETECTION" minSdkVersion="35" />
+            <permission name="android.permission.QUERY_DEVICE_STOLEN_STATE" minSdkVersion="35" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_AUDIT_LOGGING" minSdkVersion="35" />
         </permissions>
     </role>

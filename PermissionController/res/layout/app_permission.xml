@@ -83,10 +83,17 @@
                     android:id="@+id/permission_message"
                     style="@style/AppPermissionMessage" />
 
-                <RadioButton
-                    android:id="@+id/allow_radio_button"
-                    android:text="@string/app_permission_button_allow"
-                    style="@style/AppPermissionRadioButton" />
+                <FrameLayout
+                    android:id="@+id/allow_radio_button_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RadioButton
+                        android:id="@+id/allow_radio_button"
+                        android:text="@string/app_permission_button_allow"
+                        android:clickable="false"
+                        android:focusable="false"
+                        style="@style/AppPermissionRadioButton" />
+                </FrameLayout>
 
                 <RadioButton
                     android:id="@+id/allow_always_radio_button"

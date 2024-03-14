@@ -118,6 +118,8 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
         const val ALLOW_ALWAYS_RADIO_BUTTON =
             "com.android.permissioncontroller:id/allow_always_radio_button"
+        const val ALLOW_RADIO_BUTTON_FRAME =
+            "com.android.permissioncontroller:id/allow_radio_button_frame"
         const val ALLOW_RADIO_BUTTON = "com.android.permissioncontroller:id/allow_radio_button"
         const val ALLOW_FOREGROUND_RADIO_BUTTON =
             "com.android.permissioncontroller:id/allow_foreground_only_radio_button"
@@ -244,6 +246,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             android.Manifest.permission.READ_CALENDAR to "@android:string/permgrouplab_calendar",
             android.Manifest.permission.WRITE_CALENDAR to "@android:string/permgrouplab_calendar",
             // SMS
+            android.Manifest.permission_group.SMS to "@android:string/permgrouplab_sms",
             android.Manifest.permission.SEND_SMS to "@android:string/permgrouplab_sms",
             android.Manifest.permission.RECEIVE_SMS to "@android:string/permgrouplab_sms",
             android.Manifest.permission.READ_SMS to "@android:string/permgrouplab_sms",
@@ -263,6 +266,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             android.Manifest.permission.ACCESS_BACKGROUND_LOCATION to
                 "@android:string/permgrouplab_location",
             // Phone
+            android.Manifest.permission_group.PHONE to "@android:string/permgrouplab_phone",
             android.Manifest.permission.READ_PHONE_STATE to "@android:string/permgrouplab_phone",
             android.Manifest.permission.CALL_PHONE to "@android:string/permgrouplab_phone",
             "android.permission.ACCESS_IMS_CALL_SERVICE" to "@android:string/permgrouplab_phone",
