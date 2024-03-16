@@ -183,9 +183,9 @@ class PermissionUsageDetailsViewModelLegacy(
     private fun extractAppPermissionTimelineUsagesForGroup(
         appPermissionUsages: List<AppPermissionUsage>,
         group: String
-    ): List<AppPermissionTimelineUsage> =
-        appPermissionUsages
-            .filter { !Utils.getExemptedPackages(roleManager).contains(it.packageName) }
+    ): List<AppPermissionTimelineUsage> {
+        val exemptedPackages = Utils.getExemptedPackages(roleManager)
+        return appPermissionUsages.filter { !exemptedPackages.contains(it.packageName) }
             .map { appPermissionUsage ->
                 getAppPermissionTimelineUsages(
                     appPermissionUsage.app,
@@ -193,6 +193,7 @@ class PermissionUsageDetailsViewModelLegacy(
                 )
             }
             .flatten()
+    }
 
     /** Returns whether the show/hide system toggle should be displayed in the UI. */
     private fun shouldDisplayShowSystemToggle(

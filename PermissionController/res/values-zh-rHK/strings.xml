@@ -197,6 +197,8 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"關閉精確位置後，應用程式可存取你的概略位置"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>權限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"這個應用程式的<xliff:g id="PERM">%1$s</xliff:g>存取權"</string>
+    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
+    <skip />
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看擁有此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示「Google 助理」麥克風使用情況"</string>
@@ -254,6 +256,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"允許管理所有檔案"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都詢問"</string>
     <string name="denied_header" msgid="903209608358177654">"不允許"</string>
+    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
+    <skip />
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"顯示更多可存取所有檔案的應用程式"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# 小時}other{# 小時}}"</string>

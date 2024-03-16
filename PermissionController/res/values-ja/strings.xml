@@ -197,6 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"正確な位置情報がオフの場合、アプリはおおよその位置情報にアクセスできます"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>の権限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"このアプリによる<xliff:g id="PERM">%1$s</xliff:g>へのアクセス"</string>
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g> でこのアプリに <xliff:g id="PERM">%1$s</xliff:g> へのアクセス権が付与されています"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"「<xliff:g id="APP">%1$s</xliff:g>」アプリの権限をすべて表示"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"この権限があるアプリをすべて表示"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"アシスタントのマイクの使用を表示"</string>
@@ -254,6 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
     <string name="denied_header" msgid="903209608358177654">"許可しない"</string>
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g>（<xliff:g id="DEVICE_NAME">%2$s</xliff:g>）"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"すべてのファイルにアクセスできるアプリをもっと見る"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 日}other{# 日}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# 時間}other{# 時間}}"</string>

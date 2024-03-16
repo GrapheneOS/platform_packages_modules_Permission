@@ -197,6 +197,8 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Якщо вимкнено доступ до точного місцезнаходження, додатки можуть отримувати дані про приблизне"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Дозвіл \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: доступ для цього додатка"</string>
+    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
+    <skip />
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Переглянути всі дозволи додатка <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Переглянути всі додатки з цим дозволом"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показати статус мікрофона Асистента"</string>
@@ -254,6 +256,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Можуть керувати всіма файлами"</string>
     <string name="ask_header" msgid="2633816846459944376">"Запитувати щоразу"</string>
     <string name="denied_header" msgid="903209608358177654">"Заборонено"</string>
+    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
+    <skip />
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Переглянути інші додатки, які мають доступ до всіх файлів"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 день}one{# день}few{# дні}many{# днів}other{# дня}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# година}one{# година}few{# години}many{# годин}other{# години}}"</string>

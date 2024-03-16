@@ -197,6 +197,8 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wenn der genaue Standort deaktiviert ist, können Apps auf deinen ungefähren Standort zugreifen"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Berechtigung: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dieser App Zugriff auf <xliff:g id="PERM">%1$s</xliff:g> erlauben?"</string>
+    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
+    <skip />
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle Berechtigungen der App „<xliff:g id="APP">%1$s</xliff:g>“ anzeigen"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle Apps mit dieser Berechtigung anzeigen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Nutzung der Berechtigung \"Mikrofon\" für Assistant anzeigen"</string>
@@ -254,6 +256,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Verwalten aller Dateien zugelassen"</string>
     <string name="ask_header" msgid="2633816846459944376">"Jedes Mal fragen"</string>
     <string name="denied_header" msgid="903209608358177654">"Nicht zugelassen"</string>
+    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
+    <skip />
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Weitere Apps anzeigen, die auf alle Dateien zugreifen können"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 Tag}other{# Tage}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# Stunde}other{# Stunden}}"</string>

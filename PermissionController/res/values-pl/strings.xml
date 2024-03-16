@@ -197,6 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kiedy dokładna lokalizacja jest wyłączona, aplikacje mają dostęp do Twojej przybliżonej lokalizacji"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – dostęp"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dostęp tej aplikacji do: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"Aplikacja ma przyznane uprawnienie <xliff:g id="PERM">%1$s</xliff:g> na tym urządzeniu: <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobacz wszystkie uprawnienia aplikacji <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Wyświetl wszystkie aplikacje z tym uprawnieniem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Pokaż użycie mikrofonu w Asystencie"</string>
@@ -254,6 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Zezwolono na zarządzanie wszystkimi plikami"</string>
     <string name="ask_header" msgid="2633816846459944376">"Zawsze pytaj"</string>
     <string name="denied_header" msgid="903209608358177654">"Nie mają dostępu"</string>
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g> na tym urządzeniu: <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Zobacz więcej aplikacji z dostępem do wszystkich plików"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dzień}few{# dni}many{# dni}other{# dnia}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# godzina}few{# godziny}many{# godzin}other{# godziny}}"</string>

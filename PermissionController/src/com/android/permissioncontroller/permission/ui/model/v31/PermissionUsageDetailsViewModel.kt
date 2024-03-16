@@ -266,9 +266,8 @@ class PermissionUsageDetailsViewModel(
     private fun List<AppPermissionDiscreteAccessesWithLabel>.filterOutExemptAppPermissions(
         showSystem: Boolean
     ): List<AppPermissionDiscreteAccessesWithLabel> {
-        return this.filter {
-                !Utils.getExemptedPackages(roleManager).contains(it.appPermissionId.packageName)
-            }
+        val exemptedPackages = Utils.getExemptedPackages(roleManager)
+        return filter { !exemptedPackages.contains(it.appPermissionId.packageName) }
             .filter { it.appPermissionId.permissionGroup == permissionGroup }
             .filter { isPermissionRequestedByApp(it.appPermissionId) }
             .filter { showSystem || !isAppPermissionSystem(it.appPermissionId) }

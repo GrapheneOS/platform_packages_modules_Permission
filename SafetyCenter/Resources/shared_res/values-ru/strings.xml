@@ -43,7 +43,7 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{Не удалось проверить параметр}one{Не удалось проверить параметры}few{Не удалось проверить параметры}many{Не удалось проверить параметры}other{Не удалось проверить параметры}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"Действие рабочего профиля приостановлено."</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"Данных пока нет"</string>
-    <string name="notification_channel_group_name" msgid="7155072032524876859">"Защита и конфиденциальность"</string>
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"Безопасность и кон­фи­ден­циаль­ность"</string>
     <string name="notification_channel_name_information" msgid="2966444432152990166">"Рекомендации"</string>
     <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"Предупреждения"</string>
     <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"Важные предупреждения"</string>

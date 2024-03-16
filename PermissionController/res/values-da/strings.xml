@@ -197,6 +197,8 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Når den præcise lokation er slået fra, kan apps få adgang til din omtrentlige lokation"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Tilladelse til <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Adgang til <xliff:g id="PERM">%1$s</xliff:g> for denne app"</string>
+    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
+    <skip />
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tilladelser for <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apps med denne tilladelse"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis brug af Assistent-mikrofonen"</string>
@@ -238,7 +240,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Apps med denne tilladelse kan finde, oprette forbindelse til og fastslå den relative placering af enheder i nærheden"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps med denne tilladelse kan optage lyd"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps med denne tilladelse kan foretage og administrere telefonopkald"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps med denne tilladelse kan få adgang til sensordata om dine livstegn"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps med denne tilladelse kan få adgang til sensordata om dine vitale værdier"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apps med denne tilladelse kan sende og se sms-beskeder"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apps med denne tilladelse har adgang til billeder, medier og filer på din enhed"</string>
     <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Apps med denne tilladelse kan tilgå musik og andre lydfiler på denne enhed"</string>
@@ -254,6 +256,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Har tilladelse til at administrere alle filer"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spørg hver gang"</string>
     <string name="denied_header" msgid="903209608358177654">"Ikke tilladt"</string>
+    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
+    <skip />
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Se flere apps, som kan tilgå alle filer"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}one{# dag}other{# dage}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# time}one{# time}other{# timer}}"</string>
