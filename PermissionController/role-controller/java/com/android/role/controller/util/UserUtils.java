@@ -24,6 +24,8 @@ import android.os.UserManager;
 
 import androidx.annotation.NonNull;
 
+import com.android.modules.utils.build.SdkLevel;
+
 /** Utility class to deal with Android users. */
 public final class UserUtils {
 
@@ -37,7 +39,13 @@ public final class UserUtils {
      * @return whether the user is a profile
      */
     public static boolean isProfile(@NonNull UserHandle user, @NonNull Context context) {
-        return isManagedProfile(user, context) || isCloneProfile(user, context);
+        if (SdkLevel.isAtLeastV()) {
+            Context userContext = getUserContext(context, user);
+            UserManager userUserManager = userContext.getSystemService(UserManager.class);
+            return userUserManager.isProfile();
+        } else {
+            return isManagedProfile(user, context) || isCloneProfile(user, context);
+        }
     }
 
     /**
