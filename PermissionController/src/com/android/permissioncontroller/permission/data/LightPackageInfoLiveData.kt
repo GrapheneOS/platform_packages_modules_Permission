@@ -233,7 +233,7 @@ private constructor(
         val deviceContext = ContextCompat.createDeviceContext(app, deviceId)
 
         for ((idx, permName) in requestedPermissions.withIndex()) {
-            if (isPermissionDeviceAware(permName)) {
+            if (isPermissionDeviceAware(deviceContext, deviceId, permName)) {
                 val result = deviceContext.checkPermission(permName, -1, uid)
 
                 if (result == PackageManager.PERMISSION_GRANTED) {

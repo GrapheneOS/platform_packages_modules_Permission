@@ -283,6 +283,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.android.permissioncontroller.permission.ui.PermissionDialogStreamingBlockedActivity"
+            android:theme="@style/PermissionDialog.FilterTouches"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:enabled="@bool/is_at_least_v">
+        </activity>
+
         <activity android:name="com.android.permissioncontroller.ecm.EnhancedConfirmationDialog"
             android:theme="@style/GrantPermissions.FilterTouches"
             android:excludeFromRecents="true"

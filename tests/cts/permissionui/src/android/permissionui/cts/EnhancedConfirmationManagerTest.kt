@@ -32,11 +32,13 @@ import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
+import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Assume
 import org.junit.Before
@@ -162,16 +164,24 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         installPackageWithInstallSourceFromDownloadedFileAndAllowHardRestrictedPerms(
             APP_APK_NAME_LATEST
         )
+        val permissionAndExpectedGrantResults =
+            arrayOf(
+                GROUP_1_PERMISSION_1_RESTRICTED to false,
+                GROUP_1_PERMISSION_2_RESTRICTED to false
+            )
 
-        requestAppPermissionsAndAssertResult(
-            GROUP_1_PERMISSION_1_RESTRICTED to false,
-            GROUP_1_PERMISSION_2_RESTRICTED to false
-        ) {
+        requestAppPermissionsAndAssertResult(*permissionAndExpectedGrantResults) {
             click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS)
         }
-        runWithShellPermissionIdentity {
-            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
+
+        requestAppPermissionsAndAssertResult(
+            *permissionAndExpectedGrantResults,
+            waitForWindowTransition = false
+        ) {
+            assertNoEcmDialogShown()
         }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -180,18 +190,28 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         installPackageWithInstallSourceFromDownloadedFileAndAllowHardRestrictedPerms(
             APP_APK_NAME_LATEST
         )
+        val permissionAndExpectedGrantResults =
+            arrayOf(
+                GROUP_1_PERMISSION_1_RESTRICTED to false,
+                GROUP_2_PERMISSION_1_RESTRICTED to false
+            )
 
         requestAppPermissionsAndAssertResult(
-            GROUP_1_PERMISSION_1_RESTRICTED to false,
-            GROUP_2_PERMISSION_1_RESTRICTED to false,
+            *permissionAndExpectedGrantResults,
             waitForWindowTransition = false
         ) {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
         }
-        runWithShellPermissionIdentity {
-            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
+
+        requestAppPermissionsAndAssertResult(
+            *permissionAndExpectedGrantResults,
+            waitForWindowTransition = false
+        ) {
+            assertNoEcmDialogShown()
         }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -202,18 +222,25 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         )
 
         requestAppPermissionsAndAssertResult(
-            GROUP_3_PERMISSION_1_UNRESTRICTED to true,
+            GROUP_3_PERMISSION_1_UNRESTRICTED to false,
             GROUP_2_PERMISSION_1_RESTRICTED to false,
-            GROUP_3_PERMISSION_2_UNRESTRICTED to true,
+            GROUP_3_PERMISSION_2_UNRESTRICTED to false,
             GROUP_2_PERMISSION_2_RESTRICTED to false,
             waitForWindowTransition = false
         ) {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
+            doAndWaitForWindowTransition { clickPermissionRequestDenyButton() }
+        }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
+
+        requestAppPermissionsAndAssertResult(
+            GROUP_3_PERMISSION_1_UNRESTRICTED to true,
+            GROUP_3_PERMISSION_2_UNRESTRICTED to true,
+            waitForWindowTransition = false
+        ) {
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
-        runWithShellPermissionIdentity {
-            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
-        }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -233,9 +260,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
-        runWithShellPermissionIdentity {
-            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
-        }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -255,9 +280,18 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
             doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
         }
-        runWithShellPermissionIdentity {
-            assertTrue(ecm.isClearRestrictionAllowed(APP_PACKAGE_NAME))
-        }
+        assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
+    }
+
+    private fun isClearRestrictionAllowed(packageName: String) = callWithShellPermissionIdentity {
+        ecm.isClearRestrictionAllowed(packageName)
+    }
+
+    private fun assertNoEcmDialogShown() {
+        assertNull(
+            "expected to not see dialog",
+            waitFindObjectOrNull(By.res(ALERT_DIALOG_OK_BUTTON), UNEXPECTED_TIMEOUT_MILLIS.toLong())
+        )
     }
 
     companion object {

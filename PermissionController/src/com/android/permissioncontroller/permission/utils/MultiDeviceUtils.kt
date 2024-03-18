@@ -7,7 +7,7 @@ import android.os.Build
 import android.provider.Settings
 import androidx.annotation.ChecksSdkIntAtLeast
 import com.android.modules.utils.build.SdkLevel
-import com.android.permission.flags.Flags
+import com.android.permissioncontroller.DeviceUtils
 
 object MultiDeviceUtils {
     const val DEFAULT_REMOTE_DEVICE_NAME = "remote device"
@@ -21,13 +21,32 @@ object MultiDeviceUtils {
         setOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
 
     @JvmStatic
-    fun isPermissionDeviceAware(permission: String): Boolean =
-        permission in DEVICE_AWARE_PERMISSIONS
+    fun isDeviceAwarePermissionSupported(context: Context): Boolean =
+        SdkLevel.isAtLeastV() &&
+            !(DeviceUtils.isTelevision(context) ||
+                DeviceUtils.isAuto(context) ||
+                DeviceUtils.isWear(context))
 
     @JvmStatic
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    fun isDeviceAwareGrantFlowEnabled(): Boolean {
-        return SdkLevel.isAtLeastV() && Flags.deviceAwarePermissionGrantEnabled()
+    fun isPermissionDeviceAware(context: Context, deviceId: Int, permission: String): Boolean {
+        if (!SdkLevel.isAtLeastV()) {
+            return false
+        }
+
+        if (permission !in DEVICE_AWARE_PERMISSIONS) {
+            return false
+        }
+
+        val virtualDevice =
+            context.getSystemService(VirtualDeviceManager::class.java)!!.getVirtualDevice(deviceId)
+                ?: return false
+
+        return when (permission) {
+            Manifest.permission.CAMERA -> virtualDevice.hasCustomCameraSupport()
+            Manifest.permission.RECORD_AUDIO -> virtualDevice.hasCustomAudioInputSupport()
+            else -> false
+        }
     }
 
     @JvmStatic

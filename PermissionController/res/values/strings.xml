@@ -1988,4 +1988,10 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="help_url_action_disabled_by_restricted_settings" translatable="false"></string>
 
     <!-- END ENHANCED CONFIRMATION DIALOG -->
+
+    <!-- Title for the warning dialog that shows when permission grant dialog is blocked from streaming to a remote device [CHAR LIMIT=70]-->
+    <string name="permission_grant_dialog_streaming_blocked_title">Permission request suppressed</string>
+
+    <!-- Descriptions for the warning dialog that shows when permission grant dialog is blocked from streaming to a remote device [CHAR LIMIT=200] -->
+    <string name="permission_grant_dialog_streaming_blocked_description">This app is requesting additional permissions, but permissions can’t be granted in a streaming session. Grant the permission on your phone first.</string>
 </resources>

@@ -20,7 +20,6 @@ import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
-import static android.content.Intent.getIntent;
 import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
@@ -37,6 +36,7 @@ import static com.android.permissioncontroller.permission.ui.GrantPermissionsVie
 import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.APP_PERMISSION_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.ECM_REQUEST_CODE;
 import static com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel.PHOTO_PICKER_REQUEST_CODE;
+import static com.android.permissioncontroller.permission.utils.MultiDeviceUtils.isDeviceAwarePermissionSupported;
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
 import android.Manifest;
@@ -50,7 +50,6 @@ import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.permission.flags.Flags;
@@ -68,6 +67,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -222,6 +223,16 @@ public class GrantPermissionsActivity extends SettingsActivity
     /** Which device the permission will affect. Default is the primary device. */
     private int mTargetDeviceId = ContextCompat.DEVICE_ID_DEFAULT;
 
+    private ActivityResultLauncher<Intent> mShowWarningDialog =
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+                        int resultCode = result.getResultCode();
+                        if (resultCode == RESULT_OK) {
+                            finishAfterTransition();
+                        }
+                    });
+
     @Override
     public void onCreate(Bundle icicle) {
         if (DeviceUtils.isAuto(this)) {
@@ -241,7 +252,6 @@ public class GrantPermissionsActivity extends SettingsActivity
             getWindow().addFlags(FLAG_ALT_FOCUSABLE_IM);
         }
 
-        int permissionsSdkLevel;
         if (PackageManager.ACTION_REQUEST_PERMISSIONS_FOR_OTHER.equals(getIntent().getAction())) {
             mIsSystemTriggered = true;
             mTargetPackage = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
@@ -251,9 +261,6 @@ public class GrantPermissionsActivity extends SettingsActivity
                 finishAfterTransition();
                 return;
             }
-            // We don't want to do any filtering in this case.
-            // These calls are coming from the system on behalf of the app.
-            permissionsSdkLevel = Build.VERSION_CODES.CUR_DEVELOPMENT;
         } else {
             // Cache this as this can only read on onCreate, not later.
             mTargetPackage = getCallingPackage();
@@ -265,7 +272,6 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
             try {
                 PackageInfo packageInfo = getPackageManager().getPackageInfo(mTargetPackage, 0);
-                permissionsSdkLevel = packageInfo.applicationInfo.targetSdkVersion;
             } catch (PackageManager.NameNotFoundException e) {
                 Log.e(LOG_TAG, "Unable to get package info for the calling package.", e);
                 finishAfterTransition();
@@ -281,8 +287,49 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         mRequestedPermissions = removeNullOrEmptyPermissions(requestedPermissionsArray);
-        if (mIsSystemTriggered) {
-            mSystemRequestedPermissions.addAll(mRequestedPermissions);
+        mOriginalRequestedPermissions = mRequestedPermissions.toArray(new String[0]);
+
+        // Do validation if permissions are requested for a remote device or the dialog is being
+        // streamed to a remote device.
+        if (isDeviceAwarePermissionSupported(getApplicationContext())) {
+            mTargetDeviceId = getIntent().getIntExtra(
+                    PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID,
+                    ContextCompat.DEVICE_ID_DEFAULT);
+
+            // When the dialog is streamed to a remote device, verify requested permissions are all
+            // device aware and target device is the same as the remote device. Otherwise show a
+            // warning dialog.
+            if (getDeviceId() != ContextCompat.DEVICE_ID_DEFAULT) {
+                boolean showWarningDialog = mTargetDeviceId != getDeviceId();
+
+                for (String permission : mRequestedPermissions) {
+                    if (!MultiDeviceUtils.isPermissionDeviceAware(
+                            getApplicationContext(), mTargetDeviceId, permission)) {
+                        showWarningDialog = true;
+                    }
+                }
+
+                if (showWarningDialog) {
+                    mShowWarningDialog.launch(
+                            new Intent(this, PermissionDialogStreamingBlockedActivity.class));
+                    return;
+                }
+            } else if (mTargetDeviceId != ContextCompat.DEVICE_ID_DEFAULT) {
+                // On the default device, when requested permissions are for a remote device,
+                // filter out non-device aware permissions.
+                for (int i = mRequestedPermissions.size() - 1; i >= 0; i--) {
+                    if (!MultiDeviceUtils.isPermissionDeviceAware(
+                            getApplicationContext(),
+                            mTargetDeviceId,
+                            mRequestedPermissions.get(i))) {
+                        Log.e(
+                                LOG_TAG,
+                                "non-device aware permission is requested for a remote device: "
+                                        + mRequestedPermissions.get(i));
+                        mRequestedPermissions.remove(i);
+                    }
+                }
+            }
         }
 
         if (mRequestedPermissions.isEmpty()) {
@@ -290,35 +337,9 @@ public class GrantPermissionsActivity extends SettingsActivity
             return;
         }
 
-        if (MultiDeviceUtils.isDeviceAwareGrantFlowEnabled()) {
-            mTargetDeviceId =
-                    getIntent()
-                            .getIntExtra(
-                                    PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID,
-                                    ContextCompat.DEVICE_ID_DEFAULT);
+        if (mIsSystemTriggered) {
+            mSystemRequestedPermissions.addAll(mRequestedPermissions);
         }
-
-        // If the permissions requested are for a remote device, check if each permission is device
-        // aware.
-        if (mTargetDeviceId != ContextCompat.DEVICE_ID_DEFAULT) {
-            if (!MultiDeviceUtils.isDeviceAwareGrantFlowEnabled()) {
-                Log.e(LOG_TAG, "targetDeviceId should be the default device if device aware grant"
-                        + " flow is not enabled");
-                finishAfterTransition();
-                return;
-            }
-
-            for (String permission : mRequestedPermissions) {
-                if (!MultiDeviceUtils.isPermissionDeviceAware(permission)) {
-                    Log.e(LOG_TAG, "When target device is external, permission " + permission
-                            + " needs to be device aware.");
-                    finishAfterTransition();
-                    return;
-                }
-            }
-        }
-
-        mOriginalRequestedPermissions = mRequestedPermissions.toArray(new String[0]);
 
         if (SdkLevel.isAtLeastV() && Flags.enhancedConfirmationModeApisEnabled()) {
             EnhancedConfirmationManager ecm = getEnhancedConfirmationManager();

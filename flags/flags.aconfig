@@ -2,14 +2,6 @@ package: "com.android.permission.flags"
 container: "com.android.permission"
 
 flag {
-    name: "device_aware_permission_grant_enabled"
-    is_fixed_read_only: true
-    namespace: "permissions"
-    description: "Enables device aware grant permission flow"
-    bug: "292252664"
-}
-
-flag {
     name: "private_profile_supported"
     namespace: "permissions"
     description: "This flag is used to support private profile in safety center"
