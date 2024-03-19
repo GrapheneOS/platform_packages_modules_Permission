@@ -16,7 +16,6 @@
 
 package com.android.safetycenter.testing
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.content.ComponentName
 import android.content.Context
@@ -176,19 +175,15 @@ class TestNotificationListener : NotificationListenerService() {
             successMessage: String,
             onNotification: (StatusBarNotification) -> Unit = {}
         ) {
-            // Only wait for the notification event and don't wait for all notifications to "settle"
-            // as this notification is auto-cancelled after 10s; which can cause flakyness.
-            val statusBarNotification =
-                (runBlockingWithTimeout {
-                        waitForNotificationEventAsync {
-                            (it is NotificationPosted &&
-                                it.statusBarNotification.notification
-                                    ?.extras
-                                    ?.getString(Notification.EXTRA_TITLE) == successMessage)
-                        }
-                    }
-                        as NotificationPosted)
-                    .statusBarNotification
+            val successNotificationWithChannel =
+                waitForSingleNotificationMatching(
+                    NotificationCharacteristics(
+                        successMessage,
+                        "",
+                        actions = emptyList(),
+                    )
+                )
+            val statusBarNotification = successNotificationWithChannel.statusBarNotification
             onNotification(statusBarNotification)
             // Cancel the notification directly to speed up the tests as it's only auto-cancelled
             // after 10 seconds, and the teardown waits for all notifications to be cancelled to
@@ -256,17 +251,6 @@ class TestNotificationListener : NotificationListenerService() {
                 currentNotifications = getSafetyCenterNotifications()
             }
             return currentNotifications
-        }
-
-        private suspend fun waitForNotificationEventAsync(
-            predicate: (NotificationEvent) -> Boolean
-        ): NotificationEvent {
-            var event: NotificationEvent
-            do {
-                event = safetyCenterNotificationEvents.receive()
-                Log.d(TAG, "Received notification event: $event")
-            } while (!predicate(event))
-            return event
         }
 
         private fun getSafetyCenterNotifications(): List<StatusBarNotificationWithChannel> {
