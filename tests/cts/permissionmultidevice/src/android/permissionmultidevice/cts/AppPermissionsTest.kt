@@ -19,26 +19,30 @@ package android.permissionmultidevice.cts
 import android.Manifest
 import android.app.Instrumentation
 import android.companion.virtual.VirtualDeviceManager
-import android.content.Context
+import android.companion.virtual.VirtualDeviceParams
+import android.companion.virtual.VirtualDeviceParams.DEVICE_POLICY_CUSTOM
+import android.companion.virtual.VirtualDeviceParams.POLICY_TYPE_CAMERA
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import android.os.UserHandle
+import android.permission.PermissionManager
 import android.permission.flags.Flags
 import android.platform.test.annotations.RequiresFlagsEnabled
-import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.provider.Settings
+import android.virtualdevice.cts.common.VirtualDeviceRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
-import androidx.test.uiautomator.UiObject
+import androidx.test.uiautomator.UiObject2
+import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
-import com.android.compatibility.common.util.AdoptShellPermissionsRule
-import com.android.compatibility.common.util.SystemUtil
+import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -50,39 +54,47 @@ class AppPermissionsTest {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val defaultDeviceContext = instrumentation.targetContext
 
-    private lateinit var virtualDevice: VirtualDeviceManager.VirtualDevice
-    private lateinit var virtualDeviceContext: Context
-    private lateinit var persistentDeviceId: String
-    private lateinit var deviceName: String
-
-    @get:Rule(order = 0) var mFakeVirtualDeviceRule = FakeVirtualDeviceRule()
-
-    @get:Rule(order = 1)
-    val mAdoptShellPermissionsRule =
-        AdoptShellPermissionsRule(
-            instrumentation.uiAutomation,
-            Manifest.permission.CREATE_VIRTUAL_DEVICE,
+    @get:Rule
+    var virtualDeviceRule =
+        VirtualDeviceRule.withAdditionalPermissions(
             Manifest.permission.GRANT_RUNTIME_PERMISSIONS,
             Manifest.permission.MANAGE_ONE_TIME_PERMISSION_SESSIONS,
-            Manifest.permission.REVOKE_RUNTIME_PERMISSIONS
+            Manifest.permission.REVOKE_RUNTIME_PERMISSIONS,
+            Manifest.permission.CREATE_VIRTUAL_DEVICE
         )
 
-    @Rule @JvmField val mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
+    private lateinit var persistentDeviceId: String
+    private lateinit var externalDeviceCameraText: String
+    private lateinit var permissionMessage: String
+
+    private val permissionManager =
+        defaultDeviceContext.getSystemService(PermissionManager::class.java)!!
 
     @Before
     fun setup() {
-        virtualDevice = mFakeVirtualDeviceRule.virtualDevice
-        virtualDeviceContext = defaultDeviceContext.createDeviceContext(virtualDevice.deviceId)
-        persistentDeviceId = virtualDevice.persistentDeviceId!!
-        deviceName = mFakeVirtualDeviceRule.deviceDisplayName
-
         PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
+
+        val virtualDeviceManager =
+            defaultDeviceContext.getSystemService(VirtualDeviceManager::class.java)!!
+        val virtualDevice =
+            virtualDeviceRule.createManagedVirtualDevice(
+                VirtualDeviceParams.Builder()
+                    .setDevicePolicy(POLICY_TYPE_CAMERA, DEVICE_POLICY_CUSTOM)
+                    .build()
+            )
+
+        val mDeviceDisplayName =
+            virtualDeviceManager.getVirtualDevice(virtualDevice.deviceId)!!.displayName.toString()
+
+        persistentDeviceId = virtualDevice.persistentDeviceId!!
+        externalDeviceCameraText = "Camera on $mDeviceDisplayName"
+        permissionMessage = "Camera access for this app on $mDeviceDisplayName"
     }
 
     @After
     fun cleanup() {
         PackageManagementUtils.uninstallPackage(APP_PACKAGE_NAME, requireSuccess = false)
-        virtualDevice.close()
+        UiAutomatorUtils2.getUiDevice().pressHome()
     }
 
     @RequiresFlagsEnabled(
@@ -90,67 +102,251 @@ class AppPermissionsTest {
         Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
     )
     @Test
-    fun virtualDevicePermissionGrantTest() {
+    fun externalDevicePermissionGrantTest() {
         grantRunTimePermission()
 
         openAppPermissionsScreen()
 
-        val grantInfoMap = getGrantInfoMap()
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to listOf(externalDeviceCameraText),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera")
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
 
-        val virtualDeviceCameraText = "Camera on $deviceName"
+        clickPermissionItem(externalDeviceCameraText)
 
-        assertEquals(1, grantInfoMap["Allowed"]!!.size)
-        assertEquals(true, grantInfoMap["Allowed"]!!.contains(virtualDeviceCameraText))
+        verifyPermissionMessage()
 
-        assertEquals(1, grantInfoMap["Not allowed"]!!.size)
-        assertEquals(true, grantInfoMap["Not allowed"]!!.contains("Camera"))
+        val radioButtons = getRadioButtons()
+        assertEquals(true, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+    }
 
-        clickPermissionItem(virtualDeviceCameraText)
+    @RequiresFlagsEnabled(
+        Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
+        Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
+    )
+    @Test
+    fun externalDevicePermissionChangeToAskTest() {
+        grantRunTimePermission()
+        openAppPermissionsScreen()
 
-        val foregroundOnlyRadioButton =
-            UiAutomatorUtils2.waitFindObject(By.res(ALLOW_FOREGROUND_ONLY_RADIO_BUTTON))
-        val askRadioButton = UiAutomatorUtils2.waitFindObject(By.res(ASK_RADIO_BUTTON))
-        val denyRadioButton = UiAutomatorUtils2.waitFindObject(By.res(DENY_RADIO_BUTTON))
-        assertEquals(foregroundOnlyRadioButton.isChecked, true)
-        assertEquals(askRadioButton.isChecked, false)
-        assertEquals(denyRadioButton.isChecked, false)
+        clickPermissionItem(externalDeviceCameraText)
+        getRadioButtons()["ASK_RADIO_BUTTON"]!!.click()
+        verifyAskSelection()
+    }
+
+    @RequiresFlagsEnabled(
+        Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
+        Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
+    )
+    @Test
+    fun externalDevicePermissionChangeToDenyTest() {
+        grantRunTimePermission()
+        openAppPermissionsScreen()
+
+        clickPermissionItem(externalDeviceCameraText)
+        getRadioButtons()["DENY_RADIO_BUTTON"]!!.click()
+        verifyDenySelection()
+    }
+
+    @RequiresFlagsEnabled(
+        Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
+        Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
+    )
+    @Test
+    fun externalDevicePermissionChangeToAllowTest() {
+        grantRunTimePermission()
+        openAppPermissionsScreen()
+
+        clickPermissionItem(externalDeviceCameraText)
+        getRadioButtons()["ASK_RADIO_BUTTON"]!!.click()
+        val radioButtons = getRadioButtons()
+        assertEquals(false, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(true, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+
+        radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.click()
+        verifyAllowedSelection()
+    }
+
+    @RequiresFlagsEnabled(
+        Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
+        Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
+    )
+    @Test
+    fun externalDevicePermissionNotDisplayedInitiallyTest() {
+        openAppPermissionsScreen()
+
+        // External device permission does not show initially (until requested)
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to emptyList(),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera")
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
+    }
+
+    @RequiresFlagsEnabled(
+        Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
+        Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED
+    )
+    @Test
+    fun externalDevicePermissionStickyOnGrantTest() {
+        grantRunTimePermission()
+        openAppPermissionsScreen()
+
+        clickPermissionItem(externalDeviceCameraText)
+
+        val radioButtons = getRadioButtons()
+        assertEquals(true, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+
+        radioButtons["DENY_RADIO_BUTTON"]!!.click()
+
+        UiAutomatorUtils2.getUiDevice().pressBack()
+
+        // Verify the permission continue to show (sticky) after revoking, keeps option for users
+        // to change in future
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to emptyList(),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera", externalDeviceCameraText)
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
+    }
+
+    private fun verifyAskSelection() {
+        verifyPermissionMessage()
+
+        val radioButtons = getRadioButtons()
+        assertEquals(false, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(true, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+
+        UiAutomatorUtils2.getUiDevice().pressBack()
+
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to emptyList(),
+                "Ask every time" to listOf(externalDeviceCameraText),
+                "Not allowed" to listOf("Camera")
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
+
+        val permState = getPermState()
+        assertEquals(false, permState[DEVICE_AWARE_PERMISSION]!!.isGranted)
+        assertTrue(
+            permState[DEVICE_AWARE_PERMISSION]!!.flags and
+                PackageManager.FLAG_PERMISSION_ONE_TIME != 0
+        )
+    }
+
+    private fun verifyDenySelection() {
+        verifyPermissionMessage()
+
+        val radioButtons = getRadioButtons()
+        assertEquals(false, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(true, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+
+        UiAutomatorUtils2.getUiDevice().pressBack()
+
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to emptyList(),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera", externalDeviceCameraText)
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
+
+        val permState = getPermState()
+        assertEquals(false, permState[DEVICE_AWARE_PERMISSION]!!.isGranted)
+        assertTrue(
+            permState[DEVICE_AWARE_PERMISSION]!!.flags and
+                PackageManager.FLAG_PERMISSION_USER_SET != 0
+        )
+    }
+
+    private fun verifyAllowedSelection() {
+        verifyPermissionMessage()
+
+        val radioButtons = getRadioButtons()
+        assertEquals(true, radioButtons["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["ASK_RADIO_BUTTON"]!!.isChecked)
+        assertEquals(false, radioButtons["DENY_RADIO_BUTTON"]!!.isChecked)
+
+        UiAutomatorUtils2.getUiDevice().pressBack()
+
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to listOf(externalDeviceCameraText),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera")
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
+
+        val permState = getPermState()
+        assertEquals(true, permState[DEVICE_AWARE_PERMISSION]!!.isGranted)
+        assertTrue(
+            permState[DEVICE_AWARE_PERMISSION]!!.flags and
+                PackageManager.FLAG_PERMISSION_USER_SET != 0
+        )
+    }
+
+    private fun verifyPermissionMessage() {
+        val actualText = UiAutomatorUtils2.waitFindObject(By.res(PERMISSION_MESSAGE_ID)).text
+        assertEquals(permissionMessage, actualText)
     }
 
     private fun getGrantInfoMap(): Map<String, List<String>> {
-        val recyclerView = getAppPermissionsRecyclerView()
-
         val grantInfoMap =
             mapOf(
                 "Allowed" to mutableListOf<String>(),
                 "Ask every time" to mutableListOf(),
-                "Not allowed" to mutableListOf(),
-                "Unused app settings" to mutableListOf(),
-                "Manage app if unused" to mutableListOf()
+                "Not allowed" to mutableListOf()
             )
+        val outOfScopeTitles = setOf("Unused app settings", "Manage app if unused")
 
-        val childItemSelector = UiSelector().resourceId(TITLE)
-        var grantText = ""
+        val titleSelector = UiSelector().resourceId(TITLE)
+        var currentGrantText = ""
 
-        for (i in 0..recyclerView.childCount) {
-            val child = recyclerView.getChild(UiSelector().index(i)).getChild(childItemSelector)
-            if (!child.exists()) {
+        val scrollable = getScrollableRecyclerView()
+
+        // Scrolling to end inorder to have the scrollable object loaded with all child element data
+        // ready to be read. If the scroll happens in the middle of the reading process, it has been
+        // observed that child items will be skipped during the reading (could be a bug). Hence this
+        // solution is to scroll to the bottom in the beginning and be more efficient as well.
+        scrollable.scrollToEnd(1)
+
+        for (i in 0..scrollable.childCount) {
+            val child = scrollable.getChild(UiSelector().index(i))
+            val titleText = child.getChild(titleSelector).text
+            if (outOfScopeTitles.contains(titleText)) {
                 break
             }
-            if (child.text in grantInfoMap) {
-                grantText = child.text
-            } else if (!child.text.startsWith("No permissions")) {
-                grantInfoMap[grantText]!!.add(child.text)
+            if (grantInfoMap.contains(titleText)) {
+                currentGrantText = titleText
+            } else if (!titleText.startsWith("No permissions")) {
+                grantInfoMap[currentGrantText]!!.add(titleText)
             }
         }
         return grantInfoMap
     }
 
-    private fun getAppPermissionsRecyclerView(): UiObject {
-        val uiObject =
-            UiAutomatorUtils2.getUiDevice().findObject(UiSelector().resourceId(RECYCLER_VIEW))
-        uiObject.waitForExists(5000)
-        return uiObject
-    }
+    private fun getRadioButtons(): Map<String, UiObject2> =
+        mapOf(
+            "ALLOW_FOREGROUND_ONLY_RADIO_BUTTON" to
+                UiAutomatorUtils2.waitFindObject(By.res(ALLOW_FOREGROUND_ONLY_RADIO_BUTTON)),
+            "ASK_RADIO_BUTTON" to UiAutomatorUtils2.waitFindObject(By.res(ASK_RADIO_BUTTON)),
+            "DENY_RADIO_BUTTON" to UiAutomatorUtils2.waitFindObject(By.res(DENY_RADIO_BUTTON))
+        )
 
     private fun openAppPermissionsScreen() {
         instrumentation.context.startActivity(
@@ -161,24 +357,24 @@ class AppPermissionsTest {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             }
         )
-        SystemUtil.eventually { UiAutomatorUtils.click(By.text("Permissions")) }
+        eventually { UiAutomatorUtils.click(By.text("Permissions")) }
     }
 
-    private fun clickPermissionItem(permissionItemName: String) {
-        val childItemSelector = UiSelector().resourceId(TITLE)
-        getAppPermissionsRecyclerView().getChild(childItemSelector.text(permissionItemName)).let {
-            it.waitForExists(5000)
-            it.click()
-        }
-    }
+    private fun getScrollableRecyclerView(): UiScrollable =
+        UiScrollable(UiSelector().resourceId(RECYCLER_VIEW))
 
-    private fun grantRunTimePermission() {
-        virtualDeviceContext.packageManager.grantRuntimePermission(
+    private fun clickPermissionItem(permissionItemName: String) =
+        UiAutomatorUtils2.waitFindObject(By.text(permissionItemName)).click()
+
+    private fun grantRunTimePermission() =
+        permissionManager.grantRuntimePermission(
             APP_PACKAGE_NAME,
             DEVICE_AWARE_PERMISSION,
-            UserHandle.of(virtualDeviceContext.userId)
+            persistentDeviceId
         )
-    }
+
+    private fun getPermState(): Map<String, PermissionManager.PermissionState> =
+        permissionManager.getAllPermissionStates(APP_PACKAGE_NAME, persistentDeviceId)
 
     companion object {
         private const val APK_DIRECTORY = "/data/local/tmp/cts-permissionmultidevice"
@@ -195,5 +391,7 @@ class AppPermissionsTest {
             "com.android.permissioncontroller:id/deny_radio_button"
         private const val TITLE = "android:id/title"
         private const val RECYCLER_VIEW = "com.android.permissioncontroller:id/recycler_view"
+        private const val PERMISSION_MESSAGE_ID =
+            "com.android.permissioncontroller:id/permission_message"
     }
 }

@@ -394,6 +394,20 @@
             <item type="string" name="wear_material_compose_caption_3_font_family" />
             <!--END WEAR SPECIFIC FONT STRINGS -->
 
+            <!-- START ENHANCED CONFIRMATION DIALOG -->
+            <item type="style" name="Theme.EnhancedConfirmationDialog" />
+            <item type="style" name="Theme.EnhancedConfirmationDialogFragment" />
+            <item type="style" name="EnhancedConfirmationDialog" />
+            <item type="style" name="EnhancedConfirmationDialogHeader" />
+            <item type="style" name="EnhancedConfirmationDialogIcon" />
+            <item type="style" name="EnhancedConfirmationDialogTitle" />
+            <item type="style" name="EnhancedConfirmationDialogScrollView" />
+            <item type="style" name="EnhancedConfirmationDialogBody" />
+            <item type="style" name="EnhancedConfirmationDialogDesc" />
+            <item type="style" name="EnhancedConfirmationDialogButtonBar" />
+            <item type="style" name="EnhancedConfirmationDialogButton" />
+            <!-- END ENHANCED CONFIRMATION DIALOG -->
+
         </policy>
 
     </overlayable>

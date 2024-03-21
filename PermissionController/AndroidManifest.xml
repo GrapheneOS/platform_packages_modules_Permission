@@ -290,8 +290,8 @@
             android:enabled="@bool/is_at_least_v">
         </activity>
 
-        <activity android:name="com.android.permissioncontroller.ecm.EnhancedConfirmationDialog"
-            android:theme="@style/GrantPermissions.FilterTouches"
+        <activity android:name="com.android.permissioncontroller.ecm.EnhancedConfirmationDialogActivity"
+            android:theme="@style/Theme.EnhancedConfirmationDialog.FilterTouches"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTop"

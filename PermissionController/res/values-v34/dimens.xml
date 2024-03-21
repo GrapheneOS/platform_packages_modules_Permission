@@ -22,11 +22,4 @@
     <dimen name="sc_button_corner_radius_small">4dp</dimen>
     <dimen name="sc_brand_chip_corner_radius">20dp</dimen>
     <dimen name="sc_brand_chip_padding">6dp</dimen>
-
-    <!-- START ENHANCED CONFIRMATION DIALOG -->
-    <dimen name="enhanced_confirmation_dialog_padding">24dp</dimen>
-    <dimen name="enhanced_confirmation_dialog_padding_bottom">32dp</dimen>
-    <dimen name="enhanced_confirmation_dialog_title_bottom_padding">16dp</dimen>
-    <dimen name="enhanced_confirmation_dialog_icon_size">32dp</dimen>
-    <!-- END ENHANCED CONFIRMATION DIALOG -->
 </resources>

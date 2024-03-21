@@ -138,6 +138,27 @@
         <item name="android:filterTouchesWhenObscured">true</item>
     </style>
 
+    <style name="Theme.EnhancedConfirmationDialog.FilterTouches" parent="Theme.EnhancedConfirmationDialog">
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
     <style name="Theme.PermissionController.IncidentReportDialog"
         parent="@style/Theme.DeviceDefault.Dialog.NoActionBar.DayNight" />
+
+    <!-- START ENHANCED CONFIRMATION DIALOG -->
+
+    <style name="Theme.EnhancedConfirmationDialog" parent="@android:style/Theme.DeviceDefault.Dialog.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:alertDialogTheme">@style/Theme.EnhancedConfirmationDialogFragment</item>
+        <item name="android:buttonBarStyle">@style/EnhancedConfirmationDialogButtonBar</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/EnhancedConfirmationDialogButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/EnhancedConfirmationDialogButton</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/EnhancedConfirmationDialogButton</item>
+    </style>
+
+    <style name="Theme.EnhancedConfirmationDialogFragment" parent="@android:style/Theme.DeviceDefault.Dialog.Alert">
+        <item name="android:buttonBarStyle">@style/EnhancedConfirmationDialogButtonBar</item>
+    </style>
+
+    <!-- END ENHANCED CONFIRMATION DIALOG -->
 </resources>

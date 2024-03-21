@@ -33,29 +33,25 @@ import kotlinx.coroutines.Job
 /**
  * LiveData that loads all the external device permissions per package. The permissions will be
  * loaded only if the package has requested the permission. This live data produces the list of
- * {@link VirtualDeviceGrantInfo} that has group name to which permission belongs to, grant state
+ * {@link ExternalDeviceGrantInfo} that has group name to which permission belongs to, grant state
  * and persistentDeviceId
  *
  * @param app The current Application
  * @param packageName The name of the package
  * @param user The user for whom the packageInfo will be defined
  */
-class PackagePermissionsVirtualDeviceLiveData
+class PackagePermissionsExternalDeviceLiveData
 private constructor(private val app: Application, val packageName: String, val user: UserHandle) :
     SmartAsyncMediatorLiveData<
-        List<PackagePermissionsVirtualDeviceLiveData.VirtualDeviceGrantInfo>
+        List<PackagePermissionsExternalDeviceLiveData.ExternalDeviceGrantInfo>
     >() {
     private val permissionManager = app.getSystemService(PermissionManager::class.java)!!
 
-    data class VirtualDeviceGrantInfo(
+    data class ExternalDeviceGrantInfo(
         val groupName: String,
         val permGrantState: AppPermGroupUiInfo.PermGrantState,
         val persistentDeviceId: String
     )
-
-    init {
-        update()
-    }
 
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     override suspend fun loadDataAndPostValue(job: Job) {
@@ -63,24 +59,24 @@ private constructor(private val app: Application, val packageName: String, val u
             return
         }
         val virtualDeviceManager = app.getSystemService(VirtualDeviceManager::class.java)!!
-        val virtualDeviceGrantInfoList =
+        val externalDeviceGrantInfoList =
             virtualDeviceManager.allPersistentDeviceIds
                 .map { getVirtualDeviceGrantInfoList(it) }
                 .toList()
                 .flatten()
-        postValue(virtualDeviceGrantInfoList)
+        postValue(externalDeviceGrantInfoList)
     }
 
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     private fun getVirtualDeviceGrantInfoList(
         persistentDeviceId: String
-    ): List<VirtualDeviceGrantInfo> {
+    ): List<ExternalDeviceGrantInfo> {
         val permissionState =
             permissionManager.getAllPermissionStates(packageName, persistentDeviceId)
         return permissionState.mapNotNull { (permissionName, permissionState) ->
             PermissionMapping.getGroupOfPlatformPermission(permissionName)?.let { groupName ->
                 val grantState = getGrantState(permissionState)
-                VirtualDeviceGrantInfo(groupName, grantState, persistentDeviceId)
+                ExternalDeviceGrantInfo(groupName, grantState, persistentDeviceId)
             }
         }
     }
@@ -93,22 +89,22 @@ private constructor(private val app: Application, val packageName: String, val u
      */
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     private fun getGrantState(permissionState: PermissionState): AppPermGroupUiInfo.PermGrantState =
-        if (permissionState.flags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0) {
-            AppPermGroupUiInfo.PermGrantState.PERMS_ASK
-        } else if (permissionState.isGranted) {
+        if (permissionState.isGranted) {
             AppPermGroupUiInfo.PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
+        } else if (permissionState.flags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0) {
+            AppPermGroupUiInfo.PermGrantState.PERMS_ASK
         } else {
             AppPermGroupUiInfo.PermGrantState.PERMS_DENIED
         }
 
     companion object :
         DataRepositoryForPackage<
-            Pair<String, UserHandle>, PackagePermissionsVirtualDeviceLiveData
+            Pair<String, UserHandle>, PackagePermissionsExternalDeviceLiveData
         >() {
         override fun newValue(
             key: Pair<String, UserHandle>
-        ): PackagePermissionsVirtualDeviceLiveData {
-            return PackagePermissionsVirtualDeviceLiveData(
+        ): PackagePermissionsExternalDeviceLiveData {
+            return PackagePermissionsExternalDeviceLiveData(
                 PermissionControllerApplication.get(),
                 key.first,
                 key.second

@@ -1297,4 +1297,71 @@
 
     <!-- END WARNING BANNER -->
 
+    <!-- START ENHANCED CONFIRMATION DIALOG -->
+
+    <style name="EnhancedConfirmationDialog">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogIcon">
+        <item name="android:src">@drawable/ic_safety_center_shield</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">?android:attr/colorAccent</item>
+        <item name="android:contentDescription">@null</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogTitle" parent="@android:style/TextAppearance.Material.Headline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogScrollView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">false</item>
+    </style>
+    <style name="EnhancedConfirmationDialogBody">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="EnhancedConfirmationDialogDesc" parent="@android:style/TextAppearance.Material.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">google-sans-text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogButtonBar">
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="EnhancedConfirmationDialogButton">
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <!-- END ENHANCED CONFIRMATION DIALOG -->
 </resources>

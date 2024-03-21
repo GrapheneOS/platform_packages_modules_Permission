@@ -28,6 +28,10 @@ object MultiDeviceUtils {
                 DeviceUtils.isWear(context))
 
     @JvmStatic
+    fun isPermissionDeviceAware(permission: String): Boolean =
+        permission in DEVICE_AWARE_PERMISSIONS
+
+    @JvmStatic
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     fun isPermissionDeviceAware(context: Context, deviceId: Int, permission: String): Boolean {
         if (!SdkLevel.isAtLeastV()) {
@@ -85,7 +89,7 @@ object MultiDeviceUtils {
         }
         val vdm: VirtualDeviceManager =
             context.getSystemService(VirtualDeviceManager::class.java)
-                ?: throw RuntimeException("Device manager not found")
+                ?: throw RuntimeException("VirtualDeviceManager not found")
         val deviceName =
             vdm.getDisplayNameForPersistentDeviceId(persistentDeviceId)
                 ?: DEFAULT_REMOTE_DEVICE_NAME

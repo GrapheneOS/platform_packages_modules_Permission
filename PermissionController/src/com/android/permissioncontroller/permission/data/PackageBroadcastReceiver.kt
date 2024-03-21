@@ -162,7 +162,7 @@ object PackageBroadcastReceiver : BroadcastReceiver() {
             LightPackageInfoLiveData.invalidateAllForPackage(packageName)
             PermStateLiveData.invalidateAllForPackage(packageName)
             PackagePermissionsLiveData.invalidateAllForPackage(packageName)
-            PackagePermissionsVirtualDeviceLiveData.invalidateAllForPackage(packageName)
+            PackagePermissionsExternalDeviceLiveData.invalidateAllForPackage(packageName)
             HibernationSettingStateLiveData.invalidateAllForPackage(packageName)
             LightAppPermGroupLiveData.invalidateAllForPackage(packageName)
             AppPermGroupUiInfoLiveData.invalidateAllForPackage(packageName)

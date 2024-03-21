@@ -42,9 +42,9 @@ import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveDa
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
+import com.android.permissioncontroller.permission.data.PackagePermissionsExternalDeviceLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
-import com.android.permissioncontroller.permission.data.PackagePermissionsVirtualDeviceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
@@ -126,8 +126,8 @@ class AppPermissionGroupsViewModel(
     private val packagePermsLiveData = PackagePermissionsLiveData[packageName, user]
     private val appPermGroupUiInfoLiveDatas = mutableMapOf<String, AppPermGroupUiInfoLiveData>()
     private val fullStoragePermsLiveData = FullStoragePermissionAppsLiveData
-    private val packagePermsVirtualDeviceLiveData =
-        PackagePermissionsVirtualDeviceLiveData[packageName, user]
+    private val packagePermsExternalDeviceLiveData =
+        PackagePermissionsExternalDeviceLiveData[packageName, user]
 
     /**
      * LiveData whose data is a map of grant category (either allowed or denied) to a list of
@@ -145,6 +145,7 @@ class AppPermissionGroupsViewModel(
                     removeSource(autoRevokeLiveData)
                     update()
                 }
+                addSource(packagePermsExternalDeviceLiveData) { update() }
                 update()
             }
 
@@ -238,12 +239,12 @@ class AppPermissionGroupsViewModel(
                     }
                 }
 
-                packagePermsVirtualDeviceLiveData.value?.forEach { virtualDeviceGrantInfo ->
-                    val groupName = virtualDeviceGrantInfo.groupName
+                packagePermsExternalDeviceLiveData.value?.forEach { externalDeviceGrantInfo ->
+                    val groupName = externalDeviceGrantInfo.groupName
                     val isSystem =
                         PermissionMapping.getPlatformPermissionGroups().contains(groupName)
-                    val persistentDeviceId = virtualDeviceGrantInfo.persistentDeviceId
-                    when (virtualDeviceGrantInfo.permGrantState) {
+                    val persistentDeviceId = externalDeviceGrantInfo.persistentDeviceId
+                    when (externalDeviceGrantInfo.permGrantState) {
                         PermGrantState.PERMS_ALLOWED -> {
                             groupGrantStates[Category.ALLOWED]!!.add(
                                 GroupUiInfo(

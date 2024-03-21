@@ -370,16 +370,4 @@
     </style>
 
     <!-- END SAFETY CENTER SUBPAGE -->
-
-    <!-- START ENHANCED CONFIRMATION DIALOG -->
-
-    <style name="TextAppearance.EnhancedConfirmationDialogHeadline"
-        parent="@android:style/TextAppearance.DeviceDefault.Headline">
-    </style>
-
-    <style name="TextAppearance.EnhancedConfirmationDialogMessage"
-        parent="@android:style/TextAppearance.DeviceDefault">
-    </style>
-
-    <!-- END ENHANCED CONFIRMATION DIALOG -->
 </resources>
