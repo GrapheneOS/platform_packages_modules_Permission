@@ -107,6 +107,11 @@
 
     <style name="Theme.DeviceDefault.Dialog.NoActionBar.DayNight" parent="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
 
+    <!--
+        TODO(b/309578419): Make activities handle insets properly and then remove this.
+    -->
+    <style name="OptOutEdgeToEdgeEnforcement" />
+
 
 <!-- Do not allow OEMs to overlay these themes.
  Must Guarantee that filterTouches is set for these activities -->

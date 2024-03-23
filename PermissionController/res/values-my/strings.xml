@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"နေရာအတိအကျကို ပိတ်ထားသည့်အခါ အက်ပ်များက သင်၏တည်နေရာခန့်မှန်းခြေကို သုံးနိုင်သည်"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ခွင့်ပြုချက်"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ဤအက်ပ်အတွက် <xliff:g id="PERM">%1$s</xliff:g> အသုံးပြုခွင့်"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g> တွင် ဤအက်ပ်အတွက် <xliff:g id="PERM">%1$s</xliff:g> သုံးခွင့်"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ခွင့်ပြုချက်အားလုံး ကြည့်ရန်"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်အားလုံးကို ကြည့်ရန်"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant မိုက်ကရိုဖုန်း အသုံးပြုမှုကို ပြပါ"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
     <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးရန်"</string>
     <string name="denied_header" msgid="903209608358177654">"ခွင့်ပြုမထားပါ"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g> ရှိ <xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ဖိုင်အားလုံးသုံးနိုင်သည့် နောက်ထပ်အက်ပ်များ ကြည့်ရန်"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# နာရီ}other{# နာရီ}}"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"သင့်လုံခြုံရေးနှင့် ကိုယ်ရေးအချက်အလက်လုံခြုံမှုကို ထိခိုက်စေနိုင်သည့် ကန့်သတ်ဆက်တင်ဖြစ်သော <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ခွင့်ပြုချက်ကို ဤအက်ပ်က တောင်းဆိုထားသည်။ ဤခွင့်ပြုချက်ကို ကန့်သတ်ခြင်းသည် ဤအက်ပ်ကို ရပ်သွားစေနိုင်သည်။"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ပိုမိုလေ့လာရန်"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"နားလည်ပြီ"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

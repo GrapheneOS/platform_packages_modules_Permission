@@ -50,10 +50,15 @@ import java.util.function.Consumer;
 public class RoleControllerManager {
 
     /**
-     * Bundle key for getting legacy fallback disabled roles
+     * Bundle key for the payload of RoleController APIs
      */
-    public static final String KEY_LEGACY_FALLBACK_DISABLED_ROLES =
-            "LEGACY_FALLBACK_DISABLED_ROLES";
+    public static final String KEY_RESULT = RoleControllerManager.class.getName() + ".key.RESULT";
+
+    /**
+     * Bundle key for the error of RoleController APIs
+     */
+    public static final String KEY_EXCEPTION = RoleControllerManager.class.getName()
+            + ".key.EXCEPTION";
 
     private static final String LOG_TAG = RoleControllerManager.class.getSimpleName();
 
@@ -145,9 +150,9 @@ public class RoleControllerManager {
      */
     public void grantDefaultRoles(@NonNull @CallbackExecutor Executor executor,
             @NonNull Consumer<Boolean> callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
-            service.grantDefaultRoles(new RemoteCallback(future::complete));
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
+            service.grantDefaultRoles(createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "grantDefaultRoles", executor, callback);
@@ -160,10 +165,10 @@ public class RoleControllerManager {
      */
     public void onAddRoleHolder(@NonNull String roleName, @NonNull String packageName,
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
             service.onAddRoleHolder(roleName, packageName, flags,
-                    new RemoteCallback(future::complete));
+                    createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "onAddRoleHolder", callback);
@@ -176,10 +181,10 @@ public class RoleControllerManager {
      */
     public void onRemoveRoleHolder(@NonNull String roleName, @NonNull String packageName,
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
             service.onRemoveRoleHolder(roleName, packageName, flags,
-                    new RemoteCallback(future::complete));
+                    createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "onRemoveRoleHolder", callback);
@@ -192,9 +197,9 @@ public class RoleControllerManager {
      */
     public void onClearRoleHolders(@NonNull String roleName,
             @RoleManager.ManageHoldersFlags int flags, @NonNull RemoteCallback callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
-            service.onClearRoleHolders(roleName, flags, new RemoteCallback(future::complete));
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
+            service.onClearRoleHolders(roleName, flags, createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "onClearRoleHolders", callback);
@@ -208,10 +213,10 @@ public class RoleControllerManager {
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     public void isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
             service.isApplicationVisibleForRole(roleName, packageName,
-                    new RemoteCallback(future::complete));
+                    createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "isApplicationVisibleForRole", executor, callback);
@@ -225,9 +230,9 @@ public class RoleControllerManager {
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     public void isRoleVisible(@NonNull String roleName,
             @NonNull @CallbackExecutor Executor executor, @NonNull Consumer<Boolean> callback) {
-        AndroidFuture<Bundle> operation = mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
-            service.isRoleVisible(roleName, new RemoteCallback(future::complete));
+        AndroidFuture<Boolean> operation = mRemoteService.postAsync(service -> {
+            AndroidFuture<Boolean> future = new AndroidFuture<>();
+            service.isRoleVisible(roleName, createBooleanRemoteCallback(future));
             return future;
         });
         propagateCallback(operation, "isRoleVisible", executor, callback);
@@ -241,8 +246,15 @@ public class RoleControllerManager {
     public void getLegacyFallbackDisabledRoles(@NonNull @CallbackExecutor Executor executor,
             @NonNull Consumer<List<String>> callback) {
         mRemoteService.postAsync(service -> {
-            AndroidFuture<Bundle> future = new AndroidFuture<>();
-            service.getLegacyFallbackDisabledRoles(new RemoteCallback(future::complete));
+            AndroidFuture<List<String>> future = new AndroidFuture<>();
+            service.getLegacyFallbackDisabledRoles(new RemoteCallback(result -> {
+                Exception exception = (Exception) result.getSerializable(KEY_EXCEPTION);
+                if (exception != null) {
+                    future.completeExceptionally(exception);
+                } else {
+                    future.complete(result.getStringArrayList(KEY_RESULT));
+                }
+            }));
             return future;
         }).orTimeout(REQUEST_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
                 .whenComplete((res, err) -> executor.execute(() -> {
@@ -253,8 +265,7 @@ public class RoleControllerManager {
                                     err);
                             callback.accept(null);
                         } else {
-                            callback.accept(res.getStringArrayList(
-                                    KEY_LEGACY_FALLBACK_DISABLED_ROLES));
+                            callback.accept(res);
                         }
                     } finally {
                         Binder.restoreCallingIdentity(token);
@@ -262,7 +273,19 @@ public class RoleControllerManager {
                 }));
     }
 
-    private void propagateCallback(AndroidFuture<Bundle> operation, String opName,
+    @NonNull
+    private RemoteCallback createBooleanRemoteCallback(@NonNull AndroidFuture<Boolean> future) {
+        return new RemoteCallback(result -> {
+            Exception exception = (Exception) result.getSerializable(KEY_EXCEPTION);
+            if (exception != null) {
+                future.completeExceptionally(exception);
+            } else {
+                future.complete(result.getBoolean(KEY_RESULT));
+            }
+        });
+    }
+
+    private void propagateCallback(AndroidFuture<Boolean> operation, String opName,
             @CallbackExecutor @NonNull Executor executor,
             Consumer<Boolean> destination) {
         operation.orTimeout(REQUEST_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
@@ -273,7 +296,7 @@ public class RoleControllerManager {
                             Log.e(LOG_TAG, "Error calling " + opName + "()", err);
                             destination.accept(false);
                         } else {
-                            destination.accept(res != null);
+                            destination.accept(res);
                         }
                     } finally {
                         Binder.restoreCallingIdentity(token);
@@ -281,7 +304,7 @@ public class RoleControllerManager {
                 }));
     }
 
-    private void propagateCallback(AndroidFuture<Bundle> operation, String opName,
+    private void propagateCallback(AndroidFuture<Boolean> operation, String opName,
             RemoteCallback destination) {
         operation.orTimeout(REQUEST_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
                 .whenComplete((res, err) -> {
@@ -291,7 +314,7 @@ public class RoleControllerManager {
                             Log.e(LOG_TAG, "Error calling " + opName + "()", err);
                             destination.sendResult(null);
                         } else {
-                            destination.sendResult(res);
+                            destination.sendResult(res ? Bundle.EMPTY : null);
                         }
                     } finally {
                         Binder.restoreCallingIdentity(token);

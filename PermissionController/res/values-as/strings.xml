@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"সঠিক অৱস্থানটো অফ থাকিলে, এপে আপোনাৰ আনুমানিক অৱস্থান এক্সেছ কৰিব পাৰে"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>ৰ অনুমতি"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"এই এপ্‌টোৰ বাবে <xliff:g id="PERM">%1$s</xliff:g>ৰ এক্সেছ"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g>ত এই এপৰ <xliff:g id="PERM">%1$s</xliff:g>ৰ এক্সেছ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"আটাইবোৰ <xliff:g id="APP">%1$s</xliff:g> অনুমতি চাওক"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"এই অনুমতি থকা আটাইবোৰ এপ্ চাওক"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"সহায়ক মাইক্ৰ’ফ’নৰ ব্যৱহাৰ দেখুৱাওক"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"আটাইবোৰ ফাইল পৰিচালনা কৰিবলৈ অনুমতি আছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্ৰতিবাৰতে সোধক"</string>
     <string name="denied_header" msgid="903209608358177654">"অনুমতি নাই"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g>ত <xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"আটাইবোৰ ফাইল এক্সেছ কৰিব পৰা অধিক এপ্‌ চাওক"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{১ দিন}one{# দিন}other{# দিন}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# ঘণ্টা}one{# ঘণ্টা}other{# ঘণ্টা}}"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"এই এপ্‌টোৱে <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ অনুমতি বিচাৰিছে, যিটো হৈছে এটা প্ৰতিবন্ধিত ছেটিং কাৰণ এইটোৱে আপোনাৰ সুৰক্ষা আৰু গোপনীয়তা বিপদাপন্ন কৰিব পাৰে। এই অনুমতিৰ প্ৰতিবন্ধকতাই এই এপ্‌টোক কাম কৰাত বাধা দিব পাৰে।"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"অধিক জানক"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"বুজি পালোঁ"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

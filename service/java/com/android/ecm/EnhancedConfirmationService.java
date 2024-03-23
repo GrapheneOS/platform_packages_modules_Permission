@@ -202,6 +202,8 @@ public class EnhancedConfirmationService extends SystemService {
                     throw new IllegalStateException("Clear restriction attempted but not allowed");
                 }
                 setAppEcmState(packageName, EcmState.ECM_STATE_NOT_GUARDED, userId);
+                EnhancedConfirmationStatsLogUtils.INSTANCE.logRestrictionCleared(
+                        getPackageUid(packageName, userId));
             } catch (NameNotFoundException e) {
                 throw new IllegalArgumentException(e);
             }

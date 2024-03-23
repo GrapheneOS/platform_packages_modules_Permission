@@ -56,6 +56,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
+import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
 import com.android.permissioncontroller.permission.model.Permission;
@@ -742,12 +743,14 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                         "Permission grant result requestId=" + requestId + " callingUid="
                                 + uid + " callingPackage=" + packageName + " permission="
                                 + permName + " isImplicit=false" + " result=" + r);
-
+                boolean isPackageRestrictedByEnhancedConfirmation =
+                        EnhancedConfirmationStatsLogUtils.INSTANCE.isPackageEcmRestricted(this,
+                        packageName, uid);
                 PermissionControllerStatsLog.write(
                         PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED,
                         requestId, uid, packageName, permName, false, r,
                         /* permission_rationale_shown = */ false,
-                        /* TODO: 324254847 use real ECM value */ false);
+                        isPackageRestrictedByEnhancedConfirmation);
             }
         }
     }

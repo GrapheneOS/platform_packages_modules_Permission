@@ -136,7 +136,8 @@ public class RequestRoleActivity extends FragmentActivity {
             return;
         }
 
-        if (PackageUtils.getApplicationInfo(mPackageName, this) == null) {
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(mPackageName, this);
+        if (applicationInfo == null) {
             Log.w(LOG_TAG, "Unknown application: " + mPackageName);
             reportRequestResult(
                     PermissionControllerStatsLog.ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED);
@@ -162,6 +163,18 @@ public class RequestRoleActivity extends FragmentActivity {
                     + " DISALLOW_CONFIG_DEFAULT_APPS, role: " + mRoleName);
             reportRequestResult(PermissionControllerStatsLog
                     .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_USER_RESTRICTION);
+            finish();
+            return;
+        }
+
+        Intent restrictionIntent = role.getApplicationRestrictionIntentAsUser(applicationInfo,
+                Process.myUserHandle(), this);
+        if (restrictionIntent != null) {
+            Log.w(LOG_TAG, "Cannot request role due to enhanced confirmation restriction"
+                    + ", role: " + mRoleName + ", package: " + mPackageName);
+            reportRequestResult(PermissionControllerStatsLog
+                    .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_ENHANCED_CONFIRMATION_RESTRICTION);
+            startActivity(restrictionIntent);
             finish();
             return;
         }

@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"關閉精確位置後，應用程式可存取你的概略位置"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>權限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"這個應用程式的<xliff:g id="PERM">%1$s</xliff:g>存取權"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"此應用程式在<xliff:g id="DEVICE_NAME">%2$s</xliff:g>上的<xliff:g id="PERM">%1$s</xliff:g>存取權"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看擁有此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示「Google 助理」麥克風使用情況"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"允許管理所有檔案"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都詢問"</string>
     <string name="denied_header" msgid="903209608358177654">"不允許"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g>上的<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"顯示更多可存取所有檔案的應用程式"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# 小時}other{# 小時}}"</string>
@@ -470,7 +468,7 @@
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的聯絡人嗎？"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取你&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;上的通訊錄嗎？"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置的位置資訊嗎？"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取你的&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;位置嗎？"</string>
+    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"允許「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」存取&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;的位置嗎？"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"此應用程式目前只有你在使用時才能存取位置資訊"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取此裝置的位置資訊嗎？"</string>
     <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"允許 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 存取你的&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;位置嗎？"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"此應用程式已要求「<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>」權限，開放該權限可能導致使用者的安全性和私隱權面臨風險，因此屬受限設定。限制此權限可能導致應用程式無法運作。"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"瞭解詳情"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"知道了"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

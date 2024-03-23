@@ -468,7 +468,7 @@
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang iyong mga contact?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang iyong mga contact sa &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; mo?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang lokasyon ng device na ito?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang lokasyon ng &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; mo?"</string>
+    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang lokasyon ng &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; mo?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Magkakaroon lang ang app ng access sa lokasyon habang ginagamit mo ang app"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang lokasyon ng device na ito?"</string>
     <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang lokasyon ng &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> mo?"</string>
@@ -665,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Hiningi ng app na ito ang pahintulot na <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, na isang pinaghihigpitang setting dahil puwede nitong mailagay sa panganib ang iyong seguridad at privacy. Kapag pinaghigpitan ang pahintulot na ito, baka mapigilan ang paggana ng app na ito."</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Matuto pa"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

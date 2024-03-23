@@ -16,3 +16,4 @@ rule com.android.safetycenter.pendingintents.** com.android.permission.jarjar.@0
 rule com.android.safetycenter.resources.** com.android.permission.jarjar.@0
 rule com.google.protobuf.** com.android.permission.jarjar.@0
 rule kotlin.** com.android.permission.jarjar.@0
+rule com.android.permissioncontroller.PermissionControllerStatsLog com.android.permission.jarjar.@0

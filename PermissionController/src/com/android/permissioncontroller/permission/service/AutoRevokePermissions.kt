@@ -31,6 +31,7 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
+import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.data.AutoRevokedPackagesLiveData
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
@@ -199,6 +200,12 @@ suspend fun revokeAppPermissions(
 
                     val uid = group.packageInfo.uid
                     for (permName in revocablePermissions) {
+                        val isPackageRestrictedByEnhancedConfirmation =
+                            EnhancedConfirmationStatsLogUtils.isPackageEcmRestricted(
+                                context,
+                                packageName,
+                                uid
+                            )
                         PermissionControllerStatsLog.write(
                             PERMISSION_GRANT_REQUEST_RESULT_REPORTED,
                             sessionId,
@@ -208,7 +215,7 @@ suspend fun revokeAppPermissions(
                             false,
                             SERVER_LOG_ID,
                             /* permission_rationale_shown = */ false,
-                            /* TODO: 324254847 use real ECM value */ false
+                            isPackageRestrictedByEnhancedConfirmation
                         )
                     }
 

@@ -109,6 +109,7 @@ java_sdk_library {
         "safety-center-resources-lib",
         "service-permission-shared",
         "service-permission-statsd",
+        "permissioncontroller-statsd",
         "service-permission-proto-stream",
         "android.permission.flags-aconfig-java",
         "permissions-aconfig-flags-lib",

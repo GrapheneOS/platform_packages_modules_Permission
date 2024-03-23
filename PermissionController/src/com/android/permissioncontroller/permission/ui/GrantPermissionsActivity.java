@@ -40,6 +40,7 @@ import static com.android.permissioncontroller.permission.utils.MultiDeviceUtils
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.ecm.EnhancedConfirmationManager;
@@ -52,6 +53,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.Process;
+import android.os.UserHandle;
 import android.permission.flags.Flags;
 import android.text.Annotation;
 import android.text.SpannableString;
@@ -78,6 +80,7 @@ import androidx.core.util.Preconditions;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
 import com.android.permissioncontroller.permission.ui.model.DenyButton;
 import com.android.permissioncontroller.permission.ui.model.GrantPermissionsViewModel;
@@ -365,16 +368,26 @@ public class GrantPermissionsActivity extends SettingsActivity
                     if (restrictedPermGroups.contains(requestedPermGroup)) {
                         continue;
                     }
-                    if (isPermissionEcmRestricted(ecm, requestedPermission, mTargetPackage)) {
+                    if (requestedPermGroup != null && isPermissionEcmRestricted(ecm,
+                            requestedPermission, mTargetPackage)) {
                         restrictedPermGroups.add(requestedPermGroup);
                     } else {
                         unrestrictedPermissions.add(requestedPermission);
                     }
                 }
                 mUnrestrictedRequestedPermissions = unrestrictedPermissions;
-                // If the ECM dialog has already been shown for this app, then we don't want to
-                // show it again. To do this, we'll simply ignore all restricted permission groups.
-                if (wasEcmDialogAlreadyShown(ecm, mTargetPackage)) {
+                // If there are restricted permissions, and the ECM dialog has already been shown
+                // for this app, then we don't want to show it again. Act as if these restricted
+                // permissions weren't // requested at all, and log that we ignored them.
+                if (!restrictedPermGroups.isEmpty() && wasEcmDialogAlreadyShown(ecm,
+                         mTargetPackage)) {
+                    for (String ignoredPermGroup : restrictedPermGroups) {
+                        EnhancedConfirmationStatsLogUtils.INSTANCE.logDialogResultReported(
+                                getPackageUid(getCallingPackage(), Process.myUserHandle()),
+                                /* settingIdentifier */ ignoredPermGroup,
+                                /* firstShowForApp */ false,
+                                EnhancedConfirmationStatsLogUtils.DialogResult.Unspecified);
+                    }
                     mRestrictedRequestedPermissionGroups = new ArrayList<>();
                 } else {
                     mRestrictedRequestedPermissionGroups = new ArrayList<>(restrictedPermGroups);
@@ -488,6 +501,15 @@ public class GrantPermissionsActivity extends SettingsActivity
                 Utils.getGroupInfo(Manifest.permission_group.STORAGE, this.getApplicationContext());
         if (storageGroupInfo != null) {
             mStoragePermGroupIcon = storageGroupInfo.icon;
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private int getPackageUid(String packageName, UserHandle user) {
+        try {
+            return getPackageManager().getApplicationInfoAsUser(packageName, 0, user).uid;
+        } catch (PackageManager.NameNotFoundException e) {
+            return android.os.Process.INVALID_UID;
         }
     }
 

@@ -156,6 +156,9 @@ public final class ManagePermissionsActivity extends SettingsActivity {
         }
         super.onCreate(savedInstanceState);
 
+        // TODO(b/309578419): Make this activity handle insets properly and then remove this.
+        getTheme().applyStyle(R.style.OptOutEdgeToEdgeEnforcement, /* force */ false);
+
         // If this is not a phone or a watch (which uses the Navigation component), and there
         // is a previous instance, re-use its Fragment instead of making a new one.
         if ((DeviceUtils.isTelevision(this) || DeviceUtils.isAuto(this))

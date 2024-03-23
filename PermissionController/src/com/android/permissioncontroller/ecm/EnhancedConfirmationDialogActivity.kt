@@ -36,6 +36,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils.DialogResult
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
@@ -43,6 +44,12 @@ import com.android.settingslib.HelpUtils
 
 @Keep
 class EnhancedConfirmationDialogActivity : FragmentActivity() {
+    companion object {
+        private const val KEY_WAS_CLEAR_RESTRICTION_ALLOWED = "KEY_WAS_CLEAR_RESTRICTION_ALLOWED"
+    }
+
+    private var wasClearRestrictionAllowed: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!SdkLevel.isAtLeastV() || !Flags.enhancedConfirmationModeApisEnabled()) {
@@ -50,6 +57,8 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
             return
         }
         if (savedInstanceState != null) {
+            wasClearRestrictionAllowed =
+                savedInstanceState.getBoolean(KEY_WAS_CLEAR_RESTRICTION_ALLOWED)
             return
         }
 
@@ -61,7 +70,8 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         require(!packageName.isNullOrEmpty()) { "EXTRA_PACKAGE_NAME cannot be null or empty" }
         require(!settingIdentifier.isNullOrEmpty()) { "EXTRA_SUBJECT cannot be null or empty" }
 
-        setClearRestrictionAllowed(packageName, UserHandle.getUserHandleForUid(uid))
+        wasClearRestrictionAllowed =
+            setClearRestrictionAllowed(packageName, UserHandle.getUserHandleForUid(uid))
 
         val permGroupLabel: CharSequence? = getPermGroupLabelOfPermOrPermGroup(settingIdentifier)
         val dialogFragment =
@@ -78,11 +88,18 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         dialogFragment.show(supportFragmentManager, EnhancedConfirmationDialogFragment.TAG)
     }
 
-    private fun setClearRestrictionAllowed(packageName: String, user: UserHandle) {
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(KEY_WAS_CLEAR_RESTRICTION_ALLOWED, wasClearRestrictionAllowed)
+    }
+
+    private fun setClearRestrictionAllowed(packageName: String, user: UserHandle): Boolean {
         val userContext = createContextAsUser(user, 0)
         val ecm = Utils.getSystemServiceSafe(userContext, EnhancedConfirmationManager::class.java)
         try {
+            val wasClearRestrictionAllowed = ecm.isClearRestrictionAllowed(packageName)
             ecm.setClearRestrictionAllowed(packageName)
+            return wasClearRestrictionAllowed
         } catch (e: PackageManager.NameNotFoundException) {
             throw IllegalArgumentException("unknown package: $packageName")
         }
@@ -96,17 +113,17 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
                 KotlinUtils.getPermGroupLabel(this, permGroup)
             }
 
-    enum class DialogResult {
-        Unspecified,
-        Cancelled,
-        LearnMore,
-        Okay
-    }
-
     private fun onDialogResult(dialogResult: DialogResult) {
+        EnhancedConfirmationStatsLogUtils.logDialogResultReported(
+            uid = intent.getIntExtra(Intent.EXTRA_UID, Process.INVALID_UID),
+            settingIdentifier = intent.getStringExtra(Intent.EXTRA_SUBJECT)!!,
+            firstShowForApp = !wasClearRestrictionAllowed,
+            dialogResult = dialogResult
+        )
+
         setResult(
             RESULT_OK,
-            Intent().apply { putExtra(Intent.EXTRA_RETURN_RESULT, dialogResult.ordinal) }
+            Intent().apply { putExtra(Intent.EXTRA_RETURN_RESULT, dialogResult.statsLogValue) }
         )
         finish()
     }

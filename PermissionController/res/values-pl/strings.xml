@@ -665,4 +665,6 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Ta aplikacja poprosiła o uprawnienie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, które jest ustawieniem z ograniczonym dostępem, ponieważ może zagrozić bezpieczeństwu i prywatności. Ograniczenie tego uprawnienia może uniemożliwić działanie tej aplikacji."</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Więcej informacji"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Prośba o uprawnienia została zablokowana"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ta aplikacja prosi o dodatkowe uprawnienia, ale nie można ich przyznać w trakcie sesji strumieniowania. Najpierw przyznaj te uprawnienia na telefonie."</string>
 </resources>

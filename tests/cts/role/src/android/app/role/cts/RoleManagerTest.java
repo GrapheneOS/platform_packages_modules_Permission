@@ -141,6 +141,8 @@ public class RoleManagerTest {
     private static final boolean sIsWatch = sPackageManager.hasSystemFeature(
             PackageManager.FEATURE_WATCH);
 
+    private static final BySelector ENHANCED_CONFIRMATION_DIALOG_SELECTOR =
+            By.res("com.android.permissioncontroller:id/enhanced_confirmation_dialog_title");
     // TODO(b/327528959): consider using resource selectors for Wear too, once the underlying
     // issue is handled.
     private static final BySelector NEGATIVE_BUTTON_SELECTOR =
@@ -250,18 +252,16 @@ public class RoleManagerTest {
     @Test
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
     @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
-    public void requestRoleAndSelectRestrictedAppThenRestrictedSettingDialog() throws Exception {
+    public void requestRoleThenBlockRequestRoleDialogByRestrictedSettingDialog() throws Exception {
         assumeFalse(sIsWatch || sIsAutomotive || sIsTelevision);
         runWithShellPermissionIdentity(
                 () -> setEnhancedConfirmationRestrictedAppOpMode(sContext, APP_PACKAGE_NAME,
                         AppOpsManager.MODE_ERRORED));
 
         requestRole(ROLE_NAME);
-        waitFindObject(By.text(APP_LABEL).enabled(false))
-                .clickAndWait(Until.newWindow(), TIMEOUT_MILLIS);
-        waitFindObject(By.textContains("Restricted setting"), TIMEOUT_MILLIS);
+        waitFindObject(ENHANCED_CONFIRMATION_DIALOG_SELECTOR, TIMEOUT_MILLIS);
+
         pressBack();
-        respondToRoleRequest(false);
     }
 
     @Test
@@ -688,7 +688,7 @@ public class RoleManagerTest {
         waitFindObject(By.text(APP_LABEL).enabled(false)).clickAndWait(Until.newWindow(),
                 TIMEOUT_MILLIS);
 
-        waitFindObject(By.textContains("Restricted setting"), TIMEOUT_MILLIS);
+        waitFindObject(ENHANCED_CONFIRMATION_DIALOG_SELECTOR, TIMEOUT_MILLIS);
         pressBack();
 
         pressBack();
@@ -1149,8 +1149,12 @@ public class RoleManagerTest {
                 telephonyManager.isEmergencyAssistanceEnabled())) {
             String emergencyAssistancePackageName = callWithShellPermissionIdentity(() ->
                     telephonyManager.getEmergencyAssistancePackageName());
-            assertThat(emergencyRoleHolders).hasSize(1);
-            assertThat(emergencyAssistancePackageName).isEqualTo(emergencyRoleHolders.get(0));
+            if (emergencyRoleHolders.isEmpty()) {
+                assertThat(emergencyAssistancePackageName).isNull();
+            } else {
+                assertThat(emergencyRoleHolders).hasSize(1);
+                assertThat(emergencyAssistancePackageName).isEqualTo(emergencyRoleHolders.get(0));
+            }
         } else {
             assertThrows(IllegalStateException.class, () ->
                     callWithShellPermissionIdentity(() ->

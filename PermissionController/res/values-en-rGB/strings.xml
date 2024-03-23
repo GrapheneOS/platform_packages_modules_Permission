@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"When precise location is off, apps can access your approximate location"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> permission"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> access for this app"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="PERM">%1$s</xliff:g> access for this app on <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"See all <xliff:g id="APP">%1$s</xliff:g> permissions"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"See all apps with this permission"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Show Assistant microphone usage"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Allowed to manage all files"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ask every time"</string>
     <string name="denied_header" msgid="903209608358177654">"Not allowed"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g> on <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"See more apps that can access all files"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 day}other{# days}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# hour}other{# hours}}"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"This app has requested the <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> permission, which is a restricted setting because it can put your security and privacy at risk. Restriction to this permission may prevent this app from working."</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Learn more"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Got it"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

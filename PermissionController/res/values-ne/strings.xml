@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>सम्बन्धी अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"यो एप <xliff:g id="PERM">%1$s</xliff:g> प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"यो एपलाई <xliff:g id="DEVICE_NAME">%2$s</xliff:g> को <xliff:g id="PERM">%1$s</xliff:g> प्रयोग गर्ने अनुमति"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमति हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"सबै फाइल व्यवस्थापन गर्ने अनुमति दिइएको"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक पटक सोधियोस्"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नदिइएका"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g> को <xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"सबै फाइल हेर्ने र प्रयोग गर्ने अनुमति भएका थप एपहरू हेर्नुहोस्"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{१ दिन}other{# दिन}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# घण्टा}other{# घण्टा}}"</string>
@@ -454,14 +452,14 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> डिबग प्रक्रियासम्बन्धी जानकारी अपलोड गर्न चाहन्छ।"</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"डिबग प्रक्रियासम्बन्धी डेटा सेयर गर्ने हो?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"प्रणालीले कुनै समस्या फेला पारेको छ"</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> ले <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g> मा यो यन्त्रबाट लिएको बगको रिपोर्ट अपलोड गर्ने अनुरोध गर्दै छ। बग रिपोर्टमा प्रयोगकर्ताका नाम, स्ठानसम्बन्धी डेटा, डिभाइसका पहिचानकर्ता र नेटवर्कसम्बन्धी जानकारी जस्ता तपाईंको डिभाइसको व्यक्तिगत जानकारी वा अनुप्रयोगले लग गरेको जानकारी समावेश छ। तपाईंलाई यो जानकारी दिँदा फरक पर्दैन जस्तो लाग्ने विश्वसनीय मान्छे वा एपसँग मात्र बग रिपोर्टहरू सेयर गर्नुहोस्। <xliff:g id="APP_NAME_1">%4$s</xliff:g> लाई बग रिपोर्ट अपलोड गर्न दिने हो?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> ले <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g> मा यो यन्त्रबाट लिएको बगको रिपोर्ट अपलोड गर्ने अनुरोध गर्दै छ। बग रिपोर्टमा प्रयोगकर्ताका नाम, स्ठानसम्बन्धी डेटा, डिभाइसका पहिचानकर्ता र नेटवर्कसम्बन्धी जानकारी जस्ता तपाईंको डिभाइसको व्यक्तिगत जानकारी वा एपले लग गरेको जानकारी समावेश छ। तपाईंलाई यो जानकारी दिँदा फरक पर्दैन जस्तो लाग्ने विश्वसनीय मान्छे वा एपसँग मात्र बग रिपोर्टहरू सेयर गर्नुहोस्। <xliff:g id="APP_NAME_1">%4$s</xliff:g> लाई बग रिपोर्ट अपलोड गर्न दिने हो?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> को बगसम्बन्धी रिपोर्ट प्रक्रियामा लैजाने क्रममा त्रुटि भयो। त्यस कारण विस्तृत डिबग प्रक्रियासम्बन्धी डेटा आदान प्रदान गर्ने कार्य अस्वीकार गरिएको छ। व्यवधानका लागि क्षमा गर्नुहोला।"</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"अनुमति दिनुहोस्"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"अनुमति नदिनुहोस्"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"उन्नत सेटिङहरू"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"उन्नत सेटिङहरू"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"प्रणालीका एपको प्रयोगसम्बन्धी जानकारी देखाउनुहोस्"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"प्रणालीका अनुप्रयोगले गर्ने अनुमतिको प्रयोगसम्बन्धी जानकारी स्टाटस बार, ड्यासबोर्ड र अन्यत्र देखाउनुहोस्"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"प्रणालीका एपले गर्ने अनुमतिको प्रयोगसम्बन्धी जानकारी स्टाटस बार, ड्यासबोर्ड र अन्यत्र देखाउनुहोस्"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"निम्न एपको प्रयोगसम्बन्धी जानकारी हाइलाइट गर्नुहोस्"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"सहायक ट्रिगर भएको पत्ता लागेमा देखाउनुहोस्"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज सहायक सक्रिय गर्न माइक्रोफोनको प्रयोग गरिँदा स्टाटस बारमा आइकन देखाउनुहोस्"</string>
@@ -470,7 +468,7 @@
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई कन्ट्याक्ट प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; मा भएका तपाईंका कन्ट्याक्टहरू एक्सेस गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंको &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; को लोकेसन एक्सेस गर्ने अनुमति दिने हो?"</string>
+    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंको &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; को लोकेसन एक्सेस गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तपाईंले एप प्रयोग गरिरहेका बेला मात्र उक्त एपले स्थानमाथि पहुँच राख्न सक्ने छ"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको लोकेसन प्रयोग दिने हो?"</string>
     <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंको &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> को लोकेसन एक्सेस गर्ने अनुमति दिने हो?"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"यो एपले <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> नामक अनुमति मागेको छ। तपाईंको सुरक्षा र गोपनीयता जोखिममा पार्न सक्ने भएकाले यो सेटिङ प्रयोग गर्न प्रतिबन्ध लगाइएको छ। यो अनुमतिमा प्रतिबन्ध लगाइयो भने यो एपले काम नगर्न सक्छ।"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"थप जान्नुहोस्"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"बुझेँ"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

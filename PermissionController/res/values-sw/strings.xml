@@ -197,8 +197,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wakati umezima eneo mahususi, programu zinaweza kufikia eneo lako lililokadiriwa"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Ruhusa ya <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Idhini ya programu hii kufikia <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <!-- no translation found for app_permission_header_with_device_name (7193042925656173271) -->
-    <skip />
+    <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"Ufikaiji wa <xliff:g id="PERM">%1$s</xliff:g> katika programu hii kwenye <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Angalia ruhusa zote za <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Angalia programu zote zenye ruhusa hii"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Onyesha matumizi ya maikrofoni ya mratibu"</string>
@@ -256,8 +255,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Zinazoruhusiwa kudhibiti faili zote"</string>
     <string name="ask_header" msgid="2633816846459944376">"Uliza kila wakati"</string>
     <string name="denied_header" msgid="903209608358177654">"Zisizoruhusiwa"</string>
-    <!-- no translation found for permission_group_name_with_device_name (8798741850536024820) -->
-    <skip />
+    <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g> kwenye <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Angalia programu zaidi zinazoweza kufikia faili zote"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{Siku moja}other{Siku #}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{Saa #}other{Saa #}}"</string>
@@ -667,4 +665,8 @@
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Programu hii imeomba ruhusa ya <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, ambayo ni mipangilio iliyozuiwa kwa sababu inaweza kuweka usalama na faragha yako hatarini. Kuzuiwa kwa ruhusa hii kunaweza kuzuia programu hii isifanye kazi."</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Pata maelezo zaidi"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Nimeelewa"</string>
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <skip />
+    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
+    <skip />
 </resources>

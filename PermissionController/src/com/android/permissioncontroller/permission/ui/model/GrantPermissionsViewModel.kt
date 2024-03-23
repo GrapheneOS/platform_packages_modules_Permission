@@ -68,6 +68,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_GRANTED_ONE_TIME
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_IGNORED
 import com.android.permissioncontroller.auto.DrivingDecisionReminderService
+import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
@@ -1002,6 +1003,12 @@ class GrantPermissionsViewModel(
                 safetyLabelInfoLiveData?.value?.safetyLabel,
                 PermissionMapping.getGroupOfPlatformPermission(permission)
             )
+        val isPackageRestrictedByEnhancedConfirmation =
+            EnhancedConfirmationStatsLogUtils.isPackageEcmRestricted(
+                app,
+                packageName,
+                packageInfo.uid
+            )
 
         Log.i(
             LOG_TAG,
@@ -1010,7 +1017,9 @@ class GrantPermissionsViewModel(
                 "callingPackage=$packageName " +
                 "permission=$permission " +
                 "isImplicit=$isImplicit result=$result " +
-                "isPermissionRationaleShown=$isPermissionRationaleShown"
+                "isPermissionRationaleShown=$isPermissionRationaleShown" +
+                "isPackageRestrictedByEnhancedConfirmation=" +
+                "$isPackageRestrictedByEnhancedConfirmation"
         )
 
         PermissionControllerStatsLog.write(
@@ -1022,7 +1031,7 @@ class GrantPermissionsViewModel(
             isImplicit,
             result,
             isPermissionRationaleShown,
-            /* TODO: 324254847 use real ECM value */ false
+            isPackageRestrictedByEnhancedConfirmation
         )
     }
 

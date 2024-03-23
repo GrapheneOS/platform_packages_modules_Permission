@@ -11,6 +11,7 @@ flag {
 
 flag {
     name: "private_profile_title_api"
+    is_exported: true
     namespace: "permissions"
     description: "This flag is used to guard the private profile title api in safety center"
     bug: "286539356"
