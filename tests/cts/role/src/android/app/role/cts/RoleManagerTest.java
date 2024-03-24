@@ -97,6 +97,8 @@ public class RoleManagerTest {
     private static final long UNEXPECTED_TIMEOUT_MILLIS = 1000;
 
     private static final String ROLE_NAME = RoleManager.ROLE_BROWSER;
+    private static final String ROLE_PHONE_NAME = RoleManager.ROLE_DIALER;
+    private static final String ROLE_SMS_NAME = RoleManager.ROLE_SMS;
     private static final String ROLE_SHORT_LABEL = "Browser app";
 
     private static final String APP_APK_PATH = "/data/local/tmp/cts-role/CtsRoleTestApp.apk";
@@ -258,7 +260,7 @@ public class RoleManagerTest {
                 () -> setEnhancedConfirmationRestrictedAppOpMode(sContext, APP_PACKAGE_NAME,
                         AppOpsManager.MODE_ERRORED));
 
-        requestRole(ROLE_NAME);
+        requestRole(ROLE_SMS_NAME);
         waitFindObject(ENHANCED_CONFIRMATION_DIALOG_SELECTOR, TIMEOUT_MILLIS);
 
         pressBack();
@@ -681,7 +683,7 @@ public class RoleManagerTest {
         runWithShellPermissionIdentity(() -> sContext.startActivity(new Intent(
                 Intent.ACTION_MANAGE_DEFAULT_APP)
                 .addCategory(Intent.CATEGORY_DEFAULT)
-                .putExtra(Intent.EXTRA_ROLE_NAME, ROLE_NAME)
+                .putExtra(Intent.EXTRA_ROLE_NAME, ROLE_PHONE_NAME)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
 

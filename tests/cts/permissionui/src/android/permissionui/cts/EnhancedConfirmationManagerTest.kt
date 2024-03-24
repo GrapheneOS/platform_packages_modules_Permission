@@ -21,6 +21,7 @@ import android.app.AppOpsManager
 import android.app.Instrumentation
 import android.app.ecm.EnhancedConfirmationManager
 import android.content.Context
+import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Process
@@ -53,6 +54,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
     private val context: Context = instrumentation.targetContext
     private val ecm by lazy { context.getSystemService(EnhancedConfirmationManager::class.java)!! }
     private val appOpsManager by lazy { context.getSystemService(AppOpsManager::class.java)!! }
+    private val packageManager by lazy { context.packageManager }
 
     @Rule
     @JvmField
@@ -60,11 +62,11 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
 
     @Before
     fun assumeNotAutoTvOrWear() {
-        Assume.assumeFalse(context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK))
+        Assume.assumeFalse(packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK))
         Assume.assumeFalse(
-            context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
+            packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
         )
-        Assume.assumeFalse(context.packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
+        Assume.assumeFalse(packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -283,6 +285,25 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
 
+    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
+    @Test
+    fun givenPackagesSourceUnspecifiedAndInstallerTargetVersionAtLeastVThenIsRestricted() {
+        val installingApplicationInfo = getApplicationInfoAsUser(context,
+            TEST_INSTALLER_PACKAGE_NAME)
+        assertTrue(installingApplicationInfo.targetSdkVersion >=
+                Build.VERSION_CODES.VANILLA_ICE_CREAM)
+
+        installPackageViaSession(APP_APK_NAME_LATEST)
+
+        val installSource = packageManager.getInstallSourceInfo(APP_PACKAGE_NAME)
+        assertEquals(installSource.installingPackageName, TEST_INSTALLER_PACKAGE_NAME)
+        assertEquals(installSource.packageSource, PackageInstaller.PACKAGE_SOURCE_UNSPECIFIED)
+
+        runWithShellPermissionIdentity {
+            assertTrue(ecm.isRestricted(APP_PACKAGE_NAME, PROTECTED_SETTING))
+        }
+    }
+
     private fun isClearRestrictionAllowed(packageName: String) = callWithShellPermissionIdentity {
         ecm.isClearRestrictionAllowed(packageName)
     }
@@ -338,8 +359,14 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
 
         @Throws(PackageManager.NameNotFoundException::class)
         private fun getPackageUid(context: Context, packageName: String) =
-            context.packageManager
-                .getApplicationInfoAsUser(packageName, /* flags */ 0, Process.myUserHandle())
-                .uid
+            getApplicationInfoAsUser(context, packageName).uid
+
+        @Throws(PackageManager.NameNotFoundException::class)
+        private fun getApplicationInfoAsUser(context: Context, packageName: String) =
+            packageManager.getApplicationInfoAsUser(
+                packageName,
+                /* flags */ 0,
+                Process.myUserHandle()
+            )
     }
 }

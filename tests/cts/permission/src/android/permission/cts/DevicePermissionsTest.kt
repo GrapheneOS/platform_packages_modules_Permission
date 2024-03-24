@@ -28,6 +28,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.FLAG_PERMISSION_ONE_TIME
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
+import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
 import android.content.pm.PackageManager.PERMISSION_DENIED
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -375,6 +376,16 @@ class DevicePermissionsTest {
     @RequiresFlagsEnabled(Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED)
     @Test
     fun testAllPermissionStatesApiGrantForDefaultDevice() {
+        // Setting a flag explicitly so that the permission consistently stays in the state upon
+        // revoke
+        permissionManager.updatePermissionFlags(
+            TEST_PACKAGE_NAME,
+            DEVICE_AWARE_PERMISSION,
+            PERSISTENT_DEVICE_ID_DEFAULT,
+            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED,
+            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
+        )
+
         permissionManager.grantRuntimePermission(
             TEST_PACKAGE_NAME,
             DEVICE_AWARE_PERMISSION,
@@ -405,8 +416,9 @@ class DevicePermissionsTest {
 
         assertThat(
                 permissionManager
-                    .getAllPermissionStates(TEST_PACKAGE_NAME, PERSISTENT_DEVICE_ID_DEFAULT)
-                    .contains(DEVICE_AWARE_PERMISSION)
+                    .getAllPermissionStates(TEST_PACKAGE_NAME, PERSISTENT_DEVICE_ID_DEFAULT)[
+                        DEVICE_AWARE_PERMISSION]!!
+                    .isGranted
             )
             .isFalse()
     }

@@ -295,6 +295,22 @@ class AppPermissionTest : BaseUsePermissionTest() {
         pressBack()
     }
 
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
+    @Test
+    fun installWithUnspecifiedSource_disabledAllowRadioButtonAndIfClickedAndRestrictedSettingDialog_SMSPermGroup() {
+        installPackageViaSession(APP_APK_NAME_LATEST)
+
+        navigateToIndividualPermissionSetting(SMS)
+
+        assertAllowButtonIsDisabledAndRestrictedSettingDialogPoppedUp()
+
+        pressBack()
+
+        pressBack()
+    }
+
     private fun assertAllowButtonIsEnabledAndClickAndChecked() {
         waitFindObject(By.res(ALLOW_RADIO_BUTTON).enabled(true).checked(false))
             .click()
@@ -305,7 +321,7 @@ class AppPermissionTest : BaseUsePermissionTest() {
         waitFindObject(By.res(ALLOW_RADIO_BUTTON).enabled(false))
             .clickAndWait(Until.newWindow(), TIMEOUT_MILLIS)
 
-        waitFindObject(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS)
+        waitFindObject(ENHANCED_CONFIRMATION_DIALOG_SELECTOR, TIMEOUT_MILLIS)
     }
 
     private fun assertAppPermissionRationaleContainerIsVisible(expected: Boolean) {
@@ -314,5 +330,7 @@ class AppPermissionTest : BaseUsePermissionTest() {
 
     companion object {
         private const val PERMISSION_RATIONALE_ENABLED = "permission_rationale_enabled"
+        private val ENHANCED_CONFIRMATION_DIALOG_SELECTOR = By.res(
+            "com.android.permissioncontroller:id/enhanced_confirmation_dialog_title");
     }
 }
