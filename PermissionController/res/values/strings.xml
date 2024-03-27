@@ -1976,17 +1976,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="enhanced_confirmation_dialog_desc">For your security, this setting is currently unavailable.</string>
 
     <!--Title for dialog displayed to tell user that permissions are blocked by setting restrictions [CHAR LIMIT=50] -->
-    <string name="enhanced_confirmation_dialog_title_permission">App was denied access to <xliff:g id="permission_name" example="contacts">%1$s</xliff:g> permission</string>
+    <string name="enhanced_confirmation_dialog_title_permission">App was denied access to <xliff:g id="permission_name" example="contacts">%1$s</xliff:g></string>
     <!--Content for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=NONE] -->
-    <string name="enhanced_confirmation_dialog_desc_permission">Access to this permission can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without this permission.&lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt; Learn how to allow access&lt;/a&gt;</string>
+    <string name="enhanced_confirmation_dialog_desc_permission">The app requested access to a sensitive permission which can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without this restricted permission. &lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt;Learn how to allow access&lt;/a&gt;</string>
 
-    <string name="enhanced_confirmation_dialog_title_role">App was denied access to be <xliff:g id="role_name" example="phone app">%1$s</xliff:g></string>
+    <string name="enhanced_confirmation_dialog_title_role">App was denied access to be default <xliff:g id="role_name" example="phone app">%1$s</xliff:g></string>
     <!--Content for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=NONE] -->
-    <string name="enhanced_confirmation_dialog_desc_role">Access to this permission can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without this permission.&lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt; Learn how to allow access&lt;/a&gt;</string>
+    <string name="enhanced_confirmation_dialog_desc_role">The app requested access to sensitive permissions which can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without these restricted permissions. &lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt;Learn how to allow access&lt;/a&gt;</string>
 
-    <string name="enhanced_confirmation_dialog_title_settings">App was denied access</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default">App was denied access</string>
     <!--Content for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=NONE] -->
-    <string name="enhanced_confirmation_dialog_desc_settings">Access to this permission can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without this permission.&lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt; Learn how to allow access&lt;/a&gt;</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default">Access to this permission can put your personal and financial info at risk.<xliff:g>&lt;br&gt;&lt;br&gt;</xliff:g>It\'s possible the app won\'t work properly without this restricted permission. &lt;a href=&quot;<xliff:g id="learn_more_link">%1$s</xliff:g>&quot;&gt;Learn how to allow access&lt;/a&gt;</string>
 
     <!-- Button label to allow the user to view additional information [CHAR LIMIT=NONE] -->
     <string name="enhanced_confirmation_dialog_learn_more">Learn more</string>

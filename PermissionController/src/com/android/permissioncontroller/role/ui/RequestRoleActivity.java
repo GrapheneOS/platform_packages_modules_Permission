@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.role.ui;
 
+import static com.android.permissioncontroller.Constants.EXTRA_IS_ECM_IN_APP;
+
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
@@ -174,6 +176,7 @@ public class RequestRoleActivity extends FragmentActivity {
                     + ", role: " + mRoleName + ", package: " + mPackageName);
             reportRequestResult(PermissionControllerStatsLog
                     .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_ENHANCED_CONFIRMATION_RESTRICTION);
+            restrictionIntent.putExtra(EXTRA_IS_ECM_IN_APP, true);
             startActivity(restrictionIntent);
             finish();
             return;

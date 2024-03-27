@@ -21,6 +21,7 @@ import android.content.ComponentCallbacks2
 import android.content.res.Configuration
 import androidx.annotation.GuardedBy
 import androidx.annotation.MainThread
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.ContextCompat
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -77,13 +78,20 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
     @MainThread protected abstract fun newValue(key: K): V
 
     /**
-     * Remove LiveData objects with no observer based on the severity of the memory pressure. If
-     * this is a low RAM device, eject all caches always, including upon the UI closing.
-     *
-     * @param level The severity of the current memory pressure
+     * Remove LiveData objects with no observer.
      */
+    // Allow handling for trim levels that are deprecated in newer API versions
+    // but are still supported on older devices that this code ships to.
+    @SuppressWarnings("deprecation")
     override fun onTrimMemory(level: Int) {
         if (isLowMemoryDevice) {
+            trimInactiveData(TIME_THRESHOLD_ALL_NANOS)
+            return
+        }
+
+        if (SdkLevel.isAtLeastU() && level >= ComponentCallbacks2.TRIM_MEMORY_BACKGROUND) {
+            // On UDC+ TRIM_MEMORY_BACKGROUND may be the last callback an app will receive
+            // before it's frozen.
             trimInactiveData(TIME_THRESHOLD_ALL_NANOS)
             return
         }
@@ -102,6 +110,9 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
         )
     }
 
+    // Allow handling for trim levels that are deprecated in newer API versions
+    // but are still supported on older devices that this code ships to.
+    @SuppressWarnings("deprecation")
     override fun onLowMemory() {
         onTrimMemory(ComponentCallbacks2.TRIM_MEMORY_COMPLETE)
     }

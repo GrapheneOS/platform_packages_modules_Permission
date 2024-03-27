@@ -44,7 +44,6 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
     private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
     private val APP_LABEL = "CameraRequestApp"
     private val CAMERA_PREF_LABEL = "Camera"
-    private val REFRESH = "Refresh"
 
     @Before
     fun setup() {
@@ -67,14 +66,8 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
         }
 
         eventually {
-            try {
-                waitFindObject(By.res("android:id/title").textContains(CAMERA_PREF_LABEL)).click()
-            } catch (e: Exception) {
-                waitFindObject(By.textContains(REFRESH)).click()
-                throw e
-            }
+            waitFindObject(By.res("android:id/title").textContains(CAMERA_PREF_LABEL)).click()
         }
-
         waitFindObject(By.textContains(APP_LABEL))
     }
 

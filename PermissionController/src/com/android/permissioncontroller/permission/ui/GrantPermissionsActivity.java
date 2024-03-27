@@ -23,6 +23,7 @@ import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
+import static com.android.permissioncontroller.Constants.EXTRA_IS_ECM_IN_APP;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
@@ -517,6 +518,7 @@ public class GrantPermissionsActivity extends SettingsActivity
             try {
                 Intent intent = ecm.createRestrictedSettingDialogIntent(mTargetPackage,
                         nextRestrictedPermissionGroup);
+                intent.putExtra(EXTRA_IS_ECM_IN_APP, true);
                 startActivityForResult(intent, ECM_REQUEST_CODE);
                 return true;
             } catch (PackageManager.NameNotFoundException e) {

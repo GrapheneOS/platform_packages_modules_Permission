@@ -615,4 +615,9 @@
         android:protectionLevel="signature|privileged"
         android:label="@string/car_permission_label_read_persist_tethering_settings"
         android:description="@string/car_permission_desc_read_persist_tethering_settings" />
+    <permission
+        android:name="android.car.permission.BIND_APP_CARD_PROVIDER"
+        android:protectionLevel="signature|privileged"
+        android:label="@string/car_permission_label_bind_app_card_provider"
+        android:description="@string/car_permission_desc_bind_app_card_provider" />
 </manifest>

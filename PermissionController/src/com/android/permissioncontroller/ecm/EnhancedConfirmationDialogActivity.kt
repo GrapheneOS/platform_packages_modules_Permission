@@ -39,6 +39,7 @@ import androidx.annotation.Keep
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.Constants.EXTRA_IS_ECM_IN_APP
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils.DialogResult
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -71,6 +72,7 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         val uid = intent.getIntExtra(Intent.EXTRA_UID, Process.INVALID_UID)
         val packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME)
         val settingIdentifier = intent.getStringExtra(Intent.EXTRA_SUBJECT)
+        val isEcmInApp = intent.getBooleanExtra(EXTRA_IS_ECM_IN_APP, false)
 
         require(uid != Process.INVALID_UID) { "EXTRA_UID cannot be null or invalid" }
         require(!packageName.isNullOrEmpty()) { "EXTRA_PACKAGE_NAME cannot be null or empty" }
@@ -79,7 +81,7 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         wasClearRestrictionAllowed =
             setClearRestrictionAllowed(packageName, UserHandle.getUserHandleForUid(uid))
 
-        val setting = Setting.fromIdentifier(this, settingIdentifier)
+        val setting = Setting.fromIdentifier(this, settingIdentifier, isEcmInApp)
         val dialogFragment =
             EnhancedConfirmationDialogFragment.newInstance(setting.title, setting.message)
         dialogFragment.show(supportFragmentManager, EnhancedConfirmationDialogFragment.TAG)
@@ -104,8 +106,12 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
 
     private data class Setting(val title: String?, val message: CharSequence?) {
         companion object {
-            fun fromIdentifier(context: Context, settingIdentifier: String): Setting {
-                val settingType = SettingType.fromIdentifier(context, settingIdentifier)
+            fun fromIdentifier(
+                context: Context,
+                settingIdentifier: String,
+                isEcmInApp: Boolean
+            ): Setting {
+                val settingType = SettingType.fromIdentifier(context, settingIdentifier, isEcmInApp)
                 val label =
                     when (settingType) {
                         SettingType.PLATFORM_PERMISSION ->
@@ -145,11 +151,19 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
             R.string.enhanced_confirmation_dialog_title_role,
             R.string.enhanced_confirmation_dialog_desc_role
         ),
-        OTHER(null, null);
+        OTHER(
+            R.string.enhanced_confirmation_dialog_title_settings_default,
+            R.string.enhanced_confirmation_dialog_desc_settings_default
+        );
 
         companion object {
-            fun fromIdentifier(context: Context, settingIdentifier: String) =
-                when {
+            fun fromIdentifier(
+                context: Context,
+                settingIdentifier: String,
+                isEcmInApp: Boolean
+            ): SettingType {
+                if (!isEcmInApp) return SettingType.OTHER
+                return when {
                     PermissionMapping.isRuntimePlatformPermission(settingIdentifier) &&
                         PermissionMapping.getGroupOfPlatformPermission(settingIdentifier) != null ->
                         PLATFORM_PERMISSION
@@ -157,8 +171,9 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
                         PLATFORM_PERMISSION_GROUP
                     settingIdentifier.startsWith("android.app.role.") &&
                         Roles.get(context).containsKey(settingIdentifier) -> ROLE
-                    else -> OTHER
+                    else -> SettingType.OTHER
                 }
+            }
         }
     }
 

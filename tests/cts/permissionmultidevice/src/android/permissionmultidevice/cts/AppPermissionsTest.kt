@@ -40,9 +40,12 @@ import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.UiAutomatorUtils2
+import com.android.modules.utils.build.SdkLevel
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Assume.assumeFalse
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -72,6 +75,11 @@ class AppPermissionsTest {
 
     @Before
     fun setup() {
+        assumeTrue(SdkLevel.isAtLeastV())
+        assumeFalse(PermissionUtils.isAutomotive(defaultDeviceContext))
+        assumeFalse(PermissionUtils.isTv(defaultDeviceContext))
+        assumeFalse(PermissionUtils.isWatch(defaultDeviceContext))
+
         PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
 
         val virtualDeviceManager =

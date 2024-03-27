@@ -276,6 +276,12 @@ public class Constants {
             "com.android.permissioncontroller.extra.SESSION_ID";
 
     /**
+     * Intent extra used to pass if the restriction dialog is triggered in-app.
+     */
+    public static final String EXTRA_IS_ECM_IN_APP =
+            "com.android.permissincontroller.extra.IS_ECM_IN_APP";
+
+    /**
      * Intent extra used to pass privacy source details to safety center.
      */
     public static final String EXTRA_PRIVACY_SOURCE =

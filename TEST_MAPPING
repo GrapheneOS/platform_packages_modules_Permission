@@ -53,6 +53,9 @@
       "name" : "CtsPermissionMultiUserTestCases"
     },
     {
+      "name" : "CtsPermissionMultiDeviceTestCases"
+    },
+    {
       "name": "CtsBackupTestCases",
       "options": [
         {
