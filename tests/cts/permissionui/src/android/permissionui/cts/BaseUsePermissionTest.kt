@@ -670,11 +670,26 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         waitForWindowTransition: Boolean = !isWatch,
         crossinline block: () -> Unit
     ) {
+        var shouldWaitForWindowTransition = waitForWindowTransition
+        // Do not wait for windowTransition after action is performed on auto, when permissions
+        // are being denied. The click deny function explicitly waits for window to transition
+        if (isAutomotive) {
+            var somePermissionsTrue = false
+            // http://go/nl-kt-best-practices#for-loop-vs-foreach
+            for (it in permissionAndExpectedGrantResults) {
+                somePermissionsTrue = somePermissionsTrue || it.second
+            }
+            // When all permissions being requested are to be denied
+            // do not wait for windowTransition
+            if (!somePermissionsTrue) {
+                shouldWaitForWindowTransition = false
+            }
+        }
         val result =
             requestAppPermissions(
                 *permissions,
                 askTwice = askTwice,
-                waitForWindowTransition = waitForWindowTransition,
+                waitForWindowTransition = shouldWaitForWindowTransition,
                 block = block
             )
         assertEquals(
@@ -836,7 +851,11 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRequestDenyButton() {
-        if (isAutomotive || isWatch || isTv) {
+        if (isAutomotive) {
+            clickAndWaitForWindowTransition(
+                By.text(getPermissionControllerString(DENY_BUTTON_TEXT))
+            )
+        } else if (isWatch || isTv) {
             click(By.text(getPermissionControllerString(DENY_BUTTON_TEXT)))
         } else {
             click(By.res(DENY_BUTTON))
@@ -877,7 +896,9 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestDenyAndDontAskAgainButton() {
         if (isAutomotive) {
-            click(By.text(getPermissionControllerString(DENY_AND_DONT_ASK_AGAIN_BUTTON_TEXT)))
+            clickAndWaitForWindowTransition(
+                By.text(getPermissionControllerString(DENY_AND_DONT_ASK_AGAIN_BUTTON_TEXT))
+            )
         } else if (isWatch) {
             click(By.text(getPermissionControllerString(DENY_BUTTON_TEXT)))
         } else {

@@ -24,13 +24,17 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.os.UserHandle
 import android.permission.flags.Flags
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.Keep
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
@@ -41,7 +45,6 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.role.controller.model.Roles
-import com.android.settingslib.HelpUtils
 
 @Keep
 class EnhancedConfirmationDialogActivity : FragmentActivity() {
@@ -50,7 +53,9 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
     }
 
     private var wasClearRestrictionAllowed: Boolean = false
+    private var dialogResult: DialogResult = DialogResult.Cancelled
 
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.VANILLA_ICE_CREAM, codename = "VanillaIceCream")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!SdkLevel.isAtLeastV() || !Flags.enhancedConfirmationModeApisEnabled()) {
@@ -97,7 +102,7 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         }
     }
 
-    private data class Setting(val title: String?, val message: String?) {
+    private data class Setting(val title: String?, val message: CharSequence?) {
         companion object {
             fun fromIdentifier(context: Context, settingIdentifier: String): Setting {
                 val settingType = SettingType.fromIdentifier(context, settingIdentifier)
@@ -111,12 +116,17 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
                         SettingType.PLATFORM_PERMISSION_GROUP ->
                             KotlinUtils.getPermGroupLabel(context, settingIdentifier)
                         SettingType.ROLE ->
-                            context.getString(Roles.get(context)[settingIdentifier]!!.labelResource)
+                            context.getString(
+                                Roles.get(context)[settingIdentifier]!!.shortLabelResource
+                            )
                         SettingType.OTHER -> null
                     }
+                val url =
+                    context.getString(R.string.help_url_action_disabled_by_restricted_settings)
                 return Setting(
                     title = settingType.titleRes?.let { context.getString(it, label) },
-                    message = settingType.messageRes?.let { context.getString(it, label) }
+                    message =
+                        settingType.messageRes?.let { Html.fromHtml(context.getString(it, url), 0) }
                 )
             }
         }
@@ -153,18 +163,24 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
     }
 
     private fun onDialogResult(dialogResult: DialogResult) {
-        EnhancedConfirmationStatsLogUtils.logDialogResultReported(
-            uid = intent.getIntExtra(Intent.EXTRA_UID, Process.INVALID_UID),
-            settingIdentifier = intent.getStringExtra(Intent.EXTRA_SUBJECT)!!,
-            firstShowForApp = !wasClearRestrictionAllowed,
-            dialogResult = dialogResult
-        )
-
+        this.dialogResult = dialogResult
         setResult(
             RESULT_OK,
             Intent().apply { putExtra(Intent.EXTRA_RETURN_RESULT, dialogResult.statsLogValue) }
         )
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (isFinishing) {
+            EnhancedConfirmationStatsLogUtils.logDialogResultReported(
+                uid = intent.getIntExtra(Intent.EXTRA_UID, Process.INVALID_UID),
+                settingIdentifier = intent.getStringExtra(Intent.EXTRA_SUBJECT)!!,
+                firstShowForApp = !wasClearRestrictionAllowed,
+                dialogResult = dialogResult
+            )
+        }
     }
 
     class EnhancedConfirmationDialogFragment() : DialogFragment() {
@@ -173,12 +189,12 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
             private const val KEY_TITLE = "KEY_TITLE"
             private const val KEY_MESSAGE = "KEY_MESSAGE"
 
-            fun newInstance(title: String? = null, message: String? = null) =
+            fun newInstance(title: String? = null, message: CharSequence? = null) =
                 EnhancedConfirmationDialogFragment().apply {
                     arguments =
                         Bundle().apply {
                             putString(KEY_TITLE, title)
-                            putString(KEY_MESSAGE, message)
+                            putCharSequence(KEY_MESSAGE, message)
                         }
                 }
         }
@@ -192,22 +208,12 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
 
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             val title = arguments!!.getString(KEY_TITLE)
-            val message = arguments!!.getString(KEY_MESSAGE)
+            val message = arguments!!.getCharSequence(KEY_MESSAGE)
 
             return AlertDialog.Builder(dialogActivity)
                 .setView(createDialogView(dialogActivity, title, message))
                 .setPositiveButton(R.string.enhanced_confirmation_dialog_ok) { _, _ ->
                     dialogActivity.onDialogResult(DialogResult.Okay)
-                }
-                .setNeutralButton(R.string.enhanced_confirmation_dialog_learn_more) { _, _ ->
-                    startActivity(
-                        HelpUtils.getHelpIntent(
-                            dialogActivity,
-                            getString(R.string.help_url_action_disabled_by_restricted_settings),
-                            dialogActivity.javaClass.simpleName
-                        )
-                    )
-                    dialogActivity.onDialogResult(DialogResult.LearnMore)
                 }
                 .create()
         }
@@ -218,7 +224,11 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         }
 
         @SuppressLint("InflateParams")
-        private fun createDialogView(context: Context, title: String?, message: String?): View =
+        private fun createDialogView(
+            context: Context,
+            title: String?,
+            message: CharSequence?
+        ): View =
             LayoutInflater.from(context)
                 .inflate(R.layout.enhanced_confirmation_dialog, null)
                 .apply {
@@ -226,7 +236,10 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
                         requireViewById<TextView>(R.id.enhanced_confirmation_dialog_title).text = it
                     }
                     message?.let {
-                        requireViewById<TextView>(R.id.enhanced_confirmation_dialog_desc).text = it
+                        val descTextView =
+                            requireViewById<TextView>(R.id.enhanced_confirmation_dialog_desc)
+                        descTextView.text = it
+                        descTextView.movementMethod = LinkMovementMethod.getInstance()
                     }
                 }
     }

@@ -51,6 +51,7 @@ import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.os.UserHandle;
@@ -71,6 +72,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -344,71 +346,8 @@ public class GrantPermissionsActivity extends SettingsActivity
             mSystemRequestedPermissions.addAll(mRequestedPermissions);
         }
 
-        if (SdkLevel.isAtLeastV() && Flags.enhancedConfirmationModeApisEnabled()) {
-            EnhancedConfirmationManager ecm = getEnhancedConfirmationManager();
-
-            // Retrieve ECM-related persisted permission lists
-            if (icicle != null) {
-                mOriginalRequestedPermissions = icicle.getStringArray(
-                        KEY_ORIGINAL_REQUESTED_PERMISSIONS);
-                mRestrictedRequestedPermissionGroups = icicle.getStringArrayList(
-                        KEY_RESTRICTED_REQUESTED_PERMISSIONS);
-                mUnrestrictedRequestedPermissions = icicle.getStringArrayList(
-                        KEY_UNRESTRICTED_REQUESTED_PERMISSIONS);
-            }
-            // If these lists aren't persisted yet, it means we haven't yet divided
-            // mRequestedPermissions into restricted-vs-unrestricted, so do so.
-            if (mRestrictedRequestedPermissionGroups == null) {
-                ArraySet<String> restrictedPermGroups = new ArraySet<>();
-                ArrayList<String> unrestrictedPermissions = new ArrayList<>();
-
-                for (String requestedPermission : mRequestedPermissions) {
-                    String requestedPermGroup =
-                            PermissionMapping.getGroupOfPlatformPermission(requestedPermission);
-                    if (restrictedPermGroups.contains(requestedPermGroup)) {
-                        continue;
-                    }
-                    if (requestedPermGroup != null && isPermissionEcmRestricted(ecm,
-                            requestedPermission, mTargetPackage)) {
-                        restrictedPermGroups.add(requestedPermGroup);
-                    } else {
-                        unrestrictedPermissions.add(requestedPermission);
-                    }
-                }
-                mUnrestrictedRequestedPermissions = unrestrictedPermissions;
-                // If there are restricted permissions, and the ECM dialog has already been shown
-                // for this app, then we don't want to show it again. Act as if these restricted
-                // permissions weren't // requested at all, and log that we ignored them.
-                if (!restrictedPermGroups.isEmpty() && wasEcmDialogAlreadyShown(ecm,
-                         mTargetPackage)) {
-                    for (String ignoredPermGroup : restrictedPermGroups) {
-                        EnhancedConfirmationStatsLogUtils.INSTANCE.logDialogResultReported(
-                                getPackageUid(getCallingPackage(), Process.myUserHandle()),
-                                /* settingIdentifier */ ignoredPermGroup,
-                                /* firstShowForApp */ false,
-                                EnhancedConfirmationStatsLogUtils.DialogResult.Unspecified);
-                    }
-                    mRestrictedRequestedPermissionGroups = new ArrayList<>();
-                } else {
-                    mRestrictedRequestedPermissionGroups = new ArrayList<>(restrictedPermGroups);
-                }
-            }
-            // If there are remaining restricted permission groups to process, show the ECM dialog
-            // for the next one, then recreate this activity.
-            if (!mRestrictedRequestedPermissionGroups.isEmpty()) {
-                String nextRestrictedPermissionGroup = mRestrictedRequestedPermissionGroups.remove(
-                        0);
-                try {
-                    Intent intent = ecm.createRestrictedSettingDialogIntent(mTargetPackage,
-                            nextRestrictedPermissionGroup);
-                    startActivityForResult(intent, ECM_REQUEST_CODE);
-                    return;
-                } catch (PackageManager.NameNotFoundException e) {
-                    mRequestedPermissions = mUnrestrictedRequestedPermissions;
-                }
-            } else {
-                mRequestedPermissions = mUnrestrictedRequestedPermissions;
-            }
+        if (blockRestrictedPermissions(icicle)) {
+            return;
         }
 
         synchronized (sCurrentGrantRequests) {
@@ -504,6 +443,91 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
     }
 
+    /*
+     * Block permissions that are restricted by ECM (Enhanced Confirmation Mode).
+     *
+     * If any requested permissions are restricted, then:
+     *
+     * - Strip them from mRequestedPermissions (so no grant dialog appears for those permissions).
+     * - Group the restricted permissions into permission groups.
+     * - Show the EnhancedConfirmationDialogActivity for each group. Each showing requires a
+     *   cross-activity loop during which GrantPermissionActivity will be recreated.
+     * - Finally, continue processing all non-restricted requested permissions normally
+     *
+     * Returns true if we're going to show the ECM dialog (and therefore GrantPermissionsActivity
+     * will be recreated)
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.VANILLA_ICE_CREAM, codename = "VanillaIceCream")
+    private boolean blockRestrictedPermissions(Bundle icicle) {
+        if (!SdkLevel.isAtLeastV() || !Flags.enhancedConfirmationModeApisEnabled()) {
+            return false;
+        }
+        Context userContext = Utils.getUserContext(this, Process.myUserHandle());
+        EnhancedConfirmationManager ecm = Utils.getSystemServiceSafe(userContext,
+                EnhancedConfirmationManager.class);
+
+        // Retrieve ECM-related persisted permission lists
+        if (icicle != null) {
+            mOriginalRequestedPermissions = icicle.getStringArray(
+                    KEY_ORIGINAL_REQUESTED_PERMISSIONS);
+            mRestrictedRequestedPermissionGroups = icicle.getStringArrayList(
+                    KEY_RESTRICTED_REQUESTED_PERMISSIONS);
+            mUnrestrictedRequestedPermissions = icicle.getStringArrayList(
+                    KEY_UNRESTRICTED_REQUESTED_PERMISSIONS);
+        }
+        // If these lists aren't persisted yet, it means we haven't yet divided
+        // mRequestedPermissions into restricted-vs-unrestricted, so do so.
+        if (mRestrictedRequestedPermissionGroups == null) {
+            ArraySet<String> restrictedPermGroups = new ArraySet<>();
+            ArrayList<String> unrestrictedPermissions = new ArrayList<>();
+
+            for (String requestedPermission : mRequestedPermissions) {
+                String requestedPermGroup = PermissionMapping.getGroupOfPlatformPermission(
+                        requestedPermission);
+                if (restrictedPermGroups.contains(requestedPermGroup)) {
+                    continue;
+                }
+                if (requestedPermGroup != null && isPermissionEcmRestricted(ecm,
+                        requestedPermission, mTargetPackage)) {
+                    restrictedPermGroups.add(requestedPermGroup);
+                } else {
+                    unrestrictedPermissions.add(requestedPermission);
+                }
+            }
+            mUnrestrictedRequestedPermissions = unrestrictedPermissions;
+            // If there are restricted permissions, and the ECM dialog has already been shown
+            // for this app, then we don't want to show it again. Act as if these restricted
+            // permissions weren't // requested at all, and log that we ignored them.
+            if (!restrictedPermGroups.isEmpty() && wasEcmDialogAlreadyShown(ecm, mTargetPackage)) {
+                for (String ignoredPermGroup : restrictedPermGroups) {
+                    EnhancedConfirmationStatsLogUtils.INSTANCE.logDialogResultReported(
+                            getPackageUid(getCallingPackage(), Process.myUserHandle()),
+                            /* settingIdentifier */ ignoredPermGroup, /* firstShowForApp */ false,
+                            EnhancedConfirmationStatsLogUtils.DialogResult.Suppressed);
+                }
+                mRestrictedRequestedPermissionGroups = new ArrayList<>();
+            } else {
+                mRestrictedRequestedPermissionGroups = new ArrayList<>(restrictedPermGroups);
+            }
+        }
+        // If there are remaining restricted permission groups to process, show the ECM dialog
+        // for the next one, then recreate this activity.
+        if (!mRestrictedRequestedPermissionGroups.isEmpty()) {
+            String nextRestrictedPermissionGroup = mRestrictedRequestedPermissionGroups.remove(0);
+            try {
+                Intent intent = ecm.createRestrictedSettingDialogIntent(mTargetPackage,
+                        nextRestrictedPermissionGroup);
+                startActivityForResult(intent, ECM_REQUEST_CODE);
+                return true;
+            } catch (PackageManager.NameNotFoundException e) {
+                mRequestedPermissions = mUnrestrictedRequestedPermissions;
+            }
+        } else {
+            mRequestedPermissions = mUnrestrictedRequestedPermissions;
+        }
+        return false;
+    }
+
     @SuppressLint("MissingPermission")
     private int getPackageUid(String packageName, UserHandle user) {
         try {
@@ -511,11 +535,6 @@ public class GrantPermissionsActivity extends SettingsActivity
         } catch (PackageManager.NameNotFoundException e) {
             return android.os.Process.INVALID_UID;
         }
-    }
-
-    private EnhancedConfirmationManager getEnhancedConfirmationManager() {
-        Context userContext = Utils.getUserContext(this, Process.myUserHandle());
-        return Utils.getSystemServiceSafe(userContext, EnhancedConfirmationManager.class);
     }
 
     private boolean isPermissionEcmRestricted(EnhancedConfirmationManager ecm,

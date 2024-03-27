@@ -29,6 +29,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_CANCELLED
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_LEARN_MORE
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_OK
+import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_SUPPRESSED
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_UNSPECIFIED
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__SETTING_TYPE__SETTING_TYPE_APPOP
 import com.android.permissioncontroller.PermissionControllerStatsLog.ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__SETTING_TYPE__SETTING_TYPE_OTHER
@@ -49,7 +50,8 @@ object EnhancedConfirmationStatsLogUtils {
         Unspecified(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_UNSPECIFIED),
         Cancelled(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_CANCELLED),
         LearnMore(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_LEARN_MORE),
-        Okay(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_OK)
+        Okay(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_OK),
+        Suppressed(ENHANCED_CONFIRMATION_DIALOG_RESULT_REPORTED__RESULT__RESULT_SUPPRESSED)
     }
 
     enum class SettingType(val statsLogValue: Int) {
