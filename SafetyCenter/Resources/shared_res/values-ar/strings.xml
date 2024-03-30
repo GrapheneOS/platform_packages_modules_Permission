@@ -20,7 +20,7 @@
     <string name="scanning_title" msgid="5424849039854311398">"جارٍ الفحص"</string>
     <string name="loading_summary" msgid="3740846439782713910">"جارٍ التحقّق من إعدادات الجهاز…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"كل شيء على ما يرام"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"لم يتم رصد أي مشاكل."</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"لم يتم رصد أي مشاكل"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{الاطّلاع على اقتراح}zero{الاطّلاع على اقتراحات}two{الاطّلاع على اقتراحَين}few{الاطّلاع على اقتراحات}many{الاطّلاع على اقتراحات}other{الاطّلاع على اقتراحات}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{الإجراء الذي تم اتخاذه}zero{الإجراءات التي تم اتخاذها}two{الإجراءان اللذان تم اتخاذهما}few{الإجراءات التي تم اتخاذها}many{الإجراءات التي تم اتخاذها}other{الإجراءات التي تم اتخاذها}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"مراجعة الإعدادات"</string>

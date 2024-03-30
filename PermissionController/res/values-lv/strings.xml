@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jūsu vienreizējā parole ir 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ierobežots iestatījums"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Drošības apsvērumu dēļ šis iestatījums pašlaik nav pieejams."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Atļauja “<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>” ir liegta"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Šī lietotne ir pieprasījusi atļauju “<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>”. Tas ir ierobežotas piekļuves iestatījums, jo var apdraudēt jūsu drošību un datu konfidencialitāti. Šīs atļaujas ierobežojums var kavēt šīs lietotnes darbību."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Uzzināt vairāk"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Labi"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Atļaujas pieprasījums bloķēts"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Šī lietotne pieprasa papildu atļaujas, taču atļaujas nevar piešķirt straumēšanas sesijā. Vispirms piešķiriet attiecīgo atļauju savā tālrunī."</string>
 </resources>

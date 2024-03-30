@@ -519,7 +519,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Chcete aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; zmeniť prístup k fotoaparátu?"</string>
     <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Zmeniť prístup ku kamere pre &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; v zariadení &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Táto aplikácia požaduje nepretržitý prístup k foteniu a nahrávaniu videí, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k zoznamu tel. hovorov?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k zoznamu hovorov?"</string>
     <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Chcete aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; povoliť prístup k zoznamu hovorov telefónu v zariadení &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutočňovať a spravovať telefonické hovory?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutočňovať a spravovať telefonické hovor v zariadení &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -661,12 +661,15 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jednorazové heslo je 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Obmedzené nastavenie"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Z bezpečnostných dôvodov nie je toto nastavenie momentálne k dispozícii."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Povolenie používať <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> bolo zamietnuté"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Táto aplikácia požiadala o povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, ktoré patrí medzi obmedzené, pretože môže ohroziť vaše zabezpečenie a súkromie. Obmedzenie tohto povolenia môže spôsobiť, že táto aplikácia prestane fungovať."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Aplikácii bol prístup k povoleniu <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> zamietnutý"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Táto aplikácia vyžaduje prístup k citlivému povoleniu, čo môže ohroziť vaše osobné údaje a finančné informácie.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Je možné, že bez tohto obmedzeného povolenia nebude aplikácia správne fungovať. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Ako povoliť prístup&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Aplikácii bol zamietnutý prístup a predvolene nemôže byť <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Táto aplikácia vyžaduje prístup k citlivým povoleniam, čo môže ohroziť vaše osobné údaje a finančné informácie.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Je možné, že bez týchto obmedzených povolení nebude aplikácia správne fungovať. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Ako povoliť prístup&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Aplikácii bol zamietnutý prístup"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Prístup k tomuto povoleniu môže ohroziť vaše osobné údaje a finančné informácie.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Je možné, že bez tohto obmedzeného povolenia nebude aplikácia správne fungovať. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Ako povoliť prístup&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Ďalšie informácie"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Dobre"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Žiadosť o povolenie bola zablokovaná"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Táto aplikácia požaduje ďalšie povolenia, ale povolenia nie je možné udeliť v relácii streamovania. Najprv udeľte povolenie v telefóne."</string>
 </resources>

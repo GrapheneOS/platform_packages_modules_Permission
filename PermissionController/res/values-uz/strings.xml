@@ -531,8 +531,8 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Bu ilovaga tanadagi sensor maʼlumotlaridan foydalanishga (hatto ilova yopiqligida ham) doimiy ruxsat berish uchun "<annotation id="link">"sozlamalarni oching."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasi tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilaversinmi?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;da sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; qurilmasida sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> joylashuvga kira oladi"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Tashkilotingiz <xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga joylashuvingizga kirishga ruxsat bergan"</string>
@@ -552,7 +552,7 @@
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tomonidan himoyalangan. Maʼlumotlaringiz qurilmada qayta ishlanishi sababli ilovaning ruxsatlardan foydalanish statistikasi maxfiylik boshqaruv panelida chiqmaydi."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Qurilma kamerasi bloklandi"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Qurilma mikrofoni bloklandi"</string>
-    <string name="blocked_location_title" msgid="2005608279812892383">"Qurilmada joylashuv axboroti yoqilmagan"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Qurilmada joylashuvni aniqlash oʻchiq"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Ilovalar va xizmatlar uchun"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Favqulodda xizmat raqamiga telefon qilganingizda mikrofon maʼlumotlari hamon ulashilishi mumkin."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Oʻzgartirish"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Bir martalik parolingiz: 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Cheklangan sozlama"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Xavfsizlik maqsadida bu sozlama hozir ishlamaydi."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ishaltish soʻrovi rad etildi"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Bu ilova <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ruxsatini soʻradi, bu cheklangan sozlama, chunki u xavfsizlik va maxfiylikni xavf ostiga qoʻyadi. Bu ruxsat cheklansa, ushbu ilovaning ishlashiga xalaqit berishi mumkin."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Batafsil"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Ruxsat talabi bloklandi"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Bu ilova qoʻshimcha ruxsatlar talab qilmoqda, lekin ruxsatlar striming seansida berilmaydi. Avval telefoningizda ruxsat bering."</string>
 </resources>

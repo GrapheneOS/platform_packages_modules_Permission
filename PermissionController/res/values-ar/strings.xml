@@ -235,7 +235,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"يمكن للتطبيقات التي تحصل على هذا الإذن قراءة بيانات سجلّ مكالمات الهاتف وتعديلها."</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"يمكن للتطبيقات التي تملك هذا الإذن التقاط صور وتسجيل فيديوهات."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى جهات الاتصال الخاصة بك."</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الموقع الجغرافي لهذا الجهاز."</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الموقع الجغرافي لهذا الجهاز"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"تتمكن التطبيقات التي لديها هذا الإذن من العثور على الأجهزة المجاورة والربط بها وتحديد موضعها النسبي."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"يمكن للتطبيقات التي لديها هذا الإذن تسجيل الصوت."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"يمكن للتطبيقات التي لديها هذا الإذن إجراء مكالمات هاتفية وإدارتها."</string>
@@ -319,7 +319,7 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"الوسائط"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"كل الملفات"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"مسموح بالوصول إليه طوال الوقت"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"تم استخدامه آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"تم الوصول آخر مرة بتاريخ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> في <xliff:g id="TIME_DATE_1">%2$s</xliff:g>."</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"تم الوصول للأذونات في آخر 24 ساعة."</string>
@@ -552,7 +552,7 @@
     <string name="exempt_info_label" msgid="6286190981253476699">"‏تطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> محمي بواسطة Android. لأن بياناتك تتم معالجتها على هذا الجهاز، لا يظهر استخدام إذن هذا التطبيق في لوحة بيانات الخصوصية."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"كاميرا الجهاز محظورة"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"ميكروفون الجهاز محظور"</string>
-    <string name="blocked_location_title" msgid="2005608279812892383">"ميزة الموقع الجغرافي للجهاز غير مفعّلة."</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"ميزة الموقع الجغرافي للجهاز غير مفعّلة"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"للتطبيقات والخدمات"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"لا يزال يمكن مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغيير"</string>
@@ -616,7 +616,7 @@
     <string name="camera_toggle_title" msgid="1251201397431837666">"الوصول إلى الكاميرا"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"الوصول إلى الميكروفون"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"للتطبيقات والخدمات"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"بالنسبة للتطبيقات والخدمات. إذا كان هذا الخيار غير مفعّل، قد يظل بالإمكان مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ."</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"للتطبيقات والخدمات. إذا كان هذا الخيار غير مفعّل، قد تتم مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"عرض التطبيقات والخدمات التي يمكنها الوصول إلى الموقع الجغرافي"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"عرض إشعار عند الوصول إلى الحافظة"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"عرض رسالة عندما يصل التطبيق إلى نص أو صور أو محتوى آخر تم نسخه"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"كلمة المرور الصالحة لمرة واحدة هي 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"الإعداد محظور"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"للحفاظ على أمانك، هذا الإعداد غير متوفِّر حاليًا."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"تم رفض إذن الوصول إلى <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"طلب هذا التطبيق إذن الوصول إلى <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>، وهو إعداد محظور لأنّه يمكن أن يعرّض أمانك وخصوصيتك للخطر. قد يؤدي حظر هذا الإذن إلى منع هذا التطبيق من العمل."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"مزيد من المعلومات"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"حسنًا"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"تم إلغاء طلب الحصول على الإذن"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"يطلب هذا التطبيق الحصول على أذونات إضافية، ولكن لا يمكن منح أذونات في جلسة بث. امنح الإذن على هاتفك أولاً."</string>
 </resources>

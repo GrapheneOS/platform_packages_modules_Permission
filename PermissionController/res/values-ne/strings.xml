@@ -32,9 +32,9 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"थप जानकारी"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै डेटा प्रयोग गर्ने अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"सधैँ सबै अनुमति दिइयोस्"</string>
-    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"सीमित एक्सेस दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"सीमित एक्सेस दिइयोस्"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फोटो र भिडियोहरू चयन गर्नुहोस्"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"अझ धेरै फोटो चयन गर्नुहोस्"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"थप डेटा चयन नगर्नुहोस्"</string>
@@ -204,7 +204,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"प्रयोग नगरिएको एपसम्बन्धी सेटिङ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गरियोस्"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतिहरू हटाई ठाउँ खाली गरियोस्"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको अवस्थामा उक्त एपमा बिताएको समय रेकर्ड नगरियोस्"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको अवस्थामा उक्त एपमा गरिएको गतिविधि रेकर्ड नगरियोस्"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"एप प्रयोग गरिएको छैन भने व्यवस्थापन गरियोस्"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"अनुमतिहरू रद्द गरियोस्, अस्थायी फाइलहरू मेटाइयोस् र एपसम्बन्धी सूचना नपठाइयोस्"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"अनुमति रद्द गरियोस्, अस्थायी फाइलहरू मेटाइयोस्, सूचना नपठाइयोस् र एप अभिलेखमा राखियोस्"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"तपाईंको एक पटके पासवर्ड 132435 हो"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"प्रतिबन्ध लगाइएका सेटिङ"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"तपाईंको खाताको सुरक्षार्थ यो सेटिङ हाल उपलब्ध छैन।"</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> प्रयोग गर्ने अनुमति अस्वीकार गरिएको छ"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"यो एपले <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> नामक अनुमति मागेको छ। तपाईंको सुरक्षा र गोपनीयता जोखिममा पार्न सक्ने भएकाले यो सेटिङ प्रयोग गर्न प्रतिबन्ध लगाइएको छ। यो अनुमतिमा प्रतिबन्ध लगाइयो भने यो एपले काम नगर्न सक्छ।"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"थप जान्नुहोस्"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"बुझेँ"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"अनुमतिसम्बन्धी अनुरोध रद्द गरिएको छ"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"यो एपले अतिरिक्त अनुमति मागिरहेको छ तर स्ट्रिमिङ सत्रमा अनुमति दिन मिल्दैन। सर्वप्रथम आफ्नो फोनमा अनुमति दिनुहोस्।"</string>
 </resources>

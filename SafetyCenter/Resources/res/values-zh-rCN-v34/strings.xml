@@ -22,7 +22,7 @@
     <string name="privacy_sources_summary" msgid="4083646673569677049">"权限、信息中心和控件"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"健康数据共享"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"健康, 健康数据共享, Health, Health Connect"</string>
-    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"位置数据分享方面的更新"</string>
+    <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"位置数据共享方面的更新"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"数据, 数据分享, 数据分享方面的更新, 位置数据分享方面的更新, 分享, Data, Data sharing, Data sharing updates, Data sharing updates for location, sharing"</string>
     <string name="advanced_title" msgid="6259362998269627310">"其他设置"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"更多安全和隐私设置"</string>

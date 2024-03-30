@@ -235,7 +235,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"具有此权限的应用可以读取和写入手机通话记录"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"具有此权限的应用可以拍摄照片和录制视频"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"具有此权限的应用可以访问您的通讯录"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"具有此权限的应用可以使用此设备的位置信息"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"具有此权限的应用可以访问此设备的位置信息"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"具有这项权限的应用可以查找、连接附近设备，以及确定附近设备的相对位置"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"具有此权限的应用可以录制音频"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"具有此权限的应用可以拨打电话及管理通话"</string>
@@ -643,8 +643,8 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"数据安全"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"可能会分享位置数据"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"此应用已声明它可能会与第三方分享您的位置数据"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置数据分享方面的更新"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看改变了位置数据分享方式的应用"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置数据共享方面的更新"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看改变了位置数据共享方式的应用"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"这些应用改变了它们在分享您位置数据上的做法。它们之前可能未分享过位置数据，也可能现在是为了广告或营销目的而分享此类数据。"</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"这些应用的开发者已将其数据分享做法相关信息提供给应用商店。此类信息可能会随时间更新。\n\n数据分享做法可能会因应用版本、使用情况、地区和年龄而异。"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"了解数据分享"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"您的动态密码为 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"受限制的设置"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"出于安全考虑，此设置目前不可用。"</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"使用<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>的权限已被拒绝"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"此应用已请求<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限，这是一项受限制的设置，因为它会给您的安全性和隐私权设置带来风险。限制此权限可能会使此应用无法运行。"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"了解详情"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"知道了"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"权限请求被阻止"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"此应用请求获得额外的权限，但在流式传输会话期间无法授予权限。请先在手机上授予相应权限。"</string>
 </resources>

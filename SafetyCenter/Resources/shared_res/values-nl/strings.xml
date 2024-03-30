@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"Scannen"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"Apparaat­instellingen­ checken…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"Apparaat­instellingen­ controleren…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Dat ziet er goed uit"</string>
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Geen problemen gevonden"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Aanbeveling bekijken}other{Aanbevelingen bekijken}}"</string>

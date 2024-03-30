@@ -150,7 +150,7 @@
     <string name="permission_usage_last_n_minutes" msgid="7817864229878281983">"{count,plural, =1{Azken # minutuan}other{Azken # minutuetan}}"</string>
     <string name="no_permission_usages" msgid="9119517454177289331">"Ez da eskatu baimenik"</string>
     <string name="permission_usage_list_title_any_time" msgid="8718257027381592407">"Orain arteko azken sarbidea"</string>
-    <string name="permission_usage_list_title_last_7_days" msgid="9048542342670890615">"Azken zazpi egunetako azken sarbidea"</string>
+    <string name="permission_usage_list_title_last_7_days" msgid="9048542342670890615">"Azken 7 egunetako azken sarbidea"</string>
     <string name="permission_usage_list_title_last_day" msgid="8730907824567238461">"Azken 24 orduetan erabilitakoak"</string>
     <string name="permission_usage_list_title_last_hour" msgid="6624161487623223716">"Azken ordubeteko azken sarbidea"</string>
     <string name="permission_usage_list_title_last_15_minutes" msgid="8615062016024296833">"Azken 15 minutuetako azken sarbidea"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Zure erabilera bakarreko pasahitza 132435 da"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Murriztapenak ditu ezarpenak"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Zure segurtasuna bermatzeko, ezarpena ez dago erabilgarri une honetan."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Ukatu egin da <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> erabiltzeko baimena"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Aplikazio honek <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> erabiltzeko baimena eskatu du. Ezarpen murriztu bat da hori, agian segurtasuna eta pribatutasuna arriskuan jarriko dituelako. Baimen hori murrizten bada, baliteke aplikazioak ez funtzionatzea."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Lortu informazio gehiago"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Ados"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Blokeatu da baimen-eskaera"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Baimen gehigarriak eskatzen ari da aplikazioa, baina ezin da eman baimenik igorpen-saioetan. Lehenik eta behin, eman baimena telefonoan."</string>
 </resources>

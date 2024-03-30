@@ -378,7 +378,7 @@
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nije potrebno odobrenje"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"hitni slučaj"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Zadana apl. na početnom ekranu"</string>
-    <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija na početnom ekranu"</string>
+    <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija za početni ekran"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Aplikacije, poznate i kao pokretači, koje zamjenjuju početne ekrane na Android uređaju te vam daju pristup sadržaju i funkcijama uređaja"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju na početnom ekranu?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nije potrebno odobrenje"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jednokratna lozinka je 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ograničena postavka"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Radi vaše sigurnosti postavka trenutno nije dostupna."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Odbijeno je odobrenje za korištenje odobrenja <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Aplikacija je zatražila odobrenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, što je ograničena postavka jer može ugroziti vašu sigurnost i privatnost. Ograničenje ovog odobrenja može spriječiti rad aplikacije."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saznajte više"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Razumijem"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahtjev za odobrenje je potisnut"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Aplikacija traži dodatna odobrenja, ali se ona ne mogu dati u sesiji prijenosa. Najprije dajte odobrenje na telefonu."</string>
 </resources>

@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"ଆପଣଙ୍କ ଗୋଟିଏ ଥରର ପାସୱାର୍ଡ ହେଉଛି 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ପ୍ରତିବନ୍ଧିତ ସେଟିଂ"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"ଆପଣଙ୍କ ସୁରକ୍ଷା ପାଇଁ ଏହି ସେଟିଂ ବର୍ତ୍ତମାନ ଅନୁପଲବ୍ଧ ଅଟେ।"</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ବ୍ୟବହାର କରିବା ପାଇଁ ଅନୁମତିକୁ ଅଗ୍ରାହ୍ୟ କରାଯାଇଛି"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"ଏହି ଆପ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଅନୁମତି ପାଇଁ ଅନୁରୋଧ କରିଛି, ଯାହା ଏକ ପ୍ରତିବନ୍ଧିତ ସେଟିଂସ ଅଟେ କାରଣ ଏହା ଆପଣଙ୍କ ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତାକୁ ବିପଦରେ ପକାଇପାରେ। ଏହି ଅନୁମତି ଉପରେ ପ୍ରତିବନ୍ଧକ ଏ ଆପକୁ କାର୍ଯ୍ୟ କରିବାରୁ ପ୍ରତିରୋଧ କରିପାରେ।"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ଅଧିକ ଜାଣନ୍ତୁ"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"ବୁଝିଗଲି"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ଅନୁମତି ଅନୁରୋଧକୁ ବନ୍ଦ କରାଯାଇଛି"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ଏହି ଆପ ଅତିରିକ୍ତ ଅନୁମତି ପାଇଁ ଅନୁରୋଧ କରୁଛି, ଏକ ଷ୍ଟ୍ରିମିଂ ସେସନରେ ଅନୁମତି ଦିଆଯାଇପାରିବ ନାହିଁ। ପ୍ରଥମେ ଆପଣଙ୍କ ଫୋନରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</string>
 </resources>

@@ -402,8 +402,8 @@
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਨੂੰ ਕਨੈਕਟ ਕੀਤੇ ਡੀਵਾਈਸ \'ਤੇ ਸਟ੍ਰੀਮ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
     <string name="role_companion_device_computer_description" msgid="416099879217066377">"ਇਹ ਸੇਵਾ ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ, ਮੀਡੀਆ ਅਤੇ ਸੂਚਨਾਵਾਂ ਨੂੰ ਤੁਹਾਡੇ ਫ਼ੋਨ ਤੋਂ ਹੋਰ ਡੀਵਾਈਸਾਂ ਨਾਲ ਸਾਂਝਾ ਕਰਦੀ ਹੈ।"</string>
     <string name="role_notes_label" msgid="7451627001058089536">"ਨੋਟ-ਕਥਨਾਂ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਐਪ"</string>
-    <string name="role_notes_short_label" msgid="8796604147546125285">"ਨੋਟ-ਕਥਨਾਂ ਲਈ ਐਪ"</string>
-    <string name="role_notes_description" msgid="8496852798616883551">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਆਪਣੇ ਡੀਵਾਈਸ \'ਤੇ ਨੋਟ-ਕਥਨ ਲੈਣ ਦੀ ਆਗਿਆ ਦਿੰਦੀਆਂ ਹਨ"</string>
+    <string name="role_notes_short_label" msgid="8796604147546125285">"ਨੋਟ ਲਈ ਐਪ"</string>
+    <string name="role_notes_description" msgid="8496852798616883551">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਆਪਣੇ ਡੀਵਾਈਸ \'ਤੇ ਨੋਟ ਲਿਖਣ ਦੀ ਸੁਵਿਧਾ ਦਿੰਦੀਆਂ ਹਨ"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"ਨੋਟ-ਕਥਨ"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਵਾਲੇਟ ਐਪ"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Wallet ਐਪ"</string>
@@ -510,7 +510,7 @@
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"ਇਹ ਐਪ ਹਰ ਵੇਲੇ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਮੰਗਦੀ ਹੈ, ਉਦੋਂ ਵੀ ਜਦੋਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਨਾ ਕਰ ਰਹੇ ਹੋਵੋ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਪਣੀ ਸਰੀਰਕ ਸਰਗਰਮੀ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; \'ਤੇ ਆਪਣੀ ਸਰੀਰਕ ਸਰਗਰਮੀ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਪਣੇ &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; \'ਤੇ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵੇਲੇ ਹੀ ਐਪ ਤਸਵੀਰਾਂ ਖਿੱਚ ਸਕੇਗੀ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕੇਗੀ"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"ਤੁਹਾਡਾ ਇਕਹਰੀ-ਵਰਤੋਂ ਪਾਸਵਰਡ 132435 ਹੈ"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ਪ੍ਰਤਿਬੰਧਿਤ ਸੈਟਿੰਗਾਂ"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਲਈ, ਫ਼ਿਲਹਾਲ ਇਹ ਸੈਟਿੰਗ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।"</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ਨੂੰ ਵਰਤਣ ਦੀ ਇਜਾਜ਼ਤ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"ਇਸ ਐਪ ਨੇ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ਦੀ ਇਜਾਜ਼ਤ ਮੰਗੀ ਹੈ, ਜੋ ਕਿ ਇੱਕ ਪ੍ਰਤਿਬੰਧਿਤ ਸੈਟਿੰਗ ਹੈ ਕਿਉਂਕਿ ਇਹ ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ ਨੂੰ ਜੋਖਮ ਵਿੱਚ ਪਾ ਸਕਦੀ ਹੈ। ਇਸ ਇਜਾਜ਼ਤ \'ਤੇ ਲੱਗੀ ਪਾਬੰਦੀ, ਇਸ ਐਪ ਨੂੰ ਕੰਮ ਕਰਨ ਤੋਂ ਰੋਕ ਸਕਦੀ ਹੈ।"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ਹੋਰ ਜਾਣੋ"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"ਸਮਝ ਲਿਆ"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਬੇਨਤੀ ਨੂੰ ਰੋਕਿਆ ਗਿਆ"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ਇਹ ਐਪ ਵਧੀਕ ਇਜਾਜ਼ਤਾਂ ਦੀ ਬੇਨਤੀ ਕਰ ਰਹੀ ਹੈ, ਪਰ ਸਟ੍ਰੀਮਿੰਗ ਸੈਸ਼ਨ ਵਿੱਚ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਦਿੱਤੀਆਂ ਜਾ ਸਕਦੀਆਂ। ਪਹਿਲਾਂ ਆਪਣੇ ਫ਼ੋਨ \'ਤੇ ਇਜਾਜ਼ਤ ਦਿਓ।"</string>
 </resources>

@@ -206,7 +206,7 @@
     <string name="unused_apps_label" msgid="2595428768404901064">"הסרת הרשאות ופינוי מקום אחסון"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"השהיית הפעילות באפליקציה אם אין בה שימוש"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"ניהול האפליקציה כשהיא לא בשימוש"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"ההרשאות של האפליקציה יוסרו, הקבצים הזמניים יימחקו ותופסק קבלת ההתראות ממנה"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"הסרת ההרשאות, מחיקה של הקבצים הזמניים, הפסקה של קבלת ההתראות"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"הסרת ההרשאות, מחיקה של הקבצים הזמניים, הפסקה של קבלת ההתראות והעברת האפליקציה לארכיון"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"כדי להגן על הנתונים שלך, אם האפליקציה הזו לא תהיה בשימוש במשך מספר חודשים, ההרשאות שניתנו לה יוסרו."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"כדי להגן על הנתונים שלך, אם האפליקציה לא תהיה בשימוש במשך מספר חודשים, ההרשאות הבאות יוסרו: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"הסיסמה החד-פעמית שלך היא 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"הגדרה מוגבלת"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"מטעמי אבטחה, ההגדרה הזו לא זמינה כרגע."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"הבקשה להשתמש בהרשאה ל<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> נדחתה"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"האפליקציה הזו ביקשה הרשאה ל<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, שהיא הגדרה מוגבלת מכיוון שהיא יכולה לסכן את האבטחה והפרטיות שלך. הגבלת ההרשאה הזו עשויה למנוע מהאפליקציה הזו לפעול."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"מידע נוסף"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"הבנתי"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"בקשת ההרשאה בוטלה"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"האפליקציה הזו מבקשת הרשאות נוספות, אבל אי אפשר לתת הרשאות בזמן פעילות של סטרימינג. צריך לתת את ההרשאה קודם בטלפון."</string>
 </resources>

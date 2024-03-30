@@ -22,5 +22,5 @@
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"Administra el acceso de las apps a Health Connect"</string>
     <string name="location_settings" msgid="8863940440881290182">"Acceso a la ubicación"</string>
-    <string name="mic_toggle_description" msgid="1504101620086616040">"Para apps y servicios. Aunque se desactive este parámetro de configuración, es posible que se sigan compartiendo los datos del micrófono cuando llames a un número de emergencia."</string>
+    <string name="mic_toggle_description" msgid="1504101620086616040">"Para apps y servicios. Aunque se desactive este parámetro de configuración, es posible que se sigan compartiendo los datos del micrófono cuando llames a un número de emergencia"</string>
 </resources>

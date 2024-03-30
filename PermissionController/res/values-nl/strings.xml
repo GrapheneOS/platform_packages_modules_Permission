@@ -51,7 +51,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten ingetrokken"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Toestaan"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Altijd toestaan"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Tijdens gebruik van de app"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Tijdens gebruik van app"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Wijzigen in exacte locatie"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Geschatte locatie behouden"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Alleen deze keer"</string>
@@ -465,12 +465,12 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Icoon op statusbalk tonen als microfoon wordt gebruikt om de Spraakassistent te activeren"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en media op je apparaat?"</string>
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en media op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot je contacten?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang heeft tot je contacten?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de contacten op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de locatie van dit apparaat?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang heeft tot de locatie van dit apparaat?"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de locatie van je &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"De app heeft alleen toegang tot de locatie wanneer je de app gebruikt"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de locatie van dit apparaat?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang heeft tot de locatie van dit apparaat?"</string>
     <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de locatie van je &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Deze app wil mogelijk altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Toegang tot locatie wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
@@ -495,14 +495,14 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot &lt;b&gt;foto\'s, video\'s, muziek, audio en andere bestanden&lt;/b&gt; op dit apparaat?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot muziek en audio op dit apparaat?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot muziek en audio op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en video\'s op dit apparaat?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang heeft tot foto\'s en video\'s op dit apparaat?"</string>
     <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en video\'s op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot meer foto\'s en video\'s op dit apparaat?"</string>
     <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot meer foto\'s en video\'s op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; audio opneemt?"</string>
     <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Deze app kan alleen audio opnemen als je de app gebruikt"</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen?"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; audio opneemt?"</string>
     <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om audio op te nemen op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Deze app wil mogelijk altijd audio opnemen, ook als je de app niet gebruikt. "<annotation id="link">"Toestaan in instellingen."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Toegang tot microfoon wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
@@ -510,7 +510,7 @@
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Deze app wil altijd audio opnemen, ook als je de app niet gebruikt. "<annotation id="link">"Toestaan in instellingen."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot je fysieke activiteit?"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot je fysieke activiteit op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om foto\'s te maken en video\'s op te nemen?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; foto\'s maakt en video\'s opneemt?"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om foto\'s te maken en video\'s op te nemen op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Deze app kan alleen foto\'s maken en video\'s opnemen als je de app gebruikt"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om foto\'s te maken en video\'s op te nemen?"</string>
@@ -519,9 +519,9 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Toegang tot camera wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Toegang tot camera wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Deze app wil altijd foto\'s maken en video\'s opnemen, ook als je de app niet gebruikt. "<annotation id="link">"Toestaan in Instellingen."</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot je gesprekslijsten?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang heeft tot je gesprekslijsten?"</string>
     <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de gesprekslijsten op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om telefoongesprekken te starten en te beheren?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Toestaan dat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; telefoongesprekken start en beheert?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om telefoongesprekken te starten en te beheren op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot sensorgegevens over je vitale functies?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot sensorgegevens over je vitale functies op je &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -617,7 +617,7 @@
     <string name="mic_toggle_title" msgid="2649991093496110162">"Microfoontoegang"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Voor apps en services"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Voor apps en services. Als deze instelling uitstaat, kunnen microfoongegevens nog altijd worden gedeeld als je een alarmnummer belt."</string>
-    <string name="location_settings_subtitle" msgid="2328360561197430695">"Bekijk apps en services die toegang hebben tot die locatie"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Bekijk apps en services die toegang hebben tot de locatie"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Toegang tot klembord tonen"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Toon een bericht als apps toegang hebben tot tekst, afbeeldingen of andere content die je hebt gekopieerd"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wachtwoorden tonen"</string>
@@ -644,7 +644,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Locatiegegevens kunnen worden gedeeld"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Deze app geeft aan dat je locatiegegevens met derden kunnen worden gedeeld"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Check apps die de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ga na welke apps de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"De ontwikkelaars van deze apps hebben informatie gegeven aan een appstore over hun procedures voor gegevens delen. Ze kunnen deze informatie in de loop van de tijd updaten.\n\nProcedures voor gegevens delen kunnen verschillen op basis van je app-versie, gebruik, regio en leeftijd."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Meer informatie over gegevens delen"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Je eenmalige wachtwoord is 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Beperkte instelling"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Ter beveiliging is deze instelling op dit moment niet beschikbaar."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Recht om <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> te gebruiken, is afgewezen"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Deze app heeft het recht <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> aangevraagd. Dit is een beperkte instelling omdat deze een risico vormt voor je beveiliging en privacy. Beperking van deze toestemming kan voorkomen dat deze app werkt."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Meer informatie"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Verzoek om rechten onderdrukt"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Deze app vraagt om extra rechten, maar je kunt geen rechten verlenen tijdens een streamingsessie. Verleen het recht eerst op je telefoon."</string>
 </resources>

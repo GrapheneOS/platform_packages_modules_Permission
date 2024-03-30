@@ -650,7 +650,7 @@
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Маалыматтарды бөлүшүү жөнүндө кеңири маалымат"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Жүргөн жериңиз тууралуу маалымат үчүнчү тараптар менен бөлүшүлүп жатат"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Жүргөн жериңизди үчүнчү тараптар жарнамалоо же маркетинг максатында билип турушат"</string>
-    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Кечээ жаңыртылды}=1{Кечээ жаңыртылды}other{# күн мурда жаңыртылды}}"</string>
+    <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{Кечээ жаңырды}=1{Кечээ жаңырды}other{# күн мурда жаңырды}}"</string>
     <string name="no_updates_at_this_time" msgid="9031085635689982935">"Азырынча жаңыртуулар жок"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"Маалыматты бөлүшүү жаңыртуулары"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"Айрым колдонмолор турган жериңизди билдирүү ыкмасын өзгөрттү"</string>
@@ -661,12 +661,15 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Бир жолу гана колдонулуучу кодуңуз: 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Чектелген функция"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Коопсуздук максатында бул параметр азырынча иштебейт."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> параметрин колдонууга уруксат берилген жок"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Бул колдонмо коопсуздук менен купуялыгыңызга коркунуч туудурушу мүмкүн болгону үчүн чектелген <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> параметрин колдонууга уруксат сурап жатат. Бул уруксат чектелсе, колдонмо иштебеши мүмкүн."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Колдонмого <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> параметрин колдонууга тыюу салынды"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Колдонмо жеке жана каржы маалыматыңыздын коопсуздугуна коркунуч жаратышы мүмкүн болгон купуя маалыматты көрүүгө уруксат сурады.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Мындай чектелген уруксат берилбесе, колдонмо ойдогудай иштебеши ыктымал. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Мүмкүнчүлүк берүү жөнүндө кеңири маалымат&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Колдонмого демейки <xliff:g id="ROLE_NAME">%1$s</xliff:g> ролун колдонууга тыюу салынды"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Колдонмо жеке жана каржы маалыматыңыздын коопсуздугуна коркунуч жаратышы мүмкүн болгон купуя маалыматты көрүүгө уруксаттарды сурады.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Мындай чектелген уруксаттар берилбесе, колдонмо ойдогудай иштебеши ыктымал. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Мүмкүнчүлүк берүү жөнүндө кеңири маалымат&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Колдонмого мүмкүнчүлүк алууга тыюу салынды"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Бул уруксатты берсеңиз, жеке жана каржы маалыматыңыздын коопсуздугуна коркунуч жаралышы мүмкүн.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Мындай чектелген уруксат берилбесе, колдонмо ойдогудай иштебеши ыктымал. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Мүмкүнчүлүк берүү жөнүндө кеңири маалымат&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Кеңири маалымат"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Түшүндүм"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Уруксат берүү сурамы четке кагылды"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Бул колдонмо кошумча уруксаттарды берүүнү суранып жатат, бирок алып ойнотуу сеансында уруксаттарды берүүгө болбойт. Адегенде телефондо уруксат бериңиз."</string>
 </resources>

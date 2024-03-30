@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Nenosiri lako la wakati mmoja ni 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Mipangilio imezuiwa"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Ili kulinda usalama wako, mipangilio hii haipatikani kwa sasa."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Ruhusa ya kutumia <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> umekataliwa"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Programu hii imeomba ruhusa ya <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, ambayo ni mipangilio iliyozuiwa kwa sababu inaweza kuweka usalama na faragha yako hatarini. Kuzuiwa kwa ruhusa hii kunaweza kuzuia programu hii isifanye kazi."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Pata maelezo zaidi"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Nimeelewa"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Ombi la ruhusa limezuiwa"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Programu hii inaomba ruhusa za ziada. Hata hivyo, huwezi kutoa ruhusa ukitiririsha. Ruhusu kwenye simu yako kwanza."</string>
 </resources>

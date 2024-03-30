@@ -34,7 +34,7 @@
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"詳細"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"すべて許可"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"常にすべて許可"</string>
-    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"アクセス制限を許可する"</string>
+    <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"制限付きでアクセスを許可する"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"写真と動画を選択"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"さらに選択"</string>
     <string name="grant_dialog_button_dont_select_more" msgid="6643552729129461268">"他を選択しない"</string>
@@ -465,7 +465,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"マイクを使って音声アシスタントを有効にする場合にステータスバーにアイコンを表示する"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"デバイス内の写真やメディアへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の写真とメディアへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"連絡先へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"連絡先へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の連絡先へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"このデバイスの位置情報へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; の位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
@@ -510,7 +510,7 @@
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）音声を録音できる権限を求めています。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"身体活動データへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の身体活動データへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"写真と動画の撮影を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"アプリは、ユーザーがアプリを使用している場合のみ写真や動画を撮影できます"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
@@ -519,9 +519,9 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に対するカメラへのアクセス許可を変更しますか？"</string>
     <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; のカメラに対する &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; のアクセス権を変更しますか？"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）写真や動画を撮影できる権限を求めています。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"通話履歴へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"通話履歴へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の通話履歴へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"電話の発信と管理を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"電話の発信と管理を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での電話の発信と管理を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"バイタルサインに関するセンサーデータへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内のバイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"ワンタイム パスワードは 132435 です"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"制限付き設定"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"セキュリティ保護のため、この設定は現在利用できません。"</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> を使用する権限が拒否されました"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"このアプリが <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> 権限をリクエストしました。ユーザーのセキュリティやプライバシーが危険にさらされるおそれがあるため、この設定には制限があります。この権限に対する制限により、このアプリが稼働しなくなる可能性があります。"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"詳細"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"権限のリクエストが抑制されています"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"このアプリは追加の権限を求めていますが、ストリーミング セッションでは権限を付与できません。スマートフォンで先に権限を付与してください。"</string>
 </resources>

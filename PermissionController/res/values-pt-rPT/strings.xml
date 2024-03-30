@@ -204,9 +204,9 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Definições de apps não usadas"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Remover autorizações se a app não for utilizada"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Remover autorizações e libertar espaço"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar atividade de apps, se não usadas"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar atividade de apps se não usadas"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"Gerir app, se não for usada"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Remova autorizações, elimine ficheiros temporários e pare notificações"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Remover autorizações, eliminar ficheiros temporários e parar notificações"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Remove autorizações, elimina ficheiros temporários, pára notificações e arquiva a app"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger os seus dados, as autorizações desta app serão removidas se a mesma não for utilizada durante alguns meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger os seus dados, se a app não for utilizada há alguns meses, serão removidas as seguintes autorizações: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -521,7 +521,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Esta app quer tirar fotos e gravar vídeos sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos registos de chamadas do seu telemóvel?"</string>
     <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos registos de chamadas telefónicas no &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faça e gira chamadas telefónicas?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; passe a fazer e gerir chamadas telefónicas?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faça e gira chamadas no &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores acerca dos seus sinais vitais?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores sobre os seus sinais vitais no &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -661,10 +661,15 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"A sua palavra-passe de utilização única é 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Definição restrita"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Para sua segurança, esta definição está indisponível atualmente."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"A autorização de utilização de <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> foi recusada"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Esta app pediu a autorização <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, que é uma definição restrita porque pode pôr em risco a sua segurança e privacidade. A restrição desta autorização pode impedir o funcionamento desta app."</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"O acesso a <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> foi negado à app"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"A app pediu acesso a uma autorização confidencial que pode pôr em risco as suas informações pessoais e financeiras.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>É possível que a app não funcione corretamente sem esta autorização restrita. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saiba como permitir o acesso&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"O acesso à função predefinida <xliff:g id="ROLE_NAME">%1$s</xliff:g> foi negado à app"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"A app pediu acesso a autorizações confidenciais que podem pôr em risco as suas informações pessoais e financeiras.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>É possível que a app não funcione corretamente sem estas autorizações restritas. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saiba como permitir o acesso&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"O acesso foi negado à app"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"O acesso a esta autorização pode pôr em risco as suas informações pessoais e financeiras.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>É possível que a app não funcione corretamente sem esta autorização restrita. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saiba como permitir o acesso&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saber mais"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"OK"</string>
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
+    <skip />
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Pedido de autorização suprimido"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Esta app está a pedir autorizações adicionais, mas não é possível conceder autorizações numa sessão de streaming. Comece por conceder a autorização no seu telemóvel."</string>
 </resources>

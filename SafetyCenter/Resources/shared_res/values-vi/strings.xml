@@ -20,7 +20,7 @@
     <string name="scanning_title" msgid="5424849039854311398">"Quét"</string>
     <string name="loading_summary" msgid="3740846439782713910">"Đang kiểm tra chế độ cài đặt của thiết bị…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"Có vẻ ổn"</string>
-    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Không phát hiện thấy sự cố nào"</string>
+    <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"Không phát hiện thấy vấn đề nào"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Xem đề xuất}other{Xem các đề xuất}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Hành động đã thực hiện}other{Hành động đã thực hiện}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Xem lại các chế độ cài đặt"</string>

@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Вашата еднократна лозинка е 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ограничена поставка"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"За ваша безбедност, поставкава е недостапна во моментов."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Дозволата за користење <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> е одбиена"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Апликацијава ја побара дозволата за <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, што е ограничена поставка бидејќи може да ги загрози безбедноста и приватноста. Ограничувањето на дозволава може да го спречи функционирањето на апликацијава."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Дознајте повеќе"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Сфатив"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Барањето за дозвола е потиснато"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Апликацијава бара дополнителни дозволи, но нив не може да ги доделите во сесија за стриминг. Прво доделете ја дозволата на вашиот телефон."</string>
 </resources>

@@ -51,7 +51,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"geen is gedeaktiveer nie"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Laat toe"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Laat altyd toe"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Terwyl die program gebruik word"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Terwyl die app gebruik word"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Verander na presiese ligging"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Hou benaderde ligging"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Net hierdie keer"</string>
@@ -201,10 +201,10 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Sien al <xliff:g id="APP">%1$s</xliff:g> se toestemmings"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sien alle programme met hierdie toestemming"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Wys Assistent-mikrofoongebruik"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ongebruikte programinstellings"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Instellings vir ongebruikte apps"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Verwyder toestemmings as program nie gebruik word nie"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Verwyder toestemmings en maak spasie beskikbaar"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Onderbreek programaktiwiteit as ongebruik"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Onderbreek appaktiwiteit as ongebruik"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"Bestuur app indien ongebruik"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Verwyder toestemmings, vee tydelike lêers uit, en stop kennisgewings"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Verwyder toestemmings, vee tydelike lêers uit, stop kennisgewings en argiveer die app"</string>
@@ -235,7 +235,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Programme met hierdie toestemming kan foonoproeprekord lees en skryf"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programme met hierdie toestemming kan foto\'s neem en video\'s opneem"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programme met hierdie toestemming kan toegang tot jou kontakte kry"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Programme met hierdie toestemming kan toegang tot jou toestel se ligging kry"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps met hierdie toestemming kan toegang tot jou toestel se ligging kry"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programme met hierdie toestemming kan toestelle in die omtrek soek, aan hulle koppel en hul relatiewe posisie bepaal"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programme met hierdie toestemming kan oudio opneem"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programme met hierdie toestemming kan foonoproepe maak en bestuur"</string>
@@ -352,10 +352,10 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> kan jou skerm, handelinge en invoere bekyk, handelinge uitvoer, en die skerm beheer."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Hierdie programme kan jou skerm, handelinge en invoere bekyk, handelinge uitvoer, en die skerm beheer."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Verstekdigitaleassistentprogram"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Digitaleassistentprogram"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Digitaleassistentapp"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Bystandprogramme kan jou help op grond van inligting vanaf die skerm waarna jy kyk. Sommige programme steun sowel lanseerder- as steminvoerdienste om vir jou geïntegreerde bystand te gee."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Verstekblaaier"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"Blaaierprogram"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"Blaaierapp"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Programme wat jou toegang tot die internet gee en na vertoonskakels waarop jy tik"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekblaaierprogram?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Geen toestemmings is nodig nie"</string>
@@ -366,7 +366,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Hierdie program sal toegang tot jou kamera, kontakte, mikrofoon, foon en SMS\'e kry"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"beller"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Verstek-SMS-program"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-program"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-app"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Programme wat jou toelaat om jou foonnommer te gebruik om kort SMS\'e, foto\'s, video\'s en meer te stuur en te ontvang"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstek-SMS-program?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Hierdie program sal toegang tot jou kamera, kontakte, lêers en media, mikrofoon, foon en SMS\'e kry"</string>
@@ -378,7 +378,7 @@
     <string name="role_emergency_request_description" msgid="131645948770262850">"Geen toestemmings is nodig nie"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Verstekhuisprogram"</string>
-    <string name="role_home_short_label" msgid="8544733747952272337">"Huisprogram"</string>
+    <string name="role_home_short_label" msgid="8544733747952272337">"Home-app"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Programme, wat dikwels lanseerders genoem word, wat die Tuisskerms op jou Android-toestel vervang en vir jou toegang gee tot die inhoud en kenmerke van jou toestel"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekhuisprogram?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Geen toestemmings is nodig nie"</string>
@@ -427,10 +427,10 @@
     <string name="ongoing_usage_dialog_title_mic_camera" msgid="9079747867228772797">"Onlangse gebruik van mikrofoon en kamera"</string>
     <string name="ongoing_usage_dialog_separator" msgid="1715181526581520068">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" en "</string>
-    <string name="default_app_search_keyword" msgid="8330125736889689743">"verstekprogramme"</string>
+    <string name="default_app_search_keyword" msgid="8330125736889689743">"verstekapps"</string>
     <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"Mikrofoon en kamera"</string>
     <string name="settings_button" msgid="4414988414732479636">"Instellings"</string>
-    <string name="default_apps" msgid="5119201969348748639">"Verstekprogramme"</string>
+    <string name="default_apps" msgid="5119201969348748639">"Verstekapps"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Geen verstekprogramme nie"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Meer verstekke"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Oopmaak van skakels"</string>
@@ -553,7 +553,7 @@
     <string name="blocked_camera_title" msgid="1128510551791284384">"Toestelkamera is geblokkeer"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Toestelmikrofoon is geblokkeer"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Toestelligging is af"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Vir programme en dienste"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Vir apps en dienste"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofoondata kan steeds gedeel word wanneer jy \'n noodnommer bel."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Verander"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Sekuriteit en privaatheid"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jou eenmalige wagwoord is 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Beperkte instelling"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Hierdie instelling is vir jou veiligheid tans onbeskikbaar."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Toestemming om <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> te gebruik is geweier"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Hierdie app het die <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-toestemming versoek, wat ’n beperkte instelling is omdat dit jou sekuriteit en privaatheid in gevaar kan stel. As jy hierdie toestemming beperk kan dit die app verhoed om te werk."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Meer inligting"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Het dit"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Toestemmingsversoek is onderdruk"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Hierdie app versoek bykomende toestemmings, maar toestemmings kan nie in ’n stromingsessie verleen word nie. Verleen eers die toestemming op jou foon."</string>
 </resources>

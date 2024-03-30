@@ -50,7 +50,7 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"सभी अनुमतियां बंद हैं"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कोई अनुमति बंद नहीं है"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दें"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"हमेशा के लिए अनुमति दें"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"हम समय अनुमति है"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ऐप्लिकेशन इस्तेमाल करते समय"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"जगह की सटीक जानकारी पर सेट करें"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"जगह की अनुमानित जानकारी सेव करें"</string>
@@ -465,7 +465,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज़ से डिवाइस का इस्तेमाल करने के लिए, माइक्रोफ़ोन का इस्तेमाल करते समय स्थिति बार में आइकॉन दिखाएं"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने डिवाइस में मौजूद फ़ोटो और मीडिया ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; में मौजूद फ़ोटो और मीडिया का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने संपर्क देखने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके संपर्क का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; में मौजूद, संपर्कों का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की जानकारी ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; की जगह की जानकारी का ऐक्सेस देना है?"</string>
@@ -519,7 +519,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; के लिए, कैमरे के ऐक्सेस की अनुमति बदलना चाहते हैं?"</string>
     <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; के लिए, आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; के कैमरे का ऐक्सेस बदलना है?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"यह ऐप्लिकेशन हर समय तस्वीरें लेना और वीडियो रिकॉर्ड करना चाहता है, तब भी जब आप ऐप्लिकेशन इस्तेमाल न कर रहे हों. "<annotation id="link">"सेटिंग में जाकर अनुमति दें."</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने फ़ोन के काॅल लाॅग को ऐक्सेस करने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपका कॉल लॉग ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; में मौजूद, कॉल लॉग का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को फ़ोन कॉल करने और उन्हें मैनेज करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g> से फ़ोन कॉल करने और उन्हें मैनेज करने का ऐक्सेस देना है?"</string>
@@ -531,7 +531,7 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"इस ऐप्लिकेशन का इस्तेमाल न किए जाने पर भी, इसे बॉडी सेंसर के डेटा को हमेशा ऐक्सेस करने की अनुमति देने के लिए, "<annotation id="link">"सेटिंग पर जाएं."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"क्या इस्तेमाल के दौरान, &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को बॉडी सेंसर के डेटा का ऐक्सेस देते रहना है?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"क्या इस्तेमाल के दौरान, &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; पर &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को बॉडी सेंसर के डेटा का ऐक्सेस देते रहना है?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को सूचनाएं भेजने की अनुमति दें?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को सूचनाएं भेजने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; पर सूचनाएं भेजने की अनुमति देनी है?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"कंट्रोल की गई अनुमतियां"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> के पास, डिवाइस की जगह की जानकारी का ऐक्सेस है"</string>
@@ -552,7 +552,7 @@
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"डिवाइस का कैमरा ब्लॉक किया गया है"</string>
     <string name="blocked_microphone_title" msgid="1631517143648232585">"डिवाइस का माइक्रोफ़ोन ब्लॉक किया गया है"</string>
-    <string name="blocked_location_title" msgid="2005608279812892383">"डिवाइस की जगह की जानकारी की सुविधा बंद है"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"डिवाइस की जगह की जानकारी की सेटिंग बंद है"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ऐप्लिकेशन और सेवाओं के लिए"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"एक बार इस्तेमाल होने वाला पासवर्ड 132435 है"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"इस सेटिंग पर पाबंदी लगाई गई है"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"आपकी सुरक्षा के लिए, यह सेटिंग फ़िलहाल उपलब्ध नहीं है."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> को इस्तेमाल करने की अनुमति अस्वीकार कर दी गई है"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"इस ऐप्लिकेशन ने <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> को ऐक्सेस करने की अनुमति का अनुरोध किया है, जो पाबंदी वाली सेटिंग है. इसका ऐक्सेस देने से आपके डिवाइस की सुरक्षा को खतरा हो सकता है. इस अनुमति पर पाबंदी लगाने से, हो सकता है कि ऐप्लिकेशन काम करना बंद कर दे."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ज़्यादा जानें"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"ठीक है"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"अनुमति का अनुरोध अस्वीकार किया गया"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"यह ऐप्लिकेशन ज़्यादा अनुमतियों का अनुरोध कर रहा है. हालांकि, स्ट्रीमिंग सेशन के दौरान अनुमतियां नहीं दी जा सकतीं. सबसे पहले अपने फ़ोन पर अनुमति दें."</string>
 </resources>

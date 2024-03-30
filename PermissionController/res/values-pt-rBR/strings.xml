@@ -249,8 +249,8 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nunca acessou"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Negado/nunca acessado"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Permitido"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Permitido sempre"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitido durante o uso"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Permitidos sempre"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitidos durante o uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Com permissão para acessar apenas mídia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Com permissão para gerenciar todos os arquivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Perguntar sempre"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Sua senha única é 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Configuração restrita"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Para sua segurança, essa configuração está indisponível no momento."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"A permissão para acessar <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> foi negada"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Este app pediu permissão para acessar <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, que é uma configuração restrita porque pode colocar sua segurança e privacidade em risco. A restrição a essa permissão pode impedir o funcionamento do app."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saiba mais"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Entendi"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Solicitação de permissão suprimida"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Esse app está solicitando permissões extras, mas elas não podem ser concedidas em uma sessão de streaming. Dê permissão pelo smartphone primeiro."</string>
 </resources>

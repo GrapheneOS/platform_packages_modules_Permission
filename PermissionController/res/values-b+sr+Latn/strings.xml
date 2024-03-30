@@ -445,7 +445,7 @@
     <string name="no_special_app_access" msgid="6950277571805106247">"Nema posebnog pristupa apl."</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Nema aplikacija"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Ne podržava poslovni profil"</string>
-    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Napomena: Ako restartujete uređaj i podesili ste zaključavanje ekrana, ova aplikacija ne može da se pokrene dok ne otključate uređaj."</string>
+    <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Napomena: Ako restartujete uređaj i podesili ste otključavanje ekrana, ova aplikacija ne može da se pokrene dok ne otključate uređaj."</string>
     <string name="assistant_confirmation_message" msgid="7476540402884416212">"Pomoćnik će moći da čita informacije o aplikacijama koje se koriste u sistemu, uključujući informacije vidljive na ekranu ili kojima može da se pristupa u okviru aplikacija."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"Deljenje podataka o otklanjanju grešaka"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"Delite detaljne podatke za otklanjanje grešaka?"</string>
@@ -510,7 +510,7 @@
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Ova aplikacija želi da snima zvuk sve vreme, čak i kada ne koristite aplikaciju. "<annotation id="link">"Dozvolite u podešavanjima."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Želite li da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fizičkim aktivnostima?"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Dozvoljavate da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa podacima o fizičkim aktivnostima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima slike i video snimke?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima slike i video?"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Dozvolićete da aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima slike i video snimke na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplikacija će moći da snima slike i video snimke samo dok koristite aplikaciju"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima slike i video snimke?"</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jednokratna lozinka je 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ograničeno podešavanje"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Ovo podešavanje je trenutno nedostupno radi vaše bezbednosti."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Odbijena je dozvola „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Ova aplikacija je zatražila dozvolu „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“, što je ograničeno podešavanje jer može da vam ugrozi bezbednost i privatnost. Ograničavanje ove dozvole može da spreči rad aplikacije."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saznajte više"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Važi"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahtev za dozvolu je blokiran"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ova aplikacija zahteva dodatne dozvole, ali dozvole ne mogu da se daju u sesiji strimovanja. Prvo dajte dozvolu na telefonu."</string>
 </resources>

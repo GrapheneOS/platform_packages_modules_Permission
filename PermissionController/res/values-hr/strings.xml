@@ -495,7 +495,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dopustiti apl. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audio i drugim datotekama te glazbi&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup glazbi i audiodatotekama na ovom uređaju?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa glazbi i audiodatotekama na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup fotografijama i videozapisima na ovom uređaju?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa fotografijama i videozapisima na ovom uređaju?"</string>
     <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama i videozapisima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
     <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa većem broju fotografija i videozapisa na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -541,7 +541,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dopuštenja koja upotrebljavaju samo aplikacije sustava."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Dodatna dopuštenja"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Dopuštenja koja definiraju aplikacije."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparat"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Lokacija"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Drugo"</string>
@@ -571,7 +571,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Provjera statusa"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Vaše kontrole privatnosti"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"Više postavki"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Pristup fotoaparatu"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"Pristup kameri"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"Pristup mikrofonu"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Dopuštenje uklonjeno"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"Prikaži nedavnu upotrebu fotoaparata"</string>
@@ -613,7 +613,7 @@
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Promijenjen je pristup"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Prikaži nedavnu upotrebu lokacije"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Kontrole privatnosti"</string>
-    <string name="camera_toggle_title" msgid="1251201397431837666">"Pristup fotoaparatu"</string>
+    <string name="camera_toggle_title" msgid="1251201397431837666">"Pristup kameri"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Pristup mikrofonu"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Za aplikacije i usluge"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Za aplikacije i usluge. Ako je ta postavka isključena, podaci mikrofona i dalje se mogu dijeliti kad nazovete broj hitne službe."</string>
@@ -661,12 +661,21 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Vaša jednokratna zaporka je 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ograničena postavka"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Radi vaše sigurnosti ova je postavka trenutačno nedostupna."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="8411239333012890492">"Dopuštenje za upotrebu stavke <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> je odbijeno"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="9207115054288224451">"Ova je aplikacija zatražila dopuštenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, što je ograničena postavka jer može ugroziti vašu sigurnost i privatnost. Ako se to dopuštenje ograniči, to može onemogućiti funkcioniranje navedene aplikacije."</string>
+    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
+    <skip />
+    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
+    <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saznajte više"</string>
-    <string name="enhanced_confirmation_dialog_ok" msgid="1767075979746135617">"Shvaćam"</string>
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_title (8905241017017043649) -->
+    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
     <skip />
-    <!-- no translation found for permission_grant_dialog_streaming_blocked_description (838165608934085319) -->
-    <skip />
+    <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Upit za dopuštenje je spriječen"</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Aplikacija zahtijeva dodatna dopuštenja, no dopuštenja se ne mogu odobriti u sesiji streaminga. Dopuštenje najprije odobrite na telefonu."</string>
 </resources>
