@@ -33,7 +33,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
  */
 object PermissionMapping {
 
-    private val LOG_TAG = "PermissionMapping"
+    private const val LOG_TAG = "PermissionMapping"
 
     private val PERMISSION_GROUPS_TO_DATA_CATEGORIES: Map<String, List<String>> =
         mapOf(Manifest.permission_group.LOCATION to listOf(DataCategoryConstants.CATEGORY_LOCATION))
@@ -375,7 +375,12 @@ object PermissionMapping {
             return Manifest.permission_group.CAMERA
         }
 
-        return AppOpsManager.opToPermission(opName)?.let { getGroupOfPlatformPermission(it) }
+        return try {
+            AppOpsManager.opToPermission(opName)?.let { getGroupOfPlatformPermission(it) }
+        } catch (e: IllegalArgumentException) {
+            Log.wtf(LOG_TAG, "No permission group found for $opName")
+            null
+        }
     }
 
     /**

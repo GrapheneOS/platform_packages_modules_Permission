@@ -22,6 +22,7 @@ import android.safetycenter.SafetySourceIssue
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.safetycenter.pendingintents.PendingIntentSender
+import com.android.safetycenter.testing.NotificationCharacteristics
 import com.android.safetycenter.testing.SafetyCenterActivityLauncher
 import com.android.safetycenter.testing.SafetyCenterFlags
 import com.android.safetycenter.testing.SafetyCenterTestConfigs
@@ -74,7 +75,14 @@ class SafetyCenterNotificationLoggingHelperTests {
     fun openSafetyCenterFromNotification() {
         safetyCenterTestHelper.setData(SINGLE_SOURCE_ID, newTestDataWithNotifiableIssue())
 
-        sendContentPendingIntent(TestNotificationListener.waitForSingleNotification())
+        sendContentPendingIntent(
+            TestNotificationListener.waitForSingleNotificationMatching(
+                NotificationCharacteristics(
+                    actions = listOf("See issue"),
+                    safetySourceId = SINGLE_SOURCE_ID,
+                )
+            )
+        )
     }
 
     private fun newTestDataWithNotifiableIssue(): SafetySourceData =

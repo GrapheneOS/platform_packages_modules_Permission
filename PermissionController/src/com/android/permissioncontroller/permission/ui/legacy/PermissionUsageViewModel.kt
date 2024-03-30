@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.model.v31
+package com.android.permissioncontroller.permission.ui.legacy
 
 import android.Manifest
 import android.app.Application
 import android.app.role.RoleManager
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.os.UserManager
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
@@ -37,8 +38,11 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.v31.AllLightPackageOpsLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.AppPermissionId
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightPackageOps
+import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModel.Companion.SHOULD_SHOW_7_DAYS_KEY
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel.Companion.SHOULD_SHOW_7_DAYS_KEY
+import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsageViewModelV2
+import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsagesUiState
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
@@ -47,21 +51,22 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
 /**
- * [ViewModel] for handheld Permissions Usage UI.
+ * Legacy [ViewModel] for handheld Permissions Usage UI.
  *
- * Note that this class replaces [PermissionUsageViewModelLegacy] to rely on [LiveData] instead of
- * [PermissionUsages] loader.
+ * Note that this class is replaced by [PermissionUsageViewModelV2].
  */
 class PermissionUsageViewModel(
     private val state: SavedStateHandle,
     app: Application,
-) : AndroidViewModel(app) {
+) : BasePermissionUsageViewModel(app) {
     private val userManager =
         Utils.getSystemServiceSafe(app.applicationContext, UserManager::class.java)
     private val roleManager =
         Utils.getSystemServiceSafe(app.applicationContext, RoleManager::class.java)
     private val exemptedPackages: Set<String> = Utils.getExemptedPackages(roleManager)
 
+    @SuppressWarnings("NewApi")
+    // TODO : b/330215842 - Cleanup NewApi suppression's
     private val mAllLightPackageOpsLiveData = AllLightPackageOpsLiveData(app)
     private val appPermGroupUiInfoLiveDataList =
         mutableMapOf<AppPermissionId, AppPermGroupUiInfoLiveData>()
@@ -69,40 +74,59 @@ class PermissionUsageViewModel(
         mutableMapOf<Pair<String, UserHandle>, LightPackageInfoLiveData>()
     private val standardPermGroupNamesLiveData = StandardPermGroupNamesLiveData
 
-    val showSystemAppsLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
-    val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
+    private var showSystemApps = false
+    private var show7DaysData = false
+
+    override fun getPermissionUsagesUiLiveData(): LiveData<PermissionUsagesUiState> {
+        return permissionUsagesUiLiveData
+    }
+
+    override fun getShowSystemApps(): Boolean {
+        return showSystemApps
+    }
+
+    override fun getShow7DaysData(): Boolean {
+        return show7DaysData
+    }
 
     /** Updates whether system app permissions usage should be displayed in the UI. */
-    fun updateShowSystem(showSystem: Boolean) {
-        if (showSystem != state[SHOULD_SHOW_SYSTEM_KEY]) {
-            state[SHOULD_SHOW_SYSTEM_KEY] = showSystem
-        }
+    override fun updateShowSystem(showSystem: Boolean): PermissionUsagesUiState {
+        showSystemApps = showSystem
+        return buildPermissionUsagesUiData()
     }
 
     /** Updates whether 7 days usage or 1 day usage should be displayed in the UI. */
-    fun updateShow7Days(show7Days: Boolean) {
-        if (show7Days != state[SHOULD_SHOW_7_DAYS_KEY]) {
-            state[SHOULD_SHOW_7_DAYS_KEY] = show7Days
-        }
+    override fun updateShow7Days(show7Days: Boolean): PermissionUsagesUiState {
+        show7DaysData = show7Days
+        return buildPermissionUsagesUiData()
     }
 
     /** Builds a [PermissionUsagesUiData] containing all the data necessary to render the UI. */
-    private fun buildPermissionUsagesUiData(): PermissionUsagesUiData {
+    private fun buildPermissionUsagesUiData(): PermissionUsagesUiState {
         val curTime = System.currentTimeMillis()
-        val showSystem: Boolean = state[SHOULD_SHOW_SYSTEM_KEY] ?: false
-        val show7Days: Boolean = state[SHOULD_SHOW_7_DAYS_KEY] ?: false
+
         val showPermissionUsagesDuration =
-            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
+            if (KotlinUtils.is7DayToggleEnabled() && show7DaysData) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION
             }
         val startTime = max(curTime - showPermissionUsagesDuration, Instant.EPOCH.toEpochMilli())
-        return PermissionUsagesUiData(
-            showSystem,
-            show7Days,
+        return PermissionUsagesUiState(
             mAllLightPackageOpsLiveData.containsSystemAppUsages(startTime),
-            mAllLightPackageOpsLiveData.buildPermissionGroupsWithUsageCounts(startTime, showSystem)
+            mAllLightPackageOpsLiveData.buildPermissionGroupsWithUsageCounts(
+                startTime,
+                showSystemApps
+            )
+        )
+    }
+
+    private val permissionGroupLabels = mutableMapOf<String, String>()
+
+    override fun getPermissionGroupLabel(context: Context, permissionGroup: String): String {
+        return permissionGroupLabels.getOrDefault(
+            permissionGroup,
+            KotlinUtils.getPermGroupLabel(context, permissionGroup).toString()
         )
     }
 
@@ -225,6 +249,8 @@ class PermissionUsageViewModel(
         }
 
     /** Filters out app permissions when the permission has not been requested by the app. */
+    @SuppressWarnings("NewApi")
+    // TODO : b/330215842 - Cleanup NewApi suppression's
     private fun Collection<Map.Entry<String, Long>>.filterOutPermissionsNotRequestedByApp(
         packageName: String,
         userHandle: UserHandle
@@ -234,6 +260,8 @@ class PermissionUsageViewModel(
      * Filters out system app permissions from a map of permission last accesses, if showSystem is
      * false.
      */
+    @SuppressWarnings("NewApi")
+    // TODO : b/330215842 - Cleanup NewApi suppression's
     private fun Collection<Map.Entry<String, Long>>.filterOutSystemAppPermissionsIfNecessary(
         showSystem: Boolean,
         packageName: String,
@@ -268,6 +296,8 @@ class PermissionUsageViewModel(
      * Returns from a list of permissions whether any permission along with the provided package
      * name and user handle are considered a system app permission.
      */
+    @SuppressWarnings("NewApi")
+    // TODO : b/330215842 - Cleanup NewApi suppression's
     private fun Collection<String>.containsSystemAppPermission(
         packageName: String,
         userHandle: UserHandle
@@ -297,7 +327,7 @@ class PermissionUsageViewModel(
 
     /** LiveData object for [PermissionUsagesUiData]. */
     val permissionUsagesUiLiveData =
-        object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsagesUiData>() {
+        object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsagesUiState>() {
             private val getAppPermGroupUiInfoLiveData = { appPermissionId: AppPermissionId ->
                 AppPermGroupUiInfoLiveData[
                     Triple(
@@ -312,11 +342,11 @@ class PermissionUsageViewModel(
 
             init {
                 addSource(mAllLightPackageOpsLiveData) { update() }
-                addSource(showSystemAppsLiveData) { update() }
-                addSource(show7DaysLiveData) { update() }
                 addSource(standardPermGroupNamesLiveData) { update() }
             }
 
+            @SuppressWarnings("NewApi")
+            // TODO : b/330215842 - Cleanup NewApi suppression's
             override fun onUpdate() {
                 if (mAllLightPackageOpsLiveData.isStale) {
                     return

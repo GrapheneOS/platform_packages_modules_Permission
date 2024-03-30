@@ -28,6 +28,8 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,7 +44,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel;
+import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel;
+import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsageViewModelFactory;
+import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsagesUiState;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.settingslib.HelpUtils;
 
@@ -54,13 +58,15 @@ import java.util.Map;
 /** The main page for the privacy dashboard. */
 @RequiresApi(Build.VERSION_CODES.S)
 public class PermissionUsageFragment extends SettingsWithLargeHeader {
-
+    private static final String LOG_TAG = PermissionUsageFragment.class.getSimpleName();
     private static final Map<String, Integer> PERMISSION_GROUP_ORDER =
             Map.of(
                     Manifest.permission_group.LOCATION, 0,
                     Manifest.permission_group.CAMERA, 1,
                     Manifest.permission_group.MICROPHONE, 2);
     private static final int DEFAULT_ORDER = 3;
+
+    public static final boolean DEBUG = true;
 
     // Pie chart in this screen will be the first child.
     // Hence we use PERMISSION_GROUP_ORDER + 1 here.
@@ -76,7 +82,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
 
-    private PermissionUsageViewModel mViewModel;
+    private BasePermissionUsageViewModel mViewModel;
 
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
@@ -89,21 +95,23 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
 
     /** Unique Id of a request */
     private long mSessionId;
+    // track total time for dashboard loading.
+    private long mStartTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mStartTime = SystemClock.elapsedRealtime();
         if (savedInstanceState != null) {
             mSessionId = savedInstanceState.getLong(SESSION_ID_KEY);
         } else {
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
-        PermissionUsageViewModel.PermissionUsageViewModelFactory factory =
-                new PermissionUsageViewModel.PermissionUsageViewModelFactory(
+        PermissionUsageViewModelFactory factory = new PermissionUsageViewModelFactory(
                         getActivity().getApplication(), this, new Bundle());
-        mViewModel = new ViewModelProvider(this, factory).get(PermissionUsageViewModel.class);
+        mViewModel = new ViewModelProvider(this, factory)
+                .get(BasePermissionUsageViewModel.class);
 
         // Start out with 'other' permissions not expanded.
         mOtherExpanded = false;
@@ -194,11 +202,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                 menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE, R.string.menu_show_system);
         mHideSystemMenu =
                 menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
-        boolean showSystem =
-                mViewModel.getShowSystemAppsLiveData().getValue() != null
-                        ? mViewModel.getShowSystemAppsLiveData().getValue()
-                        : false;
-        updateShowSystemToggle(showSystem);
+        updateShowSystemToggle(mViewModel.getShowSystemApps());
 
         if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
             mShow7DaysDataMenu =
@@ -213,11 +217,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                             MENU_SHOW_24_HOURS_DATA,
                             Menu.NONE,
                             R.string.menu_show_24_hours_data);
-            boolean show7Days =
-                    mViewModel.getShow7DaysLiveData().getValue() != null
-                            ? mViewModel.getShow7DaysLiveData().getValue()
-                            : false;
-            updateShow7DaysToggle(show7Days);
+            updateShow7DaysToggle(mViewModel.getShow7DaysData());
         }
 
         HelpUtils.prepareHelpMenuItem(
@@ -236,16 +236,21 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                         PERMISSION_USAGE_FRAGMENT_INTERACTION,
                         mSessionId,
                         PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
-                mViewModel.updateShowSystem(true);
+                mStartTime = SystemClock.elapsedRealtime();
+                updateAllUI(mViewModel.updateShowSystem(true));
                 break;
             case MENU_HIDE_SYSTEM:
-                mViewModel.updateShowSystem(false);
+                mStartTime = SystemClock.elapsedRealtime();
+                updateAllUI(mViewModel.updateShowSystem(false));
                 break;
             case MENU_SHOW_7_DAYS_DATA:
-                mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled());
+                mStartTime = SystemClock.elapsedRealtime();
+
+                updateAllUI(mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled()));
                 break;
             case MENU_SHOW_24_HOURS_DATA:
-                mViewModel.updateShow7Days(false);
+                mStartTime = SystemClock.elapsedRealtime();
+                updateAllUI(mViewModel.updateShow7Days(false));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -293,8 +298,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
     }
 
     /** Updates page content and menu items. */
-    private void updateAllUI(
-            PermissionUsageViewModel.PermissionUsagesUiData permissionUsagesUiData) {
+    private void updateAllUI(PermissionUsagesUiState permissionUsagesUiData) {
         if (getActivity() == null) {
             return;
         }
@@ -319,40 +323,27 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                     mSessionId,
                     PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED);
         });
-        boolean containsSystemAppUsages = permissionUsagesUiData.getContainsSystemAppUsages();
+        boolean containsSystemAppUsages = permissionUsagesUiData.getShouldShowSystemToggle();
         Map<String, Integer> permissionGroupWithUsageCounts =
-                permissionUsagesUiData.getPermissionGroupsWithUsageCount();
+                permissionUsagesUiData.getPermissionGroupUsageCount();
         List<Map.Entry<String, Integer>> permissionGroupWithUsageCountsEntries =
                 new ArrayList(permissionGroupWithUsageCounts.entrySet());
 
         permissionGroupWithUsageCountsEntries.sort(Comparator.comparing(
                 (Map.Entry<String, Integer> permissionGroupWithUsageCount) ->
                         PERMISSION_GROUP_ORDER.getOrDefault(
-                                permissionGroupWithUsageCount.getKey(),
-                                DEFAULT_ORDER))
-                .thenComparing(
-                    (Map.Entry<String, Integer> permissionGroupWithUsageCount) ->
-                        KotlinUtils.INSTANCE
-                                .getPermGroupLabel(
-                                        context,
-                                        permissionGroupWithUsageCount
-                                                .getKey())
-                                .toString()));
+                                permissionGroupWithUsageCount.getKey(), DEFAULT_ORDER))
+                .thenComparing((Map.Entry<String, Integer> permissionGroupWithUsageCount) ->
+                        mViewModel.getPermissionGroupLabel(
+                                context, permissionGroupWithUsageCount.getKey())));
 
         if (mHasSystemApps != containsSystemAppUsages) {
             mHasSystemApps = containsSystemAppUsages;
         }
 
-        boolean show7Days =
-                mViewModel.getShow7DaysLiveData().getValue() != null
-                        ? mViewModel.getShow7DaysLiveData().getValue()
-                        : false;
+        boolean show7Days = mViewModel.getShow7DaysData();
         updateShow7DaysToggle(show7Days);
-        boolean showSystem =
-                mViewModel.getShowSystemAppsLiveData().getValue() != null
-                        ? mViewModel.getShowSystemAppsLiveData().getValue()
-                        : false;
-        updateShowSystemToggle(showSystem);
+        updateShowSystemToggle(mViewModel.getShowSystemApps());
 
         mGraphic = new PermissionUsageGraphicPreference(context, show7Days);
         screen.addPreference(mGraphic);
@@ -366,6 +357,11 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
         screen.setSummary(advancedInfoSummary);
 
         addUIContent(context, permissionGroupWithUsageCountsEntries, category);
+        long totalTimeTaken = SystemClock.elapsedRealtime() - mStartTime;
+        if (DEBUG) {
+            Log.i(LOG_TAG, "Total time taken in dashboard loading = " + totalTimeTaken + " ms");
+        }
+        Log.v(LOG_TAG, "Privacy dashboard data = " + permissionUsagesUiData);
     }
 
     private CharSequence getAdvancedInfoSummaryString(
@@ -381,7 +377,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                     permissionGroupWithUsageCounts
                             .get(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1)
                             .getKey();
-            return KotlinUtils.INSTANCE.getPermGroupLabel(context, permGroupName);
+            return mViewModel.getPermissionGroupLabel(context, permGroupName);
         }
 
         String permGroupName1 =
@@ -392,10 +388,8 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                 permissionGroupWithUsageCounts
                         .get(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT)
                         .getKey();
-        CharSequence permGroupLabel1 =
-                KotlinUtils.INSTANCE.getPermGroupLabel(context, permGroupName1);
-        CharSequence permGroupLabel2 =
-                KotlinUtils.INSTANCE.getPermGroupLabel(context, permGroupName2);
+        CharSequence permGroupLabel1 = mViewModel.getPermissionGroupLabel(context, permGroupName1);
+        CharSequence permGroupLabel2 = mViewModel.getPermissionGroupLabel(context, permGroupName2);
 
         // case for 2 extra items in the advanced info
         if (size == PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT + 1) {
@@ -421,14 +415,9 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
             Context context,
             List<Map.Entry<String, Integer>> permissionGroupWithUsageCounts,
             PreferenceCategory category) {
-        boolean showSystem =
-                mViewModel.getShowSystemAppsLiveData().getValue() != null
-                        ? mViewModel.getShowSystemAppsLiveData().getValue()
-                        : false;
-        boolean show7Days =
-                mViewModel.getShow7DaysLiveData().getValue() != null
-                        ? mViewModel.getShow7DaysLiveData().getValue()
-                        : false;
+        boolean showSystem = mViewModel.getShowSystemApps();
+        boolean show7Days = mViewModel.getShow7DaysData();
+
         for (int i = 0; i < permissionGroupWithUsageCounts.size(); i++) {
             Map.Entry<String, Integer> permissionGroupWithUsageCount =
                     permissionGroupWithUsageCounts.get(i);

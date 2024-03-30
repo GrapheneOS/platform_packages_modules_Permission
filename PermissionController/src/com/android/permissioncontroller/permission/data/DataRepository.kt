@@ -80,9 +80,6 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
     /**
      * Remove LiveData objects with no observer.
      */
-    // Allow handling for trim levels that are deprecated in newer API versions
-    // but are still supported on older devices that this code ships to.
-    @SuppressWarnings("deprecation")
     override fun onTrimMemory(level: Int) {
         if (isLowMemoryDevice) {
             trimInactiveData(TIME_THRESHOLD_ALL_NANOS)
@@ -100,11 +97,13 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
             threshold =
                 when (level) {
                     ComponentCallbacks2.TRIM_MEMORY_BACKGROUND -> TIME_THRESHOLD_LAX_NANOS
-                    ComponentCallbacks2.TRIM_MEMORY_MODERATE -> TIME_THRESHOLD_TIGHT_NANOS
-                    ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> TIME_THRESHOLD_ALL_NANOS
-                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE -> TIME_THRESHOLD_LAX_NANOS
-                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> TIME_THRESHOLD_TIGHT_NANOS
-                    ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> TIME_THRESHOLD_ALL_NANOS
+                    // Allow handling for trim levels that are deprecated in newer API versions
+                    // but are still supported on older devices that this code ships to.
+                    @Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_MODERATE -> TIME_THRESHOLD_TIGHT_NANOS
+                    @Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> TIME_THRESHOLD_ALL_NANOS
+                    @Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE -> TIME_THRESHOLD_LAX_NANOS
+                    @Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> TIME_THRESHOLD_TIGHT_NANOS
+                    @Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> TIME_THRESHOLD_ALL_NANOS
                     else -> return
                 }
         )
@@ -112,9 +111,8 @@ abstract class DataRepository<K, V : DataRepository.InactiveTimekeeper> : Compon
 
     // Allow handling for trim levels that are deprecated in newer API versions
     // but are still supported on older devices that this code ships to.
-    @SuppressWarnings("deprecation")
     override fun onLowMemory() {
-        onTrimMemory(ComponentCallbacks2.TRIM_MEMORY_COMPLETE)
+        onTrimMemory(@Suppress("DEPRECATION") ComponentCallbacks2.TRIM_MEMORY_COMPLETE)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

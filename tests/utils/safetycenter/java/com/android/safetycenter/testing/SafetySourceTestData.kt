@@ -464,6 +464,10 @@ class SafetySourceTestData(private val context: Context) {
     /** A [PendingIntent] used by the resolving [Action] in [criticalResolvingGeneralIssue]. */
     val criticalIssueActionPendingIntent = resolvingActionPendingIntent()
 
+    /** A [PendingIntent] used by the resolving [Action] in [criticalResolvingGeneralIssue]. */
+    fun criticalIssueActionPendingIntent(sourceId: String) =
+        resolvingActionPendingIntent(sourceId = sourceId)
+
     /**
      * Returns a [PendingIntent] for a resolving [Action] with the given [sourceId], [sourceIssueId]
      * and [sourceIssueActionId]. Default values are the same as those used by
@@ -486,6 +490,16 @@ class SafetySourceTestData(private val context: Context) {
     /** A resolving Critical [Action] */
     val criticalResolvingAction =
         Action.Builder(CRITICAL_ISSUE_ACTION_ID, "Solve issue", criticalIssueActionPendingIntent)
+            .setWillResolve(true)
+            .build()
+
+    /** A resolving Critical [Action] */
+    private fun criticalResolvingAction(sourceId: String) =
+        Action.Builder(
+                CRITICAL_ISSUE_ACTION_ID,
+                "Solve issue",
+                criticalIssueActionPendingIntent(sourceId = sourceId)
+            )
             .setWillResolve(true)
             .build()
 
@@ -518,6 +532,17 @@ class SafetySourceTestData(private val context: Context) {
             .setSuccessMessage("Issue solved")
             .build()
 
+    /** A resolving Critical [Action] that declares a success message */
+    private fun criticalResolvingActionWithSuccessMessage(sourceId: String) =
+        Action.Builder(
+                CRITICAL_ISSUE_ACTION_ID,
+                "Solve issue",
+                criticalIssueActionPendingIntent(sourceId = sourceId)
+            )
+            .setWillResolve(true)
+            .setSuccessMessage("Issue solved")
+            .build()
+
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]. */
     val criticalResolvingIssueWithSuccessMessage =
         SafetySourceIssue.Builder(
@@ -528,6 +553,18 @@ class SafetySourceTestData(private val context: Context) {
                 ISSUE_TYPE_ID
             )
             .addAction(criticalResolvingActionWithSuccessMessage)
+            .build()
+
+    /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]. */
+    private fun criticalResolvingIssueWithSuccessMessage(sourceId: String) =
+        SafetySourceIssue.Builder(
+                CRITICAL_ISSUE_ID,
+                "Critical issue title",
+                "Critical issue summary",
+                SEVERITY_LEVEL_CRITICAL_WARNING,
+                ISSUE_TYPE_ID
+            )
+            .addAction(criticalResolvingActionWithSuccessMessage(sourceId = sourceId))
             .build()
 
     /**
@@ -574,7 +611,10 @@ class SafetySourceTestData(private val context: Context) {
      * [SafetySourceIssue.Builder] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]
      * .
      */
-    fun defaultCriticalResolvingIssueBuilder(issueId: String = CRITICAL_ISSUE_ID) =
+    fun defaultCriticalResolvingIssueBuilder(
+        issueId: String = CRITICAL_ISSUE_ID,
+        sourceId: String = SINGLE_SOURCE_ID,
+    ) =
         SafetySourceIssue.Builder(
                 issueId,
                 "Critical issue title",
@@ -582,13 +622,20 @@ class SafetySourceTestData(private val context: Context) {
                 SEVERITY_LEVEL_CRITICAL_WARNING,
                 ISSUE_TYPE_ID
             )
-            .addAction(criticalResolvingAction)
+            .addAction(criticalResolvingAction(sourceId))
 
     /**
      * General [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]
      * .
      */
     val criticalResolvingGeneralIssue = defaultCriticalResolvingIssueBuilder().build()
+
+    /**
+     * General [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving [Action]
+     * .
+     */
+    private fun criticalResolvingGeneralIssue(sourceId: String) =
+        defaultCriticalResolvingIssueBuilder(sourceId = sourceId).build()
 
     /**
      * General [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and with deduplication
@@ -613,6 +660,15 @@ class SafetySourceTestData(private val context: Context) {
      */
     val criticalResolvingDeviceIssue =
         defaultCriticalResolvingIssueBuilder()
+            .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
+            .build()
+
+    /**
+     * Device related [SafetySourceIssue] with a [SEVERITY_LEVEL_CRITICAL_WARNING] and a resolving
+     * [Action].
+     */
+    private fun criticalResolvingDeviceIssue(sourceId: String) =
+        defaultCriticalResolvingIssueBuilder(sourceId = sourceId)
             .setIssueCategory(SafetySourceIssue.ISSUE_CATEGORY_DEVICE)
             .build()
 
@@ -689,6 +745,15 @@ class SafetySourceTestData(private val context: Context) {
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving general
+     * [SafetySourceIssue] and [SafetySourceStatus].
+     */
+    fun criticalWithResolvingGeneralIssue(sourceId: String) =
+        defaultCriticalDataBuilder()
+            .addIssue(criticalResolvingGeneralIssue(sourceId = sourceId))
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving general
      * [SafetySourceIssue] and [SafetySourceStatus], with confirmation dialog.
      */
     val criticalWithResolvingGeneralIssueWithConfirmation: SafetySourceData
@@ -719,6 +784,15 @@ class SafetySourceTestData(private val context: Context) {
 
     /**
      * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving device related
+     * [SafetySourceIssue] and [SafetySourceStatus].
+     */
+    fun criticalWithResolvingDeviceIssue(sourceId: String) =
+        defaultCriticalDataBuilder()
+            .addIssue(criticalResolvingDeviceIssue(sourceId = sourceId))
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving device related
      * [SafetySourceIssue] and [SafetySourceStatus] and a recommendation issue.
      */
     val criticalWithResolvingDeviceIssueAndRecommendationIssue =
@@ -743,6 +817,24 @@ class SafetySourceTestData(private val context: Context) {
                     .build()
             )
             .addIssue(criticalResolvingIssueWithSuccessMessage)
+            .build()
+
+    /**
+     * A [SafetySourceData] with a [SEVERITY_LEVEL_CRITICAL_WARNING] resolving [SafetySourceIssue]
+     * and [SafetySourceStatus].
+     */
+    fun criticalWithResolvingIssueWithSuccessMessage(sourceId: String) =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                        "Critical title",
+                        "Critical summary",
+                        SEVERITY_LEVEL_CRITICAL_WARNING
+                    )
+                    .setPendingIntent(createTestActivityRedirectPendingIntent())
+                    .build()
+            )
+            .addIssue(criticalResolvingIssueWithSuccessMessage(sourceId = sourceId))
             .build()
 
     /**

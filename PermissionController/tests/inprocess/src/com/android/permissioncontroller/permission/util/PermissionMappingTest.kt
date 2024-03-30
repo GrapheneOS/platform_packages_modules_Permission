@@ -58,6 +58,16 @@ class PermissionMappingTest {
     }
 
     @Test
+    fun testGetPlatformPermissionGroupForOp_InvalidOpName() {
+        try {
+            assertThat(PermissionMapping.getPlatformPermissionGroupForOp("invalid_opName"))
+                .isEqualTo(null)
+        } catch (e: IllegalArgumentException) {
+            // ignore wtf may throw in some configuration.
+        }
+    }
+
+    @Test
     fun testGetPlatformPermissionGroupForOp_readContacts() {
         assertThat(
                 PermissionMapping.getPlatformPermissionGroupForOp(AppOpsManager.OPSTR_READ_CONTACTS)

@@ -17,17 +17,24 @@
 package com.android.safetycenter.testing
 
 import android.app.Notification
+import android.service.notification.StatusBarNotification
+import com.android.safetycenter.internaldata.SafetyCenterIds
 
 /** The characteristic properties of a notification. */
 data class NotificationCharacteristics(
-    val title: String,
-    val text: String,
+    val title: String? = null,
+    val text: String? = null,
     val actions: List<CharSequence> = emptyList(),
     val importance: Int = IMPORTANCE_ANY,
-    val blockable: Boolean? = null
+    val blockable: Boolean? = null,
+    val safetySourceId: String? = null,
 ) {
     companion object {
         const val IMPORTANCE_ANY = -1
+
+        private fun stringMatches(actual: String?, expected: String?): Boolean {
+            return expected == null || actual == expected
+        }
 
         private fun importanceMatches(
             statusBarNotificationWithChannel: StatusBarNotificationWithChannel,
@@ -45,17 +52,31 @@ data class NotificationCharacteristics(
                 statusBarNotificationWithChannel.channel.isBlockable == characteristicBlockable
         }
 
+        fun safetySourceIdMatches(
+            statusBarNotification: StatusBarNotification,
+            safetySourceId: String?
+        ): Boolean {
+            return safetySourceId == null ||
+                SafetyCenterIds.issueKeyFromString(statusBarNotification.tag).safetySourceId ==
+                    safetySourceId
+        }
+
         private fun isMatch(
             statusBarNotificationWithChannel: StatusBarNotificationWithChannel,
             characteristic: NotificationCharacteristics
         ): Boolean {
             val notif = statusBarNotificationWithChannel.statusBarNotification.notification
+            val extras = notif.extras
             return notif != null &&
-                notif.extras.getString(Notification.EXTRA_TITLE) == characteristic.title &&
-                notif.extras.getString(Notification.EXTRA_TEXT).orEmpty() == characteristic.text &&
+                stringMatches(extras.getString(Notification.EXTRA_TITLE), characteristic.title) &&
+                stringMatches(extras.getString(Notification.EXTRA_TEXT), characteristic.text) &&
                 notif.actions.orEmpty().map { it.title } == characteristic.actions &&
                 importanceMatches(statusBarNotificationWithChannel, characteristic.importance) &&
-                blockableMatches(statusBarNotificationWithChannel, characteristic.blockable)
+                blockableMatches(statusBarNotificationWithChannel, characteristic.blockable) &&
+                safetySourceIdMatches(
+                    statusBarNotificationWithChannel.statusBarNotification,
+                    characteristic.safetySourceId
+                )
         }
 
         fun areMatching(

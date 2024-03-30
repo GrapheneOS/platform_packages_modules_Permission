@@ -119,6 +119,8 @@ android_test {
         "lottie",
         "permissions-aconfig-flags-lib",
         "android.permission.flags-aconfig-java",
+        "platform-test-annotations",
+        "flag-junit",
 
         "androidx.test.rules",
         "androidx.test.ext.truth",
