@@ -348,13 +348,26 @@ class AppPermissionsTest {
         return grantInfoMap
     }
 
-    private fun getRadioButtons(): Map<String, UiObject2> =
-        mapOf(
-            "ALLOW_FOREGROUND_ONLY_RADIO_BUTTON" to
-                UiAutomatorUtils2.waitFindObject(By.res(ALLOW_FOREGROUND_ONLY_RADIO_BUTTON)),
-            "ASK_RADIO_BUTTON" to UiAutomatorUtils2.waitFindObject(By.res(ASK_RADIO_BUTTON)),
-            "DENY_RADIO_BUTTON" to UiAutomatorUtils2.waitFindObject(By.res(DENY_RADIO_BUTTON))
-        )
+    // Use of "eventually" and invoking "isChecked" is to mitigate StaleObjectException that
+    // intermittently observed on cf_x86_64_tablet_hsum-trunk_staging-userdebug
+    private fun getRadioButtons(): Map<String, UiObject2> {
+        val map = mutableMapOf<String, UiObject2>()
+        eventually {
+            val allowButton =
+                UiAutomatorUtils2.waitFindObject(By.res(ALLOW_FOREGROUND_ONLY_RADIO_BUTTON))
+            allowButton.isChecked
+            map["ALLOW_FOREGROUND_ONLY_RADIO_BUTTON"] = allowButton
+
+            val askButton = UiAutomatorUtils2.waitFindObject(By.res(ASK_RADIO_BUTTON))
+            askButton.isChecked
+            map["ASK_RADIO_BUTTON"] = askButton
+
+            val denyButton = UiAutomatorUtils2.waitFindObject(By.res(DENY_RADIO_BUTTON))
+            denyButton.isChecked
+            map["DENY_RADIO_BUTTON"] = denyButton
+        }
+        return map
+    }
 
     private fun openAppPermissionsScreen() {
         instrumentation.context.startActivity(

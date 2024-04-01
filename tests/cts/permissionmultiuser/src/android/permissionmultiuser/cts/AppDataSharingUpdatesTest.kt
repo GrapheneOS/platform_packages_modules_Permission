@@ -52,14 +52,14 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.bedstead.harrier.BedsteadJUnit4
 import com.android.bedstead.harrier.DeviceState
-import com.android.bedstead.harrier.annotations.EnsureHasPermission
+import com.android.bedstead.permissions.annotations.EnsureHasPermission
 import com.android.bedstead.harrier.annotations.EnsureSecureSettingSet
 import com.android.bedstead.harrier.annotations.RequireDoesNotHaveFeature
 import com.android.bedstead.harrier.annotations.RequireNotWatch
 import com.android.bedstead.harrier.annotations.RequireRunOnAdditionalUser
 import com.android.bedstead.harrier.annotations.RequireRunOnWorkProfile
 import com.android.bedstead.harrier.annotations.RequireSdkVersion
-import com.android.bedstead.nene.permissions.CommonPermissions.INTERACT_ACROSS_USERS
+import com.android.bedstead.permissions.CommonPermissions.INTERACT_ACROSS_USERS
 import com.android.compatibility.common.util.ApiTest
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
