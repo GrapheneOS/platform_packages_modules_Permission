@@ -619,7 +619,7 @@
     <string name="mic_toggle_description" msgid="9163104307990677157">"アプリとサービスによるアクセス。この設定が OFF の場合でも、緊急通報番号に発信したときは、マイクのデータが共有されることがあります。"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"位置情報にアクセスできるアプリとサービスを確認"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"クリップボードへのアクセスを通知"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスすると、メッセージが表示されます"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"クリップボードにコピーしたテキストや画像などにアプリがアクセスした際に、メッセージを表示します"</string>
     <string name="show_password_title" msgid="2877269286984684659">"パスワードを表示"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"入力した文字を一瞬だけ表示します"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"このアプリは、位置情報をサードパーティと共有する可能性があります"</string>
@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"ワンタイム パスワードは 132435 です"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"制限付き設定"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"セキュリティ保護のため、この設定は現在利用できません。"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"アプリは<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>へのアクセスを拒否されました"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"機密情報に関わる権限へのアクセスをアプリがリクエストしました。この権限へのアクセスは、あなたの個人情報や財務情報を危険にさらす恐れがあります。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>この制限付きの権限がないとアプリは正しく動作しない可能性があります。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;アクセスを許可する方法の詳細&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"アプリはデフォルトの<xliff:g id="ROLE_NAME">%1$s</xliff:g>としてのアクセスを拒否されました"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"機密情報に関わる権限へのアクセスをアプリがリクエストしました。これらの権限へのアクセスは、あなたの個人情報や財務情報を危険にさらす恐れがあります。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>これらの制限付きの権限がないとアプリは正しく動作しない可能性があります。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;アクセスを許可する方法の詳細&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"アプリはアクセスを拒否されました"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"この権限へのアクセスは、あなたの個人情報や財務情報を危険にさらす恐れがあります。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>この制限付きの権限がないとアプリは正しく動作しない可能性があります。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;アクセスを許可する方法の詳細&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"詳細"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"権限のリクエストが抑制されています"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"このアプリは追加の権限を求めていますが、ストリーミング セッションでは権限を付与できません。スマートフォンで先に権限を付与してください。"</string>
 </resources>

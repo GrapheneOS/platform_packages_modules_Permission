@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.permission.data.v35
 
 import android.app.Application
 import android.companion.virtual.VirtualDeviceManager
@@ -26,6 +26,8 @@ import android.permission.PermissionManager.PermissionState
 import androidx.annotation.RequiresApi
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
+import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import kotlinx.coroutines.Job

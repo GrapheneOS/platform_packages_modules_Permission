@@ -474,7 +474,6 @@ public class LocationAccessCheckTest {
         wakeUpAndDismissKeyguard();
         bindService();
         resetPermissionControllerBeforeEachTest();
-        bypassBatterySavingRestrictions();
         assumeCanGetFineLocation();
     }
 
@@ -495,11 +494,6 @@ public class LocationAccessCheckTest {
                 "cmd jobscheduler reset-execution-quota -u " + myUserHandle().getIdentifier() + " "
                         + PERMISSION_CONTROLLER_PKG);
         runShellCommand("cmd jobscheduler reset-schedule-quota");
-    }
-
-    public void bypassBatterySavingRestrictions() {
-        runShellCommand("cmd tare set-vip " + myUserHandle().getIdentifier()
-                + " " + PERMISSION_CONTROLLER_PKG + " true");
     }
 
     /**
@@ -564,7 +558,6 @@ public class LocationAccessCheckTest {
     public void cleanupAfterEachTest() throws Throwable {
         resetPrivacyConfig();
         locationUnbind();
-        resetBatterySavingRestrictions();
     }
 
     /**
@@ -577,11 +570,6 @@ public class LocationAccessCheckTest {
 
     public void locationUnbind() throws Throwable {
         unbindService();
-    }
-
-    public void resetBatterySavingRestrictions() {
-        runShellCommand("cmd tare set-vip " + myUserHandle().getIdentifier()
-                + " " + PERMISSION_CONTROLLER_PKG + " default");
     }
 
     @Test

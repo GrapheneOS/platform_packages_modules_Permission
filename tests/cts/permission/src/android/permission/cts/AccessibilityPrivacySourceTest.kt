@@ -24,7 +24,6 @@ import android.app.UiAutomation
 import android.content.ComponentName
 import android.content.Context
 import android.os.Build
-import android.os.Process
 import android.permission.cts.CtsNotificationListenerServiceUtils.assertEmptyNotification
 import android.permission.cts.CtsNotificationListenerServiceUtils.assertNotificationExist
 import android.permission.cts.CtsNotificationListenerServiceUtils.cancelNotification
@@ -106,11 +105,6 @@ class AccessibilityPrivacySourceTest {
         InstrumentedAccessibilityService.disableAllServices()
         runShellCommand("input keyevent KEYCODE_WAKEUP")
         resetPermissionController()
-        // Bypass battery saving restrictions
-        runShellCommand(
-            "cmd tare set-vip " +
-                "${Process.myUserHandle().identifier} $permissionControllerPackage true"
-        )
         cancelNotifications(permissionControllerPackage)
         assertEmptyNotification(permissionControllerPackage, ACCESSIBILITY_NOTIFICATION_ID)
         runWithShellPermissionIdentity { safetyCenterManager?.clearAllSafetySourceDataForTests() }
@@ -124,11 +118,6 @@ class AccessibilityPrivacySourceTest {
     @After
     fun cleanup() {
         cancelNotifications(permissionControllerPackage)
-        // Reset battery saving restrictions
-        runShellCommand(
-            "cmd tare set-vip " +
-                "${Process.myUserHandle().identifier} $permissionControllerPackage default"
-        )
         runWithShellPermissionIdentity { safetyCenterManager?.clearAllSafetySourceDataForTests() }
     }
 

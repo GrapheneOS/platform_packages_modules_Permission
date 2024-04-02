@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"آپ کا ایک وقتی پاس ورڈ 132435 ہے"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"محدود ترتیب"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"آپ کی سیکیورٹی کیلئے، یہ ترتیب فی الحال دستیاب نہیں ہے۔"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> تک ایپ کی رسائی کو مسترد کر دیا گیا"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"‏ایپ نے ایک حساس اجازت تک رسائی کی درخواست کی ہے جو آپ کی ذاتی اور مالی معلومات کو خطرے میں ڈال سکتی ہے۔<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>یہ ممکن ہے کہ اس محدود اجازت کے بغیر ایپ ٹھیک سے کام نہ کرے۔ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;رسائی کی اجازت دینے کا طریقہ جانیں&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"ڈیفالٹ <xliff:g id="ROLE_NAME">%1$s</xliff:g> ہونے کے لیے ایپ کی رسائی کو مسترد کر دیا گیا"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"‏ایپ نے حساس اجازتوں تک رسائی کی درخواست کی ہے جو آپ کی ذاتی اور مالی معلومات کو خطرے میں ڈال سکتی ہیں۔<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>یہ ممکن ہے کہ ان محدود اجازتوں کے بغیر ایپ ٹھیک سے کام نہ کرے۔ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;رسائی کی اجازت دینے کا طریقہ جانیں&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"ایپ کی رسائی کو مسترد کر دیا گیا"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"‏اس اجازت تک رسائی آپ کی ذاتی اور مالی معلومات کو خطرے میں ڈال سکتی ہے۔<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>یہ ممکن ہے کہ اس محدود اجازت کے بغیر ایپ ٹھیک سے کام نہ کرے۔ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;رسائی کی اجازت دینے کا طریقہ جانیں&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"مزید جانیں"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ٹھیک ہے"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"اجازت کی درخواست مسترد کر دی گئی"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"یہ ایپ اضافی اجازتوں کی درخواست کر رہی ہے، لیکن سلسلہ بندی کے سیشن میں اجازتیں نہیں دی جا سکتیں۔ پہلے اپنے فون پر اجازت دیں۔"</string>
 </resources>

@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"သင့်တစ်ခါသုံး စကားဝှက်သည် 132435 ဖြစ်သည်"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"ကန့်သတ်ဆက်တင်"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"သင့်လုံခြုံရေးအတွက် ဤဆက်တင်ကို လောလောဆယ် မရနိုင်ပါ။"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"အက်ပ်ကို <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> သုံးခွင့် ငြင်းပယ်ထားသည်"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"အက်ပ်သည် သင်၏ ပုဂ္ဂိုလ်ရေးနှင့် ငွေကြေးဆိုင်ရာ အချက်အလက်များကို အန္တရာယ်ဖြစ်စေနိုင်သော သတိထားရမည့် ခွင့်ပြုချက်သုံးရန် တောင်းဆိုထားသည်။<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>အက်ပ်သည် ဤကန့်သတ်ထားသော ခွင့်ပြုချက်မရှိပါက ကောင်းစွာမလုပ်ဆောင်ခြင်း ဖြစ်နိုင်သည်။ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;သုံးခွင့်ပြုနည်းကို လေ့လာရန်&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"အက်ပ်အား မူရင်း <xliff:g id="ROLE_NAME">%1$s</xliff:g> အဖြစ် လုပ်ဆောင်ခွင့် ငြင်းပယ်ထားသည်"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"အက်ပ်သည် သင်၏ ပုဂ္ဂိုလ်ရေးနှင့် ငွေကြေးဆိုင်ရာ အချက်အလက်များကို အန္တရာယ်ဖြစ်စေနိုင်သော သတိထားရမည့် ခွင့်ပြုချက်များသုံးရန် တောင်းဆိုထားသည်။<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>အက်ပ်သည် ဤကန့်သတ်ထားသော ခွင့်ပြုချက်များမရှိပါက ကောင်းစွာမလုပ်ဆောင်ခြင်း ဖြစ်နိုင်သည်။ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;သုံးခွင့်ပြုနည်းကို လေ့လာရန်&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"အက်ပ်ကို သုံးခွင့် ငြင်းပယ်ထားသည်"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"ဤခွင့်ပြုချက်သုံးခြင်းသည် သင်၏ ပုဂ္ဂိုလ်ရေးနှင့် ငွေကြေးဆိုင်ရာ အချက်အလက်များကို အန္တရာယ်ဖြစ်စေနိုင်သည်။<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>အက်ပ်သည် ဤကန့်သတ်ထားသော ခွင့်ပြုချက်မရှိပါက ကောင်းစွာမလုပ်ဆောင်ခြင်း ဖြစ်နိုင်သည်။ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;သုံးခွင့်ပြုနည်းကို လေ့လာရန်&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ပိုမိုလေ့လာရန်"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ခွင့်ပြုချက်တောင်းဆိုမှု ပိတ်ထားသည်"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ဤအက်ပ်သည် နောက်ထပ်ခွင့်ပြုချက်များကို တောင်းဆိုနေသော်လည်း တိုက်ရိုက်လွှင့်စက်ရှင်တွင် ခွင့်ပြုချက်များ ပေး၍မရပါ။ သင့်ဖုန်းတွင် ဦးစွာ ခွင့်ပြုချက်ပေးပါ။"</string>
 </resources>

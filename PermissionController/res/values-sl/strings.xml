@@ -668,8 +668,7 @@
     <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Aplikaciji je bil zavrnjen dostop"</string>
     <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Dostop do tega dovoljenja lahko ogrozi vaše osebne in finančne podatke.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Aplikacija morda ne bo pravilno delovala brez tega omejenega dovoljenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Preberite, kako omogočite dostop&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Več o tem"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"V redu"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahteva za dovoljenje je bila prezrta"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ta aplikacija zahteva dodatna dovoljenja, vendar teh ni mogoče odobriti med sejo pretočnega predvajanja. Dovoljenje najprej odobrite v telefonu."</string>
 </resources>

@@ -616,7 +616,7 @@
     <string name="camera_toggle_title" msgid="1251201397431837666">"Kamerazugriff"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofonzugriff"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Für Apps und Dienste"</string>
-    <string name="mic_toggle_description" msgid="9163104307990677157">"Für Apps und Dienste. Wenn diese Einstellung deaktiviert ist, können Mikrofondaten dennoch freigegeben werden, wenn du den Notruf wählst."</string>
+    <string name="mic_toggle_description" msgid="9163104307990677157">"Für Apps und Dienste. Wenn du eine Notrufnummer wählst, können Mikrofondaten weitergegeben werden, auch wenn diese Berechtigung deaktiviert ist."</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"Apps und Dienste sehen, die Zugriff auf diesen Standort haben"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Zugriff auf Zwischenablage anzeigen"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Eine Meldung wird angezeigt, wenn Apps auf Text, Bilder oder andere Inhalte zugreifen, die du kopiert hast"</string>

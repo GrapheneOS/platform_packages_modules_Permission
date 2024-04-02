@@ -661,18 +661,12 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Engangspassordet ditt er 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Begrenset innstilling"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Av sikkerhetshensyn er denne innstillingen utilgjengelig for øyeblikket."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Appens tilgang til <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ble avvist"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Appen ba om tilgang til en sensitiv tillatelse som kan utsette den personlige og økonomiske informasjonen din for fare.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Det kan hende at appen ikke fungerer skikkelig uten denne begrensede tillatelsen. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Finn ut hvordan du gir tilgang&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Appens tilgang til standard <xliff:g id="ROLE_NAME">%1$s</xliff:g>, ble avvist"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Appen ba om tilgang til sensitive tillatelser som kan utsette den personlige og økonomiske informasjonen din for fare.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Det kan hende at appen ikke fungerer skikkelig uten disse begrensede tillatelsene. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Finn ut hvordan du gir tilgang&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Appens tilgang ble avvist"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Hvis du gir tilgang til denne tillatelsen, kan den personlige og økonomiske informasjonen din bli utsatt for fare.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Det kan hende at appen ikke fungerer skikkelig uten denne begrensede tillatelsen. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Finn ut hvordan du gir tilgang&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Finn ut mer"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Forespørselen om tillatelse er skjult"</string>

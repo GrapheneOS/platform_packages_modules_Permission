@@ -567,7 +567,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"Security and privacy status. <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"Security settings"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"Permissions"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Security &amp; privacy"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"Security and privacy"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Check status"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"Your privacy controls"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"More settings"</string>

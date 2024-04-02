@@ -137,18 +137,12 @@ public class BaseNotificationListenerCheckTest {
 
     @BeforeClass
     public static void beforeClassSetup() throws Exception {
-        // Bypass battery saving restrictions
-        runShellCommand("cmd tare set-vip "
-                + myUserHandle().getIdentifier() + " " + PERMISSION_CONTROLLER_PKG + " true");
         // Disallow any OEM enabled NLS
         disallowPreexistingNotificationListeners();
     }
 
     @AfterClass
     public static void afterClassTearDown() throws Throwable {
-        // Reset battery saving restrictions
-        runShellCommand("cmd tare set-vip "
-                + myUserHandle().getIdentifier() + " " + PERMISSION_CONTROLLER_PKG + " default");
         // Reallow any previously OEM allowed NLS
         reallowPreexistingNotificationListeners();
     }

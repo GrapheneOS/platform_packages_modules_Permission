@@ -25,6 +25,7 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.v34.LightInstallSourceInfoLiveData
 import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.data.v35.PackagePermissionsExternalDeviceLiveData
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

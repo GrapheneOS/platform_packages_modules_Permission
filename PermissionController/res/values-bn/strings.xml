@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"আপনার একবার ব্যবহারের পাসওয়ার্ড হল ১২৩৪৩৫"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"বিধিনিষেধযুক্ত সেটিংস"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"আপনার নিরাপত্তার জন্য, এই সেটিং বর্তমানে উপলভ্য নেই।"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"অ্যাপকে <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> অ্যাক্সেস করতে দেওয়া হয়নি"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"অ্যাপটি সংবেদনশীল অনুমতি অ্যাক্সেস করার অনুরোধ জানিয়েছে, যার জন্য আপনার ব্যক্তিগত ও আর্থিক অবস্থা সম্পর্কিত তথ্যের ক্ষেত্রে ঝুঁকির সম্ভাবনা থাকতে পারে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এই সীমাবদ্ধ অনুমতি ছাড়া অ্যাপটি সঠিকভাবে কাজ না করার সম্ভাবনাও আছে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কীভাবে অ্যাক্সেস করার অনুমতি দেবেন সেই সম্পর্কে জানুন&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"অ্যাপকে ডিফল্ট <xliff:g id="ROLE_NAME">%1$s</xliff:g> হিসেবে কাজ করার অ্যাক্সেস দেওয়া হয়নি"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"অ্যাপটি সংবেদনশীল অনুমতি অ্যাক্সেস করার অনুরোধ জানিয়েছে, যার জন্য আপনার ব্যক্তিগত ও আর্থিক অবস্থা সম্পর্কিত তথ্যের ক্ষেত্রে ঝুঁকির সম্ভাবনা থাকতে পারে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এইসব সীমাবদ্ধ অনুমতি ছাড়া অ্যাপটি সঠিকভাবে কাজ না করার সম্ভাবনাও আছে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কীভাবে অ্যাক্সেস করার অনুমতি দেবেন সেই সম্পর্কে জানুন&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"অ্যাপকে অ্যাক্সেস দেওয়া হয়নি"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"এই অনুমতি অ্যাক্সেস করলে আপনার ব্যক্তিগত ও আর্থিক অবস্থা সম্পর্কিত তথ্যের ক্ষেত্রে ঝুঁকি তৈরি হতে পারে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এই অনুমতি ছাড়া এই অ্যাপ সঠিকভাবে কাজ না করার সম্ভাবনা থাকতে পারে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কীভাবে অ্যাক্সেস করার অনুমতি দেবেন সেই সম্পর্কে জানুন&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"আরও জানুন"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ঠিক আছে"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"অনুমতির অনুরোধ ব্লক করা হয়েছে"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"এই অ্যাপ অতিরিক্ত অনুমতির জন্য অনুরোধ করছে, কিন্তু স্ট্রিমিং সেশন চলাকালীন অনুমতি দেওয়া যাবে না। প্রথমে আপনার ফোনে অনুমতি দিন।"</string>
 </resources>

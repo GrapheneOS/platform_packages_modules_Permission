@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"你的動態密碼為 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"受限制的設定"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"為了安全起見，目前無法使用這項設定。"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"系統已拒絕授予應用程式「<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>」存取權"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"這個應用程式要求取得私密資訊權限，授予這項權限可能導致你的個人資訊和財務資訊面臨風險。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>如果未取得這項受限制權限，應用程式可能無法正常運作。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;瞭解如何授予權限&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"系統已拒絕授予應用程式做為預設「<xliff:g id="ROLE_NAME">%1$s</xliff:g>」的存取權"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"這個應用程式要求取得私密資訊權限，授予這些權限可能導致你的個人資訊和財務資訊面臨風險。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>如果未取得這些受限制權限，應用程式可能無法正常運作。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;瞭解如何授予權限&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"系統已拒絕將存取權授予應用程式"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"如果授予這項權限，你的個人資訊和財務資訊可能會面臨風險。<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>如果未取得這項受限制權限，應用程式可能無法正常運作。&lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;瞭解如何授予權限&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"瞭解詳情"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"確定"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"權限要求遭拒"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"這個應用程式要求額外權限，但串流期間無法授權。請先在手機上授予權限。"</string>
 </resources>

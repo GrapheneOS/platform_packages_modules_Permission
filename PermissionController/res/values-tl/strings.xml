@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Ang iyong pang-isang beses na password ay 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Pinaghihigpitang setting"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Para sa iyong seguridad, hindi available ang setting na ito sa ngayon."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Tinanggihan ang access ng appp sa <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Humiling ang app ng access sa pahintulot sa sensitibong impormasyon na posibleng maglagay ng iyong personal at pinansyal na impormasyon sa panganib.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Posibleng hindi gumana nang maayos ang app kung wala ang pinaghihigpitang pahintulot na ito. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Alamin kung paano payagan ang pag-access&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Tinanggihan ang access ng app na maging default na <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Humiling ang app ng access sa mga pahintulot sa sensitibong impormasyon na posibleng maglagay ng iyong personal at pinansyal na impormasyon sa panganib.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Posibleng hindi gumana nang maayos ang app kung wala ang mga pinaghihigpitang pahintulot na ito. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Alamin kung paano payagan ang pag-access&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Tinanggihan ang access ng app"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Puwedeng ilagay sa panganib ng pag-access sa pahintulot na ito ang iyong personal at pinansyal na impormasyon.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Posibleng hindi gumana nang maayos ang app kung wala ang pinaghihigpitang pahintulot na ito. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Alamin kung paano payagan ang pag-access&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Matuto pa"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Pinigilan ang kahilingan sa pahintulot"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Humihingi ang app na ito ng dagdag na pahintulot, pero hindi puwedeng ibigay ang mga pahintulot sa isang session ng streaming. Ibigay muna ang pahintulot sa iyong telepono."</string>
 </resources>

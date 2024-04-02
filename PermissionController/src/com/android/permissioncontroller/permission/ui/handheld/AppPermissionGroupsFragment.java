@@ -75,9 +75,9 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.permission.utils.MultiDeviceUtils;
 import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.widget.FooterPreference;
 

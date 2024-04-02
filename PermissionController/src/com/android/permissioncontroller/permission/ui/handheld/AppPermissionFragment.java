@@ -83,8 +83,8 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.ui.v33.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.permission.utils.MultiDeviceUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.widget.ActionBarShadowController;

@@ -30,8 +30,8 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.utils.ContextCompat
-import com.android.permissioncontroller.permission.utils.MultiDeviceUtils.isPermissionDeviceAware
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils.isPermissionDeviceAware
 import kotlinx.coroutines.Job
 
 /**

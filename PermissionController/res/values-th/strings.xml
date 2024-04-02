@@ -617,7 +617,7 @@
     <string name="mic_toggle_title" msgid="2649991093496110162">"สิทธิ์เข้าถึงไมโครโฟน"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"สำหรับแอปและบริการ"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"สำหรับแอปและบริการ หากปิดการตั้งค่านี้ ระบบอาจยังคงแชร์ข้อมูลไมโครโฟนเมื่อคุณโทรหาหมายเลขฉุกเฉิน"</string>
-    <string name="location_settings_subtitle" msgid="2328360561197430695">"ดูแอปและบริการที่มีสิทธิ์เข้าถึงสถานที่ตั้ง"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"ดูแอปและบริการที่มีสิทธิ์เข้าถึงตำแหน่ง"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"แสดงการเข้าถึงคลิปบอร์ด"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"แสดงข้อความเมื่อแอปเข้าถึงข้อความ รูปภาพ หรือเนื้อหาอื่นๆ ที่คุณคัดลอก"</string>
     <string name="show_password_title" msgid="2877269286984684659">"แสดงรหัสผ่าน"</string>
@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"รหัสผ่านที่สามารถใช้งานได้เพียงครั้งเดียวของคุณคือ 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"การตั้งค่าที่จำกัด"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"การตั้งค่านี้ใช้ไม่ได้ในตอนนี้เพื่อความปลอดภัยของคุณ"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"แอปถูกปฏิเสธไม่ให้เข้าถึง <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"แอปขอเข้าถึงสิทธิ์ที่มีความละเอียดอ่อนซึ่งอาจทำให้ข้อมูลส่วนบุคคลและข้อมูลทางการเงินของคุณมีความเสี่ยง<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>แอปอาจทำงานได้ไม่ถูกต้องหากไม่มีสิทธิ์ที่จำกัดนี้ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ดูวิธีอนุญาตให้เข้าถึง&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"แอปถูกปฏิเสธไม่ให้เข้าถึงเพื่อเป็น <xliff:g id="ROLE_NAME">%1$s</xliff:g> เริ่มต้น"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"แอปขอเข้าถึงสิทธิ์ที่มีความละเอียดอ่อนซึ่งอาจทำให้ข้อมูลส่วนบุคคลและข้อมูลทางการเงินของคุณมีความเสี่ยง<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>แอปอาจทำงานได้ไม่ถูกต้องหากไม่มีสิทธิ์ที่จำกัดเหล่านี้ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ดูวิธีอนุญาตให้เข้าถึง&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"แอปถูกปฏิเสธไม่ให้เข้าถึง"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"การให้สิทธิ์นี้อาจทำให้ข้อมูลส่วนบุคคลและข้อมูลทางการเงินของคุณมีความเสี่ยง<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>แอปอาจทำงานได้ไม่ถูกต้องหากไม่มีสิทธิ์ที่จำกัดนี้ &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ดูวิธีอนุญาตให้เข้าถึง&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"ดูข้อมูลเพิ่มเติม"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ตกลง"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ระงับคำขอสิทธิ์อยู่"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"แอปนี้มีการขอสิทธิ์เพิ่มเติม แต่ไม่สามารถให้สิทธิ์ในเซสชันที่กำลังสตรีมอยู่ โปรดให้สิทธิ์ในโทรศัพท์ก่อน"</string>
 </resources>

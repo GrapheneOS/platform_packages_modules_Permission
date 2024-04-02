@@ -621,7 +621,7 @@
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Rādīt paziņojumus par piekļuvi starpliktuvei"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Rādīt ziņojumu, kad lietotnes piekļūst jūsu nokopētajam tekstam, attēliem vai citam saturam"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Rādīt paroles"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"Rakstot tiek īslaicīgi rādītas rakstzīmes"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"Rakstot īslaicīgi rādīt rakstzīmes"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"Lietotne norādīja, ka tā var kopīgot atrašanās vietas datus ar trešajām pusēm."</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"Datu kopīgošana un atrašanās vieta"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"Datu kopīgošanas informācijas avots"</string>
@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jūsu vienreizējā parole ir 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ierobežots iestatījums"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Drošības apsvērumu dēļ šis iestatījums pašlaik nav pieejams."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Lietotnes piekļuve atļaujai “<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>” tika liegta"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Lietotne ir pieprasījusi piekļuvi sensitīvai atļaujai, kas var apdraudēt jūsu personas un finanšu informāciju.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Iespējams, lietotne nedarbosies pareizi bez šīs ierobežotās atļaujas. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Uzziniet, kā piešķirt piekļuvi.&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Lietotnes piekļuve noklusējuma lomai “<xliff:g id="ROLE_NAME">%1$s</xliff:g>” tika liegta"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Lietotne ir pieprasījusi piekļuvi sensitīvai atļaujai, kas var apdraudēt jūsu personas un finanšu informāciju.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Iespējams, lietotne nedarbosies pareizi bez šīm ierobežotajām atļaujām. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Uzziniet, kā piešķirt piekļuvi.&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Lietotnei tika liegta piekļuve"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Piekļuve šai atļaujai var apdraudēt jūsu personas un finanšu informāciju.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Iespējams, lietotne nedarbosies pareizi bez šīs ierobežotās atļaujas. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Uzziniet, kā piešķirt piekļuvi.&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Uzzināt vairāk"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Labi"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Atļaujas pieprasījums bloķēts"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Šī lietotne pieprasa papildu atļaujas, taču atļaujas nevar piešķirt straumēšanas sesijā. Vispirms piešķiriet attiecīgo atļauju savā tālrunī."</string>
 </resources>

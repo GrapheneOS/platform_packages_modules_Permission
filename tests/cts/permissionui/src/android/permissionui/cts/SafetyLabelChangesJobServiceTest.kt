@@ -101,11 +101,6 @@ class SafetyLabelChangesJobServiceTest : BaseUsePermissionTest() {
         SystemUtil.runShellCommand("input keyevent KEYCODE_WAKEUP")
         SystemUtil.runShellCommand("wm dismiss-keyguard")
 
-        // Bypass battery saving restrictions
-        SystemUtil.runShellCommand(
-            "cmd tare set-vip " +
-                "${Process.myUserHandle().identifier} $permissionControllerPackageName true"
-        )
         CtsNotificationListenerServiceUtils.cancelNotifications(permissionControllerPackageName)
         resetPermissionControllerAndSimulateReboot()
     }
@@ -115,11 +110,6 @@ class SafetyLabelChangesJobServiceTest : BaseUsePermissionTest() {
         cancelJob(SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID)
         cancelJob(SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID)
         CtsNotificationListenerServiceUtils.cancelNotifications(permissionControllerPackageName)
-        // Reset battery saving restrictions
-        SystemUtil.runShellCommand(
-            "cmd tare set-vip " +
-                "${Process.myUserHandle().identifier} $permissionControllerPackageName default"
-        )
     }
 
     @Test

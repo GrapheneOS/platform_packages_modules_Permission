@@ -52,10 +52,10 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
-import com.android.permissioncontroller.permission.data.PackagePermissionsExternalDeviceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.v34.SafetyLabelInfoLiveData
+import com.android.permissioncontroller.permission.data.v35.PackagePermissionsExternalDeviceLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
@@ -78,13 +78,13 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.isLocationA
 import com.android.permissioncontroller.permission.utils.KotlinUtils.isPhotoPickerPromptEnabled
 import com.android.permissioncontroller.permission.utils.KotlinUtils.openPhotoPickerForApp
 import com.android.permissioncontroller.permission.utils.LocationUtils
-import com.android.permissioncontroller.permission.utils.MultiDeviceUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.PermissionMapping.getPartialStorageGrantPermissionsForGroup
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
 import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
+import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils
 import com.android.settingslib.RestrictedLockUtils
 import java.util.Random
 import kotlin.collections.component1
@@ -473,8 +473,14 @@ class AppPermissionViewModel(
                     askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                     askOneTimeState.isShown = askOneTimeState.isChecked
                     deniedState.isChecked = !group.foreground.isGranted && !group.isOneTime
-                    if (Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
-                            user, app, packageName, permGroupName) != null) {
+                    if (
+                        Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
+                            user,
+                            app,
+                            packageName,
+                            permGroupName
+                        ) != null
+                    ) {
                         allowedState.isEnabled = false
                     }
                     if (group.foreground.isPolicyFixed || group.foreground.isSystemFixed) {
@@ -562,10 +568,19 @@ class AppPermissionViewModel(
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.VANILLA_ICE_CREAM, codename = "VanillaIceCream")
     fun handleDisabledAllowButton(fragment: Fragment) {
-        if (lightAppPermGroup!!.foreground.isSystemFixed ||
-            lightAppPermGroup!!.foreground.isPolicyFixed) return
-        val restrictionIntent = Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
-            user, app, packageName, permGroupName) ?: return
+        if (
+            lightAppPermGroup!!.foreground.isSystemFixed ||
+                lightAppPermGroup!!.foreground.isPolicyFixed
+        )
+            return
+        val restrictionIntent =
+            Utils.getApplicationEnhancedConfirmationRestrictedIntentAsUser(
+                user,
+                app,
+                packageName,
+                permGroupName
+            )
+                ?: return
         fragment.startActivity(restrictionIntent)
     }
 
@@ -1015,7 +1030,7 @@ class AppPermissionViewModel(
     ) {
         when (changeRequest) {
             ChangeRequest.GRANT_FOREGROUND_ONLY ->
-                KotlinUtils.grantRuntimePermissionsWithPersistentDeviceId(
+                MultiDeviceUtils.grantRuntimePermissionsWithPersistentDeviceId(
                     app,
                     persistentDeviceId,
                     packageName,
@@ -1023,7 +1038,7 @@ class AppPermissionViewModel(
                     true
                 )
             ChangeRequest.REVOKE_BOTH ->
-                KotlinUtils.revokeRuntimePermissionsWithPersistentDeviceId(
+                MultiDeviceUtils.revokeRuntimePermissionsWithPersistentDeviceId(
                     app,
                     persistentDeviceId,
                     packageName,

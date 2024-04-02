@@ -46,8 +46,6 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_ONE_TIME
 import android.content.pm.PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED
 import android.content.pm.PackageManager.FLAG_PERMISSION_REVOKED_COMPAT
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
-import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED
-import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE
@@ -121,13 +119,6 @@ object KotlinUtils {
             FLAG_PERMISSION_ONE_TIME or
             FLAG_PERMISSION_REVIEW_REQUIRED or
             FLAG_PERMISSION_AUTO_REVOKED
-
-    private const val DEVICE_AWARE_PERMISSION_FLAG_MASK =
-        FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED or
-            FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED or
-            FLAG_PERMISSION_ONE_TIME or
-            FLAG_PERMISSION_USER_SET or
-            FLAG_PERMISSION_USER_FIXED
 
     private const val KILL_REASON_APP_OP_CHANGE = "Permission related app op changed"
     private const val SAFETY_PROTECTION_RESOURCES_ENABLED = "safety_protection_enabled"
@@ -938,46 +929,6 @@ object KotlinUtils {
     }
 
     /**
-     * Grants external device permissions to the specified package. Permissions will be extracted
-     * from the group name.
-     *
-     * @param app The current application
-     * @param persistentDeviceId The external device identifier
-     * @param packageName Name of the package to which permission needs to granted
-     * @param permissions Permissions that needs to be granted
-     * @param userSet Whether to mark the permission as user set
-     *
-     * TODO: b/328839130: This method is meant to use it on External Devices and on Device Aware
-     *   permissions only. It does not follow the default device implementation because of the
-     *   LightAppPermGroup requirement. The data class LightAppPermGroup is not available for
-     *   external devices at present, hence the implementation differs.
-     */
-    @JvmStatic
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    fun grantRuntimePermissionsWithPersistentDeviceId(
-        app: Application,
-        persistentDeviceId: String,
-        packageName: String,
-        permissions: Set<String>,
-        userSet: Boolean
-    ) {
-        if (!SdkLevel.isAtLeastV() || MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
-            return
-        }
-        permissions
-            .filter { MultiDeviceUtils.isPermissionDeviceAware(it) }
-            .forEach { permission ->
-                grantRuntimePermissionWithPersistentDeviceId(
-                    app,
-                    persistentDeviceId,
-                    packageName,
-                    permission,
-                    userSet
-                )
-            }
-    }
-
-    /**
      * Grants a single runtime permission
      *
      * @param app The current application
@@ -1121,49 +1072,6 @@ object KotlinUtils {
     }
 
     /**
-     * Grants the external device permission to the specified package
-     *
-     * @param app The current application
-     * @param persistentDeviceId The external device identifier
-     * @param packageName Name of the package to which permission needs to granted
-     * @param permission Permission that needs to be granted
-     * @param userSet Whether to mark the permission as user set
-     *
-     * TODO: b/328839130: This method is meant to use it on External Devices and on Device Aware
-     *   permissions only. It does not follow the default device implementation because of the
-     *   LightAppPermGroup requirement. The data class LightAppPermGroup is not available for
-     *   external devices at present, hence the implementation differs.
-     */
-    @JvmStatic
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    private fun grantRuntimePermissionWithPersistentDeviceId(
-        app: Application,
-        persistentDeviceId: String,
-        packageName: String,
-        permission: String,
-        userSet: Boolean
-    ) {
-        if (!SdkLevel.isAtLeastV() || MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
-            return
-        }
-        val permissionManager = app.getSystemService(PermissionManager::class.java)!!
-        var newFlag =
-            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED or
-                FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED
-        if (userSet) {
-            newFlag = newFlag or FLAG_PERMISSION_USER_SET
-        }
-        permissionManager.updatePermissionFlags(
-            packageName,
-            permission,
-            persistentDeviceId,
-            DEVICE_AWARE_PERMISSION_FLAG_MASK,
-            newFlag
-        )
-        permissionManager.grantRuntimePermission(packageName, permission, persistentDeviceId)
-    }
-
-    /**
      * Revoke all foreground runtime permissions of a LightAppPermGroup
      *
      * <p>This also disallows all app ops for permissions that have app ops.
@@ -1284,52 +1192,6 @@ object KotlinUtils {
                 .stopOneTimePermissionSession(group.packageName)
         }
         return newGroup
-    }
-
-    /**
-     * Revokes the external device permissions from the specified package. Permissions will be
-     * extracted from the group name.
-     *
-     * @param app The current application
-     * @param persistentDeviceId The external device identifier
-     * @param packageName Name of the package to which permission needs to revoked
-     * @param permissions Permissions that needs to be revoked
-     * @param userSet Whether to mark the permission as user set
-     * @param oneTime Whether this is a one-time permission grant permissions
-     * @param reason The reason for the revoke, or {@code null} for unspecified
-     *
-     * TODO: b/328839130: This method is meant to use it on External Devices and on Device Aware
-     *   permissions only. It does not follow the default device implementation because of the
-     *   LightAppPermGroup requirement. The data class LightAppPermGroup is not available for
-     *   external devices at present, hence the implementation differs.
-     */
-    @JvmStatic
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    fun revokeRuntimePermissionsWithPersistentDeviceId(
-        app: Application,
-        persistentDeviceId: String,
-        packageName: String,
-        permissions: Set<String>,
-        userSet: Boolean,
-        oneTime: Boolean,
-        reason: String? = null
-    ) {
-        if (!SdkLevel.isAtLeastV() || MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
-            return
-        }
-        permissions
-            .filter { MultiDeviceUtils.isPermissionDeviceAware(it) }
-            .forEach { permission ->
-                revokeRuntimePermissionWithPersistentDeviceId(
-                    app,
-                    persistentDeviceId,
-                    packageName,
-                    permission,
-                    userSet,
-                    oneTime,
-                    reason
-                )
-            }
     }
 
     /**
@@ -1518,64 +1380,6 @@ object KotlinUtils {
         val newState = PermState(newFlags, isGranted)
         return LightPermission(perm.pkgInfo, perm.permInfo, newState, perm.foregroundPerms) to
             shouldKill
-    }
-
-    /**
-     * Revokes the external device permission to the specified package.
-     *
-     * @param app The current application
-     * @param persistentDeviceId The external device identifier
-     * @param packageName Name of the package to which permission needs to revoked
-     * @param permission Permission that needs to be revoked
-     * @param userSet Whether to mark the permission as user set
-     * @param oneTime Whether this is a one-time permission grant permissions
-     * @param reason The reason for the revoke, or {@code null} for unspecified
-     *
-     * TODO: b/328839130: This method is meant to use it on External Devices and on Device Aware
-     *   permissions only. It does not follow the default device implementation because of the
-     *   LightAppPermGroup requirement. The data class LightAppPermGroup is not available for
-     *   external devices at present, hence the implementation differs.
-     */
-    @JvmStatic
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    private fun revokeRuntimePermissionWithPersistentDeviceId(
-        app: Application,
-        persistentDeviceId: String,
-        packageName: String,
-        permission: String,
-        userSet: Boolean,
-        oneTime: Boolean,
-        reason: String? = null
-    ) {
-        if (!SdkLevel.isAtLeastV() || MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
-            return
-        }
-        val permissionManager = app.getSystemService(PermissionManager::class.java)!!
-        var newFlag =
-            FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED or
-                FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED
-        if (oneTime) {
-            newFlag = newFlag or FLAG_PERMISSION_ONE_TIME
-        }
-        if (userSet) {
-            newFlag = newFlag or FLAG_PERMISSION_USER_SET
-        }
-        if (isPermissionUserFixed(app, persistentDeviceId, packageName, permission) && !oneTime) {
-            newFlag = newFlag or FLAG_PERMISSION_USER_FIXED
-        }
-        permissionManager.updatePermissionFlags(
-            packageName,
-            permission,
-            persistentDeviceId,
-            DEVICE_AWARE_PERMISSION_FLAG_MASK,
-            newFlag
-        )
-        permissionManager.revokeRuntimePermission(
-            packageName,
-            permission,
-            persistentDeviceId,
-            reason
-        )
     }
 
     private fun Int.setFlag(flagToSet: Int): Int {
@@ -1949,26 +1753,6 @@ object KotlinUtils {
             color = context.getColor(android.R.color.system_notification_accent_color)
         }
         return NotificationResources(appLabel, smallIcon, color)
-    }
-
-    /**
-     * Determines if the permission is UserFixed. This method is for to use with V and above only.
-     * Supports both external and default devices, need to specify persistentDeviceId accordingly.
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    private fun isPermissionUserFixed(
-        app: Application,
-        persistentDeviceId: String,
-        packageName: String,
-        permission: String
-    ): Boolean {
-        if (!SdkLevel.isAtLeastV()) {
-            return true
-        }
-        val permissionManager = app.getSystemService(PermissionManager::class.java)!!
-        val flags =
-            permissionManager.getPermissionFlags(packageName, permission, persistentDeviceId)
-        return flags and PackageManager.FLAG_PERMISSION_USER_FIXED != 0
     }
 }
 

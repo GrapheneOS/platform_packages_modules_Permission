@@ -668,8 +668,7 @@
     <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"აპისთვის წვდომა უარყოფილია"</string>
     <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"ამ ნებართვაზე წვდომა თქვენს პირად და ფინანსურ ინფორმაციას საფრთხის ქვეშ აყენებს.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>შესაძლოა აპმა ამ შეზღუდული ნებართვის გარეშე სათანადოდ ვერ იმუშაოს. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;შეიტყვეთ მეტი ნებართვის დაშვების შესახებ&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"შეიტყვეთ მეტი"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"კარგი"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ნებართვის მოთხოვნა შეჩერებულია"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ეს აპი დამატებით ნებართვებს მოითხოვს, მაგრამ ნებართვების მიცემა შეუძლებელია სტრიმინგის სესიაში. თავდაპირველად მიანიჭეთ ნებართვა ტელეფონზე."</string>
 </resources>

@@ -236,7 +236,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programme met hierdie toestemming kan foto\'s neem en video\'s opneem"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programme met hierdie toestemming kan toegang tot jou kontakte kry"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps met hierdie toestemming kan toegang tot jou toestel se ligging kry"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programme met hierdie toestemming kan toestelle in die omtrek soek, aan hulle koppel en hul relatiewe posisie bepaal"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Apps met hierdie toestemming kan toestelle in die omtrek soek, aan hulle koppel en hul relatiewe posisie bepaal"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programme met hierdie toestemming kan oudio opneem"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programme met hierdie toestemming kan foonoproepe maak en bestuur"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programme met hierdie toestemming kan toegang kry tot sensordata oor jou lewenstekens"</string>
@@ -617,7 +617,7 @@
     <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofoontoegang"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Vir apps en dienste"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Vir apps en dienste. As hierdie instelling af is, kan mikrofoondata steeds gedeel word wanneer jy ’n noodnommer bel."</string>
-    <string name="location_settings_subtitle" msgid="2328360561197430695">"Sien programme en dienste met toegang tot ligging"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Sien apps en dienste met toegang tot ligging"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Wys knipbordtoegang"</string>
     <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Wys ’n boodskap wanneer apps toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Wys wagwoorde"</string>
@@ -674,8 +674,7 @@
     <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
     <skip />
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Meer inligting"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Toestemmingsversoek is onderdruk"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Hierdie app versoek bykomende toestemmings, maar toestemmings kan nie in ’n stromingsessie verleen word nie. Verleen eers die toestemming op jou foon."</string>
 </resources>

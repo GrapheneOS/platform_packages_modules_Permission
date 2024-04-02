@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"আপোনাৰ এবাৰ ব্যৱহাৰযোগ্য পাছৱর্ড হৈছে ১৩২৪৩৫"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"প্ৰতিবন্ধিত ছেটিং"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"আপোনাৰ সুৰক্ষাৰ বাবে, এই ছেটিংটো বৰ্তমান উপলব্ধ নহয়।"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"এপ্‌টোক <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ এক্সেছ প্ৰত্যাখ্যান কৰা হৈছে"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"এপ্‌টোৱে সংবেদনশীল অনুমতি এক্সেছ কৰিবলৈ অনুৰোধ কৰিছে, যিটোৱে আপোনাৰ ব্যক্তিগত আৰু বিত্তীয় তথ্য বিপদাপন্ন কৰিব পাৰে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এপ্‌টোৱে এই প্ৰতিবন্ধিত অনুমতিটোৰ অবিহনে সঠিককৈ কাম নকৰাটো সম্ভৱ হ’ব পাৰে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কেনেকৈ এক্সেছৰ অনুমতি দিব লাগে জানক&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"এপ্‌টোক ডিফ’ল্ট <xliff:g id="ROLE_NAME">%1$s</xliff:g>ৰ এক্সেছ প্ৰত্যাখ্যান কৰা হৈছে"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"এপ্‌টোৱে সংবেদনশীল অনুমতিসমূহ এক্সেছ কৰিবলৈ অনুৰোধ কৰিছে, যিটোৱে আপোনাৰ ব্যক্তিগত আৰু বিত্তীয় তথ্য বিপদাপন্ন কৰিব পাৰে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এপ্‌টোৱে এই প্ৰতিবন্ধিত অনুমতিসমূহৰ অবিহনে সঠিককৈ কাম নকৰাটো সম্ভৱ হ’ব পাৰে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কেনেকৈ এক্সেছৰ অনুমতি দিব লাগে জানক&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"এপ্‌টোক এক্সেছ প্ৰত্যাখ্যান কৰা হৈছে"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"এই অনুমতিটোৰ এক্সেছ প্ৰদান কৰাটোৱে আপোনাৰ ব্যক্তিগত আৰু বিত্তীয় তথ্য বিপদাপন্ন কৰিব পাৰে।<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>এপ্‌টোৱে এই প্ৰতিবন্ধিত অনুমতিটোৰ অবিহনে সঠিককৈ কাম নকৰাটো সম্ভৱ হ’ব পাৰে। &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;কেনেকৈ এক্সেছৰ অনুমতি দিব লাগে জানক&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"অধিক জানক"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ঠিক আছে"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"অনুমতিৰ অনুৰোধ অৱদমন কৰা হৈছে"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"এই এপ্‌টোৱে অতিৰিক্ত অনুমতিৰ বাবে অনুৰোধ কৰিছে, কিন্তু ষ্ট্ৰীমিং ছেশ্বনত অনুমতি দিব নোৱাৰি। আপোনাৰ ফ’নটোত প্ৰথমে অনুমতি দিয়ক।"</string>
 </resources>

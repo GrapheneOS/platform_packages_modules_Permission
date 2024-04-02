@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"നിങ്ങളുടെ ഒറ്റത്തവണ പാസ്‌വേഡ് 132435 ആണ്"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"നിയന്ത്രിത ക്രമീകരണം"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"നിങ്ങളുടെ സുരക്ഷയ്ക്ക്, ഈ ക്രമീകരണം നിലവിൽ ലഭ്യമല്ല."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"ആപ്പിന് <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> എന്നതിലേക്കുള്ള ആക്‌സസ് നിരസിച്ചു"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"ആപ്പ് സെൻസിറ്റീവ് വിവരങ്ങൾക്കുള്ള അനുമതിയിലേക്ക് ആക്‌സസ് അഭ്യർത്ഥിച്ചു, ഇത് നിങ്ങളുടെ വ്യക്തിപരവും സാമ്പത്തികവുമായ വിവരങ്ങളെ അപകടത്തിലാക്കിയേക്കാം.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>ഈ നിയന്ത്രിത അനുമതിയില്ലാതെ ആപ്പ് ശരിയായി പ്രവർത്തിച്ചേക്കില്ല. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ആക്സസ് എങ്ങനെ അനുവദിക്കുന്നുവെന്നറിയുക&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"ആപ്പിന് ഡിഫോൾട്ട് <xliff:g id="ROLE_NAME">%1$s</xliff:g> ആകാനുള്ള ആക്‌സസ് നിരസിച്ചു"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"ആപ്പ് സെൻസിറ്റീവ് വിവരങ്ങൾക്കുള്ള അനുമതികളിലേക്ക് ആക്‌സസ് അഭ്യർത്ഥിച്ചു, ഇത് നിങ്ങളുടെ വ്യക്തിപരവും സാമ്പത്തികവുമായ വിവരങ്ങളെ അപകടത്തിലാക്കിയേക്കാം.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>ഈ നിയന്ത്രിത അനുമതികളില്ലാതെ ആപ്പ് ശരിയായി പ്രവർത്തിച്ചേക്കില്ല. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ആക്സസ് എങ്ങനെ അനുവദിക്കുന്നുവെന്നറിയുക&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"ആപ്പിന് ആക്‌സസ് നിരസിച്ചു"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"ഈ അനുമതിയിലേക്കുള്ള ആക്‌സസ് നിങ്ങളുടെ വ്യക്തിപരവും സാമ്പത്തികവുമായ വിവരങ്ങളെ അപകടത്തിലാക്കിയേക്കാം.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>ഈ നിയന്ത്രിത അനുമതിയില്ലാതെ ആപ്പ് ശരിയായി പ്രവർത്തിച്ചേക്കില്ല. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;ആക്സസ് എങ്ങനെ അനുവദിക്കുന്നുവെന്നറിയുക&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"കൂടുതലറിയുക"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ശരി"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"അനുമതി അഭ്യർത്ഥന കാഴ്ച്ചയിൽ നിന്ന് മറച്ചു"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ഈ ആപ്പ് അധിക അനുമതികൾ അഭ്യർത്ഥിക്കുന്നു, എന്നാൽ സ്‌ട്രീമിംഗ് സെഷനിടയിൽ അനുമതികൾ നൽകാനാകില്ല. ആദ്യം നിങ്ങളുടെ ഫോണിൽ അനുമതി നൽകുക."</string>
 </resources>

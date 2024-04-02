@@ -661,21 +661,14 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"كلمة المرور الصالحة لمرة واحدة هي 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"الإعداد محظور"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"للحفاظ على أمانك، هذا الإعداد غير متوفِّر حاليًا."</string>
-    <!-- no translation found for enhanced_confirmation_dialog_title_permission (2149144789394238266) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_permission (3150778951946468945) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_role (1737023798483772780) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_role (6369601947905234551) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_title_settings_default (1858092969721041576) -->
-    <skip />
-    <!-- no translation found for enhanced_confirmation_dialog_desc_settings_default (6911632348359332981) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"تم منع التطبيق من الوصول إلى <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"‏طلب التطبيق أحد أذونات الوصول إلى المعلومات الحساسة، ما قد يعرّض معلوماتك الشخصية والمالية للخطر.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>من المحتمل ألا يعمل التطبيق بشكل صحيح إذا لم يحصل على هذا الإذن المقيَّد. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;مزيد من المعلومات حول كيفية منح الأذونات&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"لم يتم السماح للتطبيق بأن يُستخدَم كـ <xliff:g id="ROLE_NAME">%1$s</xliff:g> تلقائيًا"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"‏طلب التطبيق أذونات الوصول إلى المعلومات الحساسة، ما قد يعرّض معلوماتك الشخصية والمالية للخطر.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>من المحتمل ألا يعمل التطبيق بشكل صحيح إذا لم يحصل على هذه الأذونات المقيَّدة. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;مزيد من المعلومات حول كيفية منح الأذونات&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"تم منع التطبيق من الوصول"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"‏إذا منحت التطبيق هذا الإذن، يمكن أن تتعرّض معلوماتك الشخصية والمالية للخطر.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>من المحتمل ألا يعمل التطبيق بشكل صحيح إذا لم يحصل على هذا الإذن المقيَّد. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;مزيد من المعلومات حول كيفية منح الأذونات&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"مزيد من المعلومات"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"حسنًا"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"تم إلغاء طلب الحصول على الإذن"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"يطلب هذا التطبيق الحصول على أذونات إضافية، ولكن لا يمكن منح أذونات في جلسة بث. امنح الإذن على هاتفك أولاً."</string>
 </resources>

@@ -668,8 +668,7 @@
     <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Aplikácii bol zamietnutý prístup"</string>
     <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Prístup k tomuto povoleniu môže ohroziť vaše osobné údaje a finančné informácie.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Je možné, že bez tohto obmedzeného povolenia nebude aplikácia správne fungovať. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Ako povoliť prístup&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Ďalšie informácie"</string>
-    <!-- no translation found for enhanced_confirmation_dialog_ok (8560373821598619924) -->
-    <skip />
+    <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Žiadosť o povolenie bola zablokovaná"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Táto aplikácia požaduje ďalšie povolenia, ale povolenia nie je možné udeliť v relácii streamovania. Najprv udeľte povolenie v telefóne."</string>
 </resources>
