@@ -19,6 +19,7 @@ package com.android.permissioncontroller.role.ui;
 import android.app.Application;
 import android.os.Process;
 import android.os.UserHandle;
+import android.os.UserManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.List;
@@ -44,6 +46,10 @@ public class DefaultAppListViewModel extends AndroidViewModel {
     private final UserHandle mWorkProfile;
     @Nullable
     private final LiveData<List<RoleItem>> mWorkLiveData;
+    @Nullable
+    private final UserHandle mPrivateProfile;
+    @Nullable
+    private final LiveData<List<RoleItem>> mPrivateLiveData;
 
     public DefaultAppListViewModel(@NonNull Application application) {
         super(application);
@@ -55,6 +61,16 @@ public class DefaultAppListViewModel extends AndroidViewModel {
         mWorkProfile = UserUtils.getWorkProfile(application);
         mWorkLiveData = mWorkProfile != null ? Transformations.map(new RoleListLiveData(true,
                 mWorkProfile, application), sortFunction) : null;
+
+        UserHandle privateProfile = UserUtils.getPrivateProfile(application);
+        if (privateProfile != null && Utils.shouldShowInSettings(
+                privateProfile, application.getSystemService(UserManager.class))) {
+            mPrivateProfile = privateProfile;
+        } else {
+            mPrivateProfile = null;
+        }
+        mPrivateLiveData = mPrivateProfile != null ? Transformations.map(new RoleListLiveData(true,
+                mPrivateProfile, application), sortFunction) : null;
     }
 
     @NonNull
@@ -84,5 +100,34 @@ public class DefaultAppListViewModel extends AndroidViewModel {
     @Nullable
     public LiveData<List<RoleItem>> getWorkLiveData() {
         return mWorkLiveData;
+    }
+
+    /**
+     * Check whether the user has a private profile.
+     *
+     * @return whether the user has a private profile.
+     */
+    public boolean hasPrivateProfile() {
+        return mPrivateProfile != null;
+    }
+
+    /**
+     * Returns the private profile belonging to the user, if any.
+     *
+     * @return the private profile, if it exists. null otherwise.
+     */
+    @Nullable
+    public UserHandle getPrivateProfile() {
+        return mPrivateProfile;
+    }
+
+    /**
+     * Returns the data corresponding to the private profile, if one exists.
+     *
+     * @return data corresponding to the private profile, if it exists. null otherwise.
+     */
+    @Nullable
+    public LiveData<List<RoleItem>> getPrivateLiveData() {
+        return mPrivateLiveData;
     }
 }

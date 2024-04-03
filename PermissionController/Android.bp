@@ -154,6 +154,7 @@ android_library {
         "androidx.compose.runtime_runtime-livedata",
         "androidx.compose.ui_ui",
         "androidx.wear.compose_compose-material",
+        "android.os.flags-aconfig-java-export",
     ],
 
     lint: {

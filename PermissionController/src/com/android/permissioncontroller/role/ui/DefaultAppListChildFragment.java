@@ -65,6 +65,8 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
             DefaultAppListChildFragment.class.getName() + ".preference.MANAGE_DOMAIN_URLS";
     private static final String PREFERENCE_KEY_WORK_CATEGORY =
             DefaultAppListChildFragment.class.getName() + ".preference.WORK_CATEGORY";
+    private static final String PREFERENCE_KEY_PRIVATE_CATEGORY =
+            DefaultAppListChildFragment.class.getName() + ".preference.PRIVATE_CATEGORY";
 
     @NonNull
     private DefaultAppListViewModel mViewModel;
@@ -88,6 +90,9 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
         if (mViewModel.hasWorkProfile()) {
             mViewModel.getWorkLiveData().observe(this, roleItems -> onRoleListChanged());
         }
+        if (mViewModel.hasPrivateProfile()) {
+            mViewModel.getPrivateLiveData().observe(this, roleItems -> onRoleListChanged());
+        }
     }
 
     private void onRoleListChanged() {
@@ -103,6 +108,14 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
                 return;
             }
         }
+        boolean hasPrivateProfile = mViewModel.hasPrivateProfile();
+        List<RoleItem> privateRoleItems = null;
+        if (hasPrivateProfile) {
+            privateRoleItems = mViewModel.getPrivateLiveData().getValue();
+            if (privateRoleItems == null) {
+                return;
+            }
+        }
 
         PF preferenceFragment = requirePreferenceFragment();
         PreferenceManager preferenceManager = preferenceFragment.getPreferenceManager();
@@ -111,17 +124,22 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
         ArrayMap<String, Preference> oldPreferences = new ArrayMap<>();
         PreferenceCategory oldWorkPreferenceCategory = null;
         ArrayMap<String, Preference> oldWorkPreferences = new ArrayMap<>();
+        PreferenceCategory oldPrivatePreferenceCategory = null;
+        ArrayMap<String, Preference> oldPrivatePreferences = new ArrayMap<>();
         if (preferenceScreen == null) {
             preferenceScreen = preferenceManager.createPreferenceScreen(context);
             preferenceFragment.setPreferenceScreen(preferenceScreen);
         } else {
-            oldWorkPreferenceCategory = preferenceScreen.findPreference(
-                    PREFERENCE_KEY_WORK_CATEGORY);
-            if (oldWorkPreferenceCategory != null) {
-                clearPreferences(oldWorkPreferenceCategory, oldWorkPreferences);
-                preferenceScreen.removePreference(oldWorkPreferenceCategory);
-                oldWorkPreferenceCategory.setOrder(Preference.DEFAULT_ORDER);
-            }
+            oldWorkPreferenceCategory =
+                    preferenceScreen.findPreference(PREFERENCE_KEY_WORK_CATEGORY);
+            clearPreferenceCategory(
+                    oldWorkPreferenceCategory, preferenceScreen, oldWorkPreferences);
+
+            oldPrivatePreferenceCategory =
+                    preferenceScreen.findPreference(PREFERENCE_KEY_PRIVATE_CATEGORY);
+            clearPreferenceCategory(
+                    oldPrivatePreferenceCategory, preferenceScreen, oldPrivatePreferences);
+
             clearPreferences(preferenceScreen, oldPreferences);
         }
 
@@ -130,20 +148,32 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
         addMoreDefaultAppsPreference(preferenceScreen, oldPreferences, context);
         addManageDomainUrlsPreference(preferenceScreen, oldPreferences, context);
         if (hasWorkProfile && !workRoleItems.isEmpty()) {
-            PreferenceCategory workPreferenceCategory = oldWorkPreferenceCategory;
-            if (workPreferenceCategory == null) {
-                workPreferenceCategory = new PreferenceCategory(context);
-                workPreferenceCategory.setKey(PREFERENCE_KEY_WORK_CATEGORY);
-                workPreferenceCategory.setTitle(Utils.getEnterpriseString(context,
-                        DefaultAppSettings.WORK_PROFILE_DEFAULT_APPS_TITLE,
-                        R.string.default_apps_for_work));
-            }
-            preferenceScreen.addPreference(workPreferenceCategory);
-            addPreferences(workPreferenceCategory, workRoleItems, oldWorkPreferences, this,
+            String workTitle = Utils.getEnterpriseString(context,
+                    DefaultAppSettings.WORK_PROFILE_DEFAULT_APPS_TITLE,
+                    R.string.default_apps_for_work);
+            addPreferenceCategory(oldWorkPreferenceCategory, PREFERENCE_KEY_WORK_CATEGORY,
+                    workTitle, preferenceScreen, workRoleItems, oldWorkPreferences, this,
                     mViewModel.getWorkProfile(), context);
+        }
+        if (hasPrivateProfile && !privateRoleItems.isEmpty()) {
+            String privateTitle = context.getString(R.string.default_apps_for_private_profile);
+            addPreferenceCategory(oldPrivatePreferenceCategory, PREFERENCE_KEY_PRIVATE_CATEGORY,
+                    privateTitle, preferenceScreen, privateRoleItems, oldPrivatePreferences, this,
+                    mViewModel.getPrivateProfile(), context);
         }
 
         preferenceFragment.onPreferenceScreenChanged();
+    }
+
+    private static void clearPreferenceCategory(@Nullable PreferenceCategory preferenceCategory,
+            @NonNull PreferenceScreen preferenceScreen,
+            @NonNull ArrayMap<String, Preference> oldPreferences) {
+        if (preferenceCategory == null) {
+            return;
+        }
+        clearPreferences(preferenceCategory, oldPreferences);
+        preferenceScreen.removePreference(preferenceCategory);
+        preferenceCategory.setOrder(Preference.DEFAULT_ORDER);
     }
 
     private static void clearPreferences(@NonNull PreferenceGroup preferenceGroup,
@@ -155,6 +185,24 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
             preference.setOrder(Preference.DEFAULT_ORDER);
             oldPreferences.put(preference.getKey(), preference);
         }
+    }
+
+    @NonNull
+    private void addPreferenceCategory(
+            @Nullable PreferenceCategory oldPreferenceCategory, @NonNull String key,
+            @Nullable String title, @NonNull PreferenceScreen preferenceScreen,
+            @NonNull List<RoleItem> roleItems, @NonNull ArrayMap<String, Preference> oldPreferences,
+            @NonNull Preference.OnPreferenceClickListener listener,
+            @NonNull UserHandle user, @NonNull Context context) {
+        PreferenceCategory preferenceCategory = oldPreferenceCategory;
+        if (preferenceCategory == null) {
+            preferenceCategory = new PreferenceCategory(context);
+            preferenceCategory.setKey(key);
+            preferenceCategory.setTitle(title);
+        }
+        preferenceScreen.addPreference(preferenceCategory);
+        addPreferences(preferenceCategory, roleItems, oldPreferences, listener,
+                user, context);
     }
 
     private void addPreferences(@NonNull PreferenceGroup preferenceGroup,

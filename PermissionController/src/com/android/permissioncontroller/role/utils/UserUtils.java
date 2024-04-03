@@ -24,6 +24,8 @@ import android.os.UserManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -60,6 +62,45 @@ public class UserUtils {
             return profile;
         }
         return null;
+    }
+
+    /**
+     * Get the private profile of current user, if any.
+     *
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return the private profile of current user, or {@code null} if none
+     */
+    @Nullable
+    public static UserHandle getPrivateProfile(@NonNull Context context) {
+        if (!SdkLevel.isAtLeastV()) {
+            return null;
+        }
+
+        List<UserHandle> profiles = context.getSystemService(UserManager.class).getUserProfiles();
+        UserHandle user = Process.myUserHandle();
+
+        int profilesSize = profiles.size();
+        for (int i = 0; i < profilesSize; i++) {
+            UserHandle profile = profiles.get(i);
+
+            if (Objects.equals(profile, user)) {
+                continue;
+            }
+            if (isPrivateProfile(profile, context)) {
+                return profile;
+            }
+        }
+        return null;
+    }
+
+    private static boolean isPrivateProfile(@NonNull UserHandle userHandle,
+            @NonNull Context context) {
+        if (!SdkLevel.isAtLeastV() || !android.os.Flags.allowPrivateProfile()) {
+            return false;
+        }
+        Context userContext = context.createContextAsUser(userHandle, /* flags= */ 0);
+        return userContext.getSystemService(UserManager.class).isPrivateProfile();
     }
 
     /**
