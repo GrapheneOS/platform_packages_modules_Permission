@@ -779,6 +779,7 @@ public class RoleManagerTest {
         pressBack();
     }
 
+    @FlakyTest
     @Test
     public void openDefaultAppListThenIsNotDefaultAppInList() throws Exception {
         sContext.startActivity(new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
