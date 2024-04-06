@@ -1657,6 +1657,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="privdash_label_24h">Past\n24 hours</string>
     <!-- Label that describes a "past 7 days" time window, prefer two lines. [CHAR LIMIT=20] -->
     <string name="privdash_label_7d">Past\n7 days</string>
+    <!-- This information will aid accessibility applications in describing permission usage percentages to users. While the chart visually represents permission usage, accessibility tools will convey the specific percentages for those who need auditory assistance. Examples would be "Microphone 40 percent" or "Location 75 percent" [CHAR LIMIT=none] -->
+    <string name="privdash_usage_percent"><xliff:g id="permission_name" example="camera">%1$s</xliff:g> <xliff:g id="percent" example="25">%2$d</xliff:g> percent</string>
 
     <!-- Info label for status bar indicator permissions (Mic and Camera) for apps holding special exempted roles. [CHAR LIMIT=none] -->
     <string name="exempt_mic_camera_info_label"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> is protected by Android. Because your data is processed on this device, this app’s permission usage isn’t shown on the status bar or your privacy dashboard. </string>

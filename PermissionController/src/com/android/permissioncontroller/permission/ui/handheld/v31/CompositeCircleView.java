@@ -19,9 +19,12 @@ package com.android.permissioncontroller.permission.ui.handheld.v31;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.android.permissioncontroller.R;
 
 /**
  * Configured to draw a set of contiguous partial circles via {@link PartialCircleView}, which
@@ -73,8 +76,10 @@ public class CompositeCircleView extends FrameLayout {
      * @param values relative weights, used to size the partial circles
      * @param colors colors corresponding to relative weights
      * @param strokeWidth stroke width to apply to all contained partial circles
+     * @param labels the permission labels to set the ContentDescription with % value
      */
-    public void configure(float startAngle, int[] values, int[] colors, int strokeWidth) {
+    public void configure(float startAngle, int[] values, int[] colors, int strokeWidth,
+            TextView[] labels) {
         removeAllViews();
         mValues = values;
 
@@ -120,6 +125,13 @@ public class CompositeCircleView extends FrameLayout {
             // angles for later reference.
             float sweepAngle = (values[i] / total) * allocatedDegrees;
             pcv.setSweepAngle(sweepAngle);
+
+            if (labels[i] != null) {
+                int percentage = Math.round((values[i] / total) * 100);
+                String contextDescription = getContext().getString(
+                        R.string.privdash_usage_percent, labels[i].getText(), percentage);
+                labels[i].setContentDescription(contextDescription);
+            }
 
             mPartialCircleCenterAngles[i] = (startAngle + (sweepAngle * 0.5f)) % 360;
             if (i > 0) {

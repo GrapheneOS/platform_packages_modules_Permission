@@ -881,10 +881,12 @@ public class GrantPermissionsActivity extends SettingsActivity
         super.onSaveInstanceState(outState);
 
         if (SdkLevel.isAtLeastV() && Flags.enhancedConfirmationModeApisEnabled()) {
-            outState.putStringArrayList(KEY_RESTRICTED_REQUESTED_PERMISSIONS, new ArrayList<>(
-                    mRestrictedRequestedPermissionGroups));
-            outState.putStringArrayList(KEY_UNRESTRICTED_REQUESTED_PERMISSIONS, new ArrayList<>(
-                    mUnrestrictedRequestedPermissions));
+            outState.putStringArrayList(KEY_RESTRICTED_REQUESTED_PERMISSIONS,
+                    mRestrictedRequestedPermissionGroups != null ? new ArrayList<>(
+                            mRestrictedRequestedPermissionGroups) : null);
+            outState.putStringArrayList(KEY_UNRESTRICTED_REQUESTED_PERMISSIONS,
+                    mUnrestrictedRequestedPermissions != null ? new ArrayList<>(
+                            mUnrestrictedRequestedPermissions) : null);
             outState.putStringArray(KEY_ORIGINAL_REQUESTED_PERMISSIONS,
                     mOriginalRequestedPermissions);
         }

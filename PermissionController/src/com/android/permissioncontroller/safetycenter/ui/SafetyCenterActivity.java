@@ -26,6 +26,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIV
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.EXTRA_SETTINGS_FRAGMENT_ARGS_KEY;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVATE_PROFILE_SUFFIX;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
 import android.app.ActionBar;
@@ -271,6 +272,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
             splitKey = preferenceKey.split("_" + PERSONAL_PROFILE_SUFFIX);
         } else if (preferenceKey.endsWith(WORK_PROFILE_SUFFIX)) {
             splitKey = preferenceKey.split("_" + WORK_PROFILE_SUFFIX);
+        } else if (preferenceKey.endsWith(PRIVATE_PROFILE_SUFFIX)) {
+            splitKey = preferenceKey.split("_" + PRIVATE_PROFILE_SUFFIX);
         } else {
             return "";
         }

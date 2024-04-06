@@ -255,6 +255,7 @@ public class RoleManagerTest {
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
     @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
     public void requestRoleThenBlockRequestRoleDialogByRestrictedSettingDialog() throws Exception {
+        assumeTrue(sRoleManager.isRoleAvailable(RoleManager.ROLE_SMS));
         assumeFalse(sIsWatch || sIsAutomotive || sIsTelevision);
         runWithShellPermissionIdentity(
                 () -> setEnhancedConfirmationRestrictedAppOpMode(sContext, APP_PACKAGE_NAME,
@@ -675,6 +676,7 @@ public class RoleManagerTest {
     @FlakyTest(bugId = 288468003, detail = "CtsRoleTestCases is breaching 20min SLO")
     public void openDefaultAppDetailsOnHandHeldThenRestrictedAppIsNotSelectableAsDefaultApp()
             throws Exception {
+        assumeTrue(sRoleManager.isRoleAvailable(RoleManager.ROLE_DIALER));
         assumeFalse(sIsWatch || sIsAutomotive || sIsTelevision);
         runWithShellPermissionIdentity(
                 () -> setEnhancedConfirmationRestrictedAppOpMode(sContext, APP_PACKAGE_NAME,

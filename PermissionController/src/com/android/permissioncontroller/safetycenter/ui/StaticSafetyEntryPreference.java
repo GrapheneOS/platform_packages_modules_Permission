@@ -19,9 +19,11 @@ package com.android.permissioncontroller.safetycenter.ui;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX;
+import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVATE_PROFILE_SUFFIX;
 import static com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX;
 
 import android.content.Context;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.text.TextUtils;
@@ -31,6 +33,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 
@@ -81,15 +84,22 @@ public class StaticSafetyEntryPreference extends Preference implements Comparabl
     }
 
     private void setupPreferenceKey(SafetyCenterEntryId entryId) {
-        boolean isWorkProfile =
-                getContext()
-                        .getSystemService(UserManager.class)
-                        .isManagedProfile(entryId.getUserId());
-        if (isWorkProfile) {
+        Context userContext = getContext()
+                .createContextAsUser(UserHandle.of(entryId.getUserId()), /* flags= */ 0);
+        UserManager userUserManager = userContext.getSystemService(UserManager.class);
+        if (userUserManager.isManagedProfile()) {
             setKey(String.format("%s_%s", entryId.getSafetySourceId(), WORK_PROFILE_SUFFIX));
+        } else if (isPrivateProfileSupported() && userUserManager.isPrivateProfile()) {
+            setKey(String.format("%s_%s", entryId.getSafetySourceId(), PRIVATE_PROFILE_SUFFIX));
         } else {
             setKey(String.format("%s_%s", entryId.getSafetySourceId(), PERSONAL_PROFILE_SUFFIX));
         }
+    }
+
+    private Boolean isPrivateProfileSupported() {
+        return SdkLevel.isAtLeastV()
+                && com.android.permission.flags.Flags.privateProfileSupported()
+                && android.os.Flags.allowPrivateProfile();
     }
 
     @Override

@@ -27,6 +27,7 @@ import android.provider.DeviceConfig
 import android.safetycenter.SafetyCenterManager
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.text.TextUtils
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
@@ -68,6 +69,7 @@ class SafetyCenterQsTileService : TileService() {
 
         qsTile.label = getString(R.string.safety_privacy_qs_tile_title)
         qsTile.subtitle = getString(R.string.safety_privacy_qs_tile_subtitle)
+        qsTile.contentDescription = TextUtils.concat(qsTile.label, ", ", qsTile.subtitle)
         qsTile.state = Tile.STATE_ACTIVE
         qsTile.updateTile()
     }

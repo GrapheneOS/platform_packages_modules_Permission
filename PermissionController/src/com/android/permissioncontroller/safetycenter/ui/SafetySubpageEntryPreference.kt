@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui
 
 import android.content.Context
 import android.os.Build
+import android.os.UserHandle
 import android.os.UserManager
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR
@@ -28,8 +29,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PERSONAL_PROFILE_SUFFIX
+import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVATE_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.WORK_PROFILE_SUFFIX
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel
 import com.android.permissioncontroller.safetycenter.ui.view.SafetyEntryCommonViewsManager.Companion.changeEnabledState
@@ -93,10 +96,21 @@ class SafetySubpageEntryPreference(
 
     private fun setupPreferenceKey() {
         val entryId: SafetyCenterEntryId = SafetyCenterIds.entryIdFromString(entry.id)
-        val isWorkProfile =
-            context.getSystemService(UserManager::class.java)!!.isManagedProfile(entryId.userId)
-        val keySuffix = if (isWorkProfile) WORK_PROFILE_SUFFIX else PERSONAL_PROFILE_SUFFIX
-        setKey("${entryId.safetySourceId}_$keySuffix")
+        val userContext = context.createContextAsUser(UserHandle.of(entryId.userId), /* flags= */ 0)
+        val userUserManager = userContext.getSystemService(UserManager::class.java) ?: return
+        if (userUserManager.isManagedProfile) {
+            setKey("${entryId.safetySourceId}_$WORK_PROFILE_SUFFIX")
+        } else if (isPrivateProfileSupported() && userUserManager.isPrivateProfile) {
+            setKey("${entryId.safetySourceId}_$PRIVATE_PROFILE_SUFFIX")
+        } else {
+            setKey("${entryId.safetySourceId}_$PERSONAL_PROFILE_SUFFIX")
+        }
+    }
+
+    private fun isPrivateProfileSupported(): Boolean {
+        return SdkLevel.isAtLeastV() &&
+            com.android.permission.flags.Flags.privateProfileSupported() &&
+            android.os.Flags.allowPrivateProfile()
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
