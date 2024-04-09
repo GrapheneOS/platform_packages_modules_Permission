@@ -34,6 +34,7 @@ import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUs
 import com.android.permissioncontroller.permission.ui.wear.elements.Chip
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
+import com.android.permissioncontroller.permission.utils.Utils
 import java.text.Collator
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -65,6 +66,8 @@ fun WearPermissionUsageScreen(
     val collator = Collator.getInstance(context.resources.configuration.locales.get(0))
     val permissionGroupPreferences =
         permissionGroupWithUsageCountsEntries
+            // Removing Health Connect from the list of permissions to fix b/331260850
+            .filterNot { Utils.isHealthPermissionGroup(it.key) }
             .map {
                 PermissionUsageControlPreference(
                     context,

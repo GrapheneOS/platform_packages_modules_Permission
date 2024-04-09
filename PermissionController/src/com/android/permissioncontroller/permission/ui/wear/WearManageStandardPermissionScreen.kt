@@ -33,6 +33,7 @@ import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableSc
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupIcon
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.StringUtils
+import com.android.permissioncontroller.permission.utils.Utils
 import java.text.Collator
 
 @Composable
@@ -75,6 +76,8 @@ internal fun getPermGroupChipParams(
             R.string.app_permissions_group_summary
         }
     return permissionGroups
+        // Removing Health Connect from the list of permissions to fix b/331260850
+        .filterNot { Utils.isHealthPermissionGroup(it.key) }
         .mapNotNull {
             val uiInfo = it.value ?: return@mapNotNull null
             PermGroupChipParam(
