@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.pm.data.repository
+package com.android.permissioncontroller.pm.data.repository.v31
 
 import android.app.Application
 import android.content.pm.PackageManager
 import android.os.UserHandle
 import android.util.Log
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.pm.data.model.PackageInfoModel
+import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
 import kotlin.concurrent.Volatile
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

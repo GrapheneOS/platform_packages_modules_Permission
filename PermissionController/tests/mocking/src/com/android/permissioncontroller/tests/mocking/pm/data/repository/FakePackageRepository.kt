@@ -17,8 +17,8 @@
 package com.android.permissioncontroller.tests.mocking.pm.data.repository
 
 import android.os.UserHandle
-import com.android.permissioncontroller.pm.data.model.PackageInfoModel
-import com.android.permissioncontroller.pm.data.repository.PackageRepository
+import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
+import com.android.permissioncontroller.pm.data.repository.v31.PackageRepository
 
 class FakePackageRepository(private val packages: Map<String, PackageInfoModel> = emptyMap()) :
     PackageRepository {

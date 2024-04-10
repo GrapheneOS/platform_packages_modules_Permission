@@ -27,7 +27,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsageViewModelFactory
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModelFactory
 

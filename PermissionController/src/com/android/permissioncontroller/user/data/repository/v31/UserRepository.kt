@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.user.data.repository
+package com.android.permissioncontroller.user.data.repository.v31
 
 import android.app.Application
 import android.content.pm.UserProperties

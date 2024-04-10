@@ -41,8 +41,8 @@ import com.android.permissioncontroller.permission.model.livedatatypes.v31.Light
 import com.android.permissioncontroller.permission.ui.legacy.PermissionUsageViewModel.Companion.SHOULD_SHOW_7_DAYS_KEY
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
 import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsageViewModelV2
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsagesUiState
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelV2
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils

@@ -20,6 +20,7 @@ import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+import android.app.UiAutomation.ROTATION_FREEZE_0
 import android.app.UiAutomation.ROTATION_FREEZE_270
 import android.app.UiAutomation.ROTATION_UNFREEZE
 import android.content.pm.PackageManager
@@ -476,9 +477,9 @@ class PhotoPickerPermissionTest : BaseUsePermissionTest() {
             waitForWindowTransition = false
         ) {
             doAndWaitForWindowTransition { click(By.res(SELECT_BUTTON)) }
-            clickImageOrVideo()
             try {
                 doAndWaitForWindowTransition { uiAutomation.setRotation(ROTATION_FREEZE_270) }
+                doAndWaitForWindowTransition { uiAutomation.setRotation(ROTATION_FREEZE_0) }
                 clickImageOrVideo()
                 doAndWaitForWindowTransition { clickAllow() }
             } finally {

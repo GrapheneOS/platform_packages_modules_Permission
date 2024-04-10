@@ -23,10 +23,10 @@ import android.content.pm.PackageManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.appops.data.model.PackageAppOpUsageModel.AppOpUsageModel
-import com.android.permissioncontroller.appops.data.repository.AppOpRepository
-import com.android.permissioncontroller.appops.data.repository.AppOpRepositoryImpl
-import com.android.permissioncontroller.permission.data.repository.PermissionRepository
+import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
+import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
+import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepositoryImpl
+import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.tests.mocking.utils.MockUtil.createMockPackageOps
 import com.android.permissioncontroller.tests.mocking.utils.MockUtil.createOpEntry
 import com.google.common.truth.Truth.assertThat

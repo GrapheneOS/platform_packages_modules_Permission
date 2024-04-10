@@ -16,7 +16,7 @@
 
 package com.android.permissioncontroller.tests.mocking.role.data.repository
 
-import com.android.permissioncontroller.role.data.repository.RoleRepository
+import com.android.permissioncontroller.role.data.repository.v31.RoleRepository
 
 class FakeRoleRepository(private val exemptedPackages: Set<String> = emptySet()) : RoleRepository {
     override suspend fun getExemptedPackages(): Set<String> = exemptedPackages

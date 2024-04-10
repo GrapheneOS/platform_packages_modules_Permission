@@ -19,7 +19,7 @@ package com.android.permissioncontroller.tests.mocking.permission.data.repositor
 import android.content.Context
 import android.os.UserHandle
 import com.android.modules.utils.build.SdkLevel
-import com.android.permissioncontroller.permission.data.repository.PermissionRepository
+import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 
 class FakePermissionRepository(private val permissionFlags: Map<String, Int> = emptyMap()) :

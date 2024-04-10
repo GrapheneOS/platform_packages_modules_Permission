@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.appops.data.repository
+package com.android.permissioncontroller.appops.data.repository.v31
 
 import android.app.AppOpsManager
 import android.app.Application
@@ -22,10 +22,10 @@ import android.content.pm.PackageManager
 import android.os.UserHandle
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
-import com.android.permissioncontroller.appops.data.model.PackageAppOpUsageModel
-import com.android.permissioncontroller.appops.data.model.PackageAppOpUsageModel.AppOpUsageModel
+import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
+import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
 import com.android.permissioncontroller.permission.data.PackageBroadcastReceiver
-import com.android.permissioncontroller.permission.data.repository.PermissionRepository
+import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import kotlin.concurrent.Volatile
 import kotlinx.coroutines.CoroutineDispatcher

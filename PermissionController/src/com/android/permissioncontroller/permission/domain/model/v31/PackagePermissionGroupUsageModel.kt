@@ -14,23 +14,12 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.pm.data.model
+package com.android.permissioncontroller.permission.domain.model.v31
 
-import android.content.pm.PackageInfo
-
-/** A model/data class representing [PackageInfo] class. */
-data class PackageInfoModel(
+/** This data class stores all data accesses (derived from app ops) for a package and user. */
+data class PackagePermissionGroupUsageModel(
     val packageName: String,
-    val requestedPermissions: List<String> = emptyList(),
-    val requestedPermissionsFlags: List<Int> = emptyList(),
-    val applicationFlags: Int = 0,
-) {
-    constructor(
-        packageInfo: PackageInfo
-    ) : this(
-        packageInfo.packageName,
-        packageInfo.requestedPermissions?.toList() ?: emptyList(),
-        packageInfo.requestedPermissionsFlags?.toList() ?: emptyList(),
-        requireNotNull(packageInfo.applicationInfo).flags
-    )
-}
+    /** Permission group and recent usage time in milliseconds since the epoch */
+    val usages: Map<String, Long>,
+    val userId: Int
+)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.domain.usecase
+package com.android.permissioncontroller.permission.domain.usecase.v31
 
 import android.Manifest
 import android.app.Application
@@ -24,15 +24,15 @@ import android.content.pm.PackageManager
 import android.os.UserHandle
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
-import com.android.permissioncontroller.appops.data.model.PackageAppOpUsageModel
-import com.android.permissioncontroller.appops.data.repository.AppOpRepository
-import com.android.permissioncontroller.permission.data.repository.PermissionRepository
-import com.android.permissioncontroller.permission.domain.model.PackagePermissionGroupUsageModel
-import com.android.permissioncontroller.permission.domain.model.PermissionGroupUsageModel
+import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
+import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
+import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
+import com.android.permissioncontroller.permission.domain.model.v31.PackagePermissionGroupUsageModel
+import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
-import com.android.permissioncontroller.pm.data.repository.PackageRepository
-import com.android.permissioncontroller.role.data.repository.RoleRepository
-import com.android.permissioncontroller.user.data.repository.UserRepository
+import com.android.permissioncontroller.pm.data.repository.v31.PackageRepository
+import com.android.permissioncontroller.role.data.repository.v31.RoleRepository
+import com.android.permissioncontroller.user.data.repository.v31.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

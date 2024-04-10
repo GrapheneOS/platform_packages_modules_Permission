@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.appops.data.model
+package com.android.permissioncontroller.appops.data.model.v31
 
 /**
  * Collection of app op usages for a package and user. App op usage represent private data access

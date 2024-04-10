@@ -77,6 +77,7 @@ import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.core.util.Preconditions;
 
@@ -539,6 +540,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     private boolean isPermissionEcmRestricted(EnhancedConfirmationManager ecm,
             String requestedPermission, String packageName) {
         try {
@@ -548,6 +550,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     private boolean wasEcmDialogAlreadyShown(EnhancedConfirmationManager ecm,
             String packageName) {
         try {

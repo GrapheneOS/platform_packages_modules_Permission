@@ -45,8 +45,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel;
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsageViewModelFactory;
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsagesUiState;
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory;
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.settingslib.HelpUtils;
 

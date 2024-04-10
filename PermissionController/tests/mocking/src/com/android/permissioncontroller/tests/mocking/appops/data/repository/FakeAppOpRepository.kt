@@ -16,8 +16,8 @@
 
 package com.android.permissioncontroller.tests.mocking.appops.data.repository
 
-import com.android.permissioncontroller.appops.data.model.PackageAppOpUsageModel
-import com.android.permissioncontroller.appops.data.repository.AppOpRepository
+import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
+import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
 import kotlinx.coroutines.flow.Flow
 
 class FakeAppOpRepository(override val packageAppOpsUsages: Flow<List<PackageAppOpUsageModel>>) :

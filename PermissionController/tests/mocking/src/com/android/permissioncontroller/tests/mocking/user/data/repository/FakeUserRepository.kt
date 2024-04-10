@@ -17,7 +17,7 @@
 package com.android.permissioncontroller.tests.mocking.user.data.repository
 
 import android.os.Process
-import com.android.permissioncontroller.user.data.repository.UserRepository
+import com.android.permissioncontroller.user.data.repository.v31.UserRepository
 
 class FakeUserRepository(
     private val currentUserProfiles: List<Int> = listOf(Process.myUserHandle().identifier),

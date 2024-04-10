@@ -20,6 +20,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 
 /**
  * Base class for [PermissionUsageViewModel] and [PermissionUsageViewModelV2], V2 is the new

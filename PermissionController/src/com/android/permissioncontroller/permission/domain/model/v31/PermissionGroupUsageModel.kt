@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.domain.model
+package com.android.permissioncontroller.permission.domain.model.v31
 
 /** Represents the private data access protected by the permission group. */
 data class PermissionGroupUsageModel(

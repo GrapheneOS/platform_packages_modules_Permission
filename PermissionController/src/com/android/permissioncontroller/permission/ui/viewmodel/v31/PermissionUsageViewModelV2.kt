@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.viewmodel
+package com.android.permissioncontroller.permission.ui.viewmodel.v31
 
 import android.app.Application
 import android.content.Context
@@ -29,9 +29,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import com.android.permissioncontroller.permission.data.repository.PermissionRepository
-import com.android.permissioncontroller.permission.domain.model.PermissionGroupUsageModel
-import com.android.permissioncontroller.permission.domain.usecase.GetPermissionGroupUsageUseCase
+import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
+import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
+import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
+import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit

@@ -20,7 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
-import com.android.permissioncontroller.permission.ui.viewmodel.PermissionUsagesUiState
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 
 class WearPermissionUsageViewModel(
     permissionUsagesUiState: PermissionUsagesUiState?,
