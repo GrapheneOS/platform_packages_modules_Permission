@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"অধিক ডিফ’ল্ট"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"লিংকসমূহ খুলি থকা হৈছে"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"কৰ্মস্থানৰ বাবে ডিফ’ল্ট"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"প্ৰাইভেট স্পে’চৰ বাবে ডিফ’ল্ট"</string>
     <string name="default_app_none" msgid="9084592086808194457">"নাই"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(ছিষ্টেম ডিফ\'ল্ট)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"কোনো এপ্‌ নাই"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"নাই"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"বিগত\n২৪ ঘণ্টা"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"যোৱা\n৭ দিনত"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> শতাংশ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Androidৰ দ্বাৰা সুৰক্ষিত। আপোনাৰ ডেটাখিনি এই ডিভাইচটোত প্ৰক্ৰিয়াকৰণ কৰা হয় বাবে স্থিতি দণ্ডত অথবা আপোনাৰ গোপনীয়তাৰ ডেশ্বব’ৰ্ডত এই এপ্‌টোৰ অনুমতিৰ ব্যৱহাৰ দেখুওৱা নহয়।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Androidৰ দ্বাৰা সুৰক্ষিত। আপোনাৰ ডেটাখিনি এই ডিভাইচটোত প্ৰক্ৰিয়াকৰণ কৰা হয় বাবে আপোনাৰ গোপনীয়তাৰ ডেশ্বব’ৰ্ডত এই এপ্‌টোৰ অনুমতিৰ ব্যৱহাৰ দেখুওৱা নহয়।"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ডিভাইচৰ কেমেৰা অৱৰোধ কৰা আছে"</string>

@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> आणि <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> परवानग्या काढल्या गेल्या"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> आणि इतर <xliff:g id="NUMBER">%2$s</xliff:g> परवानग्या काढल्या गेल्या"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"न वापरलेली अ‍ॅप्स"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ॲप काही महिन्यांमध्ये वापरले गेले नसल्यास:\n\n• तुमच्या डेटाचे संरक्षण करण्यासाठी परवानग्या काढून टाकल्या जातात\n• बॅटरीची बचत करण्यासाठी सूचना थांबवल्या जातात\n• जागा मोकळी करण्यासाठी तात्पुरत्या फाइल काढून टाकल्या जातात\n\nपरवानग्या आणि सूचना यांना पुन्हा अनुमती देण्यासाठी ॲप उघडा."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ॲप काही महिन्यांमध्ये वापरले गेले नसल्यास:\n\n• तुमच्या डेटाचे संरक्षण करण्यासाठी परवानग्या काढून टाकल्या जातात\n• बॅटरीची बचत करण्यासाठी नोटिफिकेशन थांबवल्या जातात\n• जागा मोकळी करण्यासाठी तात्पुरत्या फाइल काढून टाकल्या जातात\n\nपरवानग्या आणि नोटिफिकेशन यांना पुन्हा अनुमती देण्यासाठी ॲप उघडा."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"एखादे ॲप एका महिन्यांसाठी वापरले गेले नसल्यास:\n\n• तुमच्या डेटाचे संरक्षण करण्यासाठी परवानग्या काढून टाकल्या जातात\n• जागा मोकळी करण्याकरिता तात्पुरत्या फाइल काढून टाकल्या जातात\n\nपुन्हा परवानग्या देण्यासाठी, ॲप उघडा."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{शेवटचे # महिन्यापूर्वीपेक्षा आधी उघडले}other{शेवटचे # महिन्यांपूर्वीपेक्षा आधी उघडले}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"<xliff:g id="DATE">%s</xliff:g> रोजी ॲप शेवटचे उघडलेले"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"आणखी डीफॉल्ट"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"उघडणार्‍या लिंक"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"कार्यासाठी डीफॉल्ट"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"खाजगी स्पेससाठी डीफॉल्ट"</string>
     <string name="default_app_none" msgid="9084592086808194457">"काहीही नाही"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(सिस्टम डीफॉल्ट)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"अ‍ॅप्स नाहीत"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"कोणतेही नाही"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"मागील\n२४ तास"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"मागील\nसात दिवसातील"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे सुरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवरील स्टेटस बारवर दाखवण्यात आलेला नाही."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे सुरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवर दाखवण्यात आलेला नाही."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"डिव्हाइसचा कॅमेरा ब्लॉक केला आहे"</string>

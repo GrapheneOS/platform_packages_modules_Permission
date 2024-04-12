@@ -299,19 +299,31 @@ public final class SafetyCenterDashboardFragment extends SafetyCenterFragment {
         mStaticEntriesGroup.removeAll();
 
         for (SafetyCenterStaticEntryGroup group : data.getStaticEntryGroups()) {
-            PreferenceCategory category = new ComparablePreferenceCategory(context);
-            category.setTitle(group.getTitle());
-            mStaticEntriesGroup.addPreference(category);
-
-            for (SafetyCenterStaticEntry entry : group.getStaticEntries()) {
-                category.addPreference(
-                        new StaticSafetyEntryPreference(
-                                context,
-                                requireActivity().getTaskId(),
-                                entry,
-                                SafetyCenterBundles.getStaticEntryId(data, entry),
-                                getSafetyCenterViewModel()));
+            if (group.getTitle().toString().isEmpty()) {
+                // Interpret an empty title as signal to not create a titled category
+                addStaticEntriesTo(context, data, mStaticEntriesGroup, group.getStaticEntries());
+            } else {
+                PreferenceCategory category = new ComparablePreferenceCategory(context);
+                category.setTitle(group.getTitle());
+                mStaticEntriesGroup.addPreference(category);
+                addStaticEntriesTo(context, data, category, group.getStaticEntries());
             }
+        }
+    }
+
+    private void addStaticEntriesTo(
+            Context context,
+            SafetyCenterData data,
+            PreferenceGroup prefGroup,
+            List<SafetyCenterStaticEntry> entries) {
+        for (SafetyCenterStaticEntry entry : entries) {
+            prefGroup.addPreference(
+                    new StaticSafetyEntryPreference(
+                            context,
+                            requireActivity().getTaskId(),
+                            entry,
+                            SafetyCenterBundles.getStaticEntryId(data, entry),
+                            getSafetyCenterViewModel()));
         }
     }
 }

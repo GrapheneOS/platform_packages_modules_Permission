@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"مزید ڈیفالٹس"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"شروعاتی لنکس"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"کام کیلئے ڈیفالٹ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"پرائیویٹ اسپیس کے لیے ڈیفالٹ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"کوئی نہیں"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(سسٹم ڈیفالٹ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"کوئی ایپس نہیں ہیں"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"کوئی نہیں"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"گزشتہ\n24 گھنٹے"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"گزشتہ\n7 دن"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> فیصد"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏‫Android <xliff:g id="APP_NAME">%1$s</xliff:g> کے ساتھ تحفظ یافتہ ہے۔ کیونکہ آپ کے ڈیٹا پر اس آلے پر کارروائی کی جاتی ہے، اس ایپ کی اجازت کا استعمال اسٹیٹس بار یا آپ کے پرائیویسی ڈیش بورڈ پر دکھائی نہیں دیتا ہے۔"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏Android <xliff:g id="APP_NAME">%1$s</xliff:g> کے ساتھ تحفظ یافتہ ہے۔ کیونکہ آپ کے ڈیٹا پر اس آلے پر کارروائی کی جاتی ہے، اس ایپ کی اجازت کا استعمال آپ کے پرائیویسی ڈیش بورڈ پر دکھائی نہیں دیتا ہے۔"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"آلے کا کیمرا مسدود ہے"</string>

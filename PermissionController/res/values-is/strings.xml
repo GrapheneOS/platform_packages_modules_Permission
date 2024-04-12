@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"neyð"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Sjálfgefið heimaforrit"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Heimaforrit"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Forrit sem koma í stað heimaskjásins í Android tækinu þínu, stundum nefnd ræsiforrit, sem gefa þér aðgang að efni og eiginleikum í tækinu."</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Forrit sem koma í stað heimaskjásins í Android-tækinu þínu, stundum nefnd ræsiforrit, sem gefa þér aðgang að efni og eiginleikum í tækinu."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Velja <xliff:g id="APP_NAME">%1$s</xliff:g> sem sjálfgefið heimaforrit?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Engra heimilda krafist"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"ræsiforrit"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Fleiri sjálfgildi"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Opnun tengla"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Sjálfgefið fyrir vinnu"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Sjálfgefið fyrir leynirými"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ekkert"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Sjálfgildi kerfis)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Engin forrit"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Ekkert"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Síðasta\nsólarhringinn"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Síðastliðna\n7 daga"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> prósent"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> er verndað af Android. Unnið er úr gögnum þínum í þessu tæki og þar af leiðandi birtist heimildarnotkun þessa forrits ekki á stöðustikunni eða persónuverndarstjórnborðinu."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> er verndað af Android. Unnið er úr gögnum þínum í þessu tæki og þar af leiðandi birtist heimildarnotkun þessa forrits ekki á persónuverndarstjórnborðinu þínu."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Lokað er fyrir myndavél tækis"</string>

@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Više zadanih"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otvaranje linkova"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Uobičajeno za rad"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Zadano za privatni prostor"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Nema"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Sistemski zadano)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nema aplikacija"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Ništa"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Protekla\n24 sata"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Posljednjih\n7 dana"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> posto"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> je zaštićena Androidom. S obzirom na to da se vaši podaci obrađuju na ovom uređaju, korištenje odobrenja ove aplikacije nije prikazano na statusnoj traci ili kontrolnoj tabli za privatnost."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> je zaštićena Androidom. S obzirom na to da se vaši podaci obrađuju na ovom uređaju, korištenje odobrenja ove aplikacije nije prikazano na kontrolnoj tabli za privatnost."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera uređaja je blokirana"</string>
@@ -661,12 +663,12 @@
     <string name="test_otp_msg" msgid="7559110574222727550">"Jednokratna lozinka je 132435"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ograničena postavka"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Radi vaše sigurnosti postavka trenutno nije dostupna."</string>
-    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Aplikaciji je odbijen pristup dopuštenju <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
-    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Aplikacija je zatražila pristup dopuštenju za osjetljive podatke koje može ugroziti vaše osobne i financijske podatke.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće pravilno funkcionirati bez tog ograničenog dopuštenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako omogućiti pristup&lt;/a&gt;"</string>
-    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Aplikaciji je odbijen pristup da prema zadanim postavkama bude <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
-    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Aplikacija je zatražila pristup dopuštenjima za osjetljive podatke koja mogu ugroziti vaše osobne i financijske podatke.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće pravilno funkcionirati bez tih ograničenih dopuštenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako omogućiti pristup&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Aplikaciji je odbijen pristup odobrenju <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Aplikacija je zatražila pristup osjetljivom odobrenju, što može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovog ograničenog odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Aplikaciji je odbijen pristup da bude zadana uloga <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Aplikacija je zatražila pristup osjetljivim odobrenjima, što može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovih ograničenih odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Aplikaciji je odbijen pristup"</string>
-    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Pristup tom dopuštenju može ugroziti vaše osobne i financijske podatke.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće pravilno funkcionirati bez tog ograničenog dopuštenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako omogućiti pristup&lt;/a&gt;"</string>
+    <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Pristup ovom odobrenju može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovog ograničenog odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Saznajte više"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Uredu"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahtjev za odobrenje je potisnut"</string>

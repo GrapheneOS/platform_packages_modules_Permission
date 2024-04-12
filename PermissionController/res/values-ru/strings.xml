@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Другие приложения по умолчанию"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Переход по ссылкам"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Стандартные для работы"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Приложения по умолчанию для личного пространства"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Нет"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(по умолчанию)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Приложений нет"</string>
@@ -548,6 +549,9 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Нет"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Последние\n24 часа"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Последние\n7 дней"</string>
+    <!-- String.format failed for translation -->
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" защищено Android. Поскольку ваши данные обрабатываются на устройстве, разрешения, используемые приложением, не показываются в строке состояния на панели управления разрешениями."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" защищено Android. Поскольку ваши данные обрабатываются на устройстве, разрешения, используемые приложением, не показываются на панели управления разрешениями."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камера устройства заблокирована"</string>
@@ -556,7 +560,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Для приложений и сервисов"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Данные микрофона могут передаваться при звонке на номер экстренной службы"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Изменить"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Защита и кон­фи­ден­циаль­ность"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Безопасность и кон­фи­ден­циаль­ность"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Сканировать устройство"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Закрыть"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Закрыть оповещение?"</string>

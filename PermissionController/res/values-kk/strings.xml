@@ -390,7 +390,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Нөмір мен спамды анықтаудың әдепкі қолданбасы"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Нөмірді автоматты анықтау қызметі, спамды анықтау қолданбасы"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді бөгеуге мүмкіндік беретін қолданбалар"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді блоктауға мүмкіндік беретін қолданбалар"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> нөмірді автоматты анықтау қызметі мен спам анықтау қолданбасы болып орнатылсын ба?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Әдепкі навигация қолданбасы"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Басқа да әдепкі қолданбалар"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Сілтемелер ашу"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Жұмыс үшін әдепкі қолданба"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Құпия кеңістікке арналған әдепкі қолданбалар"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Жоқ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(жүйенің әдепкі қолданбасы)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Қолданба жоқ"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Жоқ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Соңғы\n24 сағатта"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Соңғы\n7 күн"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы күй жолағында немесе құпиялық тақтасында көрсетілмейді."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасын Android қорғайды. Деректеріңіз осы құрылғыда өңделетіндіктен, бұл қолданба рұқсатының пайдаланылуы құпиялық тақтасында көрсетілмейді."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Құрылғы камерасы блокталған"</string>

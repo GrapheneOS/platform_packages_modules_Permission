@@ -85,6 +85,7 @@ abstract class BasePermissionTest {
 
         const val QUICK_CHECK_TIMEOUT_MILLIS = 100L
         const val IDLE_TIMEOUT_MILLIS: Long = 1000
+        const val IDLE_LONG_TIMEOUT_MILLIS: Long = 5000
         const val UNEXPECTED_TIMEOUT_MILLIS = 1000
         const val TIMEOUT_MILLIS: Long = 20000
         const val PACKAGE_INSTALLER_TIMEOUT = 60000L
@@ -424,6 +425,9 @@ abstract class BasePermissionTest {
     }
 
     protected fun waitForIdle() = uiAutomation.waitForIdle(IDLE_TIMEOUT_MILLIS, TIMEOUT_MILLIS)
+
+    protected fun waitForIdleLong() =
+            uiAutomation.waitForIdle(IDLE_LONG_TIMEOUT_MILLIS, TIMEOUT_MILLIS)
 
     protected fun startActivityForFuture(
         intent: Intent

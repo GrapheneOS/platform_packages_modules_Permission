@@ -207,7 +207,7 @@
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar actividad en la app si no se usa"</string>
     <string name="unused_apps_label_v3" msgid="693340578642156657">"Administrar la app si no se usa"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Quitar permisos, borrar archivos temporales y detener notificaciones"</string>
-    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Quita permisos, borra archivos temporales, detiene notificaciones y archiva la app"</string>
+    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Quitar permisos, borrar archivos temporales, detener notificaciones y archivar la app"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger tus datos, se quitarán los permisos de esta app si no la usas durante varios meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger tus datos, si no usas la app durante varios meses, se quitarán los siguientes permisos: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para proteger tus datos, se quitaron los permisos de las apps que están en desuso hace varios meses."</string>
@@ -354,7 +354,7 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"App de asistente digital pred."</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App de asistente digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Las aplicaciones de asistencia pueden brindarte ayuda en función de la pantalla que estás viendo. Para ofrecerte asistencia integrada, algunas aplicaciones son compatibles con los servicios de selector y entrada de voz."</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Navegador predet."</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Navegador predeterminado"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"App de navegador"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apps que te permiten acceder a Internet y ver los vínculos que presionas"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"¿Quieres establecer <xliff:g id="APP_NAME">%1$s</xliff:g> como tu app de navegador predeterminada?"</string>
@@ -435,8 +435,9 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Más apps predeterminadas"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Abrir vínculos"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Predeterminadas de trabajo"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Configuración predeterminada del espacio privado"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ninguna"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(Predeterminada de sistema)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(Predeterminada del sistema)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Sin apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Se seleccionó: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Ninguno"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Últimos\n7 días"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> está protegida por Android. Tus datos se procesan en este dispositivo, por eso no se muestra el uso de permisos de esta app en la barra de estado ni en el panel de privacidad."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> está protegida por Android. Tus datos se procesan en este dispositivo, por eso no se muestra el uso de permisos de esta app en el panel de privacidad."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"La cámara del dispositivo está bloqueada"</string>

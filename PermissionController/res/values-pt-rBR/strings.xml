@@ -224,7 +224,7 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usados"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se um app fica sem uso por alguns meses:\n\n• as permissões são removidas para proteger seus dados;\n• as notificações são interrompidas para economizar bateria;\n• os arquivos temporários são removidos para liberar espaço.\n\nPara retomar as permissões e notificações, abra o app."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Quando um app fica sem uso por um mês:\n\n• As permissões são removidas para proteger seus dados.\n• Os arquivos temporários são removidos para liberar espaço.\n\nSe quiser conceder as permissões novamente, abra o app."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Usado pela última vez há mais de # mês}one{Usado pela última vez há mais de # mês}many{Usado pela última vez há mais de # de meses}other{Usado pela última vez há mais de # meses}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Usado pela última vez há mais de # mês}one{Usados pela última vez há mais de # mês}many{Usados pela última vez há mais de # de meses}other{Usados pela última vez há mais de # meses}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se você permitir o gerenciamento de todos os arquivos, o app poderá acessar, modificar e excluir qualquer arquivo no armazenamento comum do dispositivo ou no armazenamento de dispositivos conectados. O app poderá acessar arquivos sem pedir autorização."</string>
@@ -360,14 +360,14 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como navegador padrão?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nenhuma permissão necessária"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App de telefone padrão"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"App Telefone"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"App de Telefone"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Apps que permitem fazer e receber chamadas no seu dispositivo."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como seu app de telefone padrão?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Este app poderá acessar contatos, câmera, microfone, telefone e SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"discador"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App de SMS padrão"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"App de SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem usar o número do telefone para enviar e receber mensagens de texto curtas, fotos, vídeos e muito mais."</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem usar seu número do telefone para enviar e receber mensagens de texto curtas, fotos, vídeos e muito mais."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app de SMS padrão?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Este app poderá acessar contatos, câmera, arquivos e mídia, microfone, telefone e SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensagem de texto, enviar mensagens de texto, mensagens"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notas"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Carteira digital padrão"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"App de carteira"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Os apps de carteira digital armazenam seus cartões de crédito e de fidelidade,as chaves do carro, entre outros itens, para agilizar suas transações."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Os apps de carteira digital armazenam seus cartões de crédito e de fidelidade, chaves de carros, entre outros itens, para agilizar suas transações."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como seu app de carteira padrão?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Nenhuma permissão necessária"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Padrão atual"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Mais padrões"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Abrir links"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Padrão para trabalho"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Padrão para o espaço privado"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Nenhum"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Padrão do sistema)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nenhum app"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nenhuma"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Nos últimos\nsete dias"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado na barra de status nem no painel de privacidade."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado no painel de privacidade."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"A câmera do dispositivo está bloqueada"</string>
@@ -644,7 +647,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Os dados de local podem ser compartilhados"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Este app indicou que pode compartilhar seus dados de local com terceiros"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Atualizações no compartilhamento de dados de local"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Conferir apps que mudaram a forma de compartilhar dados de local"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Conferir apps que mudaram a forma de compartilhar seus dados de local"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Esses apps mudaram a forma de compartilhar os dados de local. É possível que eles não tenham compartilhado antes ou que agora compartilhem para fins de publicidade ou marketing."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os desenvolvedores desses apps oferecem informações sobre as práticas deles de compartilhamento de dados com uma app store. Eles podem atualizar essas informações com o tempo.\n\nAs práticas de compartilhamento de dados podem variar de acordo com a versão do app e com a idade, o uso e a região do usuário."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre o compartilhamento de dados"</string>

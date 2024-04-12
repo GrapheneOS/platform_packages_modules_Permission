@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"өзгөчө кырдаалда"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Демейки башкы экран"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Home колдонмосу"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Android түзмөгүңүздө башкы экрандын ордуна колдонулган, функциялар менен колдонмолорду издеп таап, иштеткен колдонмолор"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Android түзмөгүңүздө башкы экрандын ордуна колдонулуп, функциялар менен колдонмолорду издеп таап, иштеткен колдонмолор"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки \"үй\" колдонмосу катары коёсузбу?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Уруксаттардын кереги жок"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"жүргүзгүч"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Кошумча демейки колдонмолор"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Шилтемелерди ачуу"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Жумуш үчүн демейки жөндөөлөр"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Жеке мейкиндик үчүн демейки колдонмолор"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Жок"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Демейки тутум)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Бир да колдонмо жок"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Жок"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Акыркы\n24 саат"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Акыркы\n7 күндө"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> пайыз"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголот. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы абал тилкесинде же купуялык тактаңызда көрүнбөйт."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголот. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы купуялык тактаңызда көрүнбөйт."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Түзмөктүн камерасы бөгөттөлгөн"</string>

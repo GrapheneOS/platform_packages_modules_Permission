@@ -19,7 +19,7 @@ package com.android.permissioncontroller.permission.ui.wear.model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 
 class WearPermissionUsageViewModel(
@@ -40,7 +40,7 @@ class WearPermissionUsageViewModel(
 }
 
 /** Factory for a WearPermissionsUsageViewModel */
-class WearPermissionUsageViewModelFactory(val viewModel: BasePermissionUsageViewModel) :
+class WearPermissionUsageViewModelFactory(val viewModel: PermissionUsageViewModel) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")

@@ -31,7 +31,7 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Уруксаттарды жакында кайсы колдонмолор колдонгонун көрө аласыз"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Купуялык, Купуялык тактасы"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Уруксаттарды башкаргыч"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Колдонмолорго маалыматыңыздын жеткиликтүүлүгүн көзөмөлдөйсүз"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Колдонмолорго маалыматтарыңызды жеткиликтүү кыласыз"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Уруксаттар, Уруксаттарды башкаргыч"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Купуялыкты көзөмөлдөө каражаттары"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Түзмөктүн микрофонду, камераны жана башкаларды колдонуу мүмкүнчүлүгүн көзөмөлдөө"</string>

@@ -20,7 +20,7 @@
     <string name="role_sms_request_description" msgid="1506966389698625395">"Tato aplikace vám bude moci zasílat oznámení a bude mít přístup k fotoaparátu, kontaktům, souborům, mikrofonu, telefonu a SMS"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Aplikace s tímto oprávněním mají přístup ke všem souborům v tomto zařízení"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Informace o vašich pracovních zásadách"</string>
-    <string name="work_policy_summary" msgid="3886113358084963931">"Nastavení spravuje administrátor IT"</string>
+    <string name="work_policy_summary" msgid="3886113358084963931">"Nastavení spravuje IT administrátor"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Rozbalit a zobrazit seznam"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Sbalit seznam a skrýt nastavení"</string>
     <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Seznam. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>

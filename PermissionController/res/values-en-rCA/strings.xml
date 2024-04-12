@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"More defaults"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Opening links"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Default for work"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Default for private space"</string>
     <string name="default_app_none" msgid="9084592086808194457">"None"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(System default)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"No apps"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"None"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Past\n24 hours"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Past\n7 days"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> percent"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> is protected by Android. Because your data is processed on this device, this app’s permission usage isn’t shown on the status bar or your privacy dashboard."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> is protected by Android. Because your data is processed on this device, this app’s permission usage isn’t shown on your privacy dashboard."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Device camera is blocked"</string>

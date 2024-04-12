@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Дадатковыя стандартныя налады"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Адкрыццё спасылак"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Стандартныя для працы"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Стандартныя праграмы для прыватнай прасторы"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Няма"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Стандартная сістэмная)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Няма праграм"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Няма"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"За апошнія\n24 гадзіны"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"За апошнія\n7 сутак"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі стану і панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камера прылады заблакіравана"</string>

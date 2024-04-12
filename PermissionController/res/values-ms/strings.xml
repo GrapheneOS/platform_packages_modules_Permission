@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Apl skrin utama lalai"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Apl skrin utama"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Apl, yang sering dipanggil pelancar, yang menggantikan Skrin Utama pada peranti Android anda dan memberi anda akses kepada kandungan dan ciri peranti anda"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Apl, yang sering dipanggil pelancar, yang menggantikan Skrin Utama pada peranti Android dan memberi anda akses kepada kandungan dan ciri peranti anda"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl skrin utama lalai anda?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Kebenaran tidak diperlukan"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"pelancar"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"nota"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Apl dompet lalai"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Apl dompet"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Apl dompet boleh menyimpan kad kredit dan kesetiaan anda, kunci kereta dan perkara lain untuk membantu pelbagai bentuk transaksi."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Apl dompet boleh menyimpan kad kredit dan kad kesetiaan, kunci kereta dan perkara lain untuk membantu pelbagai bentuk transaksi."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl dompet lalai anda?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Kebenaran tidak diperlukan"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Lalai semasa"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Lagi tetapan lalai"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Membuka pautan"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Lalai untuk kerja"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Lalai untuk ruang privasi"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Tiada"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Ciri lalai sistem)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Tiada apl"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Tiada"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 jam\nyang lalu"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 hari\nyang lalu"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> peratus"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Ini ialah <xliff:g id="APP_NAME">%1$s</xliff:g> Protected by Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada bar status atau papan pemuka privasi anda."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Ini ialah <xliff:g id="APP_NAME">%1$s</xliff:g> Protected by Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada papan pemuka privasi anda."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera peranti disekat"</string>

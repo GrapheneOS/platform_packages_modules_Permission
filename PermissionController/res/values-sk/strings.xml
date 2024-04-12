@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Boli odstránené povolenia <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikácie"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené,\n• upozornenia sa zastavia, aby sa šetrila batéria,\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia a upozornenia znova aktivovať, otvorte aplikáciu."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené;\n• upozornenia sa zastavia, aby sa šetrila batéria;\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia a upozornenia znova aktivovať, otvorte aplikáciu."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Ak aplikácia nebola použitá mesiac:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené;\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia znova udeliť, otvorte aplikáciu."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Naposledy otvorené pred viac než # mesiacom}few{Naposledy otvorené pred viac než # mesiacmi}many{Naposledy otvorené pred viac než # mesiaca}other{Naposledy otvorené pred viac než # mesiacmi}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikácia bola naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -435,8 +435,9 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Ďalšie predvolené nastavenia"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otváranie odkazov"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Predvolené na prácu"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Predvolené pre súkromný priestor"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Žiadna"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(Predvolená systémová)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(Predvolené systémom)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žiadne aplikácie"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybraná"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Vybrané – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Žiadne"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posledných\n24 hodín"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Posledných\n7 dní"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> percent"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> je chránená Androidom. Použitie povolení pre túto aplikáciu sa nezobrazuje v stavovom riadku ani na paneli ochrany súkromia, pretože vaše údaje sa spracúvajú v tomto zariadení."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> je chránená Androidom. Použitie povolení tejto aplikácie sa nezobrazuje na paneli ochrany súkromia, pretože vaše údaje sa spracúvajú v tomto zariadení."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera zariadenia je blokovaná"</string>
@@ -617,9 +619,9 @@
     <string name="mic_toggle_title" msgid="2649991093496110162">"Prístup k mikrofónu"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"Pre aplikácie a služby"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"Pre aplikácie a služby. Keď je toto nastavenie vypnuté a zavoláte na tiesňovú linku, údaje mikrofónu sa môžu stále zdieľať."</string>
-    <string name="location_settings_subtitle" msgid="2328360561197430695">"Zobraziť aplikácie a služby, ktoré majú prístup k polohe"</string>
+    <string name="location_settings_subtitle" msgid="2328360561197430695">"Zoznam aplikácií a služieb, ktoré majú prístup k polohe"</string>
     <string name="show_clip_access_notification_title" msgid="5168467637351109096">"Zobrazovať prístup k schránke"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovať správu, keď aplikácie získajú pristup k textu, obrázkom alebo inému obsahu, ktorý ste skopírovali"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"Zobrazovať správu, keď aplikácie získajú prístup k textu, obrázkom alebo inému obsahu, ktorý ste skopírovali"</string>
     <string name="show_password_title" msgid="2877269286984684659">"Zobrazovať heslá"</string>
     <string name="show_password_summary" msgid="1110166488865981610">"Pri písaní nakrátko zobrazovať zadávané znaky"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"V tejto aplikácii bolo uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
@@ -644,7 +646,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Môžu sa zdieľať údaje o polohe"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"V tejto aplikácii je uvedené, že môže zdieľať údaje o polohe s tretími stranami"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Aktualizácie zdieľania údajov o polohe"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Skontrolujte aplikácie, ktoré zmenili spôsob zdieľania údajov o vašej polohe"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"Kontrola aplikácií, ktoré zmenili spôsob zdieľania údajov o vašej polohe"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Tieto aplikácie zmenili spôsob zdieľania údajov o vašej polohe. Možno ich v minulosti nezdieľali alebo ich teraz zdieľajú na účely reklamy a marketingu."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Vývojári týchto aplikácií poskytli informácie o ich postupoch zdieľania údajov v obchode s aplikáciami. Priebežne ich môžu aktualizovať.\n\nPostupy zdieľania údajov sa môžu líšiť v závislosti od verzie a používania vašej aplikácie, ako aj regiónu a veku jej používateľa."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Ďalšie informácie o zdieľaní údajov"</string>

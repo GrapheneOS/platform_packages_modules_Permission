@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"ಇನ್ನಷ್ಟು ಡೀಫಾಲ್ಟ್‌ಗಳು"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ಲಿಂಕ್‍‍ಗಳನ್ನು ತೆರೆಯುವುದು"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ಕೆಲಸದ ಕುರಿತಾದ ಡೀಫಾಲ್ಟ್ ಆ್ಯಪ್"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ಪ್ರೈವೆಟ್ ಸ್ಪೇಸ್‌ನ ಡೀಫಾಲ್ಟ್"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ಯಾವುದೂ ಬೇಡ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(ಸಿಸ್ಟಂ ಡಿಫಾಲ್ಟ್)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ಯಾವುದೇ ಆ್ಯಪ್‌ಗಳು ಇಲ್ಲ"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ಯಾವುದೂ ಅಲ್ಲ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ಕಳೆದ\n24 ಗಂಟೆಗಳು"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"ಕಳೆದ\n7 ದಿನಗಳಲ್ಲಿ"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android ನಿಂದ ರಕ್ಷಣೆ ಪಡೆದಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ಸ್ಥಿತಿ ಪಟ್ಟಿಯಲ್ಲಿ ಅಥವಾ ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android ನಿಂದ ರಕ್ಷಣೆ ಪಡೆದಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ಸಾಧನದ ಕ್ಯಾಮರಾವನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ"</string>

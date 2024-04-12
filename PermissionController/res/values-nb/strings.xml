@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Flere standardapper"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Åpning av linker"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Jobbstandard"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standard for privat område"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ingen"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Systemstandard)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Ingen apper"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Ingen"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"De siste\n24 timene"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"De siste\n7 dagene"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> beskyttes av Android. Siden dataene dine behandles på denne enheten, vises ikke bruken av tillatelser for denne appen i statusfeltet eller personvernoversikten."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> beskyttes av Android. Siden dataene dine behandles på denne enheten, vises ikke bruken av tillatelser for denne appen i personvernoversikten."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Enhetskameraet er blokkert"</string>

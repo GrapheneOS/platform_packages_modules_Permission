@@ -26,7 +26,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModelFactory
@@ -48,8 +48,7 @@ class WearPermissionUsageFragment : Fragment() {
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
         val factory =
             PermissionUsageViewModelFactory(requireActivity().getApplication(), this, Bundle())
-        val viewModel =
-            ViewModelProvider(this, factory).get(BasePermissionUsageViewModel::class.java)
+        val viewModel = ViewModelProvider(this, factory).get(PermissionUsageViewModel::class.java)
         wearViewModel =
             ViewModelProvider(this, WearPermissionUsageViewModelFactory(viewModel))
                 .get(WearPermissionUsageViewModel::class.java)

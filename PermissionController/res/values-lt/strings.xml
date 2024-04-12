@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Daugiau numatytųjų programų"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Nuorodų atidarymas"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Numatytosios darbo programos"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Privačios erdvės numatytosios programos"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Nėra"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Sistemos numatytoji programa)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nėra programų"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nėra"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Pastarosios\n24 val."</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Pastarosios\n7 dienos"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas būsenos juostoje ar privatumo informacijos suvestinėje."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas privatumo informacijos suvestinėje."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Įrenginio vaizdo kamera užblokuota"</string>

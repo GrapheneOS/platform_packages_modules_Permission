@@ -163,7 +163,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ਪਿਛਲੇ 1 ਮਿੰਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਵਰਤੋਂ"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_days" msgid="4771868094611359651">"{count,plural, =1{ਪਿਛਲੇ # ਦਿਨ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}one{ਪਿਛਲੇ # ਦਿਨ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}other{ਪਿਛਲੇ # ਦਿਨਾਂ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}}"</string>
     <string name="permission_usage_preference_summary_not_used_in_past_n_hours" msgid="3828973177433435742">"{count,plural, =1{ਪਿਛਲੇ # ਘੰਟੇ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}one{ਪਿਛਲੇ # ਘੰਟੇ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}other{ਪਿਛਲੇ # ਘੰਟਿਆਂ ਵਿੱਚ ਨਹੀਂ ਵਰਤੀ ਗਈ}}"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 ਐਪ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}one{# ਐਪ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}other{# ਐਪਾਂ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਗਈਆਂ}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{ਇਜਾਜ਼ਤ 1 ਐਪ ਵੱਲੋਂ ਵਰਤੀ ਗਈ}one{ਇਜਾਜ਼ਤ # ਐਪ ਵੱਲੋਂ ਵਰਤੀ ਗਈ}other{ਇਜਾਜ਼ਤ # ਐਪਾਂ ਵੱਲੋਂ ਵਰਤੀ ਗਈ}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ਸਭ ਡੈਸ਼ਬੋਰਡ ਵਿੱਚ ਦੇਖੋ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ਇਸ ਮੁਤਾਬਕ ਫਿਲਟਰ ਕੀਤਾ ਗਿਆ: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ਫਿਲਟਰ ਹਟਾਓ"</string>
@@ -353,7 +353,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ਇਹ ਐਪਾਂ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ, ਕਾਰਵਾਈਆਂ ਅਤੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਦੇਖ ਸਕਦੀਆਂ ਹਨ, ਕਾਰਵਾਈਆਂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਡਿਸਪਲੇ ਕੰਟਰੋਲ ਕਰ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਡਿਜੀਟਲ ਸਹਾਇਕ ਐਪ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ਡਿਜੀਟਲ ਸਹਾਇਕ ਐਪ"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"ਸਹਾਇਕ ਐਪਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾਂਦੀ ਸਕ੍ਰੀਨ ਤੋਂ ਪ੍ਰਾਪਤ ਜਾਣਕਾਰੀ ਦੇ ਆਧਾਰ \'ਤੇ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕਦੀਆਂ ਹਨ। ਕੁਝ ਐਪਾਂ ਤੁਹਾਨੂੰ ਏਕੀਕ੍ਰਿਤ ਸਹਾਇਤਾ ਦੇਣ ਲਈ ਲਾਂਚਰ ਅਤੇ ਵੌਇਸ ਇਨਪੁੱਟ ਸੇਵਾਵਾਂ ਦੋਵਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ।"</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"ਸਹਾਇਕ ਐਪਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾਂਦੀ ਸਕ੍ਰੀਨ ਤੋਂ ਪ੍ਰਾਪਤ ਜਾਣਕਾਰੀ ਦੇ ਆਧਾਰ \'ਤੇ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕਦੀਆਂ ਹਨ। ਕੁਝ ਐਪਾਂ ਤੁਹਾਨੂੰ ਏਕੀਕ੍ਰਿਤ ਸਹਾਇਤਾ ਦੇਣ ਲਈ ਲਾਂਚਰ ਅਤੇ ਵੌਇਸ ਇਨਪੁੱਟ ਸੇਵਾਵਾਂ ਦੋਵਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦੀਆਂ ਹਨ।"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਬ੍ਰਾਊਜ਼ਰ ਐਪ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ਬ੍ਰਾਊਜ਼ਰ ਐਪ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਇੰਟਰਨੈੱਟ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦਿੰਦੀਆਂ ਹਨ ਅਤੇ ਤੁਹਾਡੇ ਵੱਲੋਂ ਟੈਪ ਕੀਤੇ ਲਿੰਕ ਦਿਖਾਉਂਦੀਆਂ ਹਨ"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"ਹੋਰ ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ਖੁੱਲ੍ਹਣ ਵਾਲੇ ਲਿੰਕ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ਕੰਮ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ਪ੍ਰਾਈਵੇਟ ਸਪੇਸ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ਕੋਈ ਨਹੀਂ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(ਸਿਸਟਮ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ਕੋਈ ਐਪਾਂ ਨਹੀਂ"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ਕੋਈ ਨਹੀਂ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ਪਿਛਲੇ\n24 ਘੰਟੇ"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"ਪਿਛਲੇ\n7 ਦਿਨ"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ Android ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਕਿਉਂਕਿ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਤੁਹਾਡੇ ਡਾਟੇ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਐਪ ਦੀ ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਵਰਤੋਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਸਥਿਤੀ ਪੱਟੀ ਜਾਂ ਤੁਹਾਡੇ ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ \'ਤੇ ਨਹੀਂ ਦਿਸਦੀ।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ Android ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਕਿਉਂਕਿ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਤੁਹਾਡੇ ਡਾਟੇ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਐਪ ਦੀ ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਵਰਤੋਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਤੁਹਾਡੇ ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ \'ਤੇ ਨਹੀਂ ਦਿਸਦੀ।"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ਡੀਵਾਈਸ ਦੇ ਕੈਮਰੇ ਨੂੰ ਬਲਾਕ ਕੀਤਾ ਗਿਆ ਹੈ"</string>

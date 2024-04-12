@@ -31,6 +31,7 @@ import android.content.pm.PackageInstaller.PACKAGE_SOURCE_OTHER
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Build
 import android.os.Process
@@ -39,6 +40,7 @@ import android.provider.Settings
 import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.view.View
+import android.view.accessibility.AccessibilityNodeInfo
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.StaleObjectException
@@ -158,6 +160,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         const val PURPOSE_MESSAGE_ID = "com.android.permissioncontroller:id/purpose_message"
         const val LEARN_MORE_TITLE_ID = "com.android.permissioncontroller:id/learn_more_title"
         const val LEARN_MORE_MESSAGE_ID = "com.android.permissioncontroller:id/learn_more_message"
+        const val DETAIL_MESSAGE_ID = "com.android.permissioncontroller:id/detail_message"
         const val PERMISSION_RATIONALE_SETTINGS_SECTION =
             "com.android.permissioncontroller:id/settings_section"
         const val SETTINGS_TITLE_ID = "com.android.permissioncontroller:id/settings_title"
@@ -632,7 +635,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     protected inline fun requestAppPermissions(
         vararg permissions: String?,
         askTwice: Boolean = false,
-        waitForWindowTransition: Boolean = true,
+        waitForWindowTransition: Boolean = !isWatch,
         crossinline block: () -> Unit
     ): Instrumentation.ActivityResult {
         // Request the permissions
@@ -870,6 +873,10 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestSettingsLink() {
         eventually {
+            if (isWatch) {
+                scrollToViewWithText(" settings.")
+                waitForIdleLong()
+            }
             // UiObject2 doesn't expose CharSequence.
             val node =
                 if (isAutomotive) {
@@ -877,20 +884,51 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                     // sensors)
                     uiAutomation.rootInActiveWindow
                         .findAccessibilityNodeInfosByText(" settings.")[0]
+                } else if (isWatch) {
+                    // In Wear UI SurfaceView is used and so findAccessibilityNodeInfosByText does
+                    // not find the node. See second NOTE in the findAccessibilityNodeInfosByText
+                    // javadoc.
+                    findAccessibilityNodeInfosByTextForSurfaceView(
+                            uiAutomation.rootInActiveWindow,
+                            " settings.")
+                            ?: throw RuntimeException("Node not found")
                 } else {
                     uiAutomation.rootInActiveWindow
-                        .findAccessibilityNodeInfosByViewId(
-                            "com.android.permissioncontroller:id/detail_message"
-                        )[0]
+                        .findAccessibilityNodeInfosByViewId(DETAIL_MESSAGE_ID)[0]
                 }
-            if (!node.isVisibleToUser) {
+            if (!isWatch && !node.isVisibleToUser) {
                 scrollToBottom()
             }
             assertTrue(node.isVisibleToUser)
-            val text = node.text as Spanned
-            val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
-            // We could pass in null here in Java, but we need an instance in Kotlin.
-            doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
+            if (isWatch) {
+                // TODO(b/329689572): Replace this with proper accessibility node info lookup
+                val bounds = Rect()
+                node.getBoundsInScreen(bounds)
+                // Not sure where the clickable text is. So try different point in the last line
+                // of the 5 line text.
+                val xdelta = 0.2 * bounds.width()
+                val y = bounds.top + (0.95 * bounds.height())
+                var clickedOnLink: Boolean = false
+                for (i in 1..4) {
+                    val x = bounds.left + (i * xdelta)
+                    uiDevice.click(x.toInt(), y.toInt())
+                    waitForIdleLong()
+                    val nextScreenNode: AccessibilityNodeInfo? =
+                            findAccessibilityNodeInfosByTextForSurfaceView(
+                                uiAutomation.rootInActiveWindow,
+                                "All the time")
+                    if (nextScreenNode != null) {
+                        clickedOnLink = true
+                        break
+                    }
+                }
+                assertTrue("Could not click on the settings link correctly", clickedOnLink)
+            } else {
+                val text = node.text as Spanned
+                val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
+                // We could pass in null here in Java, but we need an instance in Kotlin.
+                doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
+            }
         }
     }
 
@@ -918,7 +956,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRequestNoUpgradeAndDontAskAgainButton() {
-        if (isAutomotive) {
+        if (isAutomotive || isWatch) {
             click(By.text(getPermissionControllerString(NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON_TEXT)))
         } else {
             click(By.res(NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON))
@@ -1304,6 +1342,40 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun scrollToViewWithText(viewText: String) {
+        val scrollable = UiScrollable(UiSelector().scrollable(true)).apply {
+            if (isWatch) {
+                swipeDeadZonePercentage = 0.1
+            } else {
+                swipeDeadZonePercentage = 0.25
+            }
+        }
+        waitForIdle()
+        if (scrollable.exists()) {
+            try {
+                scrollable.scrollTextIntoView(viewText)
+            } catch (e: UiObjectNotFoundException) {
+                // flingToEnd() sometimes still fails despite waitForIdle() and the exists() check
+                // (b/246984354).
+                e.printStackTrace()
+            }
+        }
+    }
+
+    protected fun findAccessibilityNodeInfosByTextForSurfaceView(
+        node: AccessibilityNodeInfo,
+        text: String
+    ): AccessibilityNodeInfo? {
+        if (node.text != null && node.text.contains(text)) return node
+        for (i in 0 until node.childCount) {
+            val child = node.getChild(i)
+            if (child != null) {
+                return findAccessibilityNodeInfosByTextForSurfaceView(child, text) ?: continue
+            }
+        }
+        return null
     }
 
     private fun byTextRes(textRes: Int): BySelector = By.text(context.getString(textRes))

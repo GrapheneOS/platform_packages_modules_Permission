@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Boshqa asosiy ilovalar"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Havolalarni ochish"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Ish uchun birlamchi"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Maxfiy makon uchun standart"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Hech qanday"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Birlamchi)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Hech qanday ilova topilmadi"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Hech qanday"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Oxirgi\n24 soat"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Oxirgi\n7 kun"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tomonidan himoyalangan. Maʼlumotlaringiz qurilmada qayta ishlanishi sababli ilovaning ruxsatlardan foydalanish statistikasi maxfiylik boshqaruv panelida chiqmaydi."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tomonidan himoyalangan. Maʼlumotlaringiz qurilmada qayta ishlanishi sababli ilovaning ruxsatlardan foydalanish statistikasi maxfiylik boshqaruv panelida chiqmaydi."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Qurilma kamerasi bloklandi"</string>

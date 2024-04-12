@@ -353,7 +353,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Aceste aplicații pot vedea ecranul, acțiunile și textul introdus, să facă acțiuni și să controleze afișajul."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Aplicația asistent digital prestabilită"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplicația asistent digital"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Aplicațiile asistent te  pot ajuta pe baza informațiilor din ecranul afișat. Pentru a-ți oferi o asistență integrată, unele aplicații acceptă atât serviciile cu lansatoare, cât și pe cele de intrare vocală."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Aplicațiile asistent te pot ajuta pe baza informațiilor din ecranul afișat. Pentru a-ți oferi o asistență integrată, unele aplicații acceptă atât serviciile cu lansatoare, cât și pe cele de intrare vocală."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicația browser prestabilită"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicația browser"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplicații care îți oferă acces la internet și afișează linkurile pe care le atingi"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Mai multe setări prestabilite"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Deschiderea linkurilor"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Prestabilite pentru serviciu"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Prestabilit pentru spațiul privat"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Niciuna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Valoare prestabilită de sistem)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nicio aplicație"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Fără"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ultimele\n24 de ore"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Ultimele\nșapte zile"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> este protejată de Android. Întrucât datele tale sunt procesate pe dispozitiv, folosirea permisiunilor de către aplicație nu apare în bara de stare sau în tabloul de bord de confidențialitate."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> este protejată de Android. Întrucât datele tale sunt procesate pe dispozitiv, folosirea permisiunilor de către aplicație nu apare în tabloul de bord de confidențialitate."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Camera dispozitivului este blocată"</string>

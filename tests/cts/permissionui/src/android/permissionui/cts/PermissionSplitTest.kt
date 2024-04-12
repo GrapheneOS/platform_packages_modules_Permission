@@ -87,7 +87,11 @@ class PermissionSplitTest : BaseUsePermissionTest() {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+                if (isWatch) {
+                    clickPermissionRequestAllowForegroundButton()
+                } else {
+                    doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+                }
             }
         }
 
@@ -105,7 +109,11 @@ class PermissionSplitTest : BaseUsePermissionTest() {
             if (expectSplit) {
                 clickPermissionRequestSettingsLinkAndAllowAlways()
             } else {
-                doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+                if (isWatch) {
+                    clickPermissionRequestAllowForegroundButton()
+                } else {
+                    doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+                }
             }
         }
 

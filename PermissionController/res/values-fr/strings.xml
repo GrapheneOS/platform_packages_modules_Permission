@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"en cas d\'urgence"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Appli d\'accueil par défaut"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Appli d\'accueil"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Applis, souvent appelées lanceurs, qui remplacent l\'écran d\'accueil de votre appareil Android et vous donnent accès au contenu de l\'appareil et à ses fonctionnalités"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Applications, souvent appelées lanceurs d\'applications, qui remplacent l\'écran d\'accueil de votre appareil Android, et vous permettent d\'accéder au contenu de l\'appareil et à ses fonctionnalités"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'écran d\'accueil par défaut ?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Aucune autorisation nécessaire"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"lanceur d\'applications"</string>
@@ -405,7 +405,7 @@
     <string name="role_notes_short_label" msgid="8796604147546125285">"Appli de notes"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Applis vous permettant de prendre des notes sur votre appareil"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notes"</string>
-    <string name="role_wallet_label" msgid="3719419175656204207">"Portefeuille numérique par défaut"</string>
+    <string name="role_wallet_label" msgid="3719419175656204207">"Appli portefeuille par défaut"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Appli portefeuille numérique"</string>
     <string name="role_wallet_description" msgid="3726535836165949838">"Les applis de portefeuille numérique stockent vos cartes bancaires, cartes de fidélité, clés de voiture et bien d\'autres choses vous permettant d\'effectuer diverses transactions."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme appli de portefeuille numérique par défaut ?"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Plus d\'applications par défaut"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Ouverture des liens"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Par défaut pour utilisation pro"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Paramètres par défaut d\'Espace privé"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Aucune"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Application système par défaut)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Aucune application"</string>
@@ -467,7 +468,7 @@
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos et contenus multimédias sur votre &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; ?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos contacts ?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos contacts sur votre &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; ?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de votre &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> ?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"L\'application n\'a accès à la position de l\'appareil que lorsqu\'elle est ouverte"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
@@ -541,13 +542,15 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées uniquement par les applications système."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Autorisations supplémentaires"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Autorisations définies par les applications."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Caméra"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Appareil photo"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Micro"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Position"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Autre"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Aucune"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Dernières\n24 heures"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 derniers\njours"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'application <xliff:g id="APP_NAME">%1$s</xliff:g> est protégée par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation des autorisations de cette appli n\'est pas affichée sur la barre d\'état, ni sur votre tableau de bord Confidentialité."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'application <xliff:g id="APP_NAME">%1$s</xliff:g> est protégée par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation des autorisations de cette appli n\'est pas affichée sur votre tableau de bord Confidentialité."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"La caméra de l\'appareil est bloquée"</string>
@@ -646,7 +649,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Mises à jour du partage des données pour la localisation"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Consulter les applis qui ont modifié la manière dont elles peuvent partager vos données de localisation"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Ces applis ont modifié la manière dont elles peuvent partager vos données de localisation. Elles ne les partageaient peut-être pas auparavant ou peuvent désormais les partager à des fins de publicité ou de marketing."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Les développeurs de ces applis ont fourni des infos concernant leurs pratiques de partage des données avec une plate-forme de téléchargement d\'applications. Ils peuvent mettre à jour ces infos au fil du temps.\n\nCes pratiques de partage des données peuvent varier selon la version de l\'appli, l\'utilisation que vous en faites, votre région et votre âge."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Les développeurs de ces applis ont fourni des infos concernant leurs pratiques de partage des données avec une plate-forme de téléchargement d\'applications. Ils peuvent mettre à jour ces infos à l\'avenir.\n\nCes pratiques de partage des données peuvent varier selon la version de l\'appli, l\'utilisation que vous en faites, votre région et votre âge."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"En savoir plus sur le partage des données"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Vos données de localisation sont désormais partagées avec des tiers"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Vos données de localisation sont désormais partagées avec des tiers à des fins de publicité ou de marketing"</string>

@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Още стандартни приложения"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Отваряне на връзки"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"По подразбиране за работа"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Стандартни за частното пространство"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Няма"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Стандартно за системата)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Няма приложения"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Без"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Последните\n24 часа"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Последните\n7 дни"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в лентата на състоянието, нито в таблото ви за управление на поверителността."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в таблото ви за управление на поверителността."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камерата на устройството е блокирана"</string>

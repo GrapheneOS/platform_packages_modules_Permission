@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Byla odebrána oprávnění <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bylo odebráno oprávnění <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a další oprávnění (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikace"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Oznámení se přestanou zobrazovat kvůli úspoře baterie\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa\n\nPokud chcete oprávnění a oznámení znovu povolit, otevřete aplikaci."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna z důvodu ochrany dat.\n• Oznámení se přestanou zobrazovat kvůli úspoře baterie.\n• Dočasné soubory jsou odstraněny, aby se uvolnilo místo.\n\nPokud chcete oprávnění a oznámení znovu povolit, příslušnou aplikaci otevřete."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Když nějakou aplikaci měsíc nepoužíváte:\n\n• Kvůli ochraně dat se odstraní oprávnění.\n• Kvůli uvolnění místa se odstraní dočasné soubory.\n\nPokud chcete oprávnění znovu povolit, otevřete aplikaci."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Naposledy otevřeno před více než # měsícem}few{Naposledy otevřeno před více než # měsíci}many{Naposledy otevřeno před více než # měsíce}other{Naposledy otevřeno před více než # měsíci}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikace byla naposledy otevřena <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"v případě nouze"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Výchozí aplikace pro domácnost"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Vstupní aplikace"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Aplikace (tzv. spouštěče), které nahrazují plochy na zařízení Android a dávají vám přístup k obsahu a funkcím zařízení."</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Aplikace (tzv. spouštěče), které nahrazují plochu na zařízení Android a dávají vám přístup k obsahu a funkcím zařízení."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci pro domácnost?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Není potřeba žádné oprávnění"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"spouštěč"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"poznámky"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Výchozí aplikace typu peněženka"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Aplikace typu peněženka"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikace typu peněženka můžou uložit vaše platební a věrnostní karty, klíče od auta a další věci, a usnadnit vám různé transakce."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikace typu peněženka můžou uložit vaše platební a věrnostní karty, klíče od auta a další věci, a usnadnit vám tak různé transakce."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Nastavit aplikaci <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí peněženku?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Nejsou potřeba žádná oprávnění"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuálně výchozí"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Další výchozí nastavení"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otevírání odkazů"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Výchozí pracovní"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Výchozí pro soukromý prostor"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Žádná"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Výchozí nastavení systému)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žádné aplikace"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Žádné"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posledních\n24 hodin"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Posledních\n7 dní"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna Androidem. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na stavovém řádku ani na panelu ochrany soukromí."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna Androidem. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na panelu ochrany soukromí."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Fotoaparát zařízení je blokován"</string>

@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"ຄ່າເລີ່ມຕົ້ນເພີ່ມເຕີມ"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ການເປີດລິ້ງ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ຄ່າເລີ່ມຕົ້ນສຳລັບບ່ອນເຮັດວຽກ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ຄ່າເລີ່ມຕົ້ນສຳລັບພື້ນທີ່ສ່ວນບຸກຄົນ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ບໍ່ມີ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ບໍ່ມີແອັບ"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ບໍ່ມີ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 ຊົ່ວໂມງ\nທີ່ຜ່ານມາ"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 ມື້\nທີ່ຜ່ານມາ"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> ເປີເຊັນ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ແມ່ນຖືກປົກປ້ອງໂດຍ Android. ເນື່ອງຈາກຂໍ້ມູນຂອງທ່ານຖືກປະມວນຜົນຢູ່ອຸປະກອນນີ້, ການນຳໃຊ້ການອະນຸຍາດຂອງແອັບນີ້ຈະບໍ່ສະແດງຢູ່ແຖບສະຖານະ ຫຼື ແຜງໜ້າປັດຄວາມເປັນສ່ວນຕົວຂອງທ່ານ."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ແມ່ນຖືກປົກປ້ອງໂດຍ Android. ເນື່ອງຈາກຂໍ້ມູນຂອງທ່ານຖືກປະມວນຜົນຢູ່ອຸປະກອນນີ້, ການນຳໃຊ້ການອະນຸຍາດຂອງແອັບນີ້ຈະບໍ່ສະແດງຢູ່ແຜງໜ້າປັດຄວາມເປັນສ່ວນຕົວຂອງທ່ານ."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ກ້ອງຖ່າຍຮູບອຸປະກອນຖືກບລັອກໄວ້"</string>

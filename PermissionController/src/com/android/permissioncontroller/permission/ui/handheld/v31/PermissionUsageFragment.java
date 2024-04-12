@@ -44,7 +44,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel;
+import  com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -82,7 +82,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
 
-    private BasePermissionUsageViewModel mViewModel;
+    private PermissionUsageViewModel mViewModel;
 
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
@@ -111,7 +111,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
         PermissionUsageViewModelFactory factory = new PermissionUsageViewModelFactory(
                         getActivity().getApplication(), this, new Bundle());
         mViewModel = new ViewModelProvider(this, factory)
-                .get(BasePermissionUsageViewModel.class);
+                .get(PermissionUsageViewModel.class);
 
         // Start out with 'other' permissions not expanded.
         mOtherExpanded = false;

@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"闲置应用"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限以继续接收通知，请打开该应用。"</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限和接收通知，请打开该应用。"</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"如果您连续 1 个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 撤消权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{距上次打开已超过 # 个月}other{距上次打开已超过 # 个月}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"更多默认应用"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"打开链接"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"默认工作应用"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"私密空间的默认应用"</string>
     <string name="default_app_none" msgid="9084592086808194457">"无"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"（系统默认）"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"没有应用"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"无"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"过去\n7 天"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理的，因此隐私信息中心不会显示该应用的权限使用情况。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>

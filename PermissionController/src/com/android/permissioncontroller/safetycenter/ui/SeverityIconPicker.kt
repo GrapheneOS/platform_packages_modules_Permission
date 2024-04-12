@@ -25,6 +25,17 @@ internal object SeverityIconPicker {
     private val TAG = SeverityIconPicker::class.java.simpleName
 
     @JvmStatic
+    fun selectIconResIdOrNull(
+        id: String,
+        severityLevel: Int,
+        severityUnspecifiedIconType: Int
+    ): Int? {
+        // For now, just fall through to the non-null version
+        // TODO: Return null icon as needed on V+ builds.
+        return selectIconResId(id, severityLevel, severityUnspecifiedIconType)
+    }
+
+    @JvmStatic
     fun selectIconResId(id: String, severityLevel: Int, severityUnspecifiedIconType: Int): Int {
         if (id == PRIVACY_SOURCES_GROUP_ID) {
             return R.drawable.ic_privacy

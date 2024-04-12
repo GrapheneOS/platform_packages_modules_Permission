@@ -205,9 +205,9 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ukloni dopuštenja ako se aplikacija ne upotrebljava"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Ukloni dopuštenja i oslobodi prostor"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pauziraj aktivnosti u aplikacijama ako se ne koriste"</string>
-    <string name="unused_apps_label_v3" msgid="693340578642156657">"Upravljajte nekorištenom aplikacijom"</string>
+    <string name="unused_apps_label_v3" msgid="693340578642156657">"Upravljaj aplikacijom koja se ne koristi"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Uklonite dopuštenja, izbrišite privremene datoteke i zaustavite obavijesti"</string>
-    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Uklonite dopuštenja, izbrišite privremene datoteke, zaustavite obavijesti i arhivirajte aplikaciju"</string>
+    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Uklanjaju se dopuštenja, brišu privremene datoteke, zaustavljaju obavijesti i aplikacija se arhivira"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Kako bi se vaši podaci zaštitili, dopuštenja za ovu aplikaciju uklonit će se ako se aplikacija ne upotrebljava nekoliko mjeseci."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Kako bi se vaši podaci zaštitili, ako se aplikacija ne upotrebljava nekoliko mjeseci, uklonit će se sljedeća dopuštenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Radi zaštite vaših podataka uklonjena su dopuštenja aplikacijama koje nekoliko mjeseci niste upotrebljavali."</string>
@@ -351,9 +351,9 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Aplikacije pristupačnosti (njih <xliff:g id="NUM_SERVICES">%s</xliff:g>) s potpunim pristupom vašem uređaju"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> može vidjeti vaš zaslon, radnje i unose, izvršavati radnje i upravljati zaslonom."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Te aplikacije mogu vidjeti vaš zaslon, radnje i unose, izvršavati radnje i upravljati zaslonom."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Zadana apl. digital. asistenta"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Zadani digitalni asistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Apl. digitalnog asistenta"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije pomoćnika mogu vam pomoći na temelju podataka s prikazanog zaslona. Neke aplikacije podržavaju pokretač i usluge glasovnog unosa kako bi vam pružile integriranu pomoć."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć služe se podacima koji se prikazuju na zaslonu. Neke aplikacije podržavaju pokretač i usluge glasovnog unosa kako bi vam pružile integriranu pomoć."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Zadana aplikacija preglednika"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplikacija preglednika"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikacije koje vam omogućuju pristup internetu i prikazuju veze koje dodirnete"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"napomene"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Zadana aplikacija za novčanik"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Aplikacija za novčanik"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikacije za novčanik mogu pohraniti vaše kreditne kartice i kartice vjernosti, automobilske ključeve i druge stvari kako bi vam razne vrste transakcija bile praktičnije."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikacije za novčanik mogu pohranjivati vaše kreditne kartice i kartice vjernosti, automobilske ključeve i druge stvari te vam pomoći s različitim transakcijama."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Želite li aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> postaviti kao zadanu aplikaciju za novčanik?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Dopuštenja nisu potrebna"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutačna zadana"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Više zadanih aplikacija"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otvaranje veza"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Zadano za posao"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Zadano za privatni prostor"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Nijedna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Zadana postavka sustava)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nema aplikacija"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nijedno"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posljednja\n24 sata"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"U posljednjih\n7 dana"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> posto"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> štiti Android. Budući da se vaši podaci obrađuju na ovom uređaju, upotreba dopuštenja te aplikacije ne prikazuje se na traci statusa ni na vašoj nadzornoj ploči za privatnost."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> štiti Android. Budući da se vaši podaci obrađuju na ovom uređaju, upotreba dopuštenja te aplikacije ne prikazuje se na vašoj nadzornoj ploči za privatnost."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera uređaja je blokirana"</string>

@@ -14,17 +14,6 @@
 
     <issue
         id="NewApi"
-        message="Class requires API level 34 (current min is 31): `android.app.AppOpsManager.OnOpNotedListener`"
-        errorLine1="    AppOpsManager.OnOpNotedListener,"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="packages/modules/Permission/PermissionController/src/com/android/permissioncontroller/permission/data/v31/AllLightPackageOpsLiveData.kt"
-            line="43"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="NewApi"
         message="Call requires API level 33 (current min is 30): `getIconId`"
         errorLine1="                .setIcon(args.getIconId())"
         errorLine2="                              ~~~~~~~~~">

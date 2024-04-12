@@ -359,7 +359,7 @@
     <string name="role_browser_description" msgid="3465253637499842671">"Appar som visar länkar du trycker på och du använder för att ansluta till internet"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardwebbläsarapp?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Inga behörigheter krävs"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"Standard telefonapp"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"Standardtelefonapp"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefonapp"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Appar som möjliggör att ringa och ta emot telefonsamtal på enheten"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardtelefonapp?"</string>
@@ -379,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Standard startskärmsapp"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Startskärmsapp"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Appar som kallas Översikter ersätter startskärmarna på Android-enheten. Du får åtkomst till innehåll och funktioner på enheten via översikten."</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Appar som kallas appstartare ersätter startskärmarna på Android-enheten. Du får åtkomst till innehåll och funktioner på enheten via appstartaren."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för startskärm?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Inga behörigheter krävs"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"översikt"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Fler standardappar"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Öppna länkar"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standardinställning för jobbet"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standard för privat område"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ingen"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Systemstandard)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Inga appar"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Inga"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Senaste\n24 timmarna"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Senaste\n7 dagarna"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> skyddas av Android. Appens användning av behörigheter visas inte i statusfältet eller integritetsöversikten eftersom din data bearbetas på enheten."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> skyddas av Android. Appens användning av behörigheter visas inte i integritetsöversikten eftersom din data bearbetas på enheten."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Enhetens kamera är blockerad"</string>

@@ -173,6 +173,11 @@ class PermissionTest29 : BaseUsePermissionTest() {
             pressBack()
             if (isAutomotive) {
                 waitFindObject(By.textContains("Allow in settings."), 100)
+            } else if (isWatch) {
+                waitForIdleLong()
+                findAccessibilityNodeInfosByTextForSurfaceView(
+                        uiAutomation.rootInActiveWindow,
+                        "Allow in settings")
             } else {
                 waitFindObject(By.res("com.android.permissioncontroller:id/grant_dialog"), 100)
             }

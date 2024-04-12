@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"കൂടുതൽ ഡിഫോൾട്ടുകൾ"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ലിങ്കുകൾ തുറക്കൽ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ജോലി ആവശ്യങ്ങൾക്ക് ഡിഫോൾട്ട്"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"സ്വകാര്യ സ്പേസിനായുള്ള ഡിഫോൾട്ട്"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ഒന്നുമില്ല"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(സിസ്‌റ്റം ഡിഫോൾട്ട്)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ആപ്പുകൾ ഒന്നുമില്ല"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ഒന്നുമില്ല"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"കഴിഞ്ഞ\n24 മണിക്കൂർ"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"കഴിഞ്ഞ\n7 ദിവസം"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> ശതമാനം"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിന് Android സുരക്ഷയൊരുക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ, ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിലെ സ്റ്റാറ്റസ് ബാറിൽ കാണിക്കില്ല."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിന് Android സുരക്ഷയൊരുക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിൽ കാണിക്കില്ല."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ഉപകരണത്തിന്റെ ക്യാമറ ബ്ലോക്ക് ചെയ്‌തിരിക്കുന്നു"</string>

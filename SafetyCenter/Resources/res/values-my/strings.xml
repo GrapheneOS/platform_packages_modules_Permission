@@ -28,7 +28,7 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"ဒက်ရှ်ဘုတ်၊ ခွင့်ပြုချက်များ၊ သတ်မှတ်ချက်များ"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"ခွင့်ပြုချက်များ မကြာသေးမီကသုံးထားသည့် အက်ပ်များကို ပြသည်"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"လတ်တလောတွင် ခွင့်ပြုချက်များ အသုံးပြုထားသည့် အက်ပ်များကို ပြသည်"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု၊ ကိုယ်ရေးအချက်အလက် လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"ခွင့်ပြုချက် မန်နေဂျာ"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"အက်ပ်၏ သင့်ဒေတာအသုံးပြုခွင့်ကို ထိန်းချုပ်သည်"</string>

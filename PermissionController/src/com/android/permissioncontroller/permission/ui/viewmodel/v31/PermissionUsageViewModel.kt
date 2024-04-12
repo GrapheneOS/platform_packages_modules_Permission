@@ -23,6 +23,7 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -32,7 +33,6 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
-import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -47,12 +47,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.runBlocking
 
 /** Privacy dashboard's new implementation. */
-class PermissionUsageViewModelV2(
+class PermissionUsageViewModel(
     val app: Application,
     private val permissionRepository: PermissionRepository,
     private val getPermissionUsageUseCase: GetPermissionGroupUsageUseCase,
     scope: CoroutineScope? = null
-) : BasePermissionUsageViewModel(app) {
+) : AndroidViewModel(app) {
     private var showSystemApps = false
     private var show7DaysData = false
     private val coroutineScope = scope ?: viewModelScope
@@ -68,7 +68,7 @@ class PermissionUsageViewModelV2(
         }
     }
 
-    override fun getPermissionUsagesUiLiveData(): LiveData<PermissionUsagesUiState> {
+    fun getPermissionUsagesUiLiveData(): LiveData<PermissionUsagesUiState> {
         return getPermissionUsagesUiDataFlow()
             .asLiveData(context = coroutineScope.coroutineContext + Dispatchers.Default)
     }
@@ -110,27 +110,27 @@ class PermissionUsageViewModelV2(
         )
     }
 
-    override fun getShowSystemApps(): Boolean {
+    fun getShowSystemApps(): Boolean {
         return showSystemApps
     }
 
-    override fun getShow7DaysData(): Boolean {
+    fun getShow7DaysData(): Boolean {
         return show7DaysData
     }
 
-    override fun updateShowSystem(showSystem: Boolean): PermissionUsagesUiState {
+    fun updateShowSystem(showSystem: Boolean): PermissionUsagesUiState {
         showSystemApps = showSystem
         return buildPermissionUsagesUiState(permissionGroupOpsFlow.value)
     }
 
-    override fun updateShow7Days(show7Days: Boolean): PermissionUsagesUiState {
+    fun updateShow7Days(show7Days: Boolean): PermissionUsagesUiState {
         show7DaysData = show7Days
         return buildPermissionUsagesUiState(permissionGroupOpsFlow.value)
     }
 
     private val permissionGroupLabels = mutableMapOf<String, String>()
 
-    override fun getPermissionGroupLabel(context: Context, permissionGroup: String): String {
+    fun getPermissionGroupLabel(context: Context, permissionGroup: String): String {
         return runBlocking(coroutineScope.coroutineContext + Dispatchers.Default) {
             permissionGroupLabels.getOrDefault(
                 permissionGroup,
@@ -139,9 +139,9 @@ class PermissionUsageViewModelV2(
         }
     }
 
-    /** Companion class for [PermissionUsageViewModelV2]. */
+    /** Companion class for [PermissionUsageViewModel]. */
     companion object {
-        internal val LOG_TAG = PermissionUsageViewModelV2::class.java.simpleName
+        internal val LOG_TAG = PermissionUsageViewModel::class.java.simpleName
 
         private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
@@ -155,7 +155,7 @@ data class PermissionUsagesUiState(
     val permissionGroupUsageCount: Map<String, Int>,
 )
 
-/** Factory for [BasePermissionUsageViewModel]. */
+/** Factory for [PermissionUsageViewModel]. */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageViewModelFactory(
     private val app: Application,
@@ -170,6 +170,6 @@ class PermissionUsageViewModelFactory(
     ): T {
         val permissionRepository = PermissionRepository.getInstance(app)
         val permissionUsageUseCase = GetPermissionGroupUsageUseCase.create(app)
-        return PermissionUsageViewModelV2(app, permissionRepository, permissionUsageUseCase) as T
+        return PermissionUsageViewModel(app, permissionRepository, permissionUsageUseCase) as T
     }
 }

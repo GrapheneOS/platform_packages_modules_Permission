@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Okuzenzakalelayo okuningi"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Ivula amalinki"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Okuzenzakalelayo kokusebenza"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Okuzenzakalelayo kwendawo engasese"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Lutho"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Okuzenzakalelayo kwesistimu)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Azikho izinhlelo zokusebenza"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Lutho"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Emahoreni angama-\n24 adlule"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Izinsuku ezi-\n7 ezedlule"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kubha yesimo noma kudeshibhodi yakho yobumfihlo"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kudeshibhodi yakho yobumfihlo"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Ikhamera yedivayisi ivinjiwe"</string>

@@ -32,8 +32,8 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"थप जानकारी"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै अनुमति दिइयोस्"</string>
-    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"सधैँ सबै अनुमति दिइयोस्"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"सबै अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"सधैँ सबै अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"सीमित एक्सेस दिइयोस्"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"फोटो र भिडियोहरू चयन गर्नुहोस्"</string>
     <string name="grant_dialog_button_allow_more_selected_photos" msgid="5145657877588697709">"अझ धेरै फोटो चयन गर्नुहोस्"</string>
@@ -49,15 +49,15 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"सबै अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कुनै पनि असक्षम पारिएको छैन"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिइयोस्"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सधैँ अनुमति दिइयोस्"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सधैँ अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"एप चलाएका बेला"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"सटीक लोकेसन प्रयोग गरियोस्"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"अनुमानित लोकेसन मात्र प्रयोग गरियोस्"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"सटीक लोकेसन प्रयोग गर्नुहोस्"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"अनुमानित लोकेसन मात्र प्रयोग गर्नुहोस्"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"यस पटक मात्र"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सधैँ अनुमति दिइयोस्"</string>
-    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइयोस्"</string>
-    <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"मिडिया फाइल प्रयोग गर्ने अनुमति दिइयोस्"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सधैँ अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुहोस्"</string>
+    <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"मिडिया फाइल प्रयोग गर्ने अनुमति दिनुहोस्"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"एपहरू"</string>
     <string name="app_permissions" msgid="3369917736607944781">"एपसम्बन्धी अनुमति"</string>
     <string name="unused_apps" msgid="2058057455175955094">"प्रयोग नगरिएका एपहरू"</string>
@@ -85,10 +85,10 @@
     <string name="default_permission_description" msgid="4624464917726285203">"कुनै अज्ञात कारबाही गर्नुहोस्"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> मध्ये <xliff:g id="COUNT_0">%1$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाइयोस्"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाइयोस्"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"पछिल्ला ७ दिनमा कुन कुन समयमा अनुमति प्रयोग गरियो भन्ने कुरा देखाइयोस्"</string>
-    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"पछिल्लो २४ घण्टामा प्रयोग गरिएका अनुमतिहरू देखाइयोस्"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाउनुहोस्"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाउनुहोस्"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"पछिल्ला ७ दिनमा कुन कुन समयमा अनुमति प्रयोग गरियो भन्ने कुरा देखाउनुहोस्"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"पछिल्लो २४ घण्टामा प्रयोग गरिएका अनुमतिहरू देखाउनुहोस्"</string>
     <string name="manage_permission" msgid="2895385393037061964">"अनुमति व्यवस्थापन गर्नुहोस्"</string>
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
     <string name="location_settings" msgid="3624412509133422562">"लोकेसन सेटिङ"</string>
@@ -109,8 +109,8 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"सधैँ अनुमति दिइयोस्"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिइयोस्"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"सधैँ अनुमति दिनुहोस्"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिनुहोस्"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"अनुमति नदिनुहोस्"</string>
     <string name="loading" msgid="4789365003890741082">"लोड गर्दै…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"सबै अनुमति"</string>
@@ -183,18 +183,18 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"एपको अनुमतिको उपयोग"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"पहुँच: <xliff:g id="NUM">%1$s</xliff:g> पटक। कुल समय: <xliff:g id="DURATION">%2$s</xliff:g>। पछिल्लो पटक <xliff:g id="TIME">%3$s</xliff:g> अघि प्रयोग गरिएको।"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"पहुँच: <xliff:g id="NUM">%1$s</xliff:g> पटक। पछिल्लो पटक <xliff:g id="TIME">%2$s</xliff:g> अघि प्रयोग गरिएको।"</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"अनुमति दिइयोस्"</string>
-    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइयोस्"</string>
-    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"केवल मिडिया प्रयोग गर्ने अनुमति दिइयोस्"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सधैँ अनुमति दिइयोस्"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिइयोस्"</string>
-    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"सधैँ सबै अनुमति दिइयोस्"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"केवल मिडिया प्रयोग गर्ने अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सधैँ अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"सधैँ सबै अनुमति दिनुहोस्"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक पटक सोधियोस्"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति नदिइयोस्"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गरियोस्"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गर्नुहोस्"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिनुहोस्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>सम्बन्धी अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"यो एप <xliff:g id="PERM">%1$s</xliff:g> प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"यो एपलाई <xliff:g id="DEVICE_NAME">%2$s</xliff:g> को <xliff:g id="PERM">%1$s</xliff:g> प्रयोग गर्ने अनुमति"</string>
@@ -202,12 +202,12 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"प्रयोग नगरिएको एपसम्बन्धी सेटिङ"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गरियोस्"</string>
-    <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतिहरू हटाई ठाउँ खाली गरियोस्"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको अवस्थामा उक्त एपमा गरिएको गतिविधि रेकर्ड नगरियोस्"</string>
-    <string name="unused_apps_label_v3" msgid="693340578642156657">"एप प्रयोग गरिएको छैन भने व्यवस्थापन गरियोस्"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"अनुमतिहरू रद्द गरियोस्, अस्थायी फाइलहरू मेटाइयोस् र एपसम्बन्धी सूचना नपठाइयोस्"</string>
-    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"अनुमति रद्द गरियोस्, अस्थायी फाइलहरू मेटाइयोस्, सूचना नपठाइयोस् र एप अभिलेखमा राखियोस्"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गर्नुहोस्"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतिहरू हटाई ठाउँ खाली गर्नुहोस्"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको अवस्थामा उक्त एपमा गरिएको गतिविधि रेकर्ड नगर्नुहोस्"</string>
+    <string name="unused_apps_label_v3" msgid="693340578642156657">"एप प्रयोग गरिएको छैन भने व्यवस्थापन गर्नुहोस्"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"अनुमतिहरू रद्द गर्नुहोस्, अस्थायी फाइलहरू मेटाउनुहोस् र एपसम्बन्धी सूचना नपठाउनुहोस्"</string>
+    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"अनुमति रद्द गर्नुहोस्, अस्थायी फाइलहरू मेटाउनुहोस्, सूचना नपठाउनुहोस् र एप अभिलेखमा राख्नुहोस्"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा यसलाई दिइएका अनुमति रद्द गरिने छन्।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा निम्न अनुमति रद्द गरिने छन्: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"तपाईंका डेटाको सुरक्षार्थ तपाईंले केही महिनादेखि प्रयोग नगरेका एपलाई दिइएका अनुमति रद्द गरिएका छन्।"</string>
@@ -217,7 +217,7 @@
     <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"<xliff:g id="PERM">%1$s</xliff:g> सम्बन्धी अनुमति हटाइने छ।"</string>
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"<xliff:g id="PERM_0">%1$s</xliff:g> र <xliff:g id="PERM_1">%2$s</xliff:g> सम्बन्धी अनुमतिहरू हटाइने छन्।"</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"निम्न अनुमतिहरू हटाइने छन्: <xliff:g id="PERMS">%1$s</xliff:g>।"</string>
-    <string name="auto_manage_title" msgid="7693181026874842935">"अनुमतिहरू स्वतः व्यवस्थापन गरियोस्"</string>
+    <string name="auto_manage_title" msgid="7693181026874842935">"अनुमतिहरू स्वतः व्यवस्थापन गर्नुहोस्"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> सम्बन्धी अनुमति हटाइयो"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> र <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> सम्बन्धी अनुमतिहरू हटाइए"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> र अन्य <xliff:g id="NUMBER">%2$s</xliff:g> अनुमतिहरू हटाइए"</string>
@@ -353,7 +353,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"यी एपहरूले तपाईंको स्क्रिन, कारबाही र इनपुट हेर्न, कारबाहीहरू सम्पादन गर्न र प्रदर्शन नियन्त्रण गर्न सक्छन्।"</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"डिफल्ट डिजिटल सहायक एप"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल सहायक एप"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"सहायक एपहरूले तपाईंले हेर्दै गर्नुभएको स्क्रिनबाट प्राप्त जानकारीमा आधारित भई तपाईंलाई मद्दत गर्न सक्छन्।केही एपहरूले तपाईंलाई एकीकृत सहायता दिन दुवै लन्चर र आवाज संलग्न इनपुट सेवाहरूलाई समर्थन गर्दछन्।"</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"सहायक एपहरूले तपाईंले हेर्दै गर्नुभएको स्क्रिनबाट प्राप्त जानकारीमा आधारित भई तपाईंलाई मद्दत गर्न सक्छन्। केही एपहरूले तपाईंलाई एकीकृत सहायता दिन दुवै लन्चर र आवाज संलग्न इनपुट सेवाहरूलाई समर्थन गर्छन्।"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"डिफल्ट ब्राउजर एप"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ब्राउजर"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"तपाईंलाई इन्टरनेट चलाउने दिने र तपाईंले ट्याप गर्ने लिंकहरू देखाउने एपहरू"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"थप डिफल्ट एपहरू"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"लिंकहरू खोल्दा"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"कार्यका लागि डिफल्ट"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"निजी स्पेसका लागि डिफल्ट एपहरू"</string>
     <string name="default_app_none" msgid="9084592086808194457">"कुनै पनि होइन"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(सिस्टम डिफल्ट)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"कुनै पनि एप छैन"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"कुनै पनि होइन"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"विगत\n२४ घन्टा"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"पछिल्ला\n७ दिन"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> प्रतिशत"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android ले <xliff:g id="APP_NAME">%1$s</xliff:g> सुरक्षित राख्छ। तपाईंको जानकारी यो डिभाइसमा नै प्रोसेस गरिने भएकाले यो एपले कुन कुन अनुमति प्रयोग गर्‍यो भन्ने कुरा स्ट्याटस बार वा तपाईंको गोपनीयतासम्बन्धी ड्यासबोर्डमा देखाइँदैन।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android ले <xliff:g id="APP_NAME">%1$s</xliff:g> सुरक्षित राख्छ। तपाईंको जानकारी यो डिभाइसमा नै प्रोसेस गरिने भएकाले यो एपले कुन कुन अनुमति प्रयोग गर्‍यो भन्ने कुरा तपाईंको गोपनीयतासम्बन्धी ड्यासबोर्डमा देखाइँदैन।"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"डिभाइसको क्यामेरा ब्लक गरिएको छ"</string>
@@ -618,10 +620,10 @@
     <string name="perm_toggle_description" msgid="7801326363741451379">"एप तथा सेवाहरूका हकमा"</string>
     <string name="mic_toggle_description" msgid="9163104307990677157">"एप तथा सेवाहरूका हकमा। यो सेटिङ अफ गरिएको अवस्थामा तपाईंले आपत्‍कालीन नम्बरमा कल गर्नुभयो भने माइक्रोफोनसम्बन्धी डेटा अझै पनि सेयर गरिन सक्छ।"</string>
     <string name="location_settings_subtitle" msgid="2328360561197430695">"लोकेसन प्रयोग गर्ने अनुमति दिइएका एप तथा सेवाहरू हेर्नुहोस्"</string>
-    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्डका सामग्री प्रयोग गरिँदा सूचना देखाइयोस्"</string>
-    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"मैले कपी गरेका टेक्स्ट, फोटो वा अन्य सामग्री एपहरूले प्रयोग गर्दा म्यासेज देखाइयोस्"</string>
-    <string name="show_password_title" msgid="2877269286984684659">"पासवर्डहरू देखाइयोस्"</string>
-    <string name="show_password_summary" msgid="1110166488865981610">"टाइप गर्दै गर्दा वर्णहरू झलक्क देखाइयोस्"</string>
+    <string name="show_clip_access_notification_title" msgid="5168467637351109096">"क्लिपबोर्डका सामग्री प्रयोग गरिँदा सूचना देखाउनुहोस्"</string>
+    <string name="show_clip_access_notification_summary" msgid="3532020182782112687">"मैले कपी गरेका टेक्स्ट, फोटो वा अन्य सामग्री एपहरूले प्रयोग गर्दा म्यासेज देखाउनुहोस्"</string>
+    <string name="show_password_title" msgid="2877269286984684659">"पासवर्डहरू देखाउनुहोस्"</string>
+    <string name="show_password_summary" msgid="1110166488865981610">"टाइप गर्दै गर्दा वर्णहरू झलक्क देखाउनुहोस्"</string>
     <string name="permission_rationale_message_location" msgid="2153841534298068414">"यो एपले यसले लोकेसन डेटा तेस्रो पक्षसँग सेयर गर्न सक्छ भन्ने जानकारी दिएको छ"</string>
     <string name="permission_rationale_location_title" msgid="2404797182678793506">"लोकेसन डेटा सेयर गर्नेसम्बन्धी अभ्यास"</string>
     <string name="permission_rationale_data_sharing_source_title" msgid="6874604543125814316">"जानकारी सेयर गर्नेसम्बन्धी अभ्यासको स्रोत"</string>

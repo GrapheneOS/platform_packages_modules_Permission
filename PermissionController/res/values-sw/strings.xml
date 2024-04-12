@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Chaguomsingi zaidi"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Kufungua viungo"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Programu chaguomsingi kazini"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Programu chaguomsingi za sehemu ya faragha"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Hakuna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Programu chaguomsingi ya mfumo)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Hakuna programu"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Hamna"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Saa 24\nzilizopita"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Siku\nsaba zilizopita"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> asilimia <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> inalindwa na Android. Kwa sababu data yako inachakatwa kwenye kifaa hiki, matumizi ya ruhusa ya programu hii hayaonyeshwi kwenye sehemu ya kuonyesha hali au dashibodi yako ya faragha."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> inalindwa na Android. Kwa sababu data yako inachakatwa kwenye kifaa hiki, matumizi ya ruhusa ya programu hii hayaonyeshwi kwenye dashibodi yako ya faragha."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera ya kifaa imezuiwa"</string>

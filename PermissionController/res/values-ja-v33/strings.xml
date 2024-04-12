@@ -19,7 +19,7 @@
     <string name="role_dialer_request_description" msgid="6188305064871543419">"このアプリは、通知の送信と、カメラ、連絡先、マイク、電話、SMS へのアクセスが可能になります"</string>
     <string name="role_sms_request_description" msgid="1506966389698625395">"このアプリは、通知の送信と、カメラ、連絡先、ファイル、マイク、電話、SMS へのアクセスが可能になります"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"この権限があるアプリは、このデバイス内のすべてのファイルにアクセスできます"</string>
-    <string name="work_policy_title" msgid="832967780713677409">"仕事に関するポリシーの情報"</string>
+    <string name="work_policy_title" msgid="832967780713677409">"仕事用ポリシーの情報"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"IT 管理者によって管理されている設定"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"リストを開いて表示する"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"リストを閉じて設定を非表示にする"</string>

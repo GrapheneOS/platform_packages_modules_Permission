@@ -124,7 +124,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Поточні дозволи"</string>
     <string name="message_staging" msgid="9110563899955511866">"Підготовка додатка…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Невідомо"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування доступом"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування дозволами"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Показувати додатки, які нещодавно використовували дозволи"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: використання"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Переглянути інші дозволи"</string>
@@ -354,14 +354,14 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Цифровий помічник за умовчанням"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Цифровий помічник"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Помічники надають допомогу на основі вмісту, який ви переглядаєте на екрані. Задля ефективності деякі додатки підтримують панель запуску й голосовий ввід."</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Веб-переглядач за умовчанням"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Вебпереглядач за умовчанням"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Вебпереглядач"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Додатки, за допомогою яких можна переглядати сайти й переходити за посиланнями"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Зробити <xliff:g id="APP_NAME">%1$s</xliff:g> веб-переглядачем за умовчанням?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Дозволи не потрібні"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Дзвінки за умовчанням"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Додаток для викликів"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Додатки, у яких можна здійснювати та приймати виклики на пристрої"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Додатки, у яких можна здійснювати й приймати виклики на пристрої"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Чи має <xliff:g id="APP_NAME">%1$s</xliff:g> використовуватись як додаток для викликів за умовчанням?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Цьому додатку буде надано дозволи \"Камера\", \"Контакти\", \"Мікрофон\", \"Телефон\" і \"SMS\""</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"телефон"</string>
@@ -390,7 +390,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Дозволи не потрібні"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"АВН і захист від спаму за умовчанням"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"АВН і захист від спаму"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Додатки для керування вхідними викликами, за допомогою яких можна визначати, хто та навіщо вам телефонує, а також блокувати спам, автоматичні виклики або дзвінки з небажаних номерів"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Додатки для керування вхідними викликами, за допомогою яких можна визначати, хто й навіщо вам телефонує, а також блокувати спам, автоматичні виклики або дзвінки з небажаних номерів"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Зробити <xliff:g id="APP_NAME">%1$s</xliff:g> додатком для автоматичного визначення номерів і захисту від спаму за умовчанням?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Дозволи не потрібні"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Навігаційний додаток за умовчанням"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Інші додатки за умовчанням"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Відкривання посилань"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Для роботи за умовчанням"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"За умовчанням для приватного простору"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Немає"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(За умовчанням)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Немає додатків"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Немає"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Минулі\n24 години"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Останні\n7 днів"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, дозволи, які використовує цей додаток, не відображаються на панелі керування дозволами чи в рядку стану."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, дозволи, які використовує цей додаток, не відображаються на панелі керування дозволами."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камеру пристрою заблоковано"</string>
@@ -670,5 +673,5 @@
     <string name="enhanced_confirmation_dialog_learn_more" msgid="5226619861379095709">"Докладніше"</string>
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ОК"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Запит на доступ відхилено"</string>
-    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Цьому додатку потрібні додаткові дозволи, але їх не можна надати під час потокового передавання. Спершу надайте дозвіл на телефоні."</string>
+    <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Цьому додатку потрібно більше дозволів, але їх не можна надати під час потокового передавання. Спершу надайте дозвіл на телефоні."</string>
 </resources>

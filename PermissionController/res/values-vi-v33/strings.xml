@@ -20,7 +20,7 @@
     <string name="role_sms_request_description" msgid="1506966389698625395">"Ứng dụng này sẽ được phép gửi Thông báo cũng như được cấp quyền truy cập vào Máy ảnh, Danh bạ, Tệp, Micrô, Điện thoại và tin nhắn SMS của bạn"</string>
     <string name="permission_description_summary_storage" msgid="1917071243213043858">"Ứng dụng được cấp quyền này có thể truy cập tất cả các tệp trên thiết bị này"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Thông tin về chính sách công việc của bạn"</string>
-    <string name="work_policy_summary" msgid="3886113358084963931">"Chế độ cài đặt do quản trị viên CNTT quản lý"</string>
+    <string name="work_policy_summary" msgid="3886113358084963931">"Các chế độ cài đặt do quản trị viên CNTT quản lý"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Mở rộng và hiện danh sách"</string>
     <string name="safety_center_entry_group_collapse_action" msgid="1525710152244405656">"Thu gọn danh sách và ẩn chế độ cài đặt"</string>
     <string name="safety_center_entry_group_content_description" msgid="7048420958214443333">"Danh sách. <xliff:g id="ENTRY_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_SUMMARY">%2$s</xliff:g>"</string>

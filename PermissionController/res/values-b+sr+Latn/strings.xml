@@ -377,7 +377,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za hitne slučajeve?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nije potrebna nijedna dozvola"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"u hitnom slučaju"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Podraz. apl. početne stranice"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Podrazumevana apl. početne stranice"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija početne stranice"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Aplikacije koje se često zovu pokretači i zamenjuju početne ekrane na Android uređaju i pružaju pristup sadržaju i funkcijama na uređaju"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju početne stranice?"</string>
@@ -389,7 +389,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za preusmeravanje poziva?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nije potrebna nijedna dozvola"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Aplikacija za ID pozivaoca i nepoželjne poruke"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl. za ID poz. i nepož. poz."</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"ID pozivaoca i nepoželjni pozivi"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije koje vam omogućavaju da identifikujete pozive, blokirate nepoželjne i automatizovane pozive i neželjene brojeve"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za ID pozivaoca i nepoželjne poruke?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nije potrebna nijedna dozvola"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Još podrazumevanih aplikacija"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otvaranje linkova"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Podrazumevana za posao"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Podrazumevano za privatan prostor"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ništa"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Podrazumevana sistemska)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nema aplikacija"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Ništa"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Prethodna\n24 sata"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"U prethodnih\n7 dana"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> posto"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android štiti <xliff:g id="APP_NAME">%1$s</xliff:g>. Pošto se podaci obrađuju na ovom uređaju, korišćenje dozvola za ovu aplikaciju se ne prikazuje na statusnoj traci ili kontrolnoj tabli za privatnost."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android štiti <xliff:g id="APP_NAME">%1$s</xliff:g>. Pošto se podaci obrađuju na ovom uređaju, korišćenje dozvola za ovu aplikaciju se ne prikazuje na kontrolnoj tabli za privatnost."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera uređaja je blokirana"</string>

@@ -28,7 +28,7 @@ import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageM
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
-import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelV2
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
 import com.android.permissioncontroller.tests.mocking.appops.data.repository.FakeAppOpRepository
@@ -101,7 +101,7 @@ class PermissionUsageViewModelTest {
     @Test
     fun allPermissionGroupsAreShown() = runTest {
         val permissionUsageViewModel =
-            PermissionUsageViewModelV2(
+            PermissionUsageViewModel(
                 application,
                 permissionRepository,
                 getPermissionGroupUsageUseCase(),
@@ -129,7 +129,7 @@ class PermissionUsageViewModelTest {
             )
         val permissionUsageUseCase = getPermissionGroupUsageUseCase(appOpsUsageModels)
         val permissionUsageViewModel =
-            PermissionUsageViewModelV2(
+            PermissionUsageViewModel(
                 application,
                 permissionRepository,
                 permissionUsageUseCase,
@@ -159,7 +159,7 @@ class PermissionUsageViewModelTest {
             )
         val permissionUsageUseCase = getPermissionGroupUsageUseCase(appOpsUsageModels)
         val permissionUsageViewModel =
-            PermissionUsageViewModelV2(
+            PermissionUsageViewModel(
                 application,
                 permissionRepository,
                 permissionUsageUseCase,

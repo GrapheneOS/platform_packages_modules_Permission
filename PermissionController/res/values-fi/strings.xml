@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"muistiinpanot"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Oletuslompakkosovellus"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Lompakkosovellus"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Lompakkosovelluksista on apua erilaisissa tapahtumissa, koska ne voivat tallentaa esimerkiksi credit- ja kanta-asiakaskortit ja autonavaimet"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Lompakkosovelluksista on apua erilaisissa tilanteissa, koska niihin voi tallentaa esimerkiksi credit- ja kanta-asiakaskortit ja autonavaimet"</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Valitaanko <xliff:g id="APP_NAME">%1$s</xliff:g> oletuslompakkosovelluksesi?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Lupia ei tarvita"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nykyinen oletus"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Lisää oletuksia"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Linkkien avaaminen"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Työkäytön oletus"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Oletus yksityiselle tilalle"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ei mitään"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Järjestelmän oletusarvo)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Ei sovelluksia"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"–"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Viimeiset\n24 tuntia"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 viime\npäivää"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> on Androidin suojaama. Koska datasi käsitellään tällä laitteella, sovelluksen lupien käyttö ei näy tilapalkissa eikä yksityisyydenhallintapaneelisi."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> on Androidin suojaama. Koska datasi käsitellään tällä laitteella, sovelluksen lupien käyttö ei näy yksityisyydenhallintapaneelissasi."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Laitteen kamera on estetty"</string>

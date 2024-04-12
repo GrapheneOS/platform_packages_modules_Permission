@@ -42,13 +42,13 @@ internal class SafetyHomepageEntryPreference(
     init {
         setTitle(entryGroup.title)
         setSummary(entryGroup.summary)
-        setIcon(
-            SeverityIconPicker.selectIconResId(
+        SeverityIconPicker.selectIconResIdOrNull(
                 entryGroup.id,
                 entryGroup.severityLevel,
                 entryGroup.severityUnspecifiedIconType
             )
-        )
+            ?.let { setIcon(it) }
+            ?: setIconSpaceReserved(false)
 
         val intent = Intent(Intent.ACTION_SAFETY_CENTER)
         intent.putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCES_GROUP_ID, entryGroup.id)

@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"سایر پیش‌فرض‌ها"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"باز کردن پیوندها"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"پیش‌فرض برای کار"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"برنامه‌های پیش‌فرض برای فضای خصوصی"</string>
     <string name="default_app_none" msgid="9084592086808194457">"هیچ‌کدام"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(پیش‌فرض سیستم)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"برنامه‌ای موجود نیست"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"هیچ‌کدام"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"۲۴\nساعت گذشته"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"۷ روز\nگذشته"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> درصد"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> تحت حفاظت Android است. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در نوار وضعیت یا داشبورد حریم خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> تحت حفاظت Android است. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در داشبورد حریم خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"دوربین دستگاه مسدود شده است"</string>

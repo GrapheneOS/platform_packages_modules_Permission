@@ -356,10 +356,10 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"ଆପଣ ଦେଖୁଥିବା ସ୍କ୍ରିନ୍‌ ସୂଚନାକୁ ଆଧାର କରି ସହାୟକ ଆପ୍‌ ଆପଣଙ୍କୁ ସାହାଯ୍ୟ କରିପାରିବ। କେତେକ ଆପ୍‌, ଆପଣଙ୍କୁ ଉତ୍ତମ ସହାୟତା ଦେବା ପାଇଁ, ଉଭୟ ଲଞ୍ଚର୍ ଓ ଭଏସ୍‍ ଇନପୁଟ୍‍ ସେବାକୁ ସମର୍ଥନ କରେ।"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ଡିଫଲ୍ଟ ବ୍ରାଉଜର୍‌ ଆପ୍‌"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ବ୍ରାଉଜର୍‌ ଆପ୍‌"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"ଆପ୍ସ ଯାହା ଆପଣଙ୍କୁ ଇଣ୍ଟର୍ନେଟ୍ ପାଇଁ ଆକ୍ସେସ୍ ଦିଏ ଏବଂ ଆପଣ ଟାପ୍ କରିଥିବା ଲିଙ୍କ୍‌ଗୁଡ଼ିକ ପ୍ରଦର୍ଶନ କରେ"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"ଆପ୍ସ ଯାହା ଆପଣଙ୍କୁ ଇଣ୍ଟର୍ନେଟ ପାଇଁ ଆକ୍ସେସ ଦିଏ ଏବଂ ଆପଣ ଟାପ କରୁଥିବା ଲିଙ୍କଗୁଡ଼ିକୁ ଡିସପ୍ଲେ କରେ"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ବ୍ରାଉଜର୍ ଭାବେ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"ଡିଫଲ୍ଟ ଫୋନ୍‌ ଆପ୍‌"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"ଡିଫଲ୍ଟ ଫୋନ ଆପ"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ଫୋନ୍ ଆପ୍"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ଆପ୍ସ, ଯାହା ଆପଣଙ୍କୁ ଆପଣଙ୍କର ଡିଭାଇସ୍‌ରେ ଟେଲିଫୋନ୍ କଲ୍ କରିବାକୁ ଏବଂ ଗ୍ରହଣ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ ଫୋନ୍ ଆପ୍ ଭାବରେ ସେଟ୍ କରିବେ କି?"</string>
@@ -388,7 +388,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"ସେହି ଆପ୍ସ ଯାହା ଆଉଟ୍‌ଗୋଇଂ କଲ୍‍ଗୁଡ଼ିକୁ ଅନ୍ୟ ଏକ ଫୋନ୍ ନମ୍ବରକୁ ଫର୍‍ୱାର୍ଡ କରିବାକୁ ଆପଣଙ୍କୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କ ଡିଫଲ୍ଟ କଲ୍ ପୁନଃନିର୍ଦ୍ଦେଶନା ଆପ୍ ଭାବରେ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"ଡିଫଲ୍ଟ କଲର୍ ID &amp; ସ୍ପାମ୍ ଆପ୍"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"ଡିଫଲ୍ଟ କଲର ID ଏବଂ ସ୍ପାମ ଆପ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"କଲର୍ ID &amp; ସ୍ପାମ୍ ଆପ୍"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"ସେହି ଆପ୍ସ ଯାହା କଲଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବା, ସ୍ପାମ୍ ଓ ରୋବୋକଲ୍ ବା ଅଦରକାରୀ ନମ୍ବରଗୁଡ଼ିକୁ ବ୍ଲକ୍ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କର ଡିଫଲ୍ଟ କଲର୍ ଆଇଡି &amp; ସ୍ପାମ୍ ଆପ୍ ଭାବ୍ ସେଟ୍ କରିବେ କି?"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"ଅଧିକ ଡିଫଲ୍ଟଗୁଡ଼ିକ"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ଓପନିଂ ଲିଙ୍କ୍"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"କାର୍ଯ୍ୟ ପାଇଁ ଡିଫଲ୍ଟ ଅଛି"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ପ୍ରାଇଭେଟ ସ୍ପେସ ପାଇଁ ଡିଫଲ୍ଟ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"କିଛି ଆପ ସେଟ କରାଯାଇନାହିଁ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(ସିଷ୍ଟମ୍ ଡିଫଲ୍ଟ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"କୌଣସି ଆପ୍‌ ନାହିଁ"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"କିଛି ନାହିଁ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ଗତ\n24 ଘଣ୍ଟା"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"ଗତ\n7 ଦିନ"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> ଶତକଡ଼ା"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ Android ଦ୍ୱାରା ସୁରକ୍ଷିତ କରାଯାଇଛି। ଏହି ଡିଭାଇସରେ ଆପଣଙ୍କ ଡାଟା ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଥିବା ଯୋଗୁଁ ଏହି ଆପର ଅନୁମତି ବ୍ୟବହାରର ସୂଚନା ଷ୍ଟାଟସ୍ ବାରରେ କିମ୍ବା ଆପଣଙ୍କ ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡରେ ଦେଖାଯାଉ ନାହିଁ।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ Android ଦ୍ୱାରା ସୁରକ୍ଷିତ କରାଯାଇଛି। ଏହି ଡିଭାଇସରେ ଆପଣଙ୍କ ଡାଟା ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଥିବା ଯୋଗୁଁ ଏହି ଆପର ଅନୁମତି ବ୍ୟବହାରର ସୂଚନା ଆପଣଙ୍କ ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡରେ ଦେଖାଯାଉ ନାହିଁ।"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ଡିଭାଇସର କ୍ୟାମେରାକୁ ବ୍ଲକ କରାଯାଇଛି"</string>

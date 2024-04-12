@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"ተጨማሪ ነባሪዎች"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"አገናኞችን በመክፈት ላይ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ለሥራ ነባሪ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ለግል ቦታ ነባሪ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ምንም"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(የሥርዓት ነባሪ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"መተግበሪያዎች የሉም"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ምንም"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ባለፉት\n24 ሰዓታት"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"ባለፉት\n7 ቀናት"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> በመቶ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በሁኔታ አሞሌ ወይም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"የመሣሪያ ካሜራ ታግዷል"</string>

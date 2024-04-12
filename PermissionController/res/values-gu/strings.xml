@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"વધુ ડિફૉલ્ટ"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"લિંક ખોલવી"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"કાર્ય માટે ડિફૉલ્ટ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"ખાનગી સ્પેસ માટે ડિફૉલ્ટ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"કોઈ નહીં"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(સિસ્ટમ ડિફૉલ્ટ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"કોઈ ઍપ નથી"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"એકપણ નહીં"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"છેલ્લા\n24 કલાક"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"છેલ્લા\n7 દિવસ"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> ટકા"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને Android વડે સુરક્ષિત કરવામાં આવી છે. આ ડિવાઇસમાં તમારા ડેટા પર પ્રક્રિયા કરવામાં આવતી હોવાથી, આ ઍપની પરવાનગીના વપરાશની માહિતી સ્ટેટસ બાર અથવા તમારા પ્રાઇવસી ડૅશબોર્ડ પર બતાવવામાં આવતી નથી."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને Android વડે સુરક્ષિત કરવામાં આવી છે. આ ડિવાઇસમાં તમારા ડેટા પર પ્રક્રિયા કરવામાં આવતી હોવાથી, આ ઍપની પરવાનગીના વપરાશની માહિતી તમારા પ્રાઇવસી ડૅશબોર્ડ પર બતાવવામાં આવતી નથી."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ડિવાઇસનો કૅમેરા બ્લૉક કરેલો છે"</string>

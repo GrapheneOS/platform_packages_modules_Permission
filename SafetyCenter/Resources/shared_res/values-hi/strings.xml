@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="scanning_title" msgid="5424849039854311398">"स्कैन किया जा रहा है"</string>
-    <string name="loading_summary" msgid="3740846439782713910">"डिवाइस सेटिंग की जांच हो रही है…"</string>
+    <string name="loading_summary" msgid="3740846439782713910">"डिवाइस की सेटिंग की जांच की जा रही है…"</string>
     <string name="overall_severity_level_ok_title" msgid="2041250138727564565">"डिवाइस सुरक्षित लग रहा है"</string>
     <string name="overall_severity_level_ok_summary" msgid="383626536912856690">"कोई समस्या नहीं मिली"</string>
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{सुझाव देखें}one{सुझाव देखें}other{सुझावों को देखें}}"</string>

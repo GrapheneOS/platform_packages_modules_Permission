@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"លំនាំដើម​ច្រើនទៀត"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ការបើកតំណ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"លំនាំដើម​សម្រាប់ការងារ"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"លំនាំដើមសម្រាប់លំហឯកជន"</string>
     <string name="default_app_none" msgid="9084592086808194457">"គ្មាន"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(លំនាំដើមប្រព័ន្ធ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"គ្មានកម្មវិធី​ទេ​"</string>
@@ -548,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"គ្មាន"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 ម៉ោង\nចុងក្រោយ"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 ថ្ងៃ​\nចុង​ក្រោយ"</string>
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> ភាគរយ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​របារស្ថានភាព ឬផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"កាមេរ៉ា​ឧបករណ៍​ត្រូវបាន​ទប់ស្កាត់"</string>

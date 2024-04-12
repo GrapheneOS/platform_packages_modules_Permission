@@ -84,7 +84,7 @@ internal fun deviceDefaultTypography(context: Context): Typography {
                     fontFamily(context, R.string.wear_material_compose_display_2_font_family)
             ),
         display3 =
-            defaultTypography.display1.copy(
+            defaultTypography.display3.copy(
                 fontFamily =
                     fontFamily(context, R.string.wear_material_compose_display_3_font_family)
             ),

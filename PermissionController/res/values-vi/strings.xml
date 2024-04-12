@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Ứng dụng mặc định khác"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Mở đường liên kết"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Ứng dụng mặc định cho công việc"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Ứng dụng mặc định cho không gian riêng tư"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Không có"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Ứng dụng mặc định của hệ thống)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Không có ứng dụng nào"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Không có"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 giờ\nqua"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 ngày\nqua"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> được Android bảo vệ. Vì dữ liệu của bạn được xử lý trên thiết bị này nên hoạt động sử dụng quyền của ứng dụng này không hiện trên thanh trạng thái hoặc bảng tổng quan về quyền riêng tư."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> được Android bảo vệ. Vì dữ liệu của bạn được xử lý trên thiết bị này nên hoạt động sử dụng quyền của ứng dụng này không hiện trên bảng tổng quan về quyền riêng tư."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Quyền truy cập vào máy ảnh của thiết bị đã bị chặn"</string>

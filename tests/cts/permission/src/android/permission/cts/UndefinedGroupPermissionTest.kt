@@ -30,6 +30,7 @@ import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.UiObjectNotFoundException
+import com.android.compatibility.common.util.FeatureUtil
 import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
@@ -166,9 +167,7 @@ class UndefinedGroupPermissionTest {
     }
 
     fun findAllowButton(): UiObject2 {
-        return if (
-            mContext?.packageManager?.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE) == true
-        ) {
+         return if (FeatureUtil.isAutomotive() || FeatureUtil.isWatch()) {
             waitFindObject(By.text(mAllowButtonText!!), 2000)
         } else {
             waitFindObject(
@@ -198,10 +197,7 @@ class UndefinedGroupPermissionTest {
             startRequestActivity(arrayOf(targetPermission))
             mUiDevice!!.waitForIdle()
             try {
-                if (
-                    mContext?.packageManager?.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE) ==
-                        true
-                ) {
+                if (FeatureUtil.isAutomotive() || FeatureUtil.isWatch()) {
                     waitFindObject(By.text(mDenyButtonText!!), 2000)
                 } else if (
                     mContext?.packageManager?.hasSystemFeature(PackageManager.FEATURE_WATCH) == true

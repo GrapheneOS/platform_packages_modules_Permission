@@ -72,7 +72,7 @@
     <string name="denied_permission_decision" msgid="5308961501779563781">"你已拒絕「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{今天}=1{1 天前}other{# 天前}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"停用應用程式"</string>
-    <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果你停用這個應用程式，Android 和其他應用程式可能無法正常運作。請注意，這是預先安裝在裝置上的應用程式，因此無法刪除。不過，只要停用這個應用程式，即可將應用程式關閉並在裝置上隱藏。"</string>
+    <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果你停用這個應用程式，Android 和其他應用程式可能無法正常運作。請注意，這是預先安裝在裝置上的應用程式，因此無法刪除。不過，只要停用這個應用程式，即可關閉該程式並在裝置上隱藏。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"權限管理員"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"不要再詢問"</string>
     <string name="no_permissions" msgid="3881676756371148563">"沒有權限"</string>
@@ -205,7 +205,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果應用程式未使用，讓系統移除相關權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並釋出空間"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"暫停未使用的應用程式活動"</string>
-    <string name="unused_apps_label_v3" msgid="693340578642156657">"管理應用程式 (如未使用)"</string>
+    <string name="unused_apps_label_v3" msgid="693340578642156657">"管理未使用的應用程式"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔及停止通知"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"移除權限、刪除暫存檔、停止通知並封存應用程式"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為了保護你的資料，如果你連續幾個月都未使用這個應用程式，系統會移除其權限。"</string>
@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>和<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>存取權"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>存取權和另外 <xliff:g id="NUMBER">%2$s</xliff:g> 項權限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的應用程式"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果你數個月未使用某個應用程式，系統將對該應用程式採取以下措施：\n\n• 移除權限以保護你的資料\n• 停止通知以節省電力\n• 移除暫存檔以釋出空間\n\n如要重新授予權限和再次接收通知，請開啟應用程式。"</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果數個月沒有使用應用程式，系統會採取以下措施：\n\n• 移除權限以保護資料\n• 停止通知以節省電量\n• 移除暫存檔以釋出空間\n\n如要重新授予權限和再次接收通知，請開啟應用程式。"</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"如果你一個月未使用某應用程式，系統將對該應用程式採取以下措施：\n\n• 移除權限以保護你的資料\n• 移除暫存檔以釋出空間\n\n如要重新授權，只要開啟應用程式即可。"</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{距離上次開啟已超過 # 個月}other{距離上次開啟已超過 # 個月}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"應用程式上次開啟時間：<xliff:g id="DATE">%s</xliff:g>"</string>
@@ -353,10 +353,10 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"這些應用程式不但可查看你的畫面、動作和輸入內容，還能執行動作及控制顯示畫面。"</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"預設的數位助理應用程式"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"數位助理應用程式"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"小幫手應用程式可根據你目前瀏覽的畫面資訊，為你提供協助。部分應用程式同時支援啟動器和語音輸入服務，能夠為你提供更完善的協助。"</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"小幫手應用程式可根據當下的螢幕內容提供協助。某些應用程式同時支援啟動器和語音輸入服務，提供更完善的服務。"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"預設的瀏覽器應用程式"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"瀏覽器應用程式"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"這類應用程式可讓你上網及顯示你點選的連結"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"你可以透過這類應用程式連上網際網路，也可以輕觸顯示的連結"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"要將 <xliff:g id="APP_NAME">%1$s</xliff:g> 設為預設的瀏覽器應用程式嗎？"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"無需任何權限"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"預設的電話應用程式"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"記事"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"預設錢包應用程式"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"錢包應用程式"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"錢包應用程式可存放消費金、會員卡、車鑰和其他資訊，幫助完成各種形式的交易。"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"錢包應用程式可存放信用卡、會員卡、車鑰和其他資訊，幫助完成各種形式的交易。"</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設錢包應用程式嗎？"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"無需任何權限"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"目前的預設應用程式"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"更多預設應用程式"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"開啟連結"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"預設的工作應用程式"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"私人空間的預設應用程式"</string>
     <string name="default_app_none" msgid="9084592086808194457">"無"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(系統預設)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"沒有可用的應用程式"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"無"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去\n24 小時"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 天內"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」受 Android 保護。系統是在這部裝置上處理你的資料，因此狀態列或隱私資訊主頁不會顯示這個應用程式的權限使用情形。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」受 Android 保護。系統是在這部裝置上處理你的資料，因此隱私資訊主頁不會顯示這個應用程式的權限使用情形。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"裝置相機已封鎖"</string>
@@ -644,7 +647,7 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"可能會分享位置資料"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"這個應用程式表示可能會將位置資料分享給第三方"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料共用方式更新"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看變更資料共用方式的應用程式"</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看曾變更位置資料共用方式的應用程式"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"以下應用程式變更了分享位置資料的做法。這些應用程式先前可能未曾分享位置資料，也可能是現在為了廣告或行銷目的而分享這些資料。"</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"這些應用程式的開發人員已將資料分享做法相關資訊提供給應用程式商店，並可能會隨著時間更新這些資訊。\n\n資料分享做法可能會因你的應用程式版本、使用方式、所在地區和年齡而異。"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"瞭解資料分享"</string>

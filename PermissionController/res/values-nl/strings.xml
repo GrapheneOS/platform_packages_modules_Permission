@@ -222,7 +222,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Rechten voor <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Niet-gebruikte apps"</string>
-    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Als je een app een paar maanden niet gebruikt, gebeurt het volgende:\n\n• De rechten worden ingetrokken om je gegevens te beschermen.\n• Meldingen worden stopgezet om de batterij te sparen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n\nOpen de app als je de rechten en meldingen weer wilt toestaan."</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Als je een app een paar maanden niet gebruikt, gebeurt het volgende:\n\n• De rechten worden ingetrokken om je gegevens te beschermen.\n• Meldingen worden stopgezet om de batterij te sparen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n\nOpen de app om rechten en meldingen opnieuw toe te staan."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Als je een app een maand niet gebruikt, gebeurt het volgende:\n\n• De rechten worden verwijderd om je gegevens te beschermen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n\nOpen de app als je de rechten weer wilt toestaan."</string>
     <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Meer dan # maand geleden voor het laatst geopend}other{Meer dan # maanden geleden voor het laatst geopend}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -353,21 +353,21 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Deze apps kunnen je scherm, acties en invoer bekijken, acties uitvoeren en de weergave beheren."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Standaard digitale-assistent-app"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Digitale-assistent-app"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Assistentie-apps kunnen je helpen op basis van de informatie op het scherm dat je bekijkt. Bepaalde apps ondersteunen launcher- en spraakinvoerservices voor geïntegreerde ondersteuning."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Apps voor assistentie kunnen je helpen op basis van de informatie op het scherm dat je bekijkt. Bepaalde apps ondersteunen launcher- en spraakinvoerservices voor geïntegreerde ondersteuning."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standaard browser-app"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Browser-app"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Apps die toegang tot internet geven en de links bekijken waarop je hebt getikt"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Apps die toegang tot internet geven en de links tonen waarop je hebt getikt"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Wil je <xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard browser-app?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Geen rechten nodig"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Standaard telefoon-app"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefoon-app"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld kunt worden op je apparaat."</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld worden op je apparaat"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard telefoon-app?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Deze app krijgt toegang tot Camera, Contacten, Microfoon, Telefoon en Sms"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"kiezer"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standaard sms-app"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Sms-app"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere sms\'jes, foto\'s en video\'s kunt sturen en ontvangen."</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere korte tekstberichten, foto\'s en video\'s kunt sturen en ontvangen"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Wil je <xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard sms-app?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Deze app krijgt toegang tot Camera, Contacten, Bestanden en media, Microfoon, Telefoon en Sms"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"tekst bericht, tekstbericht, sms, sms\'en, berichten, verzenden, sturen"</string>
@@ -405,10 +405,10 @@
     <string name="role_notes_short_label" msgid="8796604147546125285">"Notitie-app"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Apps waarmee je notities op je apparaat kunt maken"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"notities"</string>
-    <string name="role_wallet_label" msgid="3719419175656204207">"Standaard digitale portemonnee-app"</string>
-    <string name="role_wallet_short_label" msgid="6521288403762457452">"Digitale portemonnee-app"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Digitale portemonnee-apps kunnen je creditcards en klantenkaarten, autosleutels en andere zaken opslaan om je te helpen bij verschillende vormen van transacties."</string>
-    <string name="role_wallet_request_title" msgid="4770217108262737093">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard digitale portemonnee-app?"</string>
+    <string name="role_wallet_label" msgid="3719419175656204207">"Standaard portemonnee-app"</string>
+    <string name="role_wallet_short_label" msgid="6521288403762457452">"Portemonnee-app"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"In portemonnee-apps kun je je creditcards en klantenkaarten, autosleutels en andere zaken opslaan om je te helpen bij verschillende vormen van transacties."</string>
+    <string name="role_wallet_request_title" msgid="4770217108262737093">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard portemonnee-app?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Geen rechten nodig"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige standaard-app"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Niet meer vragen"</string>
@@ -435,6 +435,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Meer standaard-apps"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Links openen"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standaard voor werk"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standaard voor privégedeelte"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Geen"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Systeemstandaard)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Geen apps"</string>
@@ -548,6 +549,8 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Geen"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Afgelopen\n24 uur"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Afgelopen\n7 dagen"</string>
+    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
+    <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> wordt beveiligd door Android. Omdat je gegevens worden verwerkt op dit apparaat, wordt het gebruik van rechten door deze app niet getoond in de statusbalk of op je privacydashboard."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> wordt beveiligd door Android. Omdat je gegevens worden verwerkt op dit apparaat, wordt het gebruik van rechten door deze app niet getoond op je privacydashboard."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Camera van apparaat is geblokkeerd"</string>

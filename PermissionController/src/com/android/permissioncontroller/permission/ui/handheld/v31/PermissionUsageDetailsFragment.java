@@ -359,7 +359,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                     category.get().setTitle(R.string.permission_history_category_yesterday);
                 } else {
                     category.get()
-                            .setTitle(DateFormat.getDateFormat(context).format(currentDateMs));
+                            .setTitle(DateFormat.getLongDateFormat(context).format(currentDateMs));
                 }
                 previousDateMs = currentDateMs;
             }

@@ -30,7 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsageControlPreference
-import com.android.permissioncontroller.permission.ui.viewmodel.BasePermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.wear.elements.Chip
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
@@ -41,7 +41,7 @@ import java.text.Collator
 @Composable
 fun WearPermissionUsageScreen(
     sessionId: Long,
-    viewModel: BasePermissionUsageViewModel,
+    viewModel: PermissionUsageViewModel,
     wearViewModel: WearPermissionUsageViewModel
 ) {
     val context = LocalContext.current
