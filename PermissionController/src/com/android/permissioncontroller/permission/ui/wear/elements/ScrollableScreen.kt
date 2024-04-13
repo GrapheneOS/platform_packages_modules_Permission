@@ -136,8 +136,12 @@ internal fun Scaffold(
     titleTestTag: String? = null,
     subtitleTestTag: String? = null,
 ) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val screenHeight = LocalConfiguration.current.screenHeightDp
+    val scrollContentHorizontalPadding = (screenWidth * 0.052).dp
+    val scrollContentTopPadding = (screenHeight * 0.1456).dp
+    val scrollContentBottomPadding = (screenHeight * 0.3636).dp
     val initialCenterIndex = 0
-    val scrollContentTopPadding = 32.dp
     val centerHeightDp = Dp(LocalConfiguration.current.screenHeightDp / 2.0f)
     val initialCenterItemScrollOffset = scrollContentTopPadding + 10.dp
     val scrollAwayOffset = centerHeightDp - initialCenterItemScrollOffset
@@ -177,10 +181,10 @@ internal fun Scaffold(
                         autoCentering = null,
                         contentPadding =
                             PaddingValues(
-                                start = 10.dp,
-                                end = 10.dp,
+                                start = scrollContentHorizontalPadding,
+                                end = scrollContentHorizontalPadding,
                                 top = scrollContentTopPadding,
-                                bottom = 70.dp
+                                bottom = scrollContentBottomPadding
                             )
                     ) {
                         image?.let {
