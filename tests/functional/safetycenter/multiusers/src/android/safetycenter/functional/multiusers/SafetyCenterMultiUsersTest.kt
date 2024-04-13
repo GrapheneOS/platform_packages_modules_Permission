@@ -23,6 +23,7 @@ import android.content.Context
 import android.os.UserHandle
 import android.platform.test.annotations.RequiresFlagsDisabled
 import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
@@ -112,6 +113,8 @@ class SafetyCenterMultiUsersTest {
     companion object {
         @JvmField @ClassRule @Rule val deviceState: DeviceState = DeviceState()
     }
+
+    @Rule @JvmField val mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
 
     private val context: Context = ApplicationProvider.getApplicationContext()
     private val safetyCenterResourcesApk = SafetyCenterResourcesApk.forTests(context)

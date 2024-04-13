@@ -380,17 +380,20 @@ class AppPermissionsTest {
     }
 
     private fun openAppPermissionsScreen() {
-        eventually {
-            instrumentation.context.startActivity(
-                Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                    data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
-                    addCategory(Intent.CATEGORY_DEFAULT)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                }
-            )
-            UiAutomatorUtils2.waitFindObject(By.text("Permissions"), 12000).click()
-        }
+        eventually(
+            {
+                instrumentation.context.startActivity(
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                        data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
+                        addCategory(Intent.CATEGORY_DEFAULT)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    }
+                )
+                UiAutomatorUtils2.waitFindObject(By.text("Permissions"), 12_000).click()
+            },
+            20_000
+        )
     }
 
     private fun getScrollableRecyclerView(): UiScrollable {
