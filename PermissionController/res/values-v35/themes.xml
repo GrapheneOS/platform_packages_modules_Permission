@@ -17,6 +17,13 @@
 
 <resources>
 
+
+    <style name="CarSettings" parent="Theme.CarUi.WithToolbar">
+      <item name="carDividerColor">@color/car_divider_color</item>
+      <!--TODO b/331250994, Remove this once we have a strategy to support edgeToEdge -->
+      <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+
     <!--
         TODO(b/309578419): Make activities handle insets properly and then remove this.
     -->

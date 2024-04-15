@@ -45,7 +45,7 @@ class WearPermissionUsageViewModelFactory(val viewModel: PermissionUsageViewMode
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return WearPermissionUsageViewModel(
-            viewModel.getPermissionUsagesUiLiveData().value,
+            viewModel.permissionUsagesUiLiveData.value,
             viewModel.getShowSystemApps(),
             viewModel.getShow7DaysData()
         )

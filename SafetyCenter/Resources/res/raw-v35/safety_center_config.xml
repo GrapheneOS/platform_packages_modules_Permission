@@ -62,13 +62,6 @@
                 title="@com.android.safetycenter.resources:string/permission_manager_title"
                 summary="@com.android.safetycenter.resources:string/permission_manager_summary"
                 searchTerms="@com.android.safetycenter.resources:string/permission_manager_search_terms"/>
-            <static-safety-source
-                id="AndroidPermissionUsage"
-                profile="primary_profile_only"
-                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
-                title="@com.android.safetycenter.resources:string/permission_usage_title"
-                summary="@com.android.safetycenter.resources:string/permission_usage_summary"
-                searchTerms="@com.android.safetycenter.resources:string/permission_usage_search_terms"/>
             <dynamic-safety-source
                 id="AndroidHealthConnect"
                 profile="primary_profile_only"
@@ -118,6 +111,26 @@
                 refreshOnPageOpenAllowed="true"/>
         </safety-sources-group>
         <safety-sources-group
+            id="AndroidPrivacySourcesAdditional"
+            title="@com.android.safetycenter.resources:string/privacy_additional_title">
+            <static-safety-source
+                id="AndroidPermissionUsage"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
+                title="@com.android.safetycenter.resources:string/permission_usage_title"
+                summary="@com.android.safetycenter.resources:string/permission_usage_summary"
+                searchTerms="@com.android.safetycenter.resources:string/permission_usage_search_terms"/>
+            <dynamic-safety-source
+                id="AndroidPrivateSpace"
+                packageName="com.android.settings"
+                profile="primary_profile_only"
+                title="@com.android.safetycenter.resources:string/private_space_title"
+                summary="@com.android.safetycenter.resources:string/private_space_summary"
+                searchTerms="@com.android.safetycenter.resources:string/private_space_search_terms"
+                initialDisplayState="hidden"
+                maxSeverityLevel="0"/>
+        </safety-sources-group>
+        <safety-sources-group
             id="AndroidAdvancedSources"
             title="@com.android.safetycenter.resources:string/advanced_title">
             <dynamic-safety-source
@@ -134,15 +147,6 @@
                 title="@com.android.safetycenter.resources:string/more_settings_title"
                 summary="@com.android.safetycenter.resources:string/more_settings_summary"
                 searchTerms="@com.android.safetycenter.resources:string/more_settings_search_terms"/>
-            <dynamic-safety-source
-                id="AndroidPrivateSpace"
-                packageName="com.android.settings"
-                profile="primary_profile_only"
-                title="@com.android.safetycenter.resources:string/private_space_title"
-                summary="@com.android.safetycenter.resources:string/private_space_summary"
-                searchTerms="@com.android.safetycenter.resources:string/private_space_search_terms"
-                initialDisplayState="hidden"
-                maxSeverityLevel="0"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

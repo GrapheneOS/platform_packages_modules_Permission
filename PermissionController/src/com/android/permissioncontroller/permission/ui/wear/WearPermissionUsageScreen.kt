@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsageControlPreference
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 import com.android.permissioncontroller.permission.ui.wear.elements.Chip
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
@@ -49,8 +50,14 @@ fun WearPermissionUsageScreen(
     val showSystem = wearViewModel.showSystemAppsLiveData.observeAsState(false)
     val show7Days = wearViewModel.show7DaysLiveData.observeAsState(false)
     var isLoading by remember { mutableStateOf(true) }
-
-    val hasSystemApps: Boolean = permissionUsagesUiData.value?.shouldShowSystemToggle ?: false
+    val isDataLoaded = permissionUsagesUiData.value is PermissionUsagesUiState.Success
+    val hasSystemApps: Boolean =
+        if (isDataLoaded) {
+            val uiState = permissionUsagesUiData.value as PermissionUsagesUiState.Success
+            uiState.shouldShowSystemToggle
+        } else {
+            false
+        }
     val onShowSystemClick: (Boolean) -> Unit = { show ->
         run {
             wearViewModel.updatePermissionUsagesUiStateLiveData(viewModel.updateShowSystem(show))
@@ -59,7 +66,12 @@ fun WearPermissionUsageScreen(
     }
 
     val permissionGroupWithUsageCounts: Map<String, Int> =
-        permissionUsagesUiData.value?.permissionGroupUsageCount ?: emptyMap()
+        if (isDataLoaded) {
+            val uiState = permissionUsagesUiData.value as PermissionUsagesUiState.Success
+            uiState.permissionGroupUsageCount
+        } else {
+            emptyMap()
+        }
     val permissionGroupWithUsageCountsEntries: List<Map.Entry<String, Int>> =
         ArrayList<Map.Entry<String, Int>>(permissionGroupWithUsageCounts.entries)
 
@@ -95,7 +107,7 @@ fun WearPermissionUsageScreen(
         permissionGroupPreferences
     )
 
-    if (isLoading && permissionUsagesUiData.value != null) {
+    if (isLoading && isDataLoaded) {
         isLoading = false
     }
 }

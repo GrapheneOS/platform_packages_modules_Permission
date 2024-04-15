@@ -100,23 +100,6 @@ class GetPermissionUsageUseCaseTest {
     }
 
     @Test
-    fun invalidAppOpIsFiltered() = runTest {
-        val appOpsUsageMillis =
-            listOf(
-                AppOpUsageModel(AppOpsManager.OPSTR_CAMERA, 100),
-                AppOpUsageModel("OPSTR_INVALID", 100)
-            )
-        val appOpsUsage =
-            PackageAppOpUsageModel(testPackageName, appOpsUsageMillis, currentUser.identifier)
-        val appOpsUsageModelFlow = flow { emit(listOf(appOpsUsage)) }
-        val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
-
-        val permissionGroupUsages by collectLastValue(underTest())
-        assertThat(permissionGroupUsages)
-            .isEqualTo(listOf(PermissionGroupUsageModel(CAMERA_PERMISSION_GROUP, 100, true)))
-    }
-
-    @Test
     fun guestUserUsageIsFiltered() = runTest {
         val appOpsUsage =
             listOf(

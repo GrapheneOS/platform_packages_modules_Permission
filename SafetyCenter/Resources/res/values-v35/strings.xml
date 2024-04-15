@@ -23,6 +23,12 @@
   <!-- Device unlock -->
   <string name="biometrics_title_for_private_profile" description="The default title of the setting for managing biometric options on the device for private space"><!-- Empty placeholder--></string>
 
+  <!-- Privacy -->
+  <string name="privacy_title" description="The title of the group of safety settings relating to privacy">Privacy</string>
+  <string name="privacy_sources_title" description="The title of the group of safety settings relating to privacy controls">Privacy controls</string>
+  <string name="privacy_sources_summary" description="The summary of the group of safety settings relating to privacy, which describes the group contents">Permissions, controls</string>
+  <string name="privacy_additional_title" description="The header, or blank if none wanted, for the additional privacy settings on the main page"></string>
+
   <!-- More settings -->
   <string name="private_space_title" description="The title of the entry for Private Space">Private Space</string>
   <string name="private_space_summary" description="The summary of the entry for Private Space settings, which describes the page contents">Setup Private Space, and more</string>

@@ -24,7 +24,6 @@ import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -36,12 +35,15 @@ import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermiss
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.Volatile
 import kotlin.math.max
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.runBlocking
@@ -51,26 +53,37 @@ class PermissionUsageViewModel(
     val app: Application,
     private val permissionRepository: PermissionRepository,
     private val getPermissionUsageUseCase: GetPermissionGroupUsageUseCase,
-    scope: CoroutineScope? = null
+    scope: CoroutineScope? = null,
+    dispatcher: CoroutineDispatcher? = null
 ) : AndroidViewModel(app) {
     private var showSystemApps = false
     private var show7DaysData = false
     private val coroutineScope = scope ?: viewModelScope
-    private val permissionGroupOpsFlow: StateFlow<List<PermissionGroupUsageModel>> by lazy {
+    private val defaultDispatcher = dispatcher ?: Dispatchers.Default
+
+    // Cache permission usages to calculate ui state for "show system" and "show 7 days" toggle.
+    @Volatile private var permissionGroupUsages = emptyList<PermissionGroupUsageModel>()
+
+    private val permissionUsagesUiStateFlow: StateFlow<PermissionUsagesUiState> by lazy {
         getPermissionUsageUseCase()
-            .stateIn(coroutineScope, SharingStarted.WhileSubscribed(5000), emptyList())
+            .map { permGroupUsages ->
+                permissionGroupUsages = permGroupUsages
+                buildPermissionUsagesUiState(permGroupUsages)
+            }
+            .flowOn(defaultDispatcher)
+            .stateIn(
+                coroutineScope,
+                SharingStarted.WhileSubscribed(5000),
+                PermissionUsagesUiState.Loading
+            )
     }
+
+    val permissionUsagesUiLiveData =
+        permissionUsagesUiStateFlow.asLiveData(context = coroutineScope.coroutineContext)
 
     @VisibleForTesting
     fun getPermissionUsagesUiDataFlow(): Flow<PermissionUsagesUiState> {
-        return permissionGroupOpsFlow.map { permGroupUsages ->
-            buildPermissionUsagesUiState(permGroupUsages)
-        }
-    }
-
-    fun getPermissionUsagesUiLiveData(): LiveData<PermissionUsagesUiState> {
-        return getPermissionUsagesUiDataFlow()
-            .asLiveData(context = coroutineScope.coroutineContext + Dispatchers.Default)
+        return permissionUsagesUiStateFlow
     }
 
     /** Get start time based on whether to show 24 hours or 7 days data. */
@@ -104,7 +117,7 @@ class PermissionUsageViewModel(
                 permissionUsageCountMap[it.permissionGroup] =
                     permissionUsageCountMap.getOrDefault(it.permissionGroup, 0) + 1
             }
-        return PermissionUsagesUiState(
+        return PermissionUsagesUiState.Success(
             permGroupOps.any { !it.isUserSensitive },
             permissionUsageCountMap
         )
@@ -120,12 +133,12 @@ class PermissionUsageViewModel(
 
     fun updateShowSystem(showSystem: Boolean): PermissionUsagesUiState {
         showSystemApps = showSystem
-        return buildPermissionUsagesUiState(permissionGroupOpsFlow.value)
+        return buildPermissionUsagesUiState(permissionGroupUsages)
     }
 
     fun updateShow7Days(show7Days: Boolean): PermissionUsagesUiState {
         show7DaysData = show7Days
-        return buildPermissionUsagesUiState(permissionGroupOpsFlow.value)
+        return buildPermissionUsagesUiState(permissionGroupUsages)
     }
 
     private val permissionGroupLabels = mutableMapOf<String, String>()
@@ -141,19 +154,19 @@ class PermissionUsageViewModel(
 
     /** Companion class for [PermissionUsageViewModel]. */
     companion object {
-        internal val LOG_TAG = PermissionUsageViewModel::class.java.simpleName
-
         private val TIME_7_DAYS_DURATION = TimeUnit.DAYS.toMillis(7)
         private val TIME_24_HOURS_DURATION = TimeUnit.DAYS.toMillis(1)
     }
 }
 
 /** Data class to hold all the information required to configure the UI. */
-data class PermissionUsagesUiState(
-    val shouldShowSystemToggle: Boolean,
-    // Map instances for display in UI
-    val permissionGroupUsageCount: Map<String, Int>,
-)
+sealed class PermissionUsagesUiState {
+    data object Loading : PermissionUsagesUiState()
+    data class Success(
+        val shouldShowSystemToggle: Boolean,
+        val permissionGroupUsageCount: Map<String, Int>
+    ) : PermissionUsagesUiState()
+}
 
 /** Factory for [PermissionUsageViewModel]. */
 @RequiresApi(Build.VERSION_CODES.S)

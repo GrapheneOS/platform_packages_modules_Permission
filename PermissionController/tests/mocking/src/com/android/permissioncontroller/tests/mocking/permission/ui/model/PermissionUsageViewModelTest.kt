@@ -29,6 +29,7 @@ import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageM
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
 import com.android.permissioncontroller.tests.mocking.appops.data.repository.FakeAppOpRepository
@@ -40,6 +41,7 @@ import com.android.permissioncontroller.tests.mocking.user.data.repository.FakeU
 import com.google.common.truth.Truth.assertThat
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -105,12 +107,15 @@ class PermissionUsageViewModelTest {
                 application,
                 permissionRepository,
                 getPermissionGroupUsageUseCase(),
-                backgroundScope
+                backgroundScope,
+                StandardTestDispatcher(testScheduler)
             )
+
         val uiData =
             checkNotNull(
                 collectLastValue(permissionUsageViewModel.getPermissionUsagesUiDataFlow()).invoke()
             )
+                as PermissionUsagesUiState.Success
         assertThat(uiData.permissionGroupUsageCount.size).isEqualTo(15)
     }
 
@@ -133,12 +138,14 @@ class PermissionUsageViewModelTest {
                 application,
                 permissionRepository,
                 permissionUsageUseCase,
-                backgroundScope
+                backgroundScope,
+                StandardTestDispatcher(testScheduler)
             )
         val uiData =
             checkNotNull(
                 collectLastValue(permissionUsageViewModel.getPermissionUsagesUiDataFlow()).invoke()
             )
+                as PermissionUsagesUiState.Success
         val permissionGroupsCount = uiData.permissionGroupUsageCount
         assertThat(permissionGroupsCount[CAMERA_PERMISSION_GROUP]).isEqualTo(2)
         assertThat(permissionGroupsCount[MICROPHONE_PERMISSION_GROUP]).isEqualTo(1)
@@ -163,11 +170,13 @@ class PermissionUsageViewModelTest {
                 application,
                 permissionRepository,
                 permissionUsageUseCase,
-                backgroundScope
+                backgroundScope,
+                StandardTestDispatcher(testScheduler)
             )
 
         collectLastValue(permissionUsageViewModel.getPermissionUsagesUiDataFlow()).invoke()
-        val uiData = permissionUsageViewModel.updateShowSystem(true)
+        val uiData =
+            permissionUsageViewModel.updateShowSystem(true) as PermissionUsagesUiState.Success
         val permissionGroupsCount = uiData.permissionGroupUsageCount
         assertThat(permissionGroupsCount[CAMERA_PERMISSION_GROUP]).isEqualTo(2)
         assertThat(permissionGroupsCount[MICROPHONE_PERMISSION_GROUP]).isEqualTo(2)

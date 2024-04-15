@@ -28,7 +28,6 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,7 +43,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import  com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel;
+import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -95,13 +94,10 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
 
     /** Unique Id of a request */
     private long mSessionId;
-    // track total time for dashboard loading.
-    private long mStartTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mStartTime = SystemClock.elapsedRealtime();
         if (savedInstanceState != null) {
             mSessionId = savedInstanceState.getLong(SESSION_ID_KEY);
         } else {
@@ -236,20 +232,15 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                         PERMISSION_USAGE_FRAGMENT_INTERACTION,
                         mSessionId,
                         PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
-                mStartTime = SystemClock.elapsedRealtime();
                 updateAllUI(mViewModel.updateShowSystem(true));
                 break;
             case MENU_HIDE_SYSTEM:
-                mStartTime = SystemClock.elapsedRealtime();
                 updateAllUI(mViewModel.updateShowSystem(false));
                 break;
             case MENU_SHOW_7_DAYS_DATA:
-                mStartTime = SystemClock.elapsedRealtime();
-
                 updateAllUI(mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled()));
                 break;
             case MENU_SHOW_24_HOURS_DATA:
-                mStartTime = SystemClock.elapsedRealtime();
                 updateAllUI(mViewModel.updateShow7Days(false));
                 break;
         }
@@ -298,10 +289,14 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
     }
 
     /** Updates page content and menu items. */
-    private void updateAllUI(PermissionUsagesUiState permissionUsagesUiData) {
-        if (getActivity() == null) {
+    private void updateAllUI(PermissionUsagesUiState uiData) {
+        Log.v(LOG_TAG, "Privacy dashboard data = " + uiData);
+        if (getActivity() == null || uiData instanceof PermissionUsagesUiState.Loading) {
             return;
         }
+
+        PermissionUsagesUiState.Success permissionUsagesUiData =
+                (PermissionUsagesUiState.Success) uiData;
         Context context = getActivity();
 
         PreferenceScreen screen = getPreferenceScreen();
@@ -357,11 +352,6 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
         screen.setSummary(advancedInfoSummary);
 
         addUIContent(context, permissionGroupWithUsageCountsEntries, category);
-        long totalTimeTaken = SystemClock.elapsedRealtime() - mStartTime;
-        if (DEBUG) {
-            Log.i(LOG_TAG, "Total time taken in dashboard loading = " + totalTimeTaken + " ms");
-        }
-        Log.v(LOG_TAG, "Privacy dashboard data = " + permissionUsagesUiData);
     }
 
     private CharSequence getAdvancedInfoSummaryString(

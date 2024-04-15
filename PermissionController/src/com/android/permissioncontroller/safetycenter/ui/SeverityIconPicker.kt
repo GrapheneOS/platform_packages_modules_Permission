@@ -17,6 +17,7 @@ package com.android.permissioncontroller.safetycenter.ui
 
 import android.safetycenter.SafetyCenterEntry
 import android.util.Log
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.safetycenter.SafetyCenterConstants.PRIVACY_SOURCES_GROUP_ID
 
@@ -30,8 +31,9 @@ internal object SeverityIconPicker {
         severityLevel: Int,
         severityUnspecifiedIconType: Int
     ): Int? {
-        // For now, just fall through to the non-null version
-        // TODO: Return null icon as needed on V+ builds.
+        if (SdkLevel.isAtLeastV() && id == PRIVACY_SOURCES_GROUP_ID) {
+            return null
+        }
         return selectIconResId(id, severityLevel, severityUnspecifiedIconType)
     }
 

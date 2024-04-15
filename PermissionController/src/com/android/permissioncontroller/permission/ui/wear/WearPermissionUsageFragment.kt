@@ -53,9 +53,10 @@ class WearPermissionUsageFragment : Fragment() {
             ViewModelProvider(this, WearPermissionUsageViewModelFactory(viewModel))
                 .get(WearPermissionUsageViewModel::class.java)
 
-        viewModel
-            .getPermissionUsagesUiLiveData()
-            .observe(this, wearViewModel::updatePermissionUsagesUiStateLiveData)
+        viewModel.permissionUsagesUiLiveData.observe(
+            this,
+            wearViewModel::updatePermissionUsagesUiStateLiveData
+        )
         return ComposeView(requireContext()).apply {
             setContent { WearPermissionUsageScreen(sessionId, viewModel, wearViewModel) }
         }
