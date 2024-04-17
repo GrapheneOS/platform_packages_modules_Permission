@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"无"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"过去\n7 天"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>百分之 <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”受 Android 保护。由于您的数据是在此设备上处理的，因此隐私信息中心不会显示该应用的权限使用情况。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>
@@ -649,7 +648,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置数据共享方面的更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看改变了位置数据共享方式的应用"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"这些应用改变了它们在分享您位置数据上的做法。它们之前可能未分享过位置数据，也可能现在是为了广告或营销目的而分享此类数据。"</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"这些应用的开发者已将其数据分享做法相关信息提供给应用商店。此类信息可能会随时间更新。\n\n数据分享做法可能会因应用版本、使用情况、地区和年龄而异。"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"这些应用的开发者已将其数据分享做法的相关信息提供给应用商店，并且可能会随时间更新此类信息。\n\n数据分享做法可能会因应用版本、使用情况、地区和年龄而异。"</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"了解数据分享"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"现在会将您的位置数据分享给第三方"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"现在会将您的位置数据分享给第三方，用于广告或营销目的"</string>

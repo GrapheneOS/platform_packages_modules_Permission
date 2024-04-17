@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Няма"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"За апошнія\n24 гадзіны"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"За апошнія\n7 сутак"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, працэнтаў: <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі стану і панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камера прылады заблакіравана"</string>

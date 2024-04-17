@@ -549,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Žádné"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posledních\n24 hodin"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Posledních\n7 dní"</string>
+    <!-- String.format failed for translation -->
     <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
     <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna Androidem. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na stavovém řádku ani na panelu ochrany soukromí."</string>

@@ -645,7 +645,7 @@
     <string name="app_permission_rationale_message" msgid="8511466916077100713">"Keamanan data"</string>
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"Data lokasi mungkin dibagikan"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Aplikasi ini menyatakan bahwa aplikasi mungkin membagikan data lokasi Anda kepada pihak ketiga"</string>
-    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Pembaruan berbagi data untuk lokasi"</string>
+    <string name="data_sharing_updates_title" msgid="7996933386875213859">"Pembaruan berbagi data lokasi"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Tinjau aplikasi yang mengubah caranya berbagi data lokasi Anda"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Aplikasi ini telah mengubah caranya berbagi data lokasi Anda. Aplikasi mungkin sebelumnya tidak membagikan data, atau mungkin kini membagikan data untuk tujuan iklan atau pemasaran."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Developer aplikasi ini memberikan info tentang praktik berbagi data mereka kepada app store. Developer dapat memperbaruinya dari waktu ke waktu.\n\nPraktik berbagi data mungkin berbeda-beda berdasarkan versi aplikasi, penggunaan, wilayah, dan usia Anda."</string>

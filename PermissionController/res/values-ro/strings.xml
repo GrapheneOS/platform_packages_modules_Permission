@@ -549,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Fără"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ultimele\n24 de ore"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Ultimele\nșapte zile"</string>
+    <!-- String.format failed for translation -->
     <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
     <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> este protejată de Android. Întrucât datele tale sunt procesate pe dispozitiv, folosirea permisiunilor de către aplicație nu apare în bara de stare sau în tabloul de bord de confidențialitate."</string>

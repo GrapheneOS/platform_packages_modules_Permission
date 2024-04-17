@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nada"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Últimos\n7 días"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> por ciento"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"La aplicación <xliff:g id="APP_NAME">%1$s</xliff:g> está protegida por Android. Como tus datos están procesados en este dispositivo, el uso de los permisos de esta aplicación no se muestra ni en la barra de estado ni en tu panel de privacidad."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"La aplicación <xliff:g id="APP_NAME">%1$s</xliff:g> está protegida por Android. Como tus datos están procesados en este dispositivo, el uso de los permisos de esta aplicación no se muestra en tu panel de privacidad."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"La cámara del dispositivo está bloqueada"</string>

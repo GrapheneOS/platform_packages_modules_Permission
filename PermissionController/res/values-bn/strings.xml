@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"কোনওটিই নয়"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"গত\n২৪ ঘণ্টা"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"গত\n৭ দিনে"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> শতাংশ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android-এর মাধ্যমে সুরক্ষিত। এই ডিভাইসে আপনার ডেটা প্রসেস হওয়ার জন্য, এই অ্যাপের অনুমতি ব্যবহার সংক্রান্ত তথ্য স্ট্যাটাস বার বা প্রাইভেসি ড্যাশবোর্ডে দেখা যাবে না।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android-এর মাধ্যমে সুরক্ষিত। এই ডিভাইসে আপনার ডেটা প্রসেস হওয়ার জন্য, এই অ্যাপের অনুমতি ব্যবহার সংক্রান্ত তথ্য প্রাইভেসি ড্যাশবোর্ডে দেখা যাবে না।"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"ডিভাইসের ক্যামেরা ব্লক করা আছে"</string>

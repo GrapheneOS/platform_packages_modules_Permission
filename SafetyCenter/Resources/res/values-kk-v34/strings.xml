@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="lock_screen_sources_title" msgid="5493678510117489865">"Құрылғының құлпын ашу"</string>
-    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Жұмыс қолданбаларына арналған биометрика"</string>
+    <string name="biometrics_title_for_work" msgid="1842284049407771568">"Жұмыс қолданбаларына арналған биометрия"</string>
     <string name="privacy_sources_summary" msgid="4083646673569677049">"Рұқсаттар, бақылау тақтасы, басқару элементтері"</string>
     <string name="health_connect_title" msgid="8318152190040327804">"Health Connect"</string>
     <string name="health_connect_search_terms" msgid="4998970586245680829">"Денсаулық, Health Connect"</string>

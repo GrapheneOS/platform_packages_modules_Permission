@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nav"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Pēdējās\n24 stundās"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Pēdējo 7 dienu\nlaikā"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>: procentuālā daļa ir <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Lietotni <xliff:g id="APP_NAME">%1$s</xliff:g> aizsargā Android. Tā kā jūsu dati tiek apstrādāti šajā ierīcē, šīs lietotnes atļauju lietojums netiek rādīts statusa joslā vai jūsu konfidencialitātes informācijas panelī."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Lietotni <xliff:g id="APP_NAME">%1$s</xliff:g> aizsargā Android. Tā kā jūsu dati tiek apstrādāti šajā ierīcē, šīs lietotnes atļauju lietojums netiek rādīts jūsu konfidencialitātes informācijas panelī."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Ierīces kamera ir bloķēta"</string>

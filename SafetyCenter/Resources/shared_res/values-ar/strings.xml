@@ -41,7 +41,7 @@
     <string name="redirecting_error" msgid="8146983632878233202">"تعذَّر فتح الصفحة"</string>
     <string name="resolving_action_error" msgid="371968886143262375">"تعذَّر التعامل بشكل نهائي مع التنبيه"</string>
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{تعذّر التحقّق من الإعداد.}zero{تعذّر التحقّق من الإعدادات.}two{تعذّر التحقّق من الإعدادَين.}few{تعذّر التحقّق من الإعدادات.}many{تعذّر التحقّق من الإعدادات.}other{تعذّر التحقّق من الإعدادات.}}"</string>
-    <string name="work_profile_paused" msgid="7037400224040869079">"تم إيقاف الملف الشخصي للعمل مؤقتًا"</string>
+    <string name="work_profile_paused" msgid="7037400224040869079">"تم إيقاف ملف العمل مؤقتًا"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"ما مِن معلومات بعد."</string>
     <string name="notification_channel_group_name" msgid="7155072032524876859">"الأمان والخصوصية"</string>
     <string name="notification_channel_name_information" msgid="2966444432152990166">"الاقتراحات"</string>

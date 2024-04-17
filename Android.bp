@@ -25,6 +25,7 @@ apex {
     compat_configs: [
         "framework-permission-s-compat-config",
     ],
+    visibility: ["//packages/modules/common/build"],
 }
 
 apex_defaults {

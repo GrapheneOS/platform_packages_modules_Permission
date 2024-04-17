@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Geen"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Afgelopen\n24 uur"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Afgelopen\n7 dagen"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> procent"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> wordt beveiligd door Android. Omdat je gegevens worden verwerkt op dit apparaat, wordt het gebruik van rechten door deze app niet getoond in de statusbalk of op je privacydashboard."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> wordt beveiligd door Android. Omdat je gegevens worden verwerkt op dit apparaat, wordt het gebruik van rechten door deze app niet getoond op je privacydashboard."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Camera van apparaat is geblokkeerd"</string>
@@ -649,7 +648,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Updates voor het delen van locatiegegevens"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Ga na welke apps de manier hebben veranderd waarop je locatiegegevens worden gedeeld"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Deze apps hebben de manier veranderd waarop ze je locatiegegevens kunnen delen. Misschien deelden ze de gegevens eerder niet, of kunnen ze deze nu delen voor reclame- en marketingdoeleinden."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"De ontwikkelaars van deze apps hebben informatie gegeven aan een appstore over hun procedures voor gegevens delen. Ze kunnen deze informatie in de loop van de tijd updaten.\n\nProcedures voor gegevens delen kunnen verschillen op basis van je app-versie, gebruik, regio en leeftijd."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"De ontwikkelaars van deze apps hebben informatie gegeven aan een appstore over de manier waarop ze gegevens delen. Ze kunnen deze informatie in de loop van de tijd updaten.\n\nProcedures voor gegevens delen kunnen verschillen op basis van je app-versie, gebruik, regio en leeftijd."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Meer informatie over gegevens delen"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Je locatiegegevens worden nu gedeeld met derden"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Je locatiegegevens worden nu gedeeld met derden voor advertentie- of marketingdoeleinden"</string>

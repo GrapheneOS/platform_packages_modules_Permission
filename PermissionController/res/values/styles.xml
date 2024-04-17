@@ -1296,6 +1296,44 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="AutoWarningBannerCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardBackgroundColor">@color/warning_surface</item>
+        <item name="cardElevation">0dp</item>
+        <item name="contentPaddingBottom">24dp</item>
+        <item name="contentPaddingTop">24dp</item>
+        <item name="contentPaddingLeft">24dp</item>
+        <item name="contentPaddingRight">24dp</item>
+    </style>
+
+    <style name="AutoWarningBannerIcon">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:tint">@color/warning_onsurface</item>
+    </style>
+
+    <style name="AutoWarningBannerText">
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="AutoWarningBannerTitle" parent="@style/AutoWarningBannerText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineHeight">44sp</item>
+    </style>
+
+    <style name="AutoWarningBannerSummary" parent="@style/AutoWarningBannerText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineHeight">36sp</item>
+    </style>
     <!-- END WARNING BANNER -->
 
     <!-- START ENHANCED CONFIRMATION DIALOG -->

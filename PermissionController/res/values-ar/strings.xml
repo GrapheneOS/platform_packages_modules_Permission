@@ -445,7 +445,7 @@
     <string name="special_app_access" msgid="5019319067120213797">"أذونات خاصة للتطبيقات"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"لا إذن وصول خاص إلى التطبيق."</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"ليست هناك تطبيقات."</string>
-    <string name="home_missing_work_profile_support" msgid="1756855847669387977">"لا يتوافق التطبيق مع الملف الشخصي للعمل."</string>
+    <string name="home_missing_work_profile_support" msgid="1756855847669387977">"لا يتوافق التطبيق مع ملف العمل."</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"ملاحظة: في حال إعادة تشغيل جهازك وضبط قفل شاشة، لا يمكن بدء هذا التطبيق إلى أن تفتح جهازك."</string>
     <string name="assistant_confirmation_message" msgid="7476540402884416212">"سيتمكّن المساعِد من قراءة المعلومات عن التطبيقات قيد الاستخدام على نظامك، بما في ذلك المعلومات المرئية على شاشتك أو التي يمكن الوصول إليها داخل التطبيقات."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"مشاركة بيانات تصحيح الأخطاء"</string>
@@ -653,7 +653,7 @@
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"تتم الآن مشاركة بيانات موقعك الجغرافي مع جهات خارجية."</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"تتم الآن مشاركة بيانات موقعك الجغرافي مع جهات خارجية بهدف الإعلان أو التسويق."</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{تم التعديل خلال آخر 24 ساعة}=1{تم التعديل خلال آخر 24 ساعة}two{تم التعديل خلال آخر يومَين}few{تم التعديل خلال آخر # أيام}many{تم التعديل خلال آخر # يومًا}other{تم التعديل خلال آخر # يوم}}"</string>
-    <string name="no_updates_at_this_time" msgid="9031085635689982935">"ما مِن تعديلات في الوقت الحالي."</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"ما مِن تعديلات في الوقت الحالي"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"تعديلات مشاركة البيانات"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"غيّرت بعض التطبيقات الطريقة التي قد تشارك بها بيانات موقعك الجغرافي."</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"الإعدادات"</string>

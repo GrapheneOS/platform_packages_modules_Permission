@@ -349,6 +349,14 @@
             <item type="style" name="WarningBannerWidgetFrame" />
             <!-- END WARNING BANNER PREFERENCE STYLE -->
 
+            <!-- START AUTOMOTIVE WARNING BANNER PREFERENCE STYLE -->
+            <item type="style" name="AutoWarningBannerCardView" />
+            <item type="style" name="AutoWarningBannerIcon" />
+            <item type="style" name="AutoWarningBannerText" />
+            <item type="style" name="AutoWarningBannerTitle" />
+            <item type="style" name="AutoWarningBannerSummary" />
+            <!-- END AUTOMOTIVE WARNING BANNER PREFERENCE STYLE -->
+
             <!-- START PRIVACY CONTROLS CONFIGS -->
             <item type="string" name="camera_toggle_enable_config"/>
             <item type="string" name="mic_toggle_enable_config"/>

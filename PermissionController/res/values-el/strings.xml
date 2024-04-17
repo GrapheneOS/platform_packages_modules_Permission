@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Καμία"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Τελευταίες\n24 ώρες"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Τελευταίες\n7 ημέρες"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> τοις εκατό"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> προστατεύεται από το Android. Επειδή η επεξεργασία των δεδομένων σας πραγματοποιείται σε αυτήν τη συσκευή, η χρήση αδειών αυτής της εφαρμογής δεν εμφανίζεται στη γραμμή κατάστασης ή στον πίνακα ελέγχου απορρήτου σας."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> προστατεύεται από το Android. Επειδή η επεξεργασία των δεδομένων σας πραγματοποιείται σε αυτήν τη συσκευή, η χρήση αδειών αυτής της εφαρμογής δεν εμφανίζεται στον πίνακα ελέγχου απορρήτου σας."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Η κάμερα συσκευής αποκλείστηκε"</string>

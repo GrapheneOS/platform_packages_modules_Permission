@@ -1677,6 +1677,16 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="blocked_mic_summary">Microphone data may still be shared when you call an emergency number.</string>
     <!-- Label for the button to change the sensor status  [CHAR LIMIT=none] -->
     <string name="blocked_sensor_button_label">Change</string>
+    <!-- Info label for the warning banner title if automotive camera access is off[CHAR LIMIT=none] -->
+    <string name="automotive_blocked_camera_title">Camera access is off</string>
+    <!-- Info label to display that the sensor is blocked for automotive infotainment apps and services [CHAR LIMIT=none] -->
+    <string name="automotive_blocked_infotainment_app_summary">For infotainment apps</string>
+     <!-- Info label to display that the sensor is blocked for automotive required apps and services [CHAR LIMIT=none] -->
+    <string name="automotive_blocked_required_app_summary">For required apps</string>
+    <!-- Info label for the required app title which needs to access sensors such as camera, location and microphone [CHAR LIMIT=NONE]-->
+    <string name="automotive_required_app_title">This app is required</string>
+    <!-- Info label to display when the automotive app is a required app for accessing sensors such as camera, location and microphone [CHAR LIMIT=NONE]-->
+    <string name="automotive_required_app_summary">This app is required by your car\u2019s manufacturer</string>
 
     <!-- Title for page containing overall view of device safety status [CHAR LIMIT=30] -->
     <string name="safety_center_dashboard_page_title">Security &amp; privacy</string>

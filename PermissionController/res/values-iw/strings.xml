@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"ללא"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ב-24 השעות\nהאחרונות"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"ב-7 הימים\nהאחרונים"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"‫<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> אחוזים"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג בשורת הסטטוס או במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"המצלמה במכשיר חסומה"</string>

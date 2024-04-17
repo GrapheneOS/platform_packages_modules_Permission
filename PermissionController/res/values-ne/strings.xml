@@ -72,7 +72,7 @@
     <string name="denied_permission_decision" msgid="5308961501779563781">"तपाईंले <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> प्रयोग गर्न <xliff:g id="APP_NAME">%1$s</xliff:g> ले मागेको अनुमति अस्वीकार गर्नुभएको छ"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{आज}=1{१ दिनअघि}other{# दिनअघि}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"एप असक्षम पार्नुहोस्"</string>
-    <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपहरूले अब उप्रान्त अपेक्षाअनुसार कार्य नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको यन्त्रसँग पहिल्यै स्थापना भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्नुहुन्छ तथा यसलाई आफ्नो डिभाइसमा लुकाउनुहुन्छ।"</string>
+    <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपले अब उप्रान्त अपेक्षाअनुसार काम नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको डिभाइसमा पहिल्यै इन्स्टल भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्न र आफ्नो डिभाइसमा लुकाउन मात्र सक्नुहुन्छ।"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"अनुमति व्यवस्थापन"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"फेरि नसोध्नुहोला"</string>
     <string name="no_permissions" msgid="3881676756371148563">"अनुमति दिन भनी कुनै अनुरोध छैन"</string>
@@ -653,7 +653,7 @@
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"तपाईंको लोकेसन डेटा अहिले तेस्रो पक्षहरूसँग सेयर गरिँदै छ"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"विज्ञापन तथा मार्केटिङ गर्ने प्रयोजनका लागि तपाईंको लोकेसन डेटा अहिले तेस्रो पक्षहरूसँग सेयर गरिँदै छ"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{पछिल्लो एक दिनभित्र अपडेट गरिएको}=1{पछिल्लो एक दिनभित्र अपडेट गरिएको}other{पछिल्ला # दिनभित्र अपडेट गरिएको}}"</string>
-    <string name="no_updates_at_this_time" msgid="9031085635689982935">"अहिले कुनै अद्यावधिक जानकारी उपलब्ध छैन"</string>
+    <string name="no_updates_at_this_time" msgid="9031085635689982935">"अहिले कुनै अपडेट उपलब्ध छैन"</string>
     <string name="safety_label_changes_notification_title" msgid="4479955083472203839">"जानकारी सेयर गर्नेसम्बन्धी अभ्यासका बारेमा अद्यावधिक जानकारी"</string>
     <string name="safety_label_changes_notification_desc" msgid="7808764283266234675">"केही एपहरूले तपाईंको लोकेसन डेटा सेयर गर्न सक्ने तरिका परिवर्तन गरेका छन्"</string>
     <string name="safety_label_changes_gear_description" msgid="2655887555599138509">"सेटिङ"</string>

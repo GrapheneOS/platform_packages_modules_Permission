@@ -351,7 +351,7 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Aplikacije pristupačnosti (njih <xliff:g id="NUM_SERVICES">%s</xliff:g>) s potpunim pristupom vašem uređaju"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> može vidjeti vaš zaslon, radnje i unose, izvršavati radnje i upravljati zaslonom."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Te aplikacije mogu vidjeti vaš zaslon, radnje i unose, izvršavati radnje i upravljati zaslonom."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Zadani digitalni asistent"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Zadana aplikacija digitalnog asistenta"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Apl. digitalnog asistenta"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć služe se podacima koji se prikazuju na zaslonu. Neke aplikacije podržavaju pokretač i usluge glasovnog unosa kako bi vam pružile integriranu pomoć."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Zadana aplikacija preglednika"</string>
@@ -377,7 +377,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za hitne slučajeve?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Nije potrebno nijedno dopuštenje"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"hitni slučaj"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Zadana aplik. početnog zaslona"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Zadana aplikacija početnog zaslona"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija početnog zaslona"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Aplikacije, poznate i kao pokretači, koje zamjenjuju početne zaslone na vašem Android uređaju i pružaju vam pristup sadržajima i značajkama na njemu"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Želite li postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju početnog zaslona?"</string>

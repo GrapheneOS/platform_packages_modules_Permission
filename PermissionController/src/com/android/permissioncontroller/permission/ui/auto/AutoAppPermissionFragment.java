@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui.auto;
 
+import static android.Manifest.permission_group.CAMERA;
+
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW;
@@ -33,6 +35,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.hardware.SensorPrivacyManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.BidiFormatter;
@@ -42,6 +46,7 @@ import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -53,6 +58,7 @@ import androidx.preference.PreferenceViewHolder;
 import androidx.preference.TwoStatePreference;
 
 import com.android.car.ui.AlertDialogBuilder;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
@@ -62,11 +68,13 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.v33.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.PackageRemovalMonitor;
+import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.RestrictedLockUtils;
 
-import java.util.Map;
-
 import kotlin.Pair;
+
+import java.util.List;
+import java.util.Map;
 
 /** Settings related to a particular permission for the given app. */
 public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
@@ -74,6 +82,8 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
 
     private static final String LOG_TAG = "AppPermissionFragment";
     private static final long POST_DELAY_MS = 20;
+    private static final String BLOCKED_APP_PREF_KEY = "blocked_app";
+    private static final String REQUIRED_APP_PREF_KEY = "required_app";
 
     @NonNull
     private TwoStatePreference mAllowPermissionPreference;
@@ -99,6 +109,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
     @NonNull
     private String mPermGroupLabel;
     private Drawable mPackageIcon;
+
+    private SensorPrivacyManager mSensorPrivacyManager;
+    private List<String> mCameraPrivacyAllowlist;
 
     /**
      * Listens for changes to the app the permission is currently getting granted to. {@code null}
@@ -156,6 +169,10 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
                 mPackageName, mUser);
         setHeaderLabel(
                 requireContext().getString(R.string.app_permission_title, mPermGroupLabel));
+        if (SdkLevel.isAtLeastV()) {
+            mSensorPrivacyManager = requireContext().getSystemService(SensorPrivacyManager.class);
+            mCameraPrivacyAllowlist = mSensorPrivacyManager.getCameraPrivacyAllowlist();
+        }
     }
 
     @Override
@@ -257,6 +274,13 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         mViewModel.getButtonStateLiveData().observe(this, this::setRadioButtonsState);
         mViewModel.getDetailResIdLiveData().observe(this, this::setDetail);
         mViewModel.getShowAdminSupportLiveData().observe(this, this::setAdminSupportDetail);
+        if (SdkLevel.isAtLeastV()) {
+            // TODO: b/327489942 - Location and microphone privacy UX settings change to
+            // follow later.
+            if (CAMERA.equals(mPermGroupName)) {
+                mViewModel.getSensorStatusLiveData().observe(this, this::setSensorStatus);
+            }
+        }
     }
 
     @Override
@@ -266,6 +290,111 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         if (mPackageRemovalMonitor != null) {
             mPackageRemovalMonitor.unregister();
             mPackageRemovalMonitor = null;
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    private void setSensorStatus(Boolean sensorStatus) {
+        if (CAMERA.equals(mPermGroupName)) {
+            if (sensorStatus) {
+                setSensorCard();
+            } else {
+                removeSensorCard();
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    private void setSensorCard() {
+        int state = mSensorPrivacyManager.getSensorPrivacyState(
+                SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE,
+                SensorPrivacyManager.Sensors.CAMERA);
+        boolean isRequiredApp = mCameraPrivacyAllowlist.contains(mPackageName);
+        if ((state == SensorPrivacyManager.StateTypes.ENABLED_EXCEPT_ALLOWLISTED_APPS)
+                && isRequiredApp) {
+            setRequiredAppCard();
+        } else {
+            setBlockedAppCard(isRequiredApp);
+        }
+    }
+
+    private void setRequiredAppCard() {
+        AutoCardViewPreference sensorCard = findPreference(REQUIRED_APP_PREF_KEY);
+        if (sensorCard == null) {
+            sensorCard = createRequiredAppCard();
+            if (getPreferenceScreen() != null) {
+                getPreferenceScreen().addPreference(sensorCard);
+            }
+        }
+        sensorCard.setVisible(true);
+    }
+
+    private void setBlockedAppCard(boolean isRequiredApp) {
+        AutoCardViewPreference sensorCard = findPreference(BLOCKED_APP_PREF_KEY);
+        if (sensorCard == null) {
+            sensorCard = createBlockedAppCard(isRequiredApp);
+            if (getPreferenceScreen() != null) {
+                getPreferenceScreen().addPreference(sensorCard);
+            }
+        }
+        sensorCard.setVisible(true);
+    }
+
+    private AutoCardViewPreference createRequiredAppCard() {
+        Context context = getPreferenceManager().getContext();
+        AutoCardViewPreference sensorCard = new AutoCardViewPreference(context);
+        sensorCard.setKey(REQUIRED_APP_PREF_KEY);
+        sensorCard.setIcon(R.drawable.ic_camera_allowed);
+        sensorCard.setTitle(context.getString(R.string.automotive_required_app_title));
+        sensorCard.setSummary(context.getString(R.string.automotive_required_app_summary));
+        sensorCard.setVisible(true);
+        sensorCard.setOrder(-1);
+        return sensorCard;
+    }
+
+    private AutoCardViewPreference createBlockedAppCard(boolean isRequiredApp) {
+        Context context = getPreferenceManager().getContext();
+
+        AutoCardViewPreference sensorCard = new AutoCardViewPreference(context);
+        sensorCard.setKey(BLOCKED_APP_PREF_KEY);
+        sensorCard.setIcon(Utils.getBlockedIcon(mPermGroupName));
+        sensorCard.setTitle(context.getString(R.string.automotive_blocked_camera_title));
+        if (isRequiredApp) {
+            sensorCard.setSummary(context.getString(
+                    R.string.automotive_blocked_required_app_summary));
+        } else {
+            sensorCard.setSummary(context.getString(
+                    R.string.automotive_blocked_infotainment_app_summary));
+        }
+        sensorCard.setVisible(true);
+        sensorCard.setOrder(-1);
+        return sensorCard;
+    }
+
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    private void removeSensorCard() {
+        int state = mSensorPrivacyManager.getSensorPrivacyState(
+                SensorPrivacyManager.TOGGLE_TYPE_SOFTWARE,
+                SensorPrivacyManager.Sensors.CAMERA);
+        if ((state == SensorPrivacyManager.StateTypes.ENABLED_EXCEPT_ALLOWLISTED_APPS)
+                && (mCameraPrivacyAllowlist.contains(mPackageName))) {
+            removeRequiredAppCard();
+        } else {
+            removeBlockedAppCard();
+        }
+    }
+
+    private void removeRequiredAppCard() {
+        AutoCardViewPreference sensorCard = findPreference(REQUIRED_APP_PREF_KEY);
+        if (sensorCard != null) {
+            sensorCard.setVisible(false);
+        }
+    }
+
+    private void removeBlockedAppCard() {
+        AutoCardViewPreference sensorCard = findPreference(BLOCKED_APP_PREF_KEY);
+        if (sensorCard != null) {
+            sensorCard.setVisible(false);
         }
     }
 

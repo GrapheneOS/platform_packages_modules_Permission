@@ -549,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"なし"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去 \n24 時間"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 日間"</string>
+    <!-- String.format failed for translation -->
     <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
     <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はステータスバーやプライバシー ダッシュボードには表示されません。"</string>

@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nenhuma"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Nos últimos\nsete dias"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> por cento"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado na barra de status nem no painel de privacidade."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é Protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado no painel de privacidade."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"A câmera do dispositivo está bloqueada"</string>
@@ -648,7 +647,7 @@
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Este app indicou que pode compartilhar seus dados de local com terceiros"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Atualizações no compartilhamento de dados de local"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Conferir apps que mudaram a forma de compartilhar seus dados de local"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Esses apps mudaram a forma de compartilhar os dados de local. É possível que eles não tenham compartilhado antes ou que agora compartilhem para fins de publicidade ou marketing."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Esses apps mudaram a forma de compartilhar os dados de local. É possível que eles não os tenham compartilhado antes ou que agora os compartilhem para fins de publicidade ou marketing."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os desenvolvedores desses apps oferecem informações sobre as práticas deles de compartilhamento de dados com uma app store. Eles podem atualizar essas informações com o tempo.\n\nAs práticas de compartilhamento de dados podem variar de acordo com a versão do app e com a idade, o uso e a região do usuário."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre o compartilhamento de dados"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Seus dados de local agora são compartilhados com terceiros"</string>

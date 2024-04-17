@@ -647,7 +647,7 @@
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Esta app declarou que pode partilhar os seus dados de localização com terceiros"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Atualizações da partilha de dados para a localização"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Reveja apps que mudaram a forma de partilhar os seus dados de localização"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas apps mudaram a forma como podem partilhar os seus dados de localização. Podem não os ter partilhado antes ou podem partilhá-los agora para fins de publicidade ou marketing."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas apps mudaram a forma de partilhar os seus dados de localização. É possível que não os tenham partilhado antes ou que passem a partilhá-los agora para fins de publicidade ou marketing."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Os programadores destas apps deram informações sobre as respetivas práticas de partilha de dados a uma loja de apps. Podem atualizá-las ao longo do tempo.\n\nAs práticas de partilha de dados podem variar consoante a versão da app, a utilização, a região e a idade."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Saiba mais sobre a partilha de dados"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Os seus dados de localização são agora partilhados com terceiros"</string>

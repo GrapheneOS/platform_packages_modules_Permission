@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Cap"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 darreres\nhores"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7\ndarrers dies"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> per cent"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra a la barra d\'estat ni al tauler de privadesa."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra al tauler de privadesa."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"La càmera del dispositiu està bloquejada"</string>

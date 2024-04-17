@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"–"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Viimeiset\n24 tuntia"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"7 viime\npäivää"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> prosenttia"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> on Androidin suojaama. Koska datasi käsitellään tällä laitteella, sovelluksen lupien käyttö ei näy tilapalkissa eikä yksityisyydenhallintapaneelisi."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> on Androidin suojaama. Koska datasi käsitellään tällä laitteella, sovelluksen lupien käyttö ei näy yksityisyydenhallintapaneelissasi."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Laitteen kamera on estetty"</string>

@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Lutho"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Emahoreni angama-\n24 adlule"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Izinsuku ezi-\n7 ezedlule"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> amaphesenti angu-<xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kubha yesimo noma kudeshibhodi yakho yobumfihlo"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kudeshibhodi yakho yobumfihlo"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Ikhamera yedivayisi ivinjiwe"</string>

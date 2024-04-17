@@ -549,6 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Keine"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Letzte\n24 Stunden"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Letzte\n7 Tage"</string>
+    <!-- String.format failed for translation -->
     <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
     <skip />
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird weder in der Statusleiste noch auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App angezeigt."</string>
@@ -649,7 +650,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Änderungen bei der Weitergabe von Standortdaten"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Apps ansehen, bei denen sich die Art der Weitergabe deiner Standortdaten geändert hat"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Bei diesen Apps hat sich die Art der Weitergabe deiner Standortdaten geändert. Möglicherweise wurden sie zuvor nicht weitergegeben oder sie werden jetzt zu Werbe- oder Marketingzwecken weitergegeben."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Die Entwickler dieser Apps haben Informationen über ihre Praktiken zur Datenweitergabe an App-Shops zur Verfügung gestellt. Diese Praktiken können im Laufe der Zeit geändert werden.\n\nPraktiken zur Datenweitergabe können je nach App-Version, Verwendung, Region und Alter des Nutzers variieren."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Die Entwickler dieser Apps haben für App-Shops Informationen über ihre Praktiken zur Datenweitergabe zur Verfügung gestellt. Diese Praktiken können im Laufe der Zeit geändert werden.\n\nPraktiken zur Datenweitergabe können je nach App-Version, Verwendung, Region und Alter des Nutzers variieren."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Informationen zur Datenweitergabe"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Deine Standortdaten werden ab jetzt an Dritte weitergegeben"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Deine Standortdaten werden ab jetzt zu Werbe- oder Marketingzwecken an Dritte weitergegeben"</string>

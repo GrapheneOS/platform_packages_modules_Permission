@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"無"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去\n24 小時"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 天內"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> 百分之 <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」受 Android 保護。系統是在這部裝置上處理你的資料，因此狀態列或隱私資訊主頁不會顯示這個應用程式的權限使用情形。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」受 Android 保護。系統是在這部裝置上處理你的資料，因此隱私資訊主頁不會顯示這個應用程式的權限使用情形。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"裝置相機已封鎖"</string>
@@ -648,9 +647,9 @@
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"這個應用程式表示可能會將位置資料分享給第三方"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"位置資料共用方式更新"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"查看曾變更位置資料共用方式的應用程式"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"以下應用程式變更了分享位置資料的做法。這些應用程式先前可能未曾分享位置資料，也可能是現在為了廣告或行銷目的而分享這些資料。"</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"這些應用程式的開發人員已將資料分享做法相關資訊提供給應用程式商店，並可能會隨著時間更新這些資訊。\n\n資料分享做法可能會因你的應用程式版本、使用方式、所在地區和年齡而異。"</string>
-    <string name="learn_about_data_sharing" msgid="4200480587079488045">"瞭解資料分享"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"以下應用程式變更了共用位置資料的做法。這些應用程式先前可能未曾共用位置資料，也可能是現在為了廣告或行銷目的而共用這些資料。"</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"這些應用程式的開發人員已將資料共用做法相關資訊提供給應用程式商店，並可能會隨著時間更新這些資訊。\n\n資料共用做法可能會因你的應用程式版本、使用方式、所在地區和年齡而異。"</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"瞭解資料共用"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"你的位置資料目前已分享給第三方"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"你的位置資料目前已分享給第三方服務作為廣告或行銷用途"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{在 1 天內曾更新}=1{在 1 天內曾更新}other{在 # 天內曾更新}}"</string>

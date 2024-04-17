@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"無"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去\n24 小時"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 天內"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> 百分之 <xliff:g id="PERCENT">%2$d</xliff:g>"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> 受 Android 保護。系統會在此裝置上處理你的資料，因此狀態列或私隱資訊主頁不會顯示此應用程式的權限使用情況。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> 受 Android 保護。系統會在此裝置上處理你的資料，因此私隱資訊主頁不會顯示此應用程式的權限使用情況。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"已封鎖裝置相機"</string>

@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Nėra"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Pastarosios\n24 val."</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Pastarosios\n7 dienos"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> proc."</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas būsenos juostoje ar privatumo informacijos suvestinėje."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas privatumo informacijos suvestinėje."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Įrenginio vaizdo kamera užblokuota"</string>
@@ -648,7 +647,7 @@
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"Ši programa nurodė, kad gali bendrinti vietovės duomenis su trečiosiomis šalimis"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Duomenų bendrinimo atnaujinimai pagal vietovę"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Peržiūrėkite programas, kuriose pakeisti vietovės duomenų bendrinimo metodai"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Šiose programose pakeisti vietovės duomenų bendrinimo metodai Gali būti, kad anksčiau jie nebuvo bendrinami, arba dabar jie gali būti bendrinami reklamavimo ar rinkodaros tikslais."</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Šiose programose pakeisti vietovės duomenų bendrinimo metodai. Gali būti, kad anksčiau jie nebuvo bendrinami, arba dabar jie gali būti bendrinami reklamavimo ar rinkodaros tikslais."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Šių programų kūrėjai pateikė informacijos apie savo duomenų bendrinimo praktikos metodus programų parduotuvėje. Jie gali ją atnaujinti per laiką.\n\nDuomenų bendrinimo praktikos metodai gali skirtis atsižvelgiant į programos versiją, naudojimą, regioną ir amžių."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Sužinokite apie duomenų bendrinimą"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Jūsų vietovės duomenys dabar bendrinami su trečiosiomis šalimis"</string>

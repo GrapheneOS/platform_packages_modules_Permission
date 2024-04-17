@@ -71,8 +71,8 @@
     <string name="granted_permission_decision" msgid="7824827491551861365">"Jy het vir <xliff:g id="APP_NAME">%1$s</xliff:g> toegang tot <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> gegee"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Jy het <xliff:g id="APP_NAME">%1$s</xliff:g> toegang tot <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> geweier"</string>
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Vandag}=1{1 dag gelede}other{# dae gelede}}"</string>
-    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiveer program"</string>
-    <string name="app_disable_dlg_text" msgid="3126943217146120240">"As jy hierdie program deaktiveer, sal Android en ander programme dalk nie meer soos bedoel werk nie. Hou in gedagte dat jy nie hierdie program kan uitvee nie, want dit is vooraf op jou toestel geïnstalleer. Deur dit te deaktiveer, skakel jy hierdie program af en versteek jy dit op jou toestel."</string>
+    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiveer app"</string>
+    <string name="app_disable_dlg_text" msgid="3126943217146120240">"As jy hierdie app deaktiveer, sal Android en ander apps dalk nie meer soos bedoel werk nie. Hou in gedagte dat jy nie hierdie app kan uitvee nie, want dit is vooraf op jou toestel geïnstalleer. Deur dit te deaktiveer, skakel jy hierdie app af en versteek jy dit op jou toestel."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Toestemmingbestuurder"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Moenie weer vra nie"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Geen toestemmings nie"</string>

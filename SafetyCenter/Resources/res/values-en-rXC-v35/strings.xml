@@ -20,6 +20,10 @@
     <string name="cellular_network_security_title" msgid="2986431282931510973">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‎‎‏‎‏‏‏‎‎‎‏‏‏‏‎‏‏‏‏‎‏‏‎‏‏‎‏‏‏‎‏‎‏‎‏‎‎‏‏‏‏‏‏‎‎‏‎‏‏‏‎‏‎‏‏‏‏‎‏‎Cellular network security‎‏‎‎‏‎"</string>
     <string name="cellular_network_security_summary" msgid="7319307247487475572">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‎‏‏‎‎‏‎‎‏‏‎‏‏‎‎‏‏‏‎‎‏‎‏‎‎‏‏‎‎‎‏‎‎‎‎‏‏‎‏‏‏‎‏‏‎‏‏‏‏‏‎‏‏‏‎‏‎‎‎Network type, encryption, notification controls‎‏‎‎‏‎"</string>
     <string name="biometrics_title_for_private_profile" msgid="542819107383037820"></string>
+    <string name="privacy_title" msgid="7047524783080782769">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‎‏‏‏‎‎‏‏‎‏‏‏‎‏‎‏‏‎‎‏‏‏‎‎‏‏‎‏‏‎‏‎‎‏‎‏‎‎‏‎‏‎‏‎‏‏‏‎‏‏‏‎‏‏‎‎‎‏‎Privacy‎‏‎‎‏‎"</string>
+    <string name="privacy_sources_title" msgid="309304028326660956">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‏‏‏‎‎‎‏‎‎‏‎‏‎‏‏‎‏‏‏‏‎‎‏‏‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‏‎‎‎‎‎‏‎‏‏‎‏‎‏‏‏‎‎‎Privacy controls‎‏‎‎‏‎"</string>
+    <string name="privacy_sources_summary" msgid="2165270848857537278">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‏‎‎‎‎‎‏‏‎‎‏‎‎‏‎‏‏‎‎‏‎‏‏‏‎‏‎‏‏‎‏‏‎‎‏‎‏‎‏‎‎‏‎‏‏‏‏‎‏‎‏‏‏‏‏‏‏‎‎Permissions, controls‎‏‎‎‏‎"</string>
+    <string name="privacy_additional_title" msgid="4239060639056083649"></string>
     <string name="private_space_title" msgid="6158245041481535879">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‏‎‏‎‏‏‏‎‏‏‎‎‏‏‏‏‎‏‏‎‎‏‏‏‏‎‎‏‏‎‎‏‎‎‏‎‏‎‏‎‎‎‏‎‏‎‏‎‎‎‏‏‎‎‎‎‏‏‏‎Private Space‎‏‎‎‏‎"</string>
     <string name="private_space_summary" msgid="529869826714610294">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‏‏‏‏‏‎‏‎‏‏‎‏‎‎‏‏‏‏‎‎‏‏‏‎‎‏‏‎‎‏‏‎‎‏‏‏‎‏‎‎‎‎‏‎‏‏‎‏‎‏‎‏‎‎‏‏‏‎‏‏‎‎Setup Private Space, and more‎‏‎‎‏‎"</string>
     <string name="private_space_search_terms" msgid="4820808478299116258">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‎‏‎‏‏‏‎‎‏‏‎‏‏‏‏‎‎‏‏‏‏‎‎‎‏‎‎‏‏‏‎‏‏‏‏‎‎‏‏‎‏‎‏‏‏‎‏‎‎‏‎‏‏‏‎‎‎‏‎‎Private Space‎‏‎‎‏‎"</string>

@@ -298,7 +298,7 @@
     <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Fjarlægja aðgang"</string>
     <string name="accessibility_show_all_apps_button_label" msgid="960067249326392280">"Skoða forrit með fullan aðgang"</string>
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Aðgangur fjarlægður"</string>
-    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android kerfið"</string>
+    <string name="safety_center_notification_app_label" msgid="2457720616141926534">"Android-kerfið"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Heimildir forrits fjarlægðar vegna persónuverndar"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> hefur ekki verið notað í nokkra mánuði. Ýttu til að skoða."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> og eitt forrit í viðbót hafa ekki verið notuð í nokkra mánuði. Ýttu til að skoða."</string>

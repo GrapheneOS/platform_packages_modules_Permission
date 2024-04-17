@@ -549,8 +549,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"없음"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"지난\n24시간"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"지난\n7일"</string>
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g>퍼센트"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱은 Android에 의해 보호됩니다. 데이터가 이 기기에서 처리되므로 앱 권한 사용 내역이 상태 표시줄이나 개인 정보 대시보드에 표시되지 않습니다."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱은 Android에 의해 보호됩니다. 데이터가 이 기기에서 처리되므로 앱 권한 사용 내역이 개인 정보 대시보드에 표시되지 않습니다."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"기기 카메라 차단됨"</string>
