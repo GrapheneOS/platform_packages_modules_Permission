@@ -54,12 +54,13 @@ class PermissionUsageViewModel(
     private val permissionRepository: PermissionRepository,
     private val getPermissionUsageUseCase: GetPermissionGroupUsageUseCase,
     scope: CoroutineScope? = null,
-    dispatcher: CoroutineDispatcher? = null
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    // Inject the parameter to prevent READ_DEVICE_CONFIG permission error on T- platforms.
+    private val is7DayToggleEnabled: Boolean = KotlinUtils.is7DayToggleEnabled(),
 ) : AndroidViewModel(app) {
     private var showSystemApps = false
     private var show7DaysData = false
     private val coroutineScope = scope ?: viewModelScope
-    private val defaultDispatcher = dispatcher ?: Dispatchers.Default
 
     // Cache permission usages to calculate ui state for "show system" and "show 7 days" toggle.
     @Volatile private var permissionGroupUsages = emptyList<PermissionGroupUsageModel>()
@@ -90,7 +91,7 @@ class PermissionUsageViewModel(
     private fun getStartTime(show7DaysData: Boolean): Long {
         val curTime = System.currentTimeMillis()
         val showPermissionUsagesDuration =
-            if (KotlinUtils.is7DayToggleEnabled() && show7DaysData) {
+            if (is7DayToggleEnabled && show7DaysData) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

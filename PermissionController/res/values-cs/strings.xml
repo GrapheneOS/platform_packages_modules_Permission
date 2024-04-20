@@ -436,7 +436,7 @@
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otevírání odkazů"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Výchozí pracovní"</string>
     <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Výchozí pro soukromý prostor"</string>
-    <string name="default_app_none" msgid="9084592086808194457">"Žádná"</string>
+    <string name="default_app_none" msgid="9084592086808194457">"Žádná aplikace"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Výchozí nastavení systému)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žádné aplikace"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybráno"</string>
@@ -560,6 +560,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Pro aplikace a služby"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Když zavoláte na číslo tísňového volání, mohou být nadále sdílena data z mikrofonu."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Změnit"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Přístup k fotoaparátu je vypnutý"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Pro aplikace informační a zábavní aplikace"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Pro povinné aplikace"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Tato aplikace je povinná"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Tuto aplikaci výrobce auta vyžaduje"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Zabezpečení a ochrana soukromí"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Zkontrolovat zařízení"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavřít"</string>

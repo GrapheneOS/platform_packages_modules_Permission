@@ -39,6 +39,7 @@
                  android:exported="false"/>
 
         <activity android:name=".TestActivity"
+                  android:theme="@style/OptOutEdgeToEdgeEnforcement"
                   android:exported="false">
             <intent-filter android:priority="-1">
                 <action android:name="com.android.safetycenter.testing.action.TEST_ACTIVITY"/>

@@ -159,8 +159,19 @@ class GrantPermissionsViewModel(
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
 
-    private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
-        autoGrantNotifier = AutoGrantPermissionsNotifier(app, packageInfo.toPackageInfo(app)!!)
+    private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier? {
+        var fullPackageInfo = packageInfo.toPackageInfo(app)
+        if (fullPackageInfo == null) {
+            // try twice
+            fullPackageInfo = packageInfo.toPackageInfo(app)
+        }
+        if (fullPackageInfo == null) {
+            // We've tried to get our package info twice, and failed twice. Close the grant dialog,
+            // because the app is not accessible.
+            requestInfosLiveData.value = null
+            return null
+        }
+        autoGrantNotifier = AutoGrantPermissionsNotifier(app, fullPackageInfo)
         return autoGrantNotifier!!
     }
 
@@ -633,7 +644,7 @@ class GrantPermissionsViewModel(
                         filterPermissions = listOf(perm)
                     )
                     state = STATE_GRANTED
-                    getAutoGrantNotifier().onPermissionAutoGranted(perm)
+                    getAutoGrantNotifier()?.onPermissionAutoGranted(perm)
                     reportRequestResult(
                         perm,
                         PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED

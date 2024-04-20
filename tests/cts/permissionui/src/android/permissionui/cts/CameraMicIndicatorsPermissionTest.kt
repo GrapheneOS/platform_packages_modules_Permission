@@ -30,6 +30,7 @@ import android.os.SystemClock
 import android.os.SystemProperties
 import android.permission.PermissionManager
 import android.platform.test.annotations.AsbSecurityTest
+import android.platform.test.rule.ScreenRecordRule
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
@@ -92,6 +93,7 @@ private val HOTWORD_DETECTION_SERVICE_REQUIRED =
     SystemProperties.getBoolean("ro.hotword.detection_service_required", false)
 
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
+@ScreenRecordRule.ScreenRecord
 @FlakyTest
 class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
@@ -125,6 +127,8 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     private lateinit var carCameraPrivacyChipId: String
 
     @get:Rule val disableAnimationRule = DisableAnimationRule()
+
+    @get:Rule val screenRecordRule = ScreenRecordRule(false, false)
 
     constructor() : super()
 

@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Για εφαρμογές και υπηρεσίες"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Ενδέχεται να κοινοποιηθούν δεδομένα μικροφώνου κατά την κλήση ενός αριθμού έκτακτης ανάγκης."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Αλλαγή"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Η πρόσβαση στην κάμερα είναι απενεργοποιημένη"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Για εφαρμογές ενημέρωσης και ψυχαγωγίας"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Για απαιτούμενες εφαρμογές"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Απαιτείται αυτή η εφαρμογή"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Αυτή η εφαρμογή απαιτείται από τον κατασκευαστή του αυτοκινήτου σας"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Ασφάλεια και απόρρητο"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Σάρωση συσκευής"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Παράβλεψη"</string>

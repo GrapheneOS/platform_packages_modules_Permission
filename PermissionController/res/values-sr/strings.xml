@@ -395,7 +395,7 @@
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Није потребна ниједна дозвола"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Подразумевана апликација за навигацију"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Апликација за навигацију"</string>
-    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Апликације које могу да пружају претрагу занимљивих места и детаљну помоћ при навигацији"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Апликације које могу да пружају претрагу тачака од интереса и детаљну помоћ при навигацији"</string>
     <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Желите да подесите апликацију <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за навигацију?"</string>
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Није потребна ниједна дозвола"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ће добити дозволу за интеракцију са обавештењима и приступ дозволама за телефон, SMS поруке, контакте и календар."</string>
@@ -558,6 +558,16 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"За апликације и услуге"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Подаци микрофона могу и даље да се деле када позовете број за хитне случајеве."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Промени"</string>
+    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
+    <skip />
+    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
+    <skip />
+    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
+    <skip />
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Безбедност и приватност"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Скенирај уређај"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Одбаци"</string>

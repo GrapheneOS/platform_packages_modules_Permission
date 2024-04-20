@@ -20,12 +20,9 @@
     <string name="cellular_network_security_title" msgid="2986431282931510973">"ფიჭური ქსელის უსაფრთხოება"</string>
     <string name="cellular_network_security_summary" msgid="7319307247487475572">"ქსელის ტიპი, დაშიფვრა, შეტყობინებების მართვის საშუალებები"</string>
     <string name="biometrics_title_for_private_profile" msgid="542819107383037820"></string>
-    <!-- no translation found for privacy_title (7047524783080782769) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (309304028326660956) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (2165270848857537278) -->
-    <skip />
+    <string name="privacy_title" msgid="7047524783080782769">"კონფიდენციალურობა"</string>
+    <string name="privacy_sources_title" msgid="309304028326660956">"კონფიდენციალურობის მართვის პარამეტრები"</string>
+    <string name="privacy_sources_summary" msgid="2165270848857537278">"ნებართვები, მართვის საშუალებები"</string>
     <string name="privacy_additional_title" msgid="4239060639056083649"></string>
     <string name="private_space_title" msgid="6158245041481535879">"პირადი სივრცე"</string>
     <string name="private_space_summary" msgid="529869826714610294">"დააყენეთ პირადი სივრცე და ა.შ."</string>

@@ -20,7 +20,7 @@
     <string name="security_privacy_brand_name" msgid="7303621734258440812">"सुरक्षा और निजता"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"कंट्रोल"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
-    <string name="health_connect_summary" msgid="815473513776882296">"स्वास्थ्य की जानकारी से जुड़े डेटा के लिए, ऐप्लिकेशन का ऐक्सेस मैनेज करें"</string>
+    <string name="health_connect_summary" msgid="815473513776882296">"स्वास्थ्य की जानकारी से जुड़े डेटा के लिए, ऐप्लिकेशन का ऐक्सेस मैनेज किया जा सकता है"</string>
     <string name="location_settings" msgid="8863940440881290182">"जगह की जानकारी का ऐक्सेस"</string>
     <string name="mic_toggle_description" msgid="1504101620086616040">"ऐप्लिकेशन और सेवाओं के लिए. इस सेटिंग के बंद होने पर भी, माइक्रोफ़ोन के डेटा को शेयर किया जा सकता है. ऐसा तब होता है, जब किसी आपातकालीन नंबर पर कॉल किया जाता है"</string>
 </resources>

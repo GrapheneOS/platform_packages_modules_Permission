@@ -108,7 +108,8 @@ class PermissionUsageViewModelTest {
                 permissionRepository,
                 getPermissionGroupUsageUseCase(),
                 backgroundScope,
-                StandardTestDispatcher(testScheduler)
+                StandardTestDispatcher(testScheduler),
+                is7DayToggleEnabled = true
             )
 
         val uiData =
@@ -139,7 +140,8 @@ class PermissionUsageViewModelTest {
                 permissionRepository,
                 permissionUsageUseCase,
                 backgroundScope,
-                StandardTestDispatcher(testScheduler)
+                StandardTestDispatcher(testScheduler),
+                is7DayToggleEnabled = true
             )
         val uiData =
             checkNotNull(
@@ -171,7 +173,8 @@ class PermissionUsageViewModelTest {
                 permissionRepository,
                 permissionUsageUseCase,
                 backgroundScope,
-                StandardTestDispatcher(testScheduler)
+                StandardTestDispatcher(testScheduler),
+                is7DayToggleEnabled = true
             )
 
         collectLastValue(permissionUsageViewModel.getPermissionUsagesUiDataFlow()).invoke()

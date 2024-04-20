@@ -41,6 +41,7 @@ import android.os.Build;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
 import android.permission.PermissionManager.SplitPermissionInfo;
+import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Base64;
 import android.util.Log;
@@ -48,7 +49,6 @@ import android.util.Xml;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.os.BuildCompat;
 
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -324,15 +324,8 @@ public class BackupHelper {
         serializer.startDocument(null, true);
 
         serializer.startTag(null, TAG_PERMISSION_BACKUP);
-
-        if (BuildCompat.isAtLeastQ()) {
-            // STOPSHIP: Remove compatibility code once Q SDK level is declared
-            serializer.attribute(null, ATTR_PLATFORM_VERSION,
-                    Integer.valueOf(Build.VERSION_CODES.Q).toString());
-        } else {
-            serializer.attribute(null, ATTR_PLATFORM_VERSION,
-                    Integer.valueOf(Build.VERSION.SDK_INT).toString());
-        }
+        serializer.attribute(null, ATTR_PLATFORM_VERSION,
+                Integer.valueOf(Build.VERSION.SDK_INT).toString());
 
         serializer.startTag(null, TAG_ALL_GRANTS);
 
@@ -359,6 +352,10 @@ public class BackupHelper {
      */
     private void writeDelayedStorePkgsLocked(
             @NonNull ArrayList<BackupPackageState> packagesToRestoreLater) {
+        if (packagesToRestoreLater.size() == 0) {
+            mContext.deleteFile(DELAYED_RESTORE_PERMISSIONS_FILE);
+            return;
+        }
         try (OutputStream delayedRestoreData = mContext.openFileOutput(
                 DELAYED_RESTORE_PERMISSIONS_FILE, MODE_PRIVATE)) {
             XmlSerializer serializer = newSerializer();
@@ -456,13 +453,18 @@ public class BackupHelper {
         private final boolean mIsUserFixed;
         private final boolean mWasReviewed;
 
+        // Not persisted, used during parsing so explicitly defined state takes precedence
+        private final boolean mIsAddedFromSplit;
+
         private BackupPermissionState(@NonNull String permissionName, boolean isGranted,
-                boolean isUserSet, boolean isUserFixed, boolean wasReviewed) {
+                boolean isUserSet, boolean isUserFixed, boolean wasReviewed,
+                boolean isAddedFromSplit) {
             mPermissionName = permissionName;
             mIsGranted = isGranted;
             mIsUserSet = isUserSet;
             mIsUserFixed = isUserFixed;
             mWasReviewed = wasReviewed;
+            mIsAddedFromSplit = isAddedFromSplit;
         }
 
         /**
@@ -509,7 +511,8 @@ public class BackupHelper {
                         "true".equals(parser.getAttributeValue(null, ATTR_IS_GRANTED)),
                         "true".equals(parser.getAttributeValue(null, ATTR_USER_SET)),
                         "true".equals(parser.getAttributeValue(null, ATTR_USER_FIXED)),
-                        "true".equals(parser.getAttributeValue(null, ATTR_WAS_REVIEWED))));
+                        "true".equals(parser.getAttributeValue(null, ATTR_WAS_REVIEWED)),
+                        /* isAddedFromSplit */ i > 0));
             }
 
             return parsedPermissions;
@@ -563,7 +566,8 @@ public class BackupHelper {
             if (isNotInDefaultGrantState || perm.isUserSet() || perm.isUserFixed()
                     || permissionWasReviewed) {
                 return new BackupPermissionState(perm.getName(), isPermGrantedIncludingAppOp(perm),
-                        perm.isUserSet(), perm.isUserFixed(), permissionWasReviewed);
+                        perm.isUserSet(), perm.isUserFixed(), permissionWasReviewed,
+                        /* isAddedFromSplit */ false);
             } else {
                 return null;
             }
@@ -836,7 +840,7 @@ public class BackupHelper {
                         + ATTR_PACKAGE_NAME);
             }
 
-            ArrayList<BackupPermissionState> permissionsToRestore = new ArrayList<>();
+            ArrayMap<String, BackupPermissionState> permissionsToRestore = new ArrayMap<>();
             BackupSigningInfoState signingInfo = null;
 
             while (true) {
@@ -845,7 +849,7 @@ public class BackupHelper {
                         switch (parser.getName()) {
                             case TAG_PERMISSION:
                                 try {
-                                    permissionsToRestore.addAll(
+                                    addNewPermissions(permissionsToRestore,
                                             BackupPermissionState.parseFromXml(parser, context,
                                                     backupPlatformVersion));
                                 } catch (XmlPullParserException e) {
@@ -874,13 +878,39 @@ public class BackupHelper {
 
                         break;
                     case END_TAG:
+                        ArrayList<BackupPermissionState> permissionsToRestoreList =
+                                new ArrayList<>();
+                        int numPerms = permissionsToRestore.size();
+                        for (int i = 0; i < numPerms; i++) {
+                            permissionsToRestoreList.add(permissionsToRestore.valueAt(i));
+                        }
                         return new BackupPackageState(
                                 packageName,
-                                permissionsToRestore,
+                                permissionsToRestoreList,
                                 signingInfo);
                     case END_DOCUMENT:
                         throw new XmlPullParserException("Could not parse state for "
                                 + packageName);
+                }
+            }
+        }
+
+        private static void addNewPermissions(
+                @NonNull ArrayMap<String, BackupPermissionState> permissionsToRestore,
+                @NonNull List<BackupPermissionState> newPermissionsToRestore) {
+            int numPerms = newPermissionsToRestore.size();
+            for (int i = 0; i < numPerms; i++) {
+                BackupPermissionState newPermission = newPermissionsToRestore.get(i);
+                boolean shouldOverwrite = true;
+                if (permissionsToRestore.containsKey(newPermission.mPermissionName)) {
+                    // If it already exists only overwrite if newly added state was explicitly
+                    // saved while existing state was implicit by permission split.
+                    shouldOverwrite = !newPermission.mIsAddedFromSplit
+                            && permissionsToRestore.get(newPermission.mPermissionName)
+                                    .mIsAddedFromSplit;
+                }
+                if (shouldOverwrite) {
+                    permissionsToRestore.put(newPermission.mPermissionName, newPermission);
                 }
             }
         }

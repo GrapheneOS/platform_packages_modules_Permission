@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Mantener \"Mientras la aplicación se esté usando\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Mantener \"Solo esta vez\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Más información"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Permitir todos"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Permitir acceso a todos"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Permitir todos siempre"</string>
     <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"Permitir acceso limitado"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Seleccionar fotos y vídeos"</string>
@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para aplicaciones y servicios"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Aun así, pueden compartirse datos del micrófono cuando llamas a un número de emergencia."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"El acceso a la cámara está desactivado"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Para aplicaciones de infoentretenimiento"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Para aplicaciones requeridas"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Se requiere esta aplicación"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"El fabricante de tu coche requiere esta aplicación"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Seguridad y privacidad"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Analizar dispositivo"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Cerrar"</string>

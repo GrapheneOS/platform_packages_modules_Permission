@@ -201,7 +201,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> को मिली सभी अनुमतियां देखें"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"असिस्टेंट माइक्रोफ़ोन के इस्तेमाल से जुड़ा डेटा दिखाएं"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"इस्तेमाल न किए जाने वाले ऐप की सेटिंग"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"इस्तेमाल न हो रहे ऐप के लिए सेटिंग"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ऐप्लिकेशन का इस्तेमाल न होने पर अनुमतियां हटाएं"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतियां हटाएं और जगह खाली करें"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"इस्तेमाल न होने पर ऐप गतिविधि रोकें"</string>
@@ -558,6 +558,16 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ऐप्लिकेशन और सेवाओं के लिए"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
+    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
+    <skip />
+    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
+    <skip />
+    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
+    <skip />
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"सुरक्षा और निजता"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"डिवाइस स्कैन करें"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>
@@ -646,9 +656,9 @@
     <string name="app_location_permission_rationale_title" msgid="925420340572401350">"जगह की जानकारी का डेटा शेयर किया जा सकता है"</string>
     <string name="app_location_permission_rationale_subtitle" msgid="6986985722752868692">"इस ऐप्लिकेशन में बताया गया है कि यह तीसरे पक्ष के साथ जगह की जानकारी का डेटा शेयर कर सकता है"</string>
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"जगह की जानकारी का डेटा शेयर करने के तरीके के बारे में अपडेट"</string>
-    <string name="data_sharing_updates_summary" msgid="764113985772233889">"उन ऐप्लिकेशन को देखें जिन्होंने आपकी जगह की जानकारी का डेटा शेयर करने का तरीका बदल दिया है"</string>
-    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"इन ऐप्लिकेशन ने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है. ऐसा हो सकता है कि ये ऐप्लिकेशन पहले जगह की जानकारी का डेटा शेयर न करते हों या फिर अब विज्ञापन या मार्केटिंग के लिए यह डेटा शेयर किया हो."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"इन ऐप्लिकेशन के डेवलपर ने किसी ऐप स्टोर पर डेटा शेयर करने के उनके तरीकों की जानकारी बताई है. वे समय-समय पर इस जानकारी को अपडेट कर सकते हैं.\n\nडेटा शेयर करने के तरीके अलग-अलग हो सकते हैं. ये आपकी जगह, उम्र, ऐप्लिकेशन के वर्शन, और उसके इस्तेमाल के हिसाब से तय किए जाते हैं."</string>
+    <string name="data_sharing_updates_summary" msgid="764113985772233889">"उन ऐप्लिकेशन को देखा जा सकता है जिन्होंने आपकी जगह की जानकारी का डेटा शेयर करने का अपना तरीका बदल दिया है"</string>
+    <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"इन ऐप्लिकेशन ने आपकी जगह की जानकारी के डेटा को शेयर करने का तरीका बदल दिया है. ऐसा हो सकता है कि ये ऐप्लिकेशन पहले जगह की जानकारी का डेटा शेयर न करते हों या फिर अब ये विज्ञापन या मार्केटिंग के लिए यह डेटा शेयर करें."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"इन ऐप्लिकेशन के डेवलपरों ने, डेटा शेयर करने के अपने तरीकों के बारे में ऐप स्टोर पर जानकारी दी है. वे समय-समय पर इस जानकारी को अपडेट कर सकते हैं.\n\nडेटा शेयर करने के तरीके अलग-अलग हो सकते हैं. ये आपकी जगह, उम्र, ऐप्लिकेशन के वर्शन, और उसके इस्तेमाल के हिसाब से तय किए जाते हैं."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"डेटा शेयर करने की नीतियों के बारे में जानें"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"आपकी जगह की जानकारी का डेटा अब तीसरे पक्षों के साथ शेयर किया गया है"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"विज्ञापन देने या मार्केटिंग करने के लिए, आपकी जगह की जानकारी को अब तीसरे पक्षों के साथ शेयर किया जा रहा है"</string>

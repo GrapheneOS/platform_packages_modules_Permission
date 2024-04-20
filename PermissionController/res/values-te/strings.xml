@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"యాప్‌లు, సర్వీస్‌ల కోసం"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"మీరు ఎమర్జెన్సీ నంబర్‌కు కాల్ చేసినప్పుడు, మైక్రోఫోన్ డేటా ఇప్పటికీ షేర్ చేయబడవచ్చు."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"మార్చండి"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"కెమెరా యాక్సెస్ ఆఫ్‌లో ఉంది"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"సమాచారంతో కూడిన వినోదం యాప్‌ల కోసం"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"అవసరమైన యాప్‌ల కోసం"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"ఈ యాప్ అవసరం"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"ఈ యాప్ మీ కారు తయారీదారుకు అవసరం"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"సెక్యూరిటీ &amp; గోప్యత"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"పరికరాన్ని స్కాన్ చేయండి"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"విస్మరించండి"</string>

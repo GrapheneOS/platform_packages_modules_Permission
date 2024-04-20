@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"สำหรับแอปและบริการ"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ระบบอาจยังคงแชร์ข้อมูลไมโครโฟนเมื่อคุณโทรหาหมายเลขฉุกเฉิน"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"เปลี่ยน"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"สิทธิ์เข้าถึงกล้องปิดอยู่"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"สำหรับแอปสาระบันเทิง"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"สำหรับแอปที่จำเป็น"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"แอปนี้เป็นแอปที่จำเป็น"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"ผู้ผลิตรถยนต์จำเป็นต้องใช้แอปนี้"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"ความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"สแกนอุปกรณ์"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ปิด"</string>

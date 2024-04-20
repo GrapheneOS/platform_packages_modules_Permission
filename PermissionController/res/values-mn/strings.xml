@@ -453,7 +453,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> алдаа засах мэдээллийг байршуулах хүсэлтэй байна."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"Дебаг хийх өгөгдлийг хуваалцах уу?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Систем асуудал илрүүллээ."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> энэ төхөөрөмжөөс <xliff:g id="DATE">%2$s</xliff:g>-н <xliff:g id="TIME">%3$s</xliff:g>-д авсан алдааны мэдээг байршуулах хүсэлт тавьж байна. Алдааны мэдээнд таны төхөөрөмжийн талаарх эсвэл хэрэглэгчийн нэр, байршлын өгөгдөл, төхөөрөмжийн таниулбар болон сүлжээний мэдээлэл зэрэг аппуудын бүртгэсэн хувийн мэдээллийг агуулна. Та алдааны мэдээг зөвхөн энэ мэдээллийг хуваалцахдаа итгэлтэй байгаа хүмүүс болон аппуудтай хуваалцана уу. <xliff:g id="APP_NAME_1">%4$s</xliff:g>-д алдааны мэдээг байршуулахыг зөвшөөрөх үү?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> энэ төхөөрөмжөөс <xliff:g id="DATE">%2$s</xliff:g>-н <xliff:g id="TIME">%3$s</xliff:g>-д авсан алдааны мэдээг байршуулах хүсэлт тавьж байна. Алдааны мэдээнд таны төхөөрөмжийн талаарх эсвэл хэрэглэгчийн нэр, байршлын өгөгдөл, төхөөрөмжийн танигч болон сүлжээний мэдээлэл зэрэг аппуудын бүртгэсэн хувийн мэдээллийг агуулна. Та алдааны мэдээг зөвхөн энэ мэдээллийг хуваалцахдаа итгэлтэй байгаа хүмүүс болон аппуудтай хуваалцана уу. <xliff:g id="APP_NAME_1">%4$s</xliff:g>-д алдааны мэдээг байршуулахыг зөвшөөрөх үү?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g>-н алдааны мэдээг боловсруулахад алдаа гарсан тул алдаа засах дэлгэрэнгүй өгөгдлийг хуваалцахаас татгалзлаа. Төвөг удсанд хүлцэл өчье."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Зөвшөөрөх"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Татгалзах"</string>
@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Апп болон үйлчилгээнд"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Яаралтай тусламжийн утасны дугаар луу залгах үед микрофоны өгөгдлийг хуваалцсан хэвээр байж болзошгүй."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өөрчлөх"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Камерын хандалт унтраалттай байна"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Инфотэйнмент аппуудад зориулсан"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Шаардлагатай аппуудад зориулсан"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Энэ апп шаардлагатай"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Энэ аппыг танай машин үйлдвэрлэгчээс шаарддаг"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Аюулгүй байдал ба нууцлал"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Төхөөрөмжийг скан хийх"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Хаах"</string>

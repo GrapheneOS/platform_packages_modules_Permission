@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"За апликации и услуги"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Податоците за микрофонот може сепак да се споделат кога се јавувате на бројот за итни случаи."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Измени"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Пристапот до камерата е исклучен"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"За апликации за информации и забава"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"За задолжителните апликации"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Апликацијава е задолжителна"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Апликацијава ја бара производителот на вашиот автомобил"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Безбедност и приватност"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Скенирај го уредот"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Отфрли"</string>

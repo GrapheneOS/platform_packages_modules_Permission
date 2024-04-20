@@ -1368,6 +1368,14 @@
             <permission name="android.permission.MANAGE_DEVICE_POLICY_MICROPHONE_TOGGLE" minSdkVersion="35" />
             <permission name="android.permission.QUERY_DEVICE_STOLEN_STATE" minSdkVersion="35" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_AUDIT_LOGGING" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_WALLPAPER" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_VPN" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_AUTOFILL" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCATION" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_DISPLAY" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_LOCALE" minSdkVersion="35" />
+            <permission name="android.permission.MANAGE_DEVICE_POLICY_SMS" minSdkVersion="35" />
         </permissions>
     </role>
 

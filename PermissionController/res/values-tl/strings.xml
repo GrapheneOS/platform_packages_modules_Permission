@@ -558,6 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para sa mga app at serbisyo"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Posible pa ring ibahagi ang data ng mikropono kapag tumawag ka sa isang pang-emergency na numero."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Baguhin"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Naka-off ang access sa camera"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Para sa mga infotainment app"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Para sa mga kinakailangang app"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Kinakailangan ang app na ito"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Kinakailangan ng manufacturer ng iyong sasakyan ang app na ito"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Seguridad at privacy"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"I-scan ang device"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"I-dismiss"</string>

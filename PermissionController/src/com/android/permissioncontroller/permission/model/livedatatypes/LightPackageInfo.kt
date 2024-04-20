@@ -23,6 +23,7 @@ import android.content.pm.Attribution
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.UserHandle
+import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.utils.ContextCompat
 import com.android.permissioncontroller.permission.utils.Utils
@@ -128,7 +129,13 @@ data class LightPackageInfo(
                 packageName,
                 PackageManager.GET_PERMISSIONS
             )
-        } catch (e: PackageManager.NameNotFoundException) {}
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.e(
+                LightPackageInfo::class.java.simpleName,
+                "Failed to get real package info for $packageName, $uid",
+                e
+            )
+        }
         return null
     }
 
