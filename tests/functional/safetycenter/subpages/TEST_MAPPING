@@ -13,5 +13,15 @@
         }
       ]
     }
+  ],
+  "permission-mainline-presubmit": [
+    {
+      "name": "SafetyCenterSubpagesTestCases",
+      "options": [
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        }
+      ]
+    }
   ]
 }

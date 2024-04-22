@@ -19,6 +19,16 @@
             ]
         }
   ],
+  "permission-mainline-presubmit": [
+        {
+            "name": "CtsPermissionUiTestCases",
+            "options": [
+                {
+                    "exclude-annotation": "androidx.test.filters.FlakyTest"
+                }
+            ]
+        }
+  ],
   "postsubmit": [
     {
       "name": "CtsPermissionUiTestCases"
