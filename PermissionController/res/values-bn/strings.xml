@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"অ্যাপ ও পরিষেবার জন্য"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"আপনি জরুরি নম্বরে কল করার সময় মাইক্রোফোন ডেটা এখনও শেয়ার করা হতে পারে।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"পরিবর্তন করুন"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"ক্যামেরার অ্যাক্সেস বন্ধ করা আছে"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"ইনফোটেনমেন্ট অ্যাপের জন্য"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"প্রয়োজনীয় অ্যাপের জন্য"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"এই অ্যাপটি প্রয়োজন"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"আপনার গাড়ির প্রস্তুতকারকের এই অ্যাপটি প্রয়োজন"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"নিরাপত্তা এবং গোপনীয়তা"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ডিভাইস স্ক্যান করুন"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"বাতিল করুন"</string>

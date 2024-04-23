@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Za aplikacije i usluge"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Podaci mikrofona mogu i dalje da se dele kada pozovete broj za hitne slučajeve."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Promeni"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Pristup kameri je isključen"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Za aplikacije za info-zabavu"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Za obavezne aplikacije"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Ova aplikacija je obavezna"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Ovu aplikaciju zahteva proizvođač automobila"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Bezbednost i privatnost"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Skeniraj uređaj"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odbaci"</string>

@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Հավելվածների և ծառայությունների համար"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Խոսափողի տվյալները կարող են դեռ փոխանցվել, երբ զանգեք արտակարգ իրավիճակների որևէ հեռախոսահամարի։"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Փոխել"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Տեսախցիկի հասանելիությունն անջատված է"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Տեղեկատվաժամանցային հավելվածներ"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Պահանջվող հավելվածների համար"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Այս հավելվածը պարտադիր է"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Այս հավելվածը պահանջվում է ձեր մեքենայի արտադրողի կողմից"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Անվտանգություն և գաղտնիություն"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Սկանավորել սարքը"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Փակել"</string>

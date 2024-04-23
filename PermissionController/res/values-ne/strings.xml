@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"एप र सेवाहरूका लागि"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"तपाईंले आपत्‍कालीन नम्बरमा कल गर्नुभयो भने माइक्रोफोनसम्बन्धी डेटा सेयर गरिन पनि सक्छ।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदल्नुहोस्"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"क्यामेरा एक्सेस अफ छ"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"इन्फोटेनमेन्ट एपहरूका लागि"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"अनिवार्य रूपमा इन्स्टल गर्नु पर्ने एपहरूका लागि"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"यो एप अनिवार्य रूपमा इन्स्टल गर्नु पर्छ"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"तपाईंको कारको उत्पादकले व्यवस्था गरेबमोजिम यो एप अनिवार्य रूपमा इन्स्टल गर्नु पर्छ"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"सुरक्षा तथा गोपनीयता"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"डिभाइस स्क्यान गर्नुहोस्"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"हटाउनुहोस्"</string>

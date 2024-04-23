@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Ilovalar va xizmatlar uchun"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Favqulodda xizmat raqamiga telefon qilganingizda mikrofon maʼlumotlari hamon ulashilishi mumkin."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Oʻzgartirish"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Kameradan foydalanish taqiqlangan"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Axborot-hordiq ilovalari uchun"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Zaruriy ilovalar uchun"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Bu ilova zaruriy"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Avtomobil ishlab chiqaruvchisi bu ilovani talab qiladi"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Xavfsizlik va maxfiylik"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Qurilmani tekshirish"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Yopish"</string>

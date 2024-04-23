@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದಾಗ ಈಗಲೂ ನಿಮ್ಮ ಮೈಕ್ರೋಫೋನ್ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಸಾಧ್ಯತೆಯಿದೆ."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ಬದಲಾಯಿಸಿ"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"ಕ್ಯಾಮರಾ ಆ್ಯಕ್ಸೆಸ್ ಆಫ್ ಆಗಿದೆ"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"ಇನ್‌ಫೋಟೈನ್‌ಮೆಂಟ್ ಆ್ಯಪ್‌ಗಳಿಗಾಗಿ"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"ಅಗತ್ಯವಿರುವ ಆ್ಯಪ್‌ಗಳಿಗಾಗಿ"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"ಈ ಆ್ಯಪ್ ಅಗತ್ಯವಿದೆ"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"ನಿಮ್ಮ ಕಾರ್‌ನ ತಯಾರಕರಿಗೆ ಈ ಆ್ಯಪ್‌ ಅಗತ್ಯವಿದೆ"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"ಭದ್ರತೆ ಮತ್ತು ಗೌಪ್ಯತೆ"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ಸಾಧನವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ವಜಾಗೊಳಿಸಿ"</string>

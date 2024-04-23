@@ -558,16 +558,11 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"යෙදුම් සහ සේවා සඳහා"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ඔබ හදිසි ඇමතුම් අංකයක් අමතන විට මයික්‍රෆෝනයේ දත්ත තවම බෙදා ගත හැකිය."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"වෙනස් කරන්න"</string>
-    <!-- no translation found for automotive_blocked_camera_title (6142362431548829416) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_infotainment_app_summary (8217099645064950860) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_required_app_summary (8591513745681168088) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_title (2992168288249988735) -->
-    <skip />
-    <!-- no translation found for automotive_required_app_summary (6514902316658090465) -->
-    <skip />
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"කැමරා ප්‍රවේශය ක්‍රියා විරහිතයි"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"තොරතුරු විනෝදාස්වාද යෙදුම් සඳහා"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"අවශ්‍ය යෙදුම් සඳහා"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"මෙම යෙදුම අවශ්‍ය වේ"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"මෙම යෙදුම ඔබේ මෝටර් රථයේ නිෂ්පාදකයාට අවශ්‍ය වේ"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"උපාංගය ස්කෑන් කරන්න"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ඉවත ලන්න"</string>
