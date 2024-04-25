@@ -124,7 +124,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"လက်ရှိ ခွင့်ပြုချက်များ"</string>
     <string name="message_staging" msgid="9110563899955511866">"အက်ပ်ကို ပြင်ဆင်နေသည်…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"အမည်မသိ"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"အချက်အလက်လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"ကိုယ်ရေးဒေတာ ဒက်ရှ်ဘုတ်"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ခွင့်ပြုချက်များ လတ်တလောသုံးထားသည့် အက်ပ်ကိုကြည့်နိုင်သည်"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> အသုံးပြုမှု"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"အခြားခွင့်ပြုချက်များ ကြည့်ပါ"</string>
@@ -619,7 +619,7 @@
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"ဤအက်ပ်ကို ပိတ်ထားချိန်၌ပင် ၎င်းသည် သင့်တည်နေရာကို အမြဲကြည့်နိုင်သည်။\n\nလုံခြုံရေးနှင့် အရေးပေါ်အက်ပ်အချို့သည် ရည်ရွယ်ထားသည့်အတိုင်း အလုပ်လုပ်ရန် နောက်ခံတွင် သင့်တည်နေရာကြည့်ခွင့် လိုအပ်သည်။"</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"အသုံးပြုခွင့် ပြောင်းသွားသည်"</string>
     <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"မကြာသေးမီက တည်နေရာအသုံးပြုမှုကို ကြည့်ရန်"</string>
-    <string name="privacy_controls_title" msgid="7605929972256835199">"ကန့်သတ်ရန်ဆက်တင်များ"</string>
+    <string name="privacy_controls_title" msgid="7605929972256835199">"ကိုယ်ရေးအချက်အလက်လုံခြုံမှု ဆက်တင်များ"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"ကင်မရာသုံးခွင့်"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"မိုက်ခရိုဖုန်းသုံးခွင့်"</string>
     <string name="perm_toggle_description" msgid="7801326363741451379">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>

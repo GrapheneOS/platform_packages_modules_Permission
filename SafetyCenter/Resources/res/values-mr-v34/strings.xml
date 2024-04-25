@@ -26,7 +26,7 @@
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"डेटा, डेटा शेअरिंग, डेटा शेअरिंगसंबंधित अपडेट, स्थानासाठी डेटा शेअरिंगसंबंधित अपडेट, शेअरिंग"</string>
     <string name="advanced_title" msgid="6259362998269627310">"इतर सेटिंग्ज"</string>
     <string name="more_settings_title" msgid="9033454654010697185">"आणखी सुरक्षा आणि गोपनीयता"</string>
-    <string name="more_settings_summary" msgid="7086620830002515710">"ऑटोफिल, सूचना आणि आणखी बरेच काही"</string>
+    <string name="more_settings_summary" msgid="7086620830002515710">"ऑटोफिल, नोटिफिकेशन आणि आणखी बरेच काही"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
     <string name="work_policy_title" msgid="915692932391542104">"तुमच्या कामासंबंधित धोरणाची माहिती"</string>
 </resources>

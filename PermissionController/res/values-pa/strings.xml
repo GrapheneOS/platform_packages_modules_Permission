@@ -49,7 +49,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> ਨੂੰ ਬੰਦ ਕਰ ਦਿੱਤਾ ਗਿਆ"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"ਸਾਰੀਆਂ ਇਜਾਜ਼ਤਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਗਈਆਂ"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ਕਿਸੇ ਨੂੰ ਵੀ ਬੰਦ ਨਹੀਂ ਕੀਤਾ ਗਿਆ"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"ਕਰਨ ਦਿਓ"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"ਆਗਿਆ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ਐਪ ਵਰਤਣ ਦੌਰਾਨ"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ਸਹੀ ਟਿਕਾਣੇ \'ਤੇ ਬਦਲੋ"</string>

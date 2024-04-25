@@ -542,7 +542,7 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Povolenia používané iba systémovými aplikáciami."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Ďalšie povolenia"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Povolenia definované aplikáciami."</string>
-    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparát"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofón"</string>
     <string name="privdash_label_location" msgid="6882400763866489291">"Poloha"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Iné"</string>
