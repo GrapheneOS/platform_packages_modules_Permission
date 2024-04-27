@@ -565,7 +565,6 @@
 
     <role
         name="android.app.role.SYSTEM_AUTOMOTIVE_PROJECTION"
-        allowBypassingQualification="true"
         defaultHolders="config_systemAutomotiveProjection"
         exclusive="false"
         minSdkVersion="31"
@@ -593,6 +592,7 @@
             <!-- If this role holder has a NotificationListenerService, let that service receive
                  notifications with sensitive content unredacted-->
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
+            <permission name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT" minSdkVersion="35" />
         </permissions>
     </role>
 
