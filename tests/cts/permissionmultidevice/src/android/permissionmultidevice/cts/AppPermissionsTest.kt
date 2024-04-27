@@ -31,6 +31,7 @@ import android.permission.flags.Flags
 import android.permissionmultidevice.cts.PermissionUtils.isCddCompliantScreenSize
 import android.platform.test.annotations.RequiresFlagsEnabled
 import android.provider.Settings
+import android.util.Log
 import android.virtualdevice.cts.common.VirtualDeviceRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -56,6 +57,7 @@ import org.junit.runner.RunWith
 class AppPermissionsTest {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val defaultDeviceContext = instrumentation.targetContext
+    private val TAG = AppPermissionsTest::class.java.simpleName
 
     @get:Rule
     var virtualDeviceRule =
@@ -82,6 +84,7 @@ class AppPermissionsTest {
         assumeTrue(isCddCompliantScreenSize())
 
         PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
+        assertTrue(isPackageInstalled())
 
         val virtualDeviceManager =
             defaultDeviceContext.getSystemService(VirtualDeviceManager::class.java)!!
@@ -380,16 +383,17 @@ class AppPermissionsTest {
     }
 
     private fun openAppPermissionsScreen() {
+        val intent =
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
+                addCategory(Intent.CATEGORY_DEFAULT)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            }
+
         eventually(
             {
-                instrumentation.context.startActivity(
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                        data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
-                        addCategory(Intent.CATEGORY_DEFAULT)
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    }
-                )
+                instrumentation.context.startActivity(intent)
                 UiAutomatorUtils2.waitFindObject(By.text("Permissions"), 12_000).click()
             },
             20_000
@@ -420,6 +424,23 @@ class AppPermissionsTest {
             DEVICE_AWARE_PERMISSION,
             persistentDeviceId
         )
+
+    private fun isPackageInstalled(): Boolean {
+        try {
+            instrumentation.context.packageManager.getPackageInfo(APP_PACKAGE_NAME, 0)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            // Re-installing the package as a retry mechanism.
+            Log.e(TAG, "Package=$APP_PACKAGE_NAME not found, retrying the installation")
+            PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
+        }
+        return try {
+            instrumentation.context.packageManager.getPackageInfo(APP_PACKAGE_NAME, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
 
     private fun getPermState(): Map<String, PermissionManager.PermissionState> =
         permissionManager.getAllPermissionStates(APP_PACKAGE_NAME, persistentDeviceId)

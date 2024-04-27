@@ -267,7 +267,9 @@ public class EnhancedConfirmationService extends SystemService {
             // Otherwise, lazily decide whether the app is considered guarded.
             InstallSourceInfo installSource;
             try {
-                installSource = mPackageManager.getInstallSourceInfo(packageName);
+                installSource = mContext.createContextAsUser(UserHandle.of(userId), 0)
+                        .getPackageManager()
+                        .getInstallSourceInfo(packageName);
             } catch (NameNotFoundException e) {
                 Log.w(LOG_TAG, "Package not found: " + packageName);
                 return false;

@@ -70,6 +70,16 @@
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
         <option name="package" value="android.permissionmultidevice.cts" />
         <option name="runtime-hint" value="5m" />
+        <option name="device-listeners" value="android.device.collectors.ScreenshotOnFailureCollector"/>
     </test>
+
+    <!-- Collect the dumped files for debugging -->
+    <metrics_collector class="com.android.tradefed.device.metric.FilePullerLogCollector">
+        <option name="pull-pattern-keys" value="view_.*" />
+        <!-- Collect the files generated on error -->
+        <option name="pull-pattern-keys" value="android.device.collectors.ScreenshotOnFailureCollector.*\.png"/>
+        <option name="directory-keys" value="/data/user/0/android.permissionmultidevice.cts/files" />
+        <option name="collect-on-run-ended-only" value="false" />
+    </metrics_collector>
 
 </configuration>
