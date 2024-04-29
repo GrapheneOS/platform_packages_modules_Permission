@@ -119,5 +119,5 @@ class WearDefaultAppHelper(
 
     private fun hasHolderApplication(
         qualifyingApplications: List<Pair<ApplicationInfo, Boolean>>
-    ): Boolean = qualifyingApplications.map { it.second }.find { true } ?: false
+    ): Boolean = qualifyingApplications.map { it.second }.contains(true)
 }

@@ -62,7 +62,7 @@ class WearRequestRoleHelper(
                         null
                     },
                 icon = context.getDrawable(R.drawable.ic_remove_circle),
-                checked = selectedPackage?.isNullOrEmpty() ?: false,
+                checked = selectedPackage.isNullOrEmpty(),
                 enabled =
                     if (!wearViewModel.dontAskAgain()) {
                         true
@@ -106,7 +106,7 @@ class WearRequestRoleHelper(
 
     private fun hasHolderApplication(
         qualifyingApplications: List<Pair<ApplicationInfo, Boolean>>
-    ): Boolean = qualifyingApplications.map { it.second }.find { true } ?: false
+    ): Boolean = qualifyingApplications.map { it.second }.contains(true)
 
     fun shouldSetAsDefaultEnabled(enabled: Boolean): Boolean {
         return enabled && (wearViewModel.dontAskAgain() || !wearViewModel.isHolderChecked)
