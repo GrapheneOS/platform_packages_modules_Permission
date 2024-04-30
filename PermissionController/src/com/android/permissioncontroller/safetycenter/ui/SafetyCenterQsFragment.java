@@ -27,6 +27,7 @@ import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Insets;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -150,6 +152,11 @@ public class SafetyCenterQsFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_center_qs, container, false);
         root.setVisibility(View.GONE);
         root.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+        root.setOnApplyWindowInsetsListener((v, w) -> {
+            final Insets insets = w.getInsets(WindowInsets.Type.systemBars());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            return WindowInsets.CONSUMED;
+        });
 
         View closeButton = root.findViewById(R.id.close_button);
         closeButton.setOnClickListener((v) -> requireActivity().finish());

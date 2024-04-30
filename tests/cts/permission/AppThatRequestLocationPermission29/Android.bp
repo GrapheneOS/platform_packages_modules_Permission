@@ -25,7 +25,6 @@ android_test_helper_app {
     target_sdk_version: "29",
     // Tag this module as a cts test artifact
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
         "mcts-permission",

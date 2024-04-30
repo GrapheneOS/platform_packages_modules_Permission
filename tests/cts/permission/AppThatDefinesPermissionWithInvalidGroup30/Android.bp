@@ -23,7 +23,6 @@ android_test_helper_app {
     defaults: ["cts_defaults"],
     sdk_version: "30",
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
         "sts",

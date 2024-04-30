@@ -27,7 +27,6 @@ android_test_helper_app {
     min_sdk_version: "30",
     // Tag this module as a cts test artifact
     test_suites: [
-        "cts",
         "mts-permission",
         "general-tests",
         "mcts-permission",

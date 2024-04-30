@@ -22,7 +22,6 @@ android_test_helper_app {
     name: "CtsStorageEscalationApp29Scoped",
     certificate: ":cts-testkey2",
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
         "sts",

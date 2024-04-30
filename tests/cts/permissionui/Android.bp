@@ -72,7 +72,6 @@ android_test {
         ":CtsUsePermissionAppStorage33",
     ],
     test_suites: [
-        "cts",
         "sts",
         "general-tests",
         "mts-permission",

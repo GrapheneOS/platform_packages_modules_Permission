@@ -40,7 +40,6 @@ android_test {
         ":CtsRequestLocationApp",
     ],
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
         "mcts-permission",

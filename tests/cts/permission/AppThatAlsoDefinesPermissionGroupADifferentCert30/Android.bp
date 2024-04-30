@@ -24,7 +24,6 @@ android_test_helper_app {
     sdk_version: "30",
     certificate: ":cts-testkey2",
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
         "sts",
