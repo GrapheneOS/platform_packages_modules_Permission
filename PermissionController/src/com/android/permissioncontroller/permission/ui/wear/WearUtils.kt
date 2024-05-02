@@ -22,6 +22,7 @@ import androidx.annotation.IntDef
 import com.android.permissioncontroller.R
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
+import java.util.Locale
 
 object WearUtils {
     @Retention(AnnotationRetention.SOURCE)
@@ -76,5 +77,9 @@ object WearUtils {
                 else if (isLastAccessTodayOrYesterday) LAST_24H_YESTERDAY else LAST_7D
         }
         return Triple(lastAccessTimeFormatted, lastAccessType, lastAccessDateFormatted)
+    }
+
+    fun String.capitalize(): String = replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
     }
 }

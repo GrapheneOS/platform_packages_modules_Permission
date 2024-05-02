@@ -96,6 +96,8 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             "$APK_DIRECTORY/CtsUsePermissionAppImplicitUserSelectStorage.apk"
         const val APP_APK_PATH_STORAGE_33 = "$APK_DIRECTORY/CtsUsePermissionAppStorage33.apk"
         const val APP_APK_PATH_OTHER_APP = "$APK_DIRECTORY/CtsDifferentPkgNameApp.apk"
+        const val APP_APK_PATH_TWO_PERM_REQUESTS =
+            "$APK_DIRECTORY/CtsAppThatMakesTwoPermRequests.apk"
         const val APP_PACKAGE_NAME = "android.permissionui.cts.usepermission"
         const val OTHER_APP_PACKAGE_NAME = "android.permissionui.cts.usepermissionother"
         const val TEST_INSTALLER_PACKAGE_NAME = "android.permissionui.cts"

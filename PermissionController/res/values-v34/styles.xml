@@ -123,6 +123,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">20sp</item>
         <item name="android:lineSpacingMultiplier">1.25</item>
+        <item name="android:hyphenationFrequency">normalFast</item>
     </style>
 
     <style name="PermissionRationaleSectionPurposeList"

@@ -63,6 +63,7 @@ import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import androidx.wear.compose.material.scrollAway
+import com.android.permissioncontroller.permission.ui.wear.WearUtils.capitalize
 import com.android.permissioncontroller.permission.ui.wear.elements.rotaryinput.rotaryWithScroll
 import com.android.permissioncontroller.permission.ui.wear.theme.WearPermissionTheme
 
@@ -148,7 +149,9 @@ internal fun Scaffold(
 
     val focusRequester = remember { FocusRequester() }
     val listState = remember { ScalingLazyListState(initialCenterItemIndex = initialCenterIndex) }
-
+    LaunchedEffect(title) {
+        listState.animateScrollToItem(index = 0) // Scroll to the top when triggerValue changes
+    }
     WearPermissionTheme {
         Scaffold(
             // TODO: Use a rotary modifier from Wear Compose once Wear Compose 1.4 is landed.
@@ -233,7 +236,7 @@ internal fun Scaffold(
                                     modifier = modifier.testTag(subtitleTestTag)
                                 }
                                 AnnotatedText(
-                                    text = subtitle,
+                                    text = subtitle.toString().capitalize(),
                                     style =
                                         MaterialTheme.typography.body2.copy(
                                             color = MaterialTheme.colors.onSurfaceVariant

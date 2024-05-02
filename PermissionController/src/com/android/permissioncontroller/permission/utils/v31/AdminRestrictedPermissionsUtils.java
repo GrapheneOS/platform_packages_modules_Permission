@@ -25,6 +25,7 @@ import android.os.UserManager;
 import android.util.ArraySet;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.permission.utils.PermissionMapping;
 
 /**
  * A class for dealing with permissions that the admin may not grant in certain configurations.
@@ -78,7 +79,7 @@ public final class AdminRestrictedPermissionsUtils {
     /**
      * Returns true if the admin may grant this permission, false otherwise.
      */
-    public static boolean mayAdminGrantPermission(String permission,
+    public static boolean mayAdminGrantPermission(String permission, String permissionGroup,
             boolean canAdminGrantSensorsPermissions, boolean isManagedProfile,
             DevicePolicyManager dpm) {
         if (!SdkLevel.isAtLeastS()) {
@@ -87,7 +88,12 @@ public final class AdminRestrictedPermissionsUtils {
         if (isManagedProfile && Manifest.permission.READ_SMS.equals(permission)) {
             return mayManagedProfileAdminGrantReadSms(dpm);
         }
-        if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
+        boolean isAdminRestrictedSensorPermissionGroup = permissionGroup != null
+                && PermissionMapping.getPlatformPermissionNamesOfGroup(permissionGroup).stream()
+                .anyMatch(ADMIN_RESTRICTED_SENSORS_PERMISSIONS::contains);
+
+        if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)
+                && !isAdminRestrictedSensorPermissionGroup) {
             return true;
         }
 

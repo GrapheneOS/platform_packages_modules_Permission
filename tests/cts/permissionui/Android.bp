@@ -70,6 +70,7 @@ android_test {
         ":CtsUsePermissionAppImplicitUserSelectStorage",
         ":CtsAppThatAccessesMicAndCameraPermission",
         ":CtsUsePermissionAppStorage33",
+        ":CtsAppThatMakesTwoPermRequests",
     ],
     test_suites: [
         "sts",

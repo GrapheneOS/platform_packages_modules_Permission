@@ -16,9 +16,13 @@
 
 package android.permissionui.cts
 
+import android.content.ComponentName
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.permission.cts.MtsIgnore
+import android.platform.test.annotations.AsbSecurityTest
 import androidx.test.filters.FlakyTest
+import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil
 import org.junit.Assert
 import org.junit.Assume
@@ -26,7 +30,6 @@ import org.junit.Before
 import org.junit.Test
 
 /** Runtime permission behavior tests for apps targeting API 23. */
-@FlakyTest
 class PermissionTest23 : BaseUsePermissionTest() {
     companion object {
         private const val NON_EXISTENT_PERMISSION = "permission.does.not.exist"
@@ -39,12 +42,14 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testDefault() {
         // New permission model is denied by default
         assertAppHasAllOrNoPermissions(false)
     }
 
     @Test
+    @FlakyTest
     fun testGranted() {
         grantAppPermissionsByUi(android.Manifest.permission.READ_CALENDAR)
 
@@ -55,6 +60,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testInteractiveGrant() {
         // Start out without permission
         assertAppHasPermission(android.Manifest.permission.READ_CALENDAR, false)
@@ -74,6 +80,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testRuntimeGroupGrantSpecificity() {
         // Start out without permission
         assertAppHasPermission(android.Manifest.permission.READ_CONTACTS, false)
@@ -90,6 +97,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testCancelledPermissionRequest() {
         // Make sure we don't have the permission
         assertAppHasPermission(android.Manifest.permission.WRITE_CONTACTS, false)
@@ -102,6 +110,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testRequestGrantedPermission() {
         // Make sure we don't have the permission
         assertAppHasPermission(android.Manifest.permission.WRITE_CONTACTS, false)
@@ -121,6 +130,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testDenialWithPrejudice() {
         // Make sure we don't have the permission
         assertAppHasPermission(android.Manifest.permission.WRITE_CONTACTS, false)
@@ -163,6 +173,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testGrantPreviouslyRevokedWithPrejudiceShowsPrompt() {
         // Make sure we don't have the permission
         assertAppHasPermission(android.Manifest.permission.READ_CALENDAR, false)
@@ -195,6 +206,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testRequestNonRuntimePermission() {
         // Make sure we don't have the permission
         assertAppHasPermission(android.Manifest.permission.BIND_PRINT_SERVICE, false)
@@ -208,6 +220,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testRequestNonExistentPermission() {
         // Make sure we don't have the permission
         assertAppHasPermission(NON_EXISTENT_PERMISSION, false)
@@ -221,6 +234,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testRequestPermissionFromTwoGroups() {
         // Make sure we don't have the permissions
         assertAppHasPermission(android.Manifest.permission.WRITE_CONTACTS, false)
@@ -274,6 +288,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testNullPermissionRequest() {
         val permissions: Array<String?> = arrayOf(null)
         val results: Array<Pair<String?, Boolean>> = arrayOf()
@@ -286,6 +301,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testNullAndRealPermission() {
         // Make sure we don't have the permissions
         assertAppHasPermission(android.Manifest.permission.WRITE_CONTACTS, false)
@@ -311,6 +327,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testInvalidPermission() {
         // Request the permission and allow it
         // Expect the permission is not granted
@@ -321,6 +338,7 @@ class PermissionTest23 : BaseUsePermissionTest() {
     }
 
     @Test
+    @FlakyTest
     fun testAskButtonSetsFlags() {
         Assume.assumeFalse(
             "other form factors might not support the ask button",
@@ -359,6 +377,33 @@ class PermissionTest23 : BaseUsePermissionTest() {
                 )
             }
         }
+    }
+
+    @Test
+    @AsbSecurityTest(cveBugId = [313909156])
+    fun testAppCanOnlyShowOneDialog() {
+        uninstallApp()
+        installPackage(APP_APK_PATH_TWO_PERM_REQUESTS)
+        doAndWaitForWindowTransition {
+            val intent =
+                Intent(Intent.ACTION_MAIN)
+                    .setComponent(ComponentName(APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.Activity1"))
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            context.startActivity(intent)
+        }
+        waitFindObject(
+            By.textContains("contacts").pkg(packageManager.permissionControllerPackageName)
+        )
+        var didNotFindPhone = false
+        try {
+            waitFindObject(
+                By.textContains("phone calls").pkg(packageManager.permissionControllerPackageName),
+                3000L
+            )
+        } catch (expected: Exception) {
+            didNotFindPhone = true
+        }
+        Assert.assertTrue("Found phone permission dialog", didNotFindPhone)
     }
 
     private fun denyPermissionRequestWithPrejudice() {
