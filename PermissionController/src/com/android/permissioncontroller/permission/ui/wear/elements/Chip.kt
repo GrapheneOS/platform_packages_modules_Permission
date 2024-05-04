@@ -31,10 +31,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,7 +45,6 @@ import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.contentColorFor
-import com.android.permissioncontroller.R
 
 /**
  * This component is an alternative to [Chip], providing the following:
@@ -166,6 +164,8 @@ public fun Chip(
  * This component is an alternative to [Chip], providing the following:
  * - a convenient way of providing a label and a secondary label;
  */
+// Setting the color as per
+// https://source.corp.google.com/piper///depot/google3/java/com/google/android/clockwork/common/wearable/wearmaterial/button/res/color/wear_button_secondary_text_stateful.xml?q=wear_button_secondary_text_stateful
 @Composable
 public fun Chip(
     label: String,
@@ -177,7 +177,7 @@ public fun Chip(
     icon: (@Composable BoxScope.() -> Unit)? = null,
     largeIcon: Boolean = false,
     textColor: Color = MaterialTheme.colors.onSurface,
-    secondaryTextColor: Color = colorResource(R.color.wear_material_gray_600),
+    secondaryTextColor: Color = MaterialTheme.colors.primary,
     colors: ChipColors = chipDefaultColors(),
     enabled: Boolean = true
 ) {
@@ -192,7 +192,7 @@ public fun Chip(
             textAlign = if (hasSecondaryLabel || hasIcon) TextAlign.Start else TextAlign.Center,
             overflow = TextOverflow.Ellipsis,
             maxLines = labelMaxLines ?: if (hasSecondaryLabel) 1 else 2,
-            style = MaterialTheme.typography.button
+            style = MaterialTheme.typography.button.copy(fontWeight = FontWeight.W600)
         )
     }
 
@@ -225,10 +225,7 @@ public fun Chip(
     Chip(
         label = labelParam,
         onClick = onClick,
-        modifier =
-            modifier
-                .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
-                .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         secondaryLabel = secondaryLabelParam,
         icon = icon,
         colors = colors,

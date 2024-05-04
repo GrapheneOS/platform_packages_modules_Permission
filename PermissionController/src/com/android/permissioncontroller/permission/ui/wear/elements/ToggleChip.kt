@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -142,10 +141,7 @@ public fun ToggleChip(
         label = labelParam,
         toggleControl = toggleControlParam,
         modifier =
-            modifier
-                .adjustChipHeightToFontScale(LocalConfiguration.current.fontScale)
-                .fillMaxWidth()
-                .semantics { stateDescription = stateDescriptionSemantics },
+            modifier.fillMaxWidth().semantics { stateDescription = stateDescriptionSemantics },
         appIcon = iconParam,
         secondaryLabel = secondaryLabelParam,
         colors = colors,

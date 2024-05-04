@@ -21,14 +21,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
@@ -38,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.LocalContentColor
 import androidx.wear.compose.material.LocalTextStyle
@@ -50,31 +48,32 @@ import androidx.wear.compose.material.MaterialTheme
  * @param modifier The modifier for the [ListHeader].
  * @param backgroundColor The background color to apply - typically Color.Transparent
  * @param contentColor The color to apply to content.
- * @param contentPadding The spacing values to apply internally between the container and the
- *   content.
  * @param content Slot for [ListHeader] content, expected to be a single line of text.
  */
+
+// Styling updated to match with wear material title
+// Ref:
+// https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/google_clockwork_partners/libs/ClockworkCommonLibs/common/wearable/wearmaterial/preference/res/layout/wear_title_preference.xml;l=1;drc=8ebd53cbba588e8e9aa964522fb05f4f5224609e;bpv=1;bpt=0
 @Composable
 fun ListHeader(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.Transparent,
-    contentColor: Color = MaterialTheme.colors.onSurfaceVariant,
-    contentPadding: PaddingValues = ListHeaderDefaults.HeaderContentPadding,
+    contentColor: Color = MaterialTheme.colors.onBackground,
     content: @Composable RowScope.() -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier =
-            modifier
-                .defaultMinSize(minHeight = ListHeaderDefaults.Height)
-                .wrapContentSize()
-                .background(backgroundColor)
-                .padding(contentPadding)
-                .semantics(mergeDescendants = true) { heading() }
+            modifier.wrapContentSize().background(backgroundColor).semantics(
+                mergeDescendants = true
+            ) {
+                heading()
+            }
     ) {
         CompositionLocalProvider(
             LocalContentColor provides contentColor,
-            LocalTextStyle provides MaterialTheme.typography.title3,
+            LocalTextStyle provides
+                MaterialTheme.typography.title3.copy(fontWeight = FontWeight.W600),
         ) {
             content()
         }
@@ -88,8 +87,6 @@ fun ListHeader(
  * @param modifier The modifier for the [ListSubheader].
  * @param backgroundColor The background color to apply - typically Color.Transparent
  * @param contentColor The color to apply to content.
- * @param contentPadding The spacing values to apply internally between the container and the
- *   content.
  * @param icon A slot for providing icon to the [ListSubheader].
  * @param label A slot for providing label to the [ListSubheader].
  */
@@ -98,7 +95,6 @@ fun ListSubheader(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.Transparent,
     contentColor: Color = MaterialTheme.colors.onBackground,
-    contentPadding: PaddingValues = ListHeaderDefaults.SubheaderContentPadding,
     icon: (@Composable BoxScope.() -> Unit)? = null,
     label: @Composable RowScope.() -> Unit,
 ) {
@@ -107,12 +103,10 @@ fun ListSubheader(
         horizontalArrangement = Arrangement.Start,
         modifier =
             modifier
-                .defaultMinSize(minHeight = ListHeaderDefaults.Height)
                 .height(IntrinsicSize.Min)
                 .fillMaxWidth()
                 .wrapContentSize(align = Alignment.CenterStart)
                 .background(backgroundColor)
-                .padding(contentPadding)
                 .semantics(mergeDescendants = true) { heading() }
     ) {
         CompositionLocalProvider(
@@ -129,17 +123,4 @@ fun ListSubheader(
             label()
         }
     }
-}
-
-object ListHeaderDefaults {
-    private val TopPadding = 16.dp
-    private val SubheaderBottomPadding = 8.dp
-    private val HeaderBottomPadding = 12.dp
-    private val HorizontalPadding = 14.dp
-    internal val Height = 48.dp
-
-    val HeaderContentPadding =
-        PaddingValues(HorizontalPadding, TopPadding, HorizontalPadding, HeaderBottomPadding)
-    val SubheaderContentPadding =
-        PaddingValues(HorizontalPadding, TopPadding, HorizontalPadding, SubheaderBottomPadding)
 }

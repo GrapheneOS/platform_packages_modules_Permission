@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,7 +34,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.layout.ContentScale
@@ -125,7 +125,6 @@ fun ScrollableScreen(
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun Scaffold(
     showTimeText: Boolean,
@@ -140,13 +139,42 @@ internal fun Scaffold(
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
     val scrollContentHorizontalPadding = (screenWidth * 0.052).dp
+    val titleHorizontalPadding = (screenWidth * 0.0884).dp
+    val subtitleHorizontalPadding = (screenWidth * 0.0416).dp
     val scrollContentTopPadding = (screenHeight * 0.1456).dp
     val scrollContentBottomPadding = (screenHeight * 0.3636).dp
+    val titleBottomPadding =
+        if (subtitle == null) {
+            8.dp
+        } else {
+            4.dp
+        }
+    val subtitleBottomPadding = 8.dp
+    val timeTextTopPadding =
+        if (showTimeText) {
+            1.dp
+        } else {
+            0.dp
+        }
+    val titlePaddingValues =
+        PaddingValues(
+            start = titleHorizontalPadding,
+            top = 4.dp,
+            bottom = titleBottomPadding,
+            end = titleHorizontalPadding
+        )
+    val subTitlePaddingValues =
+        PaddingValues(
+            start = subtitleHorizontalPadding,
+            top = 4.dp,
+            bottom = subtitleBottomPadding,
+            end = subtitleHorizontalPadding
+        )
     val initialCenterIndex = 0
     val centerHeightDp = Dp(LocalConfiguration.current.screenHeightDp / 2.0f)
-    val initialCenterItemScrollOffset = scrollContentTopPadding + 10.dp
+    // We are adding TimeText's padding to create a smooth scrolling
+    val initialCenterItemScrollOffset = scrollContentTopPadding + timeTextTopPadding
     val scrollAwayOffset = centerHeightDp - initialCenterItemScrollOffset
-
     val focusRequester = remember { FocusRequester() }
     val listState = remember { ScalingLazyListState(initialCenterItemIndex = initialCenterIndex) }
     LaunchedEffect(title) {
@@ -165,8 +193,8 @@ internal fun Scaffold(
                 if (showTimeText && !isLoading) {
                     TimeText(
                         modifier =
-                            Modifier.scrollAway(listState, initialCenterIndex, scrollAwayOffset),
-                        contentPadding = PaddingValues(5.dp)
+                            Modifier.scrollAway(listState, initialCenterIndex, scrollAwayOffset)
+                                .padding(top = timeTextTopPadding),
                     )
                 }
             },
@@ -178,6 +206,7 @@ internal fun Scaffold(
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 } else {
                     ScalingLazyColumn(
+                        modifier = Modifier.fillMaxWidth(),
                         state = listState,
                         // Set autoCentering to null to avoid adding extra padding based on the
                         // content.
@@ -220,7 +249,7 @@ internal fun Scaffold(
                                 if (titleTestTag != null) {
                                     modifier = modifier.testTag(titleTestTag)
                                 }
-                                ListHeader {
+                                ListHeader(modifier = Modifier.padding(titlePaddingValues)) {
                                     Text(
                                         text = title,
                                         textAlign = TextAlign.Center,
@@ -231,7 +260,8 @@ internal fun Scaffold(
                         }
                         if (subtitle != null) {
                             item {
-                                var modifier: Modifier = Modifier
+                                var modifier: Modifier =
+                                    Modifier.align(Alignment.Center).padding(subTitlePaddingValues)
                                 if (subtitleTestTag != null) {
                                     modifier = modifier.testTag(subtitleTestTag)
                                 }
@@ -241,7 +271,7 @@ internal fun Scaffold(
                                         MaterialTheme.typography.body2.copy(
                                             color = MaterialTheme.colors.onSurfaceVariant
                                         ),
-                                    modifier = modifier.fillMaxWidth(),
+                                    modifier = modifier
                                 )
                             }
                         }
@@ -267,7 +297,7 @@ private fun RequestFocusOnResume(focusRequester: FocusRequester) {
 
 internal fun dismiss(activity: Activity) {
     if (activity is FragmentActivity) {
-        if (!activity.getSupportFragmentManager().popBackStackImmediate()) {
+        if (!activity.supportFragmentManager.popBackStackImmediate()) {
             activity.finish()
         }
     } else {
@@ -277,9 +307,7 @@ internal fun dismiss(activity: Activity) {
 
 internal fun getBackStackEntryCount(activity: Activity): Int {
     return if (activity is FragmentActivity) {
-        activity
-            .getSupportFragmentManager()
-            .primaryNavigationFragment
+        activity.supportFragmentManager.primaryNavigationFragment
             ?.childFragmentManager
             ?.backStackEntryCount
             ?: 0
