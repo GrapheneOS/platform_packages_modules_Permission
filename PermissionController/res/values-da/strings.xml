@@ -181,8 +181,8 @@
     <string name="permission_history_category_today" msgid="7496389369158806620">"I dag"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"I går"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Brug af apptilladelser"</string>
-    <string name="app_permission_usage_summary" msgid="390383661936709672">"Adgang: <xliff:g id="NUM">%1$s</xliff:g> gange. Samlet varighed: <xliff:g id="DURATION">%2$s</xliff:g>. Senest brugt for <xliff:g id="TIME">%3$s</xliff:g> siden."</string>
-    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Adgang: <xliff:g id="NUM">%1$s</xliff:g> gange. Senest brugt for <xliff:g id="TIME">%2$s</xliff:g> siden."</string>
+    <string name="app_permission_usage_summary" msgid="390383661936709672">"Adgang: <xliff:g id="NUM">%1$s</xliff:g> gange. Samlet varighed: <xliff:g id="DURATION">%2$s</xliff:g>. Senest anvendt for <xliff:g id="TIME">%3$s</xliff:g> siden."</string>
+    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Adgang: <xliff:g id="NUM">%1$s</xliff:g> gange. Senest anvendt for <xliff:g id="TIME">%2$s</xliff:g> siden."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Tillad"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Tillad administration af alle filer"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Tillad kun adgang til mediefiler"</string>
@@ -224,9 +224,9 @@
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps, du ikke bruger"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Notifikationer stoppes for at spare på batteriet\n• Midlertidige filer fjernes for at frigøre plads\n\nHvis du vil aktivere tilladelser og notifikationer igen, skal du åbne appen."</string>
     <string name="unused_apps_page_tv_summary" msgid="2624911608663778308">"Hvis en app ikke bruges i en måned, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Midlertidige filer fjernes for at frigøre plads\n\nHvis du vil aktivere tilladelserne igen, skal du åbne appen."</string>
-    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Sidst åbnet for mere end # måned siden}one{Sidst åbnet for mere end # måned siden}other{Sidst åbnet for mere end # måneder siden}}"</string>
+    <string name="last_opened_category_title" msgid="8796557894614236128">"{count,plural, =1{Senest åbnet for mere end # måned siden}one{Senest åbnet for mere end # måned siden}other{Senest åbnet for mere end # måneder siden}}"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen blev sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="last_opened_summary_short" msgid="1646067226191176825">"Sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
+    <string name="last_opened_summary_short" msgid="1646067226191176825">"Senest åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Hvis du tillader administration af alle filer, får denne app adgang og tilladelse til at ændre og slette alle filer på enhedens almindelige lagerplads og tilsluttede lagerenheder. Appen kan få adgang til filer uden at spørge dig først."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vil du give denne app adgang og tilladelse til at ændre og slette filer på denne enhed og tilsluttede lagerenheder? Appen kan få adgang til filer uden at spørge dig først."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps med denne tilladelse kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
@@ -319,24 +319,24 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Mediefiler"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Alle filer"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Altid tilladt"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"Sidst brugt <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Sidst brugt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_7d_access" msgid="4945055548894683751">"Sidst brugt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Senest anvendt <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Senest anvendt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"Senest anvendt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Brugt inden for de seneste 24 timer"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Brugt inden for de seneste 7 dage"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Sidst brugt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altid tilladt"</string>
-    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Sidst brugt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altid tilladt"</string>
-    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Sidst brugt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Altid tilladt"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Senest anvendt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altid tilladt"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Senest anvendt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altid tilladt"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Senest anvendt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Altid tilladt"</string>
     <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Brugt inden for de seneste 24 timer • Altid tilladt"</string>
     <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Brugt inden for de seneste 7 dage • Altid tilladt"</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Sidst brugt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
-    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Sidst brugt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
-    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Sidst brugt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Mediefiler"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Senest anvendt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Senest anvendt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medier"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Senest anvendt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Mediefiler"</string>
     <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Brugt inden for de seneste 24 timer • Mediefiler"</string>
     <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Brugt inden for de seneste 7 dage • Mediefiler"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Sidst brugt <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Sidst brugt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
-    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Sidst brugt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Alle filer"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Senest åbnet <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Senest anvendt i går kl. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alle filer"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Senest anvendt <xliff:g id="TIME_DATE_0">%1$s</xliff:g> kl. <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Alle filer"</string>
     <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Brugt inden for de seneste 24 timer • Alle filer"</string>
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Brugt inden for de seneste 7 dage • Alle filer"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Der ikke givet nogen tilladelser"</string>

@@ -27,7 +27,7 @@
     <string name="off" msgid="1438489226422866263">"निष्क्रिय"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइन्स्टल गर्नुहोस् वा असक्षम पार्नुहोस्"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"एप फेला परेन"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमति नदिइयोस्"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमति नदिनुहोस्"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"अनुमति नदिइनुहोस् र फेरि नसोध्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
@@ -45,7 +45,7 @@
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई सधैँ <xliff:g id="ACTION">%2$s</xliff:g> अनुमति दिने हो?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"एप प्रयोग गर्दा मात्र"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"सधैँ"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"अनुमति नदिइयोस् र फेरि नसोधियोस्"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"अनुमति नदिनुहोस् र फेरि नसोध्नुहोस्"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"सबै अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कुनै पनि असक्षम पारिएको छैन"</string>
@@ -190,7 +190,7 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिनुहोस्"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"सधैँ सबै अनुमति दिनुहोस्"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक पटक सोध्नुहोस्"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति नदिइयोस्"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति नदिनुहोस्"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गर्नुहोस्"</string>

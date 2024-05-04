@@ -196,7 +196,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用精確位置"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"精確位置關閉時，應用程式會存取你的大概位置資訊"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>權限"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式取得「<xliff:g id="PERM">%1$s</xliff:g>」的存取權限"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式存取「<xliff:g id="PERM">%1$s</xliff:g>」資訊"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"這個應用程式在<xliff:g id="DEVICE_NAME">%2$s</xliff:g>上的<xliff:g id="PERM">%1$s</xliff:g>存取權"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具備此權限的所有應用程式"</string>
@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"記事"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"預設錢包應用程式"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"錢包應用程式"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"錢包應用程式可存放信用卡、會員卡、車鑰和其他資訊，幫助完成各種形式的交易。"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"錢包應用程式可儲存信用卡、會員卡、車子鑰匙和其他資訊，方便你以多種形式進行交易。"</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設錢包應用程式嗎？"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"無需任何權限"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"目前的預設應用程式"</string>

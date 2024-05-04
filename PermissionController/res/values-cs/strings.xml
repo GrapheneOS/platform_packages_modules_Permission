@@ -205,7 +205,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odebrat oprávnění, pokud se aplikace nepoužívá"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odebrat oprávnění a uvolnit místo"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastavit aktivitu při nepoužívání"</string>
-    <string name="unused_apps_label_v3" msgid="693340578642156657">"Spravovat aplikaci, pokud se nepoužívá"</string>
+    <string name="unused_apps_label_v3" msgid="693340578642156657">"Správa nepoužívané aplikace"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Odebrat oprávnění, smazat dočasné soubory a zastavit oznámení"</string>
     <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Odebrat oprávnění, smazat dočasné soubory, zastavit oznámení a archivovat aplikaci"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pokud tuto aplikaci několik měsíců nepoužijete, kvůli ochraně vašich dat jí budou oprávnění odebrána."</string>

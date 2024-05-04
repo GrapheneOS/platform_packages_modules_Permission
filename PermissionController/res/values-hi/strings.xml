@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"नोट"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"डिफ़ॉल्ट वॉलेट ऐप्लिकेशन"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"वॉलेट ऐप्लिकेशन"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"वॉलेट ऐप्लिकेशन में, अलग-अलग तरह के लेन-देन में इस्तेमाल होने वाली चीज़ों की जानकारी को स्टोर किया जा सकता है. जैसे, क्रेडिट कार्ड, लॉयल्टी कार्ड, कार की डिजिटल कुंजी वगैरह की जानकारी."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"वॉलेट ऐप्लिकेशन में, अलग-अलग तरह के लेन-देन में इस्तेमाल होने वाली चीज़ों को स्टोर किया जा सकता है. जैसे, क्रेडिट कार्ड, लॉयल्टी कार्ड, कार की डिजिटल कुंजी वगैरह."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"क्या <xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट वॉलेट ऐप्लिकेशन के तौर पर सेट करना है?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"अनुमति लेना ज़रूरी नहीं है"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>

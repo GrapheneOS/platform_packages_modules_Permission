@@ -405,10 +405,10 @@
     <string name="role_notes_short_label" msgid="8796604147546125285">"Aplikacija za beleške"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Aplikacije koje vam omogućavaju da pravite beleške na uređaju"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"beleške"</string>
-    <string name="role_wallet_label" msgid="3719419175656204207">"Podrazumevana aplikacija Novčanik"</string>
+    <string name="role_wallet_label" msgid="3719419175656204207">"Podrazumevana aplikacija novčanika"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Aplikacija Novčanik"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikacije Novčanik mogu da čuvaju vaše kreditne kartice i kartice lojalnosti, ključeve od automobila i druge stvari kako bi vam pomogli pri različitim transakcijama."</string>
-    <string name="role_wallet_request_title" msgid="4770217108262737093">"Želite da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju Novčanik?"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Aplikacije novčanika mogu da čuvaju vaše kreditne kartice i kartice lojalnosti, ključeve od automobila i druge stvari kako bi vam pomogli pri različitim transakcijama."</string>
+    <string name="role_wallet_request_title" msgid="4770217108262737093">"Želite da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju novčanika?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Nije potrebna nijedna dozvola"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutno podrazumevana"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne pitaj ponovo"</string>

@@ -405,10 +405,10 @@
     <string name="role_notes_short_label" msgid="8796604147546125285">"Апликација за белешке"</string>
     <string name="role_notes_description" msgid="8496852798616883551">"Апликације које вам омогућавају да правите белешке на уређају"</string>
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"белешке"</string>
-    <string name="role_wallet_label" msgid="3719419175656204207">"Подразумевана апликација Новчаник"</string>
+    <string name="role_wallet_label" msgid="3719419175656204207">"Подразумевана апликација новчаника"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Апликација Новчаник"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Апликације Новчаник могу да чувају ваше кредитне картице и картице лојалности, кључеве од аутомобила и друге ствари како би вам помогли при различитим трансакцијама."</string>
-    <string name="role_wallet_request_title" msgid="4770217108262737093">"Желите да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију Новчаник?"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Апликације новчаника могу да чувају ваше кредитне картице и картице лојалности, кључеве од аутомобила и друге ствари како би вам помогли при различитим трансакцијама."</string>
+    <string name="role_wallet_request_title" msgid="4770217108262737093">"Желите да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију новчаника?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Није потребна ниједна дозвола"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Тренутно подразумевана"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Не питај поново"</string>

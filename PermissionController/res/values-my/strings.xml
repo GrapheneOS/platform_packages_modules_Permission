@@ -407,7 +407,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"မှတ်စုများ"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"မူရင်း Wallet အက်ပ်"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Wallet အက်ပ်"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"Wallet အက်ပ်များသည် ငွေလွှဲပြောင်းသည့် ဖောင်အမျိုးမျိုးနှင့်ပတ်သက်ပြီး ကူညီရန် သင်၏ခရက်ဒစ်ကတ်၊ ဖောက်သည်ကတ်များ၊ ကားသော့နှင့် အခြားအရာများကို သိမ်းနိုင်သည်။"</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"Wallet အက်ပ်များသည် ငွေလွှဲပြောင်းမှု ပုံစံအမျိုးမျိုးအတွက် ကူညီရန် သင်၏ခရက်ဒစ်ကတ်၊ ဖောက်သည်ကတ်များ၊ ကားသော့နှင့် အခြားအရာများကို သိမ်းနိုင်သည်။"</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင်၏မူရင်း Wallet အက်ပ်အဖြစ် သတ်မှတ်မလား။"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"လက်ရှိ မူရင်း"</string>

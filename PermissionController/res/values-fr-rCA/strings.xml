@@ -205,9 +205,9 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Retirer les autorisations si l\'application est inutilisée"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Retirer autorisations et libérer espace"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Suspendre l\'activité appli si inutilisée"</string>
-    <string name="unused_apps_label_v3" msgid="693340578642156657">"Gérer l\'application si inutilisée"</string>
+    <string name="unused_apps_label_v3" msgid="693340578642156657">"Gérer l\'appli si inutilisée"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Retirer les autorisations, supprimer les fichiers temporaires et arrêter les notifications"</string>
-    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Retirer les autorisations, supprimer les fichiers temporaires, arrêter les notifications et archiver l\'application"</string>
+    <string name="unused_apps_summary_v2" msgid="5011313200815115802">"Retirer les autorisations, supprimer les fichiers temporaires, arrêter les notifications et archiver l\'appli"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Afin de protéger vos données, les autorisations pour cette application seront retirées si elle n\'est pas utilisée pendant quelques mois."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Afin de protéger vos données, si l\'application n\'est pas utilisée pendant quelques mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis quelques mois."</string>

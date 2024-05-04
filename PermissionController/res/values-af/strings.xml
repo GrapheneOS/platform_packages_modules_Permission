@@ -194,12 +194,12 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Presiese ligging"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Benaderde ligging"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gebruik presiese ligging"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wanneer presiese ligging af is, kan programme jou benaderde ligging bepaal"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wanneer presiese ligging af is, kan apps jou benaderde ligging bepaal"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-toestemming"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> vir hierdie program"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> vir hierdie app"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="PERM">%1$s</xliff:g>toegang vir hierdie app op <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Sien al <xliff:g id="APP">%1$s</xliff:g> se toestemmings"</string>
-    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sien alle programme met hierdie toestemming"</string>
+    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sien alle apps met hierdie toestemming"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Wys Assistent-mikrofoongebruik"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Instellings vir ongebruikte apps"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Verwyder toestemmings as program nie gebruik word nie"</string>
@@ -654,7 +654,7 @@
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Gaan apps na wat die manier waarop hulle jou liggingdata kan deel, verander het"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Hierdie apps het die manier waarop hulle jou liggingdata kan deel, verander. Hulle het dit dalk nie voorheen gedeel nie, of kan dit nou vir reklame- of bemarkingdoeleindes deel."</string>
     <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Die ontwikkelaars van hierdie apps het inligting oor hul datadelingpraktyke met ’n appwinkel gedeel. Hulle kan dit mettertyd opdateer.\n\nDatadelingpraktyke kan verskil op grond van jou appweergawe en -gebruik, streek en ouderdom."</string>
-    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Kom meer te wete oor datadeling"</string>
+    <string name="learn_about_data_sharing" msgid="4200480587079488045">"Meer inligting oor datadeling"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Jou liggingdata word nou met derde partye gedeel"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Jou liggingdata word nou met derde partye gedeel vir reklame of bemarking"</string>
     <string name="updated_in_last_days" msgid="8371811947153042322">"{count,plural, =0{In die afgelope dag opgedateer}=1{In die afgelope dag opgedateer}other{In die afgelope # dae opgedateer}}"</string>
