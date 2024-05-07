@@ -106,24 +106,24 @@
                     style="@style/AppPermissionRadioButton" />
 
                 <RelativeLayout
-                    android:id="@+id/radio_select_layout"
+                    android:id="@+id/radio_allow_limited_layout"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_marginTop="16dp"
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/select_radio_button"
-                        android:text="@string/grant_dialog_button_allow_limited_access"
+                        android:id="@+id/allow_limited_radio_button"
+                        android:text="@string/app_permission_button_allow_limited_access"
                         android:layout_alignParentStart="true"
                         style="@style/AppPermissionRadioButton"
                         android:layout_marginTop="0dp" />
 
                     <View
-                        android:id="@+id/edit_photos_divider"
+                        android:id="@+id/select_photos_divider"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:layout_toStartOf="@id/edit_selected_button"
+                        android:layout_toStartOf="@id/select_photos_button"
                         android:layout_alignParentTop="true"
                         android:layout_alignBottom="@+id/select_radio_button"
                         android:layout_marginStart="16dp"
@@ -131,7 +131,7 @@
                         android:theme="@style/PreferenceDivider"/>
 
                     <ImageButton
-                        android:id="@+id/edit_selected_button"
+                        android:id="@+id/select_photos_button"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentEnd="true"

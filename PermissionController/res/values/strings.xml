@@ -75,7 +75,6 @@
 
     <!-- Title for the dialog button to allow limited access. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_limited_access">Allow limited access</string>
-    <!-- TODO: b/310657469 add app_permission version of this string -->
 
     <!-- Title for the dialog button to allow access to select photos to be shared. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_selected_photos">Select photos and videos</string>
@@ -582,29 +581,32 @@
     <!-- Summary for an app's use of a permission without duration [CHAR LIMIT=none] -->
     <string name="app_permission_usage_summary_no_duration">Access: <xliff:g id="num" example="2">%1$s</xliff:g> times. Last used <xliff:g id="time" example="2 hours">%2$s</xliff:g> ago.</string>
 
-    <!-- Title for the dialog button to allow a permission grant when you cannot only allow in the foreground. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow a permission grant when you cannot only allow in the foreground. [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow">Allow</string>
 
-    <!-- Title for the dialog button to allow a storage permission grant for all files [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow a storage permission grant for all files [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_all_files">Allow management of all files</string>
 
-    <!-- Title for the dialog button to allow a storage permission grant for media files only [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow a storage permission grant for media files only [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_media_only">Allow access to media only</string>
 
-    <!-- Title for the dialog button to allow a permission grant when you can also only allow in the foreground. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow a permission grant when you can also only allow in the foreground. [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_always">Allow all the time</string>
 
-    <!-- Title for the dialog button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
     <string name="app_permission_button_allow_foreground">Allow only while using the app</string>
 
-    <!-- Title for the dialog button to allow the user to always allow access to all resources guarded by a permission. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to allow the user to always allow access to all resources guarded by a permission. [CHAR LIMIT=60] -->
     <string name="app_permission_button_always_allow_all">Always allow all</string>
 
-    <!-- Title for the dialog button to require an app to ask for a permission next time they need it. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to require an app to ask for a permission next time they need it. [CHAR LIMIT=60] -->
     <string name="app_permission_button_ask">Ask every time</string>
 
-    <!-- Title for the dialog button to deny with prejudice a permission grant. [CHAR LIMIT=60] -->
+    <!-- Title for the settings radio button to deny with prejudice a permission grant. [CHAR LIMIT=60] -->
     <string name="app_permission_button_deny">Don\u2019t allow</string>
+
+    <!-- Title for the settings radio button to allow limited access. [CHAR LIMIT=60] -->
+    <string name="app_permission_button_allow_limited_access">Allow limited access</string>
 
     <!-- Content description for precise location image. [CHAR LIMIT=50] -->
     <string name="precise_image_description">Precise location</string>

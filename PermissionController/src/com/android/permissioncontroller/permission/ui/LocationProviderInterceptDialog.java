@@ -23,6 +23,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,17 +49,33 @@ public final class LocationProviderInterceptDialog extends FragmentActivity {
             return;
         }
 
-        new AlertDialog.Builder(this)
-                .setIcon(R.drawable.ic_dialog_alert_material)
-                .setTitle(android.R.string.dialog_alert_title)
-                .setMessage(getString(R.string.location_warning,
-                        Utils.getAppLabel(getPackageInfo(packageName).applicationInfo, this)))
-                .setNegativeButton(R.string.ok, null)
-                .setPositiveButton(R.string.location_settings, (dialog, which) ->
-                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
-                .setOnDismissListener((dialog) -> finish())
-                .show();
+        AlertDialog alertDialog =
+                new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_dialog_alert_material)
+                        .setTitle(android.R.string.dialog_alert_title)
+                        .setMessage(
+                                getString(
+                                        R.string.location_warning,
+                                        Utils.getAppLabel(
+                                                getPackageInfo(packageName).applicationInfo, this)))
+                        .setNegativeButton(R.string.ok, null)
+                        .setPositiveButton(
+                                R.string.location_settings,
+                                (dialog, which) ->
+                                        startActivity(
+                                                new Intent(
+                                                        Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
+                        .setOnDismissListener((dialog) -> finish())
+                        .show();
+        try {
+            Window alertWindow = alertDialog.getWindow();
+            if (alertWindow != null) {
+                alertWindow.getDecorView().requestFocus();
+            }
+        } catch (Exception ignored) {
+        }
     }
+
 
     private @Nullable PackageInfo getPackageInfo(@NonNull String packageName) {
         try {

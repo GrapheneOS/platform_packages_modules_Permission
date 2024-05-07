@@ -16,6 +16,11 @@
 
 package com.android.permissioncontroller.permission.utils.v34
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.APP_METADATA_SOURCE_APK
+import android.util.Log
+import com.android.modules.utils.build.SdkLevel
 import com.android.permission.safetylabel.DataCategory
 import com.android.permission.safetylabel.DataType
 import com.android.permission.safetylabel.DataTypeConstants
@@ -23,6 +28,8 @@ import com.android.permission.safetylabel.SafetyLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 
 object SafetyLabelUtils {
+    private val LOG_TAG = SafetyLabelUtils::class.java.simpleName
+
     /*
      * Get the sharing purposes for a SafetyLabel related to a specific permission group.
      */
@@ -54,5 +61,26 @@ object SafetyLabelUtils {
         }
 
         return purposeSet
+    }
+
+    /**
+     * Returns the {@code TRUE} if [AppMetadataSource] for the given package is
+     * supported for permission rationale, as well as for U- where getAppMetadataSource isn't
+     * available.
+     */
+    fun isAppMetadataSourceSupported(userContext: Context, packageName: String): Boolean {
+        if (!SdkLevel.isAtLeastV() || !android.content.pm.Flags.aslInApkAppMetadataSource()) {
+            // PackageManager.getAppMetadataSource() is not available and ASL in APK is ignored in
+            // U and below. We can assume it came from oem/pre-install or installer source (app
+            // store). Treat this as AppMetadataSource allowed.
+            return true
+        }
+
+        return try {
+            userContext.packageManager.getAppMetadataSource(packageName) != APP_METADATA_SOURCE_APK
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.w(LOG_TAG, "AppMetadataSource for $packageName not found")
+            false
+        }
     }
 }

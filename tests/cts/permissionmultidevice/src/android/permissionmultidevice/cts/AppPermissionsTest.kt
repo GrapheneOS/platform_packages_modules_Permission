@@ -31,7 +31,6 @@ import android.permission.flags.Flags
 import android.permissionmultidevice.cts.PermissionUtils.isCddCompliantScreenSize
 import android.platform.test.annotations.RequiresFlagsEnabled
 import android.provider.Settings
-import android.util.Log
 import android.virtualdevice.cts.common.VirtualDeviceRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -57,7 +56,6 @@ import org.junit.runner.RunWith
 class AppPermissionsTest {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val defaultDeviceContext = instrumentation.targetContext
-    private val TAG = AppPermissionsTest::class.java.simpleName
 
     @get:Rule
     var virtualDeviceRule =
@@ -84,7 +82,6 @@ class AppPermissionsTest {
         assumeTrue(isCddCompliantScreenSize())
 
         PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
-        assertTrue(isPackageInstalled())
 
         val virtualDeviceManager =
             defaultDeviceContext.getSystemService(VirtualDeviceManager::class.java)!!
@@ -119,14 +116,6 @@ class AppPermissionsTest {
 
         openAppPermissionsScreen()
 
-        val expectedGrantInfoMap =
-            mapOf(
-                "Allowed" to listOf(externalDeviceCameraText),
-                "Ask every time" to emptyList(),
-                "Not allowed" to listOf("Camera")
-            )
-        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
-
         clickPermissionItem(externalDeviceCameraText)
 
         verifyPermissionMessage()
@@ -136,6 +125,15 @@ class AppPermissionsTest {
             askChecked = false,
             denyChecked = false
         )
+
+        UiAutomatorUtils2.getUiDevice().pressBack()
+        val expectedGrantInfoMap =
+            mapOf(
+                "Allowed" to listOf(externalDeviceCameraText),
+                "Ask every time" to emptyList(),
+                "Not allowed" to listOf("Camera")
+            )
+        assertEquals(expectedGrantInfoMap, getGrantInfoMap())
     }
 
     @RequiresFlagsEnabled(
@@ -388,7 +386,6 @@ class AppPermissionsTest {
                 data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
                 addCategory(Intent.CATEGORY_DEFAULT)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             }
 
         eventually(
@@ -424,23 +421,6 @@ class AppPermissionsTest {
             DEVICE_AWARE_PERMISSION,
             persistentDeviceId
         )
-
-    private fun isPackageInstalled(): Boolean {
-        try {
-            instrumentation.context.packageManager.getPackageInfo(APP_PACKAGE_NAME, 0)
-            return true
-        } catch (e: PackageManager.NameNotFoundException) {
-            // Re-installing the package as a retry mechanism.
-            Log.e(TAG, "Package=$APP_PACKAGE_NAME not found, retrying the installation")
-            PackageManagementUtils.installPackage(APP_APK_PATH_STREAMING)
-        }
-        return try {
-            instrumentation.context.packageManager.getPackageInfo(APP_PACKAGE_NAME, 0)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
-    }
 
     private fun getPermState(): Map<String, PermissionManager.PermissionState> =
         permissionManager.getAllPermissionStates(APP_PACKAGE_NAME, persistentDeviceId)

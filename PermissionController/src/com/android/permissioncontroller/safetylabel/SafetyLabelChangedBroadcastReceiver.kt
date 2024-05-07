@@ -37,6 +37,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel as SafetyLabelForPersistence
 import java.time.Instant
 import kotlinx.coroutines.Dispatchers
@@ -142,6 +143,12 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
             } else {
                 context.createContextAsUser(user, 0)
             }
+
+        // Asl in Apk (V+) is not supported by permissions
+        if (!SafetyLabelUtils.isAppMetadataSourceSupported(userContext, packageName)) {
+            return
+        }
+
         val appMetadataBundle =
             try {
                 userContext.packageManager.getAppMetadata(packageName)

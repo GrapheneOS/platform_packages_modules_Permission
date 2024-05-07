@@ -67,10 +67,12 @@ import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGr
 import com.android.permissioncontroller.permission.model.v34.AppDataSharingUpdate
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
+import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.AppInfo
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistory.SafetyLabel as SafetyLabelForPersistence
 import com.android.permissioncontroller.safetylabel.AppsSafetyLabelHistoryPersistence
+import com.android.permissioncontroller.safetylabel.SafetyLabelChangedBroadcastReceiver
 import java.time.Duration
 import java.time.Instant
 import java.time.ZoneId
@@ -348,6 +350,12 @@ class SafetyLabelChangesJobService : JobService() {
             } else {
                 context.createContextAsUser(user, 0)
             }
+
+        // Asl in Apk (V+) is not supported by permissions
+        if (!SafetyLabelUtils.isAppMetadataSourceSupported(userContext, packageName)) {
+            return null
+        }
+
         val appMetadataBundle: PersistableBundle =
             try {
                 userContext.packageManager.getAppMetadata(packageName)
@@ -513,8 +521,7 @@ class SafetyLabelChangesJobService : JobService() {
             }
             ?.keys
             ?.filter { packageUser: Pair<String, UserHandle> -> packageUser.first == packageName }
-            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second }
-            ?: listOf()
+            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second } ?: listOf()
     }
 
     private fun AppDataSharingUpdate.containsLocationCategoryUpdate() =

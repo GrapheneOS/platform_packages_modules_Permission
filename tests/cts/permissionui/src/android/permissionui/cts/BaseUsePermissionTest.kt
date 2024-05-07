@@ -66,6 +66,7 @@ import org.junit.Before
 abstract class BaseUsePermissionTest : BasePermissionTest() {
     companion object {
         const val APP_APK_NAME_31 = "CtsUsePermissionApp31.apk"
+        const val APP_APK_NAME_31_WITH_ASL = "CtsUsePermissionApp31WithAsl.apk"
         const val APP_APK_NAME_LATEST = "CtsUsePermissionAppLatest.apk"
 
         const val APP_APK_PATH_22 = "$APK_DIRECTORY/CtsUsePermissionApp22.apk"
@@ -475,6 +476,34 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun installPackageWithInstallSourceAndNoMetadata(apkName: String) {
         installPackageViaSession(apkName)
+    }
+
+    protected fun installPackageWithInstallSourceAndNoMetadataFromStore(apkName: String) {
+        installPackageViaSession(
+            apkName,
+            packageSource = PACKAGE_SOURCE_STORE
+        )
+    }
+
+    protected fun installPackageWithInstallSourceAndNoMetadataFromLocalFile(apkName: String) {
+        installPackageViaSession(
+            apkName,
+            packageSource = PACKAGE_SOURCE_LOCAL_FILE
+        )
+    }
+
+    protected fun installPackageWithInstallSourceAndNoMetadataFromDownloadedFile(apkName: String) {
+        installPackageViaSession(
+            apkName,
+            packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE
+        )
+    }
+
+    protected fun installPackageWithInstallSourceAndNoMetadataFromOther(apkName: String) {
+        installPackageViaSession(
+            apkName,
+            packageSource = PACKAGE_SOURCE_OTHER
+        )
     }
 
     protected fun installPackageWithInstallSourceAndInvalidMetadata(apkName: String) {

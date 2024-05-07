@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.data.v34
 
 import android.app.Application
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Process
 import android.os.UserHandle
@@ -28,6 +29,7 @@ import com.android.permissioncontroller.permission.data.PackageBroadcastReceiver
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.v34.SafetyLabelInfo
+import com.android.permissioncontroller.permission.utils.v34.SafetyLabelUtils
 import kotlinx.coroutines.Job
 
 /**
@@ -88,9 +90,22 @@ private constructor(
             return
         }
 
+        val userContext =
+            if (user == Process.myUserHandle()) {
+                app
+            } else {
+                app.createContextAsUser(user, /* flags= */ 0)
+            }
+
+        // Asl in Apk (V+) is not supported by permissions
+        if (!SafetyLabelUtils.isAppMetadataSourceSupported(userContext, packageName)) {
+            postValue(SafetyLabelInfo.UNAVAILABLE)
+            return
+        }
+
         val safetyLabelInfo: SafetyLabelInfo =
             try {
-                val safetyLabel: SafetyLabel? = getSafetyLabel(packageName, user)
+                val safetyLabel: SafetyLabel? = getSafetyLabel(userContext, packageName)
                 if (safetyLabel != null) {
                     SafetyLabelInfo(safetyLabel, lightInstallSourceInfo)
                 } else {
@@ -106,14 +121,7 @@ private constructor(
 
     /** Returns the [SafetyLabel] for the given package and user. */
     @Throws(PackageManager.NameNotFoundException::class)
-    private fun getSafetyLabel(packageName: String, user: UserHandle): SafetyLabel? {
-        val userContext =
-            if (user == Process.myUserHandle()) {
-                app
-            } else {
-                app.createContextAsUser(user, /* flags= */ 0)
-            }
-
+    private fun getSafetyLabel(userContext: Context, packageName: String): SafetyLabel? {
         return SafetyLabel.getSafetyLabelFromMetadata(
             userContext.packageManager.getAppMetadata(packageName)
         )

@@ -42,6 +42,7 @@ android_test {
         "CtsAccessibilityCommon",
         "platform-test-rules",
         "platform-test-annotations",
+        "android.content.pm.flags-aconfig-java-export",
         "android.permission.flags-aconfig-java",
     ],
     data: [
@@ -58,6 +59,7 @@ android_test {
         ":CtsUsePermissionApp30WithBackground",
         ":CtsUsePermissionApp30WithBluetooth",
         ":CtsUsePermissionApp31",
+        ":CtsUsePermissionApp31WithAsl",
         ":CtsUsePermissionApp32",
         ":CtsUsePermissionAppLatest",
         ":CtsUsePermissionAppLatestNone",

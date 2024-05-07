@@ -21,9 +21,11 @@ import android.Manifest.permission_group.PHONE
 import android.Manifest.permission_group.SMS
 import android.os.Build
 import android.permission.flags.Flags
+import android.platform.test.annotations.EnableFlags
 import android.platform.test.annotations.RequiresFlagsEnabled
 import android.platform.test.flag.junit.CheckFlagsRule
 import android.platform.test.flag.junit.DeviceFlagsValueProvider
+import android.platform.test.flag.junit.SetFlagsRule
 import android.provider.DeviceConfig
 import android.provider.Settings
 import android.provider.Settings.Secure.USER_SETUP_COMPLETE
@@ -55,6 +57,9 @@ class AppPermissionTest : BaseUsePermissionTest() {
 
     @get:Rule
     val checkFlagsRule: CheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
+
+    @get:Rule
+    val setFlagsRule = SetFlagsRule()
 
     @Before
     fun setup() {
@@ -117,6 +122,67 @@ class AppPermissionTest : BaseUsePermissionTest() {
     @Test
     fun showPermissionRationaleContainer_withInstallSourceAndMetadata_packageSourceOther() {
         installPackageWithInstallSourceAndMetadataFromOther(APP_APK_NAME_31)
+
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndNoMetadata_packageSourceUnspecified() {
+        // Unspecified is the default, so no need to explicitly set it
+        installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31_WITH_ASL)
+
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndNoMetadata_packageSourceStore() {
+        installPackageWithInstallSourceAndNoMetadataFromStore(APP_APK_NAME_31_WITH_ASL)
+
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndNoMetadata_packageSourceLocalFile() {
+        installPackageWithInstallSourceAndNoMetadataFromLocalFile(APP_APK_NAME_31_WITH_ASL)
+
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndNoMetadata_packageSourceDownloadedFile() {
+        installPackageWithInstallSourceAndNoMetadataFromDownloadedFile(APP_APK_NAME_31_WITH_ASL)
+
+        navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
+
+        assertAppPermissionRationaleContainerIsVisible(false)
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun showPermissionRationaleContainer_withInstallSourceAndNoMetadata_packageSourceOther() {
+        installPackageWithInstallSourceAndNoMetadataFromOther(APP_APK_NAME_31_WITH_ASL)
 
         navigateToIndividualPermissionSetting(ACCESS_COARSE_LOCATION)
 
@@ -331,6 +397,6 @@ class AppPermissionTest : BaseUsePermissionTest() {
     companion object {
         private const val PERMISSION_RATIONALE_ENABLED = "permission_rationale_enabled"
         private val ENHANCED_CONFIRMATION_DIALOG_SELECTOR = By.res(
-            "com.android.permissioncontroller:id/enhanced_confirmation_dialog_title");
+            "com.android.permissioncontroller:id/enhanced_confirmation_dialog_title")
     }
 }
