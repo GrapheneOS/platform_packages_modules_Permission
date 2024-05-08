@@ -30,8 +30,6 @@ import android.permission.cts.PermissionUtils
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingNoAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithNoSharing
-import android.platform.test.annotations.EnableFlags
-import android.platform.test.flag.junit.SetFlagsRule
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
 import android.util.Log
@@ -52,7 +50,6 @@ import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
-
 /** Tests the UI that displays information about apps' updates to their data sharing policies. */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 @FlakyTest
@@ -60,9 +57,6 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     // TODO(b/263838456): Add tests for personal and work profile.
 
     private var activityManager: ActivityManager? = null
-
-    @get:Rule
-    val setFlagsRule = SetFlagsRule()
 
     @get:Rule
     val deviceConfigSafetyLabelChangeNotificationsEnabled =
@@ -382,7 +376,7 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
     }
 
     @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceUnspecified_showsUpdate() {
+    fun startActivityWithIntent_whenAppGrantedFineLocation_packageSourceUnspecified_showsUpdate() {
         installAndWaitTillPackageAdded(
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
@@ -505,140 +499,10 @@ class AppDataSharingUpdatesTest : BaseUsePermissionTest() {
         }
     }
 
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
-    @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceUnspecified_asAslInApk_doesntShowUpdate() {
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31,
-            createAppMetadataWithNoSharing(),
-            PACKAGE_SOURCE_UNSPECIFIED,
-            waitTillBroadcastProcessed = true
-        )
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31_WITH_ASL,
-            packageSource = PACKAGE_SOURCE_UNSPECIFIED
-        )
-        grantFineLocationPermission(APP_PACKAGE_NAME)
-
-        startAppDataSharingUpdatesActivity()
-
-        try {
-            assertNoUpdatesPresent()
-        } finally {
-            pressBack()
-        }
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
-    @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceOther_asAslInApk_doesntShowUpdate() {
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31,
-            createAppMetadataWithNoSharing(),
-            PACKAGE_SOURCE_OTHER,
-            waitTillBroadcastProcessed = true
-        )
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31_WITH_ASL,
-            packageSource = PACKAGE_SOURCE_OTHER
-        )
-        grantFineLocationPermission(APP_PACKAGE_NAME)
-
-        startAppDataSharingUpdatesActivity()
-
-        try {
-            assertNoUpdatesPresent()
-        } finally {
-            pressBack()
-        }
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
-    @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceStore_asAslInApk_doesntShowUpdate() {
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31,
-            createAppMetadataWithNoSharing(),
-            PACKAGE_SOURCE_STORE,
-            waitTillBroadcastProcessed = true
-        )
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31_WITH_ASL,
-            packageSource = PACKAGE_SOURCE_STORE
-        )
-        grantFineLocationPermission(APP_PACKAGE_NAME)
-
-        startAppDataSharingUpdatesActivity()
-
-        try {
-            assertNoUpdatesPresent()
-        } finally {
-            pressBack()
-        }
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
-    @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceLocalFile_asAslInApk_doesntShowUpdate() {
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31,
-            createAppMetadataWithNoSharing(),
-            PACKAGE_SOURCE_LOCAL_FILE,
-            waitTillBroadcastProcessed = true
-        )
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31_WITH_ASL,
-            packageSource = PACKAGE_SOURCE_LOCAL_FILE
-        )
-        grantFineLocationPermission(APP_PACKAGE_NAME)
-
-        startAppDataSharingUpdatesActivity()
-
-        try {
-            assertNoUpdatesPresent()
-        } finally {
-            pressBack()
-        }
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @EnableFlags(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
-    @Test
-    fun startActivityWithIntent_whenAppGrantedLocation_packageSourceDownloaded_asAslInApk_doesntShowUpdate() {
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31,
-            createAppMetadataWithNoSharing(),
-            PACKAGE_SOURCE_DOWNLOADED_FILE,
-            waitTillBroadcastProcessed = true
-        )
-        installAndWaitTillPackageAdded(
-            APP_APK_NAME_31_WITH_ASL,
-            packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE
-        )
-        grantFineLocationPermission(APP_PACKAGE_NAME)
-
-        startAppDataSharingUpdatesActivity()
-
-        try {
-            assertNoUpdatesPresent()
-        } finally {
-            pressBack()
-        }
-    }
-
     /** Installs an app and waits for the package added broadcast to be dispatched. */
     private fun installAndWaitTillPackageAdded(
         apkPath: String,
-        appMetadata: PersistableBundle? = null,
+        appMetadata: PersistableBundle,
         packageSource: Int? = null,
         waitTillBroadcastProcessed: Boolean = false
     ) {

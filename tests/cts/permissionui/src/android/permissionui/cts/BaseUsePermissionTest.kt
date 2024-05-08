@@ -66,7 +66,6 @@ import org.junit.Before
 abstract class BaseUsePermissionTest : BasePermissionTest() {
     companion object {
         const val APP_APK_NAME_31 = "CtsUsePermissionApp31.apk"
-        const val APP_APK_NAME_31_WITH_ASL = "CtsUsePermissionApp31WithAsl.apk"
         const val APP_APK_NAME_LATEST = "CtsUsePermissionAppLatest.apk"
 
         const val APP_APK_PATH_22 = "$APK_DIRECTORY/CtsUsePermissionApp22.apk"
@@ -130,8 +129,9 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             "com.android.permissioncontroller:id/allow_foreground_only_radio_button"
         const val ASK_RADIO_BUTTON = "com.android.permissioncontroller:id/ask_radio_button"
         const val DENY_RADIO_BUTTON = "com.android.permissioncontroller:id/deny_radio_button"
-        const val SELECT_RADIO_BUTTON = "com.android.permissioncontroller:id/select_radio_button"
-        const val EDIT_PHOTOS_BUTTON = "com.android.permissioncontroller:id/edit_selected_button"
+        const val ALLOW_LIMITED_RADIO_BUTTON =
+            "com.android.permissioncontroller:id/allow_limited_radio_button"
+        const val SELECT_PHOTOS_BUTTON = "com.android.permissioncontroller:id/select_photos_button"
 
         const val NOTIF_TEXT = "permgrouprequest_notifications"
         const val ALLOW_BUTTON_TEXT = "grant_dialog_button_allow"
@@ -476,34 +476,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun installPackageWithInstallSourceAndNoMetadata(apkName: String) {
         installPackageViaSession(apkName)
-    }
-
-    protected fun installPackageWithInstallSourceAndNoMetadataFromStore(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_STORE
-        )
-    }
-
-    protected fun installPackageWithInstallSourceAndNoMetadataFromLocalFile(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_LOCAL_FILE
-        )
-    }
-
-    protected fun installPackageWithInstallSourceAndNoMetadataFromDownloadedFile(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE
-        )
-    }
-
-    protected fun installPackageWithInstallSourceAndNoMetadataFromOther(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_OTHER
-        )
     }
 
     protected fun installPackageWithInstallSourceAndInvalidMetadata(apkName: String) {
