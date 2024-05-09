@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permite-le întotdeauna pe toate"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permite"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Locația aproximativă"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosește locația exactă"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Afișează detectarea declanșării asistentului"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Afișează pictograma în bara de stare când microfonul este folosit pentru a activa asistentul vocal"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografiile și conținutul media de pe dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la fotografiile și conținutul media de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți acceseze agenda?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze agenda de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze locația acestui dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la locația de pe &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Aplicația va avea acces la locație doar când o folosești"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze locația acestui dispozitiv?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze locația de pe &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"E posibil ca aplicația să dorească să-ți acceseze în permanență locația, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Modifici accesul la locație pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Modifici accesul la locație pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplicația dorește să-ți acceseze în permanență locația, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să găsească, să se conecteze la și să afle poziția relativă a dispozitivelor apropiate?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; poate să găsească, să se conecteze la, să determine poziția relativă a dispozitivelor apropiate pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să găsească, să se conecteze la și să determine poziția relativă a dispozitivelor apropiate? "<annotation id="link">"Permite în setări."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Schimbi permisiunile privind accesul la locație pentru <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> de la locația aproximativă la cea exactă?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Schimbi accesul la locația de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; pentru <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> de la aproximativă la exactă?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze locația aproximativă a acestui dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze locația aproximativă de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exactă"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximativă"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze calendarul?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze calendarul de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să trimită și să vadă mesaje SMS?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să trimită și să vadă mesajele SMS de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografiile, conținutul media și fișierele de pe dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la fotografiile, conținutul media și fișierele de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fotografii, clipuri, conținut audio și muzică&lt;/b&gt; de pe dispozitiv?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fotografii, clipuri, conținut audio, muzică și alte fișiere&lt;/b&gt; de pe dispozitiv?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la muzică și fișiere audio de pe acest dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Permiți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la muzică și conținut audio de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografiile și videoclipurile de pe dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografii și videoclipuri de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze mai multe fotografii și videoclipuri de pe dispozitiv?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze mai multe fotografii și videoclipuri de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze audio?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze conținut audio pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplicația va putea să înregistreze conținut audio doar când o folosești"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze audio?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze conținut audio pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Aplicația poate dori să înregistreze conținut audio permanent, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Modifici accesul la microfon pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Modifici accesul la microfon pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Aplicația dorește să înregistreze conținut audio permanent, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Permiți aplicației &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți acceseze activitatea fizică?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze activitatea fizică de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să fotografieze și să înregistreze video?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să facă fotografii și să înregistreze videoclipuri pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplicația va putea să fotografieze și să înregistreze videoclipuri doar când o folosești"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să facă fotografii și să înregistreze videoclipuri?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să facă fotografii și să înregistreze videoclipuri pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Aplicația poate dori să fotografieze și să înregistreze videoclipuri permanent, chiar când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Modifici accesul la camera foto pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Modifici accesul la camera foto pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Aplicația dorește să fotografieze și să înregistreze videoclipuri permanent, chiar și când nu o folosești. "<annotation id="link">"Acordă această permisiune din setări."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți acceseze jurnalele de apeluri?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze jurnalele de apeluri de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să dea și să gestioneze apeluri telefonice?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să inițieze și să gestioneze apeluri telefonice pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplicația solicită acces permanent la datele de la senzori despre semnele vitale, chiar și când nu o folosești. Pentru a face această modificare, "<annotation id="link">"accesează setările"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele vitale de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Pentru a permite accesul permanent al aplicației la datele de la senzorii corporali, chiar și atunci când nu o folosești, "<annotation id="link">"accesează setările"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permiți în continuare accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la datele de la senzorii corporali în timpul folosirii aplicației?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; poate accesa în continuare date de la senzorii corporali de pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; în timpul folosirii aplicației?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să-ți trimită notificări?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Permiți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să trimită notificări pe &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisiuni controlate"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> are acces la locație"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organizația ta permite ca <xliff:g id="APP_NAME">%1$s</xliff:g> să-ți acceseze locația"</string>

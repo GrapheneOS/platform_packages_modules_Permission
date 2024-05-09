@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Միշտ թույլատրել բոլորը"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ամեն անգամ հարցնել"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Չթույլատրել"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Ճշգրիտ տեղադրություն"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Մոտավոր տեղադրություն"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Օգտագործել ճշգրիտ տեղադրությունը"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Ցույց տալ ձայնային օգնականի ակտիվացման պատկերակը"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Ցույց տալ պատկերակը կարգավիճակի գոտում, երբ ձայնային օգնականի ակտիվացման համար օգտագործվում է խոսափողը"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքի լուսանկարներն ու մուլտիմեդիա ֆայլերը"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; լուսանկարներն ու մեդիա ֆայլերը։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր կոնտակտները"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր կոնտակտները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի տեղադրության տվյալները"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>-ի&lt;/b&gt; տեղադրության տվյալները"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Տեղադրության տվյալները հասանելի կլինեն հավելվածին, միայն երբ այն օգտագործելիս լինեք"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի տեղադրության տվյալները"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>ի&lt;/b&gt; տեղադրության մասին տվյալները։"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Փոխե՞լ տեղադրության մասին տվյալների հասանելիությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Փոխե՞լ տեղորոշման թույլտվությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ի համար ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին գտնել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքավորումը։"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին գտնել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքը &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին գտնել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքավորումը։ Թույլատրելու համար անցեք "<annotation id="link">"կարգավորումներ։"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"«<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>» հավելվածի տեղորոշումը փոխե՞լ մոտավորից ճգշրիտի"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Թույլատրե՞լ <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-ին օգտագործել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; ճշգրիտ տեղադրությունը՝ մոտավորի փոխարեն։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրությունը"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; մոտավոր տեղադրությունը։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ճշգրիտ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Մոտավոր"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր օրացույցը:"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր օրացույցը &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ուղարկել և դիտել SMS հաղորդագրություններ:"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին SMS-ներ ուղարկել և դիտել &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքում պահված լուսանկարները, մուլտիմեդիան և ֆայլերը"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; լուսանկարները, մեդիա նյութերը և ֆայլերը։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի &lt;b&gt;լուսանկարները, տեսանյութերը, երաժշտությունը և աուդիո ֆայլերը&lt;/b&gt;"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի &lt;b&gt;նկարները, երգերը, տեսանյութերը, աուդիո ֆայլերը և մյուս ֆայլերը&lt;/b&gt;"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի երաժշտությունը և մյուս աուդիո ֆայլերը"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; երաժշտությունը և մյուս աուդիո ֆայլերը։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի լուսանկարներն ու տեսանյութերը"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ի&lt;/b&gt; լուսանկարներն ու տեսանյութերը։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի լուսանկարներն ու տեսանյութերը"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել այլ լուսանկարներ և տեսանյութեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրել"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին ձայնագրություններ անել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Այս հավելվածը կկարողանա ձայնագրություններ անել միայն, երբ այն օգտագործելիս լինեք"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրություններ անել։"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին ձայնագրություններ անել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Այս հավելվածը հավանաբար կուզենա ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Փոխե՞լ խոսափողի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Փոխե՞լ խոսափողի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ի համար ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Այս հավելվածն ուզւոմ է ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր ֆիզիկական ակտիվության տվյալները"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր ֆիզիկական ակտիվության տվյալները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին լուսանկարել և տեսագրել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Այս հավելվածը կկարողանա լուսանկարել և տեսագրել միայն, երբ այն օգտագործելիս լինեք"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել։"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին լուսանկարել և տեսագրել ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Այս հավելվածը հավանաբար կուզենա լուսանկարել և տեսագրել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Փոխե՞լ տեսախցիկի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Փոխե՞լ տեսախցիկի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ի համար ձեր &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Այս հավելվածն ուզում է լուսանկարել և տեսագրել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր հեռախոսազանգերի մատյանները"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր հեռախոսի զանգերի մատյանները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին կատարել հեռախոսազանգեր և կառավարել դրանք"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին հեռախոսազանգեր կատարել և կառավարել դրանք &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորից ստանալ ձեր կենսագործունեության հիմնական տվյալները:"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր մարմնի սենսորների տվյալները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Հավելվածին անհրաժեշտ է մարմնի սենսորների տվյալների հասանելիություն, նույնիսկ երբ չեք օգտվում դրանից։ Այս փոփոխությունը կատարելու համար "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր կենսագործունեության տվյալները ստանալ սենսորներից"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին օգտագործել ձեր մարմնի սենսորների տվյալները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Եթե ուզում եք, որ այս հավելվածին հասանելի լինեն մարմնի սենսորների տվյալները, նույնիսկ երբ չեք օգտվում հավելվածից, "<annotation id="link">"փոխեք կարգավորումները"</annotation>"։"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Մարմնի սենսորների տվյալները հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին, միայն երբ այն օգտագործվում է"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին աշխատանքի ընթացքում օգտագործել մարմնի սենսորների տվյալները &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ին ծանուցումներ ուղարկել ձեզ &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>ում&lt;/b&gt;։"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածն ունի տեղորոշման թույլտվություն"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ձեր կազմակերպությունը հասանելի է դարձրել ձեր տեղադրությունը <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածին"</string>

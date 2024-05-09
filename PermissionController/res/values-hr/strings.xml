@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Uvijek dopusti sve"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pitaj svaki put"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nemoj dopustiti"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Točna lokacija"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Približna lokacija"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Koristi točnu lokaciju"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Prikaz otkrivanja okidača asistenta"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Prikazuje ikonu na traci statusa kada se za aktiviranje glasovne pomoći upotrebljava mikrofon"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa fotografijama i medijima na vašem uređaju?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama i medijima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa vašim kontaktima?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa vašim kontaktima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa lokaciji ovog uređaja?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa lokaciji uređaja &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Aplikacija će imati pristup lokaciji samo dok upotrebljavate aplikaciju"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa lokaciji ovog uređaja?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa lokaciji vašeg uređaja &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ova aplikacija možda će uvijek htjeti imati pristup vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Želite li promijeniti pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Promijeniti pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ova aplikacija želi uvijek pristupati vašoj lokaciji, čak i kad je ne koristite. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da traži uređaje u blizini, povezuje se s njima i određuje njihov približni položaj?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pronađe uređaje u blizini i njihov relativan položaj i poveže se s njima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; traži uređaje u blizini, poveže se s njima i odredi njihov približni položaj? "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Želite li aplikaciji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> promijeniti pristup iz približne lokacije u točnu?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Promijeniti aplikaciji <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> pristup lokaciji na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; iz približne u točnu?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa približnoj lokaciji ovog uređaja?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa približnoj lokaciji vašeg uređaja &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Točno"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približno"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa vašem kalendaru?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa vašem kalendaru na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da šalje i pregledava SMS poruke?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje i pregledava SMS poruke na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa fotografijama, medijima i datotekama na vašem uređaju?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama, medijima i datotekama na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audiodatotekama i glazbi&lt;/b&gt; na ovom uređaju?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Dopustiti apl. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup &lt;b&gt;foto/video/audio i drugim datotekama te glazbi&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup glazbi i audiodatotekama na ovom uređaju?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa glazbi i audiodatotekama na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa fotografijama i videozapisima na ovom uređaju?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama i videozapisima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti pristup većem broju fotografija i videozapisa na ovom uređaju?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa većem broju fotografija i videozapisa na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima audiozapise?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima audiozapise na vašem uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći snimati audiozapise samo dok je upotrebljavate"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima audiozapise?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima audiozapise na vašem uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Aplikacija će možda snimati audiozapise u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Želite li promijeniti pristup mikrofonu za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Promijeniti pristup mikrofonu za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Aplikacija traži dopuštenje za snimanje audiozapisa u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Želite li dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa vašoj tjelesnoj aktivnosti?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa vašoj tjelesnoj aktivnosti na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima fotografije i videozapise?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima fotografije i videozapise na vašem uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplikacija će moći snimati fotografije i videozapise samo dok je upotrebljavate"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da snima fotografije i videozapise?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima fotografije i videozapise na vašem uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Aplikacija će možda snimati fotografije i videozapise u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Želite li promijeniti pristup kameri za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Promijeniti pristup kameri za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Aplikacija traži dopuštenje za snimanje fotografija i videozapisa u svakom trenutku, čak i kad je ne upotrebljavate. "<annotation id="link">"Dopustite u postavkama."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da pristupa zapisnicima poziva vašeg telefona?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa zapisnicima poziva vašeg telefona na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da upućuje telefonske pozive i upravlja njima?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; upućuje telefonske pozive i upravlja njima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa podacima senzora o vašim vitalnim znakovima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikacija želi uvijek pristupati podacima senzora o vašim vitalnim znakovima, čak i kad je ne upotrebljavate. Da biste unijeli tu promjenu, "<annotation id="link">"otvorite postavke"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Dopustiti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa podacima senzora o vašim vitalnim znakovima na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Da biste omogućili aplikaciji da uvijek pristupa podacima s biometrijskih senzora, čak i kada je ne upotrebljavate, "<annotation id="link">"otvorite postavke."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Nastaviti dopuštati aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup podacima s biometrijskih senzora dok je upotrebljavate?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Nastaviti dopuštati da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tijekom upotrebe pristupa podacima biometrijskih senzora na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite li aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dopustiti da vam šalje obavijesti?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Dopustiti da vam &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje obavijesti na uređaju &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana dopuštenja"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ima pristup lokaciji"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Vaša organizacija dopušta da <xliff:g id="APP_NAME">%1$s</xliff:g> pristupa vašoj lokaciji"</string>

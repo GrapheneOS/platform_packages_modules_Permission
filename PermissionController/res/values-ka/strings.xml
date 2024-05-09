@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ყოველთვის ყველას დაშვება"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ყოველთვის მკითხე"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"არ დაიშვას"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"ზუსტი მდებარეობა"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"მიახლოებითი მდებარეობა"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ზუსტი მდებარეობის გამოყენება"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"ასისტენტის გაშვების ხატულის ჩვენება"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"მიკროფონის მეშვეობით ხმოვანი ასისტენტის გააქტიურებისას სტატუსის ზოლში ხატულის ჩვენება"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს თქვენს მოწყობილობაზე არსებულ ფოტოებსა და მედია-კონტენტზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა ფოტოებსა და მედიაზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს კონტაქტებზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენს კონტაქტებზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის მდებარეობაზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენი &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>-ის&lt;/b&gt; მდებარეობაზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"ამ აპს მდებარეობაზე წვდომა მხოლოდ მაშინ ექნება, როცა თქვენ მას გამოიყენებთ"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის მდებარეობაზე წვდომის ნებართვა?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენი &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>-ის მდებარეობაზე?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"აპი ითხოვს თქვენს მდებარეობაზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა მას არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"გსურთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ისთვის&lt;/b&gt; მდებარეობაზე წვდომის შეცვლა?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"შეცვლით მდებარეობაზე წვდომას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპისთვის თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"აპი ითხოვს თქვენს მდებარეობაზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა მას არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"მიეცეს საშუალება &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს იპოვოს ახლომახლო მოწყობილობები, დაუკავშირდეს მათ და დაადგინოს პოზიცია მათ მიმართ?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, იპოვოს, დაუკავშირდეს და დაადგინოს ახლომახლო მოწყობილობების შედარებითი პოზიცია თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"მიეცეს საშუალება &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს იპოვოს ახლომახლო მოწყობილობები, დაუკავშირდეს მათ და დაადგინოს პოზიცია მათ მიმართ? "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"შეიცვალოს <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-ის მდებარეობაზე წვდომა მიახლოებითის მაგიერ ზუსტით?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"შეცვლით <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-ის მდებარეობის (მიახლოებითს ზუსტით) წვდომას თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის მიახლოებით მდებარეობაზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენი &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ის მიახლოებით მდებარეობაზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ზუსტი"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"მიახლოებითი"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს კალენდარზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენს კალენდარზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; SMS-შეტყობინებათა გაგზავნის და ნახვის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, გაგზავნოს და ნახოს SMS შეტყობინებები თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენს მოწყობილობაზე არსებულ ფოტოებზე, მედია-კონტენტზე და ფაილებზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა ფოტოებზე, მედიასა და ფაილებზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას ამ მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკასა და აუდიოფაილებზე&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ის წვდომას თქვენი მოწყ. &lt;b&gt;ფოტოებზე, ვიდეოებზე, მუსიკაზე, აუდიო და სხვა &lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის მუსიკასა და აუდიოფაილებზე?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა მუსიკასა და აუდიოზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"მიანიჭებთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომას თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა ფოტოებსა და ვიდეოებზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"მიენიჭოს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს წვდომა თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა მეტ ფოტოსა და ვიდეოზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჩაწეროს აუდიო თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ეს აპი აუდიოს ჩაწერას მხოლოდ მაშინ შეძლებს, როცა მას იყენებთ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; აუდიოს ჩაწერის ნებართვა?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჩაწეროს აუდიო თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ამ აპს შეუძლია აუდიოს ჩაწერა ნებისმიერ დროს, მაშინაც კი, როცა აპს არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"გსურთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ისთვის&lt;/b&gt; მიკროფონის წვდომის შეცვლა?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"შეცვლით მიკროფონზე წვდომას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპისთვის თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"ეს აპი აუდიოს ჩაწერს ნებისმიერ დროს, მაშინაც კი, როცა აპს არ იყენებთ. "<annotation id="link">"Allow in settings."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს თქვენს ფიზიკურ აქტივობაზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენს ფიზიკურ აქტივობაზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; სურათების გადაღების და ვიდეოების ჩაწერის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, გადაიღოს სურათები და ჩაწეროს ვიდეო თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"ეს აპი სურათების გადაღებას და ვიდეოს ჩაწერას მხოლოდ მაშინ შეძლებს, როცა მას იყენებთ"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; სურათების გადაღების და ვიდეოების ჩაწერის ნებართვა?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, გადაიღოს სურათები და ჩაწეროს ვიდეო თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"ამ აპს შეუძლია სურათების გადაღება და ვიდეოს ჩაწერა ნებისმიერ დროს, მაშინაც კი, როცა აპს არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"გსურთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ისთვის&lt;/b&gt; კამერის წვდომის შეცვლა?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"შეცვლით კამერაზე წვდომას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპისთვის თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"ეს აპი სურათების გადაიღებს და ვიდეოს ჩაწერს ნებისმიერ დროს, მაშინაც კი, როცა აპს არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს თქვენს ზარების ჟურნალებზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა თქვენი ტელ-ის ზარების ჟურნალზე &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; სატელეფონო ზარების განხორციელების და მართვის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, განახორციელოს და მართოს სატელეფ. ზარები თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; თქვენი სასიცოცხლო ფუნქციების შესახებ სენსორის მონაცემებზე წვდომის ნებართვა?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა სენსორის მონაცემებზე (სასიცოცხლო მაჩვენებლები) &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ეს აპი ითხოვს თქვენი სასიცოცხლო ფუნქციების შესახებ სენსორის მონაცემებზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა აპს არ იყენებთ. ამ ცვლილებისთვის "<annotation id="link">"გადადით პარამეტრებზე."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს თქვენი სასიცოცხლო ფუნქციების შესახებ სენსორის მონაცემებზე წვდომის ნებართვა?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, ჰქონდეს წვდომა სენსორის მონაცემებზე (სასიცოცხლო მაჩვენებლები) &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"ამ აპისთვის სხეულის სენსორების მონაცემებზე მუდმივი წვდომის მისანიჭებლად (მაშინაც კი, როცა აპს არ იყენებთ), "<annotation id="link">"გადადით პარამეტრებზე."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"გსურთ გამოყენებისას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს მიანიჭოთ სხეულის სენსორების მონაცემებზე წვდომა?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, გამოყენებისას ჰქონდეს წვდომა სხეულის სენსორების მონაცემებზე თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"მისცემთ უფლებას &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს, გამოგიგზავნოთ შეტყობინებები?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"ნებას დართავთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; აპს, გამოგიგზავნოთ შეტყობინებები თქვენს &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;-ზე?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"კონტროლირებული ნებართვები"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>-ს მდებარეობაზე წვდომა აქვს"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"თქვენი ორგანიზაცია ნებას რთავს <xliff:g id="APP_NAME">%1$s</xliff:g>-ს, წვდომა ჰქონდეს თქვენ მდებარეობაზე"</string>

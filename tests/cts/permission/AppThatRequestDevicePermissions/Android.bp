@@ -25,6 +25,7 @@ android_test_helper_app {
     srcs: ["src/**/*.kt"],
     // Tag this module as a cts test artifact
     test_suites: [
+        "cts",
         "general-tests",
         "mts-permission",
         "mcts-permission",

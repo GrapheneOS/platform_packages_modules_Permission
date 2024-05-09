@@ -23,6 +23,7 @@ android_test {
     defaults: ["cts_defaults"],
     // Tag this module as a cts test artifact
     test_suites: [
+        "cts",
         "general-tests",
         "mts-permission",
         "mcts-permission",

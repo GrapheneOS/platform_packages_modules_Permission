@@ -45,6 +45,7 @@ android_test {
         "truth",
     ],
     test_suites: [
+        "cts",
         "general-tests",
         "mts-permission",
         "mcts-permission",

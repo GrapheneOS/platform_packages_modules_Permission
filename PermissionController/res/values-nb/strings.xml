@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Tillat alltid alle"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Spør hver gang"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ikke tillat"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Nøyaktig posisjon"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Omtrentlig posisjon"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Bruk nøyaktig posisjon"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Vis aktivering av assistenten"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Vis ikon i statusfeltet når mikrofonen brukes til å aktivere taleassistent"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til bilder og medier på enheten din?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke bilder og medier på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til kontaktene dine?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke kontakter på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til denne enhetens posisjon?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se posisjonen til &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Appen får bare tilgang til posisjonen når du bruker appen"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til denne enhetens posisjon?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se posisjonen til &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Denne appen vil kanskje ha tilgang til posisjonen din hele tiden, selv når du ikke bruker appen. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vil du endre posisjonstilgang for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Vil du endre posisjonstilgangen for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Denne appen vil ha tilgang til posisjonen din hele tiden, selv når du ikke bruker appen. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tillatelse til å finne, koble til og fastslå den relative posisjonen til enheter i nærheten?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; finne, koble til og fastslå den relative posisjonen til enheter i nærheten på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tillatelse til å finne, koble til og fastslå den relative posisjonen til enheter i nærheten? "<annotation id="link">"Tillat i innstillingene."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Vil du endre posisjontilgangen til <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> fra omtrentlig til nøyaktig?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Vil du endre tilgangen <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> har til posisjon på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; fra omtrentlig til nøyaktig?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til denne enhetens omtrentlige posisjon?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se den omtrentlige posisjonen til &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Nøyaktig"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Omtrentlig"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til kalenderen din?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke kalenderen på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende og se tekstmeldinger?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende og se SMS-meldinger på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til bilder, medier og filer på enheten din?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke bilder, medier og filer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke &lt;b&gt;bilder, videoer, musikk og lyd&lt;/b&gt; på denne enheten?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke &lt;b&gt;bilder, videoer, musikk, lyd og andre filer&lt;/b&gt; på denne enheten?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke musikk og lyd på denne enheten?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke musikk og lyd på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke bilder og videoer på denne enheten?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke bilder og videoer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke flere bilder og videoer på denne enheten?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; bruke flere bilder og videoer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Appen kan bare ta opp lyd mens du bruker den."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Denne appen vil kanskje ta opp lyd hele tiden, selv når du ikke bruker den. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Vil du endre mikrofontilgang for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Vil du endre mikrofontilgangen for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Denne appen vil ta opp lyd hele tiden, selv når du ikke bruker den. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til den fysiske aktiviteten din?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se fysisk aktivitet på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta bilder og spille inn video?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta bilder og spille inn videoer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Appen kan bare ta bilder og spille inn videoer mens du bruker den"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta bilder og spille inn videoer?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta bilder og spille inn videoer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Denne appen vil kanskje ta bilder og spille inn videoer hele tiden, selv når du ikke bruker den. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Vil du endre kameratilgang for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Vil du endre kameratilgangen for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Denne appen vil ta bilder og spille inn videoer hele tiden, selv når du ikke bruker den. "<annotation id="link">"Gi tillatelse i innstillingene."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til samtaleloggene dine?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se samtaleloggene på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ringe og administrere telefonsamtaler?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ringe og administrere telefonsamtaler på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til sensordata om de vitale tegnene dine?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se sensordata om de vitale tegnene dine på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Denne appen vil ha tilgang til sensordata om de vitale tegnene dine hele tiden, selv når du ikke bruker den. For å gjøre denne endringen, "<annotation id="link">"gå til innstillingene."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til sensordataene om de vitale tegnene dine?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se sensordataene om de vitale tegnene dine på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"For å gi denne appen tilgang til data fra kroppssensorer til enhver tid, selv når du ikke bruker den, "<annotation id="link">"gå til innstillingene."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsette å gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til data fra kroppssensorer mens appen er i bruk?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Vil du fortsette å la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; se data fra kroppssensorer på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; mens appen er i bruk?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende deg varsler?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende deg varsler på &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrollerte tillatelser"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> har posisjonstilgang"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Organisasjonen din lar <xliff:g id="APP_NAME">%1$s</xliff:g> se hvor du er"</string>

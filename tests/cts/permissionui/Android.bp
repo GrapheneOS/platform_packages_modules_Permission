@@ -73,6 +73,7 @@ android_test {
         ":CtsAppThatMakesTwoPermRequests",
     ],
     test_suites: [
+        "cts",
         "sts",
         "general-tests",
         "mts-permission",

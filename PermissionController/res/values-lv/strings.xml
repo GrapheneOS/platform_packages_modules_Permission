@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vienmēr atļaut visu"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vaicāt katru reizi"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Neatļaut"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Precīza atrašanās vieta"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Aptuvena atrašanās vieta"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Izmantot precīzu atrašanās vietu"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Rādīt asistenta aktivizētāja noteikšanu"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Rādīt ikonu statusa joslā, kad mikrofons tiek izmantots balss palīga aktivizēšanai"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem un multivides saturam jūsu ierīcē?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem un multivides saturam jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu kontaktpersonām?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt kontaktpersonām jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt šīs ierīces atrašanās vietai?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu ierīces (&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;) atrašanās vietai?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Lietotne varēs piekļūt atrašanās vietai tikai tad, kad izmantosiet šo lietotni"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt šīs ierīces atrašanās vietai?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu ierīces (&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>) atrašanās vietai?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Iespējams, šī lietotne vēlēsies piekļūt jūsu atrašanās vietai vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vai mainīt lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļuvi atrašanās vietai?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Vai mainīt atrašanās vietas piekļuves atļauju lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Šī lietotne vēlas piekļūt jūsu atrašanās vietai vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Vai atļaut &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atrast tuvumā esošas ierīces, veidot savienojumus ar tām un noteikt to relatīvo atrašanās vietu?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;) atrast tuvumā esošas ierīces, veidot savienojumus ar tām un noteikt to relatīvo atrašanās vietu?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Vai atļaut &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atrast tuvumā esošas ierīces, veidot savienojumus ar tām un noteikt to relatīvo atrašanās vietu? "<annotation id="link">"Varat to atļaut iestatījumos."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Vai mainīt lietotnes <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> piekļuvi atrašanās vietai no aptuvenās uz precīzo?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Vai mainīt lietotnes <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> atrašanās vietas piekļuves atļauju jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;) no aptuvenas uz precīzu?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt aptuvenai šīs ierīces atrašanās vietai?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu ierīces (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;) aptuvenajai atrašanās vietai?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precīza"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aptuvena"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu kalendāram?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt kalendāram jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt un skatīt īsziņas?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt un skatīt īsziņas jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem, multivides saturam un failiem jūsu ierīcē?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem, multivides saturam un failiem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt &lt;b&gt;foto, video, mūzikai un audio failiem&lt;/b&gt; šajā ierīcē?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt &lt;b&gt;foto, video, mūzikai, audio u.c. failiem&lt;/b&gt; ierīcē?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt mūzikai un audio failiem šajā ierīcē?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt mūzikai un audio jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem un video šajā ierīcē?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fotoattēliem un video jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt citiem fotoattēliem un video šajā ierīcē?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt citiem fotoattēliem un video jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Lietotne varēs ierakstīt audio tikai tad, kad izmantosiet lietotni."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ierakstīt audio jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Iespējams, šī lietotne vēlēsies ierakstīt audio vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Vai mainīt lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļuvi mikrofonam?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Vai mainīt mikrofona piekļuves atļauju lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Šī lietotne vēlas ierakstīt audio vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu fiziskajām aktivitātēm?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt fizisko aktivitāšu datiem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uzņemt fotoattēlus un ierakstīt videoklipus?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uzņemt attēlus un ierakstīt video jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Lietotne varēs uzņemt attēlus un ierakstīt videoklipus tikai tad, kad izmantosiet lietotni."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uzņemt fotoattēlus un ierakstīt videoklipus?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uzņemt attēlus un ierakstīt video jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Iespējams, šī lietotne vēlēsies uzņemt attēlus un ierakstīt videoklipus vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Vai mainīt lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļuvi kamerai?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Vai mainīt kameras piekļuves atļauju lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Šī lietotne vēlas uzņemt attēlus un ierakstīt videoklipus vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt jūsu tālruņa zvanu žurnāliem?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt tālruņa zvanu žurnāliem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; veikt un pārvaldīt tālruņa zvanus?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; veikt un pārvaldīt tālruņa zvanus jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt sensoru uztvertajiem veselības rādījumiem?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt sensoru datiem par veselības rādījumiem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Lietotne pieprasa atļauju piekļūt veselības rādījumu sensoru datiem vienmēr, pat ja neizmantojat lietotni. Lai veiktu šīs izmaiņas, "<annotation id="link">"pārejiet uz iestatījumiem"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt veselības rādītāju sensoru datiem?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt sensoru datiem par veselības rādījumiem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Lai atļautu šai lietotnei piekļūt ķermeņa sensoru datiem vienmēr (pat tad, kad neizmantojat lietotni), "<annotation id="link">"pārejiet uz iestatījumiem"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vai joprojām atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt ķermeņa sensoru datiem, kad izmantojat lietotni?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Vai joprojām atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt ķermeņa sensoru datiem jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;), kad izmantojat lietotni?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt jums paziņojumus?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nosūtīt jums paziņojumus jūsu ierīcē (&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;)?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolētās atļaujas"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> ir piekļuve atrašanās vietai"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Jūsu organizācija ļauj lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> piekļūt jūsu atrašanās vietai."</string>

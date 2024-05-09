@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Постоянный полный доступ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Спрашивать каждый раз"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Запретить"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Точное местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизительное местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Точное местоположение"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Показывать значок активации голосового помощника"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Показывать значок в строке состояния, когда для активации голосового помощника используется микрофон"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и мультимедиа на устройстве?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и мультимедиа на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к контактам?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к контактам на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о местоположении устройства?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о местоположении устройства &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Доступ к местоположению будет открыт, только пока вы пользуетесь приложением."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о местоположении устройства?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о местоположении устройства &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Этому приложению может потребоваться доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Изменить настройки доступа к данным о местоположении для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Изменить для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о местоположении на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Этому приложению требуется доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное положение?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное местоположение на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное положение? "<annotation id="link">"Открыть настройки"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Изменить местоположение в приложении \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" с приблизительного на точное?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Разрешить приложению \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" доступ к данным о точном местоположении устройства &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; вместо приблизительного?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном положении устройства &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Точно"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приблизительно"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к календарю?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к календарю на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять и просматривать SMS?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять и просматривать SMS на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото, мультимедиа и файлам на устройстве?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото, мультимедиа и файлам на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, музыке и аудио&lt;/b&gt; на устройстве?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к &lt;b&gt;фото, видео, аудио и другим файлам&lt;/b&gt; на устройстве?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к музыке и аудио на устройстве?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к музыке и аудио на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и видео на устройстве?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к фото и видео на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к другим фото и видео на этом устройстве?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к другим фото и видео на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Приложение будет записывать аудио, только когда вы им пользуетесь."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записывать аудио на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Это приложение может записывать аудио в любое время, даже когда вы им не пользуетесь. "<annotation id="link">"Предоставьте разрешение в настройках."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Изменить настройки доступа к микрофону для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Изменить для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; настройки доступа к микрофону на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Это приложение записывает аудио в любое время, даже когда вы им не пользуетесь. "<annotation id="link">"Предоставьте разрешение в настройках."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о физической активности?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о физической активности на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снимать фото и видео?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снимать фото и видео на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Приложение будет делать фотографии и снимать видео, только когда вы им пользуетесь."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снимать фото и видео?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снимать фото и видео на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Это приложение может делать фотографии и снимать видео в любое время, даже когда вы им не пользуетесь. "<annotation id="link">"Предоставьте разрешение в настройках."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Изменить настройки доступа к камере для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Изменить для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; настройки доступа к камере на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Это приложение делает фотографии и снимает видео в любое время, даже когда вы им не пользуетесь. "<annotation id="link">"Предоставьте разрешение в настройках."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к списку вызовов?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к списку вызовов на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; совершать звонки и управлять ими?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; совершать звонки и управлять ими на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным датчиков о состоянии организма?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Этому приложению требуется доступ к данным нательных датчиков, даже когда вы им не пользуетесь. Предоставить разрешение можно в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Чтобы предоставить приложению доступ к данным нательных датчиков, даже когда вы им не пользуетесь, "<annotation id="link">"измените настройки"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Предоставлять приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Разрешить прил. &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нат. датчиков на устр. &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; только при использ.?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить <xliff:g id="APP_NAME">%1$s</xliff:g> отправлять уведомления?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять уведомления на устройстве &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролируемые разрешения"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"У приложения \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" есть доступ к геоданным"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"В вашей организации приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" разрешен доступ к геоданным."</string>

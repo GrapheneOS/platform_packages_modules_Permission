@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"אישור של הכול תמיד"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"יש לשאול בכל פעם"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"אין אישור"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"מיקום מדויק"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"מיקום משוער"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"שימוש במיקום מדויק"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"הצגת הזיהוי של הפעלת האסיסטנט"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"הצגת הסמל בשורת הסטטוס כשהמיקרופון בשימוש, לצורך הפעלת האסיסטנט"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; גישה לתמונות ולמדיה במכשיר שלך?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות ולמדיה במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לאנשי הקשר שלך?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לאנשי הקשר במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המכשיר?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום של מכשיר &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"לאפליקציה תהיה גישה אל נתוני המיקום רק בזמן השימוש בה"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המכשיר?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום של מכשיר &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ייתכן שהאפליקציה הזו תרצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏לשנות את הרשאת הגישה למיקום של &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"‏לשנות את הרשאת הגישה של האפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; למיקום במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"האפליקציה הזו רוצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי? "<annotation id="link">"יש לתת הרשאה בהגדרות"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"לשנות את הרשאת הגישה של <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ממיקום משוער למיקום מדויק?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"‏לשנות את הרשאת הגישה של האפליקציה <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> למיקום במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>‏&lt;/b&gt; מ\'מיקום משוער\' ל\'מיקום מדויק\'?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של המכשיר?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של מכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;’s?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"מדויק"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"משוער"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומן?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומן במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>‏&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח הודעות SMS ולהציג אותן?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח הודעות SMS ולראות אותן במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות, למדיה ולקבצים במכשיר?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות, למדיה ולקבצים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה ‎&lt;b&gt;‎‏לתמונות, לסרטונים, למוזיקה ולאודיו‎&lt;/b&gt;‎‏ במכשיר?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה ‎&lt;b&gt;‎‏לתמונות, לסרטונים, למוזיקה, לאודיו ולקבצים אחרים‎&lt;/b&gt;‎‏ במכשיר?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה למוזיקה ולקובצי אודיו במכשיר?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למוזיקה ולאודיו במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים במכשיר?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות ולסרטונים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"‏לתת לאפליקציה ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎‏ הרשאת גישה לתמונות ולסרטונים נוספים במכשיר?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות ולסרטונים נוספים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; להקליט אודיו?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"האפליקציה תוכל להקליט אודיו רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ייתכן שהאפליקציה הזו תרצה להקליט אודיו כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"‏לשנות את הרשאת הגישה אל המיקרופון עבור &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"‏לשנות את הרשאת הגישה של האפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; למיקרופון במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"האפליקציה הזו רוצה להקליט אודיו כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"‏האם לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; גישה לפעילות הגופנית שלך?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתונים של הפעילות הגופנית במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לצלם תמונות וסרטונים?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לצלם תמונות וסרטונים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"האפליקציה תוכל לצלם תמונות וסרטונים רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לצלם תמונות וסרטונים?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לצלם תמונות וסרטונים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"ייתכן שהאפליקציה הזו תרצה לצלם תמונות וסרטונים כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"‏לשנות את הרשאת הגישה למצלמה של &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"‏לשנות את הרשאת הגישה למצלמה של האפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"האפליקציה זו רוצה לצלם תמונות ולהקליט סרטונים כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומני השיחות של הטלפון?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומני השיחות של הטלפון במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לבצע ולנהל שיחות טלפון?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לבצע התקשרות ולנהל את שיחות הטלפון במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני חיישנים העוקבים אחר הסימנים החיוניים שלך?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"האפליקציה הזו מבקשת הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך כל הזמן, גם כשלא נעשה בה שימוש. כדי לשנות את ההגדרה הזו, "<annotation id="link">"צריך לעבור להגדרות"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏להעניק לאפליקציה &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"כדי לאפשר לאפליקציה הזו לגשת לנתונים של החיישנים הגופניים כל הזמן, גם כשהיא לא בשימוש, "<annotation id="link">"צריך להיכנס להגדרות."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏להמשיך לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגשת לנתונים של חיישני גוף כשהיא נמצאת בשימוש?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"‏להמשיך לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגשת לנתונים של חיישנים גופניים במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; כשהיא בשימוש?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח לך התראות?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח לך התראות במכשיר &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"הרשאות בבקרה"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> יש הרשאת גישה למיקום"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"הארגון שלך מאפשר לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> לגשת למיקום שלך"</string>

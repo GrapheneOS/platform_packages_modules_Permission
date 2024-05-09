@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Ар дайым баарына уруксат берүү"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ар дайым суралсын"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Жок"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Үн жардамчысынын иштегенин чагылдырган сүрөтчөнү көрсөтүү"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Үн жардамчысын иштетүү үчүн микрофон колдонулганда, абал тилкесинде сүрөтчө көрүнөт"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн түзмөгүңүздөгү сүрөттөр менен мультимедиа файлдарын иштетесизби?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздөгү сүрөттөр менен мультимедиага мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна байланыштарыңызды жеткиликтүү кыласызбы?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө байланыштарыңызды көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн жайгашкан жерин көрүүгө уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздүн турган жерин көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Колдонмону колдонуп жаткан маалда гана, ал сиздин кайда жүргөнүңүздү билип турат."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн жайгашкан жерин көрүүгө уруксат бересизби?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> түзмөгүңүздүн турган жерин көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурашы мүмкүн. "<annotation id="link">"Параметрлерден уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн түзмөктүн жайгашкан жерин пайдалануу мүмкүнчүлүгү өзгөртүлсүнбү?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; үчүн &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздүн турган жерин көрүү мүмкүнчүлүгүн өзгөртөсүзбү?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Параметрлерден уруксат бериңиз."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай берсинби?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө жакын жердеги түзмөктөрдү таап, туташып, абалын аныктай алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы? "<annotation id="link">"Параметрлерден уруксат берүү."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунда жайгашкан жер болжолдуу эмес, так аныкталсынбы?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздүн болжолдуу эмес, так жайгашкан жерин көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн болжолдуу жайгашкан жерин пайдаланууга уруксат берилсинби?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздүн болжолдуу турган жерин көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Так"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Болжолдуу"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна жылнаамаңызды пайдаланууга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө жылнаамаңызга кирүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна SMS билдирүүлөрдү жөнөтүүгө жана окууга уруксат берилсинби?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө SMS билдирүүлөрдү көрүп жана жөнөтүүгө мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна түзмөгүңүздөгү сүрөттөрдү жана башка мультимедиа файлдарын пайдаланууга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздөгү сүрөттөр, мультимедиа жана файлдарга мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна ушул түзмөктөгү &lt;b&gt;сүрөттөрдү, видеолорду, ырларды жана аудио файлдарды&lt;/b&gt; жеткиликтүү кыласызбы?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна ушул түзмөктөгү &lt;b&gt;сүрөттөрдү, видеолорду, ырларды, аудио файлдарды жана башка нерселерди&lt;/b&gt; жеткиликтүү кыласызбы?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна ушул түзмөктөгү ырлар менен аудио файлдарды жеткиликтүү кыласызбы?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздөгү ырлар менен аудио файлдарга мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна ушул түзмөктөгү сүрөттөр менен видеолорду жеткиликтүү кыласызбы?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздөгү сүрөттөр менен видеолорго мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна ушул түзмөктөгү дагы башка сүрөттөр менен видеолорду жеткиликтүү кыласызбы?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө башка сүрөт жана видеолорду көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна аудио файлдарды жаздырганга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө аудио жаздырууга уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Колдонмону колдонуп жатканда гана, ал аудио жаздыра алат"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна аудио файлдарды жаздырууга уруксат бересизби?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө аудио жаздырууга уруксат бересизби?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Бул колдонмону колдонбой турсаңыз деле, ал такай аудио жаздыра берет. "<annotation id="link">"Ага жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн микрофонду пайдалануу мүмкүнчүлүгүн өзгөртөсүзбү?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; үчүн &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө микрофонду пайдалануу мүмкүнчүлүгүн өзгөртөсүзбү?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Бул колдонмону колдонбой турсаңыз деле, ал такай аудио жаздыра берет. "<annotation id="link">"Ага жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна кыймыл-аракеттериңизге көз салып турганга мүмкүнчүлүк бересизби?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө кыймыл-аракеттериңизди көрүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна сүрөттөр менен видеолорду тартканга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө сүрөт менен видео тартууга уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Колдонмону колдонуп жатканда гана, ал сүрөт жана видео тарта алат"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна сүрөт менен видео тартууга уруксат бересизби?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө сүрөт менен видео тартууга уруксат бересизби?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Бул колдонмону колдонбой турсаңыз деле, ал такай сүрөт жана видео тарта берет. "<annotation id="link">"Ага жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн камераны пайдалануу мүмкүнчүлүгүн өзгөртөсүзбү?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; үчүн &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө камераны пайдалануу мүмкүнчүлүгүн өзгөртөсүзбү?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Бул колдонмону колдонбой турсаңыз деле, ал такай сүрөт жана видео тарта берет. "<annotation id="link">"Ага жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна телефондогу чалуулар тизмесин пайдаланууга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө телефон чалуулардын тизмесин көрүүгө мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна телефон чалууга жана чалууларды башкарууга уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө телефон чалып жана чалууларды башкара алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна организмдин абалына көз салган сенсордун көрсөткүчтөрүн көрүүгө уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздөгү дене-бой сенсорлорунун маалыматына мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Бул колдонмону иштетпей турсаңыз деле, ал такай организмдин негизги көрсөткүчтөрү тууралуу cенсордун дайындарын жаздыра алат. Муну өзгөртүү үчүн "<annotation id="link">"параметрлерге өтүңүз."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна дене-бой сенсорлорунун көрсөткүчтөрүн көрүүгө уруксат бересизби?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө дене-бой сенсорлорунун маалыматын көрүүгө мүмкүнчүлүк алсынбы?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Бул колдонмого дене сенсорлорунун көрсөткүчтөрүн көрүү мүмкүнчүлүгүн берүү үчүн (колдонмо колдонулбай турганда да) "<annotation id="link">"параметрлерди өзгөртүңүз."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу колдонулуп жатканда дене бой сенсорлорунун көрсөткүчтөрүн көрүү мүмкүнчүлүгүн бересизби?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"Колдонулуп жатканда &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; дене сенсорлорунун маалыматына кире берсинби?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна сизге билдирмелерди жөнөтүүгө уруксат бересизби?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; түзмөгүңүздө сизге билдирмелерди жөнөтүүгө уруксат бересизби?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Көзөмөлдөнгөн уруксаттар"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> жүргөн жериңизди аныктай алат"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Уюмуңуз <xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосуна жүргөн жериңизди аныктоого уруксат берет"</string>

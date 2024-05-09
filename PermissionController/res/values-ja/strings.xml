@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"常にすべて許可"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認する"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"許可しない"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"正確な現在地"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"おおよその現在地"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"正確な位置情報を使用"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"アシスタントのトリガー検出を表示"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"マイクを使って音声アシスタントを有効にする場合にステータスバーにアイコンを表示する"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"デバイス内の写真やメディアへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の写真とメディアへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"連絡先へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の連絡先へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"このデバイスの位置情報へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; の位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"このアプリは、ユーザーがアプリを使用している間のみ位置情報にアクセスできます"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"このデバイスの位置情報へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; の位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"このアプリは、未使用時も含め、常に位置情報にアクセスする可能性があります。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に対する位置情報へのアクセス許可を変更しますか?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; の位置情報に対する &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; のアクセス権を変更しますか？"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"このアプリは、未使用時も含め、常に位置情報へのアクセスを試みます。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"付近のデバイスの検出、接続、相対位置の特定を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; の &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に、付近のデバイスの検出、接続、相対位置の特定を許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"付近のデバイスの検出、接続、相対位置の特定を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"<annotation id="link">"設定で許可してください。"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> の位置情報へのアクセスを「おおよそ」から「正確」に変更しますか？"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での &lt;b&gt;<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>&lt;/b&gt; の位置情報へのアクセス権を「おおよそ」から「正確」に変更しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"このデバイスのおおよその位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; のおおよその位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"正確"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"おおよそ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"カレンダーへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内のカレンダーへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS メッセージの送信と表示を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での SMS メッセージの送信と表示を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"デバイス内の写真、メディア、ファイルへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の写真、メディア、ファイルへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声など&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"このデバイス内の音楽と音声へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の音楽と音声へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"このデバイス内の写真と動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の写真と動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"このデバイス内の他の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の他の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"音声の録音を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"アプリは、ユーザーがアプリを使用している場合のみ音声を録音できます"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）音声を録音する可能性があります。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に対するマイクへのアクセス許可を変更しますか？"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; のマイクに対する &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; のアクセス権を変更しますか？"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）音声を録音できる権限を求めています。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"身体活動データへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の身体活動データへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"アプリは、ユーザーがアプリを使用している場合のみ写真や動画を撮影できます"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での写真と動画の撮影を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）写真や動画を撮影する可能性があります。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に対するカメラへのアクセス許可を変更しますか？"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; のカメラに対する &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; のアクセス権を変更しますか？"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"このアプリは、いつでも（ユーザーがアプリを使用していない場合でも）写真や動画を撮影できる権限を求めています。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"通話履歴へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内の通話履歴へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"電話の発信と管理を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での電話の発信と管理を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"バイタルサインに関するセンサーデータへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内のバイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"このアプリは、未使用時も含め、常にバイタルサインに関するセンサーデータへのアクセスを試みます。これを変更するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"バイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内のバイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"アプリの未使用時も、常にボディセンサー データにアクセスすることをこのアプリに許可するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ボディセンサー データへのアクセスを、引き続きアプリの使用時のみ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; 内のボディセンサー データへのアクセスを、引き続きアプリの使用時のみ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"通知の送信を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"&lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt; での通知の送信を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"権限は管理されています"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> は位置情報にアクセスできます"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"<xliff:g id="APP_NAME">%1$s</xliff:g> が位置情報にアクセスすることを組織が許可します"</string>

@@ -38,6 +38,7 @@
             android:id="@+id/grant_dialog"
             android:theme="@style/Theme.PermissionGrantDialog"
             android:importantForAccessibility="no"
+            android:focusable="false"
             style="@style/PermissionGrantDialogMaterial3">
 
             <LinearLayout

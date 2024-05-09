@@ -191,6 +191,8 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Mindig az összes engedélyezése"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Mindig kérdezzen rá"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Tiltás"</string>
+    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Pontos hely"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Hozzávetőleges hely"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Pontos helyadatok használata"</string>
@@ -465,75 +467,102 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Segédet aktiváló parancsok észlelésének megjelenítése"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Ikon megjelenítése az állapotsoron, amikor a rendszer a mikrofont használja a hangsegéd aktiválásához"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszközön tárolt fotókhoz és médiatartalmakhoz?"</string>
-    <string name="permgrouprequest_device_aware_storage_isolated" msgid="5934218468708513375">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen fotókhoz és médiatartalmakhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
+    <skip />
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a névjegyekhez?"</string>
-    <string name="permgrouprequest_device_aware_contacts" msgid="2270563860206654757">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a névjegyeihez ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
+    <skip />
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszköz helyadataihoz?"</string>
-    <string name="permgrouprequest_device_aware_location" msgid="6641436550953715107">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a következő eszköz helyadataihoz: &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
+    <skip />
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Az alkalmazás csak akkor férhet hozzá a helyadatokhoz, amikor Ön használja az alkalmazást"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszköz helyadataihoz?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_location" msgid="7660465507029650527">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a következő eszköz helyadataihoz: &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Előfordulhat, hogy az alkalmazás akkor is hozzá szeretne férni a helyadataihoz, amikor nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Megváltoztatja a helyadatokhoz való hozzáférést a következő számára: &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_location" msgid="4528266408056426513">"Módosítja a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; helyadatokhoz való hozzáférését ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Az alkalmazás akkor is hozzá szeretne férni az Ön helyadataihoz, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"A(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; megkeresheti a közeli eszközöket, meghatározhatja relatív pozíciójukat, és csatlakozhat hozzájuk?"</string>
-    <string name="permgrouprequest_device_aware_nearby_devices" msgid="7919687165848885665">"Megtalálhatja a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a közeli eszközöket, csatlakozhat hozzájuk, és meghatározhatja a relatív pozíciójukat itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"A(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; megkeresheti a közeli eszközöket, meghatározhatja relatív pozíciójukat, és csatlakozhat hozzájuk? "<annotation id="link">"Engedélyezés a beállításokban."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Megváltoztatja a(z) <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> helyhozzáférését hozzávetőlegesről pontosra?"</string>
-    <string name="permgrouprequest_device_aware_fineupgrade" msgid="3947134846432067176">"Módosítja a(z) <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> számára biztosított helyhozzáférést hozzávetőlegesről pontosra ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszköz hozzávetőleges helyadataihoz?"</string>
-    <string name="permgrouprequest_device_aware_coarselocation" msgid="9001956706241104626">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a következő hozzávetőleges helyéhez: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
+    <skip />
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Pontos"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Hozzávetőleges"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a naptárhoz?"</string>
-    <string name="permgrouprequest_device_aware_calendar" msgid="3103987548035171850">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a naptárhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
+    <skip />
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy SMS-eket küldhessen és tekinthessen meg?"</string>
-    <string name="permgrouprequest_device_aware_sms" msgid="7212083972999874267">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy SMS-eket küldjön és tekintsen meg itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
+    <skip />
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszközön tárolt fotókhoz, médiatartalmakhoz és fájlokhoz?"</string>
-    <string name="permgrouprequest_device_aware_storage" msgid="872629037299467086">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a fotókhoz, médiatartalmakhoz és fájlokhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
+    <skip />
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Hozzáférhet a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; az eszközön lévő &lt;b&gt;fotókhoz, videókhoz, zenékhez és hangfájlokhoz&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Hozzáférhet a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; az eszközön tárolt &lt;b&gt;fotókhoz, hang-, videó- és egyéb fájlokhoz&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Hozzáférhet a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; az eszközön tárolt zenékhez és egyéb hanganyagokhoz?"</string>
-    <string name="permgrouprequest_device_aware_read_media_aural" msgid="3331524384339036668">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a zenékhez ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
+    <skip />
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Hozzáférhet a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; az eszközön tárolt fotókhoz és videókhoz?"</string>
-    <string name="permgrouprequest_device_aware_read_media_visual" msgid="5492319750632751551">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a fotókhoz és a videókhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
+    <skip />
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszközön tárolt további fotókhoz és videókhoz?"</string>
-    <string name="permgrouprequest_device_aware_more_photos" msgid="8946782319103584021">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen további képekhez és videókhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hangfelvételt készíthessen?"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="1266843551173029370">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hangfelvételt készítsen ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
+    <skip />
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Az alkalmazás csak akkor tud majd hangfelvételt készíteni, amikor Ön használja az alkalmazást."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hangfelvételt készíthessen?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="4990337225146130185">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hangfelvételt készítsen ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Lehet, hogy az alkalmazás akkor is szeretne hangfelvételt készíteni, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Módosítja a mikrofonhoz való hozzáférést a következő számára: &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_microphone" msgid="222471025997100107">"Módosítja a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mikrofonhoz való hozzáférését ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Az alkalmazás akkor is szeretne hangfelvételt készíteni, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára a testmozgási adataihoz való hozzáférést?"</string>
-    <string name="permgrouprequest_device_aware_activityRecognition" msgid="3408326850847755759">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a testmozgásadatokhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
+    <skip />
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy képeket és videókat készíthessen?"</string>
-    <string name="permgrouprequest_device_aware_camera" msgid="3525106924487608868">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy képeket és videót készítsen ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
+    <skip />
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Az alkalmazás csak akkor tud majd fényképeket és videókat készíteni, amikor Ön használja az alkalmazást."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy fényképeket és videókat készíthessen?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="6718286540040964849">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy képeket és videót készítsen ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Lehet, hogy az alkalmazás akkor is szeretne fotókat és videókat készíteni, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Módosítja a kamerához való hozzáférést a következő számára: &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequest_device_aware_camera" msgid="4198765626608612156">"Módosítja a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kamerához való hozzáférését ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Az alkalmazás akkor is szeretne fényképeket és videókat készíteni, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Engedélyezi, hogy a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; hozzáférjen az Ön hívásnaplóihoz?"</string>
-    <string name="permgrouprequest_device_aware_calllog" msgid="735079772627778095">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen a telefon hívásnaplóihoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
+    <skip />
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hívásokat indíthasson és kezelhessen?"</string>
-    <string name="permgrouprequest_device_aware_phone" msgid="4389610977195521813">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hívást indítson, és kezelje a hívásokat itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
+    <skip />
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az életjelekkel kapcsolatos szenzoradatokhoz?"</string>
-    <string name="permgrouprequest_device_aware_sensors" msgid="1900598688488188225">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az életfunkciókkal kapcsolatos szenzoradatokhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
+    <skip />
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ez az alkalmazás akkor is hozzá szeretne férni az életjelekkel kapcsolatos szenzoradatokhoz, ha nincs használatban. A módosításhoz "<annotation id="link">"lépjen a beállításokhoz."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az életjelekkel kapcsolatos szenzoradatokhoz?"</string>
-    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="7691308331448239716">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az életfunkció-adatokhoz itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
+    <skip />
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Ha engedélyezni szeretné, hogy ez az alkalmazás mindig hozzáférjen a testérzékelők adataihoz (még akkor is, amikor nem használja), "<annotation id="link">"lépjen a beállításokhoz"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Továbbra is hozzáférhessen használat közben a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; alkalmazás a testérzékelők adataihoz?"</string>
-    <string name="permgroupupgraderequest_device_aware_sensors" msgid="3310667992344623159">"A(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; továbbra is hozzáférhet a testérzékelők adataihoz használat közben itt: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy értesítéseket küldjön Önnek?"</string>
-    <string name="permgrouprequest_device_aware_notifications" msgid="7307588961166360244">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy értesítéseket küldjön Önnek ezen az eszközön: &lt;b&gt;<xliff:g id="DEVICE">%2$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Szabályozott engedélyek"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> hozzáfér a tartózkodási helyhez"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Szervezete lehetővé teszi a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> számára, hogy hozzáférjen az Ön tartózkodási helyéhez"</string>
