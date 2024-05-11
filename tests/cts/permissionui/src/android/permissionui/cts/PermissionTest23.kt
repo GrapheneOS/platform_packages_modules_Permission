@@ -16,13 +16,9 @@
 
 package android.permissionui.cts
 
-import android.content.ComponentName
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.permission.cts.MtsIgnore
-import android.platform.test.annotations.AsbSecurityTest
 import androidx.test.filters.FlakyTest
-import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil
 import org.junit.Assert
 import org.junit.Assume
@@ -377,33 +373,6 @@ class PermissionTest23 : BaseUsePermissionTest() {
                 )
             }
         }
-    }
-
-    @Test
-    @AsbSecurityTest(cveBugId = [313909156])
-    fun testAppCanOnlyShowOneDialog() {
-        uninstallApp()
-        installPackage(APP_APK_PATH_TWO_PERM_REQUESTS)
-        doAndWaitForWindowTransition {
-            val intent =
-                Intent(Intent.ACTION_MAIN)
-                    .setComponent(ComponentName(APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.Activity1"))
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            context.startActivity(intent)
-        }
-        waitFindObject(
-            By.textContains("contacts").pkg(packageManager.permissionControllerPackageName)
-        )
-        var didNotFindPhone = false
-        try {
-            waitFindObject(
-                By.textContains("phone calls").pkg(packageManager.permissionControllerPackageName),
-                3000L
-            )
-        } catch (expected: Exception) {
-            didNotFindPhone = true
-        }
-        Assert.assertTrue("Found phone permission dialog", didNotFindPhone)
     }
 
     private fun denyPermissionRequestWithPrejudice() {

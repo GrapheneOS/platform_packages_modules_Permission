@@ -54,7 +54,7 @@ class AppOpRepositoryTest {
     @Mock private lateinit var appOpsManager: AppOpsManager
 
     private lateinit var underTest: AppOpRepository
-    private lateinit var mockitoSession: MockitoSession
+    private var mockitoSession: MockitoSession? = null
 
     private val currentUser = android.os.Process.myUserHandle()
     private val testPackageName = "test.package"
@@ -80,7 +80,7 @@ class AppOpRepositoryTest {
 
     @After
     fun finish() {
-        mockitoSession.finishMocking()
+        mockitoSession?.finishMocking()
     }
 
     @Test

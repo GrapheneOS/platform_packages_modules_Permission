@@ -36,6 +36,8 @@ import android.permission.cts.PermissionUtils
 import android.permission.cts.TestUtils
 import android.permissionui.cts.AppMetadata.createAppMetadataWithLocationSharingNoAds
 import android.permissionui.cts.AppMetadata.createAppMetadataWithNoSharing
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants
 import android.safetylabel.SafetyLabelConstants.SAFETY_LABEL_CHANGE_NOTIFICATIONS_ENABLED
@@ -59,6 +61,9 @@ import org.junit.Test
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 @FlakyTest
 class SafetyLabelChangesJobServiceTest : BaseUsePermissionTest() {
+
+    @get:Rule
+    val checkFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
 
     @get:Rule
     val safetyLabelChangeNotificationsEnabledConfig =
@@ -304,7 +309,7 @@ class SafetyLabelChangesJobServiceTest : BaseUsePermissionTest() {
     }
 
     @Test
-    fun runNotificationJob_packageSourceDownloadedFile_udoesNotShowNotification() {
+    fun runNotificationJob_packageSourceDownloadedFile_doesNotShowNotification() {
         installPackageViaSession(
             APP_APK_NAME_31,
             createAppMetadataWithNoSharing(),
@@ -315,6 +320,126 @@ class SafetyLabelChangesJobServiceTest : BaseUsePermissionTest() {
             APP_APK_NAME_31,
             createAppMetadataWithLocationSharingNoAds(),
             PACKAGE_SOURCE_DOWNLOADED_FILE
+        )
+        grantLocationPermission(APP_PACKAGE_NAME)
+
+        // Run the job to check whether the missing safety label for the above app update is
+        // identified and recorded.
+        runNotificationJob()
+
+        assertNotificationNotShown()
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun runNotificationJob_packageSourceUnspecified_aslInApk_doesNotShowNotification() {
+        installPackageViaSession(
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            PACKAGE_SOURCE_UNSPECIFIED
+        )
+        waitForBroadcastReceiverFinished()
+        installPackageNoBroadcast(
+            APP_APK_NAME_31_WITH_ASL,
+            packageSource = PACKAGE_SOURCE_UNSPECIFIED
+        )
+        grantLocationPermission(APP_PACKAGE_NAME)
+
+        // Run the job to check whether the missing safety label for the above app update is
+        // identified and recorded.
+        runNotificationJob()
+
+        assertNotificationNotShown()
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun runNotificationJob_packageSourceOther_aslInApk_doesNotShowNotification() {
+        installPackageViaSession(
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            PACKAGE_SOURCE_OTHER
+        )
+        waitForBroadcastReceiverFinished()
+        installPackageNoBroadcast(
+            APP_APK_NAME_31_WITH_ASL,
+            packageSource = PACKAGE_SOURCE_OTHER
+        )
+        grantLocationPermission(APP_PACKAGE_NAME)
+
+        // Run the job to check whether the missing safety label for the above app update is
+        // identified and recorded.
+        runNotificationJob()
+
+        assertNotificationNotShown()
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun runNotificationJob_packageSourceStore_aslInApk_doesNotShowNotification() {
+        installPackageViaSession(
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            PACKAGE_SOURCE_STORE
+        )
+        waitForBroadcastReceiverFinished()
+        installPackageNoBroadcast(
+            APP_APK_NAME_31_WITH_ASL,
+            packageSource = PACKAGE_SOURCE_STORE
+        )
+        grantLocationPermission(APP_PACKAGE_NAME)
+
+        // Run the job to check whether the missing safety label for the above app update is
+        // identified and recorded.
+        runNotificationJob()
+
+        assertNotificationNotShown()
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun runNotificationJob_packageSourceLocalFile_aslInApk_doesNotShowNotification() {
+        installPackageViaSession(
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            PACKAGE_SOURCE_LOCAL_FILE
+        )
+        waitForBroadcastReceiverFinished()
+        installPackageNoBroadcast(
+            APP_APK_NAME_31_WITH_ASL,
+            packageSource = PACKAGE_SOURCE_LOCAL_FILE
+        )
+        grantLocationPermission(APP_PACKAGE_NAME)
+
+        // Run the job to check whether the missing safety label for the above app update is
+        // identified and recorded.
+        runNotificationJob()
+
+        assertNotificationNotShown()
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun runNotificationJob_packageSourceDownloadedFile_aslInApk_doesNotShowNotification() {
+        installPackageViaSession(
+            APP_APK_NAME_31,
+            createAppMetadataWithNoSharing(),
+            PACKAGE_SOURCE_DOWNLOADED_FILE
+        )
+        waitForBroadcastReceiverFinished()
+        installPackageNoBroadcast(
+            APP_APK_NAME_31_WITH_ASL,
+            packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE
         )
         grantLocationPermission(APP_PACKAGE_NAME)
 

@@ -20,6 +20,8 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.CAMERA
 import android.os.Build
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.provider.DeviceConfig
 import android.safetylabel.SafetyLabelConstants.PERMISSION_RATIONALE_ENABLED
 import androidx.test.filters.FlakyTest
@@ -38,6 +40,9 @@ import org.junit.Test
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codeName = "UpsideDownCake")
 @FlakyTest
 class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
+
+    @get:Rule
+    val checkFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
 
     @get:Rule
     val deviceConfigPermissionRationaleEnabled =
@@ -235,6 +240,76 @@ class PermissionRationalePermissionGrantDialogTest : BaseUsePermissionTest() {
     @Test
     fun requestCoarseLocationPerm_hasPermissionRationale_packageSourceOther() {
         installPackageWithInstallSourceAndMetadataFromOther(APP_APK_NAME_31)
+
+        assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
+
+        requestAppPermissionsForNoResult(ACCESS_COARSE_LOCATION) {
+            assertPermissionRationaleContainerOnGrantDialogIsVisible(false)
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun requestCoarseLocationPerm_hasAslInApk_packageSourceUnspecified() {
+        installPackageWithInstallSourceAndNoMetadata(APP_APK_NAME_31_WITH_ASL)
+
+        assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
+
+        requestAppPermissionsForNoResult(ACCESS_COARSE_LOCATION) {
+            assertPermissionRationaleContainerOnGrantDialogIsVisible(false)
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun requestCoarseLocationPerm_hasAslInApk_packageSourceStore() {
+        installPackageWithInstallSourceAndNoMetadataFromStore(APP_APK_NAME_31_WITH_ASL)
+
+        assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
+
+        requestAppPermissionsForNoResult(ACCESS_COARSE_LOCATION) {
+            assertPermissionRationaleContainerOnGrantDialogIsVisible(false)
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun requestCoarseLocationPerm_hasAslInApk_packageSourceLocalFile() {
+        installPackageWithInstallSourceAndNoMetadataFromLocalFile(APP_APK_NAME_31_WITH_ASL)
+
+        assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
+
+        requestAppPermissionsForNoResult(ACCESS_COARSE_LOCATION) {
+            assertPermissionRationaleContainerOnGrantDialogIsVisible(false)
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun requestCoarseLocationPerm_hasAslInApk_packageSourceDownloadedFile() {
+        installPackageWithInstallSourceAndNoMetadataFromDownloadedFile(APP_APK_NAME_31_WITH_ASL)
+
+        assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
+
+        requestAppPermissionsForNoResult(ACCESS_COARSE_LOCATION) {
+            assertPermissionRationaleContainerOnGrantDialogIsVisible(false)
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
+    "VanillaIceCream")
+    @RequiresFlagsEnabled(android.content.pm.Flags.FLAG_ASL_IN_APK_APP_METADATA_SOURCE)
+    @Test
+    fun requestCoarseLocationPerm_hasAslInApk_packageSourceOther() {
+        installPackageWithInstallSourceAndNoMetadataFromOther(APP_APK_NAME_31_WITH_ASL)
 
         assertAppHasPermission(ACCESS_COARSE_LOCATION, false)
 

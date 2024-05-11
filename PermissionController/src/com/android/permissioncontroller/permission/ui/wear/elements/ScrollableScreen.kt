@@ -63,7 +63,6 @@ import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import androidx.wear.compose.material.scrollAway
-import com.android.permissioncontroller.permission.ui.wear.WearUtils.capitalize
 import com.android.permissioncontroller.permission.ui.wear.elements.rotaryinput.rotaryWithScroll
 import com.android.permissioncontroller.permission.ui.wear.theme.WearPermissionTheme
 
@@ -266,7 +265,7 @@ internal fun Scaffold(
                                     modifier = modifier.testTag(subtitleTestTag)
                                 }
                                 AnnotatedText(
-                                    text = subtitle.toString().capitalize(),
+                                    text = subtitle,
                                     style =
                                         MaterialTheme.typography.body2.copy(
                                             color = MaterialTheme.colors.onSurfaceVariant

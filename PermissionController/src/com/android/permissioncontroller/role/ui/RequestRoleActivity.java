@@ -24,7 +24,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.Process;
-import android.os.UserManager;
+import android.provider.Settings;
 import android.provider.Telephony;
 import android.telecom.TelecomManager;
 import android.text.TextUtils;
@@ -159,24 +159,22 @@ public class RequestRoleActivity extends FragmentActivity {
             return;
         }
 
-        UserManager userManager = getSystemService(UserManager.class);
-        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_DEFAULT_APPS)) {
-            Log.w(LOG_TAG, "Cannot request role due to user restriction"
-                    + " DISALLOW_CONFIG_DEFAULT_APPS, role: " + mRoleName);
-            reportRequestResult(PermissionControllerStatsLog
-                    .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_USER_RESTRICTION);
-            finish();
-            return;
-        }
-
         Intent restrictionIntent = role.getApplicationRestrictionIntentAsUser(applicationInfo,
                 Process.myUserHandle(), this);
         if (restrictionIntent != null) {
-            Log.w(LOG_TAG, "Cannot request role due to enhanced confirmation restriction"
-                    + ", role: " + mRoleName + ", package: " + mPackageName);
-            reportRequestResult(PermissionControllerStatsLog
-                    .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_ENHANCED_CONFIRMATION_RESTRICTION);
-            restrictionIntent.putExtra(EXTRA_IS_ECM_IN_APP, true);
+            if (Objects.equals(restrictionIntent.getAction(),
+                    Settings.ACTION_SHOW_ADMIN_SUPPORT_DETAILS)) {
+                Log.w(LOG_TAG, "Cannot request role due to user restriction"
+                        + ", role: " + mRoleName + ", package: " + mPackageName);
+                reportRequestResult(PermissionControllerStatsLog
+                        .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_USER_RESTRICTION);
+            } else {
+                Log.w(LOG_TAG, "Cannot request role due to enhanced confirmation restriction"
+                        + ", role: " + mRoleName + ", package: " + mPackageName);
+                reportRequestResult(PermissionControllerStatsLog
+                        .ROLE_REQUEST_RESULT_REPORTED__RESULT__IGNORED_ENHANCED_CONFIRMATION_RESTRICTION);
+                restrictionIntent.putExtra(EXTRA_IS_ECM_IN_APP, true);
+            }
             startActivity(restrictionIntent);
             finish();
             return;

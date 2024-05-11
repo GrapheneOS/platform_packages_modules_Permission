@@ -34,20 +34,20 @@ class WearDefaultAppListHelper(val context: Context, val user: UserHandle) {
                         context = context,
                         label = context.getString(roleItem.role.shortLabelResource),
                         onDefaultClicked = {
-                            run {
-                                val roleName: String = roleItem.role.name
-                                val role = Roles.get(context)[roleName]
-                                var intent =
-                                    RoleUiBehaviorUtils.getManageIntentAsUser(role!!, user, context)
-                                if (intent == null) {
-                                    intent =
-                                        DefaultAppActivity.createIntent(roleName, user, context)
-                                }
-                                context.startActivity(intent)
+                            val roleName: String = roleItem.role.name
+                            val role = Roles.get(context)[roleName]
+                            var intent =
+                                RoleUiBehaviorUtils.getManageIntentAsUser(role!!, user, context)
+                            if (intent == null) {
+                                intent = DefaultAppActivity.createIntent(roleName, user, context)
                             }
+                            context.startActivity(intent)
                         }
                     )
                     .apply {
+                        setRestrictionIntent(
+                            roleItem.role.getRestrictionIntentAsUser(user, context)
+                        )
                         val holderApplicationInfos = roleItem.holderApplicationInfos
                         if (holderApplicationInfos.isEmpty()) {
                             icon = null
@@ -57,16 +57,13 @@ class WearDefaultAppListHelper(val context: Context, val user: UserHandle) {
                             icon = Utils.getBadgedIcon(context, holderApplicationInfo)
                             summary = Utils.getAppLabel(holderApplicationInfo, context)
                         }
-                    }
-                    .let {
                         RoleUiBehaviorUtils.preparePreferenceAsUser(
                             roleItem.role,
                             roleItem.holderApplicationInfos,
-                            it,
+                            this,
                             user,
                             context
                         )
-                        return@map it
                     }
             }
             .toList()

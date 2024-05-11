@@ -22,7 +22,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.FileUtils
 import android.provider.MediaStore
-import android.provider.cts.ProviderTestUtils
+import android.provider.cts.media.MediaProviderTestUtils
 import android.provider.cts.media.MediaStoreUtils
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import java.io.IOException
@@ -92,7 +92,7 @@ object PhotoPickerUtils {
             return
         }
         try {
-            ProviderTestUtils.setOwner(uri, context.packageName)
+            MediaProviderTestUtils.setOwner(uri, context.packageName)
             context.contentResolver.delete(uri, Bundle.EMPTY)
         } catch (ignored: Exception) {}
     }

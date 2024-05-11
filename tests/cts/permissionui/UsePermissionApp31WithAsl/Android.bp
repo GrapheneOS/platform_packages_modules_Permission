@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2024 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,15 +19,17 @@ package {
 }
 
 android_test_helper_app {
-    name: "CtsAppThatMakesTwoPermRequests",
-    defaults: ["mts-target-sdk-version-current"],
-    min_sdk_version: "29",
-
+    name: "CtsUsePermissionApp31WithAsl",
+    srcs: [
+        ":CtsUsePermissionAppSrc",
+    ],
+    manifest: "AndroidManifest.xml",
+    assets: ["app.metadata"],
     static_libs: [
         "kotlin-stdlib",
+        "compatibility-device-util-axt",
     ],
-
-    srcs: [
-        "src/**/*.kt",
-    ],
+    certificate: ":cts-testkey2",
+    target_sdk_version: "31",
+    min_sdk_version: "31",
 }

@@ -58,13 +58,15 @@ class WearDefaultAppHelper(
     ): List<WearRoleApplicationPreference> {
         return qualifyingApplications
             .map { pair ->
+                val appInfo = pair.first
+                val selected = pair.second
                 WearRoleApplicationPreference(
                         context = context,
-                        label = Utils.getFullAppLabel(pair.first, context),
-                        checked = pair.second,
+                        label = Utils.getFullAppLabel(appInfo, context),
+                        checked = selected,
                         onDefaultCheckChanged = { _ ->
                             run {
-                                val packageName = pair.first.packageName
+                                val packageName = appInfo.packageName
                                 val confirmationMessage =
                                     RoleUiBehaviorUtils.getConfirmationMessage(
                                         role,
@@ -79,16 +81,18 @@ class WearDefaultAppHelper(
                             }
                         }
                     )
-                    .apply { icon = pair.first.loadIcon(context.packageManager) }
-                    .let {
+                    .apply {
+                        icon = appInfo.loadIcon(context.packageManager)
+                        setRestrictionIntent(
+                            role.getApplicationRestrictionIntentAsUser(appInfo, user, context)
+                        )
                         RoleUiBehaviorUtils.prepareApplicationPreferenceAsUser(
                             role,
-                            it,
-                            pair.first,
+                            this,
+                            appInfo,
                             user,
                             context
                         )
-                        return@map it
                     }
             }
             .toList()

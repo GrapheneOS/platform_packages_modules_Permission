@@ -59,7 +59,7 @@ import org.mockito.quality.Strictness
 class PermissionUsageViewModelTest {
     @Mock private lateinit var application: PermissionControllerApplication
     @Mock private lateinit var context: Context
-    private lateinit var mockitoSession: MockitoSession
+    private var mockitoSession: MockitoSession? = null
 
     private lateinit var permissionRepository: PermissionRepository
     private val currentUser = android.os.Process.myUserHandle()
@@ -100,7 +100,7 @@ class PermissionUsageViewModelTest {
 
     @After
     fun finish() {
-        mockitoSession.finishMocking()
+        mockitoSession?.finishMocking()
     }
 
     @Test
