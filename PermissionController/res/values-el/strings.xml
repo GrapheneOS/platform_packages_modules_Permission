@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Εμφάνιση εντοπισμού ενεργοποίησης βοηθού"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Εμφάνιση εικονιδίου στη γραμμή κατάστασης όταν το μικρόφωνο χρησιμοποιείται για την ενεργοποίηση του φωνητικού βοηθού"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση σε φωτογραφίες και μέσα στη συσκευή σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε φωτογραφίες και μέσα στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στις επαφές σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στις επαφές σας στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία της συσκευής &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt;;"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Η εφαρμογή θα έχει πρόσβαση στην τοποθεσία μόνο κατά τη διάρκεια χρήσης της εφαρμογής"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην τοποθεσία αυτής της συσκευής;"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία της συσκευής &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt;;"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Αλλαγή πρόσβασης στην τοποθεσία για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"Να γίνει αλλαγή της πρόσβασης σε τοποθεσία για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Να επιτρέπεται η εύρεση, η σύνδεση κι ο προσδιορισμός σχετικής τοποθεσίας των κοντινών συσκευών από &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εύρεση και η σύνδεση σε κοντινές συσκευές και ο προσδιορισμός της σχετικής θέσης τους στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Να επιτρέπεται η εύρεση, η σύνδεση κι ο προσδιορισμός σχετικής τοποθεσίας των κοντινών συσκευών από &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;; "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Αλλαγή της πρόσβασης της εφαρμογής <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> στην τοποθεσία από κατά προσέγγιση σε ακριβή;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Να γίνει αλλαγή της πρόσβασης της εφαρμογής <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> στην τοποθεσία της συσκευής &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; από κατά προσέγγιση σε ακριβή;"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην κατά προσέγγιση τοποθεσία αυτής της συσκευής;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στην τοποθεσία κατά προσέγγιση της συσκευής &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ακριβής"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Κατά προσέγγιση"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στο ημερολόγιό σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στο ημερολόγιό σας στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt;;"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η αποστολή και η προβολή μηνυμάτων SMS;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η αποστολή και η προβολή μηνυμάτων SMS στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση σε φωτογραφίες, μέσα και αρχεία στη συσκευή σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε φωτογραφίες, μέσα και αρχεία στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε &lt;b&gt;φωτογραφίες, βίντεο, μουσική και ήχο&lt;/b&gt; της συσκευής;"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε &lt;b&gt;φωτογραφίες, βίντεο, μουσική, ήχο και άλλα αρχεία&lt;/b&gt; της συσκευής;"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στη μουσική και στα αρχεία ήχου αυτής της συσκευής;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε μουσική και σε ήχο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στις φωτογραφίες και τα βίντεο αυτής της συσκευής;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε φωτογραφίες και σε βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο αυτής της συσκευής;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Αυτή η εφαρμογή θα μπορεί να εγγράφει ήχο μόνο όταν τη χρησιμοποιείτε"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Αυτή η εφαρμογή ενδέχεται να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείτε. "<annotation id="link">"Έγκριση στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Αλλαγή πρόσβασης στο μικρόφωνο για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Να γίνει αλλαγή της πρόσβασης μικροφώνου για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Αυτή η εφαρμογή θέλει να εγγράφει ήχο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείται. "<annotation id="link">"Έγκριση στις ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στη σωματική σας δραστηριότητα;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στη σωματική δραστηριότητά σας στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Αυτή η εφαρμογή θα μπορεί να τραβάει φωτογραφίες και να εγγράφει βίντεο μόνο όταν τη χρησιμοποιείτε"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο;"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Αυτή η εφαρμογή ενδέχεται να τραβάει φωτογραφίες και να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείτε. "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Αλλαγή πρόσβασης στην κάμερα για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"Να γίνει αλλαγή της πρόσβασης κάμερας για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Αυτή η εφαρμογή θέλει να τραβάει φωτογραφίες και να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείται. "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα αρχεία καταγραφής τηλεφωνικών κλήσεών σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στα αρχεία καταγραφής κλήσεων τηλεφώνου σας στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πραγματοποίηση και η διαχείριση τηλεφωνικών κλήσεων;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πραγματοποίηση και η διαχείριση τηλεφωνικών κλήσεων στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στα δεδομένα αισθητήρων των ζωτικών λειτουργιών σας στο &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Αυτή η εφαρμογή θέλει πρόσβαση στα δεδομένα αισθητήρα για τις ζωτικές σας ενδείξεις, ακόμη και όταν δεν τη χρησιμοποιείτε. Για να κάνετε αυτή την αλλαγή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση στα δεδομένα αισθητήρων των ζωτικών λειτουργιών σας στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Για να επιτρέψετε σε αυτή την εφαρμογή να έχει πρόσβαση σε δεδομένα αισθητήρων σώματος οποιαδήποτε στιγμή, ακόμα και όταν δεν χρησιμοποιείτε την εφαρμογή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Να συνεχίσει να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; κατά τη χρήση της εφαρμογής;"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να σας στέλνει ειδοποιήσεις;"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η αποστολή ειδοποιήσεων στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ελεγχόμενες άδειες"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> έχει πρόσβαση στην τοποθεσία"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ο οργανισμός σας επιτρέπει στην εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> να έχει πρόσβαση στην τοποθεσία σας"</string>

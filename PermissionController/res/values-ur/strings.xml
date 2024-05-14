@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"اسسٹنٹ ٹریگر کا پتہ لگانا دکھائیں"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"جب صوتی معاون کو فعال کرنے کے لیے مائیکروفون کا استعمال کیا جائے تو اسٹیٹس بار میں آئیکن دکھائیں"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو آپ کے آلہ پر تصاویر اور میڈیا تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر تصاویر اور میڈیا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے رابطوں تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کے رابطوں تک رسائی کے ليے lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلہ کے مقام تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; کے مقام تک رسائی کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"جب آپ ایپ استعمال کریں گے تبھی ایپ کو مقام تک رسائی حاصل ہوگی"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلہ کے مقام تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; کے مقام تک رسائی کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ممکن ہے یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کے ليے مقام تک رسائی تبدیل کریں"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"‏&lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر &lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی مقام تک رسائی کو تبدیل کریں؟"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو قریبی آلات تلاش کرنے، ان سے منسلک ہونے اور ان کی متعلقہ پوزیشن کا تعین کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر قریبی آلات کی متعلقہ پوزیشن تلاش کرنے، ان سے منسلک ہونے اور اس کا تعین کرنے کی اجازت دیں؟"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو قریبی آلات تلاش کرنے، ان سے منسلک ہونے اور ان کی متعلقہ پوزیشن کا تعین کرنے کی اجازت دیں؟ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> کے مقام تک رسائی کو تخمینی سے قطعی میں تبدیل کریں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"‏&lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر &lt;b&gt;‏<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>&lt;/b&gt; کے مقام تک رسائی کو تخمینی سے قطعی میں تبدیل کریں؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلے کے تخمینی مقام تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; کے تخمینی مقام تک رسائی حاصل کرنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"قطعی"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تخمینی"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے کیلنڈر تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر اپنے کیلنڈر تک رسائی حاصل کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو SMS پیغامات بھیجنے اور انہیں ملاحظہ کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر SMS پیغامات بھیجیںے اور ديکھنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے آلہ پر تصاویر، میڈیا اور فائلوں تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر تصاویر، میڈیا اور فائلز کی رسائی کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;تصاویر، ویڈیوز، موسیقی اور آڈیو&lt;/b&gt; تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;تصاویر، ویڈیوز، موسیقی، آڈیو اور دیگر فائلز&lt;/b&gt; تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو موسیقی اور آڈیو تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر موسیقی اور آڈیو تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"‏اس آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو اس آلے پر مزید تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر مزيد تصاوير اور ویڈیوز تک رسائی حاصل کرنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏آڈیو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آڈيو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو اجازت ديں؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"جب آپ ایپ استعمال کر رہے ہوں تب ایپ صرف آڈیو ریکارڈ کر پائے گی"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏آڈیو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت دیں؟"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آڈيو ریکارڈ کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو اجازت ديں؟"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ممکن ہے یہ ایپ ہر وقت آڈیو ریکارڈ کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;? کے ليے مائیکروفون تک رسائی تبدیل کریں؟"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"‏&lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر &lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی مائیکروفون تک رسائی تبدیل کریں؟"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"یہ ایپ ہر وقت آڈیو ریکارڈ کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt;‎ کو آپ کی جسمانی سرگرمی کی شناخت کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کی جسمانی سرگرمی تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو تصاویر لینے اور ویڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر تصاویر لینے اور ویڈیو ریکارڈ کرنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"جب آپ ایپ استعمال کر رہے ہوں تب ایپ صرف تصاویر لے سکے گی اور ویڈیوز ریکارڈ کر پائے گی"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو تصاویر لینے اور ویڈیو ریکارڈ کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر تصاویر لینے اور ویڈیو ریکارڈ کرنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"ممکن ہے یہ ایپ ہر وقت تصاویر لینا اور ویڈیو ریکارڈ کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;? کے ليے کیمرا تک رسائی تبدیل کریں؟"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"‏&lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر &lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی کیمرا تک رسائی تبدیل کریں؟"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"یہ ایپ ہر وقت تصاویر لینا اور ویڈیو ریکارڈ کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو آپ کے فون کال لاگز تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر اپنے فون کال لاگز تک رسائی حاصل کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديں؟"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏&lt;/b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو فون کالز کرنے اور ان کا نظم کرنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&amp;gt پر فون کالز کرنے اور ان کا نطم کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی اجازت ديں؟"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کی علامات حیات کے بارے میں سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود یہ ایپ ہر وقت آپ کے اہم علامتوں کے متعلق سینسر ڈیٹا تک رسائی حاصل کرنا چاہتی ہے۔ یہ تبدیلی کرنے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کی علامات حیات کے بارے میں سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود اس ایپ کو ہر وقت باڈی سینسر ڈیٹا تک رسائی کی اجازت دینے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏ایپ کے استعمال میں ہونے کے دوران ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو باڈی سینسر ڈیٹا تک رسائی کی اجازت دینا جاری رکھیں؟"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"‏ايپ استمال ہونے تک &lt;/b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;b&gt; پر باڈی سینسر ڈيٹا کی رسائی کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اجازت ديتے رہيں؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;/b&gt; کو آپ کو اطلاعات بھیجنے کی اجازت دیں؟"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کو اطلاعات بھيجنے کے ليے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی اجازت ديں؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"کنٹرول کی گئی اجازتیں"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے پاس مقام تک رسائی حاصل ہے"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"آپ کی تنظیم <xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کے مقام تک رسائی کی اجازت دیتی ہے"</string>

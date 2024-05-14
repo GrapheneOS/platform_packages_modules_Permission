@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Паказваць значок актывацыі памочніка"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Паказваць значок на панэлі стану, калі мікрафон выкарыстоўваецца для актывацыі галасавога памочніка"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і мультымедыя на вашай прыладзе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і мультымедыя на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да вашых кантактаў?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да кантактаў на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра месцазнаходжанне гэтай прылады?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да геаданых на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Праграма будзе мець доступ да звестак пра месцазнаходжанне толькі падчас карыстання ёю"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра месцазнаходжанне гэтай прылады?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да геаданых на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Гэта праграма можа запытваць пастаянны доступ да звестак пра ваша месцазнаходжанне, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Змяніць налады доступу да даных пра месцазнаходжанне для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"Змяніць для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; налады доступу да даных пра месцазнаходжанне на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Гэта праграма запытвае пастаянны доступ да звестак пра ваша месцазнаходжанне, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; знаходзіць прылады паблізу, падключацца да іх і вызначаць адлегласць да іх?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; знаходзіць прылады паблізу, падключацца да іх і вызначаць іх адноснае месцазнаходжанне на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; знаходзіць прылады паблізу, падключацца да іх і вызначаць адлегласць да такіх прылад? "<annotation id="link">"Дазволіць у наладах."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Памяняць у доступах праграмы \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" прыблізнае месцазнаходжанне на дакладнае?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Дазволіць праграме \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" доступ да даных пра дакладнае месцазнаходжанне прылады &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; замест прыблізнага?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра прыблізнае месцазнаходжанне гэтай прылады?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да прыблізнага месцазнаходжання на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Дакладна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Прыблізна"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да вашага календара?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да календара на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць і праглядаць SMS-паведамленні?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць і праглядаць SMS-паведамленні на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота, мультымедыя і файлаў на вашай прыладзе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота, мультымедыя і файлаў на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі і аўдыяфайлаў&lt;/b&gt; на гэтай прыладзе?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да &lt;b&gt;фота, відэа, музыкі, аўдыя і файлаў&lt;/b&gt; на гэтай прыладзе?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да музыкі і аўдыя на гэтай прыладзе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да музыкі і аўдыя на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і відэа на гэтай прыладзе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да фота і відэа на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да дадатковых фота і відэа на гэтай прыладзе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да большай колькасці фота і відэа на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Гэта праграма зможа запісваць аўдыя толькі падчас яе выкарыстання"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Гэта праграма можа запісваць аўдыя ўвесь час, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Змяніць налады доступу да мікрафона для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Змяніць для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; налады доступу да мікрафона на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Гэта праграма запытвае дазвол запісваць аўдыя ўвесь час, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных фізічнай актыўнасці?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных аб фізічнай актыўнасці на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць фота і запісваць відэа?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; знімаць фота і запісваць відэа на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Гэта праграма зможа рабіць фота і запісваць відэа толькі падчас яе выкарыстання"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць фота і запісваць відэа?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; знімаць фота і запісваць відэа на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Гэта праграма можа рабіць фота і запісваць відэа ўвесь час, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Змяніць налады доступу да камеры для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"Змяніць для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; налады доступу да камеры на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Гэта праграма запытвае дазвол рабіць фота і запісваць відэа ўвесь час, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў вашага тэлефона?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць тэлефонныя выклікі і кіраваць імі?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць тэлефонныя выклікі і кіраваць імі на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных датчыкаў з паказчыкамі арганізма на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Гэта праграма запытвае пастаянны доступ да даных датчыкаў з паказчыкамі вашага арганізма, нават калі яна не выкарыстоўваецца. Каб змяніць дазвол, "<annotation id="link">"перайдзіце ў налады"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных датчыкаў з паказчыкамі вашага арганізма?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных датчыкаў з паказчыкамі арганізма на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Каб дазволіць гэтай праграме мець пастаянны доступ да даных датчыкаў цела, нават калі яна не выкарыстоўваецца, "<annotation id="link">"перайдзіце ў налады."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Пакінуць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; дазвол на доступ да даных датчыкаў цела на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;, пакуль праграма выкарыстоўваецца?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць вам апавяшчэнні?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; адпраўляць вам апавяшчэнні на прыладзе &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Кіраваныя дазволы"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мае доступ да даных геалакацыі"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ваша арганізацыя дазволіла праграме \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" мець доступ да вашага месцазнаходжання"</string>

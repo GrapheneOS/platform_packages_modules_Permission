@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"অ্যাসিস্ট্যান্ট ট্রিগার ডিটেকশন দেখুন"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"ভয়েস অ্যাসিস্ট্যান্ট চালু করতে মাইক্রোফোন ব্যবহার হলে স্ট্যাটাস বারে আইকন দেখায়"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ডিভাইসের ফটো এবং মিডিয়াতে অ্যাক্সেস দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসের ফটো ও মিডিয়া অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার পরিচিতিতে অ্যাক্সেস দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসের পরিচিতি অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; ডিভাইসের লোকেশন অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধু সেটি আপনার লোকেশন অ্যাক্সেস করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; ডিভাইসের লোকেশন অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই অ্যাপ হয়ত সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য লোকেশন অ্যাক্সেস পরিবর্তন করতে চান?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপের লোকেশন অ্যাক্সেস পরিবর্তন করবেন?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"কাছাকাছি ডিভাইস খুঁজে দেখতে, কানেক্ট করতে এবং সেটির আপেক্ষিক অবস্থান নির্ধারণ করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে আশেপাশের ডিভাইস খুঁজতে, কানেক্ট করতে এবং সেটি কোথায় রয়েছে তা জানার অনুমতি দেবেন?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"কাছাকাছি ডিভাইস খুঁজে দেখতে, কানেক্ট করতে এবং সেটির আপেক্ষিক অবস্থান নির্ধারণ করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে অনুমতি দেবেন? "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-এ লোকেশন অ্যাক্সেস, আনুমানিক থেকে সুনির্দিষ্ট লোকেশনে পরিবর্তন করতে চান?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> অ্যাপটির লোকেশন অ্যাক্সেস \'আনুমানিক\' থেকে \'সুনির্দিষ্ট\'-তে পরিবর্তন করবেন?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসের আনুমানিক লোকেশন অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"নিকটবর্তী"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ক্যালেন্ডারে অ্যাক্সেস দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আপনার ক্যালেন্ডার অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এসএমএস দেখতে ও পাঠাতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে এসএমএস পাঠানো ও পড়ার অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ডিভাইসের ফটো, মিডিয়া এবং ফাইলে অ্যাক্সেস দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসের ফটো, মিডিয়া ও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে &lt;b&gt;ফটো, ভিডিও, মিউজিক এবং অডিও&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে &lt;b&gt;ফটো, ভিডিও, মিউজিক, অডিও ও অন্যান্য ফাইল&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে মিউজিক ও অডিও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে মিউজিক ও অডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসের ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"এই ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আরও ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আরও ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি অডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দিতে চান?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"এই অ্যাপ হয়ত সবসময় এমনকি আপনি যখন অ্যাপ ব্যবহার করছেন না তখনও অডিও রেকর্ড করতে চাইতে পারে। "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য মাইক্রোফোন অ্যাক্সেস পরিবর্তন করতে চান?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপের মাইক্রোফোন অ্যাক্সেস পরিবর্তন করবেন?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"এই অ্যাপ হয়ত সবসময় এমনকি আপনি যখন অ্যাপ ব্যবহার করছেন না তখনও অডিও রেকর্ড করতে চাইবে। "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার শারীরিক অ্যাক্টিভিটি অ্যাক্সেস করার অনুমতি দিতে চান?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আপনার শারীরিক অ্যাক্টিভিটির ডেটা অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে ফটো তোলা ও ভিডিও রেকর্ড করার অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে ফটো তোলার ও ভিডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি ছবি তুলতে এবং ভিডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে ফটো তুলতে এবং ভিডিও রেকর্ড করার অনুমতি দিতে চান?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে ফটো তোলার ও ভিডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"এই অ্যাপ হয়ত সবসময় এমনকি আপনি যখন অ্যাপ ব্যবহার করছেন না তখনও ছবি তুলতে এবং ভিডিও রেকর্ড করতে চাইতে পারে। "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য ক্যামেরা অ্যাক্সেস পরিবর্তন করতে চান?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপের ক্যামেরা অ্যাক্সেস পরিবর্তন করতে চান?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"এই অ্যাপ সবসময় এমনকি আপনি যখন অ্যাপ ব্যবহার করছেন না তখনও ছবি তুলতে এবং ভিডিও রেকর্ড করতে চাইবে। "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ফোন কল লগ অ্যাক্সেস করার অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আপনার ফোনের কল লগ অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে কল করতে এবং কল পরিচালনা করতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে ফোন কল করার ও তা ম্যানেজ করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে সেন্সর থেকে আপনার ভাইটাল সাইনের ডেটা অ্যাক্সেস করতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আপনার ভাইটাল সাইন সম্পর্কিত সেন্সর ডেটা অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"এই অ্যাপ সবসময় শারীরবৃত্তীয় লক্ষণ সংক্রান্ত সেন্সর ডেটা অ্যাক্সেস করার অনুমতি চায়, এমনকী আপনি যখন অ্যাপটি ব্যবহার করছেন না, তখনও। এই পরিবর্তন চালু করতে, "<annotation id="link">"সেটিংসে যান।"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার বেঁচে থাকার গুরুত্বপূর্ণ লক্ষণ সম্পর্কিত সেন্সর ডেটা অ্যাক্সেস করার অনুমতি দিতে চান?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে আপনার ভাইটাল সাইন সম্পর্কিত সেন্সর ডেটা অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"অ্যাপটি ব্যবহার না করলেও, সেটিকে সবসময় বডি সেন্সর ডেটাতে অ্যাক্সেস দিতে "<annotation id="link">"সেটিংসে যান"</annotation>"।"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ব্যবহার করার সময় &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে বডি সেন্সর ডেটার অ্যাক্সেস দিয়ে রাখতে চান?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপ ব্যবহার করার সময় সেটির বডি সেন্সর ডেটা অ্যাক্সেসের অনুমতি চালু রাখবেন?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে বিজ্ঞপ্তি পাঠানোর অনুমতি দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ডিভাইসে বিজ্ঞপ্তি পাঠানোর অনুমতি দেবেন?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"নিয়ন্ত্রিত অনুমতি"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g>-এর লোকেশন অ্যাক্সেস আছে"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"আপনার সংস্থা <xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার লোকেশন অ্যাক্সেস করার অনুমতি দেয়"</string>

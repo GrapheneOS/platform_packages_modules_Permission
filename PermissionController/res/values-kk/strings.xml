@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Көмекшінің іске қосылғанын анықтауды көрсету"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Микрофон арқылы дауыс көмекшісін іске қосқанда, күй жолағында белгішені көрсету"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына құрылғыдағы суреттерді, медиафайлдарды пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында фотосуреттер мен медиаконтент пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына контактілерді пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында контактілерді пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> құрылғысының&lt;/b&gt; локациясын пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Қолданбаны пайдалану кезінде ғана оған геодеректеріңізді көруге рұқсат етіледі."</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> құрылғысының&lt;/b&gt; локациясын пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына геодеректі пайдалануға рұқсат етілсін бе?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы үшін &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында локацияны пайдалану рұқсаты өзгертілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында маңайдағы құрылғыларды табу, олармен байланысу және қатысты локациясын анықтау рұқсаты берілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат бере аласыз."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының болжалды емес, нақты локацияны пайдалануына рұқсат беру керек пе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында локацияны пайдалану рұқсаты болжалдыдан нақты локацияға өзгертілсін бе?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының болжалды орнын пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысының болжалды локациясын пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нақты"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Болжалды"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына күнтізбеге кіруге рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында күнтізбені пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына SMS хабарларын жіберуге және көруге рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында SMS хабарларын жіберу және көру рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына құрылғыдағы суреттерге, медиафайлдарға және басқа файлдарға кіруге рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында фотосуреттер, медиаконтент және файлдар пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы &lt;b&gt;фотосурет, бейне, музыка мен аудионы&lt;/b&gt; пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы &lt;b&gt;фотосурет, бейне, музыка, аудио мен басқа файлдарды&lt;/b&gt; пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы музыка мен аудионы пайдалану рұқсаты берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында музыка мен аудионы пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғыдағы фотосурет пен бейнені пайдалану рұқсаты берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында фотосуреттер мен бейнелерді пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы осы құрылғыдағы басқа фотосуреттер мен бейнелерді пайдалансын ба?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында көбірек фотосуреттер мен бейнелер пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына дыбыс жазуға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында аудио жазу рұқсаты берілсін бе?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Қолданба тек жұмыс кезінде ғана аудиомазмұн жаза алады."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына аудиомазмұн жазуға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында аудио жазу рұқсаты берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта бейнелерді жаза алады. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына микрофонды пайдалануға рұқсат етілсін бе?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы үшін &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында микрофонды пайдалану рұқсаты өзгертілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта аудиомазмұн жазғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қимыл-қозғалыс дерегін алуға рұқсат етілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында қимыл-қозғалыс деректерін пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында суретке түсіру және бейне жазу рұқсаты берілсін бе?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Қолданба тек жұмыс кезінде ғана суретке түсіріп, бейне жаза алады."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында суретке түсіру және бейне жазу рұқсаты берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта суретке түсіріп, бейнелер жаза алады. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына камераны пайдалануға рұқсат етілсін бе?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы үшін &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында камераны пайдалану рұқсаты өзгертілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта суретке түсіріп, бейне жазғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына телефонның қоңыраулар журналына кіруге рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында қоңырау журналдарын пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қоңырау шалуға және қоңырауларды басқаруға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында қоңырау шалу және басқару рұқсаты берілсін бе?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына негізгі физиологиялық көрсеткіштерді көрсететін сенсорлық деректерді пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында тіршілік көрсеткіштеріне қатысты датчик деректерін пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Қолданбаны пайдаланбасаңыз да, ол әрдайым тіршілік көрсеткіштері туралы датчик дерегін пайдалануға рұқсат сұрайды. Мұны өзгерту үшін "<annotation id="link">"параметрлерге өтіңіз."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына тіршілік көрсеткіштеріне қатысты датчик деректерін пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында тіршілік көрсеткіштеріңіз туралы датчик деректерін пайдалану рұқсаты берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Бұл қолданбаға кез келген уақытта (ол пайдаланылмаған кезде де) дене датчигінен алынған деректі пайдалануға рұқсат беру үшін "<annotation id="link">"параметрлерге өтіңіз."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы дене датчигінен алынған деректі одан әрі пайдалана берсін бе?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында дене датчиктері деректерін одан әрі пайдалана берсін бе?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында сізге хабарландырулар жіберу рұқсаты берілсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы локацияны пайдаланады"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Ұйымыңыз <xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасына локацияңызды пайдалануға рұқсат береді."</string>

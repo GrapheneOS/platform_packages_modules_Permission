@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Assistendi käivitamise tuvastamise kuvamine"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Ikooni kuvamine olekuribal, kui häälassistendi aktiveerimiseks kasutatakse mikrofoni"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadmes olevatele fotodele ja meediale?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs fotodele ja meediale?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs teie kontaktidele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs teie kontaktidele?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme asukohale?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadme &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; asukohale?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Rakendusel on juurdepääs asukohale vaid sel ajal, kui rakendust kasutate"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme asukohale?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadme &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; asukohale?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"See rakendus võib soovida pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu asukohale?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääsu asukohale?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"See rakendus soovib pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; leida lähedalasuvaid seadmeid, nendega ühendada ja nende suhteline asukoht määrata?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; otsida ja määratleda seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; läheduses olevate seadmete suhtelist asukohta ja sellega ühendada?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; leida lähedalasuvaid seadmeid, nendega ühendada ja nende suhteline asukoht määrata? "<annotation id="link">"Lubage menüüs Seaded."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Kas muuta rakenduse <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> asukohale juurdepääsemise tase ligikaudsest täpseks?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Kas muuta rakenduse <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> juurdepääs asukohateabele seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ligikaudsest täpseks?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme ligikaudsele asukohale?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadme &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ligikaudsele asukohale?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Täpne"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Ligikaudne"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs teie kalendrile?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs teie kalendrile?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; saata ja vaadata SMS-sõnumeid?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; saata ja vaadata SMS-sõnumeid?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadmes olevatele fotodele, meediale ja failidele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs fotodele, meediale ja failidele?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt seadmes juurdep. &lt;b&gt;fotodele, videotele, muusikale ja helidele&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdep. &lt;b&gt;foto-, video-, muusika-, heli- ja muudele failidele&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; selles seadmes juurdepääs muusikale ja helifailidele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs muusikale ja helifailidele?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; selles seadmes juurdepääs fotodele ja videotele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs fotodele ja videotele?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; selles seadmes juurdepääs rohkematele fotodele ja videotele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs rohkematele fotodele ja videotele?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; salvestada heli?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; salvestada seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; heli?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Rakendus saab heli salvestada vaid siis, kui rakendust kasutate"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; heli salvestada?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; salvestada seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; heli?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"See rakendus võib soovida heli salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu mikrofonile?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääsu mikrofonile?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"See rakendus soovib heli salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs teie füüsilisele tegevusele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs teie füüsilise tegevuse andmetele?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jäädvustada pilte ja salvestada videoid?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; pilte ja salvestada videot?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Rakendus saab pildistada ja videoid salvestada vaid siis, kui rakendust kasutate"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pildistada ja videoid salvestada?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; pilte ja salvestada videot?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"See rakendus võib soovida pildistada ja videoid salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu kaamerale?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääsu kaamerale?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"See rakendus soovib pildistada ja videoid salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde teie telefoni kõnelogidele?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs teie telefoni kõnelogidele?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha ja hallata telefonikõnesid?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; helistada ja telefonikõnesid hallata?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie tervisenäitajate kohta?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"See rakendus soovib pidevat juurdepääsu teie elulistele näitajatele (ka siis, kui te rakendust ei kasuta). Selle muudatuse tegemiseks "<annotation id="link">"avage seaded."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie tervisenäitajate kohta?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Selleks et anda rakendusele pidev juurdepääs kehaanduri andmetele (ka siis, kui rakendust ei kasutata), "<annotation id="link">"avage seaded."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Kas lubada jätkuvalt rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde kehaanduri andmetele, kui rakendust kasutatakse?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; rakenduse kasutamise ajal jätkuvalt kehaanduri andmetele juurde pääseda?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile märguandeid saata?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; teile märguandeid saata?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Hallatud load"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"Rakendus <xliff:g id="APP_NAME">%1$s</xliff:g> pääseb juurde asukohale"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Teie organisatsioon lubab rakendusel <xliff:g id="APP_NAME">%1$s</xliff:g> pääseda juurde teie asukohale."</string>

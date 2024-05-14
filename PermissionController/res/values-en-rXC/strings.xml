@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‎‎‎‎‎‏‎‏‎‎‏‎‎‎‏‎‏‏‎‏‏‏‏‏‎‎‎‎‏‎‎‎‏‎‎‎‏‎‎‏‎‏‏‏‏‎‏‎‏‏‏‎‏‏‎‏‏‏‎Always allow all‎‏‎‎‏‎"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‎‏‎‎‏‎‏‏‏‏‏‎‎‎‎‎‎‏‏‎‎‏‎‏‎‏‎‏‏‎‏‎‏‎‎‎‎‏‎‎‏‏‎‏‎‎‎‎‎‎‏‏‎‎‏‏‎Ask every time‎‏‎‎‏‎"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‎‏‏‎‏‏‏‏‏‏‎‏‎‏‏‏‏‎‏‎‎‎‏‏‎‎‏‏‎‎‏‎‏‏‏‏‏‎‎‏‎‏‎‏‏‏‎‎‏‏‎‎‏‏‏‏‏‎‎‎Don’t allow‎‏‎‎‏‎"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‎‎‏‏‏‎‏‏‎‏‎‎‏‏‎‏‎‎‏‎‏‎‏‏‎‎‏‎‎‎‎‏‎‎‏‎‏‎‏‎‎‎‏‏‏‏‏‏‎‎‎‎‏‎‎‎‏‎Allow limited access‎‏‎‎‏‎"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‎‎‎‎‎‎‏‏‏‏‎‎‏‏‏‎‎‏‎‏‎‏‏‎‎‎‏‏‎‏‏‏‎‏‎‏‎‎‎‏‏‎‏‏‏‏‎‏‏‏‏‎‎‏‎‎‎‎‎‎Precise location‎‏‎‎‏‎"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‏‏‎‎‏‏‏‏‏‏‎‏‏‎‏‎‎‏‏‎‏‎‏‏‎‎‎‎‏‎‏‎‏‎‎‎‎‎‏‏‏‏‎‎‎Approximate location‎‏‎‎‏‎"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‏‎‏‏‏‎‏‎‏‏‏‏‏‏‏‎‏‎‏‎‏‎‎‏‏‎‎‎‎‎‏‎‏‎‎‎‏‏‏‏‎‏‎‏‎‎‎‎‎‏‏‏‎‏‏‎‏‎Use precise location‎‏‎‎‏‎"</string>

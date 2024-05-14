@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"顯示個人助理觸發偵測圖示"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"使用麥克風啟用語音小幫手時，在狀態列顯示相關圖示"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取裝置中的相片和媒體嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取相片和媒體嗎？"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的聯絡人嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的聯絡人嗎？"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的位置資訊嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的位置資訊嗎？"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"該應用程式只有在你使用時，才能存取位置資訊"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的位置資訊嗎？"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的位置資訊嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"這個應用程式可能會要求隨時存取你的位置資訊 (即使在你未使用此應用程式時)。"<annotation id="link">"如要授予權限，請前往「設定」"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的位置資訊存取權嗎？"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的位置資訊存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"這個應用程式想要隨時存取你的位置資訊 (即使在你未使用此應用程式時)。"<annotation id="link">"如要授予權限，請前往「設定」"</annotation>"。"</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;尋找、連結及判斷附近裝置的相對位置嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;尋找、連線到鄰近裝置及判斷相對位置嗎？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;尋找、連結及判斷附近裝置的相對位置嗎？"<annotation id="link">"請前往「設定」授予權限。"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要將「<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>」可以存取的定位資訊從「大概位置」改為「精確位置」嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"要將「<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>」在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的位置資訊存取權從大概變更為精確嗎？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的大概位置資訊嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的大概位置資訊嗎？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"精確"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大概"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的日曆嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的日曆嗎？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」傳送及查看簡訊嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送及查看簡訊嗎？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取裝置中的相片、媒體和檔案嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取相片、媒體和檔案嗎？"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的&lt;b&gt;相片、影片、音樂和音訊&lt;/b&gt;嗎？"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的&lt;b&gt;相片、影片、音樂、音訊和其他檔案&lt;/b&gt;嗎？"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的音樂和音訊嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取音樂和音訊嗎？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的相片和影片嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取相片和影片嗎？"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置上的其他相片和影片嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取更多相片和影片嗎？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」錄音嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;使用「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的麥克風錄音嗎？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"這個應用程式只有在你使用時才能錄音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」錄音嗎？"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;使用「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的麥克風錄音嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"這個應用程式要求取得隨時都能錄音的權限，即使你當下並未使用該應用程式。"<annotation id="link">"如要授予權限，請前往設定頁面。"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的麥克風存取權嗎？"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的麥克風存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"這個應用程式想取得隨時都能錄音的權限，即使你當下並未使用該應用程式。"<annotation id="link">"如要授予權限，請前往設定頁面。"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的體能活動記錄嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的體能活動資料嗎？"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」拍攝相片及錄製影片嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;使用「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的相機拍照及錄影嗎？"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"這個應用程式只有在你使用時，才能拍照及錄影"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」拍照及錄影嗎？"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;使用「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的相機拍照及錄影嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"這個應用程式要求取得隨時都能拍照及錄影的權限，即使你當下並未使用該應用程式。"<annotation id="link">"如要授予權限，請前往設定頁面。"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的相機存取權嗎？"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的相機存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"這個應用程式想取得隨時都能拍照及錄影的權限，即使你當下並未使用該應用程式。"<annotation id="link">"如要授予權限，請前往設定頁面。"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的通話記錄嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取你的通話記錄嗎？"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」撥打電話及管理通話嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;撥打電話及管理通話嗎？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取與你生命徵象相關的感應器資料嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取與生命徵象相關的感應器資料嗎？"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"這個應用程式想隨時存取與你生命徵象相關的感應器資料 (即使你當下並未使用該應用程式)。如要變更，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取與你生命徵象相關的感應器資料嗎？"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取與生命徵象相關的感應器資料嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要讓這個應用程式能隨時存取人體感應器資料 (即使你當下並未使用該應用程式)，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要變更允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;應用程式在使用期間存取人體感應器資料嗎？"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"要繼續允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在使用期間存取「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;的人體感應器資料嗎？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知嗎？"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;在「<xliff:g id="DEVICE_NAME">%2$s</xliff:g>」&lt;b&gt;&lt;/b&gt;傳送通知嗎？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"由管理員控管的權限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」具有位置存取權"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"貴機構允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取你的位置資訊"</string>

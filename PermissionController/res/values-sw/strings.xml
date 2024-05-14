@@ -467,102 +467,75 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Onyesha utambuzi wa kuwashwa/kuzimwa kwa mratibu"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Onyesha aikoni kwenye sehemu ya kuonyesha hali wakati maikrofoni inatumika kuwasha kipengele cha maagizo ya sauti"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na maudhui kwenye kifaa chako?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage_isolated (6463062962458809752) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na maudhui kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie anwani zako?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_contacts (731025863972535928) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie anwani zako kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali kilipo kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_location (6075412127429878638) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie maelezo ya mahali &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ilipo?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Programu itafikia data ya mahali ulipo unapoitumia tu"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali kilipo kifaa hiki?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_location (1264484517831380016) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_location" msgid="1264484517831380016">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie maelezo ya mahali &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; ilipo?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Huenda programu hii ikataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Ungependa kubadilisha ruhusa za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; za kufikia maelezo ya mahali?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_location (1812338666887726191) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"Ungependa kubadilisha idhini ya kufikia maelezo ya mahali ya &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Programu hii inataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itafute, iunganishe kwenye na ibaini mahali vilipo vifaa vilivyo karibu?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_nearby_devices (5293478278408567442) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itafute, iunganishe na kubaini nafasi ya makadirio ya vifaa vilivyo karibu kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itafute, iunganishe kwenye na ibaini mahali vilipo vifaa vilivyo karibu? "<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Ungependa kubadilisha ufikiaji wa maelezo ya mahali kwenye <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> kutoka eneo lililokadiriwa utumie eneo mahususi?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_fineupgrade (4453775952305587571) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Ungependa kubadilisha idhini ya <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ya kufikia maelezo ya mahali kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; kutoka makadirio kuwa mahususi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali palipokadiriwa kilipo kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_coarselocation (8367540370912066757) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie eneo linalokadiriwa la &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Mahususi"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Palipokadiriwa"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie kalenda yako?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calendar (7161929851377463612) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie kalenda yako kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itume na ione ujumbe wa SMS?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sms (6639977653040502291) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie na itume ujumbe wa SMS kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Ungependa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha, maudhui na faili kwenye kifaa chako?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_storage (6933251810928606636) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha, maudhui na faili kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki na sauti&lt;/b&gt; kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie &lt;b&gt;picha, video, muziki, sauti na faili zingine&lt;/b&gt; kwenye kifaa hiki?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na sauti kwenye kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_aural (7927884506238101064) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie muziki na sauti kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video kwenye kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_read_media_visual (3122576538319059333) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video zaidi kwenye kifaa hiki?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_more_photos (1703469013613723053) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha na video zaidi kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kurekodi sauti?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_microphone (8821701550505437951) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; irekodi sauti kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Programu itaweza kurekodi sauti unapoitumia tu"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; irekodi sauti?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_microphone (3321823187623762958) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; irekodi sauti kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Huenda programu hii ikataka kurekodi sauti kila wakati, hata wakati huitumii."<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Ungependa kubadilisha ruhusa za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; za kufikia maikrofoni?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_microphone (8722411173971679806) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Ungependa kubadilisha idhini ya &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ya kufikia maikrofoni kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Programu hii inataka kurekodi sauti kila wakati, hata wakati huitumii."<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie shughuli zako za kimwili?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_activityRecognition (1243869530588745374) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie shughuli yako ya mazoezi ya mwili kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kupiga picha na kurekodi video?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_camera (5340173564041615494) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ipige picha na kurekodi video kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Programu itaweza kupiga picha na kurekodi video unapoitumia tu"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ipige picha na kurekodi video?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_camera (8533353179594971475) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_camera" msgid="8533353179594971475">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ipige picha na kurekodi video kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Huenda programu hii ikataka kupiga picha na kurekodi video kila wakati, hata wakati huitumii."<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Ungependa kubadilisha ruhusa za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; za kufikia kamera?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_camera (3290160912843715236) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_camera" msgid="3290160912843715236">"Ungependa kubadilisha idhini ya kufikia kamera ya &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Programu hii inataka kupiga picha na kurekodi video kila wakati, hata wakati huitumii."<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie rekodi zako za namba za simu?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_calllog (8220927190376843309) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie rekodi zako za namba za simu kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kupiga na kudhibiti simu?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_phone (590399263670349955) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ipige na kudhibiti simu kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi kuhusu viashiria muhimu vya mwili wako?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_sensors (3874451050573615157) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi inayohusu viashiria muhimu vya mwili wako kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Programu hii inataka kufikia data ya vitambuzi ya viashiria muhimu vya mwili wako kila wakati, hata wakati huitumii. Ili ufanye mabadiliko haya, "<annotation id="link">"nenda kwenye mipangilio."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi inayohusu viashiria muhimu vya mwili wako?"</string>
-    <!-- no translation found for permgroupbackgroundrequest_device_aware_sensors (3687673359121603824) -->
-    <skip />
+    <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi inayohusu viashiria muhimu vya mwili wako kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Ili uruhusu programu hii ifikie data ya vitambuzi vya shughuli za mwili kila wakati, hata wakati hutumii programu, "<annotation id="link">"nenda kwenye mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ungependa kuendelea kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi vya shughuli za mwili wakati programu inatumika?"</string>
-    <!-- no translation found for permgroupupgraderequest_device_aware_sensors (5542771499929819675) -->
-    <skip />
+    <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Ungependa kuendelea kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi vya shughuli za mwili kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; wakati programu inatumika?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ikutumie arifa?"</string>
-    <!-- no translation found for permgrouprequest_device_aware_notifications (857671638951040514) -->
-    <skip />
+    <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ikutumie arifa kwenye &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ruhusa zinazodhibitiwa"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> ina idhini ya kufikia maelezo ya mahali kilipo kifaa"</string>
     <string name="auto_granted_permission_notification_body" msgid="5040234389205471318">"Shirika lako limeruhusu <xliff:g id="APP_NAME">%1$s</xliff:g> kufikia maelezo ya mahali kilipo kifaa chako"</string>

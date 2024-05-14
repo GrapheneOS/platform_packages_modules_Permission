@@ -34,5 +34,6 @@
         <permission name="android.permission.SET_UNRESTRICTED_KEEP_CLEAR_AREAS" />
         <permission name="android.permission.START_TASKS_FROM_RECENTS" />
         <permission name="android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK" />
+        <permission name="android.permission.READ_SYSTEM_GRAMMATICAL_GENDER" />
     </privapp-permissions>
 </permissions>
