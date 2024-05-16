@@ -31,7 +31,6 @@ import android.content.pm.PackageInstaller.PACKAGE_SOURCE_OTHER
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
-import android.graphics.Rect
 import android.net.Uri
 import android.os.Build
 import android.os.Process
@@ -875,7 +874,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         }
     }
 
-    protected fun clickPermissionRequestAllowForegroundButton(timeoutMillis: Long = 10_000) {
+    protected fun clickPermissionRequestAllowForegroundButton(timeoutMillis: Long = 20_000) {
         if (isAutomotive || isWatch) {
             click(
                 By.text(getPermissionControllerString(ALLOW_FOREGROUND_BUTTON_TEXT)),
@@ -907,8 +906,8 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     protected fun clickPermissionRequestSettingsLink() {
         eventually {
             if (isWatch) {
-                scrollToViewWithText(" settings.")
-                waitForIdleLong()
+                clickPermissionRequestSettingsLinkForWear()
+                return@eventually
             }
             // UiObject2 doesn't expose CharSequence.
             val node =
@@ -917,52 +916,52 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
                     // sensors)
                     uiAutomation.rootInActiveWindow
                         .findAccessibilityNodeInfosByText(" settings.")[0]
-                } else if (isWatch) {
-                    // In Wear UI SurfaceView is used and so findAccessibilityNodeInfosByText does
-                    // not find the node. See second NOTE in the findAccessibilityNodeInfosByText
-                    // javadoc.
-                    findAccessibilityNodeInfosByTextForSurfaceView(
-                            uiAutomation.rootInActiveWindow,
-                            " settings.")
-                            ?: throw RuntimeException("Node not found")
                 } else {
                     uiAutomation.rootInActiveWindow
                         .findAccessibilityNodeInfosByViewId(DETAIL_MESSAGE_ID)[0]
                 }
-            if (!isWatch && !node.isVisibleToUser) {
+            if (!node.isVisibleToUser) {
                 scrollToBottom()
             }
             assertTrue(node.isVisibleToUser)
-            if (isWatch) {
-                // TODO(b/329689572): Replace this with proper accessibility node info lookup
-                val bounds = Rect()
-                node.getBoundsInScreen(bounds)
-                // Not sure where the clickable text is. So try different point in the last line
-                // of the 5 line text.
-                val xdelta = 0.2 * bounds.width()
-                val y = bounds.top + (0.95 * bounds.height())
-                var clickedOnLink: Boolean = false
-                for (i in 1..4) {
-                    val x = bounds.left + (i * xdelta)
-                    uiDevice.click(x.toInt(), y.toInt())
-                    waitForIdleLong()
-                    val nextScreenNode: AccessibilityNodeInfo? =
-                            findAccessibilityNodeInfosByTextForSurfaceView(
-                                uiAutomation.rootInActiveWindow,
-                                "All the time")
-                    if (nextScreenNode != null) {
-                        clickedOnLink = true
-                        break
-                    }
-                }
-                assertTrue("Could not click on the settings link correctly", clickedOnLink)
-            } else {
-                val text = node.text as Spanned
-                val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
-                // We could pass in null here in Java, but we need an instance in Kotlin.
-                doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
+
+            val text = node.text as Spanned
+            val clickableSpan = text.getSpans(0, text.length, ClickableSpan::class.java)[0]
+            // We could pass in null here in Java, but we need an instance in Kotlin.
+            doAndWaitForWindowTransition { clickableSpan.onClick(View(context)) }
+        }
+    }
+
+    private fun clickPermissionRequestSettingsLinkForWear() {
+        // Find detail message.
+        val text = waitFindObject(By.textContains(" settings."))
+
+        // Move the view to the top of the screen.
+        var visibleBounds = text.getVisibleBounds()
+        val centerX = (visibleBounds.left + visibleBounds.right) / 2
+        uiDevice.drag(centerX, visibleBounds.top, centerX, 0, 10)
+
+        // Click the deep link.
+        // Not sure where the clickable text is. So try different point in the last line
+        // of the 5 line text.
+        val bounds = text.getVisibleBounds()
+        val xdelta = 0.2 * bounds.width()
+        val y = bounds.bottom - (0.05 * bounds.height())
+        var clickedOnLink: Boolean = false
+        for (i in 1..4) {
+            val x = bounds.left + (i * xdelta)
+            uiDevice.click(x.toInt(), y.toInt())
+            waitForIdleLong()
+            val nextScreenNode: AccessibilityNodeInfo? =
+                    findAccessibilityNodeInfosByTextForSurfaceView(
+                        uiAutomation.rootInActiveWindow,
+                        "All the time")
+            if (nextScreenNode != null) {
+                clickedOnLink = true
+                break
             }
         }
+        assertTrue("Could not click on the settings link correctly", clickedOnLink)
     }
 
     protected fun clickPermissionRequestDenyAndDontAskAgainButton() {
@@ -1372,34 +1371,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             } catch (e: UiObjectNotFoundException) {
                 // flingToEnd() sometimes still fails despite waitForIdle() and the exists() check
                 // (b/246984354).
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun scrollToViewWithText(viewText: String) {
-        val scrollable = UiScrollable(UiSelector().scrollable(true)).apply {
-            if (isWatch) {
-                swipeDeadZonePercentage = 0.1
-            } else {
-                swipeDeadZonePercentage = 0.25
-            }
-        }
-        waitForIdle()
-        if (scrollable.exists()) {
-            try {
-                scrollable.scrollTextIntoView(viewText)
-            } catch (e: UiObjectNotFoundException) {
-                // flingToEnd() sometimes still fails despite waitForIdle() and the exists() check
-                // (b/246984354).
-                e.printStackTrace()
-            }
-            try {
-                // Try using UiAutomatorUtils2 to further strengthen the scrolling search.
-                // We are keeping the "scrollTextIntoView" method above out of abundance of caution
-                // to avoid breaking tests that used to pass.
-                UiAutomatorUtils2.waitFindObjectOrNull(By.text(viewText))
-            } catch (e: UiObjectNotFoundException) {
                 e.printStackTrace()
             }
         }

@@ -34,19 +34,28 @@ class SplitPermissionIndex() {
     constructor(splitPermissionInfos: List<PermissionManager.SplitPermissionInfo>) : this() {
         val permToGroupSplits: MutableSet<SplitPermissionIndexEntry> = mutableSetOf()
         val groupToGroupSplits: MutableSet<SplitPermissionIndexEntry> = mutableSetOf()
-        for (splitPerm in splitPermissionInfos) {
-            val oldPerm = splitPerm.splitPermission
-            for (newPerm in splitPerm.newPermissions) {
-                val oldPermGroup = PermissionMapping.getGroupOfPlatformPermission(oldPerm)
+        for (splitPermissionInfo in splitPermissionInfos) {
+            val splitPermission = splitPermissionInfo.splitPermission
+            for (newPerm in splitPermissionInfo.newPermissions) {
+                val splitPermissionGroup =
+                    PermissionMapping.getGroupOfPlatformPermission(splitPermission)
                 val newPermGroup = PermissionMapping.getGroupOfPlatformPermission(newPerm)
                 if (newPermGroup != null) {
                     permToGroupSplits.add(
-                        SplitPermissionIndexEntry(oldPerm, splitPerm.targetSdk, newPermGroup)
+                        SplitPermissionIndexEntry(
+                            splitPermission,
+                            splitPermissionInfo.targetSdk,
+                            newPermGroup
+                        )
                     )
                 }
-                if (oldPermGroup != null && newPermGroup != null) {
+                if (splitPermissionGroup != null && newPermGroup != null) {
                     groupToGroupSplits.add(
-                        SplitPermissionIndexEntry(oldPermGroup, splitPerm.targetSdk, newPermGroup)
+                        SplitPermissionIndexEntry(
+                            splitPermissionGroup,
+                            splitPermissionInfo.targetSdk,
+                            newPermGroup
+                        )
                     )
                 }
             }
@@ -55,33 +64,63 @@ class SplitPermissionIndex() {
         this.groupToGroupSplits = groupToGroupSplits
     }
 
-    /** Given a permission, return which groups split *from* it for the given targetSdk. */
-    fun getPermToGroupSplitsFrom(oldPermission: String, targetSdk: Int): List<String> {
+    /**
+     * Given a split permission, and a package targetSdkVersion, return permission groups of new
+     * permissions. See <split-permission> tag.
+     *
+     * @param splitPermission the split permission (i.e. old permission)
+     * @param appTargetSdk app target sdk
+     * @return the permission groups calculated from new permissions
+     */
+    fun getPermissionGroupsFromSplitPermission(
+        splitPermission: String,
+        appTargetSdk: Int
+    ): List<String> {
         return permToGroupSplits
-            .filter { it.oldPerm == oldPermission && it.targetSdk < targetSdk }
-            .map { it.newPerm }
+            .filter { it.splitPermissionOrGroup == splitPermission && appTargetSdk < it.targetSdk }
+            .map { it.newPermissionGroup }
             .toList()
     }
 
-    /** Given a permission group, return which groups split *from* it for the given targetSdk. */
-    fun getGroupToGroupSplitsFrom(oldPermissionGroup: String, targetSdk: Int): List<String> {
+    /**
+     * Given a split permission, and a package targetSdkVersion, return permission groups of new
+     * permissions. See <split-permission> tag.
+     *
+     * @param splitPermissionGroup permission group of a split permission
+     * @param appTargetSdk app target sdk
+     * @return the permission groups calculated from new permissions
+     */
+    fun getPermissionGroupsFromSplitPermissionGroup(
+        splitPermissionGroup: String,
+        appTargetSdk: Int
+    ): List<String> {
         return groupToGroupSplits
-            .filter { it.oldPerm == oldPermissionGroup && it.targetSdk < targetSdk }
-            .map { it.newPerm }
+            .filter {
+                it.splitPermissionOrGroup == splitPermissionGroup && appTargetSdk < it.targetSdk
+            }
+            .map { it.newPermissionGroup }
             .toList()
     }
 
-    /** Given a permission group, return which permissions split *to* it for the given targetSdk. */
-    fun getGroupToGroupSplitsTo(newPermissionGroup: String, targetSdk: Int): List<String> {
+    /**
+     * Given a permission group, and package's target sdk find permission groups of the split
+     * permissions, see <split-permission> tag.
+     *
+     * @param permissionGroup permission group mapped to new permissions in <split-permission> tag
+     * @param appTargetSdk app target sdk
+     * @return the permission group for the split permissions
+     */
+    fun getSplitPermissionGroups(permissionGroup: String, appTargetSdk: Int): List<String> {
         return groupToGroupSplits
-            .filter { it.newPerm == newPermissionGroup && it.targetSdk < targetSdk }
-            .map { it.oldPerm }
+            .filter { it.newPermissionGroup == permissionGroup && appTargetSdk < it.targetSdk }
+            .map { it.splitPermissionOrGroup }
             .toList()
     }
 
     data class SplitPermissionIndexEntry(
-        val oldPerm: String,
+        val splitPermissionOrGroup: String,
+        /** The split only applies to app target sdk below this */
         val targetSdk: Int,
-        val newPerm: String
+        val newPermissionGroup: String
     )
 }

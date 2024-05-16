@@ -167,10 +167,12 @@ private constructor(
     }
 
     private fun getAndObservePackageLiveDatas(): Boolean {
-        val packageNames = app.packageManager.getPackagesForUid(uid)?.toList() ?: emptyList()
-        val getLiveData = { packageName: String -> LightPackageInfoLiveData[packageName, user] }
-        setSourcesToDifference(packageNames, packageLiveDatas, getLiveData)
-        return packageNames.isNotEmpty()
+        synchronized(this) {
+            val packageNames = app.packageManager.getPackagesForUid(uid)?.toList() ?: emptyList()
+            val getLiveData = { packageName: String -> LightPackageInfoLiveData[packageName, user] }
+            setSourcesToDifference(packageNames, packageLiveDatas, getLiveData)
+            return packageNames.isNotEmpty()
+        }
     }
 
     /**

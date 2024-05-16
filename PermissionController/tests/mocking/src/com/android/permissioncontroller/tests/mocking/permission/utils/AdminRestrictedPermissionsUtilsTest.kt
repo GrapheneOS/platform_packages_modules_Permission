@@ -18,8 +18,11 @@ package com.android.permissioncontroller.tests.mocking.permission.utils
 
 import android.app.admin.DevicePolicyManager
 import android.platform.test.annotations.AsbSecurityTest
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.utils.v31.AdminRestrictedPermissionsUtils
 import org.junit.Assert.assertEquals
+import org.junit.Assume
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -32,13 +35,39 @@ class AdminRestrictedPermissionsUtilsTest(
     private val canAdminGrantSensorsPermissions: Boolean,
     private val expected: Boolean
 ) {
-
     private val dpm: DevicePolicyManager = mock(DevicePolicyManager::class.java)
 
+    @Before
+    fun setup() {
+        Assume.assumeTrue(SdkLevel.isAtLeastS())
+    }
+
+    @AsbSecurityTest(cveBugId = [308138085])
+    @Test
+    fun mayAdminGrantPermissionTest() {
+        val canGrant =
+            AdminRestrictedPermissionsUtils.mayAdminGrantPermission(
+                permission,
+                group,
+                canAdminGrantSensorsPermissions,
+                false,
+                dpm
+            )
+        assertEquals(expected, canGrant)
+    }
+
     companion object {
+        /**
+         * Returns a list of arrays containing the following values:
+         *
+         * 0. Permission name (String)
+         * 1. Permission group name (String)
+         * 2. Can admin grant sensors permissions (Boolean)
+         * 3. Expected return from mayAdminGrantPermission method (Boolean)
+         */
         @JvmStatic
         @Parameterized.Parameters(name = "{index}: validate({0}, {1}, {3}) = {4}")
-        fun primeNumbers(): List<Array<out Any?>> {
+        fun getParameters(): List<Array<out Any?>> {
             return listOf(
                 arrayOf("abc", "xyz", false, true),
                 arrayOf("abc", null, false, true),
@@ -58,19 +87,5 @@ class AdminRestrictedPermissionsUtilsTest(
                 ),
             )
         }
-    }
-
-    @AsbSecurityTest(cveBugId = [308138085])
-    @Test
-    fun mayAdminGrantPermissionTest() {
-        val canGrant =
-            AdminRestrictedPermissionsUtils.mayAdminGrantPermission(
-                permission,
-                group,
-                canAdminGrantSensorsPermissions,
-                false,
-                dpm
-            )
-        assertEquals(expected, canGrant)
     }
 }
