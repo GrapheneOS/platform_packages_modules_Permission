@@ -25,6 +25,7 @@
     <application android:label="CtsCameraMicAccess">
         <activity android:name=".AccessCameraOrMicActivity"
                   android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+                  android:theme="@style/AccessCameraOrMicActivityTheme"
                   android:exported="true">
             <intent-filter>
                 <action android:name="test.action.USE_CAMERA_OR_MIC" />

@@ -33,3 +33,11 @@ flag {
     bug: "278553670"
     is_fixed_read_only: true
 }
+
+flag {
+    name: "add_banners_to_privacy_sensitive_apps_for_aaos"
+    namespace: "permissions"
+    description: "Flag to display warning banners to privacy sensitive apps in AAOS."
+    bug: "327489942"
+    is_fixed_read_only: true
+}

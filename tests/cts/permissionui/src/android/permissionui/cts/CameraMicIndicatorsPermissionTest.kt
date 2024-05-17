@@ -83,6 +83,7 @@ private const val USE_INTENT_ACTION = "test.action.USE_CAMERA_OR_MIC"
 private const val PRIVACY_CHIP_ID = "com.android.systemui:id/privacy_chip"
 private const val PRIVACY_ITEM_ID = "com.android.systemui:id/privacy_item"
 private const val INDICATORS_FLAG = "camera_mic_icons_enabled"
+private const val WEAR_MIC_LABEL = "Microphone"
 private const val PERMISSION_INDICATORS_NOT_PRESENT = 162547999L
 private const val IDLE_TIMEOUT_MILLIS: Long = 1000
 private const val UNEXPECTED_TIMEOUT_MILLIS = 1000L
@@ -107,6 +108,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
 
     private val isTv = packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
     private val isCar = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
+    private val isWatch = packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)
     private val safetyCenterMicLabel = getPermissionControllerString(MIC_LABEL_NAME)
     private val safetyCenterCameraLabel = getPermissionControllerString(CAMERA_LABEL_NAME)
     private val originalCameraLabel =
@@ -368,7 +370,14 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
         openApp(useMic, useCamera, useHotword, finishEarly)
         try {
             eventually {
-                val appView = uiDevice.findObject(UiSelector().textContains(APP_LABEL))
+                val appView =
+                    if (isWatch) {
+                        // Title is disabled by default on watch apps
+                        uiDevice.findObject(UiSelector().packageName(APP_PKG))
+                    } else {
+                        uiDevice.findObject(UiSelector().textContains(APP_LABEL))
+                    }
+
                 assertWithUiDump {
                     assertTrue("View with text $APP_LABEL not found", appView.exists())
                 }
@@ -427,6 +436,8 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
             assertTvIndicatorsShown(useMic, useCamera, useHotword)
         } else if (isCar) {
             assertCarIndicatorsShown(useMic, useCamera, useHotword, chainUsage)
+        } else if (isWatch) {
+            assertWatchIndicatorsShown(useMic, useCamera, useHotword)
         } else {
             uiDevice.openQuickSettings()
             val micInUse =
@@ -442,6 +453,23 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
                 safetyCenterEnabled
             )
             uiDevice.pressBack()
+        }
+    }
+
+    private fun assertWatchIndicatorsShown(
+        useMic: Boolean,
+        useCamera: Boolean,
+        useHotword: Boolean
+    ) {
+        if (useMic || useHotword || (!useMic && !useCamera && !useHotword)) {
+            val iconView = UiAutomatorUtils2.waitFindObjectOrNull(By.descContains(WEAR_MIC_LABEL))
+            if (useMic) {
+                assertNotNull("Did not find mic chip", iconView)
+            } else {
+                assertNull("Found mic chip, but did not expect to", iconView)
+                // waitFindObject leaves the watch on the notification screen
+                pressBack()
+            }
         }
     }
 

@@ -566,7 +566,7 @@
     <role
         name="android.app.role.SYSTEM_AUTOMOTIVE_PROJECTION"
         defaultHolders="config_systemAutomotiveProjection"
-        exclusive="false"
+        exclusive="true"
         minSdkVersion="31"
         static="true"
         systemOnly="true"
