@@ -168,7 +168,7 @@ class UndefinedGroupPermissionTest {
 
     fun findAllowButton(): UiObject2 {
          return if (FeatureUtil.isAutomotive() || FeatureUtil.isWatch()) {
-            waitFindObject(By.text(mAllowButtonText!!), 2000)
+            waitFindObject(By.text(mAllowButtonText!!))
         } else {
             waitFindObject(
                 By.res("com.android.permissioncontroller:id/permission_allow_button"),
@@ -198,7 +198,7 @@ class UndefinedGroupPermissionTest {
             mUiDevice!!.waitForIdle()
             try {
                 if (FeatureUtil.isAutomotive() || FeatureUtil.isWatch()) {
-                    waitFindObject(By.text(mDenyButtonText!!), 2000)
+                    waitFindObject(By.text(mDenyButtonText!!))
                 } else if (
                     mContext?.packageManager?.hasSystemFeature(PackageManager.FEATURE_WATCH) == true
                 ) {
