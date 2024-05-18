@@ -31,6 +31,7 @@ import android.permission.flags.Flags
 import android.permissionmultidevice.cts.PermissionUtils.isCddCompliantScreenSize
 import android.platform.test.annotations.RequiresFlagsEnabled
 import android.provider.Settings
+import android.util.Log
 import android.virtualdevice.cts.common.VirtualDeviceRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -38,11 +39,14 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
+import com.android.setupwizardlib.util.WizardManagerHelper
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
@@ -72,6 +76,8 @@ class AppPermissionsTest {
 
     private val permissionManager =
         defaultDeviceContext.getSystemService(PermissionManager::class.java)!!
+
+    private val TAG = AppPermissionsTest::class.java.simpleName
 
     @Before
     fun setup() {
@@ -381,20 +387,40 @@ class AppPermissionsTest {
     }
 
     private fun openAppPermissionsScreen() {
+        Log.d(TAG, "Waiting for device provision...")
+        eventually(
+            {
+                assertTrue(
+                    "Timed out waiting for device provision to complete",
+                    WizardManagerHelper.isDeviceProvisioned(defaultDeviceContext)
+                )
+            },
+            40_000
+        )
+
         val intent =
             Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                 data = Uri.fromParts("package", APP_PACKAGE_NAME, null)
                 addCategory(Intent.CATEGORY_DEFAULT)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             }
 
-        eventually(
-            {
-                instrumentation.context.startActivity(intent)
-                UiAutomatorUtils2.waitFindObject(By.text("Permissions"), 12_000).click()
-            },
-            20_000
-        )
+        Log.d(TAG, "Launching intent=${Settings.ACTION_APPLICATION_DETAILS_SETTINGS}")
+        defaultDeviceContext.startActivity(intent)
+
+        Log.d(TAG, "Waiting for App info to show up...")
+        val appInfo =
+            UiAutomatorUtils2.getUiDevice().wait(Until.findObject(By.text("App info")), 10000)
+        assertNotNull(appInfo)
+
+        Log.d(TAG, "Waiting for Permissions to show up...")
+        val permissions =
+            UiAutomatorUtils2.getUiDevice().wait(Until.findObject(By.text("Permissions")), 10000)
+        assertNotNull(permissions)
+
+        Log.d(TAG, "Clicking on Permissions")
+        permissions.click()
     }
 
     private fun getScrollableRecyclerView(): UiScrollable {
