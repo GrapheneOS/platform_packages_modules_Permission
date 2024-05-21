@@ -87,9 +87,6 @@ class RuntimePermissionsUpgradeControllerTest {
         val application = mock(PermissionControllerApplication::class.java)
 
         init {
-            whenever(application.applicationContext).thenReturn(application)
-            whenever(application.createContextAsUser(any(), anyInt())).thenReturn(application)
-
             whenever(application.registerComponentCallbacks(any())).thenAnswer {
                 val dataRepository = it.arguments[0] as ComponentCallbacks2
 
@@ -212,7 +209,8 @@ class RuntimePermissionsUpgradeControllerTest {
                 .startMocking()
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
-
+        whenever(application.applicationContext).thenReturn(application)
+        whenever(application.createContextAsUser(any(), anyInt())).thenReturn(application)
         doReturn(packageManager).`when`(application).packageManager
         doReturn(permissionManager)
             .`when`(application)
