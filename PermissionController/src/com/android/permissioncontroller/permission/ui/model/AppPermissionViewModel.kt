@@ -617,7 +617,7 @@ class AppPermissionViewModel(
 
                 if (shouldShowLocationAccuracy == null) {
                     shouldShowLocationAccuracy =
-                        isLocationAccuracyEnabled() &&
+                        isLocationAccuracyAvailableForApp(group) &&
                             group.permissions.containsKey(ACCESS_FINE_LOCATION)
                 }
                 val locationAccuracyState =
@@ -679,6 +679,11 @@ class AppPermissionViewModel(
         }
         val userSelectedPerm = group.permissions[READ_MEDIA_VISUAL_USER_SELECTED] ?: return false
         return !userSelectedPerm.isImplicit
+    }
+
+    private fun isLocationAccuracyAvailableForApp(group: LightAppPermGroup): Boolean {
+        return isLocationAccuracyEnabled() &&
+            group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.S
     }
 
     private fun isFineLocationChecked(group: LightAppPermGroup): Boolean {

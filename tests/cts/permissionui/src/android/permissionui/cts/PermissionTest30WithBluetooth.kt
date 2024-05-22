@@ -56,9 +56,9 @@ class PermissionTest30WithBluetooth : BaseUsePermissionTest() {
         "android.permissionui.cts.usepermission.AccessBluetoothOnCommand"
     private val TEST_APP_PKG = "android.permissionui.cts.usepermission"
     private lateinit var bluetoothAdapter: BluetoothAdapter
-    private var bluetoothAdapterWasEnabled: Boolean = false
+    private var bluetoothAdapterWasEnabled: Boolean? = null
     private val locationManager = context.getSystemService(LocationManager::class.java)!!
-    private var locationWasEnabled: Boolean = false
+    private var locationWasEnabled: Boolean? = null
 
     private enum class BluetoothScanResult {
         UNKNOWN,
@@ -83,8 +83,10 @@ class PermissionTest30WithBluetooth : BaseUsePermissionTest() {
         assumeTrue(supportsBluetooth())
         bluetoothAdapter = context.getSystemService(BluetoothManager::class.java).adapter
         bluetoothAdapterWasEnabled = bluetoothAdapter.isEnabled()
-        runWithShellPermissionIdentity {
-            assertTrue(BTAdapterUtils.enableAdapter(bluetoothAdapter, context))
+        if (bluetoothAdapterWasEnabled == false) {
+            runWithShellPermissionIdentity {
+                assertTrue(BTAdapterUtils.enableAdapter(bluetoothAdapter, context))
+            }
         }
         enableTestMode()
     }
@@ -93,7 +95,7 @@ class PermissionTest30WithBluetooth : BaseUsePermissionTest() {
     fun enableLocation() {
         val userHandle: UserHandle = Process.myUserHandle()
         locationWasEnabled = locationManager.isLocationEnabledForUser(userHandle)
-        if (!locationWasEnabled) {
+        if (locationWasEnabled == false) {
             runWithShellPermissionIdentity {
                 locationManager.setLocationEnabledForUser(true, userHandle)
             }
@@ -104,7 +106,7 @@ class PermissionTest30WithBluetooth : BaseUsePermissionTest() {
     fun disableLocation() {
         val userHandle: UserHandle = Process.myUserHandle()
 
-        if (!locationWasEnabled) {
+        if (locationWasEnabled == false) {
             runWithShellPermissionIdentity {
                 locationManager.setLocationEnabledForUser(false, userHandle)
             }
@@ -115,7 +117,7 @@ class PermissionTest30WithBluetooth : BaseUsePermissionTest() {
     fun disableBluetooth() {
         assumeTrue(supportsBluetooth())
         disableTestMode()
-        if (!bluetoothAdapterWasEnabled) {
+        if (bluetoothAdapterWasEnabled == false) {
             runWithShellPermissionIdentity {
                 assertTrue(BTAdapterUtils.disableAdapter(bluetoothAdapter, context))
             }
