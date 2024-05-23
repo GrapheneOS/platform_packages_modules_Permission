@@ -117,11 +117,10 @@ android_test {
         "safety-label",
         "role-controller",
         "lottie",
-        "permissions-aconfig-flags-lib",
-        "android.permission.flags-aconfig-java",
+        "android.permission.flags-aconfig-java-export",
+        "com.android.permission.flags-aconfig-java-export",
         "platform-test-annotations",
         "flag-junit",
-
         "androidx.test.rules",
         "androidx.test.ext.truth",
         "androidx.test.ext.junit",

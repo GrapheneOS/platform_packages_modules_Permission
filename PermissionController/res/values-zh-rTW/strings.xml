@@ -85,7 +85,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"執行不明的動作"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統設定"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"顯示系統程序"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隱藏系統程序"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"顯示過去 7 天內的使用情況"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"顯示過去 24 小時內的使用情況"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"一律全部允許"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都詢問"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"不允許"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"允許有限存取"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"精確位置"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"大概位置"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用精確位置"</string>

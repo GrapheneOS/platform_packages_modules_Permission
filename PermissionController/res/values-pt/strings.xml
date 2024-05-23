@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Sempre permitir tudo"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Perguntar sempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Não permitir"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Permitir acesso limitado"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Local exato"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Local aproximado"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar local exato"</string>
@@ -438,7 +437,7 @@
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Abrir links"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Padrão para trabalho"</string>
     <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Padrão para o espaço privado"</string>
-    <string name="default_app_none" msgid="9084592086808194457">"Nenhum"</string>
+    <string name="default_app_none" msgid="9084592086808194457">"Nenhuma"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Padrão do sistema)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nenhum app"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Selecionado"</string>
@@ -482,7 +481,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, conecte-se e determine a posição relativa de dispositivos por perto?"</string>
     <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Permitir que o &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, se conecte e saiba o posicionamento relativo de dispositivos por perto no &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, conecte-se e determine a posição relativa de dispositivos por perto? "<annotation id="link">"Permita nas configurações."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Permitir a troca para que o app <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> acesse o local exato (em vez do aproximado)?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Mudar a permissão de acesso ao local do app <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>, de aproximado para exato?"</string>
     <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Mudar o acesso ao local do <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> no &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; de aproximado para exato?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse o local aproximado deste dispositivo?"</string>
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Permitir que o &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse o local aproximado do &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;’s?"</string>

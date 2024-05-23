@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Doim hammasiga ruxsat"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Har safar soʻralsin"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Rad etish"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Cheklangan ruxsat berish"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Aniq joylashuv"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Taxminiy joylashuv"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Aniq joylashuv axborotidan foydalanish"</string>
@@ -479,7 +478,7 @@
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun joylashuv axborotiga ruxsat oʻzgartirilsinmi?"</string>
     <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasining <xliff:g id="DEVICE_NAME">%2$s</xliff:g> joylashuvidan foydalanish ruxsati oʻzgartirilsinmi?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu ilova ochiq emasligida ham joylashuvingiz haqidagi axborotdan foydalanmoqchi. Bunga "<annotation id="link">"sozlamalar"</annotation>" orqali ruxsat bering."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; yaqin-atrofdagi qurilmalar joylashuvini aniqlashi va ularga ulanishiga ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi qurilmalarni topish, ularga ulanish va ularning nisbiy joylashuvini aniqlashi uchun ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi <xliff:g id="DEVICE_NAME">%2$s</xliff:g> qurilmasida atrofdagi qurilmalarni topishi, ularning nisbiy joylashuvini aniqlashi va ularga ulanishiga ruxsat berilsinmi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; yaqin-atrofdagi qurilmalar joylashuvini aniqlashi va ularga ulanishiga ruxsat berilsinmi? "<annotation id="link">"Sozlamalar orqali ruxsat berish mumkin."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> uchun joylashuv ruxsati taxminiydan aniqqa oʻzgartirilsinmi?"</string>

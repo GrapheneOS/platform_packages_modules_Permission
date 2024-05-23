@@ -111,8 +111,7 @@ java_sdk_library {
         "service-permission-statsd",
         "permissioncontroller-statsd",
         "service-permission-proto-stream",
-        "android.permission.flags-aconfig-java",
-        "permissions-aconfig-flags-lib",
+        "com.android.permission.flags-aconfig-java",
     ],
     errorprone: {
         javacflags: ["-Xep:GuardedBy:ERROR"],
@@ -148,7 +147,8 @@ java_sdk_library {
         proguard_flags_files: ["proguard.flags"],
     },
     aconfig_declarations: [
-        "permissions-aconfig-flags",
+        "android.permission.flags-aconfig",
+        "com.android.permission.flags-aconfig",
     ],
 }
 

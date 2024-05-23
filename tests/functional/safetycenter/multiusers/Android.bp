@@ -36,7 +36,7 @@ android_test {
         "Harrier",
         "Nene",
         "TestApp",
-        "permissions-aconfig-flags-lib",
+        "com.android.permission.flags-aconfig-java-export",
     ],
     test_suites: [
         "general-tests",

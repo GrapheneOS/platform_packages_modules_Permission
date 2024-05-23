@@ -19,24 +19,42 @@ package {
 }
 
 aconfig_declarations {
-    name: "permissions-aconfig-flags",
-    package: "com.android.permission.flags",
+    name: "com.android.permission.flags-aconfig",
     container: "com.android.permission",
+    package: "com.android.permission.flags",
+    exportable: true,
     srcs: ["flags.aconfig"],
 }
 
 java_aconfig_library {
-    name: "permissions-aconfig-flags-lib",
-    aconfig_declarations: "permissions-aconfig-flags",
+    name: "com.android.permission.flags-aconfig-java-export",
+    aconfig_declarations: "com.android.permission.flags-aconfig",
+    mode: "exported",
     sdk_version: "module_current",
     min_sdk_version: "30",
-    apex_available: [
-        "com.android.permission",
-        "test_com.android.permission",
-    ],
     installable: false,
     libs: ["framework-configinfrastructure"],
     visibility: [
         "//packages/modules/Permission:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.permission",
+        "test_com.android.permission",
+    ],
+}
+
+java_aconfig_library {
+    name: "com.android.permission.flags-aconfig-java",
+    aconfig_declarations: "com.android.permission.flags-aconfig",
+    sdk_version: "module_current",
+    min_sdk_version: "30",
+    installable: false,
+    libs: ["framework-configinfrastructure"],
+    visibility: [
+        "//packages/modules/Permission:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.permission",
+        "test_com.android.permission",
     ],
 }

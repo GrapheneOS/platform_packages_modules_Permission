@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"सर्वांना नेहमी अनुमती द्या"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक वेळी विचारा"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमती देऊ नका"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"मर्यादित अ‍ॅक्सेसची अनुमती द्या"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"अचूक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अंदाजे स्‍थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
@@ -528,13 +527,13 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; वर फोन कॉल करण्याची आणि व्यवस्थापित करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या लक्षणांविषयीचा सेन्सर डेटा अ‍ॅक्सेस करू द्यायचे?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; वर तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला तुमच्या महत्त्वाच्या परिमाणांबद्दलचा सेन्सर डेटा पूर्णवेळ ॲक्सेस करायचा आहे. हा बदल करण्यासाठी, "<annotation id="link">" सेटिंग्जवर जा."</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या परिमाणांसंबंधित सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा पूर्णवेळ ॲक्सेस करायचा आहे. हा बदल करण्यासाठी, "<annotation id="link">" सेटिंग्जवर जा."</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या लक्षणांसंबंधित सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; वर तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"तुम्ही ॲप वापरत नसतानादेखील या ॲपला शरीर सेन्सर डेटा नेहमी अ‍ॅक्सेस करू देण्यासाठी, "<annotation id="link">"सेटिंग्जवर जा."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"अ‍ॅप अजूनही वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; वर शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवू द्यायचे का?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला नोटिफिकेशन पाठवू द्यायची का?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ला &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; वर तुम्हाला नोटिफिकेशन पाठवण्याची अनुमती द्यायची आहे का?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियंत्रित परवानग्या"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"<xliff:g id="APP_NAME">%1$s</xliff:g> कडे स्थान अ‍ॅक्सेस आहे"</string>

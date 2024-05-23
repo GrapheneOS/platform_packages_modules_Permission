@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Həmişə hamısına icazə verin"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Həmişə soruşulsun"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"İcazə verməyin"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Məhdud girişə icazə verin"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Dəqiq məkan"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Təxmini məkan"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Məkan dəqiq aşkarlansın"</string>

@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Постоянный полный доступ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Спрашивать каждый раз"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Запретить"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Разрешить ограниченный доступ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точное местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизительное местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Точное местоположение"</string>
@@ -482,7 +481,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное положение?"</string>
     <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное местоположение на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости, подключаться к ним и определять их относительное положение? "<annotation id="link">"Открыть настройки"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Изменить местоположение в приложении \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" с приблизительного на точное?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Разрешить приложению \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" доступ к данным о точном местоположении вместо приблизительного?"</string>
     <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Разрешить приложению \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" доступ к данным о точном местоположении устройства &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; вместо приблизительного?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -528,13 +527,13 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; совершать телефонные звонки и управлять ими на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным датчиков о состоянии организма?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Этому приложению требуется доступ к данным нательных датчиков, даже когда вы им не пользуетесь. Предоставить разрешение можно в "<annotation id="link">"настройках"</annotation>"."</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Это приложение запрашивает постоянный доступ к данным нательных датчиков, даже в то время, когда вы им не пользуетесь. Изменить его разрешения можно в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Чтобы предоставить приложению доступ к данным нательных датчиков, даже когда вы им не пользуетесь, "<annotation id="link">"измените настройки"</annotation>"."</string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Предоставлять приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Оставить для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; только во время использования?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить <xliff:g id="APP_NAME">%1$s</xliff:g> отправлять уведомления?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить приложению  &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять уведомления?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; отправлять вам уведомления на устройстве &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролируемые разрешения"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="7570818224669050377">"У приложения \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" есть доступ к геоданным"</string>
@@ -563,10 +562,10 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Данные микрофона могут передаваться при звонке на номер экстренной службы"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Изменить"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Доступ к камере запрещен"</string>
-    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Для информационно-развлекательных приложений."</string>
-    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Для обязательных приложений."</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Для информационно-развлекательных приложений"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Для обязательных приложений"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Это обязательное приложение"</string>
-    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Это приложение указано производителем автомобиля как обязательное."</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Это приложение указано производителем автомобиля как обязательное"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Безопасность и кон­фи­ден­циаль­ность"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Сканировать устройство"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Закрыть"</string>

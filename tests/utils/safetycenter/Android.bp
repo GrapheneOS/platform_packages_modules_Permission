@@ -36,7 +36,7 @@ android_library {
         "kotlinx-coroutines-android",
         "safety-center-internal-data",
         "safety-center-resources-lib",
-        "permissions-aconfig-flags-lib",
+        "com.android.permission.flags-aconfig-java-export",
     ],
     apex_available: [
         "com.android.permission",

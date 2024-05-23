@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"始终全部允许"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都询问"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"不允许"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"允许有限访问"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"确切位置"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"大致位置"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
@@ -488,9 +487,9 @@
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;的大致位置信息吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切位置"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致位置"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问您的日历吗？"</string>
     <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问您的日历吗？"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”发送和查看短信吗？"</string>
     <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上发送和查看短信吗？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"要允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问照片、媒体和文件吗？"</string>
@@ -511,7 +510,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的麦克风使用权限吗？"</string>
     <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上的麦克风使用权限吗？"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"此应用想要随时录音，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取您的身体活动数据吗？"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取您的身体活动数据吗？"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问您的身体活动记录吗？"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拍摄照片和录制视频吗？"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上拍照片和录视频吗？"</string>
@@ -529,9 +528,9 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"此应用希望随时都能访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。如要进行这种权限更改，请"<annotation id="link">"前往设置页面"</annotation>"。"</string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问与您的生命体征相关的传感器数据吗？"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要允许此应用随时可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"要继续允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;于使用期间在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问身体传感器数据吗？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”向您发送通知吗？"</string>

@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"常にすべて許可"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認する"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"許可しない"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"制限付きでアクセスを許可する"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"正確な現在地"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"おおよその現在地"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"正確な位置情報を使用"</string>
@@ -528,10 +527,10 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;での通話の発信と管理を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"バイタルサインに関するセンサーデータへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;内のバイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"このアプリは、未使用時も含め、常にバイタルサインに関するセンサーデータへのアクセスを試みます。これを変更するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"このアプリは、非使用時も含め、常にバイタルサインに関するセンサーデータへのアクセスを試みます。これを変更するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"バイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;内のバイタルサインに関するセンサーデータへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"アプリの未使用時も、常にボディセンサー データにアクセスすることをこのアプリに許可するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"アプリの非使用時も、常にボディセンサー データにアクセスすることをこのアプリに許可するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ボディセンサー データへのアクセスを、引き続きアプリの使用時のみ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"アプリ使用中に &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; が&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;内のボディセンサー データにアクセスすることを引き続き許可しますか？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"通知の送信を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>

@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permet sempre tot"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pregunta sempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permetis"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Permet l\'accés limitat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicació precisa"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ubicació aproximada"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilitza la ubicació precisa"</string>
@@ -528,7 +527,7 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faci i gestioni trucades amb el dispositiu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor de constants vitals?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor sobre les constants vitals al dispositiu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aquesta aplicació vol accedir a les dades del sensor sobre les constants vitals sempre, fins i tot quan no l\'utilitzis. Per fer aquest canvi, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aquesta aplicació vol accedir a les dades del sensor sobre les constants vitals sempre, fins i tot quan no la utilitzis. Per fer aquest canvi, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades dels sensors sobre les constants vitals?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor sobre les constants vitals al dispositiu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Per permetre que l\'aplicació accedeixi sempre a les dades del sensor corporal, fins i tot quan no la utilitzis, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
@@ -560,7 +559,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Per a aplicacions i serveis"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es comparteixin si truques a un número d\'emergència."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Canvia"</string>
-    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"L\'accés a la càmera està desactivat"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"L\'accés a Càmera està desactivat"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Per a les aplicacions d\'informació i entreteniment"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Per a les aplicacions requerides"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Es requereix aquesta aplicació"</string>

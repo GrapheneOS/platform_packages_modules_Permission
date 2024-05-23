@@ -53,7 +53,7 @@ android_test {
         "sts-device-util",
         "platform-test-rules",
         "CtsVirtualDeviceCommonLib",
-        "android.permission.flags-aconfig-java",
+        "android.permission.flags-aconfig-java-export",
         "androidx.test.rules",
     ],
     jni_libs: [

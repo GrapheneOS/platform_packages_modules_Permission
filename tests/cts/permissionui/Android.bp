@@ -43,7 +43,7 @@ android_test {
         "platform-test-rules",
         "platform-test-annotations",
         "android.content.pm.flags-aconfig-java-export",
-        "android.permission.flags-aconfig-java",
+        "android.permission.flags-aconfig-java-export",
     ],
     data: [
         ":CtsPermissionPolicyApp25",

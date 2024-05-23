@@ -24,7 +24,7 @@
     <string name="privacy_sources_title" msgid="309304028326660956">"Datenschutzeinstellungen"</string>
     <string name="privacy_sources_summary" msgid="2165270848857537278">"Berechtigungen, Einstellungen"</string>
     <string name="privacy_additional_title" msgid="4239060639056083649"></string>
-    <string name="private_space_title" msgid="6158245041481535879">"Privates Profil"</string>
-    <string name="private_space_summary" msgid="529869826714610294">"Privaten Bereich einrichten und mehr"</string>
-    <string name="private_space_search_terms" msgid="4820808478299116258">"Privates Profil"</string>
+    <string name="private_space_title" msgid="6158245041481535879">"Vertrauliches Profil"</string>
+    <string name="private_space_summary" msgid="529869826714610294">"Vertrauliches Profil einrichten und mehr"</string>
+    <string name="private_space_search_terms" msgid="4820808478299116258">"Vertrauliches Profil"</string>
 </resources>

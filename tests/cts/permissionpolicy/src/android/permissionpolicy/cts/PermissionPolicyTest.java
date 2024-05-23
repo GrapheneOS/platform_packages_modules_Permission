@@ -19,7 +19,6 @@ package android.permissionpolicy.cts;
 import static android.content.pm.PermissionInfo.FLAG_INSTALLED;
 import static android.content.pm.PermissionInfo.PROTECTION_MASK_BASE;
 import static android.os.Build.VERSION.SECURITY_PATCH;
-import static android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
 
 import static com.google.common.truth.Truth.assertWithMessage;
 
@@ -118,17 +117,13 @@ public class PermissionPolicyTest {
             declaredGroupsSet.add(declaredGroup.name);
         }
 
-        boolean filterFlaggedPermissions = sContext.getPackageManager()
-                .getApplicationInfo(PLATFORM_PACKAGE_NAME, 0).minSdkVersion <= UPSIDE_DOWN_CAKE;
-
         Set<String> expectedPermissionGroups = loadExpectedPermissionGroupNames(
                 R.raw.android_manifest);
         List<ExpectedPermissionInfo> expectedPermissions = loadExpectedPermissions(
-                R.raw.android_manifest, filterFlaggedPermissions);
+                R.raw.android_manifest);
 
         if (sContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
-            expectedPermissions.addAll(loadExpectedPermissions(R.raw.automotive_android_manifest,
-                    filterFlaggedPermissions));
+            expectedPermissions.addAll(loadExpectedPermissions(R.raw.automotive_android_manifest));
             String carServicePackageName = SystemProperties.get("ro.android.car.carservice.package",
                     null);
 
@@ -306,8 +301,7 @@ public class PermissionPolicyTest {
         return false;
     }
 
-    private List<ExpectedPermissionInfo> loadExpectedPermissions(int resourceId,
-            boolean filterFlaggedPermissions) throws Exception {
+    private List<ExpectedPermissionInfo> loadExpectedPermissions(int resourceId) throws Exception {
         List<ExpectedPermissionInfo> permissions = new ArrayList<>();
         DeviceFlagsValueProvider flagsValueProvider = new DeviceFlagsValueProvider();
         flagsValueProvider.setUp();
@@ -323,19 +317,17 @@ public class PermissionPolicyTest {
                     continue;
                 }
                 if (TAG_PERMISSION.equals(parser.getName())) {
-                    if (filterFlaggedPermissions) {
-                        String featureFlag = parser.getAttributeValue(null, ATTR_FEATURE_FLAG);
-                        if (featureFlag != null) {
-                            featureFlag = featureFlag.trim();
-                            boolean invert = featureFlag.startsWith("!");
-                            if (invert) {
-                                featureFlag = featureFlag.substring(1).trim();
-                            }
-                            boolean flagEnabled =
-                                    invert != flagsValueProvider.getBoolean(featureFlag);
-                            if (!flagEnabled) {
-                                continue;
-                            }
+                    String featureFlag = parser.getAttributeValue(null, ATTR_FEATURE_FLAG);
+                    if (featureFlag != null) {
+                        featureFlag = featureFlag.trim();
+                        boolean invert = featureFlag.startsWith("!");
+                        if (invert) {
+                            featureFlag = featureFlag.substring(1).trim();
+                        }
+                        boolean flagEnabled =
+                                invert != flagsValueProvider.getBoolean(featureFlag);
+                        if (!flagEnabled) {
+                            continue;
                         }
                     }
 

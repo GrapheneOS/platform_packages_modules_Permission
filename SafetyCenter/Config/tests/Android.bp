@@ -33,7 +33,7 @@ android_test {
         "compatibility-device-util-axt",
         "safety-center-config",
         "safety-center-test-util-lib",
-        "permissions-aconfig-flags-lib",
+        "com.android.permission.flags-aconfig-java",
     ],
     test_suites: [
         "general-tests",

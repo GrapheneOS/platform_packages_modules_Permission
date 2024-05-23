@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"আটাইবোৰকে সদায় অনুমতি দিয়ক"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্ৰতিবাৰতে সোধক"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"অনুমতি নিদিব"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"সীমিত এক্সেছৰ অনুমতি দিয়ক"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"সঠিক অৱস্থান"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"আনুমানিক অৱস্থান"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"সঠিক অৱস্থান ব্যৱহাৰ কৰক"</string>

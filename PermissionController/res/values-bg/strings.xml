@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Винаги да се разрешава пълен достъп"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Извеждане на запитване всеки път"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Забраняване"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Разрешаване на ограничен достъп"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точно местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизително местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Използване на точното местоположение"</string>
@@ -494,7 +493,7 @@
     <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да изпраща и преглежда SMS съобщения на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да има достъп до снимките, мултимедията и файловете на устройството ви?"</string>
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до снимките, мултимедията и файловете на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Разрешаване на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; достъп до &lt;b&gt;снимките, видео- и аудиосъдържанието&lt;/b&gt; на устройството ви?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; достъп до &lt;b&gt;снимките, видео- и аудиосъдържанието&lt;/b&gt; на устройството?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Разр. на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; достъп до &lt;b&gt;снимките, видео- и аудиосъдърж. и другите файлове&lt;/b&gt; на у-вото?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до музиката и аудиофайловете на това устройство?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до музиката и аудиото на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -532,7 +531,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до данните от сензорите за жизнените ви показатели?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до данните от сензорите за жизнените ви показатели на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"За да разрешите на това приложение да осъществява достъп до данните от сензорите за тяло по всяко време – дори когато не го използвате, "<annotation id="link">"отворете настройките"</annotation>"."</string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Да се предоставя ли достъп на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до данните от сензорите за тяло, докато приложението се използва?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Да се запази ли достъпът на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до данните от сензорите за тяло, докато приложението се използва?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Да има ли достъп &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до данните от сензорите за тяло на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;, докато приложението се използва?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да ви изпраща известия?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да ви изпраща известия на &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -561,7 +560,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Данните от микрофона пак могат да се споделят, когато се обадите на номер за спешни случаи."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Промяна"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Достъпът до камерата е изключен"</string>
-    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"За приложения за основното устройство"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"За приложения за информационно-развлекателната система"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"За изискваните приложения"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Това приложение е необходимо"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"Това приложение се изисква от производителя на автомобила ви"</string>

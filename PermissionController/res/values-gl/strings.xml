@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permitir todo sempre"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Preguntar sempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Non permitir"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Permitir acceso limitado"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Localización precisa"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Localización aproximada"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar localización precisa"</string>
@@ -479,9 +478,9 @@
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Queres cambiar o acceso da aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; á localización?"</string>
     <string name="permgroupupgraderequest_device_aware_location" msgid="1812338666887726191">"Queres cambiar o acceso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; á localización no dispositivo &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Esta aplicación quere acceder á túa localización todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atope dispositivos próximos, se conecte a eles e determine a súa posición relativa?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permites que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atope dispositivos próximos, se conecte a eles e determine a súa posición relativa?"</string>
     <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; busque dispositivos próximos, se conecte a eles e determine a súa posición relativa no dispositivo &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atope dispositivos próximos, se conecte a eles e determine a súa posición relativa? "<annotation id="link">"Permitir na configuración"</annotation>"."</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permites que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atope dispositivos próximos, se conecte a eles e determine a súa posición relativa? "<annotation id="link">"Permitir na configuración"</annotation>"."</string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Queres que o acceso de <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> á localización cambie de aproximada a precisa?"</string>
     <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"Queres cambiar o acceso á localización da aplicación <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> no dispositivo &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; de Aproximada a Precisa?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda á localización aproximada deste dispositivo?"</string>
@@ -529,7 +528,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais no dispositivo &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta aplicación require acceso aos datos dos sensores sobre as túas constantes vitais en todo momento, mesmo cando non a usas. Para facer este cambio, "<annotation id="link">"vai á configuración."</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais?"</string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permites que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre túas constantes vitais no dispositivo &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Para permitir que esta aplicación acceda aos datos dos sensores corporais en todo momento, aínda que non a esteas utilizando, "<annotation id="link">"vai á configuración"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permites que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siga accedendo aos datos dos sensores corporais mentres estea en uso?"</string>
@@ -563,8 +562,8 @@
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"O acceso á cámara está desactivado"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Para as aplicacións de información e entretemento"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Para as aplicacións requiridas"</string>
-    <string name="automotive_required_app_title" msgid="2992168288249988735">"Esta é unha aplicación requirida"</string>
-    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Esta é unha aplicación requirida polo fabricante do teu vehículo"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Requírese esta aplicación"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"O fabricante do teu vehículo require esta aplicación"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Seguranza e privacidade"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Analizar dispositivo"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Pechar"</string>

@@ -191,14 +191,13 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"हमेशा के लिए सभी को ऐक्सेस की अनुमति दें"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"हर बार पूछें"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति न दें"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"सीमित ऐक्सेस दें"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक जगह"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित जगह"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"जगह की सटीक जानकारी का इस्तेमाल करें"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"जगह की सटीक जानकारी देने वाली सुविधा बंद होने पर, ऐप्लिकेशन आपकी जगह की अनुमानित जानकारी को ऐक्सेस कर सकते हैं"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> की अनुमति"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन के लिए अनुमति: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"इस ऐप्लिकेशन को <xliff:g id="PERM">%1$s</xliff:g> ऐक्सेस करने की अनुमति दें"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"<xliff:g id="DEVICE_NAME">%2$s</xliff:g> पर इस ऐप्लिकेशन के लिए <xliff:g id="PERM">%1$s</xliff:g> का ऐक्सेस"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> को मिली सभी अनुमतियां देखें"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
@@ -468,7 +467,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"आवाज़ से डिवाइस का इस्तेमाल करने के लिए, माइक्रोफ़ोन का इस्तेमाल करते समय स्थिति बार में आइकॉन दिखाएं"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने डिवाइस में मौजूद फ़ोटो और मीडिया ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; में मौजूद फ़ोटो और मीडिया का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके संपर्क का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को आपके संपर्कों को ऐक्सेस करने की अनुमति देनी  है?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; में मौजूद, संपर्कों को ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस की जगह की जानकारी ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>’s&lt;/b&gt; की जगह की जानकारी ऐक्सेस करने की अनुमति देनी है?"</string>
@@ -498,7 +497,7 @@
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, ऑडियो, और अन्य फ़ाइल&lt;/b&gt; का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद संगीत और ऑडियो ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g> में मौजूद संगीत और ऑडियो का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो ऐक्सेस करने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो को ऐक्सेस करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; में मौजूद फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस पर मौजूद अन्य फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; पर मौजूद अन्य फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
@@ -564,7 +563,7 @@
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"सूचना और मनोरंजन की सुविधा देने वाले ऐप्लिकेशन के लिए"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"ज़रूरी ऐप्लिकेशन के लिए"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"यह ऐप्लिकेशन ज़रूरी है"</string>
-    <string name="automotive_required_app_summary" msgid="6514902316658090465">"यह ऐप्लिकेशन आपकी कार के मैन्युफ़ैक्चरर के लिए ज़रूरी है"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"आपकी कार के मैन्युफ़ैक्चरर के लिए, यह ऐप्लिकेशन ज़रूरी है"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"सुरक्षा और निजता"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"डिवाइस स्कैन करें"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>

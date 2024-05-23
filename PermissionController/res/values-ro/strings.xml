@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Permite-le întotdeauna pe toate"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nu permite"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Permite cu acces limitat"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Locația aproximativă"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosește locația exactă"</string>
@@ -363,7 +362,7 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nu este nevoie de permisiuni"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Aplicația pentru telefon"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicația Telefon"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Aplicațiile cu ajutorul cărora faci și primești apeluri telefonice pe dispozitiv"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Aplicațiile cu ajutorul cărora efectuezi și primești apeluri telefonice pe dispozitiv"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Setezi <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru telefon?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplicația va avea acces la Camera foto, Agendă, Microfon, Telefon și SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"tastatură telefon"</string>

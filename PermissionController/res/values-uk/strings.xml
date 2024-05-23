@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Дозволяти, лише коли додаток використовується"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Залишити дозвіл \"Лише цього разу\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Докладніше"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Дозволити всі"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Дозволити все"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Завжди дозволяти всі"</string>
     <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"Дозволити обмежений доступ"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Вибрати фото й відео"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Завжди дозволяти всі"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Запитувати щоразу"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Не дозволяти"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Дозволити обмежений доступ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точне місцезнаходження"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизне місцезнаходження"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Використовувати точне місцезнаходження"</string>
@@ -490,7 +489,7 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приблизне"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до календаря?"</string>
     <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до календаря на пристрої &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати та переглядати SMS?"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати й переглядати SMS?"</string>
     <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати й переглядати SMS на пристрої &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото, медіа та файлів на пристрої?"</string>
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото, медіаконтенту й файлів на пристрої &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>

@@ -386,9 +386,16 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             return
         }
 
-        waitFindObjectOrNull(By.res("android:id/button1"), timeoutMillis)?.let {
+        val targetSdkWarningVisible =
+            uiDevice.wait(
+                Until.hasObject(
+                    By.textStartsWith("This app was built for an older version of Android")
+                ),
+                timeoutMillis
+            )
+        if (targetSdkWarningVisible) {
             try {
-                it.click()
+                uiDevice.findObject(By.res("android:id/button1")).click()
             } catch (e: StaleObjectException) {
                 // Click sometimes fails with StaleObjectException (b/280430717).
                 e.printStackTrace()
@@ -1026,10 +1033,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     private fun navigateToAppPermissionSettings() {
         if (isTv) {
-            // Dismiss DeprecatedTargetSdkVersionDialog, if present
-            if (waitFindObjectOrNull(By.text(APP_PACKAGE_NAME), 1000L) != null) {
-                pressBack()
-            }
+            clearTargetSdkWarning(1000L)
             pressHome()
         } else {
             pressBack()

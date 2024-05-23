@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ہمیشہ سبھی کو اجازت دیں"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ہر بار پوچھیں"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"اجازت نہ دیں"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"محدود رسائی کی اجازت دیں"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"قطعی مقام"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"تخمینی مقام"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"قطعی مقام استعمال کریں"</string>
@@ -528,7 +527,7 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"‏&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&amp;gt پر فون کالز کرنے اور ان کا نطم کرنے کے لیے &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کی اجازت ديں؟"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کی علامات حیات کے بارے میں سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود یہ ایپ ہر وقت آپ کے اہم علامتوں کے متعلق سینسر ڈیٹا تک رسائی حاصل کرنا چاہتی ہے۔ یہ تبدیلی کرنے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"جب آپ ایپ استعمال نہ کر رہے ہوں اس صورت میں بھی یہ ایپ ہر وقت آپ کی صحت کی اہم علامتوں کے متعلق سینسر ڈیٹا تک رسائی حاصل کرنا چاہتی ہے۔ یہ تبدیلی کرنے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"‏&lt;b&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے &lt;b&gt;‏<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; پر آپ کی علامات حیات کے بارے میں سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود اس ایپ کو ہر وقت باڈی سینسر ڈیٹا تک رسائی کی اجازت دینے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>

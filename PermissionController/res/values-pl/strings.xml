@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Zawsze zezwalaj na wszystko"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Zawsze pytaj"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nie zezwalaj"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Zezwól na ograniczony dostęp"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Dokładna lokalizacja"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Przybliżona lokalizacja"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Używaj dokładnej lokalizacji"</string>
@@ -532,7 +531,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika dotyczących parametrów życiowych na urządzeniu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Aby zezwolić tej aplikacji na dostęp do danych z czujników na ciele przez cały czas, nawet kiedy jej nie używasz, "<annotation id="link">"przejdź do ustawień"</annotation>"."</string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Czy nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do czujników na ciele podczas jej używania?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Czy nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujników na ciele podczas jej używania?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"Nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp na urządzeniu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; do danych z czujników na ciele, gdy jest ona używana?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie powiadomień?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie powiadomień na urządzeniu &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
@@ -560,7 +559,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"dla aplikacji i usług"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Dane z mikrofonu mogą być udostępniane, kiedy dzwonisz na numer alarmowy."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Zmień"</string>
-    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Dostęp do kamery jest wyłączony"</string>
+    <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Dostęp do aparatu jest wyłączony"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Dla aplikacji informacyjno-rozrywkowych"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Dla wymaganych aplikacji"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Ta aplikacja jest wymagana"</string>

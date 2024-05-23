@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"항상 모두 허용"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"항상 확인"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"허용 안함"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"제한된 액세스 허용"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"정확한 위치"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"대략적인 위치"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"정확한 위치 사용"</string>
@@ -528,10 +527,10 @@
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;에서 전화를 걸고 전화 통화를 관리하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"앱이 사용되고 있지 않을 때도 항상 생체 신호 센서 데이터에 액세스하고자 합니다. 권한을 변경하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요."</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"앱이 사용되고 있지 않을 때를 포함해 항상 생체 신호 센서 데이터에 액세스하고자 합니다. 권한을 변경하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"앱을 사용하지 않을 때도 앱이 항상 생체 신호 센서 데이터에 액세스하도록 허용하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"앱을 사용하지 않을 때를 포함해 앱이 항상 생체 신호 센서 데이터에 액세스하도록 허용하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱을 사용하는 중에만 생체 신호 센서 데이터에 액세스하도록 허용하는 설정을 유지하시겠습니까?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"앱을 사용하는 동안 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;에서 생체 신호 센서 데이터에 계속 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 알림을 보내도록 허용하시겠습니까?"</string>

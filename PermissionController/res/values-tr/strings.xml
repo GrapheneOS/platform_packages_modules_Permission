@@ -29,7 +29,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Uygulama bulunamadı"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"İzin verme"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"İzin verme ve bir daha sorma"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“Uygulama kullanılırken” tut"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“Uygulama kullanılırken” olarak kalsın"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Yalnızca bu defa\" sakla"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Daha fazla bilgi"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Tümüne izin ver"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Tümüne her zaman izin ver"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Her zaman sor"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"İzin verme"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Sınırlı erişime izin ver"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Tam konum"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Yaklaşık konum"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Tam konumu kullan"</string>
@@ -532,7 +531,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
     <string name="permgroupbackgroundrequest_device_aware_sensors" msgid="3687673359121603824">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının, &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; cihazında hayati bulgularınızla ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Bu uygulamanın, kullanmadığınız sırada bile vücut sensörü verilerine sürekli olarak erişmesine izin vermek için "<annotation id="link">"ayarlara gidin."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının kullanımdayken vücut sensörü verilerine erişme izni sürdürülsün mü?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;, uygulama kullanılırken vücut sensörü verilerine erişmeye devam etsin mi?"</string>
     <string name="permgroupupgraderequest_device_aware_sensors" msgid="5542771499929819675">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının kullanımdayken &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; cihazındaki vücut sensörü verilerine erişme izni sürdürülsün mü?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size bildirim göndermesine izin verilsin mi?"</string>
     <string name="permgrouprequest_device_aware_notifications" msgid="857671638951040514">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; cihazında bildirim göndermesine izin verilsin mi?"</string>

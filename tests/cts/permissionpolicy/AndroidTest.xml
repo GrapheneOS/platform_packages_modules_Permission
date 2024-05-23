@@ -79,6 +79,8 @@
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
         <option name="package" value="android.permissionpolicy.cts" />
         <option name="runtime-hint" value="2m" />
+        <!-- This test reads hidden platform flags, allow it accessing the values. -->
+        <option name="hidden-api-checks" value="false"/>
     </test>
 
 </configuration>

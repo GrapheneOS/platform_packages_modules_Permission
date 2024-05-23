@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"සැම විටම සියල්ලට ඉඩ දෙන්න"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"සෑම විටම ඉල්ලන්න"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"ඉඩ නොදෙන්න"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"සීමිත ප්‍රවේශයට ඉඩ දෙන්න"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ඉතා නිවැරදි ස්ථානය"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"දළ ස්ථානය"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ඉතා නිවැරදි ස්ථානය භාවිත කරන්න"</string>

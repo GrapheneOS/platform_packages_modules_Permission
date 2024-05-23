@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Vždy povoliť všetko"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vždy sa opýtať"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nepovoliť"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Povoliť obmedzený prístup"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presná poloha"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Približná poloha"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Používať presnú polohu"</string>
@@ -488,14 +487,14 @@
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k približnej polohe zariadenia &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presná"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približná"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup ku kalendáru?"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup ku kalendáru?"</string>
     <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k svojmu kalendáru v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS?"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS?"</string>
     <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám, médiám a súborom v zariadení?"</string>
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám, médiám a súborom v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe a zvuku&lt;/b&gt; v tomto zariadení?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; v tomto zariadení?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe a zvuku&lt;/b&gt; v tomto zariadení?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; v tomto zariadení?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a zvuku v tomto zariadení?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a zvuku v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a videám v tomto zariadení?"</string>
@@ -511,7 +510,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Chcete aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; zmeniť prístup k mikrofónu?"</string>
     <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Chcete zmeniť prístup k mikrofónu pre &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Táto aplikácia požaduje nepretržitý prístup k nahrávaniu zvuku, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k vašej fyzickej aktivite?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k vašej fyzickej aktivite?"</string>
     <string name="permgrouprequest_device_aware_activityRecognition" msgid="1243869530588745374">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k svojej fyzickej aktivite v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotiť a nahrávať video?"</string>
     <string name="permgrouprequest_device_aware_camera" msgid="5340173564041615494">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotiť a nahrávať videá v zariadení &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>

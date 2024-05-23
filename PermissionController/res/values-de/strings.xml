@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Immer vollen Zugriff erlauben"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Jedes Mal fragen"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nicht zulassen"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Eingeschränkten Zugriff zulassen"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Auf genauen Standort zugreifen"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ungefährer Standort"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Genauen Standort verwenden"</string>
@@ -437,9 +436,9 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Weitere Standard-Apps"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Links öffnen"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standard-Apps für Arbeit"</string>
-    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standard-Apps für den privaten Bereich"</string>
+    <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standard-Apps für das vertrauliche Profil"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Keine"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standardeinstellung)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standard­einstellung)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Keine Apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Ausgewählt"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Ausgewählt – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
@@ -566,7 +565,7 @@
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Für Infotainment-Apps"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Für erforderliche Apps"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Diese App ist erforderlich"</string>
-    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Diese App ist für den Fahrzeughersteller erforderlich"</string>
+    <string name="automotive_required_app_summary" msgid="6514902316658090465">"Diese App wird vom Fahrzeughersteller vorgeschrieben"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Datenschutz &amp; Sicherheit"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Gerät prüfen"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Schließen"</string>

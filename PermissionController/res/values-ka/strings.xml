@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"ყოველთვის ყველას დაშვება"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ყოველთვის მკითხე"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"არ დაიშვას"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"შეზღუდული წვდომის დაშვება"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ზუსტი მდებარეობა"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"მიახლოებითი მდებარეობა"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ზუსტი მდებარეობის გამოყენება"</string>
@@ -409,7 +408,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"ჩანიშვნები"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"ნაგულისხმევი საფულის აპი"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"საფულის აპი"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"საფულის აპებს შეუძლიათ საკრედიტო და ერთგული კლიენტის ბარათების, მანქანის გასაღებების და სხვა ნივთების შენახვა, რაც დაგეხმარებათ სხვადასხვა სახის ტრანზაქციებში."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"საფულის აპებს შეუძლია საკრედიტო და ერთგული კლიენტის ბარათების, მანქანის გასაღებების და სხვა ნივთების შენახვა, რაც დაგეხმარებათ სხვადასხვა სახის ტრანზაქციებში."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"გსურთ დააყენოთ <xliff:g id="APP_NAME">%1$s</xliff:g> თქვენს ნაგულისხმევ საფულის აპად?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"ნებართვები არ არის საჭირო"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ამჟამინდელი ნაგულისხმევი"</string>

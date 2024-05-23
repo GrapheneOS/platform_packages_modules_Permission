@@ -40,7 +40,7 @@ java_library {
     ],
     static_libs: [
         "modules-utils-build",
-        "permissions-aconfig-flags-lib",
+        "com.android.permission.flags-aconfig-java",
     ],
     apex_available: [
         "com.android.permission",

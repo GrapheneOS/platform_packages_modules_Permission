@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Ruhusu zote kila wakati"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Uliza kila wakati"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Usiruhusu"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Ruhusu ufikiaji wa baadhi ya vipengele"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Eneo mahususi"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Mahali palipokadiriwa"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Tumia eneo mahususi"</string>
@@ -563,7 +562,7 @@
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Idhini ya kufikia kamera imezimwa"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Kwa programu za habari na burudani"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Kwa programu zinazotakiwa kuwepo"</string>
-    <string name="automotive_required_app_title" msgid="2992168288249988735">"Programu hii inatakiwa kuwepo"</string>
+    <string name="automotive_required_app_title" msgid="2992168288249988735">"Programu hii inatakikana"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"Mtengenezaji wa gari lako anataka programu hii iwepo"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"Usalama na faragha"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"Kagua kifaa"</string>

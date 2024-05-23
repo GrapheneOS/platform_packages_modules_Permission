@@ -29,7 +29,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Қолданба табылмады"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Рұқсат бермеу"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Рұқсат бермеу және қайта сұрамау"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Қолданба пайдаланылатын кезде\" түймесін басып тұрыңыз"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Қолданбаны пайдаланған кездегі\" рұқсатты қалдыру"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Тек осы жолы\" күйінде қалдыру"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Толығырақ"</string>
     <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Бәріне рұқсат беру"</string>
@@ -191,8 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Барлығына әрқашан рұқсат ету"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат бермеу"</string>
-    <!-- no translation found for app_permission_button_allow_limited_access (8824410215149764113) -->
-    <skip />
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Шектеулі рұқсат беру"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Шамамен алынған орын"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нақты локацияны пайдалану"</string>
@@ -482,7 +481,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_device_aware_nearby_devices" msgid="5293478278408567442">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында маңайдағы құрылғыларды табу, олармен байланысу және қатысты локациясын анықтау рұқсаты берілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды табуға, олармен байланысуға және олардың орналасуын анықтауға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат бере аласыз."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының болжалды емес, нақты локацияны пайдалануына рұқсат беру керек пе?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының болжалды емес, нақты локацияны пайдалануына рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_device_aware_fineupgrade" msgid="4453775952305587571">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> қолданбасының &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысында локацияны пайдалану рұқсаты болжалдыдан нақты локацияға өзгертілсін бе?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының болжалды орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; құрылғысының болжалды локациясын пайдалану рұқсаты берілсін бе?"</string>
@@ -561,7 +560,7 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Құтқару қызметінің нөміріне қоңырау шалу кезінде микрофон деректері әлі бөлісіліп жатуы мүмкін."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өзгерту"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Камераны пайдалану рұқсаты өшірулі"</string>
-    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Ақпараттық-сауықтық қолданбалары"</string>
+    <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Ақпараттық-сауықтық қолданбалар"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Қажетті қолданбалар үшін"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Осы қолданба қажет"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"Осы қолданба көлік өндірушісі үшін қажет."</string>

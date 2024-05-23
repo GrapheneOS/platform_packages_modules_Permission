@@ -80,8 +80,8 @@ java_sdk_library {
     static_libs: [
         "framework-permission-s-shared",
         "modules-utils-build",
-        "android.permission.flags-aconfig-java",
-        "permissions-aconfig-flags-lib",
+        "android.permission.flags-aconfig-java-export",
+        "com.android.permission.flags-aconfig-java",
     ],
     apex_available: [
         "com.android.permission",
@@ -105,6 +105,6 @@ java_sdk_library {
     ],
     aconfig_declarations: [
         "android.permission.flags-aconfig",
-        "permissions-aconfig-flags",
+        "com.android.permission.flags-aconfig",
     ],
 }
