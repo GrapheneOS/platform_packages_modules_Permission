@@ -826,20 +826,20 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
      * Only for use in tests that are not testing the notification permission popup, on T devices
      */
     protected fun clickNotificationPermissionRequestAllowButtonIfAvailable() {
-        if (!SdkLevel.isAtLeastT()) {
-            return
-        }
-
-        if (
-            waitFindObjectOrNull(
-                By.text(getPermissionControllerString(NOTIF_TEXT, APP_PACKAGE_NAME)),
-                1000
-            ) != null
-        ) {
-            if (isAutomotive) {
-                click(By.text(getPermissionControllerString(ALLOW_BUTTON_TEXT)))
-            } else {
-                click(By.res(ALLOW_BUTTON))
+        if (SdkLevel.isAtLeastT() && getTargetSdk() < Build.VERSION_CODES.TIRAMISU) {
+            val notificationPermissionRequestVisible =
+                uiDevice.wait(
+                    Until.hasObject(
+                        By.text(getPermissionControllerString(NOTIF_TEXT, APP_PACKAGE_NAME))
+                    ),
+                    1000
+                )
+            if (notificationPermissionRequestVisible) {
+                if (isAutomotive) {
+                    click(By.text(getPermissionControllerString(ALLOW_BUTTON_TEXT)))
+                } else {
+                    click(By.res(ALLOW_BUTTON))
+                }
             }
         }
     }

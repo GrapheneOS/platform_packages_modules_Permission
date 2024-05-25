@@ -59,6 +59,9 @@
         <option name="run-command" value="am wait-for-broadcast-barrier"  />
         <!-- Dismiss any system dialogs (e.g. crashes, ANR). -->
         <option name="run-command" value="am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS --receiver-foreground"  />
+        <!-- Ensure consistent Intent launch by overriding device provision and user setup status -->
+        <option name="run-command" value="settings put global device_provisioned 1" />
+        <option name="run-command" value="settings put secure user_setup_complete 1" />
     </target_preparer>
 
     <!-- Create place to store apks -->

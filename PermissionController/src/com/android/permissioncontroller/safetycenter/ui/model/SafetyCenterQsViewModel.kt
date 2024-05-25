@@ -252,6 +252,15 @@ class SafetyCenterQsViewModel(
     }
 
     fun getStartViewPermissionUsageIntent(context: Context, usage: PermissionGroupUsage): Intent? {
+        if (
+            !context
+                .getSystemService(LocationManager::class.java)!!
+                .isProviderPackage(usage.packageName)
+        ) {
+            // We should only limit this intent to location provider
+            return null
+        }
+
         var intent: Intent = Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE)
         intent.setPackage(usage.packageName)
         intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, usage.permissionGroupName)
