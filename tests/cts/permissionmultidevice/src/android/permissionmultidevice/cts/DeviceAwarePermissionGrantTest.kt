@@ -24,11 +24,14 @@ import android.companion.virtual.VirtualDeviceParams.DEVICE_POLICY_CUSTOM
 import android.companion.virtual.VirtualDeviceParams.POLICY_TYPE_CAMERA
 import android.content.ComponentName
 import android.content.Intent
+import android.content.Intent.EXTRA_RESULT_RECEIVER
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ACTION_REQUEST_PERMISSIONS
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
 import android.os.Build
+import android.os.Bundle
+import android.os.RemoteCallback
 import android.permission.flags.Flags
 import android.permissionmultidevice.cts.PackageManagementUtils.installPackage
 import android.permissionmultidevice.cts.PackageManagementUtils.uninstallPackage
@@ -45,6 +48,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import com.android.compatibility.common.util.SystemUtil
 import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.TimeUnit
 import org.junit.After
 import org.junit.Assert
 import org.junit.Assume.assumeFalse
@@ -59,12 +65,12 @@ import org.junit.runner.RunWith
 class DeviceAwarePermissionGrantTest {
     private val instrumentation: Instrumentation = InstrumentationRegistry.getInstrumentation()
     private val defaultDeviceContext = instrumentation.targetContext
-    private lateinit var mVirtualDeviceManager: VirtualDeviceManager
-    private lateinit var mVirtualDevice: VirtualDeviceManager.VirtualDevice
-    private lateinit var mVirtualDisplay: VirtualDisplay
-    private lateinit var mDeviceDisplayName: String
+    private lateinit var virtualDeviceManager: VirtualDeviceManager
+    private lateinit var virtualDevice: VirtualDeviceManager.VirtualDevice
+    private lateinit var virtualDisplay: VirtualDisplay
+    private lateinit var deviceDisplayName: String
 
-    @get:Rule var mVirtualDeviceRule = VirtualDeviceRule.createDefault()
+    @get:Rule var virtualDeviceRule = VirtualDeviceRule.createDefault()
 
     @Before
     fun setup() {
@@ -73,10 +79,10 @@ class DeviceAwarePermissionGrantTest {
         assumeFalse(PermissionUtils.isWatch(defaultDeviceContext))
 
         installPackage(APP_APK_PATH_STREAMING)
-        mVirtualDeviceManager =
+        virtualDeviceManager =
             defaultDeviceContext.getSystemService(VirtualDeviceManager::class.java)!!
-        mVirtualDevice =
-            mVirtualDeviceRule.createManagedVirtualDevice(
+        virtualDevice =
+            virtualDeviceRule.createManagedVirtualDevice(
                 VirtualDeviceParams.Builder()
                     .setDevicePolicy(POLICY_TYPE_CAMERA, DEVICE_POLICY_CUSTOM)
                     .build()
@@ -94,10 +100,10 @@ class DeviceAwarePermissionGrantTest {
                 )
                 .build()
 
-        mVirtualDisplay =
-            mVirtualDeviceRule.createManagedVirtualDisplay(mVirtualDevice, displayConfig)!!
-        mDeviceDisplayName =
-            mVirtualDeviceManager.getVirtualDevice(mVirtualDevice.deviceId)!!.displayName.toString()
+        virtualDisplay =
+            virtualDeviceRule.createManagedVirtualDisplay(virtualDevice, displayConfig)!!
+        deviceDisplayName =
+            virtualDeviceManager.getVirtualDevice(virtualDevice.deviceId)!!.displayName.toString()
     }
 
     @After
@@ -129,9 +135,9 @@ class DeviceAwarePermissionGrantTest {
     fun onHostDevice_requestPermissionForRemoteDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
             Display.DEFAULT_DISPLAY,
-            mVirtualDevice.deviceId,
+            virtualDevice.deviceId,
             true,
-            mDeviceDisplayName,
+            deviceDisplayName,
             expectPermissionGrantedOnDefaultDevice = false,
             expectPermissionGrantedOnRemoteDevice = true
         )
@@ -143,9 +149,9 @@ class DeviceAwarePermissionGrantTest {
     )
     @Test
     fun onRemoteDevice_requestPermissionForHostDevice_shouldShowWarningDialog() {
-        requestPermissionOnDevice(mVirtualDisplay.display.displayId, DEVICE_ID_DEFAULT)
+        requestPermissionOnDevice(virtualDisplay.display.displayId, DEVICE_ID_DEFAULT)
 
-        val displayId = mVirtualDisplay.display.displayId
+        val displayId = virtualDisplay.display.displayId
         waitFindObject(By.displayId(displayId).textContains("Permission request suppressed"))
     }
 
@@ -156,10 +162,10 @@ class DeviceAwarePermissionGrantTest {
     @Test
     fun onRemoteDevice_requestPermissionForRemoteDevice_shouldGrantPermission() {
         testGrantPermissionForDevice(
-            mVirtualDisplay.display.displayId,
-            mVirtualDevice.deviceId,
+            virtualDisplay.display.displayId,
+            virtualDevice.deviceId,
             true,
-            mDeviceDisplayName,
+            deviceDisplayName,
             expectPermissionGrantedOnDefaultDevice = false,
             expectPermissionGrantedOnRemoteDevice = true
         )
@@ -173,35 +179,60 @@ class DeviceAwarePermissionGrantTest {
         expectPermissionGrantedOnDefaultDevice: Boolean,
         expectPermissionGrantedOnRemoteDevice: Boolean
     ) {
-        // Assert no permission granted to either default device or virtual device
+        // Assert no permission granted to either default device or virtual device at the beginning
         assertAppHasPermissionForDevice(DEVICE_ID_DEFAULT, false)
-        assertAppHasPermissionForDevice(mVirtualDevice.deviceId, false)
+        assertAppHasPermissionForDevice(virtualDevice.deviceId, false)
 
-        requestPermissionOnDevice(displayId, targetDeviceId)
-        mVirtualDeviceRule.waitAndAssertActivityResumed(getPermissionDialogComponentName())
+        val future = requestPermissionOnDevice(displayId, targetDeviceId)
+        virtualDeviceRule.waitAndAssertActivityResumed(getPermissionDialogComponentName())
 
         if (showDeviceName) {
             assertPermissionMessageContainsDeviceName(displayId, expectedDeviceNameInDialog)
         }
 
+        // Click the allow button in the dialog to grant permission
         SystemUtil.eventually { click(By.displayId(displayId).res(ALLOW_BUTTON)) }
 
+        // Validate permission grant result returned from callback
+        val grantPermissionResult = future.get(TIMEOUT, TimeUnit.MILLISECONDS)
+        assertThat(
+                grantPermissionResult.getStringArray(
+                    TestConstants.PERMISSION_RESULT_KEY_PERMISSIONS
+                )
+            )
+            .isEqualTo(arrayOf(DEVICE_AWARE_PERMISSION))
+        assertThat(
+                grantPermissionResult.getIntArray(TestConstants.PERMISSION_RESULT_KEY_GRANT_RESULTS)
+            )
+            .isEqualTo(arrayOf(PackageManager.PERMISSION_GRANTED).toIntArray())
+        assertThat(grantPermissionResult.getInt(TestConstants.PERMISSION_RESULT_KEY_DEVICE_ID))
+            .isEqualTo(targetDeviceId)
+
+        // Validate whether permission is granted as expected
         assertAppHasPermissionForDevice(DEVICE_ID_DEFAULT, expectPermissionGrantedOnDefaultDevice)
         assertAppHasPermissionForDevice(
-            mVirtualDevice.deviceId,
+            virtualDevice.deviceId,
             expectPermissionGrantedOnRemoteDevice
         )
     }
 
-    private fun requestPermissionOnDevice(displayId: Int, targetDeviceId: Int) {
+    private fun requestPermissionOnDevice(
+        displayId: Int,
+        targetDeviceId: Int
+    ): CompletableFuture<Bundle> {
+        val future = CompletableFuture<Bundle>()
+        val callback = RemoteCallback { result: Bundle? -> future.complete(result) }
         val intent =
             Intent()
                 .setComponent(
                     ComponentName(APP_PACKAGE_NAME, "$APP_PACKAGE_NAME.RequestPermissionActivity")
                 )
                 .putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID, targetDeviceId)
+                .putExtra(EXTRA_RESULT_RECEIVER, callback)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        mVirtualDeviceRule.sendIntentToDisplay(intent, displayId)
+        virtualDeviceRule.sendIntentToDisplay(intent, displayId)
+
+        return future
     }
 
     private fun assertPermissionMessageContainsDeviceName(displayId: Int, deviceName: String) {
@@ -240,6 +271,7 @@ class DeviceAwarePermissionGrantTest {
         const val DEVICE_ID_DEFAULT = 0
         const val PERSISTENT_DEVICE_ID_DEFAULT = VirtualDeviceManager.PERSISTENT_DEVICE_ID_DEFAULT
         const val DEVICE_AWARE_PERMISSION = Manifest.permission.CAMERA
+        const val TIMEOUT = 5000L
         private const val DISPLAY_HEIGHT = 1920
         private const val DISPLAY_WIDTH = 1080
     }

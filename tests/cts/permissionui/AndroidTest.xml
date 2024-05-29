@@ -77,7 +77,8 @@
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
         <option name="run-command" value="appops set android.permissionui.cts REQUEST_INSTALL_PACKAGES allow" />
         <option name="run-command" value="am wait-for-broadcast-barrier"  />
-        <!-- ensure user setup is completed -->
+        <!-- ensure device provisioning and user setup are marked as completed -->
+        <option name="run-command" value="settings put global device_provisioned 1" />
         <option name="run-command" value="settings put secure user_setup_complete 1" />
         <!-- disable DeprecatedAbi warning -->
         <option name="run-command" value="setprop debug.wm.disable_deprecated_abi_dialog 1" />

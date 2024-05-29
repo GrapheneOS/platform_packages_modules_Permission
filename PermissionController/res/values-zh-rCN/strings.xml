@@ -495,7 +495,7 @@
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问照片、媒体和文件吗？"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的&lt;b&gt;照片、视频、音乐和音频&lt;/b&gt;吗？"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的&lt;b&gt;照片、视频、音乐、音频和其他文件&lt;/b&gt;吗？"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的音乐和音频吗？"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的音乐和音频吗？"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问音乐和音频吗？"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”访问此设备上的照片和视频吗？"</string>
     <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;在&lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;上访问照片和视频吗？"</string>

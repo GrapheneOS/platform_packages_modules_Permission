@@ -352,21 +352,21 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"有 <xliff:g id="NUM_SERVICES">%s</xliff:g> 個無障礙應用程式可完整存取你的裝置"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"「<xliff:g id="SERVICE_NAME">%s</xliff:g>」不但可查看你的畫面、動作和輸入內容，還能執行動作及控制顯示畫面。"</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"這些應用程式不但可查看你的畫面、動作和輸入內容，還能執行動作及控制顯示畫面。"</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"預設的數位助理應用程式"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"預設數位助理應用程式"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"數位助理應用程式"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"小幫手應用程式可根據當下的螢幕內容提供協助。某些應用程式同時支援啟動器和語音輸入服務，提供更完善的服務。"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"預設的瀏覽器應用程式"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"預設瀏覽器應用程式"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"瀏覽器應用程式"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"你可以透過這類應用程式連上網際網路，也可以輕觸顯示的連結"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"要將 <xliff:g id="APP_NAME">%1$s</xliff:g> 設為預設的瀏覽器應用程式嗎？"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"無需任何權限"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"預設的電話應用程式"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"預設電話應用程式"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"電話應用程式"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"這類應用程式可讓你透過裝置撥打及接聽電話"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的電話應用程式嗎？"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"這個應用程式將可存取你的相機、聯絡人、麥克風、電話及簡訊"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"撥號程式"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"預設的簡訊應用程式"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"預設簡訊應用程式"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"簡訊應用程式"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"這類應用程式可讓你透過自己的電話號碼收發簡訊、相片、影片和其他內容"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的簡訊應用程式嗎？"</string>
@@ -378,7 +378,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的緊急應用程式嗎？"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"無需任何權限"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"發生緊急情況時"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"預設的主畫面應用程式"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"預設主畫面應用程式"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"主畫面應用程式"</string>
     <string name="role_home_description" msgid="7997371519626556675">"這類應用程式通常稱為啟動器，能夠取代 Android 裝置的主畫面，並可讓你存取裝置的內容與功能"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的主畫面應用程式嗎？"</string>

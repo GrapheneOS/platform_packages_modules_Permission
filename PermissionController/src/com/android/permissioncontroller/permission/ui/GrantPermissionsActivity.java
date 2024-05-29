@@ -42,7 +42,6 @@ import static com.android.permissioncontroller.permission.utils.v35.MultiDeviceU
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.ecm.EnhancedConfirmationManager;
 import android.content.Context;
@@ -234,6 +233,8 @@ public class GrantPermissionsActivity extends SettingsActivity
     /** Which device the permission will affect. Default is the primary device. */
     private int mTargetDeviceId = ContextCompat.DEVICE_ID_DEFAULT;
 
+    private PackageManager mPackageManager;
+
     private ActivityResultLauncher<Intent> mShowWarningDialog =
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
@@ -246,6 +247,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     @Override
     public void onCreate(Bundle icicle) {
+        mPackageManager = getPackageManager();
         if (DeviceUtils.isAuto(this)) {
             setTheme(R.style.GrantPermissions_Car_FilterTouches);
         }
@@ -282,7 +284,7 @@ public class GrantPermissionsActivity extends SettingsActivity
                 return;
             }
             try {
-                PackageInfo packageInfo = getPackageManager().getPackageInfo(mTargetPackage, 0);
+                PackageInfo packageInfo = mPackageManager.getPackageInfo(mTargetPackage, 0);
             } catch (PackageManager.NameNotFoundException e) {
                 Log.e(LOG_TAG, "Unable to get package info for the calling package.", e);
                 finishAfterTransition();
@@ -306,6 +308,11 @@ public class GrantPermissionsActivity extends SettingsActivity
             mTargetDeviceId = getIntent().getIntExtra(
                     PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID,
                     ContextCompat.DEVICE_ID_DEFAULT);
+
+            if (mTargetDeviceId != ContextCompat.DEVICE_ID_DEFAULT) {
+                mPackageManager = ContextCompat.createDeviceContext(this, mTargetDeviceId)
+                        .getPackageManager();
+            }
 
             // When the dialog is streamed to a remote device, verify requested permissions are all
             // device aware and target device is the same as the remote device. Otherwise show a
@@ -549,7 +556,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     @SuppressLint("MissingPermission")
     private int getPackageUid(String packageName, UserHandle user) {
         try {
-            return getPackageManager().getApplicationInfoAsUser(packageName, 0, user).uid;
+            return mPackageManager.getApplicationInfoAsUser(packageName, 0, user).uid;
         } catch (PackageManager.NameNotFoundException e) {
             return android.os.Process.INVALID_UID;
         }
@@ -1108,9 +1115,9 @@ public class GrantPermissionsActivity extends SettingsActivity
 
             if ((mDelegated || (mViewModel != null && mViewModel.shouldReturnPermissionState()))
                     && mTargetPackage != null) {
-                PackageManager pm = getPackageManager();
                 for (int i = 0; i < resultPermissions.length; i++) {
-                    grantResults[i] = pm.checkPermission(resultPermissions[i], mTargetPackage);
+                    grantResults[i] =
+                            mPackageManager.checkPermission(resultPermissions[i], mTargetPackage);
                 }
             } else {
                 grantResults = new int[0];
@@ -1119,6 +1126,10 @@ public class GrantPermissionsActivity extends SettingsActivity
 
             result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, resultPermissions);
             result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, grantResults);
+            if (isDeviceAwarePermissionSupported(this)) {
+                result.putExtra(
+                        PackageManager.EXTRA_REQUEST_PERMISSIONS_DEVICE_ID, mTargetDeviceId);
+            }
             result.putExtra(Intent.EXTRA_PACKAGE_NAME, mTargetPackage);
             setResult(resultCode, result);
         }

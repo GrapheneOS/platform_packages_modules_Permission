@@ -50,7 +50,7 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"барлық рұқсаттар өшірілді"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ешқандай рұқсат өшірілмеді"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Рұқсат беру"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Әрқашан рұқсат беру"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Біржола рұқсат ету"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Қолданбаны пайдаланған кезде"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Нақты локацияға ауысу"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Болжалды локацияны қалдыру"</string>
@@ -110,7 +110,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Біржола рұқсат ету"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Қолданбаны пайдаланғанда ғана"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Қолданбаны пайдаланғанда ғана рұқсат ету"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"Рұқсат бермеу"</string>
     <string name="loading" msgid="4789365003890741082">"Жүктелуде…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Барлық рұқсаттар"</string>
@@ -186,7 +186,7 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Рұқсат беру"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Тек медиафайлдарды пайдалануға рұқсат беру"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Біржола рұқсат беру"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Біржола рұқсат ету"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдаланғанда ғана рұқсат беру"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Барлығына әрқашан рұқсат ету"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>

@@ -366,7 +366,7 @@
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Kas soovite määrata rakenduse <xliff:g id="APP_NAME">%1$s</xliff:g> telefoni vaikerakenduseks?"</string>
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Sellele rakendusele antakse juurdepääs teie kaamerale, kontaktidele, mikrofonile, telefonile ja SMS-idele"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"helistamine"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"SMS-vaikerakendus"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"SMS-i vaikerakendus"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-rakendus"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Rakendused, millel on luba kasutada teie telefoninumbrit lühisõnumite, fotode, videote jms saatmiseks ja vastuvõtmiseks"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Kas soovite määrata rakenduse <xliff:g id="APP_NAME">%1$s</xliff:g> SMS-i vaikerakenduseks?"</string>
@@ -494,7 +494,7 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadmes olevatele fotodele, meediale ja failidele?"</string>
     <string name="permgrouprequest_device_aware_storage" msgid="6933251810928606636">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs fotodele, meediale ja failidele?"</string>
     <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt seadmes juurdep. &lt;b&gt;fotodele, videotele, muusikale ja helidele&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdep. &lt;b&gt;foto-, video-, muusika-, heli- ja muudele failidele&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs &lt;b&gt;foto-, video-, muusika-, heli- ja muudele failidele&lt;/b&gt;?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; selles seadmes juurdepääs muusikale ja helifailidele?"</string>
     <string name="permgrouprequest_device_aware_read_media_aural" msgid="7927884506238101064">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; seadmes &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; juurdepääs muusikale ja helifailidele?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; selles seadmes juurdepääs fotodele ja videotele?"</string>

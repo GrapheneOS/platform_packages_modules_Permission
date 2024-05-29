@@ -352,7 +352,7 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> apps de accesibilidad tienen acceso completo a tu dispositivo"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> puede ver tu pantalla, lo que haces y lo que introduces, así como realizar acciones y controlar la pantalla."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Estas apps pueden ver tu pantalla, lo que haces y lo que escribes. También pueden realizar acciones y controlar la pantalla."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"App de asistente digital pred."</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"App de asistente digital predeterminada"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App de asistente digital"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Las aplicaciones de asistencia pueden brindarte ayuda en función de la pantalla que estás viendo. Para ofrecerte asistencia integrada, algunas aplicaciones son compatibles con los servicios de selector y entrada de voz."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Navegador predeterminado"</string>

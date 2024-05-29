@@ -86,7 +86,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z(o) <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Počet povolených aplikácií: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobraziť systémové"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Skryť systémové"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Skryť systémové aplikácie"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Zobraziť 7 dní"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Zobraziť 24 hodín"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Spravovať povolenie"</string>

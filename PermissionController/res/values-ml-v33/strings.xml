@@ -38,7 +38,7 @@
     <string name="safety_center_qs_expand_action" msgid="2193190557696484169">"വികസിപ്പിച്ച് ഓപ്ഷനുകൾ കാണിക്കുക"</string>
     <string name="safety_center_qs_collapse_action" msgid="5809657430125309183">"ചുരുക്കുക"</string>
     <string name="safety_center_qs_privacy_control" msgid="1160682635058529673">"മാറുക. <xliff:g id="PRIVACY_CONTROL_TITLE">%1$s</xliff:g>. <xliff:g id="PRIVACY_CONTROL_STATUS">%2$s</xliff:g>"</string>
-    <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"മാറ്റുക"</string>
+    <string name="safety_center_qs_toggle_action" msgid="5920465736488119255">"ടോഗിൾ ചെയ്യുക"</string>
     <string name="safety_center_qs_open_action" msgid="2760200829912423728">"തുറക്കുക"</string>
     <string name="safety_center_review_settings_button" msgid="938981137942443930">"ക്രമീകരണം അവലോകനം ചെയ്യുക"</string>
     <string name="safety_center_gear_label" msgid="5175877094379694098">"ക്രമീകരണം"</string>

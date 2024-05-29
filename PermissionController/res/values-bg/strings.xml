@@ -191,7 +191,7 @@
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"Винаги да се разрешава пълен достъп"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Извеждане на запитване всеки път"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Забраняване"</string>
-    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Разрешаване на ограничен достъп"</string>
+    <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"Разрешаване на ограничения достъп"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точно местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизително местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Използване на точното местоположение"</string>

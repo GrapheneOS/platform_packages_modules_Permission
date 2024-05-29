@@ -86,7 +86,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g> od <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Prikaži sistemske procese"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Skrivanje sistemskih procesov"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Skrij sistemske procese"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Pokaži 7 dni"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Pokaži 24 ur"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Upravljanje dovoljenja"</string>

@@ -345,7 +345,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"허용된 앱 없음"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"모든 파일에 허용된 앱 없음"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"미디어에만 허용된 앱 없음"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"거부된 앱 없음"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"허용되지 않은 앱 없음"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"선택됨"</string>
     <string name="settings" msgid="5409109923158713323">"설정"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g>이(가) 기기에 대한 전체 액세스 권한을 가지고 있습니다."</string>

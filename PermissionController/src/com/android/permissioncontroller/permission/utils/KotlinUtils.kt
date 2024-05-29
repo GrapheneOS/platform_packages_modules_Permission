@@ -1633,10 +1633,13 @@ object KotlinUtils {
                 PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to true,
                 filterPermissions = listOf(ACCESS_FINE_LOCATION)
             )
+            val fineIsOneTime =
+                group.permissions[Manifest.permission.ACCESS_FINE_LOCATION]?.isOneTime ?: false
             setGroupFlags(
                 app,
                 group,
                 PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to false,
+                PackageManager.FLAG_PERMISSION_ONE_TIME to fineIsOneTime,
                 filterPermissions = listOf(Manifest.permission.ACCESS_COARSE_LOCATION)
             )
         } else {

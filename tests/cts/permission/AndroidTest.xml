@@ -35,6 +35,12 @@
         <option name="disable-device-config-sync" value="true" />
     </target_preparer>
 
+    <!-- Ensure device provisioning and user setup are marked as completed -->
+    <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
+        <option name="run-command" value="settings put global device_provisioned 1" />
+        <option name="run-command" value="settings put secure user_setup_complete 1" />
+    </target_preparer>
+
     <!-- Install main test suite apk -->
     <target_preparer class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">
         <option name="cleanup-apks" value="true" />

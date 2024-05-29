@@ -32,7 +32,7 @@
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"„Wenn die App verwendet wird“ beibehalten"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Nur dieses Mal\" aktiviert lassen"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Weitere Infos"</string>
-    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Vollen Zugriff erlauben"</string>
+    <string name="grant_dialog_button_allow_all" msgid="5939066403732409516">"Vollen Zugriff zulassen"</string>
     <string name="grant_dialog_button_always_allow_all" msgid="1719900027660252167">"Immer vollen Zugriff erlauben"</string>
     <string name="grant_dialog_button_allow_limited_access" msgid="5713551784422137594">"Eingeschränkten Zugriff zulassen"</string>
     <string name="grant_dialog_button_allow_selected_photos" msgid="5497042471576153842">"Fotos und Videos auswählen"</string>
@@ -467,7 +467,7 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Symbol in der Statusleiste anzeigen, wenn das Mikrofon verwendet wird, um den Sprachassistenten zu aktivieren"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Medien auf deinem Gerät zuzugreifen?"</string>
     <string name="permgrouprequest_device_aware_storage_isolated" msgid="6463062962458809752">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deinem Gerät &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; auf Fotos und Medien zugreifen?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ erlauben, auf deine Kontakte zuzugreifen?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Kontakte zuzugreifen?"</string>
     <string name="permgrouprequest_device_aware_contacts" msgid="731025863972535928">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deinem Gerät &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; auf deine Kontakte zugreifen?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_device_aware_location" msgid="6075412127429878638">"Darf &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf den Standort deines Geräts &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; zugreifen?"</string>

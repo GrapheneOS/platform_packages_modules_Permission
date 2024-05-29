@@ -25,7 +25,7 @@
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"Обновления в передаче данных о местоположении"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"Данные, Передача данных, Обновления передачи данных, Обновление доступа к данным, Обновление доступа к данным о местоположении"</string>
     <string name="advanced_title" msgid="6259362998269627310">"Другие настройки"</string>
-    <string name="more_settings_title" msgid="9033454654010697185">"Дополнительные настройки безопасности и конфиденциальности"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"Дополнительные настройки защиты и конфиденциальности"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"Автозаполнение, уведомления и другие настройки"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
     <string name="work_policy_title" msgid="915692932391542104">"Сведения о правилах организации"</string>

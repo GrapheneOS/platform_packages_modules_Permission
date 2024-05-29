@@ -487,7 +487,7 @@
     <string name="permgrouprequest_device_aware_coarselocation" msgid="8367540370912066757">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi <xliff:g id="DEVICE_NAME">%2$s</xliff:g> qurilmasining tarxminiy joylashuv axborotidan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Aniq"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Taxminiy"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun taqvimingizga ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun taqvimingizga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_device_aware_calendar" msgid="7161929851377463612">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi <xliff:g id="DEVICE_NAME">%2$s</xliff:g> qurilmasida taqvimdan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun SMS xabarlarni yuborish va ko‘rishga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_device_aware_sms" msgid="6639977653040502291">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi <xliff:g id="DEVICE_NAME">%2$s</xliff:g> qurilmasida SMS xabarlarni oʻqishi va yuborishiga ruxsat berilsinmi?"</string>

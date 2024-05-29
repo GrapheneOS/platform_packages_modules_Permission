@@ -26,6 +26,7 @@ android_test_helper_app {
     static_libs: [
         "kotlin-stdlib",
         "compatibility-device-util-axt",
+        "permission-multidevice-test-util-lib",
     ],
     min_sdk_version: "34",
     target_sdk_version: "35",
