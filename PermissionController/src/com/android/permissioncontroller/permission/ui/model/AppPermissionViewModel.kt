@@ -282,6 +282,14 @@ class AppPermissionViewModel(
             checkAndUpdateStatus()
             if (isLocation) {
                 LocationUtils.addLocationListener(mainLocListener)
+                if (
+                    LocationUtils.isAutomotiveLocationBypassAllowlistedPackage(
+                        app.getApplicationContext(),
+                        packageName
+                    )
+                ) {
+                    LocationUtils.addAutomotiveLocationBypassListener(locBypassListener)
+                }
             } else {
                 sensorPrivacyManager.addSensorPrivacyListener(sensor, sensorPrivacyListener)
             }
@@ -291,6 +299,14 @@ class AppPermissionViewModel(
             super.onInactive()
             if (isLocation) {
                 LocationUtils.removeLocationListener(mainLocListener)
+                if (
+                    LocationUtils.isAutomotiveLocationBypassAllowlistedPackage(
+                        app.getApplicationContext(),
+                        packageName
+                    )
+                ) {
+                    LocationUtils.removeAutomotiveLocationBypassListener(locBypassListener)
+                }
             } else {
                 sensorPrivacyManager.removeSensorPrivacyListener(sensor, sensorPrivacyListener)
             }
@@ -308,6 +324,7 @@ class AppPermissionViewModel(
             }
 
         private val mainLocListener = { isEnabled: Boolean -> checkAndUpdateStatus(!isEnabled) }
+        private val locBypassListener = { _: Boolean -> checkAndUpdateStatus() }
         override fun onUpdate() {
             checkAndUpdateStatus()
         }

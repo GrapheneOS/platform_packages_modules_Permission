@@ -77,6 +77,7 @@
         <option name="run-command" value="setprop debug.wm.disable_deprecated_abi_dialog 1" />
         <!-- disable DeprecatedTargetSdk warning -->
         <option name="run-command" value="setprop debug.wm.disable_deprecated_target_sdk_dialog 1" />
+        <option name="run-command" value="am wait-for-broadcast-barrier" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >

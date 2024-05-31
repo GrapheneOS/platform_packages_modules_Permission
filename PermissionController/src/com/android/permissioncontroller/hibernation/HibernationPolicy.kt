@@ -198,6 +198,7 @@ fun cancelUnusedAppsNotification(context: Context) {
  * nothing is shown.
  */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@Suppress("MissingPermission")
 fun rescanAndPushDataToSafetyCenter(
     context: Context,
     sessionId: Long,
@@ -228,7 +229,6 @@ fun rescanAndPushDataToSafetyCenter(
                 .build()
 
         val safetySourceData = SafetySourceData.Builder().addIssue(issue).build()
-
         safetyCenterManager.setSafetySourceData(
             Constants.UNUSED_APPS_SAFETY_CENTER_SOURCE_ID,
             safetySourceData,
@@ -308,6 +308,7 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
             if (isNewJobScheduleRequired(context)) {
                 // periodic jobs normally run immediately, which is unnecessarily premature
                 SKIP_NEXT_RUN = true
+                @Suppress("MissingPermission")
                 val jobInfo =
                     JobInfo.Builder(
                             Constants.HIBERNATION_JOB_ID,
@@ -375,13 +376,15 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
  * Gets apps that are unused and should hibernate as a map of the user and their hibernateable apps.
  */
 @MainThread
+@Suppress("MissingPermission")
 private suspend fun getAppsToHibernate(
     context: Context,
 ): Map<UserHandle, List<LightPackageInfo>> {
     val now = System.currentTimeMillis()
     val startTimeOfUnusedAppTracking = getStartTimeOfUnusedAppTracking(context.sharedPreferences)
 
-    val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue(forceUpdate = true)
+    val allPackagesByUser =
+        AllPackageInfosLiveData.getInitializedValue(forceUpdate = true) ?: emptyMap()
     val allPackagesByUserByUid =
         allPackagesByUser.mapValues { (_, pkgs) -> pkgs.groupBy { pkg -> pkg.uid } }
     val unusedApps = allPackagesByUser.toMutableMap()
@@ -391,6 +394,7 @@ private suspend fun getAppsToHibernate(
                 getUnusedThresholdMs(),
                 if (DEBUG_OVERRIDE_THRESHOLDS) INTERVAL_DAILY else INTERVAL_MONTHLY]
             .getInitializedValue()
+            ?: emptyMap()
     if (DEBUG_HIBERNATION_POLICY) {
         for ((user, stats) in userStats) {
             DumpableLog.i(
@@ -538,17 +542,20 @@ private fun List<UsageStats>.lastTimePackageUsed(pkgName: String): Long {
 }
 
 /** Checks if the given package is exempt from hibernation in a way that's not user-overridable */
+@Suppress("MissingPermission")
 suspend fun isPackageHibernationExemptBySystem(
     pkg: LightPackageInfo,
     user: UserHandle,
 ): Boolean {
-    if (!LauncherPackagesLiveData.getInitializedValue().contains(pkg.packageName)) {
+    val launcherPkgs = LauncherPackagesLiveData.getInitializedValue() ?: emptyList()
+    if (!launcherPkgs.contains(pkg.packageName)) {
         if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - Package is not on launcher")
         }
         return true
     }
-    if (!ExemptServicesLiveData[user].getInitializedValue()[pkg.packageName].isNullOrEmpty()) {
+    val exemptServicePkgs = ExemptServicesLiveData[user].getInitializedValue() ?: emptyMap()
+    if (!exemptServicePkgs[pkg.packageName].isNullOrEmpty()) {
         return true
     }
     if (Utils.isUserDisabledOrWorkProfile(user)) {
@@ -638,8 +645,9 @@ suspend fun isPackageHibernationExemptBySystem(
             context.checkPermission(UPDATE_PACKAGES_WITHOUT_USER_ACTION, -1 /* pid */, pkg.uid) ==
                 PERMISSION_GRANTED
         val isInstallerOfRecord =
-            InstallerPackagesLiveData[user].getInitializedValue().contains(pkg.packageName) &&
-                hasUpdatePackagesWithoutUserActionPermission
+            (InstallerPackagesLiveData[user].getInitializedValue() ?: emptyList()).contains(
+                pkg.packageName
+            ) && hasUpdatePackagesWithoutUserActionPermission
         // Grant if app w/ privileged install/update permissions or app is an installer app that
         // updates packages without user action.
         if (hasInstallOrUpdatePermissions || isInstallerOfRecord) {
@@ -883,6 +891,7 @@ class DismissHandler : BroadcastReceiver() {
  * A job to check for apps unused in the last [getUnusedThresholdMs]ms every [getCheckFrequencyMs]ms
  * and hibernate the app / revoke their runtime permissions.
  */
+@Suppress("MissingPermission")
 class HibernationJobService : JobService() {
     var job: Job? = null
     var jobStartTime: Long = -1L

@@ -1681,6 +1681,10 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="blocked_sensor_button_label">Change</string>
     <!-- Info label for the warning banner title if automotive camera access is off[CHAR LIMIT=none] -->
     <string name="automotive_blocked_camera_title">Camera access is off</string>
+    <!-- Info label for the warning banner title if automotive microphone access is off[CHAR LIMIT=none] -->
+    <string name="automotive_blocked_microphone_title">Microphone access is off</string>
+    <!-- Info label for the warning banner title if automotive location access is off[CHAR LIMIT=none] -->
+    <string name="automotive_blocked_location_title">Location access is off</string>
     <!-- Info label to display that the sensor is blocked for automotive infotainment apps and services [CHAR LIMIT=none] -->
     <string name="automotive_blocked_infotainment_app_summary">For infotainment apps</string>
      <!-- Info label to display that the sensor is blocked for automotive required apps and services [CHAR LIMIT=none] -->

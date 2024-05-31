@@ -236,7 +236,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
      * @param staleOk whether [isStale] value is ok to return
      * @param forceUpdate whether to call [update] (usually triggers an IPC)
      */
-    suspend fun getInitializedValue(staleOk: Boolean = false, forceUpdate: Boolean = false): T {
+    suspend fun getInitializedValue(staleOk: Boolean = false, forceUpdate: Boolean = false): T? {
         return getInitializedValue(
             observe = { observer ->
                 observeForever(observer)

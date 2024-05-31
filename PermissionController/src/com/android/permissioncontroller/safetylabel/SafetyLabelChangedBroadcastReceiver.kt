@@ -151,6 +151,7 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
 
         val appMetadataBundle =
             try {
+                @Suppress("MissingPermission")
                 userContext.packageManager.getAppMetadata(packageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(TAG, "Package $packageName not found while retrieving app metadata")
@@ -204,7 +205,7 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
 
         private suspend fun isSafetyLabelSupported(packageUser: Pair<String, UserHandle>): Boolean {
             val lightInstallSourceInfo =
-                LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
+                LightInstallSourceInfoLiveData[packageUser].getInitializedValue() ?: return false
             return lightInstallSourceInfo.supportsSafetyLabel
         }
 
@@ -212,6 +213,7 @@ class SafetyLabelChangedBroadcastReceiver : BroadcastReceiver() {
             intentAction == ACTION_PACKAGE_ADDED ||
                 intentAction == ACTION_PACKAGE_ADDED_PERMISSIONCONTROLLER_FORWARDED
 
+        @Suppress("MissingPermission")
         private fun forwardBroadcastToParentUser(
             context: Context,
             userManager: UserManager,

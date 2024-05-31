@@ -232,6 +232,8 @@ public final class Utils {
     private static final ArrayMap<String, Integer> PERM_BLOCKED_ICON;
     /** Permission -> Title res id */
     private static final ArrayMap<String, Integer> PERM_BLOCKED_TITLE;
+    /** Permission -> Title res id */
+    private static final ArrayMap<String, Integer> PERM_BLOCKED_TITLE_AUTOMOTIVE;
 
     public static final int FLAGS_ALWAYS_USER_SENSITIVE =
             FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
@@ -389,6 +391,10 @@ public final class Utils {
         PERM_BLOCKED_TITLE.put(MICROPHONE, R.string.blocked_microphone_title);
         PERM_BLOCKED_TITLE.put(LOCATION, R.string.blocked_location_title);
 
+        PERM_BLOCKED_TITLE_AUTOMOTIVE = new ArrayMap<>();
+        PERM_BLOCKED_TITLE_AUTOMOTIVE.put(CAMERA, R.string.automotive_blocked_camera_title);
+        PERM_BLOCKED_TITLE_AUTOMOTIVE.put(MICROPHONE, R.string.automotive_blocked_microphone_title);
+        PERM_BLOCKED_TITLE_AUTOMOTIVE.put(LOCATION, R.string.automotive_blocked_location_title);
     }
 
     private Utils() {
@@ -1530,6 +1536,13 @@ public final class Utils {
      **/
     public static int getBlockedTitle(@NonNull String permissionGroupName) {
         return PERM_BLOCKED_TITLE.getOrDefault(permissionGroupName, -1);
+    }
+
+    /**
+     * Returns the blocked title code on automotive for a permission
+     **/
+    public static int getBlockedTitleAutomotive(@NonNull String permissionGroupName) {
+        return PERM_BLOCKED_TITLE_AUTOMOTIVE.getOrDefault(permissionGroupName, -1);
     }
 
     /**

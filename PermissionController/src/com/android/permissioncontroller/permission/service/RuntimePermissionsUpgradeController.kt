@@ -66,6 +66,7 @@ object RuntimePermissionsUpgradeController {
             9
         }
 
+    @Suppress("MissingPermission")
     fun upgradeIfNeeded(context: Context, onComplete: Runnable) {
         val permissionManager = context.getSystemService(PermissionManager::class.java)
         val storedVersion = permissionManager!!.runtimePermissionsVersion
@@ -390,7 +391,7 @@ object RuntimePermissionsUpgradeController {
             }
 
         // Trigger loading of data and wait until data is loaded
-        val upgradeData = upgradeDataProvider.getInitializedValue(forceUpdate = true)
+        val upgradeData = upgradeDataProvider.getInitializedValue(forceUpdate = true)!!
 
         // Only exempt permissions that are in the OTA. Apps that are updated via OTAs are never
         // installed. Hence their permission are never exempted. This code replaces that by

@@ -15,6 +15,8 @@
  */
 package com.android.permissioncontroller.permission.utils;
 
+import static android.content.Context.RECEIVER_NOT_EXPORTED;
+import static android.location.LocationManager.EXTRA_ADAS_GNSS_ENABLED;
 import static android.location.LocationManager.EXTRA_LOCATION_ENABLED;
 
 import android.Manifest;
@@ -27,6 +29,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
@@ -34,11 +37,16 @@ import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
+import com.android.permission.flags.Flags;
 import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class LocationUtils {
 
@@ -84,6 +92,35 @@ public class LocationUtils {
         return context.getSystemService(LocationManager.class).isLocationEnabled();
     }
 
+    /** Checks if the automotive location bypass is enabled. */
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    public static boolean isAutomotiveLocationBypassEnabled(Context context) {
+        return context.getSystemService(LocationManager.class).isAdasGnssLocationEnabled();
+    }
+
+    /** Return the automotive location bypass allowlist. */
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    public static Collection<String> getAutomotiveLocationBypassAllowlist(Context context) {
+        // TODO(b/335763768): Remove reflection once getAdasAllowlist() is a System API
+        try {
+            LocationManager locationManager = context.getSystemService(LocationManager.class);
+            Object packageTagsList =
+                    LocationManager.class.getMethod("getAdasAllowlist").invoke(locationManager);
+            return (Collection<String>) packageTagsList.getClass().getMethod("getPackages")
+                    .invoke(packageTagsList);
+        } catch (Exception e) {
+            Log.e(TAG, "Cannot get location bypass allowlist: " + e);
+            return new ArrayList<String>();
+        }
+    }
+
+    /** Checks if the provided package is an automotive location bypass allowlisted package. */
+    public static boolean isAutomotiveLocationBypassAllowlistedPackage(
+            Context context, String packageName) {
+        return SdkLevel.isAtLeastV() && Flags.addBannersToPrivacySensitiveAppsForAaos()
+                && getAutomotiveLocationBypassAllowlist(context).contains(packageName);
+    }
+
     /** Checks if the provided package is a location provider. */
     public static boolean isLocationProvider(Context context, String packageName) {
         return context.getSystemService(LocationManager.class).isProviderPackage(packageName);
@@ -126,52 +163,105 @@ public class LocationUtils {
         void onLocationStateChange(boolean enabled);
     }
 
-    private static final ArrayList<LocationListener> sLocationListeners = new ArrayList<>();
-
-    private static BroadcastReceiver sLocationBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            boolean isEnabled = intent.getBooleanExtra(EXTRA_LOCATION_ENABLED, true);
-            sMainHandler.postDelayed(() -> {
-                synchronized (sLocationListeners) {
-                    for (LocationListener l : sLocationListeners) {
-                        l.onLocationStateChange(isEnabled);
-                    }
-                }
-            }, LOCATION_UPDATE_DELAY_MS);
-        }
-    };
-
     /**
-     * Add a LocationListener, which will be notified if the location provider is enabled or
-     * disabled
+     * Add a location listener, which will be notified if the automotive location bypass state is
+     * enabled or disabled.
      * @param listener the listener to add
      */
-    public static void addLocationListener(LocationListener listener) {
-        synchronized (sLocationListeners) {
-            boolean wasEmpty = sLocationListeners.isEmpty();
-            sLocationListeners.add(listener);
-            if (wasEmpty) {
-                IntentFilter intentFilter = new IntentFilter(LocationManager.MODE_CHANGED_ACTION);
-                PermissionControllerApplication.get().getApplicationContext()
-                        .registerReceiverForAllUsers(sLocationBroadcastReceiver, intentFilter,
-                                null, null);
-            }
-        }
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    public static void addAutomotiveLocationBypassListener(LocationListener listener) {
+        addLocationListener(listener, sAutomotiveLocationBypassListeners,
+                sAutomotiveLocationBypassBroadcastReceiver,
+                LocationManager.ACTION_ADAS_GNSS_ENABLED_CHANGED);
     }
 
     /**
-     * Remove a LocationListener
+     * Add a location listener, which will be notified if the main location state is enabled or
+     * disabled.
+     * @param listener the listener to add
+     */
+    public static void addLocationListener(LocationListener listener) {
+        addLocationListener(listener, sLocationListeners, sLocationBroadcastReceiver,
+                LocationManager.MODE_CHANGED_ACTION);
+    }
+
+    /**
+     * Remove an automotive location bypass listener
+     * @param listener The listener to remove
+     *
+     * @return True if it was successfully removed, false otherwise
+     */
+    public static boolean removeAutomotiveLocationBypassListener(LocationListener listener) {
+        return removeLocationListener(listener, sAutomotiveLocationBypassListeners,
+                sAutomotiveLocationBypassBroadcastReceiver);
+    }
+
+    /**
+     * Remove a main location listener
      * @param listener The listener to remove
      *
      * @return True if it was successfully removed, false otherwise
      */
     public static boolean removeLocationListener(LocationListener listener) {
-        synchronized (sLocationListeners) {
-            boolean success = sLocationListeners.remove(listener);
-            if (success && sLocationListeners.isEmpty()) {
+        return removeLocationListener(listener, sLocationListeners, sLocationBroadcastReceiver);
+    }
+
+    private static final List<LocationListener> sAutomotiveLocationBypassListeners =
+            new ArrayList<>();
+    private static final List<LocationListener> sLocationListeners = new ArrayList<>();
+
+    private static final BroadcastReceiver sAutomotiveLocationBypassBroadcastReceiver =
+            getLocationBroadcastReceiver(
+                    SdkLevel.isAtLeastT() ? EXTRA_ADAS_GNSS_ENABLED : EXTRA_LOCATION_ENABLED,
+                    sAutomotiveLocationBypassListeners);
+    private static final BroadcastReceiver sLocationBroadcastReceiver =
+            getLocationBroadcastReceiver(EXTRA_LOCATION_ENABLED, sLocationListeners);
+
+    private static BroadcastReceiver getLocationBroadcastReceiver(String locationIntentExtra,
+            List<LocationListener> locationListeners) {
+        return new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    boolean isEnabled = intent.getBooleanExtra(locationIntentExtra, true);
+                    sMainHandler.postDelayed(() -> {
+                        synchronized (locationListeners) {
+                            for (LocationListener l : locationListeners) {
+                                l.onLocationStateChange(isEnabled);
+                            }
+                        }
+                    }, LOCATION_UPDATE_DELAY_MS);
+                }
+            };
+    }
+
+    private static void addLocationListener(LocationListener listener,
+            List<LocationListener> locationListeners, BroadcastReceiver locationBroadcastReceiver,
+            String intentAction) {
+        synchronized (locationListeners) {
+            boolean wasEmpty = locationListeners.isEmpty();
+            locationListeners.add(listener);
+            if (wasEmpty) {
+                IntentFilter intentFilter = new IntentFilter(intentAction);
+                if (SdkLevel.isAtLeastU()) {
+                    PermissionControllerApplication.get().getApplicationContext()
+                            .registerReceiverForAllUsers(locationBroadcastReceiver, intentFilter,
+                                    null, null, RECEIVER_NOT_EXPORTED);
+                } else {
+                    PermissionControllerApplication.get().getApplicationContext()
+                            .registerReceiverForAllUsers(locationBroadcastReceiver, intentFilter,
+                                    null, null);
+                }
+            }
+        }
+    }
+
+    private static boolean removeLocationListener(LocationListener listener,
+            List<LocationListener> locationListeners, BroadcastReceiver locationBroadcastReceiver) {
+        synchronized (locationListeners) {
+            boolean success = locationListeners.remove(listener);
+            if (success && locationListeners.isEmpty()) {
                 PermissionControllerApplication.get().getApplicationContext()
-                        .unregisterReceiver(sLocationBroadcastReceiver);
+                        .unregisterReceiver(locationBroadcastReceiver);
             }
             return success;
         }

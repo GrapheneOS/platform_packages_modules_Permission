@@ -20,24 +20,10 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.permission.PermissionManager
-import android.permission.PermissionManager.PermissionState
 import android.util.Log
-import com.android.compatibility.common.util.SystemUtil
 
 object PermissionUtils {
     private val TAG = PermissionUtils::class.java.getSimpleName()
-
-    fun getAllPermissionStates(
-        context: Context,
-        packageName: String,
-        companionDeviceId: String
-    ): Map<String, PermissionState> {
-        val permissionManager = context.getSystemService(PermissionManager::class.java)!!
-        return SystemUtil.runWithShellPermissionIdentity<Map<String, PermissionState>> {
-            permissionManager.getAllPermissionStates(packageName, companionDeviceId)
-        }
-    }
 
     fun isAutomotive(context: Context): Boolean =
         context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)

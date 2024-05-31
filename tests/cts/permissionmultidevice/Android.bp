@@ -39,7 +39,6 @@ android_test {
         "permission-multidevice-test-util-lib",
         "android.permission.flags-aconfig-java-export",
         "collector-device-lib",
-        "setup-wizard-lib",
     ],
     data: [
         ":CtsAccessRemoteDeviceCamera",

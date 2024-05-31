@@ -358,6 +358,7 @@ class SafetyLabelChangesJobService : JobService() {
 
         val appMetadataBundle: PersistableBundle =
             try {
+                @Suppress("MissingPermission")
                 userContext.packageManager.getAppMetadata(packageName)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "Package $packageName not found while retrieving app metadata")
@@ -432,12 +433,12 @@ class SafetyLabelChangesJobService : JobService() {
 
     private suspend fun getAllPackagesRequestingLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
-            .getInitializedValue(staleOk = false, forceUpdate = true)
+            .getInitializedValue(staleOk = false, forceUpdate = true)!!
             .keys
 
     private suspend fun getAllPackagesGrantedLocation(): Set<Pair<String, UserHandle>> =
         SinglePermGroupPackagesUiInfoLiveData[Manifest.permission_group.LOCATION]
-            .getInitializedValue(staleOk = false, forceUpdate = true)
+            .getInitializedValue(staleOk = false, forceUpdate = true)!!
             .filter { (_, appPermGroupUiInfo) -> appPermGroupUiInfo.isPermissionGranted() }
             .keys
 
@@ -446,7 +447,7 @@ class SafetyLabelChangesJobService : JobService() {
 
     private suspend fun isSafetyLabelSupported(packageUser: Pair<String, UserHandle>): Boolean {
         val lightInstallSourceInfo =
-            LightInstallSourceInfoLiveData[packageUser].getInitializedValue()
+            LightInstallSourceInfoLiveData[packageUser].getInitializedValue() ?: return false
         return lightInstallSourceInfo.supportsSafetyLabel
     }
 
@@ -490,6 +491,7 @@ class SafetyLabelChangesJobService : JobService() {
         val appDataSharingUpdates =
             AppDataSharingUpdatesLiveData(PermissionControllerApplication.get())
                 .getInitializedValue()
+                ?: return 0
 
         return appDataSharingUpdates
             .map { appDataSharingUpdate ->
@@ -521,7 +523,8 @@ class SafetyLabelChangesJobService : JobService() {
             }
             ?.keys
             ?.filter { packageUser: Pair<String, UserHandle> -> packageUser.first == packageName }
-            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second } ?: listOf()
+            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second }
+            ?: listOf()
     }
 
     private fun AppDataSharingUpdate.containsLocationCategoryUpdate() =
@@ -685,6 +688,7 @@ class SafetyLabelChangesJobService : JobService() {
                 }
 
                 val job =
+                    @Suppress("MissingPermission")
                     JobInfo.Builder(
                             SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID,
                             ComponentName(context, SafetyLabelChangesJobService::class.java)

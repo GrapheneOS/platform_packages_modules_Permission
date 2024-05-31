@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "LongLogTag")
 
 package com.android.permissioncontroller.permission.utils
 
@@ -638,6 +638,7 @@ object KotlinUtils {
         }
     }
 
+    @Suppress("MissingPermission")
     fun openPhotoPickerForApp(
         activity: Activity,
         uid: Int,
@@ -942,6 +943,7 @@ object KotlinUtils {
      * @return a LightPermission and boolean pair <permission with updated state (or the original
      *   state, if it wasn't changed), should kill app>
      */
+    @Suppress("MissingPermission")
     private fun grantRuntimePermission(
         app: Application,
         perm: LightPermission,
@@ -1136,6 +1138,7 @@ object KotlinUtils {
         )
     }
 
+    @Suppress("MissingPermission")
     private fun revokeRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
@@ -1231,6 +1234,7 @@ object KotlinUtils {
      * @param group Optional, the current app permission group we are examining
      * @return true if any permission in the package is granted for one time, false otherwise
      */
+    @Suppress("MissingPermission")
     private fun anyPermsOfPackageOneTimeGranted(
         app: Application,
         packageInfo: LightPackageInfo,
@@ -1267,6 +1271,7 @@ object KotlinUtils {
      * @return a LightPermission and boolean pair <permission with updated state (or the original
      *   state, if it wasn't changed), should kill app>
      */
+    @Suppress("MissingPermission")
     private fun revokeRuntimePermission(
         app: Application,
         perm: LightPermission,
@@ -1519,7 +1524,7 @@ object KotlinUtils {
         if (currentMode == mode) {
             return false
         }
-        manager.setUidMode(op, uid, mode)
+        @Suppress("MissingPermission") manager.setUidMode(op, uid, mode)
         return true
     }
 
@@ -1548,6 +1553,7 @@ object KotlinUtils {
      * @return true if the permission denied was POST_NOTIFICATIONS, the app is a backup app, and a
      *   backup restore is in progress, false otherwise
      */
+    @SuppressLint("LongLogTag")
     fun shouldSkipKillOnPermDeny(
         app: Application,
         permission: String,
@@ -1761,15 +1767,14 @@ object KotlinUtils {
 
 /** Get the [value][LiveData.getValue], suspending until [isInitialized] if not yet so */
 suspend fun <T, LD : LiveData<T>> LD.getInitializedValue(
-    observe: LD.(Observer<T>) -> Unit = { observeForever(it) },
+    observe: LD.(Observer<T?>) -> Unit = { observeForever(it) },
     isValueInitialized: LD.() -> Boolean = { value != null }
-): T {
+): T? {
     return if (isValueInitialized()) {
-        @Suppress("UNCHECKED_CAST")
-        value as T
+        value
     } else {
-        suspendCoroutine { continuation: Continuation<T> ->
-            val observer = AtomicReference<Observer<T>>()
+        suspendCoroutine { continuation: Continuation<T?> ->
+            val observer = AtomicReference<Observer<T?>>()
             observer.set(
                 Observer { newValue ->
                     if (isValueInitialized()) {
