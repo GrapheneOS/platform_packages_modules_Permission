@@ -23,6 +23,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.REVI
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -405,7 +406,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
                     }
                     activity.startIntentSenderForResult(intent, -1, null,
                             flagMask, flagValues, 0);
-                } catch (IntentSender.SendIntentException e) {
+                } catch (IntentSender.SendIntentException | ActivityNotFoundException e) {
                         /* ignore */
                 }
                 return;

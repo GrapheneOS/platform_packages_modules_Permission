@@ -1394,6 +1394,7 @@
             <permission name="android.permission.RECEIVE_SMS" />
             <permission name="android.permission.GET_BACKGROUND_INSTALLED_PACKAGES" minSdkVersion="35" />
             <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
+            <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
         </permissions>
         <app-op-permissions>
