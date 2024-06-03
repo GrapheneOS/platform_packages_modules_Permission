@@ -61,6 +61,7 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
     lateinit var pkgManager: PackageManager
 
     override fun onCreatePreferences(savedState: Bundle?, rootKey: String?) {
+        @Suppress("DEPRECATION") // see onOptionsItemSelected
         setHasOptionsMenu(true)
 
         val ctx = requireContext()
@@ -365,6 +366,10 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
         }
     }
 
+    // it's not clear how to resolve deprecation warnings for setHasOptionsMenu and onOptionsItemSelected,
+    // they are suppressed in upstream fragments that use android.R.id.home too
+    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             pressBack()
