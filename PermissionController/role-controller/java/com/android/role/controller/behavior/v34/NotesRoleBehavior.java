@@ -17,6 +17,7 @@
 package com.android.role.controller.behavior.v34;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.UserHandle;
@@ -28,6 +29,8 @@ import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 import com.android.role.controller.util.UserUtils;
 
+import java.util.Objects;
+
 /**
  * Class for behavior of the Notes role.
  */
@@ -38,7 +41,7 @@ public class NotesRoleBehavior implements RoleBehavior {
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         // Role should be enabled by OEMs.
-        Resources resources = context.getResources();
+        Resources resources = getResources(context);
         if (!resources.getBoolean(android.R.bool.config_enableDefaultNotes)) {
             return false;
         }
@@ -54,5 +57,28 @@ public class NotesRoleBehavior implements RoleBehavior {
         }
 
         return true;
+    }
+
+    /**
+     * Gets {@link Resources} for fetching notes role related resources.
+     * <p>
+     * When running within the system server process, this method retrieves system resource that
+     * include Runtime Resource Overlay (RRO) values. These RRO values are not accessible through
+     * the {@code context} object provided to this class during construction.
+     *
+     * @throws RuntimeException when no system package is found when this class runs in the system
+     * server process.
+     */
+    @NonNull
+    private static Resources getResources(@NonNull Context context) {
+        if (Objects.equals(context.getPackageName(), "android")) {
+            try {
+                return context.getPackageManager().getResourcesForApplication("system");
+            } catch (PackageManager.NameNotFoundException e) {
+                throw new RuntimeException("System package not found", e);
+            }
+        } else {
+            return context.getResources();
+        }
     }
 }
