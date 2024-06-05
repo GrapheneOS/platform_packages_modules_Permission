@@ -525,7 +525,7 @@
     <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; में मौजूद, कॉल लॉग का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को फ़ोन कॉल करने और उन्हें मैनेज करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; से फ़ोन कॉल करने और उन्हें मैनेज करने का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने स्वास्थ्य से जुड़ी ज़रूरी जानकारी इस्तेमाल करने की अनुमति देनी है?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को बीपी, धड़कन वगैरह की जानकारी इस्तेमाल करने की अनुमति देनी है?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt; में मौजूद, शरीर के बारे में ज़रूरी जानकारी देने वाले सेंसर डेटा का ऐक्सेस देना है?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"यह ऐप्लिकेशन, आपके शरीर के बारे में ज़रूरी जानकारी देने वाले सेंसर डेटा को हमेशा ऐक्सेस करने की अनुमति मांगता है. यह अनुमति उस समय के लिए भी मांगी जाती है जिस समय ऐप्लिकेशन का इस्तेमाल न हो रहा हो. यह अनुमति देने के लिए, "<annotation id="link">"सेटिंग पर जाएं."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने शरीर के बारे में जानकारी देने वाले लक्षणों के सेंसर डेटा को ऐक्सेस करने की अनुमति दें?"</string>
@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"कैमरे का ऐक्सेस बंद है"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"माइक्रोफ़ोन इस्तेमाल करने की अनुमति नहीं है"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"जगह की जानकारी इस्तेमाल करने की अनुमति नहीं है"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"सूचना और मनोरंजन की सुविधा देने वाले ऐप्लिकेशन के लिए"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"ज़रूरी ऐप्लिकेशन के लिए"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"यह ऐप्लिकेशन ज़रूरी है"</string>

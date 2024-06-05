@@ -560,11 +560,13 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ਜਦੋਂ ਤੁਸੀਂ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਦੇ ਹੋ ਤਾਂ ਸ਼ਾਇਦ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਡਾਟਾ ਹਾਲੇ ਵੀ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ਬਦਲੋ"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"ਕੈਮਰੇ ਤੱਕ ਪਹੁੰਚ ਬੰਦ ਹੈ"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਤੱਕ ਪਹੁੰਚ ਬੰਦ ਹੈ"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਬੰਦ ਹੈ"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"ਇੰਫ਼ੋਟੇਨਮੈਂਟ ਐਪਾਂ ਲਈ"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"ਲੋੜੀਂਦੀਆਂ ਐਪਾਂ ਲਈ"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"ਇਹ ਐਪ ਲੋੜੀਂਦੀ ਹੈ"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"ਤੁਹਾਡੀ ਕਾਰ ਦੇ ਨਿਰਮਾਤਾ ਵੱਲੋਂ ਇਹ ਐਪ ਲੋੜੀਂਦੀ ਹੈ"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"ਸਿਕਿਊਰਟੀ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ਡੀਵਾਈਸ ਨੂੰ ਸਕੈਨ ਕਰੋ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ਕੀ ਇਸ ਅਲਰਟ ਨੂੰ ਖਾਰਜ ਕਰਨਾ ਹੈ?"</string>
@@ -575,7 +577,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ ਸਥਿਤੀ। <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>. <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"ਸੁਰੱਖਿਆ ਸੈਟਿੰਗਾਂ"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"ਇਜਾਜ਼ਤਾਂ"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"ਸਿਕਿਊਰਟੀ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ਸਥਿਤੀ ਦੀ ਜਾਂਚ ਕਰੋ"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"ਤੁਹਾਡੇ ਪਰਦੇਦਾਰੀ ਕੰਟਰੋਲ"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"ਹੋਰ ਸੈਟਿੰਗਾਂ"</string>

@@ -17,7 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="security_privacy_brand_name" msgid="7303621734258440812">"ความปลอดภัยและความเป็นส่วนตัว"</string>
+    <string name="security_privacy_brand_name" msgid="7303621734258440812">"การรักษาความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="privacy_subpage_controls_header" msgid="4152396976713749322">"การควบคุม"</string>
     <string name="health_connect_title" msgid="2132233890867430855">"Health Connect"</string>
     <string name="health_connect_summary" msgid="815473513776882296">"จัดการสิทธิ์ของแอปในการเข้าถึงข้อมูลสุขภาพ"</string>

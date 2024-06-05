@@ -110,7 +110,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"সদায় অনুমতি দিয়ক"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"কেৱল এপ্‌টো ব্যৱহাৰ কৰাৰ সময়তহে অনুমতি দিয়ক"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"অনুমতি নিদিব"</string>
     <string name="loading" msgid="4789365003890741082">"ল’ড হৈ আছে…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"সকলো অনুমতি"</string>
@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"আপুনি কোনো জৰুৰীকালীন নম্বৰত কল কৰিলে মাইক্ৰ’ফ’নৰ ডেটা তথাপি শ্বেয়াৰ কৰা হ’ব পাৰে।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"সলনি কৰক"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"কেমেৰাৰ এক্সেছ অফ আছে"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"মাইক্ৰ’ফ’নৰ এক্সেছ অফ আছে"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"অৱস্থানৰ এক্সেছ অফ আছে"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"ইনফ’টেইনমেণ্ট এপ্‌সমূহৰ বাবে"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"আৱশ্যকীয় এপ্‌সমূহৰ বাবে"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"এই এপ্‌টো আৱশ্যকীয়"</string>

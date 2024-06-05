@@ -560,6 +560,10 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"எனினும் அவசர உதவி எண்ணைத் தொடர்பு கொள்ளும்போது மைக்ரோஃபோன் தரவு பகிரப்படலாம்."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"மாற்று"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"கேமரா அணுகல் முடக்கப்பட்டுள்ளது"</string>
+    <!-- no translation found for automotive_blocked_microphone_title (3956311098238620220) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_location_title (6047574747593264689) -->
+    <skip />
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"இன்ஃபோடெயின்மென்ட் ஆப்ஸுக்கு"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"தேவையான ஆப்ஸுக்கு"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"இந்த ஆப்ஸ் தேவை"</string>

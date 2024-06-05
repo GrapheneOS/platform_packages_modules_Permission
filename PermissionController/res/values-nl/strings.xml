@@ -438,7 +438,7 @@
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standaard voor werk"</string>
     <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Standaard voor privégedeelte"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Geen"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(Systeemstandaard)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(Systeem­standaard)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Geen apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Geselecteerd"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Geselecteerd: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Microfoongegevens kunnen nog altijd worden gedeeld als je een alarmnummer belt."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Wijzigen"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Cameratoegang staat uit"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"Microfoontoegang staat uit"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"Locatietoegang staat uit"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Voor infotainment-apps"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Voor vereiste apps"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Deze app is vereist"</string>

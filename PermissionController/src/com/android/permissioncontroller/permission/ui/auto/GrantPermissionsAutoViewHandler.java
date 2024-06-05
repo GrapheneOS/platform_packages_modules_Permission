@@ -116,7 +116,6 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
 
         AlertDialogBuilder builder = new AlertDialogBuilder(mContext)
                 .setTitle(mGroupMessage)
-                .setSubtitle(mDetailMessage)
                 .setAllowDismissButton(false)
                 .setOnDismissListener((dialog) -> {
                     mDialog = null;
@@ -127,6 +126,17 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         }
 
         List<CarUiListItem> itemList = new ArrayList<>();
+
+
+        // TODO(b/343727055): We are adding the subtitle to the item list so that it is
+        // scrollable. When the title and the subtitle are long, the buttons in the
+        // AlertDialog are not visible to the user.
+        if (mDetailMessage != null && !(mDetailMessage.length() == 0)) {
+            CarUiContentListItem item = new CarUiContentListItem(CarUiContentListItem.Action.NONE);
+            item.setSecure(true);
+            item.setTitle(mDetailMessage);
+            itemList.add(item);
+        }
 
         // Don't show the allow one time button as per automotive design decisions
         createListItem(itemList, R.string.grant_dialog_button_allow,

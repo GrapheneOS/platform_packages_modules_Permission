@@ -525,7 +525,7 @@
     <string name="permgrouprequest_device_aware_calllog" msgid="8220927190376843309">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda al registro de llamadas telefónicas de &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga y gestione llamadas?"</string>
     <string name="permgrouprequest_device_aware_phone" msgid="590399263670349955">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga y gestione llamadas en &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos del sensor sobre tus constantes vitales?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a tus datos de constantes vitales del sensor?"</string>
     <string name="permgrouprequest_device_aware_sensors" msgid="3874451050573615157">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores sobre tus constantes vitales de &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales todo el tiempo, incluso cuando no la uses. Para hacer este cambio, "<annotation id="link">"ve a los ajustes"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de sensores de tus constantes vitales?"</string>
@@ -560,6 +560,10 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Aun así, pueden compartirse datos del micrófono cuando llamas a un número de emergencia."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"El acceso a la cámara está desactivado"</string>
+    <!-- no translation found for automotive_blocked_microphone_title (3956311098238620220) -->
+    <skip />
+    <!-- no translation found for automotive_blocked_location_title (6047574747593264689) -->
+    <skip />
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Para aplicaciones de infoentretenimiento"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Para aplicaciones requeridas"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Se requiere esta aplicación"</string>

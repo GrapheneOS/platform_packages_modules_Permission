@@ -24,7 +24,7 @@
     <string name="overall_severity_level_tip_summary" msgid="1935765582243024999">"{count,plural, =1{Pogledajte preporuku}one{Pogledajte preporuke}few{Pogledajte preporuke}other{Pogledajte preporuke}}"</string>
     <string name="overall_severity_level_action_taken_summary" msgid="8064091657855656545">"{count,plural, =1{Poduzeta je radnja}one{Poduzete su radnje}few{Poduzete su radnje}other{Poduzete su radnje}}"</string>
     <string name="overall_severity_level_ok_review_title" msgid="1494321117696765360">"Pregledajte postavke"</string>
-    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Provjera popisa postavki"</string>
+    <string name="overall_severity_level_ok_review_summary" msgid="7743619617413076275">"Popis postavki za provjeru"</string>
     <string name="overall_severity_level_device_recommendation_title" msgid="5250040236433061827">"Uređaj je možda ugrožen"</string>
     <string name="overall_severity_level_critical_device_warning_title" msgid="5901771721834272596">"Uređaj je ugrožen"</string>
     <string name="overall_severity_level_data_recommendation_title" msgid="1424269714861655302">"Podaci mogu biti ugroženi"</string>

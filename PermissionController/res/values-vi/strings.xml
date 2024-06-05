@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Thay đổi"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Quyền truy cập vào camera đang tắt"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"Tính năng truy cập micrô đang tắt"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"Tính năng truy cập thông tin vị trí đang tắt"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Đối với các ứng dụng thông tin giải trí"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Đối với các ứng dụng bắt buộc"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Cần có ứng dụng này"</string>

@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"तुम्ही आणीबाणी नंबरवर कॉल करता तेव्हा, मायक्रोफोन डेटा तरीही कदाचित शेअर केला जाईल."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदला"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"कॅमेराचा ॲक्सेस बंद आहे"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"मायक्रोफोनचा अ‍ॅक्सेस बंद आहे"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"स्थानाचा अ‍ॅक्सेस बंद आहे"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"इन्फोटेनमेंट ॲप्ससाठी"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"आवश्यक अ‍ॅप्ससाठी"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"हे ॲप आवश्यक आहे"</string>

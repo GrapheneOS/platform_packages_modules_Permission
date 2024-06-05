@@ -438,7 +438,7 @@
     <string name="default_apps_for_work" msgid="4970308943596201811">"Par défaut pour util. profess."</string>
     <string name="default_apps_for_private_profile" msgid="2022024112144880785">"Applications par défaut pour l\'Espace privé"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Aucune"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(Valeurs par défaut du système)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(Paramètre(s) système par défaut)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Aucune application"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Sélectionnée"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Sélectionnée – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Il est possible que les données du microphone soient partagées lorsque vous appelez un numéro d\'urgence."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modifier"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"L\'accès à l\'appareil photo est désactivé"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"L\'accès au microphone est désactivé"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"L\'accès à la position est désactivé"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Pour les applis d\'infodivertissement"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Pour les applis requises"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Cette appli est requise"</string>

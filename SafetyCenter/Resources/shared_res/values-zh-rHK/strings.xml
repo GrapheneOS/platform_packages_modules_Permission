@@ -43,7 +43,7 @@
     <string name="refresh_error" msgid="656062128422446177">"{count,plural, =1{無法檢查設定}other{無法檢查設定}}"</string>
     <string name="work_profile_paused" msgid="7037400224040869079">"工作設定檔已暫停"</string>
     <string name="group_unknown_summary" msgid="6951386960814105641">"暫時沒有資料"</string>
-    <string name="notification_channel_group_name" msgid="7155072032524876859">"安全性和私隱權"</string>
+    <string name="notification_channel_group_name" msgid="7155072032524876859">"安全性和私隱"</string>
     <string name="notification_channel_name_information" msgid="2966444432152990166">"建議"</string>
     <string name="notification_channel_name_recommendation" msgid="7847408286580217922">"警告"</string>
     <string name="notification_channel_name_critical_warning" msgid="5994320322108351769">"嚴重警告"</string>

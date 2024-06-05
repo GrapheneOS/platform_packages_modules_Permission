@@ -560,11 +560,13 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ទិន្នន័យមីក្រូហ្វូន​នៅតែអាចត្រូវ​បានចែករំលែក​ដដែល នៅពេលអ្នក​ហៅទៅលេខសង្គ្រោះបន្ទាន់។"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ផ្លាស់ប្ដូរ"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"សិទ្ធិចូលប្រើកាមេរ៉ាត្រូវបានបិទ"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"សិទ្ធិចូលប្រើមីក្រូហ្វូនត្រូវបានបិទ"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"សិទ្ធិចូលប្រើទីតាំងត្រូវបានបិទ"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"សម្រាប់កម្មវិធីព័ត៌មាននិងកម្សាន្ត"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"សម្រាប់កម្មវិធីដែលតម្រូវឱ្យមាន"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"តម្រូវឱ្យមានកម្មវិធីនេះ"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"ក្រុមហ៊ុនផលិតរថយន្តរបស់អ្នកតម្រូវឱ្យមានកម្មវិធីនេះ"</string>
-    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"សុវត្ថិភាព និងឯកជនភាព"</string>
+    <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"សន្តិសុខ និងឯកជនភាព"</string>
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ស្កេនឧបករណ៍"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ច្រានចោល"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ច្រានចោលការជូនដំណឹងនេះឬ?"</string>
@@ -575,7 +577,7 @@
     <string name="safety_status_preference_title_and_summary_content_description" msgid="3511373256505058464">"ស្ថានភាពសុវត្ថិភាព និង​ឯកជនភាព។ <xliff:g id="OVERALL_SAFETY_STATUS">%1$s</xliff:g>។ <xliff:g id="SUMMARY_OF_DEVICE_STATUS">%2$s</xliff:g>"</string>
     <string name="security_settings" msgid="3808106921175271317">"ការកំណត់​សុវត្ថិភាព"</string>
     <string name="sensor_permissions_qs" msgid="1022267900031317472">"ការអនុញ្ញាត"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"សុវត្ថិភាព និងឯកជនភាព"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="727301867710374052">"សន្តិសុខ និងឯកជនភាព"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ពិនិត្យ​​ស្ថានភាព"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"ការគ្រប់គ្រង​ឯកជនភាពរបស់អ្នក"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"ការកំណត់ច្រើនទៀត"</string>

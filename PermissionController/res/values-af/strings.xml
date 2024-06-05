@@ -560,6 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofoondata kan steeds gedeel word wanneer jy \'n noodnommer bel."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Verander"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Kameratoegang is af"</string>
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"Mikrofoontoegang is af"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"Liggingtoegang is af"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Vir inligtingvermaakapps"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Vir vereiste apps"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Hierdie app is vereis"</string>

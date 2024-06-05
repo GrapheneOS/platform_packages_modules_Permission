@@ -894,6 +894,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestDenyButton() {
         if (isAutomotive) {
+            scrollToBottom();
             clickAndWaitForWindowTransition(
                 By.text(getPermissionControllerString(DENY_BUTTON_TEXT))
             )
@@ -973,6 +974,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestDenyAndDontAskAgainButton() {
         if (isAutomotive) {
+            scrollToBottom();
             clickAndWaitForWindowTransition(
                 By.text(getPermissionControllerString(DENY_AND_DONT_ASK_AGAIN_BUTTON_TEXT))
             )

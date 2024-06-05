@@ -25,7 +25,7 @@
     <string name="app_data_sharing_updates_title" msgid="7428862330643262588">"การอัปเดตการแชร์ข้อมูลตำแหน่ง"</string>
     <string name="app_data_sharing_updates_search_terms" msgid="8414777373734245398">"ข้อมูล, การแชร์ข้อมูล, การอัปเดตการแชร์ข้อมูล, การอัปเดตการแชร์ข้อมูลตำแหน่ง, การแชร์"</string>
     <string name="advanced_title" msgid="6259362998269627310">"การตั้งค่าอื่นๆ"</string>
-    <string name="more_settings_title" msgid="9033454654010697185">"ความปลอดภัยและความเป็นส่วนตัวเพิ่มเติม"</string>
+    <string name="more_settings_title" msgid="9033454654010697185">"การรักษาความปลอดภัยและความเป็นส่วนตัวเพิ่มเติม"</string>
     <string name="more_settings_summary" msgid="7086620830002515710">"การป้อนข้อความอัตโนมัติ การแจ้งเตือน และอื่นๆ"</string>
     <string name="more_settings_search_terms" msgid="1371913937610933955"></string>
     <string name="work_policy_title" msgid="915692932391542104">"ข้อมูลนโยบายการทำงาน"</string>
