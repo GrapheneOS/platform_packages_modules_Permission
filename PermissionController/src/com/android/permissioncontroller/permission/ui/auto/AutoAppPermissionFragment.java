@@ -289,6 +289,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
                 if (Manifest.permission_group.LOCATION.equals(mPermGroupName)) {
                     mViewModel.getSensorStatusLiveData().observe(this, this::setSensorStatus);
                 }
+                if (Manifest.permission_group.MICROPHONE.equals(mPermGroupName)) {
+                    mViewModel.getSensorStatusLiveData().observe(this, this::setSensorStatus);
+                }
             }
         }
     }
@@ -320,6 +323,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
             isRequiredAppCard =
                     isRequiredApp && LocationUtils.isAutomotiveLocationBypassEnabled(
                             getPreferenceManager().getContext());
+        } else if (Manifest.permission_group.MICROPHONE.equals(mPermGroupName)) {
+            isRequiredApp = false;
+            isRequiredAppCard = false;
         }
 
         if (isRequiredApp != null && isRequiredAppCard != null) {
