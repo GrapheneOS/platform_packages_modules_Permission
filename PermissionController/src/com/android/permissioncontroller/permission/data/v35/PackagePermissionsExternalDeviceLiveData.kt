@@ -60,7 +60,7 @@ private constructor(private val app: Application, val packageName: String, val u
         if (!SdkLevel.isAtLeastV()) {
             return
         }
-        val virtualDeviceManager = app.getSystemService(VirtualDeviceManager::class.java)!!
+        val virtualDeviceManager = app.getSystemService(VirtualDeviceManager::class.java) ?: return
         val externalDeviceGrantInfoList =
             virtualDeviceManager.allPersistentDeviceIds
                 .map { getVirtualDeviceGrantInfoList(it) }

@@ -34,4 +34,5 @@ android_test_helper_app {
     ],
     srcs: ["src/**/*.java"],
     resource_dirs: ["res"],
+    sdk_version: "test_current",
 }

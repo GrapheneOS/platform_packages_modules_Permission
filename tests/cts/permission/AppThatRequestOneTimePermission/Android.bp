@@ -33,4 +33,5 @@ android_test_helper_app {
         "mcts-permission",
     ],
     srcs: ["src/**/*.java"],
+    sdk_version: "test_current",
 }

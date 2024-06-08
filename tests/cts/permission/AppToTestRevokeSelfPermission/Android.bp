@@ -32,4 +32,5 @@ android_test_helper_app {
         "general-tests",
     ],
     srcs: ["src/**/*.java"],
+    sdk_version: "test_current",
 }

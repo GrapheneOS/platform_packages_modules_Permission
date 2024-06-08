@@ -354,7 +354,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"يمكن لهذه التطبيقات عرض شاشتك وإجراءاتك ومدخلاتك وتنفيذ الإجراءات والتحكم في العرض."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"تطبيق المساعد الرقمي التلقائي"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"تطبيق المساعد الرقمي"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"بإمكان التطبيقات المساعِدة مساعدك استنادًا إلى المعلومات التي تظهر على شاشتك. وتعمل بعض التطبيقات مع كل من خدمة المشغّل وخدمة الإدخال الصوتي لتوفير مساعدة متكاملة لك."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"بإمكان التطبيقات المساعِدة مساعدتك استنادًا إلى المعلومات التي تظهر على شاشتك. وتعمل بعض التطبيقات مع كل من خدمة المشغّل وخدمة الإدخال الصوتي لتوفير مساعدة متكاملة لك."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"تطبيق المتصفّح التلقائي"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"تطبيق المتصفح"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"التطبيقات التي تتيح إمكانية الوصول إلى الإنترنت وتعرض روابط تنقر عليها"</string>

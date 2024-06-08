@@ -28,4 +28,5 @@ android_test_helper_app {
         "sts",
         "mcts-permission",
     ],
+    sdk_version: "test_current",
 }

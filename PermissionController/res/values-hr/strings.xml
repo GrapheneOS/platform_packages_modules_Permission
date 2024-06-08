@@ -560,10 +560,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Podaci mikrofona i dalje se mogu dijeliti kad pozovete broj hitne službe."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Promijeni"</string>
     <string name="automotive_blocked_camera_title" msgid="6142362431548829416">"Pristup kameri je isključen"</string>
-    <!-- no translation found for automotive_blocked_microphone_title (3956311098238620220) -->
-    <skip />
-    <!-- no translation found for automotive_blocked_location_title (6047574747593264689) -->
-    <skip />
+    <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"Pristup mikrofonu je isključen"</string>
+    <string name="automotive_blocked_location_title" msgid="6047574747593264689">"Pristup lokaciji je isključen"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"Za aplikacije sustava za informiranje i zabavu"</string>
     <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"Za obavezne aplikacije"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"Ova je aplikacija obavezna"</string>

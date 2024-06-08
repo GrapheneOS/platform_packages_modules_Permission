@@ -28,7 +28,7 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"Confidentialité"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Tableau de bord, autorisations, commandes"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Tableau de bord Confidentialité"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Afficher les applis qui ont récemment utilisé des autorisations"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Affichez les applis qui ont récemment utilisé des autorisations"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"confidentialité, tableau de bord confidentialité"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Gestionnaire d\'autorisations"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Contrôler l\'accès des applis à vos données"</string>

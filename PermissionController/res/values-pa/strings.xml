@@ -570,7 +570,7 @@
     <string name="safety_center_rescan_button" msgid="4517514567809409596">"ਡੀਵਾਈਸ ਨੂੰ ਸਕੈਨ ਕਰੋ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ਕੀ ਇਸ ਅਲਰਟ ਨੂੰ ਖਾਰਜ ਕਰਨਾ ਹੈ?"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"ਹੋਰ ਸੁਰੱਖਿਆ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਕਿਸੇ ਵੀ ਸਮੇਂ ਆਪਣੀਆਂ ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_message" msgid="3775418736671093563">"ਹੋਰ ਸੁਰੱਖਿਆ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਕਿਸੇ ਵੀ ਸਮੇਂ ਆਪਣੀਆਂ ਸਿਕਿਊਰਟੀ ਅਤੇ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ਰੱਦ ਕਰੋ"</string>
     <string name="safety_center_entries_category_title" msgid="34356964062813115">"ਸੈਟਿੰਗਾਂ"</string>

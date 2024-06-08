@@ -73,9 +73,8 @@ object MultiDeviceUtils {
             return false
         }
 
-        val virtualDevice =
-            context.getSystemService(VirtualDeviceManager::class.java)!!.getVirtualDevice(deviceId)
-                ?: return false
+        val vdm = context.getSystemService(VirtualDeviceManager::class.java) ?: return false
+        val virtualDevice = vdm.getVirtualDevice(deviceId) ?: return false
 
         return when (permission) {
             Manifest.permission.CAMERA -> virtualDevice.hasCustomCameraSupport()
