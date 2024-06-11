@@ -280,7 +280,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
         mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
         mAskButton = root.requireViewById(R.id.ask_radio_button);
-        mAllowLimitedButton = root.requireViewById(R.id.allow_limited_radio_button);
+        mAllowLimitedButton = root.requireViewById(R.id.select_radio_button);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
 
@@ -289,9 +289,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mPermissionDetails = root.requireViewById(R.id.permission_details);
         mLocationAccuracy = root.requireViewById(R.id.location_accuracy);
         mLocationAccuracySwitch = root.requireViewById(R.id.location_accuracy_switch);
-        mAllowLimitedPhotosLayout = root.requireViewById(R.id.radio_allow_limited_layout);
-        mSelectPhotosButton = root.requireViewById(R.id.select_photos_button);
-        mSelectPhotosDivider = root.requireViewById(R.id.select_photos_divider);
+        mAllowLimitedPhotosLayout = root.requireViewById(R.id.radio_select_layout);
+        mSelectPhotosButton = root.requireViewById(R.id.edit_selected_button);
+        mSelectPhotosDivider = root.requireViewById(R.id.edit_photos_divider);
         mNestedScrollView = root.requireViewById(R.id.nested_scroll_view);
 
         if (mViewModel.getButtonStateLiveData().getValue() != null) {
