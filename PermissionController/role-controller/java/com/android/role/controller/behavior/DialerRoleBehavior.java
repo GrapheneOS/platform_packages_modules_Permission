@@ -28,6 +28,7 @@ import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 import com.android.role.controller.model.VisibilityMixin;
 import com.android.role.controller.util.PackageUtils;
+import com.android.role.controller.util.UserUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +52,9 @@ public class DialerRoleBehavior implements RoleBehavior {
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
+        if (UserUtils.isPrivateProfile(user, context)) {
+            return false;
+        }
         TelephonyManager telephonyManager = context.getSystemService(TelephonyManager.class);
         return telephonyManager.isVoiceCapable();
     }

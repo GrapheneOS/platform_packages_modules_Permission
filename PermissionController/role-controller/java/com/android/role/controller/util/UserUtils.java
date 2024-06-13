@@ -18,6 +18,7 @@ package com.android.role.controller.util;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Flags;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -75,6 +76,23 @@ public final class UserUtils {
         Context userContext = getUserContext(context, user);
         UserManager userUserManager = userContext.getSystemService(UserManager.class);
         return userUserManager.isCloneProfile();
+    }
+
+    /**
+     * Check whether a user is a private profile.
+     *
+     * @param user    the user to check
+     * @param context the {@code Context} to retrieve system services
+     * @return whether the user is a private profile. Private profiles are
+     * allowed from Android V+ only, so this method will return false on Sdk levels below that.
+     */
+    public static boolean isPrivateProfile(@NonNull UserHandle user, @NonNull Context context) {
+        if (!SdkLevel.isAtLeastV() || !Flags.allowPrivateProfile()) {
+            return false;
+        }
+        Context userContext = getUserContext(context, user);
+        UserManager userUserManager = userContext.getSystemService(UserManager.class);
+        return userUserManager.isPrivateProfile();
     }
 
     /**

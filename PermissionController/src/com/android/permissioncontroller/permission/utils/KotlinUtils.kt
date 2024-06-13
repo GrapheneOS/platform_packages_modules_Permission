@@ -1260,6 +1260,7 @@ object KotlinUtils {
         }
         return false
     }
+
     /**
      * Revokes a single runtime permission.
      *
@@ -1553,7 +1554,6 @@ object KotlinUtils {
      * @return true if the permission denied was POST_NOTIFICATIONS, the app is a backup app, and a
      *   backup restore is in progress, false otherwise
      */
-    @SuppressLint("LongLogTag")
     fun shouldSkipKillOnPermDeny(
         app: Application,
         permission: String,
@@ -1569,25 +1569,23 @@ object KotlinUtils {
             return false
         }
 
-        return try {
-            val isInSetup =
-                Settings.Secure.getInt(
-                    userContext.contentResolver,
-                    Settings.Secure.USER_SETUP_COMPLETE,
-                    user.identifier
-                ) == 0
-            val isInDeferredSetup =
-                Settings.Secure.getInt(
-                    userContext.contentResolver,
-                    Settings.Secure.USER_SETUP_PERSONALIZATION_STATE,
-                    user.identifier
-                ) == Settings.Secure.USER_SETUP_PERSONALIZATION_STARTED
-            isInSetup || isInDeferredSetup
-        } catch (e: Settings.SettingNotFoundException) {
-            Log.w(LOG_TAG, "Failed to check if the user is in restore: $e")
-            false
-        }
+        val isInSetup = getSecureInt(Settings.Secure.USER_SETUP_COMPLETE, userContext, user) == 0
+        if (isInSetup) return true
+
+        val isInDeferredSetup =
+            getSecureInt(Settings.Secure.USER_SETUP_PERSONALIZATION_STATE, userContext, user) ==
+                Settings.Secure.USER_SETUP_PERSONALIZATION_STARTED
+        return isInDeferredSetup
     }
+
+    @SuppressLint("LongLogTag")
+    private fun getSecureInt(settingName: String, userContext: Context, user: UserHandle): Int? =
+        try {
+            Settings.Secure.getInt(userContext.contentResolver, settingName, user.identifier)
+        } catch (e: Settings.SettingNotFoundException) {
+            Log.i(LOG_TAG, "Setting $settingName not found", e)
+            null
+        }
 
     /**
      * Determine if a given package has a launch intent. Will function correctly even if called

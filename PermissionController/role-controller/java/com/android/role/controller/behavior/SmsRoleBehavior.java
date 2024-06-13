@@ -59,7 +59,8 @@ public class SmsRoleBehavior implements RoleBehavior {
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         if (SdkLevel.isAtLeastU()) {
-            if (UserUtils.isCloneProfile(user, context)) {
+            if (UserUtils.isCloneProfile(user, context)
+                    || UserUtils.isPrivateProfile(user, context)) {
                 return false;
             }
 

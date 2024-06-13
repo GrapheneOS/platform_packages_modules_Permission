@@ -367,7 +367,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Ova aplikacija će dobiti pristup vašoj Kameri, Kontaktima, Mikrofonu, Telefonu i SMS-u"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"brojčana tastatura"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Zadana aplikacija za SMS"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikacija za SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"aplikacija za SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplikacije koje vam omogućavaju korištenje broja telefona za slanje i primanje kratkih SMS-ova, fotografija, videozapisa i drugog"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za SMS?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Ova aplikacija će dobiti pristup vašoj Kameri, Kontaktima, Fajlovima i medijima, Mikrofonu, Telefonu i SMS-u"</string>
@@ -673,7 +673,7 @@
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Radi vaše sigurnosti postavka trenutno nije dostupna."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Aplikaciji je odbijen pristup odobrenju <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
     <string name="enhanced_confirmation_dialog_desc_permission" msgid="3150778951946468945">"Aplikacija je zatražila pristup osjetljivom odobrenju, što može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovog ograničenog odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>
-    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Aplikaciji je odbijen pristup da bude zadana uloga <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
+    <string name="enhanced_confirmation_dialog_title_role" msgid="1737023798483772780">"Aplikaciji je odbijen pristup da bude zadana <xliff:g id="ROLE_NAME">%1$s</xliff:g>"</string>
     <string name="enhanced_confirmation_dialog_desc_role" msgid="6369601947905234551">"Aplikacija je zatražila pristup osjetljivim odobrenjima, što može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovih ograničenih odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>
     <string name="enhanced_confirmation_dialog_title_settings_default" msgid="1858092969721041576">"Aplikaciji je odbijen pristup"</string>
     <string name="enhanced_confirmation_dialog_desc_settings_default" msgid="6911632348359332981">"Pristup ovom odobrenju može ugroziti vaše lične i finansijske informacije.<xliff:g id="ID_1">&lt;br&gt;&lt;br&gt;</xliff:g>Moguće je da aplikacija neće ispravno raditi bez ovog ograničenog odobrenja. &lt;a href=<xliff:g id="LEARN_MORE_LINK">%1$s</xliff:g>&gt;Saznajte kako dozvoliti pristup&lt;/a&gt;"</string>

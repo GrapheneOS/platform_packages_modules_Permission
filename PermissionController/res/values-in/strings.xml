@@ -367,7 +367,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplikasi ini akan diberi akses ke Kamera, Kontak, Mikrofon, Telepon, dan SMS Anda"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telepon"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Aplikasi SMS default"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikasi SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"aplikasi SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplikasi yang memungkinkan Anda menggunakan nomor telepon untuk mengirim dan menerima SMS, foto, video, dan sebagainya"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi SMS default Anda?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Aplikasi ini akan diberi akses ke Kamera, Kontak, File dan media, Mikrofon, Telepon, dan SMS Anda"</string>

@@ -1,3 +1,5 @@
+rule android.os.*Flags* com.android.permission.jarjar.@0
+rule android.os.Flags com.android.permission.jarjar.@0
 rule android.os.HandlerExecutor com.android.permission.jarjar.@0
 rule android.permission.flags.*Flags* com.android.permission.jarjar.@0
 rule android.permission.flags.Flags com.android.permission.jarjar.@0
