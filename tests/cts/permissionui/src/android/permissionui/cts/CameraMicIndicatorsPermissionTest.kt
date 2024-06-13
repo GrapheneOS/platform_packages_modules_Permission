@@ -109,8 +109,6 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     private val isTv = packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
     private val isCar = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
     private val isWatch = packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)
-    private val safetyCenterMicLabel = getPermissionControllerString(MIC_LABEL_NAME)
-    private val safetyCenterCameraLabel = getPermissionControllerString(CAMERA_LABEL_NAME)
     private val originalCameraLabel =
         packageManager
             .getPermissionGroupInfo(Manifest.permission_group.CAMERA, 0)
@@ -723,6 +721,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     private fun assertSafetyCenterMicViewNotNull() {
+        val safetyCenterMicLabel = getPermissionControllerString(MIC_LABEL_NAME)
         val micView = waitFindObject(byOneOfText(originalMicLabel, safetyCenterMicLabel))
         assertNotNull(
             "View with text '$originalMicLabel' or '$safetyCenterMicLabel' not found",
@@ -731,6 +730,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     }
 
     private fun assertSafetyCenterCameraViewNotNull() {
+        val safetyCenterCameraLabel = getPermissionControllerString(CAMERA_LABEL_NAME)
         val cameraView = waitFindObject(byOneOfText(originalCameraLabel, safetyCenterCameraLabel))
         assertNotNull(
             "View with text '$originalCameraLabel' or '$safetyCenterCameraLabel' not found",
