@@ -368,7 +368,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"vytáčanie"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Predvolená aplikácia na SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"aplikáciou na SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Aplikácie, ktoré vám umožňujú prostredníctvom vášho telefónneho čísla odosielať a prijímať krátke textové správy, fotky, videá a ďalší obsah"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Aplikácie, ktoré vám pomocou telefónneho čísla umožňujú posielať a prijímať krátke textové správy, fotky, videá a iné"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Chcete <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviť ako predvolenú aplikáciu na SMS?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"Tejto aplikácii bude udelený prístup k vašej kamere, kontaktom, súborom a médiám, mikrofónu, telefónu aj správam SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"textová správa, poslať textovú správu, správy, posielanie textových správ"</string>

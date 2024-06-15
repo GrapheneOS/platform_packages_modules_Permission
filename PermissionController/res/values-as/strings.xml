@@ -367,7 +367,7 @@
     <string name="role_dialer_request_description" msgid="6288839625724909320">"এই এপ্‌টোক আপোনাৰ কেমেৰা, সম্পৰ্ক, মাইক্ৰ’ফ’ন, ফ’ন আৰু এছএমএছৰ এক্সেছ দিয়া হ’ব"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ডায়েলাৰ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ডিফ’ল্ট এছএমএছ এপ্"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"এছএমএছ এপ্"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"এছএমএছ এপ"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"যিবোৰ এপে আপোনাক নিজৰ ফ’ন নম্বৰ ব্যৱহাৰ কৰি চমু পাঠ বাৰ্তা, ফট’, ভিডিঅ’ আৰু অন্য সমল পঠিওৱাৰ অনুমতি দিয়ে"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট এছএমএছ এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"এই এপ্‌টোক আপোনাৰ কেমেৰা, সম্পৰ্ক, ফাইল আৰু মিডিয়া, মাইক্ৰ’ফ’ন, ফ’ন আৰু এছএমএছৰ এক্সেছ দিয়া হ’ব"</string>
