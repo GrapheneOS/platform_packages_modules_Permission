@@ -452,6 +452,9 @@
             <permission name="android.permission.ALLOW_SLIPPERY_TOUCHES" minSdkVersion="33" optionalMinSdkVersion="30" />
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35" />
         </permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <!--- @see android.telecom.CallRedirectionService -->
@@ -561,6 +564,9 @@
             <app-op-permission name="android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER" />
             <app-op-permission name="android.permission.MEDIA_ROUTING_CONTROL" minSdkVersion="35" />
         </app-op-permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <role
@@ -594,6 +600,9 @@
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
             <permission name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT" minSdkVersion="35" />
         </permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <role
@@ -984,6 +993,9 @@
                  notifications with sensitive content unredacted-->
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
         </permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <!---
@@ -1140,6 +1152,9 @@
                  notifications with sensitive content unredacted-->
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
         </permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <!---
@@ -1205,6 +1220,9 @@
                  notifications with sensitive content unredacted-->
             <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS" minSdkVersion="35"/>
        </permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <role
@@ -1228,6 +1246,9 @@
        <app-op-permissions>
            <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
        </app-op-permissions>
+        <app-ops>
+            <app-op name="android:receive_sensitive_notifications" mode="allowed" minSdkVersion="35"/>
+        </app-ops>
     </role>
 
     <role

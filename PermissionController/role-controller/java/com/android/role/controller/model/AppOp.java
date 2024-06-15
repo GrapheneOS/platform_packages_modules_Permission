@@ -18,11 +18,13 @@ package com.android.role.controller.model;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.role.controller.util.PackageUtils;
 
 import java.util.Objects;
@@ -45,13 +47,20 @@ public class AppOp {
     private final Integer mMaxTargetSdkVersion;
 
     /**
+     * The minimum device SDK version for this app op to be granted
+     */
+    private final int mMinSdkVersion;
+
+    /**
      * The mode of this app op when granted.
      */
     private final int mMode;
 
-    public AppOp(@NonNull String name, @Nullable Integer maxTargetSdkVersion, int mode) {
+    public AppOp(@NonNull String name, @Nullable Integer maxTargetSdkVersion, int minSdkVersion,
+            int mode) {
         mName = name;
         mMaxTargetSdkVersion = maxTargetSdkVersion;
+        mMinSdkVersion = minSdkVersion;
         mMode = mode;
     }
 
@@ -63,6 +72,10 @@ public class AppOp {
     @Nullable
     public Integer getMaxTargetSdkVersion() {
         return mMaxTargetSdkVersion;
+    }
+
+    public int getMindSdkVersion() {
+        return mMinSdkVersion;
     }
 
     public int getMode() {
@@ -80,7 +93,7 @@ public class AppOp {
      */
     public boolean grantAsUser(@NonNull String packageName, @NonNull UserHandle user,
             @NonNull Context context) {
-        if (!checkTargetSdkVersionAsUser(packageName, user, context)) {
+        if (!isAvailableAsUser(packageName, user, context)) {
             return false;
         }
         return Permissions.setAppOpUidModeAsUser(packageName, mName, mMode, user, context);
@@ -97,15 +110,20 @@ public class AppOp {
      */
     public boolean revokeAsUser(@NonNull String packageName, @NonNull UserHandle user,
             @NonNull Context context) {
-        if (!checkTargetSdkVersionAsUser(packageName, user, context)) {
+        if (!isAvailableAsUser(packageName, user, context)) {
             return false;
         }
         int defaultMode = Permissions.getDefaultAppOpMode(mName);
         return Permissions.setAppOpUidModeAsUser(packageName, mName, defaultMode, user, context);
     }
 
-    private boolean checkTargetSdkVersionAsUser(@NonNull String packageName,
+    private boolean isAvailableAsUser(@NonNull String packageName,
             @NonNull UserHandle user, @NonNull Context context) {
+        if (!(Build.VERSION.SDK_INT >= mMinSdkVersion
+                // Workaround to match the value 35 for V in roles.xml before SDK finalization.
+                || (mMinSdkVersion == 35 && SdkLevel.isAtLeastV()))) {
+            return false;
+        }
         if (mMaxTargetSdkVersion == null) {
             return true;
         }
@@ -122,6 +140,7 @@ public class AppOp {
         return "AppOp{"
                 + "mName='" + mName + '\''
                 + ", mMaxTargetSdkVersion=" + mMaxTargetSdkVersion
+                + ", mMinSdkVersion=" + mMinSdkVersion
                 + ", mMode=" + mMode
                 + '}';
     }
@@ -135,13 +154,14 @@ public class AppOp {
             return false;
         }
         AppOp appOp = (AppOp) object;
-        return mMode == appOp.mMode
+        return mMinSdkVersion == appOp.mMinSdkVersion
+                && mMode == appOp.mMode
                 && Objects.equals(mName, appOp.mName)
                 && Objects.equals(mMaxTargetSdkVersion, appOp.mMaxTargetSdkVersion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mName, mMaxTargetSdkVersion, mMode);
+        return Objects.hash(mName, mMaxTargetSdkVersion, mMinSdkVersion, mMode);
     }
 }
