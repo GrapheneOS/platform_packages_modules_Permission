@@ -868,6 +868,8 @@ public class RoleManagerTest {
         waitForIdle();
         waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(false))
                     .hasDescendant(By.text(APP_LABEL))).click();
+        waitFindObject(By.clickable(true).hasDescendant(By.checkable(true).checked(true))
+                    .hasDescendant(By.text(APP_LABEL)));
 
         assertIsRoleHolderAsUser(ROLE_NAME, APP_PACKAGE_NAME, true, privateProfile);
 

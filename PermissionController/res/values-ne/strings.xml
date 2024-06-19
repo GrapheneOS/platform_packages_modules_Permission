@@ -563,7 +563,7 @@
     <string name="automotive_blocked_microphone_title" msgid="3956311098238620220">"माइक्रोफोन एक्सेस अफ गरिएको छ"</string>
     <string name="automotive_blocked_location_title" msgid="6047574747593264689">"लोकेसन एक्सेस अफ गरिएको छ"</string>
     <string name="automotive_blocked_infotainment_app_summary" msgid="8217099645064950860">"इन्फोटेनमेन्ट एपहरूका लागि"</string>
-    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"अनिवार्य रूपमा इन्स्टल गर्नु पर्ने एपहरूका लागि"</string>
+    <string name="automotive_blocked_required_app_summary" msgid="8591513745681168088">"आवश्यक एपहरूका लागि"</string>
     <string name="automotive_required_app_title" msgid="2992168288249988735">"यो एप अनिवार्य रूपमा इन्स्टल गर्नु पर्छ"</string>
     <string name="automotive_required_app_summary" msgid="6514902316658090465">"तपाईंको कारको उत्पादकले व्यवस्था गरेबमोजिम यो एप अनिवार्य रूपमा इन्स्टल गर्नु पर्छ"</string>
     <string name="safety_center_dashboard_page_title" msgid="2810774008694315854">"सुरक्षा तथा गोपनीयता"</string>

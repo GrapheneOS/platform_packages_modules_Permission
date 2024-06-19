@@ -1223,6 +1223,9 @@ public class RoleParser {
     }
 
     private void validateAppOp(@NonNull AppOp appOp) {
+        if (!appOp.isAvailableBySdkVersion()) {
+            return;
+        }
         // This throws IllegalArgumentException if app op is unknown.
         String permission = AppOpsManager.opToPermission(appOp.getName());
         if (permission != null) {

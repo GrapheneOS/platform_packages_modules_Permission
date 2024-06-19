@@ -74,7 +74,7 @@ public class AppOp {
         return mMaxTargetSdkVersion;
     }
 
-    public int getMindSdkVersion() {
+    public int getMinSdkVersion() {
         return mMinSdkVersion;
     }
 
@@ -117,11 +117,15 @@ public class AppOp {
         return Permissions.setAppOpUidModeAsUser(packageName, mName, defaultMode, user, context);
     }
 
+    public boolean isAvailableBySdkVersion() {
+        return Build.VERSION.SDK_INT >= mMinSdkVersion
+                // Workaround to match the value 35 for V in roles.xml before SDK finalization.
+                || (mMinSdkVersion == 35 && SdkLevel.isAtLeastV());
+    }
+
     private boolean isAvailableAsUser(@NonNull String packageName,
             @NonNull UserHandle user, @NonNull Context context) {
-        if (!(Build.VERSION.SDK_INT >= mMinSdkVersion
-                // Workaround to match the value 35 for V in roles.xml before SDK finalization.
-                || (mMinSdkVersion == 35 && SdkLevel.isAtLeastV()))) {
+        if (!isAvailableBySdkVersion()) {
             return false;
         }
         if (mMaxTargetSdkVersion == null) {
