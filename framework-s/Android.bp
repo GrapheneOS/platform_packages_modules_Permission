@@ -107,4 +107,7 @@ java_sdk_library {
         "android.permission.flags-aconfig",
         "com.android.permission.flags-aconfig",
     ],
+    lint: {
+        baseline_filename: "lint-baseline-framework-permission-s.xml",
+    },
 }

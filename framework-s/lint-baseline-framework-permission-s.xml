@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.4.0-alpha08" type="baseline" client="" dependencies="true" name="" variant="all" version="8.4.0-alpha08">
+
+    <issue
+        id="FlaggedApi"
+        message="Method `onGetLegacyFallbackDisabledRoles()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `getLegacyFallbackDisabledRoles` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="                    List&lt;String> legacyFallbackDisabledRoles = onGetLegacyFallbackDisabledRoles();"
+        errorLine2="                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/framework-s/java/android/app/role/RoleControllerService.java"
+            line="197"
+            column="64"/>
+    </issue>
+
+</issues>
