@@ -44,6 +44,7 @@ android_test {
         "platform-test-annotations",
         "android.content.pm.flags-aconfig-java-export",
         "android.permission.flags-aconfig-java-export",
+        "Harrier",
     ],
     data: [
         ":CtsPermissionPolicyApp25",
