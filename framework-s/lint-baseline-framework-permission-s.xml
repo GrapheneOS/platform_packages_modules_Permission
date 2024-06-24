@@ -12,4 +12,15 @@
             column="64"/>
     </issue>
 
+    <issue
+        id="FlaggedApi"
+        message="Method `onGetLegacyFallbackDisabledRoles()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `getLegacyFallbackDisabledRoles` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="                List&lt;String> legacyFallbackDisabledRoles = onGetLegacyFallbackDisabledRoles();"
+        errorLine2="                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/framework-s/java/android/app/role/RoleControllerService.java"
+            line="189"
+            column="60"/>
+    </issue>
+
 </issues>

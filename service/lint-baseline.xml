@@ -100,4 +100,59 @@
             column="9"/>
     </issue>
 
+    <issue
+        id="FlaggedApi"
+        message="Method `RolesState()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `writeFile` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="            roles = new RolesState(mVersion, packagesHash,"
+        errorLine2="                    ^">
+        <location
+            file="packages/modules/Permission/service/java/com/android/role/RoleUserState.java"
+            line="450"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FlaggedApi"
+        message="Method `getFallbackEnabledRoles()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `readFile` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="                fallbackEnabledRoles = roleState.getFallbackEnabledRoles();"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/service/java/com/android/role/RoleUserState.java"
+            line="468"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="FlaggedApi"
+        message="Method `RolesState()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `parseRoles` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="        return new RolesState(version, packagesHash, roles, fallbackEnabledRoles);"
+        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/service/java/com/android/role/persistence/RolesPersistenceImpl.java"
+            line="167"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="FlaggedApi"
+        message="Method `getFallbackEnabledRoles()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `serializeRoles` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="        Set&lt;String> fallbackEnabledRoles = roles.getFallbackEnabledRoles();"
+        errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/service/java/com/android/role/persistence/RolesPersistenceImpl.java"
+            line="247"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="FlaggedApi"
+        message="Method `RolesState()` is a flagged API and should be inside an `if (Flags.systemServerRoleControllerEnabled())` check (or annotate the surrounding method `RolesState` with `@FlaggedApi(Flags.FLAG_SYSTEM_SERVER_ROLE_CONTROLLER_ENABLED) to transfer requirement to caller`)"
+        errorLine1="        this(version, packagesHash, roles, roles.keySet());"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="packages/modules/Permission/service/java/com/android/role/persistence/RolesState.java"
+            line="70"
+            column="9"/>
+    </issue>
+
 </issues>
