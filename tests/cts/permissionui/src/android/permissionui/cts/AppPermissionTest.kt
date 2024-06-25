@@ -356,22 +356,6 @@ class AppPermissionTest : BaseUsePermissionTest() {
         pressBack()
     }
 
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
-    @Test
-    fun installWithUnspecifiedSource_disabledAllowRadioButtonAndIfClickedAndRestrictedSettingDialog_SMSPermGroup() {
-        installPackageViaSession(APP_APK_NAME_LATEST)
-
-        navigateToIndividualPermissionSetting(SMS)
-
-        assertAllowButtonIsDisabledAndRestrictedSettingDialogPoppedUp()
-
-        pressBack()
-
-        pressBack()
-    }
-
     private fun assertAllowButtonIsEnabledAndClickAndChecked() {
         waitFindObject(By.res(ALLOW_RADIO_BUTTON).enabled(true).checked(false))
             .click()

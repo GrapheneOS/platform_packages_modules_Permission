@@ -286,14 +286,6 @@ public class EnhancedConfirmationService extends SystemService {
             String installingPackageName = installSource.getInstallingPackageName();
             ApplicationInfo installingApplicationInfo =
                     getApplicationInfoAsUser(installingPackageName, userId);
-            // TODO(b/330927429): We might need a long-term solution to persist the installer's
-            //  targetSdkVersion if it is uninstalled.
-            if (packageSource == PackageInstaller.PACKAGE_SOURCE_UNSPECIFIED
-                    && installingApplicationInfo != null
-                    && installingApplicationInfo.targetSdkVersion
-                    >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-                        return true;
-            }
 
             // ECM doesn't consider a transitive chain of trust for install sources.
             // If this package hasn't been explicitly handled by this point
