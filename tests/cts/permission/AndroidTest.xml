@@ -74,6 +74,7 @@
         <option name="push" value="CtsAppThatRequestsLocationPermission29v4.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsLocationPermission29v4.apk" />
         <option name="push" value="CtsAppThatRequestsLocationPermission28.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsLocationPermission28.apk" />
         <option name="push" value="CtsAppThatRequestsLocationPermission22.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsLocationPermission22.apk" />
+        <option name="push" value="CtsAppThatRequestsStoragePermission22.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsStoragePermission22.apk" />
         <option name="push" value="CtsAppThatRequestsStoragePermission29.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsStoragePermission29.apk" />
         <option name="push" value="CtsAppThatRequestsStoragePermission28.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsStoragePermission28.apk" />
         <option name="push" value="CtsAppThatRequestsLocationAndBackgroundPermission28.apk->/data/local/tmp/cts-permission/CtsAppThatRequestsLocationAndBackgroundPermission28.apk" />

@@ -103,6 +103,7 @@ android_test {
         ":CtsAppThatRequestsOneTimePermission",
         ":CtsAppThatRequestsPermissionAandB",
         ":CtsAppThatRequestsPermissionAandC",
+        ":CtsAppThatRequestsStoragePermission22",
         ":CtsAppThatRequestsStoragePermission28",
         ":CtsAppThatRequestsStoragePermission29",
         ":CtsAppThatRunsRationaleTests",

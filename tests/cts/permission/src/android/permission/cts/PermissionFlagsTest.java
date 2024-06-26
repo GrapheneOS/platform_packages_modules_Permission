@@ -18,6 +18,7 @@ package android.permission.cts;
 
 import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_MEDIA_LOCATION;
 import static android.Manifest.permission.READ_CALL_LOG;
 import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.SYSTEM_ALERT_WINDOW;
@@ -73,6 +74,8 @@ public class PermissionFlagsTest {
             TMP_DIR + "CtsAppThatRequestsLocationPermission22.apk";
     private static final String APK_LOCATION_28 =
             TMP_DIR + "CtsAppThatRequestsLocationPermission28.apk";
+    private static final String APK_STORAGE_22 =
+            TMP_DIR + "CtsAppThatRequestsStoragePermission22.apk";
     private static final String APK_SYSTEM_ALERT_WINDOW_23 =
             TMP_DIR + "CtsAppThatRequestsSystemAlertWindow23.apk";
 
@@ -89,6 +92,16 @@ public class PermissionFlagsTest {
 
         assertEquals(FLAG_PERMISSION_REVOKE_WHEN_REQUESTED,
                 getPermissionFlags(APP_PKG, ACCESS_BACKGROUND_LOCATION));
+    }
+
+    @Test
+    public void implicitPermissionPreM() throws Exception {
+        install(APK_STORAGE_22);
+
+        // Test ACCESS_MEDIA_LOCATION which is split from READ_EXTERNAL_STORAGE but won't get
+        // REVOKE_ON_UPGRADE, while it should still get REVIEW_REQUIRED when pre-M.
+        assertEquals(FLAG_PERMISSION_REVIEW_REQUIRED, getPermissionFlags(APP_PKG,
+                ACCESS_MEDIA_LOCATION) & FLAG_PERMISSION_REVIEW_REQUIRED);
     }
 
     @Test

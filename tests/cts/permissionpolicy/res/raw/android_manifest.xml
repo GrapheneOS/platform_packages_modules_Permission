@@ -5472,6 +5472,14 @@
     <permission android:name="android.permission.TUNER_RESOURCE_ACCESS"
          android:protectionLevel="signature|privileged|vendorPrivileged" />
 
+    <!-- This permission is required among systems services to always keep the
+         binding with TvInputManagerService.
+         <p>Protection level: signature|privileged|vendorPrivileged
+         <p>This should only be used by the OEM TvInputService.
+         @hide -->
+    <permission android:name="android.permission.ALWAYS_BOUND_TV_INPUT"
+        android:protectionLevel="signature|privileged|vendorPrivileged" />
+
     <!-- @SystemApi This permission is required by Media Resource Manager Service when
          system services create MediaCodecs on behalf of other processes and apps.
          <p>Protection level: signature|privileged|vendorPrivileged
