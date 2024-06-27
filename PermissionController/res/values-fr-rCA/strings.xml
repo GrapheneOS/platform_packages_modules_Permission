@@ -195,7 +195,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Position exacte"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Position approximative"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utiliser la position exacte"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Si la position exacte est désactivée, les applications ont accès à votre position approximative"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Si la position exacte est désactivée, les applis ont accès à votre position approximative"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorisation : <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accès pour cette appli : <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"Accès <xliff:g id="PERM">%1$s</xliff:g> pour cette application sur <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>

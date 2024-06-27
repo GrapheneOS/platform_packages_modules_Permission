@@ -195,7 +195,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"الموقع الجغرافي الدقيق"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"الموقع الجغرافي التقريبي"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"استخدام الموقع الجغرافي الدقيق"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"عندما يكون الموقع الجغرافي الدقيق غير مفعّل، يمكن للتطبيقات الوصول إلى الموقع الجغرافي التقريبي"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"التطبيقات يمكنها الوصول إلى الموقع الجغرافي التقريبي عندما يكون الموقع الجغرافي الدقيق غير مفعّل"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"إذن <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"منح هذا التطبيق الإذن بالوصول إلى <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"إذن \"<xliff:g id="PERM">%1$s</xliff:g>\" لهذا التطبيق على \"<xliff:g id="DEVICE_NAME">%2$s</xliff:g>\""</string>

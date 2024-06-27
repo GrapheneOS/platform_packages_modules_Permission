@@ -42,6 +42,7 @@ import android.app.usage.UsageStatsManager.INTERVAL_DAILY
 import android.app.usage.UsageStatsManager.INTERVAL_MONTHLY
 import android.content.BroadcastReceiver
 import android.content.ComponentName
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
@@ -49,6 +50,8 @@ import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.database.ContentObserver
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
@@ -59,6 +62,7 @@ import android.printservice.PrintService
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import android.provider.Settings
+import android.provider.Settings.Secure.USER_SETUP_COMPLETE
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -105,13 +109,13 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
-import java.util.Date
-import java.util.Random
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.Date
+import java.util.Random
+import java.util.concurrent.TimeUnit
 
 private const val LOG_TAG = "HibernationPolicy"
 const val DEBUG_OVERRIDE_THRESHOLDS = false
@@ -144,7 +148,7 @@ private fun getCheckFrequencyMs() =
 // Intentionally kept value of the key same as before because we want to continue reading value of
 // this shared preference stored by previous versions of PermissionController
 const val PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING = "first_boot_time"
-const val PREF_KEY_BOOT_TIME_SNAPSHOT = "ah_boot_time_snapshot"
+const val PREF_KEY_SYSTEM_TIME_SNAPSHOT = "ah_boot_time_snapshot"
 const val PREF_KEY_ELAPSED_REALTIME_SNAPSHOT = "ah_elapsed_realtime_snapshot"
 
 private const val PREFS_FILE_NAME = "unused_apps_prefs"
@@ -274,7 +278,29 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
+        val contentResolver = context.contentResolver
         if (action == Intent.ACTION_BOOT_COMPLETED || action == ACTION_SET_UP_HIBERNATION) {
+            if (isUserSetupComplete(contentResolver)) {
+                maybeInitStartTimeUnusedAppTracking(context.sharedPreferences)
+            } else {
+                // User set-up is not complete. Delay this until it is.
+                // This is best-effort as the process may be killed before set-up completes
+                // which prevents this callback from being called.
+                // In that case, unused app tracking will instead start when the job first runs
+                contentResolver.registerContentObserver(
+                    Settings.Secure.getUriFor(USER_SETUP_COMPLETE),
+                    /* notifyForDescendants= */ false,
+                    object : ContentObserver(/* handler= */ null) {
+                        override fun onChange(selfChange: Boolean, uri: Uri?) {
+                            if (uri == Settings.Secure.getUriFor(USER_SETUP_COMPLETE)
+                                && isUserSetupComplete(contentResolver)) {
+                                contentResolver.unregisterContentObserver(this)
+                                maybeInitStartTimeUnusedAppTracking(context.sharedPreferences)
+                            }
+                        }
+                    }
+                )
+            }
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(
                     LOG_TAG,
@@ -284,7 +310,7 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
                 )
             }
 
-            initStartTimeOfUnusedAppTracking(context.sharedPreferences)
+            setSystemTimeSnapshots(context.sharedPreferences)
 
             // If this user is a profile, then its hibernation/auto-revoke will be handled by the
             // primary user
@@ -329,7 +355,7 @@ class HibernationBroadcastReceiver : BroadcastReceiver() {
             }
         }
         if (action == Intent.ACTION_TIME_CHANGED || action == Intent.ACTION_TIMEZONE_CHANGED) {
-            adjustStartTimeOfUnusedAppTracking(context.sharedPreferences)
+            adjustSnapshotTimes(context.sharedPreferences)
         }
     }
 
@@ -764,7 +790,7 @@ internal class SystemTime {
 private fun getSystemTime(sharedPreferences: SharedPreferences): SystemTime {
     val systemTime = SystemTime()
     val systemTimeSnapshot =
-        sharedPreferences.getLong(PREF_KEY_BOOT_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
+        sharedPreferences.getLong(PREF_KEY_SYSTEM_TIME_SNAPSHOT, SNAPSHOT_UNINITIALIZED)
     if (systemTimeSnapshot == SNAPSHOT_UNINITIALIZED) {
         DumpableLog.e(LOG_TAG, "PREF_KEY_BOOT_TIME_SNAPSHOT is not initialized")
         return systemTime
@@ -803,7 +829,7 @@ fun getStartTimeOfUnusedAppTracking(sharedPreferences: SharedPreferences): Long 
     val diffSystemTime = getSystemTime(sharedPreferences).diffSystemTime
     // If the value stored is older than a day adjust start time.
     if (diffSystemTime > ONE_DAY_MS) {
-        adjustStartTimeOfUnusedAppTracking(sharedPreferences)
+        adjustSnapshotTimes(sharedPreferences)
     }
     return sharedPreferences.getLong(
         PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
@@ -811,7 +837,10 @@ fun getStartTimeOfUnusedAppTracking(sharedPreferences: SharedPreferences): Long 
     )
 }
 
-private fun initStartTimeOfUnusedAppTracking(sharedPreferences: SharedPreferences) {
+/**
+ * Init the start time of unused apps tracking if it has not been initialized before
+ */
+private fun maybeInitStartTimeUnusedAppTracking(sharedPreferences: SharedPreferences) {
     val systemTimeSnapshot = System.currentTimeMillis()
     if (
         sharedPreferences.getLong(
@@ -824,33 +853,43 @@ private fun initStartTimeOfUnusedAppTracking(sharedPreferences: SharedPreference
             .putLong(PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING, systemTimeSnapshot)
             .apply()
     }
+}
+
+private fun setSystemTimeSnapshots(sharedPreferences: SharedPreferences) {
+    val systemTimeSnapshot = System.currentTimeMillis()
     val realtimeSnapshot = SystemClock.elapsedRealtime()
     sharedPreferences
         .edit()
-        .putLong(PREF_KEY_BOOT_TIME_SNAPSHOT, systemTimeSnapshot)
+        .putLong(PREF_KEY_SYSTEM_TIME_SNAPSHOT, systemTimeSnapshot)
         .putLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT, realtimeSnapshot)
         .apply()
 }
 
-private fun adjustStartTimeOfUnusedAppTracking(sharedPreferences: SharedPreferences) {
+private fun adjustSnapshotTimes(sharedPreferences: SharedPreferences) {
     val systemTime = getSystemTime(sharedPreferences)
+    val editor = sharedPreferences
+        .edit()
+        .putLong(PREF_KEY_SYSTEM_TIME_SNAPSHOT, systemTime.actualSystemTime)
+        .putLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT, systemTime.actualRealtime)
+
     val startTimeOfUnusedAppTracking =
         sharedPreferences.getLong(
             PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
             SNAPSHOT_UNINITIALIZED
         )
     if (startTimeOfUnusedAppTracking == SNAPSHOT_UNINITIALIZED) {
-        DumpableLog.e(LOG_TAG, "PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING is not initialized")
-        return
+        DumpableLog.w(LOG_TAG, "PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING is not initialized")
+    } else {
+        val adjustedStartTimeOfUnusedAppTracking =
+                startTimeOfUnusedAppTracking + systemTime.diffSystemTime
+        editor.putLong(PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING,
+                adjustedStartTimeOfUnusedAppTracking)
     }
-    val adjustedStartTimeOfUnusedAppTracking =
-        startTimeOfUnusedAppTracking + systemTime.diffSystemTime
-    sharedPreferences
-        .edit()
-        .putLong(PREF_KEY_START_TIME_OF_UNUSED_APP_TRACKING, adjustedStartTimeOfUnusedAppTracking)
-        .putLong(PREF_KEY_BOOT_TIME_SNAPSHOT, systemTime.actualSystemTime)
-        .putLong(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT, systemTime.actualRealtime)
-        .apply()
+    editor.apply()
+}
+
+private fun isUserSetupComplete(contentResolver: ContentResolver): Boolean {
+    return Settings.Secure.getInt(contentResolver, USER_SETUP_COMPLETE, 0) != 0
 }
 
 /** Make intent to go to unused apps page. */
@@ -900,6 +939,16 @@ class HibernationJobService : JobService() {
         if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "onStartJob")
         }
+
+        if (!isUserSetupComplete(contentResolver)) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Skipping hibernation job because set-up is not complete")
+            }
+            jobFinished(params, /* wantsReschedule= */ true)
+            return true
+        }
+
+        maybeInitStartTimeUnusedAppTracking(sharedPreferences)
 
         if (SKIP_NEXT_RUN) {
             SKIP_NEXT_RUN = false

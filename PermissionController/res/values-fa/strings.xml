@@ -265,11 +265,11 @@
     <string name="permission_reminders" msgid="6528257957664832636">"یادآوری‌های مجوز"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"۱ برنامه استفاده‌نشده"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> برنامه استفاده‌نشده"</string>
-    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"برای محافظت از حریم خصوصی شما، اجازه‌ها برداشته شد. برای مرور، ضربه بزنید"</string>
+    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"برای محافظت از حریم خصوصی شما، اجازه‌ها برداشته شد. برای مرور، تک‌ضرب بزنید"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"اجازه‌های مربوط به برنامه‌های استفاده‌نشده برداشته شد"</string>
-    <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
+    <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند. برای مرور، تک‌ضرب بزنید."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# برنامه استفاده‌نشده}one{# برنامه استفاده‌نشده}other{# برنامه استفاده‌نشده}}"</string>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازه‌ها و فایل‌های موقت حذف شده‌اند و اعلان‌ها متوقف شده‌اند. برای مرور، ضربه بزنید."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازه‌ها و فایل‌های موقت حذف شده‌اند و اعلان‌ها متوقف شده‌اند. برای مرور، تک‌ضرب بزنید."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"مرور برنامه‌هایی که اجازه‌های آن‌ها برداشته شده است"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"اجازه‌ها و فایل‌های موقت مربوط به برنامه‌هایی که مدتی از آن‌ها استفاده نکرده‌اید برداشته شدند و اعلان‌ها متوقف شدند."</string>
     <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"مرور برنامه‌ها"</string>
@@ -286,7 +286,7 @@
     <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> ماه قبل"</string>
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"برای محافظت از حریم خصوصی شما، اجازه‌ها برداشته شد"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> به موقعیت مکانی شما در پس‌زمینه دسترسی دارد"</string>
-    <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"این برنامه همیشه می‌تواند به مکانتان دسترسی داشته باشد. برای تغییر دادن، ضربه بزنید."</string>
+    <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"این برنامه همیشه می‌تواند به مکانتان دسترسی داشته باشد. برای تغییر دادن، تک‌ضرب بزنید."</string>
     <string name="notification_listener_reminder_notification_title" msgid="3747210460187479091">"مرور برنامهٔ دارای دسترسی به اعلان‌ها"</string>
     <string name="notification_listener_reminder_notification_content" msgid="831476101108863427">"<xliff:g id="APP_NAME">%s</xliff:g> می‌تواند اعلان‌ها را رد کند، روی آن‌ها کنش انجام دهد، و به محتوای داخل آن‌ها دسترسی داشته باشد"</string>
     <string name="notification_listener_warning_card_content" msgid="7840973324284115893">"این برنامه می‌تواند اعلان‌ها را رد کند، روی آن‌ها کنش انجام دهد، و به محتوای داخل آن‌ها دسترسی داشته باشد. برخی برنامه‌ها به این نوع دسترسی نیاز دارند تا طبق برنامه کار کنند."</string>
@@ -301,12 +301,12 @@
     <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"دسترسی برداشته شد"</string>
     <string name="safety_center_notification_app_label" msgid="2457720616141926534">"‏سیستم Android"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"برای محافظت از حریم خصوصی، اجازه‌های برنامه برداشته شدند"</string>
-    <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> طی چند ماه استفاده نشده است. برای مرور، ضربه بزنید."</string>
-    <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> و ۱ برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
-    <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"<xliff:g id="APP_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
+    <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> طی چند ماه استفاده نشده است. برای مرور، تک‌ضرب بزنید."</string>
+    <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> و ۱ برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، تک‌ضرب بزنید."</string>
+    <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"<xliff:g id="APP_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> برنامه دیگر طی چند ماه استفاده نشده‌اند. برای مرور، تک‌ضرب بزنید."</string>
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"۱ برنامه استفاده نشده است"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> برنامه استفاده نشده‌اند"</string>
-    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"برای محافظت از حریم خصوصی، اجازه‌ها برداشته خواهند شد. برای مرور، ضربه بزنید."</string>
+    <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"برای محافظت از حریم خصوصی، اجازه‌ها برداشته خواهند شد. برای مرور، تک‌ضرب بزنید."</string>
     <string name="unused_apps_title" msgid="8589298917717872239">"برنامه‌های استفاده‌نشده"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"اجازه‌ها از این برنامه‌ها برداشته شد"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"اجازه‌ها از این برنامه‌ها برداشته خواهند شد"</string>
