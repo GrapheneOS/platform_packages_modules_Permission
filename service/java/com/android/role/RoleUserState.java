@@ -515,8 +515,7 @@ class RoleUserState {
 
             long rolesToken = dumpOutputStream.start("roles", RoleUserStateProto.ROLES);
             dumpOutputStream.write("name", RoleProto.NAME, roleName);
-            dumpOutputStream.write("fallback_enabled", RoleProto.FALLBACK_ENABLED,
-                    Boolean.toString(fallbackEnabled));
+            dumpOutputStream.write("fallback_enabled", RoleProto.FALLBACK_ENABLED, fallbackEnabled);
             int roleHoldersSize = roleHolders.size();
             for (int roleHoldersIndex = 0; roleHoldersIndex < roleHoldersSize; roleHoldersIndex++) {
                 String roleHolder = roleHolders.valueAt(roleHoldersIndex);

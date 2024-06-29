@@ -52,6 +52,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.text.BidiFormatter;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -119,10 +120,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull RadioButton mAllowForegroundButton;
     private @NonNull RadioButton mAskOneTimeButton;
     private @NonNull RadioButton mAskButton;
-    private @NonNull RadioButton mAllowLimitedButton;
+    private @NonNull RadioButton mSelectButton;
     private @NonNull RadioButton mDenyButton;
     private @NonNull RadioButton mDenyForegroundButton;
-    private @NonNull ImageView mSelectPhotosButton;
+    private @NonNull ImageView mEditSelectedPhotosButton;
     private @NonNull View mAllowLimitedPhotosLayout;
     private @NonNull View mSelectPhotosDivider;
     private @NonNull View mLocationAccuracy;
@@ -280,7 +281,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
         mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
         mAskButton = root.requireViewById(R.id.ask_radio_button);
-        mAllowLimitedButton = root.requireViewById(R.id.select_radio_button);
+        mSelectButton = root.requireViewById(R.id.select_radio_button);
         mDenyButton = root.requireViewById(R.id.deny_radio_button);
         mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
 
@@ -290,7 +291,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mLocationAccuracy = root.requireViewById(R.id.location_accuracy);
         mLocationAccuracySwitch = root.requireViewById(R.id.location_accuracy_switch);
         mAllowLimitedPhotosLayout = root.requireViewById(R.id.radio_select_layout);
-        mSelectPhotosButton = root.requireViewById(R.id.edit_selected_button);
+        mEditSelectedPhotosButton = root.requireViewById(R.id.edit_selected_button);
         mSelectPhotosDivider = root.requireViewById(R.id.edit_photos_divider);
         mNestedScrollView = root.requireViewById(R.id.nested_scroll_view);
 
@@ -307,7 +308,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             mLocationAccuracy.setVisibility(View.GONE);
             mAllowLimitedPhotosLayout.setVisibility(View.GONE);
             mSelectPhotosDivider.setAlpha(0f);
-            mSelectPhotosButton.setAlpha(0f);
+            mEditSelectedPhotosButton.setAlpha(0f);
         }
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized() && mIsStorageGroup) {
@@ -408,6 +409,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
         mAllowButtonFrame.setOnClickListener((v) -> allowButtonFrameClickListener());
         mAllowAlwaysButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.ALLOW_ALWAYS);
             if (mIsStorageGroup) {
                 showConfirmDialog(ChangeRequest.GRANT_ALL_FILE_ACCESS,
                         R.string.special_file_access_dialog, -1, false);
@@ -418,6 +420,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             setResult(GRANTED_ALWAYS);
         });
         mAllowForegroundButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.ALLOW_FOREGROUND);
             if (mIsStorageGroup) {
                 mViewModel.setAllFilesAccess(false);
                 mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_BOTH,
@@ -429,19 +432,24 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 setResult(GRANTED_FOREGROUND_ONLY);
             }
         });
-        // mAskOneTimeButton only shows if checked hence should do nothing
+        mAskOneTimeButton.setOnClickListener((v) -> {
+            // mAskOneTimeButton only shows if checked hence should do nothing
+            markSingleButtonAsChecked(ButtonType.ASK_ONCE);
+        });
         mAskButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.ASK);
             mViewModel.requestChange(true, this, this, ChangeRequest.REVOKE_BOTH,
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ASK_EVERY_TIME);
             setResult(DENIED);
         });
-        mAllowLimitedButton.setOnClickListener((v) -> {
+        mSelectButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.SELECT_PHOTOS);
             int buttonPressed =
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PHOTOS_SELECTED;
             mViewModel.requestChange(false, this, this, ChangeRequest.PHOTOS_SELECTED,
                     buttonPressed);
         });
-        mSelectPhotosButton.setOnClickListener((v) -> {
+        mEditSelectedPhotosButton.setOnClickListener((v) -> {
             ButtonState selectState = states.get(ButtonType.SELECT_PHOTOS);
             if (selectState != null && selectState.isChecked() && !mPhotoPickerTriggered) {
                 mPhotoPickerTriggered = true;
@@ -449,6 +457,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             }
         });
         mDenyButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.DENY);
             if (mViewModel.getFullStorageStateLiveData().getValue() != null
                     && !mViewModel.getFullStorageStateLiveData().getValue().isLegacy()) {
                 mViewModel.setAllFilesAccess(false);
@@ -458,6 +467,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             setResult(DENIED_DO_NOT_ASK_AGAIN);
         });
         mDenyForegroundButton.setOnClickListener((v) -> {
+            markSingleButtonAsChecked(ButtonType.DENY_FOREGROUND);
             mViewModel.requestChange(false, this, this, ChangeRequest.REVOKE_FOREGROUND,
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND);
             setResult(DENIED_DO_NOT_ASK_AGAIN);
@@ -485,8 +495,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         setButtonState(mAskButton, states.get(ButtonType.ASK));
         setButtonState(mDenyButton, states.get(ButtonType.DENY));
         setButtonState(mDenyForegroundButton, states.get(ButtonType.DENY_FOREGROUND));
-        setButtonState(mAllowLimitedButton, states.get(ButtonType.SELECT_PHOTOS));
-        if (mAllowLimitedButton.getVisibility() == View.VISIBLE) {
+        setButtonState(mSelectButton, states.get(ButtonType.SELECT_PHOTOS));
+        if (mSelectButton.getVisibility() == View.VISIBLE) {
             mAllowButton.setText(R.string.app_permission_button_always_allow_all);
         } else {
             mAllowButton.setText(R.string.app_permission_button_allow);
@@ -515,7 +525,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         if (!mAllowButton.isEnabled()) {
             mViewModel.handleDisabledAllowButton(this);
         } else {
-            mAllowButton.setChecked(true);
+            markSingleButtonAsChecked(ButtonType.ALLOW);
             mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FOREGROUND,
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW);
             setResult(GRANTED_ALWAYS);
@@ -533,16 +543,16 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             button.jumpDrawablesToCurrentState();
         }
 
-        if (button == mAllowLimitedButton) {
+        if (button == mSelectButton) {
             mAllowLimitedPhotosLayout.setVisibility(visible);
             float endOpacity = state.isChecked() ? 1f : 0f;
             // On initial load, do not show the fade in/out animation
             if (mIsInitialLoad) {
                 mSelectPhotosDivider.setAlpha(endOpacity);
-                mSelectPhotosButton.setAlpha(endOpacity);
+                mEditSelectedPhotosButton.setAlpha(endOpacity);
                 return;
             }
-            mSelectPhotosButton.animate().alpha(endOpacity)
+            mEditSelectedPhotosButton.animate().alpha(endOpacity)
                     .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
             mSelectPhotosDivider.animate().alpha(endOpacity)
                     .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
@@ -668,6 +678,24 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         defaultDenyDialog.setArguments(args);
         defaultDenyDialog.show(getChildFragmentManager().beginTransaction(),
                 ConfirmDialog.class.getName());
+    }
+
+    private void markSingleButtonAsChecked(ButtonType buttonToMarkChecked) {
+        if (!mViewModel.getButtonStateLiveData().isInitialized()) {
+            return;
+        }
+        Map<ButtonType, ButtonState> currentStates = mViewModel.getButtonStateLiveData().getValue();
+        Map<ButtonType, ButtonState> newStates = new ArrayMap<>();
+        for (ButtonType button: currentStates.keySet()) {
+            ButtonState state = currentStates.get(button);
+            boolean isChecked = button == buttonToMarkChecked
+                    // Don't uncheck the Location Accuracy switch, if it is checked
+                    || (button == ButtonType.LOCATION_ACCURACY && state.isChecked());
+            ButtonState newState = new ButtonState(isChecked, state.isEnabled(), state.isShown(),
+                    state.getCustomRequest());
+            newStates.put(button, newState);
+        }
+        setRadioButtonsState(newStates);
     }
 
     /**

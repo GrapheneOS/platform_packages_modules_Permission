@@ -4,8 +4,10 @@ include platform/frameworks/base:/core/java/android/permission/OWNERS
 stenning@google.com
 
 # For television related changes
-aabdagic@google.com
-robhor@google.com
+per-file TELEVISION_OWNERS = file:/PermissionController/TELEVISION_OWNERS
+per-file src/com/android/permissioncontroller/permission/ui/television/** = file:/PermissionController/TELEVISION_OWNERS
+per-file res/*-television/* = file:/PermissionController/TELEVISION_OWNERS
+per-file tests/permissionui/src/com/android/permissioncontroller/permissionui/ui/television/** = file:/PermissionController/TELEVISION_OWNERS
 
 # For incident report related changes
 joeo@google.com
