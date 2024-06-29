@@ -22,6 +22,7 @@ import com.android.permissioncontroller.permissionui.ui.TEST_APP_DEFINED_PERMISS
 import com.android.permissioncontroller.permissionui.ui.grantTestAppPermission
 import com.android.permissioncontroller.permissionui.ui.installTestAppThatDefinesAdditionalPermissions
 import com.android.permissioncontroller.permissionui.ui.installTestAppThatUsesAdditionalPermission
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -47,6 +48,11 @@ class ManagePermissionsOtherFragmentTest : TelevisionUiBaseTest() {
             otherPermissionsLabel,
             uiDevice.fragmentDecorTitle
         )
+    }
+
+    @After
+    fun goOutOfOtherPermissionsScreen() {
+        uiDevice.pressBack()
     }
 
     @Test
