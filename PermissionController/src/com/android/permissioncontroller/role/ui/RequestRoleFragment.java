@@ -45,7 +45,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
@@ -230,8 +230,9 @@ public class RequestRoleFragment extends DialogFragment {
         mPackageRemovalMonitor.register();
 
         // Postponed to onStart() so that the list view in dialog is created.
-        mViewModel = ViewModelProviders.of(this, new RequestRoleViewModel.Factory(mRole,
-                requireActivity().getApplication())).get(RequestRoleViewModel.class);
+        ViewModelProvider.Factory viewModelFactory = new RequestRoleViewModel.Factory(mRole,
+                requireActivity().getApplication());
+        mViewModel = new ViewModelProvider(this, viewModelFactory).get(RequestRoleViewModel.class);
         mViewModel.getRoleLiveData().observe(this, this::onRoleDataChanged);
         mViewModel.getManageRoleHolderStateLiveData().observe(this,
                 this::onManageRoleHolderStateChanged);

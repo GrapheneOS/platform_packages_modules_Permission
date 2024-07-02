@@ -28,7 +28,7 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -103,8 +103,10 @@ public class SpecialAppAccessChildFragment<PF extends PreferenceFragmentCompat
         mRole = Roles.get(activity).get(mRoleName);
         preferenceFragment.setTitle(getString(mRole.getLabelResource()));
 
-        mViewModel = ViewModelProviders.of(this, new SpecialAppAccessViewModel.Factory(mRole,
-                activity.getApplication())).get(SpecialAppAccessViewModel.class);
+        ViewModelProvider.Factory viewModelFactory = new SpecialAppAccessViewModel.Factory(mRole,
+                activity.getApplication());
+        mViewModel = new ViewModelProvider(this, viewModelFactory)
+                .get(SpecialAppAccessViewModel.class);
         mViewModel.getRoleLiveData().observe(this, this::onRoleChanged);
         mViewModel.observeManageRoleHolderState(this, this::onManageRoleHolderStateChanged);
     }

@@ -378,7 +378,8 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                             appPermissionAccessUiInfo.getShowingAttribution(),
                             appPermissionAccessUiInfo.getAttributionTags(),
                             i == appPermissionAccessUiInfoList.size() - 1,
-                            mSessionId);
+                            mSessionId,
+                            appPermissionAccessUiInfo.getOnClickDialog());
 
             category.get().addPreference(permissionUsagePreference);
         }

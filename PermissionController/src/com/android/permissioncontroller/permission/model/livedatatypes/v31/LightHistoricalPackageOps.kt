@@ -155,6 +155,7 @@ data class LightHistoricalPackageOps(
                     val opEntry: AttributedOpEntry = it.getDiscreteAccessAt(i)
                     discreteAccessList.add(
                         DiscreteAccess(
+                            it.opName,
                             opEntry.getLastAccessTime(DISCRETE_ACCESS_OP_FLAGS),
                             opEntry.getLastDuration(DISCRETE_ACCESS_OP_FLAGS),
                             opEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)
@@ -192,6 +193,7 @@ data class LightHistoricalPackageOps(
                     val attributedOpEntry: AttributedOpEntry = it.getDiscreteAccessAt(i)
                     discreteAccessList.add(
                         DiscreteAccess(
+                            it.opName,
                             attributedOpEntry.getLastAccessTime(DISCRETE_ACCESS_OP_FLAGS),
                             attributedOpEntry.getLastDuration(DISCRETE_ACCESS_OP_FLAGS),
                             attributedOpEntry.getLastProxyInfo(DISCRETE_ACCESS_OP_FLAGS)
@@ -231,6 +233,7 @@ data class LightHistoricalPackageOps(
 
     /** Data class representing a discrete permission access. */
     data class DiscreteAccess(
+        val opName: String,
         val accessTimeMs: Long,
         val accessDurationMs: Long,
         val proxy: OpEventProxyInfo?

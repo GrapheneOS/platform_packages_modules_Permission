@@ -20,6 +20,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__INFO_ICON_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.UserHandle;
 import android.text.format.DateFormat;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -47,7 +49,7 @@ import com.android.permissioncontroller.permission.compat.IntentCompat;
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -65,25 +67,24 @@ public class PermissionHistoryPreference extends Preference {
     private final long mAccessEndTime;
     private final Drawable mAppIcon;
     private final String mTitle;
-    private final ArrayList<String> mAttributionTags;
+    private final List<String> mAttributionTags;
     private final boolean mIsLastUsage;
     private final Intent mIntent;
     private final boolean mShowingAttribution;
     private final PackageManager mUserPackageManager;
+    private final PermissionUsageDetailsViewModel.PermissionUsageOnClickDialog mOnClickDialog;
 
     private final long mSessionId;
 
     private Drawable mWidgetIcon;
 
-    public PermissionHistoryPreference(@NonNull Context context,
-            @NonNull UserHandle userHandle, @NonNull String pkgName,
-            @Nullable Drawable appIcon,
-            @NonNull String preferenceTitle,
-            @NonNull String permissionGroup,
-            @NonNull long accessStartTime,
-            @NonNull long accessEndTime,
-            @Nullable CharSequence summaryText, boolean showingAttribution,
-            @NonNull ArrayList<String> attributionTags, boolean isLastUsage, long sessionId) {
+    public PermissionHistoryPreference(@NonNull Context context, @NonNull UserHandle userHandle,
+            @NonNull String pkgName, @Nullable Drawable appIcon, @NonNull String preferenceTitle,
+            @NonNull String permissionGroup, @NonNull long accessStartTime,
+            @NonNull long accessEndTime, @Nullable CharSequence summaryText,
+            boolean showingAttribution, @NonNull List<String> attributionTags,
+            boolean isLastUsage, long sessionId,
+            @Nullable PermissionUsageDetailsViewModel.PermissionUsageOnClickDialog onClickDialog) {
         super(context);
         mContext = context;
         Context userContext = Utils.getUserContext(context, userHandle);
@@ -100,6 +101,7 @@ public class PermissionHistoryPreference extends Preference {
         mIsLastUsage = isLastUsage;
         mSessionId = sessionId;
         mShowingAttribution = showingAttribution;
+        mOnClickDialog = onClickDialog;
 
         setTitle(mTitle);
         if (summaryText != null) {
@@ -150,19 +152,39 @@ public class PermissionHistoryPreference extends Preference {
         // It's temporarily created via a static method due to ongoing ViewModel refactoring.
         Intent intent =
                 PermissionUsageDetailsViewModel.Companion.createHistoryPreferenceClickIntent(
-                    mContext,
-                    mUserHandle,
-                    mPackageName,
-                    mPermissionGroup,
-                    mAccessStartTime,
-                    mAccessEndTime,
-                    mShowingAttribution,
-                    mAttributionTags);
+                        mContext,
+                        mUserHandle,
+                        mPackageName,
+                        mPermissionGroup,
+                        mAccessStartTime,
+                        mAccessEndTime,
+                        mShowingAttribution,
+                        mAttributionTags);
 
-        setOnPreferenceClickListener((preference) -> {
-            mContext.startActivityAsUser(intent, mUserHandle);
-            return true;
-        });
+        if (mOnClickDialog != null) {
+            setOnPreferenceClickListener(preference -> {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext)
+                        .setTitle(mOnClickDialog.getTitle())
+                        .setMessage(mOnClickDialog.getDescription())
+                        .setPositiveButton(R.string.app_permissions,  (dialog, which) -> {
+                            mContext.startActivityAsUser(intent, mUserHandle);
+                        })
+                        .setNegativeButton(R.string.dialog_close, null);
+
+                AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+                TextView messageView = alertDialog.findViewById(android.R.id.message);
+                if (messageView != null) {
+                    messageView.setMovementMethod(LinkMovementMethod.getInstance());
+                }
+                return true;
+            });
+        } else {
+            setOnPreferenceClickListener((preference) -> {
+                mContext.startActivityAsUser(intent, mUserHandle);
+                return true;
+            });
+        }
     }
 
     private void setInfoIcon(@NonNull PreferenceViewHolder holder, ImageView widgetView) {

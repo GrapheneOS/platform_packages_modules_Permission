@@ -26,7 +26,7 @@ import android.util.ArrayMap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -69,7 +69,7 @@ public class SpecialAppAccessListChildFragment<PF extends PreferenceFragmentComp
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mViewModel = ViewModelProviders.of(this).get(SpecialAppAccessListViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SpecialAppAccessListViewModel.class);
         mViewModel.getLiveData().observe(this, roleItems -> onRoleListChanged());
     }
 

@@ -20,6 +20,7 @@ import android.app.AppOpsManager
 import android.app.Application
 import android.content.pm.PackageManager
 import android.os.UserHandle
+import android.permission.flags.Flags
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
@@ -201,6 +202,9 @@ class AppOpRepositoryImpl(
         opNames.add(AppOpsManager.OPSTR_PHONE_CALL_CAMERA)
         if (SdkLevel.isAtLeastT()) {
             opNames.add(AppOpsManager.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO)
+        }
+        if (SdkLevel.isAtLeastV() && Flags.locationBypassPrivacyDashboardEnabled()) {
+            opNames.add(AppOpsManager.OPSTR_EMERGENCY_LOCATION)
         }
         return opNames
     }

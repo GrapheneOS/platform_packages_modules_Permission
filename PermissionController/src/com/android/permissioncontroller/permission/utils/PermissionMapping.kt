@@ -22,6 +22,7 @@ import android.app.AppOpsManager
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP
+import android.permission.flags.Flags
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 import com.android.permission.safetylabel.DataCategoryConstants
@@ -373,6 +374,13 @@ object PermissionMapping {
         }
         if (opName == AppOpsManager.OPSTR_PHONE_CALL_CAMERA) {
             return Manifest.permission_group.CAMERA
+        }
+        if (
+            SdkLevel.isAtLeastV() &&
+                Flags.locationBypassPrivacyDashboardEnabled() &&
+                opName == AppOpsManager.OPSTR_EMERGENCY_LOCATION
+        ) {
+            return Manifest.permission_group.LOCATION
         }
 
         return try {
