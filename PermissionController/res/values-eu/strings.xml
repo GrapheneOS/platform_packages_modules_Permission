@@ -172,7 +172,7 @@
     <string name="filter_by_time" msgid="6667864816999691642">"Iragazi orduaren arabera"</string>
     <string name="sort_spinner_most_permissions" msgid="1704349738096822836">"Baimen gehien erabili dituztenak"</string>
     <string name="sort_spinner_most_accesses" msgid="5283913004357220161">"Erabilienak"</string>
-    <string name="sort_spinner_recent" msgid="7513845273076525203">"Azkenak"</string>
+    <string name="sort_spinner_recent" msgid="7513845273076525203">"Azkenaldikoak"</string>
     <string name="sort_by_app" msgid="4055799843051138087">"Ordenatu erabileraren arabera"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"Ordenatu orduaren arabera"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>

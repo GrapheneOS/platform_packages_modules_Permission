@@ -200,7 +200,7 @@
     <string name="app_permission_header" msgid="2951363137032603806">"לאפליקציה תהיה גישה ל<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"גישה ל<xliff:g id="PERM">%1$s</xliff:g> לאפליקציה הזו ב<xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
-    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
+    <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"אני רוצה לראות את כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏השימוש במיקרופון של Assistant"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"הגדרות של אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"הסרת ההרשאות כשלא בשימוש"</string>

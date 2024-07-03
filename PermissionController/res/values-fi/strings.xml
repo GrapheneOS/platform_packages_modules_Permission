@@ -195,7 +195,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Tarkka sijainti"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Likimääräinen sijainti"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Käytä tarkkaa sijaintia"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kun tarkka sijainti ei ole päällä, sovellukset voivat nähdä likimääräisen sijaintisi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kun tarkka sijainti ei ole päällä, sovellukset voivat käyttää likimääräistä sijaintiasi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>lupa"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Sovellus pyytää <xliff:g id="PERM">%1$s</xliff:g>-lupaa"</string>
     <string name="app_permission_header_with_device_name" msgid="7193042925656173271">"Tällä sovelluksella on pääsy (<xliff:g id="PERM">%1$s</xliff:g>) laitteella <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>

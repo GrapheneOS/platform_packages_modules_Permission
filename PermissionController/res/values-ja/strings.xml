@@ -185,7 +185,7 @@
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"アクセス: <xliff:g id="NUM">%1$s</xliff:g> 回。最終使用: <xliff:g id="TIME">%2$s</xliff:g>前。"</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"許可する"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"すべてのファイルの管理を許可"</string>
-    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"メディアへのアクセスのみを許可"</string>
+    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"アクセスのみ許可"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"常に許可"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"アプリの使用中のみ許可"</string>
     <string name="app_permission_button_always_allow_all" msgid="4905699259378428855">"常にすべて許可"</string>
@@ -252,7 +252,7 @@
     <string name="allowed_header" msgid="7769277978004790414">"許可"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"常に許可"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"使用中のみ許可"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"メディアへのアクセスのみが許可されたアプリ"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"アクセスのみ許可"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
     <string name="denied_header" msgid="903209608358177654">"許可しない"</string>

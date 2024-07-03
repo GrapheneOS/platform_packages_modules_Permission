@@ -28,6 +28,5 @@ android_test_helper_app {
         "general-tests",
         "sts",
         "mts-permission",
-        "mcts-permission",
     ],
 }

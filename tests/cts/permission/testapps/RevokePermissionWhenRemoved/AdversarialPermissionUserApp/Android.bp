@@ -27,7 +27,6 @@ android_test_helper_app {
         "general-tests",
         "sts",
         "mts-permission",
-        "mcts-permission",
     ],
     certificate: ":cts-testkey2",
 }
