@@ -103,7 +103,9 @@ class DevicePermissionsTest {
     @After
     fun cleanup() {
         runShellCommandOrThrow("pm uninstall $TEST_PACKAGE_NAME")
-        virtualDevice.close()
+        if (this::virtualDevice.isInitialized) {
+            virtualDevice.close()
+        }
     }
 
     @RequiresFlagsEnabled(
