@@ -22,6 +22,8 @@ import static com.android.compatibility.common.util.SystemUtil.runWithShellPermi
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.junit.Assume.assumeNotNull;
+
 import android.companion.virtual.VirtualDeviceManager;
 import android.companion.virtual.VirtualDeviceParams;
 import android.content.Context;
@@ -125,6 +127,7 @@ public class PermissionUpdateListenerTest {
     @RequiresFlagsEnabled({Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
             Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED})
     public void testVirtualDeviceGrantPermissionNotifyListener() throws InterruptedException {
+        assumeNotNull(mVirtualDeviceManager);
         VirtualDeviceManager.VirtualDevice virtualDevice =
                 mVirtualDeviceManager.createVirtualDevice(
                         mFakeAssociationRule.getAssociationInfo().getId(),
@@ -169,6 +172,7 @@ public class PermissionUpdateListenerTest {
     @RequiresFlagsEnabled({Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
             Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED})
     public void testVirtualDeviceRevokePermissionNotifyListener() throws InterruptedException {
+        assumeNotNull(mVirtualDeviceManager);
         VirtualDeviceManager.VirtualDevice virtualDevice =
                 mVirtualDeviceManager.createVirtualDevice(
                         mFakeAssociationRule.getAssociationInfo().getId(),
@@ -209,6 +213,7 @@ public class PermissionUpdateListenerTest {
     @RequiresFlagsEnabled({Flags.FLAG_DEVICE_AWARE_PERMISSION_APIS_ENABLED,
             Flags.FLAG_DEVICE_AWARE_PERMISSIONS_ENABLED})
     public void testVirtualDeviceUpdatePermissionFlagsNotifyListener() throws InterruptedException {
+        assumeNotNull(mVirtualDeviceManager);
         VirtualDeviceManager.VirtualDevice virtualDevice =
                 mVirtualDeviceManager.createVirtualDevice(
                         mFakeAssociationRule.getAssociationInfo().getId(),
