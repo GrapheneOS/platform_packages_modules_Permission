@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"izinler"</string>
     <string name="cancel" msgid="8943320028373963831">"İptal"</string>
     <string name="back" msgid="6249950659061523680">"Geri"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Kapat"</string>
     <string name="available" msgid="6007778121920339498">"İzin verildi"</string>
     <string name="blocked" msgid="9195547604866033708">"Engellendi"</string>
     <string name="on" msgid="280241003226755921">"Açık"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Tamam"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"İzin isteği reddedildi"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Bu uygulama ek izinler istiyor ancak akış oturumundayken izin verilemez. Önce telefonunuzda ilgili izni verin."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Acil durum araması veya mesajı için"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Konum, acil durum hizmetlerine gönderildi"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Bu uygulama, bir acil durum numarasına telefon ederken veya mesaj gönderirken cihazınızın konumuna erişti. Bu durum, uygulamanın konum izni olmadığında veya cihazın konumu kapalı olduğunda bile yaşanabilir ."<a href="https://support.google.com/android/answer/9319337">"Daha fazla bilgi edinin"</a>"."</string>
 </resources>

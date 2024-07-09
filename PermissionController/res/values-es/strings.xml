@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"permisos"</string>
     <string name="cancel" msgid="8943320028373963831">"Cancelar"</string>
     <string name="back" msgid="6249950659061523680">"Atrás"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Cerrar"</string>
     <string name="available" msgid="6007778121920339498">"Disponible"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloqueado"</string>
     <string name="on" msgid="280241003226755921">"Activado"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Aceptar"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Solicitud de permiso rechazada"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Esta aplicación está solicitando permisos adicionales, pero no se pueden dar durante una sesión de streaming. Da primero el permiso en tu teléfono."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Para llamadas o mensajes de emergencia"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Ubicación enviada a los servicios de emergencias"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Esta aplicación ha accedido a la ubicación de tu dispositivo mientras hacías una llamada o enviabas un mensaje al número de emergencia. Esto puede ocurrir aunque la aplicación no tenga el permiso de ubicación o la ubicación del dispositivo esté desactivada. "<a href="https://support.google.com/android/answer/9319337">"Más información"</a></string>
 </resources>

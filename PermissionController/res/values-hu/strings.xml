@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"engedélyek"</string>
     <string name="cancel" msgid="8943320028373963831">"Mégse"</string>
     <string name="back" msgid="6249950659061523680">"Vissza"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Bezárás"</string>
     <string name="available" msgid="6007778121920339498">"Rendelkezésre áll"</string>
     <string name="blocked" msgid="9195547604866033708">"Letiltva"</string>
     <string name="on" msgid="280241003226755921">"Be"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Engedélykérés letiltva"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ez az alkalmazás további engedélyeket kér, de az engedélyeket nem lehet megadni streamelési munkamenetben. Előbb adja meg az engedélyeket a telefonján."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"A segélyhívó szám felhívásakor vagy a segélyhívó számra való üzenetküldéskor"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"A helyadatok el lettek küldve a segélyhívó szolgálatnak"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Az alkalmazás hozzáfért az eszköze helyadataihoz a segélyhívó szám felhívása vagy a segélyhívó számra való üzenetküldés során. Ez akkor is megtörténhet, amikor az appnak nincs helymeghatározási jogosultsága, vagy ki vannak kapcsolva az eszköz helyadatai. "<a href="https://support.google.com/android/answer/9319337">"További információ"</a></string>
 </resources>

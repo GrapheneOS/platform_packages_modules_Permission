@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"اجازه‌ها"</string>
     <string name="cancel" msgid="8943320028373963831">"لغو"</string>
     <string name="back" msgid="6249950659061523680">"برگشت"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"بستن"</string>
     <string name="available" msgid="6007778121920339498">"دردسترس"</string>
     <string name="blocked" msgid="9195547604866033708">"مسدود"</string>
     <string name="on" msgid="280241003226755921">"روشن"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"بسیارخوب"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"درخواست اجازه رد شد"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"این برنامه درخواست اجازه‌های اضافی دارد، اما امکان دادن این اجازه‌ها در جلسه جاری‌سازی وجود ندارد. ابتدا اجازه را در تلفنتان اعطا کنید."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"برای تماس یا پیامک اضطراری"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"مکان به خدمات اضطراری ارسال شد"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"این برنامه درحین تماس با شماره تلفن اضطراری یا ارسال پیامک به آن به مکان دستگاهتان دسترسی پیدا کرده است. حتی زمانی‌که برنامه اجازه مکان ندارد یا مکان دستگاه خاموش است، ممکن است این اتفاق رخ دهد. "<a href="https://support.google.com/android/answer/9319337">"بیشتر بدانید"</a></string>
 </resources>

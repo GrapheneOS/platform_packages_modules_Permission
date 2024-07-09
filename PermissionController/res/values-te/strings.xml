@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"అనుమతులు"</string>
     <string name="cancel" msgid="8943320028373963831">"రద్దు చేయండి"</string>
     <string name="back" msgid="6249950659061523680">"వెనుకకు"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"మూసివేయండి"</string>
     <string name="available" msgid="6007778121920339498">"అందుబాటులో ఉంది"</string>
     <string name="blocked" msgid="9195547604866033708">"బ్లాక్ చేయబడినది"</string>
     <string name="on" msgid="280241003226755921">"ఆన్‌లో ఉంది"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"సరే"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"అనుమతి రిక్వెస్ట్ బ్లాక్ చేయబడింది"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ఈ యాప్ అదనపు అనుమతి కోసం రిక్వెస్ట్ చేస్తోంది, కానీ స్ట్రీమింగ్ సెషన్‌లో అనుమతులను మంజూరు చేయడం సాధ్యం కాదు. ముందుగా మీ ఫోన్‌లో అనుమతిని మంజూరు చేయండి."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ఎమర్జెన్సీ కాల్ లేదా టెక్స్ట్ మెసేజ్ పంపే విషయంలో"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ఎమర్జెన్సీ సర్వీసులకు లొకేషన్ పంపడం జరిగింది"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ఎమర్జెన్సీ నంబర్‌కు కాల్ చేసినప్పుడు, లేదా టెక్స్ట్ మెసేజ్ పంపినప్పుడు ఈ యాప్ మీ పరికర లొకేషన్‌ను యాక్సెస్ చేసింది. యాప్‌నకు లొకేషన్ అనుమతి లేకున్నా లేదా పరికర లొకేషన్ ఆఫ్‌లో ఉన్నప్పటికీ కూడా ఇలా జరిగవచ్చు. "<a href="https://support.google.com/android/answer/9319337">"మరింత తెలుసుకోండి"</a></string>
 </resources>

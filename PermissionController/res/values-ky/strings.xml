@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"уруксаттар"</string>
     <string name="cancel" msgid="8943320028373963831">"Жок"</string>
     <string name="back" msgid="6249950659061523680">"Артка"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Жабуу"</string>
     <string name="available" msgid="6007778121920339498">"Жеткиликтүү"</string>
     <string name="blocked" msgid="9195547604866033708">"Бөгөттөлдү"</string>
     <string name="on" msgid="280241003226755921">"Күйүк"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Жарайт"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Уруксат берүү сурамы четке кагылды"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Бул колдонмо кошумча уруксаттарды берүүнү суранып жатат, бирок алып ойнотуу сеансында уруксаттарды берүүгө болбойт. Адегенде телефондо уруксат бериңиз."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Шашылыш чалуу же билдирүү жөнөтүү үчүн"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Жайгашкан жер кырсыктаганда жардамга келчү кызматтарга жөнөтүлдү"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Бул колдонмо кырсыктаганда жардамга келчү кызматтын номерине чалып же билдирүү жөнөткөнүңүздө түзмөк жайгашкан жерди аныктады. Колдонмонун жайгашкан жерди аныктоого уруксаты болбосо же түзмөктүн жайгашкан жери өчүк болсо да, ушундай болушу мүмкүн. "<a href="https://support.google.com/android/answer/9319337">"Кеңири маалымат"</a></string>
 </resources>

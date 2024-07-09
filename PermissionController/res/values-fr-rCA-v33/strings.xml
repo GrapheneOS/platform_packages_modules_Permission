@@ -16,9 +16,9 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="role_dialer_request_description" msgid="6188305064871543419">"Cette application sera autorisée à vous envoyer des notifications; elle aura accès à votre appareil photo, à vos contacts, à votre microphone, à votre téléphone et à vos messages texte"</string>
-    <string name="role_sms_request_description" msgid="1506966389698625395">"Cette application sera autorisée à vous envoyer des notifications; elle aura accès à votre appareil photo, à vos contacts, à vos fichiers, à votre microphone, à votre téléphone et à vos messages texte"</string>
-    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Les applications possédant cette autorisation peuvent accéder à tous les fichiers sur cet appareil"</string>
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"Cette appli sera autorisée à vous envoyer des notifications; elle aura accès à votre appareil photo, à vos contacts, à votre microphone, à votre téléphone et à vos messages texte"</string>
+    <string name="role_sms_request_description" msgid="1506966389698625395">"Cette appli sera autorisée à vous envoyer des notifications; elle aura accès à votre appareil photo, à vos contacts, à vos fichiers, à votre microphone, à votre téléphone et à vos messages texte"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"Les applis possédant cette autorisation peuvent accéder à tous les fichiers sur cet appareil"</string>
     <string name="work_policy_title" msgid="832967780713677409">"Infos sur votre politique de travail"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"Les paramètres sont gérés par votre administrateur informatique"</string>
     <string name="safety_center_entry_group_expand_action" msgid="5358289574941779652">"Développer et afficher la liste"</string>

@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"අවසර"</string>
     <string name="cancel" msgid="8943320028373963831">"අවලංගු කරන්න"</string>
     <string name="back" msgid="6249950659061523680">"ආපසු යන්න"</string>
+    <!-- no translation found for dialog_close (6840699812532384661) -->
+    <skip />
     <string name="available" msgid="6007778121920339498">"තිබේ"</string>
     <string name="blocked" msgid="9195547604866033708">"අවහිරයි"</string>
     <string name="on" msgid="280241003226755921">"සක්‍රීය"</string>
@@ -681,4 +683,10 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"හරි"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"අවසර ඉල්ලීම වළක්වා ඇත"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"මෙම යෙදුම අතිරේක අවසර ඉල්ලා සිටින නමුත්, ප්‍රවාහ කිරීමේ සැසියක අවසර ලබා දිය නොහැක. පළමුව ඔබේ දුරකථනයෙන් අවසරය ලබා දෙන්න."</string>
+    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
+    <skip />
+    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
+    <skip />
+    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
+    <skip />
 </resources>

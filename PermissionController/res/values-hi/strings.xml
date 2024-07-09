@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"अनुमतियां"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करें"</string>
     <string name="back" msgid="6249950659061523680">"वापस जाएं"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"बंद करें"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध है"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक किया गया"</string>
     <string name="on" msgid="280241003226755921">"चालू है"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ठीक है"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"अनुमति का अनुरोध अस्वीकार किया गया"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"यह ऐप्लिकेशन ज़्यादा अनुमतियों का अनुरोध कर रहा है. हालांकि, स्ट्रीमिंग सेशन के दौरान अनुमतियां नहीं दी जा सकतीं. सबसे पहले अपने फ़ोन पर अनुमति दें."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"आपातकालीन कॉल या मैसेज करने के लिए"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"आपातकालीन सेवाओं को जगह की जानकारी भेजी गई"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ऐसा हो सकता है कि किसी आपातकालीन नंबर पर कॉल या मैसेज करने के दौरान, ऐप्लिकेशन ने आपके डिवाइस की जगह की जानकारी ऐक्सेस कर ली हो. ऐप्लिकेशन के पास जगह की जानकारी ऐक्सेस करने की अनुमति न होने या डिवाइस की जगह की जानकारी की सेटिंग बंद होने पर भी, ऐप्लिकेशन ऐसा कर सकता है. "<a href="https://support.google.com/android/answer/9319337">"ज़्यादा जानें"</a></string>
 </resources>

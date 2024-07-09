@@ -28,10 +28,10 @@
     <string name="privacy_sources_title" msgid="4061110826457365957">"Confidentialité"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"Tableau de bord, autorisations, commandes"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"Tableau de bord de confidentialité"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Affichez les applications qui ont récemment utilisé les autorisations"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Affichez les applis qui ont récemment utilisé les autorisations"</string>
     <string name="permission_usage_search_terms" msgid="3852343592870257104">"Confidentialité, Tableau de bord de confidentialité"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Gestionnaire des autorisations"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Gérez l\'accès des applications à vos données"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Gérez l\'accès des applis à vos données"</string>
     <string name="permission_manager_search_terms" msgid="2895147613099694722">"Autorisations, Gestionnaire des autorisations"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Paramètres de confidentialité"</string>
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Contrôlez l\'accès de l\'appareil au microphone, à l\'appareil photo, etc."</string>

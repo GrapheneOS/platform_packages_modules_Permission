@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"اجازتیں"</string>
     <string name="cancel" msgid="8943320028373963831">"منسوخ کریں"</string>
     <string name="back" msgid="6249950659061523680">"واپس جائیں"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"بند کریں"</string>
     <string name="available" msgid="6007778121920339498">"دستیاب ہے"</string>
     <string name="blocked" msgid="9195547604866033708">"مسدود کردہ"</string>
     <string name="on" msgid="280241003226755921">"آن"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ٹھیک ہے"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"اجازت کی درخواست مسترد کر دی گئی"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"یہ ایپ اضافی اجازتوں کی درخواست کر رہی ہے، لیکن سلسلہ بندی کے سیشن میں اجازتیں نہیں دی جا سکتیں۔ پہلے اپنے فون پر اجازت دیں۔"</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ایمرجنسی کال یا ٹیکسٹ کے لیے"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ایمرجنسی سروسز کو مقام بھیج دیا گیا"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"اس ایپ نے ایمرجنسی نمبر پر ٹیکسٹ یا کال کے دوران آپ کے آلہ کے مقام تک رسائی حاصل کی۔ ایسا تب بھی ہو سکتا ہے جب ایپ کو مقام کی اجازت نہ ہو یا آلہ کا مقام آف ہو۔ "<a href="https://support.google.com/android/answer/9319337">"مزید جانیں"</a></string>
 </resources>

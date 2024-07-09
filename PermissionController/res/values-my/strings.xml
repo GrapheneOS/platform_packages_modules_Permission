@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ခွင့်ပြုချက်များ"</string>
     <string name="cancel" msgid="8943320028373963831">"မလုပ်တော့"</string>
     <string name="back" msgid="6249950659061523680">"နောက်သို့"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"ပိတ်ရန်"</string>
     <string name="available" msgid="6007778121920339498">"ရနိုင်သည်"</string>
     <string name="blocked" msgid="9195547604866033708">"ပိတ်ထားသည်"</string>
     <string name="on" msgid="280241003226755921">"ဖွင့်"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ခွင့်ပြုချက်တောင်းဆိုမှု ပိတ်ထားသည်"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ဤအက်ပ်သည် နောက်ထပ်ခွင့်ပြုချက်များကို တောင်းဆိုနေသော်လည်း တိုက်ရိုက်လွှင့်စက်ရှင်တွင် ခွင့်ပြုချက်များ ပေး၍မရပါ။ သင့်ဖုန်းတွင် ဦးစွာ ခွင့်ပြုချက်ပေးပါ။"</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"အရေးပေါ်ဖုန်းခေါ်ခြင်း (သို့) စာတိုပို့ခြင်းအတွက်"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"အရေးပေါ်ဝန်ဆောင်မှုများထံ တည်နေရာ ပို့ထားသည်"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"အရေးပေါ် နံပါတ်ထံ ဖုန်းခေါ် (သို့) စာတိုပို့နေစဉ် ဤအက်ပ်သည် သင့်စက်ပစ္စည်း၏ တည်နေရာကို သုံးထားသည်။ အက်ပ်တွင် တည်နေရာခွင့်ပြုချက် မရှိလည်း (သို့) စက်ပစ္စည်းတည်နေရာကို ပိတ်ထားလည်း ဤသို့ဖြစ်နိုင်သည်။ "<a href="https://support.google.com/android/answer/9319337">"ပိုမိုလေ့လာရန်"</a></string>
 </resources>

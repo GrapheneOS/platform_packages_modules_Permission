@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ការអនុញ្ញាត"</string>
     <string name="cancel" msgid="8943320028373963831">"បោះបង់"</string>
     <string name="back" msgid="6249950659061523680">"ថយក្រោយ"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"បិទ"</string>
     <string name="available" msgid="6007778121920339498">"អាចចូលប្រើបាន"</string>
     <string name="blocked" msgid="9195547604866033708">"បាន​ទប់ស្កាត់"</string>
     <string name="on" msgid="280241003226755921">"បើក"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"យល់ព្រម"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"បានទប់ស្កាត់សំណើសុំការអនុញ្ញាត"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"កម្មវិធីនេះកំពុងស្នើសុំការអនុញ្ញាតបន្ថែម ប៉ុន្តែមិនអាចផ្តល់ការអនុញ្ញាតក្នុងវគ្គផ្សាយបានទេ។ ផ្តល់ការអនុញ្ញាតនៅលើទូរសព្ទរបស់អ្នកជាមុនសិន។"</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"សម្រាប់ការហៅ ឬផ្ញើសារជាអក្សរទៅលេខសង្គ្រោះបន្ទាន់"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"បានផ្ញើទីតាំង​ទៅសេវាសង្គ្រោះបន្ទាន់"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"កម្មវិធីនេះបានចូលប្រើទីតាំងឧបករណ៍របស់អ្នកក្នុងអំឡុងពេលហៅទូរសព្ទ ឬផ្ញើសារជាអក្សរទៅកាន់លេខសង្គ្រោះបន្ទាន់។ ករណីនេះអាចកើតឡើង ទោះបីជាកម្មវិធីនេះមិនមានការអនុញ្ញាតទីតាំង ឬបិទទីតាំងឧបករណ៍ក៏ដោយ។ "<a href="https://support.google.com/android/answer/9319337">"ស្វែងយល់បន្ថែម"</a></string>
 </resources>

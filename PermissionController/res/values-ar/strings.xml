@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"أذونات"</string>
     <string name="cancel" msgid="8943320028373963831">"إلغاء"</string>
     <string name="back" msgid="6249950659061523680">"رجوع"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"إغلاق"</string>
     <string name="available" msgid="6007778121920339498">"متاح"</string>
     <string name="blocked" msgid="9195547604866033708">"محظور"</string>
     <string name="on" msgid="280241003226755921">"مفعَّلة"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"حسنًا"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"تم إلغاء طلب الحصول على الإذن"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"يطلب هذا التطبيق الحصول على أذونات إضافية، ولكن لا يمكن منح أذونات في جلسة بث. امنح الإذن على هاتفك أولاً."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"مراسلة نصية أو مكالمة طوارئ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"تم إرسال بيانات الموقع الجغرافي إلى خدمات طوارئ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"وصل هذا التطبيق إلى الموقع الجغرافي لجهازك أثناء إجراء اتصال برقم طوارئ أو مراسلته نصيًا. يمكن أن يحدث ذلك حتى إذا لم يحصل التطبيق على إذن تحديد الموقع الجغرافي أو لم يتم تفعيل إعدادات الموقع الجغرافي للجهاز. "<a href="https://support.google.com/android/answer/9319337">"مزيد من المعلومات"</a></string>
 </resources>

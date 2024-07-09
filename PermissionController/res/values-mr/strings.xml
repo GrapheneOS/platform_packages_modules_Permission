@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"परवानग्या"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करा"</string>
     <string name="back" msgid="6249950659061523680">"मागे जा"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"बंद करा"</string>
     <string name="available" msgid="6007778121920339498">"उपलब्ध आहे"</string>
     <string name="blocked" msgid="9195547604866033708">"ब्लॉक केला आहे"</string>
     <string name="on" msgid="280241003226755921">"सुरू आहे"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ओके"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"परवानगी मागणारी विनंती सप्रेस केली आहे"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"हे ॲप अतिरिक्त परवानग्यांची विनंती करत आहे, पण स्ट्रीमिंग सेशनदरम्यान परवानग्या दिल्या जाऊ शकत नाहीत. आधी तुमच्या फोनवर परवानगी द्या."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"आणीबाणी कॉल करण्यासाठी किंवा एसएमएस पाठवण्यासाठी"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"आणीबाणी सेवांना स्थान पाठवले आहे"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"आणीबाणी नंबरवर कॉल करत असताना किंवा एसएमएस पाठवत असताना या ॲपने तुमच्या डिव्हाइसचे स्थान ॲक्सेस केले आहे. ॲपकडे स्थान परवानगी नसताना किंवा डिव्हाइसचे स्थान बंद असतानादेखील हे होऊ शकते. "<a href="https://support.google.com/android/answer/9319337">"अधिक जाणून घ्या"</a></string>
 </resources>

@@ -86,7 +86,7 @@ public class NoProcessOutgoingCallPermissionTest {
     @Test
     public void testProcessOutgoingCall() throws InterruptedException {
         final PackageManager pm = mContext.getPackageManager();
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) ||
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING) ||
                 !pm.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP)) {
             return;
         }

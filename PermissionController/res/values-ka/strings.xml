@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ნებართვები"</string>
     <string name="cancel" msgid="8943320028373963831">"გაუქმება"</string>
     <string name="back" msgid="6249950659061523680">"უკან"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"დახურვა"</string>
     <string name="available" msgid="6007778121920339498">"ხელმისაწვდომი"</string>
     <string name="blocked" msgid="9195547604866033708">"დაბლოკილი"</string>
     <string name="on" msgid="280241003226755921">"ჩართვა"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"კარგი"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ნებართვის მოთხოვნა შეჩერებულია"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ეს აპი დამატებით ნებართვებს მოითხოვს, მაგრამ ნებართვების მიცემა შეუძლებელია სტრიმინგის სესიაში. თავდაპირველად მიანიჭეთ ნებართვა ტელეფონზე."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"გადაუდებელი ზარის ან ტექსტური შეტყობინებისთვის"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"გადაუდებელი დახმარების სამსახურებთან მდებარეობის გაგზავნა"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ამ აპმა წვდომა მიიღო თქვენი მოწყობილობის მდებარეობაზე ზარის ან ტექსტური შეტყობინების გაგზავნისას გადაუდებელი დახმარების სამსახურის ნომერზე. ეს შეიძლება მოხდეს მაშინაც კი, როდესაც აპს არ აქვს მდებარეობის ნებართვა ან მოწყობილობის მდებარეობა გამორთულია. "<a href="https://support.google.com/android/answer/9319337">"შეიტყვეთ მეტი"</a></string>
 </resources>

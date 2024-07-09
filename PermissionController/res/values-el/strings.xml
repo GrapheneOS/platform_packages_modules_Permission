@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"άδειες"</string>
     <string name="cancel" msgid="8943320028373963831">"Ακύρωση"</string>
     <string name="back" msgid="6249950659061523680">"Πίσω"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Κλείσιμο"</string>
     <string name="available" msgid="6007778121920339498">"Διαθέσιμο"</string>
     <string name="blocked" msgid="9195547604866033708">"Αποκλεισμένο"</string>
     <string name="on" msgid="280241003226755921">"Ενεργό"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ΟΚ"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Το αίτημα άδειας ανεστάλη"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Αυτή η εφαρμογή ζητά πρόσθετες άδειες, αλλά οι άδειες δεν μπορούν να εκχωρηθούν σε μια περίοδο σύνδεσης ροής. Εκχωρήστε πρώτα την άδεια στο τηλέφωνό σας."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Για κλήσεις ή μηνύματα έκτακτης ανάγκης"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Η τοποθεσία στάλθηκε στις υπηρεσίες έκτακτης ανάγκης"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Αυτή η εφαρμογή απέκτησε πρόσβαση στην τοποθεσία της συσκευής σας κατά τη διάρκεια μιας κλήσης ή κατά την αποστολή ενός μηνύματος σε έναν αριθμό έκτακτης ανάγκης. Αυτό μπορεί να συμβεί ακόμα και εάν η εφαρμογή δεν έχει άδεια τοποθεσίας ή εάν η τοποθεσία της συσκευής είναι απενεργοποιημένη. "<a href="https://support.google.com/android/answer/9319337">"Μάθετε περισσότερα"</a></string>
 </resources>

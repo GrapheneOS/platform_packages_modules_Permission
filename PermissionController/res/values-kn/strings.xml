@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ಅನುಮತಿಗಳು"</string>
     <string name="cancel" msgid="8943320028373963831">"ರದ್ದುಮಾಡಿ"</string>
     <string name="back" msgid="6249950659061523680">"ಹಿಂದಕ್ಕೆ"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"ಮುಚ್ಚಿರಿ"</string>
     <string name="available" msgid="6007778121920339498">"ಲಭ್ಯವಿದೆ"</string>
     <string name="blocked" msgid="9195547604866033708">"ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ"</string>
     <string name="on" msgid="280241003226755921">"ಆನ್"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ಸರಿ"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ಅನುಮತಿ ವಿನಂತಿಯನ್ನು ನಿಗ್ರಹಿಸಲಾಗಿದೆ"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ಈ ಆ್ಯಪ್ ಹೆಚ್ಚುವರಿ ಅನುಮತಿಗಳನ್ನು ವಿನಂತಿಸುತ್ತಿದೆ, ಆದರೆ ಸ್ಟ್ರೀಮಿಂಗ್ ಸೆಶನ್‌ನಲ್ಲಿ ಅನುಮತಿಗಳನ್ನು ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮೊದಲು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಅನುಮತಿ ನೀಡಿ."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ತುರ್ತು ಕರೆ ಅಥವಾ ಪಠ್ಯಕ್ಕಾಗಿ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ಸ್ಥಳವನ್ನು ತುರ್ತು ಸೇವೆಗಳಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದ ಅಥವಾ ಪಠ್ಯವನ್ನು ಕಳುಹಿಸುವ ಸಮಯದಲ್ಲಿ ಈ ಆ್ಯಪ್ ನಿಮ್ಮ ಸಾಧನದ ಸ್ಥಳವನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಿದೆ. ಆ್ಯಪ್ ಸ್ಥಳದ ಅನುಮತಿಯನ್ನು ಹೊಂದಿಲ್ಲದಿರುವಾಗ ಅಥವಾ ಸಾಧನದ ಸ್ಥಳವು ಆಫ್ ಆಗಿರುವಾಗಲೂ ಇದು ಸಂಭವಿಸಬಹುದು. "<a href="https://support.google.com/android/answer/9319337">"ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"</a></string>
 </resources>

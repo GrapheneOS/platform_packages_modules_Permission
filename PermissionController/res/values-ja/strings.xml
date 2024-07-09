@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"権限"</string>
     <string name="cancel" msgid="8943320028373963831">"キャンセル"</string>
     <string name="back" msgid="6249950659061523680">"戻る"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"閉じる"</string>
     <string name="available" msgid="6007778121920339498">"使用可能"</string>
     <string name="blocked" msgid="9195547604866033708">"ブロック中"</string>
     <string name="on" msgid="280241003226755921">"ON"</string>
@@ -683,4 +684,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"権限のリクエストが抑制されています"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"このアプリは追加の権限を求めていますが、ストリーミング セッションでは権限を付与できません。スマートフォンで先に権限を付与してください。"</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"緊急通報（電話またはテキスト メッセージ）の場合"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"緊急サービスへの位置情報の送信"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"このアプリは緊急通報番号に電話またはテキスト メッセージで通報する際にデバイスの位置情報にアクセスしました。このアクセスは、アプリに位置情報の利用許可が付与されていない場合やデバイスの位置情報が OFF の場合も発生することがあります。"<a href="https://support.google.com/android/answer/9319337">"詳細"</a></string>
 </resources>

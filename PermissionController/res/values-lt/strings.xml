@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"leidimai"</string>
     <string name="cancel" msgid="8943320028373963831">"Atšaukti"</string>
     <string name="back" msgid="6249950659061523680">"Atgal"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Uždaryti"</string>
     <string name="available" msgid="6007778121920339498">"Pasiekiama"</string>
     <string name="blocked" msgid="9195547604866033708">"Užblokuota"</string>
     <string name="on" msgid="280241003226755921">"Įjungta"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Gerai"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Leidimo užklausa atmesta"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ši programa prašo papildomų leidimų, bet jų negalima suteikti per srautinio perdavimo seansą. Leidimą pirmiausia suteikite telefone."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Skambutis arba pranešimas pagalbos numeriu"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Vietovės informacija išsiųsta pagalbos tarnyboms"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Skambinant ar siunčiant pranešimą pagalbos numeriu, ši programa pasiekė jūsų įrenginio vietovės informaciją. Taip gali nutikti net tada, kai programa neturi leidimo pasiekti vietovės duomenis arba kai įrenginio vietovė yra išjungta."<a href="https://support.google.com/android/answer/9319337">"Sužinokite daugiau"</a></string>
 </resources>

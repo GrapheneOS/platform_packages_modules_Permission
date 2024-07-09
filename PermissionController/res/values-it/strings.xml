@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"autorizzazioni"</string>
     <string name="cancel" msgid="8943320028373963831">"Annulla"</string>
     <string name="back" msgid="6249950659061523680">"Indietro"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Chiudi"</string>
     <string name="available" msgid="6007778121920339498">"Disponibile"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloccato"</string>
     <string name="on" msgid="280241003226755921">"On"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Ok"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Richiesta di autorizzazione rifiutata"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Questa app richiede autorizzazioni aggiuntive, ma non è possibile concedere autorizzazioni in una sessione di streaming. Devi prima concedere l\'autorizzazione sul tuo smartphone."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Per messaggio o chiamata di emergenza"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Posizione inviata ai servizi di emergenza"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Questa app ha eseguito l\'accesso alla posizione del tuo dispositivo durante una chiamata o l\'invio di un messaggio a un numero di emergenza. Questo può accadere anche quando l\'app non ha l\'autorizzazione di accesso alla posizione o se la localizzazione del dispositivo è disattivata. "<a href="https://support.google.com/android/answer/9319337">"Scopri di più"</a></string>
 </resources>

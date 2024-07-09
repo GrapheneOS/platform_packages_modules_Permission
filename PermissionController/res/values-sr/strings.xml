@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"дозволе"</string>
     <string name="cancel" msgid="8943320028373963831">"Откажи"</string>
     <string name="back" msgid="6249950659061523680">"Назад"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Затвори"</string>
     <string name="available" msgid="6007778121920339498">"Доступно"</string>
     <string name="blocked" msgid="9195547604866033708">"Блокирано"</string>
     <string name="on" msgid="280241003226755921">"Укључено"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Важи"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Захтев за дозволу је блокиран"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ова апликација захтева додатне дозволе, али дозволе не могу да се дају у сесији стримовања. Прво дајте дозволу на телефону."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"За хитни позив или поруку"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Локација је послата хитним службама"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ова апликација је приступила локацији уређаја током позивања броја за хитне случајеве или слања поруке том броју. То може да се догоди чак и када апликација нема дозволу за локацију или је локација уређаја искључена. "<a href="https://support.google.com/android/answer/9319337">"Сазнајте више"</a></string>
 </resources>

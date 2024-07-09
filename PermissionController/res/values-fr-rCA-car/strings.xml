@@ -17,5 +17,5 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage."</string>
+    <string name="unused_apps_page_summary" msgid="7505839764289846511">"Si une appli n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage."</string>
 </resources>

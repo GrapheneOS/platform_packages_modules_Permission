@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"permissions"</string>
     <string name="cancel" msgid="8943320028373963831">"Cancel"</string>
     <string name="back" msgid="6249950659061523680">"Back"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Close"</string>
     <string name="available" msgid="6007778121920339498">"Available"</string>
     <string name="blocked" msgid="9195547604866033708">"Blocked"</string>
     <string name="on" msgid="280241003226755921">"On"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Permission request suppressed"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"This app is requesting additional permissions, but permissions can\'t be granted in a streaming session. Grant the permission on your phone first."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"For emergency call or text"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Location sent to emergency services"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"This app accessed your device\'s location during a call or text to an emergency number. This can happen even when the app doesn\'t have location permission or the device location is off. "<a href="https://support.google.com/android/answer/9319337">"Learn more"</a></string>
 </resources>

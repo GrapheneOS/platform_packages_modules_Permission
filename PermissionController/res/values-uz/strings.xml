@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ruxsatlar"</string>
     <string name="cancel" msgid="8943320028373963831">"Bekor qilish"</string>
     <string name="back" msgid="6249950659061523680">"Orqaga"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Yopish"</string>
     <string name="available" msgid="6007778121920339498">"Mavjud"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloklangan"</string>
     <string name="on" msgid="280241003226755921">"Yoniq"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"OK"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Ruxsat talabi bloklandi"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Bu ilova qoʻshimcha ruxsatlar talab qilmoqda, lekin ruxsatlar striming seansida berilmaydi. Avval telefoningizda ruxsat bering."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Favqulodda chaqiruv yoki SMS uchun"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Joylashuv axboroti favqulodda xizmatlarga yuborildi"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Bu ilova favqulodda xizmat raqamini chaqirish yoki SMS yuborish vaqtida qurilmangiz joylashuv axborotidan foydalandi. Bu ilovaga joylashuv axboroti uchun ruxsat berilmagan yoki qurilmada joylashuv xizmati faolsizlantirilgan boʻlsa ham yuz berishi mumkin. "<a href="https://support.google.com/android/answer/9319337">"Batafsil"</a></string>
 </resources>

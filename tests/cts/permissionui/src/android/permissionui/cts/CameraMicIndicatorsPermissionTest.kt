@@ -29,6 +29,7 @@ import android.os.Process
 import android.os.SystemClock
 import android.os.SystemProperties
 import android.permission.PermissionManager
+import android.permission.cts.MtsIgnore
 import android.platform.test.annotations.AsbSecurityTest
 import android.platform.test.rule.ScreenRecordRule
 import android.provider.DeviceConfig
@@ -274,6 +275,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
 
     @Test
     @AsbSecurityTest(cveBugId = [258672042])
+    @MtsIgnore(bugId = 351903707)
     fun testMicIndicatorWithManualFinishOpStillShows() {
         changeSafetyCenterFlag(false.toString())
         testCameraAndMicIndicator(useMic = true, useCamera = false, finishEarly = true)

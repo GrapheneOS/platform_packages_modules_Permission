@@ -21,6 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"dovoljenja"</string>
     <string name="cancel" msgid="8943320028373963831">"Prekliči"</string>
     <string name="back" msgid="6249950659061523680">"Nazaj"</string>
+    <string name="dialog_close" msgid="6840699812532384661">"Zapri"</string>
     <string name="available" msgid="6007778121920339498">"Na voljo"</string>
     <string name="blocked" msgid="9195547604866033708">"Blokirano"</string>
     <string name="on" msgid="280241003226755921">"Vklopljeno"</string>
@@ -681,4 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"V redu"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahteva za dovoljenje je bila prezrta"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ta aplikacija zahteva dodatna dovoljenja, vendar teh ni mogoče odobriti med sejo pretočnega predvajanja. Dovoljenje najprej odobrite v telefonu."</string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Za klic ali sporočilo v sili"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokacija je poslana reševalnim službam"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ta aplikacija je dostopala do lokacije naprave med klicanjem ali pošiljanjem sporočila na številko za klic v sili. To se lahko zgodi tudi, če aplikacija nima dovoljenja za lokacijo ali če je lokacija naprave izklopljena. "<a href="https://support.google.com/android/answer/9319337">"Več o tem"</a></string>
 </resources>
