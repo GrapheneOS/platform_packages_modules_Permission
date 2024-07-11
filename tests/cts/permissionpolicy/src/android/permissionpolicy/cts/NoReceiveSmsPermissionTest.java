@@ -77,7 +77,7 @@ public class NoReceiveSmsPermissionTest extends AndroidTestCase {
      */
     public void testReceiveTextMessage() {
         PackageManager packageManager = mContext.getPackageManager();
-        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_MESSAGING)) {
             return;
         }
 
@@ -108,7 +108,7 @@ public class NoReceiveSmsPermissionTest extends AndroidTestCase {
      */
     public void testAppSpecificSmsToken() {
         PackageManager packageManager = mContext.getPackageManager();
-        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_MESSAGING)) {
             return;
         }
 
