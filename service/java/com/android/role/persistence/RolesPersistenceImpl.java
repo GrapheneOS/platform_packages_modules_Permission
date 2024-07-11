@@ -190,9 +190,6 @@ public class RolesPersistenceImpl implements RolesPersistence {
 
     @Override
     public void writeForUser(@NonNull RolesState roles, @NonNull UserHandle user) {
-        File reserveFile = getReserveCopyFile(user);
-        reserveFile.delete();
-
         File file = getFile(user);
         AtomicFile atomicFile = new AtomicFile(file);
         FileOutputStream outputStream = null;
@@ -217,6 +214,7 @@ public class RolesPersistenceImpl implements RolesPersistence {
             IoUtils.closeQuietly(outputStream);
         }
 
+        File reserveFile = getReserveCopyFile(user);
         try (FileInputStream in = new FileInputStream(file);
              FileOutputStream out = new FileOutputStream(reserveFile)) {
             FileUtils.copy(in, out);
