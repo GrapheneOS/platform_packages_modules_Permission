@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="cancel" msgid="8943320028373963831">"ਰੱਦ ਕਰੋ"</string>
     <string name="back" msgid="6249950659061523680">"ਪਿੱਛੇ"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"ਬੰਦ ਕਰੋ"</string>
     <string name="available" msgid="6007778121920339498">"ਉਪਲਬਧ ਹੈ"</string>
     <string name="blocked" msgid="9195547604866033708">"ਬਲਾਕ ਹੈ"</string>
     <string name="on" msgid="280241003226755921">"ਚਾਲੂ ਹੈ"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ਠੀਕ ਹੈ"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਬੇਨਤੀ ਨੂੰ ਰੋਕਿਆ ਗਿਆ"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ਇਹ ਐਪ ਵਧੀਕ ਇਜਾਜ਼ਤਾਂ ਦੀ ਬੇਨਤੀ ਕਰ ਰਹੀ ਹੈ, ਪਰ ਸਟ੍ਰੀਮਿੰਗ ਸੈਸ਼ਨ ਵਿੱਚ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਦਿੱਤੀਆਂ ਜਾ ਸਕਦੀਆਂ। ਪਹਿਲਾਂ ਆਪਣੇ ਫ਼ੋਨ \'ਤੇ ਇਜਾਜ਼ਤ ਦਿਓ।"</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ਐਮਰਜੈਂਸੀ ਕਾਲ ਜਾਂ ਲਿਖਤ ਸੁਨੇਹੇ ਲਈ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ਐਮਰਜੈਂਸੀ ਸੇਵਾਵਾਂ ਨੂੰ ਭੇਜੀ ਗਈ ਟਿਕਾਣਾ ਜਾਣਕਾਰੀ"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ਇਸ ਐਪ ਵੱਲੋਂ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਨ ਜਾਂ ਲਿਖਤ ਸੁਨੇਹਾ ਭੇਜਣ ਦੌਰਾਨ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਗਈ। ਇਹ ਉਦੋਂ ਵੀ ਹੋ ਸਕਦਾ ਹੈ, ਜਦੋਂ ਐਪ ਕੋਲ ਟਿਕਾਣੇ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ ਹੈ ਜਾਂ ਡੀਵਾਈਸ ਦੀ ਟਿਕਾਣਾ ਸੁਵਿਧਾ ਬੰਦ ਹੁੰਦੀ ਹੈ। "<a href="https://support.google.com/android/answer/9319337">"ਹੋਰ ਜਾਣੋ"</a></string>
 </resources>

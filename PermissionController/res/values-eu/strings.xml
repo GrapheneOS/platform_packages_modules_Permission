@@ -622,7 +622,7 @@
     <string name="safety_center_background_location_access_reminder_title" msgid="5477847038103863843">"Berrikusi kokapena atzeko planoan erabiltzeko baimena duen aplikazioa"</string>
     <string name="safety_center_background_location_access_reminder_summary" msgid="7431657777510537658">"Aplikazioak beti erabil dezake kokapena, nahiz eta itxita egon.\n\nSegurtasun- eta larrialdi-aplikazio batzuek atzeko planoan kokapena erabiltzeko baimena behar dute behar bezala funtzionatzeko."</string>
     <string name="safety_center_background_location_access_revoked" msgid="6972274943343442213">"Aldatu da sarbidea"</string>
-    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ikusi kokapenaren azken erabilera"</string>
+    <string name="safety_center_view_recent_location_access" msgid="3524391299490678243">"Ikusi kokapenaren azkenaldiko erabilera"</string>
     <string name="privacy_controls_title" msgid="7605929972256835199">"Pribatutasun-ezarpenak"</string>
     <string name="camera_toggle_title" msgid="1251201397431837666">"Kamera erabiltzeko baimena"</string>
     <string name="mic_toggle_title" msgid="2649991093496110162">"Mikrofonoa erabiltzeko baimena"</string>

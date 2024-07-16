@@ -328,6 +328,7 @@
             <!-- END CAR THEMES -->
 
             <!-- START LAYOUTPREFERENCE -->
+            <!-- {@deprecated Use SettingsLibEntityHeaderTitle.} -->
             <item type="style" name="TextAppearance.EntityHeaderTitle" />
             <!-- END LAYOUTPREFERENCE -->
 
@@ -415,6 +416,11 @@
             <item type="style" name="EnhancedConfirmationDialogButtonBar" />
             <item type="style" name="EnhancedConfirmationDialogButton" />
             <!-- END ENHANCED CONFIRMATION DIALOG -->
+
+            <item type="style" name="SettingsLibEntityHeader" />
+            <item type="style" name="SettingsLibEntityHeaderContent" />
+            <item type="style" name="SettingsLibEntityHeaderIcon" />
+            <item type="style" name="SettingsLibEntityHeaderTitle" />
 
         </policy>
 

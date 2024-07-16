@@ -117,16 +117,6 @@ public class EnhancedConfirmationService extends SystemService {
 
         static {
             // Runtime permissions
-            // TODO(b/310654818): Construct this list by permission group instead of by permission
-            PROTECTED_SETTINGS.add(Manifest.permission.READ_PHONE_STATE);
-            PROTECTED_SETTINGS.add(Manifest.permission.READ_PHONE_NUMBERS);
-            PROTECTED_SETTINGS.add(Manifest.permission.CALL_PHONE);
-            PROTECTED_SETTINGS.add(Manifest.permission.ADD_VOICEMAIL);
-            PROTECTED_SETTINGS.add(Manifest.permission.USE_SIP);
-            PROTECTED_SETTINGS.add(Manifest.permission.ANSWER_PHONE_CALLS);
-            PROTECTED_SETTINGS.add(Manifest.permission.ACCEPT_HANDOVER);
-            PROTECTED_SETTINGS.add(Manifest.permission_group.PHONE);
-
             PROTECTED_SETTINGS.add(Manifest.permission.SEND_SMS);
             PROTECTED_SETTINGS.add(Manifest.permission.RECEIVE_SMS);
             PROTECTED_SETTINGS.add(Manifest.permission.READ_SMS);
@@ -136,7 +126,6 @@ public class EnhancedConfirmationService extends SystemService {
             PROTECTED_SETTINGS.add(Manifest.permission_group.SMS);
 
             PROTECTED_SETTINGS.add(Manifest.permission.BIND_DEVICE_ADMIN);
-            // TODO(b/310654818): Add other explicitly protected runtime permissions
             // App ops
             PROTECTED_SETTINGS.add(AppOpsManager.OPSTR_BIND_ACCESSIBILITY_SERVICE);
             PROTECTED_SETTINGS.add(AppOpsManager.OPSTR_ACCESS_NOTIFICATIONS);
@@ -146,7 +135,6 @@ public class EnhancedConfirmationService extends SystemService {
             // Default application roles.
             PROTECTED_SETTINGS.add(RoleManager.ROLE_DIALER);
             PROTECTED_SETTINGS.add(RoleManager.ROLE_SMS);
-            // TODO(b/310654015): Add other explicitly protected settings
         }
 
         private final @NonNull Context mContext;

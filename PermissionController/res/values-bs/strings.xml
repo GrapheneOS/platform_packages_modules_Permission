@@ -682,7 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Uredu"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Zahtjev za odobrenje je potisnut"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Aplikacija traži dodatna odobrenja, ali se ona ne mogu dati u sesiji prijenosa. Najprije dajte odobrenje na telefonu."</string>
-    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Za pozive ili poruke hitnim službama"</string>
-    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokacija poslana hitnim službama"</string>
-    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ova je aplikacija pristupila lokaciji vašeg uređaja prilikom upućivanja poziva ili poruke na broj hitne službe. To se može dogoditi čak i kad aplikacija nema dopuštenje za lokaciju ili je lokacija uređaja isključena. "<a href="https://support.google.com/android/answer/9319337">"Saznajte više"</a></string>
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Za hitni poziv ili poruku"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokacija je poslana hitnim službama"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ova aplikacija je pristupila lokaciji uređaja tokom poziva ili slanja poruke broju za hitne slučajeve. To se može dogoditi čak i kada aplikacija nema odobrenje za lokaciju ili je lokacija uređaja isključena. "<a href="https://support.google.com/android/answer/9319337">"Saznajte više"</a></string>
 </resources>

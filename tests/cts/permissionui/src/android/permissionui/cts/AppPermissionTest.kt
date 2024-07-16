@@ -17,7 +17,6 @@
 package android.permissionui.cts
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.Manifest.permission_group.PHONE
 import android.Manifest.permission_group.SMS
 import android.os.Build
 import android.permission.flags.Flags
@@ -281,27 +280,9 @@ class AppPermissionTest : BaseUsePermissionTest() {
     fun installFromTrustedSource_enabledAllowRadioButtonAndIfClickedAndChecked() {
         installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_LATEST)
 
-        navigateToIndividualPermissionSetting(PHONE)
+        navigateToIndividualPermissionSetting(SMS)
 
         assertAllowButtonIsEnabledAndClickAndChecked()
-
-        pressBack()
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
-    @Test
-    fun installFromDownloadedFile_disabledAllowRadioButtonAndIfClickedAndRestrictedSettingDialog_PhonePermGroup() {
-        installPackageWithInstallSourceFromDownloadedFileAndAllowHardRestrictedPerms(
-            APP_APK_NAME_LATEST
-        )
-
-        navigateToIndividualPermissionSetting(PHONE)
-
-        assertAllowButtonIsDisabledAndRestrictedSettingDialogPoppedUp()
-
-        pressBack()
 
         pressBack()
     }
@@ -316,22 +297,6 @@ class AppPermissionTest : BaseUsePermissionTest() {
         )
 
         navigateToIndividualPermissionSetting(SMS)
-
-        assertAllowButtonIsDisabledAndRestrictedSettingDialogPoppedUp()
-
-        pressBack()
-
-        pressBack()
-    }
-
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.VANILLA_ICE_CREAM, codeName =
-    "VanillaIceCream")
-    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
-    @Test
-    fun installFromLocalFile_disabledAllowRadioButtonAndIfClickedAndRestrictedSettingDialog_PhonePermGroup() {
-        installPackageWithInstallSourceAndMetadataFromLocalFile(APP_APK_NAME_LATEST)
-
-        navigateToIndividualPermissionSetting(PHONE)
 
         assertAllowButtonIsDisabledAndRestrictedSettingDialogPoppedUp()
 

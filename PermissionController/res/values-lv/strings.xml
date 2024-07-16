@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"atļaujas"</string>
     <string name="cancel" msgid="8943320028373963831">"Atcelt"</string>
     <string name="back" msgid="6249950659061523680">"Atpakaļ"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"Aizvērt"</string>
     <string name="available" msgid="6007778121920339498">"Pieejama"</string>
     <string name="blocked" msgid="9195547604866033708">"Bloķēta"</string>
     <string name="on" msgid="280241003226755921">"Ieslēgta"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Labi"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Atļaujas pieprasījums bloķēts"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Šī lietotne pieprasa papildu atļaujas, taču atļaujas nevar piešķirt straumēšanas sesijā. Vispirms piešķiriet attiecīgo atļauju savā tālrunī."</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Ārkārtas izsaukumam (zvanam vai īsziņai)"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Ārkārtas palīdzības dienestiem tika nosūtīti atrašanās vietas dati"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Šī lietotne piekļuva ierīces atrašanās vietas datiem, zvanot vai sūtot īsziņu uz ārkārtas numuru. Tas var notikt pat tad, ja lietotnei nav atrašanās vietas atļaujas vai ierīcē ir izslēgta atrašanās vietas noteikšana. "<a href="https://support.google.com/android/answer/9319337">"Uzziniet vairāk."</a></string>
 </resources>

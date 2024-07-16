@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"权限"</string>
     <string name="cancel" msgid="8943320028373963831">"取消"</string>
     <string name="back" msgid="6249950659061523680">"返回"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"关闭"</string>
     <string name="available" msgid="6007778121920339498">"可用"</string>
     <string name="blocked" msgid="9195547604866033708">"已禁用"</string>
     <string name="on" msgid="280241003226755921">"已开启"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"确定"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"权限请求被阻止"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"此应用请求获得额外的权限，但在流式传输会话期间无法授予权限。请先在手机上授予相应权限。"</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"用于紧急呼叫或发送紧急短信"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"已向应急服务发送位置信息"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"在向紧急电话号码致电或发短信期间，此应用会获取您设备的位置信息。即使此应用没有位置信息权限或设备位置信息服务已关闭，也可能发生此情况。"<a href="https://support.google.com/android/answer/9319337">"了解详情"</a></string>
 </resources>

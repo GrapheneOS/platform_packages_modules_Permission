@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"зөвшөөрөл"</string>
     <string name="cancel" msgid="8943320028373963831">"Болих"</string>
     <string name="back" msgid="6249950659061523680">"Буцах"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"Хаах"</string>
     <string name="available" msgid="6007778121920339498">"Боломжтой"</string>
     <string name="blocked" msgid="9195547604866033708">"Блоклосон"</string>
     <string name="on" msgid="280241003226755921">"Асаалттай"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ОК"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Зөвшөөрлийн хүсэлтийг зогсоосон"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Энэ апп нэмэлт зөвшөөрөл хүсэж байгаа ч дамжуулалтын харилцан үйлдлийн үеэр зөвшөөрөл олгох боломжгүй. Эхлээд утсан дээрээ зөвшөөрөл олгоно уу."</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Яаралтай дуудлага хийх эсвэл мессеж илгээх зорилгоор"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Байршлыг яаралтай тусламжийн үйлчилгээнүүд рүү илгээсэн"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Энэ апп яаралтай тусламжийн утасны дугаар луу хийсэн дуудлага эсвэл илгээсэн мессежийн үеэр таны төхөөрөмжийн байршилд хандсан. Энэ нь аппад байршлын зөвшөөрөл байхгүй эсвэл төхөөрөмжийн байршил унтраалттай байсан ч тохиолдож болно. "<a href="https://support.google.com/android/answer/9319337">"Нэмэлт мэдээлэл авах"</a></string>
 </resources>

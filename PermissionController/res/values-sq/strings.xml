@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"lejet"</string>
     <string name="cancel" msgid="8943320028373963831">"Anulo"</string>
     <string name="back" msgid="6249950659061523680">"Pas"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"Mbyll"</string>
     <string name="available" msgid="6007778121920339498">"Ofrohet"</string>
     <string name="blocked" msgid="9195547604866033708">"Bllokuar"</string>
     <string name="on" msgid="280241003226755921">"Aktiv"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"Në rregull"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"Kërkesa për leje është ndaluar"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"Ky aplikacion po kërkon leje shtesë, por lejet nuk mund të jepen në një seancë transmetimi. Fillimisht jep lejen në telefonin tënd."</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Për telefonatën apo mesazhin me tekst të urgjencës"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Vendndodhja u dërgua te shërbimet e urgjencës"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ky aplikacion u qas te vendndodhja e pajisjes sate gjatë një telefonate apo mesazhi me tekst drejt një numri urgjence. Kjo mund të ndodhë edhe kur aplikacioni nuk ka lejen për vendndodhjen ose kur vendndodhja e pajisjes është joaktive. "<a href="https://support.google.com/android/answer/9319337">"Mëso më shumë"</a></string>
 </resources>

@@ -21,8 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"അനുമതികൾ"</string>
     <string name="cancel" msgid="8943320028373963831">"റദ്ദാക്കുക"</string>
     <string name="back" msgid="6249950659061523680">"മടങ്ങുക"</string>
-    <!-- no translation found for dialog_close (6840699812532384661) -->
-    <skip />
+    <string name="dialog_close" msgid="6840699812532384661">"അടയ്ക്കുക"</string>
     <string name="available" msgid="6007778121920339498">"ലഭ്യമാണ്"</string>
     <string name="blocked" msgid="9195547604866033708">"ബ്ലോക്ക് ചെയ്‌തിരിക്കുന്നു"</string>
     <string name="on" msgid="280241003226755921">"ഓണാണ്"</string>
@@ -683,10 +682,7 @@
     <string name="enhanced_confirmation_dialog_ok" msgid="8560373821598619924">"ശരി"</string>
     <string name="permission_grant_dialog_streaming_blocked_title" msgid="8905241017017043649">"അനുമതി അഭ്യർത്ഥന കാഴ്ച്ചയിൽ നിന്ന് മറച്ചു"</string>
     <string name="permission_grant_dialog_streaming_blocked_description" msgid="838165608934085319">"ഈ ആപ്പ് അധിക അനുമതികൾ അഭ്യർത്ഥിക്കുന്നു, എന്നാൽ സ്‌ട്രീമിംഗ് സെഷനിടയിൽ അനുമതികൾ നൽകാനാകില്ല. ആദ്യം നിങ്ങളുടെ ഫോണിൽ അനുമതി നൽകുക."</string>
-    <!-- no translation found for privacy_dashboard_emergency_location_enforced_attribution_label (5702912511473457693) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_title (849723944428031911) -->
-    <skip />
-    <!-- no translation found for privacy_dashboard_emergency_location_dialog_description (5815970230573483329) -->
-    <skip />
+    <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"എമർജൻസി കോളിനോ ടെക്സ്റ്റിനോ ആയി"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"അടിയന്തര സേവനങ്ങളിലേക്ക് ലൊക്കേഷൻ അയച്ചു"</string>
+    <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"അടിയന്തര നമ്പറിലേക്ക് ഒരു കോൾ ചെയ്യുമ്പോഴോ ടെക്സ്റ്റ് ചെയ്യുമ്പോഴോ ഈ ആപ്പ് നിങ്ങളുടെ ഉപകരണത്തിന്റെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്തു. ആപ്പിന് ലൊക്കേഷൻ അനുമതി ഇല്ലാത്തപ്പോഴോ ഉപകരണ ലൊക്കേഷൻ ഓഫായിരിക്കുമ്പോഴോ പോലും ഇത് സംഭവിക്കാം. "<a href="https://support.google.com/android/answer/9319337">"കൂടുതലറിയുക"</a></string>
 </resources>
