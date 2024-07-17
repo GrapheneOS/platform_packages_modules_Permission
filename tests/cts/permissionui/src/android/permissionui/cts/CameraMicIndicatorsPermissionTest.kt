@@ -87,8 +87,7 @@ private const val PRIVACY_ITEM_ID = "com.android.systemui:id/privacy_item"
 private const val INDICATORS_FLAG = "camera_mic_icons_enabled"
 private const val WEAR_MIC_LABEL = "Microphone"
 private const val PERMISSION_INDICATORS_NOT_PRESENT = 162547999L
-private const val IDLE_TIMEOUT_MILLIS: Long = 1000
-private const val UNEXPECTED_TIMEOUT_MILLIS = 1000L
+private const val IDLE_TIMEOUT_MILLIS: Long = 2000
 private const val TIMEOUT_MILLIS: Long = 20000
 private const val TV_MIC_INDICATOR_WINDOW_TITLE = "MicrophoneCaptureIndicator"
 private const val MIC_LABEL_NAME = "microphone_toggle_label_qs"
@@ -456,6 +455,13 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
                 } else {
                     useMic
                 }
+            if (!micInUse && !useCamera) {
+                // We're asserting the indicator is gone. Wait up to IDLE_TIMEOUT after the quick
+                // settings is opened to see if we find the indicator, so we don't automatically
+                // assert the indicator is gone, just because we didn't open quick settings fast
+                // enough.
+                UiAutomatorUtils2.waitFindObjectOrNull(By.res(PRIVACY_CHIP_ID), IDLE_TIMEOUT_MILLIS)
+            }
             assertPrivacyChipAndIndicatorsPresent(
                 micInUse,
                 useCamera,

@@ -45,3 +45,12 @@ flag {
     bug: "327489942"
     is_fixed_read_only: true
 }
+
+flag {
+    name: "enable_coarse_fine_location_prompt_for_aaos"
+    is_exported: true
+    namespace: "permissions"
+    description: "Feature flag to enable downgrading to coarse location on Automotive"
+    bug: "346369736"
+    is_fixed_read_only: true
+}

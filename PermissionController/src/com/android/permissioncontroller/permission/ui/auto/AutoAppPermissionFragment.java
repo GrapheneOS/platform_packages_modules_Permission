@@ -22,6 +22,8 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_ALWAYS;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW_FOREGROUND;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT;
 
@@ -42,6 +44,7 @@ import android.text.BidiFormatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -95,6 +98,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
     private TwoStatePreference mForegroundOnlyPermissionPreference;
     @NonNull
     private TwoStatePreference mDenyPermissionPreference;
+
+    @NonNull
+    private TwoStatePreference mToggleFineLocationPreference;
     @NonNull
     private AutoTwoTargetPreference mDetailsPreference;
 
@@ -127,9 +133,9 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
      * Returns a new {@link AutoAppPermissionFragment}.
      *
      * @param packageName the package name for which the permission is being changed
-     * @param permName the name of the permission being changed
-     * @param groupName the name of the permission group being changed
-     * @param userHandle the user for which the permission is being changed
+     * @param permName    the name of the permission being changed
+     * @param groupName   the name of the permission group being changed
+     * @param userHandle  the user for which the permission is being changed
      */
     @NonNull
     public static AutoAppPermissionFragment newInstance(@NonNull String packageName,
@@ -157,6 +163,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mPackageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
         mPermGroupName = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
         if (mPermGroupName == null) {
@@ -213,6 +220,29 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         mDenyPermissionPreference = new SelectedPermissionPreference(requireContext());
         mDenyPermissionPreference.setTitle(R.string.app_permission_button_deny);
         permissionSelector.addPreference(mDenyPermissionPreference);
+
+
+        Log.w(LOG_TAG, "enableCoarseFineLocationPromptForAaos flag set to: "
+                + Flags.enableCoarseFineLocationPromptForAaos());
+        if (Flags.enableCoarseFineLocationPromptForAaos()) {
+            mToggleFineLocationPreference = new SelectedSwitchPermissionPreference(
+                    requireContext());
+            mToggleFineLocationPreference.setTitle(R.string.app_permission_location_accuracy);
+            mToggleFineLocationPreference.setSummary(
+                    R.string.app_permission_location_accuracy_subtitle);
+            permissionSelector.addPreference(mToggleFineLocationPreference);
+
+            mToggleFineLocationPreference.setOnPreferenceClickListener(v -> {
+                if (mToggleFineLocationPreference.isChecked()) {
+                    requestChange(ChangeRequest.GRANT_FINE_LOCATION,
+                            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION);
+                } else {
+                    requestChange(ChangeRequest.REVOKE_FINE_LOCATION,
+                            APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION);
+                }
+                return true;
+            });
+        }
 
         mAllowPermissionPreference.setOnPreferenceClickListener(v -> {
             checkOnlyOneButtonOverride(AppPermissionViewModel.ButtonType.ALLOW);
@@ -295,6 +325,16 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
                     mViewModel.getSensorStatusLiveData().observe(this, this::setSensorStatus);
                 }
             }
+        }
+
+        if (Flags.enableCoarseFineLocationPromptForAaos()) {
+            mViewModel.getButtonStateLiveData().observe(this, buttonState -> {
+                AppPermissionViewModel.ButtonState locationAccuracyState = buttonState.get(
+                        AppPermissionViewModel.ButtonType.LOCATION_ACCURACY);
+                mToggleFineLocationPreference.setVisible(locationAccuracyState.isShown());
+                mToggleFineLocationPreference.setChecked(locationAccuracyState.isChecked());
+                mToggleFineLocationPreference.setEnabled(locationAccuracyState.isEnabled());
+            });
         }
     }
 
@@ -555,6 +595,26 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         }
     }
 
+    private static class SelectedSwitchPermissionPreference extends TwoStatePreference {
+
+        SelectedSwitchPermissionPreference(Context context) {
+            super(context, null,
+                    TypedArrayUtils.getAttr(context, androidx.preference.R.attr.preferenceStyle,
+                            android.R.attr.preferenceStyle));
+            setPersistent(false);
+            setLayoutResource(R.layout.car_switch_button_preference);
+            setWidgetLayoutResource(R.layout.switch_button_preference_widget);
+        }
+
+        @Override
+        public void onBindViewHolder(PreferenceViewHolder holder) {
+            super.onBindViewHolder(holder);
+
+            Switch switchButton = (Switch) holder.findViewById(R.id.location_accuracy_switch);
+            switchButton.setChecked(isChecked());
+        }
+    }
+
     /**
      * A dialog warning the user that they are about to deny a permission that was granted by
      * default.
@@ -567,7 +627,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
                 + ".arg.changeRequest";
         private static final String BUTTON = ConfirmDialog.class.getName()
                 + ".arg.button";
-        private static int sCode =  APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW;
+        private static int sCode = APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW;
 
         @NonNull
         @Override

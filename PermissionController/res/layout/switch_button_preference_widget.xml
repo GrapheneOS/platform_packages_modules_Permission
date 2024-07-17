@@ -22,12 +22,9 @@
     android:minWidth="@dimen/toggle_preference_container_min_width"
     android:layout_height="match_parent">
 
-    <RadioButton
-        android:id="@id/radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@null"
-        android:clickable="false"
-        android:focusable="false" />
+    <Switch
+        android:id="@+id/location_accuracy_switch"
+        android:checked="false"
+        android:duplicateParentState="true"
+        style="@style/AppPermissionLocationAccuracySwitch" />
 </FrameLayout>
