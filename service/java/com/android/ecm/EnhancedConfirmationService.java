@@ -348,7 +348,6 @@ public class EnhancedConfirmationService extends SystemService {
 
         private boolean isSettingEcmProtected(@NonNull String settingIdentifier) {
             if (mPackageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
-                    || mPackageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)
                     || mPackageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
                 return false;
             }

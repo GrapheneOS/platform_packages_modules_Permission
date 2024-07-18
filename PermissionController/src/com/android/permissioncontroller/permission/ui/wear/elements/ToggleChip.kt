@@ -30,6 +30,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
@@ -51,7 +53,7 @@ import com.android.permissioncontroller.R
  * - a convenient way of providing an icon and setting the icon to be mirrored in RTL mode;
  */
 @Composable
-public fun ToggleChip(
+fun ToggleChip(
     checked: Boolean,
     onCheckedChanged: (Boolean) -> Unit,
     label: String,
@@ -127,6 +129,13 @@ public fun ToggleChip(
             }
         }
 
+    val semanticsRole =
+        when (toggleControl) {
+            ToggleChipToggleControl.Switch -> Role.Switch
+            ToggleChipToggleControl.Radio -> Role.RadioButton
+            ToggleChipToggleControl.Checkbox -> Role.Checkbox
+        }
+
     val stateDescriptionSemantics =
         stringResource(
             if (checked) {
@@ -141,7 +150,10 @@ public fun ToggleChip(
         label = labelParam,
         toggleControl = toggleControlParam,
         modifier =
-            modifier.fillMaxWidth().semantics { stateDescription = stateDescriptionSemantics },
+            modifier.fillMaxWidth().semantics {
+                role = semanticsRole
+                stateDescription = stateDescriptionSemantics
+            },
         appIcon = iconParam,
         secondaryLabel = secondaryLabelParam,
         colors = colors,

@@ -861,6 +861,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             group.setSelfRevoked();
             group.persistChanges(false);
         }
+        Log.d(LOG_TAG, "Self revoked permissions: " + String.join(",", permissions));
         getMainExecutor().execute(callback);
     }
 }

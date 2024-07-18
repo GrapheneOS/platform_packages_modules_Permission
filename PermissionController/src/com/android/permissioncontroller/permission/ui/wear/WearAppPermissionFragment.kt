@@ -125,15 +125,14 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
         val permGroupName =
             arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
                 ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
-                    ?: throw RuntimeException("Permission name must not be null.")
+                ?: throw RuntimeException("Permission name must not be null.")
 
         val isStorageGroup = permGroupName == Manifest.permission_group.STORAGE
 
         val user =
             arguments?.let {
                 BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)
-            }
-                ?: UserHandle.SYSTEM
+            } ?: UserHandle.SYSTEM
         val permGroupLabel = getPermGroupLabel(activity, permGroupName).toString()
 
         val sessionId = arguments?.getLong(EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
@@ -233,6 +232,8 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
             confirmDialogViewModel.showAdvancedConfirmDialogLiveData.value = false
         }
 
+        val onDisabledAllowButtonTap: () -> Unit = { viewModel.handleDisabledAllowButton(this) }
+
         return ComposeView(activity).apply {
             setContent {
                 WearPermissionTheme {
@@ -246,7 +247,8 @@ class WearAppPermissionFragment : Fragment(), ConfirmDialogShowingFragment {
                         onConfirmDialogOkButtonClick,
                         onConfirmDialogCancelButtonClick,
                         onAdvancedConfirmDialogOkButtonClick,
-                        onAdvancedConfirmDialogCancelButtonClick
+                        onAdvancedConfirmDialogCancelButtonClick,
+                        onDisabledAllowButtonTap
                     )
                 }
             }

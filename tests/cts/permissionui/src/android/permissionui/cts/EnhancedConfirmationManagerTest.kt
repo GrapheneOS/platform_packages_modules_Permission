@@ -62,12 +62,9 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
     val mCheckFlagsRule: CheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
 
     @Before
-    fun assumeNotAutoTvOrWear() {
+    fun assumeNotAutoOrTv() {
         Assume.assumeFalse(packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK))
-        Assume.assumeFalse(
-            packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
-        )
-        Assume.assumeFalse(packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
+        Assume.assumeFalse(packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE))
     }
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
@@ -174,7 +171,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             )
 
         requestAppPermissionsAndAssertResult(*permissionAndExpectedGrantResults) {
-            click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS)
+            clickECMAlertDialogOKButton(waitForWindowTransition = false)
         }
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
 
@@ -201,8 +198,8 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             GROUP_2_PERMISSION_2_RESTRICTED to false,
             waitForWindowTransition = false
         ) {
-            doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
-            doAndWaitForWindowTransition { clickPermissionRequestDenyButton() }
+            clickECMAlertDialogOKButton()
+            clickPermissionRequestDenyButton()
         }
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
 
@@ -211,7 +208,7 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             GROUP_3_PERMISSION_2_UNRESTRICTED to true,
             waitForWindowTransition = false
         ) {
-            doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+            clickPermissionRequestAllowForegroundButton()
         }
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
@@ -228,8 +225,8 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             GROUP_2_PERMISSION_1_RESTRICTED to false,
             waitForWindowTransition = false
         ) {
-            doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
-            doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+            clickECMAlertDialogOKButton()
+            clickPermissionRequestAllowForegroundButton()
         }
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
@@ -246,8 +243,8 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
             GROUP_2_PERMISSION_1_RESTRICTED to false,
             waitForWindowTransition = false
         ) {
-            doAndWaitForWindowTransition { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
-            doAndWaitForWindowTransition { clickPermissionRequestAllowForegroundButton() }
+            clickECMAlertDialogOKButton()
+            clickPermissionRequestAllowForegroundButton()
         }
         assertTrue(isClearRestrictionAllowed(APP_PACKAGE_NAME))
     }
@@ -259,7 +256,17 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
     private fun assertNoEcmDialogShown() {
         assertNull(
             "expected to not see dialog",
-            waitFindObjectOrNull(By.res(ALERT_DIALOG_OK_BUTTON), UNEXPECTED_TIMEOUT_MILLIS.toLong())
+            if (isWatch) {
+                waitFindObjectOrNull(
+                    By.text(getPermissionControllerString(ECM_ALERT_DIALOG_OK_BUTTON_TEXT)),
+                    UNEXPECTED_TIMEOUT_MILLIS.toLong()
+                )
+            } else {
+                waitFindObjectOrNull(
+                    By.res(ALERT_DIALOG_OK_BUTTON),
+                    UNEXPECTED_TIMEOUT_MILLIS.toLong()
+                )
+            }
         )
     }
 

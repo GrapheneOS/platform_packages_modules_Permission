@@ -2034,4 +2034,13 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Description of the dialog when clicking the app op access entry for EMERGENCY_LOCATION in the privacy dashboard -->
     <string name="privacy_dashboard_emergency_location_dialog_description">This app accessed your device\'s location during a call or text to an emergency number. This can happen even when the app doesn\'t have location permission or the device location is off. <a href="https://support.google.com/android/answer/9319337">Learn more</a></string>
     <!-- Close button in the pop up dialog when clicking the app op access entry in the privacy dashboard -->
+
+    <!-- Text instructing user to check their paired phone-->
+    <string name="wear_check_your_phone_title">Check your phone</string>
+
+    <!-- Text letting the user to know that companion phone couldn't be reached -->
+    <string name="wear_phone_connection_error">Couldn\'t reach your phone</string>
+
+    <!-- Text asking the user if they want to retry connecting to the paired phone -->
+    <string name="wear_phone_connection_should_retry">Retry?</string>
 </resources>

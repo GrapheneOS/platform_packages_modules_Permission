@@ -40,8 +40,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants.EXTRA_IS_ECM_IN_APP
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils.DialogResult
+import com.android.permissioncontroller.permission.ui.wear.WearEnhancedConfirmationDialogFragment
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
@@ -82,9 +84,13 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
             setClearRestrictionAllowed(packageName, UserHandle.getUserHandleForUid(uid))
 
         val setting = Setting.fromIdentifier(this, settingIdentifier, isEcmInApp)
-        val dialogFragment =
+        if (DeviceUtils.isWear(this)) {
+            WearEnhancedConfirmationDialogFragment.newInstance(setting.title, setting.message)
+                .show(supportFragmentManager, WearEnhancedConfirmationDialogFragment.TAG)
+        } else {
             EnhancedConfirmationDialogFragment.newInstance(setting.title, setting.message)
-        dialogFragment.show(supportFragmentManager, EnhancedConfirmationDialogFragment.TAG)
+                .show(supportFragmentManager, EnhancedConfirmationDialogFragment.TAG)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -178,7 +184,7 @@ class EnhancedConfirmationDialogActivity : FragmentActivity() {
         }
     }
 
-    private fun onDialogResult(dialogResult: DialogResult) {
+    fun onDialogResult(dialogResult: DialogResult) {
         this.dialogResult = dialogResult
         setResult(
             RESULT_OK,

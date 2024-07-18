@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
+import androidx.wear.compose.material.ToggleChipDefaults
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonState
@@ -35,6 +36,7 @@ import com.android.permissioncontroller.permission.ui.wear.elements.ListFooter
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
 import com.android.permissioncontroller.permission.ui.wear.elements.ToggleChip
 import com.android.permissioncontroller.permission.ui.wear.elements.ToggleChipToggleControl
+import com.android.permissioncontroller.permission.ui.wear.elements.toggleChipDisabledColors
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionConfirmDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.ConfirmDialogArgs
 import com.android.settingslib.RestrictedLockUtils
@@ -50,7 +52,8 @@ fun WearAppPermissionScreen(
     onConfirmDialogOkButtonClick: (ConfirmDialogArgs) -> Unit,
     onConfirmDialogCancelButtonClick: () -> Unit,
     onAdvancedConfirmDialogOkButtonClick: (AdvancedConfirmDialogArgs) -> Unit,
-    onAdvancedConfirmDialogCancelButtonClick: () -> Unit
+    onAdvancedConfirmDialogCancelButtonClick: () -> Unit,
+    onDisabledAllowButtonClick: () -> Unit
 ) {
     val buttonState = viewModel.buttonStateLiveData.observeAsState(null)
     val detailResIds = viewModel.detailResIdLiveData.observeAsState(null)
@@ -70,6 +73,7 @@ fun WearAppPermissionScreen(
             onLocationSwitchChanged,
             onGrantedStateChanged,
             onFooterClicked,
+            onDisabledAllowButtonClick
         )
         ConfirmDialog(
             showDialog = showConfirmDialog.value,
@@ -98,7 +102,8 @@ internal fun WearAppPermissionContent(
     isLoading: Boolean,
     onLocationSwitchChanged: (Boolean) -> Unit,
     onGrantedStateChanged: (ButtonType, Boolean) -> Unit,
-    onFooterClicked: (RestrictedLockUtils.EnforcedAdmin) -> Unit
+    onFooterClicked: (RestrictedLockUtils.EnforcedAdmin) -> Unit,
+    onDisabledAllowButtonClick: () -> Unit
 ) {
     ScrollableScreen(title = title, isLoading = isLoading) {
         buttonState?.get(ButtonType.LOCATION_ACCURACY)?.let {
@@ -121,11 +126,20 @@ internal fun WearAppPermissionContent(
                     item {
                         ToggleChip(
                             checked = it.isChecked,
-                            enabled = it.isEnabled,
+                            colors =
+                                if (it.isEnabled) {
+                                    ToggleChipDefaults.toggleChipColors()
+                                } else {
+                                    toggleChipDisabledColors()
+                                },
                             label = labelsByButton(buttonType),
                             toggleControl = ToggleChipToggleControl.Radio,
                             onCheckedChanged = { checked ->
-                                onGrantedStateChanged(buttonType, checked)
+                                if (it.isEnabled) {
+                                    onGrantedStateChanged(buttonType, checked)
+                                } else {
+                                    onDisabledAllowButtonClick()
+                                }
                             },
                             labelMaxLine = Integer.MAX_VALUE
                         )

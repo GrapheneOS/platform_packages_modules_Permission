@@ -36,9 +36,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyListScope
@@ -63,6 +63,8 @@ fun ResponsiveDialogContent(
     icon: @Composable (() -> Unit)? = null,
     title: @Composable (() -> Unit)? = null,
     message: @Composable (() -> Unit)? = null,
+    okButtonIcon: Any = Icons.Default.Check,
+    cancelButtonIcon: Any = Icons.Default.Close,
     onOk: (() -> Unit)? = null,
     onCancel: (() -> Unit)? = null,
     okButtonContentDescription: String = stringResource(android.R.string.ok),
@@ -104,7 +106,8 @@ fun ResponsiveDialogContent(
                 title?.let {
                     item {
                         CompositionLocalProvider(
-                            LocalTextStyle provides MaterialTheme.typography.title3,
+                            LocalTextStyle provides
+                                MaterialTheme.typography.title3.copy(fontWeight = FontWeight.W600),
                         ) {
                             Box(
                                 Modifier.fillMaxWidth(titleMaxWidthFraction)
@@ -151,7 +154,7 @@ fun ResponsiveDialogContent(
                         ) {
                             onCancel?.let {
                                 ResponsiveButton(
-                                    icon = Icons.Default.Close,
+                                    icon = cancelButtonIcon,
                                     cancelButtonContentDescription,
                                     onClick = it,
                                     buttonWidth,
@@ -160,7 +163,7 @@ fun ResponsiveDialogContent(
                             }
                             onOk?.let {
                                 ResponsiveButton(
-                                    icon = Icons.Default.Check,
+                                    icon = okButtonIcon,
                                     okButtonContentDescription,
                                     onClick = it,
                                     buttonWidth,
@@ -176,7 +179,7 @@ fun ResponsiveDialogContent(
 
 @Composable
 private fun ResponsiveButton(
-    icon: ImageVector,
+    icon: Any,
     contentDescription: String,
     onClick: () -> Unit,
     buttonWidth: Dp,
@@ -186,7 +189,7 @@ private fun ResponsiveButton(
         label = {
             Box(Modifier.fillMaxWidth()) {
                 Icon(
-                    imageVector = icon,
+                    icon = icon,
                     contentDescription = contentDescription,
                     modifier =
                         Modifier.size(ButtonDefaults.DefaultIconSize).align(Alignment.Center),

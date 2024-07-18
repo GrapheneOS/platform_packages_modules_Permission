@@ -1,0 +1,19 @@
+{
+  "tv-postsubmit": [
+    {
+      "name": "PermissionUiTestCases",
+      "options": [
+        {"include-filter": "com.android.permissioncontroller.permissionui.ui.television"},
+        {"exclude-annotation": "org.junit.Ignore"},
+        {"exclude-annotation": "androidx.test.filters.FlakyTest"}
+      ]
+    },
+    {
+      "name": "CtsPermissionUiTestCases",
+      "options": [
+        {"include-filter": "android.permissionui.cts.CameraMicIndicatorsPermissionTest"},
+        {"exclude-annotation": "org.junit.Ignore"}
+      ]
+    }
+  ]
+}

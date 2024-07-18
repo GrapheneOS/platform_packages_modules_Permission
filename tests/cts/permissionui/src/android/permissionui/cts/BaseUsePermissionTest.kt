@@ -51,7 +51,6 @@ import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
-import com.android.compatibility.common.util.UiAutomatorUtils2
 import com.android.modules.utils.build.SdkLevel
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
@@ -145,6 +144,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         const val DENY_AND_DONT_ASK_AGAIN_BUTTON_TEXT =
             "grant_dialog_button_deny_and_dont_ask_again"
         const val NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON_TEXT = "grant_dialog_button_no_upgrade"
+        const val ECM_ALERT_DIALOG_OK_BUTTON_TEXT = "enhanced_confirmation_dialog_ok"
         const val ALERT_DIALOG_MESSAGE = "android:id/message"
         const val ALERT_DIALOG_OK_BUTTON = "android:id/button1"
         const val APP_PERMISSION_RATIONALE_CONTAINER_VIEW =
@@ -369,8 +369,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         // dialog
         callWithShellPermissionIdentity {
             context.packageManager.resolveActivity(finishOnCreateIntent, PackageManager.MATCH_ALL)
-        }
-            ?: return
+        } ?: return
 
         // Start the test app, and expect the targetSDK warning dialog
         context.startActivity(finishOnCreateIntent)
@@ -486,31 +485,19 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun installPackageWithInstallSourceAndNoMetadataFromStore(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_STORE
-        )
+        installPackageViaSession(apkName, packageSource = PACKAGE_SOURCE_STORE)
     }
 
     protected fun installPackageWithInstallSourceAndNoMetadataFromLocalFile(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_LOCAL_FILE
-        )
+        installPackageViaSession(apkName, packageSource = PACKAGE_SOURCE_LOCAL_FILE)
     }
 
     protected fun installPackageWithInstallSourceAndNoMetadataFromDownloadedFile(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE
-        )
+        installPackageViaSession(apkName, packageSource = PACKAGE_SOURCE_DOWNLOADED_FILE)
     }
 
     protected fun installPackageWithInstallSourceAndNoMetadataFromOther(apkName: String) {
-        installPackageViaSession(
-            apkName,
-            packageSource = PACKAGE_SOURCE_OTHER
-        )
+        installPackageViaSession(apkName, packageSource = PACKAGE_SOURCE_OTHER)
     }
 
     protected fun installPackageWithInstallSourceAndInvalidMetadata(apkName: String) {
@@ -893,7 +880,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestDenyButton() {
         if (isAutomotive) {
-            scrollToBottom();
+            scrollToBottom()
             clickAndWaitForWindowTransition(
                 By.text(getPermissionControllerString(DENY_BUTTON_TEXT))
             )
@@ -960,9 +947,10 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             uiDevice.click(x.toInt(), y.toInt())
             waitForIdleLong()
             val nextScreenNode: AccessibilityNodeInfo? =
-                    findAccessibilityNodeInfosByTextForSurfaceView(
-                        uiAutomation.rootInActiveWindow,
-                        "All the time")
+                findAccessibilityNodeInfosByTextForSurfaceView(
+                    uiAutomation.rootInActiveWindow,
+                    "All the time"
+                )
             if (nextScreenNode != null) {
                 clickedOnLink = true
                 break
@@ -973,7 +961,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
     protected fun clickPermissionRequestDenyAndDontAskAgainButton() {
         if (isAutomotive) {
-            scrollToBottom();
+            scrollToBottom()
             clickAndWaitForWindowTransition(
                 By.text(getPermissionControllerString(DENY_AND_DONT_ASK_AGAIN_BUTTON_TEXT))
             )
@@ -1335,6 +1323,7 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             android.Manifest.permission.ACCESS_BACKGROUND_LOCATION -> true
             else -> false
         }
+
     private fun showsAllowPhotosButton(permission: String): Boolean {
         if (!isPhotoPickerPermissionPromptEnabled()) {
             return false
@@ -1449,6 +1438,21 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
             for ((flag, set) in flags) {
                 assertEquals("flag $flag: ", set, currFlags and flag != 0)
             }
+        }
+    }
+
+    protected fun clickECMAlertDialogOKButton(waitForWindowTransition: Boolean = !isWatch) {
+        var action = { click(By.res(ALERT_DIALOG_OK_BUTTON), TIMEOUT_MILLIS) }
+        if (isWatch) {
+            val okButtonText =
+                getPermissionControllerResString(ECM_ALERT_DIALOG_OK_BUTTON_TEXT) ?: "OK"
+            action = { click(By.text(okButtonText), TIMEOUT_MILLIS) }
+        }
+
+        if (waitForWindowTransition) {
+            doAndWaitForWindowTransition { action() }
+        } else {
+            action()
         }
     }
 }

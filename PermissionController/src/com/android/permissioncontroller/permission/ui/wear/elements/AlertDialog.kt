@@ -17,11 +17,15 @@
 package com.android.permissioncontroller.permission.ui.wear.elements
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.rememberTextMeasurer
@@ -52,6 +56,8 @@ import com.android.permissioncontroller.permission.ui.wear.elements.layout.remem
 fun AlertDialog(
     message: String,
     iconRes: Int? = null,
+    okButtonIcon: Any = Icons.Default.Check,
+    cancelButtonIcon: Any = Icons.Default.Close,
     onCancelButtonClick: () -> Unit,
     onOKButtonClick: () -> Unit,
     showDialog: Boolean,
@@ -61,9 +67,13 @@ fun AlertDialog(
     okButtonContentDescription: String = stringResource(android.R.string.ok),
     cancelButtonContentDescription: String = stringResource(android.R.string.cancel)
 ) {
+    val focusManager = LocalFocusManager.current
     Dialog(
         showDialog = showDialog,
-        onDismissRequest = onCancelButtonClick,
+        onDismissRequest = {
+            focusManager.clearFocus()
+            onCancelButtonClick()
+        },
         scrollState = scalingLazyListState,
         modifier = modifier
     ) {
@@ -71,6 +81,8 @@ fun AlertDialog(
             title = title,
             icon = { AlertIcon(iconRes) },
             message = message,
+            okButtonIcon = okButtonIcon,
+            cancelButtonIcon = cancelButtonIcon,
             onCancel = onCancelButtonClick,
             onOk = onOKButtonClick,
             okButtonContentDescription = okButtonContentDescription,
@@ -89,6 +101,7 @@ fun AlertDialog(
 fun SingleButtonAlertDialog(
     message: String,
     iconRes: Int? = null,
+    okButtonIcon: Any = Icons.Default.Check,
     onButtonClick: () -> Unit,
     showDialog: Boolean,
     scalingLazyListState: ScalingLazyListState,
@@ -106,6 +119,7 @@ fun SingleButtonAlertDialog(
             title = title,
             icon = { AlertIcon(iconRes) },
             message = message,
+            okButtonIcon = okButtonIcon,
             onOk = onButtonClick,
             okButtonContentDescription = buttonContentDescription
         )
@@ -113,12 +127,14 @@ fun SingleButtonAlertDialog(
 }
 
 @Composable
-public fun AlertContent(
+fun AlertContent(
     onCancel: (() -> Unit)? = null,
     onOk: (() -> Unit)? = null,
     icon: @Composable (() -> Unit)? = null,
     title: String? = null,
     message: String? = null,
+    okButtonIcon: Any = Icons.Default.Check,
+    cancelButtonIcon: Any = Icons.Default.Close,
     okButtonContentDescription: String = stringResource(android.R.string.ok),
     cancelButtonContentDescription: String = stringResource(android.R.string.cancel),
     state: ScalingLazyColumnState =
@@ -187,6 +203,8 @@ public fun AlertContent(
         content = content,
         onOk = onOk,
         onCancel = onCancel,
+        okButtonIcon = okButtonIcon,
+        cancelButtonIcon = cancelButtonIcon,
         okButtonContentDescription = okButtonContentDescription,
         cancelButtonContentDescription = cancelButtonContentDescription,
         state = state,
