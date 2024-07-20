@@ -107,6 +107,8 @@
 
     <style name="Theme.DeviceDefault.Dialog.NoActionBar.DayNight" parent="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
 
+    <style name="Theme.DeviceDefault.Dialog.Alert.DayNight" parent="@android:style/Theme.DeviceDefault.Light.Dialog.Alert" />
+
     <!--
         TODO(b/309578419): Make activities handle insets properly and then remove this.
     -->
@@ -152,7 +154,7 @@
 
     <!-- START ENHANCED CONFIRMATION DIALOG -->
 
-    <style name="Theme.EnhancedConfirmationDialog" parent="@android:style/Theme.DeviceDefault.Dialog.NoActionBar">
+    <style name="Theme.EnhancedConfirmationDialog" parent="@style/Theme.DeviceDefault.Dialog.NoActionBar.DayNight">
         <item name="windowNoTitle">true</item>
         <item name="android:alertDialogTheme">@style/Theme.EnhancedConfirmationDialogFragment</item>
         <item name="android:buttonBarStyle">@style/EnhancedConfirmationDialogButtonBar</item>
@@ -161,7 +163,7 @@
         <item name="android:buttonBarNeutralButtonStyle">@style/EnhancedConfirmationDialogButton</item>
     </style>
 
-    <style name="Theme.EnhancedConfirmationDialogFragment" parent="@android:style/Theme.DeviceDefault.Dialog.Alert">
+    <style name="Theme.EnhancedConfirmationDialogFragment" parent="@style/Theme.DeviceDefault.Dialog.Alert.DayNight">
         <item name="android:buttonBarStyle">@style/EnhancedConfirmationDialogButtonBar</item>
     </style>
 

@@ -238,6 +238,7 @@ public class RuntimePermissionsPersistenceImpl implements RuntimePermissionsPers
         }
 
         File reserveFile = getReserveCopyFile(user);
+        reserveFile.delete();
         try (FileInputStream in = new FileInputStream(file);
              FileOutputStream out = new FileOutputStream(reserveFile)) {
             FileUtils.copy(in, out);

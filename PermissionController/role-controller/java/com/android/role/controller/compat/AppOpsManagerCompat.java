@@ -17,10 +17,13 @@
 
 package com.android.role.controller.compat;
 
+import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 
@@ -28,6 +31,11 @@ import java.util.Objects;
 
 /** Helper for accessing features in {@link AppOpsManager}. */
 public class AppOpsManagerCompat {
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    @SuppressLint("NewApi")
+    public static final String OPSTR_ACCESS_RESTRICTED_SETTINGS =
+            AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS;
 
     private AppOpsManagerCompat() {}
 
