@@ -65,7 +65,6 @@
     <uses-permission android:name="android.permission.START_TASKS_FROM_RECENTS" />
     <uses-permission android:name="android.permission.READ_APP_SPECIFIC_LOCALES" />
     <uses-permission android:name="android.permission.GET_APP_METADATA" />
-    <uses-permission android:name="android.permission.NFC_PREFERRED_PAYMENT_INFO" />
     <uses-permission android:name="android.permission.MANAGE_ENHANCED_CONFIRMATION_STATES" />
     <uses-permission android:name="android.permission.READ_SYSTEM_GRAMMATICAL_GENDER" />
     <uses-permission android:name="android.permission.MANAGE_CLIPBOARD_ACCESS_NOTIFICATION" />
