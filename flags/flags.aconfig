@@ -54,3 +54,12 @@ flag {
     bug: "346369736"
     is_fixed_read_only: true
 }
+
+flag {
+    name: "livevdata_refactor_permission_timeline_enabled"
+    is_exported: true
+    namespace: "permissions"
+    description: "This flag is used to enable modern app architecture implementation for timeline page"
+    bug: "354234946"
+    is_fixed_read_only: true
+}
