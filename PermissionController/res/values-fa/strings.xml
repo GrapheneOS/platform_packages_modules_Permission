@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"برای تماس یا پیامک اضطراری"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"مکان به خدمات اضطراری ارسال شد"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"این برنامه درحین تماس با شماره تلفن اضطراری یا ارسال پیامک به آن به مکان دستگاهتان دسترسی پیدا کرده است. حتی زمانی‌که برنامه اجازه مکان ندارد یا مکان دستگاه خاموش است، ممکن است این اتفاق رخ دهد. "<a href="https://support.google.com/android/answer/9319337">"بیشتر بدانید"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

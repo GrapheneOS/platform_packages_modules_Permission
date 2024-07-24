@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"გადაუდებელი ზარის ან ტექსტური შეტყობინებისთვის"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"გადაუდებელი დახმარების სამსახურებთან მდებარეობის გაგზავნა"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ამ აპმა წვდომა მიიღო თქვენი მოწყობილობის მდებარეობაზე ზარის ან ტექსტური შეტყობინების გაგზავნისას გადაუდებელი დახმარების სამსახურის ნომერზე. ეს შეიძლება მოხდეს მაშინაც კი, როდესაც აპს არ აქვს მდებარეობის ნებართვა ან მოწყობილობის მდებარეობა გამორთულია. "<a href="https://support.google.com/android/answer/9319337">"შეიტყვეთ მეტი"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"შეამოწმეთ თქვენი ტელეფონი"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"თქვენს ტელეფონთან დაკავშირება ვერ მოხერხდა"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"გსურთ ხელახლა ცდა?"</string>
 </resources>

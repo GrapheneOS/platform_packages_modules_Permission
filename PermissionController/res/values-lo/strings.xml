@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ສຳລັບການໂທ ຫຼື ສົ່ງຂໍ້ຄວາມສຸກເສີນ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ສົ່ງສະຖານທີ່ໄປຫາບໍລິການສຸກເສີນແລ້ວ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ແອັບນີ້ໄດ້ເຂົ້າເຖິງສະຖານທີ່ຂອງອຸປະກອນຂອງທ່ານໃນລະຫວ່າງທີ່ໂທ ຫຼື ສົ່ງຂໍ້ຄວາມຫາເບີໂທສຸກເສີນ. ເຊິ່ງນີ້ສາມາດເກີດຂຶ້ນໄດ້ເຖິງແມ່ນວ່າແອັບຈະບໍ່ມີການອະນຸຍາດສະຖານທີ່ ຫຼື ເຖິງແມ່ນວ່າສະຖານທີ່ຂອງອຸປະກອນຈະປິດຢູ່ກໍຕາມ. "<a href="https://support.google.com/android/answer/9319337">"ສຶກສາເພີ່ມເຕີມ"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"ກວດເບິ່ງໂທລະສັບຂອງທ່ານ"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"ບໍ່ສາມາດເຂົ້າເຖິງໂທລະສັບຂອງທ່ານໄດ້"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"ລອງໃໝ່ບໍ?"</string>
 </resources>

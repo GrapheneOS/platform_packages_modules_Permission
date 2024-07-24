@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"आणीबाणी कॉल करण्यासाठी किंवा एसएमएस पाठवण्यासाठी"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"आणीबाणी सेवांना स्थान पाठवले आहे"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"आणीबाणी नंबरवर कॉल करत असताना किंवा एसएमएस पाठवत असताना या ॲपने तुमच्या डिव्हाइसचे स्थान ॲक्सेस केले आहे. ॲपकडे स्थान परवानगी नसताना किंवा डिव्हाइसचे स्थान बंद असतानादेखील हे होऊ शकते. "<a href="https://support.google.com/android/answer/9319337">"अधिक जाणून घ्या"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"तुमचा फोन तपासा"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"तुमच्या फोनशी कनेक्ट करता आले नाही"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"पुन्हा प्रयत्न करायचा आहे का?"</string>
 </resources>

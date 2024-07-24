@@ -687,4 +687,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Pentru apel sau mesaj de urgență"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Locație trimisă la serviciile de urgență"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Această aplicație a accesat locația dispozitivului când ai inițiat un apel sau ai trimis un mesaj către un număr de urgență. Se poate întâmpla chiar dacă aplicația nu are permisiune pentru locație sau locația dispozitivului este dezactivată."<a href="https://support.google.com/android/answer/9319337">"Află mai mult"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

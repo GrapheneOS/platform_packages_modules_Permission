@@ -42,6 +42,7 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
     static final int MENU_ALL_PERMS = Menu.FIRST + 1;
     public static final int MENU_SHOW_SYSTEM = Menu.FIRST + 2;
     public static final int MENU_HIDE_SYSTEM = Menu.FIRST + 3;
+    static final int MENU_ALLOW_RESTRICTED_SETTINGS = Menu.FIRST + 4;
 
     private ViewGroup mPreferencesContainer;
 

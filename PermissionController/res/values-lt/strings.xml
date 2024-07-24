@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Skambutis arba pranešimas pagalbos numeriu"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Vietovės informacija išsiųsta pagalbos tarnyboms"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Skambinant ar siunčiant pranešimą pagalbos numeriu, ši programa pasiekė jūsų įrenginio vietovės informaciją. Taip gali nutikti net tada, kai programa neturi leidimo pasiekti vietovės duomenis arba kai įrenginio vietovė yra išjungta."<a href="https://support.google.com/android/answer/9319337">"Sužinokite daugiau"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Patikrinkite telefoną"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Nepavyksta pasiekti jūsų telefono"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Bandyti dar kartą?"</string>
 </resources>

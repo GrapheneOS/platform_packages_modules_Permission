@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Na potrzeby połączenia lub SMS-a alarmowego"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokalizacja została wysłana do służb ratunkowych"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ta aplikacja uzyskała dostęp do lokalizacji Twojego urządzenia podczas połączenia z numerem alarmowym lub wysyłania SMS-a pod ten numer. Może się tak zdarzyć, nawet jeśli aplikacja nie ma uprawnień do lokalizacji lub gdy lokalizacja jest wyłączona na urządzeniu. "<a href="https://support.google.com/android/answer/9319337">"Więcej informacji"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

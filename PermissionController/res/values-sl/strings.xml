@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Za klic ali sporočilo v sili"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokacija je poslana reševalnim službam"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ta aplikacija je dostopala do lokacije naprave med klicanjem ali pošiljanjem sporočila na številko za klic v sili. To se lahko zgodi tudi, če aplikacija nima dovoljenja za lokacijo ali če je lokacija naprave izklopljena. "<a href="https://support.google.com/android/answer/9319337">"Več o tem"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

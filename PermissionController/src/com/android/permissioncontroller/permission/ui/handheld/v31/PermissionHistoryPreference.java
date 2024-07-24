@@ -66,25 +66,23 @@ public class PermissionHistoryPreference extends Preference {
     private final long mAccessStartTime;
     private final long mAccessEndTime;
     private final Drawable mAppIcon;
-    private final String mTitle;
     private final List<String> mAttributionTags;
     private final boolean mIsLastUsage;
     private final Intent mIntent;
     private final boolean mShowingAttribution;
     private final PackageManager mUserPackageManager;
-    private final PermissionUsageDetailsViewModel.PermissionUsageOnClickDialog mOnClickDialog;
+    private final boolean mIsEmergencyLocationAccess;
 
     private final long mSessionId;
 
-    private Drawable mWidgetIcon;
+    private Drawable mInfoWidgetIcon;
 
     public PermissionHistoryPreference(@NonNull Context context, @NonNull UserHandle userHandle,
-            @NonNull String pkgName, @Nullable Drawable appIcon, @NonNull String preferenceTitle,
+            @NonNull String pkgName, @Nullable Drawable packageIcon, @NonNull String packageLabel,
             @NonNull String permissionGroup, @NonNull long accessStartTime,
             @NonNull long accessEndTime, @Nullable CharSequence summaryText,
             boolean showingAttribution, @NonNull List<String> attributionTags,
-            boolean isLastUsage, long sessionId,
-            @Nullable PermissionUsageDetailsViewModel.PermissionUsageOnClickDialog onClickDialog) {
+            boolean isLastUsage, long sessionId, boolean isEmergencyLocationAccess) {
         super(context);
         mContext = context;
         Context userContext = Utils.getUserContext(context, userHandle);
@@ -94,23 +92,22 @@ public class PermissionHistoryPreference extends Preference {
         mPermissionGroup = permissionGroup;
         mAccessStartTime = accessStartTime;
         mAccessEndTime = accessEndTime;
-        mAppIcon = appIcon;
-        mTitle = preferenceTitle;
-        mWidgetIcon = null;
+        mAppIcon = packageIcon;
+        mInfoWidgetIcon = null;
         mAttributionTags = attributionTags;
         mIsLastUsage = isLastUsage;
         mSessionId = sessionId;
         mShowingAttribution = showingAttribution;
-        mOnClickDialog = onClickDialog;
+        mIsEmergencyLocationAccess = isEmergencyLocationAccess;
 
-        setTitle(mTitle);
+        setTitle(packageLabel);
         if (summaryText != null) {
             setSummary(summaryText);
         }
 
         mIntent = getViewPermissionUsageForPeriodIntent(showingAttribution);
         if (mIntent != null) {
-            mWidgetIcon = mContext.getDrawable(R.drawable.ic_info_outline);
+            mInfoWidgetIcon = mContext.getDrawable(R.drawable.ic_info_outline);
             setWidgetLayoutResource(R.layout.image_view_with_divider);
         }
     }
@@ -139,8 +136,8 @@ public class PermissionHistoryPreference extends Preference {
         TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
         permissionHistoryTime.setText(DateFormat.getTimeFormat(mContext).format(mAccessEndTime));
 
-        ImageView permissionIcon = widget.findViewById(R.id.permission_history_icon);
-        permissionIcon.setImageDrawable(mAppIcon);
+        ImageView appIcon = widget.findViewById(R.id.permission_history_icon);
+        appIcon.setImageDrawable(mAppIcon);
 
         ImageView widgetView = widgetFrame.findViewById(R.id.icon);
         setInfoIcon(holder, widgetView);
@@ -161,11 +158,12 @@ public class PermissionHistoryPreference extends Preference {
                         mShowingAttribution,
                         mAttributionTags);
 
-        if (mOnClickDialog != null) {
+        if (mIsEmergencyLocationAccess) {
             setOnPreferenceClickListener(preference -> {
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext)
-                        .setTitle(mOnClickDialog.getTitle())
-                        .setMessage(mOnClickDialog.getDescription())
+                        .setTitle(R.string.privacy_dashboard_emergency_location_dialog_title)
+                        .setMessage(
+                                R.string.privacy_dashboard_emergency_location_dialog_description)
                         .setPositiveButton(R.string.app_permissions,  (dialog, which) -> {
                             mContext.startActivityAsUser(intent, mUserHandle);
                         })
@@ -189,7 +187,7 @@ public class PermissionHistoryPreference extends Preference {
 
     private void setInfoIcon(@NonNull PreferenceViewHolder holder, ImageView widgetView) {
         if (mIntent != null) {
-            widgetView.setImageDrawable(mWidgetIcon);
+            widgetView.setImageDrawable(mInfoWidgetIcon);
             widgetView.setOnClickListener(v -> {
                 write(PERMISSION_DETAILS_INTERACTION,
                         mSessionId,

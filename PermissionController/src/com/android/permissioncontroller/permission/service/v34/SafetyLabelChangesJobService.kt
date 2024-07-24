@@ -111,10 +111,6 @@ class SafetyLabelChangesJobService : JobService() {
                 Log.i(LOG_TAG, "onReceive: Safety label change notifications are not enabled.")
                 return
             }
-            if (KotlinUtils.safetyLabelChangesJobServiceKillSwitch()) {
-                Log.i(LOG_TAG, "onReceive: kill switch is set.")
-                return
-            }
             if (isContextInProfileUser(receiverContext)) {
                 Log.i(
                     LOG_TAG,
@@ -172,10 +168,6 @@ class SafetyLabelChangesJobService : JobService() {
         }
         if (!KotlinUtils.isSafetyLabelChangeNotificationsEnabled(context)) {
             Log.w(LOG_TAG, "Not starting job: safety label change notifications are not enabled.")
-            return false
-        }
-        if (KotlinUtils.safetyLabelChangesJobServiceKillSwitch()) {
-            Log.i(LOG_TAG, "Not starting job: kill switch is set.")
             return false
         }
         when (params.jobId) {
@@ -490,8 +482,7 @@ class SafetyLabelChangesJobService : JobService() {
     private suspend fun getNumberOfAppsWithDataSharingChanged(): Int {
         val appDataSharingUpdates =
             AppDataSharingUpdatesLiveData(PermissionControllerApplication.get())
-                .getInitializedValue()
-                ?: return 0
+                .getInitializedValue() ?: return 0
 
         return appDataSharingUpdates
             .map { appDataSharingUpdate ->
@@ -523,8 +514,7 @@ class SafetyLabelChangesJobService : JobService() {
             }
             ?.keys
             ?.filter { packageUser: Pair<String, UserHandle> -> packageUser.first == packageName }
-            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second }
-            ?: listOf()
+            ?.map { packageUser: Pair<String, UserHandle> -> packageUser.second } ?: listOf()
     }
 
     private fun AppDataSharingUpdate.containsLocationCategoryUpdate() =
@@ -660,9 +650,7 @@ class SafetyLabelChangesJobService : JobService() {
                             SAFETY_LABEL_CHANGES_DETECT_UPDATES_JOB_ID,
                             ComponentName(context, SafetyLabelChangesJobService::class.java)
                         )
-                        .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle()
-                        )
+                        .setRequiresDeviceIdle(true)
                         .build()
                 val result = jobScheduler.schedule(job)
                 if (result != JobScheduler.RESULT_SUCCESS) {
@@ -693,9 +681,7 @@ class SafetyLabelChangesJobService : JobService() {
                             SAFETY_LABEL_CHANGES_PERIODIC_NOTIFICATION_JOB_ID,
                             ComponentName(context, SafetyLabelChangesJobService::class.java)
                         )
-                        .setRequiresDeviceIdle(
-                            KotlinUtils.runSafetyLabelChangesJobOnlyWhenDeviceIdle()
-                        )
+                        .setRequiresDeviceIdle(true)
                         .setPeriodic(KotlinUtils.getSafetyLabelChangesJobIntervalMillis())
                         .setPersisted(true)
                         .build()

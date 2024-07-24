@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"用於緊急電話或簡訊"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"位置資訊已傳送至緊急救援服務"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"這個應用程式已在你撥打緊急電話號碼或傳送簡訊期間，存取裝置的位置資訊。即使應用程式並未取得位置存取權，或是裝置定位功能已關閉，也可能發生這種情況。"<a href="https://support.google.com/android/answer/9319337">"瞭解詳情"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

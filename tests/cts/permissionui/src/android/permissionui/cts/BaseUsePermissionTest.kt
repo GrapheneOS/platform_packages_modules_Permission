@@ -1102,6 +1102,21 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         }
     }
 
+    @Suppress("DEPRECATION")
+    protected fun startManageAppPermissionsActivity() {
+        doAndWaitForWindowTransition {
+            runWithShellPermissionIdentity {
+                context.startActivity(
+                    Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        putExtra(Intent.EXTRA_PACKAGE_NAME, APP_PACKAGE_NAME)
+                    }
+                )
+            }
+        }
+    }
+
     /** Starts activity with intent [ACTION_REVIEW_APP_DATA_SHARING_UPDATES]. */
     fun startAppDataSharingUpdatesActivity() {
         doAndWaitForWindowTransition {

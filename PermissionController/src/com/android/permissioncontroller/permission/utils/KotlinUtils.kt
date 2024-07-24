@@ -164,10 +164,6 @@ object KotlinUtils {
     private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE =
         "safety_label_changes_job_run_when_idle"
 
-    /** Whether the kill switch is set for [SafetyLabelChangesJobService]. */
-    private const val PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH =
-        "safety_label_changes_job_service_kill_switch"
-
     data class Quadruple<out A, out B, out C, out D>(
         val first: A,
         val second: B,
@@ -278,20 +274,6 @@ object KotlinUtils {
             !DeviceUtils.isWear(context)
     }
 
-    /**
-     * Whether the kill switch is set for [SafetyLabelChangesJobService]. If {@code true}, the
-     * service is effectively disabled and will not run or schedule any jobs.
-     */
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
-    fun safetyLabelChangesJobServiceKillSwitch(): Boolean {
-        return SdkLevel.isAtLeastU() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PROPERTY_SAFETY_LABEL_CHANGES_JOB_SERVICE_KILL_SWITCH,
-                false
-            )
-    }
-
     /** How often the safety label changes job will run. */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
     fun getSafetyLabelChangesJobIntervalMillis(): Long {
@@ -299,16 +281,6 @@ object KotlinUtils {
             DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_SAFETY_LABEL_CHANGES_JOB_INTERVAL_MILLIS,
             Duration.ofDays(30).toMillis()
-        )
-    }
-
-    /** Whether the safety label changes job should only be run when the device is idle. */
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "UpsideDownCake")
-    fun runSafetyLabelChangesJobOnlyWhenDeviceIdle(): Boolean {
-        return DeviceConfig.getBoolean(
-            DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_SAFETY_LABEL_CHANGES_JOB_RUN_WHEN_IDLE,
-            true
         )
     }
 

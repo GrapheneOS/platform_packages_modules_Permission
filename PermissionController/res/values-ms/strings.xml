@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Untuk panggilan atau teks kecemasan"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokasi dihantar kepada perkhidmatan kecemasan"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Apl ini mengakses lokasi peranti anda semasa panggilan atau teks kepada nombor kecemasan. Hal ini boleh berlaku apabila apl tiada kebenaran lokasi atau lokasi peranti telah dimatikan. "<a href="https://support.google.com/android/answer/9319337">"Ketahui lebih lanjut"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Semak telefon anda"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Tidak dapat menyambung kepada telefon anda"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Cuba semula?"</string>
 </resources>

@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_IGNORED
@@ -31,6 +32,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.modules.utils.build.SdkLevel
+import com.android.permission.flags.Flags
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION
@@ -128,6 +130,37 @@ class AppPermissionGroupsViewModel(
     private val fullStoragePermsLiveData = FullStoragePermissionAppsLiveData
     private val packagePermsExternalDeviceLiveData =
         PackagePermissionsExternalDeviceLiveData[packageName, user]
+    private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
+    private val packageManager = app.packageManager
+
+    /** Check if the application is in restricted settings mode. */
+    @SuppressLint("NewApi")
+    fun isClearRestrictedAllowed(): Boolean {
+        if (Flags.enhancedConfirmationBackportEnabled()) {
+            // TODO(b/347876543): Replace this when EnhancedConfirmtionServiceImpl is
+            // available.
+            val isRestricted =
+                appOpsManager.noteOpNoThrow(AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
+                    packageManager.getApplicationInfoAsUser(packageName, 0, user).uid,
+                    packageName, null, null) == MODE_IGNORED
+            return isRestricted
+        }
+        return false
+    }
+
+    /** Allow restricted settings on the applications. */
+    @SuppressLint("NewApi")
+    fun clearRestriction() {
+        if (Flags.enhancedConfirmationBackportEnabled()) {
+            // TODO(b/347876543): Replace this when EnhancedConfirmationServiceImpl is
+            // available.
+            appOpsManager.setMode(
+                AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
+                packageManager.getApplicationInfoAsUser(packageName, 0, user).uid,
+                packageName, MODE_ALLOWED
+            )
+        }
+    }
 
     /**
      * LiveData whose data is a map of grant category (either allowed or denied) to a list of

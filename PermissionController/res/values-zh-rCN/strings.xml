@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"用于紧急呼叫或发送紧急短信"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"已向应急服务发送位置信息"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"在向紧急电话号码致电或发短信期间，此应用会获取您设备的位置信息。即使此应用没有位置信息权限或设备位置信息服务已关闭，也可能发生此情况。"<a href="https://support.google.com/android/answer/9319337">"了解详情"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

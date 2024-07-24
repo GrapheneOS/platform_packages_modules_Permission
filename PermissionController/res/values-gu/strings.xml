@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ઇમર્જન્સી કૉલ કે ટેક્સ્ટ માટે"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ઇમર્જન્સી સર્વિસને મોકલવામાં આવેલું લોકેશન"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"કોઈ ઇમર્જન્સી નંબરને કૉલ કે ટેક્સ્ટ કરવા દરમિયાન આ ઍપ દ્વારા તમારા ડિવાઇસના લોકેશનને ઍક્સેસ કરવામાં આવ્યું. ઍપને લોકેશનની પરવાનગી ન હોય કે ડિવાઇસનું લોકેશન સેટિંગ બંધ કરેલું હોય, ત્યારે પણ આમ થઈ શકે છે. "<a href="https://support.google.com/android/answer/9319337">"વધુ જાણો"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

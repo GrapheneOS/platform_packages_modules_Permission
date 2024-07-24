@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Для екстрених викликів або SMS"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Геодані надіслано службам екстреної допомоги"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Цей додаток отримав доступ до геоданих вашого пристрою, коли ви телефонували або надсилали SMS на екстрений номер. Це може статися, навіть якщо додаток не має дозволу на доступ до геоданих або коли на пристрої вимкнено геолокацію. "<a href="https://support.google.com/android/answer/9319337">"Докладніше"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

@@ -687,4 +687,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"緊急通報（電話またはテキスト メッセージ）の場合"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"緊急サービスへの位置情報の送信"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"このアプリは緊急通報番号に電話またはテキスト メッセージで通報する際にデバイスの位置情報にアクセスしました。このアクセスは、アプリに位置情報の利用許可が付与されていない場合やデバイスの位置情報が OFF の場合も発生することがあります。"<a href="https://support.google.com/android/answer/9319337">"詳細"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"スマートフォンを確認してください"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"スマートフォンに接続できません"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"再試行しますか？"</string>
 </resources>

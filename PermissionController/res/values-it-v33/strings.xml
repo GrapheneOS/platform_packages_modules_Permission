@@ -29,7 +29,7 @@
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>"</string>
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Altri avvisi"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Avvisi chiusi"</string>
-    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Espandi e visualizza un altro avviso}many{Espandi e visualizza altri # avvisi}other{Espandi e visualizza altri # avvisi}}"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Espandi e visualizza un altro avviso}many{Espandi e visualizza altri # di avvisi}other{Espandi e visualizza altri # avvisi}}"</string>
     <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Avviso. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Azione completata"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Controlla le impostazioni che possono proteggere meglio il tuo dispositivo"</string>

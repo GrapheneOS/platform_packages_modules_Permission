@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ತುರ್ತು ಕರೆ ಅಥವಾ ಪಠ್ಯಕ್ಕಾಗಿ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ಸ್ಥಳವನ್ನು ತುರ್ತು ಸೇವೆಗಳಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದ ಅಥವಾ ಪಠ್ಯವನ್ನು ಕಳುಹಿಸುವ ಸಮಯದಲ್ಲಿ ಈ ಆ್ಯಪ್ ನಿಮ್ಮ ಸಾಧನದ ಸ್ಥಳವನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಿದೆ. ಆ್ಯಪ್ ಸ್ಥಳದ ಅನುಮತಿಯನ್ನು ಹೊಂದಿಲ್ಲದಿರುವಾಗ ಅಥವಾ ಸಾಧನದ ಸ್ಥಳವು ಆಫ್ ಆಗಿರುವಾಗಲೂ ಇದು ಸಂಭವಿಸಬಹುದು. "<a href="https://support.google.com/android/answer/9319337">"ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"ಪುನಃ ಪ್ರಯತ್ನಿಸಬೇಕೆ?"</string>
 </resources>

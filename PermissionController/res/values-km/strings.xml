@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"សម្រាប់ការហៅ ឬផ្ញើសារជាអក្សរទៅលេខសង្គ្រោះបន្ទាន់"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"បានផ្ញើទីតាំង​ទៅសេវាសង្គ្រោះបន្ទាន់"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"កម្មវិធីនេះបានចូលប្រើទីតាំងឧបករណ៍របស់អ្នកក្នុងអំឡុងពេលហៅទូរសព្ទ ឬផ្ញើសារជាអក្សរទៅកាន់លេខសង្គ្រោះបន្ទាន់។ ករណីនេះអាចកើតឡើង ទោះបីជាកម្មវិធីនេះមិនមានការអនុញ្ញាតទីតាំង ឬបិទទីតាំងឧបករណ៍ក៏ដោយ។ "<a href="https://support.google.com/android/answer/9319337">"ស្វែងយល់បន្ថែម"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

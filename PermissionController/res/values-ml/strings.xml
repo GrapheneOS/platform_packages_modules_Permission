@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"എമർജൻസി കോളിനോ ടെക്സ്റ്റിനോ ആയി"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"അടിയന്തര സേവനങ്ങളിലേക്ക് ലൊക്കേഷൻ അയച്ചു"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"അടിയന്തര നമ്പറിലേക്ക് ഒരു കോൾ ചെയ്യുമ്പോഴോ ടെക്സ്റ്റ് ചെയ്യുമ്പോഴോ ഈ ആപ്പ് നിങ്ങളുടെ ഉപകരണത്തിന്റെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്തു. ആപ്പിന് ലൊക്കേഷൻ അനുമതി ഇല്ലാത്തപ്പോഴോ ഉപകരണ ലൊക്കേഷൻ ഓഫായിരിക്കുമ്പോഴോ പോലും ഇത് സംഭവിക്കാം. "<a href="https://support.google.com/android/answer/9319337">"കൂടുതലറിയുക"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

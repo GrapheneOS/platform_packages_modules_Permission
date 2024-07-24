@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Para chamada ou mensagem de texto de emergência"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Localização enviada aos serviços de emergência"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Esta app acedeu à localização do seu dispositivo durante uma chamada ou o envio de uma mensagem de texto para um número de emergência. Isto pode acontecer mesmo quando a app não tem autorização de acesso à localização ou a localização do dispositivo está desativada. "<a href="https://support.google.com/android/answer/9319337">"Saiba mais"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Verifique o seu telemóvel"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Não foi possível ligar ao telemóvel"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Tentar novamente?"</string>
 </resources>

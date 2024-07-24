@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"ਐਮਰਜੈਂਸੀ ਕਾਲ ਜਾਂ ਲਿਖਤ ਸੁਨੇਹੇ ਲਈ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ਐਮਰਜੈਂਸੀ ਸੇਵਾਵਾਂ ਨੂੰ ਭੇਜੀ ਗਈ ਟਿਕਾਣਾ ਜਾਣਕਾਰੀ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ਇਸ ਐਪ ਵੱਲੋਂ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਨ ਜਾਂ ਲਿਖਤ ਸੁਨੇਹਾ ਭੇਜਣ ਦੌਰਾਨ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਗਈ। ਇਹ ਉਦੋਂ ਵੀ ਹੋ ਸਕਦਾ ਹੈ, ਜਦੋਂ ਐਪ ਕੋਲ ਟਿਕਾਣੇ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ ਹੈ ਜਾਂ ਡੀਵਾਈਸ ਦੀ ਟਿਕਾਣਾ ਸੁਵਿਧਾ ਬੰਦ ਹੁੰਦੀ ਹੈ। "<a href="https://support.google.com/android/answer/9319337">"ਹੋਰ ਜਾਣੋ"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"आपत्कालीन अवस्थामा यो नम्बरमा कल गर्नुहोस् वा टेक्स्ट म्यासेज पठाउनुहोस्"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"आपत्कालीन सेवाहरूमा लोकेसन पठाइएको छ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"यो एपले आपत्कालीन नम्बरमा कल वा टेक्स्ट म्यासेज गर्ने बेलामा तपाईंको डिभाइसको लोकेसन एक्सेस गरेको छ। यो एपलाई लोकेसन प्रयोग गर्ने अनुमति नदिइएका वा यो डिभाइसको लोकेसन अफ गरिएका अवस्थामा पनि यस्तो हुन सक्छ। "<a href="https://support.google.com/android/answer/9319337">"थप जान्नुहोस्"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"आफ्नो फोनमा हेर्नुहोस्"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"तपाईंको फोनमा कनेक्ट गर्न सकिएन"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"पुनः प्रयास गर्ने हो?"</string>
 </resources>

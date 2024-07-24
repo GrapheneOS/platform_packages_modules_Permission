@@ -1992,6 +1992,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- A string representing a message (sms, email, etc.) telling the user about a one time password. Used for testing [CHAR LIMIT=NONE] -->
     <string name="test_otp_msg">Your one time password is 132435</string>
 
+    <!-- [CHAR LIMIT=50] Manage applications, unlock restricted setting from app permissions options menu -->
+    <string name="allow_restricted_settings">Allow restricted settings</string>
+
     <!-- START ENHANCED CONFIRMATION DIALOG -->
 
     <!--Title for dialog displayed to tell user that settings are blocked by setting restrictions [CHAR LIMIT=50] -->

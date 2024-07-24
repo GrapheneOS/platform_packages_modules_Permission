@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Per a trucades o missatges de text d\'emergència"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"La ubicació s\'ha enviat als serveis d\'emergències"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Aquesta aplicació ha accedit a la ubicació del teu dispositiu mentre feies una trucada o enviaves un missatge de text a un número d\'emergència. Això pot passar fins i tot quan l\'aplicació no té permís d\'ubicació o la ubicació del dispositiu està desactivada. "<a href="https://support.google.com/android/answer/9319337">"Més informació"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

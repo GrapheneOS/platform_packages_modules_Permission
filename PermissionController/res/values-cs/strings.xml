@@ -687,4 +687,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Pro tísňové volání nebo textovou zprávu"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Poloha byla odeslána na tísňovou linku"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Tato aplikace získala přístup k poloze vašeho zařízení během hovoru nebo při posílání SMS na číslo tísňového volání. K tomu může dojít, i když aplikace nemá oprávnění pro přístup k poloze nebo je poloha zařízení vypnutá. "<a href="https://support.google.com/android/answer/9319337">"Další informace"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

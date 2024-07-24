@@ -47,6 +47,15 @@ flag {
 }
 
 flag {
+    name: "enhanced_confirmation_backport_enabled"
+    is_exported: true
+    namespace: "permissions"
+    description: "Flag to backport enhanced confirmation in permission mainline to T and U."
+    bug: "347876543"
+    is_fixed_read_only: true
+}
+
+flag {
     name: "enable_coarse_fine_location_prompt_for_aaos"
     is_exported: true
     namespace: "permissions"

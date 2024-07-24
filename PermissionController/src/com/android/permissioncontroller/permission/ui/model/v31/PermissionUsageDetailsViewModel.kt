@@ -36,7 +36,6 @@ import android.os.UserHandle
 import android.os.UserManager
 import android.permission.flags.Flags
 import androidx.annotation.RequiresApi
-import androidx.annotation.StringRes
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -429,10 +428,11 @@ class PermissionUsageDetailsViewModel(
         val durationSummaryLabel = getDurationSummary(context, this, accessTimeList)
         val proxyLabel = getProxyPackageLabel(this)
         val subAttributionLabel = getSubAttributionLabel(this)
-        val showingSubAttribution = subAttributionLabel != null && subAttributionLabel.isNotEmpty()
+        val showingSubAttribution = !subAttributionLabel.isNullOrEmpty()
         val summary =
             buildUsageSummary(context, subAttributionLabel, proxyLabel, durationSummaryLabel)
-        val onClickDialog = getPermissionUsageOnclickDialog(this.clusteredOp)
+        val isEmergencyLocationAccess =
+            isLocationByPassEnabled() && clusteredOp == AppOpsManager.OPSTR_EMERGENCY_LOCATION
 
         return AppPermissionAccessUiInfo(
             this.appPermissionId.userHandle,
@@ -445,24 +445,8 @@ class PermissionUsageDetailsViewModel(
             showingSubAttribution,
             ArrayList(this.attributionTags),
             getBadgedPackageIcon(this.appPermissionId.packageName, this.appPermissionId.userHandle),
-            onClickDialog
+            isEmergencyLocationAccess
         )
-    }
-
-    /**
-     * If an app op is clustered by itself and clicking its access entry in the privacy timeline
-     * displays an alert dialog, return the dialog with title and description.
-     */
-    private fun getPermissionUsageOnclickDialog(
-        clusteredOp: String?
-    ): PermissionUsageOnClickDialog? {
-        if (isLocationByPassEnabled() && clusteredOp == AppOpsManager.OPSTR_EMERGENCY_LOCATION) {
-            val title = R.string.privacy_dashboard_emergency_location_dialog_title
-            val description = R.string.privacy_dashboard_emergency_location_dialog_description
-            return PermissionUsageOnClickDialog(title, description)
-        }
-
-        return null
     }
 
     /** Builds a summary of the permission access. */
@@ -590,12 +574,7 @@ class PermissionUsageDetailsViewModel(
         val showingAttribution: Boolean,
         val attributionTags: ArrayList<String>,
         val badgedPackageIcon: Drawable?,
-        val onClickDialog: PermissionUsageOnClickDialog?
-    )
-
-    data class PermissionUsageOnClickDialog(
-        @StringRes val title: Int,
-        @StringRes val description: Int
+        val isEmergencyLocationAccess: Boolean
     )
 
     /**

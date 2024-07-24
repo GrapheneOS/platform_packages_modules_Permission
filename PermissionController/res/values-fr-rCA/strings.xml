@@ -102,7 +102,7 @@
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"L\'accès en arrière-plan est désactivé par la politique"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"L\'accès en arrière-plan est activé par la politique"</string>
     <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"L\'accès en avant-plan est activé par la politique"</string>
-    <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Contrôlé par l\'administrateur"</string>
+    <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Contrôlée par l\'administrateur"</string>
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"L\'accès en arrière-plan est désactivé par l\'administrateur"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"L\'accès en arrière-plan est activé par l\'administrateur"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"L\'accès en avant-plan est activé par l\'administrateur"</string>
@@ -143,7 +143,7 @@
     <string name="duration_used_days" msgid="8238355545812998877">"{count,plural, =1{# jour}one{# jour}many{# de jours}other{# jours}}"</string>
     <string name="duration_used_hours" msgid="4983814806123370332">"{count,plural, =1{# heure}one{# heure}many{# d\'heures}other{# heures}}"</string>
     <string name="duration_used_minutes" msgid="1701379522897227819">"{count,plural, =1{# min}one{# min}many{# de minutes}other{# min}}"</string>
-    <string name="duration_used_seconds" msgid="4067390990568727715">"{count,plural, =1{# s}one{# s}many{# de secondes}other{# s}}"</string>
+    <string name="duration_used_seconds" msgid="4067390990568727715">"{count,plural, =1{# s}one{# s}many{# s}other{# s}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Toute autorisation"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"À tout moment"</string>
     <string name="permission_usage_last_n_days" msgid="7882626467375714145">"{count,plural, =1{Depuis # jour}one{Depuis # jour}many{Depuis # de jours}other{Depuis # jours}}"</string>
@@ -259,10 +259,10 @@
     <string name="denied_header" msgid="903209608358177654">"Non autorisées"</string>
     <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g> sur <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Afficher d\'autres applis pouvant accéder à tous les fichiers"</string>
-    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 jour}one{# jour}many{# jours}other{# jours}}"</string>
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 jour}one{# jour}many{# de jours}other{# jours}}"</string>
     <string name="hours" msgid="7302866489666950038">"{count,plural, =1{# heure}one{# heure}many{# d\'heures}other{# heures}}"</string>
     <string name="minutes" msgid="4868414855445375753">"{count,plural, =1{# minute}one{# minute}many{# de minutes}other{# minutes}}"</string>
-    <string name="seconds" msgid="5893958182059842734">"{count,plural, =1{# seconde}one{# seconde}many{# de secondes}other{# secondes}}"</string>
+    <string name="seconds" msgid="5893958182059842734">"{count,plural, =1{# seconde}one{# seconde}many{# de secondes}other{# secondes}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"Rappels d\'autorisation"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 appli non utilisée"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> applis non utilisées"</string>
@@ -328,7 +328,7 @@
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Dernier accès : au cours des 7 derniers jours"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorisée en permanence"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Dernier accès : hier à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorisée en permanence"</string>
-    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Dernier accès : <xliff:g id="TIME_DATE_0">%1$s</xliff:g> à <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Autorisée en permanence"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Dernier accès : <xliff:g id="TIME_DATE_0">%1$s</xliff:g> à <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Autorisée en permanence"</string>
     <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Dernier accès : au cours des dernières 24 h • Autorisée en permanence"</string>
     <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Dernier accès : au cours des 7 derniers j. • Autorisée en permanence"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g> • Fichiers multimédias"</string>
@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Pour un appel ou un message texte d\'urgence"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Position envoyée aux services d\'urgence"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Cette appli a accédé à la position de votre appareil lors d\'un appel ou de l\'envoi d\'un message texte à un numéro d\'urgence. Cela peut se produire même si l\'appli ne dispose pas de l\'autorisation de localisation ou si la localisation de l\'appareil est désactivée. "<a href="https://support.google.com/android/answer/9319337">"En savoir plus"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

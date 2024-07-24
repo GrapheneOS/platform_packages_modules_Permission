@@ -29,7 +29,7 @@
     <string name="safety_center_entry_content_description" msgid="3639565652938224321">"<xliff:g id="ENTRY_ITEM_TITLE">%1$s</xliff:g>. <xliff:g id="ENTRY_ITEM_SUMMARY">%2$s</xliff:g>."</string>
     <string name="safety_center_more_issues_card_title" msgid="7425844746197493312">"Más alertas"</string>
     <string name="safety_center_dismissed_issues_card_title" msgid="2340129842725145733">"Alertas ignoradas"</string>
-    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Ampliar para ver una alerta más}many{Ampliar para ver # alertas más}other{Ampliar para ver # alertas más}}"</string>
+    <string name="safety_center_more_issues_card_expand_action" msgid="7109451851052272946">"{count,plural, =1{Amplía para ver una alerta más}many{Amplía para ver # alertas más}other{Amplía para ver # alertas más}}"</string>
     <string name="safety_center_issue_card_prefix_content_description" msgid="1447445289637043544">"Alerta. <xliff:g id="ISSUE_CARD_TITLE">%1$s</xliff:g>"</string>
     <string name="safety_center_resolved_issue_fallback" msgid="8548932070610766651">"Acción completada"</string>
     <string name="safety_center_qs_status_summary" msgid="5193925895830451177">"Comprueba los ajustes que pueden proteger más tu dispositivo"</string>

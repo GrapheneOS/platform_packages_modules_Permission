@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"அவசர அழைப்பு/மெசேஜுக்கு"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"அவசரகாலச் சேவைகளுக்கு இருப்பிடம் அனுப்பப்பட்டது"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"அவசர உதவி எண்ணை அழைத்தபோதோ அந்த எண்ணிற்கு மெசேஜ் அனுப்பியபோதோ உங்கள் சாதனத்தின் இருப்பிடத்தை இந்த ஆப்ஸ் அணுகியது. இருப்பிட அனுமதி ஆப்ஸுக்கு இல்லாதபோதும் சாதனத்தின் இருப்பிடம் முடக்கப்பட்டிருக்கும்போதும் கூட இப்படி நிகழலாம். "<a href="https://support.google.com/android/answer/9319337">"மேலும் அறிக"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

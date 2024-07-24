@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"आपातकालीन कॉल या मैसेज करने के लिए"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"आपातकालीन सेवाओं को जगह की जानकारी भेजी गई"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"ऐसा हो सकता है कि किसी आपातकालीन नंबर पर कॉल या मैसेज करने के दौरान, ऐप्लिकेशन ने आपके डिवाइस की जगह की जानकारी ऐक्सेस कर ली हो. ऐप्लिकेशन के पास जगह की जानकारी ऐक्सेस करने की अनुमति न होने या डिवाइस की जगह की जानकारी की सेटिंग बंद होने पर भी, ऐप्लिकेशन ऐसा कर सकता है. "<a href="https://support.google.com/android/answer/9319337">"ज़्यादा जानें"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"अपना फ़ोन देखें"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"आपके फ़ोन से कनेक्ट नहीं किया जा सका"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"फिर से कोशिश करें?"</string>
 </resources>

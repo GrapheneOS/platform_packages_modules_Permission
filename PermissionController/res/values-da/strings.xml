@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"For opkald eller beskeder til et alarmnummer"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokation sendt til nødtjenester"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Denne app har tilgået din enheds lokation i forbindelse med et opkald eller en besked til et alarmnummer. Dette kan lade sig gøre, selvom appen ikke har lokationstilladelse, eller enhedens lokation er deaktiveret. "<a href="https://support.google.com/android/answer/9319337">"Få flere oplysninger"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

@@ -657,7 +657,7 @@
     <string name="data_sharing_updates_title" msgid="7996933386875213859">"Cambios en los datos compartidos de ubicación"</string>
     <string name="data_sharing_updates_summary" msgid="764113985772233889">"Consulta las aplicaciones que han cambiado cómo comparten tus datos de ubicación"</string>
     <string name="data_sharing_updates_subtitle" msgid="6311537708950632329">"Estas aplicaciones han cambiado cómo pueden compartir tus datos de ubicación. Puede que no los hayan compartido antes, o que ahora lo hagan con fines publicitarios o de marketing."</string>
-    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Los desarrolladores de estas aplicaciones han proporcionado información a una tienda de aplicaciones sobre sus formas de compartir datos. Es posible que la actualicen con el tiempo.\n\nLas formas en que se comparten los datos pueden variar en función de la versión de la aplicación, el modo en que la utilices, el país donde la uses y tu edad."</string>
+    <string name="data_sharing_updates_footer_message" msgid="1582711655172892107">"Los desarrolladores de estas aplicaciones han proporcionado información a una tienda de aplicaciones sobre sus formas de compartir datos. Es posible que la actualicen con el tiempo.\n\nLas formas en que se comparten los datos pueden variar en función de la versión de la aplicación, el modo en que la utilices, la zona donde la uses y tu edad."</string>
     <string name="learn_about_data_sharing" msgid="4200480587079488045">"Más información sobre cómo se comparten los datos"</string>
     <string name="shares_location_with_third_parties" msgid="2278051743742057767">"Tus datos de ubicación ahora se comparten con terceros"</string>
     <string name="shares_location_with_third_parties_for_advertising" msgid="1918588064014480513">"Tus datos de ubicación ahora se comparten con terceros para fines de publicidad o marketing"</string>
@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Para llamadas o mensajes de emergencia"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Ubicación enviada a los servicios de emergencias"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Esta aplicación ha accedido a la ubicación de tu dispositivo mientras hacías una llamada o enviabas un mensaje al número de emergencia. Esto puede ocurrir aunque la aplicación no tenga el permiso de ubicación o la ubicación del dispositivo esté desactivada. "<a href="https://support.google.com/android/answer/9319337">"Más información"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

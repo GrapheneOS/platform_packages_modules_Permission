@@ -685,4 +685,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Voor noodoproep of -tekstbericht"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Locatie naar de hulpdiensten gestuurd"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Deze app heeft toegang gehad tot de locatie van je apparaat tijdens een gesprek met of tekstbericht naar een alarmnummer. Dit kan ook gebeuren als de app geen locatierechten heeft of als de apparaatlocatie uitstaat. "<a href="https://support.google.com/android/answer/9319337">"Meer informatie"</a></string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Check je telefoon"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Kan je telefoon niet bereiken"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Opnieuw proberen?"</string>
 </resources>

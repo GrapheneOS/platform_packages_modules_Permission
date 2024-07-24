@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"အရေးပေါ်ဖုန်းခေါ်ခြင်း (သို့) စာတိုပို့ခြင်းအတွက်"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"အရေးပေါ်ဝန်ဆောင်မှုများထံ တည်နေရာ ပို့ထားသည်"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"အရေးပေါ် နံပါတ်ထံ ဖုန်းခေါ် (သို့) စာတိုပို့နေစဉ် ဤအက်ပ်သည် သင့်စက်ပစ္စည်း၏ တည်နေရာကို သုံးထားသည်။ အက်ပ်တွင် တည်နေရာခွင့်ပြုချက် မရှိလည်း (သို့) စက်ပစ္စည်းတည်နေရာကို ပိတ်ထားလည်း ဤသို့ဖြစ်နိုင်သည်။ "<a href="https://support.google.com/android/answer/9319337">"ပိုမိုလေ့လာရန်"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

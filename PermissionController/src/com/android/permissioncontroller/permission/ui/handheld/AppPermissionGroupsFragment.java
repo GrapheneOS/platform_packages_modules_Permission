@@ -252,6 +252,12 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                         mPackageName, mUser));
                 return true;
             }
+
+            case MENU_ALLOW_RESTRICTED_SETTINGS: {
+                mViewModel.clearRestriction();
+                getActivity().invalidateOptionsMenu();
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -265,6 +271,20 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
                         getClass().getName());
             }
+        }
+
+        if (SdkLevel.isAtLeastT() && !SdkLevel.isAtLeastV()
+                && Flags.enhancedConfirmationBackportEnabled()) {
+            menu.add(Menu.NONE, MENU_ALLOW_RESTRICTED_SETTINGS, Menu.NONE,
+                    R.string.allow_restricted_settings);
+        }
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        final MenuItem allowRestrictedSettingsMenu = menu.findItem(MENU_ALLOW_RESTRICTED_SETTINGS);
+        if (allowRestrictedSettingsMenu != null) {
+            allowRestrictedSettingsMenu.setVisible(mViewModel.isClearRestrictedAllowed());
         }
     }
 

@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"Артқа"</string>
     <string name="dialog_close" msgid="6840699812532384661">"Жабу"</string>
     <string name="available" msgid="6007778121920339498">"Қолжетімді"</string>
-    <string name="blocked" msgid="9195547604866033708">"Бөгелген"</string>
+    <string name="blocked" msgid="9195547604866033708">"Блокталған"</string>
     <string name="on" msgid="280241003226755921">"Қосулы"</string>
     <string name="off" msgid="1438489226422866263">"Өшіру"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Жою немесе өшіру"</string>
@@ -685,4 +685,10 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Құтқару қызметіне қоңырау шалуға немесе мәтіндік хабар жіберуге арналған"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Локация құтқару қызметтеріне жіберілді"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Бұл қолданба құтқару қызметінің нөміріне қоңырау шалу немесе мәтіндік хабар жіберу кезінде құрылғының локациясын пайдаланды. Локацияны пайдалану рұқсаты болмаған немесе құрылғы локациясы өшірулі болған жағдайда да, қолданба локацияны пайдалануы мүмкін. "<a href="https://support.google.com/android/answer/9319337">"Толық ақпарат"</a></string>
+    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
+    <skip />
+    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
+    <skip />
 </resources>

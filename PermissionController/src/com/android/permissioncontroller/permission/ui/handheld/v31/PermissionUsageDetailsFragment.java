@@ -37,7 +37,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -76,8 +75,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
 
     private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
-    private @Nullable String mPermissionGroup;
-    private int mUsageSubtitle;
+    private String mPermissionGroup;
     private boolean mHasSystemApps;
 
     private MenuItem mShowSystemMenu;
@@ -190,9 +188,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                             .getString(
                                     R.string.permission_group_usage_title,
                                     KotlinUtils.INSTANCE.getPermGroupLabel(
-                                            getActivity(), mPermissionGroup));
+                                            requireActivity(), mPermissionGroup));
         }
-        getActivity().setTitle(title);
+        requireActivity().setTitle(title);
     }
 
     @Override
@@ -239,7 +237,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         int itemId = item.getItemId();
         switch (itemId) {
             case android.R.id.home:
-                getActivity().finishAfterTransition();
+                requireActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
                 mViewModel.updateShowSystemAppsToggle(true);
@@ -277,17 +275,16 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
 
         Preference subtitlePreference = new Preference(context);
         updateShow7DaysToggle(show7Days);
-        mUsageSubtitle =
-                show7Days
-                        ? R.string.permission_group_usage_subtitle_7d
-                        : R.string.permission_group_usage_subtitle_24h;
+        int usageSubtitle = show7Days
+                ? R.string.permission_group_usage_subtitle_7d
+                : R.string.permission_group_usage_subtitle_24h;
 
         subtitlePreference.setSummary(
                 getResources()
                         .getString(
-                                mUsageSubtitle,
+                                usageSubtitle,
                                 KotlinUtils.INSTANCE.getPermGroupLabel(
-                                        getActivity(), mPermissionGroup)));
+                                        context, mPermissionGroup)));
         subtitlePreference.setSelectable(false);
         screen.addPreference(subtitlePreference);
 
@@ -306,14 +303,8 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         AtomicReference<PreferenceCategory> category =
                 new AtomicReference<>(createDayCategoryPreference());
         screen.addPreference(category.get());
-        PreferenceScreen finalScreen = screen;
 
-        if (getActivity() == null) {
-            // Fragment has no Activity, return.
-            return;
-        }
-        renderHistoryPreferences(uiData.getAppPermissionAccessUiInfoList(), category, finalScreen);
-
+        renderHistoryPreferences(uiData.getAppPermissionAccessUiInfoList(), category, screen);
         setLoading(false, true);
         setProgressBarVisible(false);
     }
@@ -323,8 +314,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
             List<AppPermissionAccessUiInfo> appPermissionAccessUiInfoList,
             AtomicReference<PreferenceCategory> category,
             PreferenceScreen preferenceScreen) {
-        Context context = getContext();
-        long previousDateMs = 0L;
+        Context context = requireContext();
         long midnightToday =
                 ZonedDateTime.now(ZoneId.systemDefault())
                                 .truncatedTo(ChronoUnit.DAYS)
@@ -337,19 +327,20 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                                 .toEpochSecond()
                         * 1000L;
 
+        long previousAccessDateMs = 0L;
         for (int i = 0; i < appPermissionAccessUiInfoList.size(); i++) {
             AppPermissionAccessUiInfo appPermissionAccessUiInfo =
                     appPermissionAccessUiInfoList.get(i);
             long accessEndTime = appPermissionAccessUiInfo.getAccessEndTime();
-            long currentDateMs =
+            long accessDateMS =
                     ZonedDateTime.ofInstant(
                                             Instant.ofEpochMilli(accessEndTime),
                                             Clock.system(ZoneId.systemDefault()).getZone())
                                     .truncatedTo(ChronoUnit.DAYS)
                                     .toEpochSecond()
                             * 1000L;
-            if (currentDateMs != previousDateMs) {
-                if (previousDateMs != 0L) {
+            if (accessDateMS != previousAccessDateMs) {
+                if (previousAccessDateMs != 0L) {
                     category.set(createDayCategoryPreference());
                     preferenceScreen.addPreference(category.get());
                 }
@@ -359,14 +350,14 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                     category.get().setTitle(R.string.permission_history_category_yesterday);
                 } else {
                     category.get()
-                            .setTitle(DateFormat.getLongDateFormat(context).format(currentDateMs));
+                            .setTitle(DateFormat.getLongDateFormat(context).format(accessDateMS));
                 }
-                previousDateMs = currentDateMs;
+                previousAccessDateMs = accessDateMS;
             }
 
             Preference permissionUsagePreference =
                     new PermissionHistoryPreference(
-                            getContext(),
+                            context,
                             appPermissionAccessUiInfo.getUserHandle(),
                             appPermissionAccessUiInfo.getPackageName(),
                             appPermissionAccessUiInfo.getBadgedPackageIcon(),
@@ -379,7 +370,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                             appPermissionAccessUiInfo.getAttributionTags(),
                             i == appPermissionAccessUiInfoList.size() - 1,
                             mSessionId,
-                            appPermissionAccessUiInfo.getOnClickDialog());
+                            appPermissionAccessUiInfo.isEmergencyLocationAccess());
 
             category.get().addPreference(permissionUsagePreference);
         }
