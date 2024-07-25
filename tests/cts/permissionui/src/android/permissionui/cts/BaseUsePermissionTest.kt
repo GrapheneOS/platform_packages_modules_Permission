@@ -162,6 +162,8 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         const val PURPOSE_TITLE_ID = "com.android.permissioncontroller:id/purpose_title"
         const val PURPOSE_MESSAGE_ID = "com.android.permissioncontroller:id/purpose_message"
         const val LEARN_MORE_TITLE_ID = "com.android.permissioncontroller:id/learn_more_title"
+        const val HELP_URL_ECM =
+            "com.android.permissioncontroller:id/help_url_action_disabled_by_restricted_settings"
         const val LEARN_MORE_MESSAGE_ID = "com.android.permissioncontroller:id/learn_more_message"
         const val DETAIL_MESSAGE_ID = "com.android.permissioncontroller:id/detail_message"
         const val PERMISSION_RATIONALE_SETTINGS_SECTION =

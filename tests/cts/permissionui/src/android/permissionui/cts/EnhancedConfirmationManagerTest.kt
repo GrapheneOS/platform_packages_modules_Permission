@@ -69,6 +69,13 @@ class EnhancedConfirmationManagerTest : BaseUsePermissionTest() {
 
     @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
     @Test
+    fun helpUrlActionLinkIsNotEmpty() {
+        val helpUrl = getPermissionControllerResString(HELP_URL_ECM)
+        assertFalse(helpUrl?.length == 0)
+    }
+
+    @RequiresFlagsEnabled(Flags.FLAG_ENHANCED_CONFIRMATION_MODE_APIS_ENABLED)
+    @Test
     fun installedAppStartsWithModeDefault() {
         installPackageWithInstallSourceAndMetadataFromStore(APP_APK_NAME_LATEST)
         eventually {
