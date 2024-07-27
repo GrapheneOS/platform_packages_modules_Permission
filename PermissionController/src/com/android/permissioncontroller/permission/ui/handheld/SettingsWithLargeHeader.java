@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceViewHolder;
 
@@ -180,7 +179,7 @@ public abstract class SettingsWithLargeHeader extends PermissionsFrameFragment  
     /**
      * A Preference that will act as the "Large Header" for "SettingsWithLargeHeader" fragments.
      */
-    public static class LargeHeaderPreference extends PreferenceCategory {
+    public static class LargeHeaderPreference extends PermissionPreferenceCategory {
         private SettingsWithLargeHeader mFragment;
 
         private LargeHeaderPreference(Context context, SettingsWithLargeHeader fragment) {

@@ -36,7 +36,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 
 import com.android.permissioncontroller.R;
@@ -229,7 +228,7 @@ public final class AllAppPermissionsFragment extends SettingsWithLargeHeader {
         }
         PreferenceGroup pref = findPreference(groupName);
         if (pref == null) {
-            pref = new PreferenceCategory(getPreferenceManager().getContext());
+            pref = new PermissionPreferenceCategory(getPreferenceManager().getContext());
             pref.setKey(groupName);
             pref.setTitle(KotlinUtils.INSTANCE.getPermGroupLabel(getContext(), groupName));
             getPreferenceScreen().addPreference(pref);
@@ -251,7 +250,7 @@ public final class AllAppPermissionsFragment extends SettingsWithLargeHeader {
                     getActivity().getApplication(), mPackageName, groupName, mUser, false);
             pref = new MyMultiTargetSwitchPreference(context, permName, appPermGroup);
         } else {
-            pref = new Preference(context);
+            pref = new PermissionPreference(context);
         }
         pref.setIcon(KotlinUtils.INSTANCE.getPermInfoIcon(context, permName));
         pref.setTitle(KotlinUtils.INSTANCE.getPermInfoLabel(context, permName));

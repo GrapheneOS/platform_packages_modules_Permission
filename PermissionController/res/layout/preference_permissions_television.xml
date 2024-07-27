@@ -16,7 +16,7 @@
 
 <!-- Based off frameworks/base/core/res/res/layout/preference_material.xml
      except that this has the negative margin on the image removed
-     and has a set icon size (and some padding to align). -->
+     and has a set icon size (and some padding to realign). -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -39,8 +39,8 @@
         android:paddingBottom="4dp">
         <androidx.preference.internal.PreferenceImageView
             android:id="@android:id/icon"
-            android:layout_width="@dimen/permission_icon_size"
-            android:layout_height="@dimen/permission_icon_size"
+            android:layout_width="@dimen/tv_permission_icon_size"
+            android:layout_height="@dimen/tv_permission_icon_size"
             android:scaleType="fitCenter" />
     </LinearLayout>
 

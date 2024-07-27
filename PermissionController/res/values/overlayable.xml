@@ -27,6 +27,33 @@
             <item type="string" name="help_url_action_disabled_by_restricted_settings" />
             <!-- END HELP LINKS -->
 
+            <!-- START PREFERENCE STYLES. Used in V35 only -->
+            <item type="style" name="PermissionPreferenceCategoryRootLayoutStyle" />
+            <item type="style" name="PermissionPreferenceCategoryTextRelativeLayoutStyle" />
+            <item type="style" name="PermissionPreferenceCategoryTitleTextStyle" />
+            <item type="style" name="PermissionPreferenceCategorySummaryTextStyle" />
+
+            <item type="style" name="PermissionPreferenceRootLayoutStyle" />
+            <item type="style" name="PermissionPreferenceIconFrameStyle" />
+            <item type="style" name="PermissionPreferenceIconStyle" />
+            <item type="style" name="PermissionPreferenceTextRelativeLayoutStyle" />
+            <item type="style" name="PermissionPreferenceTitleTextStyle" />
+            <item type="style" name="PermissionPreferenceSummaryTextStyle" />
+            <item type="style" name="PermissionPreferenceWidgetFrameLayoutStyle" />
+
+            <item type="style" name="PermissionFooterPreferenceRootLayoutStyle" />
+            <item type="style" name="PermissionFooterPreferenceIconFrameStyle" />
+            <item type="style" name="PermissionFooterPreferenceIconStyle" />
+            <item type="style" name="PermissionFooterPreferenceLearnMoreTextLayoutStyle" />
+            <item type="style" name="PermissionFooterPreferenceTitleTextStyle" />
+            <item type="style" name="PermissionFooterPreferenceLearnMoreTextStyle" />
+
+            <item type="bool" name="config_permissionFooterPreferenceIconVisible" />
+            <item type="dimen" name="permission_preference_app_icon_size" />
+            <item type="dimen" name="permission_preference_permission_group_icon_size" />
+
+            <!-- END PREFERENCE STYLES -->
+
             <!-- START PERMISSION GRANT DIALOG -->
             <item type="style" name="PermissionGrantScrollView" />
             <item type="style" name="PermissionGrantSingleton" />

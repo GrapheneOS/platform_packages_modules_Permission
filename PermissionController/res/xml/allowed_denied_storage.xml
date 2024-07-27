@@ -18,23 +18,23 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
         android:key="allowed_storage_full"
         android:title="@string/allowed_storage_full" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
         android:key="allowed_storage_scoped"
         android:title="@string/allowed_storage_scoped" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
         android:key="allowed_foreground"
         android:title="@string/allowed_foreground_header" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
         android:key="ask"
         android:title="@string/ask_header" />
 
-    <PreferenceCategory
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
         android:key="denied"
         android:title="@string/denied_header" />
 

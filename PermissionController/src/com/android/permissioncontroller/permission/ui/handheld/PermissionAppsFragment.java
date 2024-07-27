@@ -62,7 +62,6 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.utils.applications.AppUtils;
-import com.android.settingslib.widget.FooterPreference;
 
 import kotlin.Pair;
 import kotlin.Triple;
@@ -324,7 +323,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             return;
         }
 
-        FooterPreference preference = new FooterPreference(context);
+        PermissionFooterPreference preference = new PermissionFooterPreference(context);
         preference.setKey(STORAGE_FOOTER_PREFERENCE_KEY);
         preference.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
                 android.R.attr.colorControlNormal));
@@ -419,7 +418,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             // permission, set up the empty preference.
             if (packages.size() == 0
                     && (!isStorageAndLessThanT || !grantCategory.equals(ALLOWED))) {
-                Preference empty = new Preference(context);
+                Preference empty = new PermissionPreference(context);
                 empty.setSelectable(false);
                 empty.setKey(category.getKey() + KEY_EMPTY);
                 if (grantCategory.equals(ALLOWED)) {
@@ -496,7 +495,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                 PreferenceCategory full = findPreference(STORAGE_ALLOWED_FULL);
                 PreferenceCategory scoped = findPreference(STORAGE_ALLOWED_SCOPED);
                 if (full.getPreferenceCount() == 0) {
-                    Preference empty = new Preference(context);
+                    Preference empty = new PermissionPreference(context);
                     empty.setSelectable(false);
                     empty.setKey(STORAGE_ALLOWED_FULL + KEY_EMPTY);
                     empty.setTitle(getString(R.string.no_apps_allowed_full));
@@ -504,7 +503,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                 }
 
                 if (scoped.getPreferenceCount() == 0) {
-                    Preference empty = new Preference(context);
+                    Preference empty = new PermissionPreference(context);
                     empty.setSelectable(false);
                     empty.setKey(STORAGE_ALLOWED_FULL + KEY_EMPTY);
                     empty.setTitle(getString(R.string.no_apps_allowed_scoped));

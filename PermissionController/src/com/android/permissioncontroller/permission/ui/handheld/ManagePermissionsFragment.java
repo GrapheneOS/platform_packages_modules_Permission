@@ -158,7 +158,7 @@ abstract class ManagePermissionsFragment extends PermissionsFrameFragment
      * A preference whose icons have the same fixed size. Allows the setting of dividers above and
      * below the preference.
      */
-    protected static final class FixedSizeIconPreference extends Preference {
+    protected static final class FixedSizeIconPreference extends PermissionPreference {
         private boolean mShowDividerAbove = true;
         private boolean mShowDividerBelow = false;
 
@@ -178,7 +178,7 @@ abstract class ManagePermissionsFragment extends PermissionsFrameFragment
             ImageView icon = ((ImageView) holder.findViewById(android.R.id.icon));
             icon.setAdjustViewBounds(true);
             int size = getContext().getResources().getDimensionPixelSize(
-                    R.dimen.permission_icon_size);
+                    R.dimen.permission_preference_permission_group_icon_size);
             icon.setMaxWidth(size);
             icon.setMaxHeight(size);
             icon.getLayoutParams().width = size;

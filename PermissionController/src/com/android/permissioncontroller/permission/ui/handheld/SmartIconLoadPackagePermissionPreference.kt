@@ -24,7 +24,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.preference.AndroidResources
-import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -39,13 +38,12 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
  * @param user The user whose package icon will be retrieved
  * @param context The current context
  */
-open class SmartIconLoadPackagePermissionPreference
-constructor(
+open class SmartIconLoadPackagePermissionPreference(
     private val app: Application,
     private val packageName: String,
     private val user: UserHandle,
     context: Context
-) : Preference(context) {
+) : PermissionPreference(context) {
 
     private var titleContentDescription: CharSequence? = null
 
@@ -60,18 +58,14 @@ constructor(
         title.maxLines = 1
         title.ellipsize = TextUtils.TruncateAt.END
 
-        val imageView = holder.findViewById(android.R.id.icon) as ImageView
+        val icon = holder.findViewById(android.R.id.icon) as ImageView
+        val iconSize =
+            context.resources.getDimensionPixelSize(R.dimen.permission_preference_app_icon_size)
+        icon.maxWidth = iconSize
+        icon.maxHeight = iconSize
 
-        imageView.maxWidth =
-            context.resources.getDimensionPixelSize(
-                com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size
-            )
-        imageView.maxHeight =
-            context.resources.getDimensionPixelSize(
-                com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size
-            )
-        imageView.setImageDrawable(KotlinUtils.getBadgedPackageIcon(app, packageName, user))
-        imageView.visibility = View.VISIBLE
+        icon.setImageDrawable(KotlinUtils.getBadgedPackageIcon(app, packageName, user))
+        icon.visibility = View.VISIBLE
 
         var imageFrame: View? = holder.findViewById(R.id.icon_frame)
         if (imageFrame == null) {

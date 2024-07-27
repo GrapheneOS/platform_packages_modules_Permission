@@ -79,7 +79,6 @@ import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils;
 import com.android.settingslib.HelpUtils;
-import com.android.settingslib.widget.FooterPreference;
 
 import java.text.Collator;
 import java.time.Instant;
@@ -452,11 +451,11 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     private void addAutoRevokePreferences(PreferenceScreen screen) {
         Context context = screen.getPreferenceManager().getContext();
 
-        PreferenceCategory autoRevokeCategory = new PreferenceCategory(context);
+        PreferenceCategory autoRevokeCategory = new PermissionPreferenceCategory(context);
         autoRevokeCategory.setKey(AUTO_REVOKE_CATEGORY_KEY);
         screen.addPreference(autoRevokeCategory);
 
-        SwitchPreference autoRevokeSwitch = new SwitchPreference(context);
+        SwitchPreference autoRevokeSwitch = new PermissionSwitchPreference(context);
         autoRevokeSwitch.setOnPreferenceClickListener((preference) -> {
             mViewModel.setAutoRevoke(autoRevokeSwitch.isChecked());
             return true;
@@ -479,8 +478,9 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
         autoRevokeCategory.addPreference(autoRevokeSwitch);
 
-        Preference autoRevokeSummary = SdkLevel.isAtLeastS() ? new FooterPreference(context)
-                : new Preference(context);
+        Preference autoRevokeSummary =
+                SdkLevel.isAtLeastS() ? new PermissionFooterPreference(context)
+                : new PermissionPreference(context);
         autoRevokeSummary.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
                 android.R.attr.colorControlNormal));
         autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
@@ -543,7 +543,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     }
 
     private Preference setUpCustomPermissionsScreen(Context context, int count, String category) {
-        final Preference extraPerms = new Preference(context);
+        final Preference extraPerms = new PermissionPreference(context);
         extraPerms.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_toc,
                 android.R.attr.colorControlNormal));
         extraPerms.setTitle(R.string.additional_permissions);
@@ -560,7 +560,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
 
     private void setNoPermissionPreference(PreferenceCategory category, @StringRes int stringId,
             Context context) {
-        Preference empty = new Preference(context);
+        Preference empty = new PermissionPreference(context);
         empty.setKey(getString(stringId));
         empty.setTitle(empty.getKey());
         empty.setSelectable(false);

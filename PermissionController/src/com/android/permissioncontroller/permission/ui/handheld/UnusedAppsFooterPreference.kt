@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.permission.ui.handheld
 
 import android.content.Context
-import android.util.AttributeSet
 import android.widget.TextView
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
@@ -27,15 +26,12 @@ import com.android.permissioncontroller.R
  * A Preference for the footer of a screen. Has two summaries, and adjusted spacing and icon
  * placement.
  */
-class FooterPreference : Preference {
-    constructor(c: Context) : super(c)
-    constructor(c: Context, a: AttributeSet) : super(c, a)
-    constructor(c: Context, a: AttributeSet, attr: Int) : super(c, a, attr)
-    constructor(c: Context, a: AttributeSet, attr: Int, res: Int) : super(c, a, attr, res)
+class UnusedAppsFooterPreference(c: Context) : Preference(c) {
 
     init {
-        layoutResource = R.layout.footer_preference
+        layoutResource = R.layout.unused_apps_footer_preference
     }
+
     var secondSummary: CharSequence = ""
         set(value) {
             secondSummaryView?.text = value

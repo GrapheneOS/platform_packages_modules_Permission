@@ -77,8 +77,9 @@ import java.util.Random;
  * which permissions to grant to the app before first use and if an update changed the permissions.
  */
 public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
-        implements View.OnClickListener, PermissionPreference.PermissionPreferenceChangeListener,
-        PermissionPreference.PermissionPreferenceOwnerFragment {
+        implements View.OnClickListener,
+        BasePermissionReviewPreference.PermissionPreferenceChangeListener,
+        BasePermissionReviewPreference.PermissionPreferenceOwnerFragment {
 
     private static final String EXTRA_PACKAGE_INFO =
             "com.android.permissioncontroller.permission.ui.extra.PACKAGE_INFO";
@@ -369,7 +370,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
                     screen.addPreference(preference);
                 } else {
                     if (mNewPermissionsCategory == null) {
-                        mNewPermissionsCategory = new PreferenceCategory(activity);
+                        mNewPermissionsCategory = new PermissionPreferenceCategory(activity);
                         mNewPermissionsCategory.setTitle(R.string.new_permissions_category);
                         mNewPermissionsCategory.setOrder(1);
                         screen.addPreference(mNewPermissionsCategory);
@@ -378,7 +379,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
                 }
             } else {
                 if (mCurrentPermissionsCategory == null) {
-                    mCurrentPermissionsCategory = new PreferenceCategory(activity);
+                    mCurrentPermissionsCategory = new PermissionPreferenceCategory(activity);
                     mCurrentPermissionsCategory.setTitle(R.string.current_permissions_category);
                     mCurrentPermissionsCategory.setOrder(2);
                     screen.addPreference(mCurrentPermissionsCategory);
@@ -447,7 +448,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
     }
 
     /**
-     * Extend the {@link PermissionPreference}:
+     * Extend the {@link BasePermissionReviewPreference}:
      * <ul>
      *     <li>Show the description of the permission group</li>
      *     <li>Show the permission group as granted if the user has not toggled it yet. This means
@@ -455,7 +456,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
      *     in {@link #confirmPermissionsReview()}.</li>
      * </ul>
      */
-    private static class PermissionReviewPreference extends PermissionPreference {
+    private static class PermissionReviewPreference extends BasePermissionReviewPreference {
         private final LightAppPermGroup mGroup;
         private final Context mContext;
         private boolean mWasChanged;

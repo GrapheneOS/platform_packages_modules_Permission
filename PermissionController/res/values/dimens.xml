@@ -23,8 +23,11 @@
     <dimen name="header_margin_start">16dp</dimen>
     <dimen name="header_margin_end">16dp</dimen>
 
-    <dimen name="permission_icon_size">24dp</dimen>
+    <dimen name="tv_permission_icon_size">24dp</dimen>
     <dimen name="permission_icon_header_size">32dp</dimen>
+
+    <dimen name="permission_preference_app_icon_size">@dimen/secondary_app_icon_size</dimen>
+    <dimen name="permission_preference_permission_group_icon_size">24dp</dimen>
 
     <dimen name="lb_action_section_width">384dp</dimen>
 

@@ -36,7 +36,6 @@ import com.android.permissioncontroller.permission.ui.UnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
 import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.settingslib.widget.FooterPreference;
 
 /**
  * Fragment that allows the user to manage standard permissions.
@@ -168,8 +167,9 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
         return screen;
     }
 
-    private FooterPreference createAutoRevokeFooterPreferenceForSPlus() {
-        FooterPreference autoRevokePreference = new FooterPreference(getContext());
+    private PermissionFooterPreference createAutoRevokeFooterPreferenceForSPlus() {
+        PermissionFooterPreference autoRevokePreference =
+                new PermissionFooterPreference(getContext());
         autoRevokePreference.setSummary(R.string.auto_revoked_apps_page_summary);
         autoRevokePreference.setLearnMoreAction(view -> {
             mViewModel.showAutoRevoke(this, UnusedAppsFragment.createArgs(

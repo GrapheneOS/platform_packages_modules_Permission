@@ -27,4 +27,6 @@
 
     <!-- Whether to show the "Show password" toggle -->
     <bool name="config_display_show_password_toggle">true</bool>
+
+    <bool name="config_permissionFooterPreferenceIconVisible">true</bool>
 </resources>

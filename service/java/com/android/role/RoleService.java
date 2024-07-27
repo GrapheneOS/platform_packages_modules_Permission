@@ -276,6 +276,7 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         if (legacyFallbackDisabledRoles == null) {
             return;
         }
+        Log.v(LOG_TAG, "Received legacy fallback disabled roles: " + legacyFallbackDisabledRoles);
         userState.upgradeVersion(legacyFallbackDisabledRoles);
     }
 

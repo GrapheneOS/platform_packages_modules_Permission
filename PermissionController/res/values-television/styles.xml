@@ -23,7 +23,7 @@
     </style>
 
     <style name="LeanbackPreference.Permissions">
-        <item name="layout">@layout/preference_permissions</item>
+        <item name="layout">@layout/preference_permissions_television</item>
     </style>
 
     <style name="LeanbackPreference.Category.Permissions">
@@ -31,7 +31,7 @@
     </style>
 
     <style name="LeanbackPreference.SwitchPreference.Permissions">
-        <item name="layout">@layout/preference_permissions_switch</item>
+        <item name="layout">@layout/preference_permissions_switch_television</item>
     </style>
 
     <!-- Request role dialog start -->

@@ -48,7 +48,7 @@ import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 /**
  * A preference for representing a permission group requested by an app.
  */
-class PermissionPreference extends MultiTargetSwitchPreference {
+class BasePermissionReviewPreference extends MultiTargetSwitchPreference {
 
     /**
      * holds state for the permission group represented by this preference.
@@ -114,7 +114,7 @@ class PermissionPreference extends MultiTargetSwitchPreference {
         void onBackgroundAccessChosen(String key, int chosenItem);
     }
 
-    PermissionPreference(PreferenceFragmentCompat fragment, LightAppPermGroup group,
+    BasePermissionReviewPreference(PreferenceFragmentCompat fragment, LightAppPermGroup group,
             PermissionPreferenceChangeListener callbacks,
             ReviewPermissionsViewModel reviewPermissionsViewModel) {
         super(fragment.getPreferenceManager().getContext());
@@ -417,7 +417,7 @@ class PermissionPreference extends MultiTargetSwitchPreference {
      *     <li>{@code showDefaultDenyDialog}</li>
      *     <li>{@link DefaultDenyDialog#onCreateDialog}</li>
      *     <li>{@link PermissionPreferenceOwnerFragment#onDenyAnyWay}</li>
-     *     <li>{@link PermissionPreference#onDenyAnyWay}</li>
+     *     <li>{@link BasePermissionReviewPreference#onDenyAnyWay}</li>
      * </ol>
      *
      * @param changeTarget Whether background or foreground should be changed
@@ -448,7 +448,7 @@ class PermissionPreference extends MultiTargetSwitchPreference {
      *     <li>{@code showBackgroundChooserDialog}</li>
      *     <li>{@link BackgroundAccessChooser#onCreateDialog}</li>
      *     <li>{@link PermissionPreferenceOwnerFragment#onBackgroundAccessChosen}</li>
-     *     <li>{@link PermissionPreference#onBackgroundAccessChosen}</li>
+     *     <li>{@link BasePermissionReviewPreference#onBackgroundAccessChosen}</li>
      * </ol>
      */
     private void showBackgroundChooserDialog() {

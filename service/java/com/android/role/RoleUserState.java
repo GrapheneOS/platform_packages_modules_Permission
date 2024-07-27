@@ -242,11 +242,13 @@ class RoleUserState {
     public void upgradeVersion(@NonNull List<String> legacyFallbackDisabledRoles) {
         synchronized (mLock) {
             if (mVersion < VERSION_FALLBACK_STATE_MIGRATED) {
+                mFallbackEnabledRoles.addAll(mRoles.keySet());
                 int legacyFallbackDisabledRolesSize = legacyFallbackDisabledRoles.size();
                 for (int i = 0; i < legacyFallbackDisabledRolesSize; i++) {
                     String roleName = legacyFallbackDisabledRoles.get(i);
                     mFallbackEnabledRoles.remove(roleName);
                 }
+                Log.v(LOG_TAG, "Migrated fallback enabled roles: " + mFallbackEnabledRoles);
                 mVersion = VERSION_FALLBACK_STATE_MIGRATED;
                 scheduleWriteFileLocked();
             }

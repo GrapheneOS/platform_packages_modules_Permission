@@ -41,8 +41,8 @@
             android:visibility="gone">
             <ImageView
                 android:id="@android:id/icon"
-                android:layout_width="@dimen/permission_icon_size"
-                android:layout_height="@dimen/permission_icon_size"/>
+                android:layout_width="@dimen/tv_permission_icon_size"
+                android:layout_height="@dimen/tv_permission_icon_size"/>
         </LinearLayout>
 
         <TextView

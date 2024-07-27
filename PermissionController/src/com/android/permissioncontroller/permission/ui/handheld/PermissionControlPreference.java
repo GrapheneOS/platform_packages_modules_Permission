@@ -40,9 +40,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
@@ -54,7 +54,7 @@ import java.util.List;
 /**
  * A preference that links to the screen where a permission can be toggled.
  */
-public class PermissionControlPreference extends Preference {
+public class PermissionControlPreference extends PermissionPreference {
     private final @NonNull Context mContext;
     private @Nullable Drawable mWidgetIcon;
     private @Nullable String mWidgetIconContentDescription;
@@ -176,14 +176,21 @@ public class PermissionControlPreference extends Preference {
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
+        ImageView icon = ((ImageView) holder.findViewById(android.R.id.icon));
         if (mUseSmallerIcon) {
-            ImageView icon = ((ImageView) holder.findViewById(android.R.id.icon));
-            icon.setMaxWidth(
-                    mContext.getResources().getDimensionPixelSize(
-                            com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size));
-            icon.setMaxHeight(
-                    mContext.getResources().getDimensionPixelSize(
-                            com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size));
+            int iconSize = mContext.getResources().getDimensionPixelSize(
+                            com.android.settingslib.widget.theme.R.dimen.secondary_app_icon_size);
+            icon.setMaxWidth(iconSize);
+            icon.setMaxHeight(iconSize);
+        } else if (SdkLevel.isAtLeastV()) {
+            icon.setAdjustViewBounds(true);
+            int size = getContext().getResources().getDimensionPixelSize(
+                    R.dimen.permission_preference_permission_group_icon_size);
+            icon.setMaxWidth(size);
+            icon.setMaxHeight(size);
+            icon.getLayoutParams().width = size;
+            icon.getLayoutParams().height = size;
+            icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
 
         super.onBindViewHolder(holder);

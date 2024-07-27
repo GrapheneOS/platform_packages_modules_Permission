@@ -250,7 +250,7 @@ public final class AllAppPermissionsFragment extends SettingsWithHeader {
 
         // TODO: No hardcoded layouts
         SwitchPreference pref = new SwitchPreference(getPreferenceManager().getContext());
-        pref.setLayoutResource(R.layout.preference_permissions);
+        pref.setLayoutResource(R.layout.preference_permissions_television);
         pref.setChecked(permGroup.areRuntimePermissionsGranted(filterPermissions));
         pref.setIcon(getTintedPermissionIcon(getActivity(), perm, group));
         pref.setTitle(perm.loadLabel(getActivity().getPackageManager()));
@@ -277,7 +277,7 @@ public final class AllAppPermissionsFragment extends SettingsWithHeader {
 
         // TODO: No hardcoded layouts
         Preference pref = new Preference(getActivity());
-        pref.setLayoutResource(R.layout.preference_permissions);
+        pref.setLayoutResource(R.layout.preference_permissions_television);
         pref.setIcon(getTintedPermissionIcon(getActivity(), perm, group));
         pref.setTitle(perm.loadLabel(pm));
         pref.setPersistent(false);
