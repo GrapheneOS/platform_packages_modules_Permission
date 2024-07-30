@@ -65,7 +65,7 @@ flag {
 }
 
 flag {
-    name: "livevdata_refactor_permission_timeline_enabled"
+    name: "livedata_refactor_permission_timeline_enabled"
     is_exported: true
     namespace: "permissions"
     description: "This flag is used to enable modern app architecture implementation for timeline page"

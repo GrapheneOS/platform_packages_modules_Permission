@@ -34,6 +34,7 @@ abstract class BasePermissionUiTest {
             hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
                 hasSystemFeature(PackageManager.FEATURE_LEANBACK_ONLY)
         }
+    protected val isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
 
     @Rule fun disableAnimationsRule() = DisableAnimationRule()
 }

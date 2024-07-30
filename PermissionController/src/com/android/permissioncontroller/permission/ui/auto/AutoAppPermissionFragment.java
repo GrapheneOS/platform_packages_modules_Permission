@@ -222,7 +222,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
         permissionSelector.addPreference(mDenyPermissionPreference);
 
 
-        Log.w(LOG_TAG, "enableCoarseFineLocationPromptForAaos flag set to: "
+        Log.i(LOG_TAG, "enableCoarseFineLocationPromptForAaos flag set to: "
                 + Flags.enableCoarseFineLocationPromptForAaos());
         if (Flags.enableCoarseFineLocationPromptForAaos()) {
             mToggleFineLocationPreference = new SelectedSwitchPermissionPreference(

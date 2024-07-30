@@ -23,6 +23,8 @@ import android.permission.cts.PermissionUtils.uninstallApp
 // Test Apps' APK files
 private const val APK_DIRECTORY = "/data/local/tmp/pc-permissionui/"
 private const val LOCATION_PERM_USER_APK = "$APK_DIRECTORY/AppThatRequestsLocation.apk"
+private const val FINE_AND_BACKGROUND_LOCATION_PERM_USER_APK =
+    "$APK_DIRECTORY/AppThatRequestsLocationAndBackground.apk"
 private const val CAMERA_PERM_USER_APK = "$APK_DIRECTORY/PermissionUiUseCameraPermissionApp.apk"
 private const val HEALTH_CONNECT_PERMISSION_USER_APK =
     "$APK_DIRECTORY/PermissionUiUseHealthConnectPermissionApp.apk"
@@ -51,6 +53,8 @@ const val TEST_APP_DEFINED_PERMISSION_B_LABEL = "Permission B"
 const val TEST_APP_DEFINED_PERMISSION_C_LABEL = "Permission C"
 
 fun installTestAppThatRequestsLocation() = install(LOCATION_PERM_USER_APK)
+
+fun installTestAppThatRequestsFineLocation() = install(FINE_AND_BACKGROUND_LOCATION_PERM_USER_APK)
 
 fun installTestAppThatUsesCameraPermission() = install(CAMERA_PERM_USER_APK)
 

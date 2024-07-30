@@ -523,7 +523,10 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         }
 
         groupLabels.sort(mCollator);
-        if (groupLabels.isEmpty()) {
+        autoRevokeSummary.setVisible(true);
+        if (state.isExemptBySystem()) {
+            autoRevokeSummary.setVisible(false);
+        } else if (groupLabels.isEmpty()) {
             autoRevokeSummary.setSummary(R.string.auto_revoke_summary);
         } else {
             autoRevokeSummary.setSummary(getString(R.string.auto_revoke_summary_with_permissions,
