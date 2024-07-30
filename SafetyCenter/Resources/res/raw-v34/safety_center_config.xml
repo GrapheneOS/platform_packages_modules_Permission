@@ -108,6 +108,15 @@
         <safety-sources-group
             id="AndroidAdvancedSources"
             title="@com.android.safetycenter.resources:string/advanced_title">
+
+            <static-safety-source
+                id="AndroidExploitProtectionSettings"
+                profile="primary_profile_only"
+                intentAction="com.android.settings.EXPLOIT_PROTECTION_SETTINGS"
+                title="@com.android.safetycenter.resources:string/exploit_protection_title"
+                summary="@com.android.safetycenter.resources:string/exploit_protection_summary"
+                searchTerms="@com.android.safetycenter.resources:string/exploit_protection_search_terms"/>
+
             <dynamic-safety-source
                 id="AndroidWorkPolicyInfo"
                 packageName="com.android.permissioncontroller"
