@@ -96,6 +96,15 @@ public final class SafetySource implements Parcelable {
     @Retention(RetentionPolicy.SOURCE)
     public @interface SafetySourceType {}
 
+    public static final int USER_PRIMARY = 0;
+    public static final int USER_ALL = 1;
+    /** @hide */
+    @IntDef(
+            prefix = {"USER_"},
+            value = {USER_PRIMARY, USER_ALL})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface User {}
+
     /** Profile property unspecified. */
     public static final int PROFILE_NONE = 0;
 
@@ -204,6 +213,7 @@ public final class SafetySource implements Parcelable {
     @StringRes private final int mTitleForWorkResId;
     @StringRes private final int mSummaryResId;
     @Nullable private final String mIntentAction;
+    @User private final int mUser;
     @Profile private final int mProfile;
     @InitialDisplayState private final int mInitialDisplayState;
     private final int mMaxSeverityLevel;
@@ -223,6 +233,7 @@ public final class SafetySource implements Parcelable {
             @StringRes int titleForWorkResId,
             @StringRes int summaryResId,
             @Nullable String intentAction,
+            @User int user,
             @Profile int profile,
             @InitialDisplayState int initialDisplayState,
             int maxSeverityLevel,
@@ -240,6 +251,7 @@ public final class SafetySource implements Parcelable {
         mTitleForWorkResId = titleForWorkResId;
         mSummaryResId = summaryResId;
         mIntentAction = intentAction;
+        mUser = user;
         mProfile = profile;
         mInitialDisplayState = initialDisplayState;
         mMaxSeverityLevel = maxSeverityLevel;
@@ -422,6 +434,11 @@ public final class SafetySource implements Parcelable {
                     "getIntentAction unsupported for issue-only safety source");
         }
         return mIntentAction;
+    }
+
+    @User
+    public int getUser() {
+        return mUser;
     }
 
     /** Returns the profile property of this safety source. */
@@ -700,6 +717,7 @@ public final class SafetySource implements Parcelable {
         @Nullable @StringRes private Integer mTitleForWorkResId;
         @Nullable @StringRes private Integer mSummaryResId;
         @Nullable private String mIntentAction;
+        @Nullable @User private Integer mUser;
         @Nullable @Profile private Integer mProfile;
         @Nullable @InitialDisplayState private Integer mInitialDisplayState;
         @Nullable private Integer mMaxSeverityLevel;
@@ -731,6 +749,7 @@ public final class SafetySource implements Parcelable {
             mTitleForWorkResId = safetySource.mTitleForWorkResId;
             mSummaryResId = safetySource.mSummaryResId;
             mIntentAction = safetySource.mIntentAction;
+            mUser = safetySource.mUser;
             mProfile = safetySource.mProfile;
             mInitialDisplayState = safetySource.mInitialDisplayState;
             mMaxSeverityLevel = safetySource.mMaxSeverityLevel;
@@ -864,6 +883,12 @@ public final class SafetySource implements Parcelable {
         @NonNull
         public Builder setIntentAction(@Nullable String intentAction) {
             mIntentAction = intentAction;
+            return this;
+        }
+
+        @NonNull
+        public Builder setUser(@User int user) {
+            mUser = user;
             return this;
         }
 
@@ -1050,6 +1075,9 @@ public final class SafetySource implements Parcelable {
             boolean isHidden = initialDisplayState == INITIAL_DISPLAY_STATE_HIDDEN;
             boolean isDynamicNotHidden = isDynamic && !isHidden;
 
+            int user = BuilderUtils.validateIntDef(mUser, "user", false, false,
+                    USER_ALL, USER_PRIMARY, USER_ALL);
+
             int profile =
                     BuilderUtils.validateIntDef(
                             mProfile,
@@ -1145,6 +1173,7 @@ public final class SafetySource implements Parcelable {
                     titleForWorkResId,
                     summaryResId,
                     intentAction,
+                    user,
                     profile,
                     initialDisplayState,
                     maxSeverityLevel,

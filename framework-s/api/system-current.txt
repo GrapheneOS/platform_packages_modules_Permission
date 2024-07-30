@@ -575,6 +575,7 @@ package android.safetycenter.config {
     method @StringRes public int getTitleForWorkResId();
     method @StringRes public int getTitleResId();
     method public int getType();
+    method public int getUser();
     method public boolean isLoggingAllowed();
     method public boolean isRefreshOnPageOpenAllowed();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
@@ -588,6 +589,8 @@ package android.safetycenter.config {
     field public static final int SAFETY_SOURCE_TYPE_DYNAMIC = 2; // 0x2
     field public static final int SAFETY_SOURCE_TYPE_ISSUE_ONLY = 3; // 0x3
     field public static final int SAFETY_SOURCE_TYPE_STATIC = 1; // 0x1
+    field public static final int USER_ALL = 1; // 0x1
+    field public static final int USER_PRIMARY = 0; // 0x0
   }
 
   public static final class SafetySource.Builder {
@@ -610,6 +613,7 @@ package android.safetycenter.config {
     method @FlaggedApi("com.android.permission.flags.private_profile_title_api") @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForPrivateProfileResId(@StringRes int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForWorkResId(@StringRes int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setUser(int);
   }
 
   public final class SafetySourcesGroup implements android.os.Parcelable {
