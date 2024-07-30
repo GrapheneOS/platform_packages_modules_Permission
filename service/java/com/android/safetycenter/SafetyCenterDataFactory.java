@@ -395,6 +395,11 @@ public final class SafetyCenterDataFactory {
         List<SafetyCenterEntry> entries = new ArrayList<>(safetySources.size());
         for (int safetySourceIdx = 0; safetySourceIdx < safetySources.size(); ++safetySourceIdx) {
             SafetySource safetySource = safetySources.get(safetySourceIdx);
+            if (safetySource.getUser() == SafetySource.USER_PRIMARY) {
+                if (!android.os.UserHandle.of(userProfileGroup.getProfileParentUserId()).isSystem()) {
+                    continue;
+                }
+            }
             for (int profileTypeIdx = 0;
                     profileTypeIdx < ProfileType.ALL_PROFILE_TYPES.length;
                     ++profileTypeIdx) {
@@ -853,6 +858,11 @@ public final class SafetyCenterDataFactory {
             @UserIdInt int userId,
             @ProfileType int profileType,
             boolean isUserRunning) {
+        if (safetySource.getUser() == SafetySource.USER_PRIMARY
+                && !android.os.UserHandle.of(userId).isSystem()) {
+            return;
+        }
+
         SafetyCenterStaticEntry staticEntry =
                 toSafetyCenterStaticEntry(
                         safetySource, defaultPackageName, userId, profileType, isUserRunning);
