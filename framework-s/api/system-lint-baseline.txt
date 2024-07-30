@@ -35,3 +35,13 @@ RequiresPermission: android.app.role.RoleManager#removeRoleHolderFromController(
     Method 'removeRoleHolderFromController' documentation mentions permissions already declared by @RequiresPermission
 RequiresPermission: android.app.role.RoleManager#setRoleNamesFromController(java.util.List<java.lang.String>):
     Method 'setRoleNamesFromController' documentation mentions permissions already declared by @RequiresPermission
+
+
+UnflaggedApi: android.safetycenter.config.SafetySource#USER_ALL:
+    New API must be flagged with @FlaggedApi: field android.safetycenter.config.SafetySource.USER_ALL
+UnflaggedApi: android.safetycenter.config.SafetySource#USER_PRIMARY:
+    New API must be flagged with @FlaggedApi: field android.safetycenter.config.SafetySource.USER_PRIMARY
+UnflaggedApi: android.safetycenter.config.SafetySource#getUser():
+    New API must be flagged with @FlaggedApi: method android.safetycenter.config.SafetySource.getUser()
+UnflaggedApi: android.safetycenter.config.SafetySource.Builder#setUser(int):
+    New API must be flagged with @FlaggedApi: method android.safetycenter.config.SafetySource.Builder.setUser(int)
