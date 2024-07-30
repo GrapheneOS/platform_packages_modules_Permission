@@ -73,6 +73,7 @@ public final class SafetyCenterConfigParser {
             "titleForPrivateProfile";
     private static final String ATTR_SAFETY_SOURCE_SUMMARY = "summary";
     private static final String ATTR_SAFETY_SOURCE_INTENT_ACTION = "intentAction";
+    private static final String ATTR_SAFETY_SOURCE_USER = "user";
     private static final String ATTR_SAFETY_SOURCE_PROFILE = "profile";
     private static final String ATTR_SAFETY_SOURCE_INITIAL_DISPLAY_STATE = "initialDisplayState";
     private static final String ATTR_SAFETY_SOURCE_MAX_SEVERITY_LEVEL = "maxSeverityLevel";
@@ -88,6 +89,8 @@ public final class SafetyCenterConfigParser {
     private static final String ENUM_GROUP_TYPE_STATEFUL = "stateful";
     private static final String ENUM_GROUP_TYPE_STATELESS = "stateless";
     private static final String ENUM_GROUP_TYPE_HIDDEN = "hidden";
+    private static final String ENUM_USER_ALL = "all";
+    private static final String ENUM_USER_PRIMARY = "primary";
     private static final String ENUM_PROFILE_PRIMARY = "primary_profile_only";
     private static final String ENUM_PROFILE_ALL = "all_profiles";
     private static final String ENUM_INITIAL_DISPLAY_STATE_ENABLED = "enabled";
@@ -354,6 +357,10 @@ public final class SafetyCenterConfigParser {
                                     parser.getAttributeName(i),
                                     resources,
                                     packageNameOverride));
+                    break;
+                case ATTR_SAFETY_SOURCE_USER:
+                    builder.setUser(parseUser(parser.getAttributeValue(i),
+                            name, parser.getAttributeName(i), resources, packageNameOverride));
                     break;
                 case ATTR_SAFETY_SOURCE_PROFILE:
                     builder.setProfile(
@@ -649,6 +656,21 @@ public final class SafetyCenterConfigParser {
                 return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_STATELESS;
             case ENUM_GROUP_TYPE_HIDDEN:
                 return SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
+            default:
+                throw attributeInvalid(valueToParse, parent, name);
+        }
+    }
+
+    private static int parseUser(
+            String valueString, String parent, String name, Resources resources,
+            @Nullable String packageNameOverride)
+            throws ParseException {
+        String valueToParse = getValueToParse(valueString, parent, name, resources, packageNameOverride);
+        switch (valueToParse) {
+            case ENUM_USER_PRIMARY:
+                return SafetySource.USER_PRIMARY;
+            case ENUM_USER_ALL:
+                return SafetySource.USER_ALL;
             default:
                 throw attributeInvalid(valueToParse, parent, name);
         }
