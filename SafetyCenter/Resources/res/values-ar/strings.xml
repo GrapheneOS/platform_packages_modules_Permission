@@ -24,7 +24,7 @@
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ما مِن معلومات بعد."</string>
     <string name="lock_screen_search_terms" msgid="2678486357779794826">"قفل الجهاز، قفل الشاشة، شاشة القفل، شاشة قفل، كلمة المرور، رقم التعريف الشخصي، نقش"</string>
     <string name="biometrics_title" msgid="5859504610285212938">"المقاييس الحيوية"</string>
-    <string name="biometrics_search_terms" msgid="6040319118762671981">"بصمة الإصبع، إصبع، إضافة بصمة إصبع، فتح الجهاز بالتعرف على الوجه، وجه"</string>
+    <string name="biometrics_search_terms" msgid="6040319118762671981">"بصمة الإصبع، إصبع، إضافة بصمة إصبع، فتح الجهاز ببصمة الوجه، وجه"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"الخصوصية"</string>
     <string name="privacy_sources_summary" msgid="4089719981155120864">"لوحة البيانات والأذونات وعناصر التحكّم"</string>
     <string name="permission_usage_title" msgid="3633779688945350407">"لوحة بيانات الخصوصية"</string>

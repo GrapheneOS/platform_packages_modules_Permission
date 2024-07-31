@@ -672,6 +672,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Последний доступ вчера: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Последний доступ: <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Ваш одноразовый код: 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"Разрешить доступ к настройкам"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Настройки с ограниченным доступом"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"В целях безопасности эти настройки пока недоступны."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Для приложения заблокировано разрешение \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\""</string>
@@ -687,10 +688,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Для экстренного вызова или сообщения"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Местоположение отправлено экстренным службам"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Это приложение получало доступ к местоположению устройства во время звонка или отправки сообщения на номер экстренной службы. Такое возможно, даже если у приложения нет разрешения на определение местоположения или геолокация отключена на устройстве. "<a href="https://support.google.com/android/answer/9319337">"Подробнее…"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Проверьте телефон"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Нет связи с телефоном."</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Повторить попытку?"</string>
 </resources>

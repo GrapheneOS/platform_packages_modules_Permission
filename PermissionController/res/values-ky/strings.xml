@@ -670,6 +670,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Кечээ саат <xliff:g id="TIME_DATE">%1$s</xliff:g> колдонулду"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> саат <xliff:g id="TIME_DATE_1">%2$s</xliff:g> колдонулду"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Бир жолу гана колдонулуучу кодуңуз: 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"Чектелген параметрлерге уруксат берүү"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Чектелген функция"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Коопсуздук максатында бул параметр азырынча иштебейт."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Колдонмого <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> параметрин колдонууга тыюу салынды"</string>
@@ -685,10 +686,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Шашылыш чалуу же билдирүү жөнөтүү үчүн"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Жайгашкан жер кырсыктаганда жардамга келчү кызматтарга жөнөтүлдү"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Бул колдонмо кырсыктаганда жардамга келчү кызматтын номерине чалып же билдирүү жөнөткөнүңүздө түзмөк жайгашкан жерди аныктады. Колдонмонун жайгашкан жерди аныктоого уруксаты болбосо же түзмөктүн жайгашкан жери өчүк болсо да, ушундай болушу мүмкүн. "<a href="https://support.google.com/android/answer/9319337">"Кеңири маалымат"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Телефонуңузду текшериңиз"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Телефонго туташкан жок"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Дагы аракет кыласызбы?"</string>
 </resources>

@@ -670,6 +670,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"어제 <xliff:g id="TIME_DATE">%1$s</xliff:g>에 액세스함"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>에 액세스함"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"일회용 비밀번호는 132435입니다"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"제한된 설정 허용"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"제한된 설정"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"보안을 위해 이 설정은 현재 사용할 수 없습니다."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>에 대한 앱의 액세스가 거부됨"</string>
@@ -685,10 +686,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"긴급 전화 또는 문자용"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"위치를 응급 서비스로 전송함"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"긴급 전화번호로 전화를 걸거나 문자를 전송하는 중에 앱에서 기기 위치에 액세스했습니다. 앱에 위치 정보 액세스 권한이 없거나 기기 위치 기능이 사용 중지되어 있는 경우에도 앱에서 기기 위치에 액세스할 수 있습니다. "<a href="https://support.google.com/android/answer/9319337">"자세히 알아보기"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"휴대전화를 확인하세요"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"휴대전화에 연결할 수 없습니다"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"다시 시도하시겠습니까?"</string>
 </resources>

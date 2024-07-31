@@ -17,5 +17,4 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Gestita dall\'amministratore"</string>
-    <string name="permission_rationale_data_sharing_device_manufacturer_message" msgid="7569261218145653185">"Lo sviluppatore ha fornito al produttore di questo dispositivo le informazioni sulla modalità di condivisione dei dati nell\'app. Lo sviluppatore potrebbe aggiornare queste informazioni nel tempo."</string>
 </resources>

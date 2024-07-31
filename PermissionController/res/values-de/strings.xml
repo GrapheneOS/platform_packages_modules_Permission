@@ -419,7 +419,7 @@
     <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"Kamera und Mikrofon werden für &lt;b&gt;Videoanruf&lt;/b&gt; verwendet"</string>
     <string name="phone_call_uses_camera" msgid="2048417022147857418">"Kamera wird für &lt;b&gt;Videoanruf&lt;/b&gt; verwendet"</string>
     <string name="system_uses_microphone" msgid="576672130318877143">"Der Zugriff auf das Mikrofon erfolgt über den Systemdienst"</string>
-    <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"Der Zugriff auf die Kamera und das Mikrofon erfolt über den Systemdienst"</string>
+    <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"Der Zugriff auf die Kamera und das Mikrofon erfolgt über den Systemdienst"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"Der Zugriff auf die Kamera erfolgt über den Systemdienst"</string>
     <string name="other_use" msgid="6564855051022776692">"Andere Funktionen:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"Ok"</string>
@@ -672,6 +672,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Zugriff: gestern, <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Zugriff: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Dein Einmalpasswort lautet 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"Eingeschränkte Einstellungen zulassen"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Eingeschränkte Einstellung"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Aus Sicherheitsgründen ist diese Einstellung derzeit nicht verfügbar."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"App wurde Zugriff auf „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ verweigert"</string>
@@ -687,10 +688,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Für Notrufe oder Nachrichten an eine Notrufnummer"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Standort wurde an den Rettungsdienst gesendet"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Diese App hat den Standort deines Geräts abgerufen, während ein Notruf getätigt oder eine Nachricht an eine Notrufnummer gesendet wurde. Das kann auch dann passieren, wenn die App keine Berechtigung zur Standortermittlung hat oder der Gerätestandort deaktiviert ist. "<a href="https://support.google.com/android/answer/9319337">"Weitere Informationen"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Smartphone prüfen"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Verbindung mit dem Smartphone nicht möglich"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Noch einmal versuchen?"</string>
 </resources>

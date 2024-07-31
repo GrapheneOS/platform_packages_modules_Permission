@@ -670,6 +670,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"‏آخر استخدام للإذن أمس: ‎<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"‏آخر استخدام للإذن في ‎<xliff:g id="TIME_DATE_0">%1$s</xliff:g>: ‏<xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"كلمة المرور الصالحة لمرة واحدة هي 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"السماح بالإعدادات المحظورة"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"الإعداد محظور"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"للحفاظ على أمانك، هذا الإعداد غير متوفِّر حاليًا."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"تم منع التطبيق من الوصول إلى <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
@@ -685,10 +686,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"مراسلة نصية أو مكالمة طوارئ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"تم إرسال بيانات الموقع الجغرافي إلى خدمات طوارئ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"وصل هذا التطبيق إلى الموقع الجغرافي لجهازك أثناء إجراء اتصال برقم طوارئ أو مراسلته نصيًا. يمكن أن يحدث ذلك حتى إذا لم يحصل التطبيق على إذن تحديد الموقع الجغرافي أو لم يتم تفعيل إعدادات الموقع الجغرافي للجهاز. "<a href="https://support.google.com/android/answer/9319337">"مزيد من المعلومات"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"التحقّق من هاتفك"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"تعذَّر الوصول إلى هاتفك"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"هل تريد إعادة المحاولة؟"</string>
 </resources>

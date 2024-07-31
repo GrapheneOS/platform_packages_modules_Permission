@@ -670,6 +670,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"Ostatni dostęp wczoraj, <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"Ostatni dostęp <xliff:g id="TIME_DATE_0">%1$s</xliff:g>, <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"Twoje hasło jednorazowe to 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"Zezwól na ustawienia z ograniczonym dostępem"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"Ustawienie z ograniczonym dostępem"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"Ze względów bezpieczeństwa to ustawienie jest obecnie niedostępne."</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"Aplikacja nie otrzymała dostępu do uprawnień <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
@@ -685,10 +686,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"Na potrzeby połączenia lub SMS-a alarmowego"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"Lokalizacja została wysłana do służb ratunkowych"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Ta aplikacja uzyskała dostęp do lokalizacji Twojego urządzenia podczas połączenia z numerem alarmowym lub wysyłania SMS-a pod ten numer. Może się tak zdarzyć, nawet jeśli aplikacja nie ma uprawnień do lokalizacji lub gdy lokalizacja jest wyłączona na urządzeniu. "<a href="https://support.google.com/android/answer/9319337">"Więcej informacji"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Sprawdź telefon"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"Nie można połączyć się z telefonem"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Spróbować ponownie?"</string>
 </resources>

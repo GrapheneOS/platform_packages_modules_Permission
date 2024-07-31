@@ -670,6 +670,7 @@
     <string name="wear_app_perms_24h_access_yest" msgid="7069312481704735679">"เข้าถึงเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="wear_app_perms_7d_access" msgid="4608069019194676432">"เข้าถึงเมื่อวันที่ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ตอน <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="test_otp_msg" msgid="7559110574222727550">"รหัสผ่านที่สามารถใช้งานได้เพียงครั้งเดียวของคุณคือ 132435"</string>
+    <string name="allow_restricted_settings" msgid="8073000189478396881">"อนุญาตการตั้งค่าที่จำกัด"</string>
     <string name="enhanced_confirmation_dialog_title" msgid="7562437438040966351">"การตั้งค่าที่จำกัด"</string>
     <string name="enhanced_confirmation_dialog_desc" msgid="5921240234843839219">"การตั้งค่านี้ใช้ไม่ได้ในตอนนี้เพื่อความปลอดภัยของคุณ"</string>
     <string name="enhanced_confirmation_dialog_title_permission" msgid="2149144789394238266">"แอปถูกปฏิเสธไม่ให้เข้าถึง <xliff:g id="PERMISSION_NAME">%1$s</xliff:g>"</string>
@@ -685,10 +686,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"สำหรับการโทรหรือส่งข้อความฉุกเฉิน"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"ส่งตำแหน่งไปยังบริการช่วยเหลือฉุกเฉินแล้ว"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"แอปนี้เข้าถึงตำแหน่งของอุปกรณ์ระหว่างที่โทรหรือส่งข้อความหาหมายเลขฉุกเฉิน ซึ่งอาจเกิดขึ้นได้แม้ว่าแอปจะไม่มีสิทธิ์เข้าถึงตำแหน่งหรือแม้ว่าตำแหน่งของอุปกรณ์จะปิดอยู่ก็ตาม "<a href="https://support.google.com/android/answer/9319337">"ดูข้อมูลเพิ่มเติม"</a></string>
-    <!-- no translation found for wear_check_your_phone_title (7957291983474981420) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_error (8934350845737930783) -->
-    <skip />
-    <!-- no translation found for wear_phone_connection_should_retry (2835355845567088003) -->
-    <skip />
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"ตรวจสอบโทรศัพท์"</string>
+    <string name="wear_phone_connection_error" msgid="8934350845737930783">"เข้าถึงโทรศัพท์ของคุณไม่ได้"</string>
+    <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"ลองใหม่ไหม"</string>
 </resources>
