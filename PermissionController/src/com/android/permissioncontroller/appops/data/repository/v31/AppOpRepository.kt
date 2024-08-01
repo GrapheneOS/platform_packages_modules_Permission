@@ -18,14 +18,15 @@ package com.android.permissioncontroller.appops.data.repository.v31
 
 import android.app.AppOpsManager
 import android.app.Application
-import android.content.pm.PackageManager
 import android.os.UserHandle
 import android.permission.flags.Flags
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
-import com.android.permissioncontroller.permission.data.PackageBroadcastReceiver
+import com.android.permissioncontroller.data.repository.v31.AppOpChangeListener
+import com.android.permissioncontroller.data.repository.v31.PackageChangeListener
+import com.android.permissioncontroller.data.repository.v31.PermissionChangeListener
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import kotlin.concurrent.Volatile
@@ -78,87 +79,20 @@ class AppOpRepositoryImpl(
         callbackFlow {
                 send(getPackageOps())
 
-                // Suppress OnOpNotedListener lint error, startWatchingNoted is behind sdk check.
-                @SuppressWarnings("NewApi")
-                val callback =
-                    object :
-                        PackageManager.OnPermissionsChangedListener,
-                        PackageBroadcastReceiver.PackageBroadcastListener,
-                        AppOpsManager.OnOpActiveChangedListener,
-                        AppOpsManager.OnOpNotedListener,
-                        AppOpsManager.OnOpChangedListener {
-                        override fun onPermissionsChanged(uid: Int) {
-                            sendUpdate()
-                        }
-
-                        override fun onOpChanged(op: String?, packageName: String?) {
-                            sendUpdate()
-                        }
-
-                        override fun onPackageUpdate(packageName: String) {
-                            sendUpdate()
-                        }
-
-                        override fun onOpActiveChanged(
-                            op: String,
-                            uid: Int,
-                            packageName: String,
-                            active: Boolean
-                        ) {
-                            sendUpdate()
-                        }
-
-                        override fun onOpNoted(
-                            op: String,
-                            uid: Int,
-                            packageName: String,
-                            attributionTag: String?,
-                            flags: Int,
-                            result: Int
-                        ) {
-                            sendUpdate()
-                        }
-
-                        fun sendUpdate() {
-                            trySend(getPackageOps())
-                        }
-                    }
-
-                packageManager.addOnPermissionsChangeListener(callback)
-                PackageBroadcastReceiver.addAllCallback(callback)
-                appOpNames.forEach { opName ->
-                    // TODO(b/262035952): We watch each active op individually as
-                    //  startWatchingActive only registers the callback if all ops are valid.
-                    //  Fix this behavior so if one op is invalid it doesn't affect the other ops.
-                    try {
-                        appOpsManager.startWatchingActive(arrayOf(opName), { it.run() }, callback)
-                    } catch (ignored: IllegalArgumentException) {
-                        // Older builds may not support all requested app ops.
-                    }
-
-                    try {
-                        appOpsManager.startWatchingMode(opName, /* all packages */ null, callback)
-                    } catch (ignored: IllegalArgumentException) {
-                        // Older builds may not support all requested app ops.
-                    }
-
-                    if (SdkLevel.isAtLeastU()) {
-                        try {
-                            appOpsManager.startWatchingNoted(arrayOf(opName), callback)
-                        } catch (ignored: IllegalArgumentException) {
-                            // Older builds may not support all requested app ops.
-                        }
-                    }
+                fun sendUpdate() {
+                    trySend(getPackageOps())
                 }
 
+                val appOpListener = AppOpChangeListener(appOpNames, appOpsManager) { sendUpdate() }
+                val packageListener = PackageChangeListener { sendUpdate() }
+                val permissionListener = PermissionChangeListener(packageManager) { sendUpdate() }
+                packageListener.register()
+                appOpListener.register()
+                permissionListener.register()
                 awaitClose {
-                    packageManager.removeOnPermissionsChangeListener(callback)
-                    PackageBroadcastReceiver.removeAllCallback(callback)
-                    appOpsManager.stopWatchingActive(callback)
-                    appOpsManager.stopWatchingMode(callback)
-                    if (SdkLevel.isAtLeastU()) {
-                        appOpsManager.stopWatchingNoted(callback)
-                    }
+                    appOpListener.unregister()
+                    packageListener.unregister()
+                    permissionListener.unregister()
                 }
             }
             .flowOn(dispatcher)

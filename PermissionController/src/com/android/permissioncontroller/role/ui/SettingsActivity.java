@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.DeviceUtils;
+import com.android.settingslib.collapsingtoolbar.EdgeToEdgeUtils;
 import com.android.settingslib.collapsingtoolbar.SettingsTransitionActivity;
 
 /**
@@ -32,6 +33,8 @@ public class SettingsActivity extends SettingsTransitionActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        EdgeToEdgeUtils.enable(this);
+
         super.onCreate(savedInstanceState);
 
         getWindow().addSystemFlags(

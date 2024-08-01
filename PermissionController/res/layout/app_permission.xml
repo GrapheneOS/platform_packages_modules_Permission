@@ -114,6 +114,7 @@
 
                     <RadioButton
                         android:id="@+id/select_radio_button"
+                        android:layout_toStartOf="@id/edit_photos_divider"
                         android:text="@string/app_permission_button_allow_limited_access"
                         android:layout_alignParentStart="true"
                         style="@style/AppPermissionRadioButton"
