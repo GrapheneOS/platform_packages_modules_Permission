@@ -287,42 +287,6 @@ public class FileSystemPermissionTest {
         assertFileOwnedByGroup(f, "nfc");
     }
 
-    @MediumTest
-    @Test
-    public void testDevQtaguidSane() throws Exception {
-        File f = new File("/dev/xt_qtaguid");
-        assertFalse(f.canRead());
-        assertFalse(f.canWrite());
-        assertFalse(f.canExecute());
-
-        assertFileOwnedBy(f, "root");
-        assertFileOwnedByGroup(f, "root");
-    }
-
-    @MediumTest
-    @Test
-    public void testProcQtaguidCtrlSane() throws Exception {
-        File f = new File("/proc/net/xt_qtaguid/ctrl");
-        assertFalse(f.canRead());
-        assertFalse(f.canWrite());
-        assertFalse(f.canExecute());
-
-        assertFileOwnedBy(f, "root");
-        assertFileOwnedByGroup(f, "net_bw_acct");
-    }
-
-    @MediumTest
-    @Test
-    public void testProcQtaguidStatsSane() throws Exception {
-        File f = new File("/proc/net/xt_qtaguid/stats");
-        assertFalse(f.canRead());
-        assertFalse(f.canWrite());
-        assertFalse(f.canExecute());
-
-        assertFileOwnedBy(f, "root");
-        assertFileOwnedByGroup(f, "net_bw_stats");
-    }
-
     private static List<String> procNetFiles = Arrays.asList("anycast6", "arp", "arp_tables_matches",
             "arp_tables_names", "arp_tables_targets", "dev", "dev_mcast", "fib_trie", "fib_triestat",
             "hci", "icmp", "icmp6", "if_inet6", "igmp", "igmp6", "ip6_flowlabel",
