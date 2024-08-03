@@ -127,7 +127,7 @@ public class PermissionHistoryPreference extends Preference {
         widgetFrameParent.setGravity(Gravity.TOP);
 
         TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
-        permissionHistoryTime.setText(DateFormat.getTimeFormat(mContext).format(mAccessEndTime));
+        permissionHistoryTime.setText(DateFormat.getTimeFormat(mContext).format(mAccessStartTime));
 
         ImageView appIcon = widget.findViewById(R.id.permission_history_icon);
         appIcon.setImageDrawable(mAppIcon);

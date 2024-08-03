@@ -363,7 +363,8 @@ abstract class BasePermissionTest {
     protected fun findView(selector: BySelector, expected: Boolean) {
         val timeoutMs =
             if (expected) {
-                10000L
+                // Small screens with larger font fail to find views within 10s while scrolling
+                15000L
             } else {
                 1000L
             }

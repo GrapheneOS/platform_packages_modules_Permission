@@ -5485,7 +5485,8 @@
          <p>This should only be used by the OEM TvInputService.
          @hide -->
     <permission android:name="android.permission.ALWAYS_BOUND_TV_INPUT"
-        android:protectionLevel="signature|privileged|vendorPrivileged" />
+        android:protectionLevel="signature|privileged|vendorPrivileged"
+        android:featureFlag="android.media.tv.flags.tis_always_bound_permission"/>
 
     <!-- @SystemApi This permission is required by Media Resource Manager Service when
          system services create MediaCodecs on behalf of other processes and apps.
