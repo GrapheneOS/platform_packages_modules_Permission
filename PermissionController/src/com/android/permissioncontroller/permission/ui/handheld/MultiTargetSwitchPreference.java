@@ -21,8 +21,9 @@ import android.view.View;
 import android.widget.Switch;
 
 import androidx.preference.PreferenceViewHolder;
+import androidx.preference.SwitchPreference;
 
-class MultiTargetSwitchPreference extends PermissionSwitchPreference {
+class MultiTargetSwitchPreference extends SwitchPreference {
     private View.OnClickListener mSwitchOnClickLister;
 
     public MultiTargetSwitchPreference(Context context) {

@@ -20,6 +20,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.preference.SwitchPreference
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.R
 
 open class PermissionSwitchPreference : SwitchPreference {
@@ -28,7 +29,7 @@ open class PermissionSwitchPreference : SwitchPreference {
     constructor(c: Context, a: AttributeSet) : super(c, a)
 
     init {
-        if (SdkLevel.isAtLeastV()) {
+        if (SdkLevel.isAtLeastV() && DeviceUtils.isHandheld(context)) {
             layoutResource = R.layout.permission_preference
         }
     }

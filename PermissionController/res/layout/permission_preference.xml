@@ -19,7 +19,7 @@
   ~  SettingsLib/SettingsTheme/res/layout-v31/settingslib_icon_frame.xml
   ~  with overlayable styles
   -->
-<LinearLayout
+<com.android.permissioncontroller.permission.ui.handheld.v35.DrawableStateLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/PermissionPreferenceRootLayoutStyle">
 
@@ -51,4 +51,4 @@
         android:id="@android:id/widget_frame"
         style="@style/PermissionPreferenceWidgetFrameLayoutStyle"/>
 
-</LinearLayout>
+</com.android.permissioncontroller.permission.ui.handheld.v35.DrawableStateLinearLayout>

@@ -154,6 +154,17 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             // fragments are restored properly on configuration changes.
             setTheme(R.style.CarSettings);
         }
+        if (SdkLevel.isAtLeastV() && DeviceUtils.isHandheld(this)) {
+            switch (getIntent().getAction()) {
+                case Intent.ACTION_MANAGE_PERMISSIONS:
+                case Intent.ACTION_MANAGE_APP_PERMISSION:
+                case Intent.ACTION_MANAGE_APP_PERMISSIONS:
+                case APP_PERMISSIONS_SETTINGS:
+                case Intent.ACTION_MANAGE_PERMISSION_APPS:
+                    getTheme().applyStyle(R.style.ThemeOverlay_PermissionSettings, true);
+                    break;
+            }
+        }
         super.onCreate(savedInstanceState);
 
         // TODO(b/309578419): Make this activity handle insets properly and then remove this.
