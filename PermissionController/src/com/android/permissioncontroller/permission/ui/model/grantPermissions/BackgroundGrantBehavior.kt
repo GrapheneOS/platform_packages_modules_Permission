@@ -57,7 +57,7 @@ object BackgroundGrantBehavior : GrantBehavior() {
         val requestsBg = hasBgPerms(group, requestedPerms)
         val requestsFg = requestedPerms.any { it !in group.backgroundPermNames }
         val isOneTimeGroup = PermissionMapping.supportsOneTimeGrant(group.permGroupName)
-        val isFgGranted = group.foreground.isGrantedExcludingRWROrAllRWR
+        val isFgGranted = group.foreground.allowFullGroupGrant
         val isFgOneTime = group.foreground.isOneTime
         val splitSdk = getSdkGroupWasSplitToBg(requestedPerms)
         val isAppIsOlderThanSplitToBg = group.packageInfo.targetSdkVersion < splitSdk
@@ -171,16 +171,15 @@ object BackgroundGrantBehavior : GrantBehavior() {
         group: LightAppPermGroup,
         requestedPerms: Set<String>
     ): Boolean {
-        return (!hasBgPerms(group, requestedPerms) ||
-            group.background.isGrantedExcludingRWROrAllRWR) &&
-            group.foreground.isGrantedExcludingRWROrAllRWR
+        return (!hasBgPerms(group, requestedPerms) || group.background.allowFullGroupGrant) &&
+            group.foreground.allowFullGroupGrant
     }
 
     override fun isForegroundFullyGranted(
         group: LightAppPermGroup,
         requestedPerms: Set<String>
     ): Boolean {
-        return group.foreground.isGrantedExcludingRWROrAllRWR
+        return group.foreground.allowFullGroupGrant
     }
 
     override fun isPermissionFixed(group: LightAppPermGroup, perm: String): Boolean {

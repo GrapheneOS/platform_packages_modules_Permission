@@ -338,7 +338,7 @@ class GrantPermissionsViewModel(
                     if (state != null) {
                         val allAffectedGranted =
                             state.affectedPermissions.all { perm ->
-                                appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true &&
+                                appPermGroup.permissions[perm]?.isGranted == true &&
                                     appPermGroup.permissions[perm]?.isRevokeWhenRequested == false
                             }
                         if (allAffectedGranted) {
@@ -592,7 +592,7 @@ class GrantPermissionsViewModel(
 
         val behavior = getGrantBehavior(group)
         return if (behavior.isGroupFullyGranted(group, groupRequestedPermissions)) {
-            if (group.permissions[perm]?.isGrantedIncludingAppOp == false) {
+            if (group.permissions[perm]?.isGranted == false) {
                 if (isBackground) {
                     grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
@@ -864,18 +864,15 @@ class GrantPermissionsViewModel(
                 } else {
                     PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_GRANTED
                 }
+            var affectedPermissions: Collection<String> = groupState.affectedPermissions
             if (shouldAffectBackgroundPermissions) {
-                grantBackgroundRuntimePermissions(
-                    app,
-                    groupState.group,
-                    groupState.affectedPermissions
-                )
+                grantBackgroundRuntimePermissions(app, groupState.group, affectedPermissions)
             } else if (shouldAffectForegroundPermssions) {
                 if (affectedForegroundPermissions == null) {
                     grantForegroundRuntimePermissions(
                         app,
                         groupState.group,
-                        groupState.affectedPermissions,
+                        affectedPermissions,
                         isOneTime
                     )
                     // This prevents weird flag state when app targetSDK switches from S+ to R-
@@ -883,11 +880,12 @@ class GrantPermissionsViewModel(
                         KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, groupState.group, true)
                     }
                 } else {
+                    affectedPermissions = affectedForegroundPermissions
                     val newGroup =
                         grantForegroundRuntimePermissions(
                             app,
                             groupState.group,
-                            affectedForegroundPermissions,
+                            affectedPermissions,
                             isOneTime
                         )
                     if (!isOneTime || newGroup.isOneTime) {
@@ -899,7 +897,17 @@ class GrantPermissionsViewModel(
                     }
                 }
             }
-            groupState.state = STATE_GRANTED
+            val shouldDenyFullGroupGrant =
+                groupState.group.isPlatformPermissionGroup &&
+                    affectedPermissions.none {
+                        groupState.group.permissions[it]?.isPlatformOrSystem == true
+                    }
+            groupState.state =
+                if (shouldDenyFullGroupGrant) {
+                    STATE_UNKNOWN
+                } else {
+                    STATE_GRANTED
+                }
         } else {
             if (shouldAffectBackgroundPermissions) {
                 revokeBackgroundRuntimePermissions(

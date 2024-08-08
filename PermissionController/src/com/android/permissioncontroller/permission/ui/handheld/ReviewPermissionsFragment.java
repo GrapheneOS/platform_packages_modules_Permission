@@ -268,11 +268,11 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
             PermissionControllerStatsLog.write(REVIEW_PERMISSIONS_FRAGMENT_RESULT_REPORTED,
                     changeId, mViewModel.getPackageInfo().applicationInfo.uid,
                     group.getPackageName(),
-                    permission.getName(), permission.isGrantedIncludingAppOp());
+                    permission.getName(), permission.isGranted());
             Log.i(LOG_TAG, "Permission grant via permission review changeId=" + changeId + " uid="
                     + mViewModel.getPackageInfo().applicationInfo.uid + " packageName="
                     + group.getPackageName() + " permission="
-                    + permission.getName() + " granted=" + permission.isGrantedIncludingAppOp());
+                    + permission.getName() + " granted=" + permission.isGranted());
         }
     }
 

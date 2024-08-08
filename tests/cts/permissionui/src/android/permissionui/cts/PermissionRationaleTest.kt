@@ -225,7 +225,7 @@ class PermissionRationaleTest : BaseUsePermissionTest() {
     }
 
     private fun clickInstallSourceLink() {
-        findView(By.res(DATA_SHARING_SOURCE_MESSAGE_ID), true)
+        findView(By.res(DATA_SHARING_SOURCE_MESSAGE_ID), 20000L, true)
 
         eventually {
             // UiObject2 doesn't expose CharSequence.

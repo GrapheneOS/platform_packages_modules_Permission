@@ -47,7 +47,7 @@ object HealthGrantBehavior : GrantBehavior() {
         group: LightAppPermGroup,
         requestedPerms: Set<String>
     ): Boolean {
-        return requestedPerms.all { group.permissions[it]?.isGrantedIncludingAppOp != false }
+        return requestedPerms.all { group.permissions[it]?.isGranted != false }
     }
 
     override fun isPermissionFixed(group: LightAppPermGroup, perm: String): Boolean {

@@ -23,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseFragment;
 
 /**
@@ -60,4 +62,14 @@ public abstract class PermissionsCollapsingToolbarBaseFragment
      */
     @NonNull
     public abstract PreferenceFragmentCompat createPreferenceFragment();
+
+    @Override
+    protected final boolean useCollapsingToolbar() {
+        return SdkLevel.isAtLeastS() && (!isPermissionSettings() || getResources()
+                .getBoolean(R.bool.config_useCollapsingToolbarInPermissionSettings));
+    }
+
+    protected boolean isPermissionSettings() {
+        return false;
+    }
 }

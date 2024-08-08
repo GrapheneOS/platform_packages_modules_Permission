@@ -1329,6 +1329,9 @@
     <!-- Label when there are no apps available for a default app [CHAR LIMIT=30] -->
     <string name="default_app_no_apps">No apps</string>
 
+    <!-- Title for preference item that will open a screen to manage other NFC services [CHAR LIMIT=50] -->
+    <string name="default_payment_app_other_nfc_services">Other NFC services</string>
+
     <!-- Label for the selected default app for default app [CHAR LIMIT=30] -->
     <string name="car_default_app_selected">Selected</string>
 

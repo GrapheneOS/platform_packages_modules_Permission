@@ -58,7 +58,7 @@ abstract class GrantBehavior {
      * group not already granted will be granted.
      */
     open fun isGroupFullyGranted(group: LightAppPermGroup, requestedPerms: Set<String>): Boolean {
-        return group.foreground.isGrantedExcludingRWROrAllRWR
+        return group.foreground.allowFullGroupGrant
     }
 
     /**

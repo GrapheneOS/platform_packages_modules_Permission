@@ -20,6 +20,7 @@ import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.os.Build
 import android.os.UserHandle
+import com.android.permissioncontroller.permission.utils.Utils
 
 /**
  * A lightweight version of the AppPermissionGroup data structure. Represents information about a
@@ -75,10 +76,13 @@ data class LightAppPermGroup(
         get() =
             permissions.mapNotNull { (name, _) -> if (name !in backgroundPermNames) name else null }
 
+    val isPlatformPermissionGroup = permGroupInfo.packageName == Utils.OS_PKG
+
     val foreground =
         AppPermSubGroup(
             permissions.filter { it.key in foregroundPermNames },
             packageInfo,
+            isPlatformPermissionGroup,
             specialLocationGrant
         )
 
@@ -86,6 +90,7 @@ data class LightAppPermGroup(
         AppPermSubGroup(
             permissions.filter { it.key in backgroundPermNames },
             packageInfo,
+            isPlatformPermissionGroup,
             specialLocationGrant
         )
 
@@ -123,7 +128,7 @@ data class LightAppPermGroup(
     val isOneTime =
         (permGroupName != Manifest.permission_group.LOCATION &&
             permissions.any { it.value.isOneTime } &&
-            permissions.none { !it.value.isOneTime && it.value.isGrantedIncludingAppOp }) ||
+            permissions.none { !it.value.isOneTime && it.value.isGranted }) ||
             (permGroupName == Manifest.permission_group.LOCATION &&
                 permissions[ACCESS_COARSE_LOCATION]?.isOneTime == true)
 
@@ -160,16 +165,24 @@ data class LightAppPermGroup(
      *
      * @param permissions The permissions contained within this subgroup, a subset of those
      *   contained in the full group
+     * @param isPlatformPermissionGroup Whether this is a platform permission group
      * @param specialLocationGrant Whether this is a special location package
      */
     data class AppPermSubGroup
     internal constructor(
         private val permissions: Map<String, LightPermission>,
         private val packageInfo: LightPackageInfo,
+        private val isPlatformPermissionGroup: Boolean,
         private val specialLocationGrant: Boolean?
     ) {
         /** Whether any of this App Permission SubGroup's permissions are granted */
-        val isGranted = specialLocationGrant ?: permissions.any { it.value.isGrantedIncludingAppOp }
+        val isGranted =
+            specialLocationGrant
+                ?: permissions.any {
+                    val mayGrantByPlatformOrSystem =
+                        !isPlatformPermissionGroup || it.value.isPlatformOrSystem
+                    it.value.isGranted && mayGrantByPlatformOrSystem
+                }
 
         /**
          * Whether this App Permission SubGroup should be treated as granted. This means either:
@@ -178,14 +191,13 @@ data class LightAppPermGroup(
          * 2) All permissions were auto-granted (all permissions are all granted and all
          *    RevokeWhenRequested.)
          */
-        val isGrantedExcludingRWROrAllRWR =
+        val allowFullGroupGrant =
             specialLocationGrant
                 ?: (permissions.any {
-                    it.value.isGrantedIncludingAppOp && !it.value.isRevokeWhenRequested
-                } ||
-                    permissions.all {
-                        it.value.isGrantedIncludingAppOp && it.value.isRevokeWhenRequested
-                    })
+                    val mayGrantByPlatformOrSystem =
+                        !isPlatformPermissionGroup || it.value.isPlatformOrSystem
+                    it.value.allowFullGroupGrant && mayGrantByPlatformOrSystem
+                } || permissions.all { it.value.isGranted && it.value.isRevokeWhenRequested })
 
         /** Whether any of this App Permission SubGroup's permissions are granted by default */
         val isGrantedByDefault = permissions.any { it.value.isGrantedByDefault }
@@ -196,7 +208,7 @@ data class LightAppPermGroup(
          */
         val isOneTime =
             permissions.any { it.value.isOneTime } &&
-                permissions.none { it.value.isGrantedIncludingAppOp && !it.value.isOneTime }
+                permissions.none { it.value.isGranted && !it.value.isOneTime }
 
         /**
          * Whether any of this App Permission Subgroup's foreground permissions are fixed by policy

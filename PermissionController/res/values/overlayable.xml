@@ -450,10 +450,14 @@
             <item type="style" name="EnhancedConfirmationDialogButton" />
             <!-- END ENHANCED CONFIRMATION DIALOG -->
 
+            <!-- START STETINGS LIB HEADER -->
             <item type="style" name="SettingsLibEntityHeader" />
             <item type="style" name="SettingsLibEntityHeaderContent" />
             <item type="style" name="SettingsLibEntityHeaderIcon" />
             <item type="style" name="SettingsLibEntityHeaderTitle" />
+
+            <item type="bool" name="config_useCollapsingToolbarInPermissionSettings"/>
+            <!-- END SETTINGS LIB HEADER -->
 
         </policy>
 

@@ -30,4 +30,9 @@ public class ManageStandardPermissionsWrapperFragment
     public PreferenceFragmentCompat createPreferenceFragment() {
         return new ManageStandardPermissionsFragment();
     }
+
+    @Override
+    protected boolean isPermissionSettings() {
+        return true;
+    }
 }

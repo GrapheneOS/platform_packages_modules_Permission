@@ -16,13 +16,18 @@
 
 package com.android.permissioncontroller.role.utils;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
+import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.Objects;
 
 /**
  * Utility methods about application packages.
@@ -65,5 +70,26 @@ public final class PackageUtils {
     public static ApplicationInfo getApplicationInfoAsUser(@NonNull String packageName,
             @NonNull UserHandle user, @NonNull Context context) {
         return getApplicationInfo(packageName, UserUtils.getUserContext(context, user));
+    }
+
+    /**
+     * Check whether an intent is resolved to an activity inside Settings.
+     *
+     * @param intent the intent to check
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return whether the intent is resolved to an activity inside Settings,
+     */
+    public static boolean isIntentResolvedToSettings(@NonNull Intent intent,
+            @NonNull Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        ComponentName componentName = intent.resolveActivity(packageManager);
+        if (componentName == null) {
+            return false;
+        }
+        Intent settingsIntent = new Intent(Settings.ACTION_SETTINGS);
+        String settingsPackageName = settingsIntent.resolveActivity(packageManager)
+                .getPackageName();
+        return Objects.equals(componentName.getPackageName(), settingsPackageName);
     }
 }

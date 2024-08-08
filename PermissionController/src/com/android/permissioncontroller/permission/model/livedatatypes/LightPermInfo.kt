@@ -30,6 +30,7 @@ import android.content.pm.PermissionInfo
  * @param protection The protection level of this permission
  * @param protection Extra information about the protection of this permission
  * @param flags The system flags of this permission
+ * @param isSystem Whether this permission is defined by a system app
  */
 data class LightPermInfo(
     val name: String,
@@ -38,10 +39,12 @@ data class LightPermInfo(
     val backgroundPermission: String?,
     val protection: Int,
     val protectionFlags: Int,
-    val flags: Int
+    val flags: Int,
+    val isSystem: Boolean?,
 ) {
     constructor(
-        permInfo: PermissionInfo
+        permInfo: PermissionInfo,
+        isSystem: Boolean?
     ) : this(
         permInfo.name,
         permInfo.packageName,
@@ -49,7 +52,8 @@ data class LightPermInfo(
         permInfo.backgroundPermission,
         permInfo.protection,
         permInfo.protectionFlags,
-        permInfo.flags
+        permInfo.flags,
+        isSystem
     )
 
     /**

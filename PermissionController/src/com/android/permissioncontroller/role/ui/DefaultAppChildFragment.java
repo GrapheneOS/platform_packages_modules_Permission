@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.role.ui;
 
 import android.app.Activity;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -37,9 +38,12 @@ import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.RoleUiBehaviorUtils;
+import com.android.permissioncontroller.role.utils.SettingsCompat;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.Roles;
 
@@ -63,6 +67,8 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
             + ".preference.NONE";
     private static final String PREFERENCE_KEY_DESCRIPTION = DefaultAppChildFragment.class.getName()
             + ".preference.DESCRIPTION";
+    private static final String PREFERENCE_KEY_OTHER_NFC_SERVICES =
+            DefaultAppChildFragment.class.getName() + ".preference.OTHER_NFC_SERVICES";
 
     @NonNull
     private String mRoleName;
@@ -133,11 +139,6 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
             preferenceScreen = preferenceManager.createPreferenceScreen(context);
             preferenceFragment.setPreferenceScreen(preferenceScreen);
         } else {
-            oldDescriptionPreference = preferenceScreen.findPreference(PREFERENCE_KEY_DESCRIPTION);
-            if (oldDescriptionPreference != null) {
-                preferenceScreen.removePreference(oldDescriptionPreference);
-                oldDescriptionPreference.setOrder(Preference.DEFAULT_ORDER);
-            }
             for (int i = preferenceScreen.getPreferenceCount() - 1; i >= 0; --i) {
                 Preference preference = preferenceScreen.getPreference(i);
 
@@ -168,13 +169,8 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
                     oldPreferences, preferenceScreen, context);
         }
 
-        Preference descriptionPreference = oldDescriptionPreference;
-        if (descriptionPreference == null) {
-            descriptionPreference = preferenceFragment.createFooterPreference();
-            descriptionPreference.setKey(PREFERENCE_KEY_DESCRIPTION);
-            descriptionPreference.setSummary(mRole.getDescriptionResource());
-        }
-        preferenceScreen.addPreference(descriptionPreference);
+        addNonPaymentNfcServicesPreference(preferenceScreen, oldPreferences, context);
+        addDescriptionPreference(preferenceScreen, oldPreferences);
 
         preferenceFragment.onPreferenceScreenChanged();
     }
@@ -263,6 +259,46 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
     @Override
     public void setDefaultApp(@NonNull String packageName) {
         mViewModel.setDefaultApp(packageName);
+    }
+
+    private void addNonPaymentNfcServicesPreference(@NonNull PreferenceScreen preferenceScreen,
+            @NonNull ArrayMap<String, Preference> oldPreferences, @NonNull Context context) {
+        if (!(SdkLevel.isAtLeastV() && Objects.equals(mRoleName, RoleManager.ROLE_WALLET))) {
+            return;
+        }
+
+        Intent intent = new Intent(SettingsCompat.ACTION_MANAGE_OTHER_NFC_SERVICES_SETTINGS);
+        if (!PackageUtils.isIntentResolvedToSettings(intent, context)) {
+            return;
+        }
+
+        Preference preference = oldPreferences.get(PREFERENCE_KEY_OTHER_NFC_SERVICES);
+        if (preference == null) {
+            preference = new Preference(context);
+            preference.setKey(PREFERENCE_KEY_OTHER_NFC_SERVICES);
+            preference.setIcon(AppCompatResources.getDrawable(context, R.drawable.ic_nfc));
+            preference.setTitle(context.getString(
+                    R.string.default_payment_app_other_nfc_services));
+            preference.setPersistent(false);
+            preference.setOnPreferenceClickListener(preference2 -> {
+                context.startActivity(intent);
+                return true;
+            });
+        }
+
+        preferenceScreen.addPreference(preference);
+    }
+
+    private void addDescriptionPreference(@NonNull PreferenceScreen preferenceScreen,
+            @NonNull ArrayMap<String, Preference> oldPreferences) {
+        Preference preference = oldPreferences.get(PREFERENCE_KEY_DESCRIPTION);
+        if (preference == null) {
+            preference = requirePreferenceFragment().createFooterPreference();
+            preference.setKey(PREFERENCE_KEY_DESCRIPTION);
+            preference.setSummary(mRole.getDescriptionResource());
+        }
+
+        preferenceScreen.addPreference(preference);
     }
 
     @NonNull

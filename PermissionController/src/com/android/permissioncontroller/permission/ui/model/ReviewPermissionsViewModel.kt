@@ -133,7 +133,7 @@ class ReviewPermissionsViewModel(val app: Application, val packageInfo: PackageI
         val lightPerms = permGroup.allPermissions.values.toList()
         val permissionCount = lightPerms.size
         for (i in 0 until permissionCount) {
-            if (!lightPerms[i].isGrantedIncludingAppOp) {
+            if (!lightPerms[i].isGranted) {
                 revokedCount++
             }
         }

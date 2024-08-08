@@ -104,7 +104,7 @@ class ReviewPermissionsViewModelTest {
         permissionsMap["mockedPermission1"] = permission2
 
         whenever(permGroup.allPermissions).thenReturn(permissionsMap)
-        whenever(permission1.isGrantedIncludingAppOp).thenReturn(true)
+        whenever(permission1.isGranted).thenReturn(true)
 
         val summary = model.getSummaryForIndividuallyControlledPermGroup(permGroup)
         assertEquals(

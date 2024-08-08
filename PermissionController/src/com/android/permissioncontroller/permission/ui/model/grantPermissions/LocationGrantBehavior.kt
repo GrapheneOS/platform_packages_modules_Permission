@@ -37,8 +37,7 @@ object LocationGrantBehavior : GrantBehavior() {
     ): Prompt {
         val backgroundPrompt = BackgroundGrantBehavior.getPrompt(group, requestedPerms)
         val requestsBackground = requestedPerms.any { it in group.backgroundPermNames }
-        val coarseGranted =
-            group.permissions[ACCESS_COARSE_LOCATION]?.isGrantedIncludingAppOp == true
+        val coarseGranted = group.permissions[ACCESS_COARSE_LOCATION]?.isGranted == true
         return if (!supportsLocationAccuracy(group) || requestsBackground) {
             backgroundPrompt
         } else if (requestedPerms.contains(ACCESS_FINE_LOCATION)) {
@@ -84,10 +83,10 @@ object LocationGrantBehavior : GrantBehavior() {
         }
 
         if (requestedPerms.contains(ACCESS_FINE_LOCATION)) {
-            return group.permissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp == true
+            return group.permissions[ACCESS_FINE_LOCATION]?.isGranted == true
         }
 
-        return group.foreground.isGrantedExcludingRWROrAllRWR
+        return group.foreground.allowFullGroupGrant
     }
 
     override fun isPermissionFixed(group: LightAppPermGroup, perm: String): Boolean {

@@ -29,4 +29,9 @@ public class AppPermissionGroupsWrapperFragment extends PermissionsCollapsingToo
     public PreferenceFragmentCompat createPreferenceFragment() {
         return new AppPermissionGroupsFragment();
     }
+
+    @Override
+    protected boolean isPermissionSettings() {
+        return true;
+    }
 }

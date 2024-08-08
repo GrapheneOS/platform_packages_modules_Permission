@@ -28,8 +28,8 @@ import com.android.permissioncontroller.permission.utils.Utils
  *
  * @param pkgInfo The package requesting the permission
  * @param permInfo The permissionInfo this represents
- * @param isGrantedIncludingAppOp Whether or not this permission is functionally granted. A
- *   non-granted app op but granted permission is counted as not granted
+ * @param isGranted Whether or not this permission is functionally granted. A non-granted app op but
+ *   granted permission is counted as not granted
  * @param flags The PermissionController flags for this permission
  * @param foregroundPerms The foreground permission names corresponding to this permission, if this
  *   permission is a background permission
@@ -37,7 +37,7 @@ import com.android.permissioncontroller.permission.utils.Utils
 data class LightPermission(
     val pkgInfo: LightPackageInfo,
     val permInfo: LightPermInfo,
-    val isGrantedIncludingAppOp: Boolean,
+    val isGranted: Boolean,
     val flags: Int,
     val foregroundPerms: List<String>?
 ) {
@@ -98,9 +98,9 @@ data class LightPermission(
     /** Whether this permission is user sensitive in its current grant state */
     val isUserSensitive =
         !isRuntimePlatformPermission(permInfo.name) ||
-            (isGrantedIncludingAppOp &&
+            (isGranted &&
                 (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED) != 0) ||
-            (!isGrantedIncludingAppOp &&
+            (!isGranted &&
                 (flags and PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED) != 0)
     /** Whether the permission is restricted */
     val isRestricted =
@@ -122,10 +122,17 @@ data class LightPermission(
      */
     val isSelectedLocationAccuracy =
         flags and PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY != 0
+    /** Whether this permission is defined by platform or a system app */
+    val isPlatformOrSystem = permInfo.packageName == Utils.OS_PKG || permInfo.isSystem == true
+    /**
+     * Whether this permission is granted including app op and does not hold the
+     * PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED flag.
+     */
+    val allowFullGroupGrant = isGranted && !isRevokeWhenRequested
 
     override fun toString() = buildString {
         append(name)
-        if (isGrantedIncludingAppOp) append(", Granted") else append(", NotGranted")
+        if (isGranted) append(", Granted") else append(", NotGranted")
         if (isPolicyFixed) append(", PolicyFixed")
         if (isSystemFixed) append(", SystemFixed")
         if (isUserFixed) append(", UserFixed")

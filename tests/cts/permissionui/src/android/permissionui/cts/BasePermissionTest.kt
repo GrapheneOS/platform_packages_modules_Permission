@@ -360,6 +360,17 @@ abstract class BasePermissionTest {
             .clickAndWait(Until.newWindow(), NEW_WINDOW_TIMEOUT_MILLIS)
     }
 
+    protected fun findView(selector: BySelector, timeoutMs: Long, expected: Boolean) {
+        val exception =
+            try {
+                waitFindObject(selector, timeoutMs)
+                null
+            } catch (e: Exception) {
+                e
+            }
+        Assert.assertTrue("Expected to find view: $expected", (exception == null) == expected)
+    }
+
     protected fun findView(selector: BySelector, expected: Boolean) {
         val timeoutMs =
             if (expected) {
@@ -369,14 +380,7 @@ abstract class BasePermissionTest {
                 1000L
             }
 
-        val exception =
-            try {
-                waitFindObject(selector, timeoutMs)
-                null
-            } catch (e: Exception) {
-                e
-            }
-        Assert.assertTrue("Expected to find view: $expected", (exception == null) == expected)
+        findView(selector, timeoutMs, expected)
     }
 
     protected fun clickPermissionControllerUi(selector: BySelector, timeoutMillis: Long = 20_000) {

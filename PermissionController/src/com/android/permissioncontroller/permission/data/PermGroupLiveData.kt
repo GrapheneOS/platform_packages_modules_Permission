@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.data
 
 import android.app.Application
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageItemInfo
 import android.content.pm.PackageManager
 import android.content.pm.PermissionGroupInfo
@@ -64,7 +65,6 @@ private constructor(private val app: Application, private val groupName: String)
      */
     override fun onUpdate() {
         val permissionInfos = mutableMapOf<String, LightPermInfo>()
-
         groupInfo =
             Utils.getGroupInfo(groupName, context)
                 ?: run {
@@ -73,28 +73,25 @@ private constructor(private val app: Application, private val groupName: String)
                     value = null
                     return
                 }
-
+        val permInfos = mutableListOf<PermissionInfo>()
         when (groupInfo) {
             is PermissionGroupInfo -> {
-                val permInfos =
-                    try {
+                try {
+                    permInfos.addAll(
                         Utils.getInstalledRuntimePermissionInfosForGroup(
                             context.packageManager,
                             groupName
                         )
-                    } catch (e: PackageManager.NameNotFoundException) {
-                        Log.e(LOG_TAG, "Invalid permission group $groupName")
-                        invalidateSingle(groupName)
-                        value = null
-                        return
-                    }
-
-                for (permInfo in permInfos) {
-                    permissionInfos[permInfo.name] = LightPermInfo(permInfo)
+                    )
+                } catch (e: PackageManager.NameNotFoundException) {
+                    Log.e(LOG_TAG, "Invalid permission group $groupName")
+                    invalidateSingle(groupName)
+                    value = null
+                    return
                 }
             }
             is PermissionInfo -> {
-                permissionInfos[groupInfo.name] = LightPermInfo(groupInfo as PermissionInfo)
+                permInfos.add(groupInfo as PermissionInfo)
             }
             else -> {
                 value = null
@@ -102,19 +99,25 @@ private constructor(private val app: Application, private val groupName: String)
             }
         }
 
-        val permGroup = PermGroup(LightPermGroupInfo(groupInfo), permissionInfos)
-
-        value = permGroup
-
-        val packageNames =
-            permissionInfos.values.map { permInfo -> permInfo.packageName }.toMutableSet()
+        val packageNames = permInfos.map { permInfo -> permInfo.packageName }.toMutableSet()
         packageNames.add(groupInfo.packageName)
-
         // TODO ntmyren: What if the package isn't installed for the system user?
         val getLiveData = { packageName: String ->
             LightPackageInfoLiveData[packageName, UserHandle.SYSTEM]
         }
         setSourcesToDifference(packageNames, packageLiveDatas, getLiveData)
+        if (!packageLiveDatas.all { it.value.isInitialized }) {
+            return
+        }
+        for (permInfo in permInfos) {
+            val lightPackageInfo = packageLiveDatas[permInfo.packageName]?.value
+            val isSystem =
+                lightPackageInfo?.let { it.appFlags and ApplicationInfo.FLAG_SYSTEM != 0 }
+            permissionInfos[permInfo.name] = LightPermInfo(permInfo, isSystem)
+        }
+
+        val permGroup = PermGroup(LightPermGroupInfo(groupInfo), permissionInfos)
+        value = permGroup
     }
 
     override fun onInactive() {

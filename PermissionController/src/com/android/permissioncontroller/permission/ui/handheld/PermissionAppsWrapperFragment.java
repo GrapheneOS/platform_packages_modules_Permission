@@ -28,4 +28,9 @@ public class PermissionAppsWrapperFragment extends PermissionsCollapsingToolbarB
     public PreferenceFragmentCompat createPreferenceFragment() {
         return new PermissionAppsFragment();
     }
+
+    @Override
+    protected boolean isPermissionSettings() {
+        return true;
+    }
 }

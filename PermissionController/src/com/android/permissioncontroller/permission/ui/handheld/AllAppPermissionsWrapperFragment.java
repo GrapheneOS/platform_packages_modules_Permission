@@ -43,4 +43,9 @@ public class AllAppPermissionsWrapperFragment extends PermissionsCollapsingToolb
                 packageName, filterGroup, userHandle));
         return instance;
     }
+
+    @Override
+    protected boolean isPermissionSettings() {
+        return true;
+    }
 }

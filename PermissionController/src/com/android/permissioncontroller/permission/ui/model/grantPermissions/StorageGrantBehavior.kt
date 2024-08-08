@@ -66,11 +66,11 @@ object StorageGrantBehavior : GrantBehavior() {
         }
 
         val userSelectedPerm = group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]
-        if (userSelectedPerm?.isUserFixed == true && userSelectedPerm.isGrantedIncludingAppOp) {
+        if (userSelectedPerm?.isUserFixed == true && userSelectedPerm.isGranted) {
             return Prompt.NO_UI_PHOTO_PICKER_REDIRECT
         }
 
-        if (userSelectedPerm?.isGrantedIncludingAppOp == true) {
+        if (userSelectedPerm?.isGranted == true) {
             return Prompt.SELECT_MORE_PHOTOS
         } else {
             return Prompt.SELECT_PHOTOS
@@ -97,16 +97,14 @@ object StorageGrantBehavior : GrantBehavior() {
         }
 
         return group.permissions.values.any {
-            it.name !in getPartialGrantPermissions(group) && it.isGrantedIncludingAppOp
+            it.name !in getPartialGrantPermissions(group) && it.isGranted
         }
     }
 
     override fun isPermissionFixed(group: LightAppPermGroup, perm: String): Boolean {
         val userSelectedPerm = group.permissions[READ_MEDIA_VISUAL_USER_SELECTED]
         if (
-            userSelectedPerm != null &&
-                userSelectedPerm.isGrantedIncludingAppOp &&
-                userSelectedPerm.isUserFixed
+            userSelectedPerm != null && userSelectedPerm.isGranted && userSelectedPerm.isUserFixed
         ) {
             // If the user selected permission is fixed and granted, we immediately show the
             // photo picker, rather than filtering

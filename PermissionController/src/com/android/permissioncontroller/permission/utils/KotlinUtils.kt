@@ -743,7 +743,7 @@ object KotlinUtils {
                 LightPermission(
                     group.packageInfo,
                     perm.permInfo,
-                    perm.isGrantedIncludingAppOp,
+                    perm.isGranted,
                     perm.flags or flagsToSet,
                     perm.foregroundPerms
                 )
@@ -876,7 +876,7 @@ object KotlinUtils {
                 group.specialLocationGrant
             )
         // If any permission in the group is one time granted, start one time permission session.
-        if (newGroup.permissions.any { it.value.isOneTime && it.value.isGrantedIncludingAppOp }) {
+        if (newGroup.permissions.any { it.value.isOneTime && it.value.isGranted }) {
             if (SdkLevel.isAtLeastT()) {
                 context
                     .getSystemService(PermissionManager::class.java)!!
@@ -938,7 +938,7 @@ object KotlinUtils {
 
         var newFlags = perm.flags
         var oldFlags = perm.flags
-        var isGranted = perm.isGrantedIncludingAppOp
+        var isGranted = perm.isGranted
         var shouldKill = false
 
         // Create a new context with the given deviceId so that permission updates will be bound
@@ -946,7 +946,7 @@ object KotlinUtils {
         val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
 
         // Grant the permission if needed.
-        if (!perm.isGrantedIncludingAppOp) {
+        if (!perm.isGranted) {
             val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
             // TODO 195016052: investigate adding split permission handling
@@ -1015,14 +1015,14 @@ object KotlinUtils {
 
         // If we newly grant background access to the fine location, double-guess the user some
         // time later if this was really the right choice.
-        if (!perm.isGrantedIncludingAppOp && isGranted) {
+        if (!perm.isGranted && isGranted) {
             var triggerLocationAccessCheck = false
             if (perm.name == ACCESS_FINE_LOCATION) {
                 val bgPerm = group.permissions[perm.backgroundPermission]
-                triggerLocationAccessCheck = bgPerm?.isGrantedIncludingAppOp == true
+                triggerLocationAccessCheck = bgPerm?.isGranted == true
             } else if (perm.name == ACCESS_BACKGROUND_LOCATION) {
                 val fgPerm = group.permissions[ACCESS_FINE_LOCATION]
-                triggerLocationAccessCheck = fgPerm?.isGrantedIncludingAppOp == true
+                triggerLocationAccessCheck = fgPerm?.isGranted == true
             }
             if (triggerLocationAccessCheck) {
                 // trigger location access check
@@ -1261,7 +1261,7 @@ object KotlinUtils {
         val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
         var newFlags = perm.flags
         val deviceId = group.deviceId
-        var isGranted = perm.isGrantedIncludingAppOp
+        var isGranted = perm.isGranted
         val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
         var shouldKill = false
 
@@ -1271,7 +1271,7 @@ object KotlinUtils {
         // to the device
         val context = ContextCompat.createDeviceContext(app.applicationContext, deviceId)
 
-        if (perm.isGrantedIncludingAppOp || (perm.isCompatRevoked && forceRemoveRevokedCompat)) {
+        if (perm.isGranted || (perm.isCompatRevoked && forceRemoveRevokedCompat)) {
             if (
                 supportsRuntime &&
                     !isPermissionSplitFromNonRuntime(
@@ -1335,14 +1335,14 @@ object KotlinUtils {
 
         // If we revoke background access to the fine location, we trigger a check to remove
         // notification warning about background location access
-        if (perm.isGrantedIncludingAppOp && !isGranted) {
+        if (perm.isGranted && !isGranted) {
             var cancelLocationAccessWarning = false
             if (perm.name == ACCESS_FINE_LOCATION) {
                 val bgPerm = group.permissions[perm.backgroundPermission]
-                cancelLocationAccessWarning = bgPerm?.isGrantedIncludingAppOp == true
+                cancelLocationAccessWarning = bgPerm?.isGranted == true
             } else if (perm.name == ACCESS_BACKGROUND_LOCATION) {
                 val fgPerm = group.permissions[ACCESS_FINE_LOCATION]
-                cancelLocationAccessWarning = fgPerm?.isGrantedIncludingAppOp == true
+                cancelLocationAccessWarning = fgPerm?.isGranted == true
             }
             if (cancelLocationAccessWarning) {
                 // cancel location access warning notification
@@ -1402,7 +1402,7 @@ object KotlinUtils {
                 val fgPerm = group.permissions[foregroundPermName]
                 val appOpName = permissionToOp(foregroundPermName) ?: continue
 
-                if (fgPerm != null && fgPerm.isGrantedIncludingAppOp) {
+                if (fgPerm != null && fgPerm.isGranted) {
                     wasChanged =
                         setOpMode(appOpName, uid, packageName, MODE_ALLOWED, appOpsManager) ||
                             wasChanged
@@ -1415,7 +1415,7 @@ object KotlinUtils {
                     if (group.permissions.containsKey(perm.backgroundPermission)) {
                         val bgPerm = group.permissions[perm.backgroundPermission]
                         val mode =
-                            if (bgPerm != null && bgPerm.isGrantedIncludingAppOp) MODE_ALLOWED
+                            if (bgPerm != null && bgPerm.isGranted) MODE_ALLOWED
                             else MODE_FOREGROUND
 
                         setOpMode(appOpName, uid, packageName, mode, appOpsManager)
@@ -1462,7 +1462,7 @@ object KotlinUtils {
         if (perm.isBackgroundPermission && perm.foregroundPerms != null) {
             for (foregroundPermName in perm.foregroundPerms) {
                 val fgPerm = group.permissions[foregroundPermName]
-                if (fgPerm != null && fgPerm.isGrantedIncludingAppOp) {
+                if (fgPerm != null && fgPerm.isGranted) {
                     val appOpName = permissionToOp(foregroundPermName) ?: return false
                     wasChanged =
                         wasChanged ||
