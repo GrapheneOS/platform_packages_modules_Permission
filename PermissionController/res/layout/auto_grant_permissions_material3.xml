@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2024 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!--
+  ~ A lot of content in this file is identical to grant_permissions.xml
+  ~ Be sure to update both files when making changes.
+  -->
+
+<!-- In (hopefully very rare) case dialog is too high: allow scrolling -->
+<!-- The following layout file is a fork of the phone layout version, customized for auto -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AutoPermissionGrantScrollView"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/grant_singleton"
+        style="@style/AutoPermissionGrantSingleton"
+        android:focusable="false"
+        android:importantForAccessibility="no">
+
+        <!-- The dialog -->
+        <LinearLayout
+            android:id="@+id/grant_dialog"
+            style="@style/AutoPermissionGrantDialogMaterial3"
+            android:focusable="false"
+            android:importantForAccessibility="no"
+            android:theme="@style/Theme.PermissionGrantDialog">
+
+            <LinearLayout
+                android:id="@+id/content_container"
+                style="@style/AutoPermissionGrantContent">
+
+                <LinearLayout style="@style/AutoPermissionGrantDescription">
+
+                    <TextView
+                        android:id="@+id/permission_message"
+                        style="@style/AutoPermissionGrantTitleMessage"
+                        android:accessibilityHeading="true" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detail_message"
+                    style="@style/AutoPermissionGrantDetailMessage" />
+
+            </LinearLayout>
+
+            <!-- location (precise/approximate) animations -->
+            <LinearLayout
+                android:id="@+id/permission_location_accuracy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_fine_only"
+                    style="@style/AutoPermissionLocationAccuracyImageViewMaterial13"
+                    android:contentDescription="@string/precise_image_description" />
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_coarse_only"
+                    style="@style/AutoPermissionLocationAccuracyImageViewMaterial13"
+                    android:contentDescription="@string/approximate_image_description" />
+
+                <RadioGroup
+                    android:id="@+id/permission_location_accuracy_radio_group"
+                    style="@style/AutoPermissionLocationAccuracyRadioGroupMaterial3">
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_fine"
+                        style="@style/AutoPermissionLocationAccuracyRadioFine"
+                        android:text="@string/permgrouprequest_finelocation_imagetext" />
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_coarse"
+                        style="@style/AutoPermissionLocationAccuracyRadioCoarse"
+                        android:text="@string/permgrouprequest_coarselocation_imagetext" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- Buttons on bottom of dialog -->
+            <LinearLayout style="@style/AutoPermissionGrantButtonListMaterial3">
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_dont_allow_more_selected_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_dont_select_more" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_no_upgrade_one_time_and_dont_ask_again_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_no_upgrade_one_time" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_no_upgrade_one_time_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_no_upgrade_one_time" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_no_upgrade_and_dont_ask_again_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_no_upgrade" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_no_upgrade_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_no_upgrade" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_deny_and_dont_ask_again_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_deny" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_deny_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_deny" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_selected_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_allow_limited_access" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_one_time_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_allow_one_time" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_foreground_only_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_allow_foreground" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_allow" />
+
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
+                    android:id="@+id/permission_allow_all_button"
+                    style="@style/AutoPermissionGrantButton"
+                    android:text="@string/grant_dialog_button_allow_all" />
+
+            </LinearLayout>
+
+            <com.android.permissioncontroller.permission.ui.v33.widget.SafetyProtectionSectionView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

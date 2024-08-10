@@ -38,6 +38,8 @@ import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewMo
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModelFactory
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModelFactory
 
 /**
  * This is a condensed version of
@@ -65,7 +67,7 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
         val permGroupName =
             arguments?.getString(Intent.EXTRA_PERMISSION_GROUP_NAME)
                 ?: arguments?.getString(Intent.EXTRA_PERMISSION_NAME)
-                    ?: throw RuntimeException("Permission group name must not be null.")
+                ?: throw RuntimeException("Permission group name must not be null.")
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
         val isStorageAndLessThanT =
@@ -78,6 +80,12 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
         wearViewModel =
             ViewModelProvider(this, WearAppPermissionUsagesViewModelFactory())
                 .get(WearAppPermissionUsagesViewModel::class.java)
+
+        val locationProviderDialogViewModel =
+            ViewModelProvider(
+                owner = this,
+                factory = WearLocationProviderInterceptDialogViewModelFactory()
+            )[WearLocationProviderInterceptDialogViewModel::class.java]
 
         val onAppClick: (String, UserHandle, String) -> Unit = { packageName, user, category ->
             run {
@@ -114,7 +122,7 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
                         isAllowedForeground,
                         isDenied,
                         sessionId,
-                        activity.getApplication(),
+                        activity.application,
                         permGroupName,
                         LOG_TAG
                     )
@@ -133,7 +141,7 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
                 filterTimeBeginMillis,
                 Long.MAX_VALUE,
                 PermissionUsages.USAGE_FLAG_LAST,
-                requireActivity().getLoaderManager(),
+                requireActivity().loaderManager,
                 false,
                 false,
                 this,
@@ -145,10 +153,12 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
             setContent {
                 WearPermissionAppsScreen(
                     WearPermissionAppsHelper(
-                        activity.getApplication(),
+                        activity.application,
+                        this@WearPermissionAppsFragment.requireContext(),
                         permGroupName,
                         viewModel,
                         wearViewModel,
+                        locationProviderDialogViewModel,
                         isStorageAndLessThanT,
                         onAppClick,
                         onShowSystemClick,

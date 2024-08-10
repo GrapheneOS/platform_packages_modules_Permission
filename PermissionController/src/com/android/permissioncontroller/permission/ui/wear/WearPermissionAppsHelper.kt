@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.ui.wear
 
 import android.app.Application
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.UserHandle
 import com.android.permission.flags.Flags
@@ -25,9 +26,11 @@ import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModel
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupDescription
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.settingslib.utils.applications.AppUtils
 import java.text.Collator
 import java.util.Random
@@ -35,20 +38,28 @@ import java.util.Random
 /** Helper class for WearPermissionsAppScreen. */
 class WearPermissionAppsHelper(
     val application: Application,
+    val context: Context,
     val permGroupName: String,
     val viewModel: PermissionAppsViewModel,
     val wearViewModel: WearAppPermissionUsagesViewModel,
+    val locationProviderDialogViewModel: WearLocationProviderInterceptDialogViewModel,
     private val isStorageAndLessThanT: Boolean,
     private val onAppClick: (String, UserHandle, String) -> Unit,
     val onShowSystemClick: (Boolean) -> Unit,
     val logFragmentCreated: (String, UserHandle, Long, Boolean, Boolean, Boolean) -> Unit
 ) {
     fun categorizedAppsLiveData() = viewModel.categorizedAppsLiveData
+
     fun hasSystemAppsLiveData() = viewModel.hasSystemAppsLiveData
+
     fun shouldShowSystemLiveData() = viewModel.shouldShowSystemLiveData
+
     fun showAlways() = viewModel.showAllowAlwaysStringLiveData.value ?: false
+
     fun getTitle() = getPermGroupLabel(application, permGroupName).toString()
+
     fun getSubTitle() = getPermGroupDescription(application, permGroupName).toString()
+
     fun getChipsByCategory(
         categorizedApps: Map<Category, List<Pair<String, UserHandle>>>,
         appPermissionUsages: List<AppPermissionUsage>
@@ -64,7 +75,7 @@ class WearPermissionAppsHelper(
         val comparator = ChipComparator(collator)
 
         val viewIdForLogging = Random().nextLong()
-        for (category in Category.values()) {
+        for (category in Category.entries) {
             if (category == Category.ALLOWED && isStorageAndLessThanT) {
                 val allowedList = categorizedApps[Category.ALLOWED]
                 if (!allowedList.isNullOrEmpty()) {
@@ -169,9 +180,21 @@ class WearPermissionAppsHelper(
             title = KotlinUtils.getPackageLabel(application, packageName, user),
             summary = summary,
             contentDescription =
-                AppUtils.getAppContentDescription(application, packageName, user.getIdentifier()),
+                AppUtils.getAppContentDescription(application, packageName, user.identifier),
             icon = KotlinUtils.getBadgedPackageIcon(application, packageName, user),
-            onClick = { onClick(packageName, user, category.categoryName) }
+            onClick = {
+                if (
+                    LocationUtils.isLocationGroupAndProvider(
+                        application.applicationContext,
+                        permGroupName,
+                        packageName
+                    )
+                ) {
+                    locationProviderDialogViewModel.showDialog(context, packageName)
+                } else {
+                    onClick(packageName, user, category.categoryName)
+                }
+            }
         )
     }
 

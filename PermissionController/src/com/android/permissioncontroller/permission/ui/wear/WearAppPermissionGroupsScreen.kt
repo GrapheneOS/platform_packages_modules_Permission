@@ -39,6 +39,11 @@ fun WearAppPermissionGroupsScreen(helper: WearAppPermissionGroupsHelper) {
     val autoRevoke = helper.viewModel.autoRevokeLiveData.observeAsState(null)
     val appPermissionUsages = helper.wearViewModel.appPermissionUsages.observeAsState(emptyList())
     val showRevokeDialog = helper.revokeDialogViewModel.showDialogLiveData.observeAsState(false)
+    val showLocationProviderDialog =
+        helper.locationProviderInterceptDialogViewModel.dialogVisibilityLiveData.observeAsState(
+            false
+        )
+
     var isLoading by remember { mutableStateOf(true) }
 
     Box {
@@ -51,6 +56,11 @@ fun WearAppPermissionGroupsScreen(helper: WearAppPermissionGroupsHelper) {
             showDialog = showRevokeDialog.value,
             args = helper.revokeDialogViewModel.revokeDialogArgs
         )
+        if (showLocationProviderDialog.value) {
+            LocationProviderDialogScreen(
+                helper.locationProviderInterceptDialogViewModel.locationProviderInterceptDialogArgs
+            )
+        }
     }
 
     if (isLoading && !packagePermGroups.value.isNullOrEmpty()) {

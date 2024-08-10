@@ -16,6 +16,23 @@
 
 <resources>
 
+    <!-- START AUTO PERMISSION GRANT DIALOG -->
+
+    <style name="AutoPermissionGrantButton" parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/car_location_permission_prompt_min_height</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/car_location_permission_prompt_margin_small</item>
+        <item name="android:padding">@dimen/car_location_permission_prompt_padding_extra_small</item>
+        <item name="android:textSize">@dimen/car_location_permission_prompt_button_text_size</item>
+        <item name="android:lineHeight">@dimen/car_location_permission_prompt_line_height_small</item>
+        <item name="android:textColor">@android:color/system_accent2_900</item>
+        <item name="android:background">@drawable/auto_grant_permissions_buttons</item>
+        <item name="android:textAppearance">@style/AutoPermissionGrantTitleMessage</item>
+    </style>
+
+    <!-- END AUTO PERMISSION GRANT DIALOG -->
+
     <!-- START PERMISSION GRANT DIALOG -->
 
     <style name="PermissionGrantDialogMaterial3">

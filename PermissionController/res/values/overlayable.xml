@@ -54,6 +54,16 @@
 
             <!-- END PREFERENCE STYLES -->
 
+            <!-- START AUTO PERMISSION GRANT DIALOG -->
+
+            <item type="style" name="AutoPermissionLocationAccuracyRadioFine" />
+            <item type="style" name="AutoPermissionLocationAccuracyRadioCoarse" />
+            <item type="style" name="AutoPermissionGrantDialogMaterial3" />
+            <item type="style" name="AutoPermissionGrantTitleMessage" />
+            <item type="style" name="AutoPermissionGrantButton" />
+
+            <!-- END AUTO PERMISSION GRANT DIALOG -->
+
             <!-- START PERMISSION GRANT DIALOG -->
             <item type="style" name="PermissionGrantScrollView" />
             <item type="style" name="PermissionGrantSingleton" />

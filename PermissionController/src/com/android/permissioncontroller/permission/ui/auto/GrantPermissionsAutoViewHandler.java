@@ -30,6 +30,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -37,12 +38,14 @@ import com.android.car.ui.AlertDialogBuilder;
 import com.android.car.ui.recyclerview.CarUiContentListItem;
 import com.android.car.ui.recyclerview.CarUiListItem;
 import com.android.car.ui.recyclerview.CarUiListItemAdapter;
+import com.android.permission.flags.Flags;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+
 
 /**
  * A {@link GrantPermissionsViewHandler} that is specific for the auto use-case. In this case, the
@@ -55,11 +58,16 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
     private static final String ARG_GROUP_ICON = "ARG_GROUP_ICON";
     private static final String ARG_GROUP_MESSAGE = "ARG_GROUP_MESSAGE";
     private static final String ARG_GROUP_DETAIL_MESSAGE = "ARG_GROUP_DETAIL_MESSAGE";
-    private static final String ARG_BUTTON_VISIBILITIES = "ARG_BUTTON_VISIBILITIES";
+    private static final String ARG_DIALOG_BUTTON_VISIBILITIES = "ARG_DIALOG_BUTTON_VISIBILITIES";
+    private static final String ARG_DIALOG_LOCATION_VISIBILITIES =
+            "ARG_DIALOG_LOCATION_VISIBILITIES";
+    private static final String ARG_DIALOG_SELECTED_PRECISION = "ARG_DIALOG_SELECTED_PRECISION";
+    private static final String LOG_TAG = GrantPermissionsAutoViewHandler.class.getSimpleName();
 
     private final Context mContext;
     private ResultListener mResultListener;
     private AlertDialog mDialog;
+    private AutoLocationPermissionPromptView mAutoLocationPermissionPromptView;
     private String mGroupName;
     private int mGroupCount;
     private int mGroupIndex;
@@ -68,20 +76,34 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
     private CharSequence mDetailMessage;
     private boolean[] mButtonVisibilities;
 
+    // Tracks the selected location accuracy option.
+    // States: 0 (no option), 1 (fine), 2 (coarse)
+    private int mSelectedPrecision = 0;
+
+
     public GrantPermissionsAutoViewHandler(Context context, String appPackageName) {
         mContext = context;
+        mAutoLocationPermissionPromptView = new AutoLocationPermissionPromptView(context);
     }
+
 
     @Override
     public GrantPermissionsViewHandler setResultListener(ResultListener listener) {
         mResultListener = listener;
+        mAutoLocationPermissionPromptView.setResultListener(listener);
         return this;
     }
 
     @Override
     public View createView() {
-        // We will use a system dialog instead of a locally defined view.
-        return new View(mContext);
+        Log.d(LOG_TAG, "enableCoarseFineLocationPromptForAaos flag set to: "
+                + Flags.enableCoarseFineLocationPromptForAaos());
+        if (Flags.enableCoarseFineLocationPromptForAaos()) {
+            return mAutoLocationPermissionPromptView.createView();
+        } else {
+            // We will use a system dialog instead of a locally defined view.
+            return new View(mContext);
+        }
     }
 
     @Override
@@ -104,7 +126,13 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         mDetailMessage = detailMessage;
         setButtonVisibilities(buttonVisibilities);
 
-        update();
+        if (Flags.enableCoarseFineLocationPromptForAaos()) {
+            mAutoLocationPermissionPromptView.updateState(groupName,
+                    icon, message, detailMessage, buttonVisibilities, locationVisibilities,
+                    mSelectedPrecision);
+        } else {
+            update();
+        }
     }
 
     private void update() {
@@ -192,7 +220,8 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         arguments.putParcelable(ARG_GROUP_ICON, mGroupIcon);
         arguments.putCharSequence(ARG_GROUP_MESSAGE, mGroupMessage);
         arguments.putCharSequence(ARG_GROUP_DETAIL_MESSAGE, mDetailMessage);
-        arguments.putBooleanArray(ARG_BUTTON_VISIBILITIES, mButtonVisibilities);
+        arguments.putBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES, mButtonVisibilities);
+        arguments.putInt(ARG_DIALOG_SELECTED_PRECISION, mSelectedPrecision);
     }
 
     @Override
@@ -203,10 +232,20 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         mGroupCount = savedInstanceState.getInt(ARG_GROUP_COUNT);
         mGroupIndex = savedInstanceState.getInt(ARG_GROUP_INDEX);
         mDetailMessage = savedInstanceState.getCharSequence(ARG_GROUP_DETAIL_MESSAGE);
-        setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_BUTTON_VISIBILITIES));
+        setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES));
+        boolean[] locationVisibilities =
+                savedInstanceState.getBooleanArray(ARG_DIALOG_LOCATION_VISIBILITIES);
+        mSelectedPrecision = savedInstanceState.getInt(ARG_DIALOG_SELECTED_PRECISION);
 
-        update();
+        if (Flags.enableCoarseFineLocationPromptForAaos()) {
+            mAutoLocationPermissionPromptView.updateState(mGroupName,
+                    mGroupIcon, mGroupMessage, mDetailMessage,
+                    mButtonVisibilities, locationVisibilities, mSelectedPrecision);
+        } else {
+            update();
+        }
     }
+
 
     private void setButtonVisibilities(boolean[] visibilities) {
         // If GrantPermissionsActivity sent the user directly to settings, button visibilities are
@@ -214,6 +253,9 @@ public class GrantPermissionsAutoViewHandler implements GrantPermissionsViewHand
         // recreated to perform onActivityResult, it will try to loadInstanceState in onCreate but
         // the button visibilities were never set, so they will be null.
         mButtonVisibilities = visibilities == null ? new boolean[0] : visibilities;
+        if (visibilities == null) {
+            Log.e(LOG_TAG, "Button visibilities are null");
+        }
     }
 
     @Override

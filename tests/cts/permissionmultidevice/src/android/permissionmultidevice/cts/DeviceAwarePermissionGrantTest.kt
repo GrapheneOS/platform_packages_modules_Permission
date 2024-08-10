@@ -88,7 +88,7 @@ class DeviceAwarePermissionGrantTest {
                     .build()
             )
 
-        val displayConfig =
+        val displayConfigBuilder =
             VirtualDeviceRule.createDefaultVirtualDisplayConfigBuilder(
                     DISPLAY_WIDTH,
                     DISPLAY_HEIGHT
@@ -98,10 +98,9 @@ class DeviceAwarePermissionGrantTest {
                         DisplayManager.VIRTUAL_DISPLAY_FLAG_TRUSTED or
                         DisplayManager.VIRTUAL_DISPLAY_FLAG_OWN_CONTENT_ONLY
                 )
-                .build()
 
         virtualDisplay =
-            virtualDeviceRule.createManagedVirtualDisplay(virtualDevice, displayConfig)!!
+            virtualDeviceRule.createManagedVirtualDisplay(virtualDevice, displayConfigBuilder)!!
         deviceDisplayName =
             virtualDeviceManager.getVirtualDevice(virtualDevice.deviceId)!!.displayName.toString()
     }

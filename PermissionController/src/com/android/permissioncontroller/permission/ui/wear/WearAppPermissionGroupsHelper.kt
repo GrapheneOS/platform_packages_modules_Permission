@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.permission.ui.wear
 
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Build
@@ -35,7 +34,6 @@ import com.android.permissioncontroller.permission.model.Permission
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
-import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo
@@ -43,6 +41,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.RevokeDialogArgs
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModel
 import com.android.permissioncontroller.permission.utils.ArrayUtils
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
@@ -59,6 +58,7 @@ class WearAppPermissionGroupsHelper(
     val viewModel: AppPermissionGroupsViewModel,
     val wearViewModel: WearAppPermissionUsagesViewModel,
     val revokeDialogViewModel: AppPermissionGroupsRevokeDialogViewModel,
+    val locationProviderInterceptDialogViewModel: WearLocationProviderInterceptDialogViewModel,
     private val toggledGroups: ArraySet<AppPermissionGroup> = ArraySet()
 ) {
     fun getPermissionGroupChipParams(
@@ -310,9 +310,7 @@ class WearAppPermissionGroupsHelper(
         addToggledGroup(group)
 
         if (LocationUtils.isLocationGroupAndProvider(context, permGroupName, packageName)) {
-            val intent = Intent(context, LocationProviderInterceptDialog::class.java)
-            intent.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
-            context.startActivityAsUser(intent, user)
+            locationProviderInterceptDialogViewModel.showDialog(context, packageName)
         } else if (
             LocationUtils.isLocationGroupAndControllerExtraPackage(
                 context,

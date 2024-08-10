@@ -204,8 +204,8 @@ class PermissionUsageDetailsViewModel(
             .getLightHistoricalPackageOps()
             ?.filter { Utils.shouldShowInSettings(it.userHandle, userManager) }
             ?.flatMap { it.clusterAccesses(startTime, showSystem) }
-            ?.sortedBy { -1 * it.discreteAccesses.first().accessTimeMs }
-            ?.map { it.buildAppPermissionAccessUiInfo() } ?: listOf()
+            ?.map { it.buildAppPermissionAccessUiInfo() }
+            ?.sortedBy { -it.accessStartTime } ?: listOf()
     }
 
     private fun LightHistoricalPackageOps.clusterAccesses(
@@ -349,7 +349,9 @@ class PermissionUsageDetailsViewModel(
     ): List<AppPermissionDiscreteAccessCluster> {
         val clusters = mutableListOf<AppPermissionDiscreteAccessCluster>()
         val currentDiscreteAccesses = mutableListOf<DiscreteAccess>()
-        for (discreteAccess in appPermAccesses.discreteAccesses) {
+        // Iterate entries in asc order based on access timestamp.
+        for (index in appPermAccesses.discreteAccesses.size - 1 downTo 0) {
+            val discreteAccess = appPermAccesses.discreteAccesses[index]
             if (currentDiscreteAccesses.isEmpty()) {
                 currentDiscreteAccesses.add(discreteAccess)
             } else if (!canAccessBeAddedToCluster(discreteAccess, currentDiscreteAccesses)) {
@@ -371,7 +373,7 @@ class PermissionUsageDetailsViewModel(
         }
 
         if (currentDiscreteAccesses.isNotEmpty()) {
-            val opName = currentDiscreteAccesses.first().opName
+            val opName = currentDiscreteAccesses.last().opName
             clusters.add(
                 AppPermissionDiscreteAccessCluster(
                     appPermAccesses.appPermissionId,
@@ -390,20 +392,25 @@ class PermissionUsageDetailsViewModel(
      * list that it can be added to the cluster.
      */
     private fun canAccessBeAddedToCluster(
-        discreteAccess: DiscreteAccess,
+        currentAccess: DiscreteAccess,
         clusteredAccesses: List<DiscreteAccess>
     ): Boolean {
+        val clusterOp = clusteredAccesses.last().opName
         if (
-            isOpClusteredByItself(discreteAccess.opName) &&
-                discreteAccess.opName != clusteredAccesses.first().opName
+            (isOpClusteredByItself(currentAccess.opName) || isOpClusteredByItself(clusterOp)) &&
+                currentAccess.opName != clusteredAccesses.last().opName
         ) {
             return false
         }
-
-        return discreteAccess.accessTimeMs / ONE_HOUR_MS ==
-            clusteredAccesses.first().accessTimeMs / ONE_HOUR_MS &&
-            clusteredAccesses.last().accessTimeMs / ONE_MINUTE_MS -
-                discreteAccess.accessTimeMs / ONE_MINUTE_MS <= CLUSTER_SPACING_MINUTES
+        val currentAccessMinute = currentAccess.accessTimeMs / ONE_MINUTE_MS
+        val prevMostRecentAccessMillis =
+            clusteredAccesses.maxOf { discreteAccess ->
+                if (discreteAccess.accessDurationMs > 0)
+                    discreteAccess.accessTimeMs + discreteAccess.accessDurationMs - ONE_MINUTE_MS
+                else discreteAccess.accessTimeMs
+            }
+        val prevMostRecentAccessMinute = prevMostRecentAccessMillis / ONE_MINUTE_MS
+        return (currentAccessMinute - prevMostRecentAccessMinute) <= CLUSTER_SPACING_MINUTES
     }
 
     /**
@@ -424,8 +431,21 @@ class PermissionUsageDetailsViewModel(
     private fun AppPermissionDiscreteAccessCluster.buildAppPermissionAccessUiInfo():
         AppPermissionAccessUiInfo {
         val context = application
-        val accessTimeList = this.discreteAccesses.map { it.accessTimeMs }
-        val durationSummaryLabel = getDurationSummary(context, this, accessTimeList)
+        // The end minute is exclusive here in terms of access, i.e. [1..5) as the private data
+        // was not accessed at minute 5, it helps calculate the duration correctly.
+        val accessEndTimeMillis =
+            discreteAccesses.maxOf { appOpEvent ->
+                if (appOpEvent.accessDurationMs > 0)
+                    appOpEvent.accessTimeMs + appOpEvent.accessDurationMs
+                else appOpEvent.accessTimeMs + ONE_MINUTE_MS
+            }
+        val accessStartTimeMillis = discreteAccesses.minOf { it.accessTimeMs }
+        val durationMs = accessEndTimeMillis - accessStartTimeMillis
+        val durationSummaryLabel =
+            if (durationMs >= TimeUnit.MINUTES.toMillis(CLUSTER_SPACING_MINUTES + 1)) {
+                getDurationUsedStr(context, durationMs)
+            } else null
+
         val proxyLabel = getProxyPackageLabel(this)
         val subAttributionLabel = getSubAttributionLabel(this)
         val showingSubAttribution = !subAttributionLabel.isNullOrEmpty()
@@ -439,11 +459,12 @@ class PermissionUsageDetailsViewModel(
             this.appPermissionId.packageName,
             getPackageLabel(this.appPermissionId.packageName, this.appPermissionId.userHandle),
             permissionGroup,
-            this.discreteAccesses.last().accessTimeMs,
-            this.discreteAccesses.first().accessTimeMs,
+            accessStartTimeMillis,
+            // Make the end time inclusive i.e. [1..4]
+            accessEndTimeMillis - ONE_MINUTE_MS,
             summary,
             showingSubAttribution,
-            ArrayList(this.attributionTags),
+            this.attributionTags.toSet(),
             getBadgedPackageIcon(this.appPermissionId.packageName, this.appPermissionId.userHandle),
             isEmergencyLocationAccess
         )
@@ -485,36 +506,6 @@ class PermissionUsageDetailsViewModel(
         return lightPackageInfo != null &&
             shouldShowSubattributionInPermissionsDashboard() &&
             SubattributionUtils.isSubattributionSupported(lightPackageInfo)
-    }
-
-    /** Returns a summary of the duration the permission was accessed for. */
-    private fun getDurationSummary(
-        context: Context,
-        accessCluster: AppPermissionDiscreteAccessCluster,
-        accessTimeList: List<Long>,
-    ): String? {
-        if (accessTimeList.isEmpty()) {
-            return null
-        }
-        // Since Location accesses are atomic, we manually calculate the access duration by
-        // comparing the first and last access within the cluster.
-        val durationMs: Long =
-            if (permissionGroup == Manifest.permission_group.LOCATION) {
-                accessTimeList[0] - accessTimeList[accessTimeList.size - 1]
-            } else {
-                accessCluster.discreteAccesses
-                    .filter { it.accessDurationMs > 0 }
-                    .sumOf { it.accessDurationMs }
-            }
-
-        // Only show the duration summary if it is at least (CLUSTER_SPACING_MINUTES + 1) minutes.
-        // Displaying a time that is shorter than the cluster granularity
-        // (CLUSTER_SPACING_MINUTES) will not convey useful information.
-        if (durationMs >= TimeUnit.MINUTES.toMillis(CLUSTER_SPACING_MINUTES + 1)) {
-            return getDurationUsedStr(context, durationMs)
-        }
-
-        return null
     }
 
     /** Returns the proxied package label if the permission access was proxied. */
@@ -572,7 +563,7 @@ class PermissionUsageDetailsViewModel(
         val accessEndTime: Long,
         val summaryText: CharSequence?,
         val showingAttribution: Boolean,
-        val attributionTags: ArrayList<String>,
+        val attributionTags: Set<String>,
         val badgedPackageIcon: Drawable?,
         val isEmergencyLocationAccess: Boolean
     )
@@ -764,7 +755,7 @@ class PermissionUsageDetailsViewModel(
             accessStartTime: Long,
             accessEndTime: Long,
             showingAttribution: Boolean,
-            attributionTags: List<String>
+            attributionTags: Set<String>
         ): Intent {
             return getManagePermissionUsageIntent(
                 context,
@@ -788,7 +779,7 @@ class PermissionUsageDetailsViewModel(
             accessStartTime: Long,
             accessEndTime: Long,
             showingAttribution: Boolean,
-            attributionTags: List<String>
+            attributionTags: Set<String>
         ): Intent? {
             if (
                 !showingAttribution ||

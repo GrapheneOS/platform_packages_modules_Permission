@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui.wear
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -40,6 +42,8 @@ fun WearPermissionAppsScreen(helper: WearPermissionAppsHelper) {
     val categorizedApps = helper.categorizedAppsLiveData().observeAsState(emptyMap())
     val hasSystemApps = helper.hasSystemAppsLiveData().observeAsState(false)
     val showSystem = helper.shouldShowSystemLiveData().observeAsState(false)
+    val showLocationProviderDialog =
+        helper.locationProviderDialogViewModel.dialogVisibilityLiveData.observeAsState(false)
     val appPermissionUsages = helper.wearViewModel.appPermissionUsages.observeAsState(emptyList())
     var isLoading by remember { mutableStateOf(true) }
 
@@ -48,18 +52,23 @@ fun WearPermissionAppsScreen(helper: WearPermissionAppsHelper) {
     val showAlways = helper.showAlways()
     val chipsByCategory =
         helper.getChipsByCategory(categorizedApps.value, appPermissionUsages.value)
-
-    WearPermissionAppsContent(
-        chipsByCategory,
-        showSystem.value,
-        hasSystemApps.value,
-        title,
-        subTitle,
-        showAlways,
-        isLoading,
-        helper.onShowSystemClick
-    )
-
+    Box(modifier = Modifier.fillMaxSize()) {
+        val dialogArgs = helper.locationProviderDialogViewModel.locationProviderInterceptDialogArgs
+        if (showLocationProviderDialog.value && dialogArgs != null) {
+            LocationProviderDialogScreen(dialogArgs)
+        } else {
+            WearPermissionAppsContent(
+                chipsByCategory = chipsByCategory,
+                showSystem = showSystem.value,
+                hasSystemApps = hasSystemApps.value,
+                title = title,
+                subtitle = subTitle,
+                showAlways = showAlways,
+                isLoading = isLoading,
+                onShowSystemClick = helper.onShowSystemClick
+            )
+        }
+    }
     if (isLoading && categorizedApps.value.isNotEmpty()) {
         isLoading = false
     }

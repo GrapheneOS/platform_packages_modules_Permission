@@ -75,6 +75,29 @@
 
     <dimen name="toggle_preference_container_min_width">56dp</dimen>
 
+    <dimen name="car_location_permission_prompt_radius">40dp</dimen>
+    <dimen name="car_location_permission_prompt_icon_size">32dp</dimen>
+    <dimen name="car_location_permission_prompt_padding_large">40dp</dimen>
+    <dimen name="car_location_permission_prompt_padding">24dp</dimen>
+    <dimen name="car_location_permission_prompt_padding_medium">20dp</dimen>
+    <dimen name="car_location_permission_prompt_padding_small">16dp</dimen>
+    <dimen name="car_location_permission_prompt_padding_extra_small">6dp</dimen>
+    <dimen name="car_location_permission_prompt_margin_large">32dp</dimen>
+    <dimen name="car_location_permission_prompt_margin_medium">24dp</dimen>
+    <dimen name="car_location_permission_prompt_margin_small">12dp</dimen>
+    <dimen name="car_location_permission_prompt_margin_xsmall">8dp</dimen>
+    <dimen name="car_location_permission_prompt_margin_extra_small">6dp</dimen>
+    <dimen name="car_location_permission_prompt_min_width">520dp</dimen>
+    <dimen name="car_location_permission_prompt_min_height">64dp</dimen>
+    <dimen name="car_location_permission_prompt_button_text_size">28sp</dimen>
+    <dimen name="car_location_permission_prompt_text_size_xlarge">32sp</dimen>
+    <dimen name="car_location_permission_prompt_line_height_xlarge">40sp</dimen>
+    <dimen name="car_location_permission_prompt_text_size_large">24sp</dimen>
+    <dimen name="car_location_permission_prompt_text_size_medium">20sp</dimen>
+    <dimen name="car_location_permission_prompt_text_size_small">16sp</dimen>
+    <dimen name="car_location_permission_prompt_line_height_small">36sp</dimen>
+    <dimen name="car_location_permission_prompt_radio_button_text_size">28sp</dimen>
+
     <item name="permission_access_time_dialog_width_scalar" format="float" type="dimen">0.9</item>
     <item name="permission_access_time_dialog_height_scalar" format="float" type="dimen">0.7</item>
 

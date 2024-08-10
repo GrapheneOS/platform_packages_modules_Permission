@@ -61,7 +61,7 @@ class AutoPermissionHistoryPreference(
                     accessEndTime = historyPreferenceData.accessEndTime,
                     accessStartTime = historyPreferenceData.accessStartTime,
                     showingAttribution = historyPreferenceData.showingAttribution,
-                    attributionTags = historyPreferenceData.attributionTags
+                    attributionTags = historyPreferenceData.attributionTags.toSet()
                 )
             )
             true

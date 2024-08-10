@@ -88,15 +88,19 @@ fun ScrollableScreen(
     val state = rememberSwipeToDismissBoxState()
 
     LaunchedEffect(state.currentValue) {
+        // If the swipe is complete
         if (state.currentValue == SwipeToDismissValue.Dismissed) {
+            // pop the top fragment immediately or dismiss activity.
             dismiss(activity)
+            // Set  dismissed state as true
             dismissed = true
+            // Set swipe box back to starting position(that is cancelled swipe effect) to
+            // show loading indicator while fragment dismisses.
+            // For some reason fragment `popBackImmediate` takes few secs at times.
             state.snapTo(SwipeToDismissValue.Default)
         }
     }
 
-    // To support Swipe-dismiss effect,
-    // add the view to SwipeToDismissBox if the screen is not on the top fragment.
     if (getBackStackEntryCount(activity) > 0) {
         SwipeToDismissBox(state = state) { isBackground ->
             Scaffold(
@@ -199,7 +203,12 @@ internal fun Scaffold(
                 }
             },
             vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) },
-            positionIndicator = { PositionIndicator(scalingLazyListState = listState) }
+            positionIndicator =
+                if (!isLoading) {
+                    { PositionIndicator(scalingLazyListState = listState) }
+                } else {
+                    null
+                }
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
                 if (isLoading) {

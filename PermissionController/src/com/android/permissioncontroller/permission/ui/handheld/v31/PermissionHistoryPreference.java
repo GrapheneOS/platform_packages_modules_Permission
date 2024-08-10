@@ -49,8 +49,8 @@ import com.android.permissioncontroller.permission.compat.IntentCompat;
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Preference for the permission history page
@@ -66,7 +66,7 @@ public class PermissionHistoryPreference extends Preference {
     private final long mAccessStartTime;
     private final long mAccessEndTime;
     private final Drawable mAppIcon;
-    private final List<String> mAttributionTags;
+    private final Set<String> mAttributionTags;
     private final boolean mIsLastUsage;
     private Intent mIntent = null;
     private boolean mIntentLoaded = false;
@@ -80,7 +80,7 @@ public class PermissionHistoryPreference extends Preference {
             @NonNull String pkgName, @Nullable Drawable packageIcon, @NonNull String packageLabel,
             @NonNull String permissionGroup, @NonNull long accessStartTime,
             @NonNull long accessEndTime, @Nullable CharSequence summaryText,
-            boolean showingAttribution, @NonNull List<String> attributionTags,
+            boolean showingAttribution, @NonNull Set<String> attributionTags,
             boolean isLastUsage, long sessionId, boolean isEmergencyLocationAccess) {
         super(context);
         mContext = context;

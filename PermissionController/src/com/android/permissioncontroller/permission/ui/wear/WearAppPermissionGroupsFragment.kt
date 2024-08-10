@@ -46,6 +46,8 @@ import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGr
 import com.android.permissioncontroller.permission.ui.wear.model.AppPermissionGroupsRevokeDialogViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModelFactory
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModel
+import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.theme.WearPermissionTheme
 import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 import java.time.Instant
@@ -68,17 +70,15 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
         val user =
             arguments?.let {
                 BundleCompat.getParcelable(it, Intent.EXTRA_USER, UserHandle::class.java)!!
-            }
-                ?: UserHandle.SYSTEM
+            } ?: UserHandle.SYSTEM
 
         val activity: Activity = requireActivity()
         val packageManager = activity.packageManager
-
         val packageInfo: PackageInfo? =
             try {
                 packageManager.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
             } catch (e: PackageManager.NameNotFoundException) {
-                Log.i(LOG_TAG, "No package:" + activity.getCallingPackage(), e)
+                Log.i(LOG_TAG, "No package:" + activity.callingPackage, e)
                 null
             }
 
@@ -88,16 +88,30 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
             return null
         }
         val sessionId = arguments?.getLong(EXTRA_SESSION_ID, 0) ?: 0
-        val appPermissions = AppPermissions(activity, packageInfo, true, { activity.finish() })
-        val factory = AppPermissionGroupsViewModelFactory(packageName, user, sessionId)
+
+        val appPermissions = AppPermissions(activity, packageInfo, true) { activity.finish() }
+
         val viewModel =
-            ViewModelProvider(this, factory).get(AppPermissionGroupsViewModel::class.java)
+            ViewModelProvider(
+                owner = this,
+                factory = AppPermissionGroupsViewModelFactory(packageName, user, sessionId)
+            )[AppPermissionGroupsViewModel::class.java]
+
         wearViewModel =
-            ViewModelProvider(this, WearAppPermissionUsagesViewModelFactory())
-                .get(WearAppPermissionUsagesViewModel::class.java)
+            ViewModelProvider(owner = this, factory = WearAppPermissionUsagesViewModelFactory())[
+                WearAppPermissionUsagesViewModel::class.java]
+
         val revokeDialogViewModel =
-            ViewModelProvider(this, AppPermissionGroupsRevokeDialogViewModelFactory())
-                .get(AppPermissionGroupsRevokeDialogViewModel::class.java)
+            ViewModelProvider(
+                owner = this,
+                factory = AppPermissionGroupsRevokeDialogViewModelFactory()
+            )[AppPermissionGroupsRevokeDialogViewModel::class.java]
+
+        val locationProviderInterceptDialogViewModel =
+            ViewModelProvider(
+                owner = this,
+                factory = WearLocationProviderInterceptDialogViewModelFactory()
+            )[WearLocationProviderInterceptDialogViewModel::class.java]
 
         val context = requireContext()
 
@@ -112,7 +126,7 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
                     .toLong()
 
             val filterTimeBeginMillis =
-                Math.max(
+                maxOf(
                     System.currentTimeMillis() -
                         TimeUnit.DAYS.toMillis(aggregateDataFilterBeginDays),
                     Instant.EPOCH.toEpochMilli()
@@ -123,7 +137,7 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
                 filterTimeBeginMillis,
                 Long.MAX_VALUE,
                 PermissionUsages.USAGE_FLAG_LAST,
-                requireActivity().getLoaderManager(),
+                requireActivity().loaderManager,
                 false,
                 false,
                 this,
@@ -140,7 +154,8 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
                 appPermissions = appPermissions,
                 viewModel = viewModel,
                 wearViewModel = wearViewModel,
-                revokeDialogViewModel = revokeDialogViewModel
+                revokeDialogViewModel = revokeDialogViewModel,
+                locationProviderInterceptDialogViewModel = locationProviderInterceptDialogViewModel
             )
 
         return ComposeView(activity).apply {

@@ -17,6 +17,108 @@
 
 <resources>
 
+    <!--  START AUTO PERMISSION GRANT DIALOG  -->
+
+    <style name="AutoPermissionGrantScrollView">
+        <item name="android:scrollbars">none</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:clipChildren">false</item>
+    </style>
+
+    <style name="AutoPermissionGrantSingleton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AutoPermissionGrantDialogMaterial3">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/car_location_permission_prompt_padding_large</item>
+        <item name="android:background">@drawable/auto_grant_permissions_dialog</item>
+    </style>
+
+    <style name="AutoPermissionGrantContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingBottom">@dimen/car_location_permission_prompt_padding_medium</item>
+    </style>
+
+    <style name="AutoPermissionGrantDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="AutoPermissionGrantTitleMessage" parent="@android:style/TextAppearance.DeviceDefault.WindowTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxWidth">@dimen/car_location_permission_prompt_min_width</item>
+        <item name="android:textSize">@dimen/car_location_permission_prompt_text_size_xlarge</item>
+        <item name="android:lineHeight">@dimen/car_location_permission_prompt_line_height_xlarge</item>
+        <item name="android:layout_marginBottom">@dimen/car_location_permission_prompt_margin_small</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
+    <style name="AutoPermissionGrantDetailMessage" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/car_location_permission_prompt_margin_small</item>
+        <item name="android:textSize">@dimen/car_location_permission_prompt_text_size_small</item>
+    </style>
+
+    <style name="AutoPermissionLocationAccuracyRadioGroupMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/car_location_permission_prompt_margin_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AutoPermissionLocationAccuracyRadioFine">
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/car_location_permission_prompt_margin_large</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textSize">@dimen/car_location_permission_prompt_radio_button_text_size</item>
+        <item name="android:lineHeight">@dimen/car_location_permission_prompt_line_height_small</item>
+    </style>
+
+    <style name="AutoPermissionLocationAccuracyRadioCoarse">
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/car_location_permission_prompt_margin_large</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textSize">@dimen/car_location_permission_prompt_radio_button_text_size</item>
+        <item name="android:lineHeight">@dimen/car_location_permission_prompt_line_height_small</item>
+    </style>
+
+    <style name="AutoPermissionLocationAccuracyImageViewMaterial13">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/car_location_permission_prompt_margin_medium</item>
+    </style>
+
+    <style name="AutoPermissionGrantButtonListMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AutoPermissionGrantButtonBarSpace">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- END AUTO PERMISSION GRANT DIALOG -->
+
+
     <!-- START PERMISSION GRANT DIALOG -->
 
     <style name="PermissionGrantScrollView">
