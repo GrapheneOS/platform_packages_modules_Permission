@@ -260,7 +260,7 @@ public class PermissionUtils {
      * @param packageName Package to clear
      */
     public static void clearAppState(@NonNull String packageName) {
-        runShellCommand("pm clear --user current " + packageName);
+        runShellCommand("pm clear --user " + sContext.getUserId() + " " + packageName);
     }
 
     /**

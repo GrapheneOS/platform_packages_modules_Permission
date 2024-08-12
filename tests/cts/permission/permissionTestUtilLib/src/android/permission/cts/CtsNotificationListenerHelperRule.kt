@@ -28,6 +28,7 @@ class CtsNotificationListenerHelperRule(context: Context) : TestRule {
 
     private val notificationListenerComponentName =
         ComponentName(context, CtsNotificationListenerService::class.java)
+    private val context = context
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
@@ -35,14 +36,20 @@ class CtsNotificationListenerHelperRule(context: Context) : TestRule {
                 try {
                     // Allow NLS used to verify notifications sent
                     SystemUtil.runShellCommand(
-                        ALLOW_NLS_COMMAND + notificationListenerComponentName.flattenToString()
+                        ALLOW_NLS_COMMAND +
+                            notificationListenerComponentName.flattenToString() +
+                            " " +
+                            context.getUserId()
                     )
 
                     base.evaluate()
                 } finally {
                     // Disallow NLS used to verify notifications sent
                     SystemUtil.runShellCommand(
-                        DISALLOW_NLS_COMMAND + notificationListenerComponentName.flattenToString()
+                        DISALLOW_NLS_COMMAND +
+                            notificationListenerComponentName.flattenToString() +
+                            " " +
+                            context.getUserId()
                     )
                 }
             }
