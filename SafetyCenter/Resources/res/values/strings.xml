@@ -55,4 +55,7 @@
     <string name="exploit_protection_title">Exploit protection</string>
     <string name="exploit_protection_summary">Device and app security improvements</string>
     <string name="exploit_protection_search_terms">Exploit, protection</string>
+
+    <string name="duress_password_title">Duress password</string>
+    <string name="duress_password_search_terms">Duress, Duress password</string>
 </resources>
