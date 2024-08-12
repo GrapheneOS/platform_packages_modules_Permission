@@ -113,7 +113,11 @@ class SafetyCenterSubpageFragment : SafetyCenterFragment() {
             }
         val resName = "${resPrefix}_${SnakeCaseConverter.fromCamelCase(sourceGroupId)}"
         val context = requireContext()
-        val drawable = SafetyCenterResourcesApk(context).getDrawableByName(resName, context.theme)
+        val drawable = if (sourceGroupId == "AndroidLockScreenSources") {
+            null
+        } else {
+            SafetyCenterResourcesApk(context).getDrawableByName(resName, context.theme)
+        }
         if (drawable == null) {
             Log.w(TAG, "$sourceGroupId doesn't have any matching illustration")
             expressiveIllustration?.isVisible = false
