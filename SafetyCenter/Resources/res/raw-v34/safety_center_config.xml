@@ -37,6 +37,16 @@
                 titleForWork="@com.android.safetycenter.resources:string/biometrics_title_for_work"
                 searchTerms="@com.android.safetycenter.resources:string/biometrics_search_terms"
                 initialDisplayState="hidden"/>
+
+            <static-safety-source
+                id="AndroidDuressPassword"
+                packageName="com.android.settings"
+                user="primary"
+                profile="primary_profile_only"
+                intentAction="com.android.settings.DURESS_PASSWORD_SETTINGS"
+                title="@com.android.safetycenter.resources:string/duress_password_title"
+                searchTerms="@com.android.safetycenter.resources:string/duress_password_search_terms"/>
+
         </safety-sources-group>
         <safety-sources-group
             id="AndroidPrivacySources"
