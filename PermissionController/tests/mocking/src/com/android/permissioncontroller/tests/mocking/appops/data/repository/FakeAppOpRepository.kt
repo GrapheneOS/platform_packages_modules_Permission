@@ -16,9 +16,21 @@
 
 package com.android.permissioncontroller.tests.mocking.appops.data.repository
 
+import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
 import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
-class FakeAppOpRepository(override val packageAppOpsUsages: Flow<List<PackageAppOpUsageModel>>) :
-    AppOpRepository
+class FakeAppOpRepository(
+    override val packageAppOpsUsages: Flow<List<PackageAppOpUsageModel>>,
+    private val discreteOps: Flow<List<DiscretePackageOpsModel>> = flowOf(),
+) : AppOpRepository {
+    override fun getDiscreteOps(
+        opNames: List<String>,
+        coroutineScope: CoroutineScope
+    ): Flow<List<DiscretePackageOpsModel>> {
+        return discreteOps
+    }
+}

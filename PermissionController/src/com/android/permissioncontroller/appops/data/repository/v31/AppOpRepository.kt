@@ -17,11 +17,21 @@
 package com.android.permissioncontroller.appops.data.repository.v31
 
 import android.app.AppOpsManager
+import android.app.AppOpsManager.AttributedOpEntry
+import android.app.AppOpsManager.HISTORY_FLAG_DISCRETE
+import android.app.AppOpsManager.HISTORY_FLAG_GET_ATTRIBUTION_CHAINS
+import android.app.AppOpsManager.HistoricalOps
+import android.app.AppOpsManager.HistoricalOpsRequest
+import android.app.AppOpsManager.OP_FLAG_SELF
+import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXIED
+import android.app.AppOpsManager.OP_FLAG_TRUSTED_PROXY
 import android.app.Application
 import android.os.UserHandle
 import android.permission.flags.Flags
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel
+import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel.DiscreteOpModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
 import com.android.permissioncontroller.data.repository.v31.AppOpChangeListener
@@ -29,13 +39,18 @@ import com.android.permissioncontroller.data.repository.v31.PackageChangeListene
 import com.android.permissioncontroller.data.repository.v31.PermissionChangeListener
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.Volatile
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
 
 /**
  * This repository encapsulate app op data (i.e. app op usage, app op mode, historical ops etc.)
@@ -49,6 +64,17 @@ interface AppOpRepository {
      * @see AppOpsManager.getPackagesForOps
      */
     val packageAppOpsUsages: Flow<List<PackageAppOpUsageModel>>
+
+    /**
+     * Returns a flow of discrete package ops.
+     *
+     * @param opNames A list of app op names.
+     * @param coroutineScope the coroutine scope where we fetch the data asynchronously.
+     */
+    fun getDiscreteOps(
+        opNames: List<String>,
+        coroutineScope: CoroutineScope
+    ): Flow<List<DiscretePackageOpsModel>>
 
     companion object {
         @Volatile private var instance: AppOpRepository? = null
@@ -74,6 +100,93 @@ class AppOpRepositoryImpl(
     private val packageManager = application.packageManager
 
     private val appOpNames = getPrivacyDashboardAppOpNames()
+
+    override fun getDiscreteOps(
+        opNames: List<String>,
+        coroutineScope: CoroutineScope
+    ): Flow<List<DiscretePackageOpsModel>> {
+        return callbackFlow {
+                var job: Job? = null
+                send(getDiscreteOps(opNames))
+
+                fun sendUpdate() {
+                    if (job == null || job?.isActive == false) {
+                        job = coroutineScope.launch { trySend(getDiscreteOps(opNames)) }
+                    }
+                }
+
+                val appOpListener =
+                    AppOpChangeListener(opNames.toSet(), appOpsManager) { sendUpdate() }
+                val packageListener = PackageChangeListener { sendUpdate() }
+                val permissionListener = PermissionChangeListener(packageManager) { sendUpdate() }
+                packageListener.register()
+                appOpListener.register()
+                permissionListener.register()
+                awaitClose {
+                    appOpListener.unregister()
+                    packageListener.unregister()
+                    permissionListener.unregister()
+                }
+            }
+            .flowOn(dispatcher)
+    }
+
+    private suspend fun getDiscreteOps(opNames: List<String>): List<DiscretePackageOpsModel> {
+        val duration = TimeUnit.DAYS.toMillis(7)
+        val currentTime = System.currentTimeMillis()
+        val beginTimeMillis = currentTime - duration
+        val request =
+            HistoricalOpsRequest.Builder(beginTimeMillis, currentTime)
+                .setFlags(OP_FLAG_SELF or OP_FLAG_TRUSTED_PROXIED)
+                .setOpNames(opNames)
+                .setHistoryFlags(HISTORY_FLAG_DISCRETE or HISTORY_FLAG_GET_ATTRIBUTION_CHAINS)
+                .build()
+        val historicalOps: HistoricalOps = suspendCoroutine {
+            appOpsManager.getHistoricalOps(request, { it.run() }) { ops: HistoricalOps ->
+                it.resumeWith(Result.success(ops))
+            }
+        }
+        val discreteOpsResult = mutableListOf<DiscretePackageOpsModel>()
+        // Read through nested (uid -> package name -> attribution tag -> op -> discrete events)
+        // historical ops data structure
+        for (uidIndex in 0 until historicalOps.uidCount) {
+            val historicalUidOps = historicalOps.getUidOpsAt(uidIndex)
+            val userId = UserHandle.getUserHandleForUid(historicalUidOps.uid).identifier
+            for (packageIndex in 0 until historicalUidOps.packageCount) {
+                val historicalPackageOps = historicalUidOps.getPackageOpsAt(packageIndex)
+                val packageName = historicalPackageOps.packageName
+                val appOpEvents = mutableListOf<DiscreteOpModel>()
+                for (tagIndex in 0 until historicalPackageOps.attributedOpsCount) {
+                    val attributedHistoricalOps = historicalPackageOps.getAttributedOpsAt(tagIndex)
+                    for (opIndex in 0 until attributedHistoricalOps.opCount) {
+                        val historicalOp = attributedHistoricalOps.getOpAt(opIndex)
+                        for (index in 0 until historicalOp.discreteAccessCount) {
+                            val attributedOpEntry: AttributedOpEntry =
+                                historicalOp.getDiscreteAccessAt(index)
+                            val proxy = attributedOpEntry.getLastProxyInfo(OPS_LAST_ACCESS_FLAGS)
+                            val opEvent =
+                                DiscreteOpModel(
+                                    opName = historicalOp.opName,
+                                    accessTimeMillis =
+                                        attributedOpEntry.getLastAccessTime(OPS_LAST_ACCESS_FLAGS),
+                                    durationMillis =
+                                        attributedOpEntry.getLastDuration(OPS_LAST_ACCESS_FLAGS),
+                                    attributionTag = attributedHistoricalOps.tag,
+                                    proxyPackageName = proxy?.packageName,
+                                    proxyUserId =
+                                        proxy?.uid?.let {
+                                            UserHandle.getUserHandleForUid(it).identifier
+                                        },
+                                )
+                            appOpEvents.add(opEvent)
+                        }
+                    }
+                }
+                discreteOpsResult.add(DiscretePackageOpsModel(packageName, userId, appOpEvents))
+            }
+        }
+        return discreteOpsResult
+    }
 
     override val packageAppOpsUsages by lazy {
         callbackFlow {
@@ -147,8 +260,6 @@ class AppOpRepositoryImpl(
         private const val LOG_TAG = "AppOpUsageRepository"
 
         private const val OPS_LAST_ACCESS_FLAGS =
-            AppOpsManager.OP_FLAG_SELF or
-                AppOpsManager.OP_FLAG_TRUSTED_PROXIED or
-                AppOpsManager.OP_FLAG_TRUSTED_PROXY
+            OP_FLAG_SELF or OP_FLAG_TRUSTED_PROXIED or OP_FLAG_TRUSTED_PROXY
     }
 }

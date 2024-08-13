@@ -441,6 +441,8 @@
     <string name="default_app_none" msgid="9084592086808194457">"Keine"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standard­einstellung)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Keine Apps"</string>
+    <!-- no translation found for default_payment_app_other_nfc_services (5957633798695758917) -->
+    <skip />
     <string name="car_default_app_selected" msgid="5416420830430644174">"Ausgewählt"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Ausgewählt – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"spezieller App-Zugriff"</string>
@@ -551,9 +553,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Keine"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Letzte\n24 Stunden"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Letzte\n7 Tage"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> %%"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird weder in der Statusleiste noch auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App angezeigt."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App nicht angezeigt."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Gerätekamera ist blockiert"</string>

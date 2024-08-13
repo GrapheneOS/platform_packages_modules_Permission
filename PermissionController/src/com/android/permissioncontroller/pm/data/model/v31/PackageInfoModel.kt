@@ -34,3 +34,12 @@ data class PackageInfoModel(
         requireNotNull(packageInfo.applicationInfo).flags
     )
 }
+
+data class PackageAttributionModel(
+    val packageName: String,
+    val areUserVisible: Boolean = false,
+    /** A map of attribution tag to attribution resource label identifier. */
+    val tagResourceMap: Map<String, Int>? = null,
+    /** A map of attribution resource label identifier to attribution label. */
+    val resourceLabelMap: Map<Int, String>? = null,
+)

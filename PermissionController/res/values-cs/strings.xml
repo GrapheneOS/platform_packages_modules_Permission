@@ -441,6 +441,8 @@
     <string name="default_app_none" msgid="9084592086808194457">"Žádná aplikace"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Výchozí nastavení systému)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žádné aplikace"</string>
+    <!-- no translation found for default_payment_app_other_nfc_services (5957633798695758917) -->
+    <skip />
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybráno"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Vybráno – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"zvláštní přístup aplikací"</string>
@@ -551,9 +553,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"Žádné"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posledních\n24 hodin"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Posledních\n7 dní"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g> %%"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna Androidem. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na stavovém řádku ani na panelu ochrany soukromí."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna Androidem. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na panelu ochrany soukromí."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Fotoaparát zařízení je blokován"</string>

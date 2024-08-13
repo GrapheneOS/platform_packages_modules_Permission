@@ -245,7 +245,7 @@ public class RevokeSelfPermissionTest {
 
 
     private void installApp() {
-        runShellCommandOrThrow("pm install -r " + APK);
+        runShellCommandOrThrow("pm install -r --user " + mContext.getUserId() + " " + APK);
     }
 
     private void keepAppInForeground(long timeoutMillis) {
@@ -272,7 +272,9 @@ public class RevokeSelfPermissionTest {
         try {
             new Thread(() -> {
                 while (!hasExited[0]) {
-                    mUiDevice.pressHome();
+                    // Launch Home
+                    SystemUtil.runShellCommand("am start -a android.intent.action.MAIN -c android"
+                            + ".intent.category.HOME --user " + mContext.getUserId());
                     mUiDevice.pressBack();
                     try {
                         Thread.sleep(1000);
@@ -301,8 +303,10 @@ public class RevokeSelfPermissionTest {
     }
 
     private void revokePermissions(String[] permissions) {
-        runShellCommand("am start-activity -W -n " + APP_PKG_NAME  + "/.RevokePermission"
-                + " --esa permissions " + String.join(",", permissions));
+        runShellCommand(
+                "am start-activity " + "--user " + mContext.getUserId() + " -W -n " + APP_PKG_NAME
+                        + "/.RevokePermission" + " --esa permissions " + String.join(",",
+                        permissions));
         PackageManager pkgMgr = mContext.getPackageManager();
         eventually(() -> runWithShellPermissionIdentity(() -> {
             for (int i = 0; i < permissions.length; i++) {

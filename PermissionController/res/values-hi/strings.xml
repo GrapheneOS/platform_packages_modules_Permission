@@ -441,6 +441,7 @@
     <string name="default_app_none" msgid="9084592086808194457">"कोई नहीं"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(सिस्टम डिफ़ॉल्ट)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"कोई ऐप्लिकेशन नहीं"</string>
+    <string name="default_payment_app_other_nfc_services" msgid="5957633798695758917">"अन्य एनएफ़सी सेवाएं"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"चुना हुआ"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"<xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g> - चुना गया"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"ऐप्लिकेशन को खास अनुमति"</string>

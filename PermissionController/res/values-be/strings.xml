@@ -93,7 +93,7 @@
     <string name="manage_permission" msgid="2895385393037061964">"Кіраваць дазволам"</string>
     <string name="no_apps" msgid="2412612731628386816">"Няма праграм"</string>
     <string name="location_settings" msgid="3624412509133422562">"Налады месцазнаходжання"</string>
-    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> з\'яўляецца службай геалакацыі для гэтай прылады. Доступ да вызначэння месцазнаходжання можна змяніць у наладах."</string>
+    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> з’яўляецца службай геалакацыі для гэтай прылады. Доступ да вызначэння месцазнаходжання можна змяніць у наладах."</string>
     <string name="system_warning" msgid="1173400963234358816">"Калі вы адхіліце гэты дазвол, асноўныя функцыі прылады могуць перастаць працаваць належным чынам."</string>
     <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Гэта праграма створана для ранейшай версіі Android. Забараніўшы праграме доступ да фота і відэа, вы таксама закрыеце доступ да музыкі і іншых аўдыяфайлаў."</string>
     <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Гэта праграма створана для ранейшай версіі Android. Забараніўшы праграме доступ да музыкі і іншых аўдыяфайлаў, вы таксама закрыеце доступ да фота і відэа."</string>
@@ -375,7 +375,7 @@
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"тэкставае паведамленне, SMS, паведамленні, абмен паведамленнямі"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Праграма экстраннай дапамогі"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Праграма экстраннай дапамогі"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"Праграмы, якія даюць вам магчымасць: запісаць медыцынскую інфармацыю і зрабіць яе даступнай для экстраннай службы; атрымліваць абвесткі пра стыхійныя бедствы і складаныя ўмовы надвор\'я; апавяшчаць іншых пра тое, што вам патрабуецца дапамога"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"Праграмы, якія даюць вам магчымасць: запісаць медыцынскую інфармацыю і зрабіць яе даступнай для экстраннай службы; атрымліваць абвесткі пра стыхійныя бедствы і складаныя ўмовы надвор’я; апавяшчаць іншых пра тое, што вам патрабуецца дапамога"</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай экстраннай дапамогі?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Дазволы не патрэбныя"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"у выпадку надзвычайнай сітуацыі"</string>
@@ -409,7 +409,7 @@
     <string name="role_notes_search_keywords" msgid="7710756695666744631">"нататкі"</string>
     <string name="role_wallet_label" msgid="3719419175656204207">"Стандартная праграма-кашалёк"</string>
     <string name="role_wallet_short_label" msgid="6521288403762457452">"Праграма-кашалёк"</string>
-    <string name="role_wallet_description" msgid="3726535836165949838">"У праграмах-кашальках можна захоўваць крэдытныя карткі, карткі лаяльнасці, ключы ад аўтамабіля і іншыя лічбавыя аб\'екты, што дае магчымасць ажыццяўляць розныя формы трансакцый."</string>
+    <string name="role_wallet_description" msgid="3726535836165949838">"У праграмах-кашальках можна захоўваць крэдытныя карткі, карткі лаяльнасці, ключы ад аўтамабіля і іншыя лічбавыя аб’екты, што дае магчымасць ажыццяўляць розныя формы трансакцый."</string>
     <string name="role_wallet_request_title" msgid="4770217108262737093">"Задаць у якасці стандартнай праграмы-кашалька праграму \"<xliff:g id="APP_NAME">%1$s</xliff:g>\"?"</string>
     <string name="role_wallet_request_description" msgid="6305487425777483053">"Дазволы не патрэбныя"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Цяперашняя стандартная"</string>
@@ -441,6 +441,7 @@
     <string name="default_app_none" msgid="9084592086808194457">"Няма"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Стандартная сістэмная)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Няма праграм"</string>
+    <string name="default_payment_app_other_nfc_services" msgid="5957633798695758917">"Іншыя сэрвісы NFC"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Выбрана"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Выбрана – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"спецыяльны доступ для праграм"</string>

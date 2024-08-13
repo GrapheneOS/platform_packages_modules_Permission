@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui.wear.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +42,7 @@ class WearPermissionUsageViewModel(
 }
 
 /** Factory for a WearPermissionsUsageViewModel */
+@RequiresApi(Build.VERSION_CODES.S)
 class WearPermissionUsageViewModelFactory(val viewModel: PermissionUsageViewModel) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

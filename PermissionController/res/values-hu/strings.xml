@@ -441,6 +441,8 @@
     <string name="default_app_none" msgid="9084592086808194457">"Nincs"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Alapértelmezett)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Nincs alkalmazás"</string>
+    <!-- no translation found for default_payment_app_other_nfc_services (5957633798695758917) -->
+    <skip />
     <string name="car_default_app_selected" msgid="5416420830430644174">"Kiválasztva"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Kiválasztva – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"különleges alkalmazás-hozzáférés"</string>
@@ -686,7 +688,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"A segélyhívó szám felhívásakor vagy a segélyhívó számra való üzenetküldéskor"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"A helyadatok el lettek küldve a segélyhívó szolgálatnak"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"Az alkalmazás hozzáfért az eszköze helyadataihoz a segélyhívó szám felhívása vagy a segélyhívó számra való üzenetküldés során. Ez akkor is megtörténhet, amikor az appnak nincs helymeghatározási jogosultsága, vagy ki vannak kapcsolva az eszköz helyadatai. "<a href="https://support.google.com/android/answer/9319337">"További információ"</a></string>
-    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Folytatás a telefonján"</string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"Ellenőrizze telefonját"</string>
     <string name="wear_phone_connection_error" msgid="8934350845737930783">"Nem sikerült elérni a telefonját"</string>
     <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"Újrapróbálja?"</string>
 </resources>

@@ -273,7 +273,7 @@
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Povolenia a dočasné súbory boli odstránené a upozornenia boli zastavené. Skontrolujte to klepnutím."</string>
     <string name="unused_apps_safety_center_card_title" msgid="5638409355530099149">"Skontrolujte aplikácie s odstránenými povoleniami"</string>
     <string name="unused_apps_safety_center_card_content" msgid="1088557243627427820">"V prípade aplikácií, ktoré ste dlhšie nepoužívali, boli povolenia a dočasné súbory odstránené a upozornenia deaktivované."</string>
-    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Skontrolovať aplikácie"</string>
+    <string name="unused_apps_safety_center_action_title" msgid="8865914432518993194">"Kontrola aplikácií"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Skontrolujte nedávne povolenia"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%1$s</xliff:g> povolenie <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Počas jazdy ste udelili aplikácii <xliff:g id="APP">%1$s</xliff:g> prístup k povoleniam <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
@@ -441,6 +441,8 @@
     <string name="default_app_none" msgid="9084592086808194457">"Žiadna"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Predvolené systémom)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žiadne aplikácie"</string>
+    <!-- no translation found for default_payment_app_other_nfc_services (5957633798695758917) -->
+    <skip />
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybraná"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Vybrané – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"špeciálny prístup aplikácií"</string>

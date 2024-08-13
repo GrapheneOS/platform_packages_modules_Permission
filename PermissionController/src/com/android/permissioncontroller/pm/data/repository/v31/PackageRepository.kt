@@ -18,9 +18,13 @@ package com.android.permissioncontroller.pm.data.repository.v31
 
 import android.app.Application
 import android.content.pm.PackageManager
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.os.UserHandle
 import android.util.Log
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.pm.data.model.v31.PackageAttributionModel
 import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
 import kotlin.concurrent.Volatile
 import kotlinx.coroutines.CoroutineDispatcher
@@ -32,11 +36,36 @@ import kotlinx.coroutines.withContext
  * shouldn't access [PackageManager] directly, instead they should use the repository.
  */
 interface PackageRepository {
+    /**
+     * Returns a package label for the given [packageName] and [user] Returns [packageName] if the
+     * package is not found.
+     */
+    fun getPackageLabel(packageName: String, user: UserHandle): String
+
+    /**
+     * Returns a package's badged icon for the given [packageName] and [user] Returns null if the
+     * package is not found.
+     */
+    fun getBadgedPackageIcon(packageName: String, user: UserHandle): Drawable?
+
+    /**
+     * Returns a [PackageInfoModel] for the given [packageName] and [user] Returns null if the
+     * package is not found.
+     */
     suspend fun getPackageInfo(
         packageName: String,
         user: UserHandle,
         flags: Int = PackageManager.GET_PERMISSIONS
     ): PackageInfoModel?
+
+    /**
+     * Returns a [PackageAttributionModel] for the given [packageName] and [user] Returns null if
+     * the package is not found.
+     */
+    suspend fun getPackageAttributionInfo(
+        packageName: String,
+        user: UserHandle,
+    ): PackageAttributionModel?
 
     companion object {
         @Volatile private var instance: PackageRepository? = null
@@ -50,6 +79,26 @@ class PackageRepositoryImpl(
     private val app: Application,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : PackageRepository {
+    override fun getPackageLabel(packageName: String, user: UserHandle): String {
+        return try {
+            val userContext = Utils.getUserContext(app, user)
+            val appInfo = userContext.packageManager.getApplicationInfo(packageName, 0)
+            Utils.getFullAppLabel(appInfo, app)
+        } catch (e: PackageManager.NameNotFoundException) {
+            packageName
+        }
+    }
+
+    override fun getBadgedPackageIcon(packageName: String, user: UserHandle): Drawable? {
+        return try {
+            val userContext = Utils.getUserContext(app, user)
+            val appInfo = userContext.packageManager.getApplicationInfo(packageName, 0)
+            Utils.getBadgedIcon(app, appInfo)
+        } catch (e: PackageManager.NameNotFoundException) {
+            null
+        }
+    }
+
     override suspend fun getPackageInfo(
         packageName: String,
         user: UserHandle,
@@ -60,8 +109,52 @@ class PackageRepositoryImpl(
                 val packageInfo =
                     Utils.getUserContext(app, user)
                         .packageManager
-                        .getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
+                        .getPackageInfo(packageName, flags)
                 PackageInfoModel(packageInfo)
+            } catch (e: PackageManager.NameNotFoundException) {
+                Log.w(LOG_TAG, "package $packageName not found for user ${user.identifier}")
+                null
+            }
+        }
+
+    @Suppress("DEPRECATION")
+    override suspend fun getPackageAttributionInfo(
+        packageName: String,
+        user: UserHandle,
+    ): PackageAttributionModel? =
+        withContext(dispatcher) {
+            try {
+                val packageInfo =
+                    Utils.getUserContext(app, user)
+                        .packageManager
+                        .getPackageInfo(packageName, PackageManager.GET_ATTRIBUTIONS)
+                val attributionUserVisible =
+                    packageInfo.applicationInfo?.areAttributionsUserVisible() ?: false
+                if (attributionUserVisible && SdkLevel.isAtLeastS()) {
+                    val pkgContext = app.createPackageContext(packageName, 0)
+                    val attributionTagToLabelRes =
+                        packageInfo.attributions?.associate { it.tag to it.label }
+                    val labelResToLabelStringMap =
+                        attributionTagToLabelRes
+                            ?.mapNotNull { entry ->
+                                val labelString =
+                                    try {
+                                        pkgContext.getString(entry.value)
+                                    } catch (e: Resources.NotFoundException) {
+                                        null
+                                    }
+                                if (labelString != null) entry.value to labelString else null
+                            }
+                            ?.toMap()
+                    PackageAttributionModel(
+                        packageName,
+                        true,
+                        attributionTagToLabelRes,
+                        labelResToLabelStringMap
+                    )
+                } else {
+                    PackageAttributionModel(packageName)
+                }
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.w(LOG_TAG, "package $packageName not found for user ${user.identifier}")
                 null

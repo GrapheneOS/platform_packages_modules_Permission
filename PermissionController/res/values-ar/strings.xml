@@ -441,6 +441,7 @@
     <string name="default_app_none" msgid="9084592086808194457">"غير محدَّد"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(الإعداد التلقائي للنظام)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ليست هناك تطبيقات."</string>
+    <string name="default_payment_app_other_nfc_services" msgid="5957633798695758917">"‏خدمات NFC الأخرى"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"التطبيق المُختار"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"التطبيق المُختار - <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"أذونات خاصة للتطبيقات"</string>
@@ -686,7 +687,7 @@
     <string name="privacy_dashboard_emergency_location_enforced_attribution_label" msgid="5702912511473457693">"مراسلة نصية أو مكالمة طوارئ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_title" msgid="849723944428031911">"تم إرسال بيانات الموقع الجغرافي إلى خدمات طوارئ"</string>
     <string name="privacy_dashboard_emergency_location_dialog_description" msgid="5815970230573483329">"وصل هذا التطبيق إلى الموقع الجغرافي لجهازك أثناء إجراء اتصال برقم طوارئ أو مراسلته نصيًا. يمكن أن يحدث ذلك حتى إذا لم يحصل التطبيق على إذن تحديد الموقع الجغرافي أو لم يتم تفعيل إعدادات الموقع الجغرافي للجهاز. "<a href="https://support.google.com/android/answer/9319337">"مزيد من المعلومات"</a></string>
-    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"التحقّق من هاتفك"</string>
+    <string name="wear_check_your_phone_title" msgid="7957291983474981420">"يرجى التحقّق من هاتفك"</string>
     <string name="wear_phone_connection_error" msgid="8934350845737930783">"تعذَّر الوصول إلى هاتفك"</string>
     <string name="wear_phone_connection_should_retry" msgid="2835355845567088003">"هل تريد إعادة المحاولة؟"</string>
 </resources>

@@ -441,6 +441,7 @@
     <string name="default_app_none" msgid="9084592086808194457">"なし"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"（システムのデフォルト）"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"アプリなし"</string>
+    <string name="default_payment_app_other_nfc_services" msgid="5957633798695758917">"その他の NFC サービス"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"選択済み"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"選択済み - <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"特別なアプリアクセス"</string>
@@ -551,9 +552,7 @@
     <string name="privdash_label_none" msgid="5991866260360484858">"なし"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去 \n24 時間"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"過去\n7 日間"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for privdash_usage_percent (6893824766124414127) -->
-    <skip />
+    <string name="privdash_usage_percent" msgid="6893824766124414127">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> <xliff:g id="PERCENT">%2$d</xliff:g>%%"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はステータスバーやプライバシー ダッシュボードには表示されません。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> は Android によって保護されています。あなたのデータはこのデバイス上で処理されるため、このアプリの権限の使用状況はプライバシー ダッシュボードには表示されません。"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"デバイスのカメラがブロックされています"</string>

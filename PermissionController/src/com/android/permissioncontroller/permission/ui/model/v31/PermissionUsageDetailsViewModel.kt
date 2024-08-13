@@ -37,6 +37,7 @@ import android.os.UserManager
 import android.permission.flags.Flags
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
@@ -69,10 +70,10 @@ import java.util.concurrent.TimeUnit.DAYS
 /** [ViewModel] for the Permission Usage Details page. */
 @RequiresApi(Build.VERSION_CODES.S)
 class PermissionUsageDetailsViewModel(
-    val application: Application,
+    private val application: Application,
     private val state: SavedStateHandle,
     private val permissionGroup: String,
-) : ViewModel() {
+) : BasePermissionUsageDetailsViewModel(application) {
 
     val allLightHistoricalPackageOpsLiveData =
         AllLightHistoricalPackageOpsLiveData(application, opNames)
@@ -83,30 +84,27 @@ class PermissionUsageDetailsViewModel(
     val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
     val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
 
-    private val packageIconCache: MutableMap<Pair<String, UserHandle>, Drawable> = mutableMapOf()
-    private val packageLabelCache: MutableMap<String, String> = mutableMapOf()
-
     private val roleManager =
         Utils.getSystemServiceSafe(application.applicationContext, RoleManager::class.java)
     private val userManager =
         Utils.getSystemServiceSafe(application.applicationContext, UserManager::class.java)
 
     /** Updates whether system app permissions usage should be displayed in the UI. */
-    fun updateShowSystemAppsToggle(showSystem: Boolean) {
+    override fun updateShowSystemAppsToggle(showSystem: Boolean) {
         if (showSystem != state[SHOULD_SHOW_SYSTEM_KEY]) {
             state[SHOULD_SHOW_SYSTEM_KEY] = showSystem
         }
     }
 
     /** Updates whether 7 days usage or 1 day usage should be displayed in the UI. */
-    fun updateShow7DaysToggle(show7Days: Boolean) {
+    override fun updateShow7DaysToggle(show7Days: Boolean) {
         if (show7Days != state[SHOULD_SHOW_7_DAYS_KEY]) {
             state[SHOULD_SHOW_7_DAYS_KEY] = show7Days
         }
     }
 
-    /** Creates a [PermissionUsageDetailsUiInfo] containing all information to render the UI. */
-    fun buildPermissionUsageDetailsUiInfo(): PermissionUsageDetailsUiInfo {
+    /** Creates a [PermissionUsageDetailsUiState] containing all information to render the UI. */
+    fun buildPermissionUsageDetailsUiInfo(): PermissionUsageDetailsUiState {
         val showSystem: Boolean = state[SHOULD_SHOW_SYSTEM_KEY] ?: false
         val show7Days: Boolean = state[SHOULD_SHOW_7_DAYS_KEY] ?: false
         val showPermissionUsagesDuration =
@@ -120,9 +118,7 @@ class PermissionUsageDetailsViewModel(
                 Instant.EPOCH.toEpochMilli()
             )
 
-        return PermissionUsageDetailsUiInfo(
-            show7Days,
-            showSystem,
+        return PermissionUsageDetailsUiState.Success(
             buildAppPermissionAccessUiInfoList(
                 allLightHistoricalPackageOpsLiveData,
                 startTime,
@@ -568,30 +564,14 @@ class PermissionUsageDetailsViewModel(
         val isEmergencyLocationAccess: Boolean
     )
 
-    /**
-     * Class containing all the information needed by the permission usage details fragments to
-     * render UI.
-     */
-    data class PermissionUsageDetailsUiInfo(
-        /**
-         * Whether to show data over the last 7 days.
-         *
-         * While this information is available from the [SHOULD_SHOW_7_DAYS_KEY] state, we include
-         * it in the UI info so that it triggers a UI update when changed.
-         */
-        private val show7Days: Boolean,
-        /**
-         * Whether to show system apps' data.
-         *
-         * While this information is available from the [SHOULD_SHOW_SYSTEM_KEY] state, we include
-         * it in the UI info so that it triggers a UI update when changed.
-         */
-        private val showSystem: Boolean,
-        /** List of [AppPermissionAccessUiInfo]s to be displayed in the UI. */
-        val appPermissionAccessUiInfoList: List<AppPermissionAccessUiInfo>,
-        /** Whether to show the "show/hide system" toggle. */
-        val containsSystemAppAccesses: Boolean,
-    )
+    sealed class PermissionUsageDetailsUiState {
+        data object Loading : PermissionUsageDetailsUiState()
+
+        data class Success(
+            val appPermissionAccessUiInfoList: List<AppPermissionAccessUiInfo>,
+            val containsSystemAppAccesses: Boolean,
+        ) : PermissionUsageDetailsUiState()
+    }
 
     /**
      * Data class representing a cluster of permission accesses close enough together to be
@@ -616,9 +596,10 @@ class PermissionUsageDetailsViewModel(
         val discreteAccesses: List<DiscreteAccess>
     )
 
-    /** [LiveData] object for [PermissionUsageDetailsUiInfo]. */
-    val permissionUsagesDetailsInfoUiLiveData =
-        object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsageDetailsUiInfo>() {
+    /** [LiveData] object for [PermissionUsageDetailsUiState]. */
+    private val _permissionUsagesDetailsInfoUiLiveData =
+        object :
+            SmartUpdateMediatorLiveData<@JvmSuppressWildcards PermissionUsageDetailsUiState>() {
             private val getAppPermGroupUiInfoLiveData = { appPermissionId: AppPermissionId ->
                 AppPermGroupUiInfoLiveData[
                     Triple(
@@ -684,44 +665,21 @@ class PermissionUsageDetailsViewModel(
             }
         }
 
-    /**
-     * Returns the icon for the provided package name and user, by first searching the cache
-     * otherwise retrieving it from the app's [android.content.pm.ApplicationInfo].
-     */
-    private fun getBadgedPackageIcon(packageName: String, userHandle: UserHandle): Drawable? {
-        val packageNameWithUser: Pair<String, UserHandle> = Pair(packageName, userHandle)
-        if (packageIconCache.containsKey(packageNameWithUser)) {
-            return requireNotNull(packageIconCache[packageNameWithUser])
-        }
-        val packageIcon = KotlinUtils.getBadgedPackageIcon(application, packageName, userHandle)
-        if (packageIcon != null) packageIconCache[packageNameWithUser] = packageIcon
+    override fun getPermissionUsagesDetailsInfoUiLiveData():
+        LiveData<PermissionUsageDetailsUiState> = _permissionUsagesDetailsInfoUiLiveData
 
-        return packageIcon
-    }
+    override fun getShowSystem(): Boolean = showSystemLiveData.value ?: false
 
-    /**
-     * Returns the label for the provided package name, by first searching the cache otherwise
-     * retrieving it from the app's [android.content.pm.ApplicationInfo].
-     */
-    private fun getPackageLabel(packageName: String, user: UserHandle): String {
-        if (packageLabelCache.containsKey(packageName)) {
-            return requireNotNull(packageLabelCache[packageName])
-        }
-
-        val packageLabel = KotlinUtils.getPackageLabel(application, packageName, user)
-        packageLabelCache[packageName] = packageLabel
-
-        return packageLabel
-    }
+    override fun getShow7Days(): Boolean = show7DaysLiveData.value ?: false
 
     /** Companion object for [PermissionUsageDetailsViewModel]. */
     companion object {
-        private const val ONE_HOUR_MS = 3_600_000
-        private const val ONE_MINUTE_MS = 60_000
-        private const val CLUSTER_SPACING_MINUTES: Long = 1L
+        const val ONE_HOUR_MS = 3_600_000
+        const val ONE_MINUTE_MS = 60_000
+        const val CLUSTER_SPACING_MINUTES: Long = 1L
         private const val TELECOM_PACKAGE = "com.android.server.telecom"
-        private val TIME_7_DAYS_DURATION: Long = DAYS.toMillis(7)
-        private val TIME_24_HOURS_DURATION: Long = DAYS.toMillis(1)
+        val TIME_7_DAYS_DURATION: Long = DAYS.toMillis(7)
+        val TIME_24_HOURS_DURATION: Long = DAYS.toMillis(1)
         internal const val SHOULD_SHOW_SYSTEM_KEY = "showSystem"
         internal const val SHOULD_SHOW_7_DAYS_KEY = "show7Days"
 
@@ -846,7 +804,13 @@ class PermissionUsageDetailsViewModel(
             handle: SavedStateHandle,
         ): T {
             @Suppress("UNCHECKED_CAST")
-            return PermissionUsageDetailsViewModel(app, handle, permissionGroup) as T
+            return if (
+                com.android.permission.flags.Flags.livedataRefactorPermissionTimelineEnabled()
+            ) {
+                PermissionUsageDetailsViewModelV2.create(app, handle, permissionGroup) as T
+            } else {
+                PermissionUsageDetailsViewModel(app, handle, permissionGroup) as T
+            }
         }
     }
 }
