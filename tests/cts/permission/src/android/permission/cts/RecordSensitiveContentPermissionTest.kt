@@ -16,6 +16,7 @@
 
 package android.permission.cts
 
+import android.content.pm.PackageInfo
 import android.os.Build
 import android.permission.flags.Flags.FLAG_SENSITIVE_NOTIFICATION_APP_PROTECTION
 import android.platform.test.annotations.AppModeFull
@@ -42,20 +43,20 @@ class RecordSensitiveContentPermissionTest {
     @RequiresFlagsEnabled(FLAG_SENSITIVE_NOTIFICATION_APP_PROTECTION)
     fun testRecordSensitiveContentDuringProjection() {
         val packageManager = InstrumentationRegistry.getContext().getPackageManager()
-        val packagesHoldingPermission =
-            packageManager
-                .getPackagesHoldingPermissions(
-                    arrayOf(android.Manifest.permission.RECORD_SENSITIVE_CONTENT),
-                    0
-                )
-                .map { it.packageName }
+        val packagesInfoList: List<PackageInfo> =
+            packageManager.getPackagesHoldingPermissions(
+                arrayOf(android.Manifest.permission.RECORD_SENSITIVE_CONTENT),
+                0
+            )
+        val uidHoldingPermission: Set<Int> =
+            packagesInfoList.mapNotNullTo(mutableSetOf()) { it.applicationInfo?.uid }
 
-        if (packagesHoldingPermission.size > 1) {
+        if (uidHoldingPermission.size > 1) {
             Assert.fail(
                 "Only one system app on the device is allowed to hold the " +
-                    "RECORD_SENSITIVE_CONTENT_DURING_PROJECTION permission, " +
+                    "RECORD_SENSITIVE_CONTENT permission, " +
                     "packages holding the permissions are: " +
-                    packagesHoldingPermission
+                    packagesInfoList.map { it.packageName }
             )
         }
     }

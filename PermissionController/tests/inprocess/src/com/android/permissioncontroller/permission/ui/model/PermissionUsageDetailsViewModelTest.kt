@@ -18,12 +18,14 @@ package com.android.permissioncontroller.permission.ui.model
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsUiState
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelV2
 import com.android.permissioncontroller.permission.util.InstantTaskExecutorRule
 import com.google.common.truth.Truth
 import java.util.concurrent.CountDownLatch
+import org.junit.Assume
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,10 +33,11 @@ import org.junit.runner.RunWith
 /** This is an integration tests for permission timeline page view model. */
 @RunWith(AndroidJUnit4::class)
 class PermissionUsageDetailsViewModelTest {
-    @get:Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @JvmField @Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Test
     fun verifyUiStateIsGeneratedSuccessfully() {
+        Assume.assumeTrue(SdkLevel.isAtLeastS())
         lateinit var uiState: PermissionUsageDetailsUiState.Success
         val viewModel =
             PermissionUsageDetailsViewModelV2.create(
