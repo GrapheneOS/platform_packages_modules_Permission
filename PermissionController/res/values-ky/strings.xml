@@ -441,8 +441,7 @@
     <string name="default_app_none" msgid="9084592086808194457">"Жок"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Демейки тутум)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Бир да колдонмо жок"</string>
-    <!-- no translation found for default_payment_app_other_nfc_services (5957633798695758917) -->
-    <skip />
+    <string name="default_payment_app_other_nfc_services" msgid="5957633798695758917">"Башка NFC кызматтары"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Тандалды"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Тандалды – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"колдонмонун атайын уруксаты"</string>

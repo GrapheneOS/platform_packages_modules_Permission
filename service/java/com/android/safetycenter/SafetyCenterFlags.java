@@ -28,6 +28,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permission.flags.Flags;
 import com.android.safetycenter.resources.SafetyCenterResourcesApk;
 
 import java.io.PrintWriter;
@@ -123,6 +124,8 @@ public final class SafetyCenterFlags {
     private static final String RESURFACE_ISSUE_DELAYS_DEFAULT = "";
     private static final Duration RESURFACE_ISSUE_DELAYS_DEFAULT_DURATION = Duration.ofDays(180);
 
+    private static final ArraySet<String> sAllowedNotificationSources =
+            new ArraySet<>(new String[] {"GoogleAppProtectionService"});
     private static final ArraySet<String> sAllowedNotificationSourcesUPlus =
             new ArraySet<>(new String[] {"GoogleBackupAndRestore"});
 
@@ -251,15 +254,17 @@ public final class SafetyCenterFlags {
      */
     public static ArraySet<String> getNotificationsAllowedSourceIds() {
         ArraySet<String> sources = getNotificationsAllowedSourceIdsFlag();
+        // This is a hack to update the flag value via mainline update. Reasons why we can't do this
+        // via:
+        // remote flag update - these are generally avoided and considered risky
+        // XML config - it would break GTS tests for OEMs that have a separate config copy
+        // default flag value - it would also require a remote flag update
+        if (Flags.odadNotificationsSupported()) {
+            sources.addAll(sAllowedNotificationSources);
+        }
         if (SdkLevel.isAtLeastU()) {
-            // This is a hack to update the flag value via mainline update. Reasons why we can't do
-            // this via:
-            // remote flag update - these are generally avoided and considered risky
-            // XML config - it would break GTS tests for OEMs that have a separate config copy
-            // default flag value - it would also require a remote flag update
             sources.addAll(sAllowedNotificationSourcesUPlus);
         }
-
         return sources;
     }
 

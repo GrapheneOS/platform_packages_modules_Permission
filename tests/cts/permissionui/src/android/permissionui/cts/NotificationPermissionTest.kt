@@ -27,7 +27,6 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
-import android.os.UserHandle
 import android.provider.Settings
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.SdkSuppress
@@ -60,7 +59,7 @@ const val EXPECTED_TIMEOUT_MS = 2000L
 class NotificationPermissionTest : BaseUsePermissionTest() {
 
     private val cr = callWithShellPermissionIdentity {
-        context.createContextAsUser(UserHandle.SYSTEM, 0).contentResolver
+        context.createContextAsUser(context.getUser(), 0).contentResolver
     }
     private var previousEnableState = -1
     private var countDown: CountDownLatch = CountDownLatch(1)
@@ -71,8 +70,7 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
                 allowedGroups =
                     intent?.getStringArrayListExtra(
                         PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS
-                    )
-                        ?: emptyList()
+                    ) ?: emptyList()
                 countDown.countDown()
             }
         }
@@ -153,6 +151,7 @@ class NotificationPermissionTest : BaseUsePermissionTest() {
         launchApp(createChannels = false)
         assertDialogNotShowing()
     }
+
     @Test
     fun notificationPromptDoesNotShowForNonLauncherIntentCategoryLaunches_onChannelCreate() {
         installPackage(APP_APK_PATH_CREATE_NOTIFICATION_CHANNELS_31, expectSuccess = true)
