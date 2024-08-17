@@ -33,6 +33,8 @@ abstract class BasePermissionUsageDetailsViewModel(val app: Application) : Andro
 
     abstract fun getShowSystem(): Boolean
 
+    abstract val showSystemLiveData: LiveData<Boolean>
+
     abstract fun getShow7Days(): Boolean
 
     abstract fun updateShowSystemAppsToggle(showSystem: Boolean)

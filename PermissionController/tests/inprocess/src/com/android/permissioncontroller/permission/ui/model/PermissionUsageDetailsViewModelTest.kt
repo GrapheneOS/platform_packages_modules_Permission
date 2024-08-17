@@ -16,15 +16,19 @@
 
 package com.android.permissioncontroller.permission.ui.model
 
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.modules.utils.build.SdkLevel
+import com.android.permission.flags.Flags
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsUiState
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelV2
-import com.android.permissioncontroller.permission.util.InstantTaskExecutorRule
 import com.google.common.truth.Truth
 import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import org.junit.Assume
 import org.junit.Rule
 import org.junit.Test
@@ -33,9 +37,12 @@ import org.junit.runner.RunWith
 /** This is an integration tests for permission timeline page view model. */
 @RunWith(AndroidJUnit4::class)
 class PermissionUsageDetailsViewModelTest {
+    @JvmField @Rule val checkFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
+
     @JvmField @Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Test
+    @RequiresFlagsEnabled(Flags.FLAG_LIVEDATA_REFACTOR_PERMISSION_TIMELINE_ENABLED)
     fun verifyUiStateIsGeneratedSuccessfully() {
         Assume.assumeTrue(SdkLevel.isAtLeastS())
         lateinit var uiState: PermissionUsageDetailsUiState.Success
@@ -53,7 +60,7 @@ class PermissionUsageDetailsViewModelTest {
                 countDownLatch.countDown()
             }
         }
-        countDownLatch.await()
+        countDownLatch.await(5L, TimeUnit.SECONDS)
         Truth.assertThat(uiState).isNotNull()
     }
 

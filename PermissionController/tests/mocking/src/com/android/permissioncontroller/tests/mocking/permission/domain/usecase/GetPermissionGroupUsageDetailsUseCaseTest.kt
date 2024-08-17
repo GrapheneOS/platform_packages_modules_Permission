@@ -69,7 +69,7 @@ class GetPermissionGroupUsageDetailsUseCaseTest {
     @Mock private lateinit var application: PermissionControllerApplication
     @Mock private lateinit var context: Context
 
-    private lateinit var mockitoSession: MockitoSession
+    private var mockitoSession: MockitoSession? = null
     private lateinit var packageInfos: MutableMap<String, PackageInfoModel>
 
     private val currentUser = android.os.Process.myUserHandle()
@@ -110,7 +110,7 @@ class GetPermissionGroupUsageDetailsUseCaseTest {
 
     @After
     fun finish() {
-        mockitoSession.finishMocking()
+        mockitoSession?.finishMocking()
     }
 
     @Test

@@ -42,6 +42,7 @@ android_test {
     ],
 
     static_libs: [
+        "androidx.arch.core_core-testing",
         "androidx.test.rules",
         "androidx.test.ext.truth",
         "androidx.test.ext.junit",

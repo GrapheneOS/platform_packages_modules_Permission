@@ -29,7 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
-import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.BasePermissionUsageDetailsViewModel
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 
@@ -63,7 +63,7 @@ class WearPermissionUsageDetailsFragment : Fragment() {
                 permissionGroup
             )
         val viewModel =
-            ViewModelProvider(this, factory).get(PermissionUsageDetailsViewModel::class.java)
+            ViewModelProvider(this, factory).get(BasePermissionUsageDetailsViewModel::class.java)
         viewModel.updateShowSystemAppsToggle(showSystem)
         viewModel.updateShow7DaysToggle(is7DayToggleEnabled() && show7Days)
 

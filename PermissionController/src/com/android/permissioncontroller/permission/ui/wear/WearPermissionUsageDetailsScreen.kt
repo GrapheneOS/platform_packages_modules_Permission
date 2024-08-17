@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.wear.compose.material.ChipDefaults
 import androidx.wear.compose.material.MaterialTheme
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.model.v31.BasePermissionUsageDetailsViewModel
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.AppPermissionAccessUiInfo
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsUiState
@@ -44,7 +45,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
 @Composable
 fun WearPermissionUsageDetailsScreen(
     permissionGroup: String,
-    viewModel: PermissionUsageDetailsViewModel
+    viewModel: BasePermissionUsageDetailsViewModel
 ) {
     val context = LocalContext.current
     val uiData = viewModel.getPermissionUsagesDetailsInfoUiLiveData().observeAsState(null)

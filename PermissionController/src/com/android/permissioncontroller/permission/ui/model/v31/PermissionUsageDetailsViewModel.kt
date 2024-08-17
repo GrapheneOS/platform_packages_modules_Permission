@@ -81,7 +81,8 @@ class PermissionUsageDetailsViewModel(
         mutableMapOf<AppPermissionId, AppPermGroupUiInfoLiveData>()
     private val lightPackageInfoLiveDataMap =
         mutableMapOf<Pair<String, UserHandle>, LightPackageInfoLiveData>()
-    val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
+
+    override val showSystemLiveData = state.getLiveData(SHOULD_SHOW_SYSTEM_KEY, false)
     val show7DaysLiveData = state.getLiveData(SHOULD_SHOW_7_DAYS_KEY, false)
 
     private val roleManager =

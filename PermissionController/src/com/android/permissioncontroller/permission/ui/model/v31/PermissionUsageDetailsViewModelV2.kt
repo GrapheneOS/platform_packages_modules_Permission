@@ -154,6 +154,9 @@ class PermissionUsageDetailsViewModelV2(
 
     override fun getShowSystem(): Boolean = showSystemFlow.value
 
+    override val showSystemLiveData =
+        showSystemFlow.asLiveData(context = coroutineScope.coroutineContext)
+
     override fun getShow7Days(): Boolean = show7DaysFlow.value
 
     private fun getUsageDuration(show7Days: Boolean): Long {
