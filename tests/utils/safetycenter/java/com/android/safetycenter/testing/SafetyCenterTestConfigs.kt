@@ -351,6 +351,23 @@ class SafetyCenterTestConfigs(private val context: Context) {
             .build()
 
     /**
+     * A simple [SafetyCenterConfig] for tests with a single stateful group containing 2 dynamic
+     * sources and an issue only source.
+     */
+    val entryGroupWithIssueOnlyConfig =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(
+                safetySourcesGroupBuilder("EntryGroupWithIssueOnly")
+                    .addSafetySource(dynamicSource1)
+                    .addSafetySource(dynamicSource2)
+                    .addSafetySource(
+                        issueOnlySafetySourceBuilder(ISSUE_ONLY_ALL_OPTIONAL_ID).build()
+                    )
+                    .build()
+            )
+            .build()
+
+    /**
      * A simple [SafetyCenterConfig] for tests with multiple sources with one source having an
      * invalid default intent.
      */

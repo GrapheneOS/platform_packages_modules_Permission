@@ -22,6 +22,9 @@ import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import android.os.UserHandle
+import android.platform.test.annotations.RequiresFlagsDisabled
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING
@@ -64,6 +67,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil
 import com.android.modules.utils.build.SdkLevel
+import com.android.permission.flags.Flags
 import com.android.safetycenter.internaldata.SafetyCenterBundles
 import com.android.safetycenter.internaldata.SafetyCenterBundles.ISSUES_TO_GROUPS_BUNDLE_KEY
 import com.android.safetycenter.internaldata.SafetyCenterEntryId
@@ -783,8 +787,9 @@ class SafetyCenterManagerTest {
                 )
             )
 
-    @get:Rule(order = 1) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
-    @get:Rule(order = 2) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
+    @get:Rule(order = 1) val flagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
+    @get:Rule(order = 2) val supportsSafetyCenterRule = SupportsSafetyCenterRule(context)
+    @get:Rule(order = 3) val safetyCenterTestRule = SafetyCenterTestRule(safetyCenterTestHelper)
 
     @Test
     fun getSafetySourceData_differentPackageWithManageSafetyCenterPermission_returnsData() {
@@ -3153,6 +3158,105 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SAFETY_CENTER_ISSUE_ONLY_AFFECTS_GROUP_STATUS)
+    fun getSafetyCenterData_entryGroupWithIssueOnlySourceHighestOfGroup_affectsEntryGroupStatus() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.entryGroupWithIssueOnlyConfig)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(safetySourceTestData.recommendationGeneralIssue)
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.severityLevel)
+            .isEqualTo(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.summary!!.toString())
+            .isEqualTo("Recommendation issue title")
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SAFETY_CENTER_ISSUE_ONLY_AFFECTS_GROUP_STATUS)
+    fun getSafetyCenterData_entryGroupWithIssueOnlySourceSameAsGroup_affectsTitle() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.entryGroupWithIssueOnlyConfig)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(safetySourceTestData.informationIssue)
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.severityLevel)
+            .isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.summary!!.toString())
+            .isEqualTo("Information issue title")
+    }
+
+    @Test
+    fun getSafetyCenterData_entryGroupWithIssueOnlySourceNotHighest_doesntAffectEntryGroupStatus() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.entryGroupWithIssueOnlyConfig)
+        safetyCenterTestHelper.setData(
+            SOURCE_ID_1,
+            safetySourceTestData.recommendationWithGeneralIssue
+        )
+        safetyCenterTestHelper.setData(SOURCE_ID_2, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(safetySourceTestData.informationIssue)
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.severityLevel)
+            .isEqualTo(ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.summary!!.toString())
+            .isEqualTo("Recommendation summary")
+    }
+
+    @Test
+    fun getSafetyCenterData_entryGroupWithIssueOnlySourceDismissed_doesntAffectEntryGroupStatus() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.entryGroupWithIssueOnlyConfig)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(safetySourceTestData.recommendationGeneralIssue)
+        )
+        safetyCenterManager.dismissSafetyCenterIssueWithPermission(
+            SafetyCenterTestData.issueId(ISSUE_ONLY_ALL_OPTIONAL_ID, RECOMMENDATION_ISSUE_ID)
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.severityLevel)
+            .isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.summary!!.toString())
+            .isEqualTo("OK")
+    }
+
+    @Test
+    @RequiresFlagsDisabled(Flags.FLAG_SAFETY_CENTER_ISSUE_ONLY_AFFECTS_GROUP_STATUS)
+    fun getSafetyCenterData_entryGroupWithIssueOnlySourceFlagOff_doesntAffectEntryGroupStatus() {
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.entryGroupWithIssueOnlyConfig)
+        safetyCenterTestHelper.setData(SOURCE_ID_1, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(SOURCE_ID_2, safetySourceTestData.information)
+        safetyCenterTestHelper.setData(
+            ISSUE_ONLY_ALL_OPTIONAL_ID,
+            SafetySourceTestData.issuesOnly(safetySourceTestData.recommendationGeneralIssue)
+        )
+
+        val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
+
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.severityLevel)
+            .isEqualTo(ENTRY_SEVERITY_LEVEL_OK)
+        assertThat(apiSafetyCenterData.entriesOrGroups.single().entryGroup!!.summary!!.toString())
+            .isEqualTo("OK")
+    }
+
+    @Test
     fun addOnSafetyCenterDataChangedListener_listenerCalledWithSafetyCenterDataFromConfig() {
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
@@ -3836,9 +3940,11 @@ class SafetyCenterManagerTest {
 
     companion object {
         private val RESURFACE_DELAY = Duration.ofMillis(500)
+
         // Wait 3 times the RESURFACE_DELAY before asserting whether an issue has or has not
         // resurfaced. Use a constant additive error buffer if we increase the delay considerably.
         private val RESURFACE_TIMEOUT = RESURFACE_DELAY.multipliedBy(3)
+
         // Check more than once during a RESURFACE_DELAY before asserting whether an issue has or
         // has not resurfaced. Use a different check logic (focused at the expected resurface time)
         // if we increase the delay considerably.
