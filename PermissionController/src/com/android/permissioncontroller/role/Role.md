@@ -31,8 +31,8 @@ The list of available roles and their behavior can be updated via PermissionCont
 of the platform release cycle. Since Android Q, all the default apps (e.g. default SMS app) are
 backed by a corresponding role implementation.
 
-The definition for all the roles can be found in [roles.xml](../../../../../res/xml/roles.xml) and
-associated [`RoleBehavior`](model/RoleBehavior.java) classes.
+The definition for all the roles can be found in [roles.xml][roles-xml] and
+associated [`RoleBehavior`][role-behavior] [classes][role-behavior-implementations].
 
 ## Defining a role
 
@@ -41,7 +41,7 @@ A role is defined by a `<role>` tag in `roles.xml`.
 The following attributes are available for role:
 
 - `name`: The unique name to identify the role, e.g. `android.app.role.SMS`.
-- `behavior`: Optional name of a [`RoleBehavior`](model/RoleBehavior.java) class to control certain
+- `behavior`: Optional name of a [`RoleBehavior`][role-behavior] class to control certain
 role behavior in Java code, e.g. `SmsRoleBehavior`. This can be useful when the XML syntax cannot
 express certain behavior specific to the role.
 - `defaultHolders`: Optional name of a system config resource that designates the default holders of
@@ -190,3 +190,7 @@ cmd role set-bypassing-role-qualification true|false
 
 The command outputs nothing and exits with `0` on success. If there was an error, the error will be
 printed and the command will terminate with a non-zero exit code.
+
+[role-behavior]: ../../../../../role-controller/java/com/android/role/controller/model/RoleBehavior.java
+[role-behavior-implementations]: ../../../../../role-controller/java/com/android/role/controller/behavior/
+[roles-xml]: ../../../../../res/xml/roles.xml

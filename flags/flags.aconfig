@@ -90,3 +90,13 @@ flag {
     bug: "356910111"
     is_fixed_read_only: true
 }
+
+flag {
+    name: "safety_center_enabled_no_device_config"
+    is_exported: true
+    namespace: "permissions"
+    description: "This flag disables the usage of DeviceConfig to enable/disable Safety Center on UDC+ (enabled by default instead)"
+    bug: "354670125"
+    is_fixed_read_only: true
+}
+

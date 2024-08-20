@@ -92,6 +92,12 @@
         <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionui"/>
     </target_preparer>
 
+    <!-- Ensures that screen recording is captured -->
+    <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer">
+        <option name="force-root" value="true" />
+        <option name="throw-on-error" value="false" />
+    </target_preparer>
+
     <metrics_collector class="com.android.tradefed.device.metric.FilePullerLogCollector">
         <option name="directory-keys" value="/data/user/0/android.permissionui.cts/files" />
         <option name="collect-on-run-ended-only" value="true" />

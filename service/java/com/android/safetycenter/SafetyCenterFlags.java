@@ -232,6 +232,9 @@ public final class SafetyCenterFlags {
 
     /** Returns whether Safety Center is enabled. */
     public static boolean getSafetyCenterEnabled() {
+        if (Flags.safetyCenterEnabledNoDeviceConfig() && SdkLevel.isAtLeastU()) {
+            return true;
+        }
         return getBoolean(PROPERTY_SAFETY_CENTER_ENABLED, SdkLevel.isAtLeastU());
     }
 
