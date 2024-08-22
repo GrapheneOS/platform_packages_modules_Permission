@@ -95,6 +95,7 @@ import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
+import org.junit.Assume.assumeFalse
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
@@ -788,6 +789,10 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
         // Implicit broadcast is only sent to system user.
         assumeTrue(context.getSystemService(UserManager::class.java)!!.isSystemUser)
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
@@ -806,6 +811,10 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenImplicitReceiverDoesntHavePermission_receiverNotCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
         // Implicit broadcast is only sent to system user.
         assumeTrue(context.getSystemService(UserManager::class.java)!!.isSystemUser)
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver(context)
@@ -818,6 +827,10 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenSourceReceiverHasPermission_receiverCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         val receiverValue =
@@ -833,6 +846,10 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_valueDoesntChange_receiverNotCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -845,6 +862,10 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenSourceReceiverDoesntHavePermission_receiverNotCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
         safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -854,6 +875,26 @@ class SafetyCenterManagerTest {
 
     @Test
     fun safetyCenterEnabledChanged_whenSourceReceiverNotInConfig_receiverNotCalled() {
+        assumeTrue(
+            "Cannot toggle SafetyCenter using DeviceConfig",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
+        assertFailsWith(TimeoutCancellationException::class) {
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
+                false,
+                TIMEOUT_SHORT
+            )
+        }
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_whenNoDeviceConfigFlag_receiverNotCalled() {
+        assumeFalse(
+            "SafetyCenter DeviceConfig flag is in use",
+            SafetyCenterTestHelper.safetyCenterCanBeToggledUsingDeviceConfig()
+        )
+        safetyCenterTestHelper.setConfig(safetyCenterTestConfigs.singleSourceConfig)
+
         assertFailsWith(TimeoutCancellationException::class) {
             SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
                 false,

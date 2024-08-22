@@ -244,6 +244,9 @@ public final class SafetyCenterService extends SystemService {
 
     @GuardedBy("mApiLock")
     private void registerSafetyCenterEnabledListenerLocked() {
+        if (Flags.safetyCenterEnabledNoDeviceConfig() && SdkLevel.isAtLeastU()) {
+            return;
+        }
         SafetyCenterEnabledListener safetyCenterEnabledListener = new SafetyCenterEnabledListener();
         DeviceConfig.addOnPropertiesChangedListener(
                 DeviceConfig.NAMESPACE_PRIVACY,
@@ -1151,9 +1154,7 @@ public final class SafetyCenterService extends SystemService {
         if (!UserProfileGroup.isSupported(userId, context)) {
             Log.i(
                     TAG,
-                    "Received broadcast for user id: "
-                            + userId
-                            + ", which is an unsupported user");
+                    "Received broadcast for user id: " + userId + ", which is an unsupported user");
             return false;
         }
         if (Intent.ACTION_USER_SWITCHED.equals(action)
@@ -1166,11 +1167,7 @@ public final class SafetyCenterService extends SystemService {
             return false;
         }
         if (isProfileAddedOrAvailable(action) && !UserUtils.isUserExistent(userId, context)) {
-            Log.w(
-                    TAG,
-                    "Received broadcast for user id: "
-                            + userId
-                            + ", which does not exist");
+            Log.w(TAG, "Received broadcast for user id: " + userId + ", which does not exist");
             return false;
         }
         return true;
