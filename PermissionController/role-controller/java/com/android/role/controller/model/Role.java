@@ -52,6 +52,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * Specifies a role and its properties.
@@ -116,6 +117,12 @@ public class Role {
      * Whether this role should fall back to the default holder.
      */
     private final boolean mFallBackToDefaultHolder;
+
+    /**
+     * The feature flag for this app op to be granted, or {@code null} if none.
+     */
+    @Nullable
+    private final Supplier<Boolean> mFeatureFlag;
 
     /**
      * The string resource for the label of this role.
@@ -234,12 +241,13 @@ public class Role {
     public Role(@NonNull String name, boolean allowBypassingQualification,
             @Nullable RoleBehavior behavior, @Nullable String defaultHoldersResourceName,
             @StringRes int descriptionResource, boolean exclusive, boolean fallBackToDefaultHolder,
-            @StringRes int labelResource, int maxSdkVersion, int minSdkVersion,
-            boolean onlyGrantWhenAdded, boolean overrideUserWhenGranting,
-            @StringRes int requestDescriptionResource, @StringRes int requestTitleResource,
-            boolean requestable, @StringRes int searchKeywordsResource,
-            @StringRes int shortLabelResource, boolean showNone, boolean statik, boolean systemOnly,
-            boolean visible, @NonNull List<RequiredComponent> requiredComponents,
+            @Nullable Supplier<Boolean> featureFlag, @StringRes int labelResource,
+            int maxSdkVersion, int minSdkVersion, boolean onlyGrantWhenAdded,
+            boolean overrideUserWhenGranting, @StringRes int requestDescriptionResource,
+            @StringRes int requestTitleResource, boolean requestable,
+            @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
+            boolean showNone, boolean statik, boolean systemOnly, boolean visible,
+            @NonNull List<RequiredComponent> requiredComponents,
             @NonNull List<Permission> permissions, @NonNull List<Permission> appOpPermissions,
             @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities,
             @Nullable String uiBehaviorName) {
@@ -250,6 +258,7 @@ public class Role {
         mDescriptionResource = descriptionResource;
         mExclusive = exclusive;
         mFallBackToDefaultHolder = fallBackToDefaultHolder;
+        mFeatureFlag = featureFlag;
         mLabelResource = labelResource;
         mMaxSdkVersion = maxSdkVersion;
         mMinSdkVersion = minSdkVersion;
@@ -289,6 +298,11 @@ public class Role {
 
     public boolean isExclusive() {
         return mExclusive;
+    }
+
+    @Nullable
+    public Supplier<Boolean> getFeatureFlag() {
+        return mFeatureFlag;
     }
 
     @StringRes
@@ -396,7 +410,7 @@ public class Role {
      * @return whether this role is available.
      */
     public boolean isAvailableAsUser(@NonNull UserHandle user, @NonNull Context context) {
-        if (!isAvailableBySdkVersion()) {
+        if (!isAvailableByFeatureFlagAndSdkVersion()) {
             return false;
         }
         if (mBehavior != null) {
@@ -410,7 +424,10 @@ public class Role {
      *
      * @return whether this role is available based on SDK version
      */
-    boolean isAvailableBySdkVersion() {
+    boolean isAvailableByFeatureFlagAndSdkVersion() {
+        if (mFeatureFlag != null && !mFeatureFlag.get()) {
+            return false;
+        }
         return (Build.VERSION.SDK_INT >= mMinSdkVersion
                 // Workaround to match the value 35 for V in roles.xml before SDK finalization.
                 || (mMinSdkVersion == 35 && SdkLevel.isAtLeastV()))
@@ -1087,6 +1104,7 @@ public class Role {
                 + ", mDescriptionResource=" + mDescriptionResource
                 + ", mExclusive=" + mExclusive
                 + ", mFallBackToDefaultHolder=" + mFallBackToDefaultHolder
+                + ", mFeatureFlag=" + mFeatureFlag
                 + ", mLabelResource=" + mLabelResource
                 + ", mMaxSdkVersion=" + mMaxSdkVersion
                 + ", mMinSdkVersion=" + mMinSdkVersion

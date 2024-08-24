@@ -41,12 +41,15 @@ import com.android.role.controller.util.ResourceUtils;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Parser for {@link Role} definitions.
@@ -90,6 +93,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_DESCRIPTION = "description";
     private static final String ATTRIBUTE_EXCLUSIVE = "exclusive";
     private static final String ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER = "fallBackToDefaultHolder";
+    private static final String ATTRIBUTE_FEATURE_FLAG = "featureFlag";
     private static final String ATTRIBUTE_LABEL = "label";
     private static final String ATTRIBUTE_MAX_SDK_VERSION = "maxSdkVersion";
     private static final String ATTRIBUTE_MIN_SDK_VERSION = "minSdkVersion";
@@ -132,6 +136,21 @@ public class RoleParser {
         sModeNameToMode.put(MODE_NAME_ERRORED, AppOpsManager.MODE_ERRORED);
         sModeNameToMode.put(MODE_NAME_DEFAULT, AppOpsManager.MODE_DEFAULT);
         sModeNameToMode.put(MODE_NAME_FOREGROUND, AppOpsManager.MODE_FOREGROUND);
+    }
+
+    private static final Supplier<Boolean> sFeatureFlagFallback = () -> false;
+
+    private static final ArrayMap<Class<?>, Class<?>> sPrimitiveToWrapperClass = new ArrayMap<>();
+    static {
+        sPrimitiveToWrapperClass.put(Boolean.TYPE, Boolean.class);
+        sPrimitiveToWrapperClass.put(Byte.TYPE, Byte.class);
+        sPrimitiveToWrapperClass.put(Character.TYPE, Character.class);
+        sPrimitiveToWrapperClass.put(Short.TYPE, Short.class);
+        sPrimitiveToWrapperClass.put(Integer.TYPE, Integer.class);
+        sPrimitiveToWrapperClass.put(Long.TYPE, Long.class);
+        sPrimitiveToWrapperClass.put(Float.TYPE, Float.class);
+        sPrimitiveToWrapperClass.put(Double.TYPE, Double.class);
+        sPrimitiveToWrapperClass.put(Void.TYPE, Void.class);
     }
 
     @NonNull
@@ -273,6 +292,9 @@ public class RoleParser {
             return null;
         }
 
+        Supplier<Boolean> featureFlag = getAttributeMethodValue(parser, ATTRIBUTE_FEATURE_FLAG,
+                boolean.class, sFeatureFlagFallback, TAG_PERMISSION_SET);
+
         int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
                 Build.VERSION_CODES.BASE);
         int optionalMinSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_OPTIONAL_MIN_SDK_VERSION,
@@ -295,11 +317,13 @@ public class RoleParser {
                 if (permission == null) {
                     continue;
                 }
+                Supplier<Boolean> mergedFeatureFlag =
+                        mergeFeatureFlags(permission.getFeatureFlag(), featureFlag);
                 int mergedMinSdkVersion = Math.max(permission.getMinSdkVersion(), minSdkVersion);
                 int mergedOptionalMinSdkVersion = Math.max(permission.getOptionalMinSdkVersion(),
                         optionalMinSdkVersion);
-                permission = permission.withSdkVersions(mergedMinSdkVersion,
-                        mergedOptionalMinSdkVersion);
+                permission = permission.withFeatureFlagAndSdkVersions(mergedFeatureFlag,
+                        mergedMinSdkVersion, mergedOptionalMinSdkVersion);
                 validateNoDuplicateElement(permission, permissions, "permission");
                 permissions.add(permission);
             } else {
@@ -319,11 +343,16 @@ public class RoleParser {
             skipCurrentTag(parser);
             return null;
         }
+
+        Supplier<Boolean> featureFlag = getAttributeMethodValue(parser, ATTRIBUTE_FEATURE_FLAG,
+                boolean.class, sFeatureFlagFallback, TAG_PERMISSION);
+
         int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
                 Build.VERSION_CODES.BASE);
         int optionalMinSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_OPTIONAL_MIN_SDK_VERSION,
                 minSdkVersion);
-        return new Permission(name, minSdkVersion, optionalMinSdkVersion);
+
+        return new Permission(name, featureFlag, minSdkVersion, optionalMinSdkVersion);
     }
 
     @Nullable
@@ -393,6 +422,9 @@ public class RoleParser {
 
         boolean fallBackToDefaultHolder = getAttributeBooleanValue(parser,
                 ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER, false);
+
+        Supplier<Boolean> featureFlag = getAttributeMethodValue(parser, ATTRIBUTE_FEATURE_FLAG,
+                boolean.class, sFeatureFlagFallback, TAG_ROLE);
 
         int maxSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MAX_SDK_VERSION,
                 Build.VERSION_CODES.CUR_DEVELOPMENT);
@@ -535,7 +567,7 @@ public class RoleParser {
             preferredActivities = Collections.emptyList();
         }
         return new Role(name, allowBypassingQualification, behavior, defaultHoldersResourceName,
-                descriptionResource, exclusive, fallBackToDefaultHolder, labelResource,
+                descriptionResource, exclusive, fallBackToDefaultHolder, featureFlag, labelResource,
                 maxSdkVersion, minSdkVersion, onlyGrantWhenAdded, overrideUserWhenGranting,
                 requestDescriptionResource, requestTitleResource, requestable,
                 searchKeywordsResource, shortLabelResource, showNone, statik, systemOnly, visible,
@@ -780,6 +812,9 @@ public class RoleParser {
                         throwOrLogMessage("Unknown permission set:" + permissionSetName);
                         continue;
                     }
+                    Supplier<Boolean> featureFlag = getAttributeMethodValue(parser,
+                            ATTRIBUTE_FEATURE_FLAG, boolean.class, sFeatureFlagFallback,
+                            TAG_PERMISSION_SET);
                     int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
                             Build.VERSION_CODES.BASE);
                     int optionalMinSdkVersion = getAttributeIntValue(parser,
@@ -789,12 +824,14 @@ public class RoleParser {
                     for (int permissionsInSetIndex = 0;
                             permissionsInSetIndex < permissionsInSetSize; permissionsInSetIndex++) {
                         Permission permission = permissionsInSet.get(permissionsInSetIndex);
+                        Supplier<Boolean> mergedFeatureFlag =
+                                mergeFeatureFlags(permission.getFeatureFlag(), featureFlag);
                         int mergedMinSdkVersion =
                                 Math.max(permission.getMinSdkVersion(), minSdkVersion);
                         int mergedOptionalMinSdkVersion = Math.max(
                                 permission.getOptionalMinSdkVersion(), optionalMinSdkVersion);
-                        permission = permission.withSdkVersions(mergedMinSdkVersion,
-                                mergedOptionalMinSdkVersion);
+                        permission = permission.withFeatureFlagAndSdkVersions(mergedFeatureFlag,
+                                mergedMinSdkVersion, mergedOptionalMinSdkVersion);
                         // We do allow intersection between permission sets.
                         permissions.add(permission);
                     }
@@ -872,6 +909,8 @@ public class RoleParser {
                 }
                 validateNoDuplicateElement(name, appOpNames, "app op");
                 appOpNames.add(name);
+                Supplier<Boolean> featureFlag = getAttributeMethodValue(parser,
+                        ATTRIBUTE_FEATURE_FLAG, boolean.class, sFeatureFlagFallback, TAG_APP_OP);
                 Integer maxTargetSdkVersion = getAttributeIntValue(parser,
                         ATTRIBUTE_MAX_TARGET_SDK_VERSION, Integer.MIN_VALUE);
                 if (maxTargetSdkVersion == Integer.MIN_VALUE) {
@@ -893,7 +932,8 @@ public class RoleParser {
                     continue;
                 }
                 int mode = sModeNameToMode.valueAt(modeIndex);
-                AppOp appOp = new AppOp(name, maxTargetSdkVersion, minSdkVersion, mode);
+                AppOp appOp = new AppOp(name, featureFlag, maxTargetSdkVersion, minSdkVersion,
+                        mode);
                 appOps.add(appOp);
             } else {
                 throwOrLogForUnknownTag(parser);
@@ -1052,6 +1092,110 @@ public class RoleParser {
         return getAttributeResourceValue(parser, name, defaultValue);
     }
 
+    @Nullable
+    private <T> Supplier<T> getAttributeMethodValue(@NonNull XmlResourceParser parser,
+            @NonNull String name, @NonNull Class<T> returnType, @Nullable Supplier<T> fallbackValue,
+            @NonNull String tagName) {
+        String value = parser.getAttributeValue(null, name);
+        if (value == null) {
+            return null;
+        }
+        int lastDotIndex = value.lastIndexOf('.');
+        if (lastDotIndex == -1) {
+            throwOrLogMessage("Invalid method \"" + value + "\" for \"" + name + "\" on <" + tagName
+                    + ">");
+            return fallbackValue;
+        }
+        String className = applyJarjarTransform(value.substring(0, lastDotIndex));
+        String methodName = value.substring(lastDotIndex + 1);
+        Method method;
+        try {
+            Class<?> clazz = Class.forName(className);
+            method = clazz.getMethod(methodName);
+        } catch (Exception e) {
+            throwOrLogMessage("Cannot find method \"" + value + "\" for \"" + name + "\" on <"
+                    + tagName + ">", e);
+            return fallbackValue;
+        }
+        int methodModifiers = method.getModifiers();
+        if ((methodModifiers & Modifier.PUBLIC) != Modifier.PUBLIC) {
+            throwOrLogMessage("Non-public method \"" + value + "\" for \"" + name + "\" on <"
+                    + tagName + ">");
+            return fallbackValue;
+        }
+        if ((methodModifiers & Modifier.STATIC) != Modifier.STATIC) {
+            throwOrLogMessage("Non-static method \"" + value + "\" for \"" + name + "\" on <"
+                    + tagName + ">");
+            return fallbackValue;
+        }
+        Class<?> methodReturnType = method.getReturnType();
+        if (!primitiveToWrapperClass(returnType).isAssignableFrom(
+                primitiveToWrapperClass(methodReturnType))) {
+            throwOrLogMessage("Unexpected return type for method \"" + value + "\" for \""
+                    + name + "\" on <" + tagName + ">, expected:" + returnType.getName()
+                    + ", found: " + methodReturnType.getName());
+            return fallbackValue;
+        }
+        return new Supplier<T>() {
+            @Override
+            public T get() {
+                try {
+                    //noinspection unchecked
+                    return (T) method.invoke(null);
+                } catch (Exception e) {
+                    throwOrLogMessage("Failed to invoke method \"" + value + "\" for \"" + name
+                            + "\" on <" + tagName + ">", e);
+                    return fallbackValue.get();
+                }
+            }
+            @Override
+            public String toString() {
+                return "Method{name=" + value + "}";
+            }
+        };
+    }
+
+    // LINT.IfChange(applyJarjarTransform)
+    /**
+     * Simulate the jarjar transform that should happen on the class name.
+     * <p>
+     * Currently this only handles the {@code Flags} classes for feature flagging.
+     */
+    @NonNull
+    private String applyJarjarTransform(@NonNull String className) {
+        if (className.endsWith(".Flags")) {
+            String jarjarPrefix = Objects.equals(mContext.getPackageName(), "android")
+                    ? "com.android.permission.jarjar." : "com.android.permissioncontroller.jarjar.";
+            return jarjarPrefix + className;
+        }
+        return className;
+    }
+    // LINT.ThenChange()
+
+    /**
+     * Return the wrapper class for the given class if it's a primitive type, or the class itself
+     * otherwise.
+     */
+    @NonNull
+    private Class<?> primitiveToWrapperClass(@NonNull Class<?> clazz) {
+        if (clazz.isPrimitive()) {
+            return sPrimitiveToWrapperClass.get(clazz);
+        }
+        return clazz;
+    }
+
+    @Nullable
+    private Supplier<Boolean> mergeFeatureFlags(@Nullable Supplier<Boolean> featureFlag1,
+            @Nullable Supplier<Boolean> featureFlag2) {
+        if (featureFlag1 == null) {
+            return featureFlag2;
+        }
+        if (featureFlag2 == null) {
+            return featureFlag1;
+        }
+        return () -> featureFlag1.get() && featureFlag2.get();
+    }
+
     private <T> void validateNoDuplicateElement(@NonNull T element,
             @NonNull Collection<T> collection, @NonNull String name) {
         if (collection.contains(element)) {
@@ -1108,7 +1252,7 @@ public class RoleParser {
         for (int rolesIndex = 0; rolesIndex < rolesSize; rolesIndex++) {
             Role role = roles.valueAt(rolesIndex);
 
-            if (!role.isAvailableBySdkVersion()) {
+            if (!role.isAvailableByFeatureFlagAndSdkVersion()) {
                 continue;
             }
 
@@ -1223,7 +1367,7 @@ public class RoleParser {
     }
 
     private void validateAppOp(@NonNull AppOp appOp) {
-        if (!appOp.isAvailableBySdkVersion()) {
+        if (!appOp.isAvailableByFeatureFlagAndSdkVersion()) {
             return;
         }
         // This throws IllegalArgumentException if app op is unknown.

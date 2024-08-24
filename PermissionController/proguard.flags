@@ -32,6 +32,11 @@
   *** has*();
 }
 
+# Keep Flags classes because they may be referenced by reflection in roles.xml
+-keep class **.Flags {
+    *;
+}
+
 # Strip verbose logs.
 -assumenosideeffects class android.util.Log {
   static *** v(...);

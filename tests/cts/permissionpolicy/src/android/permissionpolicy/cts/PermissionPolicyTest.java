@@ -33,6 +33,7 @@ import android.os.Process;
 import android.os.SystemProperties;
 import android.platform.test.annotations.AppModeFull;
 import android.platform.test.flag.junit.DeviceFlagsValueProvider;
+import android.platform.test.flag.util.FlagReadException;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -309,6 +310,7 @@ public class PermissionPolicyTest {
             XmlPullParser parser = Xml.newPullParser();
             parser.setInput(in, null);
 
+            boolean hasMissingFlag = false;
             final int outerDepth = parser.getDepth();
             int type;
             while ((type = parser.next()) != XmlPullParser.END_DOCUMENT
@@ -318,14 +320,18 @@ public class PermissionPolicyTest {
                 }
                 if (TAG_PERMISSION.equals(parser.getName())) {
                     String featureFlag = parser.getAttributeValue(null, ATTR_FEATURE_FLAG);
-                    if (featureFlag != null) {
+                    boolean missingFlag = "missing".equals(featureFlag);
+                    hasMissingFlag |= missingFlag;
+                    if (featureFlag != null && !missingFlag) {
                         featureFlag = featureFlag.trim();
                         boolean invert = featureFlag.startsWith("!");
                         if (invert) {
                             featureFlag = featureFlag.substring(1).trim();
                         }
-                        boolean flagEnabled =
-                                invert != flagsValueProvider.getBoolean(featureFlag);
+                        boolean flagEnabled = invert;
+                        try {
+                            flagEnabled = invert != flagsValueProvider.getBoolean(featureFlag);
+                        } catch (FlagReadException ignored) { }
                         if (!flagEnabled) {
                             continue;
                         }
@@ -343,6 +349,10 @@ public class PermissionPolicyTest {
                 } else {
                     Log.e(LOG_TAG, "Unknown tag " + parser.getName());
                 }
+            }
+            if (!hasMissingFlag) {
+                Assert.fail("All new permissions have real flags now! Revert the changes to this "
+                        + "file that introduced this error message to pass this test.");
             }
         } finally {
             flagsValueProvider.tearDownBeforeTest();

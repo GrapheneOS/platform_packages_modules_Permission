@@ -72,6 +72,11 @@ java_library {
     ],
 }
 
+filegroup {
+    name: "PermissionController-jarjar-rules",
+    srcs: ["jarjar-rules.txt"],
+}
+
 android_library {
     name: "PermissionController-lib",
     sdk_version: "system_current",
@@ -168,7 +173,7 @@ android_library {
     ],
 
     // TODO(b/313706381): Remove jarjar once flagging lib is fixed
-    jarjar_rules: "jarjar-rules.txt",
+    jarjar_rules: ":PermissionController-jarjar-rules",
 }
 
 android_app {

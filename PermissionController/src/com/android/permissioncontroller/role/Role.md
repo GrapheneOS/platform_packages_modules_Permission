@@ -58,6 +58,10 @@ the default app detail page as a footer. This attribute is required if the role 
 allowed to be its holder.
 - `fallBackToDefaultHolder`: Whether the role should fall back to the default holder. This attribute
 is optional and defaults to `false`.
+- `featureFlag`: Optional feature flag for the role be available, as the fully qualified name of
+the Java method on the `Flags` class which will be invoked via reflection. Note that any new
+aconfig library dependency will need corresponding jarjar rules for PermissionController and the
+system service JAR.
 - `label`: The string resource for the label of the role, e.g. `@string/role_sms_label`, which says
 "Default SMS app". For default apps, this string will appear in the default app detail page as the
 title. This attribute is required if the role is `visible`.

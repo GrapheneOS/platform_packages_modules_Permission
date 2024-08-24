@@ -64,4 +64,10 @@ android_test {
         ":CtsSMSNotRestrictedWithSharedUid",
         ":CtsProcessOutgoingCalls",
     ],
+    lint: {
+        extra_check_modules: [
+            "PermissionPolicyLintChecker",
+        ],
+        baseline_filename: "lint-baseline.xml",
+    },
 }
