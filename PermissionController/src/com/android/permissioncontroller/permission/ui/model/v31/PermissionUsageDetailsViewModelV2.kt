@@ -25,6 +25,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.android.permissioncontroller.R
 import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionTimelineUsageModel
@@ -64,6 +65,7 @@ class PermissionUsageDetailsViewModelV2(
     private val packageRepository: PackageRepository = PackageRepository.getInstance(app)
 ) : BasePermissionUsageDetailsViewModel(app) {
     private val coroutineScope = scope ?: viewModelScope
+    private val context = app
 
     private val showSystemFlow = MutableStateFlow(state[SHOULD_SHOW_SYSTEM_KEY] ?: false)
     private val show7DaysFlow = MutableStateFlow(state[SHOULD_SHOW_7_DAYS_KEY] ?: false)
@@ -123,14 +125,18 @@ class PermissionUsageDetailsViewModelV2(
                             null
                         }
                     val proxyLabel = getProxyPackageLabel(clusterOps)
-                    val subAttributionLabel = clusterOps.attributionLabel
-                    val showingSubAttribution = !subAttributionLabel.isNullOrEmpty()
-                    val summary =
-                        buildUsageSummary(subAttributionLabel, proxyLabel, durationSummaryLabel)
                     val isEmergencyLocationAccess =
                         isLocationByPassEnabled() &&
                             clusterOps.opNames.any { it == OPSTR_EMERGENCY_LOCATION }
-
+                    val subAttributionLabel =
+                        if (isEmergencyLocationAccess) {
+                            emergencyLocationAttributionLabel
+                        } else {
+                            clusterOps.attributionLabel
+                        }
+                    val showingSubAttribution = !subAttributionLabel.isNullOrEmpty()
+                    val summary =
+                        buildUsageSummary(subAttributionLabel, proxyLabel, durationSummaryLabel)
                     PermissionUsageDetailsViewModel.AppPermissionAccessUiInfo(
                         UserHandle.of(clusterOps.userId),
                         clusterOps.packageName,
@@ -150,6 +156,10 @@ class PermissionUsageDetailsViewModelV2(
                 }
                 .sortedBy { -1 * it.accessStartTime }
         return PermissionUsageDetailsUiState.Success(result, containsSystemUsages)
+    }
+
+    private val emergencyLocationAttributionLabel: String by lazy {
+        context.getString(R.string.privacy_dashboard_emergency_location_enforced_attribution_label)
     }
 
     override fun getShowSystem(): Boolean = showSystemFlow.value

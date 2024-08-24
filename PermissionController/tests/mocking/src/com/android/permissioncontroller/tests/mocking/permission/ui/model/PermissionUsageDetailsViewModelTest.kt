@@ -20,6 +20,7 @@ import android.app.AppOpsManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
+import android.permission.flags.Flags
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
@@ -89,6 +90,7 @@ class PermissionUsageDetailsViewModelTest {
                 .mockStatic(PermissionControllerApplication::class.java)
                 .mockStatic(Utils::class.java)
                 .mockStatic(StringUtils::class.java)
+                .mockStatic(Flags::class.java)
                 .strictness(Strictness.LENIENT)
                 .startMocking()
 
@@ -355,15 +357,14 @@ class PermissionUsageDetailsViewModelTest {
     }
 
     @Test
-    fun verifyLocationBypassAccess() = runTest {
+    fun verifyEmergencyLocationAccessWithAttribution() = runTest {
+        Assume.assumeTrue(SdkLevel.isAtLeastV())
+        whenever(Flags.locationBypassPrivacyDashboardEnabled()).thenReturn(true)
+        whenever(application.getString(anyInt())).thenReturn("emergency attr label")
         val accessTimeMillis = (getCurrentTime() - TimeUnit.HOURS.toMillis(5))
         val appOpEvents =
             listOf(
-                DiscreteOpModel(
-                    AppOpsManager.OPSTR_EMERGENCY_LOCATION,
-                    accessTimeMillis,
-                    TimeUnit.MINUTES.toMillis(1)
-                ),
+                DiscreteOpModel(AppOpsManager.OPSTR_EMERGENCY_LOCATION, accessTimeMillis, -1),
             )
         val discretePackageOps = flow {
             emit(
@@ -377,12 +378,13 @@ class PermissionUsageDetailsViewModelTest {
             getViewModel(
                 LOCATION_PERMISSION_GROUP,
                 discretePackageOps,
-                savedStateMap = mapOf("show7Days" to false, "showSystem" to false)
             )
         val uiState = getPermissionUsageDetailsUiState(underTest)
         assertThat(uiState.appPermissionAccessUiInfoList.size).isEqualTo(1)
         val timelineRow = uiState.appPermissionAccessUiInfoList.first()
         assertThat(timelineRow.isEmergencyLocationAccess).isTrue()
+        assertThat(timelineRow.showingAttribution).isTrue()
+        assertThat(timelineRow.summaryText).isEqualTo("emergency attr label")
     }
 
     @Test
