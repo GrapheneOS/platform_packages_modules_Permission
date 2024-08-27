@@ -77,6 +77,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
     private String mPermissionGroup;
     private boolean mHasSystemApps;
+    private boolean mMenuItemsCreated = false;
 
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
@@ -203,8 +204,6 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                 menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE, R.string.menu_show_system);
         mHideSystemMenu =
                 menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
-        updateShowSystemToggle(mViewModel.getShowSystem());
-
         if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
             mShow7DaysDataMenu =
                     menu.add(
@@ -218,8 +217,11 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                             MENU_SHOW_24_HOURS_DATA,
                             Menu.NONE,
                             R.string.menu_show_24_hours_data);
+            mMenuItemsCreated = true;
             updateShow7DaysToggle(mViewModel.getShow7Days());
         }
+        mMenuItemsCreated = true;
+        updateShowSystemToggle(mViewModel.getShowSystem());
     }
 
     @Override
@@ -276,7 +278,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         subtitlePreference.setSelectable(false);
         screen.addPreference(subtitlePreference);
 
-        boolean containsSystemAppAccesses = uiData.getContainsSystemAppAccesses();
+        boolean containsSystemAppAccesses = uiData.getContainsSystemAppUsage();
         if (mHasSystemApps != containsSystemAppAccesses) {
             mHasSystemApps = containsSystemAppAccesses;
         }
@@ -361,35 +363,28 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
     }
 
     private void updateShowSystemToggle(boolean showSystem) {
+        if (!mMenuItemsCreated) return;
+
         if (mHasSystemApps) {
-            if (mShowSystemMenu != null) {
-                mShowSystemMenu.setVisible(!showSystem);
-                mShowSystemMenu.setEnabled(true);
-            }
+            mShowSystemMenu.setVisible(!showSystem);
+            mShowSystemMenu.setEnabled(true);
 
-            if (mHideSystemMenu != null) {
-                mHideSystemMenu.setVisible(showSystem);
-                mHideSystemMenu.setEnabled(true);
-            }
+            mHideSystemMenu.setVisible(showSystem);
+            mHideSystemMenu.setEnabled(true);
         } else {
-            if (mShowSystemMenu != null) {
-                mShowSystemMenu.setVisible(true);
-                mShowSystemMenu.setEnabled(false);
-            }
+            mShowSystemMenu.setVisible(true);
+            mShowSystemMenu.setEnabled(false);
 
-            if (mHideSystemMenu != null) {
-                mHideSystemMenu.setVisible(false);
-                mHideSystemMenu.setEnabled(false);
-            }
+            mHideSystemMenu.setVisible(false);
+            mHideSystemMenu.setEnabled(false);
         }
     }
 
     private void updateShow7DaysToggle(boolean show7Days) {
-        if (mShow7DaysDataMenu != null) {
-            mShow7DaysDataMenu.setVisible(!show7Days);
-        }
+        if (!mMenuItemsCreated) return;
 
-        if (mShow24HoursDataMenu != null) {
+        if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
+            mShow7DaysDataMenu.setVisible(!show7Days);
             mShow24HoursDataMenu.setVisible(show7Days);
         }
     }

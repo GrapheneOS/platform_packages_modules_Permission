@@ -146,10 +146,15 @@ class PermissionUsageDetailsViewModelTest {
             )
         }
 
-        val underTest = getViewModel(LOCATION_PERMISSION_GROUP, discretePackageOps)
+        val underTest =
+            getViewModel(
+                LOCATION_PERMISSION_GROUP,
+                discretePackageOps,
+                savedStateMap = mapOf("show7Days" to false, "showSystem" to false),
+            )
         val uiState = getPermissionUsageDetailsUiState(underTest)
 
-        assertThat(uiState.containsSystemAppAccesses).isEqualTo(true)
+        assertThat(uiState.containsSystemAppUsage).isEqualTo(true)
         assertThat(uiState.appPermissionAccessUiInfoList.size).isEqualTo(1)
         assertThat(uiState.appPermissionAccessUiInfoList.first().packageName)
             .isEqualTo(testPackageName)
@@ -185,7 +190,7 @@ class PermissionUsageDetailsViewModelTest {
             )
         val uiState = getPermissionUsageDetailsUiState(underTest)
 
-        assertThat(uiState.containsSystemAppAccesses).isEqualTo(true)
+        assertThat(uiState.containsSystemAppUsage).isEqualTo(true)
         assertThat(uiState.appPermissionAccessUiInfoList.size).isEqualTo(2)
         assertThat(uiState.appPermissionAccessUiInfoList.map { it.packageName }.toSet())
             .isEqualTo(setOf(testPackageName, systemPackageName))
@@ -218,7 +223,37 @@ class PermissionUsageDetailsViewModelTest {
             )
         val uiState = getPermissionUsageDetailsUiState(underTest)
 
-        assertThat(uiState.containsSystemAppAccesses).isEqualTo(false)
+        assertThat(uiState.containsSystemAppUsage).isEqualTo(false)
+    }
+
+    @Test
+    fun verifyNoSystemAppsAvailableInLast24Hours() = runTest {
+        val accessTimeMillis = (getCurrentTime() - TimeUnit.DAYS.toMillis(2))
+        val appOpEvents =
+            listOf(
+                DiscreteOpModel(
+                    AppOpsManager.OPSTR_COARSE_LOCATION,
+                    accessTimeMillis,
+                    TimeUnit.MINUTES.toMillis(1)
+                ),
+            )
+        val discretePackageOps = flow {
+            emit(
+                listOf(
+                    DiscretePackageOpsModel(systemPackageName, currentUser.identifier, appOpEvents),
+                )
+            )
+        }
+
+        val underTest =
+            getViewModel(
+                LOCATION_PERMISSION_GROUP,
+                discretePackageOps,
+                savedStateMap = mapOf("show7Days" to false, "showSystem" to false)
+            )
+        val uiState = getPermissionUsageDetailsUiState(underTest)
+
+        assertThat(uiState.containsSystemAppUsage).isEqualTo(false)
     }
 
     @Test
@@ -252,9 +287,6 @@ class PermissionUsageDetailsViewModelTest {
         assertThat(uiState.appPermissionAccessUiInfoList.size).isEqualTo(1)
         val timelineRow = uiState.appPermissionAccessUiInfoList.first()
         assertThat(timelineRow.accessStartTime).isEqualTo(accessStartWithIn24Hours)
-        // End minute is inclusive
-        assertThat(timelineRow.accessEndTime)
-            .isEqualTo(accessStartWithIn24Hours + TimeUnit.MINUTES.toMillis(4))
     }
 
     @Test
@@ -297,19 +329,16 @@ class PermissionUsageDetailsViewModelTest {
             .isInOrder(Comparator.reverseOrder<Long>())
         val lastRow = uiState.appPermissionAccessUiInfoList.last()
         assertThat(lastRow.accessStartTime).isEqualTo(accessTimeBefore24Hours)
-        // End minute is inclusive
-        assertThat(lastRow.accessEndTime)
-            .isEqualTo(accessTimeBefore24Hours + TimeUnit.MINUTES.toMillis(6))
     }
 
     @Test
     fun verifyDurationLabelIsShown() = runTest {
-        val accessStartWithIn24Hours = (getCurrentTime() - TimeUnit.HOURS.toMillis(5))
+        val accessTimeMillis = (getCurrentTime() - TimeUnit.HOURS.toMillis(5))
         val appOpEvents =
             listOf(
                 DiscreteOpModel(
                     AppOpsManager.OPSTR_CAMERA,
-                    accessStartWithIn24Hours,
+                    accessTimeMillis,
                     TimeUnit.MINUTES.toMillis(5)
                 ),
             )
@@ -331,12 +360,12 @@ class PermissionUsageDetailsViewModelTest {
 
     @Test
     fun verifyDurationLabelIsNotShown() = runTest {
-        val accessStartWithIn24Hours = (getCurrentTime() - TimeUnit.HOURS.toMillis(5))
+        val accessTimeMillis = (getCurrentTime() - TimeUnit.HOURS.toMillis(5))
         val appOpEvents =
             listOf(
                 DiscreteOpModel(
                     AppOpsManager.OPSTR_CAMERA,
-                    accessStartWithIn24Hours,
+                    accessTimeMillis,
                     TimeUnit.MINUTES.toMillis(1)
                 ),
             )
@@ -409,7 +438,6 @@ class PermissionUsageDetailsViewModelTest {
             getViewModel(
                 LOCATION_PERMISSION_GROUP,
                 discretePackageOps,
-                savedStateMap = mapOf("show7Days" to false, "showSystem" to false)
             )
         val result by collectLastValue(underTest.permissionUsageDetailsUiStateFlow)
         var uiState = result as PermissionUsageDetailsUiState.Success

@@ -106,16 +106,18 @@ class PermissionUsageDetailsViewModelV2(
         if (this is PermissionTimelineUsageModelWrapper.Loading) {
             return PermissionUsageDetailsUiState.Loading
         }
-        val permissionTimelineUsageModels =
+        val timelineUsageModels =
             (this as PermissionTimelineUsageModelWrapper.Success).timelineUsageModels
         val startTime =
             (System.currentTimeMillis() - getUsageDuration(show7Days)).coerceAtLeast(
                 Instant.EPOCH.toEpochMilli()
             )
+
+        val permissionTimelineUsageModels =
+            timelineUsageModels.filter { it.accessEndMillis > startTime }
         val containsSystemUsages = permissionTimelineUsageModels.any { !it.isUserSensitive }
         val result =
             permissionTimelineUsageModels
-                .filter { it.accessEndMillis > startTime }
                 .filter { showSystem || it.isUserSensitive }
                 .map { clusterOps ->
                     val durationSummaryLabel =

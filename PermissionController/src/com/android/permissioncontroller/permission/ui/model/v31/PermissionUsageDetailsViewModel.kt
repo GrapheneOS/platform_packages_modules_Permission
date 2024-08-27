@@ -570,7 +570,7 @@ class PermissionUsageDetailsViewModel(
 
         data class Success(
             val appPermissionAccessUiInfoList: List<AppPermissionAccessUiInfo>,
-            val containsSystemAppAccesses: Boolean,
+            val containsSystemAppUsage: Boolean,
         ) : PermissionUsageDetailsUiState()
     }
 

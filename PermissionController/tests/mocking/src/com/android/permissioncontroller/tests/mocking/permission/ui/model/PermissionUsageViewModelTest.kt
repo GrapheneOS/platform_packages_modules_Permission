@@ -66,6 +66,7 @@ class PermissionUsageViewModelTest {
     private val testPackageName = "test.package"
     private val systemPackageName = "test.package.system"
     private lateinit var packageInfos: MutableMap<String, PackageInfoModel>
+
     @Before
     fun setup() {
         Assume.assumeTrue(SdkLevel.isAtLeastS())
@@ -159,6 +160,38 @@ class PermissionUsageViewModelTest {
         val permissionGroupsCount = uiData.permissionGroupUsageCount
         assertThat(permissionGroupsCount[CAMERA_PERMISSION_GROUP]).isEqualTo(2)
         assertThat(permissionGroupsCount[MICROPHONE_PERMISSION_GROUP]).isEqualTo(1)
+    }
+
+    @Test
+    fun noSystemAppsAvailableInLast24Hours() = runTest {
+        val timestamp = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(2)
+        val appOpsUsage =
+            listOf(
+                AppOpUsageModel(AppOpsManager.OPSTR_CAMERA, timestamp),
+                AppOpUsageModel(AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE, timestamp),
+            )
+        val appOpsUsageModels =
+            listOf(
+                PackageAppOpUsageModel(testPackageName, appOpsUsage, currentUser.identifier),
+                PackageAppOpUsageModel(systemPackageName, appOpsUsage, currentUser.identifier),
+            )
+        val permissionUsageUseCase = getPermissionGroupUsageUseCase(appOpsUsageModels)
+        val permissionUsageViewModel =
+            PermissionUsageViewModel(
+                application,
+                permissionRepository,
+                permissionUsageUseCase,
+                backgroundScope,
+                StandardTestDispatcher(testScheduler),
+                is7DayToggleEnabled = false
+            )
+        val uiData =
+            checkNotNull(
+                collectLastValue(permissionUsageViewModel.getPermissionUsagesUiDataFlow()).invoke()
+            )
+                as PermissionUsagesUiState.Success
+
+        assertThat(uiData.containsSystemAppUsage).isFalse()
     }
 
     @Test

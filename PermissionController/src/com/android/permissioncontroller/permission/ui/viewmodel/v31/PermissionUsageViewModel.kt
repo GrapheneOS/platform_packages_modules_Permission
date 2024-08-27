@@ -164,7 +164,7 @@ class PermissionUsageViewModel(
 sealed class PermissionUsagesUiState {
     data object Loading : PermissionUsagesUiState()
     data class Success(
-        val shouldShowSystemToggle: Boolean,
+        val containsSystemAppUsage: Boolean,
         val permissionGroupUsageCount: Map<String, Int>
     ) : PermissionUsagesUiState()
 }

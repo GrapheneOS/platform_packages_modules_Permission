@@ -54,7 +54,7 @@ fun WearPermissionUsageScreen(
     val hasSystemApps: Boolean =
         if (isDataLoaded) {
             val uiState = permissionUsagesUiData.value as PermissionUsagesUiState.Success
-            uiState.shouldShowSystemToggle
+            uiState.containsSystemAppUsage
         } else {
             false
         }

@@ -61,7 +61,7 @@ fun WearPermissionUsageDetailsScreen(
 
     val hasSystemApps: Boolean =
         if (uiData.value is PermissionUsageDetailsUiState.Success) {
-            (uiData.value as PermissionUsageDetailsUiState.Success).containsSystemAppAccesses
+            (uiData.value as PermissionUsageDetailsUiState.Success).containsSystemAppUsage
         } else {
             false
         }
