@@ -125,7 +125,9 @@ class PermissionUsageDetailsViewModel(
                 startTime,
                 showSystem
             ),
-            containsSystemAppUsages(allLightHistoricalPackageOpsLiveData, startTime)
+            containsSystemAppUsages(allLightHistoricalPackageOpsLiveData, startTime),
+            showSystem,
+            show7Days
         )
     }
 
@@ -571,6 +573,8 @@ class PermissionUsageDetailsViewModel(
         data class Success(
             val appPermissionAccessUiInfoList: List<AppPermissionAccessUiInfo>,
             val containsSystemAppUsage: Boolean,
+            val showSystem: Boolean,
+            val show7Days: Boolean,
         ) : PermissionUsageDetailsUiState()
     }
 

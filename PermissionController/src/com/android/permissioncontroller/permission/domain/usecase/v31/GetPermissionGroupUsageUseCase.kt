@@ -29,6 +29,7 @@ import com.android.permissioncontroller.appops.data.repository.v31.AppOpReposito
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PackagePermissionGroupUsageModel
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
+import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModelWrapper
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.pm.data.repository.v31.PackageRepository
 import com.android.permissioncontroller.role.data.repository.v31.RoleRepository
@@ -51,18 +52,20 @@ class GetPermissionGroupUsageUseCase(
      * Returns a flow (i.e. a stream) of permission group usages (i.e. the private data accesses)
      * for privacy dashboard page.
      */
-    operator fun invoke(): Flow<List<PermissionGroupUsageModel>> {
+    operator fun invoke(): Flow<PermissionGroupUsageModelWrapper> {
         return appOpRepository.packageAppOpsUsages.map { packagesOps ->
             val exemptedPackages = roleRepository.getExemptedPackages()
             val currentUsers = userRepository.getUserProfilesIncludingCurrentUser()
 
-            packagesOps
-                .mapToPermissionGroups()
-                .filter { it.userId in currentUsers }
-                .filter { it.packageName !in exemptedPackages }
-                .filterQuietProfilesIfNeeded(currentUsers)
-                .filterNonRequestedOps()
-                .buildPermissionGroupUsageModels()
+            val usages =
+                packagesOps
+                    .mapToPermissionGroups()
+                    .filter { it.userId in currentUsers }
+                    .filter { it.packageName !in exemptedPackages }
+                    .filterQuietProfilesIfNeeded(currentUsers)
+                    .filterNonRequestedOps()
+                    .buildPermissionGroupUsageModels()
+            PermissionGroupUsageModelWrapper.Success(usages)
         }
     }
 
@@ -128,8 +131,7 @@ class GetPermissionGroupUsageUseCase(
                     packageInfo?.requestedPermissions?.any { permission ->
                         permissionGroupUsage.key ==
                             PermissionMapping.getGroupOfPlatformPermission(permission)
-                    }
-                        ?: false
+                    } ?: false
                 }
             if (filteredOps.isNotEmpty()) {
                 PackagePermissionGroupUsageModel(pkgOps.packageName, filteredOps, pkgOps.userId)

@@ -157,7 +157,12 @@ class PermissionUsageDetailsViewModelV2(
                     )
                 }
                 .sortedBy { -1 * it.accessStartTime }
-        return PermissionUsageDetailsUiState.Success(result, containsSystemUsages)
+        return PermissionUsageDetailsUiState.Success(
+            result,
+            containsSystemUsages,
+            showSystem,
+            show7Days
+        )
     }
 
     private val emergencyLocationAttributionLabel: String by lazy {

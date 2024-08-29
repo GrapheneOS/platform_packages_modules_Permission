@@ -29,3 +29,10 @@ data class PermissionGroupUsageModel(
      */
     val isUserSensitive: Boolean,
 )
+
+sealed class PermissionGroupUsageModelWrapper {
+    data object Loading : PermissionGroupUsageModelWrapper()
+
+    data class Success(val permissionUsageModels: List<PermissionGroupUsageModel>) :
+        PermissionGroupUsageModelWrapper()
+}

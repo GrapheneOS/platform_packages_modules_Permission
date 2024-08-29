@@ -31,20 +31,23 @@ import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
+import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModelWrapper
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_7_DAYS_KEY
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
-import kotlin.concurrent.Volatile
 import kotlin.math.max
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.runBlocking
 
@@ -57,35 +60,35 @@ class PermissionUsageViewModel(
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
     // Inject the parameter to prevent READ_DEVICE_CONFIG permission error on T- platforms.
     private val is7DayToggleEnabled: Boolean = KotlinUtils.is7DayToggleEnabled(),
+    private val savedState: SavedStateHandle = SavedStateHandle(emptyMap()),
 ) : AndroidViewModel(app) {
-    private var showSystemApps = false
-    private var show7DaysData = false
+    private val showSystemFlow = MutableStateFlow(savedState[SHOULD_SHOW_SYSTEM_KEY] ?: false)
+    private val show7DaysFlow = MutableStateFlow(savedState[SHOULD_SHOW_7_DAYS_KEY] ?: false)
     private val coroutineScope = scope ?: viewModelScope
 
-    // Cache permission usages to calculate ui state for "show system" and "show 7 days" toggle.
-    @Volatile private var permissionGroupUsages = emptyList<PermissionGroupUsageModel>()
-
-    private val permissionUsagesUiStateFlow: StateFlow<PermissionUsagesUiState> by lazy {
+    private val permissionUsagesUiStateFlow: StateFlow<PermissionGroupUsageModelWrapper> by lazy {
         getPermissionUsageUseCase()
-            .map { permGroupUsages ->
-                permissionGroupUsages = permGroupUsages
-                buildPermissionUsagesUiState(permGroupUsages)
-            }
             .flowOn(defaultDispatcher)
             .stateIn(
                 coroutineScope,
                 SharingStarted.WhileSubscribed(5000),
-                PermissionUsagesUiState.Loading
+                PermissionGroupUsageModelWrapper.Loading
             )
     }
 
-    val permissionUsagesUiLiveData =
-        permissionUsagesUiStateFlow.asLiveData(context = coroutineScope.coroutineContext)
-
     @VisibleForTesting
-    fun getPermissionUsagesUiDataFlow(): Flow<PermissionUsagesUiState> {
-        return permissionUsagesUiStateFlow
+    val permissionUsagesUiDataFlow: Flow<PermissionUsagesUiState> by lazy {
+        combine(permissionUsagesUiStateFlow, showSystemFlow, show7DaysFlow) {
+                permGroupUsages,
+                showSystemApps,
+                show7Days ->
+                buildPermissionUsagesUiState(permGroupUsages, showSystemApps, show7Days)
+            }
+            .flowOn(defaultDispatcher)
     }
+
+    val permissionUsagesUiLiveData =
+        permissionUsagesUiDataFlow.asLiveData(context = coroutineScope.coroutineContext)
 
     /** Get start time based on whether to show 24 hours or 7 days data. */
     private fun getStartTime(show7DaysData: Boolean): Long {
@@ -101,8 +104,17 @@ class PermissionUsageViewModel(
 
     /** Builds a [PermissionUsagesUiState] containing all data necessary to render the UI. */
     private fun buildPermissionUsagesUiState(
-        permissionGroupOps: List<PermissionGroupUsageModel>
+        usages: PermissionGroupUsageModelWrapper,
+        showSystemApps: Boolean,
+        show7DaysData: Boolean,
     ): PermissionUsagesUiState {
+        if (usages is PermissionGroupUsageModelWrapper.Loading) {
+            return PermissionUsagesUiState.Loading
+        }
+
+        val permissionGroupOps: List<PermissionGroupUsageModel> =
+            (usages as PermissionGroupUsageModelWrapper.Success).permissionUsageModels
+
         val startTime = getStartTime(show7DaysData)
         val dashboardPermissionGroups =
             permissionRepository.getPermissionGroupsForPrivacyDashboard()
@@ -120,26 +132,31 @@ class PermissionUsageViewModel(
             }
         return PermissionUsagesUiState.Success(
             permGroupOps.any { !it.isUserSensitive },
-            permissionUsageCountMap
+            permissionUsageCountMap,
+            showSystemApps,
+            show7DaysData
         )
     }
 
-    fun getShowSystemApps(): Boolean {
-        return showSystemApps
+    fun getShowSystemApps(): Boolean = showSystemFlow.value
+
+    fun getShow7DaysData(): Boolean = show7DaysFlow.value
+
+    val showSystemAppsLiveData =
+        showSystemFlow.asLiveData(context = coroutineScope.coroutineContext)
+
+    fun updateShowSystem(showSystem: Boolean) {
+        if (showSystem != savedState[SHOULD_SHOW_SYSTEM_KEY]) {
+            savedState[SHOULD_SHOW_SYSTEM_KEY] = showSystem
+        }
+        showSystemFlow.compareAndSet(!showSystem, showSystem)
     }
 
-    fun getShow7DaysData(): Boolean {
-        return show7DaysData
-    }
-
-    fun updateShowSystem(showSystem: Boolean): PermissionUsagesUiState {
-        showSystemApps = showSystem
-        return buildPermissionUsagesUiState(permissionGroupUsages)
-    }
-
-    fun updateShow7Days(show7Days: Boolean): PermissionUsagesUiState {
-        show7DaysData = show7Days
-        return buildPermissionUsagesUiState(permissionGroupUsages)
+    fun updateShow7Days(show7Days: Boolean) {
+        if (show7Days != savedState[SHOULD_SHOW_7_DAYS_KEY]) {
+            savedState[SHOULD_SHOW_7_DAYS_KEY] = show7Days
+        }
+        show7DaysFlow.compareAndSet(!show7Days, show7Days)
     }
 
     private val permissionGroupLabels = mutableMapOf<String, String>()
@@ -163,9 +180,12 @@ class PermissionUsageViewModel(
 /** Data class to hold all the information required to configure the UI. */
 sealed class PermissionUsagesUiState {
     data object Loading : PermissionUsagesUiState()
+
     data class Success(
         val containsSystemAppUsage: Boolean,
-        val permissionGroupUsageCount: Map<String, Int>
+        val permissionGroupUsageCount: Map<String, Int>,
+        val showSystem: Boolean,
+        val show7Days: Boolean,
     ) : PermissionUsagesUiState()
 }
 
@@ -184,6 +204,12 @@ class PermissionUsageViewModelFactory(
     ): T {
         val permissionRepository = PermissionRepository.getInstance(app)
         val permissionUsageUseCase = GetPermissionGroupUsageUseCase.create(app)
-        return PermissionUsageViewModel(app, permissionRepository, permissionUsageUseCase) as T
+        return PermissionUsageViewModel(
+            app,
+            permissionRepository,
+            permissionUsageUseCase,
+            savedState = handle
+        )
+            as T
     }
 }

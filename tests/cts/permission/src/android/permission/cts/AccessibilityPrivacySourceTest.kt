@@ -44,12 +44,14 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import com.android.compatibility.common.util.DeviceConfigStateChangerRule
+import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.modules.utils.build.SdkLevel
 import org.junit.After
 import org.junit.Assert
 import org.junit.Assume
+import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.ClassRule
 import org.junit.Rule
@@ -215,6 +217,13 @@ class AccessibilityPrivacySourceTest {
     @Test
     fun testJobWithSafetyCenterDisabledDoesNotSendNotification() {
         setDeviceConfigPrivacyProperty(SAFETY_CENTER_ENABLED, false.toString())
+        // Safety Center cannot be disabled at runtime on UDC+.
+        assumeFalse(
+            "Safety Center cannot be disabled",
+            callWithShellPermissionIdentity {
+                safetyCenterManager?.isSafetyCenterEnabled() ?: false
+            }
+        )
         mAccessibilityServiceRule.enableService()
         runJobAndWaitUntilCompleted()
         assertEmptyNotification(permissionControllerPackage, ACCESSIBILITY_NOTIFICATION_ID)
@@ -223,6 +232,13 @@ class AccessibilityPrivacySourceTest {
     @Test
     fun testJobWithSafetyCenterDisabledDoesNotSendIssueToSafetyCenter() {
         setDeviceConfigPrivacyProperty(SAFETY_CENTER_ENABLED, false.toString())
+        // Safety Center cannot be disabled at runtime on UDC+.
+        assumeFalse(
+            "Safety Center cannot be disabled",
+            callWithShellPermissionIdentity {
+                safetyCenterManager?.isSafetyCenterEnabled() ?: false
+            }
+        )
         mAccessibilityServiceRule.enableService()
         runJobAndWaitUntilCompleted()
         assertSafetyCenterIssueDoesNotExist(

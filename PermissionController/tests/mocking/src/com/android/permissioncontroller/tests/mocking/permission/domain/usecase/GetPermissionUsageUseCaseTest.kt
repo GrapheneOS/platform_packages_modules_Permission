@@ -29,6 +29,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
+import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModelWrapper
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.pm.data.model.v31.PackageInfoModel
@@ -43,6 +44,7 @@ import com.android.permissioncontroller.user.data.repository.v31.UserRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assume
@@ -119,7 +121,7 @@ class GetPermissionUsageUseCaseTest {
         }
         val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(listOf(PermissionGroupUsageModel(CAMERA_PERMISSION_GROUP, 100, true)))
     }
@@ -149,7 +151,7 @@ class GetPermissionUsageUseCaseTest {
         val underTest =
             getPermissionGroupUsageUseCase(appOpsUsageModelFlow, userRepo = userRepository)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(
                 listOf(
@@ -181,7 +183,7 @@ class GetPermissionUsageUseCaseTest {
             )
         val underTest =
             getPermissionGroupUsageUseCase(appOpsUsageModelFlow, userRepo = userRepository)
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages).isEmpty()
     }
 
@@ -209,7 +211,7 @@ class GetPermissionUsageUseCaseTest {
         }
         val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(listOf(PermissionGroupUsageModel(CAMERA_PERMISSION_GROUP, 100, true)))
     }
@@ -235,7 +237,7 @@ class GetPermissionUsageUseCaseTest {
             )
         val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(listOf(PermissionGroupUsageModel(MICROPHONE_PERMISSION_GROUP, 100, true)))
     }
@@ -258,7 +260,7 @@ class GetPermissionUsageUseCaseTest {
         }
         val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(
                 listOf(
@@ -285,7 +287,7 @@ class GetPermissionUsageUseCaseTest {
         // test package is not a system package
         val underTest = getPermissionGroupUsageUseCase(appOpsUsageModelFlow)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(
                 listOf(
@@ -328,7 +330,7 @@ class GetPermissionUsageUseCaseTest {
         val underTest =
             getPermissionGroupUsageUseCase(appOpsUsageModelFlow, permissionFlags = permissionFlags)
 
-        val permissionGroupUsages by collectLastValue(underTest())
+        val permissionGroupUsages = getResult(underTest)
         assertThat(permissionGroupUsages)
             .isEqualTo(
                 listOf(
@@ -336,6 +338,13 @@ class GetPermissionUsageUseCaseTest {
                     PermissionGroupUsageModel(MICROPHONE_PERMISSION_GROUP, 100, false)
                 )
             )
+    }
+
+    private fun TestScope.getResult(
+        useCase: GetPermissionGroupUsageUseCase
+    ): List<PermissionGroupUsageModel> {
+        val result by collectLastValue(useCase())
+        return (result as PermissionGroupUsageModelWrapper.Success).permissionUsageModels
     }
 
     private fun getPackageInfoModel(

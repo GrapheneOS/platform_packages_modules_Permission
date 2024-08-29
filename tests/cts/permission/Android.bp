@@ -128,3 +128,41 @@ android_test {
     ],
     per_testcase_directory: true,
 }
+
+test_module_config {
+    name: "CtsPermissionTestCases_Platform",
+    base: "CtsPermissionTestCases",
+    test_suites: ["general-tests"],
+    include_filters: [
+        "android.permission.cts.BackgroundPermissionsTest",
+        "android.permission.cts.PermissionControllerTest",
+        "android.permission.cts.PermissionFlagsTest",
+        "android.permission.cts.RuntimePermissionPresentationInfoTest",
+        "android.permission.cts.SharedUidPermissionsTest",
+        "android.permission.cts.SplitPermissionTest",
+    ],
+}
+
+test_module_config {
+    name: "CtsPermissionTestCases_PermissionController",
+    base: "CtsPermissionTestCases",
+    test_suites: ["general-tests"],
+    include_filters: [
+        "android.permission.cts.BackgroundPermissionsTest",
+        "android.permission.cts.LocationAccessCheckTest",
+        "android.permission.cts.NotificationListenerCheckTest",
+        "android.permission.cts.OneTimePermissionTest",
+        "android.permission.cts.PermissionControllerTest",
+        "android.permission.cts.PlatformPermissionGroupMappingTest",
+    ],
+}
+
+test_module_config {
+    name: "CtsPermissionTestCases_PrivacySources",
+    base: "CtsPermissionTestCases",
+    test_suites: ["general-tests"],
+    include_filters: [
+        "android.permission.cts.AccessibilityPrivacySourceTest",
+        "android.permission.cts.NotificationListenerCheckTest",
+    ],
+}

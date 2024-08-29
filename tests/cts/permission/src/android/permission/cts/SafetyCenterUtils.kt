@@ -29,12 +29,14 @@ import android.safetycenter.SafetyCenterManager
 import androidx.annotation.RequiresApi
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
+import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.android.compatibility.common.util.SystemUtil.runWithShellPermissionIdentity
 import com.android.compatibility.common.util.UiAutomatorUtils2.waitFindObject
 import com.android.safetycenter.internaldata.SafetyCenterIds
 import com.android.safetycenter.internaldata.SafetyCenterIssueId
 import com.android.safetycenter.internaldata.SafetyCenterIssueKey
 import org.junit.Assert
+import org.junit.Assume.assumeTrue
 
 object SafetyCenterUtils {
     /** Name of the flag that determines whether SafetyCenter is enabled. */
@@ -54,6 +56,14 @@ object SafetyCenterUtils {
     @JvmStatic
     fun setSafetyCenterEnabled(enabled: Boolean) {
         setDeviceConfigPrivacyProperty(PROPERTY_SAFETY_CENTER_ENABLED, enabled.toString())
+        val safetyCenterManager =
+            instrumentation.targetContext.getSystemService(SafetyCenterManager::class.java)
+        assumeTrue(
+            "Cannot toggle Safety Center",
+            callWithShellPermissionIdentity {
+                safetyCenterManager?.isSafetyCenterEnabled ?: false
+            } == enabled
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)

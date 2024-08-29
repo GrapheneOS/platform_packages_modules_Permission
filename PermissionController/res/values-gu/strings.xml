@@ -372,7 +372,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ મેસેજ, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ SMS ઍપ તરીકે સેટ કરીએ?"</string>
     <string name="role_sms_request_description" msgid="2691004766132144886">"આ ઍપને તમારા કૅમેરા, સંપર્કો, ફાઇલો અને મીડિયા, માઇક્રોફોન, ફોન અને SMSનો ઍક્સેસ આપવામાં આવશે."</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"ટેક્સ્ટ સંદેશ, ટેક્સ્ટિંગ, સંદેશા, મેસેજિંગ"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"ટેક્સ્ટ મેસેજ, ટેક્સ્ટિંગ, મેસેજ, મેસેજિંગ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ડિફૉલ્ટ ઇમર્જન્સી ઍપ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"ઇમર્જન્સી ઍપ"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"ઍપ કે જે તમને તમારી તબીબી માહિતી રેકોર્ડ કરીને ઇમર્જન્સી દરમિયાન ઍક્સેસ કરવાની; હવામાનની ગંભીર ઘટનાઓ અને દુર્ઘટનાઓ વિશે ચેતવણી મેળવવાની અને તમને સહાયની જરૂર હોય ત્યારે બીજા લોકોને તે વિશે સૂચિત કરવાની મંજૂરી આપે છે"</string>

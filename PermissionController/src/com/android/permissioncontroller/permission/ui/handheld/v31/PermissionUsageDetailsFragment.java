@@ -262,10 +262,9 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
             setPreferenceScreen(screen);
         }
         screen.removeAll();
-        boolean show7Days = mViewModel.getShow7Days();
         Preference subtitlePreference = new Preference(context);
-        updateShow7DaysToggle(show7Days);
-        int usageSubtitle = show7Days
+        updateShow7DaysToggle(uiData.getShow7Days());
+        int usageSubtitle = uiData.getShow7Days()
                 ? R.string.permission_group_usage_subtitle_7d
                 : R.string.permission_group_usage_subtitle_24h;
 
@@ -282,7 +281,7 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         if (mHasSystemApps != containsSystemAppAccesses) {
             mHasSystemApps = containsSystemAppAccesses;
         }
-        updateShowSystemToggle(mViewModel.getShowSystem());
+        updateShowSystemToggle(uiData.getShowSystem());
 
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression

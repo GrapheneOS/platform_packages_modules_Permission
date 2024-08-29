@@ -23,18 +23,7 @@
       ]
     },
     {
-      "name": "CtsPermissionTestCases",
-      "options": [
-        {
-          "include-filter": "android.permission.cts.NotificationListenerCheckTest"
-        },
-        {
-          "include-filter": "android.permission.cts.AccessibilityPrivacySourceTest"
-        },
-        {
-          "exclude-annotation": "androidx.test.filters.FlakyTest"
-        }
-      ]
+      "name": "CtsPermissionTestCases_PrivacySources"
     }
   ],
   "postsubmit": [

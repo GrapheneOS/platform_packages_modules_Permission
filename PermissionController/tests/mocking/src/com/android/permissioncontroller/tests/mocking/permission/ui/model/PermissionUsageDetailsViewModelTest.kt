@@ -450,6 +450,40 @@ class PermissionUsageDetailsViewModelTest {
         assertThat(uiState.appPermissionAccessUiInfoList.size).isEqualTo(1)
     }
 
+    @Test
+    fun verifyObserverIsNotifiedOnUserActionWhenDataIsSame() = runTest {
+        val accessTimeMillis = (getCurrentTime() - TimeUnit.HOURS.toMillis(2))
+        val appOpEvents =
+            listOf(
+                DiscreteOpModel(
+                    AppOpsManager.OPSTR_COARSE_LOCATION,
+                    accessTimeMillis,
+                    TimeUnit.MINUTES.toMillis(1)
+                ),
+            )
+
+        val discretePackageOps = flow {
+            emit(
+                listOf(
+                    DiscretePackageOpsModel(testPackageName, currentUser.identifier, appOpEvents),
+                )
+            )
+        }
+        val underTest =
+            getViewModel(
+                LOCATION_PERMISSION_GROUP,
+                discretePackageOps,
+            )
+
+        val uiState = getPermissionUsageDetailsUiState(underTest)
+        assertThat(uiState.show7Days).isFalse()
+
+        // perform user action
+        underTest.updateShow7DaysToggle(true)
+        val uiState2 = getPermissionUsageDetailsUiState(underTest)
+        assertThat(uiState2.show7Days).isTrue()
+    }
+
     private fun getPermissionGroupUsageDetailsUseCase(
         permissionGroup: String,
         discreteUsageFlow: Flow<List<DiscretePackageOpsModel>>,

@@ -34,7 +34,6 @@ import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUs
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState
 import com.android.permissioncontroller.permission.ui.wear.elements.Chip
 import com.android.permissioncontroller.permission.ui.wear.elements.ScrollableScreen
-import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
 import com.android.permissioncontroller.permission.utils.Utils
 import java.text.Collator
 
@@ -43,12 +42,10 @@ import java.text.Collator
 fun WearPermissionUsageScreen(
     sessionId: Long,
     viewModel: PermissionUsageViewModel,
-    wearViewModel: WearPermissionUsageViewModel
 ) {
     val context = LocalContext.current
-    val permissionUsagesUiData = wearViewModel.permissionUsagesUiStateLiveData.observeAsState(null)
-    val showSystem = wearViewModel.showSystemAppsLiveData.observeAsState(false)
-    val show7Days = wearViewModel.show7DaysLiveData.observeAsState(false)
+    val permissionUsagesUiData = viewModel.permissionUsagesUiLiveData.observeAsState(null)
+    val showSystem = viewModel.showSystemAppsLiveData.observeAsState(false)
     var isLoading by remember { mutableStateOf(true) }
     val isDataLoaded = permissionUsagesUiData.value is PermissionUsagesUiState.Success
     val hasSystemApps: Boolean =
@@ -58,12 +55,8 @@ fun WearPermissionUsageScreen(
         } else {
             false
         }
-    val onShowSystemClick: (Boolean) -> Unit = { show ->
-        run {
-            wearViewModel.updatePermissionUsagesUiStateLiveData(viewModel.updateShowSystem(show))
-            wearViewModel.showSystemAppsLiveData.value = viewModel.getShowSystemApps()
-        }
-    }
+
+    val onShowSystemClick: (Boolean) -> Unit = { show -> run { viewModel.updateShowSystem(show) } }
 
     val permissionGroupWithUsageCounts: Map<String, Int> =
         if (isDataLoaded) {
@@ -87,7 +80,7 @@ fun WearPermissionUsageScreen(
                     it.value,
                     showSystem.value,
                     sessionId,
-                    show7Days.value
+                    false,
                 )
             }
             .sortedWith { o1, o2 ->

@@ -28,8 +28,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory
-import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModel
-import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionUsageViewModelFactory
 
 /**
  * This is a condensed version of
@@ -38,27 +36,19 @@ import com.android.permissioncontroller.permission.ui.wear.model.WearPermissionU
  */
 @RequiresApi(Build.VERSION_CODES.S)
 class WearPermissionUsageFragment : Fragment() {
-    lateinit var wearViewModel: WearPermissionUsageViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val sessionId: Long =
             arguments?.getLong(Constants.EXTRA_SESSION_ID) ?: Constants.INVALID_SESSION_ID
-        val factory =
-            PermissionUsageViewModelFactory(requireActivity().getApplication(), this, Bundle())
-        val viewModel = ViewModelProvider(this, factory).get(PermissionUsageViewModel::class.java)
-        wearViewModel =
-            ViewModelProvider(this, WearPermissionUsageViewModelFactory(viewModel))
-                .get(WearPermissionUsageViewModel::class.java)
 
-        viewModel.permissionUsagesUiLiveData.observe(
-            this,
-            wearViewModel::updatePermissionUsagesUiStateLiveData
-        )
+        val factory = PermissionUsageViewModelFactory(requireActivity().application, this, Bundle())
+        val viewModel = ViewModelProvider(this, factory).get(PermissionUsageViewModel::class.java)
+
         return ComposeView(requireContext()).apply {
-            setContent { WearPermissionUsageScreen(sessionId, viewModel, wearViewModel) }
+            setContent { WearPermissionUsageScreen(sessionId, viewModel) }
         }
     }
 

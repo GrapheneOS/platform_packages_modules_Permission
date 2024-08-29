@@ -1,20 +1,6 @@
 {
     "presubmit": [
         {
-            "name": "CtsPermissionTestCases",
-            "options": [
-                {
-                    "exclude-annotation": "androidx.test.filters.FlakyTest"
-                },
-                {
-                    "include-filter": "android.permission.cts.PermissionControllerTest"
-                },
-                {
-                    "include-filter": "android.permission.cts.OneTimePermissionTest"
-                }
-            ]
-        },
-        {
             "name": "CtsPermissionUiTestCases",
             "options": [
                 {
@@ -24,18 +10,6 @@
                     "include-filter": "android.permissionui.cts.SafetyLabelChangesJobServiceTest"
                 }
             ]
-        },
-        {
-            "name": "CtsPermissionTestCases",
-            "options": [
-                {
-                    "exclude-annotation": "androidx.test.filters.FlakyTest"
-                },
-                {
-                    "include-filter": "android.permission.cts.LocationAccessCheckTest"
-                }
-            ],
-            "file_patterns": ["LocationAccessCheck\\.java"]
         },
         {
             "name": "CtsBackupTestCases",

@@ -262,6 +262,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
         val manager = context.getSystemService(CameraManager::class.java)!!
         assumeTrue(manager.cameraIdList.isNotEmpty())
         changeSafetyCenterFlag(false.toString())
+        assumeSafetyCenterDisabled()
         testCameraAndMicIndicator(useMic = false, useCamera = true)
     }
 
@@ -269,6 +270,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     @CddTest(requirement = "9.8.2/H-4-1,T-4-1,A-1-1")
     fun testMicIndicator() {
         changeSafetyCenterFlag(false.toString())
+        assumeSafetyCenterDisabled()
         testCameraAndMicIndicator(useMic = true, useCamera = false)
     }
 
@@ -276,14 +278,19 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
     @AsbSecurityTest(cveBugId = [258672042])
     @MtsIgnore(bugId = 351903707)
     fun testMicIndicatorWithManualFinishOpStillShows() {
-        changeSafetyCenterFlag(false.toString())
-        testCameraAndMicIndicator(useMic = true, useCamera = false, finishEarly = true)
+        testCameraAndMicIndicator(
+            useMic = true,
+            useCamera = false,
+            finishEarly = true,
+            safetyCenterEnabled = getSafetyCenterEnabled()
+        )
     }
 
     @Test
     @CddTest(requirement = "9.8.2/H-4-1,T-4-1,A-1-1")
     fun testHotwordIndicatorBehavior() {
         changeSafetyCenterFlag(false.toString())
+        assumeSafetyCenterDisabled()
         testCameraAndMicIndicator(useMic = false, useCamera = false, useHotword = true)
     }
 
@@ -298,6 +305,7 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
         // If camera is not available skip the test
         assumeTrue(packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
         changeSafetyCenterFlag(false.toString())
+        assumeSafetyCenterDisabled()
         testCameraAndMicIndicator(useMic = false, useCamera = true, chainUsage = true)
     }
 
@@ -697,10 +705,17 @@ class CameraMicIndicatorsPermissionTest : StsExtraBusinessLogicTestCase {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun assumeSafetyCenterEnabled() {
-        val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
-        val isSafetyCenterEnabled: Boolean =
-            runWithShellPermissionIdentity<Boolean> { safetyCenterManager.isSafetyCenterEnabled }
-        assumeTrue(isSafetyCenterEnabled)
+        assumeTrue(getSafetyCenterEnabled())
+    }
+
+    private fun assumeSafetyCenterDisabled() {
+        assumeFalse(getSafetyCenterEnabled())
+    }
+
+    private fun getSafetyCenterEnabled(): Boolean {
+        val safetyCenterManager =
+            context.getSystemService(SafetyCenterManager::class.java) ?: return false
+        return runWithShellPermissionIdentity<Boolean> { safetyCenterManager.isSafetyCenterEnabled }
     }
 
     protected fun waitFindObject(selector: BySelector): UiObject2? {
