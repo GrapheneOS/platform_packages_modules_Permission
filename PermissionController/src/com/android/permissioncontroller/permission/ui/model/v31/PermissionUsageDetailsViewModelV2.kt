@@ -25,6 +25,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.appops.data.repository.v31.AppOpRepository
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
@@ -37,7 +38,6 @@ import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageD
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.TIME_24_HOURS_DURATION
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.TIME_7_DAYS_DURATION
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsUiState
-import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.pm.data.repository.v31.PackageRepository
 import com.android.permissioncontroller.role.data.repository.v31.RoleRepository
 import com.android.permissioncontroller.user.data.repository.v31.UserRepository
@@ -60,8 +60,6 @@ class PermissionUsageDetailsViewModelV2(
     private val permissionGroup: String,
     scope: CoroutineScope? = null,
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
-    // Inject the parameter to prevent READ_DEVICE_CONFIG permission error on T- platforms.
-    private val is7DayToggleEnabled: Boolean = KotlinUtils.is7DayToggleEnabled(),
     private val packageRepository: PackageRepository = PackageRepository.getInstance(app)
 ) : BasePermissionUsageDetailsViewModel(app) {
     private val coroutineScope = scope ?: viewModelScope
@@ -177,7 +175,7 @@ class PermissionUsageDetailsViewModelV2(
     override fun getShow7Days(): Boolean = show7DaysFlow.value
 
     private fun getUsageDuration(show7Days: Boolean): Long {
-        return if (is7DayToggleEnabled && show7Days) {
+        return if (show7Days && DeviceUtils.isHandheld()) {
             TIME_7_DAYS_DURATION
         } else {
             TIME_24_HOURS_DURATION

@@ -96,6 +96,9 @@
         <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
         <permission name="android.permission.ADD_TRUSTED_DISPLAY" minSdkVersion="33" />
         <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
+        <permission
+            name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
+            featureFlag="android.companion.virtualdevice.flags.Flags.activityControlApi" />
     </permission-set>
 
     <role

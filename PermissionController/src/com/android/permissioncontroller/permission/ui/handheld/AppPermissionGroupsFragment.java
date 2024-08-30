@@ -184,9 +184,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
             Context context = getPreferenceManager().getContext();
             mPermissionUsages = new PermissionUsages(context);
 
-            long aggregateDataFilterBeginDays = KotlinUtils.INSTANCE.is7DayToggleEnabled()
-                    ? AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 :
-                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1;
+            long aggregateDataFilterBeginDays =
+                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7;
 
             long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
                             - DAYS.toMillis(aggregateDataFilterBeginDays),

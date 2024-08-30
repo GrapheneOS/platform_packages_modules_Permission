@@ -31,7 +31,6 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.model.v31.BasePermissionUsageDetailsViewModel
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.PermissionUsageDetailsViewModelFactory
-import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 
 /**
  * This is a condensed version of
@@ -53,8 +52,6 @@ class WearPermissionUsageDetailsFragment : Fragment() {
                 }
         val showSystem =
             arguments?.getBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false) ?: false
-        val show7Days =
-            arguments?.getBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, false) ?: false
 
         val factory =
             PermissionUsageDetailsViewModelFactory(
@@ -65,7 +62,6 @@ class WearPermissionUsageDetailsFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this, factory).get(BasePermissionUsageDetailsViewModel::class.java)
         viewModel.updateShowSystemAppsToggle(showSystem)
-        viewModel.updateShow7DaysToggle(is7DayToggleEnabled() && show7Days)
 
         return ComposeView(requireContext()).apply {
             setContent { WearPermissionUsageDetailsScreen(permissionGroup, viewModel) }
@@ -79,7 +75,6 @@ class WearPermissionUsageDetailsFragment : Fragment() {
         fun newInstance(
             groupName: String?,
             showSystem: Boolean,
-            show7Days: Boolean
         ): WearPermissionUsageDetailsFragment {
             return WearPermissionUsageDetailsFragment().apply {
                 val arguments =
@@ -88,7 +83,6 @@ class WearPermissionUsageDetailsFragment : Fragment() {
                             putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
                         }
                         putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem)
-                        putBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, show7Days)
                     }
                 setArguments(arguments)
             }

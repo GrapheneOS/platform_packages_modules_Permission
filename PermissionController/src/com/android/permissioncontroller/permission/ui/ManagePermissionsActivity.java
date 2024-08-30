@@ -270,7 +270,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                             groupName, showSystem, sessionId);
                 } else if (DeviceUtils.isWear(this)) {
                     androidXFragment = WearPermissionUsageDetailsFragment
-                            .newInstance(groupName, showSystem, show7Days);
+                            .newInstance(groupName, showSystem);
                 } else {
                     androidXFragment = PermissionDetailsWrapperFragment
                             .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId,

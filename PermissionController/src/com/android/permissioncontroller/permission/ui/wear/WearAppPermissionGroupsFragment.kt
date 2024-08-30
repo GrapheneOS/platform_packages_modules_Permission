@@ -49,7 +49,6 @@ import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissi
 import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModel
 import com.android.permissioncontroller.permission.ui.wear.model.WearLocationProviderInterceptDialogViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.theme.WearPermissionTheme
-import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 
@@ -120,10 +119,7 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
         if (SdkLevel.isAtLeastS()) {
             permissionUsages = PermissionUsages(context)
             val aggregateDataFilterBeginDays =
-                (if (is7DayToggleEnabled())
-                        AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
-                    else AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1)
-                    .toLong()
+                AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1.toLong()
 
             val filterTimeBeginMillis =
                 maxOf(

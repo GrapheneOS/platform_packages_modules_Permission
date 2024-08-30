@@ -25,6 +25,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel.AppOpUsageModel
@@ -76,11 +77,13 @@ class PermissionUsageViewModelTest {
         mockitoSession =
             ExtendedMockito.mockitoSession()
                 .mockStatic(PermissionControllerApplication::class.java)
+                .mockStatic(DeviceUtils::class.java)
                 .strictness(Strictness.LENIENT)
                 .startMocking()
 
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(context)
+        whenever(DeviceUtils.isHandheld()).thenReturn(true)
         PermissionMapping.addHealthPermissionsToPlatform(setOf("health1"))
 
         val permissionFlags =
@@ -206,7 +209,6 @@ class PermissionUsageViewModelTest {
         val permissionUsageViewModel =
             getViewModel(
                 useCase = permissionUsageUseCase,
-                is7DayToggleEnabled = true,
                 savedStateHandle = SavedStateHandle(mapOf("show7Days" to true))
             )
         val permissionGroupsCount =
@@ -246,7 +248,6 @@ class PermissionUsageViewModelTest {
 
     private fun TestScope.getViewModel(
         useCase: GetPermissionGroupUsageUseCase = getPermissionGroupUsageUseCase(),
-        is7DayToggleEnabled: Boolean = false,
         savedStateHandle: SavedStateHandle = SavedStateHandle(emptyMap())
     ): PermissionUsageViewModel {
         return PermissionUsageViewModel(
@@ -255,7 +256,6 @@ class PermissionUsageViewModelTest {
             useCase,
             backgroundScope,
             StandardTestDispatcher(testScheduler),
-            is7DayToggleEnabled = is7DayToggleEnabled,
             savedState = savedStateHandle
         )
     }

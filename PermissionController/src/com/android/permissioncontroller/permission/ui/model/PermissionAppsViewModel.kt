@@ -37,6 +37,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__ALLOWED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND
@@ -57,7 +58,6 @@ import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewMo
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOW_ALWAYS_ALLOWED
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageUid
-import com.android.permissioncontroller.permission.utils.KotlinUtils.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
@@ -164,7 +164,8 @@ class PermissionAppsViewModel(
 
     inner class CategorizedAppsLiveData(groupName: String) :
         MediatorLiveData<
-            @kotlin.jvm.JvmSuppressWildcards Map<Category, List<Pair<String, UserHandle>>>
+            @kotlin.jvm.JvmSuppressWildcards
+            Map<Category, List<Pair<String, UserHandle>>>
         >() {
         private val packagesUiInfoLiveData = SinglePermGroupPackagesUiInfoLiveData[groupName]
 
@@ -335,7 +336,7 @@ class PermissionAppsViewModel(
 
     fun getFilterTimeBeginMillis(): Long {
         val aggregateDataFilterBeginDays =
-            if (is7DayToggleEnabled()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+            if (DeviceUtils.isHandheld()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
             else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
 
         return max(
@@ -358,7 +359,7 @@ class PermissionAppsViewModel(
         }
 
         val aggregateDataFilterBeginDays =
-            if (is7DayToggleEnabled()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+            if (DeviceUtils.isHandheld()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
             else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
         val now = System.currentTimeMillis()
         val filterTimeBeginMillis =

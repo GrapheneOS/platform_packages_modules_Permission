@@ -42,6 +42,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.compat.IntentCompat
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
@@ -58,7 +59,6 @@ import com.android.permissioncontroller.permission.model.livedatatypes.v31.Light
 import com.android.permissioncontroller.permission.model.livedatatypes.v31.LightHistoricalPackageOps.DiscreteAccess
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
 import com.android.permissioncontroller.permission.ui.handheld.v31.shouldShowSubattributionInPermissionsDashboard
-import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.v31.SubattributionUtils
@@ -109,7 +109,7 @@ class PermissionUsageDetailsViewModel(
         val showSystem: Boolean = state[SHOULD_SHOW_SYSTEM_KEY] ?: false
         val show7Days: Boolean = state[SHOULD_SHOW_7_DAYS_KEY] ?: false
         val showPermissionUsagesDuration =
-            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
+            if (show7Days && DeviceUtils.isHandheld()) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

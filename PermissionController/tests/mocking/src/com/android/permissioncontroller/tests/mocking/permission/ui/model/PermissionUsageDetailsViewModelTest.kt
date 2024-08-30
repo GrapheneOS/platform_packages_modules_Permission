@@ -25,6 +25,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel
 import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel.DiscreteOpModel
@@ -89,6 +90,7 @@ class PermissionUsageDetailsViewModelTest {
             ExtendedMockito.mockitoSession()
                 .mockStatic(PermissionControllerApplication::class.java)
                 .mockStatic(Utils::class.java)
+                .mockStatic(DeviceUtils::class.java)
                 .mockStatic(StringUtils::class.java)
                 .mockStatic(Flags::class.java)
                 .strictness(Strictness.LENIENT)
@@ -97,6 +99,7 @@ class PermissionUsageDetailsViewModelTest {
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(context)
         whenever(Utils.getUserContext(application, currentUser)).thenReturn(context)
+        whenever(DeviceUtils.isHandheld()).thenReturn(true)
         whenever(
                 StringUtils.getIcuPluralsString(
                     any(),
@@ -319,7 +322,6 @@ class PermissionUsageDetailsViewModelTest {
                 CAMERA_PERMISSION_GROUP,
                 discretePackageOps,
                 savedStateMap = mapOf("show7Days" to true, "showSystem" to false),
-                is7DayToggleEnabled = true
             )
 
         val uiState = getPermissionUsageDetailsUiState(underTest)
@@ -511,7 +513,6 @@ class PermissionUsageDetailsViewModelTest {
         permissionGroup: String,
         discretePackageOps: Flow<List<DiscretePackageOpsModel>>,
         savedStateMap: Map<String, Boolean> = mapOf("show7Days" to false, "showSystem" to false),
-        is7DayToggleEnabled: Boolean = false,
         pkgRepository: PackageRepository = packageRepository
     ) =
         PermissionUsageDetailsViewModelV2(
@@ -521,7 +522,6 @@ class PermissionUsageDetailsViewModelTest {
             permissionGroup,
             scope = backgroundScope,
             StandardTestDispatcher(testScheduler),
-            is7DayToggleEnabled = is7DayToggleEnabled,
             packageRepository = pkgRepository
         )
 

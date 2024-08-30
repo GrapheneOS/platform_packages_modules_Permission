@@ -29,13 +29,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModel
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionGroupUsageModelWrapper
 import com.android.permissioncontroller.permission.domain.usecase.v31.GetPermissionGroupUsageUseCase
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_7_DAYS_KEY
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
-import com.android.permissioncontroller.permission.utils.KotlinUtils
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
@@ -58,8 +58,6 @@ class PermissionUsageViewModel(
     private val getPermissionUsageUseCase: GetPermissionGroupUsageUseCase,
     scope: CoroutineScope? = null,
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
-    // Inject the parameter to prevent READ_DEVICE_CONFIG permission error on T- platforms.
-    private val is7DayToggleEnabled: Boolean = KotlinUtils.is7DayToggleEnabled(),
     private val savedState: SavedStateHandle = SavedStateHandle(emptyMap()),
 ) : AndroidViewModel(app) {
     private val showSystemFlow = MutableStateFlow(savedState[SHOULD_SHOW_SYSTEM_KEY] ?: false)
@@ -94,7 +92,7 @@ class PermissionUsageViewModel(
     private fun getStartTime(show7DaysData: Boolean): Long {
         val curTime = System.currentTimeMillis()
         val showPermissionUsagesDuration =
-            if (is7DayToggleEnabled && show7DaysData) {
+            if (show7DaysData && DeviceUtils.isHandheld()) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

@@ -2,6 +2,10 @@
 # RoleParser.applyJarjarTransform(), by adding NO_IFTTT=reason to your commit
 # message.
 # LINT.IfChange
+rule android.companion.virtualdevice.flags.*FeatureFlags* com.android.permission.jarjar.@0
+rule android.companion.virtualdevice.flags.FeatureFlags* com.android.permission.jarjar.@0
+rule android.companion.virtualdevice.flags.FeatureFlags com.android.permission.jarjar.@0
+rule android.companion.virtualdevice.flags.Flags com.android.permission.jarjar.@0
 rule android.os.*FeatureFlags* com.android.permission.jarjar.@0
 rule android.os.FeatureFlags* com.android.permission.jarjar.@0
 rule android.os.FeatureFlags com.android.permission.jarjar.@0

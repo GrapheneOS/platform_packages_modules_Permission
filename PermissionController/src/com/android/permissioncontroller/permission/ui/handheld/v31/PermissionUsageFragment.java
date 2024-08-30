@@ -46,7 +46,6 @@ import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLarge
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModel;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsageViewModelFactory;
 import com.android.permissioncontroller.permission.ui.viewmodel.v31.PermissionUsagesUiState;
-import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -198,23 +197,20 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                 menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE, R.string.menu_show_system);
         mHideSystemMenu =
                 menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE, R.string.menu_hide_system);
-        if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
-            mShow7DaysDataMenu =
-                    menu.add(
-                            Menu.NONE,
-                            MENU_SHOW_7_DAYS_DATA,
-                            Menu.NONE,
-                            R.string.menu_show_7_days_data);
-            mShow24HoursDataMenu =
-                    menu.add(
-                            Menu.NONE,
-                            MENU_SHOW_24_HOURS_DATA,
-                            Menu.NONE,
-                            R.string.menu_show_24_hours_data);
-            mMenuItemsCreated = true;
-            updateShow7DaysToggle(mViewModel.getShow7DaysData());
-        }
+        mShow7DaysDataMenu =
+                menu.add(
+                        Menu.NONE,
+                        MENU_SHOW_7_DAYS_DATA,
+                        Menu.NONE,
+                        R.string.menu_show_7_days_data);
+        mShow24HoursDataMenu =
+                menu.add(
+                        Menu.NONE,
+                        MENU_SHOW_24_HOURS_DATA,
+                        Menu.NONE,
+                        R.string.menu_show_24_hours_data);
         mMenuItemsCreated = true;
+        updateShow7DaysToggle(mViewModel.getShow7DaysData());
         updateShowSystemToggle(mViewModel.getShowSystemApps());
     }
 
@@ -236,7 +232,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                 mViewModel.updateShowSystem(false);
                 break;
             case MENU_SHOW_7_DAYS_DATA:
-                mViewModel.updateShow7Days(KotlinUtils.INSTANCE.is7DayToggleEnabled());
+                mViewModel.updateShow7Days(true);
                 break;
             case MENU_SHOW_24_HOURS_DATA:
                 mViewModel.updateShow7Days(false);
@@ -279,10 +275,8 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
     private void updateShow7DaysToggle(boolean show7Days) {
         if (!mMenuItemsCreated) return;
 
-        if (KotlinUtils.INSTANCE.is7DayToggleEnabled()) {
-            mShow7DaysDataMenu.setVisible(!show7Days);
-            mShow24HoursDataMenu.setVisible(show7Days);
-        }
+        mShow7DaysDataMenu.setVisible(!show7Days);
+        mShow24HoursDataMenu.setVisible(show7Days);
     }
 
     /** Updates page content and menu items. */

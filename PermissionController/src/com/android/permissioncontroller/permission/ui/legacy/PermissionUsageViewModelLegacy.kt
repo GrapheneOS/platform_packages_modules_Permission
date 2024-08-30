@@ -29,7 +29,6 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
-import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
@@ -96,7 +95,7 @@ class PermissionUsageViewModelLegacy(val roleManager: RoleManager) : ViewModel()
     ): PermissionUsagesUiData {
         val curTime = System.currentTimeMillis()
         val showPermissionUsagesDuration =
-            if (KotlinUtils.is7DayToggleEnabled() && show7Days) {
+            if (show7Days) {
                 TIME_7_DAYS_DURATION
             } else {
                 TIME_24_HOURS_DURATION

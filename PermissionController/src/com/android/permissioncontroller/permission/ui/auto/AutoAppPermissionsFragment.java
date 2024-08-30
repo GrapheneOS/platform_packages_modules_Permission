@@ -145,8 +145,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         if (SdkLevel.isAtLeastS()) {
             mPermissionUsages = new PermissionUsages(getContext());
 
-            long aggregateDataFilterBeginDays = KotlinUtils.INSTANCE.is7DayToggleEnabled()
-                    ? AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 :
+            long aggregateDataFilterBeginDays =
                     AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1;
 
             long filterTimeBeginMillis = Math.max(System.currentTimeMillis()

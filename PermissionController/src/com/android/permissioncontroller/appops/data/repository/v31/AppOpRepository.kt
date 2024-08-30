@@ -30,6 +30,7 @@ import android.os.UserHandle
 import android.permission.flags.Flags
 import android.util.Log
 import com.android.modules.utils.build.SdkLevel
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel
 import com.android.permissioncontroller.appops.data.model.v31.DiscretePackageOpsModel.DiscreteOpModel
 import com.android.permissioncontroller.appops.data.model.v31.PackageAppOpUsageModel
@@ -132,7 +133,8 @@ class AppOpRepositoryImpl(
     }
 
     private suspend fun getDiscreteOps(opNames: List<String>): List<DiscretePackageOpsModel> {
-        val duration = TimeUnit.DAYS.toMillis(7)
+        val duration =
+            if (DeviceUtils.isHandheld()) TimeUnit.DAYS.toMillis(7) else TimeUnit.DAYS.toMillis(1)
         val currentTime = System.currentTimeMillis()
         val beginTimeMillis = currentTime - duration
         val request =

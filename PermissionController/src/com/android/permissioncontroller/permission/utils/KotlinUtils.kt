@@ -143,9 +143,6 @@ object KotlinUtils {
     /** Whether to show the location indicators. */
     private const val PROPERTY_LOCATION_INDICATORS_ENABLED = "location_indicators_enabled"
 
-    /** Whether to show 7-day toggle in privacy hub. */
-    private const val PRIVACY_DASHBOARD_7_DAY_TOGGLE = "privacy_dashboard_7_day_toggle"
-
     /** Whether to show the photo picker option in permission prompts. */
     private const val PROPERTY_PHOTO_PICKER_PROMPT_ENABLED = "photo_picker_prompt_enabled"
 
@@ -201,21 +198,6 @@ object KotlinUtils {
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun isLocationAccuracyEnabled(): Boolean {
         return SdkLevel.isAtLeastS()
-    }
-
-    /**
-     * Whether we should enable the 7-day toggle in privacy dashboard
-     *
-     * @return whether the flag is enabled
-     */
-    @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
-    fun is7DayToggleEnabled(): Boolean {
-        return SdkLevel.isAtLeastS() &&
-            DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY,
-                PRIVACY_DASHBOARD_7_DAY_TOGGLE,
-                false
-            )
     }
 
     /**

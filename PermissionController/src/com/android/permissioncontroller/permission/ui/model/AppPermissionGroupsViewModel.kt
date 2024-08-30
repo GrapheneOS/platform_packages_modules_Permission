@@ -33,6 +33,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.modules.utils.build.SdkLevel
 import com.android.permission.flags.Flags
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION
@@ -53,7 +54,6 @@ import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGr
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.utils.IPC
-import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.AppPermsLastAccessType
@@ -140,9 +140,13 @@ class AppPermissionGroupsViewModel(
             // TODO(b/347876543): Replace this when EnhancedConfirmtionServiceImpl is
             // available.
             val isRestricted =
-                appOpsManager.noteOpNoThrow(AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
+                appOpsManager.noteOpNoThrow(
+                    AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
                     packageManager.getApplicationInfoAsUser(packageName, 0, user).uid,
-                    packageName, null, null) == MODE_IGNORED
+                    packageName,
+                    null,
+                    null
+                ) == MODE_IGNORED
             return isRestricted
         }
         return false
@@ -157,7 +161,8 @@ class AppPermissionGroupsViewModel(
             appOpsManager.setMode(
                 AppOpsManager.OPSTR_ACCESS_RESTRICTED_SETTINGS,
                 packageManager.getApplicationInfoAsUser(packageName, 0, user).uid,
-                packageName, MODE_ALLOWED
+                packageName,
+                MODE_ALLOWED
             )
         }
     }
@@ -429,7 +434,7 @@ class AppPermissionGroupsViewModel(
         }
 
         val aggregateDataFilterBeginDays =
-            if (KotlinUtils.is7DayToggleEnabled()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
+            if (DeviceUtils.isHandheld()) AGGREGATE_DATA_FILTER_BEGIN_DAYS_7
             else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
 
         accessTime.clear()
