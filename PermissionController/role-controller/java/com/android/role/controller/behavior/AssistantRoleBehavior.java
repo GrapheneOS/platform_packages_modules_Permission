@@ -17,6 +17,7 @@
 package com.android.role.controller.behavior;
 
 import android.app.ActivityManager;
+import android.app.appfunctions.flags.Flags;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
@@ -36,15 +37,18 @@ import android.util.Xml;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.role.controller.model.Permissions;
 import com.android.role.controller.model.Role;
 import com.android.role.controller.model.RoleBehavior;
 import com.android.role.controller.model.VisibilityMixin;
+import com.android.role.controller.util.PackageUtils;
 import com.android.role.controller.util.UserUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -54,6 +58,14 @@ import java.util.Set;
 public class AssistantRoleBehavior implements RoleBehavior {
 
     private static final String LOG_TAG = AssistantRoleBehavior.class.getSimpleName();
+
+    /**
+     * Permissions to be granted if the application fulfilling the assistant role is also a system
+     * or preinstalled app.
+     */
+    private static final List<String> SYSTEM_ASSISTANT_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.EXECUTE_APP_FUNCTIONS
+    );
 
     @Override
     public void onRoleAddedAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -74,6 +86,28 @@ public class AssistantRoleBehavior implements RoleBehavior {
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         return !UserUtils.isProfile(user, context);
+    }
+
+    @Override
+    public void grantAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        if (Flags.enableAppFunctionManager()) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
+                Permissions.grantAsUser(packageName, SYSTEM_ASSISTANT_PERMISSIONS, false, false,
+                        true, false, false, user, context);
+            }
+        }
+    }
+
+    @Override
+    public void revokeAsUser(@NonNull Role role, @NonNull String packageName,
+            @NonNull UserHandle user, @NonNull Context context) {
+        if (Flags.enableAppFunctionManager()) {
+            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
+                Permissions.revokeAsUser(packageName, SYSTEM_ASSISTANT_PERMISSIONS, true, false,
+                        false, user, context);
+            }
+        }
     }
 
     @Nullable

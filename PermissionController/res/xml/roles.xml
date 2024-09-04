@@ -869,6 +869,8 @@
             <permission name="android.permission.READ_SMS" minSdkVersion="33" />
             <permission name="android.permission.READ_PEOPLE_DATA" />
             <permission name="android.permission.READ_GLOBAL_APP_SEARCH_DATA" />
+            <permission name="android.permission.EXECUTE_APP_FUNCTIONS_TRUSTED"
+                featureFlag="android.app.appfunctions.flags.Flags.enableAppFunctionManager" />
         </permissions>
     </role>
 
