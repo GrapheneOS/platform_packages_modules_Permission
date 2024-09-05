@@ -20,6 +20,7 @@
     <option name="config-descriptor:metadata" key="parameter" value="multi_abi" />
     <option name="config-descriptor:metadata" key="parameter" value="no_foldable_states" />
     <option name="config-descriptor:metadata" key="parameter" value="secondary_user" />
+    <option name="config-descriptor:metadata" key="parameter" value="secondary_user_on_secondary_display" />
 
     <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer">
         <option name="force-root" value="false" />

@@ -159,7 +159,6 @@ fun AlertContent(
                         text = it,
                         color = MaterialTheme.colors.onBackground,
                         textAlign = TextAlign.Center,
-                        maxLines = if (icon == null) 3 else 2,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }

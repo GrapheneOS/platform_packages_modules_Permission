@@ -7990,8 +7990,7 @@
          @hide -->
     <permission android:name="android.permission.MANAGE_KEY_GESTURES"
                 android:protectionLevel="signature"
-                android:featureFlag="missing"/> <!-- real flag needed, this is not compatible with
-                                                     24Q3 -->
+                android:featureFlag="com.android.hardware.input.manage_key_gestures" />
 
     <uses-permission android:name="android.permission.HANDLE_QUERY_PACKAGE_RESTART" />
 

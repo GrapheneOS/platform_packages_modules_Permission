@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.ui.wear
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,7 @@ class WearEnhancedConfirmationDialogFragment : DialogFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         enhancedConfirmationDialogActivity = context as EnhancedConfirmationDialogActivity
+        enhancedConfirmationDialogActivity.window.decorView.setBackgroundColor(Color.TRANSPARENT)
     }
 
     override fun onCreateView(

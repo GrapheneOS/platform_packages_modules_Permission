@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.ui.wear
 
 import android.app.Activity
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -131,7 +132,7 @@ fun WearEnhancedConfirmationScreen(
 
     SwipeToDismissBox(state = state) { isBackground ->
         if (isBackground || dismissed) {
-            Box(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background)) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         } else {

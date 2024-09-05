@@ -100,3 +100,11 @@ flag {
     is_fixed_read_only: true
 }
 
+flag {
+    name: "app_permission_fragment_uses_preferences"
+    is_exported: true
+    namespace: "permissions"
+    description: "This flag enables AppPermissionFragment rather than LegacyAppPermissionFragment (to support BC25)"
+    bug: "349675008"
+    is_fixed_read_only: true
+}
