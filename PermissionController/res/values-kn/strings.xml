@@ -583,7 +583,7 @@
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ"</string>
     <string name="privacy_controls_qs" msgid="5780144882040591169">"ನಿಮ್ಮ ಗೌಪ್ಯತೆ ನಿಯಂತ್ರಣಗಳು"</string>
     <string name="security_settings_button_label_qs" msgid="8280343822465962330">"ಇನ್ನಷ್ಟು ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"ಕ್ಯಾಮರಾ ಪ್ರವೇಶ"</string>
+    <string name="camera_toggle_label_qs" msgid="3880261453066157285">"ಕ್ಯಾಮರಾ ಆ್ಯಕ್ಸೆಸ್"</string>
     <string name="microphone_toggle_label_qs" msgid="8132912469813396552">"ಮೈಕ್ ಆ್ಯಕ್ಸೆಸ್"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"ಅನುಮತಿಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="camera_usage_qs" msgid="4394233566086665994">"ಇತ್ತೀಚಿನ ಕ್ಯಾಮರಾ ಬಳಕೆಯನ್ನು ನೋಡಿ"</string>

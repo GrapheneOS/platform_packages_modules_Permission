@@ -82,7 +82,7 @@ java_sdk_library {
     ],
     libs: [
         "androidx.annotation_annotation",
-        "framework-configinfrastructure",
+        "framework-configinfrastructure.stubs.module_lib",
         // TODO(b/177884622): Short term solution to prevent service-permission from seeing hidden
         //  APIs in framework-permission, as we don't actually have any dependency in it.
         //"framework-permission",

@@ -115,6 +115,7 @@ class GetPermissionGroupUsageDetailsUseCase(
                                 packageOps.userId,
                                 appOpAccesses = labelAppOpsEntry.value,
                                 attributionLabel = labelAppOpsEntry.key,
+                                isUserSensitive = packageOps.isUserSensitive,
                             )
                         }
                     } else {

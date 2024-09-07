@@ -38,8 +38,8 @@ android_test {
         "src/**/*.kt",
     ],
     libs: [
-        "android.test.base",
-        "android.test.runner",
+        "android.test.base.stubs.test",
+        "android.test.runner.stubs.test",
     ],
 
     static_libs: [

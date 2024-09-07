@@ -423,7 +423,7 @@
     <string name="system_uses_camera" msgid="1911223105234441470">"Sistemaren zerbitzu bat kamera erabiltzen ari da"</string>
     <string name="other_use" msgid="6564855051022776692">"Besta erabilera bat:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"Ados"</string>
-    <string name="ongoing_usage_dialog_title" msgid="683836493556628569">"<xliff:g id="TYPES_LIST">%s</xliff:g> erabilitako azken aplikazioak"</string>
+    <string name="ongoing_usage_dialog_title" msgid="683836493556628569">"Azkenaldian <xliff:g id="TYPES_LIST">%s</xliff:g> erabilitako aplikazioak"</string>
     <string name="ongoing_usage_dialog_title_mic" msgid="5966714811125593992">"Mikrofonoa duela gutxi erabili dutenak"</string>
     <string name="ongoing_usage_dialog_title_camera" msgid="7819329688650711470">"Kamera duela gutxi erabili dutenak"</string>
     <string name="ongoing_usage_dialog_title_mic_camera" msgid="9079747867228772797">"Mikrofonoa eta kamera duela gutxi erabili dituztenak"</string>

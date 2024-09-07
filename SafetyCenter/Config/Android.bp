@@ -35,7 +35,7 @@ java_library {
     libs: [
         "androidx.annotation_annotation",
         "framework-annotations-lib",
-        "framework-permission-s",
+        "framework-permission-s.impl",
         "safety-center-annotations",
     ],
     static_libs: [

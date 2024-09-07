@@ -127,6 +127,7 @@ class AppPermissionViewModel(
             oneTime: Boolean
         )
 
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
         fun showAdvancedConfirmDialog(args: AdvancedConfirmDialogArgs)
     }
 
@@ -1555,28 +1556,16 @@ class AppPermissionViewModel(
  * @param sessionId A session ID used in logs to identify this particular session
  * @param persistentDeviceId Indicates the device in the context of virtual devices
  */
-class AppPermissionViewModelFactory(
+class AppPermissionViewModelFactory
+@JvmOverloads
+constructor(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle,
     private val sessionId: Long,
-    private val persistentDeviceId: String
+    private val persistentDeviceId: String = MultiDeviceUtils.getDefaultDevicePersistentDeviceId()
 ) : ViewModelProvider.Factory {
-    constructor(
-        app: Application,
-        packageName: String,
-        permGroupName: String,
-        user: UserHandle,
-        sessionId: Long
-    ) : this(
-        app,
-        packageName,
-        permGroupName,
-        user,
-        sessionId,
-        MultiDeviceUtils.getDefaultDevicePersistentDeviceId()
-    )
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")

@@ -67,8 +67,8 @@ android_test {
     ],
     sdk_version: "test_current",
     libs: [
-        "android.test.runner",
-        "android.test.base",
+        "android.test.runner.stubs.test",
+        "android.test.base.stubs.test",
     ],
     data: [
         ":AppThatDefinesUndefinedPermissionGroupElement",
