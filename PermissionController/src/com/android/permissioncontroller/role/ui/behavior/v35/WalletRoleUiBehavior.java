@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.role.ui.behavior.v35;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -28,6 +29,7 @@ import android.nfc.cardemulation.HostApduService;
 import android.nfc.cardemulation.OffHostApduService;
 import android.os.Build;
 import android.os.UserHandle;
+import android.permission.flags.Flags;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -82,8 +84,18 @@ public class WalletRoleUiBehavior implements RoleUiBehavior {
             List<ApduServiceInfo> serviceInfos = getNfcServicesForPackage(
                     applicationInfo.packageName, user, context);
 
-            Pair<Drawable, CharSequence> bannerAndLabel =
-                    getNonPaymentServiceBannerAndLabelIfExists(serviceInfos, user, context);
+            Pair<Drawable, CharSequence> bannerAndLabel = null;
+            // If the flag is enabled , attempt to fetch it from property
+            if (Flags.walletRoleIconPropertyEnabled()) {
+                bannerAndLabel =
+                        getBannerAndLabelFromPackageProperty(context, user,
+                                applicationInfo.packageName);
+            }
+            // If it's null, indicating that the property is not set, perform a legacy icon lookup.
+            if (bannerAndLabel == null) {
+                bannerAndLabel =
+                        getNonPaymentServiceBannerAndLabelIfExists(serviceInfos, user, context);
+            }
             if (bannerAndLabel != null) {
                 preference.setIcon(bannerAndLabel.first);
                 if (setTitle) {
@@ -93,6 +105,30 @@ public class WalletRoleUiBehavior implements RoleUiBehavior {
                 }
             }
         }
+    }
+
+
+    @Nullable
+    private Pair<Drawable, CharSequence> getBannerAndLabelFromPackageProperty(
+            @NonNull Context context, @NonNull UserHandle user, @NonNull String packageName) {
+        List<ApduServiceInfo> apduServiceInfos = getNfcServicesForPackage(packageName,
+                user, context);
+        PackageManager packageManager = context.getPackageManager();
+        int apduServiceInfoSize = apduServiceInfos.size();
+        for (int i = 0; i < apduServiceInfoSize; i++) {
+            ApduServiceInfo serviceInfo = apduServiceInfos.get(i);
+            ComponentName componentName = serviceInfo.getComponent();
+            try {
+                PackageManager.Property iconProperty = packageManager.getProperty(
+                        ApduServiceInfo.PROPERTY_WALLET_PREFERRED_BANNER_AND_LABEL, componentName);
+                if (iconProperty.isBoolean() && iconProperty.getBoolean()) {
+                    return loadBannerAndLabel(serviceInfo, packageManager);
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                continue;
+            }
+        }
+        return null;
     }
 
     @NonNull
