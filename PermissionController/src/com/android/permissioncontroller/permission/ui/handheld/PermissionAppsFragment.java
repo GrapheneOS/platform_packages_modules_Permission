@@ -52,6 +52,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.compat.AppPermissionFragmentCompat;
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.Category;
@@ -473,9 +474,9 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                         packageName, user));
                 pref.setOnPreferenceClickListener((Preference p) -> {
                     mViewModel.navigateToAppPermission(this, packageName, user,
-                            AppPermissionFragment.createArgs(packageName, null, mPermGroupName,
-                                    user, getClass().getName(), sessionId,
-                                    grantCategory.getCategoryName()));
+                            AppPermissionFragmentCompat.createArgs(packageName, null,
+                                    mPermGroupName, user, getClass().getName(), sessionId,
+                                    grantCategory.getCategoryName(), null));
                     return true;
                 });
                 pref.setTitleContentDescription(AppUtils.getAppContentDescription(context,

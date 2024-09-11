@@ -20,8 +20,6 @@ import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
-import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.GRANT_CATEGORY;
-import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.PERSISTENT_DEVICE_ID;
 import static com.android.permissioncontroller.permission.utils.KotlinUtilsKt.navigateSafe;
 
 import android.Manifest;
@@ -44,6 +42,7 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.compat.AppPermissionFragmentCompat;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
@@ -239,14 +238,8 @@ public class PermissionControlPreference extends PermissionPreference {
                     Utils.navigateToAppHealthConnectSettings(mContext, mPackageName, mUser);
                     return true;
                 }
-                Bundle args = new Bundle();
-                args.putString(Intent.EXTRA_PACKAGE_NAME, mPackageName);
-                args.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermGroupName);
-                args.putParcelable(Intent.EXTRA_USER, mUser);
-                args.putString(EXTRA_CALLER_NAME, mCaller);
-                args.putLong(EXTRA_SESSION_ID, mSessionId);
-                args.putString(GRANT_CATEGORY, mGranted);
-                args.putString(PERSISTENT_DEVICE_ID, mPersistentDeviceId);
+                Bundle args = AppPermissionFragmentCompat.createArgs(mPackageName, null,
+                        mPermGroupName, mUser, mCaller, mSessionId, mGranted, mPersistentDeviceId);
                 navigateSafe(Navigation.findNavController(holder.itemView), R.id.perm_groups_to_app,
                         args);
             } else {

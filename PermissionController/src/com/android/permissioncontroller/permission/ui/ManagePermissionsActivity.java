@@ -61,6 +61,7 @@ import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.hibernation.HibernationPolicyKt;
+import com.android.permissioncontroller.permission.compat.AppPermissionFragmentCompat;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPermissionsFragment;
@@ -69,7 +70,6 @@ import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionD
 import com.android.permissioncontroller.permission.ui.auto.AutoUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageDetailsFragment;
 import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageFragment;
-import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionDetailsWrapperFragment;
@@ -323,8 +323,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     args = WearAppPermissionFragment.createArgs(packageName, permissionName,
                             groupName, userHandle, caller, sessionId, null);
                 } else {
-                    args = AppPermissionFragment.createArgs(packageName, permissionName,
-                            groupName, userHandle, caller, sessionId, null);
+                    args = AppPermissionFragmentCompat.createArgs(packageName, permissionName,
+                            groupName, userHandle, caller, sessionId, null, null);
                 }
                 setNavGraph(args, R.id.app_permission);
                 return;

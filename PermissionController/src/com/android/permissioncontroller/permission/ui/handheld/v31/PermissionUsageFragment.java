@@ -20,6 +20,7 @@ import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_7DAYS_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
@@ -232,6 +233,10 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader {
                 mViewModel.updateShowSystem(false);
                 break;
             case MENU_SHOW_7_DAYS_DATA:
+                write(
+                        PERMISSION_USAGE_FRAGMENT_INTERACTION,
+                        mSessionId,
+                        PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_7DAYS_CLICKED);
                 mViewModel.updateShow7Days(true);
                 break;
             case MENU_SHOW_24_HOURS_DATA:

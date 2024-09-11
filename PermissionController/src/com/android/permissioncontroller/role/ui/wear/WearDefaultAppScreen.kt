@@ -63,7 +63,7 @@ private fun WearDefaultAppContent(
         helper.getNonePreference(qualifyingApplications)?.let {
             item {
                 ToggleChip(
-                    label = it.label,
+                    label = it.title.toString(),
                     icon = it.icon,
                     checked = it.checked,
                     onCheckedChanged = it.onDefaultCheckChanged,
@@ -75,10 +75,10 @@ private fun WearDefaultAppContent(
         for (pref in helper.getPreferences(qualifyingApplications)) {
             item {
                 ToggleChip(
-                    label = pref.label,
+                    label = pref.title.toString(),
                     icon = pref.icon,
                     colors =
-                        if (pref.isEnabled()) {
+                        if (pref.isEnabled) {
                             ToggleChipDefaults.toggleChipColors()
                         } else {
                             toggleChipDisabledColors()

@@ -33,7 +33,6 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
-import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModelFactory
 import com.android.permissioncontroller.permission.ui.wear.model.WearAppPermissionUsagesViewModel
@@ -93,7 +92,7 @@ class WearPermissionAppsFragment : Fragment(), PermissionsUsagesChangeCallback {
                     this,
                     packageName,
                     user,
-                    AppPermissionFragment.createArgs(
+                    WearAppPermissionFragment.createArgs(
                         packageName,
                         null,
                         permGroupName,

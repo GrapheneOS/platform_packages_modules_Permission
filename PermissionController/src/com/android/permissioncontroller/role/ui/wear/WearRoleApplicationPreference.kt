@@ -27,17 +27,21 @@ import com.android.permissioncontroller.role.ui.RoleApplicationPreference
  */
 class WearRoleApplicationPreference(
     context: Context,
-    val label: String,
+    defaultLabel: String,
     val checked: Boolean,
     val onDefaultCheckChanged: (Boolean) -> Unit = {},
     private var restrictionIntent: Intent? = null
 ) : TwoStatePreference(context), RoleApplicationPreference {
+    init {
+        title = defaultLabel
+    }
+
     fun getOnCheckChanged(): (Boolean) -> Unit =
         restrictionIntent?.let { { _ -> context.startActivity(it) } } ?: onDefaultCheckChanged
 
     override fun setRestrictionIntent(restrictionIntent: Intent?) {
         this.restrictionIntent = restrictionIntent
-        setEnabled(restrictionIntent == null)
+        isEnabled = restrictionIntent == null
     }
 
     override fun asTwoStatePreference(): TwoStatePreference = this

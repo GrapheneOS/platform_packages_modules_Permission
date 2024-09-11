@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld;
+// LINT.IfChange
+
+package com.android.permissioncontroller.permission.ui.handheld.v36;
 
 import static android.Manifest.permission_group.STORAGE;
 import static android.app.Activity.RESULT_OK;
@@ -30,6 +32,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__PHOTOS_SELECTED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
+import static com.android.permissioncontroller.permission.compat.AppPermissionFragmentCompat.PERSISTENT_DEVICE_ID;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS;
@@ -68,7 +71,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.core.widget.NestedScrollView;
@@ -79,6 +81,10 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
+import com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonState;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType;
@@ -103,15 +109,15 @@ import java.util.Set;
  * Show and manage a single permission group for an app.
  *
  * <p>Allows the user to control whether the app is granted the permission.
+ *
+ * <p>Note: This fragment is opt-in on V and enabled on B.
  */
+@RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
 public class AppPermissionFragment extends SettingsWithLargeHeader
         implements AppPermissionViewModel.ConfirmDialogShowingFragment {
     private static final String LOG_TAG = "AppPermissionFragment";
     private static final long POST_DELAY_MS = 20;
     private static final long EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS = 200L;
-
-    static final String GRANT_CATEGORY = "grant_category";
-    static final String PERSISTENT_DEVICE_ID = "persistent_device_id";
 
     private @NonNull AppPermissionViewModel mViewModel;
     private @NonNull ViewGroup mAppPermissionRationaleContainer;
@@ -148,37 +154,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull String mPermGroupLabel;
     private Drawable mPackageIcon;
     private @NonNull RoleManager mRoleManager;
-
-    /**
-     * Create a bundle with the arguments needed by this fragment
-     *
-     * @param packageName   The name of the package
-     * @param permName      The name of the permission whose group this fragment is for (optional)
-     * @param groupName     The name of the permission group (required if permName not specified)
-     * @param userHandle    The user of the app permission group
-     * @param caller        The name of the fragment we called from
-     * @param sessionId     The current session ID
-     * @param grantCategory The grant status of this app permission group. Used to initially set
-     *                      the button state
-     * @return A bundle with all of the args placed
-     */
-    public static Bundle createArgs(@NonNull String packageName,
-            @Nullable String permName, @Nullable String groupName,
-            @NonNull UserHandle userHandle, @Nullable String caller, long sessionId, @Nullable
-            String grantCategory) {
-        Bundle arguments = new Bundle();
-        arguments.putString(Intent.EXTRA_PACKAGE_NAME, packageName);
-        if (groupName == null) {
-            arguments.putString(Intent.EXTRA_PERMISSION_NAME, permName);
-        } else {
-            arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
-        }
-        arguments.putParcelable(Intent.EXTRA_USER, userHandle);
-        arguments.putString(EXTRA_CALLER_NAME, caller);
-        arguments.putLong(EXTRA_SESSION_ID, sessionId);
-        arguments.putString(GRANT_CATEGORY, grantCategory);
-        return arguments;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -781,3 +756,4 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         b.show();
     }
 }
+// LINT.ThenChange(../max35/LegacyAppPermissionFragment.java)

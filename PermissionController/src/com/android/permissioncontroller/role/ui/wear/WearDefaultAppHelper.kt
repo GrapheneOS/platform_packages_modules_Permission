@@ -44,7 +44,7 @@ class WearDefaultAppHelper(
         if (role.shouldShowNone()) {
             WearRoleApplicationPreference(
                     context = context,
-                    label = context.getString(R.string.default_app_none),
+                    defaultLabel = context.getString(R.string.default_app_none),
                     checked = !hasHolderApplication(qualifyingApplications),
                     onDefaultCheckChanged = { _ -> viewModel.setNoneDefaultApp() }
                 )
@@ -62,7 +62,7 @@ class WearDefaultAppHelper(
                 val selected = pair.second
                 WearRoleApplicationPreference(
                         context = context,
-                        label = Utils.getFullAppLabel(appInfo, context),
+                        defaultLabel = Utils.getFullAppLabel(appInfo, context),
                         checked = selected,
                         onDefaultCheckChanged = { _ ->
                             run {
@@ -115,6 +115,7 @@ class WearDefaultAppHelper(
         confirmDialogViewModel.confirmDialogArgs = null
         confirmDialogViewModel.showConfirmDialogLiveData.value = false
     }
+
     private fun setDefaultApp(packageName: String) {
         viewModel.setDefaultApp(packageName)
     }

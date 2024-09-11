@@ -18,6 +18,11 @@ package com.android.permissioncontroller.permission.ui.handheld.v31;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__MANAGE_PERMISSIONS_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__SHOW_7DAYS_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -158,6 +163,11 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
         extendedFab.setVisibility(View.VISIBLE);
         extendedFab.setOnClickListener(
                 view -> {
+                    write(PERMISSION_DETAILS_INTERACTION,
+                            mSessionId,
+                            mPermissionGroup,
+                            null,
+                            PERMISSION_DETAILS_INTERACTION__ACTION__MANAGE_PERMISSIONS_CLICKED);
                     Intent intent =
                             new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                                     .putExtra(Intent.EXTRA_PERMISSION_NAME, mPermissionGroup);
@@ -227,12 +237,22 @@ public class PermissionUsageDetailsFragment extends SettingsWithLargeHeader {
                 requireActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
+                write(PERMISSION_DETAILS_INTERACTION,
+                        mSessionId,
+                        mPermissionGroup,
+                        null,
+                        PERMISSION_DETAILS_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
                 mViewModel.updateShowSystemAppsToggle(true);
                 break;
             case MENU_HIDE_SYSTEM:
                 mViewModel.updateShowSystemAppsToggle(false);
                 break;
             case MENU_SHOW_7_DAYS_DATA:
+                write(PERMISSION_DETAILS_INTERACTION,
+                        mSessionId,
+                        mPermissionGroup,
+                        null,
+                        PERMISSION_DETAILS_INTERACTION__ACTION__SHOW_7DAYS_CLICKED);
                 mViewModel.updateShow7DaysToggle(true);
                 break;
             case MENU_SHOW_24_HOURS_DATA:

@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.ui.handheld.v31;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__INFO_ICON_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__TIMELINE_ROW_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
 import android.app.AlertDialog;
@@ -154,6 +155,12 @@ public class PermissionHistoryPreference extends Preference {
 
         if (mIsEmergencyLocationAccess) {
             setOnPreferenceClickListener(preference -> {
+                write(PERMISSION_DETAILS_INTERACTION,
+                        mSessionId,
+                        mPermissionGroup,
+                        mPackageName,
+                        PERMISSION_DETAILS_INTERACTION__ACTION__TIMELINE_ROW_CLICKED);
+                mContext.startActivityAsUser(intent, mUserHandle);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext)
                         .setTitle(R.string.privacy_dashboard_emergency_location_dialog_title)
                         .setMessage(
@@ -173,6 +180,11 @@ public class PermissionHistoryPreference extends Preference {
             });
         } else {
             setOnPreferenceClickListener((preference) -> {
+                write(PERMISSION_DETAILS_INTERACTION,
+                        mSessionId,
+                        mPermissionGroup,
+                        mPackageName,
+                        PERMISSION_DETAILS_INTERACTION__ACTION__TIMELINE_ROW_CLICKED);
                 mContext.startActivityAsUser(intent, mUserHandle);
                 return true;
             });

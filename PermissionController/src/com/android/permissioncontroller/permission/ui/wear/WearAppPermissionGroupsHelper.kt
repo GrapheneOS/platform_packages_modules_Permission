@@ -34,7 +34,6 @@ import com.android.permissioncontroller.permission.model.Permission
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.ui.Category
-import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.PermSubtitle
@@ -322,7 +321,7 @@ class WearAppPermissionGroupsHelper(
             LocationUtils.startLocationControllerExtraPackageSettings(context, user)
         } else {
             val args =
-                AppPermissionFragment.createArgs(
+                WearAppPermissionFragment.createArgs(
                     packageName,
                     null,
                     permGroupName,
