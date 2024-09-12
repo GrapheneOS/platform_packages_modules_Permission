@@ -49,7 +49,7 @@ java_aconfig_library {
     sdk_version: "module_current",
     min_sdk_version: "30",
     installable: false,
-    libs: ["framework-configinfrastructure"],
+    libs: ["framework-configinfrastructure.stubs.module_lib"],
     visibility: [
         "//packages/modules/Permission:__subpackages__",
     ],
