@@ -45,7 +45,7 @@
     <!-- Create place to store apks -->
     <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
         <option name="run-command" value="mkdir -p /data/local/tmp/cts-permissionpolicy" />
-        <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionpolicy-permissionpolicy"/>
+        <option name="teardown-command" value="rm -rf /data/local/tmp/cts-permissionpolicy"/>
     </target_preparer>
 
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">

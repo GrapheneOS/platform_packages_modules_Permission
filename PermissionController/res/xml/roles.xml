@@ -706,6 +706,10 @@
                 minSdkVersion="35" />
             <permission name="android.permission.MANAGE_DEVICE_POLICY_AUDIT_LOGGING"
                 minSdkVersion="35" />
+            <permission name="android.permission.EXECUTE_APP_FUNCTIONS"
+                featureFlag="android.app.appfunctions.flags.Flags.enableAppFunctionManager" />
+            <permission name="android.permission.EXECUTE_APP_FUNCTIONS_TRUSTED"
+                featureFlag="android.app.appfunctions.flags.Flags.enableAppFunctionManager" />
         </permissions>
     </role>
 
