@@ -35,6 +35,7 @@ import android.os.Bundle
 import android.os.UserHandle
 import android.os.UserManager
 import android.permission.flags.Flags
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
@@ -812,6 +813,7 @@ class PermissionUsageDetailsViewModel(
             return if (
                 com.android.permission.flags.Flags.livedataRefactorPermissionTimelineEnabled()
             ) {
+                Log.d("PermissionTimeline", "timeline refactor flag enabled..")
                 PermissionUsageDetailsViewModelV2.create(app, handle, permissionGroup) as T
             } else {
                 PermissionUsageDetailsViewModel(app, handle, permissionGroup) as T
