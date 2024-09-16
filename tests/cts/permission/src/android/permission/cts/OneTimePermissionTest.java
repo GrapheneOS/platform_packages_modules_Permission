@@ -295,7 +295,6 @@ public class OneTimePermissionTest {
             new Thread(() -> {
                 while (!hasExited[0]) {
                     DreamManager mDreamManager = mContext.getSystemService(DreamManager.class);
-                    mUiDevice.pressHome();
                     mUiDevice.pressBack();
                     runWithShellPermissionIdentity(() -> {
                         if (mDreamManager.isDreaming()) {
