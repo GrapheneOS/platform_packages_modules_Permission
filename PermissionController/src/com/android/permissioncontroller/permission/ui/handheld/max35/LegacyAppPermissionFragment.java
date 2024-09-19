@@ -105,7 +105,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-
 /**
  * Show and manage a single permission group for an app.
  *

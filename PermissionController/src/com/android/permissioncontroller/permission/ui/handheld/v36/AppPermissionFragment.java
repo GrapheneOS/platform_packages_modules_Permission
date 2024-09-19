@@ -62,20 +62,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.Preference;
+import androidx.preference.TwoStatePreference;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
@@ -84,6 +79,11 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionPreference;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionSwitchPreference;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionTwoTargetPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonState;
@@ -96,13 +96,12 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.permission.utils.v35.MultiDeviceUtils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
-import com.android.settingslib.widget.ActionBarShadowController;
+import com.android.settingslib.widget.SelectorWithWidgetPreference;
 
 import kotlin.Pair;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -120,26 +119,25 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private static final long EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS = 200L;
 
     private @NonNull AppPermissionViewModel mViewModel;
-    private @NonNull ViewGroup mAppPermissionRationaleContainer;
-    private @NonNull ViewGroup mAppPermissionRationaleContent;
-    private @NonNull FrameLayout mAllowButtonFrame;
-    private @NonNull RadioButton mAllowButton;
-    private @NonNull RadioButton mAllowAlwaysButton;
-    private @NonNull RadioButton mAllowForegroundButton;
-    private @NonNull RadioButton mAskOneTimeButton;
-    private @NonNull RadioButton mAskButton;
-    private @NonNull RadioButton mSelectButton;
-    private @NonNull RadioButton mDenyButton;
-    private @NonNull RadioButton mDenyForegroundButton;
-    private @NonNull ImageView mEditSelectedPhotosButton;
-    private @NonNull View mAllowLimitedPhotosLayout;
-    private @NonNull View mSelectPhotosDivider;
-    private @NonNull View mLocationAccuracy;
-    private @NonNull Switch mLocationAccuracySwitch;
-    private @NonNull View mDivider;
-    private @NonNull ViewGroup mWidgetFrame;
-    private @NonNull TextView mPermissionDetails;
-    private @NonNull NestedScrollView mNestedScrollView;
+
+    private @NonNull PermissionPreferenceCategory mAppPermissionRationaleContainer;
+    private @NonNull PermissionPreference mAppPermissionRationaleContent;
+    private @NonNull PermissionPreferenceCategory mButtonCategory;
+    private @NonNull PermissionSelectorWithWidgetPreference mAllowButton;
+    private @NonNull SelectorWithWidgetPreference mAllowAlwaysButton;
+    private @NonNull SelectorWithWidgetPreference mAllowForegroundButton;
+    private @NonNull PermissionSelectorWithWidgetPreference mSelectButton;
+    private @NonNull SelectorWithWidgetPreference mAskOneTimeButton;
+    private @NonNull SelectorWithWidgetPreference mAskButton;
+    private @NonNull SelectorWithWidgetPreference mDenyButton;
+    private @NonNull SelectorWithWidgetPreference mDenyForegroundButton;
+    private @NonNull PermissionSwitchPreference mLocationAccuracySwitch;
+    private @NonNull PermissionTwoTargetPreference mDetails;
+    private @NonNull PermissionPreference mFooterLink1;
+    private @NonNull PermissionPreference mFooterLink2;
+    private @NonNull PermissionPreference mFooterStorageSpecialAppAccess;
+    private @NonNull PermissionPreference mAdditionalInfo;
+
     private @NonNull String mPackageName;
     private @NonNull String mPermGroupName;
     private @NonNull UserHandle mUser;
@@ -202,20 +200,52 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         if (mIsStorageGroup) {
             mViewModel.getFullStorageStateLiveData().observe(this, this::setSpecialStorageState);
         }
+        mViewModel.getShowPermissionRationaleLiveData().observe(this,
+                this::showPermissionRationaleDialog);
 
         mRoleManager = Utils.getSystemServiceSafe(getContext(), RoleManager.class);
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle bundle, String s) {
+        super.onCreatePreferences(bundle, s);
+        addPreferencesFromResource(R.xml.app_permission);
+
+        mAppPermissionRationaleContainer = requirePreference("app_permission_rationale_container");
+        mAppPermissionRationaleContent = requirePreference("app_permission_rationale");
+        mButtonCategory = requirePreference("app_permission_button_category");
+        mAllowButton = requirePreference("app_permission_allow_radio_button");
+        mAllowAlwaysButton = requirePreference("app_permission_allow_always_radio_button");
+        mAllowForegroundButton =
+                requirePreference("app_permission_allow_foreground_only_radio_button");
+        mSelectButton = requirePreference("app_permission_select_photos_radio_button");
+        mAskOneTimeButton = requirePreference("app_permission_ask_one_time_radio_button");
+        mAskButton = requirePreference("app_permission_ask_radio_button");
+        mDenyButton = requirePreference("app_permission_deny_radio_button");
+        mDenyForegroundButton = requirePreference("app_permission_deny_foreground_radio_button");
+        mLocationAccuracySwitch = requirePreference("app_permission_location_accuracy_switch");
+        mDetails = requirePreference("app_permission_details");
+        mFooterLink1 = requirePreference("app_permission_footer_link_1");
+        mFooterLink2 = requirePreference("app_permission_footer_link_2");
+        mFooterStorageSpecialAppAccess =
+                requirePreference("app_permission_footer_storage_special_app_access");
+        mAdditionalInfo = requirePreference("app_permission_additional_info");
+    }
+
+    @SuppressWarnings("TypeParameterUnusedInFormals")
+    private <T extends Preference> @NonNull T requirePreference(@NonNull CharSequence key) {
+        return Objects.requireNonNull(findPreference(key),
+                "Failed to find preference '" + key + "'");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         Context context = getContext();
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.app_permission, container, false);
 
         mIsInitialLoad = true;
 
         setHeader(mPackageIcon, mPackageLabel, null, null, false);
-        updateHeader(root.requireViewById(R.id.large_header));
 
         String text = null;
         if (MultiDeviceUtils.isDefaultDeviceId(mPersistentDeviceId)) {
@@ -225,87 +255,54 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             text = context.getString(R.string.app_permission_header_with_device_name,
                     mPermGroupLabel, deviceName);
         }
-        ((TextView) root.requireViewById(R.id.permission_message)).setText(text);
+        mButtonCategory.setTitle(text);
 
+        mFooterLink1.setSummary(context.getString(
+                R.string.app_permission_footer_app_permissions_link, mPackageLabel));
         String caller = getArguments().getString(EXTRA_CALLER_NAME);
+        setBottomLinkState(mFooterLink1, caller, Intent.ACTION_MANAGE_APP_PERMISSIONS);
 
-        TextView footer1Link = root.requireViewById(R.id.footer_link_1);
-        footer1Link.setText(context.getString(R.string.app_permission_footer_app_permissions_link,
-                mPackageLabel));
-        setBottomLinkState(footer1Link, caller, Intent.ACTION_MANAGE_APP_PERMISSIONS);
-
-        TextView footer2Link = root.requireViewById(R.id.footer_link_2);
-        footer2Link.setText(context.getString(R.string.app_permission_footer_permission_apps_link));
-        setBottomLinkState(footer2Link, caller, Intent.ACTION_MANAGE_PERMISSION_APPS);
+        setBottomLinkState(mFooterLink2, caller, Intent.ACTION_MANAGE_PERMISSION_APPS);
 
         Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
-        ImageView footerInfoIcon = root.requireViewById(R.id.app_additional_info_icon);
-        TextView footerInfoText = root.requireViewById(R.id.app_additional_info_text);
         if (exemptedPackages.contains(mPackageName)) {
             int additional_info_label = Utils.isStatusBarIndicatorPermission(mPermGroupName)
                     ? R.string.exempt_mic_camera_info_label : R.string.exempt_info_label;
-            footerInfoText.setText(context.getString(additional_info_label, mPackageLabel));
-            footerInfoIcon.setVisibility(View.VISIBLE);
-            footerInfoText.setVisibility(View.VISIBLE);
+            mAdditionalInfo.setSummary(context.getString(additional_info_label, mPackageLabel));
+            mAdditionalInfo.setVisible(true);
         } else {
-            footerInfoIcon.setVisibility(View.GONE);
-            footerInfoText.setVisibility(View.GONE);
+            mAdditionalInfo.setVisible(false);
         }
-
-        mAllowButtonFrame = root.requireViewById(R.id.allow_radio_button_frame);
-        mAllowButton = root.requireViewById(R.id.allow_radio_button);
-        mAllowAlwaysButton = root.requireViewById(R.id.allow_always_radio_button);
-        mAllowForegroundButton = root.requireViewById(R.id.allow_foreground_only_radio_button);
-        mAskOneTimeButton = root.requireViewById(R.id.ask_one_time_radio_button);
-        mAskButton = root.requireViewById(R.id.ask_radio_button);
-        mSelectButton = root.requireViewById(R.id.select_radio_button);
-        mDenyButton = root.requireViewById(R.id.deny_radio_button);
-        mDenyForegroundButton = root.requireViewById(R.id.deny_foreground_radio_button);
-
-        mDivider = root.requireViewById(R.id.two_target_divider);
-        mWidgetFrame = root.requireViewById(R.id.widget_frame);
-        mPermissionDetails = root.requireViewById(R.id.permission_details);
-        mLocationAccuracy = root.requireViewById(R.id.location_accuracy);
-        mLocationAccuracySwitch = root.requireViewById(R.id.location_accuracy_switch);
-        mAllowLimitedPhotosLayout = root.requireViewById(R.id.radio_select_layout);
-        mEditSelectedPhotosButton = root.requireViewById(R.id.edit_selected_button);
-        mSelectPhotosDivider = root.requireViewById(R.id.edit_photos_divider);
-        mNestedScrollView = root.requireViewById(R.id.nested_scroll_view);
 
         if (mViewModel.getButtonStateLiveData().getValue() != null) {
             setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
         } else {
-            mAllowButton.setVisibility(View.GONE);
-            mAllowAlwaysButton.setVisibility(View.GONE);
-            mAllowForegroundButton.setVisibility(View.GONE);
-            mAskOneTimeButton.setVisibility(View.GONE);
-            mAskButton.setVisibility(View.GONE);
-            mDenyButton.setVisibility(View.GONE);
-            mDenyForegroundButton.setVisibility(View.GONE);
-            mLocationAccuracy.setVisibility(View.GONE);
-            mAllowLimitedPhotosLayout.setVisibility(View.GONE);
-            mSelectPhotosDivider.setAlpha(0f);
-            mEditSelectedPhotosButton.setAlpha(0f);
+            mAllowButton.setVisible(false);
+            mAllowAlwaysButton.setVisible(false);
+            mAllowForegroundButton.setVisible(false);
+            mAskOneTimeButton.setVisible(false);
+            mAskButton.setVisible(false);
+            mDenyButton.setVisible(false);
+            mDenyForegroundButton.setVisible(false);
+            mLocationAccuracySwitch.setVisible(false);
+            mSelectButton.setVisible(false);
+            mSelectButton.setExtraWidgetOnClickListener(null);
         }
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized() && mIsStorageGroup) {
-            setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue(), root);
+            setSpecialStorageState(mViewModel.getFullStorageStateLiveData().getValue());
         } else {
-            TextView storageFooter = root.requireViewById(R.id.footer_storage_special_app_access);
-            storageFooter.setVisibility(View.GONE);
+            mFooterStorageSpecialAppAccess.setVisible(false);
         }
-        mAppPermissionRationaleContainer =
-                root.requireViewById(R.id.app_permission_rationale_container);
-        mAppPermissionRationaleContent =
-                root.requireViewById(R.id.app_permission_rationale_content);
-        mViewModel.getShowPermissionRationaleLiveData().observe(this, show -> {
-            showPermissionRationaleDialog(Optional.ofNullable(show).orElse(false));
-        });
+
+        // Avoid an animation by showing this Preference immediately
+        showPermissionRationaleDialog(mViewModel.getShowPermissionRationaleLiveData().getValue());
 
         getActivity().setTitle(
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
                         mPermGroupLabel));
-        return root;
+
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     public void onResume() {
@@ -314,28 +311,32 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mPhotoPickerTriggered = false;
     }
 
+    private void showPermissionRationaleDialog(Boolean showPermissionRationale) {
+        showPermissionRationaleDialog(showPermissionRationale == Boolean.TRUE);
+    }
+
     private void showPermissionRationaleDialog(boolean showPermissionRationale) {
         if (!showPermissionRationale) {
-            mAppPermissionRationaleContainer.setVisibility(View.GONE);
+            mAppPermissionRationaleContainer.setVisible(false);
         } else {
-            mAppPermissionRationaleContainer.setVisibility(View.VISIBLE);
-            mAppPermissionRationaleContent.setOnClickListener((v) -> {
-                if (!SdkLevel.isAtLeastU()) {
-                    return;
+            mAppPermissionRationaleContainer.setVisible(true);
+            mAppPermissionRationaleContent.setOnPreferenceClickListener((v) -> {
+                if (SdkLevel.isAtLeastU()) {
+                    mViewModel.showPermissionRationaleActivity(getActivity(), mPermGroupName);
                 }
-                mViewModel.showPermissionRationaleActivity(getActivity(), mPermGroupName);
+                return true;
             });
         }
     }
 
-    private void setBottomLinkState(TextView view, String caller, String action) {
+    private void setBottomLinkState(Preference preference, String caller, String action) {
         if ((Objects.equals(caller, AppPermissionGroupsFragment.class.getName())
                 && action.equals(Intent.ACTION_MANAGE_APP_PERMISSIONS))
                 || (Objects.equals(caller, PermissionAppsFragment.class.getName())
                 && action.equals(Intent.ACTION_MANAGE_PERMISSION_APPS))) {
-            view.setVisibility(View.GONE);
+            preference.setVisible(false);
         } else {
-            view.setOnClickListener((v) -> {
+            preference.setOnPreferenceClickListener((v) -> {
                 Bundle args;
                 if (action.equals(Intent.ACTION_MANAGE_APP_PERMISSIONS)) {
                     args = AppPermissionGroupsFragment.createArgs(mPackageName, mUser,
@@ -344,24 +345,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                     args = PermissionAppsFragment.createArgs(mPermGroupName, mSessionId);
                 }
                 mViewModel.showBottomLinkPage(this, action, args);
+                return true;
             });
         }
-    }
-
-    private void setSpecialStorageState(FullStoragePackageState storageState) {
-        setSpecialStorageState(storageState, getView());
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        ActionBar ab = getActivity().getActionBar();
-        if (ab != null) {
-            ab.setElevation(0);
-        }
-
-        ActionBarShadowController.attachToView(getActivity(), getLifecycle(), mNestedScrollView);
     }
 
     @Override
@@ -384,7 +370,13 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         } else if (states == null) {
             return;
         }
-        mAllowButtonFrame.setOnClickListener((v) -> allowButtonFrameClickListener());
+
+        mAllowButton.setOnClickListener((v) -> {
+            allowButtonFrameClickListener();
+        });
+        mAllowButton.setOnDisabledClickListener((v) -> {
+            allowButtonFrameClickListener();
+        });
         mAllowAlwaysButton.setOnClickListener((v) -> {
             markSingleButtonAsChecked(ButtonType.ALLOW_ALWAYS);
             if (mIsStorageGroup) {
@@ -426,13 +418,21 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             mViewModel.requestChange(false, this, this, ChangeRequest.PHOTOS_SELECTED,
                     buttonPressed);
         });
-        mEditSelectedPhotosButton.setOnClickListener((v) -> {
-            ButtonState selectState = states.get(ButtonType.SELECT_PHOTOS);
-            if (selectState != null && selectState.isChecked() && !mPhotoPickerTriggered) {
-                mPhotoPickerTriggered = true;
-                mViewModel.openPhotoPicker(this);
-            }
-        });
+
+        if (isButtonChecked(states, ButtonType.SELECT_PHOTOS)) {
+            // Show the clickable extra widget
+            // TODO(b/366269715): make the widget show/hide via animation
+            mSelectButton.setExtraWidgetOnClickListener((v) -> {
+                if (isButtonChecked(states, ButtonType.SELECT_PHOTOS) && !mPhotoPickerTriggered) {
+                    mPhotoPickerTriggered = true;
+                    mViewModel.openPhotoPicker(this);
+                }
+            });
+        } else {
+            // Hide the clickable extra widget
+            mSelectButton.setExtraWidgetOnClickListener(null);
+        }
+
         mDenyButton.setOnClickListener((v) -> {
             markSingleButtonAsChecked(ButtonType.DENY);
             if (mViewModel.getFullStorageStateLiveData().getValue() != null
@@ -454,15 +454,17 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
         int revokeFineLocation =
                 APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
-        mLocationAccuracy.setOnClickListener((v) -> {
-            mLocationAccuracySwitch.performClick();
-            if (mLocationAccuracySwitch.isChecked()) {
+
+        mLocationAccuracySwitch.setOnPreferenceChangeListener((pref, newValue) -> {
+            if ((Boolean) newValue) {
                 mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FINE_LOCATION,
                         grantFineLocation);
             } else {
                 mViewModel.requestChange(false, this, this, ChangeRequest.REVOKE_FINE_LOCATION,
                         revokeFineLocation);
             }
+            // Don't actually toggle the switch yet. (Allow livedata observer to do so.)
+            return false;
         });
 
         setButtonState(mAllowButton, states.get(ButtonType.ALLOW));
@@ -473,23 +475,13 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         setButtonState(mDenyButton, states.get(ButtonType.DENY));
         setButtonState(mDenyForegroundButton, states.get(ButtonType.DENY_FOREGROUND));
         setButtonState(mSelectButton, states.get(ButtonType.SELECT_PHOTOS));
-        if (mSelectButton.getVisibility() == View.VISIBLE) {
-            mAllowButton.setText(R.string.app_permission_button_always_allow_all);
+        if (mSelectButton.isVisible()) {
+            mAllowButton.setTitle(R.string.app_permission_button_always_allow_all);
         } else {
-            mAllowButton.setText(R.string.app_permission_button_allow);
+            mAllowButton.setTitle(R.string.app_permission_button_allow);
         }
 
-        ButtonState locationAccuracyState = states.get(ButtonType.LOCATION_ACCURACY);
-        if (!locationAccuracyState.isShown()) {
-            mLocationAccuracy.setVisibility(View.GONE);
-        } else {
-            mLocationAccuracy.setVisibility(View.VISIBLE);
-        }
-        mLocationAccuracySwitch.setChecked(locationAccuracyState.isChecked());
-        if (!locationAccuracyState.isEnabled()) {
-            mLocationAccuracy.setEnabled(false);
-            mLocationAccuracySwitch.setEnabled(false);
-        }
+        setButtonState(mLocationAccuracySwitch, states.get(ButtonType.LOCATION_ACCURACY));
 
         mIsInitialLoad = false;
 
@@ -509,60 +501,38 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
     }
 
-    private void setButtonState(CompoundButton button, AppPermissionViewModel.ButtonState state) {
-        int visible = state.isShown() ? View.VISIBLE : View.GONE;
-        button.setVisibility(visible);
-        if (state.isShown()) {
-            button.setChecked(state.isChecked());
-            button.setEnabled(state.isEnabled());
-        }
-        if (mIsInitialLoad) {
-            button.jumpDrawablesToCurrentState();
-        }
-
-        if (button == mSelectButton) {
-            mAllowLimitedPhotosLayout.setVisibility(visible);
-            float endOpacity = state.isChecked() ? 1f : 0f;
-            // On initial load, do not show the fade in/out animation
-            if (mIsInitialLoad) {
-                mSelectPhotosDivider.setAlpha(endOpacity);
-                mEditSelectedPhotosButton.setAlpha(endOpacity);
-                return;
-            }
-            mEditSelectedPhotosButton.animate().alpha(endOpacity)
-                    .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
-            mSelectPhotosDivider.animate().alpha(endOpacity)
-                    .setDuration(EDIT_PHOTOS_BUTTON_ANIMATION_LENGTH_MS);
-        }
+    private void setButtonState(TwoStatePreference button,
+            AppPermissionViewModel.ButtonState state) {
+        button.setVisible(state.isShown());
+        button.setChecked(state.isChecked());
+        button.setEnabled(state.isEnabled());
     }
 
-    private void setSpecialStorageState(FullStoragePackageState storageState, View v) {
-        if (v == null) {
+    private boolean isButtonChecked(Map<ButtonType, ButtonState> state, ButtonType button) {
+        return state.containsKey(button) && state.get(button).isChecked();
+    }
+
+    private void setSpecialStorageState(FullStoragePackageState storageState) {
+        if (!mAllowButton.isVisible() || !mIsStorageGroup) {
+            mFooterStorageSpecialAppAccess.setVisible(false);
             return;
         }
 
-        TextView textView = v.requireViewById(R.id.footer_storage_special_app_access);
-        if (mAllowButton == null || !mIsStorageGroup) {
-            textView.setVisibility(View.GONE);
-            return;
-        }
-
-        mAllowAlwaysButton.setText(R.string.app_permission_button_allow_all_files);
-        mAllowForegroundButton.setText(R.string.app_permission_button_allow_media_only);
+        mAllowAlwaysButton.setTitle(R.string.app_permission_button_allow_all_files);
+        mAllowForegroundButton.setTitle(R.string.app_permission_button_allow_media_only);
 
         if (storageState == null) {
-            textView.setVisibility(View.GONE);
+            mFooterStorageSpecialAppAccess.setVisible(false);
             return;
         }
 
         if (storageState.isLegacy()) {
-            mAllowButton.setText(R.string.app_permission_button_allow_all_files);
-            textView.setVisibility(View.GONE);
+            mAllowButton.setTitle(R.string.app_permission_button_allow_all_files);
+            mFooterStorageSpecialAppAccess.setVisible(false);
             return;
         }
 
-        textView.setText(R.string.app_permission_footer_special_file_access);
-        textView.setVisibility(View.VISIBLE);
+        mFooterStorageSpecialAppAccess.setVisible(true);
     }
 
     private void setResult(@GrantPermissionsViewHandler.Result int result) {
@@ -578,50 +548,34 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
     private void setDetail(Pair<Integer, Integer> detailResIds) {
         if (detailResIds == null) {
-            mWidgetFrame.setVisibility(View.GONE);
-            mDivider.setVisibility(View.GONE);
+            mDetails.setOnSecondTargetClickListener(null);
             return;
         }
-        mWidgetFrame.setVisibility(View.VISIBLE);
         if (detailResIds.getSecond() != null) {
             // If the permissions are individually controlled, also show a link to the page that
             // lets you control them.
-            mDivider.setVisibility(View.VISIBLE);
-            showRightIcon(R.drawable.ic_settings);
+            mDetails.setExtraWidgetIconRes(R.drawable.ic_settings);
             Bundle args = AllAppPermissionsFragment.createArgs(mPackageName, mPermGroupName, mUser);
-            mWidgetFrame.setOnClickListener(v -> mViewModel.showAllPermissions(this, args));
-            mPermissionDetails.setText(getPreferenceManager().getContext().getString(
+            mDetails.setOnSecondTargetClickListener((v) ->
+                    mViewModel.showAllPermissions(this, args));
+            mDetails.setSummary(getPreferenceManager().getContext().getString(
                     detailResIds.getFirst(), detailResIds.getSecond()));
         } else {
-            mPermissionDetails.setText(getPreferenceManager().getContext().getString(
+            mDetails.setOnSecondTargetClickListener(null);
+            mDetails.setSummary(getPreferenceManager().getContext().getString(
                     detailResIds.getFirst()));
         }
-        mPermissionDetails.setVisibility(View.VISIBLE);
-
+        mDetails.setVisible(true);
     }
 
     private void setAdminSupportDetail(EnforcedAdmin admin) {
         if (admin != null) {
-            showRightIcon(R.drawable.ic_info);
-            mWidgetFrame.setOnClickListener(v ->
-                    RestrictedLockUtils.sendShowAdminSupportDetailsIntent(getContext(), admin)
-            );
+            mDetails.setExtraWidgetIconRes(R.drawable.ic_info_outline);
+            mDetails.setOnSecondTargetClickListener((v) ->
+                    RestrictedLockUtils.sendShowAdminSupportDetailsIntent(getContext(), admin));
         } else {
-            mWidgetFrame.removeAllViews();
+            mDetails.setOnSecondTargetClickListener(null);
         }
-    }
-
-    /**
-     * Show the given icon on the right of the first radio button.
-     *
-     * @param iconId the resourceId of the drawable to use.
-     */
-    private void showRightIcon(int iconId) {
-        mWidgetFrame.removeAllViews();
-        ImageView imageView = new ImageView(getPreferenceManager().getContext());
-        imageView.setImageResource(iconId);
-        mWidgetFrame.addView(imageView);
-        mWidgetFrame.setVisibility(View.VISIBLE);
     }
 
     /**

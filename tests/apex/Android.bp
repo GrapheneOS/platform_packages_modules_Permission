@@ -27,6 +27,7 @@ android_test {
     ],
     static_libs: [
         "service-permission.impl",
+        "services.core",
         "androidx.test.rules",
         "androidx.test.ext.junit",
         "androidx.test.ext.truth",

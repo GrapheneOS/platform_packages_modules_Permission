@@ -1,0 +1,104 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
+        android:key="app_permission_rationale_container"
+        android:title="@string/app_permission_rationale_message"
+        app:isPreferenceVisible="false">
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionPreference
+            android:key="app_permission_rationale"
+            android:icon="@drawable/ic_shield_exclamation_outline_24dp"
+            android:summary="@string/app_location_permission_rationale_subtitle"
+            android:title="@string/app_location_permission_rationale_title" />
+
+    </com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory>
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory
+        android:key="app_permission_button_category"
+        android:title="@string/app_permission_header">
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_allow_radio_button"
+            android:title="@string/app_permission_button_allow"
+            app:checkboxId="@+id/allow_radio_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_allow_always_radio_button"
+            android:title="@string/app_permission_button_allow_always"
+            app:checkboxId="@+id/allow_always_radio_button"
+            app:isPreferenceVisible="false" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_allow_foreground_only_radio_button"
+            android:title="@string/app_permission_button_allow_foreground"
+            app:checkboxId="@+id/allow_foreground_only_radio_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_select_photos_radio_button"
+            android:title="@string/app_permission_button_allow_limited_access"
+            app:checkboxId="@+id/select_radio_button"
+            app:extraWidgetIcon="@drawable/ic_edit"
+            app:extraWidgetId="@+id/edit_selected_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_ask_one_time_radio_button"
+            android:title="@string/app_permission_button_ask"
+            app:checkboxId="@+id/ask_one_time_radio_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_ask_radio_button"
+            android:text="@string/app_permission_button_ask"
+            android:title="@string/app_permission_button_ask"
+            app:checkboxId="@+id/ask_radio_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_deny_radio_button"
+            android:title="@string/app_permission_button_deny"
+            app:checkboxId="@+id/deny_radio_button" />
+
+        <com.android.permissioncontroller.permission.ui.handheld.PermissionSelectorWithWidgetPreference
+            android:key="app_permission_deny_foreground_radio_button"
+            android:title="@string/app_permission_button_deny"
+            app:checkboxId="@+id/deny_foreground_radio_button" />
+
+    </com.android.permissioncontroller.permission.ui.handheld.PermissionPreferenceCategory>
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionSwitchPreference
+        android:key="app_permission_location_accuracy_switch"
+        android:summary="@string/app_permission_location_accuracy_subtitle"
+        android:title="@string/app_permission_location_accuracy"
+        app:isPreferenceVisible="false" />
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionTwoTargetPreference
+        android:key="app_permission_details"
+        android:selectable="false"
+        android:summary="@string/permission_summary_enabled_system_fixed"
+        app:extraWidgetIcon="@drawable/ic_settings"
+        app:iconSpaceReserved="true"
+        app:isPreferenceVisible="false" />
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreference
+        android:key="app_permission_footer_link_1"
+        android:summary="@string/app_permission_footer_app_permissions_link" />
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreference
+        android:key="app_permission_footer_link_2"
+        android:summary="@string/app_permission_footer_permission_apps_link" />
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreference
+        android:key="app_permission_footer_storage_special_app_access"
+        android:icon="@drawable/ic_info_outline"
+        android:selectable="false"
+        android:summary="@string/app_permission_footer_special_file_access"
+        app:isPreferenceVisible="false" />
+
+    <com.android.permissioncontroller.permission.ui.handheld.PermissionPreference
+        android:key="app_permission_additional_info"
+        android:icon="@drawable/ic_info_outline"
+        android:selectable="false"
+        android:summary="@string/exempt_info_label"
+        app:isPreferenceVisible="false" />
+
+</PreferenceScreen>

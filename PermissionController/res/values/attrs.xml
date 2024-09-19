@@ -37,4 +37,9 @@
     <attr name="carDividerColor" format="color"/>
     <!-- END: Car Settings Preferences -->
 
+    <!-- START: AppPermissionFragment -->
+    <attr name="extraWidgetId" format="reference" />
+    <attr name="extraWidgetIcon" format="reference" />
+    <attr name="checkboxId" format="reference" />
+    <!-- END: AppPermissionFragment -->
 </resources>

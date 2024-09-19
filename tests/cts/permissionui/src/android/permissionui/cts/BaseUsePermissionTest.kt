@@ -122,8 +122,6 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
 
         const val ALLOW_ALWAYS_RADIO_BUTTON =
             "com.android.permissioncontroller:id/allow_always_radio_button"
-        const val ALLOW_RADIO_BUTTON_FRAME =
-            "com.android.permissioncontroller:id/allow_radio_button_frame"
         const val ALLOW_RADIO_BUTTON = "com.android.permissioncontroller:id/allow_radio_button"
         const val ALLOW_FOREGROUND_RADIO_BUTTON =
             "com.android.permissioncontroller:id/allow_foreground_only_radio_button"
@@ -147,10 +145,9 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
         const val ECM_ALERT_DIALOG_OK_BUTTON_TEXT = "enhanced_confirmation_dialog_ok"
         const val ALERT_DIALOG_MESSAGE = "android:id/message"
         const val ALERT_DIALOG_OK_BUTTON = "android:id/button1"
-        const val APP_PERMISSION_RATIONALE_CONTAINER_VIEW =
-            "com.android.permissioncontroller:id/app_permission_rationale_container"
-        const val APP_PERMISSION_RATIONALE_CONTENT_VIEW =
-            "com.android.permissioncontroller:id/app_permission_rationale_content"
+        const val APP_PERMISSION_RATIONALE_TITLE_TEXT = "app_location_permission_rationale_title"
+        const val APP_PERMISSION_RATIONALE_SUBTITLE_TEXT =
+            "app_location_permission_rationale_subtitle"
         const val GRANT_DIALOG_PERMISSION_RATIONALE_CONTAINER_VIEW =
             "com.android.permissioncontroller:id/permission_rationale_container"
         const val PERMISSION_RATIONALE_ACTIVITY_TITLE_VIEW =
@@ -994,7 +991,9 @@ abstract class BaseUsePermissionTest : BasePermissionTest() {
     }
 
     protected fun clickPermissionRationaleContentInAppPermission() {
-        clickAndWaitForWindowTransition(By.res(APP_PERMISSION_RATIONALE_CONTENT_VIEW))
+        clickAndWaitForWindowTransition(
+            By.text(getPermissionControllerString(APP_PERMISSION_RATIONALE_SUBTITLE_TEXT))
+        )
     }
 
     protected fun clickPermissionRationaleViewInGrantDialog() {

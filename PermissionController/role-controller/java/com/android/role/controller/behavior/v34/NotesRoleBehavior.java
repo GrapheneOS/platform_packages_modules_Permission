@@ -46,17 +46,12 @@ public class NotesRoleBehavior implements RoleBehavior {
             return false;
         }
 
-        // Cloned profile shouldn't have a separate role.
-        if (UserUtils.isCloneProfile(user, context)) {
-            return false;
-        }
-
         if (UserUtils.isManagedProfile(user, context)) {
             // The role holder for work profile is separately controlled via config.
             return resources.getBoolean(android.R.bool.config_enableDefaultNotesForWorkProfile);
         }
 
-        return true;
+        return !UserUtils.isProfile(user, context);
     }
 
     /**

@@ -335,7 +335,10 @@ class AppPermissionTest : BaseUsePermissionTest() {
     }
 
     private fun assertAppPermissionRationaleContainerIsVisible(expected: Boolean) {
-        findView(By.res(APP_PERMISSION_RATIONALE_CONTAINER_VIEW), expected)
+        findView(
+            By.text(getPermissionControllerString(APP_PERMISSION_RATIONALE_TITLE_TEXT)),
+            expected
+        )
     }
 
     companion object {
