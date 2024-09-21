@@ -160,7 +160,6 @@ public class PermissionHistoryPreference extends Preference {
                         mPermissionGroup,
                         mPackageName,
                         PERMISSION_DETAILS_INTERACTION__ACTION__TIMELINE_ROW_CLICKED);
-                mContext.startActivityAsUser(intent, mUserHandle);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext)
                         .setTitle(R.string.privacy_dashboard_emergency_location_dialog_title)
                         .setMessage(

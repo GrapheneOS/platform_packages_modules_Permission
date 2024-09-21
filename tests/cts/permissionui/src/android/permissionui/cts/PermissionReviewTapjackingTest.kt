@@ -44,6 +44,8 @@ class PermissionReviewTapjackingTest : BaseUsePermissionTest() {
         installPackage(APP_APK_PATH_22)
         installPackage(HELPER_APP_OVERLAY)
 
+        Thread.sleep(1000)
+
         SystemUtil.runShellCommandOrThrow(
             "appops set $HELPER_PACKAGE_NAME android:system_alert_window allow"
         )
