@@ -250,7 +250,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"درحال‌حاضر رد شده است / آخرین دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"هرگز دسترسی نداشته است"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"غیرمجاز / هرگز دسترسی نداشته است"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"مجاز است"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"مجاز بودن"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز بودن"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"مجاز فقط برای دسترسی به رسانه‌ها"</string>
@@ -346,7 +346,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"برنامه‌ای مجاز نشده"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"برنامه‌ای برای همه فایل‌ها مجاز نشده"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"برنامه‌ای برای فقط رسانه مجاز نشده"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"برنامه‌ای غیرمجاز نشده"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"برنامه‌ای رد نشده"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"انتخاب‌شده"</string>
     <string name="settings" msgid="5409109923158713323">"تنظیمات"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> سرویس به دستگاه شما دسترسی کامل دارند"</string>

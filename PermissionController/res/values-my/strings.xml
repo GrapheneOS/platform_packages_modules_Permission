@@ -195,7 +195,7 @@
     <string name="app_permission_button_allow_limited_access" msgid="8824410215149764113">"ကန့်သတ်သုံးခြင်းကို ခွင့်ပြုရန်"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"နေရာအတိအကျ"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"တည်နေရာခန့်မှန်းခြေ"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"နေရာအတိအကျကို သုံးခြင်း"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"နေရာအတိအကျ သုံးရန်"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"နေရာအတိအကျကို ပိတ်ထားသည့်အခါ အက်ပ်များက သင်၏တည်နေရာခန့်မှန်းခြေကို သုံးနိုင်သည်"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ခွင့်ပြုချက်"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ဤအက်ပ်အတွက် <xliff:g id="PERM">%1$s</xliff:g> အသုံးပြုခွင့်"</string>
