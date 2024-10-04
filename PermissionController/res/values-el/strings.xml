@@ -256,7 +256,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Επιτρέπεται η πρόσβαση μόνο σε μέσα"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Επιτρέπεται η διαχείριση όλων των αρχείων"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ερώτηση κάθε φορά"</string>
-    <string name="denied_header" msgid="903209608358177654">"Δεν επιτρέπεται"</string>
+    <string name="denied_header" msgid="903209608358177654">"Δεν επιτρέπονται"</string>
     <string name="permission_group_name_with_device_name" msgid="8798741850536024820">"<xliff:g id="PERM_GROUP_NAME">%1$s</xliff:g> στη συσκευή <xliff:g id="DEVICE_NAME">%2$s</xliff:g>"</string>
     <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Δείτε περισσότερες εφαρμογές με πρόσβαση σε όλα τα αρχεία"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ημέρα}other{# ημέρες}}"</string>
@@ -503,11 +503,11 @@
     <string name="permgrouprequest_device_aware_read_media_visual" msgid="3122576538319059333">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε φωτογραφίες και σε βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequest_more_photos" msgid="128933814654231321">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο αυτής της συσκευής;"</string>
     <string name="permgrouprequest_device_aware_more_photos" msgid="1703469013613723053">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε περισσότερες φωτογραφίες και βίντεο στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
-    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ηχογράφηση;"</string>
+    <string name="permgrouprequest_device_aware_microphone" msgid="8821701550505437951">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ηχογράφηση στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Αυτή η εφαρμογή θα μπορεί να εγγράφει ήχο μόνο όταν τη χρησιμοποιείτε"</string>
-    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
-    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ηχογράφηση;"</string>
+    <string name="permgroupbackgroundrequest_device_aware_microphone" msgid="3321823187623762958">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ηχογράφηση στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Αυτή η εφαρμογή ενδέχεται να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείτε. "<annotation id="link">"Έγκριση στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Αλλαγή πρόσβασης στο μικρόφωνο για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequest_device_aware_microphone" msgid="8722411173971679806">"Να γίνει αλλαγή της πρόσβασης μικροφώνου για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; στη συσκευή &lt;b&gt;<xliff:g id="DEVICE_NAME">%2$s</xliff:g>&lt;/b&gt;;"</string>

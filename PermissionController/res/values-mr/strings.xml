@@ -87,7 +87,7 @@
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> पैकी <xliff:g id="COUNT_0">%1$d</xliff:g> अ‍ॅप्सना परवानगी दिली"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना अनुमती आहे"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टीम दाखवा"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लपवा"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टीम लपवा"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"सात दिवस दाखवा"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"२४ तास दाखवा"</string>
     <string name="manage_permission" msgid="2895385393037061964">"परवानगी व्यवस्थापित करा"</string>

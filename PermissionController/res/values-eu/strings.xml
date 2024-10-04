@@ -250,7 +250,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Une honetan ukatuta / Azken sarbide-data: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Ez da erabili inoiz"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Ukatuta / Ez da erabili inoiz"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Baimenduta"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Baimendutakoak"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Beti baimendutakoak"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Erabili bitartean soilik baimendutakoak"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Multimedia-fitx. soilik erabiltzeko baimena dutenak"</string>
