@@ -258,7 +258,8 @@ public class Permissions {
         if (!wasPermissionOrAppOpGranted) {
             // If we've granted a permission which wasn't granted, it's no longer user set or fixed.
             newMask |= PackageManager.FLAG_PERMISSION_USER_FIXED
-                    | PackageManager.FLAG_PERMISSION_USER_SET;
+                    | PackageManager.FLAG_PERMISSION_USER_SET
+                    | PackageManager.FLAG_PERMISSION_ONE_TIME;
         }
         // If a component gets a permission for being the default handler A and also default handler
         // B, we grant the weaker grant form. This only applies to default permission grant.
@@ -629,7 +630,8 @@ public class Permissions {
         }
         if (!overrideUserSetAndFixed) {
             fixedFlags |= PackageManager.FLAG_PERMISSION_USER_FIXED
-                    | PackageManager.FLAG_PERMISSION_USER_SET;
+                    | PackageManager.FLAG_PERMISSION_USER_SET
+                    | PackageManager.FLAG_PERMISSION_ONE_TIME;
         }
         return (flags & fixedFlags) != 0;
     }
