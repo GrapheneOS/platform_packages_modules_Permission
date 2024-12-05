@@ -30,6 +30,7 @@
         <!-- These two attributes are required when using Toolbar as ActionBar. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextAppearance.CategoryTitle"
