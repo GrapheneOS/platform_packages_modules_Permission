@@ -23,6 +23,7 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:alertDialogTheme">@style/Theme.DeviceDefault.AlertDialog.SettingsLib.Expressive</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="Theme.PermissionController.Settings.Expressive.FilterTouches">
