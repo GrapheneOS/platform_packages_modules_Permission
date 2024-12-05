@@ -132,6 +132,20 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     public static final String ANNOTATION_ID = "link";
 
+    public static boolean isAllowButton(int id) {
+        switch (id) {
+            case ALLOW_BUTTON:
+            case ALLOW_ALWAYS_BUTTON:
+            case ALLOW_FOREGROUND_BUTTON:
+            case ALLOW_ONE_TIME_BUTTON:
+            case ALLOW_ALL_BUTTON:
+            case ALLOW_SELECTED_BUTTON:
+                return true;
+            default:
+                return false;
+        }
+    }
+
     public static final int NEXT_BUTTON = 16;
     public static final int ALLOW_BUTTON = 0;
     public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
