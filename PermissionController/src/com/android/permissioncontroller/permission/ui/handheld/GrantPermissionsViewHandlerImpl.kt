@@ -26,6 +26,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
+import android.util.Log
 import android.util.SparseIntArray
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -344,12 +345,25 @@ class GrantPermissionsViewHandlerImpl(
     private fun updateButtons() {
         for (i in 0 until BUTTON_RES_ID_TO_NUM.size()) {
             val pos = BUTTON_RES_ID_TO_NUM.valueAt(i)
-            buttons[pos]?.visibility =
-                if (buttonVisibilities[pos]) {
-                    View.VISIBLE
-                } else {
-                    View.GONE
+            val button = buttons[pos]!!
+            val buttonVisible = buttonVisibilities[pos]
+
+            button.visibility = if (buttonVisible) View.VISIBLE else View.GONE
+
+            if (buttonVisible && GrantPermissionsActivity.isAllowButton(pos)) {
+                button.isEnabled = false
+
+                val shouldLog = Log.isLoggable(TAG, Log.DEBUG)
+                val suffix = "$pos, pkg $mAppPackageName, group $groupName"
+                if (shouldLog) Log.d(TAG, "temporarily disabled button $suffix")
+
+                val action = Runnable {
+                    button.isEnabled = true
+                    if (shouldLog) Log.d(TAG, "enabled button $suffix")
                 }
+                button.postDelayed(action, 1000)
+            }
+
             if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos]) {
                 if (
                     locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
