@@ -241,7 +241,7 @@ class GrantRevokeTests {
         perms: Map<String, LightPermission> = emptyMap()
     ): LightAppPermGroup {
         val pGi = LightPermGroupInfo(PERM_GROUP_NAME, TEST_PACKAGE_NAME, 0, 0, 0, false)
-        return LightAppPermGroup(pkgInfo, pGi, perms, false, false)
+        return LightAppPermGroup(pkgInfo, pGi, perms, false, false, false)
     }
 
     /**

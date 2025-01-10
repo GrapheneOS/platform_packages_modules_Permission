@@ -16,7 +16,13 @@
 
 package com.android.permissioncontroller.permission.data
 
+import android.Manifest.permission_group.READ_MEDIA_VISUAL
+import android.Manifest.permission_group.STORAGE
+import android.app.AppOpsManager
+import android.app.AppOpsManager.MODE_ALLOWED
+import android.app.AppOpsManager.OPSTR_WRITE_MEDIA_IMAGES
 import android.app.Application
+import android.app.role.RoleManager
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Build
@@ -121,19 +127,6 @@ private constructor(
                 LightPermission(packageInfo, permInfo, permState, foregroundPerms)
         }
 
-        // Determine if this app permission group is a special location package or provider
-        var specialLocationGrant: Boolean? = null
-        val userContext = Utils.getUserContext(app, user)
-        if (LocationUtils.isLocationGroupAndProvider(userContext, permGroupName, packageName)) {
-            specialLocationGrant = LocationUtils.isLocationEnabled(userContext)
-        } else if (
-            LocationUtils.isLocationGroupAndControllerExtraPackage(app, permGroupName, packageName)
-        ) {
-            // The permission of the extra location controller package is determined by the status
-            // of the controller package itself.
-            specialLocationGrant =
-                LocationUtils.isExtraLocationControllerPackageEnabled(userContext)
-        }
 
         val hasInstallToRuntimeSplit = hasInstallToRuntimeSplit(packageInfo, permissionMap)
         value =
@@ -142,7 +135,8 @@ private constructor(
                 permGroup.groupInfo,
                 permissionMap,
                 hasInstallToRuntimeSplit,
-                specialLocationGrant
+                isSpecialLocationGranted(app, packageName, permGroupName, user),
+                isSpecialFixedStorageGranted(app, packageName, permGroupName, packageInfo.uid)
             )
     }
 
@@ -233,6 +227,57 @@ private constructor(
                 key.third,
                 deviceId
             )
+        }
+
+        private const val SYSTEM_GALLERY_ROLE_NAME = "android.app.role.SYSTEM_GALLERY"
+
+        // Returns true if this app is the location provider or location extra package, and location
+        // access is granted, false if it is the provider/extra, and location is not granted, and
+        // null if it is not a special package
+        fun isSpecialLocationGranted(
+            app: Application,
+            packageName: String,
+            permGroupName: String,
+            user: UserHandle
+        ): Boolean? {
+            val userContext = Utils.getUserContext(app, user)
+            return if (
+                LocationUtils.isLocationGroupAndProvider(userContext, permGroupName, packageName)
+            ) {
+                LocationUtils.isLocationEnabled(userContext)
+            } else if (
+                LocationUtils.isLocationGroupAndControllerExtraPackage(app, permGroupName, packageName)
+            ) {
+                // The permission of the extra location controller package is determined by the status
+                // of the controller package itself.
+                LocationUtils.isExtraLocationControllerPackageEnabled(userContext)
+            } else {
+                null
+            }
+        }
+
+        // Gallery role is static, so we only need to get the set gallery app once
+        private val systemGalleryApps: List<String> by lazy {
+            val roleManager = PermissionControllerApplication.get()
+                .getSystemService(RoleManager::class.java) ?: return@lazy emptyList()
+            roleManager.getRoleHolders(SYSTEM_GALLERY_ROLE_NAME)
+        }
+
+        fun isSpecialFixedStorageGranted(
+            app: Application,
+            packageName: String,
+            permGroupName: String,
+            uid: Int
+        ): Boolean {
+            if (permGroupName != READ_MEDIA_VISUAL && permGroupName != STORAGE) {
+                return false
+            }
+            if (packageName !in systemGalleryApps) {
+                return false
+            }
+            // This is the storage group, and the gallery app. Check the write media app op
+            val appOps = app.getSystemService(AppOpsManager::class.java)
+            return appOps.unsafeCheckOpNoThrow(OPSTR_WRITE_MEDIA_IMAGES, uid, packageName) == MODE_ALLOWED
         }
     }
 }
