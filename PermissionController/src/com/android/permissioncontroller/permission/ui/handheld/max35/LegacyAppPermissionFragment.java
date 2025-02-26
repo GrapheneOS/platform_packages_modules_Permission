@@ -507,9 +507,9 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
             mViewModel.handleDisabledAllowButton(this);
         } else {
             Context ctx = requireContext();
-            var epl = ExtraPermissionLinkKt.getExtraPermissionLink(ctx, mPackageName, mPermGroupName);
-            if (epl != null && epl.isAllowPermissionSettingsButtonBlocked(ctx, mPackageName)) {
-                epl.onAllowPermissionSettingsButtonClick(ctx, mPackageName);
+            var epl = ExtraPermissionLinkKt.getExtraPermissionLink(ctx, mPackageName, mUser, mPermGroupName);
+            if (epl != null && epl.isAllowPermissionSettingsButtonBlocked(ctx, mPackageName, mUser)) {
+                epl.onAllowPermissionSettingsButtonClick(ctx);
                 return;
             }
 
@@ -780,7 +780,7 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
         }
 
         ExtraPermissionLink link = ExtraPermissionLinkKt.getExtraPermissionLink(requireContext(),
-                mPackageName, mPermGroupName);
+                mPackageName, mUser, mPermGroupName);
 
         if (link == null) {
             return;
@@ -789,9 +789,9 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
         Context ctx = requireContext();
 
         String packageName = mPackageName;
-        GosPackageState packageState = GosPackageState.get(packageName, ctx.getUser());
+        GosPackageState packageState = GosPackageState.get(packageName, mUser);
 
-        String denyItemSuffix = link.getSettingsDeniedRadioButtonSuffix(ctx, packageName, packageState);
+        String denyItemSuffix = link.getSettingsDeniedRadioButtonSuffix(ctx, packageState);
 
         if (denyItemSuffix != null) {
             if (mOrigDenyButtonText == null) {
@@ -806,8 +806,8 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
 
         TextView view = mExtraViews.requireViewById(R.id.app_permission_extra_link_1);
 
-        view.setText(link.getSettingsLinkText(ctx, packageName, packageState));
-        view.setOnClickListener(v -> link.onSettingsLinkClick(this, packageName, packageState));
+        view.setText(link.getSettingsLinkText(ctx));
+        view.setOnClickListener(v -> link.onSettingsLinkClick(v.getContext(), mPackageName, mUser));
 
         mExtraViews.setVisibility(View.VISIBLE);
     }

@@ -393,7 +393,7 @@ class GrantPermissionsViewHandlerImpl(
                 }
             }
             if (pos == EXTRA_BUTTON_1 && buttonVisibilities[pos]) {
-                val spec = getExtraPermissionLink(mActivity, mAppPackageName, groupName!!)!!
+                val spec = getExtraPermissionLink(mActivity, mAppPackageName, mActivity.user, groupName!!)!!
                 this.extraButton1 = spec
                 spec.setupDialogButton(buttons[pos]!!)
             }

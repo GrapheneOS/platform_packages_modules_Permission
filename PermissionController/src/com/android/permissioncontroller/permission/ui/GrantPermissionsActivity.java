@@ -897,7 +897,8 @@ public class GrantPermissionsActivity extends SettingsActivity
             buttons.add(LINK_TO_PERMISSION_RATIONALE);
         }
 
-        if (ExtraPermissionLinkKt.getExtraPermissionLink(this, mTargetPackage, groupInfo.getName()) != null) {
+        if (ExtraPermissionLinkKt.getExtraPermissionLink(this, mTargetPackage, getUser(),
+                groupInfo.getName()) != null) {
             buttons.add(EXTRA_BUTTON_1);
         }
 
