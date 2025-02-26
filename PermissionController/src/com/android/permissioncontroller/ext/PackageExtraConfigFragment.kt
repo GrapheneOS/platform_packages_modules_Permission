@@ -39,10 +39,4 @@ abstract class PackageExtraConfigFragment : BaseSettingsWithLargeHeaderFragment(
             pressBack()
         }
     }
-
-    companion object {
-        fun createArgs(packageName: String) = Bundle().apply {
-            putString(Intent.EXTRA_PACKAGE_NAME, packageName)
-        }
-    }
 }
