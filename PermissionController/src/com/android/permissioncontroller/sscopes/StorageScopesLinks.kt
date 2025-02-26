@@ -3,16 +3,15 @@ package com.android.permissioncontroller.sscopes
 import android.app.StorageScope
 import android.content.Context
 import android.content.pm.GosPackageState
+import android.os.UserHandle
 import android.widget.Button
-import androidx.navigation.fragment.NavHostFragment
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.ext.PackageExtraConfigFragment
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.handheld.ExtraPermissionLink
 
 object StorageScopesLinks : ExtraPermissionLink() {
 
-    override fun isVisible(ctx: Context, groupName: String, packageName: String) =
+    override fun isVisible(ctx: Context, groupName: String, packageName: String, user: UserHandle) =
             StorageScopesUtils.isStoragePermissionGroup(groupName)
 
     override fun setupDialogButton(button: Button) {
@@ -25,8 +24,7 @@ object StorageScopesLinks : ExtraPermissionLink() {
                 GrantPermissionsActivity.REQ_CODE_SETUP_STORAGE_SCOPES)
     }
 
-    override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageName: String,
-                                                    packageState: GosPackageState): String? {
+    override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageState: GosPackageState): String? {
         if (StorageScopesUtils.isStorageScopesEnabled(packageState)) {
             return " (+ " + ctx.getString(R.string.sscopes) + ")"
         }
@@ -34,12 +32,12 @@ object StorageScopesLinks : ExtraPermissionLink() {
         return null
     }
 
-    override fun getSettingsLinkText(ctx: Context, packageName: String, packageState: GosPackageState): CharSequence {
+    override fun getSettingsLinkText(ctx: Context): CharSequence {
         return ctx.getText(R.string.sscopes)
     }
 
-    override fun onSettingsLinkClick(fragment: androidx.fragment.app.Fragment, packageName: String, packageState: GosPackageState) {
-        val args = PackageExtraConfigFragment.createArgs(packageName)
-        NavHostFragment.findNavController(fragment).navigate(R.id.storage_scopes, args)
+    override fun onSettingsLinkClick(ctx: Context, packageName: String, user: UserHandle) {
+        val intent = StorageScope.createConfigActivityIntent(packageName)
+        ctx.startActivityAsUser(intent, user)
     }
 }
