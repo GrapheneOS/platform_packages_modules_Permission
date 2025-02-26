@@ -1014,7 +1014,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         if (requestCode == REQ_CODE_SETUP_CONTACT_SCOPES) {
-            if (ContactScopesUtils.isContactScopesEnabled(this, mTargetPackage)) {
+            if (ContactScopesUtils.isContactScopesEnabled(mTargetPackage, getUser())) {
                 setResultAndFinish();
             }
             return;

@@ -3,6 +3,7 @@ package com.android.permissioncontroller.cscopes
 import android.content.Context
 import android.content.pm.GosPackageState
 import android.ext.cscopes.ContactScopesApi
+import android.os.UserHandle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.NavHostFragment
@@ -13,7 +14,7 @@ import com.android.permissioncontroller.permission.ui.handheld.ExtraPermissionLi
 
 object ContactScopesLinks : ExtraPermissionLink() {
 
-    override fun isVisible(ctx: Context, groupName: String, packageName: String): Boolean {
+    override fun isVisible(ctx: Context, groupName: String, packageName: String, user: UserHandle): Boolean {
         if (!ContactScopesUtils.isContactsPermissionGroup(groupName)) {
             return false
         }
@@ -40,17 +41,19 @@ object ContactScopesLinks : ExtraPermissionLink() {
         activity.startActivityForResult(intent, GrantPermissionsActivity.REQ_CODE_SETUP_CONTACT_SCOPES)
     }
 
-    override fun isAllowPermissionSettingsButtonBlocked(ctx: Context, packageName: String) =
-            ContactScopesUtils.isContactScopesEnabled(ctx, packageName)
+    override fun isAllowPermissionSettingsButtonBlocked(ctx: Context, packageName: String,
+                                                        user: UserHandle): Boolean {
+        return ContactScopesUtils.isContactScopesEnabled(packageName, user)
+    }
 
-    override fun onAllowPermissionSettingsButtonClick(ctx: Context, packageName: String) {
+    override fun onAllowPermissionSettingsButtonClick(ctx: Context) {
         AlertDialog.Builder(ctx).run {
             setMessage(R.string.cscopes_allow_contacts_permission_blocked_msg)
             show()
         }
     }
 
-    override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageName: String, packageState: GosPackageState): String? {
+    override fun getSettingsDeniedRadioButtonSuffix(ctx: Context, packageState: GosPackageState): String? {
         if (!ContactScopesUtils.isContactScopesEnabled(packageState)) {
             return null
         }
@@ -59,12 +62,12 @@ object ContactScopesLinks : ExtraPermissionLink() {
         return " (+ $cscopes)"
     }
 
-    override fun getSettingsLinkText(ctx: Context, packageName: String, packageState: GosPackageState): CharSequence {
+    override fun getSettingsLinkText(ctx: Context): CharSequence {
         return ctx.getText(R.string.contact_scopes)
     }
 
-    override fun onSettingsLinkClick(fragment: androidx.fragment.app.Fragment, packageName: String, packageState: GosPackageState) {
-        val args = PackageExtraConfigFragment.createArgs(packageName)
-        NavHostFragment.findNavController(fragment).navigate(R.id.contact_scopes, args)
+    override fun onSettingsLinkClick(ctx: Context, packageName: String, user: UserHandle) {
+        val intent = ContactScopesApi.createConfigActivityIntent(packageName)
+        ctx.startActivityAsUser(intent, user)
     }
 }
