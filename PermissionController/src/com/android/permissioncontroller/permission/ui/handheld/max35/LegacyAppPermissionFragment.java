@@ -779,14 +779,14 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
             return;
         }
 
-        ExtraPermissionLink link = ExtraPermissionLinkKt.getExtraPermissionLink(requireContext(),
+        Context ctx = mDenyButton.getContext();
+
+        ExtraPermissionLink link = ExtraPermissionLinkKt.getExtraPermissionLink(ctx,
                 mPackageName, mUser, mPermGroupName);
 
         if (link == null) {
             return;
         }
-
-        Context ctx = requireContext();
 
         String packageName = mPackageName;
         GosPackageState packageState = GosPackageState.get(packageName, mUser);
