@@ -277,7 +277,7 @@ private constructor(
             }
             // This is the storage group, and the gallery app. Check the write media app op
             val appOps = app.getSystemService(AppOpsManager::class.java)
-            return appOps.unsafeCheckOpNoThrow(OPSTR_WRITE_MEDIA_IMAGES, uid, packageName) == MODE_ALLOWED
+            return appOps.checkOpNoThrow(OPSTR_WRITE_MEDIA_IMAGES, uid, packageName) == MODE_ALLOWED
         }
     }
 }
