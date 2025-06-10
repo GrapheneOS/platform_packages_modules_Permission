@@ -23,12 +23,15 @@ import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.MODE_FOREGROUND;
 import static android.app.AppOpsManager.MODE_IGNORED;
 import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
+import static android.content.pm.PackageManager.FLAG_PERMISSION_ONE_TIME;
+import static android.content.pm.PackageManager.FLAG_PERMISSION_REVOKED_COMPAT;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 
 import static com.android.permissioncontroller.permission.utils.Utils.isHealthPermissionUiEnabled;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.Application;
@@ -1662,10 +1665,34 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             } finally {
                 Binder.restoreCallingIdentity(token);
             }
-        } else {
+        } else if (!anyPermsOfPackageOneTimeGranted(getApp())) {
+            // Stop the session only when no permission in the package is granted as one time.
             mContext.getSystemService(PermissionManager.class)
                     .stopOneTimePermissionSession(packageName);
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    private boolean anyPermsOfPackageOneTimeGranted(PackageInfo packageInfo) {
+        if (packageInfo.requestedPermissions == null
+                || packageInfo.requestedPermissionsFlags == null) {
+            return false;
+        }
+
+        for (int i = 0; i < packageInfo.requestedPermissions.length; i++) {
+            if ((packageInfo.requestedPermissionsFlags[i] &
+                    PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
+                continue;
+            }
+            int flags = mPackageManager.getPermissionFlags(
+                    packageInfo.requestedPermissions[i], packageInfo.packageName, getUser());
+            boolean isGrantedOneTime = (flags & FLAG_PERMISSION_REVOKED_COMPAT) == 0 &&
+                    (flags & FLAG_PERMISSION_ONE_TIME) != 0;
+            if (isGrantedOneTime) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
