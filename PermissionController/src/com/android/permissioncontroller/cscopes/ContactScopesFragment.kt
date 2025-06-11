@@ -48,7 +48,7 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mainSwitch = MainSwitchPreference(context).apply {
+        mainSwitch = MainSwitchPreference(context_).apply {
             setTitle(R.string.cscopes_enable)
             addOnSwitchChangeListener { _, isChecked ->
                 if (isChecked) {
