@@ -50,10 +50,11 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
 
         mainSwitch = MainSwitchPreference(context_).apply {
             setTitle(R.string.cscopes_enable)
-            addOnSwitchChangeListener { _, isChecked ->
-                if (isChecked) {
+            setOnPreferenceChangeListener { _, newValue ->
+                if (newValue == true) {
                     setContactScopesEnabled(true)
                 }
+                true
             }
         }
 
