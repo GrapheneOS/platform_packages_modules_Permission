@@ -28,6 +28,7 @@ import com.android.permissioncontroller.appops.data.repository.v31.AppOpReposito
 import com.android.permissioncontroller.permission.data.repository.v31.PermissionRepository
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionTimelineUsageModel
 import com.android.permissioncontroller.permission.domain.model.v31.PermissionTimelineUsageModelWrapper
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.CLUSTER_SPACING_MINUTES
 import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.Companion.ONE_MINUTE_MS
 import com.android.permissioncontroller.permission.utils.LocationUtils
@@ -300,12 +301,7 @@ class GetPermissionGroupUsageDetailsUseCase(
 
         private fun permissionGroupToOpNamesMap(): Map<String, List<String>> {
             val permissionGroupOpNamesMap = mutableMapOf<String, MutableList<String>>()
-            val permissionGroups =
-                listOf(
-                    Manifest.permission_group.CAMERA,
-                    Manifest.permission_group.LOCATION,
-                    Manifest.permission_group.MICROPHONE,
-                )
+            val permissionGroups = PermissionUsageControlPreferenceUtils.SENSOR_DATA_PERMISSIONS
             permissionGroups.forEach { permissionGroup ->
                 val opNames =
                     PermissionMapping.getPlatformPermissionNamesOfGroup(permissionGroup)
