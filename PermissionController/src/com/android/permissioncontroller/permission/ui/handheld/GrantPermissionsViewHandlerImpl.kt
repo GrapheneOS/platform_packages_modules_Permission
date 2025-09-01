@@ -352,6 +352,7 @@ class GrantPermissionsViewHandlerImpl(
 
             if (buttonVisible && GrantPermissionsActivity.isAllowButton(pos)) {
                 button.isEnabled = false
+                button.setAlpha(0.5f)
 
                 val shouldLog = Log.isLoggable(TAG, Log.DEBUG)
                 val suffix = "$pos, pkg $mAppPackageName, group $groupName"
@@ -359,6 +360,7 @@ class GrantPermissionsViewHandlerImpl(
 
                 val action = Runnable {
                     button.isEnabled = true
+                    button.setAlpha(1f)
                     if (shouldLog) Log.d(TAG, "enabled button $suffix")
                 }
                 button.postDelayed(action, 1000)
