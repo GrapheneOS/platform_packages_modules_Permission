@@ -5,4 +5,6 @@
     <string name="scopes_btn_remove_scope">Remove</string>
 
     <string name="action_proceed">Proceed</string>
+
+    <string name="device_admin_request">Activate device admin app?</string>
 </resources>
