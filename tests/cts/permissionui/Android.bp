@@ -77,6 +77,8 @@ android_test {
         ":CtsAppThatAccessesMicAndCameraPermission",
         ":CtsUsePermissionAppStorage33",
         ":CtsAppThatMakesTwoPermRequests",
+        ":CtsAppWithSharedUidNoPerms",
+        ":CtsAppWithSharedUidWithPerms",
     ],
     test_suites: [
         "cts",

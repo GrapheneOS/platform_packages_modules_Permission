@@ -21,6 +21,7 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Parcel
 import android.os.UserHandle
 import android.os.UserManager
 import android.util.Log
@@ -109,7 +110,21 @@ private constructor(
                 }
 
                 val packageManager = Utils.getUserContext(app, user).packageManager
-                val pI = packageManager.getPackageInfo(packageName, flags)
+                var pI = packageManager.getPackageInfo(packageName, flags)
+                if (pI.sharedUserId != null && pI.applicationInfo != null) {
+                    val sharedPackageNames =
+                        packageManager.getPackagesForUid(pI.applicationInfo!!.uid)
+                    val sharedPackages =
+                        sharedPackageNames?.mapNotNull { otherPackageName ->
+                            try {
+                                val otherPi = packageManager.getPackageInfo(otherPackageName, flags)
+                                otherPi
+                            } catch (_: PackageManager.NameNotFoundException) {
+                                null
+                            }
+                        }
+                    pI = mergePermissionsInSharedUid(pI, sharedPackages)
+                }
 
                 // PackageInfo#requestedPermissionsFlags is not device aware. Hence for device aware
                 // permissions if the deviceId is not the primary device we need to separately check
@@ -271,6 +286,79 @@ private constructor(
                 key.second,
                 deviceId
             )
+        }
+
+        @JvmStatic
+        fun mergePermissionsInSharedUid(
+            base: PackageInfo,
+            flags: Int,
+            packageManager: PackageManager,
+        ): PackageInfo {
+            if (base.sharedUserId != null && base.applicationInfo != null) {
+                val sharedPackageNames =
+                    packageManager.getPackagesForUid(base.applicationInfo!!.uid)
+                val sharedPackages =
+                    sharedPackageNames?.mapNotNull { otherPackageName ->
+                        try {
+                            val otherPi = packageManager.getPackageInfo(otherPackageName, flags)
+                            otherPi
+                        } catch (_: PackageManager.NameNotFoundException) {
+                            null
+                        }
+                    }
+                return mergePermissionsInSharedUid(base, sharedPackages)
+            }
+            return base
+        }
+
+        fun mergePermissionsInSharedUid(
+            base: PackageInfo,
+            otherPackages: List<PackageInfo>?,
+        ): PackageInfo {
+            if (
+                otherPackages == null || base.applicationInfo == null || base.sharedUserId == null
+            ) {
+                return base
+            }
+
+            val allPackages =
+                if (base in otherPackages) otherPackages
+                else otherPackages.toMutableList().apply { add(base) }
+            val permissionStates = mutableMapOf<String, Int>()
+            allPackages.forEach { packageInfo ->
+                if (
+                    packageInfo.applicationInfo?.uid != base.applicationInfo?.uid ||
+                        packageInfo.requestedPermissions == null
+                ) {
+                    return@forEach
+                }
+                packageInfo.requestedPermissions!!.forEachIndexed { index, permission ->
+                    val existingFlags = permissionStates.getOrDefault(permission, 0)
+                    permissionStates[permission] =
+                        existingFlags or packageInfo.requestedPermissionsFlags!![index]
+                }
+            }
+            val requestedPermissions = permissionStates.keys.toTypedArray()
+            val requestedPermissionsFlags = IntArray(requestedPermissions.size)
+            requestedPermissions.forEachIndexed { index, permission ->
+                requestedPermissionsFlags[index] = permissionStates[permission]!!
+            }
+            val packageCopy = copyPackageInfo(base)
+            packageCopy.requestedPermissions = requestedPermissions
+            packageCopy.requestedPermissionsFlags = requestedPermissionsFlags
+            return packageCopy
+        }
+
+        fun copyPackageInfo(original: PackageInfo): PackageInfo {
+            val parcel = Parcel.obtain()
+            try {
+                original.writeToParcel(parcel, 0)
+                parcel.setDataPosition(0)
+                val copy = PackageInfo.CREATOR.createFromParcel(parcel)
+                return copy
+            } finally {
+                parcel.recycle()
+            }
         }
     }
 }

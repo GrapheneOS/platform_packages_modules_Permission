@@ -36,6 +36,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.model.AppPermissions
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages
@@ -75,7 +76,13 @@ class WearAppPermissionGroupsFragment : Fragment(), PermissionsUsagesChangeCallb
         val packageManager = activity.packageManager
         val packageInfo: PackageInfo? =
             try {
-                packageManager.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
+                val flags = PackageManager.GET_PERMISSIONS
+                val pI = packageManager.getPackageInfo(packageName, flags)
+                LightPackageInfoLiveData.mergePermissionsInSharedUid(
+                    pI,
+                    flags,
+                    activity.packageManager
+                )
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.i(LOG_TAG, "No package:" + activity.callingPackage, e)
                 null
