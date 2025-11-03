@@ -375,6 +375,22 @@ class PermissionTest23 : BaseUsePermissionTest() {
         }
     }
 
+    @Test
+    fun testSharedUidAppsSharePermissionsInUi() {
+        try {
+            installPackage(APP_APK_PATH_SHARED_UID_NO_PERMS)
+            installPackage(APP_APK_PATH_SHARED_UID_WITH_PERMS)
+            navigateToIndividualPermissionSetting(
+                android.Manifest.permission.RECORD_AUDIO,
+                SHARED_UID_NO_PERMS_PACKAGE_NAME
+            )
+            clicksDenyInSettings()
+        } finally {
+            uninstallPackage(SHARED_UID_NO_PERMS_PACKAGE_NAME)
+            uninstallPackage(SHARED_UID_WITH_PERMS_PACKAGE_NAME)
+        }
+    }
+
     private fun denyPermissionRequestWithPrejudice() {
         if (isTv || isWatch) {
             clickPermissionRequestDontAskAgainButton()
