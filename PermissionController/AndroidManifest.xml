@@ -645,23 +645,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Used to show a permission prompt for device admin app request -->
-        <!-- based on GrantPermissionsActivity -->
-        <activity
-            android:name="com.android.permissioncontroller.permission.ui.DeviceAdminPromptActivity"
-            android:configChanges="keyboardHidden|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:theme="@style/GrantPermissions.FilterTouches"
-            android:inheritShowWhenLocked="true"
-            android:hardwareAccelerated="false"
-        >
-        <intent-filter>
-            <action android:name="android.app.action.ADD_DEVICE_ADMIN_PROMPT" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-        </activity>
-
         <!-- based on GrantPermissionsActivity-->
         <activity
             android:name="com.android.permissioncontroller.sscopes.BroadStorageAccessPromptActivity"
