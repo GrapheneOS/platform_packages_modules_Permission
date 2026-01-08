@@ -25,12 +25,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroup
-import androidx.preference.SwitchPreference
+import androidx.preference.SwitchPreferenceCompat
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.ext.BaseSettingsActivity
 import com.android.permissioncontroller.ext.addCategory
 import com.android.permissioncontroller.ext.addPref
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsCollapsingToolbarBaseFragment
+import com.android.permissioncontroller.permission.ui.handheld.PermissionsFrameFragment
 import com.android.permissioncontroller.permission.ui.handheld.pressBack
 import getAppInfoOrNull
 
@@ -44,9 +45,9 @@ class AndroidAutoConfigWrapperFragment : PermissionsCollapsingToolbarBaseFragmen
 
 private val PKG_NAME = PackageId.ANDROID_AUTO_NAME
 
-class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
+class AndroidAutoConfigFragment : PermissionsFrameFragment() {
     lateinit var aautoSettingsPref: Preference
-    val pkgFlagPrefs = mutableMapOf<Int, SwitchPreference>()
+    val pkgFlagPrefs = mutableMapOf<Int, SwitchPreferenceCompat>()
     val packagePrefs = mutableMapOf<String, Preference>()
 
     lateinit var potentialIssues: PreferenceGroup
@@ -149,8 +150,8 @@ class AndroidAutoConfigFragment : PreferenceFragmentCompat() {
         update()
     }
 
-    fun addPkgFlagPerm(dst: PreferenceGroup, flag: Int, title: Int, confirmationText: Int, summary: Int = 0): SwitchPreference {
-        val pref = SwitchPreference(requireContext())
+    fun addPkgFlagPerm(dst: PreferenceGroup, flag: Int, title: Int, confirmationText: Int, summary: Int = 0): SwitchPreferenceCompat {
+        val pref = SwitchPreferenceCompat(dst.context)
         pref.setTitle(title)
         if (summary != 0) {
             pref.setSummary(summary)
