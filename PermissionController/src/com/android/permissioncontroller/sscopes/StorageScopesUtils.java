@@ -26,12 +26,15 @@ import android.content.pm.GosPackageStateFlag;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import java.io.FileDescriptor;
 import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.system.Os;
+import android.system.OsConstants;
+import android.system.StructStat;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -193,19 +196,24 @@ public class StorageScopesUtils {
             }
         } else {
             try (ParcelFileDescriptor pfd = ctx.getContentResolver().openFile(uri, "r", null)) {
-                String fdPath = "/proc/self/fd/" + pfd.getFd();
 
-                String realpath = Os.readlink(fdPath);
+                FileDescriptor fd = pfd.getFileDescriptor();
+                StructStat stat = Os.fstat(fd);
 
-                if (realpath.startsWith("/mnt/user/")) {
-                    // devices that launched with Android 11+ mount shared storage differently
-                    realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
-                }
+                int ftype = stat.st_mode & OsConstants.S_IFMT;
 
-                if (new File(realpath).isFile()) {
+                // Check if the current file is a regular file
+                if (ftype == OsConstants.S_IFREG) {
+                    String fdPath = "/proc/self/fd/" + pfd.getFd();
+
+                    String realpath = Os.readlink(fdPath);
+
+                    if (realpath.startsWith("/mnt/user/")) {
+                        // devices that launched with Android 11+ mount shared storage differently
+                        realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
+                    }
+
                     unverifiedPath = realpath;
-                } else {
-                    Log.d(TAG, realpath + " is not a file, " + Os.stat(realpath));
                 }
             } catch (Exception e) {
                 Log.d(TAG, "unable to convert uri " + uri + " to path", e);
