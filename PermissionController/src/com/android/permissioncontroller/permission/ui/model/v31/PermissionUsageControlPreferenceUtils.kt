@@ -78,15 +78,10 @@ object PermissionUsageControlPreferenceUtils {
                     R.string.permission_usage_preference_label,
                     count
                 )
-            if (count == 0) {
+            if (count == 0 && !PermissionMapping.isSpecialRuntimePermissionGroup(groupName)) {
                 isEnabled = false
                 val permissionUsageSummaryNotUsed =
-                    if (
-                            groupName == Manifest.permission_group.NETWORK
-                            || groupName == Manifest.permission_group.OTHER_SENSORS)
-                    {
-                        context.getString(R.string.permission_usage_preference_summary_not_supported)
-                    } else if (show7Days) {
+                    if (show7Days) {
                         StringUtils.getIcuPluralsString(
                             context,
                             R.string.permission_usage_preference_summary_not_used_in_past_n_days,
@@ -111,6 +106,9 @@ object PermissionUsageControlPreferenceUtils {
                     true
                 }
             } else {
+                if (PermissionMapping.isSpecialRuntimePermissionGroup(groupName)) {
+                    setSummary(null)
+                }
                 onPreferenceClickListener = OnPreferenceClickListener {
                     val intent = Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                     intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
