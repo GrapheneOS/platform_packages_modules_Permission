@@ -721,7 +721,7 @@
         <activity
             android:name="com.android.permissioncontroller.sscopes.StorageScopesActivity"
             android:exported="true"
-            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:theme="@style/Theme.PermissionController.Settings.Expressive.FilterTouches"
             android:excludeFromRecents="true"
             android:permission="android.permission.WRITE_SECURE_SETTINGS"
         >
