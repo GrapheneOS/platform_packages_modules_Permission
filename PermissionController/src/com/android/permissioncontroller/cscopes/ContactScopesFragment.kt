@@ -493,7 +493,7 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
                         check(pos == 0)
                         ContactScopesUtils.setCustomContactsAppAllowed(context_, isChecked)
                     }
-                    setNeutralButton(R.string.cscopes_settings_dismiss, null)
+                    setNegativeButton(R.string.cscopes_settings_dismiss, null)
                     show()
                 }
             }
