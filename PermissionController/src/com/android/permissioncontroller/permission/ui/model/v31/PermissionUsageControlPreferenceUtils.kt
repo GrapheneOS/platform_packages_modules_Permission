@@ -31,16 +31,30 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.PermissionMapping
 import com.android.permissioncontroller.permission.utils.StringUtils
 
 @RequiresApi(Build.VERSION_CODES.S)
 object PermissionUsageControlPreferenceUtils {
 
-    private val SENSOR_DATA_PERMISSIONS: List<String> =
+    @JvmField
+    val PERMISSIONS_WITH_USAGE_HISTORY: List<String> =
         listOf(
             Manifest.permission_group.LOCATION,
             Manifest.permission_group.CAMERA,
             Manifest.permission_group.MICROPHONE,
+            Manifest.permission_group.ACTIVITY_RECOGNITION,
+            Manifest.permission_group.CALENDAR,
+            Manifest.permission_group.CALL_LOG,
+            Manifest.permission_group.CONTACTS,
+            android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP,
+            Manifest.permission_group.NEARBY_DEVICES,
+            Manifest.permission_group.PHONE,
+            Manifest.permission_group.READ_MEDIA_AURAL,
+            Manifest.permission_group.READ_MEDIA_VISUAL,
+            Manifest.permission_group.SENSORS,
+            Manifest.permission_group.STORAGE,
+            Manifest.permission_group.SMS,
         )
 
     @JvmStatic
@@ -80,7 +94,7 @@ object PermissionUsageControlPreferenceUtils {
                         )
                     }
                 setSummary(permissionUsageSummaryNotUsed)
-            } else if (SENSOR_DATA_PERMISSIONS.contains(groupName)) {
+            } else if (PERMISSIONS_WITH_USAGE_HISTORY.contains(groupName)) {
                 onPreferenceClickListener = OnPreferenceClickListener {
                     val intent = Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY)
                     intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
@@ -116,7 +130,7 @@ object PermissionUsageControlPreferenceUtils {
                 Manifest.permission_group.MICROPHONE -> {
                     PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__MICROPHONE_ACCESS_TIMELINE_VIEWED
                 }
-                else -> 0
+                else -> return
             }
         PermissionControllerStatsLog.write(PERMISSION_USAGE_FRAGMENT_INTERACTION, sessionId, act)
     }
