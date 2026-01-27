@@ -303,7 +303,7 @@ class GetPermissionGroupUsageDetailsUseCase(
 
         private fun permissionGroupToOpNamesMap(): Map<String, List<String>> {
             val permissionGroupOpNamesMap = mutableMapOf<String, MutableList<String>>()
-            val permissionGroups = com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils.SENSOR_DATA_PERMISSIONS
+            val permissionGroups = com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils.PERMISSIONS_WITH_USAGE_HISTORY
             permissionGroups.forEach { permissionGroup ->
                 val opNames =
                     PermissionMapping.getPlatformPermissionNamesOfGroup(permissionGroup)
