@@ -471,4 +471,8 @@ object PermissionMapping {
     fun isSpecialRuntimePermissionGroup(permissionGroup: String): Boolean {
         return SPECIAL_RUNTIME_PERMISSION_GROUPS.containsKey(permissionGroup)
     }
+
+    init {
+        com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageHistoryConfigCheck.run()
+    }
 }
