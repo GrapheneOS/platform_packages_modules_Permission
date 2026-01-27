@@ -6,6 +6,7 @@ import android.os.UserHandle
 import android.widget.Button
 import com.android.permissioncontroller.cscopes.ContactScopesLinks
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
+import com.android.permissioncontroller.privacy.LocationIndicatorLinks
 import com.android.permissioncontroller.sscopes.StorageScopesLinks
 
 abstract class ExtraPermissionLink {
@@ -29,6 +30,7 @@ abstract class ExtraPermissionLink {
 private val allExtraPermissionLinks = arrayOf(
         StorageScopesLinks,
         ContactScopesLinks,
+        LocationIndicatorLinks,
 )
 
 fun getExtraPermissionLink(ctx: Context, packageName: String, user: UserHandle, groupName: String): ExtraPermissionLink? {
