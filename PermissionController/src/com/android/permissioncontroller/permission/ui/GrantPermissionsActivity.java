@@ -88,6 +88,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.cscopes.ContactScopesUtils;
+import com.android.permissioncontroller.mscopes.MicrophoneScopesUtils;
 import com.android.permissioncontroller.ecm.EnhancedConfirmationStatsLogUtils;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
@@ -1046,6 +1047,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     public static final int REQ_CODE_SETUP_STORAGE_SCOPES = 100;
     public static final int REQ_CODE_SETUP_CONTACT_SCOPES = 101;
+    public static final int REQ_CODE_SETUP_MICROPHONE_SCOPES = 102;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1066,6 +1068,13 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         if (requestCode == REQ_CODE_SETUP_CONTACT_SCOPES) {
             if (ContactScopesUtils.isContactScopesEnabled(mTargetPackage, getUser())) {
+                setResultAndFinish();
+            }
+            return;
+        }
+
+        if (requestCode == REQ_CODE_SETUP_MICROPHONE_SCOPES) {
+            if (MicrophoneScopesUtils.isMicrophoneScopesEnabled(mTargetPackage, getUser())) {
                 setResultAndFinish();
             }
             return;

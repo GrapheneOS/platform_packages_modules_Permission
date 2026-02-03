@@ -1,0 +1,23 @@
+<resources>
+    <string name="microphone_scopes">Microphone Scopes</string>
+    <string name="setup_microphone_scopes">Setup Microphone Scopes</string>
+
+    <string name="mscopes_enable">Enable Microphone Scopes</string>
+    <string name="mscopes_toast_microphone_permission_denied">Microphone permission is now denied</string>
+    <string name="mscopes_turn_off">Turn off</string>
+    <string name="mscopes_turn_off_confirmation">Turn off Microphone Scopes?</string>
+
+    <string name="mscopes_audio_source">Audio source</string>
+    <string name="mscopes_no_file_selected">No file selected</string>
+
+    <string name="mscopes_disabled_footer">
+"Enabling Microphone Scopes will make this app assume that it has the Microphone permission, despite not actually having it.
+
+It will receive a chosen audio file instead of real microphone input."
+    </string>
+
+    <string name="mscopes_allow_microphone_permission_blocked_msg">Turn off Microphone Scopes before allowing the Microphone permission.</string>
+    <string name="mscopes_toast_file_picker_not_found">File picker not found</string>
+    <string name="mscopes_file_not_found">File not found</string>
+
+</resources>

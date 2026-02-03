@@ -740,6 +740,12 @@
 
 
         <activity
+            android:name="com.android.permissioncontroller.mscopes.MicrophoneScopesActivity"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS"
+            android:exported="true" />
+
+        <activity
             android:name="com.android.permissioncontroller.ext.aauto.AndroidAutoConfigActivity"
             android:theme="@style/Theme.PermissionController.Settings.Expressive.FilterTouches"
             android:permission="com.android.permissioncontroller.permission.LAUNCH_GMSCOMPAT_ACTIVITIES"

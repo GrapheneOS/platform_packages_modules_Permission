@@ -314,6 +314,7 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
         super.onResume();
         // If we're returning to the fragment, photo picker hasn't been triggered
         mPhotoPickerTriggered = false;
+        setupExtraViews();
     }
 
     private void showPermissionRationaleDialog(boolean showPermissionRationale) {

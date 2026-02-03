@@ -202,6 +202,10 @@
         android:name="com.android.permissioncontroller.cscopes.ContactScopesWrapperFragment"
         android:label="ContactScopes"/>
 
+    <fragment
+        android:id="@+id/microphone_scopes"
+        android:name="com.android.permissioncontroller.mscopes.MicrophoneScopesWrapperFragment"
+        android:label="MicrophoneScopes"/>
 
     <fragment
         android:id="@+id/android_auto_config"
