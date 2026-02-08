@@ -3,36 +3,26 @@ package com.android.permissioncontroller.ext.aauto
 import android.Manifest
 import android.app.compat.gms.AndroidAutoPackageFlag
 import android.app.compat.gms.GmsUtils
-import android.content.BroadcastReceiver
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.content.pm.GosPackageState
-import android.content.pm.GosPackageStateFlag
-import android.content.pm.PackageManager
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.content.pm.ServiceInfo
 import android.ext.PackageId
 import android.net.Uri
-import android.os.Bundle
-import android.os.PatternMatcher
-import android.permission.PermissionManager
 import android.provider.Settings
 import android.service.notification.NotificationListenerService
-import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroup
-import androidx.preference.SwitchPreferenceCompat
+import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.ext.BaseGosPkgStateConfigFragment
 import com.android.permissioncontroller.ext.BaseSettingsActivity
 import com.android.permissioncontroller.ext.addCategory
 import com.android.permissioncontroller.ext.addPref
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsCollapsingToolbarBaseFragment
-import com.android.permissioncontroller.permission.ui.handheld.PermissionsFrameFragment
-import com.android.permissioncontroller.permission.ui.handheld.pressBack
 import getAppInfoOrNull
 
 class AndroidAutoConfigActivity : BaseSettingsActivity() {
@@ -43,36 +33,18 @@ class AndroidAutoConfigWrapperFragment : PermissionsCollapsingToolbarBaseFragmen
     override fun createPreferenceFragment(): PreferenceFragmentCompat = AndroidAutoConfigFragment()
 }
 
-private val PKG_NAME = PackageId.ANDROID_AUTO_NAME
-
-class AndroidAutoConfigFragment : PermissionsFrameFragment() {
+class AndroidAutoConfigFragment : BaseGosPkgStateConfigFragment(
+    packageName = PackageId.ANDROID_AUTO_NAME,
+    titleStringRes = R.string.android_auto
+) {
     lateinit var aautoSettingsPref: Preference
-    val pkgFlagPrefs = mutableMapOf<Int, SwitchPreferenceCompat>()
-    val packagePrefs = mutableMapOf<String, Preference>()
-
     lateinit var potentialIssues: PreferenceGroup
     lateinit var aautoVoiceCommandIssues: Preference
 
-    val pkgChangeReceiver = object : BroadcastReceiver() {
-        override fun onReceive(ctx: Context, intent: Intent) {
-            update()
-        }
-    }
-
-    lateinit var pkgManager: PackageManager
-
-    override fun onCreatePreferences(savedState: Bundle?, rootKey: String?) {
-        @Suppress("DEPRECATION") // see onOptionsItemSelected
-        setHasOptionsMenu(true)
-
-        val ctx = requireContext()
-        pkgManager = ctx.packageManager
-
-        val screen = preferenceManager.createPreferenceScreen(ctx)
-
+    override fun configurePreferenceScreen(screen: PreferenceScreen) {
         aautoSettingsPref = screen.addPref(getText(R.string.aauto_settings)).apply {
             intent = Intent(Intent.ACTION_APPLICATION_PREFERENCES).apply {
-                `package` = PKG_NAME
+                `package` = packageName
             }
         }
 
@@ -100,7 +72,7 @@ class AndroidAutoConfigFragment : PermissionsFrameFragment() {
 
             addPref(getText(R.string.aauto_app_info_title)).apply {
                 setSummary(R.string.aauto_app_info_summary)
-                intent = createAppInfoIntent(PKG_NAME)
+                intent = createAppInfoIntent(packageName)
             }
 
             addPref(getText(R.string.notif_listener_settings_title)).apply {
@@ -120,69 +92,6 @@ class AndroidAutoConfigFragment : PermissionsFrameFragment() {
             addAppPref("com.google.android.tts", getText(R.string.speech_services_app))
             addAppPref(PackageId.G_SEARCH_APP_NAME, getText(R.string.google_search_app))
         }
-
-        IntentFilter().run {
-            addAction(Intent.ACTION_PACKAGE_ADDED)
-            addAction(Intent.ACTION_PACKAGE_CHANGED)
-            addAction(Intent.ACTION_PACKAGE_REMOVED)
-            addDataScheme("package")
-
-            packagePrefs.keys.forEach {
-                addDataSchemeSpecificPart(it, PatternMatcher.PATTERN_LITERAL)
-            }
-
-            addDataSchemeSpecificPart(PKG_NAME, PatternMatcher.PATTERN_LITERAL)
-
-            ctx.registerReceiver(pkgChangeReceiver, this)
-        }
-
-        preferenceScreen = screen
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        requireContext().unregisterReceiver(pkgChangeReceiver)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        requireActivity().setTitle(R.string.android_auto)
-        update()
-    }
-
-    fun addPkgFlagPerm(dst: PreferenceGroup, flag: Int, title: Int, confirmationText: Int, summary: Int = 0): SwitchPreferenceCompat {
-        val pref = SwitchPreferenceCompat(dst.context)
-        pref.setTitle(title)
-        if (summary != 0) {
-            pref.setSummary(summary)
-        }
-
-        pkgFlagPrefs[flag] = pref
-
-        pref.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValueB ->
-            val newValue = newValueB as Boolean
-
-            val ctx = requireContext()
-
-            if (newValue) {
-                AlertDialog.Builder(ctx).run {
-                    setMessage(getText(confirmationText))
-                    setPositiveButton(R.string.grant_dialog_button_allow) { _, _ ->
-                        updatePackageFlag(ctx, flag, true)
-                        update()
-                    }
-                    setNegativeButton(R.string.cancel, null)
-                    show()
-                }
-                false
-            } else {
-                updatePackageFlag(ctx, flag, false)
-                true
-            }
-        }
-
-        dst.addPreference(pref)
-        return pref
     }
 
     private fun createAppInfoIntent(pkgName: String): Intent {
@@ -198,51 +107,10 @@ class AndroidAutoConfigFragment : PermissionsFrameFragment() {
         }
     }
 
-    private fun updatePackageFlag(ctx: Context, flag: Int, flagValue: Boolean) {
-        val userId = android.os.Process.myUserHandle().identifier
-        GosPackageState.edit(PKG_NAME, userId).run {
-            setPackageFlagState(flag, flagValue)
-            applyOrPressBack()
-        }
-
-        val permManager = ctx.getSystemService(PermissionManager::class.java)!!
-        permManager.updatePermissionState(PKG_NAME, userId)
-
-        GosPackageState.edit(PKG_NAME, userId).run {
-            killUidAfterApply()
-            applyOrPressBack()
-        }
-
-        val isPkgEnabled = pkgManager.getApplicationInfo(PKG_NAME, 0).enabled
-        if (isPkgEnabled) {
-            // this is needed to invalidate cached system_server state
-            pkgManager.setApplicationEnabledSetting(PKG_NAME, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, userId)
-            pkgManager.setApplicationEnabledSetting(PKG_NAME, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, userId)
-
-            if (flagValue) {
-                when (flag) {
-                    AndroidAutoPackageFlag.GRANT_PERMS_FOR_WIRED_ANDROID_AUTO,
-                    AndroidAutoPackageFlag.GRANT_PERMS_FOR_WIRELESS_ANDROID_AUTO,
-                    -> {
-                        // this is needed to complete Android Auto initialization
-                        pkgManager.sendBootCompletedBroadcastToPackage(PKG_NAME, true, userId)
-                    }
-                }
-            }
-        }
-    }
-
-    fun update() {
-        val aautoAppInfo = pkgManager.getAppInfoOrNull(PKG_NAME)
-
-        if (aautoAppInfo == null) {
-            pressBack()
-            return
-        }
-
+    override fun updateNonPkgStateUi(applicationInfo: ApplicationInfo) {
         aautoSettingsPref.apply {
-            isEnabled = aautoAppInfo.enabled
-            if (aautoAppInfo.enabled) {
+            isEnabled = applicationInfo.enabled
+            if (applicationInfo.enabled) {
                 summary = null
             } else {
                 setSummary(R.string.aauto_settings_summary_disabled)
@@ -265,12 +133,6 @@ class AndroidAutoConfigFragment : PermissionsFrameFragment() {
         }
 
         potentialIssues.isVisible = aautoVoiceCommandIssues.isVisible
-
-        val ps = GosPackageState.get(PKG_NAME, requireContext().user)
-
-        pkgFlagPrefs.entries.forEach {
-            it.value.isChecked = ps.hasPackageFlag(it.key)
-        }
 
         packagePrefs.entries.forEach { e ->
             val pkgName = e.key
@@ -356,26 +218,5 @@ class AndroidAutoConfigFragment : PermissionsFrameFragment() {
             val nlsComponent = ComponentName(nls.packageName, nls.name)
             putExtra(Settings.EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME, nlsComponent.flattenToString())
         }
-    }
-
-    fun GosPackageState.Editor.applyOrPressBack() {
-        if (apply()) {
-            update()
-        } else {
-            // apply() fails only if the package is uninstalled
-            pressBack()
-        }
-    }
-
-    // it's not clear how to resolve deprecation warnings for setHasOptionsMenu and onOptionsItemSelected,
-    // they are suppressed in upstream fragments that use android.R.id.home too
-    @Suppress("DEPRECATION")
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            pressBack()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 }
