@@ -152,8 +152,8 @@ abstract class BaseGosPkgStateConfigFragment(
         val isPkgEnabled = pkgManager.getApplicationInfo(packageName, 0).enabled
         if (isPkgEnabled) {
             // this is needed to invalidate cached system_server state
-            pkgManager.setApplicationEnabledSetting(packageName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, userId)
-            pkgManager.setApplicationEnabledSetting(packageName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, userId)
+            pkgManager.setApplicationEnabledSetting(packageName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
+            pkgManager.setApplicationEnabledSetting(packageName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
         }
     }
 
