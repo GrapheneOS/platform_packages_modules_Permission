@@ -745,6 +745,12 @@
             android:permission="com.android.permissioncontroller.permission.LAUNCH_GMSCOMPAT_ACTIVITIES"
             android:exported="true" />
 
+        <activity
+            android:name="com.android.permissioncontroller.ext.gmscore.GmsCoreConfigActivity"
+            android:theme="@style/Theme.PermissionController.Settings.Expressive.FilterTouches"
+            android:permission="com.android.permissioncontroller.permission.LAUNCH_GMSCOMPAT_ACTIVITIES"
+            android:exported="true" />
+
         <service
             android:name="com.android.permissioncontroller.permission.service.DeviceStateAppFunctionService"
             android:permission="android.permission.BIND_APP_FUNCTION_SERVICE"
