@@ -759,6 +759,14 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
 
         mExtraLink1.setTitle(link.getSettingsLinkText(ctx));
+        int settingsLinkIcon = link.getSettingsLinkIconResId(ctx);
+        if (settingsLinkIcon != 0) {
+            mExtraLink1.setIcon(settingsLinkIcon);
+            mExtraLink1.setIconSpaceReserved(true);
+        } else {
+            mExtraLink1.setIcon(null);
+            mExtraLink1.setIconSpaceReserved(false);
+        }
         mExtraLink1.setOnPreferenceClickListener(p -> {
             link.onSettingsLinkClick(p.getContext(), mPackageName, mUser);
             return true;

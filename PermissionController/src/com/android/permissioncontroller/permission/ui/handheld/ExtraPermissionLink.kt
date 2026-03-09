@@ -23,6 +23,8 @@ abstract class ExtraPermissionLink {
 
     abstract fun getSettingsLinkText(ctx: Context): CharSequence
 
+    open fun getSettingsLinkIconResId(ctx: Context): Int = 0
+
     abstract fun onSettingsLinkClick(ctx: Context, packageName: String, user: UserHandle)
 }
 
