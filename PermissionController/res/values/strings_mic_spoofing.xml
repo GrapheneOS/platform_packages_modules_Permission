@@ -6,15 +6,14 @@
     <string name="mic_spoofing_enable">Enable Microphone Spoofing</string>
     <string name="mic_spoofing_source">Audio source</string>
     <string name="mic_spoofing_source_default">Default (Silence)</string>
-    <string name="mic_spoofing_source_choose_custom_file">Custom file</string>
-    <string name="mic_spoofing_source_custom_fallback">Custom WAV</string>
+    <string name="mic_spoofing_source_choose_custom_file">Choose custom audio file</string>
+    <string name="mic_spoofing_source_custom_fallback">Custom audio file</string>
 
-    <string name="mic_spoofing_footer_disabled">When enabled, Microphone Spoofing replaces app microphone input with silence or audio from a WAV file.</string>
+    <string name="mic_spoofing_footer_disabled">When enabled, Microphone Spoofing replaces app microphone input with silence or audio from a custom audio file.</string>
     <string name="mic_spoofing_footer_enabled_default">Microphone Spoofing is enabled. Replacing microphone input with silence.</string>
     <string name="mic_spoofing_footer_enabled_custom">Microphone Spoofing is enabled. Replacing microphone input with %1$s.</string>
 
     <string name="mic_spoofing_toast_picker_not_found">File picker app not found</string>
-    <string name="mic_spoofing_toast_invalid_wav">Selected file is not a valid WAV file</string>
-    <string name="mic_spoofing_toast_wav_too_large">Selected WAV file exceeds 100 MB</string>
+    <string name="mic_spoofing_toast_invalid_audio">Selected file is not a supported audio file</string>
     <string name="mic_spoofing_toast_invalid_location">Invalid file location</string>
 </resources>

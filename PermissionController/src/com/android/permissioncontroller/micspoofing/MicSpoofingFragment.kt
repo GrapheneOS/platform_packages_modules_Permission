@@ -3,14 +3,12 @@ package com.android.permissioncontroller.micspoofing
 import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.content.pm.GosPackageState
 import android.content.pm.GosPackageStateFlag
 import android.ext.micspoofing.MicSpoofingApi
 import android.net.Uri
 import android.os.Bundle
 import android.os.storage.StorageManager
-import android.provider.DocumentsContract
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
@@ -38,13 +36,13 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
     private lateinit var sourceCategory: PermissionPreferenceCategory
     private lateinit var footer: FooterPreference
 
-    private var chooseWavJob: Job? = null
+    private var chooseAudioFileJob: Job? = null
 
-    private val chooseWavLauncher = registerForActivityResult(
+    private val chooseAudioFileLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.data?.let(::onChooseWavResult)
+            result.data?.data?.let(::onChooseAudioFileResult)
         }
     }
 
@@ -85,16 +83,16 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
     }
 
     override fun onDestroy() {
-        chooseWavJob?.cancel()
-        chooseWavJob = null
+        chooseAudioFileJob?.cancel()
+        chooseAudioFileJob = null
 
         super.onDestroy()
     }
 
     private fun onSourceSelected(selectedValue: String) {
         when (selectedValue) {
-            SOURCE_VALUE_DEFAULT -> useDefaultWav()
-            SOURCE_VALUE_CHOOSE_CUSTOM_FILE -> launchWavPicker()
+            SOURCE_VALUE_DEFAULT -> useDefaultAudioSource()
+            SOURCE_VALUE_CHOOSE_CUSTOM_FILE -> launchAudioPicker()
         }
     }
 
@@ -149,7 +147,7 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
             title = entry.label
             setIcon(R.drawable.ic_settings_open)
             setOnPreferenceClickListener {
-                launchWavPicker()
+                launchAudioPicker()
                 true
             }
         }
@@ -184,42 +182,19 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
         }
     }
 
-    private fun launchWavPicker() {
+    private fun launchAudioPicker() {
         try {
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                type = MIME_AUDIO_WAV
-                addCategory(Intent.CATEGORY_OPENABLE)
-                putExtra(Intent.EXTRA_MIME_TYPES, arrayOf(MIME_AUDIO_WAV, MIME_AUDIO_X_WAV))
-                putStringArrayListExtra(
-                    Intent.EXTRA_RESTRICTIONS_LIST,
-                    arrayListOf(
-                        DocumentsContract.EXTERNAL_STORAGE_PROVIDER_AUTHORITY,
-                        "com.android.providers.media.documents",
-                        "com.android.providers.downloads.documents",
-                    ),
-                )
-            }
-            chooseWavLauncher.launch(intent)
+            chooseAudioFileLauncher.launch(createPickerIntent())
         } catch (e: ActivityNotFoundException) {
-            Log.w(TAG, "Unable to launch document picker for WAV source selection", e)
+            Log.w(TAG, "Unable to launch document picker for audio source selection", e)
             toastManager.showToast(R.string.mic_spoofing_toast_picker_not_found)
         }
     }
 
-    private fun onChooseWavResult(uri: Uri) {
-        chooseWavJob?.cancel()
-        chooseWavJob = lifecycleScope.launch {
-            if (!validateSelectedWav(uri)) {
-                return@launch
-            }
-
-            val path = withContext(Dispatchers.IO) {
-                convertUriToPath(uri)
-            }
-            if (path == null) {
-                toastManager.showToast(R.string.mic_spoofing_toast_invalid_location)
-                return@launch
-            }
+    private fun onChooseAudioFileResult(uri: Uri) {
+        chooseAudioFileJob?.cancel()
+        chooseAudioFileJob = lifecycleScope.launch {
+            val path = resolveValidatedAudioPath(uri) ?: return@launch
 
             val oldState = getGosPackageState()
             val newConfig = MicSpoofingApi.buildCustomPathConfig(path)
@@ -240,7 +215,7 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
         }
     }
 
-    private fun useDefaultWav() {
+    private fun useDefaultAudioSource() {
         val packageState = getGosPackageState()
         val applied = applyMicSpoofingConfig(packageState, null)
 
@@ -253,16 +228,19 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
         update()
     }
 
-    private suspend fun validateSelectedWav(uri: Uri): Boolean {
-        val validationError = withContext(Dispatchers.IO) {
-            validateWavUri(uri)
+    private suspend fun resolveValidatedAudioPath(uri: Uri): String? {
+        val validationResult = withContext(Dispatchers.IO) {
+            validateAudioUri(uri)
         }
-        if (validationError == 0) {
-            return true
+        if (validationResult.errorResId == 0) {
+            return validationResult.path
         }
-        Log.w(TAG, "Selected WAV source failed validation: errorResId=$validationError")
-        toastManager.showToast(validationError)
-        return false
+        Log.w(
+            TAG,
+            "Selected audio source failed validation: errorResId=${validationResult.errorResId}",
+        )
+        toastManager.showToast(validationResult.errorResId)
+        return null
     }
 
     private fun convertUriToPath(uri: Uri): String? {
@@ -275,75 +253,56 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
         )
     }
 
-    private fun validateWavUri(uri: Uri): Int {
-        val fileSize = getFileSize(uri) ?: return R.string.mic_spoofing_toast_invalid_wav
-        if (fileSize > MAX_WAV_FILE_SIZE_BYTES) {
-            return R.string.mic_spoofing_toast_wav_too_large
+    private fun validateAudioUri(uri: Uri): SelectedAudioValidationResult {
+        val path = convertUriToPath(uri) ?: return SelectedAudioValidationResult(
+            errorResId = R.string.mic_spoofing_toast_invalid_location,
+        )
+
+        val hasReadableContent = isReadableAndNonEmpty(uri) ?: return SelectedAudioValidationResult(
+            errorResId = R.string.mic_spoofing_toast_invalid_audio,
+        )
+        if (!hasReadableContent) {
+            return SelectedAudioValidationResult(
+                errorResId = R.string.mic_spoofing_toast_invalid_audio,
+            )
         }
-        if (!hasWavHeader(uri)) {
-            return R.string.mic_spoofing_toast_invalid_wav
+        val mimeType = getMimeType(uri)
+        if (!isPlausibleAudioFile(mimeType, path)) {
+            return SelectedAudioValidationResult(
+                errorResId = R.string.mic_spoofing_toast_invalid_audio,
+            )
         }
-        return 0
+
+        return SelectedAudioValidationResult(path = path)
     }
 
-    private fun getFileSize(uri: Uri): Long? {
+    private fun isReadableAndNonEmpty(uri: Uri): Boolean? {
         try {
-            context_.contentResolver.openAssetFileDescriptor(uri, "r")?.use { afd ->
-                if (afd.length >= 0) {
-                    return afd.length
-                }
+            val assetLength = context_.contentResolver.openAssetFileDescriptor(uri, "r")?.use { afd ->
+                afd.length.takeIf { it >= 0 }
             }
-
-            context_.contentResolver.openInputStream(uri)?.use { input ->
-                val buffer = ByteArray(8 * 1024)
-                var total = 0L
-                while (true) {
-                    val count = input.read(buffer)
-                    if (count < 0) {
-                        break
-                    }
-                    total += count
-                    if (total > MAX_WAV_FILE_SIZE_BYTES) {
-                        break
-                    }
-                }
-                return total
-            }
+            return probeReadableAndNonEmptyContent(
+                assetLength = assetLength,
+                openInputStream = { context_.contentResolver.openInputStream(uri) },
+            )
         } catch (e: IOException) {
-            Log.w(TAG, "Failed to read selected file size", e)
+            Log.w(TAG, "Failed to verify selected audio readability", e)
             return null
         } catch (e: SecurityException) {
-            Log.w(TAG, "No permission to read selected file size", e)
+            Log.w(TAG, "No permission to verify selected audio readability", e)
             return null
         }
+    }
 
+    private fun getMimeType(uri: Uri): String? {
+        try {
+            return context_.contentResolver.getType(uri)
+        } catch (e: IOException) {
+            Log.w(TAG, "Failed to resolve selected audio MIME type", e)
+        } catch (e: SecurityException) {
+            Log.w(TAG, "No permission to resolve selected audio MIME type", e)
+        }
         return null
-    }
-
-    private fun hasWavHeader(uri: Uri): Boolean {
-        val header = ByteArray(12)
-        try {
-            context_.contentResolver.openInputStream(uri)?.use { input ->
-                var read = 0
-                while (read < header.size) {
-                    val count = input.read(header, read, header.size - read)
-                    if (count < 0) {
-                        Log.w(TAG, "Selected WAV source is too short to contain full header")
-                        return false
-                    }
-                    read += count
-                }
-            } ?: return false
-        } catch (e: IOException) {
-            Log.w(TAG, "Failed to read WAV header", e)
-            return false
-        } catch (e: SecurityException) {
-            Log.w(TAG, "No permission to read WAV header", e)
-            return false
-        }
-
-        return checkMagicBytes(header, 0, RIFF_MAGIC) &&
-                checkMagicBytes(header, 8, WAVE_MAGIC)
     }
 
     private fun applyMicSpoofingConfig(
@@ -355,24 +314,6 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
             setNotifyUidAfterApply(true)
             apply()
         }
-    }
-
-    private fun checkMagicBytes(
-        header: ByteArray,
-        startIndex: Int,
-        magic: String,
-    ): Boolean {
-        if (header.size < startIndex + magic.length) {
-            return false
-        }
-
-        for (i in magic.indices) {
-            if (header[startIndex + i] != magic[i].code.toByte()) {
-                return false
-            }
-        }
-
-        return true
     }
 
     private fun getFooterSummary(packageState: GosPackageState, enabled: Boolean): CharSequence {
@@ -408,17 +349,15 @@ class MicSpoofingFragment : PackageExtraConfigFragment() {
         val label: String,
     )
 
+    private data class SelectedAudioValidationResult(
+        val path: String? = null,
+        val errorResId: Int = 0,
+    )
+
     private companion object {
         private const val TAG = "MicSpoofingFragment"
 
-        private const val MAX_WAV_FILE_SIZE_BYTES = 100L * 1024 * 1024
-        private const val MIME_AUDIO_WAV = "audio/wav"
-        private const val MIME_AUDIO_X_WAV = "audio/x-wav"
-
         private const val SOURCE_VALUE_DEFAULT = "__default__"
         private const val SOURCE_VALUE_CHOOSE_CUSTOM_FILE = "__choose_custom_file__"
-
-        private const val RIFF_MAGIC = "RIFF"
-        private const val WAVE_MAGIC = "WAVE"
     }
 }
