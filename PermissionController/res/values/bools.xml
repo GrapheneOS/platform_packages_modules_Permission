@@ -31,5 +31,5 @@
     <bool name="config_enableExpressiveDesignInEnhancedConfirmationDialog">true</bool>
     <!-- config for opting out of expressive Safety Center. This has no effect currently
     but may be enabled in a subsequent release -->
-    <bool name="config_enableExpressiveDesignInSafetyCenter">false</bool>
+    <bool name="config_enableExpressiveDesignInSafetyCenter">true</bool>
 </resources>
