@@ -25,82 +25,39 @@ import android.content.pm.GosPackageState;
 import android.content.pm.GosPackageStateFlag;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.os.UserHandle;
-import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.system.Os;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.ext.ScopesUtils;
+import com.android.permissioncontroller.ext.StoragePathUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import static com.android.permissioncontroller.ext.StringUtils.isUtf16;
-
 public class StorageScopesUtils {
     private static final String TAG = "StorageScopesUtils";
-
-    private static final String MEDIA_PROVIDER_PACKAGE = "com.android.providers.media.module";
-
-    private static final int MAX_SCOPE_PATH_LENGTH_IN_UTF8_BYTES = 4096; // default PATH_MAX value
 
     private StorageScopesUtils() {}
 
     private static boolean validateScopePath(@Nullable String path, Context context, @Nullable List<StorageVolume> cachedVolumes) {
-        if (path == null) {
+        if (!StoragePathUtils.validatePathBasics(path)) {
             return false;
         }
 
-        // Java String content isn't guaranteed to be a valid UTF-16 sequence
-        if (!isUtf16(path)) {
-            return false;
-        }
-
-        if (path.indexOf('\0') >= 0) {
-            return false;
-        }
-
-        String[] components = path.split("/");
-
-        if (components.length < 2) {
-            return false;
-        }
-
-        if (components[0].length() != 0) {
-            // first component ("" before initial "/") should be empty
-            return false;
-        }
-
-        for (int i = 1; i < components.length; ++i) {
-            if (components[i].length() == 0) {
-                return false;
-            }
-        }
-
-        if (path.getBytes(StandardCharsets.UTF_8).length > MAX_SCOPE_PATH_LENGTH_IN_UTF8_BYTES) {
-            return false;
-        }
-
-        if (StorageScopesUtils.storageVolumeForPath(context, new File(path), cachedVolumes) == null) {
-            return false;
-        }
-
-        return true;
+        return StoragePathUtils.storageVolumeForPath(context, new File(path), cachedVolumes) != null;
     }
 
     static String pathToUiLabel(Context ctx, List<StorageVolume> volumes, File path) {
-        StorageVolume volume = storageVolumeForPath(ctx, path, volumes);
+        StorageVolume volume = StoragePathUtils.storageVolumeForPath(ctx, path, volumes);
 
         if (volume != null) {
             String volumeName = volume.isPrimary() ?
@@ -116,38 +73,6 @@ public class StorageScopesUtils {
         }
 
         return path.getAbsolutePath();
-    }
-
-    @Nullable
-    private static StorageVolume storageVolumeForPath(Context ctx, File file, List<StorageVolume> cachedVolumes) {
-        List<StorageVolume> volumes = (cachedVolumes != null) ?
-                cachedVolumes :
-                ctx.getSystemService(StorageManager.class).getStorageVolumes();
-
-        for (StorageVolume volume : volumes) {
-            File volumeRoot = volume.getDirectory();
-
-            if (volumeRoot == null) {
-                continue;
-            }
-
-            if (dirContainsOrEquals(volumeRoot, file)) {
-                return volume;
-            }
-        }
-        return null;
-    }
-
-    private static boolean dirContainsOrEquals(File dir, File file) {
-        for (;;) {
-            if (file.equals(dir)) {
-                return true;
-            }
-            file = file.getParentFile();
-            if (file == null) {
-                return false;
-            }
-        }
     }
 
     static String dirUriToPath(Context ctx, Uri uri) {
@@ -192,25 +117,7 @@ public class StorageScopesUtils {
                 unverifiedPath = res.getString(id);
             }
         } else {
-            try (ParcelFileDescriptor pfd = ctx.getContentResolver().openFile(uri, "r", null)) {
-                String fdPath = "/proc/self/fd/" + pfd.getFd();
-
-                String realpath = Os.readlink(fdPath);
-
-                if (realpath.startsWith("/mnt/user/")) {
-                    // devices that launched with Android 11+ mount shared storage differently
-                    realpath = realpath.replaceFirst("/mnt/user/" + UserHandle.myUserId() + "/", "/storage/");
-                }
-
-                if (new File(realpath).isFile()) {
-                    unverifiedPath = realpath;
-                } else {
-                    Log.d(TAG, realpath + " is not a file, " + Os.stat(realpath));
-                }
-            } catch (Exception e) {
-                Log.d(TAG, "unable to convert uri " + uri + " to path", e);
-                return null;
-            }
+            unverifiedPath = StoragePathUtils.resolveFileUriToPath(ctx, uri);
         }
 
         if (validateScopePath(unverifiedPath, ctx, cachedVolumes)) {

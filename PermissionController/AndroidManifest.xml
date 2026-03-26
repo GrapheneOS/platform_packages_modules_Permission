@@ -738,6 +738,11 @@
             android:permission="android.permission.WRITE_SECURE_SETTINGS"
             android:exported="true" />
 
+        <activity
+            android:name="com.android.permissioncontroller.micspoofing.MicSpoofingActivity"
+            android:exported="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS"
+            android:theme="@style/Theme.PermissionController.Settings.Expressive.FilterTouches" />
 
         <activity
             android:name="com.android.permissioncontroller.ext.aauto.AndroidAutoConfigActivity"

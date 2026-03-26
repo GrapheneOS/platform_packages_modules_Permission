@@ -5,6 +5,7 @@ import android.content.pm.GosPackageState
 import android.os.UserHandle
 import android.widget.Button
 import com.android.permissioncontroller.cscopes.ContactScopesLinks
+import com.android.permissioncontroller.micspoofing.MicSpoofingLinks
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.sscopes.StorageScopesLinks
 
@@ -23,12 +24,15 @@ abstract class ExtraPermissionLink {
 
     abstract fun getSettingsLinkText(ctx: Context): CharSequence
 
+    open fun getSettingsLinkIconResId(ctx: Context): Int = 0
+
     abstract fun onSettingsLinkClick(ctx: Context, packageName: String, user: UserHandle)
 }
 
 private val allExtraPermissionLinks = arrayOf(
         StorageScopesLinks,
         ContactScopesLinks,
+        MicSpoofingLinks,
 )
 
 fun getExtraPermissionLink(ctx: Context, packageName: String, user: UserHandle, groupName: String): ExtraPermissionLink? {
