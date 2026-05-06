@@ -1046,6 +1046,7 @@ public class GrantPermissionsActivity extends SettingsActivity
 
     public static final int REQ_CODE_SETUP_STORAGE_SCOPES = 100;
     public static final int REQ_CODE_SETUP_CONTACT_SCOPES = 101;
+    public static final int REQ_CODE_SETUP_LOCATION_INDICATOR = 102;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1068,6 +1069,11 @@ public class GrantPermissionsActivity extends SettingsActivity
             if (ContactScopesUtils.isContactScopesEnabled(mTargetPackage, getUser())) {
                 setResultAndFinish();
             }
+            return;
+        }
+
+        if (requestCode == REQ_CODE_SETUP_LOCATION_INDICATOR) {
+            setResultAndFinish();
             return;
         }
 

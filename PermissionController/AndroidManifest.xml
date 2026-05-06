@@ -735,6 +735,12 @@
             android:permission="android.permission.WRITE_SECURE_SETTINGS"
             android:exported="true" />
 
+        <activity
+            android:name="com.android.permissioncontroller.privacy.LocationIndicatorActivity"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS"
+            android:exported="true" />
+
         <service
             android:name="com.android.permissioncontroller.permission.service.DeviceStateAppFunctionService"
             android:permission="android.permission.BIND_APP_FUNCTION_SERVICE"

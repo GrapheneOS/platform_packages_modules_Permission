@@ -3,4 +3,9 @@
     <string name="scopes_list_is_full">Scope list is full</string>
     <string name="scopes_menu_item_turn_off">Turn off</string>
     <string name="scopes_btn_remove_scope">Remove</string>
+
+    <string name="location_indicator">Location indicator</string>
+    <string name="location_indicator_footer">When enabled, the standard privacy indicator will not show when the app is using location. It is assumed that the app will always be tracking your location. Location usage will still be logged.</string>
+    <string name="hide_location_indicator_title">Hide location indicator</string>
+    <string name="hide_location_indicator_toast">Changes will take effect the next time the app requests location access.</string>
 </resources>
