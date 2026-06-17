@@ -13,7 +13,10 @@ import android.ext.cscopes.ContactScopesStorage
 import android.ext.cscopes.ContactsGroup
 import android.net.Uri
 import android.os.Bundle
+import android.provider.BaseColumns
 import android.provider.ContactsContract
+import android.provider.ContactsPickerSessionContract
+import android.util.Log
 import android.util.SparseArray
 import android.view.Menu
 import android.view.MenuInflater
@@ -24,7 +27,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuProvider
 import androidx.preference.PreferenceCategory
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.cscopes.ContactScopesUtils.maybeSpecifyPackage
 import com.android.permissioncontroller.ext.PackageExtraConfigFragment
 import com.android.permissioncontroller.ext.PreferenceWithImageButton
 import com.android.permissioncontroller.ext.addMenuItem
@@ -209,7 +211,7 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
     fun launchIntentView(uri: Uri, type: String) {
         Intent(Intent.ACTION_VIEW).run {
             setDataAndType(uri, type)
-            maybeSpecifyPackage(context_, this)
+            `package` = BUNDLED_CONTACTS_APP_PACKAGE
             startContactsActivityOrToast(this)
         }
     }
@@ -219,22 +221,29 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
             return
         }
 
-        val uris: List<Uri> = run {
-            val clipData = intent.clipData
-            if (clipData != null) {
-                val list = ArrayList<Uri>(clipData.itemCount)
-                for (i in 0 until clipData.itemCount) {
-                    val uri = clipData.getItemAt(i).uri ?: continue
-                    list.add(uri)
+        val ids: LongArray?
+        val uris: List<Uri>
+        if (type == ContactScope.TYPE_CONTACT) {
+            uris = run {
+                val clipData = intent.clipData
+                if (clipData != null) {
+                    val list = ArrayList<Uri>(clipData.itemCount)
+                    for (i in 0 until clipData.itemCount) {
+                        val uri = clipData.getItemAt(i).uri ?: continue
+                        list.add(uri)
+                    }
+                    list
+                } else {
+                    val uri = intent.data ?: return@onPickerResult
+                    listOf(uri)
                 }
-                list
-            } else {
-                val uri = intent.data ?: return@onPickerResult
-                listOf(uri)
             }
+            ids = getIdsFromUris(uris)
+        } else {
+            val uri = intent.data ?: return
+            uris = listOf(uri)
+            ids = getIdsFromUri(uri)
         }
-
-        val ids = getIdsFromUris(type, uris)
 
         if (ids == null) {
             val template = resources.getQuantityText(R.plurals.cscopes_toast_unknown_scope, uris.size).toString()
@@ -258,25 +267,34 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
         }
     }
 
-    fun getIdsFromUris(type: Int, uris: List<Uri>): LongArray? {
-         when (type) {
-            ContactScope.TYPE_CONTACT -> {
-                val args = Bundle().apply {
-                    putParcelableArray(ContactScopesApi.KEY_URIS, uris.toTypedArray())
+    fun getIdsFromUris(uris: List<Uri>): LongArray? {
+        val proj = arrayOf(BaseColumns._ID)
+        val ids = arrayListOf<Long>()
+        uris.forEach { uri ->
+            context_.contentResolver.query(uri, proj, null, null)?.use { cursor ->
+                while (cursor.moveToNext()) {
+                    ids.add(cursor.getLong(0))
                 }
-                val res = callScopedContactsProvider(ContactScopesApi.METHOD_GET_IDS_FROM_URIS, args)
-                if (res == null) {
-                    return null
-                }
-                return res.getLongArray(ContactScopesApi.KEY_IDS)!!
             }
-            ContactScope.TYPE_NUMBER, ContactScope.TYPE_EMAIL -> {
-                return uris.map {
-                    it.lastPathSegment!!.toLong()
-                }.toLongArray()
-            }
-            else -> error(type)
         }
+        if (ids.isEmpty()) {
+            return null
+        }
+        return ids.toLongArray()
+    }
+
+    fun getIdsFromUri(uri: Uri): LongArray? {
+        val proj = arrayOf(BaseColumns._ID)
+        val ids = arrayListOf<Long>()
+        context_.contentResolver.query(uri, proj, null, null)?.use { cursor ->
+            while (cursor.moveToNext()) {
+                ids.add(cursor.getLong(0))
+            }
+        }
+        if (ids.isEmpty()) {
+            return null
+        }
+        return ids.toLongArray()
     }
 
     fun callScopedContactsProvider(method: String, args: Bundle? = null, arg: String? = null): Bundle? {
@@ -351,7 +369,7 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
                 } else {
                     Intent(Intent.ACTION_INSERT).run {
                         type = ContactsContract.Groups.CONTENT_TYPE
-                        maybeSpecifyPackage(context_, this)
+                        `package` = BUNDLED_CONTACTS_APP_PACKAGE
                         startContactsActivityOrToast(this)
                     }
                 }
@@ -402,11 +420,21 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
     class PickerActivityContract(val dataType: String, val scopeType: Int)
         : ActivityResultContract<Unit, Intent?>() {
         override fun createIntent(context: Context, input: Unit): Intent {
-            return Intent(Intent.ACTION_PICK).apply {
-                type = dataType
-                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-                maybeSpecifyPackage(context, this)
+            if (scopeType == ContactScope.TYPE_CONTACT) {
+                return Intent(Intent.ACTION_PICK).apply {
+                    type = dataType
+                    putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+                    putExtra(Intent.EXTRA_USE_SYSTEM_CONTACTS_PICKER, true)
+                }
+            } else {
+                return Intent(ContactsPickerSessionContract.ACTION_PICK_CONTACTS).apply {
+                    putStringArrayListExtra(
+                        ContactsPickerSessionContract.EXTRA_PICK_CONTACTS_REQUESTED_DATA_FIELDS,
+                        arrayListOf(dataType))
+                    putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+                }
             }
+
         }
 
         override fun parseResult(resultCode: Int, intent: Intent?): Intent? {
@@ -458,8 +486,6 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
             val item = addMenuItem(R.string.cscopes_turn_off, menu)
             item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         }
-
-        addMenuItem(R.string.cscopes_settings, menu)
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
@@ -477,24 +503,6 @@ class ContactScopesFragment : PackageExtraConfigFragment(), MenuProvider {
                         }
                         show()
                     }
-                }
-            }
-
-            R.string.cscopes_settings -> {
-                AlertDialog.Builder(context_).run {
-                    setTitle(R.string.cscopes_settings)
-                    val items = arrayOf(
-                        getText(R.string.cscopes_allow_custom_contacts_app)
-                    )
-                    val checked = booleanArrayOf(
-                        ContactScopesUtils.isCustomContactsAppAllowed(context_)
-                    )
-                    setMultiChoiceItems(items, checked) { _, pos, isChecked ->
-                        check(pos == 0)
-                        ContactScopesUtils.setCustomContactsAppAllowed(context_, isChecked)
-                    }
-                    setNegativeButton(R.string.cscopes_settings_dismiss, null)
-                    show()
                 }
             }
 

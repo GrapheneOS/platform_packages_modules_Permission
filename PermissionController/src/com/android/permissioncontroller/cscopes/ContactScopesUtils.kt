@@ -10,10 +10,6 @@ import com.android.permissioncontroller.ext.ScopesUtils
 
 const val BUNDLED_CONTACTS_APP_PACKAGE = "com.android.contacts"
 
-private const val CSCOPES_PREFS_NAME = "cscopes"
-private const val PREF_KEY_ALLOW_CUSTOM_CONTACTS_APP = "custom_contacts_app_allowed"
-private const val PREF_DEFAULT_ALLOW_CUSTOM_CONTACTS_APP = false
-
 private val PERMISSION_GROUPS = setOf(
         Manifest.permission_group.CONTACTS
 )
@@ -29,28 +25,6 @@ object ContactScopesUtils {
 
     fun isContactScopesEnabled(ps: GosPackageState): Boolean {
         return ps.hasFlag(GosPackageStateFlag.CONTACT_SCOPES_ENABLED)
-    }
-
-    private fun getPrefs(ctx: Context) = ctx.getSharedPreferences(CSCOPES_PREFS_NAME, Context.MODE_PRIVATE)
-
-    fun maybeSpecifyPackage(ctx: Context, i: Intent) {
-        if (!isCustomContactsAppAllowed(ctx)) {
-            i.`package` = BUNDLED_CONTACTS_APP_PACKAGE
-        }
-    }
-
-    fun isCustomContactsAppAllowed(ctx: Context): Boolean {
-        return getPrefs(ctx).getBoolean(
-                PREF_KEY_ALLOW_CUSTOM_CONTACTS_APP,
-                PREF_DEFAULT_ALLOW_CUSTOM_CONTACTS_APP
-        )
-    }
-
-    fun setCustomContactsAppAllowed(ctx: Context, v: Boolean) {
-        getPrefs(ctx).edit().run {
-            putBoolean(PREF_KEY_ALLOW_CUSTOM_CONTACTS_APP, v)
-            apply()
-        }
     }
 
     fun revokeContactPermissions(ctx: Context, pkgName: String): Boolean {
