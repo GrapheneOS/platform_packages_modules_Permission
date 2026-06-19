@@ -257,9 +257,14 @@ public final class SafetyCenterConfigParser {
                 default:
                     break loop;
             }
-            builder.addSafetySource(
-                    parseSafetySource(
-                            parser, resources, type, parser.getName(), packageNameOverride));
+
+            SafetySource safetySource = parseSafetySource(
+                            parser, resources, type, parser.getName(), packageNameOverride);
+            if ("AndroidAppFunctionAccess".equals(safetySource.getId())
+                    && !android.permission.flags.Flags.appFunctionAccessUiEnabled()) {
+                continue;
+            }
+            builder.addSafetySource(safetySource);
         }
         validateElementEnd(parser, name);
         parser.nextTag();
