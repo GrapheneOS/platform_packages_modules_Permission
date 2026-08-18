@@ -42,6 +42,7 @@ import static com.android.permissioncontroller.permission.ui.ManagePermissionsAc
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -50,6 +51,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.GosPackageState;
+import android.ext.SettingsIntents;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -73,6 +75,7 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.TwoStatePreference;
 
 import com.android.modules.utils.build.SdkLevel;
@@ -142,6 +145,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull TwoStatePreference mLocationAccuracySwitch;
     private @NonNull Preference mExtraLink1;
     private @NonNull PermissionTwoTargetPreference mDetails;
+    private @NonNull PreferenceCategory mAppNetworkAccessGranularity;
+    private @NonNull Preference mAppStrictLeakBlocking;
     private @NonNull AppPermissionFooterLinkPreference mFooterLink1;
     private @NonNull AppPermissionFooterLinkPreference mFooterLink2;
     private @NonNull PermissionFooterPreference mFooterPreference;
@@ -255,6 +260,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
         mExtraLink1 = requirePreference("app_permission_extra_link_1");
         mDetails = requirePreference("app_permission_details");
+        mAppNetworkAccessGranularity = requirePreference("app_network_access_granularity");
+        mAppStrictLeakBlocking = requirePreference("app_strict_leak_blocking");
         mFooterLink1 = requirePreference("app_permission_footer_link_1");
         mFooterLink2 = requirePreference("app_permission_footer_link_2");
         mFooterPreference = requirePreference("app_permission_footer");
@@ -330,6 +337,22 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         getActivity().setTitle(
                 getPreferenceManager().getContext().getString(R.string.app_permission_title,
                         mPermGroupLabel));
+
+        if (mPermGroupName.equals(Manifest.permission_group.NETWORK)) {
+            // Although the network access granularity settings only matter when NETWORK is allowed,
+            // they are intentionally displayed regardless of the current status of NETWORK.
+            // Consider the case where a user that disables strict leak blocking and then disallows
+            // NETWORK. At a later date that user might want to enable NETWORK but only after strict
+            // leak blocking is enabled.
+            mAppNetworkAccessGranularity.setVisible(true);
+
+            mAppStrictLeakBlocking.setOnPreferenceClickListener(preference -> {
+                Intent i = SettingsIntents.createAppIntent(context,
+                        SettingsIntents.APP_STRICT_LEAK_BLOCKING, mPackageName, false);
+                requireActivity().startActivity(i);
+                return true;
+            });
+        }
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
