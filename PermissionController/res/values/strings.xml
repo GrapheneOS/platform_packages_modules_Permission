@@ -692,6 +692,12 @@
     <!-- Description for showing an app's permission along with device name [CHAR LIMIT=NONE] -->
     <string name="app_permission_header_with_device_name"><xliff:g id="perm" example="camera">%1$s</xliff:g> access for this app on <xliff:g id="device_name" example="My Laptop">%2$s</xliff:g></string>
 
+    <!-- Title for app network access granularity category [CHAR LIMIT=none] -->
+    <string name="app_network_access_granularity_title">Access granularity</string>
+
+    <!-- Text for linking to the page that shows an app's strict leak blocking setting [CHAR LIMIT=none] -->
+    <string name="app_strict_leak_blocking_title">Strict leak blocking</string>
+
     <!-- Text for linking to the page that shows an app's permissions [CHAR LIMIT=none] -->
     <string name="app_permission_footer_app_permissions_link">See all <xliff:g id="app" example="Maps">%1$s</xliff:g> permissions</string>
 
