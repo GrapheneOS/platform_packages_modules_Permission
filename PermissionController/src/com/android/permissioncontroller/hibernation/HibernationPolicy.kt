@@ -47,6 +47,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.SharedPreferences
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.database.ContentObserver
@@ -119,6 +120,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 private const val LOG_TAG = "HibernationPolicy"
+
+private val HIBERNATION_EXEMPT_SYSTEM_PACKAGES =
+    setOf(
+        "app.attestation.auditor",
+        "app.grapheneos.apps",
+        "app.seamlessupdate.client",
+    )
 
 private var SKIP_NEXT_RUN = false
 
@@ -572,6 +580,13 @@ private fun List<UsageStats>.lastTimePackageUsed(pkgName: String): Long {
 /** Checks if the given package is exempt from hibernation in a way that's not user-overridable */
 @Suppress("MissingPermission")
 suspend fun isPackageHibernationExemptBySystem(pkg: LightPackageInfo, user: UserHandle): Boolean {
+    if (
+        pkg.appFlags and ApplicationInfo.FLAG_SYSTEM != 0 &&
+            pkg.packageName in HIBERNATION_EXEMPT_SYSTEM_PACKAGES
+    ) {
+        return true
+    }
+
     val launcherPkgs = LauncherPackagesLiveData.getInitializedValue() ?: emptyList()
     if (!launcherPkgs.contains(pkg.packageName)) {
         if (Log.isLoggable(LOG_TAG, Log.INFO)) {
