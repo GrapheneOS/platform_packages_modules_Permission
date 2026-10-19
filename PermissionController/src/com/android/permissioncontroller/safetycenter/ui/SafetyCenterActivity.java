@@ -35,7 +35,6 @@ import static java.util.Objects.requireNonNull;
 import android.app.ActionBar;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -255,13 +254,14 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity
         switch (action) {
             case ACTION_SAFETY_CENTER:
             case PRIVACY_CONTROLS_ACTION:
-                if (!isHandledByThisActivity(action)) {
+                ComponentName resolvedComponent = resolveComponent(action);
+                if (resolvedComponent != null && !resolvedComponent.equals(getComponentName())) {
                     Log.i(
                             TAG,
                             "Redirecting away from SafetyCenterActivity in PermissionController"
                                     + " for: "
                                     + action);
-                    startActivity(makeIntentImplicitWithResultForwarding(intent));
+                    startActivity(makeRedirectIntent(intent, resolvedComponent));
                     finishAndRemoveTask();
                     return true;
                 }
@@ -288,24 +288,28 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity
         return false;
     }
 
-    private static Intent makeIntentImplicitWithResultForwarding(Intent intent) {
-        Intent newIntent = new Intent(intent);
-
-        newIntent.setComponent(null);
-        newIntent.setPackage(null);
-        newIntent.addFlags(FLAG_ACTIVITY_FORWARD_RESULT);
-        newIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-
-        return newIntent;
+    /**
+     * Builds the intent that forwards the request to the resolved component.
+     *
+     * <p>Only the action and the extras of the incoming intent are carried over, and the target
+     * is the explicit component resolved for the action, so the data, clip data, grant flags and
+     * selector of the incoming intent are not relaunched with this app's identity.
+     */
+    private static Intent makeRedirectIntent(Intent intent, ComponentName component) {
+        return new Intent(intent.getAction())
+                .setComponent(component)
+                .putExtras(intent)
+                .addFlags(FLAG_ACTIVITY_FORWARD_RESULT | FLAG_ACTIVITY_NEW_TASK);
     }
 
     private boolean isHandledByThisActivity(String action) {
-        PackageManager pm = getPackageManager();
-        ComponentName pcScActivity = getComponentName();
-        Intent queryIntent = new Intent(action);
+        return getComponentName().equals(resolveComponent(action));
+    }
 
-        ComponentName resolvedComponent = queryIntent.resolveActivity(pm);
-        return pcScActivity.equals(resolvedComponent);
+    /** Resolves the activity that handles the given action. */
+    @Nullable
+    private ComponentName resolveComponent(String action) {
+        return new Intent(action).resolveActivity(getPackageManager());
     }
 
     /** Whether to redirect to the new Safety Center UI in Settings. */
