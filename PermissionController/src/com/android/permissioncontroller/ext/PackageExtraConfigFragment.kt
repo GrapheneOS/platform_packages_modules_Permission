@@ -18,13 +18,15 @@ abstract class PackageExtraConfigFragment : BaseSettingsWithLargeHeaderFragment(
         val application = requireActivity().application
         val user = requireContext().user
         val label = getPackageLabel(application, pkgName, user)
+        // null if the package isn't installed for this user, getPackageLabel() falls back to
+        // pkgName in that case
+        val icon = getBadgedPackageIcon(application, pkgName, user)
 
-        if (TextUtils.isEmpty(label)) {
+        if (icon == null || TextUtils.isEmpty(label)) {
             this.pressBack()
             return
         }
-        val icon = getBadgedPackageIcon(application, pkgName, user)
-        setHeader(icon!!, label, null, user, false)
+        setHeader(icon, label, null, user, false)
     }
 
     fun getGosPackageState(): GosPackageState {
