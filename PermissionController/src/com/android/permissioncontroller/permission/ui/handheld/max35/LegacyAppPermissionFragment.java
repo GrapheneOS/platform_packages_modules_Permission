@@ -612,6 +612,7 @@ public class LegacyAppPermissionFragment extends SettingsWithLargeHeader
 
     private void setDetail(Pair<Integer, Integer> detailResIds) {
         if (detailResIds == null) {
+            mPermissionDetails.setVisibility(View.GONE);
             mWidgetFrame.setVisibility(View.GONE);
             mDivider.setVisibility(View.GONE);
             return;

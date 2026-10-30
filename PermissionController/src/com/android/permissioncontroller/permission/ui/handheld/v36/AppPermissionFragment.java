@@ -628,6 +628,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
     private void setDetail(Pair<Integer, Integer> detailResIds) {
         if (detailResIds == null) {
+            mDetails.setVisible(false);
             mDetails.setOnSecondTargetClickListener(null);
             return;
         }

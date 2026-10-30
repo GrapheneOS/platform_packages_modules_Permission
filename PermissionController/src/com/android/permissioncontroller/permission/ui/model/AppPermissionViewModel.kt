@@ -31,7 +31,10 @@ import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_ERRORED
 import android.app.AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE
 import android.app.Application
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.hardware.SensorPrivacyManager
 import android.hardware.SensorPrivacyManager.OnSensorPrivacyChangedListener
@@ -39,6 +42,7 @@ import android.hardware.SensorPrivacyManager.OnSensorPrivacyChangedListener.Sens
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import android.os.UserManager
 import android.permission.flags.Flags
 import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
@@ -118,6 +122,8 @@ class AppPermissionViewModel(
     companion object {
         private val LOG_TAG = AppPermissionViewModel::class.java.simpleName
         private const val DEVICE_PROFILE_ROLE_PREFIX = "android.app.role"
+        // Custom framework restriction; not exposed in the system SDK used by this module.
+        private const val DISALLOW_NETWORK = "no_network"
     }
 
     interface ConfirmDialogShowingFragment {
@@ -377,6 +383,32 @@ class AppPermissionViewModel(
             private val packagePermissionsExternalDeviceLiveData =
                 PackagePermissionsExternalDeviceLiveData[packageName, user]
 
+            private val restrictionContext by lazy { Utils.getUserContext(app, user) }
+            private val restrictionReceiver = object : BroadcastReceiver() {
+                override fun onReceive(context: Context, intent: Intent) {
+                    update()
+                }
+            }
+
+            override fun onActive() {
+                if (permGroupName == Manifest.permission_group.NETWORK) {
+                    restrictionContext.registerReceiver(
+                        restrictionReceiver,
+                        IntentFilter(UserManager.ACTION_USER_RESTRICTIONS_CHANGED))
+                }
+                super.onActive()
+                if (permGroupName == Manifest.permission_group.NETWORK) {
+                    update()
+                }
+            }
+
+            override fun onInactive() {
+                if (permGroupName == Manifest.permission_group.NETWORK) {
+                    restrictionContext.unregisterReceiver(restrictionReceiver)
+                }
+                super.onInactive()
+            }
+
             init {
                 addSource(appPermGroupLiveData) { appPermGroup ->
                     lightAppPermGroup = appPermGroup
@@ -471,8 +503,14 @@ class AppPermissionViewModel(
             }
 
             override fun onUpdate() {
+                if (permGroupName == Manifest.permission_group.NETWORK) {
+                    detailResIdLiveData.value = null
+                }
+
                 if (!MultiDeviceUtils.isDefaultDeviceId(persistentDeviceId)) {
-                    value = getButtonStatesForExternalDevicePermission()
+                    value = getButtonStatesForExternalDevicePermission().also {
+                        applyNetworkRestriction(it)
+                    }
                     return
                 }
 
@@ -689,9 +727,22 @@ class AppPermissionViewModel(
                         DENY_FOREGROUND to deniedForegroundState,
                         LOCATION_ACCURACY to locationAccuracyState,
                         SELECT_PHOTOS to selectState,
-                    )
+                    ).also { applyNetworkRestriction(it) }
             }
         }
+
+    private fun isNetworkPermissionRestricted(): Boolean =
+        permGroupName == Manifest.permission_group.NETWORK &&
+            app.getSystemService(UserManager::class.java)!!.hasUserRestrictionForUser(
+                DISALLOW_NETWORK, user)
+
+    private fun applyNetworkRestriction(states: Map<ButtonType, ButtonState>) {
+        if (isNetworkPermissionRestricted()) {
+            // Use the same disabled-button state as fixed permissions, without changing grants.
+            states.values.forEach { it.isEnabled = false }
+            detailResIdLiveData.value = R.string.network_permission_restricted_for_user to null
+        }
+    }
 
     fun shouldShowAskOrWhenYouShareLabel() =
         lightAppPermGroup?.permGroupName == LOCATION && Flags.locationButtonEnabled()
@@ -917,6 +968,7 @@ class AppPermissionViewModel(
         changeRequest: ChangeRequest,
         buttonClicked: Int,
     ) {
+        if (isNetworkPermissionRestricted()) return
         val context = fragment.context ?: return
         val group = lightAppPermGroup ?: return
         val wasForegroundGranted = group.foreground.isGranted
@@ -1334,6 +1386,7 @@ class AppPermissionViewModel(
      * @param oneTime whether the change should show that the permission was selected as one-time
      */
     fun onDenyAnyWay(changeRequest: ChangeRequest, buttonPressed: Int, oneTime: Boolean) {
+        if (isNetworkPermissionRestricted()) return
         val unexpandedGroup = lightAppPermGroup ?: return
 
         for (group in expandToSupergroup(unexpandedGroup)) {
