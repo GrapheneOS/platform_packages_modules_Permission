@@ -94,6 +94,17 @@
         app:iconSpaceReserved="true"
         app:isPreferenceVisible="false" />
 
+    <PreferenceCategory
+        android:key="app_network_access_granularity"
+        android:title="@string/app_network_access_granularity_title"
+        app:isPreferenceVisible="false">
+
+    <Preference
+        android:key="app_strict_leak_blocking"
+        android:title="@string/app_strict_leak_blocking_title" />
+
+    </PreferenceCategory>
+
     <com.android.permissioncontroller.permission.ui.handheld.v36.AppPermissionFooterLinkPreference
         android:key="app_permission_footer_link_1"
         android:summary="@string/app_permission_footer_app_permissions_link" />
